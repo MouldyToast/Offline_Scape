@@ -1,6 +1,5 @@
 package com.zenyte.plugins.drop.catacombsofkourend;
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -60,9 +59,6 @@ public class CatacombsProcessor extends DropProcessor {
 
     public void onDeath(final NPC npc, final Player killer) {
         int rate = Math.max(1, 450 - npc.getMaxHitpoints());
-        if (SlayerHelmetEffects.INSTANCE.purpleHelmet(killer, npc)) {
-            rate *= 0.75;
-        }
         if (random(rate) == 0 || (SuperiorMonster.superiorMonsters.contains(npc.getId()) && !CatacombsOfKourend.polygon.contains(npc.getLocation()))) {
             dropTotemPiece(killer, npc);
         }

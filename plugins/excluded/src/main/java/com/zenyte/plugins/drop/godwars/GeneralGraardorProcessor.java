@@ -6,7 +6,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_LONGSWORD;
 
 /**
  * @author Kris | 24/11/2018 21:13
@@ -27,7 +26,6 @@ public class GeneralGraardorProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(11820, 1, 1, 50));
         appendDrop(new DisplayedDrop(11822, 1, 1, 50));
         appendDrop(new DisplayedDrop(11822, 1, 1, 50));
-        appendDrop(new DisplayedDrop(PRIMAL_LONGSWORD, 1, 1, 750));
     }
 
     @Override
@@ -42,9 +40,6 @@ public class GeneralGraardorProcessor extends DropProcessor {
             }
             if (randomDrop(killer, 100) == 0) {
                 return new Item(11812);
-            }
-            if (randomDrop(killer, 750) == 0) {
-                return new Item(PRIMAL_LONGSWORD);
             }
         }
         return item;

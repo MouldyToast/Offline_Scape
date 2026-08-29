@@ -1,6 +1,5 @@
 package com.zenyte.game.content.boss.bryophyta;
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -99,7 +98,7 @@ public class Bryophyta extends NPC implements CombatScript {
                 }
             }
 
-            if (player.getVariables().getTime(TickVariable.POISON_IMMUNITY) > 0 || CombatUtilities.isWearingSerpentineHelmet(player) || SlayerHelmetEffects.INSTANCE.immuneToPoison(player, this)) {
+            if (player.getVariables().getTime(TickVariable.POISON_IMMUNITY) > 0 || CombatUtilities.isWearingSerpentineHelmet(player)) {
                 player.getCombatAchievements().complete(CAType.PREPARATION_IS_KEY);
             }
 

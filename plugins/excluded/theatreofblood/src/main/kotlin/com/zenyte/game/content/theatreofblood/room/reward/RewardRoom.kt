@@ -45,9 +45,6 @@ internal class RewardRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, room: T
         val completedInTime = raid.enterTick <= completeRequirement
         log.debug("Completed in time $completedInTime. Time ${Utils.ticksToTime(raid.enterTick)}, required ${Utils.ticksToTime(completeRequirement)}")
         var mode = if (completedInTime) TheatreOfBloodMode.HARD else TheatreOfBloodMode.NORMAL
-        if(raid.bypassMode) {
-            mode = TheatreOfBloodMode.BYPASS
-        }
         log.debug("Rolling rewards for raid in mode {}", mode)
         val playerRewards = TheatreOfBloodRewardGenerator.roll(party, mode, completedInTime)
         log.debug("Total points for party = ${party.totalContributionPoints()}/${party.maxContributionPoints()}")

@@ -1,6 +1,5 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.chambersofxeric.npc.IcefiendNPC;
 import com.zenyte.game.content.chambersofxeric.room.IceDemonRoom;
@@ -71,7 +70,7 @@ public class BrazierObject implements ObjectAction {
                 player.sendMessage("You need some kindling to light the brazier.");
                 return false;
             }
-            if (!player.hasBoon(SwissArmyMan.class) && !inventory.containsItem(590, 1)) {
+            if (!inventory.containsItem(590, 1)) {
                 player.sendMessage("You need a tinderbox to light the brazier.");
                 return false;
             }
@@ -90,7 +89,7 @@ public class BrazierObject implements ObjectAction {
                     player.sendMessage("That\'s not going to help now.");
                     return;
                 }
-                if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItem(590, 1)) {
+                if (!player.getInventory().containsItem(590, 1)) {
                     player.sendMessage("You need a tinderbox to light the brazier.");
                     return;
                 }

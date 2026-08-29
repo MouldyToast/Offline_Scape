@@ -81,7 +81,7 @@ public class GameConstants {
 
 	//!Case sensitive usernames
 	public static final String[] owners = new String[] {
-			"jacmob", "kryeus"
+			"jesse"
 	};
 
 	static {
@@ -117,7 +117,7 @@ public class GameConstants {
 
 	public static boolean FILTERING_DUPLICATE_JS5_REQUESTS = false;
 
-	public static final String UPDATE_LOG_BROADCAST = "Quality of Life & Bug Fixes! Click here to join the Discord.";
+	public static final String UPDATE_LOG_BROADCAST = "You can do this, believe in yourself!";
 
 	public static final String UPDATE_LOG_URL = "";
 

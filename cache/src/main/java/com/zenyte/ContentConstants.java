@@ -2,7 +2,7 @@ package com.zenyte;
 
 public final class ContentConstants {
 
-    public static final String SERVER_NAME = "Near-Reality";
+    public static final String SERVER_NAME = "Offline_scape";
 
     public static final boolean CHRISTMAS = false;
     public static final boolean CASTLE_WARS = false;

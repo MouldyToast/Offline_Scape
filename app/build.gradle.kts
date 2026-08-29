@@ -3,6 +3,12 @@ plugins {
     application
 }
 
+fun findContentModules(): List<Project> =
+    project(":content").subprojects.filter { it.buildFile.exists() }
+
+fun findToolModules(): List<Project> =
+    project(":tools").subprojects.filter { it.buildFile.exists() }
+
 dependencies {
     runtimeOnly(libs.hotswap.agent.core)
 
@@ -68,6 +74,10 @@ dependencies {
     runtimeOnly(projects.plugins.excluded.tools.backups)
     // runtimeOnly(projects.plugins.excluded.tools.discord) // Discord stripped
     runtimeOnly(projects.plugins.excluded.tools.updater)
+
+    // Auto-discovered content and tools modules
+    findContentModules().forEach { runtimeOnly(it) }
+    findToolModules().forEach { runtimeOnly(it) }
 }
 
 val defaultMainClass = "com.zenyte.Main"

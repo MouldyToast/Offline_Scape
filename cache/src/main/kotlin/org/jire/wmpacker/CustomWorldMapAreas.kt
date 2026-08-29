@@ -34,20 +34,17 @@ object CustomWorldMapAreas {
 //        addMapElement(2501, Location(1755, 2687, 0))
 //        addMapElement(2510, Location(1759, 2716, 0))
 //        addMapElement(2508, Location(1824, 2716, 0))
-        addMapElement(2509, Location(1824, 2653, 0))
-
-        /* Edge Island */
-        addMapElement(2511, Location(3412, 3697, 0))
-        /* 317 Mobs in Wildy */
-        addMapElement(2512, Location(3201, 3880, 0))
-        addMapElement(2513, Location(2975, 3954, 0))
-        addMapElement(2514, Location(2982, 3907, 0))
-        addMapElement(2514, Location(2985, 3798, 0))
+//        addMapElement(2509, Location(1824, 2653, 0))
+//
+//        /* Edge Island */
+//        addMapElement(2511, Location(3412, 3697, 0))
+//        /* 317 Mobs in Wildy */
+//        addMapElement(2512, Location(3201, 3880, 0))
+//        addMapElement(2513, Location(2975, 3954, 0))
+//        addMapElement(2514, Location(2982, 3907, 0))
+//        addMapElement(2514, Location(2985, 3798, 0))
 
         update(9517, 0)
-        update(6954, 0)
-        update(7210, 0)
-        update(7209, 0)
         update(11828, 0)
         update(11829, 0)
         update(11830, 0)
@@ -64,8 +61,8 @@ object CustomWorldMapAreas {
         update(12597, 0)
         update(12598, 0)
         update(12599, 0)
-        update(13625, 0)
-        update(13369, 0)
+//        update(13625, 0)
+//        update(13369, 0)
 //        update(6441, 0)
 //        update(6440, 0)
 //        update(6697, 0)

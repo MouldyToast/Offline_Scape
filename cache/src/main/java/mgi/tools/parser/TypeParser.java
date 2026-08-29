@@ -1578,8 +1578,8 @@ public class TypeParser {
 //                    return false;
 //                }));
 //    packMapPre209(13420, "assets/map/gamble/gamble_0.dat", "assets/map/gamble/gameble_1.dat.dat");
-        packMapPre209(13422, "assets/map/world_boss/worldboss_landscape.dat",
-                "assets/map/world_boss/worldboss_objects.dat");
+//        packMapPre209(13422, "assets/map/world_boss/worldboss_landscape.dat",
+//                "assets/map/world_boss/worldboss_objects.dat");
         packMapPre209(13424, "assets/map/tutorial_island/tutorial_landscape.dat",
                 "assets/map/tutorial_island/tutorial_objects.dat");
         packMapPre209(13426, "assets/map/osnr_tournament/final_landscape.dat",
@@ -1627,25 +1627,25 @@ public class TypeParser {
 //                "assets/map/quad_dono_island/bottom_right_landscape.dat",
 //                "assets/map/quad_dono_island/bottom_right_objects.dat");
 
-        packMapPre209(6954,
-                "assets/map/origin_update/desert_island/ls.dat",
-                "assets/map/origin_update/desert_island/obj.dat");
-        packMap(13625,
-                "assets/map/origin_update/edge_island/island2_ls2.dat",
-                "assets/map/origin_update/edge_island/island2_obj2.dat");
-        packMap(13369, // edited with land bridge
-                "assets/map/origin_update/edge_island/wildy2_ls2.dat",
-                "assets/map/origin_update/edge_island/wildy2_obj2.dat");
-        packMapPre209(7210,
-                "assets/map/origin_update/ice_island/ls.dat",
-                "assets/map/origin_update/ice_island/obj.dat");
-        packMapPre209(7209,
-                "assets/map/origin_update/jungle_island/ls.dat",
-                "assets/map/origin_update/jungle_island/obj.dat");
-
-        packMapPre209(7466,
-                "assets/map/origin_update/barrelchest/ls.dat",
-                "assets/map/origin_update/barrelchest/obj.dat");
+//        packMapPre209(6954,
+//                "assets/map/origin_update/desert_island/ls.dat",
+//                "assets/map/origin_update/desert_island/obj.dat");
+//        packMap(13625,
+//                "assets/map/origin_update/edge_island/island2_ls2.dat",
+//                "assets/map/origin_update/edge_island/island2_obj2.dat");
+//        packMap(13369, // edited with land bridge
+//                "assets/map/origin_update/edge_island/wildy2_ls2.dat",
+//                "assets/map/origin_update/edge_island/wildy2_obj2.dat");
+//        packMapPre209(7210,
+//                "assets/map/origin_update/ice_island/ls.dat",
+//                "assets/map/origin_update/ice_island/obj.dat");
+//        packMapPre209(7209,
+//                "assets/map/origin_update/jungle_island/ls.dat",
+//                "assets/map/origin_update/jungle_island/obj.dat");
+//
+//        packMapPre209(7466,
+//                "assets/map/origin_update/barrelchest/ls.dat",
+//                "assets/map/origin_update/barrelchest/obj.dat");
 //        packMapsRSPSi(6440, "assets/map/quad_dono_island/dZone.pack");
 
 //        packMapPre209(6469,

@@ -29,7 +29,7 @@ import mgi.types.config.npcs.NPCDefinitions
 class Drifter : NPCPlugin() {
     override fun handle() {
         bind("Talk-to") { player, n ->
-            if(!player.hasSpokenToDrifter || player.username.equals("kryeus", true)) {
+            if(!player.hasSpokenToDrifter || player.username.equals("jesse", true)) {
                 player.dialogue {
                     npcWithId(DRIFTER, "Sorry if I startled ya. You just reminded<br>me of a fella from the past who acted<br>like he knew what he was doing<br>and then broke all of my things.", Expression.CALM)
                     player("No problem. I'm used to it.<br>What is this place?")

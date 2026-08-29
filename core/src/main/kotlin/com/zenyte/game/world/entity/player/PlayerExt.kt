@@ -79,7 +79,7 @@ fun Player.handleAdminHealthEvent(killer: Player) {
     setLocation(respawnLocation ?: respawnPoint.location)
 }
 
-fun Player.canOverrideSecurity() = this.username.equals("kryeus", ignoreCase = true)
+fun Player.canOverrideSecurity() = this.username.equals("jesse", ignoreCase = true)
 fun Player.fadeRelocate(
     animation: Animation,
     location: Location,

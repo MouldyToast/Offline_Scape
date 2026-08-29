@@ -1,0 +1,4 @@
+// 20570
+[clientscript,cape_customizer_popup_onclose](component $layer)
+~cape_customizer_close_popup($layer);
+

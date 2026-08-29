@@ -1,0 +1,18 @@
+// 20562
+[proc,meslayer_color_keypress](component $component0, component $component1, int $int2, int $int3, struct $struct4, component $component5, int $int6, int $int7, int $int8, int $int9)
+def_int $int10 = -1;
+def_string $string0 = "";
+def_int $int11 = string_length(%varcstring359);
+if ($int11 > 0) {
+    switch_int (%varcint5) {
+        case 23, 24, 25 :
+            ~meslayer_color_parse(%varcint5, %varcstring359, $component0, $component1, $int2, $int3, $struct4, $component5, $int6, $int7, $int8, $int9);
+        case 22 :
+            ~meslayer_color_update($component0, ~hex_string_to_int(%varcstring359), $component1, $int2, $int3, $struct4, $component5, $int6, $int7, $int8, $int9);
+    }
+} else {
+    return;
+}
+%settings_search_right = 0;
+%settings_amount_typing = 1;
+~meslayer_close(true, true, true);

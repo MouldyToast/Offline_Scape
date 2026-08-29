@@ -1,0 +1,6 @@
+// 20328
+[clientscript,cape_customizer_colorpicker_save_selection](component $modal)
+if_sethide(true, $modal);
+if_setnoclickthrough(false, $modal);
+def_int $hsl16_color = ~hsl_to_hsl16(~packed_rgb_to_hsl(%varcint459));
+resume_stringdialog("<tostring(%cape_customizer_current_block_color_index)>,<tostring(%varcint459)>,<tostring($hsl16_color)>");

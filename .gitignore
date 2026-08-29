@@ -1,0 +1,76 @@
+# Build output
+build/
+**/build/
+!**/src/**/build/
+out/
+**/out/
+!**/src/**/out/
+target/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Kotlin
+.kotlin
+
+# Java
+*.class
+
+# Logs
+*.log
+logs/
+
+# Game cache (too large for GitHub)
+cache/data/cache/
+cache/data/cache-228-openrs2.zip
+cache/data/cache-*/
+cache/data/dynamic/
+
+# Runtime / player data
+data/characters/
+!data/characters/help.json
+data/characters-hiscores/
+data/characters-hardware/
+data/logs/
+data/backups/
+data/clans/
+data/authenticator/
+data/grandexchange/
+data/polls/
+data/gim/groups.json
+data/punishments.json
+data/well.json
+data/plugins.dat
+data/plugins.version.dat
+data/lottery.json
+data/clans.json
+data/invitedplayers.json
+data/referrals/ips.json
+data/referrals/code_usage.json
+data/scoreboard/
+data/dt2/
+data/discord/
+data/middleman/
+data/contests/launch.json
+data/tob_statistics.json
+data/tob/
+data/nex_statistics.json
+data/nightmare_statistics.json
+data/phosanis_nightmare_statistics.json
+data/inferno completions.json
+data/test/
+
+# Misc
+*.DS_Store
+run.bat
+error.log
+dropeditor/
+item-images/
+info/

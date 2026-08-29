@@ -1,0 +1,11 @@
+// 20555
+[clientscript,color_picker_box_interact](component $marker, component $marker2, component $to_recolor, int $mouse_x, int $mouse_y)
+def_int $row = calc($mouse_y / 2);
+def_int $column = calc($mouse_x / 2);
+def_int $colour = ~make_rgb_color($row, $column, 64, 64, %generic_varp_261);
+%cape_customizer_selected_saturation = $row;
+%cape_customizer_selected_brightness = $column;
+%generic_varp_263 = $colour;
+if_setcolour($colour, $to_recolor);
+if_setposition($mouse_x, $mouse_y, ^setpos_abs_left, ^setpos_abs_top, $marker);
+if_setposition($mouse_x, $mouse_y, ^setpos_abs_left, ^setpos_abs_top, $marker2);

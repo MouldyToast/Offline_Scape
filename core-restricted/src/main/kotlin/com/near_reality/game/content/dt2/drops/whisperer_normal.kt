@@ -1,0 +1,157 @@
+package com.near_reality.game.content.dt2.drops
+
+import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
+import com.near_reality.scripts.npc.drops.table.noted
+import com.zenyte.game.content.util.hasKilledWhispererNormal
+import com.zenyte.game.content.util.hasReceivedShadowQuartz
+import com.zenyte.game.item.Item
+import com.zenyte.game.util.Utils
+import com.near_reality.scripts.npc.drops.NPCDropTableScript
+import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.world.entity.npc.NpcId.*
+import com.near_reality.game.util.invoke
+import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ItemId.*
+import com.near_reality.scripts.npc.drops.table.DropTableType.*
+import com.zenyte.game.world.entity.npc.drop.matrix.Drop
+import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
+import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
+import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
+import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+
+class WhispererNormalDroptable : NPCDropTableScript() {
+
+    object WhispererUniques : StandaloneDropTableBuilder({
+
+        limit = 16
+        static {
+            CHROMIUM_INGOT quantity 1 rarity 8
+            SIRENS_STAFF quantity 1 rarity 1
+            VIRTUS_MASK quantity 1 rarity 1
+            VIRTUS_ROBE_TOP quantity 1 rarity 1
+            VIRTUS_ROBE_LEGS quantity 1 rarity 1
+        }
+    })
+
+    init {
+        npcs(THE_WHISPERER)
+
+        onDeath {
+
+            killer.hasKilledWhispererNormal = true
+
+            if (Utils.random(511) == 0) {
+                npc.dropItemAtKiller(killer, Item(BELLATOR_VESTIGE, 1))
+            }
+
+            if (Utils.random(63) == 0) {
+                rollTable(killer, Standalone, WhispererUniques.staticTable).forEach {
+                    npc.dropItemAtKiller(killer, Item(it.id, 1))
+                }
+            } else if (Utils.random(33) == 0) {
+                npc.dropItemAtKiller(killer, Item(AWAKENERS_ORB))
+            } else if (Utils.random(199) == 0) {
+                npc.dropItemAtKiller(killer, Item(SHADOW_QUARTZ))
+                killer.hasReceivedShadowQuartz = true
+            } else if (Utils.random(4) == 0) {
+                npc.dropItemAtKiller(killer, Item(ANCIENT_BREW_4, 2))
+                npc.dropItemAtKiller(killer, Item(PRAYER_POTION3, 1))
+                npc.dropItemAtKiller(killer, Item(MANTA_RAY, (3..4).random()))
+            } else {
+                rollStaticTableAndDropBelowPlayer(killer, Main)
+            }
+
+
+            if (Utils.random(1999) == 0) {
+                npc.dropItemAtKiller(killer, Item(ItemId.WISP))
+            }
+            if (Utils.random(39) == 0) {
+                npc.dropItemAtKiller(killer, Item(CLUE_SCROLL))
+            }
+        }
+
+
+
+
+        appendDrop(DisplayedDrop(BELLATOR_VESTIGE, 1, 1, 512.00))
+        appendDrop(DisplayedDrop(AWAKENERS_ORB, 1, 1, 34.00))
+        appendDrop(DisplayedDrop(SIRENIC_TABLET, 1, 1, 25.00))
+        appendDrop(DisplayedDrop(SHADOW_QUARTZ, 1, 1, 200.00))
+        appendDrop(DisplayedDrop(ItemId.ANCIENT_BREW_4, 2, 2, 5.00))
+        appendDrop(DisplayedDrop(PRAYER_POTION3, 1, 1, 5.00))
+        appendDrop(DisplayedDrop(MANTA_RAY, 3, 4, 5.00))
+        appendDrop(DisplayedDrop(ItemId.WISP, 1, 1, 2000.00))
+
+        appendDrop(DisplayedDrop(BRONZE_LONGSWORD, 16, 24, 100.00))
+        appendDrop(DisplayedDrop(MITHRIL_LONGSWORD, 7, 10, 100.00))
+        appendDrop(DisplayedDrop(ADAMANT_LONGSWORD, 9, 14, 100.00))
+        appendDrop(DisplayedDrop(BATTLESTAFF, 70, 105, 200.00))
+        appendDrop(DisplayedDrop(DRAGON_PLATESKIRT, 7, 10, 100.00))
+
+        appendDrop(DisplayedDrop(PURE_ESSENCE, 280, 420, 100.00))
+        appendDrop(DisplayedDrop(ItemId.IRON_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(ItemId.COAL, 303, 455, 800.00))
+        appendDrop(DisplayedDrop(ItemId.GOLD_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(ItemId.MITHRIL_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(ItemId.ADAMANTITE_ORE, 105, 157, 800.00))
+        appendDrop(DisplayedDrop(ItemId.RUNITE_ORE, 42, 63, 200.00))
+        appendDrop(DisplayedDrop(SAPPHIRE, 39, 59, 100.00))
+        appendDrop(DisplayedDrop(EMERALD, 39, 59, 100.00))
+        appendDrop(DisplayedDrop(RUBY, 39, 59, 100.00))
+        appendDrop(DisplayedDrop(UNCUT_RUBY, 58, 87, 500.00))
+        appendDrop(DisplayedDrop(UNCUT_DIAMOND, 58, 87, 500.00))
+        appendDrop(DisplayedDrop(DRAGON_JAVELIN_HEADS, 84, 126, 800.00))
+        appendDrop(DisplayedDrop(RUNITE_BOLTS_UNF, 84, 126, 800.00))
+        appendDrop(DisplayedDrop(RAW_MONKFISH, 700, 1050, 100.00))
+
+        appendDrop(DisplayedDrop(WATER_RUNE, 280, 420, 100.00))
+        appendDrop(DisplayedDrop(STEAM_RUNE, 466, 700, 800.00))
+        appendDrop(DisplayedDrop(CHAOS_RUNE, 140, 210, 100.00))
+        appendDrop(DisplayedDrop(DEATH_RUNE, 466, 700, 800.00))
+        appendDrop(DisplayedDrop(SOUL_RUNE, 933, 1400, 200.00))
+
+
+        appendDrop(DisplayedDrop(VIRTUS_MASK, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_TOP, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_LEGS, 1, 1, 1600.00))
+
+        buildTable(100) {
+            Main {
+
+                BRONZE_LONGSWORD quantity 16.noted rarity 1
+                MITHRIL_LONGSWORD quantity 7.noted rarity 1
+                ADAMANT_LONGSWORD quantity 9.noted rarity 1
+                BATTLESTAFF quantity 70.noted rarity 2
+                DRAGON_PLATESKIRT quantity 7 rarity 1
+
+
+                PURE_ESSENCE quantity 280.noted rarity 1
+                ItemId.IRON_ORE quantity 88.noted rarity 1
+                ItemId.COAL quantity 303.noted rarity 8
+                ItemId.GOLD_ORE quantity 88.noted rarity 1
+                ItemId.MITHRIL_ORE quantity 88.noted rarity 1
+                ItemId.ADAMANTITE_ORE quantity 105.noted rarity 8
+                ItemId.RUNITE_ORE quantity 42.noted rarity 2
+                SAPPHIRE quantity 39.noted rarity 1
+                EMERALD quantity 39.noted rarity 1
+                RUBY quantity 39.noted rarity 1
+                UNCUT_RUBY quantity 58.noted rarity 5
+                UNCUT_DIAMOND quantity 58.noted rarity 5
+                DRAGON_JAVELIN_HEADS quantity 84 rarity 8
+                RUNITE_BOLTS_UNF quantity 84 rarity 8
+                RAW_MONKFISH quantity 700.noted rarity 1
+
+
+                WATER_RUNE quantity 280 rarity 1
+                STEAM_RUNE quantity 466 rarity 8
+                CHAOS_RUNE quantity 140 rarity 1
+                DEATH_RUNE quantity 466 rarity 8
+                SOUL_RUNE quantity 933 rarity 2
+            }
+            Tertiary {
+                ItemId.WISP quantity 1 oneIn 2000
+                CLUE_SCROLL quantity 1 oneIn 40
+            }
+        }
+    }
+}

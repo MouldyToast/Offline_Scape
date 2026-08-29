@@ -1,0 +1,3 @@
+// 20350
+[clientscript,cape_customizer_modal_onop](int $size, string $string0, string $string1)
+~cape_customizer_popup_create($size, $string0, $string1);

@@ -1,0 +1,10 @@
+[[object]]
+inherit=374
+id=60409
+name="Reagent mixer"
+op1="Use"
+op2="Decant"
+op3="Clean"
+op4="Make unfinished potion(s)"
+op5=""
+models=[60409]

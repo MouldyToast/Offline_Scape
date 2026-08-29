@@ -1,0 +1,195 @@
+# cape_customizer_preset10
+[[varbit]]
+basevar = 3922
+id = 25028
+startbit = 0
+endbit = 6
+
+# cape_customizer_preset11
+[[varbit]]
+basevar = 3922
+id = 25029
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset12
+[[varbit]]
+basevar = 3922
+id = 25030
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset13
+[[varbit]]
+basevar = 3922
+id = 25031
+startbit = 21
+endbit = 27
+
+# cape_customizer_preset20
+[[varbit]]
+basevar = 3923
+id = 25032
+startbit = 0
+endbit = 6
+
+#cape_customizer_preset21
+[[varbit]]
+basevar = 3923
+id = 25033
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset22
+[[varbit]]
+basevar = 3923
+id = 25034
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset23
+[[varbit]]
+basevar = 3923
+id = 25035
+startbit = 21
+endbit = 27
+
+# cape_customizer_preset30
+[[varbit]]
+basevar = 3924
+id = 25036
+startbit = 0
+endbit = 6
+
+# cape_customizer_preset31
+[[varbit]]
+basevar = 3924
+id = 25037
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset32
+[[varbit]]
+basevar = 3924
+id = 25038
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset33
+[[varbit]]
+basevar = 3924
+id = 25039
+startbit = 21
+endbit = 27
+
+# cape_customizer_preset40
+[[varbit]]
+basevar = 3925
+id = 25040
+startbit = 0
+endbit = 6
+
+# cape_customizer_preset41
+[[varbit]]
+basevar = 3925
+id = 25041
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset42
+[[varbit]]
+basevar = 3925
+id = 25042
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset43
+[[varbit]]
+basevar = 3925
+id = 25043
+startbit = 21
+endbit = 27
+
+# cape_customizer_preset50
+[[varbit]]
+basevar = 3926
+id = 25044
+startbit = 0
+endbit = 6
+
+# cape_customizer_preset51
+[[varbit]]
+basevar = 3926
+id = 25045
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset52
+[[varbit]]
+basevar = 3926
+id = 25046
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset53
+[[varbit]]
+basevar = 3926
+id = 25047
+startbit = 21
+endbit = 27
+
+# cape_customizer_preset60
+[[varbit]]
+basevar = 3927
+id = 25048
+startbit = 0
+endbit = 6
+
+# cape_customizer_preset61
+[[varbit]]
+basevar = 3927
+id = 25049
+startbit = 7
+endbit = 13
+
+# cape_customizer_preset62
+[[varbit]]
+basevar = 3927
+id = 25050
+startbit = 14
+endbit = 20
+
+# cape_customizer_preset63
+[[varbit]]
+basevar = 3927
+id = 25051
+startbit = 21
+endbit = 27
+
+# cape_customizer_part_color1
+[[varbit]]
+basevar = 3928
+id = 25052
+startbit = 0
+endbit = 6
+
+# cape_customizer_part_color2
+[[varbit]]
+basevar = 3928
+id = 25053
+startbit = 7
+endbit = 13
+
+# cape_customizer_part_color3
+[[varbit]]
+basevar = 3928
+id = 25054
+startbit = 14
+endbit = 20
+
+# cape_customizer_part_color4
+[[varbit]]
+basevar = 3928
+id = 25055
+startbit = 21
+endbit = 27

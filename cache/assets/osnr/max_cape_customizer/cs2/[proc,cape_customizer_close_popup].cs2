@@ -1,0 +1,5 @@
+// 20557
+[proc,cape_customizer_close_popup](component $layer)
+def_component $close_button = comp_cape_customizer:com14;
+~script4215($close_button, "Close");
+if_setonop("modal_resetbg($layer)", $close_button);

@@ -1,0 +1,71 @@
+// 20335
+[proc,cape_customizer_preset_getcolor](int $int0, int $int1)(int)
+switch_int ($int0) {
+    case 0 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset1_slot1);
+            case 1 :
+                return(%cape_customizer_preset1_slot2);
+            case 2 :
+                return(%cape_customizer_preset1_slot3);
+            case 3 :
+                return(%cape_customizer_preset1_slot4);
+        }
+    case 1 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset2_slot1);
+            case 1 :
+                return(%cape_customizer_preset2_slot2);
+            case 2 :
+                return(%cape_customizer_preset2_slot3);
+            case 3 :
+                return(%cape_customizer_preset2_slot4);
+        }
+    case 2 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset3_slot1);
+            case 1 :
+                return(%cape_customizer_preset3_slot2);
+            case 2 :
+                return(%cape_customizer_preset3_slot3);
+            case 3 :
+                return(%cape_customizer_preset3_slot4);
+        }
+    case 3 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset4_slot1);
+            case 1 :
+                return(%cape_customizer_preset4_slot2);
+            case 2 :
+                return(%cape_customizer_preset4_slot3);
+            case 3 :
+                return(%cape_customizer_preset4_slot4);
+        }
+    case 4 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset5_slot1);
+            case 1 :
+                return(%cape_customizer_preset5_slot2);
+            case 2 :
+                return(%cape_customizer_preset5_slot3);
+            case 3 :
+                return(%cape_customizer_preset5_slot4);
+        }
+    case 5 :
+        switch_int ($int1) {
+            case 0 :
+                return(%cape_customizer_preset6_slot1);
+            case 1 :
+                return(%cape_customizer_preset6_slot2);
+            case 2 :
+                return(%cape_customizer_preset6_slot3);
+            case 3 :
+                return(%cape_customizer_preset6_slot4);
+        }
+}
+return(0);

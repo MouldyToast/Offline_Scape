@@ -1,0 +1,7 @@
+// 20551
+[proc,make_rgb_color](int $row, int $col, int $row_count, int $col_count, int $hue)(int)
+def_int $saturation = calc(255 - scale($row, $row_count, 255));
+def_int $brightness = calc(scale($col, $col_count, 255));
+%generic_varp_262 = $saturation;
+%generic_varp_263 = $brightness;
+return(~rgb_to_hex(~hsb_to_rgb($hue, $saturation, $brightness)));

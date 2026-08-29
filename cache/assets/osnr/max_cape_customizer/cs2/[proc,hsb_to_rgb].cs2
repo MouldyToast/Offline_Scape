@@ -1,0 +1,25 @@
+[proc,hsb_to_rgb](int $h, int $s, int $b)(int,int,int)
+if ($s = 0) {
+    return($b, $b, $b);
+}
+
+def_int $region = calc($h / 43);
+def_int $remainder = calc(($h - ($region * 43)) * 6);
+def_int $p = calc(($b * (255 - $s)) / 256);
+def_int $q = calc(($b * (255 - (($s * $remainder) / 256))) / 256);
+def_int $t = calc(($b * (255 - (($s * (255 - $remainder)) / 256))) / 256);
+
+switch_int ($region) {
+    case 0 :
+        return ($b, $t, $p);
+    case 1 :
+        return ($q, $b, $p);
+    case 2 :
+        return ($p, $b, $t);
+    case 3 :
+        return ($p, $q, $b);
+    case 4 :
+        return ($t, $p, $b);
+    case default :
+        return ($b, $p, $q);
+}

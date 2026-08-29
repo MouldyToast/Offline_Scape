@@ -1,0 +1,4 @@
+// 20303
+[clientscript,modal_resetbg](component $hide_com)
+if_settrans(255, comp_cape_customizer:com11);
+if_sethide(true, $hide_com);

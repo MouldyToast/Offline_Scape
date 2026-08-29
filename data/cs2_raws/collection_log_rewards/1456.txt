@@ -1,0 +1,103 @@
+void script_1456(Widget widget0, int arg1, int arg2) {
+	Widget widget3;
+	Widget widget4;
+	Widget widget5;
+	Widget widget6;
+	Widget widget7;
+	Widget widget8;
+	Widget widget9;
+	Location location10;
+	Widget widget11;
+	Widget widget12;
+	Widget widget13;
+	Widget widget14;
+	Widget widget15;
+	int int16;
+	Item item17;
+	Widget widget18;
+	widget3 = widget0.getHeight();
+	widget4 = widget0.getWidth();
+	widget5 = widget(0, 44);
+	widget6 = (widget3 - 5 * widget5) / 2;
+	widget7 = (widget4 - 7 * widget5) / 2;
+	if (widget6 < widget(0, 0) || widget7 < widget(0, 0)) {
+		return;
+	}
+	widget8 = widget(0, 1);
+	widget9 = null;
+	location10 = null;
+	widget11 = widget(0, 0);
+	widget12 = widget(0, 0);
+	widget13 = widget(0, 0);
+	widget14 = widget(0, 0);
+	widget15 = widget(0, 0);
+	int16 = 0;
+	item17 = null;
+	widget0.clearChildren();
+	_CHILD.createChild(widget0, 3, widget(0, 0));
+	_CHILD.setHidden(true);
+	widget18 = widget(0, 0);
+	while (widget8 <= widget(0, 14)) {
+		int16 = 0;
+		widget9 = datamap('i', 'I', 1511, widget8);
+		if (widget9 == null) {
+			return;
+		}
+		location10 = datamap('i', 'c', 1512, widget8);
+		if (location10 == null) {
+			return;
+		}
+		widget11 = y(location10);
+		widget12 = x(location10);
+		widget13 = widget7 + (widget12 - 1) * widget5;
+		widget14 = widget6 + (widget11 - 1) * widget5;
+		widget9.setPosition(widget13, widget14, 0, 0);
+		widget9.setSize(widget5, widget5, 0, 0);
+		item17 = datamap('i', 'O', 982, widget8);
+		widget18 = getItemAmtInContainer(93, item17);
+		if (getItemAmtInContainer(93, 12791) > widget(0, 0) || getItemAmtInContainer(93, 24416) > widget(0, 0) || getItemAmtInContainer(93, 27281) > widget(0, 0) || getItemAmtInContainer(93, 27509) > widget(0, 0)) {
+			if (widget(VARPBIT[29]) == widget8) {
+				widget18 = widget18 + VARPBIT[1624];
+			} else if (widget(VARPBIT[1622]) == widget8) {
+				widget18 = widget18 + VARPBIT[1625];
+			} else if (widget(VARPBIT[1623]) == widget8) {
+				widget18 = widget18 + VARPBIT[1626];
+			} else if ((getItemAmtInContainer(93, 27281) > widget(0, 0) || getItemAmtInContainer(93, 27509) > widget(0, 0)) && widget(VARPBIT[14285]) == widget8) {
+				widget18 = widget18 + VARPBIT[14286];
+			} else if ((getItemAmtInContainer(93, 27281) > widget(0, 0) || getItemAmtInContainer(93, 27509) > widget(0, 0)) && widget(VARPBIT[19494]) == widget8) {
+				widget18 = widget18 + VARPBIT[19495];
+			}
+		}
+		if (widget18 >= widget(0, 20) || arg2 == 0) {
+			int16 = 1;
+		}
+		widget9.clearChildren();
+		if (int16 == 1) {
+			if (widget8 == widget(arg1)) {
+				widget15 = script_198(widget9);
+			} else {
+				widget15 = script_208(widget9);
+			}
+			widget9.hookMouseEnter(&script_1455(widget0, widget8, (boolean)arg2));
+			widget9.hookMouseExit(&script_1455(widget0, -1, (boolean)arg2));
+		} else {
+			widget15 = script_134(widget9);
+		}
+		widget9.setOptionBase("<col=ff9040>" + getItemName(item17) + "</col>");
+		widget9.setContextMenuOption(1, "Choose");
+		widget9.hookOptionClick(&script_1457(widget8, widget0, widget9, (int)widget15, (boolean)arg2));
+		CHILD.createChild(widget9, 5, widget15);
+		CHILD.setItem(item17, widget18);
+		CHILD.setSize(widget(0, 36), widget(0, 32), 0, 0);
+		CHILD.setPosition(widget(0, 2), widget(0, 0), 1, 1);
+		CHILD.setShadowColor(0x333333);
+		CHILD.setOutlineThickness(1);
+		if (int16 == 0) {
+			CHILD.setTrans(widget(0, 125));
+		}
+		_CHILD.createChild(widget0, 3, widget8);
+		_CHILD.setHidden(true);
+		widget8 = widget8 + 1;
+	}
+	return;
+}

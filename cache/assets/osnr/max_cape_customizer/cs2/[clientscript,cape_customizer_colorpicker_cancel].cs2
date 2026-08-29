@@ -1,0 +1,3 @@
+// 20331
+[clientscript,cape_customizer_colorpicker_cancel](component $modal)
+if_sethide(true, $modal);

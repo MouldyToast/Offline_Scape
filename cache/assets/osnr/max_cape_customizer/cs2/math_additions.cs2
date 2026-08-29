@@ -1,0 +1,5 @@
+[proc,shl](int $value, int $shift)(int)
+return(calc($value * pow(2, $shift)));
+
+[proc,shr](int $value, int $shift)(int)
+return(calc($value / pow(2, $shift)));

@@ -1,0 +1,12 @@
+[[object]]
+inherit=29241
+id=60407
+name="Pool of rejuvenation"
+sizex=1
+sizey=1
+op1="Drink"
+op2="Remove-skull"
+op3="Skull"
+op4=""
+op5=""
+models=[60407]

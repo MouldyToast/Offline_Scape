@@ -1,0 +1,12 @@
+// 20571
+[clientscript,cape_customizer_apply_preset](int $action, int $preset_idx)
+if ($action = 0) {
+  // save preset request
+	resume_stringdialog("save,<tostring($preset_idx)>");
+} else {
+  // load preset request
+	resume_stringdialog("load,<tostring($preset_idx)>");
+}
+def_component $popup = comp_cape_customizer:com10;
+if_sethide(true, $popup);
+if_setnoclickthrough(false, $popup);

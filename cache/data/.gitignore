@@ -1,0 +1,13 @@
+# Cache files (downloaded from OpenRS2, not tracked)
+cache/
+cache-228-openrs2.zip
+
+# XTEA keys (downloaded from OpenRS2)
+objects/xteas.json
+
+# Legacy Jire references
+cache-228/
+cache-228.zip
+cache-228-keys.json
+/plugins.dat
+objects/xteas.json.bak

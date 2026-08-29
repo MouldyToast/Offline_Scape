@@ -1,0 +1,7 @@
+// 20342
+[clientscript,script20342](int $int0, string $text, component $event_com, fontmetrics $font)
+if (clientclock < $int0) {
+    return;
+}
+if_setontimer(null, $event_com);
+~script20340(0, $text, $event_com, $font);

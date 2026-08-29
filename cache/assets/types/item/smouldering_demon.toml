@@ -1,0 +1,25 @@
+[item]
+inherit=20023
+id=33250
+name="Smouldering Demon"
+op1=""
+op2=""
+op3=""
+op4=""
+op5="Drop"
+
+# Pet
+[[npc]]
+inherit=13602 # what we're copying
+id=13602 # New id to copy to
+name="Smouldering Demon"
+models=[53285] # Models that makup the NPC
+combatlevel=0
+resizex=32 # Resize Width
+resizey=32 # Resize Length
+resizez=32 # Resize Height
+size=1 # 1x1 NPC size
+ops=["", "", "Pick-up", "", ""]
+filteredops=["", "", "Pick-up", "", ""]
+minimapvisible=true
+familiar=true

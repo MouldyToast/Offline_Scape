@@ -1,0 +1,16 @@
+# disable_default_player_icons
+[enum]
+id = 1894
+keytype = "int"
+valuetype = "string"
+default = ""
+
+[enum.values]
+0 = ""
+1 = ""
+2 = ""
+3 = ""
+4 = ""
+5 = ""
+6 = ""
+7 = ""

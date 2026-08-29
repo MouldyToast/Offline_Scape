@@ -1,0 +1,4 @@
+// 20549
+[clientscript,color_picker_init](component $sv_selector, component $h_selector)
+~color_picker_sv_init($sv_selector);
+~color_picker_h_init($h_selector);

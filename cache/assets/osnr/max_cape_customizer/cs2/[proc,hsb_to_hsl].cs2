@@ -1,0 +1,13 @@
+[proc,hsb_to_hsl](int $h, int $s, int $b)(int, int, int)
+def_int $l = calc(((512 - $s) * $b) / 2);
+
+if ($l ! 0) {
+    if ($l = 255) {
+        $s = 0;
+    } else if ($l < 128) {
+        $s = calc(($s * $b) / ($l * 2));
+    } else {
+        $s = calc(($s * $b) / (512 - $l * 2));
+    }
+}
+return ($h, $s, $l);

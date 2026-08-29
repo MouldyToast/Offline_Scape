@@ -1,0 +1,25 @@
+// 20552
+[proc,color_picker_sv_init](component $parent)
+def_int $cell_width = 4;
+def_int $cell_height = 4;
+def_int $row_count = calc(if_getheight($parent) / $cell_width);
+def_int $col_count = calc(if_getwidth($parent) / $cell_height);
+
+def_int $row = 0;
+def_int $col = 0;
+def_int $index = 0;
+def_int $hue = %generic_varp_261;
+while ($row < $row_count) {
+    while ($col < $col_count) {
+        if (cc_find($parent, $index) = ^false) {
+            cc_create($parent, ^iftype_rectangle, $index);
+        }
+        cc_setposition(calc($col * $cell_width), calc($row * $cell_height), 0, 0);
+        cc_setsize($cell_width, $cell_height, 0, 0);
+        cc_setcolour(~make_rgb_color($row, $col, $row_count, $col_count, $hue));
+        cc_setfill(true);
+        $col = add($col, 1);
+        $index = add($index, 1);
+    }
+    $row, $col = add($row, 1), 0;
+}

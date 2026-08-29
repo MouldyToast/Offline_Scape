@@ -1,0 +1,203 @@
+plugins {
+    id("org.jetbrains.kotlin.jvm")
+    application
+}
+
+dependencies {
+    runtimeOnly(libs.hotswap.agent.core)
+
+    runtimeOnly(libs.slf4j.api)
+    runtimeOnly(libs.logback.classic)
+
+    runtimeOnly(projects.core)
+
+    runtimeOnly(projects.coreRestricted)
+
+    runtimeOnly(projects.plugins.area.feroxEnclave)
+    runtimeOnly(projects.plugins.area.osnrHome.npc)
+    runtimeOnly(projects.plugins.area.osnrHome.obj)
+    runtimeOnly(projects.plugins.area.osnrHome)
+    runtimeOnly(projects.plugins.boss.zalcano)
+    runtimeOnly(projects.plugins.elven)
+    runtimeOnly(projects.plugins.groundItems)
+    runtimeOnly(projects.plugins.interfaces.characterdesign)
+    runtimeOnly(projects.plugins.interfaces.death)
+    runtimeOnly(projects.plugins.interfaces.slayer)
+    runtimeOnly(projects.plugins.interfaces.teleports)
+    runtimeOnly(projects.plugins.interfaces.worldswitcher)
+    runtimeOnly(projects.plugins.item.actions.deathItems)
+    runtimeOnly(projects.plugins.item.actions)
+    runtimeOnly(projects.plugins.item.cosmetics)
+    runtimeOnly(projects.plugins.item.customs)
+    runtimeOnly(projects.plugins.item.staffOfBalance)
+    runtimeOnly(projects.plugins.larranskey)
+    runtimeOnly(projects.plugins.npc.drops)
+    runtimeOnly(projects.plugins.`object`)
+    runtimeOnly(projects.plugins.rewards)
+    runtimeOnly(projects.plugins.shops)
+    runtimeOnly(projects.plugins.spawns.custom)
+    runtimeOnly(projects.plugins.spawns.nex)
+    runtimeOnly(projects.plugins.spawns.region10xxx)
+    runtimeOnly(projects.plugins.spawns.region11xxx)
+    runtimeOnly(projects.plugins.spawns.region12xxx)
+    runtimeOnly(projects.plugins.spawns.region13xxx)
+    runtimeOnly(projects.plugins.spawns.region14xxx)
+    runtimeOnly(projects.plugins.spawns.region15xxx)
+    runtimeOnly(projects.plugins.spawns.region16xxx)
+    runtimeOnly(projects.plugins.spawns.region17xxx)
+    runtimeOnly(projects.plugins.spawns.region4xxx)
+    runtimeOnly(projects.plugins.spawns.region5xxx)
+    runtimeOnly(projects.plugins.spawns.region6xxx)
+    runtimeOnly(projects.plugins.spawns.region7xxx)
+    runtimeOnly(projects.plugins.spawns.region8xxx)
+    runtimeOnly(projects.plugins.spawns.region9xxx)
+
+    runtimeOnly(projects.plugins.excluded)
+    runtimeOnly(projects.plugins.excluded.boss.abyssalsire)
+    runtimeOnly(projects.plugins.excluded.boss.nex)
+    runtimeOnly(projects.plugins.excluded.boss.nightmare)
+    runtimeOnly(projects.plugins.excluded.gauntlet)
+    runtimeOnly(projects.plugins.excluded.groupIronman)
+    runtimeOnly(projects.plugins.excluded.itemonitem.impl)
+    runtimeOnly(projects.plugins.excluded.itemonitem.neitiznotFaceguard)
+    runtimeOnly(projects.plugins.excluded.itemonobject.elementalTiara)
+    runtimeOnly(projects.plugins.excluded.muddychest)
+    runtimeOnly(projects.plugins.excluded.skills.agility.priffdinasrooftop)
+    runtimeOnly(projects.plugins.excluded.theatreofblood)
+    runtimeOnly(projects.plugins.excluded.tools.analyzer)
+    runtimeOnly(projects.plugins.excluded.tools.backups)
+    // runtimeOnly(projects.plugins.excluded.tools.discord) // Discord stripped
+    runtimeOnly(projects.plugins.excluded.tools.updater)
+}
+
+val defaultMainClass = "com.zenyte.Main"
+
+application {
+    applicationName = "near-reality-server"
+    mainClass = defaultMainClass
+}
+
+val defaultJvmArgs = arrayOf(
+    "--enable-preview",
+    "--enable-native-access=ALL-UNNAMED",
+
+    "--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED",
+    "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED",
+    "--add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED",
+    "--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+    "--add-opens=jdk.compiler/com.sun.tools.javac=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+    "--add-opens=java.base/java.io=ALL-UNNAMED",
+    "--add-opens=java.base/java.util=ALL-UNNAMED",
+
+    "-Xms1g",
+    "-XX:AutoBoxCacheMax=65535",
+    "--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED",
+    "-XX:TieredStopAtLevel=1",
+    "-XX:CompileThreshold=1500",
+    "-Dslf4j.internal.verbosity=warn",
+
+    "-XX:-OmitStackTraceInFastThrow",
+
+    "-Dio.netty.tryReflectionSetAccessible=true",
+
+    "--add-opens=java.base/java.time=ALL-UNNAMED",
+    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+    "--add-opens=java.base/java.io=ALL-UNNAMED",
+    "--add-opens=jdk.unsupported/sun.misc=ALL-UNNAMED",
+    "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED",
+
+    "--add-opens=java.base/java.nio=ALL-UNNAMED",
+    "--add-opens=java.base/java.security=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.action=ALL-UNNAMED",
+    "--add-opens=jdk.naming.rmi/com.sun.jndi.rmi.registry=ALL-UNNAMED",
+    "--add-opens=java.base/sun.net=ALL-UNNAMED",
+)
+
+tasks.register<JavaExec>("runPluginScanner") {
+    group = "_nr_data"
+    mainClass.set("com.zenyte.plugins.PluginScanner")
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("generateFlatCache") {
+    group = "_nr_data"
+    mainClass.set("org.jire.runecache.GenerateFlatCache")
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("generateWebJs5ResponseDirectory") {
+    group = "_nr_data"
+    mainClass.set("org.jire.runecache.GenerateWebJs5ResponseDirectory")
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("runDev") {
+    group = "_nr_dev"
+    mainClass.set(defaultMainClass)
+    classpath = sourceSets["main"].runtimeClasspath
+    args = listOf("localhost")
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("runBeta") {
+    group = "_nr"
+    mainClass.set(defaultMainClass)
+    classpath = sourceSets["main"].runtimeClasspath
+    args = listOf("beta")
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("runProduction") {
+    group = "_nr"
+    mainClass.set(defaultMainClass)
+    classpath = sourceSets["main"].runtimeClasspath
+    args = listOf("main")
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+tasks.register<JavaExec>("generateBoonData") {
+    group = "_nr_data"
+    mainClass.set("com.zenyte.game.content.boons.BoonDataGenerator")
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(*defaultJvmArgs)
+}
+
+//tasks.register<JavaExec>("generateCache") {
+//    group = "_nr_data"
+//    mainClass.set("mgi.tools.parser.TypeParser")
+//    classpath = sourceSets["main"].runtimeClasspath
+//    args = listOf("--unzip", "false")
+//    workingDir = layout.projectDirectory.dir("../").asFile
+//    jvmArgs(*defaultJvmArgs)
+//}
+
+tasks.register<JavaExec>("runHotswap") {
+    group = "application"
+    description = "Run server with HotSwap Agent for live code reload"
+    mainClass.set(defaultMainClass)
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = layout.projectDirectory.dir("../").asFile
+    jvmArgs(defaultJvmArgs.toList())
+    jvmArgs("-XX:HotswapAgent=fatjar")
+}
+
+tasks.named<Zip>("distZip").configure {
+    enabled = false
+}
+
+tasks.named<Tar>("distTar").configure {
+    enabled = false
+}

@@ -1,0 +1,11 @@
+// 20554
+[clientscript,color_picker_slider_interact](component $box, component $slider, int $mouse_x, int $mouse_y)
+def_int $hue = scale($mouse_y, if_getheight($slider), 255);
+if ($hue = %generic_varp_261) {
+    return();
+}
+
+%generic_varp_261 = $hue;
+~color_picker_sv_init($box);
+def_int $colour = ~make_rgb_color(%cape_customizer_selected_saturation, %cape_customizer_selected_brightness, 64, 64, %generic_varp_261);
+if_setcolour($colour, comp_cape_customizer:com38);

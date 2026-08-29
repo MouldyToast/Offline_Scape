@@ -1,0 +1,228 @@
+// 20296
+[proc,cape_customizer_open_colorpicker](string $title, int $swatch_index)
+if_sethide(false, comp_cape_customizer:com10);
+
+cc_deleteall(comp_cape_customizer:com12);
+// Gets the last colour received from the server after sending the selection to the server.
+def_int $colour = ~cape_customizer_part_getcolor(%cape_customizer_current_block_color_index);
+%cape_customizer_current_block_color = $colour;
+%varcint459 = %cape_customizer_current_block_color;
+
+def_component $popup = comp_cape_customizer:com10;
+def_string $string0 = "#";
+def_struct $struct4 = null;
+~steelborder(comp_cape_customizer:com13, "Colour picker - <$title>", 1);
+
+if_sethide(false, comp_cape_customizer:com15);
+if_sethide(false, comp_cape_customizer:com16);
+if_sethide(true, comp_cape_customizer:com25);
+if_sethide(true, comp_cape_customizer:com50);
+
+def_int $popup_width = 400;
+def_int $popup_height = 250;
+if_setsize($popup_width, $popup_height, ^setsize_abs, ^setsize_abs, comp_cape_customizer:com12);
+def_component $component11 = comp_cape_customizer:com17;
+def_component $component12 = comp_cape_customizer:com18;
+def_component $component13 = comp_cape_customizer:com19;
+def_component $component14 = comp_cape_customizer:com20;
+def_component $component15 = comp_cape_customizer:com21;
+def_component $component16 = comp_cape_customizer:com22;
+if_sethide(false, $component14);
+if_sethide(false, $component15);
+if_sethide(false, $component16);
+cc_deleteall($component14);
+cc_deleteall($component15);
+cc_deleteall($component16);
+
+def_int $int17 = 0;
+cc_create($component11, ^iftype_text, $int17);
+cc_settext("Current colour");
+cc_settextfont(b12_full);
+cc_settextshadow(true);
+cc_setcolour(0xff981f);
+cc_settextalign(^settextalign_centre, ^settextalign_centre, 0);
+cc_setsize(100, 18, ^setsize_abs, ^setsize_abs);
+cc_setposition(18, 2, ^setpos_abs_left, ^setpos_abs_top);
+$int17 = calc($int17 + 1);
+def_int $int18 = 45;
+
+cc_create($component11, ^iftype_rectangle, $int17);
+cc_setsize($int18, $int18, ^setsize_abs, ^setsize_abs);
+cc_setposition(45, 22, ^setpos_abs_left, ^setpos_abs_top);
+cc_setcolour(%cape_customizer_current_block_color);
+cc_setfill(true);
+$int17 = calc($int17 + 1);
+
+$int17 = ~thinbox_specific($component11, $int17, 45, 22, $int18, $int18, ^setpos_abs_left, ^setpos_abs_top);
+cc_create($component11, ^iftype_text, $int17);
+cc_settext(append($string0, ~colour_to_string(%varcint459)));
+cc_settextfont(p11_full);
+cc_settextshadow(true);
+cc_setcolour(0xff981f);
+cc_settextalign(^settextalign_centre, ^settextalign_centre, 0);
+cc_setsize(80, 18, ^setsize_abs, ^setsize_abs);
+cc_setposition(27, 2, ^setpos_abs_left, ^setpos_abs_bottom);
+$int17 = calc($int17 + 1);
+
+cc_create($component11, ^iftype_text, $int17);
+cc_settext("New colour");
+cc_settextfont(b12_full);
+cc_settextshadow(true);
+cc_setcolour(0xff981f);
+cc_settextalign(^settextalign_centre, ^settextalign_centre, 0);
+cc_setsize(100, 18, ^setsize_abs, ^setsize_abs);
+cc_setposition(137, 2, ^setpos_abs_left, ^setpos_abs_top);
+$int17 = calc($int17 + 1);
+
+cc_create($component11, ^iftype_rectangle, $int17);
+cc_setsize($int18, $int18, ^setsize_abs, ^setsize_abs);
+cc_setposition(164, 22, ^setpos_abs_left, ^setpos_abs_top);
+cc_setcolour(%varcint459);
+cc_setfill(true);
+def_int $int19 = $int17;
+$int17 = calc($int17 + 1);
+$int17 = ~thinbox_specific($component11, $int17, 164, 22, $int18, $int18, ^setpos_abs_left, ^setpos_abs_top);
+def_string $string1 = append($string0, ~colour_to_string(%varcint459));
+cc_create($component11, ^iftype_text, $int17);
+cc_settext($string1);
+cc_settextfont(p11_full);
+cc_settextshadow(true);
+cc_setcolour(0xff981f);
+cc_settextalign(^settextalign_centre, ^settextalign_centre, 0);
+cc_setsize(80, 18, ^setsize_abs, ^setsize_abs);
+cc_setposition(147, 2, ^setpos_abs_left, ^setpos_abs_bottom);
+def_int $int20 = $int17;
+$int17 = 0;
+
+def_int $int21 = 0;
+def_int $int22 = 0;
+def_int $int23 = 0;
+def_int $int24 = 0;
+def_int $int25 = 0;
+def_int $int26 = 0;
+def_int $int27 = 0;
+def_int $int28 = 0;
+$int26, $int27, $int28 = ~hex_to_rgb(%varcint459);
+$int17, $int21, $int22 = ~script4501($component12, $int17, $component13, $int21, $string1, 20, 33, 80, 18, "Hexadecimal");
+$int17, $int21, $int23 = ~script4501($component12, $int17, $component13, $int21, tostring($int26), 7, 67, 32, 18, "Red");
+$int17, $int21, $int24 = ~script4501($component12, $int17, $component13, $int21, tostring($int27), 44, 67, 32, 18, "Green");
+$int17, $int21, $int25 = ~script4501($component12, $int17, $component13, $int21, tostring($int28), 81, 67, 32, 18, "Blue");
+if (cc_find($component13, 0) = ^true) {
+    cc_setonop("meslayer_input_color(0, $popup, $component11, $int19, $int20, $struct4, $component12, $int22, $int23, $int24, $int25)");
+}
+if (cc_find($component13, 1) = ^true) {
+    cc_setonop("meslayer_input_color(1, $popup, $component11, $int19, $int20, $struct4, $component12, $int22, $int23, $int24, $int25)");
+}
+if (cc_find($component13, 2) = ^true) {
+    cc_setonop("meslayer_input_color(2, $popup, $component11, $int19, $int20, $struct4, $component12, $int22, $int23, $int24, $int25)");
+}
+if (cc_find($component13, 3) = ^true) {
+    cc_setonop("meslayer_input_color(3, $popup, $component11, $int19, $int20, $struct4, $component12, $int22, $int23, $int24, $int25)");
+}
+
+cc_create($component12, ^iftype_text, $int17);
+cc_settext("Custom input");
+cc_settextfont(b12_full);
+cc_settextshadow(true);
+cc_setcolour(0xff981f);
+cc_settextalign(^settextalign_centre, ^settextalign_centre, 0);
+cc_setsize(100, 18, ^setsize_abs, ^setsize_abs);
+cc_setposition(10, 2, ^setpos_abs_left, ^setpos_abs_top);
+
+def_int $int29 = calc(enum_getoutputcount(enum_3760) + 1);
+def_int $int30 = 26;
+def_int $int31 = 1;
+def_int $int32 = if_getheight($component14);
+def_int $int33 = calc($int32 / ($int30 + $int31));
+def_int $int34 = calc(if_getwidth($component14) / ($int31 + $int30));
+def_int $int35 = calc($int29 / $int34);
+def_int $int36 = calc($int29 % $int34);
+def_int $int37 = 0;
+if ($int36 > 0) {
+    $int37 = calc($int35 + 1);
+} else {
+    $int37, $int36 = $int35, $int34;
+}
+if ($int37 > $int33) {
+    if_setsize(16, 0, ^setsize_minus, ^setsize_minus, $component15);
+    if_sethide(false, $component16);
+    ~scrollbar_vertical($component16, $component15, "scrollbar_dragger_v2,3", "scrollbar_dragger_v2,0", "scrollbar_dragger_v2,1", "scrollbar_dragger_v2,2", "scrollbar_v2,0", "scrollbar_v2,1");
+    $component14 = $component15;
+    $int34 = calc(if_getwidth($component14) / ($int31 + $int30));
+    $int35 = calc($int29 / $int34);
+    $int36 = calc($int29 % $int34);
+    if ($int36 > 0) {
+        $int37 = calc($int35 + 1);
+    } else {
+        $int37, $int36 = $int35, $int34;
+    }
+} else {
+    if_setsize(0, 0, ^setsize_minus, ^setsize_minus, $component15);
+    if_sethide(true, $component16);
+}
+
+$int17 = 0;
+def_int $int38 = 0;
+def_int $int39 = 0;
+def_int $int40 = 0;
+def_int $colour_choice_fill = 0;
+def_int $int42 = 0;
+def_int $int43 = 0;
+def_int $int44 = 0;
+def_int $int45 = 0;
+while ($int40 < $int37) {
+    if ($int40 = calc($int37 - 1)) {
+        $int34 = $int36;
+        if ($int35 = 0) {
+            $int43 = calc(if_getheight($component14) / 2 - ($int30 + $int31) / 2);
+        }
+    }
+    $int45 = calc($int34 * ($int30 + $int31));
+    $int42 = calc((if_getwidth($component14) - $int45) / 2);
+    while ($int39 < $int34) {
+        $colour_choice_fill = enum(int, int, enum_3760, $int38);
+        if ($colour_choice_fill < 0) {
+        	$colour_choice_fill = ^white;
+        }
+        cc_create($component15, ^iftype_rectangle, $int17);
+        cc_setsize($int30, $int30, ^setsize_abs, ^setsize_abs);
+        cc_setposition($int42, $int43, ^setpos_abs_left, ^setpos_abs_top);
+        cc_setcolour($colour_choice_fill);
+        cc_setfill(true);
+        cc_setonop("cape_customizer_colorpicker_onselect(event_op, event_com, event_comsubid, $popup, $int38, $colour_choice_fill, $component11, $int19, $int20, $struct4, $component12, $int22, $int23, $int24, $int25)");
+        cc_setop(1, "Select colour");
+        $int17 = calc($int17 + 1);
+
+        cc_create($component15, ^iftype_rectangle, $int17);
+        cc_setsize($int30, $int30, ^setsize_abs, ^setsize_abs);
+        cc_setposition($int42, $int43, ^setpos_abs_left, ^setpos_abs_top);
+        cc_setcolour(^black);
+        cc_setfill(true);
+        cc_settrans(250);
+        cc_setonmouserepeat("cc_settrans(event_com, event_comsubid, 220, null)");
+        cc_setonmouseleave("cc_settrans(event_com, event_comsubid, 255, null)");
+        $int17 = calc($int17 + 1);
+        $int17 = ~thinbox_specific($component15, $int17, $int42, $int43, $int30, $int30, ^setpos_abs_left, ^setpos_abs_top);
+        $int42 = calc($int42 + $int30 + $int31);
+        $int38 = calc($int38 + 1);
+        $int39 = calc($int39 + 1);
+    }
+    $int39 = 0;
+    $int42 = 0;
+    $int43 = calc($int43 + $int30 + $int31);
+    $int40 = calc($int40 + 1);
+}
+
+if ($int37 > $int33) {
+    if_setscrollsize(0, $int37, $component16);
+    ~scrollbar_resize($component16, $component15, if_getscrolly($component15));
+}
+
+def_component $back_button = comp_cape_customizer:com23;
+if_setop(1, "Back", $back_button);
+if_setonop("cape_customizer_colorpicker_cancel($popup)", $back_button);
+
+def_component $done_button = comp_cape_customizer:com24;
+if_setop(1, "Done", $done_button);
+if_setonop("cape_customizer_colorpicker_save_selection($popup)", $done_button);
+

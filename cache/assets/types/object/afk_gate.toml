@@ -1,0 +1,13 @@
+# Left-Gate
+[[object]]
+inherit=53
+id=60444
+name="Afk gate"
+models=[60519]
+
+# Right-Gate
+[[object]]
+inherit=53
+id=60445
+name="Afk gate"
+models=[60520]

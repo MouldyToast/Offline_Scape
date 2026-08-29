@@ -1,0 +1,24 @@
+# Eastern Herb plot
+[[object]]
+inherit=27115
+id=60472
+
+# Northern Herb plot
+[[object]]
+inherit=27115
+id=60473
+
+# Western Herb plot
+[[object]]
+inherit=27115
+id=60474
+
+# Southern Herb plot
+[[object]]
+inherit=27115
+id=60475
+
+# Southern Tree plot
+[[object]]
+inherit=8391
+id=60476

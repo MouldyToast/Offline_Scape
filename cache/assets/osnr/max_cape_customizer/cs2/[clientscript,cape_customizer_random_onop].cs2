@@ -1,0 +1,11 @@
+// 20556
+[clientscript,cape_customizer_random_onop]
+sound_synth(interface_select1, 1, 0);
+def_int $num_colors = enum_getoutputcount(enum_3760);
+def_int $color_index = 0;
+while($color_index < 4) {
+    def_int $rgb = enum(int, int, enum_3760, random($num_colors));
+    def_int $hsl16_color = ~hsl_to_hsl16(~packed_rgb_to_hsl($rgb));
+    resume_stringdialog("<tostring($color_index)>,<tostring($rgb)>,<tostring($hsl16_color)>");
+    $color_index = add($color_index, 1);
+}

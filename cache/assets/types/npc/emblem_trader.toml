@@ -1,0 +1,9 @@
+[[npc]]
+id=12113
+inherit=7943
+size=2
+ops=["Talk-to", "", "Rewards", "", "Skull"]
+models=[44937, 32063, 28286, 3381, 29702, 44953, 181, 32970, 3189]
+originalcolours=[127, 937, 123, 9443, 61, 16]
+replacementcolours=[18, 7104, 8, 7104, 7104, 929]
+chatModels=[45093]

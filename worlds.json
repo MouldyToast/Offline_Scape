@@ -1,0 +1,126 @@
+{
+  "localhost": {
+    "number": 101,
+    "host": "localhost",
+    "port": 43594,
+    "activity": "Local Host",
+    "private": false,
+    "visibility": "DEVELOPER",
+    "nearRealityGuild": "STAFF",
+    "discordToken": "",
+    "verifyPasswords": false,
+    "location": "UNITED_STATES_OF_AMERICA",
+    "logback": "logback-dev",
+    "types": [
+      "MEMBERS"
+    ],
+    "api": {
+      "enabled": false,
+      "token": ""
+    },
+    "hiscoresDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "hiscores",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    },
+    "worldsDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "worlds",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    }
+  },
+  "beta": {
+    "number": 2,
+    "host": "localhost",
+    "port": 43594,
+    "activity": "Beta",
+    "private": false,
+    "visibility": "BETA",
+    "nearRealityGuild": "QUALITY_CONTROL",
+    "discordToken": "",
+    "verifyPasswords": true,
+    "location": "UNITED_STATES_OF_AMERICA",
+    "logback": "logback-beta",
+    "types": [
+      "MEMBERS"
+    ],
+    "api": {
+      "enabled": false,
+      "token": ""
+    },
+    "hiscoresDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "hiscores",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    },
+    "worldsDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "worlds",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    }
+  },
+  "main": {
+    "number": 1,
+    "host": "localhost",
+    "port": 43594,
+    "activity": "Main",
+    "private": false,
+    "visibility": "PUBLIC",
+    "nearRealityGuild": "STAFF",
+    "discordToken": "",
+    "verifyPasswords": true,
+    "location": "UNITED_STATES_OF_AMERICA",
+    "logback": "logback-live",
+    "types": [
+      "MEMBERS"
+    ],
+    "api": {
+      "enabled": false,
+      "token": ""
+    },
+    "logsDatabase": {
+      "enabled": true,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "nr_game_logs",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    },
+    "mainDatabase": {
+      "enabled": true,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "nr",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    },
+    "hiscoresDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "hiscores",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    },
+    "worldsDatabase": {
+      "enabled": false,
+      "create": true,
+      "databaseUrl": "jdbc:postgresql://localhost",
+      "databaseName": "worlds",
+      "databaseUser": "postgres",
+      "databasePassword": ""
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// 20087
+[proc,modal_start_fadebg](int $int0, component $com0)
+def_int $int2 = 10;
+def_int $int3 = 150;
+def_int $int4 = 10;
+
+if_settrans(255, $com0);
+if_setontimer("modal_fadebg(clientclock, $int2, $int3, event_com)", $com0);

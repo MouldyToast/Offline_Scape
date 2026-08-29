@@ -1,0 +1,38 @@
+# Starter sword
+[[item]]
+inherit=22331
+invmodel=60018
+primarymalemodel=60017
+primaryfemalemodel=60017
+modelpitch=462
+modelroll=2015
+modelyaw=77
+zoom=1613
+offsetx=17
+offsety=0
+
+# Starter bow
+[[item]]
+inherit=22333
+invmodel=60016
+primarymalemodel=60015
+primaryfemalemodel=60015
+modelpitch=540
+modelroll=55
+modelyaw=77
+zoom=1484
+offsetx=9
+offsety=2
+
+# Starter staff
+[[item]]
+inherit=22335
+invmodel=60020
+primarymalemodel=60019
+primaryfemalemodel=60019
+modelpitch=540
+modelroll=44
+modelyaw=77
+zoom=2280
+offsetx=11
+offsety=-4

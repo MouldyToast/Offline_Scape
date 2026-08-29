@@ -1,0 +1,21 @@
+{
+  "id": 12824,
+  "hitpoints": 1,
+  "immune_poison": true,
+  "immune_venom": true,
+  "statDefinitions": {
+    "combatStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "spawnDefinitions": {
+    "deathAnimation": {
+      "id": 10800,
+      "delay": 0
+    }
+  }
+}

@@ -38,6 +38,7 @@ Use [RSProx](https://github.com/blurite/rsprox) to launch the client. Add this e
 ```yaml
   - name: Offline_Scape
     jav_config_url: https://client.blurite.io/jav_local_228.ws
+    varp_count: 20000
     revision: 228
     game_server_port: 43594
     modulus: 933160a3e3e3369fef59748ce74ab1ea4f21a6a523558b6a1b7b395998d96f3ab62827af37c4855220303edae8365f968eb7cc0794f82ba4117d029e2a9d54adc2d60d8d2f79a6cc37c74bc225432291b02c0c92571ff91d393698f54413af6fe20eb71dbbedd87b6233e6597bfb295a21f2d085d9f4c7a02374e32719c4dce1

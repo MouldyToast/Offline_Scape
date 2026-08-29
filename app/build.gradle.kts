@@ -58,8 +58,6 @@ dependencies {
     runtimeOnly(projects.plugins.spawns.region8xxx)
     runtimeOnly(projects.plugins.spawns.region9xxx)
 
-    runtimeOnly(projects.plugins.excluded)
-
     // Auto-discovered content and tools modules
     findContentModules().forEach { runtimeOnly(it) }
     findToolModules().forEach { runtimeOnly(it) }

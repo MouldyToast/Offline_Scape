@@ -113,11 +113,6 @@ include(
     ":plugins:spawns:region9xxx",
 )
 
-// excluded — remaining blob (Phase 4 will drain this)
-include(
-    ":plugins:excluded",
-)
-
 include(":app")
 
 // Auto-discovered content and tools modules.

@@ -718,8 +718,8 @@ public class TypeParser {
         scimmyStall.setName("Magic stall (Hard)");
         scimmyStall.pack();
 
-        var tutorialIslandPortal = cloneObject(4406, 55070);
-        tutorialIslandPortal.pack();
+//        var tutorialIslandPortal = cloneObject(4406, 55070);
+//        tutorialIslandPortal.pack();
         var revEntrance = cloneObject(31555, REVENANT_ENTRANCE_1);
         revEntrance.pack();
         var revEntrance2 = cloneObject(31555, REVENANT_ENTRANCE_2);
@@ -1580,8 +1580,8 @@ public class TypeParser {
 //    packMapPre209(13420, "assets/map/gamble/gamble_0.dat", "assets/map/gamble/gameble_1.dat.dat");
 //        packMapPre209(13422, "assets/map/world_boss/worldboss_landscape.dat",
 //                "assets/map/world_boss/worldboss_objects.dat");
-        packMapPre209(13424, "assets/map/tutorial_island/tutorial_landscape.dat",
-                "assets/map/tutorial_island/tutorial_objects.dat");
+//        packMapPre209(13424, "assets/map/tutorial_island/tutorial_landscape.dat",
+//                "assets/map/tutorial_island/tutorial_objects.dat");
         packMapPre209(13426, "assets/map/osnr_tournament/final_landscape.dat",
                 "assets/map/osnr_tournament/final_objects.dat");
         packMapPre209(8314, "assets/map/staff_landscape.dat",

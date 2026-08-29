@@ -113,24 +113,9 @@ include(
     ":plugins:spawns:region9xxx",
 )
 
-// excluded
+// excluded — remaining blob (Phase 4 will drain this)
 include(
     ":plugins:excluded",
-    ":plugins:excluded:boss:abyssalsire",
-    ":plugins:excluded:boss:nex",
-    ":plugins:excluded:boss:nightmare",
-    ":plugins:excluded:gauntlet",
-    ":plugins:excluded:group-ironman",
-    ":plugins:excluded:itemonitem:impl",
-    ":plugins:excluded:itemonitem:neitiznot_faceguard",
-    ":plugins:excluded:itemonobject:elemental_tiara",
-    ":plugins:excluded:muddychest",
-    ":plugins:excluded:skills:agility:priffdinasrooftop",
-    ":plugins:excluded:theatreofblood",
-    ":plugins:excluded:tools:analyzer",
-    ":plugins:excluded:tools:backups",
-    // ":plugins:excluded:tools:discord", // Discord base classes stripped, bot disabled
-    ":plugins:excluded:tools:updater",
 )
 
 include(":app")

@@ -59,21 +59,6 @@ dependencies {
     runtimeOnly(projects.plugins.spawns.region9xxx)
 
     runtimeOnly(projects.plugins.excluded)
-    runtimeOnly(projects.plugins.excluded.boss.abyssalsire)
-    runtimeOnly(projects.plugins.excluded.boss.nex)
-    runtimeOnly(projects.plugins.excluded.boss.nightmare)
-    runtimeOnly(projects.plugins.excluded.gauntlet)
-    runtimeOnly(projects.plugins.excluded.groupIronman)
-    runtimeOnly(projects.plugins.excluded.itemonitem.impl)
-    runtimeOnly(projects.plugins.excluded.itemonitem.neitiznotFaceguard)
-    runtimeOnly(projects.plugins.excluded.itemonobject.elementalTiara)
-    runtimeOnly(projects.plugins.excluded.muddychest)
-    runtimeOnly(projects.plugins.excluded.skills.agility.priffdinasrooftop)
-    runtimeOnly(projects.plugins.excluded.theatreofblood)
-    runtimeOnly(projects.plugins.excluded.tools.analyzer)
-    runtimeOnly(projects.plugins.excluded.tools.backups)
-    // runtimeOnly(projects.plugins.excluded.tools.discord) // Discord stripped
-    runtimeOnly(projects.plugins.excluded.tools.updater)
 
     // Auto-discovered content and tools modules
     findContentModules().forEach { runtimeOnly(it) }

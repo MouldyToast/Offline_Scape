@@ -18,7 +18,6 @@ import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.clans.ClanRank;
 import com.zenyte.game.content.consumables.drinks.GourdPotion;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.GameTab;
 import com.zenyte.game.model.ui.InterfacePosition;
@@ -365,9 +364,6 @@ public final class Raid {
         final int current = getPoints(player);
 
         int amt = (int) Math.floor((int) (amount * (player.getVariables().getRaidsBoost() > 0 ? getRaidsBoost(player) : 1.0F)) * (player.getSkills().getCombatLevel() < 115 ? 0.8F : 1));
-        if(World.hasBoost(XamphurBoost.BONUX_COX_POINTS_25PCNT)) {
-            amt *= 1.25f;
-        }
         if (SlayerHelmetEffects.INSTANCE.twistedHelmet(player, false)) {
             amt *= 1.10f;
         }

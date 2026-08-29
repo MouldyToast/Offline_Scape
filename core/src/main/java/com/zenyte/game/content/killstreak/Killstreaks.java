@@ -4,7 +4,6 @@ import com.google.common.eventbus.Subscribe;
 import com.near_reality.game.world.PlayerEvent;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.well.WellPerk;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Colour;
@@ -44,7 +43,7 @@ public class Killstreaks {
 
         double rankBoost = 1.0d + getRankBoost(attacker.getMemberRank());
         int totalBloodmoney = (int) (getTotalBloodmoneyForKill(attacker, victim) * rankBoost);
-        if(World.hasBoost(XamphurBoost.BONUS_BLOOD_MONEY) || World.hasBoost(WellPerk.DOUBLE_BLOOD_MONEY))
+        if(World.hasBoost(WellPerk.DOUBLE_BLOOD_MONEY))
             totalBloodmoney *= 2;
         if (attacker.getVariables().getBloodMoneyBoosterLeft() > 0) {
             attacker.getVariables().setBloodMoneyBoosterLeft(attacker.getVariables().getBloodMoneyBoosterLeft() - 1);

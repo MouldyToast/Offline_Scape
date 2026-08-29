@@ -12,7 +12,6 @@ import com.near_reality.tools.logging.ChallengeLogger;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.net.packet.PacketDispatcher;
@@ -415,7 +414,7 @@ public class Slayer {
             amount *= 1.15;
         }
         boolean hasPerk = player.remnantPetManager.hasDoubleSlayerPoints();
-        boolean hasWorldBoost = World.hasBoost(XamphurBoost.SLAYER_POINTS_X2);
+        boolean hasWorldBoost = false;
         if(hasPerk && hasWorldBoost) {
             amount *= 3;
         } else if (hasPerk || hasWorldBoost) {

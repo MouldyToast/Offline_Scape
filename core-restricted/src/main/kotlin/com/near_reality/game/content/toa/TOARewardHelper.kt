@@ -2,7 +2,6 @@ package com.near_reality.game.content.toa
 
 import com.zenyte.game.content.tombsofamascut.InvocationCategoryType
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidParty
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Utils
@@ -62,8 +61,8 @@ object TOARewardHelper {
     }
 
     private fun rewardWinner(winner: Player, party: TOARaidParty, level: Int, rrm: TOARewardRoomManager) {
-        val rolledLevel = if(World.hasBoost(XamphurBoost.TOA_BOOST)) level + 100 else level
-        val clamp = if(World.hasBoost(XamphurBoost.TOA_BOOST)) 650 else 550
+        val rolledLevel = level
+        val clamp = 550
         val levelClamped = rolledLevel.coerceAtMost(clamp)
         if(winner.getBooleanTemporaryAttribute("overridePurple") || rolledUnique(levelClamped, winner.toaManager.currentPoints)) {
             rewardUniqueAndTertiary(winner, party, levelClamped, rrm)
@@ -145,7 +144,7 @@ object TOARewardHelper {
     private fun MutableList<Item>.rewardClueScroll() = this.add(eliteClueScroll)
 
     private fun MutableList<Item>.hasMoreRoom() = this.size < 6
-    private fun rolls() = if(World.hasBoost(XamphurBoost.TOA_BOOST)) 4 else 3
+    private fun rolls() = 3
     private fun TOARaidParty.eligibleForTertiaryRewards() = this.totalDeaths == 0
     private fun Pair<Player, TOARaidParty>.eligibleForMasoriCK() = second.completedRaidLevel >= 350 && !first.containsAny(ItemId.MASORI_CRAFTING_KIT)
     private fun Pair<Player, TOARaidParty>.eligibleForMenaphiteOK() = second.completedRaidLevel >= 400 && !first.containsAny(ItemId.MENAPHITE_ORNAMENT_KIT)

@@ -6,7 +6,6 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.treasuretrails.ClueItem;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.CameraShakeType;
@@ -266,9 +265,6 @@ public final class Barrows {
     void calculateLoot() {
         int slainAmount = slainWights.size();
         int totalRolls = Math.max(1, slainAmount);
-
-        if(World.hasBoost(XamphurBoost.BONUS_BARROWS_DR_25))
-            totalRolls *= 2;
 
         int barrowsRolls = 0;
         final ArrayList<Item> availableBarrowsLoot = new ArrayList<Item>(slainAmount * 4);

@@ -26,7 +26,6 @@ import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.supplycaches.SupplyCache;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.content.treasuretrails.ClueItem;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
@@ -1744,10 +1743,6 @@ public class NPC extends AbstractEntity {
             }
 
             final int id = item.getId();
-            if (id == 995 && World.hasBoost(XamphurBoost.DOUBLE_COINS)) {
-                item.setAmount(item.getAmount() * 2);
-            }
-
             if ((id == 995 || id == 21555 || id == 6529) && RingOfWealthItem.isRingOfWealth(killer.getRing()) && !killer.getBooleanSetting(Setting.ROW_CURRENCY_COLLECTOR)) {
                 killer.getInventory().addOrDrop(item);
                 killer.getNotificationSettings().sendDropNotification(item);

@@ -4,7 +4,6 @@ import com.near_reality.game.content.commands.DeveloperCommands;
 import com.zenyte.CacheManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.rewards.Rewards;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -140,13 +139,6 @@ public class LarransKey {
                         }
                     } else {
                         rewards = Rewards.generateRewards(keyToUse, 1);
-                    }
-
-                    if(World.hasBoost(XamphurBoost.LARRANS_KEY_DROPS_X2)) {
-                        player.sendMessage("You get double the loot because of the Xamphur boost!");
-                        for (Item reward : rewards) {
-                            reward.setAmount(reward.getAmount() * 2);
-                        }
                     }
 
                     for (Item item : rewards) {

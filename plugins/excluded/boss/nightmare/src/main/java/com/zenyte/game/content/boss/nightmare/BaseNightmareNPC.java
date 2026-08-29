@@ -5,7 +5,6 @@ import com.zenyte.game.content.boss.nightmare.area.NightmareBossArea;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -303,7 +302,7 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 
 	public static void handleDrops(BaseNightmareNPC npc, int playersOnStart) {
 		boolean phosanis = npc instanceof PhosanisNightmareNPC;
-		boolean boostActive = World.hasBoost(XamphurBoost.NIGHTMARE);
+		boolean boostActive = false;
 
 		Map<Player, Integer> damageMap = new HashMap<>();
 		for (Map.Entry<Pair<String, GameMode>, ObjectArrayList<ReceivedDamage>> entry : npc.getReceivedDamage().entrySet()) {

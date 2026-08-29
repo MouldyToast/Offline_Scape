@@ -7,7 +7,6 @@ import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.model.item.SkillcapePerk
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
@@ -201,9 +200,6 @@ object SlayerHelper {
 
         var worldRate = 100
         if(player.overrideSuperiorRate != 0) worldRate = player.overrideSuperiorRate
-        if (World.hasBoost(XamphurBoost.BONUS_SLAYER_SUPERIOR)) {
-            worldRate = 50.coerceAtLeast(worldRate / 2)
-        }
         if (player.variables.slayerBoosterTick > 0) {
             worldRate = 50.coerceAtLeast((worldRate * 0.75).toInt())
         }

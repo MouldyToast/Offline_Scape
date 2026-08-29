@@ -7,7 +7,6 @@ import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
 import com.zenyte.game.content.treasuretrails.rewards.ClueReward;
 import com.zenyte.game.content.treasuretrails.rewards.ClueRewardTable;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -104,7 +103,7 @@ public class ClueCasket extends ItemPlugin {
 
         AdventCalendarManager.increaseChallengeProgress(player, 2022, 14, 1);
         final ClueRewardTable rewards = Objects.requireNonNull(ClueReward.getTable(item.getId()));
-        final List<Item> loot = rewards.roll(player.inArea(Entrana.class), World.hasBoost(XamphurBoost.BONUS_CLUE_LOOT), booster);
+        final List<Item> loot = rewards.roll(player.inArea(Entrana.class), false, booster);
         player.sendMessage("Well done, you've completed the Treasure Trail!");
         final String tierString = tier.toString().toLowerCase();
         final int count = player.getNumericAttribute("completed " + tierString + " treasure trails").intValue() + 1;

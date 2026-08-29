@@ -8,7 +8,6 @@ import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.minigame.wintertodt.RewardCrate;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -318,7 +317,7 @@ public enum BossPet implements Pet {
     public int getRarity(final Player player, final int bossId) {
         int finalRarity = rarity;
         // boosted drop rate calculation for events; disabled for raids
-        boolean boosted = GameConstants.BOOSTED_BOSS_PETS || World.hasBoost(XamphurBoost.BONUS_PET_RATES);
+        boolean boosted = GameConstants.BOOSTED_BOSS_PETS;
         if (boosted && !this.equals(OLMLET))
             finalRarity = (int) (rarity - (rarity * GameConstants.BOOSTED_BOSS_PET_RATE));
         if (this.equals(PET_CHAOS_ELEMENTAL)) {

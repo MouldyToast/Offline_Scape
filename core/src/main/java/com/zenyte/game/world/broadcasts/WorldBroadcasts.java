@@ -401,18 +401,6 @@ public class WorldBroadcasts {
                 builder.append(secondaryBuilder);
                 break;
             }
-            case XAMPHUR: {
-                builder.append("Event: ");
-                secondaryBuilder.append("Xamphur has been spawned, defeat him at ::event!");
-                builder.append(secondaryBuilder);
-                break;
-            }
-            case WORLD_BOSS: {
-                builder.append("Event: ");
-                secondaryBuilder.append("Avatar of Creation has been spawned!");
-                builder.append(secondaryBuilder);
-                break;
-            }
             case COLOSSAL_CHICKEN: {
                 builder.append("Event: ");
                 secondaryBuilder.append("The Colossal Chicken has been spawned, defeat her at ::easter!");

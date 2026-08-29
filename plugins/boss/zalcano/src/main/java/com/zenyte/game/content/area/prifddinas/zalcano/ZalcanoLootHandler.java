@@ -4,7 +4,6 @@ import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.zenyte.CacheManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.rewards.Rewards;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
@@ -90,7 +89,7 @@ public class ZalcanoLootHandler {
 
         int shardsToAdd = 1;
         List<Item> dropForPlayer = new ArrayList<>();
-        boolean boostedLoot = World.hasBoost(XamphurBoost.BONUS_ZALCANO_LOOT);
+        boolean boostedLoot = false;
         if (currentHealthDamage + currentShieldDamage > 31) {
             dropForPlayer.addAll(Rewards.generateRewards(RARE_LOOT_KEY, boostedLoot ? 2 : 1));
             shardsToAdd = 2;

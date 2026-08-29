@@ -8,7 +8,6 @@ import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -134,8 +133,6 @@ public final class BasicRunecraftingAction extends Action {
 		if (DiaryUtil.eligibleFor(DiaryReward.RADAS_BLESSING4, player) && rune.equals(Runecrafting.BLOOD_RUNE)) {
 			amount *= 1.1;
 		}
-		if(World.hasBoost(XamphurBoost.RC_RUNES_X2))
-			amount *= 2;
 		if (rune.equals(Runecrafting.BLOOD_RUNE) || rune.equals(Runecrafting.BLOOD_RUNE_REAL)) {
 			final Item item = player.getInventory().getItemById(ItemId.BLOOD_ESSENCE_ACTIVE);
 			if (item != null) {

@@ -58,8 +58,6 @@ import com.zenyte.game.content.stars.ShootingStarLocation;
 import com.zenyte.game.content.stars.ShootingStars;
 import com.zenyte.game.content.universalshop.UniversalShopCommands;
 import com.zenyte.game.content.universalshop.UniversalShopInterface;
-import com.zenyte.game.content.xamphur.XamphurBoost;
-import com.zenyte.game.content.xamphur.XamphurHandler;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
@@ -1284,54 +1282,6 @@ public final class GameCommands {
                 teleport.teleport(p);
             }
         });
-        new Command(PlayerPrivilege.PLAYER, "event", "Teleport to event boss.", (p, args) -> {
-            if (p.isLocked()) {
-                return;
-            }
-            final Teleport teleport = new Teleport() {
-                @Override
-                public TeleportType getType() {
-                    return TeleportType.NEAR_REALITY_PORTAL_TELEPORT;
-                }
-
-                @Override
-                public Location destination() {
-                    return new Location(3360, 7057, 0);
-                }
-
-                @Override
-                public int getLevel() {
-                    return 0;
-                }
-
-                @Override
-                public double getExperience() {
-                    return 0;
-                }
-
-                @Override
-                public int getRandomizationDistance() {
-                    return 0;
-                }
-
-                @Override
-                public Item[] getRunes() {
-                    return null;
-                }
-
-                @Override
-                public int getWildernessLevel() {
-                    return 0;
-                }
-
-                @Override
-                public boolean isCombatRestricted() {
-                    return false;
-                }
-            };
-            teleport.teleport(p);
-        });
-
         new Command(PlayerPrivilege.DEVELOPER, "spawning", (p, args) -> {
             try {
                 final AllocatedArea area = MapBuilder.findEmptyChunk(8, 8);
@@ -1486,63 +1436,6 @@ public final class GameCommands {
                     mode = GameMode.REGULAR;
                 }
                 UserPlayerHandler.INSTANCE.updateGameMode(a, mode, (success) -> Unit.INSTANCE);
-            });
-        });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "worldboost", "Lets you choose boost to active.", (p, args) -> {
-            int length = XamphurBoost.VALUES.length;
-            String[] names = new String[length];
-            for (int i = 0; i < length; i++) {
-                names[i] = XamphurBoost.VALUES[i].getMssg();
-            }
-
-            p.getDialogueManager().start(new OptionsMenuD(p, "Choose a boost", names) {
-                @Override
-                public void handleClick(int slotId) {
-                    p.sendInputInt("Enter hours of the boost.", hours -> {
-                        if (hours <= 0) {
-                            return;
-                        }
-                        XamphurHandler.activateBoost(XamphurBoost.VALUES[slotId], hours);
-                    });
-                }
-
-                @Override
-                public boolean cancelOption() {
-                    return true;
-                }
-            });
-        });
-
-        new Command(PlayerPrivilege.ADMINISTRATOR, "removeboost", "Lets you choose a boost to remove.", (p, args) -> {
-            int length = XamphurBoost.VALUES.length;
-            String[] names = new String[length];
-            for (int i = 0; i < length; i++) {
-                names[i] = XamphurBoost.VALUES[i].getMssg();
-            }
-
-            p.getDialogueManager().start(new OptionsMenuD(p, "Choose a boost to remove", names) {
-                @Override
-                public void handleClick(int slotId) {
-                    WorldBoostType type = XamphurBoost.VALUES[slotId];
-                    List<WorldBoost> activeBoosts = World.getWorldBoosts().stream().filter(it -> it.getBoostType() == type).toList();
-
-                    if (activeBoosts.size() != 0) {
-                        for (WorldBoost boost : activeBoosts)
-                            World.getWorldBoosts().remove(boost);
-
-                        for (Player player : World.getPlayers())
-                            ServerEventsInterface.update(player);
-
-                        player.sendMessage("Deactivated all boosts of type: " + type.getMssg());
-                    } else {
-                        player.sendMessage("No valid boosts of this type were found to be active.");
-                    }
-                }
-
-                @Override
-                public boolean cancelOption() {
-                    return true;
-                }
             });
         });
         new Command(PlayerPrivilege.DEVELOPER, "removehome", "Removes home attribute from a player", (p, args) -> {

@@ -18,7 +18,6 @@ import com.zenyte.game.content.grandexchange.GrandExchangePriceManager
 import com.zenyte.game.content.partyroom.PartyRoomVariables
 import com.zenyte.game.content.skills.farming.hespori.HesporiInstance
 import com.zenyte.game.content.well.WellConstants
-import com.zenyte.game.content.xamphur.XamphurHandler
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.music.Music
 import com.zenyte.game.model.ui.Interface
@@ -281,13 +280,6 @@ object AdministratorCommands {
             p.sendMessage("Well is " + if (WellConstants.WELL_DISABLED) "Enabled" else "Disabled")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablexamphur") { p: Player, _: Array<String?>? ->
-            XamphurHandler.get().isEnabled = !XamphurHandler.get().isEnabled
-            p.sendMessage("Xamphur is " + if (XamphurHandler.get().isEnabled) "Enabled" else "Disabled")
-            val xamphur = XamphurHandler.get().xamphur
-            if (xamphur.fightStarted) xamphur.applyHit(Hit(xamphur.hitpoints, HitType.MELEE))
-        }
-
         Command(PlayerPrivilege.ADMINISTRATOR, "disableworldboosts") { p: Player, _: Array<String?>? ->
             World.getWorldBoosts().clear()
             p.sendMessage("World boosts cleared")
@@ -497,10 +489,6 @@ object AdministratorCommands {
             })
             for (i in 0..7) { p.packetDispatcher.sendClientScript(6722, 2, "") }
             p.packetDispatcher.sendClientScript(6729, args[0].toInt(), 0, 0, 0, 0, 0, 0, 0)
-        }
-
-        Command(PlayerPrivilege.ADMINISTRATOR, "xamphur") { p: Player?, args: Array<String?>? ->
-            XamphurHandler.get().addVotes(p, XamphurHandler.AMT_TO_SPAWN)
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "disablejoin") { p: Player, args: Array<String?>? ->

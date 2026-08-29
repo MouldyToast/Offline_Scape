@@ -1,7 +1,6 @@
 package com.near_reality.plugins.item
 
 import com.near_reality.game.item.CustomItemId
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
@@ -24,9 +23,7 @@ class SlayerCasketItemaction : ItemActionScript() {
                     else if (Utils.randomBoolean(15))
                         Item(setOf(SLAYER_TASK_RESET_SCROLL, SLAYER_TASK_PICKER_SCROLL).random(), 1) to "a scroll"
                     else {
-                        var coinAmount = (25_000..75_000).random()
-                        if (World.hasBoost(XamphurBoost.DOUBLE_COINS))
-                            coinAmount *= 2
+                        val coinAmount = (25_000..75_000).random()
                         Item(COINS_995, coinAmount) to "some coins"
                     }
                     addOrDrop(item)

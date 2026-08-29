@@ -150,8 +150,6 @@ public final class NPCSpawnLoader {
         artificialSpawns.add(new NPCSpawn(2592, 2993, 3108, 0, Direction.SOUTH, 5));
         //The Mimic
         artificialSpawns.add(new NPCSpawn(8633, 2719, 4318, 1, Direction.SOUTH, 5));
-        //Xamphur
-        artificialSpawns.add(new NPCSpawn(10955, 3359, 7070, 0, Direction.SOUTH, 5));
 
         dropViewerNPCs.addAll(SuperiorMonster.superiorMonsters);
         //Armadylian guardian

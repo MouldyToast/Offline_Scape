@@ -67,7 +67,7 @@ public class AdventCalendarManager {
 				}),
 				new AdventDay(2, 10328, "Kill 50 lizardman shamans"),
 				new AdventDay(3, 10329, "Loot 30 barrows chests"),
-				new AdventDay(4, 10330, "Kill 2 xamphur"),
+				new AdventDay(4, 10330, "Kill 2 bosses"),
 				new AdventDay(5, 10331, "Kill 20 kalphite queens"),
 				new AdventDay(6, 10332, "Fish 100 anglerfish"),
 				new AdventDay(7, 10333, "200 pest control points"),

@@ -5,7 +5,6 @@ import com.zenyte.game.content.boons.impl.NoPetDebt;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
@@ -145,7 +144,7 @@ public enum SkillingPet implements Pet {
     @Override
     public boolean roll(final Player player, final int rarity) {
         int roll = rarity;
-        if (GameConstants.BOOSTED_SKILLING_PETS || World.hasBoost(XamphurBoost.BONUS_PET_RATES)) {
+        if (GameConstants.BOOSTED_SKILLING_PETS) {
             roll = (int) (rarity - (rarity * GameConstants.BOOSTED_SKILLING_PET_RATE));
         }
 

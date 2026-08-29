@@ -7,7 +7,6 @@ import com.zenyte.game.content.minigame.pestcontrol.npc.BrawlerNPC;
 import com.zenyte.game.content.minigame.pestcontrol.npc.PestPortalNPC;
 import com.zenyte.game.content.minigame.pestcontrol.npc.SpinnerNPC;
 import com.zenyte.game.content.minigame.pestcontrol.npc.VoidKnightNPC;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTask;
@@ -373,9 +372,6 @@ public final class PestControlInstance extends DynamicArea implements DeathPlugi
                 }
                 if (player.getCombatAchievements().hasTierCompleted(CATierType.EASY)) {
                     points += 1;
-                }
-                if (World.hasBoost(XamphurBoost.PEST_CONTROL)) {
-                    points *= 1.5;
                 }
                 AdventCalendarManager.increaseChallengeProgress(player, 2022, 7, points);
                 player.addAttribute("pest_control_points", player.getNumericAttribute("pest_control_points").intValue() + points);

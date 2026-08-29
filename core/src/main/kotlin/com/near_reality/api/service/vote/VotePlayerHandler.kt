@@ -12,7 +12,6 @@ import com.near_reality.tools.logging.GameLogger
 import com.zenyte.cores.CoresManager
 import com.zenyte.game.content.skills.afk.AfkSkilling
 import com.zenyte.game.content.vote.VoteHandler
-import com.zenyte.game.content.xamphur.XamphurHandler
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.task.WorldTasksManager
@@ -82,7 +81,6 @@ object VotePlayerHandler {
                     GameLogMessage.ClaimedVotes(username = player.username, ipAddress = vote.userIp, votesClaimed = votePoints, votesBonus = bonusVotePoints)
                 }
                 if (votePointsWithBonus > 0) {
-                    XamphurHandler.get().addVotes(player, votePoints)
                     AfkSkilling.addAfkTime(player, TimeUnit.HOURS.toMillis(12))
                     WiseOldManD.rollClues(player, votePointsWithBonus)
                     val coinRewardAmount = votePointsWithBonus * (if (player.authenticator.isEnabled) 150_000 else 75_000)

@@ -8,7 +8,6 @@ import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollItemC
 import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollItemOneIn
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
@@ -103,10 +102,6 @@ class NexDroptable : NPCDropTableScript() {
 
                         if ((type == Unique || type == Tertiary) && player.variables.nexBoosterleft > 0)
                             rarityScale += 0.15
-
-                        if ((type == Unique || type == Tertiary) && World.hasBoost(XamphurBoost.NEX_BOOST))
-                            rarityScale += 0.20
-
 
                         rarity = scaleRarity(dropChance, rarity, rarityScale)
                     }

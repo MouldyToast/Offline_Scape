@@ -35,8 +35,6 @@ import com.zenyte.game.content.treasuretrails.clues.MusicClue
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask
 import com.zenyte.game.content.treasuretrails.clues.*
 import com.zenyte.game.content.well.WellPerk
-import com.zenyte.game.content.xamphur.XamphurBoost
-import com.zenyte.game.content.xamphur.XamphurHandler
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.shop.ShopCurrency
@@ -99,7 +97,6 @@ object DeveloperCommands {
     var npcProcessTimeLogging = false
     var enabledDPinRedeeming = WORLD_PROFILE.verifyPasswords && !WORLD_PROFILE.isBeta() && !WORLD_PROFILE.isDevelopment() && !WORLD_PROFILE.private
     var adminsLoseItemsOnDeath = WORLD_PROFILE.isBeta() || WORLD_PROFILE.isDevelopment() || WORLD_PROFILE.private
-    var doubleXamphurDrops = false
     var enableWildernessVault = false
     var enableCombatDummyOther = true
     var forceApiForLogin = java.util.concurrent.atomic.AtomicBoolean(false)
@@ -207,31 +204,6 @@ object DeveloperCommands {
             PlayerCommands.referralList.add(referral)
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "resetxamphur") { p: Player, _: Array<String?>? ->
-            XamphurHandler.get().resetXamphur()
-            p.sendMessage("Reset Xamphur NPC")
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "magicbuffet") { player, _ ->
-            if(isOwner(player)) {
-                val length = XamphurBoost.VALUES.size
-                for (i in 0 until length) {
-                    XamphurHandler.activateBoost(
-                        XamphurBoost.VALUES[i], 1
-                    )
-                }
-
-                WorldBroadcasts.sendMessage(
-                    "ALL World Boosts activated by " + player.titleName,
-                    BroadcastType.WELL_OF_GOODWILL,
-                    true)
-
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-
-        }
-
         Command(PlayerPrivilege.TRUE_DEVELOPER, "doubledrops") { player, _ ->
             if(isOwner(player)) {
                 val mssg = "<col=" + BroadcastType.WELL_OF_GOODWILL.color + "><shad=000000><img=49>News: Double Drops activated! Thanks to " + player.titleName + " for contributing the most (" + Utils.formatNumWDot(WellPerk.DOUBLE_DROPS.amount) + ")"
@@ -274,30 +246,6 @@ object DeveloperCommands {
             player.inventory.addItem(Item(ItemId.CANNON_FURNACE))
             player.inventory.addItem(Item(ItemId.CANNON_BARRELS))
             player.inventory.addItem(Item(ItemId.CANNONBALL, 2_000_000_000))
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "magicbuffetx") { player, args ->
-            if(isOwner(player)) {
-                val time = args[0].toInt()
-                if(time > 24) {
-                    return@Command
-                }
-                val length = XamphurBoost.VALUES.size
-                for (i in 0 until length) {
-                    XamphurHandler.activateBoost(
-                        XamphurBoost.VALUES[i], time
-                    )
-                }
-
-                WorldBroadcasts.sendMessage(
-                    "ALL World Boosts activated by " + player.titleName + " for $time hours!",
-                    BroadcastType.WELL_OF_GOODWILL,
-                    true)
-
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-
         }
 
         Command(PlayerPrivilege.TRUE_DEVELOPER, "barrelchest") { player, args  ->
@@ -461,15 +409,6 @@ object DeveloperCommands {
                 BroadcastType.SUPER_RARE_DROP,
                 " just killed the Kraken and found ... a pool cue?"
             )
-        }
-        Command(PlayerPrivilege.DEVELOPER, "togglebonusworldboss") { p, _ ->
-            if(doubleXamphurDrops) {
-                doubleXamphurDrops = false
-                p.sendMessage("Disabled double Xamphur drops")
-            } else {
-                doubleXamphurDrops = true
-                p.sendMessage("Enabled double Xamphur drops")
-            }
         }
         Command(PlayerPrivilege.DEVELOPER, "testbroadcast2") { p, args ->
             WorldBroadcasts.broadcast(

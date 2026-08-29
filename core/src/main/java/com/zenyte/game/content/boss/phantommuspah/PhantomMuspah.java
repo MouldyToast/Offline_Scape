@@ -3,7 +3,6 @@ package com.zenyte.game.content.boss.phantommuspah;
 import com.near_reality.game.content.scoreboard.ScoreboardModule;
 import com.zenyte.game.content.boons.impl.IgnoranceIsBliss;
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.content.xamphur.PhantomHandCorruptionKt;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.task.WorldTask;
@@ -583,9 +582,6 @@ public class PhantomMuspah extends NPC implements CombatScript {
 									}
 								}
 							} else if (ticks == 3) {
-								if (applyCorruption) {
-									PhantomHandCorruptionKt.applyCorruptionEffect(instance.getPlayer()); //TODO make corruption core mechanic
-								}
 								stop();
 							}
 						}

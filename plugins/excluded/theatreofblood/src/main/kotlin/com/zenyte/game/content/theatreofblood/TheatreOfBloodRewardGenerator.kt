@@ -8,7 +8,6 @@ import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollChanc
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.zenyte.CacheManager
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.Utils
@@ -139,10 +138,6 @@ internal object TheatreOfBloodRewardGenerator {
             if (booster != null) {
                 uniqueRollBaseChance = (uniqueRollBaseChance * 1.15).toInt()
             }
-            if (World.hasBoost(XamphurBoost.TOB_PURPLE_BOOST)) {
-                uniqueRollBaseChance = (uniqueRollBaseChance * 1.20).toInt()
-            }
-
             val maxPoints = party.maxContributionPoints()
             val totalPoints = party.totalContributionPoints()
             val chanceReductionFactor = totalPoints.toDouble() / maxPoints.toDouble()

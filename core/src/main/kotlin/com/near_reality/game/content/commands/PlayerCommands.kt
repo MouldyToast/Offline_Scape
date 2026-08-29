@@ -12,7 +12,6 @@ import com.zenyte.game.content.skills.magic.spells.teleports.RegularTeleport
 import com.zenyte.game.content.wildernessVault.WildernessVaultConstants
 import com.zenyte.game.content.wildernessVault.WildernessVaultHandler
 import com.zenyte.game.content.wildernessVault.WildernessVaultStatus
-import com.zenyte.game.content.xamphur.XamphurHandler
 import com.zenyte.game.item.Item
 import com.zenyte.game.referral.ReferralIPDatabase
 import com.zenyte.game.referral.ReferralUsageDatabase
@@ -156,10 +155,6 @@ object PlayerCommands {
             val msg = "Kills: $kills Deaths: $deaths Ratio: $ratio Streak: $killStreak"
             p.forceTalk = ForceTalk(msg)
             p.sendMessage(msg)
-        }
-
-        Command(PlayerPrivilege.PLAYER, "votesleft") { p, _ ->
-            p.sendMessage("There are ${XamphurHandler.get().amtTillSpawn()} votes remaining until Xamphur spawns!")
         }
 
         /* Toggles */

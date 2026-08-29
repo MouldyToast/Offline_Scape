@@ -23,7 +23,6 @@ import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.content.treasuretrails.ClueItemUtil;
 import com.zenyte.game.content.treasuretrails.clues.CharlieTask;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
@@ -424,7 +423,7 @@ public class Mining extends Action {
                     if (ore == OreDefinitions.PAYDIRT) {
                         final Optional<Paydirt> generated = Paydirt.generate(player);
                         generated.ifPresent(payDirt -> {
-                            boolean goldenNuggetsBoost = payDirt == Paydirt.GOLDEN_NUGGET && World.hasBoost(XamphurBoost.GOLDEN_NUGGETS_X2);
+                            boolean goldenNuggetsBoost = false;
                             final Item item = new Item(ore.getOre(), goldenNuggetsBoost ? 2 : 1);
                             item.setAttribute("paydirt ore id", payDirt.getId());
                             if (exp > 0)

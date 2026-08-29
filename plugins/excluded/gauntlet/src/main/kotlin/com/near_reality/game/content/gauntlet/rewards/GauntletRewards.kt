@@ -6,7 +6,6 @@ import com.near_reality.scripts.npc.drops.table.chance.RollItemChance
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
 import com.zenyte.game.content.boons.impl.CrystalCatalyst
-import com.zenyte.game.content.xamphur.XamphurBoost
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.World
@@ -24,18 +23,14 @@ sealed class GauntletRewards(
     object CorruptedNoPrep : GauntletRewards(3, corruptedRewardsMain, corruptedRewardsTertiary, true)
 
     private fun getQuantityModifier(): Double {
-        return if (World.hasBoost(XamphurBoost.BONUS_GAUNTLET) && !noPrepMode)
-            3.0
-        else if (World.hasBoost(XamphurBoost.BONUS_GAUNTLET) && noPrepMode)
-            2.0
-        else if(noPrepMode)
+        return if(noPrepMode)
             1.0
         else
             1.5
     }
 
     private fun getTertiaryQuantityMod(chance: RollItemChance): Int {
-        return if (World.hasBoost(XamphurBoost.BONUS_GAUNTLET) && chance.id != YOUNGLLEF) 2 else 1
+        return 1
     }
 
     fun rollCompleted(player: Player, rateModifier: Double = 1.0): List<Item> {

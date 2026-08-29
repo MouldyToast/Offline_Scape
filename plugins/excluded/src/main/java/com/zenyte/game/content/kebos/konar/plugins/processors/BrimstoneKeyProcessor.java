@@ -4,7 +4,6 @@ import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.near_reality.game.content.slayer.SlayerMaster;
 import com.near_reality.game.content.slayer.Task;
-import com.zenyte.game.content.xamphur.XamphurBoost;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.World;
@@ -58,7 +57,7 @@ public class BrimstoneKeyProcessor extends DropProcessor {
 
         int rate = (int) getBasicDrops().get(0).getRate(killer, npc.getId());
         if (random(rate) == 0) {
-            npc.dropItem(killer, new Item(ItemId.BRIMSTONE_KEY, World.hasBoost(XamphurBoost.BRIMSTONE_KEY_DROPS_X2) ? 2 : 1));
+            npc.dropItem(killer, new Item(ItemId.BRIMSTONE_KEY, 1));
         }
     }
 

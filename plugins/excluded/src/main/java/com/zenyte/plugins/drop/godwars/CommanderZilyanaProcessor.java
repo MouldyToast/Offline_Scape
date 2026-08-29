@@ -6,7 +6,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_LONGSWORD;
 
 /**
  * @author Tommeh | 25-11-2018 | 17:09
@@ -28,8 +27,6 @@ public class CommanderZilyanaProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(11818, 1, 1, 50));
         appendDrop(new DisplayedDrop(11820, 1, 1, 50));
         appendDrop(new DisplayedDrop(11822, 1, 1, 50));
-        appendDrop(new DisplayedDrop(PRIMAL_LONGSWORD, 1, 1, 750));
-
     }
 
     @Override
@@ -47,9 +44,6 @@ public class CommanderZilyanaProcessor extends DropProcessor {
             }
             if ((random = randomDrop(killer,150)) < 3) {
                 return new Item(11818 + (random * 2));
-            }
-            if (randomDrop(killer, 750) == 0) {
-                return new Item(PRIMAL_LONGSWORD);
             }
         }
         return item;

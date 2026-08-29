@@ -60,11 +60,6 @@ class GauntletRewardsChest : ObjectAction {
                     if(gauntletType.isNoPrep)
                         rate = 2.0
 
-                    if (player.variables.gauntletBoosterCompletionsLeft > 0) {
-                        player.variables.gauntletBoosterCompletionsLeft--
-                        rate =- 0.25
-                    }
-
                     rewardsTable.rollCompleted(player, rate)
                 }
             }

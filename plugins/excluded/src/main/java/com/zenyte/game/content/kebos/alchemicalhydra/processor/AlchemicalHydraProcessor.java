@@ -10,7 +10,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static com.near_reality.game.item.CustomItemId.SLAYER_RIGHT_BONE;
 import static com.zenyte.game.item.ItemId.*;
 import static com.zenyte.tools.DropUtils.randomRoll;
 
@@ -33,7 +32,6 @@ public class AlchemicalHydraProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(HYDRAS_CLAW, 1, 1, 300));
         appendDrop(new DisplayedDrop(ALCHEMICAL_HYDRA_HEADS, 1, 1, 200));
         appendDrop(new DisplayedDrop(JAR_OF_CHEMICALS, 1, 1, 600));
-        appendDrop(new DisplayedDrop(SLAYER_RIGHT_BONE, 1, 1, 500));
         put(HYDRAS_EYE, new PredicatedDrop("The Hydra's eye has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
         put(HYDRAS_FANG, new PredicatedDrop("The Hydra's fang has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
         put(HYDRAS_HEART, new PredicatedDrop("The Hydra's heart has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
@@ -49,16 +47,6 @@ public class AlchemicalHydraProcessor extends DropProcessor {
         if(randomRoll(killer, 599) == 0) {
             npc.dropItem(killer, new Item(JAR_OF_CHEMICALS));
             return;
-        }
-        if(randomRoll(killer,499) == 0) {
-            npc.dropItem(killer, new Item(SLAYER_RIGHT_BONE));
-        } else {
-            killer.incrementNumericAttribute("slayer_right_bone_dry_streak", 1);
-        }
-        if(killer.getNumericAttribute("slayer_right_bone_dry_streak").intValue() == 500) {
-            killer.sendMessage("You have received a slayer right bone for hitting a 500 kill drystreak.");
-            npc.dropItem(killer, new Item(SLAYER_RIGHT_BONE));
-            killer.incrementNumericAttribute("slayer_right_bone_dry_streak", 1);
         }
         if(randomRoll(killer,299) == 0) {
             npc.dropItem(killer, new Item(HYDRAS_CLAW));

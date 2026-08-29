@@ -123,28 +123,13 @@ internal object TheatreOfBloodRewardGenerator {
         playerRewardsMap: MutableMap<Player, MutableList<Item>>,
         allPlayers: List<Player>
     ) {
-        var booster: Player? = null
-        for (player in allPlayers) {
-            if (player.variables.tobBoosterleft > 0) {
-                player.variables.tobBoosterleft--
-                booster = player
-                break
-            }
-        }
-
         // roll unique reward
         var (uniqueRollBaseChance, uniqueTable) = mode.toChanceUniqueTablePair()
         if (uniqueTable != null) {
-            if (booster != null) {
-                uniqueRollBaseChance = (uniqueRollBaseChance * 1.15).toInt()
-            }
             val maxPoints = party.maxContributionPoints()
             val totalPoints = party.totalContributionPoints()
             val chanceReductionFactor = totalPoints.toDouble() / maxPoints.toDouble()
-            val actualChance = when(mode) {
-                TheatreOfBloodMode.BYPASS -> uniqueRollBaseChance
-                else -> (uniqueRollBaseChance * chanceReductionFactor).roundToInt()
-            }
+            val actualChance = (uniqueRollBaseChance * chanceReductionFactor).roundToInt()
             if (Random.nextInt(0..100) <= actualChance) {
                 val uniqueItem = uniqueTable.roll().firstOrNull()?.rollItem()
                 if (uniqueItem == null)
@@ -158,7 +143,6 @@ internal object TheatreOfBloodRewardGenerator {
 
         val commonAmountMultiplier = when(mode) {
             TheatreOfBloodMode.ENTRY -> 0.15
-            TheatreOfBloodMode.BYPASS -> 1.0
             TheatreOfBloodMode.NORMAL -> 1.4
             TheatreOfBloodMode.HARD -> 1.6
         }
@@ -184,16 +168,10 @@ internal object TheatreOfBloodRewardGenerator {
             else
                 normalModeTertiaryRewards
 
-            var staticRollChanceRarityTransformer: (DropTableContext.(StaticRollChance) -> Int)? = null
-            if (player == booster) {
-                staticRollChanceRarityTransformer = { (it.rarity * 0.9).toInt() }
-            }
-
-            val tertiaryItems = tertiaryTable.roll(player, DropTableType.Main, staticRollChanceRarityTransformer).map(RollItemChance::rollItem)
+            val tertiaryItems = tertiaryTable.roll(player, DropTableType.Main, null).map(RollItemChance::rollItem)
             playerRewardsMap.add(player, tertiaryItems)
             val goldReward = when(mode) {
                 TheatreOfBloodMode.ENTRY,
-                TheatreOfBloodMode.BYPASS,
                 TheatreOfBloodMode.NORMAL -> Utils.random(100_000, 250_000)
                 TheatreOfBloodMode.HARD -> Utils.random(200_000, 350_000)
             }
@@ -209,7 +187,6 @@ internal object TheatreOfBloodRewardGenerator {
         TheatreOfBloodMode.ENTRY -> 0 to null
         TheatreOfBloodMode.NORMAL -> 23 to uniqueRollTableNormal
         TheatreOfBloodMode.HARD -> 33 to uniqueRollTableHard
-        TheatreOfBloodMode.BYPASS -> 3 to uniqueRollTableNormal
     }
 
     /**
@@ -260,8 +237,7 @@ internal object TheatreOfBloodRewardGenerator {
 enum class TheatreOfBloodMode {
     ENTRY,
     NORMAL,
-    HARD,
-    BYPASS
+    HARD
 }
 
 /* before: 27% chance to hit, ~1.8% per point  */

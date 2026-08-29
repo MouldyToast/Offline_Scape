@@ -1,7 +1,6 @@
 
 package com.zenyte.plugins.drop.kalphitequeen;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -25,9 +24,6 @@ public class KalphiteQueenProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(7981, 1, 1, 64));
         //Kq head (tattered)
         appendDrop(new DisplayedDrop(22671, 1, 1, 128));
-        //Primal 2H Sword
-        appendDrop(new DisplayedDrop(CustomItemId.PRIMAL_2H_SWORD, 1, 1, 750));
-        appendDrop(new DisplayedDrop(32064, 1, 1, 850));
         //Dragon Pickaxe
         appendDrop(new DisplayedDrop(ItemId.DRAGON_PICKAXE, 1, 1, 250));
         //Jar of Sand
@@ -50,13 +46,6 @@ public class KalphiteQueenProcessor extends DropProcessor {
     @Override
     public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
         if (!drop.isAlways()) {
-
-            if (randomDrop(killer, 850) == 0)
-                return new Item(CustomItemId.LAVA_WHIP);
-
-            if (randomDrop(killer, 750) == 0)
-                return new Item(CustomItemId.PRIMAL_2H_SWORD);
-
             final int random = Utils.random(128);
             if (random < 2) {
                 //1/128

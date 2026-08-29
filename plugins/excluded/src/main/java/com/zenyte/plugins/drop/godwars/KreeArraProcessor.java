@@ -7,7 +7,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_LONGSWORD;
 
 /**
  * @author Tommeh | 25-11-2018 | 16:37
@@ -27,7 +26,6 @@ public class KreeArraProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(11818, 1, 1, 50));
         appendDrop(new DisplayedDrop(11820, 1, 1, 50));
         appendDrop(new DisplayedDrop(11822, 1, 1, 50));
-        appendDrop(new DisplayedDrop(PRIMAL_LONGSWORD, 1, 1, 650));
 
         put(11826, new PredicatedDrop("There is a 1/75 chance to roll the armour table, with a 1/225 chance for a specific piece."));
         put(11828, new PredicatedDrop("There is a 1/75 chance to roll the armour table, with a 1/225 chance for a specific piece."));
@@ -49,9 +47,6 @@ public class KreeArraProcessor extends DropProcessor {
             }
             if (randomDrop(killer, 100) == 0) {
                 return new Item(11810);
-            }
-            if (randomDrop(killer, 650) == 0) {
-                return new Item(PRIMAL_LONGSWORD);
             }
         }
         return item;

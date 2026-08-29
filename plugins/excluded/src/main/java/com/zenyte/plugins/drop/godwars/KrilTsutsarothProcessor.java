@@ -7,7 +7,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_LONGSWORD;
 
 /**
  * @author Tommeh | 25-11-2018 | 16:49
@@ -29,7 +28,6 @@ public class KrilTsutsarothProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(11818, 1, 1, 50));
         appendDrop(new DisplayedDrop(11820, 1, 1, 50));
         appendDrop(new DisplayedDrop(11822, 1, 1, 50));
-        appendDrop(new DisplayedDrop(PRIMAL_LONGSWORD, 1, 1, 750));
     }
 
     @Override
@@ -47,9 +45,6 @@ public class KrilTsutsarothProcessor extends DropProcessor {
             }
             if(randomDrop(killer, 75) == 0) {
                 return new Item(ItemId.STAFF_OF_THE_DEAD);
-            }
-            if (randomDrop(killer, 750) == 0) {
-                return new Item(PRIMAL_LONGSWORD);
             }
         }
         return item;

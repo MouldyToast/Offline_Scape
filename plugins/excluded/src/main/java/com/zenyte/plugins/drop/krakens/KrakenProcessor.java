@@ -1,10 +1,6 @@
 package com.zenyte.plugins.drop.krakens;
 
-import com.near_reality.game.item.HiddenItems;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
-import com.zenyte.game.world.broadcasts.BroadcastType;
-import com.zenyte.game.world.broadcasts.WorldBroadcasts;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
@@ -25,28 +21,12 @@ public class KrakenProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(11905, 1, 1, 175));
         //Jar of dirt
         appendDrop(new DisplayedDrop(12007, 1, 1, 600));
-        // Slayer Statue Piece
-        appendDrop(new DisplayedDrop(ItemId.SLAYER_SHAFT, 1, 1, 500));
     }
 
     @Override
     public void onDeath(final NPC npc, final Player killer) {
         if (randomDrop(killer,600) == 0) {
             npc.dropItem(killer, new Item(12007));
-        }
-        if (randomDrop(killer,499) == 0) {
-            npc.dropItem(killer, new Item(ItemId.SLAYER_SHAFT));
-        } else {
-            killer.incrementNumericAttribute("slayer_shaft_dry_streak", 1);
-        }
-        if(killer.getNumericAttribute("slayer_shaft_dry_streak").intValue() == 500) {
-            killer.sendMessage("You have received a slayer shaft for hitting a 500 kill drystreak.");
-            npc.dropItem(killer, new Item(ItemId.SLAYER_SHAFT));
-            killer.incrementNumericAttribute("slayer_shaft_dry_streak", 1);
-        }
-        if (randomDrop(killer,7500) == 0) {
-            npc.dropItem(killer, new Item(HiddenItems.POOL_CUE));
-            WorldBroadcasts.broadcast(killer, BroadcastType.SUPER_RARE_DROP, " just killed the Kraken and found ... a pool cue?");
         }
     }
 

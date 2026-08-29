@@ -1,6 +1,5 @@
 package com.zenyte.game.content.theatreofblood.room
 
-import com.zenyte.game.content.boons.impl.BrawnOfJustice
 import com.zenyte.game.content.theatreofblood.insideTob
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikViturPhase
@@ -94,11 +93,6 @@ internal abstract class TheatreNPC<T : TheatreRoom>(
     override fun setRespawnTask() {}
 
     override fun processHit(hit: Hit) {
-        if(hit.source is Player && hit.damage > 0) {
-            val t = hit.source as Player
-            if (t.hasBoon(BrawnOfJustice::class.java) && BrawnOfJustice.applies(t) && t.insideTob) hit.damage = (hit.damage * 1.2).toInt()
-        }
-
         super.processHit(hit)
 
         val damage = hit.damage

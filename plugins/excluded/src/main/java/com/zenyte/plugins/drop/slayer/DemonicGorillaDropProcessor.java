@@ -1,11 +1,8 @@
 
 package com.zenyte.plugins.drop.slayer;
 
-import com.near_reality.game.item.HiddenItems;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
-import com.zenyte.game.world.broadcasts.BroadcastType;
-import com.zenyte.game.world.broadcasts.WorldBroadcasts;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
@@ -30,14 +27,6 @@ public class DemonicGorillaDropProcessor extends DropProcessor {
         appendDrop(new DisplayedDrop(19589, 1, 1, 50));
         //Monkey tail
         appendDrop(new DisplayedDrop(19610, 1, 1, 50));
-    }
-
-    @Override
-    public void onDeath(NPC npc, Player killer) {
-        if (randomDrop(killer, 12500) == 0) {
-            npc.dropItem(killer, new Item(HiddenItems.GNOME_SCARF));
-            WorldBroadcasts.broadcast(killer, BroadcastType.SUPER_RARE_DROP, " just killed a Demonic Gorilla and found ... a gnome's scarf?");
-        }
     }
 
     @Override

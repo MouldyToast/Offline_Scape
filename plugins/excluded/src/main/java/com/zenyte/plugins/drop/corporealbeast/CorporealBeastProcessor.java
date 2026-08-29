@@ -1,6 +1,5 @@
 package com.zenyte.plugins.drop.corporealbeast;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -8,7 +7,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_RAPIER;
 
 /**
  * @author Tommeh | 25-11-2018 | 19:11
@@ -27,10 +25,8 @@ public class CorporealBeastProcessor extends DropProcessor {
         //Arcane sigil
         appendDrop(new DisplayedDrop(12827, 1, 1, 600));
         appendDrop(new DisplayedDrop(ItemId.JAR_OF_SPIRITS, 1, 1, 600));
-        appendDrop(new DisplayedDrop(PRIMAL_RAPIER, 1, 1, 900));
         //Elysian sigil
         appendDrop(new DisplayedDrop(12819, 1, 1, 1200));
-        appendDrop(new DisplayedDrop(CustomItemId.DIVINE_SIGIL, 1, 1, 1200));
     }
 
     @Override
@@ -53,13 +49,6 @@ public class CorporealBeastProcessor extends DropProcessor {
             }
             if (randomDrop(killer,100) == 0) {
                 return new Item(12833);
-            }
-            if (randomDrop(killer,900) == 0) {
-                return new Item(PRIMAL_RAPIER);
-            }
-
-            if (randomDrop(killer, 1200) == 0) {
-                return new Item(ItemId.DIVINE_SIGIL);
             }
         }
         return item;

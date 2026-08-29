@@ -1,6 +1,5 @@
 package com.zenyte.game.content.boss.zulrah;
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.boss.zulrah.combat.*;
@@ -159,8 +158,7 @@ public final class ZulrahNPC extends NPC {
 						World.sendSoundEffect(tile, Utils.random(2) == 0 ? DISSIPATE_A : DISSIPATE_B);
 					} else {
 						if (player.getLocation().withinDistance(tile, 1)) {
-							if (!SlayerHelmetEffects.INSTANCE.araxyteHelmet(player, true))
-								player.applyHit(new Hit(Utils.random(1, 4), HitType.VENOM));
+							player.applyHit(new Hit(Utils.random(1, 4), HitType.VENOM));
 						}
 					}
 					ticks++;

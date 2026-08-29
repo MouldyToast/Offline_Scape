@@ -5,7 +5,6 @@ import com.near_reality.scripts.npc.drops.table.chance.RollAlways
 import com.near_reality.scripts.npc.drops.table.chance.RollItemChance
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
-import com.zenyte.game.content.boons.impl.CrystalCatalyst
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.World
@@ -34,7 +33,7 @@ sealed class GauntletRewards(
     }
 
     fun rollCompleted(player: Player, rateModifier: Double = 1.0): List<Item> {
-        val bonusRolls: Int = if (player.boonManager.hasBoon(CrystalCatalyst::class.java)) 1 else 0
+        val bonusRolls = 0
         val totalItems = mutableListOf<Item>()
         main.staticTable.run {
             totalItems += roll(player).mapNotNull { it.rollItem(player, getQuantityModifier()) }

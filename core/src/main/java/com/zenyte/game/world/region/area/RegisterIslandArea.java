@@ -22,15 +22,16 @@ import com.zenyte.plugins.renewednpc.ZenyteGuide;
  */
 public class RegisterIslandArea extends PolygonRegionArea implements TeleportPlugin, TradePlugin, PrayerPlugin, RandomEventRestrictionPlugin {
 
-    public static final Location ZENYTE_GUIDE_LOCATION = new Location(3362, 7206, 1);
+    public static final Location ZENYTE_GUIDE_LOCATION = new Location(3094, 3107, 0);
 
     @Override
     public RSPolygon[] polygons() {
-        return new RSPolygon[]{new RSPolygon(13424)};
+        return new RSPolygon[]{new RSPolygon(12336)};
     }
 
     @Override
     public void enter(Player player) {
+        if (player.getBooleanAttribute("registered")) return;
         World.findNPC(ZenyteGuide.NPC_ID, ZENYTE_GUIDE_LOCATION, 10)
                 .ifPresent(npc -> player.getPacketDispatcher().sendHintArrow(new HintArrow(npc)));
         WorldTasksManager.schedule(() -> GameInterface.CHARACTER_DESIGN.open(player), 1);

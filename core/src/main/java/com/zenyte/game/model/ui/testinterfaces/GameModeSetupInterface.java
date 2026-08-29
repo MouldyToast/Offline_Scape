@@ -4,14 +4,14 @@ import com.near_reality.api.service.user.UserPlayerHandler;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.model.HintArrow;
-import com.zenyte.game.model.HintArrowPosition;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.world.World;
+import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NPC;
+import com.zenyte.game.world.entity.player.cutscene.FadeScreen;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
@@ -200,12 +200,29 @@ public class GameModeSetupInterface extends Interface {
                         player.unlock();
                         VarCollection.IRONMAN_MODE.send(player, mode.ordinal());
                         PlayerAttributesKt.setSelectedGameMode(player, mode);
-                        setKey(5);
+                        if (isGroupIronman) {
+                            new FadeScreen(player, () -> {
+                                UserPlayerHandler.INSTANCE.updateGameMode(player, mode, (success) -> {
+                                    if (!success) {
+                                        player.setGameMode(mode);
+                                    }
+                                    player.teleport(new Location(3105, 3028));
+                                    player.getAppearance().setInvisible(false);
+                                    player.putBooleanAttribute("registered", true);
+                                    player.getVarManager().sendVar(281, 1000);
+                                    return Unit.INSTANCE;
+                                });
+                            }).fade(3, true);
+                        } else {
+                            new FadeScreen(player, () -> {
+                                player.teleport(ZenyteGuide.SPAWN_LOCATION);
+                                ZenyteGuide.finishAppearance(player);
+                            }).fade(3, false);
+                        }
                     }).onOptionTwo(() -> {
                         player.unlock();
                         GameInterface.GAME_MODE_SETUP.open(player);
                     });
-                npc(5, "Now go to the portal, but be warned you cannot change your game mode once you travel there. Talk to me again if you want to change your game mode").setOnDisplay(() -> player.getPacketDispatcher().sendHintArrow(new HintArrow(3360, 7194, (byte) 50, HintArrowPosition.NORTH)));
             }
 
         });

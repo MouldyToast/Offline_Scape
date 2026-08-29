@@ -152,6 +152,7 @@ public class ZenyteGuide extends NPCPlugin {
             player.getTemporaryAttributes().remove("registration");
             player.getTemporaryAttributes().remove("viewed_tutorial");
             player.putBooleanAttribute("registered", true);
+            player.getVarManager().sendVar(281, 1000);
             final DailyChallenge challenge = player.getDailyChallengeManager().getRandomChallenge();
             if (challenge != null)
                 player.getDailyChallengeManager().assignChallenge(challenge);

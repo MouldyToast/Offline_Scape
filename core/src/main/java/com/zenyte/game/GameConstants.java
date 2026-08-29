@@ -29,7 +29,7 @@ public class GameConstants {
 	public static final int WORLD_CYCLE_TIME = 600;
 	public static final int LOGIN_PORT = 43596;
 	public static final boolean DEV_DEBUG = true;
-	public static final Location REGISTRATION_LOCATION = new Location(3360, 7206, 1);
+	public static final Location REGISTRATION_LOCATION = new Location(3093, 3107, 0);
 	public static final String SERVER_NAME = ContentConstants.SERVER_NAME;
 	public static final String SERVER_CHANNEL_NAME = "help";
 	public static final String SERVER_WEBSITE_URL = "";

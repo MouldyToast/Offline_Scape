@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.GlassBlowingData;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -22,7 +21,7 @@ public class GlassBlowingCrafting extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < data.getLevel()) {
 			player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of " + data.getLevel() + " to make a " + data.getProduct().getDefinitions().getName().toLowerCase() + "."));
 			return false;
 		}

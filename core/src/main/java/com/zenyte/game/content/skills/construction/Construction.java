@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
 import com.google.gson.annotations.Expose;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.skills.construction.constants.Furniture;
@@ -919,7 +918,7 @@ public final class Construction {
                 return;
             }
         }
-        if ((player.getSkills().getLevel(SkillConstants.CONSTRUCTION) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < room.getLevel()) {
+        if ((player.getSkills().getLevel(SkillConstants.CONSTRUCTION)) < room.getLevel()) {
             player.getDialogueManager().start(new PlainChat(player, "You need a Construction level of " + room.getLevel() + " to build that room."));
             player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
             return;

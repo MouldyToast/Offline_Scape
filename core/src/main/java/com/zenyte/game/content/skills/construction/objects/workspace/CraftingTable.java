@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.construction.objects.workspace;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -141,7 +140,7 @@ public final class CraftingTable implements ObjectInteraction {
                 player.sendMessage("You need " + builder + " and " + craftable.getLevel() + " Crafting to craft a " + craftable.toString().toLowerCase().replaceAll("_", " ") + ".");
                 return false;
             }
-            if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < craftable.getLevel()) {
+            if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < craftable.getLevel()) {
                 player.sendMessage("You need a Crafting level of at least " + craftable.getLevel() + " to craft a " + craftable.toString().toLowerCase().replaceAll("_", " ") + ".");
                 return false;
             }

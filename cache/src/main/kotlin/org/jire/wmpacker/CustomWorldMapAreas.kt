@@ -24,16 +24,16 @@ object CustomWorldMapAreas {
         /* Here be a wild mole */
         addMapElement(2500, Location(3136, 3916, 0))
 
-        /* Donator Island */
-        addMapElement(2503, Location(1663, 2615, 0))
-        addMapElement(2504, Location(1627, 2615, 0))
-        addMapElement(2505, Location(1663, 2663, 0))
-        addMapElement(2506, Location(1699, 2623, 0))
-        addMapElement(2507, Location(1663, 2594, 0))
-        addMapElement(2502, Location(1714, 2652, 0))
-        addMapElement(2501, Location(1755, 2687, 0))
-        addMapElement(2510, Location(1759, 2716, 0))
-        addMapElement(2508, Location(1824, 2716, 0))
+//        /* Donator Island */
+//        addMapElement(2503, Location(1663, 2615, 0))
+//        addMapElement(2504, Location(1627, 2615, 0))
+//        addMapElement(2505, Location(1663, 2663, 0))
+//        addMapElement(2506, Location(1699, 2623, 0))
+//        addMapElement(2507, Location(1663, 2594, 0))
+//        addMapElement(2502, Location(1714, 2652, 0))
+//        addMapElement(2501, Location(1755, 2687, 0))
+//        addMapElement(2510, Location(1759, 2716, 0))
+//        addMapElement(2508, Location(1824, 2716, 0))
         addMapElement(2509, Location(1824, 2653, 0))
 
         /* Edge Island */
@@ -66,10 +66,10 @@ object CustomWorldMapAreas {
         update(12599, 0)
         update(13625, 0)
         update(13369, 0)
-        update(6441, 0)
-        update(6440, 0)
-        update(6697, 0)
-        update(6696, 0)
+//        update(6441, 0)
+//        update(6440, 0)
+//        update(6697, 0)
+//        update(6696, 0)
     }
 
 }

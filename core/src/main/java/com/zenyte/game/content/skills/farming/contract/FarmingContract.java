@@ -2,7 +2,6 @@ package com.zenyte.game.content.skills.farming.contract;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -69,7 +68,7 @@ public enum FarmingContract {
     public static FarmingContract generateContract(@NotNull final Player player, @NotNull final FarmingContractDifficulty difficulty) {
         final ObjectArrayList<Object> possibleContracts = new ObjectArrayList<>();
         for (FarmingContract contract : contractsByDifficulty.get(difficulty)) {
-            if ((player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) >= contract.getLevelForDifficulty(difficulty)) {
+            if ((player.getSkills().getLevel(SkillConstants.FARMING)) >= contract.getLevelForDifficulty(difficulty)) {
                 possibleContracts.add(contract);
             }
         }

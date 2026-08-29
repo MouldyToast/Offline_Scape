@@ -2,7 +2,6 @@ package com.zenyte.game.content.skills.fishing;
 
 import com.google.common.collect.ImmutableMap;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.model.item.leagues.raging_echo.EchoAxe;
 import com.near_reality.game.model.item.leagues.raging_echo.EchoHarpoon;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
@@ -144,7 +143,7 @@ public class Fishing extends Action {
 
     public boolean success() {
         final int fishLevel = defs == SpotDefinitions.MINNOW ? 20 : defs == SpotDefinitions.BARBARIAN_FISH ? 1 : defs.getLowestTierFish().getLevel();
-        final int level = (player.getSkills().getLevel(SkillConstants.FISHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) + (player.inArea("Fishing Guild") ? 7 : 0);
+        final int level = (player.getSkills().getLevel(SkillConstants.FISHING)) + (player.inArea("Fishing Guild") ? 7 : 0);
         final int advancedLevels = level - fishLevel;
         return Math.min(Math.round(advancedLevels * 0.6F) + 30, 67) > Utils.random(80);
     }
@@ -367,7 +366,7 @@ public class Fishing extends Action {
 
         if (CrystalTool.Harpoon.INSTANCE.is(tool)) {
             final int requiredLevel = CrystalTool.Harpoon.INSTANCE.getSkillRequirement().getSecond();
-            if (requiredLevel > (player.getSkills().getLevel(SkillConstants.FISHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))) {
+            if (requiredLevel > (player.getSkills().getLevel(SkillConstants.FISHING))) {
                 final String name = ItemDefinitions.nameOf(tool.id).toLowerCase();
                 player.getDialogueManager().start(new PlainChat(player, "You need to be at least level " + requiredLevel + " Fishing to use "+Utils.getAOrAn(name)+" "+name+"."));
                 return false;
@@ -375,12 +374,12 @@ public class Fishing extends Action {
         }
 
         final FishDefinitions fish = defs.getLowestTierFish();
-        if (fish.getLevel() > (player.getSkills().getLevel(SkillConstants.FISHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))) {
+        if (fish.getLevel() > (player.getSkills().getLevel(SkillConstants.FISHING))) {
             player.getDialogueManager().start(new PlainChat(player, "You need to be at least level " + fish.getLevel() + " Fishing to " + defs.getActions()[0].toLowerCase() + " these fish."));
             return false;
         }
-        if (fish.getBarbarianLevel() > (player.getSkills().getLevel(SkillConstants.AGILITY) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))
-            || fish.getBarbarianLevel() > (player.getSkills().getLevel(SkillConstants.STRENGTH) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))) {
+        if (fish.getBarbarianLevel() > (player.getSkills().getLevel(SkillConstants.AGILITY))
+            || fish.getBarbarianLevel() > (player.getSkills().getLevel(SkillConstants.STRENGTH))) {
             player.getDialogueManager().start(new PlainChat(player, "You need to be at least level " + fish.getBarbarianLevel() + " in Agility and Strength to catch these fish."));
             return false;
         }

@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming.contract;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -49,7 +48,7 @@ public class GuildmasterJaneDialogue extends Dialogue {
         final int completedContractAmount = player.getNumericAttribute(FarmingContract.COMPLETED_COUNT_ATTR).intValue();
         if (dialogueType == JaneDialogueType.FULL) {
             npc("Welcome to the farming guild. How may I help you?");
-            if ((player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < FarmingContract.MINIMUM_LEVEL) {
+            if ((player.getSkills().getLevel(SkillConstants.FARMING)) < FarmingContract.MINIMUM_LEVEL) {
                 options(TITLE, new DialogueOption("Tell me about yourself.", key(ABOUT_YOURSELF_KEY)), new DialogueOption("I'm just passing by."));
             } else {
                 final Dialogue.DialogueOption secondOption = contractCompleted ? new DialogueOption("I've completed " +
@@ -140,7 +139,7 @@ public class GuildmasterJaneDialogue extends Dialogue {
     }
 
     private void assign(@NotNull final Player player, @NotNull final FarmingContractDifficulty difficulty, FarmingContract contract) {
-        if (contract == null || (player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < difficulty.getLevelRequirement()) {
+        if (contract == null || (player.getSkills().getLevel(SkillConstants.FARMING)) < difficulty.getLevelRequirement()) {
             player.sendMessage("You're not high enough level to take this type of contract.");
             player.getDialogueManager().finish();
             return;

@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.construction.objects.chapel;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -56,7 +55,7 @@ public final class Burner implements ObjectInteraction {
                 player.sendMessage("You need a clean marrentill to light to burner.");
                 return;
             }
-            final int time = 217 + (int) ((player.getSkills().getLevel(SkillConstants.FIREMAKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) / 200f * 217);
+            final int time = 217 + (int) ((player.getSkills().getLevel(SkillConstants.FIREMAKING)) / 200f * 217);
             player.lock();
             object.setLocked(true);
             player.getInventory().deleteItem(251, 1);
@@ -97,7 +96,7 @@ public final class Burner implements ObjectInteraction {
                 player.sendMessage("You need a clean marrentill to relight to burner.");
                 return;
             }
-            final int time = 217 + (int) ((player.getSkills().getLevel(SkillConstants.FIREMAKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) / 200f * 217);
+            final int time = 217 + (int) ((player.getSkills().getLevel(SkillConstants.FIREMAKING)) / 200f * 217);
             player.lock(1);
             player.setAnimation(ANIMATION);
             player.getInventory().deleteItem(251, 1);

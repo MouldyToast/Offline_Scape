@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -119,7 +118,7 @@ public enum SmeltableBar {
     }
 
     public static boolean hasRequiredLevel(final Player player, final SmeltableBar data) {
-        if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+        if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < data.getLevel()) {
             player.getDialogueManager().start(new PlainChat(player, "You need a Smithing level of at least " + data.getLevel() + " to work " + data.getProduct().getDefinitions().getName().replace(" bar", ".").toLowerCase()));
             return false;
         }

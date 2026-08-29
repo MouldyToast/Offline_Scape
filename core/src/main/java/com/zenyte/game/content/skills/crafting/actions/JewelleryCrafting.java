@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.JewelleryData;
@@ -35,7 +34,7 @@ public class JewelleryCrafting extends Action {
 		if (data.equals(JewelleryData.SLAYER_RING) && player.getInventory().containsItem(JewelleryData.ETERNAL_SLAYER_RING.getMaterials()[0])) {
 			data = JewelleryData.ETERNAL_SLAYER_RING;
 		}
-		if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < data.getLevel()) {
 			player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
 			player.getDialogueManager().start(new PlainChat(player, "You need at least level " + data.getLevel() + " Crafting to make that."));
 			return false;

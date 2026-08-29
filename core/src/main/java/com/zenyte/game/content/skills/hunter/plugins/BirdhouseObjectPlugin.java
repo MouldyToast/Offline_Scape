@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.hunter.BirdHousePosition;
 import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseState;
@@ -59,7 +58,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
         final Hunter hunter = player.getHunter();
         final BirdHouseType type = BirdHouseType.findThroughBirdhouse(item.getId()).orElseThrow(RuntimeException::new);
         final BirdHousePosition position = BirdHousePosition.findPosition(object.getId()).orElseThrow(RuntimeException::new);
-        if ((player.getSkills().getLevelForXp(SkillConstants.HUNTER) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < type.getHunterRequirement()) {
+        if ((player.getSkills().getLevelForXp(SkillConstants.HUNTER)) < type.getHunterRequirement()) {
             player.getDialogueManager().start(new PlainChat(player, "You need at least level " + type.getHunterRequirement() + " Hunter to place that."));
             return;
         }
@@ -210,7 +209,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
 
     private final Optional<BirdHouseType> findBestBirdhouse(@NotNull final Player player) {
         final Inventory inventory = player.getInventory();
-        final int level = (player.getSkills().getLevelForXp(SkillConstants.HUNTER) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+        final int level = (player.getSkills().getLevelForXp(SkillConstants.HUNTER));
         BirdHouseType bestType = null;
         for (int i = 0; i < 28; i++) {
             final Item item = inventory.getItem(i);

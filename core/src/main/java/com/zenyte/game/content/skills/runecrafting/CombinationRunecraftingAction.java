@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.runecrafting;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -30,7 +29,7 @@ public final class CombinationRunecraftingAction extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.RUNECRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < cRune.getLevelRequired()) {
+		if ((player.getSkills().getLevel(SkillConstants.RUNECRAFTING)) < cRune.getLevelRequired()) {
 			player.sendMessage("You need at least level " + cRune.getLevelRequired() + " Runecrafting to combine these runes.");
 			return false;
 		}

@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
@@ -83,7 +82,7 @@ public class Smithing extends Action {
 	}
 
 	private boolean hasLevel(final Item product, final boolean dialogue) {
-		if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < getLevel(product.getId())) {
+		if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < getLevel(product.getId())) {
 			final String message = "You need a Smithing level of " + getLevel(product.getId()) + " to make a " + TextUtils.capitalizeFirstCharacter(PRODUCTS[tier][componentId].getDefinitions().getName()) + ".";
 			if (dialogue) {
 				player.getDialogueManager().start(new PlainChat(player, message));

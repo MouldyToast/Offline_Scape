@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing.zombie_item;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.smithing.Smithing;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.player.Player;
@@ -20,7 +19,7 @@ public abstract class ZombieItem implements ItemOnObjectAction {
             player.getDialogueManager().start(new PlainChat(player, "You need to have a hammer to do this."));
             return false;
         }
-        if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < 70) {
+        if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < 70) {
             player.getDialogueManager().start(new PlainChat(player, "You need to have a Smithing level of at least 70 to do this."));
             return false;
         }

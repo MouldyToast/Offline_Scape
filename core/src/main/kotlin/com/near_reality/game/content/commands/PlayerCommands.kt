@@ -1,7 +1,6 @@
 package com.near_reality.game.content.commands
 
 import com.near_reality.game.content.commands.DeveloperCommands.enableWildernessVault
-import com.near_reality.game.content.donator.new_island.npc.AvatarEvent
 import com.near_reality.game.item.CustomItemId
 import com.near_reality.game.world.entity.player.claimedFreeMB
 import com.near_reality.game.world.entity.player.manuallyLeftHelpChat
@@ -48,12 +47,7 @@ object PlayerCommands {
             }
         }
 
-        Command(PlayerPrivilege.PLAYER, "avatime", "Tells the user how many minutes until Avatar spawns.") { player, _ ->
-            if (player.isLocked) {
-                return@Command
-            }
-            player.sendMessage("There are ${AvatarEvent.minutesLeft} minutes before Avatar respawns.")
-        }
+
         Command(PlayerPrivilege.PLAYER, "vault", "Displays information about the Wilderness Vault spawn.") { player, _ ->
             val wildernessVault = WildernessVaultHandler.getInstance()
             if (player.privilege.inherits(PlayerPrivilege.ADMINISTRATOR)){

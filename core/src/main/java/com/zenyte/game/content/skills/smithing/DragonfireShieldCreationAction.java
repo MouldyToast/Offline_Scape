@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -34,7 +33,7 @@ public class DragonfireShieldCreationAction extends Action {
 			player.getDialogueManager().start(new PlainChat(player, "You need to have a draconic visage so it can be attached on a shield."));
 			return false;
 		}
-		if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < 90) {
+		if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < 90) {
 			player.getDialogueManager().start(new PlainChat(player, "You need to have a Smithing level of at least 90 to do this."));
 			return false;
 		}

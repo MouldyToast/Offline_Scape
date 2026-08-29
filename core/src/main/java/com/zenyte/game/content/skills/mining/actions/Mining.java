@@ -2,7 +2,6 @@ package com.zenyte.game.content.skills.mining.actions;
 
 import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
 import com.near_reality.game.model.item.leagues.raging_echo.EchoPickaxe;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
@@ -138,7 +137,7 @@ public class Mining extends Action {
             return true;
         }
         assert ore.getSpeed() > 0;
-        int level = (player.getSkills().getLevel(SkillConstants.MINING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) + (player.inArea("Mining Guild") ? 7 : 0);
+        int level = (player.getSkills().getLevel(SkillConstants.MINING)) + (player.inArea("Mining Guild") ? 7 : 0);
         if (player.getEquipment().getId(EquipmentSlot.RING) == ItemId.CELESTIAL_RING || player.getEquipment().getId(EquipmentSlot.RING) == ItemId.CELESTIAL_RING_UNCHARGED) {
             level += 4; // Celestial ring provides invisible 4 level boost.
         }
@@ -402,7 +401,7 @@ public class Mining extends Action {
             EchoPickaxe.Companion.processEchoPickaxe(player, ore.getOre());
         }
         else {
-            final int essence = (skills.getLevel(SkillConstants.MINING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < 30 ? 1436 : 7936;
+            final int essence = (skills.getLevel(SkillConstants.MINING)) < 30 ? 1436 : 7936;
             if (ore.equals(OreDefinitions.CLAY)) {
                 final Item bracelet = player.getEquipment().getItem(EquipmentSlot.HANDS);
                 if (bracelet != null && bracelet.getId() == ItemId.BRACELET_OF_CLAY) {

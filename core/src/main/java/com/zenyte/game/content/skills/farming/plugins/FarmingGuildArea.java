@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -34,14 +33,14 @@ public class FarmingGuildArea extends GreatKourend implements FullMovementPlugin
     @Override
     public boolean processMovement(Player player, int x, int y) {
         if (!intermediateSection.contains(player.getLocation()) && intermediateSection.contains(x, y)) {
-            if ((player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < 65) {
+            if ((player.getSkills().getLevel(SkillConstants.FARMING)) < 65) {
                 player.sendMessage("You need a Farming level of at least 65 to enter the intermediate section of the " + "Farming guild.");
                 player.resetWalkSteps();
                 player.getPacketDispatcher().resetMapFlag();
                 return false;
             }
         } else if (!advancedSection.contains(player.getLocation()) && advancedSection.contains(x, y)) {
-            if ((player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < 65) {
+            if ((player.getSkills().getLevel(SkillConstants.FARMING)) < 65) {
                 player.sendMessage("You need a Farming level of at least 85 to enter the advanced section of the " +
                         "Farming guild.");
                 player.resetWalkSteps();

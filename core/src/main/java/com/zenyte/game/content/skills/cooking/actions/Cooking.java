@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.cooking.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions.CookingData;
@@ -133,7 +132,7 @@ public class Cooking extends Action {
         final boolean hasGauntlets = player.getEquipment().getId(EquipmentSlot.HANDS) == 775;
         final int burnLevel = data.getBurnLevel();
         // TODO: "Level at which stops burning" differs per food per circumstance.
-        final int burnChance = burnLevel - (hasGauntlets ? 5 : 0) - (object.getId() == 21302 ? 5 : 0) - (player.getSkills().getLevel(SkillConstants.COOKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+        final int burnChance = burnLevel - (hasGauntlets ? 5 : 0) - (object.getId() == 21302 ? 5 : 0) - (player.getSkills().getLevel(SkillConstants.COOKING));
         return Utils.random(100) < Math.min(burnChance, 34);
     }
 }

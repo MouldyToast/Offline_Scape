@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.woodcutting.actions;
 
 import com.near_reality.game.content.crystal.CrystalShardKt;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.content.skills.woodcutting.AxeDefinition;
 import com.near_reality.game.model.item.degrading.Degradeable;
 import com.near_reality.game.model.item.leagues.raging_echo.EchoAxe;
@@ -102,7 +101,7 @@ public class Woodcutting extends Action {
     }
 
     private boolean check() {
-        if (definitions.getLevel() > (player.getSkills().getLevel(SkillConstants.WOODCUTTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))) {
+        if (definitions.getLevel() > (player.getSkills().getLevel(SkillConstants.WOODCUTTING))) {
             player.sendMessage("You need a Woodcutting level of at least " + definitions.getLevel() + " to chop down this tree.");
             return false;
         }

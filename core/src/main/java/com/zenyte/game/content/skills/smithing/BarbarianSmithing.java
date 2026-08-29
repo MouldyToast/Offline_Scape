@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
@@ -19,7 +18,7 @@ public class BarbarianSmithing extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < weapon.getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < weapon.getLevel()) {
 			player.sendMessage("You need a Smithing level of at least " + weapon.getLevel() + " to smith this weapon.");
 			return false;
 		}

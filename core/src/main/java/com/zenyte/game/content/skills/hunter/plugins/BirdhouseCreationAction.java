@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -27,7 +26,7 @@ public class BirdhouseCreationAction extends Action {
     @Override
     public boolean start() {
         final Skills skills = player.getSkills();
-        if ((skills.getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < house.getCraftingRequirement()) {
+        if ((skills.getLevel(SkillConstants.CRAFTING)) < house.getCraftingRequirement()) {
             player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of at least " + house.getCraftingRequirement() + " to create this bird house."));
             return false;
         }

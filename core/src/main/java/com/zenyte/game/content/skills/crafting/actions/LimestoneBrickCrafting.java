@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
@@ -31,7 +30,7 @@ public class LimestoneBrickCrafting implements PairedItemOnItemPlugin {
             return;
         }
         final Skills skills = player.getSkills();
-        final int crafting = (skills.getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+        final int crafting = (skills.getLevel(SkillConstants.CRAFTING));
         if (crafting < CRAFTING_REQUIREMENT) {
             player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of at least " + CRAFTING_REQUIREMENT + " to turn the limestone into a brick."));
             return;

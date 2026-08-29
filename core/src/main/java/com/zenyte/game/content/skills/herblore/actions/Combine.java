@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.herblore.actions;
 
 import com.near_reality.game.content.crystal.CrystalShardKt;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.*;
@@ -270,7 +269,7 @@ public class Combine extends Action {
 		}
 
 		public static boolean hasRequirements(final Player player, final HerbloreData potion) {
-			if (potion.getXp() == 0 && (player.getSkills().getLevel(SkillConstants.HERBLORE) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < potion.getLevel()) {
+			if (potion.getXp() == 0 && (player.getSkills().getLevel(SkillConstants.HERBLORE)) < potion.getLevel()) {
 				player.getDialogueManager().start(new PlainChat(player, "You need level " + potion.getLevel() + " Herblore to combine those."));
 				return false;
 			}

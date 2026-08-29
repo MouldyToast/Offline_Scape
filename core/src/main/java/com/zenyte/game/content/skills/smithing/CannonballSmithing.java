@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.smithing;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.item.Item;
@@ -40,7 +39,7 @@ public class CannonballSmithing extends Action {
 			player.sendMessage("You need an ammo mould to make cannonballs.");
 			return false;
 		}
-		if ((player.getSkills().getLevel(SkillConstants.SMITHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < LEVEL_REQ) {
+		if ((player.getSkills().getLevel(SkillConstants.SMITHING)) < LEVEL_REQ) {
 			player.getDialogueManager().start(new PlainChat(player, "You need a Smithing level of at least " + LEVEL_REQ + " to smith cannonballs."));
 			return false;
 		}

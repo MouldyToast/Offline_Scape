@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
@@ -26,7 +25,7 @@ public class LogsFletching extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.FLETCHING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < LEVELS[category][slotId]) {
+		if ((player.getSkills().getLevel(SkillConstants.FLETCHING)) < LEVELS[category][slotId]) {
 			final String message = slotId == 0 ? "You need a Fletching level of " + LEVELS[category][slotId] + " to make arrow shafts from " + MATERIALS[category][slotId].getDefinitions().getName().toLowerCase() + "." : "You need a Fletching level of " + LEVELS[category][slotId] + " to make a " + PRODUCTS[category][slotId].getDefinitions().getName().replace(" (u)", "").toLowerCase() + ".";
 			player.getDialogueManager().start(new DoubleItemChat(player, MATERIALS[category][slotId], PRODUCTS[category][slotId], message));
 			return false;

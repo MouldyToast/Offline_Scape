@@ -2,7 +2,6 @@ package com.zenyte.game.world.entity.player;
 
 import com.google.gson.annotations.Expose;
 import com.near_reality.game.content.custom.SlayerHelmetEffects;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.PlayerEvent;
 import com.zenyte.game.GameConstants;
@@ -104,7 +103,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
     }
 
     public boolean checkLevel(final int skill, final int levelRequired, final String action) {
-        if ((getLevel(skill) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(getPlayer())) < levelRequired) {
+        if ((getLevel(skill)) < levelRequired) {
             player.sendMessage("You need at least level " + levelRequired + " " + SkillConstants.SKILLS[skill] + " to " + action + ".");
             return false;
         }

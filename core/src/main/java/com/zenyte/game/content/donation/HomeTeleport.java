@@ -11,11 +11,6 @@ public enum HomeTeleport {
     HOME(new Location(3087, 3490), "Regular Home", MemberRank.SAPPHIRE),
     MAGE_BANK(new Location(2539, 4716), "Mage's Bank", MemberRank.SAPPHIRE),
     FEROX_ENCLAVE(new Location(3150, 3636), "Ferox Enclave", MemberRank.SAPPHIRE),
-    DIE(DonatorZoneTeleports.DI.getLocation(), "Donator Island", MemberRank.NONE),
-    DI(DonatorZoneTeleports.SAPPHIRE.getLocation(), "Sapphire Island", MemberRank.SAPPHIRE),
-    RDI(DonatorZoneTeleports.DIAMOND.getLocation(), "Diamond Island", MemberRank.DIAMOND),
-    LDI(DonatorZoneTeleports.ONYX.getLocation(), "Onyx Island", MemberRank.ONYX),
-    UDI(DonatorZoneTeleports.ENCHANTED.getLocation(), "Enchanted Island", MemberRank.ENCHANTED),
     ;
 
     HomeTeleport(Location location, String name, MemberRank required) {

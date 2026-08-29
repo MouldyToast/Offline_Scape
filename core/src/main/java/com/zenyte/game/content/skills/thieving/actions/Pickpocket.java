@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.thieving.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
@@ -80,7 +79,7 @@ public class Pickpocket extends Action {
 			player.sendMessage("You cannot pickpocket that NPC.");
 			return false;
 		}
-		if ((player.getSkills().getLevel(SkillConstants.THIEVING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.THIEVING)) < data.getLevel()) {
 			player.sendMessage("You need a Thieving level of at least " + data.getLevel() + " to pickpocket " + npc.getName(player).toLowerCase() + ".");
 			return false;
 		}

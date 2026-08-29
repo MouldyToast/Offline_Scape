@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.thieving.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
@@ -60,7 +59,7 @@ public class StallThieving extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.THIEVING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < stall.getType().getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.THIEVING)) < stall.getType().getLevel()) {
 			player.sendMessage("You need a Thieving level of at least " + stall.getType().getLevel() + " to steal from this stall.");
 			return false;
 		}

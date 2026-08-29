@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.GemCuttingData;
@@ -22,7 +21,7 @@ public class GemCuttingCrafting extends Action {
 	private int cycle;
 
 	public static final boolean successful(final Player player, final int requirement) {
-		final double baseChance = 5.0 / 833 * (player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+		final double baseChance = 5.0 / 833 * (player.getSkills().getLevel(SkillConstants.CRAFTING));
 		final double reqChance = 0.5 - (requirement * 0.0093);
 		return Utils.randomDouble() < baseChance + reqChance;
 	}
@@ -30,7 +29,7 @@ public class GemCuttingCrafting extends Action {
 	@Override
 	public boolean start() {
 		final int level = data.equals(GemCuttingData.AMETHYST) ? data.getLevel() + (2 * slot) : data.getLevel();
-		if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < level) {
+		if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < level) {
 			player.sendMessage("You need a Crafting level of at least " + level + " to craft that.");
 			return false;
 		}

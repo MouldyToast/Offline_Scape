@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.cooking.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.world.World;
@@ -96,7 +95,7 @@ public class WineCreation extends Action {
     @Override
     public boolean start() {
         final int level = grapes == 20749 ? 65 : 35;
-        if ((player.getSkills().getLevel(SkillConstants.COOKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < level) {
+        if ((player.getSkills().getLevel(SkillConstants.COOKING)) < level) {
             player.sendMessage("You need a Cooking level of at least " + level + " to ferment this wine.");
             return false;
         }

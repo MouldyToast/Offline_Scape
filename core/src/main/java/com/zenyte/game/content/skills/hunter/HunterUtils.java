@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.hunter;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.hunter.node.NetTrapPair;
 import com.zenyte.game.content.skills.hunter.node.TrapType;
 import com.zenyte.game.content.skills.hunter.npc.HunterDummyNPC;
@@ -137,7 +136,7 @@ public class HunterUtils {
     }
 
     public static boolean isBelowRequiredLevel(@NotNull final Player player, @NotNull final TrapType trapType) {
-        if ((player.getSkills().getLevel(SkillConstants.HUNTER) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < trapType.getLevel()) {
+        if ((player.getSkills().getLevel(SkillConstants.HUNTER)) < trapType.getLevel()) {
             player.sendMessage("You need a Hunter level of at least " + trapType.getLevel() + " to lay this trap.");
             return true;
         }

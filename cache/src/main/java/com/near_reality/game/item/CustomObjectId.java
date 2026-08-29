@@ -40,8 +40,6 @@ public class CustomObjectId {
 
     public static final int REVENANT_ENTRANCE_1 = 60420;
     public static final int REVENANT_ENTRANCE_2 = 60421;
-    public static final int DONATOR_OBELISK = 60422;
-    public static final int DONATOR_OBELISK_NULL = 60423;
     public static final int REJUVENATION_OVERLOAD = 60424;
     public static final int REJUVENATION_DIVINE = 60425;
     public static final int REJUVENATION_ORNATE = 60426;

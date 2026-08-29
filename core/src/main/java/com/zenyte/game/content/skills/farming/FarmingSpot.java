@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -583,7 +582,7 @@ public final class FarmingSpot {
     public double successProbability() {
         final FarmingProduct product = getProduct();
         final FarmingPatch patch = getPatch();
-        final int level = (player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+        final int level = (player.getSkills().getLevel(SkillConstants.FARMING));
         final int chanceA = product.getLowEndHarvestChance();
         final int chanceB = product.getHighEndHarvestChance();
         float base = 1.0F;

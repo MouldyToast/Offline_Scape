@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -34,7 +33,7 @@ public class ClockworkOnLogsPlugin implements PairedItemOnItemPlugin {
         final BirdHouseType birdhouse = BirdHouseType.findThroughLogs((from.getId() == ItemId.CLOCKWORK || from.getId() == ItemId.CHISEL || from.getId() == ItemId.HAMMER) ? to.getId() : from.getId()).orElseThrow(RuntimeException::new);
         final Inventory inventory = player.getInventory();
         final Skills skills = player.getSkills();
-        if ((skills.getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < birdhouse.getCraftingRequirement()) {
+        if ((skills.getLevel(SkillConstants.CRAFTING)) < birdhouse.getCraftingRequirement()) {
             player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of at least " + birdhouse.getCraftingRequirement() + " to create this bird house."));
             return;
         }

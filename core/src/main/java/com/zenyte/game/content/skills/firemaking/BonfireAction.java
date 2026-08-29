@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.firemaking;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -17,7 +16,7 @@ public class BonfireAction extends Action {
 
     public boolean check() {
         Firemaking logs = firemaking;
-        if(logs != null && logs.getLevel() > (player.getSkills().getLevel(SkillConstants.FIREMAKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player))) {
+        if(logs != null && logs.getLevel() > (player.getSkills().getLevel(SkillConstants.FIREMAKING))) {
             player.sendMessage("You lack the required firemaking level to light these.");
             return false;
         }

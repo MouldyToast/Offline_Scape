@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.skills.construction.FurnitureData;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.construction.TeleportPortal;
@@ -60,7 +59,7 @@ public final class PortalDirectD extends OptionsMenuD {
 				if (teleportRune.getId() == 1963) runes[idx++] = new Item(1964, teleportRune.getAmount() * 100);
 				 else runes[idx++] = new Item(teleportRune.getId(), teleportRune.getAmount() * 100);
 			}
-			if ((player.getSkills().getLevel(SkillConstants.MAGIC) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < portal.getTeleport().getLevel() || !player.getInventory().containsItems(runes)) {
+			if ((player.getSkills().getLevel(SkillConstants.MAGIC)) < portal.getTeleport().getLevel() || !player.getInventory().containsItems(runes)) {
 				final StringBuilder builder = new StringBuilder();
 				for (Item i : runes) builder.append(i.getAmount() + " " + i.getName().toLowerCase() + "s, ");
 				builder.delete(builder.length() - 2, builder.length());

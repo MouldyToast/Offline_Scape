@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.herblore;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnItemAction;
@@ -59,7 +58,7 @@ public class BarbarianMix implements ItemOnItemAction {
 			return;
 		}
 		final Skills skills = player.getSkills();
-		if ((skills.getLevel(SkillConstants.HERBLORE) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < mix.level) {
+		if ((skills.getLevel(SkillConstants.HERBLORE)) < mix.level) {
 			player.sendMessage("You need a Herblore level of at least " + mix.level + " to combine the potion with the fish eggs.");
 			return;
 		}

@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.runecrafting;
 
 import com.google.common.base.Preconditions;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.*;
@@ -43,7 +42,7 @@ public final class BasicRunecraftingAction extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.RUNECRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < rune.getLevel()) {
+		if ((player.getSkills().getLevel(SkillConstants.RUNECRAFTING)) < rune.getLevel()) {
 			player.sendMessage("You need at least " + rune.getLevel() + " Runecrafting to runecraft " + rune.toString().replace("_", " ").toLowerCase() + "s.");
 			return false;
 		}

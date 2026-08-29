@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -137,7 +136,7 @@ public class CraftingDefinitions {
         }
 
         public static boolean hasRequirements(final Player player, final BattlestaffAttachingData data) {
-            if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+            if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < data.getLevel()) {
                 final String product = data.getProduct().getDefinitions().getName().toLowerCase();
                 final boolean vowel = product.startsWith("a") || product.startsWith("o") || product.startsWith("u") || product.startsWith("i") || product.startsWith("e");
                 player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of " + data.getLevel() + " to make " + (vowel ? "an " : "a ") + product + "."));
@@ -212,7 +211,7 @@ public class CraftingDefinitions {
         }
 
         public static boolean hasRequirements(final Player player, final GemCuttingData data) {
-            if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+            if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < data.getLevel()) {
                 final String material = data.equals(OPAL) ? "opals" : data.equals(JADE) ? "jades" : data.equals(RED_TOPAZ) ? "red topaz'" : data.equals(SAPPHIRE) ? "sapphires" : data.equals(EMERALD) ? "emeralds" : data.equals(RUBY) ? "rubbies" : data.equals(DIAMOND) ? "diamonds" : data.equals(DRAGONSTONE) ? "dragonstones" : data.equals(ONYX) ? "onyx'" : data.equals(AMETHYST) ? "amethyst" : "zenytes";
                 player.getDialogueManager().start(new ItemChat(player, data.getMaterial(), "You need a Crafting level of " + data.getLevel() + " to cut " + material + "."));
                 return false;

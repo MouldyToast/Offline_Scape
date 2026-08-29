@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.firemaking;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
@@ -38,7 +37,7 @@ public class FiremakingAction extends Action {
             player.sendMessage("You need a tinderbox to light a fire.");
             return false;
         }
-        if ((player.getSkills().getLevel(SkillConstants.FIREMAKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < data.getLevel()) {
+        if ((player.getSkills().getLevel(SkillConstants.FIREMAKING)) < data.getLevel()) {
             player.sendMessage("You need a Firemaking level of at least " + data.getLevel() + " to burn " + data.getLogs().getDefinitions().getName().toLowerCase() + ".");
             return false;
         }
@@ -73,7 +72,7 @@ public class FiremakingAction extends Action {
         final Object burnDelay = player.getTemporaryAttributes().remove("BurnDelay");
         final Long time = !(burnDelay instanceof Long) ? null : (Long) burnDelay;
         final boolean quickFire = time != null && time > Utils.currentTimeMillis();
-        final int levelDifference = (player.getSkills().getLevel(SkillConstants.FIREMAKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) - data.getLevel();
+        final int levelDifference = (player.getSkills().getLevel(SkillConstants.FIREMAKING)) - data.getLevel();
         final int successPercentage = levelDifference * 7;
         final int random = Utils.random(1, 3);
         delay(quickFire ? 1 : (successPercentage > Utils.random(100) ? 2 : (random * 4)));

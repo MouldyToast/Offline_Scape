@@ -1,7 +1,5 @@
 package com.zenyte.plugins.object;
 
-import com.near_reality.game.content.donator.new_island.DonorExtKt;
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -77,12 +75,7 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
         /* only home altar can be used as gilded altar */
-        var inWest = DonorExtKt.isInWesternQuadrant(player);
-        var inEast = DonorExtKt.isInEasternQuadrant(player);
-        var inNorth = DonorExtKt.isInNorthernQuadrant(player);
-        var isInDonoIsland = inWest || inEast || inNorth;
-
-        if (!isInDonoIsland && object.getId() != HOME_ALTAR_OBJ) {
+        if (object.getId() != HOME_ALTAR_OBJ) {
             player.sendMessage("Nothing interesting happens.");
             return;
         }

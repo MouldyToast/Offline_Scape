@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.boons.impl.FarmersFortune;
 import com.zenyte.game.content.boons.impl.SwissArmyMan;
@@ -51,7 +50,7 @@ public class Planting extends Action {
             player.getDialogueManager().start(new PlainChat(player, "You can only plant " + product.getSeedsPlural() + " in an empty patch."));
             return false;
         }
-        if ((player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < product.getLevelRequired()) {
+        if ((player.getSkills().getLevel(SkillConstants.FARMING)) < product.getLevelRequired()) {
             player.sendMessage("You need a farming level of at least " + product.getLevelRequired() + " to plant this.");
             return false;
         }
@@ -70,7 +69,7 @@ public class Planting extends Action {
             }
         }
         if (type == PatchType.SPIRIT_TREE_PATCH) {
-            final int level = (player.getSkills().getLevel(SkillConstants.FARMING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player));
+            final int level = (player.getSkills().getLevel(SkillConstants.FARMING));
             if (level < 99) {
                 final int spiritTreeCount = player.getFarming().getGrownCount(PatchType.SPIRIT_TREE_PATCH, spot -> !spot.getState().equals(WEEDS));
                 if (spiritTreeCount >= 2 || spiritTreeCount >= 1 && level < 91) {

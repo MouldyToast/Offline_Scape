@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.mining.actions;
 
-import com.near_reality.game.content.donator.new_island.DonorExtKt;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.mining.MiningDefinitions;
@@ -83,9 +82,6 @@ public class DenseRunestoneMining extends Action {
                 player.sendMessage("You manage to mine an additional dense essence block!");
             }
         }
-        // If we're in dono zone, don't deplete
-        if (DonorExtKt.isInSouthernQuadrant(player)) return 7;
-
         if (Utils.random(10 + (player.getSkills().getLevel(SkillConstants.MINING) / 30)) == 0) {
             var rockDef = rock.getDefinitions();
             assert rockDef != null : "Rock definition is null.";

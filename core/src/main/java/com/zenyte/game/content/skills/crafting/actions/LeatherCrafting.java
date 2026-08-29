@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
@@ -89,7 +88,7 @@ public class LeatherCrafting extends Action {
 
 	@Override
 	public boolean start() {
-		if ((player.getSkills().getLevel(SkillConstants.CRAFTING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < LEVELS[category][slotId]) {
+		if ((player.getSkills().getLevel(SkillConstants.CRAFTING)) < LEVELS[category][slotId]) {
 			player.getDialogueManager().start(new PlainChat(player, "You need a Crafting level of " + LEVELS[category][slotId] + " to make a " + PRODUCTS[category][slotId].getDefinitions().getName().toLowerCase() + "."));
 			return false;
 		}

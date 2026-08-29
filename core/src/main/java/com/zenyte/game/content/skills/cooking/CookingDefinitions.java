@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.cooking;
 
-import com.near_reality.game.content.donator.new_island.area.DonatorIslandQuadrant;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -110,7 +109,7 @@ public class CookingDefinitions {
 			if (!player.getInventory().containsItem(food.getRaw(), 1)) {
 				return false;
 			}
-			if ((player.getSkills().getLevel(SkillConstants.COOKING) + DonatorIslandQuadrant.Companion.getQuadrantHiddenSkillBoost(player)) < food.getLevel()) {
+			if ((player.getSkills().getLevel(SkillConstants.COOKING)) < food.getLevel()) {
 				player.sendMessage("You need level " + food.getLevel() + " Cooking to cook a " + TextUtils.capitalizeFirstCharacter(food.getName(food.getCooked())) + ".");
 				return false;
 			}

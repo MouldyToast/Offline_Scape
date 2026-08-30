@@ -53,7 +53,6 @@ class JungleStrykewyrmsDroptable : NPCDropTableScript() {
                 RUNITE_BOLTS quantity 15 rarity 10
                 DRAGON_DAGGER quantity 1 rarity 10
 
-                CHAOTIC_CROSSBOW quantity 1 rarity 1 announce everywhere
                 EAGLE_EYE_KITESHIELD quantity 1 rarity 1 announce everywhere
             }
             Tertiary {

@@ -1,7 +1,6 @@
 package com.zenyte.game.content.chambersofxeric;
 
 import com.google.common.eventbus.Subscribe;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.chambersofxeric.greatolm.GreatOlm;
@@ -364,9 +363,6 @@ public final class Raid {
         final int current = getPoints(player);
 
         int amt = (int) Math.floor((int) (amount * (player.getVariables().getRaidsBoost() > 0 ? getRaidsBoost(player) : 1.0F)) * (player.getSkills().getCombatLevel() < 115 ? 0.8F : 1));
-        if (SlayerHelmetEffects.INSTANCE.twistedHelmet(player, false)) {
-            amt *= 1.10f;
-        }
 
         if (total) {
             totalPoints += amt;

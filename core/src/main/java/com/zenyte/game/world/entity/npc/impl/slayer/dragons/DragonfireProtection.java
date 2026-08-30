@@ -1,7 +1,5 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.dragons;
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -23,13 +21,12 @@ public enum DragonfireProtection {
     ELEMENTAL_SHIELD("shield", 0.75F),
     DRAGONFIRE_SHIELD("shield", 0.75F),
     ANTIFIRE_POTION("antifire potion", 0.5F),
-    SUPER_ANTIFIRE_POTION("super antifire potion", 1.0F),
-    BLACK_SLAYER_HELMET("black slayer helmet", 1.0F);
+    SUPER_ANTIFIRE_POTION("super antifire potion", 1.0F);
 
     final String protectionName;
     final float protectionTier;
-    static final DragonfireProtection[] wyvernProtection = new DragonfireProtection[]{ELEMENTAL_SHIELD, DRAGONFIRE_SHIELD, BLACK_SLAYER_HELMET};
-    static final DragonfireProtection[] defaultProtection = new DragonfireProtection[]{PROTECT_FROM_MAGIC, ANTI_DRAGON_SHIELD, DRAGONFIRE_SHIELD, ANTIFIRE_POTION, SUPER_ANTIFIRE_POTION, BLACK_SLAYER_HELMET};
+    static final DragonfireProtection[] wyvernProtection = new DragonfireProtection[]{ELEMENTAL_SHIELD, DRAGONFIRE_SHIELD};
+    static final DragonfireProtection[] defaultProtection = new DragonfireProtection[]{PROTECT_FROM_MAGIC, ANTI_DRAGON_SHIELD, DRAGONFIRE_SHIELD, ANTIFIRE_POTION, SUPER_ANTIFIRE_POTION};
 
     public static List<DragonfireProtection> getProtection(NPC source, final Player target) {
         return getProtection(source, target, false);
@@ -59,13 +56,10 @@ public enum DragonfireProtection {
         switch (target.getEquipment().getId(EquipmentSlot.SHIELD)) {
             case 2890, 9731 -> list.add(ELEMENTAL_SHIELD);
             case 1540, 8282, 11710 -> list.add(ANTI_DRAGON_SHIELD);
-            case 11283, 11284, 22002, 22003, 21633, 21634, CustomItemId.DRAGON_KITE ->
+            case 11283, 11284, 22002, 22003, 21633, 21634 ->
                     list.add(DRAGONFIRE_SHIELD);
         }
 
-        if (SlayerHelmetEffects.INSTANCE.immuneToDragonfire(target, source)) {
-            list.add(BLACK_SLAYER_HELMET);
-        }
         return list;
     }
 

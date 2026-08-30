@@ -33,8 +33,6 @@ dependencies {
     runtimeOnly(projects.plugins.interfaces.worldswitcher)
     runtimeOnly(projects.plugins.item.actions.deathItems)
     runtimeOnly(projects.plugins.item.actions)
-    runtimeOnly(projects.plugins.item.cosmetics)
-    runtimeOnly(projects.plugins.item.customs)
     runtimeOnly(projects.plugins.item.staffOfBalance)
     runtimeOnly(projects.plugins.larranskey)
     runtimeOnly(projects.plugins.npc.drops)

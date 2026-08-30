@@ -3,7 +3,7 @@ package com.near_reality.game.content.crystal
 import com.near_reality.game.content.crystal.recipes.CrystalChargeable
 import com.near_reality.game.content.crystal.recipes.CrystalCorrupted
 import com.near_reality.game.content.crystal.recipes.EnhancedCrystalKeyRecipe
-import com.near_reality.game.content.custom.GodBow
+
 import com.zenyte.game.world.entity.player.Player
 
 /**
@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.player.Player
  */
 interface CrystalRecipe {
 
-    companion object { val all by lazy { CrystalChargeable.all + CrystalCorrupted.all + GodBow.all + EnhancedCrystalKeyRecipe } }
+    companion object { val all by lazy { CrystalChargeable.all + CrystalCorrupted.all + EnhancedCrystalKeyRecipe } }
 
     /**
      * Item id of the active variant.

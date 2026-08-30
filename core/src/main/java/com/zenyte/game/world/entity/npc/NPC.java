@@ -2,7 +2,6 @@ package com.zenyte.game.world.entity.npc;
 
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.content.remnantpets.RemnantPetDropModifier;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.SlayerHelper;
@@ -267,37 +266,6 @@ public class NPC extends AbstractEntity {
         return value;
     }
 
-    private boolean removeBlight = false;
-    public boolean monitoringBlight = false;
-    private int blightCooldown = 0;
-    public void applyBlight() {
-        getTemporaryAttributes().put("blighted_stats", true);
-        setTinting(new Tinting(0, 6, 24, 60, 0, 1200));
-        blightCooldown = 20;
-
-        if(!monitoringBlight) {
-            WorldTasksManager.schedule(new TickTask() {
-                @Override
-                public void run() {
-                    monitoringBlight = true;
-                    blightCooldown--;
-                    combatDefinitions.applyBlight();
-
-                    if(blightCooldown <= 0) {
-                        removeBlight = true;
-                    }
-
-                    if(removeBlight || isDead()) {
-                        combatDefinitions.resetStats();
-                        getTemporaryAttributes().put("blighted_stats", false);
-                        monitoringBlight = false;
-                        stop();
-                    }
-                    ticks++;
-                }
-            });
-        }
-    }
 
     private int ticker = 0;
 
@@ -1533,9 +1501,6 @@ public class NPC extends AbstractEntity {
             return;
         }
         Player finalKiller = killer;
-        if (SlayerHelmetEffects.INSTANCE.getBonusDropRoll(killer))
-            NPCDrops.rollTable(killer, drops, drop -> dropItem(finalKiller, drop, tile));
-
         NPCDrops.rollTable(killer, drops, drop -> dropItem(finalKiller, drop, tile));
     }
 

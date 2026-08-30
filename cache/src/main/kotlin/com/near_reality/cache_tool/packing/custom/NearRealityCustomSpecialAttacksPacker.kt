@@ -12,12 +12,6 @@ object NearRealityCustomSpecialAttacksPacker {
         EnumDefinitions.get(1739).apply {
             values[CustomItemId.HOLY_GREAT_WARHAMMER] = "Smash: Deal an attack that inflicts 50% more damage and lowers your target's Defence level by 30%."
             values[32161] = "Enhanced Sanctuary: In addition to a better boost in defence (15% + 2 boost), heals the player 10 hp every 2 seconds for 10 seconds for a total of 50 hp."
-            values[CustomItemId.ARMADYL_BOW] = "The Judgement: Equivalent to that of the Armadyl god sword."
-            values[CustomItemId.BANDOS_BOW] = "Favour Of The War God: Equivalent to that of the Ancient mace."
-            values[CustomItemId.ZAMORAK_BOW] = "Ice Cleave: Equivalent to that of the Zamorak god sword."
-            values[CustomItemId.SARADOMIN_BOW] = "Saradomin's Lightning: Equivalent to that of the Saradomin sword."
-            values[CustomItemId.LIME_WHIP] = "Binding Tentacle: Equivalent to that of the Abyssal tentacle."
-            values[CustomItemId.LAVA_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
             values[CustomItemId.BARROWS_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
             values[CustomItemId.ELEMENTAL_WHIP] = "Binding Tentacle: Equivalent to that of the Abyssal tentacle."
             values[CustomItemId.DRAGON_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
@@ -30,9 +24,6 @@ object NearRealityCustomSpecialAttacksPacker {
             values[CustomItemId.RUNE_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
             values[CustomItemId.GREEN_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
             values[CustomItemId.PINK_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.POLYPORE_STAFF] = "Defrost: Lifts any freeze effect."
-            values[CustomItemId.POLYPORE_STAFF_DEG] = values[CustomItemId.POLYPORE_STAFF]
-
             values[BARRELCHEST_ANCHOR_BH] = "Drains the target's combat levels equivalent to 10% of the damage dealt. Drains in the following order: Defence, Attack, Ranged, then Magic.";
             values[DRAGON_MACE_BH] = "Increases damage and accuracy for one hit."
             values[DRAGON_LONGSWORD_BH] = "Deals 25% more damage."
@@ -57,11 +48,6 @@ object NearRealityCustomSpecialAttacksPacker {
             values[CORRUPTED_ARMADYL_GODSWORD] = values[ARMADYL_GODSWORD]
             values[CORRUPTED_DARK_BOW] = values[DARK_BOW]
             values[CORRUPTED_VOLATILE_NIGHTMARE_STAFF] = values[VOLATILE_NIGHTMARE_STAFF]
-            values[CHAOTIC_MAUL] = "Lowers the target's current Defence level by 45% on a successful hit. (pvm only)"
-            values[CHAOTIC_LONGSWORD] = "Deals 55% more damage. (pvm only)"
-            values[CHAOTIC_CROSSBOW] = "Launches an explosive daemonheim bolt dealing 200% bonus damage. (60 sec. cd) (pvm only)"
-            values[CHAOTIC_STAFF] = "Uses crimson lightning to lower your target's combat stats by 25% for 60 seconds. (pvm only)"
-            values[CHAOTIC_RAPIER] = "Deals three rapid hits with varied strength and 10% chance to ignore defense. (pvm only)"
             pack()
         }
         // special attack energy cost
@@ -73,17 +59,9 @@ object NearRealityCustomSpecialAttacksPacker {
             values[CORRUPTED_VOLATILE_NIGHTMARE_STAFF] = values[VOLATILE_NIGHTMARE_STAFF]
             values[CustomItemId.HOLY_GREAT_WARHAMMER] = 500
             values[32161] = 500
-            values[CustomItemId.ARMADYL_BOW] = 650
-            values[CustomItemId.BANDOS_BOW] = 650
-            values[CustomItemId.ZAMORAK_BOW] = 650
-            values[CustomItemId.SARADOMIN_BOW] = 650
-            values[CustomItemId.LIME_WHIP] = 500
-            values[CustomItemId.LAVA_WHIP] = 500
             values[CustomItemId.ELEMENTAL_WHIP] = 500
             values[CustomItemId.DRAGON_WHIP] = 500
             values[CustomItemId.BARROWS_WHIP] = 500
-            values[CustomItemId.POLYPORE_STAFF] = 550
-            values[CustomItemId.POLYPORE_STAFF_DEG] = 550
             values[11235] = 500
             values[12765] = 500
             values[12766] = 500
@@ -135,11 +113,6 @@ object NearRealityCustomSpecialAttacksPacker {
             values[ELDER_MAUL] = 500
             values[ELDER_MAUL_OR] = 500
 
-            values[CHAOTIC_MAUL] = 1000
-            values[CHAOTIC_CROSSBOW] = 1000
-            values[CHAOTIC_STAFF] = 1000
-            values[CHAOTIC_RAPIER] = 1000
-            values[CHAOTIC_LONGSWORD] = 650
             pack()
         }
     }

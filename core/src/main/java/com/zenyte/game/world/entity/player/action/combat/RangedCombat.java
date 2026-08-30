@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
@@ -248,7 +247,6 @@ public class RangedCombat extends PlayerCombat {
             }
         }
         maxhit *= specialModifier;
-        maxhit = SlayerHelmetEffects.INSTANCE.rollBonusDamage(player, target, maxhit);
 
         if (boltSpecial == EnchantedBoltSpecial.DRAGONS_BREATH) {
             if (CombatUtilities.isDragonsBreath(this)) {

@@ -1,6 +1,5 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
-import com.near_reality.game.content.custom.GodBow;
 
 import static com.zenyte.game.item.ItemId.*;
 
@@ -25,11 +24,7 @@ public final class BowItemIds {
 			BOW_OF_FAERDHINEN_C_25890,
 			BOW_OF_FAERDHINEN_C_25892,
 			BOW_OF_FAERDHINEN_C_25894,
-			BOW_OF_FAERDHINEN_C_25896,
-			GodBow.Armadyl.INSTANCE.getItemId(),
-			GodBow.Bandos.INSTANCE.getItemId(),
-			GodBow.Saradomin.INSTANCE.getItemId(),
-			GodBow.Zamorak.INSTANCE.getItemId()
+			BOW_OF_FAERDHINEN_C_25896
 	};
 
 }

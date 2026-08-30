@@ -217,5 +217,4 @@ object NearRealityCustomItemPacker {
         class Recolor(val recolorMap: Map<Int, Int>) : CustomDefinition()
     }
 
-    private class GodBow(modelId: Int) : CustomDefinition.Model(modelId)
 }

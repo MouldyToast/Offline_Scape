@@ -87,8 +87,6 @@ include(
     ":plugins:interfaces:worldswitcher",
     ":plugins:item:actions:death-items",
     ":plugins:item:actions",
-    ":plugins:item:cosmetics",
-    ":plugins:item:customs",
     ":plugins:item:staff-of-balance",
     ":plugins:larranskey",
     ":plugins:npc:drops",

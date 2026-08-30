@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
 import com.google.gson.annotations.Expose;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.PlayerEvent;
 import com.zenyte.game.GameConstants;
@@ -283,9 +282,6 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
      * @param exp   the xp being added to the skill.
      */
     public void addXp(final int skill, double exp) {
-        if (skill == SkillConstants.SLAYER) {
-            exp = SlayerHelmetEffects.INSTANCE.transformSlayerExperience(player, exp);
-        }
         addXp(skill, exp, true);
     }
 

@@ -94,7 +94,6 @@ internal object ChaosChestTable {
             .append(ItemId.RAW_MANTA_RAY + 1, 10, 150)
             .append(ItemId.REMNANT_POINT_VOUCHER_1, 5, 1000)
             .append(CustomItemId.OSNR_MYSTERY_BOX, 2, 1)
-            .append(CustomItemId.DEATH_CAPE, 2, 1)
             .append(ItemId.PRIMAL_WARHAMMER, 1, 1)
     }
 

@@ -2,9 +2,7 @@ package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
-import com.near_reality.game.content.custom.ChaoticSpecials;
-import com.near_reality.game.content.custom.GodBow;
-import com.near_reality.game.content.custom.PolyporeStaff;
+
 import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
@@ -533,8 +531,6 @@ public enum SpecialAttack implements ISpecialAttack {
     BINDING_TENTACLE(AttackType.SLASH, new int[] {
         ItemId.ABYSSAL_TENTACLE,
         26484,
-        ItemId.LIME_WHIP,
-        CustomItemId.ELEMENTAL_WHIP
     }, WEAPON_SPEED, MELEE, new Animation(1658), null, (player, combat, target) -> {
         combat.delayHit(0, combat.getHit(player, target, 1, 1, 1, false));
         player.sendSound(BINDING_TENTACLE_SOUND);
@@ -549,22 +545,10 @@ public enum SpecialAttack implements ISpecialAttack {
 
     ENERGY_DRAIN(AttackType.SLASH, new int[] {
         4151,
-        ItemId.LAVA_WHIP,
         20405,
         12773,
         12774,
         26482,
-        CustomItemId.IRON_WHIP,
-        CustomItemId.STEEL_WHIP,
-        CustomItemId.MITHRIL_WHIP,
-        CustomItemId.BLACK_WHIP,
-        CustomItemId.WHITE_WHIP,
-        CustomItemId.GREEN_WHIP,
-        CustomItemId.PINK_WHIP,
-        CustomItemId.RUNE_WHIP,
-        CustomItemId.ADAMANT_WHIP,
-        CustomItemId.DRAGON_WHIP,
-        CustomItemId.BARROWS_WHIP,
     }, WEAPON_SPEED, MELEE, new Animation(1658), null, (player, combat, target) -> {
         combat.delayHit(0, combat.getHit(player, target, 1.25, 1, 1, false));
         WorldTasksManager.schedule(() -> {
@@ -1539,16 +1523,6 @@ public enum SpecialAttack implements ISpecialAttack {
     static {
         for (final SpecialAttack att : values())
             register(att);
-        register(GodBow.Saradomin.INSTANCE);
-        register(GodBow.Bandos.INSTANCE);
-        register(GodBow.Zamorak.INSTANCE);
-        register(GodBow.Armadyl.INSTANCE);
-        register(PolyporeStaff.Special.INSTANCE);
-        register(ChaoticSpecials.Staff.INSTANCE);
-        register(ChaoticSpecials.Longsword.INSTANCE);
-        register(ChaoticSpecials.Rapier.INSTANCE);
-        register(ChaoticSpecials.Crossbow.INSTANCE);
-        register(ChaoticSpecials.Maul.INSTANCE);
     }
 
     private static void register(ISpecialAttack specialAttack) {

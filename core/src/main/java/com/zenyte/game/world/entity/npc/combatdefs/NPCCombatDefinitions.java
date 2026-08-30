@@ -36,8 +36,6 @@ public final class NPCCombatDefinitions {
     private BlockDefinitions blockDefinitions;
     private SpawnDefinitions spawnDefinitions;
 
-    public transient boolean blighted = false;
-
     public static NPCCombatDefinitions clone(final int id, final NPCCombatDefinitions other) {
         final NPCCombatDefinitions defs = new NPCCombatDefinitions();
         if (other != null) {
@@ -365,18 +363,6 @@ public final class NPCCombatDefinitions {
         final NPCCombatDefinitions cachedDefs = NPCCDLoader.get(id);
         if (cachedDefs != null) {
             statDefinitions = cachedDefs.statDefinitions.clone();
-            blighted = false;
-        }
-    }
-
-    public void applyBlight() {
-        if(!blighted) {
-            drainSkill(SkillConstants.ATTACK, 25);
-            drainSkill(SkillConstants.DEFENCE, 25);
-            drainSkill(SkillConstants.MAGIC, 25);
-            drainSkill(SkillConstants.STRENGTH, 25);
-            drainSkill(SkillConstants.RANGED, 25);
-            blighted = true;
         }
     }
 

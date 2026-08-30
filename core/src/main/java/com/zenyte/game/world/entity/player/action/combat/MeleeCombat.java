@@ -1,8 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
-import com.near_reality.game.world.entity.player.action.combat.effect.DeathCapeEffect;
 import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -162,7 +160,6 @@ public class MeleeCombat extends PlayerCombat {
             if(player.hasBoon(VigourOfInquisition.class) && VigourOfInquisition.applies(player) && player.getWeapon() != null && attackType == AttackType.CRUSH)
                 result *= 1.05;
         }
-        result = SlayerHelmetEffects.INSTANCE.rollBonusDamage(player, target, result);
         return (int) Math.floor(result);
     }
 
@@ -181,10 +178,6 @@ public class MeleeCombat extends PlayerCombat {
 
     @Override
     public int getRandomHit(final Player player, final Entity target, final int maxhit, final double modifier, final AttackType attackType) {
-
-        final Integer deathCapeDamageOverride = DeathCapeEffect.apply(player, target);
-        if (deathCapeDamageOverride != null)
-            return deathCapeDamageOverride;
 
         if (CombatUtilities.isAlwaysTakeMaxHit(target, HitType.MELEE) || CombatUtilities.isWardenCore(target)) {
             return maxhit;
@@ -348,7 +341,7 @@ public class MeleeCombat extends PlayerCombat {
         if (weapon == null) return;
 
         switch (weapon.getId()) {
-            case ItemId.ABYSSAL_TENTACLE, 26484, ItemId.LIME_WHIP -> {
+            case ItemId.ABYSSAL_TENTACLE, 26484 -> {
                 if (Utils.random(3) == 0)
                     WorldTasksManager.scheduleOrExecute(() -> target.getToxins().applyToxin(ToxinType.POISON, 4, player), delay);
                 return;

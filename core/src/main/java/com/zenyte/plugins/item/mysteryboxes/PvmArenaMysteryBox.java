@@ -64,7 +64,6 @@ public class PvmArenaMysteryBox extends ItemPlugin {
             new MysteryItem(ItemId.HOLY_ELIXIR, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.OCCULT_NECKLACE, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.DRAGONFIRE_SHIELD, 1, 1, RARE).announce(),
-            new MysteryItem(ItemId.LAVA_WHIP, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.ZAMORAKIAN_SPEAR, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.STAFF_OF_THE_DEAD, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.SPECTRAL_SIGIL, 1, 1, RARE).announce(),
@@ -83,8 +82,6 @@ public class PvmArenaMysteryBox extends ItemPlugin {
             new MysteryItem(ItemId.DRAGON_WARHAMMER, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.ARCANE_SIGIL, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.ELYSIAN_SIGIL, 1, 1, MEGA_RARE).announce(),
-            new MysteryItem(ItemId.LIME_WHIP, 1, 1, MEGA_RARE).announce(),
-            new MysteryItem(ItemId.DEATH_CAPE, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.ENHANCED_CRYSTAL_WEAPON_SEED, 1, 1, MEGA_RARE).announce(),
 
         };

@@ -2,7 +2,6 @@ package com.zenyte.game.content.boons;
 
 import com.google.common.eventbus.Subscribe;
 import com.near_reality.api.service.item.ItemConfigManager;
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import static com.zenyte.game.item.ItemId.*;
@@ -196,11 +195,6 @@ public class RemnantValueManager {
         values.add(gen(1000,
                 VENGEFUL_KITESHIELD,
                 MERCILESS_KITESHIELD,
-                CHAOTIC_CROSSBOW,
-                CHAOTIC_STAFF,
-                CHAOTIC_KITESHIELD,
-                FARSEER_KITESHIELD,
-                EAGLE_EYE_KITESHIELD,
                 SKULL_OF_VETION,
                 FANGS_OF_VENENATIS,
                 CLAWS_OF_CALLISTO,
@@ -282,9 +276,6 @@ public class RemnantValueManager {
                 PEGASIAN_BOOTS,
                 ELDER_MAUL,
                 SANGUINE_DUST,
-                DRAGON_KITE,
-                DEATH_CAPE,
-                DEMONHORN_NECKLACE,
                 TANZANITE_MUTAGEN,
                 MAGMA_MUTAGEN,
                 PRIMORDIAL_BOOTS,
@@ -333,8 +324,7 @@ public class RemnantValueManager {
                 BLACK_SANTA_HAT,
                 INVERTED_SANTA_HAT,
                 BLACK_HWEEN_MASK,
-                HYDRA_LEATHER,
-                LIME_WHIP
+                HYDRA_LEATHER
         ));
         values.add(gen(3250,
                 PINK_HWEEN_MASK,
@@ -363,7 +353,6 @@ public class RemnantValueManager {
         values.add(gen(5000,
                 NEAR_REALITY_PARTY_HAT,
                 GHOSTLY_PARTYHAT,
-                POLYPORE_STAFF,
                 ELIDINIS_WARD
         ));
         values.add(gen(5500,

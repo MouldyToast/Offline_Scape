@@ -1,6 +1,5 @@
 package com.zenyte.plugins.item;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ChargeExtension;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -17,12 +16,8 @@ public class DragonfireShield extends ItemPlugin implements ChargeExtension {
 
 	@Override
 	public void handle() {
-		bind("Activate", (player, item, slotId) -> {
-			if (item.getId() == CustomItemId.DRAGON_KITE && item.getCharges() <= 0)
-				player.sendMessage("Your Dragon kite is out of charges.");
-			else
-				player.getTemporaryAttributes().put("dragonfireBurst", true);
-		});
+		bind("Activate", (player, item, slotId) ->
+				player.getTemporaryAttributes().put("dragonfireBurst", true));
 		bind("Operate", (player, item, slotId) ->
 				player.getTemporaryAttributes().put("dragonfireBurst", true));
 	    bind("Inspect", (player, item, slotId) ->
@@ -37,17 +32,15 @@ public class DragonfireShield extends ItemPlugin implements ChargeExtension {
 	}
 
 	public static final int[] DRAGONFIRE_SHIELDS =
-			IntArray.of(11283, 11284, 21633, 21634, 22002, 22003, CustomItemId.DRAGON_KITE);
+			IntArray.of(11283, 11284, 21633, 21634, 22002, 22003);
 
 	@Override
 	public void removeCharges(final Player player, final Item item, final ContainerWrapper wrapper, int slotId, final int amount) {
 		item.setCharges(Math.max(0, item.getCharges() - amount));
-		if (item.getId() != CustomItemId.DRAGON_KITE) {
-			if (!item.hasCharges()) {
-				item.setId(item.getId() + 1);
-			}
-			wrapper.refresh(slotId);
+		if (!item.hasCharges()) {
+			item.setId(item.getId() + 1);
 		}
+		wrapper.refresh(slotId);
 	}
 
 }

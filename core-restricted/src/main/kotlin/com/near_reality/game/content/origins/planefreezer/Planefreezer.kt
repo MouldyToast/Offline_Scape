@@ -54,7 +54,6 @@ class PlanefreezerDroptable : NPCDropTableScript() {
                 CRYSTAL_KEY quantity 1 rarity 12
 
                 // Rare
-                CHAOTIC_MAUL quantity 1 rarity 2 announce everywhere
                 PRIMAL_GAUNTLETS quantity 1 rarity 1 announce everywhere
                 PRIMAL_BOOTS quantity 1 rarity 1 announce everywhere
             }

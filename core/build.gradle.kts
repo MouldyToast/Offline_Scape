@@ -20,7 +20,7 @@ dependencies {
     api(libs.javaparser.core)
     api(libs.javaparser.symbol.solver.core)
 
-    implementation(libs.apache.commons.lang3)
+    api(libs.apache.commons.lang3)
     implementation(libs.apache.commons.codec)
     implementation(libs.jctools.core)
     implementation(libs.jackson.module.afterburner)

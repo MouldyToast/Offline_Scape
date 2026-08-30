@@ -9,8 +9,6 @@ import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
-import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Player;
@@ -18,7 +16,6 @@ import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.calog.CATierType;
 import com.zenyte.game.world.entity.player.calog.CAType;
 import com.zenyte.game.world.entity.player.container.ContainerResult;
-import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.plugins.dialogue.MenuD;
 import com.zenyte.plugins.events.LoginEvent;
@@ -36,7 +33,7 @@ import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCat
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCategoryType.getMultiple;
 
 @StaticInitializer
-public class CompletionistCape implements ItemOnItemAction {
+public class CompletionistCape {
 
 	private static final List<CompletionistCapeRequirement> requirements = new ArrayList<>();
 
@@ -200,28 +197,6 @@ public class CompletionistCape implements ItemOnItemAction {
 		}
 		Diary.addSpaces(list, 3);
 		return list;
-	}
-
-	@Override
-	public int[] getItems() {
-		return new int[] {
-			// Death Cape
-			ItemId.DEATH_CAPE,
-			// capes
-			MASTER_COMP_CAPE
-		};
-	}
-
-	@Override
-	public void handleItemOnItemAction(Player player, Item from, Item to, int fromSlot, int toSlot) {
-		addDeathCapeToCompCape(player, to.getId() == ItemId.DEATH_CAPE ? to : from);
-	}
-
-	private void addDeathCapeToCompCape(Player player, Item deathCape) {
-		if (player.getInventory().deleteItem(deathCape).getResult() == RequestResult.SUCCESS) {
-			player.putBooleanAttribute("death_cape_added_to_comp", true);
-			player.sendMessage("><col=00FF42>Your Completionist cape has consumed your Death Cape.");
-		}
 	}
 
 	//Wrap the lists with color to avoid the hover hook inside scripts

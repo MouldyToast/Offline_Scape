@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity;
 
 import com.google.gson.annotations.Expose;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Entity.EntityType;
@@ -69,8 +68,6 @@ public final class Toxins {
 				return;
 			}
 			if (CombatUtilities.isWearingSerpentineHelmet(player))
-				return;
-			if (SlayerHelmetEffects.INSTANCE.immuneToPoison(player, source))
 				return;
 		} else if (entity.getEntityType() == EntityType.NPC) {
 			final NPC npc = (NPC) entity;

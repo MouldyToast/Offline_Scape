@@ -1,6 +1,5 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.near_reality.game.item.CustomItemId
 import com.zenyte.game.item.ItemId
 import mgi.types.config.enums.EnumDefinitions
 import net.runelite.cache.util.ScriptVarType
@@ -143,11 +142,10 @@ object NearRealityCustomEnumsPacker {
         // Ganodermic Beast
         EnumDefinitions.create(10025, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
             this.values[0] = ItemId.LIME_WHIP
-            this.values[1] = ItemId.POLYPORE_STAFF_DEG
-            this.values[2] = ItemId.ANCIENT_EYE
-            this.values[3] = ItemId.DRAGON_KITE
-            this.values[4] = ItemId.PVP_MYSTERY_BOX
-            this.values[5] = ItemId.POLYPORE_SPORES
+            this.values[1] = ItemId.ANCIENT_EYE
+            this.values[2] = ItemId.DRAGON_KITE
+            this.values[3] = ItemId.PVP_MYSTERY_BOX
+            this.values[4] = ItemId.POLYPORE_SPORES
             this.pack()
         }
 
@@ -166,11 +164,10 @@ object NearRealityCustomEnumsPacker {
         /* Strykewyrms */
         EnumDefinitions.create(10500, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
             this.values[0] = ItemId.STAFF_OF_LIGHT
-            this.values[1] = ItemId.CHAOTIC_STAFF
-            this.values[2] = ItemId.CHAOTIC_CROSSBOW
-            this.values[3] = ItemId.CHAOTIC_KITESHIELD
-            this.values[4] = ItemId.EAGLE_EYE_KITESHIELD
-            this.values[5] = ItemId.FARSEER_KITESHIELD
+            this.values[1] = ItemId.CHAOTIC_CROSSBOW
+            this.values[2] = ItemId.CHAOTIC_KITESHIELD
+            this.values[3] = ItemId.EAGLE_EYE_KITESHIELD
+            this.values[4] = ItemId.FARSEER_KITESHIELD
             this.pack()
         }
 

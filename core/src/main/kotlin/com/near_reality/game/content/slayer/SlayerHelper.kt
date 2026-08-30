@@ -1,6 +1,5 @@
 package com.near_reality.game.content.slayer
 
-import com.near_reality.game.content.custom.SlayerHelmetEffects.araxyteHelmet
 import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary
@@ -17,7 +16,6 @@ import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.privilege.MemberRank
 import com.zenyte.game.world.region.RegionArea
 import java.util.function.Predicate
-import kotlin.math.ceil
 
 
 /**
@@ -54,7 +52,6 @@ object SlayerHelper {
             }
         }
         val amount = Utils.random(min, max)
-        if ((task == RegularTask.ARAXYTES || task == RegularTask.SPIDERS) && araxyteHelmet(this, true)) return ceil(amount * 1.25).toInt()
         return amount
     }
 

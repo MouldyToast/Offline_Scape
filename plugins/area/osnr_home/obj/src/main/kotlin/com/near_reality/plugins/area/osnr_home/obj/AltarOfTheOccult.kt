@@ -1,6 +1,6 @@
 package com.near_reality.plugins.area.osnr_home.obj
 
-import com.near_reality.game.item.CustomObjectId.NEAR_REALITY_ALTAR
+
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
@@ -21,6 +21,7 @@ class AltarOfTheOccult : ObjectAction {
         option: String
     ) {
         val spellbook = when (option) {
+            "Venerate" -> Spellbook.NORMAL
             "Standard" -> Spellbook.NORMAL
             "Regular" -> Spellbook.NORMAL
             "Ancient" -> Spellbook.ANCIENT
@@ -41,7 +42,7 @@ class AltarOfTheOccult : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(24911, ObjectId.ALTAR_OF_THE_OCCULT, NEAR_REALITY_ALTAR)
+    override fun getObjects() = arrayOf(ObjectId.ALTAR_OF_THE_OCCULT)
 
     private companion object {
         const val PRAY_ANIM = 645

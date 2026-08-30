@@ -1,3 +1,6 @@
 plugins { id("org.jetbrains.kotlin.jvm") }
-dependencies { compileOnly(projects.core) }
+dependencies {
+    compileOnly(projects.core)
+    implementation(projects.content.generic.npcPlugins)
+}
 

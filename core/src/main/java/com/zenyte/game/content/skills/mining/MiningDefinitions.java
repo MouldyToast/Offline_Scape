@@ -127,7 +127,7 @@ public class MiningDefinitions {
                 return Utils.random(1, 2);
             }
         },
-        ECHO_PICKAXE(ItemId.ECHO_PICKAXE, 1, new Animation(12009), new Animation(12009), -1) {
+        ECHO_PICKAXE(ItemId.ECHO_PICKAXE, 1, new Animation(8788), new Animation(8786), -1) {
             @Override
             public int getMineTime() {
                 return Utils.random(1, 2);

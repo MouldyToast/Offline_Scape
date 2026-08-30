@@ -55,7 +55,7 @@ public enum AxeDefinitions implements AxeDefinition {
 			return Utils.random(1, 2);
 		}
 	},
-	ECHO_AXE(ItemId.ECHO_AXE, 0, -1, 12_007,
+	ECHO_AXE(ItemId.ECHO_AXE, 0, -1, 8966,
 		CrystalTool.Axe.INSTANCE.getTrunkCutAnimation().getId(),
 		CrystalTool.Axe.INSTANCE.getCanoeCutAnimation().getId()
 	) {

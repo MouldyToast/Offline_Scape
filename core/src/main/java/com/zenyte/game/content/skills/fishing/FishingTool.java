@@ -17,12 +17,12 @@ import java.util.Optional;
  */
 public enum FishingTool {
 
-    LOBSTER_POT(new Tool(new Animation(619), 301), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    SMALL_FISHING_NET(new Tool(new Animation(621), 303), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    BIG_FISHING_NET(new Tool(new Animation(620), 305), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    FISHING_ROD(new Tool(new Animation(622), 307), new Tool(new Animation(8188), 22846), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    FLY_FISHING_ROD(new Tool(new Animation(623), 309), new Tool(new Animation(8189), 22844), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    OILY_FISHING_ROD(new Tool(new Animation(623), 1585), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
+    LOBSTER_POT(new Tool(new Animation(619), 301), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    SMALL_FISHING_NET(new Tool(new Animation(621), 303), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    BIG_FISHING_NET(new Tool(new Animation(620), 305), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    FISHING_ROD(new Tool(new Animation(622), 307), new Tool(new Animation(8188), 22846), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    FLY_FISHING_ROD(new Tool(new Animation(623), 309), new Tool(new Animation(8189), 22844), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    OILY_FISHING_ROD(new Tool(new Animation(623), 1585), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
     HARPOON(new Tool(new Animation(618), 311),
             new Tool(new Animation(618), 10129),
             new Tool(new Animation(7401), 21028, true),
@@ -30,12 +30,12 @@ public enum FishingTool {
             new Tool(new Animation(7402), 21031, true), // Dragon?
             new Tool(new Animation(8336), CrystalTool.Harpoon.INSTANCE.getProductItemId(), true),
             new Tool(new Animation(8336), CrystalTool.Harpoon.INSTANCE.getInactiveId(), false),
-            new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)
+            new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)
     ),
     BARBARIAN_ROD(new Tool(new Animation(623), 11323),
             new Tool(new Animation(8190), 22842),
-            new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true)),
-    KARAMBWAN_VESSEL(new Tool(new Animation(1193), 3157), new Tool(new Animation(12008), ItemId.ECHO_HARPOON, true));
+            new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true)),
+    KARAMBWAN_VESSEL(new Tool(new Animation(1193), 3157), new Tool(new Animation(8784), ItemId.ECHO_HARPOON, true));
 
     FishingTool(@NotNull final Tool... tools) {
         this.tools = tools;

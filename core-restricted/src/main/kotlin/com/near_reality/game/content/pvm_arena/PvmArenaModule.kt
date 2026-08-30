@@ -8,7 +8,6 @@ import com.near_reality.game.content.pvm_arena.area.PvmArenaLobbyArea
 import com.near_reality.game.content.pvm_arena.loc.PvmArenaTeamPortalPlugin
 import com.near_reality.game.content.pvm_arena.player.spawnFakePlayers
 import com.near_reality.game.content.pvm_arena.wave.*
-import com.near_reality.game.item.CustomObjectId
 import com.zenyte.game.GameConstants
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.World
@@ -62,7 +61,7 @@ object PvmArenaModule {
     private fun spawnObjects() {
         World.spawnObject(WorldObject(id = ObjectId.BANK_CHEST, tile = Location(1761, 4705, 0)))
         World.spawnObject(WorldObject(id = ObjectId.ALTAR_OF_THE_OCCULT, 10, 2, Location(1762, 4698, 0)))
-        World.spawnObject(WorldObject(id = CustomObjectId.REJUVINATION_POOL, 10, 1, Location(1758, 4699, 0)))
+
         World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_BLUE_PORTAL_ID, tile = Location(1763, 4705, 0)))
         World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_RED_PORTAL_ID, tile = Location(1759, 4705, 0)))
     }

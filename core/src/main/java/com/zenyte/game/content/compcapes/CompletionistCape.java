@@ -9,7 +9,6 @@ import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Player;
@@ -34,7 +33,7 @@ import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCat
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCategoryType.getMultiple;
 
 @StaticInitializer
-public class CompletionistCape implements ItemOnItemAction {
+public class CompletionistCape {
 
 	private static final List<CompletionistCapeRequirement> requirements = new ArrayList<>();
 
@@ -198,14 +197,6 @@ public class CompletionistCape implements ItemOnItemAction {
 		}
 		Diary.addSpaces(list, 3);
 		return list;
-	}
-
-	@Override
-	public int[] getItems() {
-		return new int[] {
-			// capes
-			MASTER_COMP_CAPE
-		};
 	}
 
 	//Wrap the lists with color to avoid the hover hook inside scripts

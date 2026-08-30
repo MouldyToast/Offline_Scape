@@ -15,4 +15,5 @@ dependencies {
     implementation(projects.content.minigames.pyramidPlunder)
     implementation(projects.content.skills.agility.pyramid)
     implementation(projects.content.skills.agility.shortcuts)
+    implementation(projects.content.areas.taverley)
 }

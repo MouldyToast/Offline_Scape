@@ -4,7 +4,6 @@ import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 import com.near_reality.game.content.custom.PolyporeStaff;
-import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.model.item.degrading.Degradeable;
 import com.zenyte.game.content.tombsofamascut.TOAConstants;
 import com.zenyte.game.item.Item;
@@ -176,7 +175,6 @@ public enum DegradableItem implements Degradeable {
     DRAGONFIRE_SHIELD(DegradeType.USE, 11283, 11284, 50, 0),
     ANCIENT_WYVERN_SHIELD(DegradeType.USE, 21633, 21634, 50, 0),
     DRAGONFIRE_WARD(DegradeType.USE, 22002, 22003, 50, 0),
-    DRAGON_KITE(DegradeType.USE, CustomItemId.DRAGON_KITE, CustomItemId.DRAGON_KITE, 50, 0),
     CRYSTAL_BOW_BASIC(DegradeType.OUTGOING_HIT, ItemId.CRYSTAL_BOW_BASIC, -1, 100_000, 0),
     CRYSTAL_BOW_ATTUNED(DegradeType.OUTGOING_HIT, ItemId.CRYSTAL_BOW_ATTUNED, -1, 100_000, 0),
     CRYSTAL_BOW_PERFECTED(DegradeType.OUTGOING_HIT, ItemId.CRYSTAL_BOW_PERFECTED, -1, 100_000, 0),

@@ -1,6 +1,5 @@
 package com.zenyte.game.content.godwars;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.player.Player;
@@ -11,11 +10,6 @@ import mgi.utilities.StringFormatUtil;
 
 public enum GodType {
     BANDOS(3975, new int[]{
-            CustomItemId.BANDOS_MAX_CAPE,
-            CustomItemId.IMBUED_BANDOS_CAPE,
-            CustomItemId.BANDOS_BOW,
-            CustomItemId.BANDOS_CHESTPLATE_OR,
-            CustomItemId.BANDOS_TASSETS_OR,
             ItemId.BANDOS_CHESTPLATE_OR,
             ItemId.BANDOS_TASSETS_OR,
             ItemId.ANCIENT_MACE,
@@ -51,9 +45,6 @@ public enum GodType {
     }),
 
     ZAMORAK(3976, new int[]{
-            CustomItemId.ZAMORAK_BOW,
-            CustomItemId.IMBUED_ANCIENT_CAPE,
-            CustomItemId.ANCIENT_MAX_CAPE,
             ItemId.ZAMORAK_MONK_BOTTOM,
             ItemId.ZAMORAK_MONK_TOP,
             ItemId.ZAMORAK_CAPE,
@@ -110,9 +101,6 @@ public enum GodType {
     }),
 
     SARADOMIN(3972, new int[]{
-            CustomItemId.SARADOMIN_BOW,
-            CustomItemId.SEREN_MAX_CAPE,
-            CustomItemId.IMBUED_SEREN_CAPE,
             ItemId.SARADOMIN_CAPE,
             ItemId.SARADOMIN_STAFF,
             ItemId.SARADOMIN_PLATEBODY,
@@ -166,9 +154,6 @@ public enum GodType {
     }),
 
     ARMADYL(3973, new int[]{
-            CustomItemId.IMBUED_ARMADYL_CAPE,
-            CustomItemId.ARMADYL_BOW,
-            CustomItemId.ARMADYL_MAX_CAPE,
             ItemId.ARMADYL_PENDANT,
             ItemId.ARMADYL_CROSSBOW,
             ItemId.ARMADYL_GODSWORD,
@@ -204,8 +189,6 @@ public enum GodType {
     }),
 
     ANCIENT(13080, new int[]{
-            CustomItemId.ANCIENT_MAX_CAPE,
-            CustomItemId.IMBUED_ANCIENT_CAPE,
             ItemId.ANCIENT_GODSWORD,
             ItemId.ANCIENT_STAFF,
             ItemId.ANCIENT_CROZIER,

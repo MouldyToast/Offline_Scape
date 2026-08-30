@@ -19,8 +19,6 @@ object CustomCommands {
 
                 "Spawn all in bank" {
                     p.bank.apply {
-                        add(Item(CustomItemId.ANCIENT_EYE, 10))
-                        add(Item(CustomItemId.ANCIENT_BOOK_32004, 10))
                         add(Item(CustomItemId.ARMADYL_SOUL_CRYSTAL, 10))
                         add(Item(CustomItemId.ARMADYL_BOW, 10))
                         add(Item(CustomItemId.BANDOS_SOUL_CRYSTAL, 10))
@@ -29,14 +27,6 @@ object CustomCommands {
                         add(Item(CustomItemId.SARADOMIN_BOW, 10))
                         add(Item(CustomItemId.ZAMORAK_SOUL_CRYSTAL, 10))
                         add(Item(CustomItemId.ZAMORAK_BOW, 10))
-                        add(Item(CustomItemId.DRAGON_KITE, 10))
-                        add(Item(CustomItemId.ANCIENT_MEDALLION_32024, 10))
-                        add(Item(CustomItemId.IMBUED_ANCIENT_CAPE, 10))
-                        add(Item(CustomItemId.IMBUED_ARMADYL_CAPE, 10))
-                        add(Item(CustomItemId.IMBUED_BANDOS_CAPE, 10))
-                        add(Item(CustomItemId.IMBUED_SEREN_CAPE, 10))
-                        add(Item(CustomItemId.GAUNTLET_SLAYER_HELM, 10))
-                        add(Item(CustomItemId.CORRUPTED_GAUNTLET_SLAYER_HELM, 10))
                         add(Item(CustomItemId.POLYPORE_SPORES, 10))
                         add(Item(CustomItemId.POLYPORE_STAFF_DEG, 10))
                         add(Item(CustomItemId.POLYPORE_STAFF, 10))
@@ -46,7 +36,6 @@ object CustomCommands {
                         add(Item(CustomItemId.PLATINUM_KEY, 10))
                         add(Item(CustomItemId.DIAMOND_KEY, 10))
                         add(Item(CustomItemId.NR_TABLET, 10))
-                        add(Item(CustomItemId.DEATH_CAPE, 10))
                         add(Item(CustomItemId.LIME_WHIP, 10))
                         add(Item(CustomItemId.LAVA_WHIP, 10))
                         add(Item(CustomItemId.PINK_PARTYHAT, 10))

@@ -2,7 +2,6 @@ package com.zenyte.game.content.boons;
 
 import com.google.common.eventbus.Subscribe;
 import com.near_reality.api.service.item.ItemConfigManager;
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import static com.zenyte.game.item.ItemId.*;
@@ -198,9 +197,6 @@ public class RemnantValueManager {
                 MERCILESS_KITESHIELD,
                 CHAOTIC_CROSSBOW,
                 CHAOTIC_STAFF,
-                CHAOTIC_KITESHIELD,
-                FARSEER_KITESHIELD,
-                EAGLE_EYE_KITESHIELD,
                 SKULL_OF_VETION,
                 FANGS_OF_VENENATIS,
                 CLAWS_OF_CALLISTO,
@@ -282,9 +278,6 @@ public class RemnantValueManager {
                 PEGASIAN_BOOTS,
                 ELDER_MAUL,
                 SANGUINE_DUST,
-                DRAGON_KITE,
-                DEATH_CAPE,
-                DEMONHORN_NECKLACE,
                 TANZANITE_MUTAGEN,
                 MAGMA_MUTAGEN,
                 PRIMORDIAL_BOOTS,

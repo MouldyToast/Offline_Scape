@@ -84,7 +84,6 @@ public class PvmArenaMysteryBox extends ItemPlugin {
             new MysteryItem(ItemId.ARCANE_SIGIL, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.ELYSIAN_SIGIL, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.LIME_WHIP, 1, 1, MEGA_RARE).announce(),
-            new MysteryItem(ItemId.DEATH_CAPE, 1, 1, MEGA_RARE).announce(),
             new MysteryItem(ItemId.ENHANCED_CRYSTAL_WEAPON_SEED, 1, 1, MEGA_RARE).announce(),
 
         };

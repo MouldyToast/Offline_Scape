@@ -2,7 +2,6 @@ package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
-import com.near_reality.game.world.entity.player.action.combat.effect.DeathCapeEffect;
 import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -181,10 +180,6 @@ public class MeleeCombat extends PlayerCombat {
 
     @Override
     public int getRandomHit(final Player player, final Entity target, final int maxhit, final double modifier, final AttackType attackType) {
-
-        final Integer deathCapeDamageOverride = DeathCapeEffect.apply(player, target);
-        if (deathCapeDamageOverride != null)
-            return deathCapeDamageOverride;
 
         if (CombatUtilities.isAlwaysTakeMaxHit(target, HitType.MELEE) || CombatUtilities.isWardenCore(target)) {
             return maxhit;

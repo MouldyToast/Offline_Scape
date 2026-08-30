@@ -254,7 +254,7 @@ public abstract class PlayerCombat extends Action {
     public static void appendDragonfireShieldCharges(final Player player) {
         final int id = player.getEquipment().getId(EquipmentSlot.SHIELD);
         switch (id) {
-            case ItemId.DRAGONFIRE_SHIELD, ItemId.DRAGONFIRE_SHIELD_11284, ItemId.DRAGONFIRE_WARD, ItemId.DRAGONFIRE_WARD_22003, CustomItemId.DRAGON_KITE -> {
+            case ItemId.DRAGONFIRE_SHIELD, ItemId.DRAGONFIRE_SHIELD_11284, ItemId.DRAGONFIRE_WARD, ItemId.DRAGONFIRE_WARD_22003 -> {
                 final int charges = player.getShield().getCharges();
                 if (charges < 50) {
                     player.setAnimation(new Animation(6695));

@@ -122,10 +122,8 @@ public enum RareDrop {
     JAR_OF_SWAMP(ItemId.JAR_OF_SWAMP),
     JAR_OF_SPIRITS(ItemId.JAR_OF_SPIRITS),
 
-    DRAGON_KITE(CustomItemId.DRAGON_KITE),
     LAVA_WHIP(CustomItemId.LAVA_WHIP),
     LIME_WHIP(CustomItemId.LIME_WHIP),
-    DEATH_CAPE(CustomItemId.DEATH_CAPE),
 
     BOOK_OF_DEATH(ItemId.BOOK_OF_THE_DEAD),
     XAMPHUR_PET(32083),
@@ -151,7 +149,6 @@ public enum RareDrop {
     //Ganodermic beast
     GANODERMIC_RUNT(CustomItemId.GANODERMIC_RUNT),
     POLYPORE_STAFF(CustomItemId.POLYPORE_STAFF_DEG),
-    ANCIENT_EYE(CustomItemId.ANCIENT_EYE),
 
     //Rots
     SHIELD1(32192),

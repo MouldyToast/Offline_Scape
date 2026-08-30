@@ -9,4 +9,7 @@ kotlin {
     }
 }
 
-dependencies { compileOnly(projects.core) }
+dependencies {
+    compileOnly(projects.core)
+    implementation(projects.scripts.item.actions)
+}

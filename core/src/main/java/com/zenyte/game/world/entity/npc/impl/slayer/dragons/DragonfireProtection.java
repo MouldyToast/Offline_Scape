@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.dragons;
 
 import com.near_reality.game.content.custom.SlayerHelmetEffects;
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -59,7 +58,7 @@ public enum DragonfireProtection {
         switch (target.getEquipment().getId(EquipmentSlot.SHIELD)) {
             case 2890, 9731 -> list.add(ELEMENTAL_SHIELD);
             case 1540, 8282, 11710 -> list.add(ANTI_DRAGON_SHIELD);
-            case 11283, 11284, 22002, 22003, 21633, 21634, CustomItemId.DRAGON_KITE ->
+            case 11283, 11284, 22002, 22003, 21633, 21634 ->
                     list.add(DRAGONFIRE_SHIELD);
         }
 

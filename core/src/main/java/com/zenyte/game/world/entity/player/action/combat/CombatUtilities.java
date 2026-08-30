@@ -492,8 +492,7 @@ public class CombatUtilities {
             final int shield = p.getEquipment().getId(EquipmentSlot.SHIELD.getSlot());
             return p.getVariables().getTime(TickVariable.ANTIFIRE) <= 0
                     && p.getVariables().getTime(TickVariable.SUPER_ANTIFIRE) <= 0
-                    && shield != 1540 && shield != 8282 && shield != 11283 && shield != 11284
-                    && shield != CustomItemId.DRAGON_KITE;
+                    && shield != 1540 && shield != 8282 && shield != 11283 && shield != 11284;
         } else if (rangedCombat.target.getEntityType() == Entity.EntityType.NPC) {
             return !isFireNPC((NPC) rangedCombat.target);
         }

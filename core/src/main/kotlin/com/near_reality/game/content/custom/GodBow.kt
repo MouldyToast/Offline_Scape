@@ -7,7 +7,6 @@ import com.near_reality.game.item.CustomItemId
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack
 import com.near_reality.game.world.entity.player.action.combat.ranged.GodBowCombat
-import com.zenyte.game.content.godwars.npcs.KreeArra
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.Projectile
@@ -195,12 +194,16 @@ sealed class GodBow(
         projectile = Projectile(6004,  40, 36, 41, 21, 5, 11, 5)
     ) {
 
+        private val TORNADO_SOUND = SoundEffect(3870, 10, 0)
+        private val TORNADO_HIT_SOUND = SoundEffect(2727, 10, -1)
+        private val TORNADO_SPLASH_SOUND = SoundEffect(227, 10, -1)
+
         override val specialAttackName: String = "Twister shot"
 
         override val attack: SpecialAttackScript = SpecialAttackScript { player, combat, target ->
             val projectile = Projectile(6001, 16, 10, 40, 15, 10, 64, 5)
 
-            World.sendSoundEffect(player.position, KreeArra.TORNADO_SOUND)
+            World.sendSoundEffect(player.position, TORNADO_SOUND)
             player.animation = Animation(9168)
             val hit = combat.getHit(player, target, 2.5, 1.35, 1.0, false)
             val hitDelay = World.sendProjectile(player, target, projectile)
@@ -212,8 +215,8 @@ sealed class GodBow(
         }
 
         private fun getHitSoundEffect(hit: Hit) = (if (hit.damage == 0)
-            KreeArra.TORNADO_SPLASH_SOUND
+            TORNADO_SPLASH_SOUND
         else
-            KreeArra.TORNADO_HIT_SOUND)
+            TORNADO_HIT_SOUND)
     }
 }

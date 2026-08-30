@@ -1,4 +1,4 @@
-package com.zenyte.plugins.object.memberzones;
+package com.zenyte.game.content.boss.giantmole;
 
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.Position;
@@ -8,7 +8,6 @@ import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.npc.impl.GiantMoleInstanced;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
-import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.region.DynamicArea;
 import com.zenyte.game.world.region.area.plugins.DeathPlugin;
 import com.zenyte.game.world.region.area.plugins.EntityAttackPlugin;
@@ -19,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class GiantMoleInstance extends DynamicArea implements EntityAttackPlugin, DeathPlugin, LogoutPlugin, LootBroadcastPlugin {
 
-    public static final Location OUTSIDE_TILE_UBER = new Location(1703, 2603, 0);
     public static final Location OUTSIDE_TILE = new Location(3005, 3380, 0);
     public static final Location INSIDE_TILE = new Location(1759, 5186, 0);
     private final Player player;
@@ -42,18 +40,18 @@ public class GiantMoleInstance extends DynamicArea implements EntityAttackPlugin
     @Override
     public void leave(Player player, boolean logout) {
         if (logout) {
-            player.forceLocation(player.getMemberRank().equalToOrGreaterThan(MemberRank.ONYX) ? OUTSIDE_TILE_UBER : OUTSIDE_TILE);
+            player.forceLocation(OUTSIDE_TILE);
         }
     }
 
     @Override
     public void onLogout(final @NotNull Player player) {
-        player.setLocation(player.getMemberRank().equalToOrGreaterThan(MemberRank.ONYX) ? OUTSIDE_TILE_UBER : OUTSIDE_TILE);
+        player.setLocation(OUTSIDE_TILE);
     }
 
     @Override
     public Location onLoginLocation() {
-        return player.getMemberRank().equalToOrGreaterThan(MemberRank.ONYX) ? OUTSIDE_TILE_UBER : OUTSIDE_TILE;
+        return OUTSIDE_TILE;
     }
 
     @Override

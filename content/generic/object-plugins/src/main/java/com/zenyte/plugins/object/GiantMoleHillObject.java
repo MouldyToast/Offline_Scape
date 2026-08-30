@@ -13,11 +13,11 @@ import com.zenyte.game.world.region.dynamicregion.AllocatedArea;
 import com.zenyte.game.world.region.dynamicregion.MapBuilder;
 import com.zenyte.game.world.region.dynamicregion.OutOfSpaceException;
 import com.zenyte.logger.NearRealityPrintStream;
-import com.zenyte.plugins.object.memberzones.GiantMoleInstance;
+import com.zenyte.game.content.boss.giantmole.GiantMoleInstance;
 
 import java.util.Set;
 
-import static com.zenyte.plugins.object.memberzones.GiantMoleInstance.INSIDE_TILE;
+import static com.zenyte.game.content.boss.giantmole.GiantMoleInstance.INSIDE_TILE;
 
 /**
  * @author Tommeh | 02/05/2019 | 18:11

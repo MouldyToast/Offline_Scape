@@ -1,6 +1,5 @@
 package com.near_reality.game.content.commands
 
-import com.near_reality.game.content.commands.DeveloperCommands.enableWildernessVault
 import com.near_reality.game.item.CustomItemId
 import com.near_reality.game.world.entity.player.claimedFreeMB
 import com.near_reality.game.world.entity.player.manuallyLeftHelpChat
@@ -9,9 +8,6 @@ import com.near_reality.game.world.entity.player.pvpKillStreak
 import com.near_reality.game.world.entity.player.pvpKills
 import com.zenyte.ContentConstants
 import com.zenyte.game.content.skills.magic.spells.teleports.RegularTeleport
-import com.zenyte.game.content.wildernessVault.WildernessVaultConstants
-import com.zenyte.game.content.wildernessVault.WildernessVaultHandler
-import com.zenyte.game.content.wildernessVault.WildernessVaultStatus
 import com.zenyte.game.item.Item
 import com.zenyte.game.referral.ReferralIPDatabase
 import com.zenyte.game.referral.ReferralUsageDatabase
@@ -47,62 +43,6 @@ object PlayerCommands {
         }
 
 
-        Command(PlayerPrivilege.PLAYER, "vault", "Displays information about the Wilderness Vault spawn.") { player, _ ->
-            val wildernessVault = WildernessVaultHandler.getInstance()
-            if (player.privilege.inherits(PlayerPrivilege.ADMINISTRATOR)){
-                val header = if (wildernessVault.currentSpawn == null) "<str>" else ""
-                val lockDuration = TimeUnit.TICKS.toMinutes(WildernessVaultConstants.LOCK_DURATION.toLong())
-                val spawnDuration = TimeUnit.TICKS.toMinutes(WildernessVaultConstants.SPAWN_DELAY.toLong())
-                player.dialogue {
-                    options("Vault controls") {
-                        "Spawn" {
-                            WildernessVaultHandler.getInstance().finishEvent(false)
-                            WildernessVaultHandler.getInstance().vaultStatus = WildernessVaultStatus.INACTIVE
-                            WildernessVaultHandler.getInstance().cycle = WildernessVaultConstants.SPAWN_DELAY - 2
-                        }
-                        header + "Tele" {
-                            val spawnDefinition = WildernessVaultHandler.getInstance().currentSpawn
-                            if (spawnDefinition == null)
-                                player.sendMessage("Not active.")
-                            else
-                                player.setLocation(spawnDefinition.locationPlayer())
-                        }
-                        "Clear" {
-                            WildernessVaultHandler.getInstance().finishEvent(false)
-                        }
-                        "Set lock duration: $lockDuration minute" + if (lockDuration > 1) "s" else "" {
-                            player.sendInputInt("Set lock duration minutes") { amount: Int ->
-                                WildernessVaultConstants.LOCK_DURATION = TimeUnit.MINUTES.toTicks(amount.toLong()).toInt()
-                                player.dialogueManager.start(this@dialogue)
-                            }
-                        }
-                        "Set spawn duration: $spawnDuration minute" + if (spawnDuration > 1) "s" else "" {
-                            player.sendInputInt("Set spawn duration minutes") { amount: Int ->
-                                WildernessVaultConstants.SPAWN_DELAY = TimeUnit.MINUTES.toTicks(amount.toLong()).toInt()
-                                player.dialogueManager.start(this@dialogue)
-                            }
-                        }
-                        (if (enableWildernessVault) "Disable" else "Enable") {
-                            enableWildernessVault = !enableWildernessVault
-                            player.sendMessage("Wilderness vault is now ${if (enableWildernessVault) "enabled" else "disabled"}.")
-                        }
-                    }
-                }
-            }
-            when(val status = wildernessVault.vaultStatus) {
-                WildernessVaultStatus.INACTIVE -> {
-                    val ticksTill = WildernessVaultConstants.SPAWN_DELAY - wildernessVault.cycle
-                    if (ticksTill < 0)
-                        player.sendMessage("<img=47> <col=8b0000><shad=000000>The Wilderness Vault is currently inactive.")
-                    else {
-                        val timeTillSpawn = wildernessVault.timeTillNextEvent(true)
-                        player.sendMessage("<img=47> <col=8b0000><shad=000000>The Wilderness Vault will spawn next in approximately $timeTillSpawn.")
-                    }
-                }
-               else ->
-                   player.sendMessage("<img=47> <col=8b0000><shad=000000>The Wilderness Vault is currently ${status.name.lowercase()} at ${wildernessVault.currentSpawn?.name}.")
-            }
-        }
 
         Command(PlayerPrivilege.PLAYER, arrayOf("tourny", "tourney"), "Teleport to tournament area.") { p, _ ->
             if (p.isLocked)

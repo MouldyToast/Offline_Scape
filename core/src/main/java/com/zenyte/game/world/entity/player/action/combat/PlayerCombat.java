@@ -14,7 +14,6 @@ import com.near_reality.game.world.entity.CombatCooldownKt;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.boons.impl.*;
-import com.zenyte.game.content.boss.dagannothkings.DagannothKing;
 import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.custom.LimeWhipCombat;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
@@ -817,10 +816,7 @@ public abstract class PlayerCombat extends Action {
             return (int) bonus;
         } else {
             final NPC npc = (NPC) target;
-            if(npc instanceof DagannothKing && attacker instanceof Player p && p.getBoonManager().hasBoon(DagaWHO.class)) {
-                effectiveLevel = 1;
-                equipmentBonus = 10;
-            } else {
+            {
                 effectiveLevel = npc.getCombatDefinitions().getStatDefinitions().get(type == AttackType.MAGIC && !(npc instanceof IceDemon) ? StatType.MAGIC : StatType.DEFENCE);
                 equipmentBonus = npc.getCombatDefinitions().getStatDefinitions().get(StatType.getDefenceType(type));
 

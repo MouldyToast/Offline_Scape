@@ -4,7 +4,6 @@ import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;

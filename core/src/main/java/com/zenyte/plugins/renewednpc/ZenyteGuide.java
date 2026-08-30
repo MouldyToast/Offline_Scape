@@ -2,14 +2,11 @@ package com.zenyte.plugins.renewednpc;
 
 import com.near_reality.api.service.user.UserPlayerHandler;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
-import com.zenyte.ContentConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
-import com.zenyte.game.model.ui.InterfacePosition;
-import com.zenyte.game.world.World;
 import com.zenyte.game.world.broadcasts.BroadcastType;
 import com.zenyte.game.world.broadcasts.WorldBroadcasts;
 import com.zenyte.game.world.entity.Location;
@@ -18,18 +15,17 @@ import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.LogLevel;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.entity.player.cutscene.impl.EdgevilleCutscene;
+
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.DailyChallenge;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.privilege.ExpConfiguration;
 import com.zenyte.game.world.entity.player.privilege.ExpConfigurations;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
 import kotlin.Unit;
-import mgi.utilities.StringFormatUtil;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * @author Kris | 25/11/2018 16:13
@@ -68,7 +64,6 @@ public class ZenyteGuide extends NPCPlugin {
             }
     };
 
-    private static final Item EXTRA_TUTORIAL_GOLD = new Item(995, 25000);
     public static final Location HOME_ZENYTE_GUIDE = new Location(3089, 3496);
     public static final Location SPAWN_LOCATION = new Location(3090, 3497);
     public static boolean disableJoinAnnouncement = false;
@@ -78,25 +73,7 @@ public class ZenyteGuide extends NPCPlugin {
         takeWeapon(player, ItemId.STARTER_SWORD);
         takeWeapon(player, ItemId.STARTER_BOW);
         takeWeapon(player, ItemId.STARTER_STAFF);
-        player.getDialogueManager().start(new Dialogue(player, NPC_ID) {
-            @Override
-            public void buildDialogue() {
-                npc("I've given you an assortment of starter weapons to try out. Hopefully this will help in your adventure on " + ContentConstants.SERVER_NAME + ".");
-                npc("Would you like to view the tutorial so I can show you around our home area or do you want to skip it?");
-                //setting zoom depth
-                options("Would you like to view the tutorial?", "Yes. <col=00080>(Receive extra " + StringFormatUtil.format(EXTRA_TUTORIAL_GOLD.getAmount()) + " gold)</col>", "No, I want to skip it.").onOptionOne(() -> {
-                    player.putBooleanTemporaryAttribute("viewed_tutorial", true);
-                    player.getPacketDispatcher().sendClientScript(10700, 1);
-                    player.getPacketDispatcher().sendClientScript(42, 0, 200);
-                    player.setLocation(SPAWN_LOCATION);
-                    player.lock();
-                    player.getCutsceneManager().play(new EdgevilleCutscene());
-                }).onOptionTwo(() -> {
-                    player.putBooleanTemporaryAttribute("viewed_tutorial", false);
-                    finishTutorial(player);
-                });
-            }
-        });
+        finishTutorial(player);
     }
 
     private static void takeWeapon(@NotNull final Player player, final int weaponId) {
@@ -107,28 +84,9 @@ public class ZenyteGuide extends NPCPlugin {
     public static void finishTutorial(final Player player) {
         player.getAppearance().setInvisible(false);
         player.unlock();
-        if (player.getBooleanTemporaryAttribute("tutorial_rewatch")) {
-            player.setLocation(HOME_ZENYTE_GUIDE);
-            player.getInterfaceHandler().closeInterface(InterfacePosition.DIALOGUE);
-            player.addTemporaryAttribute("tutorial_rewatch", 0);
-            return;
-        }
-
         if (!disableJoinAnnouncement) {
             WorldBroadcasts.broadcast(player, BroadcastType.NEW_PLAYER);
         }
-        Optional<NPC> optionalGuide = World.findNPC(NPC_ID, ZenyteGuide.HOME_ZENYTE_GUIDE);
-        optionalGuide.ifPresent(npc -> npc.setForceTalk("Welcome " + player.getName() + " to " + ContentConstants.SERVER_NAME + "!"));
-
-        player.getDialogueManager().start(new Dialogue(player, NPC_ID) {
-            @Override
-            public void buildDialogue() {
-                npc("That should be everything regarding our home area.");
-                npc("If I went a bit too fast for you, you can always come and visit me in the achievement hall and " +
-                        "I'll show you around whenever you want.");
-                npc("Good luck on your adventure.");
-            }
-        });
         final GameMode gameMode = PlayerAttributesKt.getSelectedGameMode(player);
         UserPlayerHandler.INSTANCE.updateGameMode(player, gameMode, (success) -> {
             if (!success) {
@@ -146,11 +104,7 @@ public class ZenyteGuide extends NPCPlugin {
                     player.getInventory().addItem(it);
                 }
             }
-            if (player.getBooleanTemporaryAttribute("viewed_tutorial")) {
-                player.getInventory().addItem(EXTRA_TUTORIAL_GOLD);
-            }
             player.getTemporaryAttributes().remove("registration");
-            player.getTemporaryAttributes().remove("viewed_tutorial");
             player.putBooleanAttribute("registered", true);
             player.getVarManager().sendVar(281, 1000);
             final DailyChallenge challenge = player.getDailyChallengeManager().getRandomChallenge();
@@ -196,16 +150,7 @@ public class ZenyteGuide extends NPCPlugin {
                         @Override
                         public void buildDialogue() {
                             npc("Hey! It's good to see you again, " + player.getName() + ". What can I do for you?");
-                            options(TITLE, "Talk about my experience mode.", "Rewatch the tutorial.").onOptionOne(() -> {
-                                setKey(5);
-                            }).onOptionTwo(() -> {
-                                player.lock();
-                                player.getPacketDispatcher().sendClientScript(10700, 1);
-                                player.getPacketDispatcher().sendClientScript(42, 0, 200); //setting zoom depth
-                                player.setLocation(SPAWN_LOCATION);
-                                player.addTemporaryAttribute("tutorial_rewatch", 1);
-                                player.getCutsceneManager().play(new EdgevilleCutscene());
-                            });
+                            setKey(5);
                             ExpConfigurations config = ExpConfigurations.of(player.getGameMode());
                             if (config != null) {
                                 int currentIndex = config.getExpConfigurationIndex(player.getCombatXPRate(), player.getSkillingXPRate());
@@ -243,20 +188,6 @@ public class ZenyteGuide extends NPCPlugin {
                 }
             }
         });
-        bind("Trade", (player, npc) -> player.getDialogueManager().start(new Dialogue(player, npc) {
-            @Override
-            public void buildDialogue() {
-                if (!player.getBooleanAttribute("registered")) {
-                    npc("Talk to me once you're on the mainland about purchasing starter weapons.");
-                } else {
-                    npc("Would you like to purchase any of the three starter weapons? I can sell them to you for 50,000 each!");
-                    options("Purchase a starter weapon?", new DialogueOption("Starter sword.", key(5)), new DialogueOption("Starter bow.", key(10)), new DialogueOption("Starter staff.", key(15)), new DialogueOption("Cancel."));
-                    player(5, "I'll take a starter sword, please.").executeAction(() -> purchase(player, npc, ItemId.STARTER_SWORD));
-                    player(10, "I'll take a starter bow, please.").executeAction(() -> purchase(player, npc, ItemId.STARTER_BOW));
-                    player(15, "I'll take a starter staff, please.").executeAction(() -> purchase(player, npc, ItemId.STARTER_STAFF));
-                }
-            }
-        }));
     }
 
     private static void confirmDialogue(Player player, NPC npc) {
@@ -297,29 +228,6 @@ public class ZenyteGuide extends NPCPlugin {
         player.sendAdventurersEntry(AdventurersLogIcon.OVERALL_SKILLING, player.getName() + " has just changed exp mode - they are now playing under the " + expConfiguration + " mode!");
     }
 
-    private static final Item COST = new Item(995, 50_000);
-
-    private static void purchase(@NotNull final Player player, @NotNull final NPC npc, final int weaponId) {
-        player.getDialogueManager().finish();
-        player.getDialogueManager().start(new Dialogue(player, npc) {
-            @Override
-            public void buildDialogue() {
-                if (!player.getInventory().containsItem(COST)) {
-                    npc("You need at least 50,000 coins to purchase it!");
-                    return;
-                }
-                if (!player.getInventory().hasFreeSlots()) {
-                    npc("Perhaps you should make some free space in your inventory first.");
-                    return;
-                }
-                player.getInventory().deleteItem(COST);
-                final Item weapon = new Item(weaponId, 1, DegradableItem.getFullCharges(weaponId));
-                player.getInventory().addOrDrop(weapon);
-                item(weapon, "The guide hands you a " + weapon.getName().toLowerCase() + ".");
-                npc("Pleasure doing business with you.");
-            }
-        });
-    }
 
     @Override
     public int[] getNPCs() {

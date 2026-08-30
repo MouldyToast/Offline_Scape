@@ -1655,22 +1655,6 @@ public class TypeParser {
                     "assets/runespawn/edgarrock_objects.dat");
             packMapPre209(13382, "assets/runespawn/darkedge_landscape.dat",
                     "assets/runespawn/darkedge_objects.dat");
-        } else {
-            packMapPre209(12086, "assets/map/osnr_home/12086_landscape.dat",
-                    "assets/map/osnr_home/12086_objects.dat");
-            packMapPre209(12342, "assets/map/osnr_home/12342_landscape.dat",
-                    "assets/map/osnr_home/12342_objects.dat");
-            packMapPre209(12598, "assets/map/osnr_home/12598_landscape.dat",
-                    "assets/map/osnr_home/12598_objects.dat");
-            packMapPre209(12085, "assets/map/osnr_home/12085_landscape.dat",
-                    "assets/map/osnr_home/12085_objects.dat");
-            packMapPre209(12341, "assets/map/osnr_home/12341_landscape.dat",
-                    "assets/map/osnr_home/12341_objects.dat");
-
-            /*packMapPre209(12087, "assets/map/osnr_home/12087_landscape.dat",
-                "assets/map/osnr_home/12087_objects.dat");
-            packMapPre209(12343, "assets/map/osnr_home/12343_landscape.dat",
-                "assets/map/osnr_home/12343_objects.dat");*/
         }
         packMapsRSPSi(12854, "assets/map/varrock_topr.pack");
 

@@ -12,4 +12,7 @@ kotlin {
 dependencies {
     compileOnly(projects.core)
     implementation(projects.scripts.item.actions)
+    implementation(projects.content.minigames.pyramidPlunder)
+    implementation(projects.content.skills.agility.pyramid)
+    implementation(projects.content.skills.agility.shortcuts)
 }

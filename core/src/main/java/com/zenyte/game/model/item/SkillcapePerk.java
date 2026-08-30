@@ -44,12 +44,7 @@ public enum SkillcapePerk {
     private final int[] skillCapes;
 
     SkillcapePerk(int... capes) {
-        this(IntArrayList.of(COMPLETIONIST_CAPE, COMPLETIONIST_CAPE_T, MASTER_COMP_CAPE), capes);
-    }
-
-    SkillcapePerk(IntArrayList alwaysAdd, int... capes) {
-        alwaysAdd.addAll(IntList.of(capes));
-        this.capes = alwaysAdd.toArray(new int[0]);
+        this.capes = capes;
         final IntArrayList list = new IntArrayList();
         for (final int cape : capes) {
             final ItemDefinitions definitions = ItemDefinitions.get(cape);

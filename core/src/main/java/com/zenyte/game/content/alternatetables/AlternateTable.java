@@ -28,7 +28,6 @@ public enum AlternateTable {
     LARRANS_SMALL(LarransSmallChestTable.class),
     LARRANS_LARGE(LarransLargeChestTable.class),
     BRIMSTONE(BrimstoneChestTable.class),
-    WILDY_VAULT(WildernessVaultChestTable.class),
     COX_NORMAL(Raids1NormalTable.class),
     COX_CM(Raids1CMTable.class),
     //TOB_ENTRY(Raids2EntryTable.class),

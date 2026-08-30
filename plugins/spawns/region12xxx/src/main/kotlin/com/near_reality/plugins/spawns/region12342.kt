@@ -10,5 +10,6 @@ class Region12342 : NPCSpawnsScript() {
 
     init {
         IMP_5007(3134, 3487, 0, SOUTH, 100)
+        LUNA(3121, 3516, 0, SOUTH, 3)
     }
 }

@@ -6,7 +6,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.SkipPluginScan;
-import com.zenyte.plugins.object.memberzones.GiantMoleInstance;
+import com.zenyte.game.content.boss.giantmole.GiantMoleInstance;
 
 @SkipPluginScan
 public final class GiantMoleInstanced extends GiantMole implements Spawnable {

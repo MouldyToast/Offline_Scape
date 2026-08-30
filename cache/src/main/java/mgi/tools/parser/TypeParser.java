@@ -22,7 +22,6 @@ import com.near_reality.cache_tool.packing.custom.NearRealityCustomObjectsPacker
 import com.near_reality.cache_tool.packing.custom.NearRealityCustomSpecialAttacksPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityCustomStructsPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityCustomWorldMapPacker;
-import com.near_reality.cache_tool.packing.custom.NearRealityEaster2024Packer;
 import com.near_reality.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import com.near_reality.cache_tool.packing.custom.NearRealityOriginsPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityOriginsWhipPacker;
@@ -239,7 +238,6 @@ public class TypeParser {
         addCustomStalls();
         TeleportsPacker.pack();
         increaseVarclientAmount();
-        wildernessVault();
         NearRealityCustomObjectsPacker.pack();
         if (ENABLED_MAP_PACKING) {
             NearRealityCustomMapsPacker.pack();
@@ -270,7 +268,6 @@ public class TypeParser {
         NearRealityRaidsItemDefinitions.makeKindlingStackable();
         NearRealityRaidsItemDefinitions.makeCavernGrubsStackable();
         NearRealityReducePricesItemDefinitions.reducePrices();
-        NearRealityEaster2024Packer.pack();
         NearRealityCustomHeadIconsPacker.pack();
         NearRealityRemovePetsFromBossCLs.pack();
         NearRealityStoreInterfacePacker.pack();
@@ -1681,11 +1678,6 @@ public class TypeParser {
         CustomWorldMapAreas.changeMainArea(service);
 
         NearRealityEffigyMapEdits.apply();
-    }
-
-    public static void wildernessVault() throws IOException {
-        packMapsRSPSi(7789, "assets/osnr/wilderness_vault/wilderness_vault.pack");
-        packMapPre209(8557, "assets/osnr/wilderness_vault/vault_0.dat", "assets/osnr/wilderness_vault/vault_1.dat");
     }
 
     public static void removeCATasks() {

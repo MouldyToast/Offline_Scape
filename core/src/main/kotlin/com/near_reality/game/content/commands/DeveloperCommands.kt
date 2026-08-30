@@ -97,7 +97,6 @@ object DeveloperCommands {
     var npcProcessTimeLogging = false
     var enabledDPinRedeeming = WORLD_PROFILE.verifyPasswords && !WORLD_PROFILE.isBeta() && !WORLD_PROFILE.isDevelopment() && !WORLD_PROFILE.private
     var adminsLoseItemsOnDeath = WORLD_PROFILE.isBeta() || WORLD_PROFILE.isDevelopment() || WORLD_PROFILE.private
-    var enableWildernessVault = false
     var enableCombatDummyOther = true
     var forceApiForLogin = java.util.concurrent.atomic.AtomicBoolean(false)
 

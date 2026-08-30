@@ -1,7 +1,7 @@
 package com.near_reality.game.content.contests.launch
 
 import com.near_reality.game.content.challenges.ChallengeRegistry
-import com.zenyte.game.content.skills.slayer.Slayer
+
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface
@@ -58,9 +58,7 @@ class SoloLaunchContest : ChallengeRegistry<SoloContestant>() {
                 return@register 0
             if(this.findPlayer().get().privilege.inherits(PlayerPrivilege.ADMINISTRATOR))
                 return@register 0
-            if (this.findPlayer().get().varManager.getValue(Slayer.SLAYER_STATUES_VAR) > 0)
-                return@register 1
-            else 0
+            0
         }
         register(10415, "Twisted Bow") {
             if(this.findPlayer().isEmpty)

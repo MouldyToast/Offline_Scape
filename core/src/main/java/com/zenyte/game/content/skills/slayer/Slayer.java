@@ -7,8 +7,6 @@ import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.content.slayer.SlayerMaster;
 import com.near_reality.game.content.slayer.SlayerTask;
 import com.near_reality.game.world.PlayerEvent.SlayerTaskCompleted;
-import com.near_reality.tools.logging.ChallengeLog;
-import com.near_reality.tools.logging.ChallengeLogger;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -35,7 +33,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
 import mgi.types.config.enums.Enums;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.event.Level;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +47,6 @@ import java.util.function.Predicate;
  */
 @StaticInitializer
 public class Slayer {
-    private static final List<Item> SLAYER_STATUES_ITEMS = List.of(new Item(32227), new Item(32228), new Item(32229), new Item(32230));
     private static final short[] BANNED_SLOT_VARBITS = new short[] {3209, 3210, 3211, 3212, 4441, 5023};
     private static final long FULL_EXTENSION_UNLOCK_HASH;
     public static final int LUMBRIDGE_ELITE_DIARY_COMPLETED_BIT = 4538;
@@ -63,7 +59,6 @@ public class Slayer {
     private static final int STORED_TASK_INDEX_VAR = 265;
     private static final int UNLOCK_REWARDS_FIRST_VARP = 1076;
     private static final int UNLOCK_REWARDS_SECOND_VARP = 1344;
-    public static final int SLAYER_STATUES_VAR = 3811;
     private static final boolean DOUBLE_POINTS = true;
 
     static {
@@ -78,7 +73,6 @@ public class Slayer {
             FULL_EXTENSION_UNLOCK_HASH = hash;
         }
 
-        VarManager.appendPersistentVarp(SLAYER_STATUES_VAR);
     }
 
     private com.near_reality.game.content.slayer.Assignment assignment;
@@ -216,18 +210,6 @@ public class Slayer {
         if (currentPoints < pointsRequired) {
             player.sendMessage("You do not have enough Slayer Points to purchase '" + unlockName + "'.");
             return;
-        }
-        if (unlockName.equalsIgnoreCase("Slayer Statues")) {
-            if (!player.getInventory().containsItems(SLAYER_STATUES_ITEMS)) {
-                player.sendMessage("You need all 4 statue items in your inventory to purchase '" + unlockName + "'.");
-                return;
-            }
-
-            player.getVarManager().sendVar(SLAYER_STATUES_VAR, SlayerMountType.NONE.getIndex());
-            for (Item item : SLAYER_STATUES_ITEMS) {
-                player.getInventory().deleteItem(item);
-            }
-            ChallengeLogger.log(Level.INFO, () -> new ChallengeLog.SlayerStatue(player.getDbUsername()));
         }
         removeSlayerPoints(pointsRequired);
         setUnlocksHash(getUnlocksHash() | (1L << slotId));

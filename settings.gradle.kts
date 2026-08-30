@@ -81,7 +81,7 @@ include(
     ":plugins:elven",
     ":plugins:ground-items",
     ":plugins:interfaces:characterdesign",
-    ":plugins:interfaces:death",
+
     ":plugins:interfaces:slayer",
     ":plugins:interfaces:teleports",
     ":plugins:interfaces:worldswitcher",

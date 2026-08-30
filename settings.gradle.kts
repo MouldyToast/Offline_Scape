@@ -90,7 +90,7 @@ include(
     ":plugins:item:staff-of-balance",
     ":plugins:larranskey",
     ":plugins:npc:drops",
-    ":plugins:object",
+
     ":plugins:rewards",
     ":plugins:shops",
     ":plugins:spawns:custom",

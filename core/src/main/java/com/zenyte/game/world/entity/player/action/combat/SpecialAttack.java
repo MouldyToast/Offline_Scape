@@ -298,7 +298,7 @@ public enum SpecialAttack implements ISpecialAttack {
         if (weaponId == CORRUPTED_ARMADYL_GODSWORD)
             anim = CORRUPTED_JUDGEMENT_ANIM;
         player.setAnimation(anim);
-        var gfx = weaponId == CORRUPTED_ARMADYL_GODSWORD ? new Graphics(6013) : new Graphics(1211);
+        var gfx = new Graphics(1211);
         World.sendGraphics(gfx, player.getLocation());
         combat.delayHit(0, combat.getHit(player, target, 2.15F, 1.1F, 1.25F, false));
         World.sendSoundEffect(player, THE_JUDGEMENT_SOUND);

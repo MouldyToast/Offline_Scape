@@ -41,7 +41,7 @@ public interface SpecialAttackScript {
 	Projectile DUALITY_POISONOUS_PROJ = new Projectile(1629, 40, 36, 25, 21, 0, 11, 5);
 	Animation ORNAMENT_JUDGEMENT_ANIM = new Animation(7645);
 	Animation JUDGEMENT_ANIM = new Animation(7644);
-	Animation CORRUPTED_JUDGEMENT_ANIM = new Animation(12006);
+	Animation CORRUPTED_JUDGEMENT_ANIM = new Animation(10427);
 	Animation ORNAMENT_HEALING_BLADE_ANIM = new Animation(7641);
 	Animation HEALING_BLADE_ANIM = new Animation(7640);
 	Animation ORNAMENT_WARSTRIKE_ANIM = new Animation(7643);

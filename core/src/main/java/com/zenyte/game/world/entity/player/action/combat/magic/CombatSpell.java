@@ -641,11 +641,6 @@ public enum CombatSpell implements EntitySpell {
         }
     },
 
-    POLYPORE_STAFF(null, 25, 0, new Animation(1167),
-            new Graphics(1251, 0, 92), new Graphics(1253, -1, 60),
-            new SoundEffect(178, 0, 0), new SoundEffect(1460, 10, -1),
-            new Projectile(1252, 23, 15, 51, 23, 10, 64, 5)) {
-    },
 	TRIDENT_OF_THE_SWAMP(null, 23, 0, new Animation(1167),
             new Graphics(665, 0, 92), new Graphics(1042, -1, 60),
             new SoundEffect(178, 0, 0), new SoundEffect(1460, 10, -1),

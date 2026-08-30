@@ -14,7 +14,6 @@ import com.near_reality.game.content.bountyhunter.BountyHunterController;
 import com.near_reality.game.content.bountyhunter.WildyExtKt;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.content.middleman.MiddleManManager;
 import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.near_reality.game.item.CustomItemId;
@@ -2947,8 +2946,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (isNulled() || immune) {
             return;
         }
-        if (hit.getHitType() == HitType.VENOM && SlayerHelmetEffects.INSTANCE.araxyteHelmet(this, true))
-            return;
         super.applyHit(hit);
         interfaceHandler.closeInterfaces(true);
         if (worldMap.isVisible() && worldMap.isFullScreen()) {

@@ -3,7 +3,6 @@ package com.zenyte.game.world.entity.player.action.combat;
 import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
@@ -389,7 +388,6 @@ public class MagicCombat extends PlayerCombat {
 
         boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isCombatDummy(target);
         situationalModifier *= determineSlayerHelmetDamageBoost(hasTask, HitType.MAGIC, player, target);
-        situationalModifier = SlayerHelmetEffects.INSTANCE.rollBonusDamage(player, target, situationalModifier);
 
         if (target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc)) {
             situationalModifier *= 1.1F;
@@ -616,18 +614,15 @@ public class MagicCombat extends PlayerCombat {
                 player.getChargesManager().removeCharges(shield, 1, player.getEquipment().getContainer(), EquipmentSlot.SHIELD.getSlot());
             }
         }
-        boolean saveRuneOrCharge = SlayerHelmetEffects.INSTANCE.redHelmet(player, target) && Utils.random(100) < 25;
         final int delay = fireProjectile();
         hit(delay);
         if (area instanceof PlayerCombatPlugin) {
             ((PlayerCombatPlugin) area).onAttack(player, target, "Magic", spell, splash);
         }
         addBaseXP();
-        if (!saveRuneOrCharge) {
-            degrade();
-        }
+        degrade();
         animate();
-        if (!(player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KODAI_WAND && Utils.random(100) < 15) && !saveRuneOrCharge) {
+        if (!(player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KODAI_WAND && Utils.random(100) < 15)) {
             state.remove();
         }
         if (spell.equals(CombatSpell.ICE_BARRAGE)) {

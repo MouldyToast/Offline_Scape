@@ -4,7 +4,6 @@ import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalDegradeable;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
 import com.near_reality.game.model.item.degrading.Degradeable;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -99,10 +98,6 @@ public final class ChargesManager {
                     player.sendFilteredMessage("Your Elven Signet prevents your weapon from losing a charge.");
                     continue;
                 }
-            }
-            if(deg.getType() == DegradeType.OUTGOING_HIT || deg.getType() == DegradeType.SPELL) {
-                if(SlayerHelmetEffects.INSTANCE.shouldNotDegrade(player))
-                    continue;
             }
             final ItemPlugin chargesPlugin = ItemPlugin.getPlugin(itemId);
             final ContainerType containerType = container.getType();

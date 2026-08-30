@@ -5,17 +5,11 @@ import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.zenyte.game.world.entity.player.action.combat.ranged.MorriganBHWeaponsCombat;
 import com.near_reality.game.content.combat.CombatUtility;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
-import com.near_reality.game.content.custom.GodBow;
-import com.near_reality.game.content.custom.LavaWhipCombat;
-import com.near_reality.game.content.custom.PolyporeStaff;
-import com.near_reality.game.content.custom.SlayerHelmetEffects;
-import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.world.entity.CombatCooldownKt;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
-import com.zenyte.game.content.custom.LimeWhipCombat;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.content.skills.magic.spells.MagicSpell;
 import com.zenyte.game.content.skills.magic.spells.arceuus.GreaterCorruptionKt;
@@ -54,7 +48,6 @@ import com.zenyte.game.world.entity.player.variables.TickVariable;
 import com.zenyte.game.world.region.CharacterLoop;
 import com.zenyte.game.world.region.GlobalAreaManager;
 import com.zenyte.game.world.region.RegionArea;
-import com.zenyte.game.world.region.area.CatacombsOfKourend;
 import com.zenyte.game.world.region.area.apeatoll.Greegree;
 import com.zenyte.game.world.region.area.plugins.EntityAttackPlugin;
 import com.zenyte.game.world.region.area.plugins.HitProcessPlugin;
@@ -106,7 +99,6 @@ public abstract class PlayerCombat extends Action {
             CrystalTool.Harpoon.INSTANCE.getProductItemId(),
             CrystalTool.Axe.INSTANCE.getProductItemId(),
             CrystalTool.Pickaxe.INSTANCE.getProductItemId(),
-            PolyporeStaff.INSTANCE.getItemId(),
             32161,
             ItemID.KERIS_PARTISAN_OF_THE_SUN
     );
@@ -352,9 +344,6 @@ public abstract class PlayerCombat extends Action {
             return;
         } else if (spell == CombatSpell.WARPED_SCEPTRE) {
             player.getActionManager().setAction(new WarpedSceptreCombat(entity, spell, castType));
-            return;
-        } else if (spell == CombatSpell.POLYPORE_STAFF) {
-            player.getActionManager().setAction(new PolyporeStaffCombat(entity, spell, castType));
             return;
         }else if (spell == CombatSpell.SANGUINESTI_STAFF) {
             player.getActionManager().setAction(new SanguinestiStaffCombat(entity, spell, castType));
@@ -617,10 +606,7 @@ public abstract class PlayerCombat extends Action {
         } else if (weaponId == ItemId.WARPED_SCEPTRE) {
             magicAttack(player, entity, CombatSpell.WARPED_SCEPTRE, true);
             return;
-        } else if(weaponId == CustomItemId.POLYPORE_STAFF) {
-            magicAttack(player, entity, CombatSpell.POLYPORE_STAFF, true);
-            return;
-        }else if (weaponId == ItemId.THAMMARONS_SCEPTRE || weaponId == ItemId.THAMMARONS_SCEPTRE_U) {
+        } else if (weaponId == ItemId.THAMMARONS_SCEPTRE || weaponId == ItemId.THAMMARONS_SCEPTRE_U) {
             magicAttack(player, entity, CombatSpell.THAMMARONS_SCEPTRE, true);
             return;
         } else if (weaponId == 27662 || weaponId == 27665) {
@@ -659,14 +645,6 @@ public abstract class PlayerCombat extends Action {
             player.getActionManager().setAction(new DarkBowRangedCombat(entity));
         } else if (weaponId == ItemId.RED_CHINCHOMPA_10034 || weaponId == ItemId.BLACK_CHINCHOMPA || weaponId == ItemId.CHINCHOMPA_10033) {
             player.getActionManager().setAction(new ChinchompaRangedCombat(entity));
-        } else if (weaponId == CustomItemId.BANDOS_BOW) {
-            player.getActionManager().setAction(GodBow.Bandos.INSTANCE.createCombat(entity));
-        } else if (weaponId == CustomItemId.SARADOMIN_BOW) {
-            player.getActionManager().setAction(GodBow.Saradomin.INSTANCE.createCombat(entity));
-        } else if (weaponId == CustomItemId.ZAMORAK_BOW) {
-            player.getActionManager().setAction(GodBow.Zamorak.INSTANCE.createCombat(entity));
-        } else if (weaponId == CustomItemId.ARMADYL_BOW) {
-            player.getActionManager().setAction(GodBow.Armadyl.INSTANCE.createCombat(entity));
         } else if (isRangedWeapon(weaponId, weaponName)) {
             player.getActionManager().setAction(new RangedCombat(entity));
         } else if (weaponName.equals("granite maul")) {
@@ -689,8 +667,6 @@ public abstract class PlayerCombat extends Action {
         }
         else if (weaponId == ItemId.SOULREAPER_AXE_28338)
             player.getActionManager().setAction(new SoulreaperCombat(entity));
-        else if (weaponId == CustomItemId.LIME_WHIP || weaponId == 33060)   player.getActionManager().setAction(new LimeWhipCombat(entity));
-        else if (weaponId == CustomItemId.LAVA_WHIP)  player.getActionManager().setAction(new LavaWhipCombat(entity));
         else if (weaponId == ItemId.URSINE_CHAINMACE_27660)   player.getActionManager().setAction(new UrsineChainmaceCombat(entity));
         else if (weaponId == ItemId.VIGGORAS_CHAINMACE) player.getActionManager().setAction(new ViggoraChainmaceCombat(entity));
         else if (weaponId == ItemId.BLISTERWOOD_FLAIL)    player.getActionManager().setAction(new BlisterwoodFlailCombat(entity));
@@ -918,26 +894,19 @@ public abstract class PlayerCombat extends Action {
 
         final Map<Object, Object> temporaryAttributes = player.getTemporaryAttributes();
 
-        final boolean lavaWhipTrigger = temporaryAttributes.get(LavaWhipCombat.ATTRIBUTE_KEY) == Boolean.TRUE;
         final boolean dfsTrigger = (temporaryAttributes.get("dragonfireBurst") == Boolean.TRUE);
 
-        if (!lavaWhipTrigger && !dfsTrigger)
+        if (!dfsTrigger)
             return false;
 
-        if (lavaWhipTrigger && !player.getEquipment().containsItem(CustomItemId.LAVA_WHIP))
+        if (!ArrayUtils.contains(DragonfireShield.DRAGONFIRE_SHIELDS,
+                player.getEquipment().getId(EquipmentSlot.SHIELD)))
             return false;
 
-        if (dfsTrigger) {
-
-            if (!ArrayUtils.contains(DragonfireShield.DRAGONFIRE_SHIELDS,
-                    player.getEquipment().getId(EquipmentSlot.SHIELD)))
-                return false;
-
-            if (isPossible) {
-                temporaryAttributes.remove("dragonfireBurst");
-                player.sendMessage("Your shield hasn't finished recharging yet.");
-                return false;
-            }
+        if (isPossible) {
+            temporaryAttributes.remove("dragonfireBurst");
+            player.sendMessage("Your shield hasn't finished recharging yet.");
+            return false;
         }
 
         if (!Utils.isOnRange(player.getX(), player.getY(), player.getSize(), target.getX(), target.getY(),
@@ -948,10 +917,7 @@ public abstract class PlayerCombat extends Action {
             return true;
 
         final boolean wyvernVariant;
-        if (lavaWhipTrigger) {
-            temporaryAttributes.remove(LavaWhipCombat.ATTRIBUTE_KEY);
-            wyvernVariant = false;
-        } else {
+        {
             final Item shield = player.getEquipment().getItem(EquipmentSlot.SHIELD);
             temporaryAttributes.put("dragonfireBurstDelay", Utils.currentTimeMillis() + 60000);
             player.getChargesManager().removeCharges(shield, 1, player.getEquipment().getContainer(),
@@ -1215,15 +1181,6 @@ public abstract class PlayerCombat extends Action {
             }
 
             if (target instanceof final NPC npc) {
-                if(player.getVariables().getTime(TickVariable.CRIMSON_LIGHTNING_TIMER) > 0) {
-                    if(lastProjectileIndex == 0) {
-                        World.sendProjectile(player.getMiddleLocation(), npc.getMiddleLocation(), new Projectile(2181, 32, 22, 0, 1, 90, 0, 0));
-                    }
-                    lastProjectileIndex++;
-                    if(lastProjectileIndex == 3)
-                        lastProjectileIndex = 0;
-                    npc.applyBlight();
-                }
                 final int cap = npc.getDamageCap();
                 if (cap >= 0 && hit.getDamage() > cap) {
                     hit.setDamage(cap);
@@ -1427,8 +1384,7 @@ public abstract class PlayerCombat extends Action {
 
         switch (weapon.getId()) {
             case ItemId.ABYSSAL_TENTACLE:
-            case 26484:
-            case ItemId.LIME_WHIP: {
+            case 26484: {
                 return true;
             }
         }
@@ -1471,60 +1427,12 @@ public abstract class PlayerCombat extends Action {
         return 0.0F;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     public double determineSlayerHelmetAccuracyBoost(boolean hasTask, HitType type, Player player, Entity target) {
         if (target instanceof Player)
             return 1.0F;
-        var helmEffect = SlayerHelmetEffects.INSTANCE;
-        var checkImbued = type != HitType.MELEE;
-
-        double baseMultiplier = helmEffect.transformAccuracy(player, target, 1.0F);
-
-        if (slayerHelmOrStatue(player) && player.hasBoon(SlayersSpite.class))
-            baseMultiplier += 0.05F;
-
-        if (helmEffect.twistedHelmet(player, checkImbued) && player.getArea() != null && player.getArea().isRaidArea())
-            baseMultiplier *= 1.1F;
-
-        if (!hasTask)
-            return baseMultiplier;
-
-        if (!checkImbued && slayerHelmOrStatue(player))
-            baseMultiplier *= 1.13F;
-        else if (checkImbued && slayerHelmIOrStatue(player))
-            baseMultiplier *= 1.15F;
-
-        if (helmEffect.purpleHelmetNoAssignment(player, checkImbued) && CatacombsOfKourend.polygon.contains(target.getLocation()))
-            return baseMultiplier * 1.30F;
-        else if (helmEffect.turquoiseHelmetNoAssignment(player, checkImbued) && CombatUtilities.SALVE_AFFECTED_NPCS.contains(name))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.hydraHelmetNoAssignment(player, checkImbued) && CombatUtilities.isHydra(target))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.wearsTzkalSlayerHelmet(player, checkImbued) && CombatUtilities.isTzhaar(target))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.wearsVampiricSlayerHelmet(player, checkImbued) && CombatUtilities.isVampyric(target))
-            return baseMultiplier * 1.15F;
-        else if (helmEffect.wearsTztokSlayerHelmet(player, checkImbued) && CombatUtilities.isTzhaar(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.blackHelmetNoAssignment(player, checkImbued) && CombatUtilities.isDraconic(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.greenHelmetNoAssignment(player, checkImbued) && CombatUtilities.isKerisAffected(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.redHelmetNoAssignment(player, checkImbued) && CombatUtilities.isDemon(target))
-            return baseMultiplier * 1.10F;
-        return 1.0F;
-    }
-
-    @SuppressWarnings("DuplicatedCode")
-    public double determineSlayerHelmetDamageBoost(boolean hasTask, HitType type, Player player, Entity target) {
-        if(target instanceof Player)
-            return 1.0F;
-        var helmEffect = SlayerHelmetEffects.INSTANCE;
         var checkImbued = type != HitType.MELEE;
 
         double baseMultiplier = 1.0F;
-        if (helmEffect.twistedHelmet(player, checkImbued) && player.getArea() != null && player.getArea().isRaidArea())
-            baseMultiplier *= 1.1F;
 
         if (slayerHelmOrStatue(player) && player.hasBoon(SlayersSpite.class))
             baseMultiplier += 0.05F;
@@ -1537,24 +1445,27 @@ public abstract class PlayerCombat extends Action {
         else if (checkImbued && slayerHelmIOrStatue(player))
             baseMultiplier *= 1.15F;
 
-        if (helmEffect.purpleHelmetNoAssignment(player, checkImbued) && CatacombsOfKourend.polygon.contains(target.getLocation()))
-            return baseMultiplier * 1.30F;
-        else if (helmEffect.turquoiseHelmetNoAssignment(player, checkImbued) && CombatUtilities.SALVE_AFFECTED_NPCS.contains(name))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.hydraHelmetNoAssignment(player, checkImbued) && CombatUtilities.isHydra(target))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.wearsTzkalSlayerHelmet(player, checkImbued) && CombatUtilities.isTzhaar(target))
-            return baseMultiplier * 1.20F;
-        else if (helmEffect.wearsVampiricSlayerHelmet(player, checkImbued) && CombatUtilities.isVampyric(target))
-            return baseMultiplier * 1.15F;
-        else if (helmEffect.wearsTztokSlayerHelmet(player, checkImbued) && CombatUtilities.isTzhaar(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.blackHelmetNoAssignment(player, checkImbued) && CombatUtilities.isDraconic(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.greenHelmetNoAssignment(player, checkImbued) && CombatUtilities.isKerisAffected(target))
-            return baseMultiplier * 1.10F;
-        else if (helmEffect.redHelmetNoAssignment(player, checkImbued) && CombatUtilities.isDemon(target))
-            return baseMultiplier * 1.10F;
+        return baseMultiplier;
+    }
+
+    public double determineSlayerHelmetDamageBoost(boolean hasTask, HitType type, Player player, Entity target) {
+        if(target instanceof Player)
+            return 1.0F;
+        var checkImbued = type != HitType.MELEE;
+
+        double baseMultiplier = 1.0F;
+
+        if (slayerHelmOrStatue(player) && player.hasBoon(SlayersSpite.class))
+            baseMultiplier += 0.05F;
+
+        if (!hasTask)
+            return baseMultiplier;
+
+        if (!checkImbued && slayerHelmOrStatue(player))
+            baseMultiplier *= 1.13F;
+        else if (checkImbued && slayerHelmIOrStatue(player))
+            baseMultiplier *= 1.15F;
+
         return baseMultiplier;
     }
 

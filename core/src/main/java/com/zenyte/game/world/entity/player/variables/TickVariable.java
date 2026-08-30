@@ -305,20 +305,7 @@ public enum TickVariable {
             return;
         }
         SoulreaperCombat.handleTimer(p);
-    }),
-
-    CRIMSON_LIGHTNING_TIMER((p, tick) -> {
-        if(tick == 0) {
-            p.sendMessage(Colour.RS_RED.wrap("The Crimson Lightning is no longer effecting monsters you attack."));
-        }
-    }),
-
-    DAEMONHEIM_EXPLOSIVE_COOLDOWN((p, tick) -> {
-        if(tick == 0) {
-            p.sendMessage("You are now able to fire another Daemonheim explosive.");
-        }
     })
-
 
     ;
 

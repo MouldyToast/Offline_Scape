@@ -49,7 +49,6 @@ class IceStrykewyrmsDroptable : NPCDropTableScript() {
                 RUNE_KITESHIELD quantity 1.noted rarity 28
 
                 STAFF_OF_LIGHT quantity 1 rarity 8
-                CHAOTIC_STAFF quantity 1 rarity 2 announce everywhere
                 FARSEER_KITESHIELD quantity 1 rarity 2 announce everywhere
             }
             Tertiary {

@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
-import com.near_reality.game.content.custom.GodBow;
+
 import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.item.ItemId;
@@ -486,10 +486,6 @@ public enum AmmunitionDefinitions implements AmmunitionDefinition {
                 }
             }
         }
-        definitions.put(GodBow.Saradomin.INSTANCE.getItemId(), GodBow.Saradomin.INSTANCE);
-        definitions.put(GodBow.Bandos.INSTANCE.getItemId(), GodBow.Bandos.INSTANCE);
-        definitions.put(GodBow.Zamorak.INSTANCE.getItemId(), GodBow.Zamorak.INSTANCE);
-        definitions.put(GodBow.Armadyl.INSTANCE.getItemId(), GodBow.Armadyl.INSTANCE);
     }
 
     private final int[] itemIds;

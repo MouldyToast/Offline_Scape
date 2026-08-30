@@ -3,7 +3,7 @@ package com.zenyte.game.model.item.degradableitems;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
-import com.near_reality.game.content.custom.PolyporeStaff;
+
 import com.near_reality.game.model.item.degrading.Degradeable;
 import com.zenyte.game.content.tombsofamascut.TOAConstants;
 import com.zenyte.game.item.Item;
@@ -342,7 +342,6 @@ public enum DegradableItem implements Degradeable {
         register(CrystalArmour.Body.INSTANCE);
         register(CrystalArmour.Helm.INSTANCE);
         register(CrystalArmour.Legs.INSTANCE);
-        register(PolyporeStaff.INSTANCE);
     }
 
     static void register(Degradeable value) {

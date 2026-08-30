@@ -195,8 +195,6 @@ public class RemnantValueManager {
         values.add(gen(1000,
                 VENGEFUL_KITESHIELD,
                 MERCILESS_KITESHIELD,
-                CHAOTIC_CROSSBOW,
-                CHAOTIC_STAFF,
                 SKULL_OF_VETION,
                 FANGS_OF_VENENATIS,
                 CLAWS_OF_CALLISTO,
@@ -326,8 +324,7 @@ public class RemnantValueManager {
                 BLACK_SANTA_HAT,
                 INVERTED_SANTA_HAT,
                 BLACK_HWEEN_MASK,
-                HYDRA_LEATHER,
-                LIME_WHIP
+                HYDRA_LEATHER
         ));
         values.add(gen(3250,
                 PINK_HWEEN_MASK,
@@ -356,7 +353,6 @@ public class RemnantValueManager {
         values.add(gen(5000,
                 NEAR_REALITY_PARTY_HAT,
                 GHOSTLY_PARTYHAT,
-                POLYPORE_STAFF,
                 ELIDINIS_WARD
         ));
         values.add(gen(5500,

@@ -9,6 +9,7 @@ import com.zenyte.game.util.Direction.*
 class Region9781 : NPCSpawnsScript() {
 
     init {
+        NIEVE(2432, 3423, 0, SOUTH, 0)
         490(2432, 3423, 0, EAST, 0)
         GNOME_WOMAN(2434, 3436, 0, SOUTH, 5)
         TERRORBIRD(2436, 3434, 0, SOUTH, 9)

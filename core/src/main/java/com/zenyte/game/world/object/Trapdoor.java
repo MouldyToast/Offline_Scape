@@ -13,7 +13,7 @@ import mgi.utilities.CollectionUtils;
 
 public enum Trapdoor {
 
-	EDGEVILLE_TRAPDOOR(1581, 1579, tile(3100, 3487, 0), tile(3096, 9867, 0)),
+	EDGEVILLE_TRAPDOOR(1581, 1579, tile(3097, 3468, 0), tile(3096, 9867, 0)),
 	DRAYNOR_TRAPDOOR_A(6435, 6434, tile(3084, 3272, 0), tile(3084, 9673, 0)),
     DRAYNOR_TRAPDOOR_B(6435, 6434, tile(3118, 3244, 0), tile(3118, 9644, 0)),
 	ROGUES_DEN_TRAPDOOR(7257, -1, tile(2905, 3537, 0), tile(3061, 4985, 1)),

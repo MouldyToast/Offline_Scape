@@ -74,14 +74,12 @@ include(
 
 include(
     ":plugins:area:ferox_enclave",
-    ":plugins:area:osnr_home:npc",
-    ":plugins:area:osnr_home:obj",
-    ":plugins:area:osnr_home",
+
     ":plugins:boss:zalcano",
     ":plugins:elven",
     ":plugins:ground-items",
     ":plugins:interfaces:characterdesign",
-    ":plugins:interfaces:death",
+
     ":plugins:interfaces:slayer",
     ":plugins:interfaces:teleports",
     ":plugins:interfaces:worldswitcher",
@@ -90,7 +88,7 @@ include(
     ":plugins:item:staff-of-balance",
     ":plugins:larranskey",
     ":plugins:npc:drops",
-    ":plugins:object",
+
     ":plugins:rewards",
     ":plugins:shops",
     ":plugins:spawns:custom",

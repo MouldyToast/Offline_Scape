@@ -13,7 +13,6 @@ import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.content.skills.magic.spells.MagicSpell;
 import com.zenyte.game.content.skills.magic.spells.arceuus.GreaterCorruptionKt;
-import com.zenyte.game.content.skills.slayer.SlayerMountType;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -162,10 +161,6 @@ public abstract class PlayerCombat extends Action {
     }
 
     public static boolean slayerHelmIOrStatue(Player player) {
-        if (SlayerMountType.hasHelmMounted(player)) {
-            return true;
-        }
-
         final Item helm = player.getEquipment().getItem(EquipmentSlot.HELMET);
         if (helm == null) {
             return false;
@@ -176,10 +171,6 @@ public abstract class PlayerCombat extends Action {
     }
 
     public static boolean slayerHelmOrStatue(Player player) {
-        if (SlayerMountType.hasHelmMounted(player)) {
-            return true;
-        }
-
         final Item helm = player.getEquipment().getItem(EquipmentSlot.HELMET);
         if (helm == null) {
             return false;

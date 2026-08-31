@@ -22,8 +22,6 @@ public class ClanWarsFFAArea extends PolygonRegionArea implements RandomEventRes
     @Subscribe
     public static void onServerLaunched(ServerLaunchEvent event) {
         World.spawnObject(new WorldObject(ObjectId.BANK_CHEST, 10, 0, new Location(3326, 4753)));
-        World.spawnObject(new WorldObject(50081, 10, 0, new Location( 3324, 4754)));
-        World.spawnObject(new WorldObject(24911, 10, 0, new Location( 3331, 4754)));
     }
 
     @Override

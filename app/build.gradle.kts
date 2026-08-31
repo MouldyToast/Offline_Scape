@@ -20,14 +20,12 @@ dependencies {
     runtimeOnly(projects.coreRestricted)
 
     runtimeOnly(projects.plugins.area.feroxEnclave)
-    runtimeOnly(projects.plugins.area.osnrHome.npc)
-    runtimeOnly(projects.plugins.area.osnrHome.obj)
-    runtimeOnly(projects.plugins.area.osnrHome)
+
     runtimeOnly(projects.plugins.boss.zalcano)
     runtimeOnly(projects.plugins.elven)
     runtimeOnly(projects.plugins.groundItems)
     runtimeOnly(projects.plugins.interfaces.characterdesign)
-    runtimeOnly(projects.plugins.interfaces.death)
+
     runtimeOnly(projects.plugins.interfaces.slayer)
     runtimeOnly(projects.plugins.interfaces.teleports)
     runtimeOnly(projects.plugins.interfaces.worldswitcher)
@@ -36,7 +34,7 @@ dependencies {
     runtimeOnly(projects.plugins.item.staffOfBalance)
     runtimeOnly(projects.plugins.larranskey)
     runtimeOnly(projects.plugins.npc.drops)
-    runtimeOnly(projects.plugins.`object`)
+
     runtimeOnly(projects.plugins.rewards)
     runtimeOnly(projects.plugins.shops)
     runtimeOnly(projects.plugins.spawns.custom)

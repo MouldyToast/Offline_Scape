@@ -7,7 +7,6 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.object.WorldObject;
 
-import static com.near_reality.game.item.CustomObjectId.MINI_REJUVENATION_POOL;
 import static com.zenyte.game.world.object.ObjectId.*;
 
 /**
@@ -32,8 +31,6 @@ public final class Pool implements ObjectInteraction {
                 drink(player, 2);
             else if (id == POOL_SPACE)
                 drink(player, 3);
-            else if (id == MINI_REJUVENATION_POOL)
-                drink(player, 4);
         }
     }
 

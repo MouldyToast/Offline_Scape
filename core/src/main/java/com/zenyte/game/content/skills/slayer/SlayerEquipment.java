@@ -15,13 +15,13 @@ import java.util.function.BiPredicate;
 public enum SlayerEquipment {
     SLAYER_HELM(EquipmentSlot.HELMET, (item, player) -> item.getName().toLowerCase().contains("slayer helm")),
     EARMUFFS(EquipmentSlot.HELMET, (item, player) -> item.getId() == 4166 || item.getName().toLowerCase().contains("slayer " +
-            "helm") || SlayerMountType.hasHelmMounted(player)),
+            "helm")),
     NOSE_PEG(EquipmentSlot.HELMET, (item, player) -> item.getId() == 4168 || item.getName().toLowerCase().contains("slayer " +
-            "helm") || SlayerMountType.hasHelmMounted(player)),
+            "helm")),
     FACE_MASK(EquipmentSlot.HELMET, (item, player) -> item.getId() == 4164 || item.getName().toLowerCase().contains("slayer " +
-            "helm") || SlayerMountType.hasHelmMounted(player)),
+            "helm")),
     SPINY_HELMET(EquipmentSlot.HELMET, (item, player) -> item.getId() == 4551 || item.getName().toLowerCase().contains("slayer " +
-            "helm") || SlayerMountType.hasHelmMounted(player)),
+            "helm")),
     MIRROR_SHIELD(EquipmentSlot.SHIELD, (item, player) -> item.getId() == ItemId.MIRROR_SHIELD || item.getId() == ItemId.VS_SHIELD_24266),
     LIT_BUG_LANTERN(EquipmentSlot.SHIELD, (item, player) -> item.getId() == 7053),
     WITCHWOOD_ICON(EquipmentSlot.AMULET, (item, player) -> item.getId() == 8923),

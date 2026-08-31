@@ -104,5 +104,6 @@ class Region10553 : NPCSpawnsScript() {
         MORD_GUNNARS(2644, 3709, 0, EAST, 0)
         MARIA_GUNNARS_1883(2644, 3710, 0, SOUTH, 0)
         BIGREDJAPAN(2656, 3676, 3, SOUTH, 5)
+        SIGMUND_THE_MERCHANT(2639, 3681, 0, SOUTH, 0)
     }
 }

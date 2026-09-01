@@ -18,24 +18,32 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
 /**
  * Manticore combat script for the Fortis Colosseum (NPC 12818).
  * <p>
- * Attack sequence (10-tick cycle):
- * 1. Charge phase: plays seq 10868 + shows 3 charge spotanims in slots 1/2/3
- * 2. Throw phase (1 tick later): plays seq 10869 + fires 3 projectiles
- * 3. Each orb hits independently with its own attack style
+ * 10-tick attack cycle (RSProx-verified, rsprox-1197-rev237):
+ * <pre>
+ *   +0  triple_charge anim (10868) — no orbs yet
+ *   +1  slot 1 orb appears (height 300)
+ *   +2  slot 2 orb appears (height 400)
+ *   +3  slot 3 orb appears (height 500, always melee)
+ *   +4  hold
+ *   +5  hold
+ *   +6  triple_throw anim (10869), slot 1 cleared, first projectile fires
+ *   +7  slot 2 cleared, second projectile fires
+ *   +8  slot 3 cleared, third projectile fires
+ *   +10 next charge starts
+ * </pre>
  * <p>
- * Orb pattern (RSProx-verified):
- * - Slot 1 + Slot 2: magic-ranged or ranged-magic (random)
- * - Slot 3: ALWAYS melee
+ * Orb pattern: slots 1+2 are magic/ranged in random order, slot 3 is always melee.
  * <p>
- * Charge spotanim IDs (shown on NPC during wind-up):
- * - 2681 = magic charge (height 300 at slot 1, 400 at slot 2)
- * - 2683 = ranged charge (height 300 at slot 1, 400 at slot 2)
- * - 2685 = melee charge (always height 500 at slot 3)
+ * Spotanim IDs (same IDs used for both the NPC charge orbs and the fired projectiles):
+ * - 2681 = magic,  2683 = ranged,  2685 = melee
  * <p>
- * Projectile spotanim IDs (fired at player):
- * - 2663 = magic projectile
- * - 2662 = ranged projectile
- * - 2664 = melee projectile
+ * Impact spotanim IDs (played on the player when an orb hits):
+ * - 2682 = magic impact,  2684 = ranged impact,  2686 = melee impact
+ * <p>
+ * Animation names (from decoded RSProx, correcting earlier binary analysis):
+ * - 10866 = death,  10867 = death_explode (Volatility modifier, NOT a combat anim)
+ * - 10868 = triple_charge,  10869 = triple_throw
+ * - 10870 = spawn_01,  10871 = spawn_02 (no flinch or block anim exists)
  */
 public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
 
@@ -43,6 +51,9 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
     private static final Animation THROW_ANIM = new Animation(10869);
     private static final Animation SPAWN_ANIM = new Animation(10871);
     private static final Animation DEATH_ANIM = new Animation(10866);
+
+    // Track the active attack task so a new attack() cancels any stale one.
+    private WorldTask activeTask;
 
     // Charge spotanims (shown on NPC body during wind-up)
     private static final int CHARGE_MAGIC = 2681;
@@ -80,66 +91,124 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
         final int slot1Charge = magicFirst ? CHARGE_MAGIC : CHARGE_RANGED;
         final int slot2Charge = magicFirst ? CHARGE_RANGED : CHARGE_MAGIC;
 
-        // Phase 1: Charge — show wind-up animation + 3 charge spotanims on NPC
-        setAnimation(CHARGE_ANIM);
-        final var avatar = getAvatar();
-        if (avatar != null) {
-            avatar.getExtendedInfo().setSpotAnim(1, slot1Charge, 0, SLOT_1_HEIGHT);
-            avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
-            avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
+        // If still holding charged orbs waiting for LOS, don't restart the cycle.
+        if (activeTask != null) {
+            return 1;
         }
 
-        // Phase 2: Throw — fire one projectile per tick, 3 ticks total
-        WorldTasksManager.schedule(new WorldTask() {
+        // Tick +0: Charge animation only — no orbs yet.
+        setAnimation(CHARGE_ANIM);
+        final var avatar = getAvatar();
+
+        // Kill any stale task from a previous attack cycle before starting a new one.
+        if (activeTask != null) {
+            activeTask.stop();
+            activeTask = null;
+        }
+
+        // Ticks +1 through +8: orb reveal → hold → throw → fire projectiles.
+        // RSProx-verified timing (rsprox-1197-rev237):
+        //   +1  slot 1 orb appears
+        //   +2  slot 2 orb appears
+        //   +3  slot 3 orb (melee) appears
+        //   +4  hold (all three visible)
+        //   +5  hold
+        //   +6  throw anim, clear slot 1, fire projectile 1
+        //   +7  clear slot 2, fire projectile 2
+        //   +8  clear slot 3, fire projectile 3
+        activeTask = new WorldTask() {
             int tick = 0;
+            int throwTick = -1;
 
             @Override
             public void run() {
                 if (isDead() || isFinished() || target.isDead() || target.isFinished()) {
+                    if (avatar != null) {
+                        avatar.getExtendedInfo().setSpotAnim(1, -1, 0, 0);
+                        avatar.getExtendedInfo().setSpotAnim(2, -1, 0, 0);
+                        avatar.getExtendedInfo().setSpotAnim(3, -1, 0, 0);
+                    }
+                    activeTask = null;
                     stop();
                     return;
                 }
 
-                if (tick == 0) {
-                    setAnimation(THROW_ANIM);
+                // === Throw phase (once LOS triggered it) ===
+                if (throwTick >= 0) {
+                    switch (throwTick) {
+                        case 0: { // Throw — clear slot 1, re-assert slots 2+3, fire first projectile
+                            setAnimation(THROW_ANIM);
+                            if (avatar != null) {
+                                avatar.getExtendedInfo().setSpotAnim(1, -1, 0, 0);
+                                avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
+                                avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
+                            }
+                            final Projectile proj1 = magicFirst ? SLOT1_MAGIC_PROJ : SLOT1_RANGED_PROJ;
+                            final int delay1 = World.sendProjectile(ManticoreCombat.this, target, proj1);
+                            final Hit hit1 = magicFirst
+                                    ? magic(target, combatDefinitions.getMaxHit())
+                                    : ranged(target, combatDefinitions.getMaxHit());
+                            delayHit(delay1, target, hit1);
+                            break;
+                        }
+                        case 1: { // Clear slot 2, re-assert slot 3, fire second projectile
+                            if (avatar != null) {
+                                avatar.getExtendedInfo().setSpotAnim(2, -1, 0, 0);
+                                avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
+                            }
+                            final Projectile proj2 = magicFirst ? SLOT2_RANGED_PROJ : SLOT2_MAGIC_PROJ;
+                            final int delay2 = World.sendProjectile(ManticoreCombat.this, target, proj2);
+                            final Hit hit2 = magicFirst
+                                    ? ranged(target, combatDefinitions.getMaxHit())
+                                    : magic(target, combatDefinitions.getMaxHit());
+                            delayHit(delay2, target, hit2);
+                            break;
+                        }
+                        case 2: { // Clear slot 3 (melee), fire third projectile
+                            if (avatar != null) {
+                                avatar.getExtendedInfo().setSpotAnim(3, -1, 0, 0);
+                            }
+                            final int delay3 = World.sendProjectile(ManticoreCombat.this, target, SLOT3_MELEE_PROJ);
+                            final Hit hit3 = melee(target, combatDefinitions.getMaxHit());
+                            delayHit(delay3, target, hit3);
+                            activeTask = null;
+                            stop();
+                            break;
+                        }
+                    }
+                    throwTick++;
+                    return;
+                }
 
-                    // Fire slot 1 — clear it, but re-assert slots 2+3 so they stay visible
-                    if (avatar != null) {
-                        avatar.getExtendedInfo().setSpotAnim(1, -1, 0, 0);
-                        avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
-                        avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
-                    }
-                    final Projectile proj1 = magicFirst ? SLOT1_MAGIC_PROJ : SLOT1_RANGED_PROJ;
-                    final int delay1 = World.sendProjectile(ManticoreCombat.this, target, proj1);
-                    final Hit hit1 = magicFirst
-                            ? magic(target, combatDefinitions.getMaxHit())
-                            : ranged(target, combatDefinitions.getMaxHit());
-                    delayHit(delay1, target, hit1);
-                } else if (tick == 1) {
-                    // Fire slot 2 — clear it, re-assert slot 3
-                    if (avatar != null) {
-                        avatar.getExtendedInfo().setSpotAnim(2, -1, 0, 0);
-                        avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
-                    }
-                    final Projectile proj2 = magicFirst ? SLOT2_RANGED_PROJ : SLOT2_MAGIC_PROJ;
-                    final int delay2 = World.sendProjectile(ManticoreCombat.this, target, proj2);
-                    final Hit hit2 = magicFirst
-                            ? ranged(target, combatDefinitions.getMaxHit())
-                            : magic(target, combatDefinitions.getMaxHit());
-                    delayHit(delay2, target, hit2);
-                } else if (tick == 2) {
-                    // Fire slot 3 — clear it, all gone
-                    if (avatar != null) {
-                        avatar.getExtendedInfo().setSpotAnim(3, -1, 0, 0);
-                    }
-                    final int delay3 = World.sendProjectile(ManticoreCombat.this, target, SLOT3_MELEE_PROJ);
-                    final Hit hit3 = melee(target, combatDefinitions.getMaxHit());
-                    delayHit(delay3, target, hit3);
-                    stop();
+                // === Charge and hold phase ===
+                switch (tick) {
+                    case 0: // First orb appears
+                        if (avatar != null) {
+                            avatar.getExtendedInfo().setSpotAnim(1, slot1Charge, 0, SLOT_1_HEIGHT);
+                        }
+                        break;
+                    case 1: // Second orb appears, re-assert slot 1
+                        if (avatar != null) {
+                            avatar.getExtendedInfo().setSpotAnim(1, slot1Charge, 0, SLOT_1_HEIGHT);
+                            avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
+                        }
+                        break;
+                    default: // Tick 2+: all three orbs charged, hold until LOS
+                        if (avatar != null) {
+                            avatar.getExtendedInfo().setSpotAnim(1, slot1Charge, 0, SLOT_1_HEIGHT);
+                            avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
+                            avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);
+                        }
+                        // Minimum 2-tick hold after all orbs visible, then wait for LOS
+                        if (tick >= 4 && !isProjectileClipped(target, false)) {
+                            throwTick = 0;
+                        }
+                        break;
                 }
                 tick++;
             }
-        }, 1, 0);
+        };
+        WorldTasksManager.schedule(activeTask, 1, 0);
 
         return combatDefinitions.getAttackSpeed();
     }

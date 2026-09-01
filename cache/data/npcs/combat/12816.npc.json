@@ -6,6 +6,8 @@
   "attackDistance": 1,
   "aggressionDistance": 64,
   "maximumDistance": 64,
+  "immune_poison": true,
+  "immune_venom": true,
   "targetType": "PLAYER",
   "aggressionType": "AGGRESSIVE",
   "statDefinitions": {
@@ -17,12 +19,13 @@
   "attackDefinitions": {
     "type": "STAB",
     "maxHit": 29,
-    "animation": {"id": 400, "delay": 0}
+    "animation": {"id": 10856, "delay": 0}
   },
   "blockDefinitions": {
-    "animation": {"id": 403, "delay": 0}
+    "animation": {"id": 10857, "delay": 0}
   },
   "spawnDefinitions": {
-    "deathAnimation": {"id": 836, "delay": 0}
+    "deathAnimation": {"id": 10858, "delay": 0},
+    "spawnAnimation": {"id": 10861, "delay": 0}
   }
 }

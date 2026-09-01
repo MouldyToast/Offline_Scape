@@ -20,6 +20,7 @@
     "animation": {"id": 10821, "delay": 0}
   },
   "spawnDefinitions": {
-    "deathAnimation": {"id": 10823, "delay": 0}
+    "deathAnimation": {"id": 10823, "delay": 0},
+    "spawnAnimation": {"id": 10824, "delay": 0}
   }
 }

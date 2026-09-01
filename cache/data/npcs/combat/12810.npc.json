@@ -6,6 +6,8 @@
   "attackDistance": 1,
   "aggressionDistance": 64,
   "maximumDistance": 64,
+  "immune_poison": true,
+  "immune_venom": true,
   "targetType": "PLAYER",
   "aggressionType": "AGGRESSIVE",
   "statDefinitions": {

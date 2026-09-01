@@ -1,19 +1,29 @@
 {
   "id": 12825,
   "hitpoints": 1,
+  "attackSpeed": 4,
+  "slayerLevel": 1,
+  "attackDistance": 1,
+  "aggressionDistance": 0,
+  "maximumDistance": 0,
+  "immune_poison": true,
+  "immune_venom": true,
+  "targetType": "PLAYER",
+  "aggressionType": "PASSIVE",
   "statDefinitions": {
-    "combatStats": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    "combatStats": [1, 1, 1, 1, 1],
+    "aggressiveStats": [0, 0, 0, 0, 0],
+    "defensiveStats": [0, 0, 0, 0, 0],
+    "otherBonuses": [0, 0, 0]
+  },
+  "attackDefinitions": {
+    "type": "MAGIC",
+    "maxHit": 0,
+    "animation": {"id": 10826, "delay": 0},
+    "drawbackGraphics": {"id": 2688, "delay": 0, "height": 0}
   },
   "spawnDefinitions": {
-    "deathAnimation": {
-      "id": 10828,
-      "delay": 0
-    }
+    "deathAnimation": {"id": 10828, "delay": 0},
+    "spawnAnimation": {"id": 10829, "delay": 0}
   }
 }

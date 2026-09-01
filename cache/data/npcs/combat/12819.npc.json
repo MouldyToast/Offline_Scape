@@ -1,7 +1,7 @@
 {
   "id": 12819,
   "hitpoints": 125,
-  "attackSpeed": 6,
+  "attackSpeed": 5,
   "slayerLevel": 1,
   "attackDistance": 8,
   "aggressionDistance": 64,
@@ -19,12 +19,19 @@
   "attackDefinitions": {
     "type": "MAGIC",
     "maxHit": 56,
-    "animation": {"id": 10903, "delay": 0}
-  },
-  "blockDefinitions": {
-    "animation": {"id": 10892, "delay": 0}
+    "animation": {"id": 10903, "delay": 0},
+    "projectile": {
+      "graphicsId": 2520,
+      "startHeight": 45,
+      "endHeight": 31,
+      "delay": 51,
+      "angle": 0,
+      "duration": 5,
+      "distanceOffset": 64,
+      "multiplier": 5
+    }
   },
   "spawnDefinitions": {
-    "deathAnimation": {"id": 10894, "delay": 0}
+    "deathAnimation": {"id": 10895, "delay": 0}
   }
 }

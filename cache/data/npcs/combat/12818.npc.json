@@ -17,14 +17,12 @@
     "otherBonuses": [0, 0, 0]
   },
   "attackDefinitions": {
-    "type": "MELEE",
+    "type": "MAGIC",
     "maxHit": 36,
     "animation": {"id": 10868, "delay": 0}
   },
-  "blockDefinitions": {
-    "animation": {"id": 10869, "delay": 0}
-  },
   "spawnDefinitions": {
-    "deathAnimation": {"id": 10866, "delay": 0}
+    "deathAnimation": {"id": 10866, "delay": 0},
+    "spawnAnimation": {"id": 10871, "delay": 0}
   }
 }

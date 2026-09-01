@@ -89,20 +89,6 @@ object NearRealityCustomEnumsPacker {
             this.pack()
         }
 
-        /* Barrows */
-        EnumDefinitions.get(2110).apply {
-            var index = this.size
-            this.values[index++] = ItemId.BARROWS_WHIP
-            this.pack()
-        }
-
-        /* Chaos Elemental */
-        EnumDefinitions.get(2114).apply {
-            var index = this.size
-            this.values[index++] = ItemId.ELEMENTAL_WHIP
-            this.pack()
-        }
-
         //TOA
         EnumDefinitions.get(4805).apply {
             values.clear()
@@ -141,7 +127,6 @@ object NearRealityCustomEnumsPacker {
 
         // Ganodermic Beast
         EnumDefinitions.create(10025, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = ItemId.LIME_WHIP
             this.values[1] = ItemId.ANCIENT_EYE
             this.values[2] = ItemId.DRAGON_KITE
             this.values[3] = ItemId.PVP_MYSTERY_BOX

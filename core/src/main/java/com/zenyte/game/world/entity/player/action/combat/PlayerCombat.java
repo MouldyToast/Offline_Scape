@@ -138,7 +138,7 @@ public abstract class PlayerCombat extends Action {
     public static final Projectile ZARYTE_SPEC_PROJ = new Projectile(1995, 38, 36, 41, 7, 5, 11, 5);
     public static final Graphics BLOOD_FURY_GFX = new Graphics(1542);
     private static final String[] RANGED_WEAPONS = new String[]{"bow", "javelin", "thrownaxe", "throwing axe", "knife", "knives"
-            , "chinchompa", "hand cannon", "toktz-xil-ul", "holy water", "dart", "ballista", "blowpipe", "seercull", "mud pie"};
+            , "chinchompa", "toktz-xil-ul", "holy water", "dart", "ballista", "blowpipe", "seercull", "mud pie"};
     private static final IntSet nonRangedWeapons = new IntOpenHashSet(new int[]{ItemId.KITCHEN_KNIFE});
     private static final Animation DRAGONFIRE_SPECIAL_ANIM = new Animation(6696);
     private static final Graphics DRAGONFIRE_START_GFX = new Graphics(1165);

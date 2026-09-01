@@ -24,7 +24,6 @@ import com.near_reality.cache_tool.packing.custom.NearRealityCustomStructsPacker
 import com.near_reality.cache_tool.packing.custom.NearRealityCustomWorldMapPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import com.near_reality.cache_tool.packing.custom.NearRealityOriginsPacker;
-import com.near_reality.cache_tool.packing.custom.NearRealityOriginsWhipPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityRaidsItemDefinitions;
 import com.near_reality.cache_tool.packing.custom.NearRealityRebirthPacker;
 import com.near_reality.cache_tool.packing.custom.NearRealityReducePricesItemDefinitions;
@@ -212,7 +211,6 @@ public class TypeParser {
         packHighRevision();
         NearRealityCustomAnimationsPacker.pack();
         NearRealityOriginsPacker.pack();
-        NearRealityOriginsWhipPacker.pack();
         NearRealityRebirthPacker.pack();
         NearRealityCustomGraphicsPacker.pack();
         NearRealityCustomStructsPacker.pack();

@@ -36,7 +36,6 @@ class DiVeracDroptable : NPCDropTableScript() {
                 VERACS_BRASSARD quantity 1 rarity 2
                 VERACS_PLATESKIRT quantity 1 rarity 2
                 VERACS_FLAIL quantity 1 rarity 2
-                BARROWS_WHIP quantity 1 rarity 1
                 BOOK_OF_THE_DEAD quantity 1 rarity 1
                 TOOTH_HALF_OF_KEY quantity 1 rarity 1
                 LOOP_HALF_OF_KEY quantity 1 rarity 1

@@ -67,11 +67,6 @@ sealed class CrystalArmour(
             ItemId.BOW_OF_FAERDHINEN_C_25892,
             ItemId.BOW_OF_FAERDHINEN_C_25894,
             ItemId.BOW_OF_FAERDHINEN_C_25896,
-
-            CustomItemId.ARMADYL_BOW,
-            CustomItemId.ZAMORAK_BOW,
-            CustomItemId.SARADOMIN_BOW,
-            CustomItemId.BANDOS_BOW
         )
 
         val all by lazy {

@@ -51,7 +51,6 @@ class BarrowsDroptable : NPCDropTableScript() {
             TORAGS_PLATELEGS quantity 1 rarity 20 onlyDroppedBy TORAG_THE_CORRUPTED
             TORAGS_PLATEBODY quantity 1 rarity 20 onlyDroppedBy TORAG_THE_CORRUPTED
 
-            BARROWS_WHIP quantity 1 rarity 2
         }
     })
 

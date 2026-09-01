@@ -12,18 +12,6 @@ object NearRealityCustomSpecialAttacksPacker {
         EnumDefinitions.get(1739).apply {
             values[CustomItemId.HOLY_GREAT_WARHAMMER] = "Smash: Deal an attack that inflicts 50% more damage and lowers your target's Defence level by 30%."
             values[32161] = "Enhanced Sanctuary: In addition to a better boost in defence (15% + 2 boost), heals the player 10 hp every 2 seconds for 10 seconds for a total of 50 hp."
-            values[CustomItemId.BARROWS_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.ELEMENTAL_WHIP] = "Binding Tentacle: Equivalent to that of the Abyssal tentacle."
-            values[CustomItemId.DRAGON_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.IRON_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.STEEL_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.WHITE_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.BLACK_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.MITHRIL_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.ADAMANT_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.RUNE_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.GREEN_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
-            values[CustomItemId.PINK_WHIP] = "Energy Drain: Equivalent to that of the Abyssal whip."
             values[BARRELCHEST_ANCHOR_BH] = "Drains the target's combat levels equivalent to 10% of the damage dealt. Drains in the following order: Defence, Attack, Ranged, then Magic.";
             values[DRAGON_MACE_BH] = "Increases damage and accuracy for one hit."
             values[DRAGON_LONGSWORD_BH] = "Deals 25% more damage."
@@ -59,9 +47,6 @@ object NearRealityCustomSpecialAttacksPacker {
             values[CORRUPTED_VOLATILE_NIGHTMARE_STAFF] = values[VOLATILE_NIGHTMARE_STAFF]
             values[CustomItemId.HOLY_GREAT_WARHAMMER] = 500
             values[32161] = 500
-            values[CustomItemId.ELEMENTAL_WHIP] = 500
-            values[CustomItemId.DRAGON_WHIP] = 500
-            values[CustomItemId.BARROWS_WHIP] = 500
             values[11235] = 500
             values[12765] = 500
             values[12766] = 500

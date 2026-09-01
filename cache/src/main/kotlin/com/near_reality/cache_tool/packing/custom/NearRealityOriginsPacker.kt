@@ -610,32 +610,6 @@ object NearRealityOriginsPacker {
             defaultSkins()
         }
 
-        32881.newItem()
-            .named("Hand cannon")
-            .models(
-                inventory = "origins_handcannon_inv".model(),
-                primaryMale = "origins_handcannon_eq".model()
-            )
-            .tradable()
-            .rotateInv(539, 1805, 0)
-            .offsetInv(-13, 11)
-            .offsetEq(female = -4)
-            .weaponOps()
-            .zoom(1579)
-            .createPlaceholder(32882)
-            .packNew()
-
-        32883.newItem()
-            .named("Hand cannon shot")
-            .models(inventory = "origins_handcannon_shot_inv".model())
-            .rotateInv(188, 64, 0)
-            .weaponOps()
-            .zoom(1034)
-            .stackable()
-            .tradable()
-            .createPlaceholder(32950)
-            .packNew()
-
         32884.newItem()
             .named("Lord marshall cap")
             .models(

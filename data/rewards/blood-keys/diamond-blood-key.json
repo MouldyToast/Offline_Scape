@@ -233,11 +233,6 @@
             "maxAmount": 1
           },
           {
-            "itemId": 15241, // Hand cannon
-            "minAmount": 1,
-            "maxAmount": 1
-          },
-          {
             "itemId": 41926, // Odium ward
             "minAmount": 1,
             "maxAmount": 1

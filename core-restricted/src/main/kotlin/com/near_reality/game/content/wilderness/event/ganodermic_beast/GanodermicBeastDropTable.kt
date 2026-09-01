@@ -102,7 +102,6 @@ class GanodermicBeastDropTable : NPCDropTableScript() {
                 CustomItemId.DRAGON_KITE quantity 1 oneIn 100 announce everywhere
                 CustomItemId.POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
                 CustomItemId.ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
-                CustomItemId.LIME_WHIP quantity 1 oneIn 200 announce everywhere
                 CustomItemId.GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
             }
             Tertiary {

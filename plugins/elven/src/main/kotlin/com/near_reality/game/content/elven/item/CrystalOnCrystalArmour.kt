@@ -26,8 +26,8 @@ class CrystalOnCrystalArmour : ItemOnItemAction {
         val source = CorruptedRecolourCrystal.entries
             .find {
                 it.helmId == from.id || it.helmId == to.id ||
-                it.chestId == from.id || it.chestId == to.id ||
-                it.legId == from.id || it.legId == to.id
+                        it.chestId == from.id || it.chestId == to.id ||
+                        it.legId == from.id || it.legId == to.id
             } ?: return
 
         val crystalItem = when (target.crystalItemId) {
@@ -43,9 +43,10 @@ class CrystalOnCrystalArmour : ItemOnItemAction {
             source.legId -> target.legId
             else -> error("Invalid crystal weapon item id for $source")
         }
-        val amourName = oldArmourItem.name
+        val armourName = oldArmourItem.name
+        val crystalItemId = target.crystalItemId
         player.dialogue {
-            options("Are you sure you wish to recolour your $amourName?") {
+            options("Are you sure you wish to recolour your $armourName?") {
                 "Yes" {
                     val slot = if (oldArmourItem == from) fromSlot else toSlot
                     val itemAtSlot = player.inventory.getItem(slot)
@@ -57,8 +58,8 @@ class CrystalOnCrystalArmour : ItemOnItemAction {
                         player.dialogue {
                             doubleItem(
                                 newArmourItem,
-                                target.crystalItemId,
-                                "You use the crystal to colour your $amourName."
+                                crystalItemId,
+                                "You use the crystal to colour your $armourName."
                             )
                         }
                     }
@@ -90,4 +91,3 @@ class CrystalOnCrystalArmour : ItemOnItemAction {
     }
 
 }
-

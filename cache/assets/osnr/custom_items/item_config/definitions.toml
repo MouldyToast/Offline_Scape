@@ -150,46 +150,6 @@ groundops=["", "", "Take", "", ""]
 notedtemplate=799
 invmodel=60003
 
-# Near-Reality Armadyl bow
-[[item]]
-id=32008
-inherit=25867
-name="Armadyl godbow"
-invmodel=60331
-primarymalemodel=60330
-primaryfemalemodel=60330
-placeholderid=33008
-stackable=0
-notedid=32009
-grandexchange=true
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
-# Near-Reality Armadyl bow (noted)
-[[item]]
-id=32009
-inherit=25867
-name="Armadyl godbow"
-notedid=32008
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60331
-primarymalemodel=60330
-primaryfemalemodel=60330
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
 # Near-Reality Bandos soul crystal
 [[item]]
 id=32010
@@ -215,46 +175,6 @@ op5="Drop"
 groundops=["", "", "Take", "", ""]
 notedtemplate=799
 invmodel=60006
-
-# Near-Reality Bandos bow
-[[item]]
-id=32012
-inherit=25867
-name="Bandos godbow"
-invmodel=60333
-primarymalemodel=60332
-primaryfemalemodel=60332
-placeholderid=33012
-stackable=0
-notedid=32013
-grandexchange=true
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
-# Near-Reality Bandos bow (noted)
-[[item]]
-id=32013
-inherit=25867
-name="Bandos godbow"
-notedid=32012
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60333
-primarymalemodel=60332
-primaryfemalemodel=60332
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
 
 # Near-Reality Saradomin soul crystal
 [[item]]
@@ -282,46 +202,6 @@ groundops=["", "", "Take", "", ""]
 notedtemplate=799
 invmodel=60009
 
-# Near-Reality Saradomin bow
-[[item]]
-id=32016
-inherit=25867
-name="Saradomin godbow"
-invmodel=60335
-primarymalemodel=60334
-primaryfemalemodel=60334
-placeholderid=33016
-stackable=0
-notedid=32017
-grandexchange=true
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
-# Near-Reality Saradomin bow (noted)
-[[item]]
-id=32017
-inherit=25867
-name="Saradomin godbow"
-notedid=32016
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60335
-primarymalemodel=60334
-primaryfemalemodel=60334
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
 # Near-Reality Zamorak soul crystal
 [[item]]
 id=32018
@@ -347,46 +227,6 @@ op5="Drop"
 groundops=["", "", "Take", "", ""]
 notedtemplate=799
 invmodel=60012
-
-# Near-Reality Zamorak bow
-[[item]]
-id=32020
-inherit=25867
-name="Zamorak godbow"
-invmodel=60337
-primarymalemodel=60336
-primaryfemalemodel=60336
-placeholderid=33020
-stackable=0
-notedid=32021
-grandexchange=true
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
-# Near-Reality Zamorak bow (noted)
-[[item]]
-id=32021
-inherit=25867
-name="Zamorak godbow"
-notedid=32020
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60337
-primarymalemodel=60336
-primaryfemalemodel=60336
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
 
 # Near-Reality Dragon kite
 [[item]]
@@ -978,141 +818,6 @@ modelroll=1025
 modelyaw=9
 offsetx=-3
 offsety=-10
-
-# Near-Reality Lime whip
-[[item]]
-id=32060
-inherit=4151
-name="Lime whip"
-examine="Nostalgia."
-invmodel=60054
-primarymalemodel=60053
-primaryfemalemodel=60053
-zoom=900
-modelroll=2015
-modelpitch=352
-modelyaw=0
-offsetx=2
-offsety=24
-placeholderid=33060
-stackable=0
-notedid=32061
-grandexchange=true
-price=8000000
-
-# Near-Reality Lime whip (noted)
-[[item]]
-id=32061
-inherit=4151
-name="Lime whip"
-examine="Nostalgia."
-notedid=32060
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60054
-primarymalemodel=60053
-primaryfemalemodel=60053
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-price=8000000
-
-# Near-Reality Lime whip special
-[[item]]
-id=32062
-inherit=4151
-name="Lime whip special"
-invmodel=60056
-primarymalemodel=60055
-primaryfemalemodel=60055
-placeholderid=33062
-stackable=0
-notedid=32063
-grandexchange=false
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-
-# Near-Reality Lime whip special (noted)
-[[item]]
-id=32063
-inherit=4151
-name="Lime whip special"
-notedid=32062
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60056
-primarymalemodel=60055
-primaryfemalemodel=60055
-grandexchange=false
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-
-# Near-Reality Lava whip
-[[item]]
-id=32064
-inherit=4151
-name="Lava whip"
-examine="Ouch, hot!"
-invmodel=60060
-primarymalemodel=60059
-primaryfemalemodel=60059
-placeholderid=33064
-stackable=0
-notedid=32065
-grandexchange=true
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-price=7860000
-
-# Near-Reality Lava whip (noted)
-[[item]]
-id=32065
-inherit=4151
-name="Lava whip"
-examine="Ouch, hot!"
-notedid=32064
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60060
-primarymalemodel=60059
-primaryfemalemodel=60059
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-price=7860000
 
 # Near-Reality Pink partyhat
 [[item]]
@@ -2910,22 +2615,6 @@ placeholderid=32006
 placeholdertemplate=14401
 invmodel=60003
 
-# Near-Reality Armadyl bow (placeholder)
-[[item]]
-id=33008
-inherit=25867
-name="Armadyl godbow"
-placeholderid=32008
-placeholdertemplate=14401
-invmodel=60331
-primarymalemodel=60330
-primaryfemalemodel=60330
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
 # Near-Reality Bandos soul crystal (placeholder)
 [[item]]
 id=33010
@@ -2934,22 +2623,6 @@ name="Bandos soul crystal"
 placeholderid=32010
 placeholdertemplate=14401
 invmodel=60006
-
-# Near-Reality Bandos bow (placeholder)
-[[item]]
-id=33012
-inherit=25867
-name="Bandos godbow"
-placeholderid=32012
-placeholdertemplate=14401
-invmodel=60333
-primarymalemodel=60332
-primaryfemalemodel=60332
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
 
 # Near-Reality Saradomin soul crystal (placeholder)
 [[item]]
@@ -2960,22 +2633,6 @@ placeholderid=32014
 placeholdertemplate=14401
 invmodel=60009
 
-# Near-Reality Saradomin bow (placeholder)
-[[item]]
-id=33016
-inherit=25867
-name="Saradomin godbow"
-placeholderid=32016
-placeholdertemplate=14401
-invmodel=60335
-primarymalemodel=60334
-primaryfemalemodel=60334
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
-
 # Near-Reality Zamorak soul crystal (placeholder)
 [[item]]
 id=33018
@@ -2984,22 +2641,6 @@ name="Zamorak soul crystal"
 placeholderid=32018
 placeholdertemplate=14401
 invmodel=60012
-
-# Near-Reality Zamorak bow (placeholder)
-[[item]]
-id=33020
-inherit=25867
-name="Zamorak godbow"
-placeholderid=32020
-placeholdertemplate=14401
-invmodel=60337
-primarymalemodel=60336
-primaryfemalemodel=60336
-modelpitch=484
-modelroll=498
-offsetx=-1
-offsety=-1
-zoom=2600
 
 # Near-Reality Dragon kite (placeholder)
 [[item]]
@@ -3245,60 +2886,6 @@ modelpitch=463
 modelyaw=9
 offsetx=-3
 offsety=-10
-
-# Near-Reality Lime whip (placeholder)
-[[item]]
-id=33060
-inherit=4151
-name="Lime whip"
-examine="Nostalgia."
-placeholderid=32060
-placeholdertemplate=14401
-invmodel=60054
-primarymalemodel=60053
-primaryfemalemodel=60053
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-
-# Near-Reality Lime whip special (placeholder)
-[[item]]
-id=33062
-inherit=4151
-name="Lime whip special"
-examine="Nostalgia."
-placeholderid=32062
-placeholdertemplate=14401
-invmodel=60056
-primarymalemodel=60055
-primaryfemalemodel=60055
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
-
-# Near-Reality Lava whip (placeholder)
-[[item]]
-id=33064
-inherit=4151
-name="Lava whip"
-examine="Ouch, hot!"
-placeholderid=32064
-placeholdertemplate=14401
-invmodel=60060
-primarymalemodel=60059
-primaryfemalemodel=60059
-zoom=1040
-modelroll=250
-modelpitch=530
-modelyaw=0
-offsetx=-1
-offsety=5
 
 # Near-Reality Pink partyhat (placeholder)
 [[item]]

@@ -426,16 +426,6 @@ class UniversalShopTable(
         val BloodMoney = UniversalShopTable(
             category = UnivShopCategory.BloodMoney,
             items = arrayOf(
-                UnivShopItem(CustomItemId.IRON_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.STEEL_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.MITHRIL_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.ADAMANT_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.RUNE_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.BLACK_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.GREEN_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.WHITE_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.PINK_WHIP, buyPrice = 2500, ironmanRestricted = true),
-                UnivShopItem(CustomItemId.DRAGON_WHIP, buyPrice = 5000, ironmanRestricted = true),
                 UnivShopItem(12902, buyPrice = 5000, ironmanRestricted = true),
                 UnivShopItem(11802, buyPrice = 2500, ironmanRestricted = true),
                 UnivShopItem(12831, buyPrice = 2000, ironmanRestricted = true),

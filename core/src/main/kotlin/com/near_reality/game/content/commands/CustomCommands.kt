@@ -19,10 +19,6 @@ object CustomCommands {
 
                 "Spawn all in bank" {
                     p.bank.apply {
-                        add(Item(CustomItemId.ARMADYL_SOUL_CRYSTAL, 10))
-                        add(Item(CustomItemId.BANDOS_SOUL_CRYSTAL, 10))
-                        add(Item(CustomItemId.SARADOMIN_SOUL_CRYSTAL, 10))
-                        add(Item(CustomItemId.ZAMORAK_SOUL_CRYSTAL, 10))
                         add(Item(CustomItemId.BRONZE_KEY, 10))
                         add(Item(CustomItemId.SILVER_KEY, 10))
                         add(Item(CustomItemId.GOLD_KEY, 10))

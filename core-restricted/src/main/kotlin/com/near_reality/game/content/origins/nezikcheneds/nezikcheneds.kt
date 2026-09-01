@@ -71,39 +71,8 @@ class NezikchenedsDroptable : NPCDropTableScript() {
                 REMNANT_TOOLS quantity 1 rarity 2
 
                 /* 1 in 4000 drops (6pts) */
-                SARADOMIN_BOW quantity 1 rarity 1 announce everywhere
-                ZAMORAK_BOW quantity 1 rarity 1 announce everywhere
-                BANDOS_BOW quantity 1 rarity 1 announce everywhere
-                ARMADYL_BOW quantity 1 rarity 1 announce everywhere
                 SKILLING_MYSTERY_BOX quantity 1 rarity 1
-                OSNR_MYSTERY_BOX quantity 1 rarity 1 announce everywhere transformItem { item ->
-                    val inRDI2 = location.regionId == 11604
-                    if(inRDI2 && memberRank.equalToOrGreaterThan(MemberRank.ONYX)) {
-                        val hasTodaysMboxElsewhere = dailyMysteryBox
-                        if(!hasTodaysMboxElsewhere && !extraDailyMysteryBox) {
-                            extraDailyMysteryBox = true
-                            item
-                        } else if(hasTodaysMboxElsewhere && !extraDailyMysteryBox) {
-                            extraDailyMysteryBox = true
-                            item
-                        } else if(extraDailyMysteryBox && !hasTodaysMboxElsewhere) {
-                            dailyMysteryBox = true
-                            item
-                        } else {
-                            item.id = Utils.random(arrayOf(SARADOMIN_BOW, ZAMORAK_BOW, BANDOS_BOW, ARMADYL_BOW))
-                            item
-                        }
-                    } else {
-                        if(dailyMysteryBox) {
-                            item.id = Utils.random(arrayOf(SARADOMIN_BOW, ZAMORAK_BOW, BANDOS_BOW, ARMADYL_BOW))
-                            item
-                        } else {
-                            dailyMysteryBox = true
-                            item
-                        }
-                    }
-
-                } info { "This drop is limited to 1 per day (2 if killed in ::rdi2). If it is rolled again, a random godbow will replace it."}
+                OSNR_MYSTERY_BOX quantity 1 rarity 1 announce everywhere
             }
         }
     }

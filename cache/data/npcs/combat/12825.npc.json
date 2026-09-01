@@ -1,0 +1,19 @@
+{
+  "id": 12825,
+  "hitpoints": 1,
+  "statDefinitions": {
+    "combatStats": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "spawnDefinitions": {
+    "deathAnimation": {
+      "id": 10828,
+      "delay": 0
+    }
+  }
+}

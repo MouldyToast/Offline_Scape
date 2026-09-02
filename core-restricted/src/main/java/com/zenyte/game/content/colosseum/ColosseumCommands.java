@@ -8,11 +8,11 @@ import com.zenyte.plugins.events.ServerLaunchEvent;
 @SuppressWarnings("unused")
 public class ColosseumCommands {
 
-	@Subscribe
-	public static void onLaunch(final ServerLaunchEvent event) {
-		new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "sol", "teleports directly to sol", (p, args) -> {
-			ColosseumInstance.createInstance(p);
-		});
-	}
+    @Subscribe
+    public static void onLaunch(final ServerLaunchEvent event) {
+        new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "sol", "creates colosseum instance (wave system)", (p, args) -> {
+            ColosseumInstance.createInstance(p);
+        });
+    }
 
 }

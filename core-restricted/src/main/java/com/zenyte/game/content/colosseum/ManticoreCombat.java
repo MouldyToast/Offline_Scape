@@ -206,7 +206,12 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
                         }
                         break;
                     default: // Tick 2+: all three orbs charged, hold until LOS
-                        if (avatar != null) {
+                        // The charge orb seqs (10327/10328/10329) are 20 frames × delay 3
+                        // = 60 client cycles = 1200ms = 2 server ticks. Re-asserting every
+                        // tick restarts the animation from frame 0 each tick, so it never
+                        // plays past the halfway point. Re-assert every 2 ticks instead,
+                        // matching the seq duration so each cycle completes before refresh.
+                        if (avatar != null && tick % 2 == 0) {
                             avatar.getExtendedInfo().setSpotAnim(1, slot1Charge, 0, SLOT_1_HEIGHT);
                             avatar.getExtendedInfo().setSpotAnim(2, slot2Charge, 0, SLOT_2_HEIGHT);
                             avatar.getExtendedInfo().setSpotAnim(3, CHARGE_MELEE, 0, SLOT_3_HEIGHT);

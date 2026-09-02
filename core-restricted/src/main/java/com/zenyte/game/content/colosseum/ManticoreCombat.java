@@ -9,6 +9,7 @@ import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Animation;
+import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -69,6 +70,11 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
     private static final int PROJ_MAGIC = 2681;
     private static final int PROJ_RANGED = 2683;
     private static final int PROJ_MELEE = 2685;
+
+    // Impact spotanims (played on the player when an orb lands)
+    private static final int IMPACT_MAGIC = 2682;
+    private static final int IMPACT_RANGED = 2684;
+    private static final int IMPACT_MELEE = 2686;
 
     // Per-slot projectile definitions — each slot fires from a different height on the NPC body.
     // Slot 1 (lowest orb) fires first (delay=0), slot 2 fires slightly after (delay=5).
@@ -145,6 +151,8 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
                             }
                             final Projectile proj1 = magicFirst ? SLOT1_MAGIC_PROJ : SLOT1_RANGED_PROJ;
                             final int delay1 = World.sendProjectile(ManticoreCombat.this, target, proj1);
+                            final int clientDelay1 = proj1.getProjectileDuration(ManticoreCombat.this, target);
+                            target.setGraphics(new Graphics(magicFirst ? IMPACT_MAGIC : IMPACT_RANGED, clientDelay1, 100));
                             final Hit hit1 = magicFirst
                                     ? magic(target, combatDefinitions.getMaxHit())
                                     : ranged(target, combatDefinitions.getMaxHit());
@@ -158,6 +166,8 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
                             }
                             final Projectile proj2 = magicFirst ? SLOT2_RANGED_PROJ : SLOT2_MAGIC_PROJ;
                             final int delay2 = World.sendProjectile(ManticoreCombat.this, target, proj2);
+                            final int clientDelay2 = proj2.getProjectileDuration(ManticoreCombat.this, target);
+                            target.setGraphics(new Graphics(magicFirst ? IMPACT_RANGED : IMPACT_MAGIC, clientDelay2, 100));
                             final Hit hit2 = magicFirst
                                     ? ranged(target, combatDefinitions.getMaxHit())
                                     : magic(target, combatDefinitions.getMaxHit());
@@ -169,6 +179,8 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
                                 avatar.getExtendedInfo().setSpotAnim(3, -1, 0, 0);
                             }
                             final int delay3 = World.sendProjectile(ManticoreCombat.this, target, SLOT3_MELEE_PROJ);
+                            final int clientDelay3 = SLOT3_MELEE_PROJ.getProjectileDuration(ManticoreCombat.this, target);
+                            target.setGraphics(new Graphics(IMPACT_MELEE, clientDelay3, 100));
                             final Hit hit3 = melee(target, combatDefinitions.getMaxHit());
                             delayHit(delay3, target, hit3);
                             activeTask = null;

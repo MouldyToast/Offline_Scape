@@ -1,8 +1,6 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.near_reality.game.item.CustomObjectId.AFK_FARMING_PLOT
-import com.near_reality.game.item.CustomObjectId.REJUVENATION_DIVINE
-import com.near_reality.game.item.CustomObjectId.REJUVENATION_FANCY
+
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.`object`.ObjectId
 import com.zenyte.game.world.`object`.WorldObject
@@ -64,12 +62,7 @@ object NearRealityEffigyMapEdits {
             replace(54270, 54149)
         }
 
-        edit(6696) {
-            replace(REJUVENATION_FANCY, REJUVENATION_DIVINE)
-        }
-        edit(12598) {
-            AFK_FARMING_PLOT(3141, 3492, 0)
-        }
+
     }
 
     class MapEdit(val regionId: Int) {

@@ -35,7 +35,6 @@ import com.near_reality.cache_tool.packing.custom.ganodermic_beasts.GanodermicBe
 import com.near_reality.cache_tool.packing.custom.inquisitors_great_flail.InquisitorsGreatFlailPacker;
 import com.near_reality.cache_tool.packing.custom.mack.ClownStoreInterfacePacker;
 import com.near_reality.cache_tool.packing.custom.mack.ClownVoteInterfacePacker;
-import static com.near_reality.game.item.CustomObjectId.*;
 import com.near_reality.util.gson.Int2ObjectMapDeserializer;
 import com.near_reality.util.gson.IntListTypeAdapter;
 import com.near_reality.util.gson.Object2IntMapDeserializer;
@@ -696,90 +695,9 @@ public class TypeParser {
     }
 
     public static void addCustomStalls() {
-        var coinsStall = cloneObject(11731, AFK_STALL_COINS);
-        coinsStall.setName("Coins stall (Master)");
-        coinsStall.pack();
-        var fruitStall = cloneObject(11730, AFK_STALL_BAKER);
-        fruitStall.setName("Baker's stall (Beginner)");
-        fruitStall.pack();
-        var fruitStall2 = cloneObject(11732, AFK_STALL_FUR);
-        fruitStall2.setName("Fur stall (Easy)");
-        fruitStall2.pack();
-        var runesStall = cloneObject(11734, AFK_STALL_SILVER);
-        runesStall.setName("Silver stall (Medium)");
-        runesStall.pack();
-        var scimmyStall = cloneObject(11731, AFK_STALL_MAGIC);
-        scimmyStall.setModels(new int[]{60483});
-        scimmyStall.setName("Magic stall (Hard)");
-        scimmyStall.pack();
-
-//        var tutorialIslandPortal = cloneObject(4406, 55070);
-//        tutorialIslandPortal.pack();
-        var revEntrance = cloneObject(31555, REVENANT_ENTRANCE_1);
-        revEntrance.pack();
-        var revEntrance2 = cloneObject(31555, REVENANT_ENTRANCE_2);
-        revEntrance2.pack();
-//        var donorObelisk = cloneObject(14827, DONATOR_OBELISK);
-//        donorObelisk.setOptions(new String[]{"Wilderness-Vault", "Ganodermic-Beast", null, null, null});
-//        donorObelisk.pack();
-//        var donorObelisk2 = cloneObject(14825, DONATOR_OBELISK_NULL);
-//        donorObelisk2.setOptions(new String[]{null, null, null, null, null});
-//        donorObelisk2.pack();
     }
 
     public static void editObjects() {
-        var ornate = cloneObject(29241, REJUVENATION_ORNATE);
-        ornate.setOptions(new String[]{"Drink", null, null, null, null});
-        ornate.pack();
-
-        var overload = cloneObject(29241, REJUVENATION_OVERLOAD);
-        overload.setOptions(new String[]{"Drink", "Rejuvenate", null, null, null});
-        overload.setName("Overload pool of Rejuvenation");
-        overload.setModels(new int[]{60206});
-        overload.pack();
-
-        var divine = cloneObject(29241, REJUVENATION_DIVINE);
-        divine.setOptions(new String[]{"Drink", "Rejuvenate", null, null, null});
-        divine.setName("Divine pool of Rejuvenation");
-        divine.setModels(new int[]{60205});
-        divine.pack();
-
-        var fancy = cloneObject(29240, REJUVENATION_FANCY);
-        fancy.setOptions(new String[]{"Drink", null, null, null, null});
-        fancy.pack();
-        var poolHome = cloneObject(29241, REJUVINATION_POOL);
-        poolHome.setOptions(new String[]{"Drink", "Remove-skull", "Skull", null, null});
-        poolHome.pack();
-
-        var nexus = cloneObject(41415, 50082);
-        nexus.setName("Teleportation nexus");
-        nexus.setOptions(new String[]{"Teleportation-menu", "Previous-teleport", null, null, null});
-        nexus.pack();
-        var barrier = cloneObject(4469, AFK_ENTRY_OBJECT);
-        barrier.setName("AFK Skilling Area");
-        barrier.setOptions(new String[]{"Pass", null, null, null, null});
-        barrier.pack();
-        var flax = cloneObject(14896, AFK_FLAX);
-        flax.setOptions(new String[]{"Afk", null, null, null, null});
-        flax.pack();
-        var r_stall = cloneObject(4877, AFK_THIEVING);
-        r_stall.setOptions(new String[]{"Afk", null, null, null, null});
-        r_stall.pack();
-
-        var fishing = cloneObject(42, AFK_FISHING);
-        fishing.setOptions(new String[]{"Afk", null, null, null, null});
-        fishing.pack();
-
-
-        var score = cloneObject(884, AFK_SCOREBOARD);
-        score.setModels(new int[]{60197});
-        score.setSizeX(7);
-        score.setSizeY(2);
-        score.setModelSizeX(128);
-        score.setModelSizeY(128);
-        score.setName("Scoreboard");
-        score.setOptions(new String[]{"View", null, null, null, null});
-        score.pack();
     }
 
     public static ObjectDefinitions cloneObject(int from, int to) {
@@ -1214,24 +1132,7 @@ public class TypeParser {
                     new WorldObject(10060, 0, 3, new Location(3095, 3495, 1)),
                     //Fix pottery wheel
                     new WorldObject(4310, 10, 1, new Location(3104, 3497, 0)),
-                    new WorldObject(2031, 10, 3, new Location(3108, 3494, 0)),
-                    //Xmas stuff
-                    //new WorldObject(ChristmasConstants.CHRISTMAS_CUPBOARD_ID, 10, 2, ChristmasConstants.homeChristmasCupboardLocation),
-                    //new WorldObject(46077, 10, 0, new Location(3087, 3499, 0))
-                    //Slayer
-                    new WorldObject(50103, 10, 3, new Location(3073, 3471, 0)),
-
-                    //Combat Dummy Bank
-                    new WorldObject(2693, 10, 1, new Location(3072, 3483)),
-
-                    //Stalls
-                    new WorldObject(50055, 10, 1, new Location(3094, 3482, 0)),
-                    new WorldObject(50056, 10, 1, new Location(3094, 3479, 0)),
-                    new WorldObject(50057, 10, 1, new Location(3094, 3476, 0)),
-                    new WorldObject(50058, 10, 1, new Location(3094, 3473, 0)),
-                    new WorldObject(55000, 10, 3, new Location(3108, 3486, 0)),
-                    //Armor repair stand
-                    new WorldObject(6802, 10, 0, new Location(3077, 3512, 0))
+                    new WorldObject(2031, 10, 3, new Location(3108, 3494, 0))
             );
         }
         if (regionID == 8036) {

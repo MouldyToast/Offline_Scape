@@ -4,7 +4,7 @@ import com.near_reality.api.service.vote.totalVoteCredits
 import com.near_reality.game.world.entity.player.bountyHunterPoints
 import com.near_reality.game.world.entity.player.exchangePoints
 import com.near_reality.game.world.entity.player.pvmArenaPoints
-import com.zenyte.game.content.skills.afk.AfkSkillingConstants
+
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.shop.CurrencyPalette
 import com.zenyte.game.model.shop.ShopCurrency
@@ -18,7 +18,7 @@ object ShopCurrencyHandler {
     fun getAmount(type: CurrencyPalette, player: Player): Int {
         return when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits
-            ShopCurrency.AFK_POINTS -> player.getNumericAttribute(AfkSkillingConstants.AFK_POINTS).toInt()
+
             ShopCurrency.BH_POINTS -> player.bountyHunterPoints
             ShopCurrency.LOYALTY_POINTS -> player.loyaltyManager.loyaltyPoints
             ShopCurrency.EXCHANGE_POINTS -> player.exchangePoints
@@ -40,7 +40,7 @@ object ShopCurrencyHandler {
         when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits -= amount
             ShopCurrency.BH_POINTS -> player.bountyHunterPoints -= amount
-            ShopCurrency.AFK_POINTS -> player.incrementNumericAttribute(AfkSkillingConstants.AFK_POINTS, -amount)
+
             ShopCurrency.LOYALTY_POINTS -> {
                 val currentAmount = player.loyaltyManager.loyaltyPoints
                 player.loyaltyManager.setLoyaltyPoints(max(0, (currentAmount - amount)))
@@ -64,7 +64,7 @@ object ShopCurrencyHandler {
         when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits += amount
             ShopCurrency.BH_POINTS -> player.bountyHunterPoints += amount
-            ShopCurrency.AFK_POINTS -> player.incrementNumericAttribute(AfkSkillingConstants.AFK_POINTS, amount)
+
             ShopCurrency.LOYALTY_POINTS -> {
                 val currentAmount = player.loyaltyManager.loyaltyPoints
                 player.loyaltyManager.setLoyaltyPoints(min((currentAmount + amount), Int.MAX_VALUE))

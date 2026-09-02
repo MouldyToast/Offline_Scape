@@ -137,7 +137,7 @@ public class StallThieving extends Action {
 			case KELDAGRIM_GEM_STALL -> player.getAchievementDiaries().update(FremennikDiary.STEAL_FROM_GEM_STALL);
 			case KOUREND_FRUIT_STALL -> player.getAchievementDiaries().update(KourendDiary.STEAL_FROM_FOOD_STALL);
 			case TZHAAR_GEM_SHOP_COUNTER -> player.getDailyChallengeManager().update(SkillingChallenge.PICKPOCKET_GEM_STALL_TZHAARS);
-			case HOME_COINS_STALL_BEGINNER, HOME_COINS_STALL_EASY, HOME_COINS_STALL_MEDIUM, HOME_COINS_STALL_HARD, HOME_COINS_STALL_MASTER -> Analytics.flagInteraction(player, Analytics.InteractionType.HOME_STALLS);
+
 		}
 		final boolean isBot = PlayerAttributesKt.getFlaggedAsBot(player);
 		final Inventory inventory = player.getInventory();

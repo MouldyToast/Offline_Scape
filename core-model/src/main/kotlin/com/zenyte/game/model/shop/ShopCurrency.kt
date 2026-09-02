@@ -26,9 +26,7 @@ enum class ShopCurrency(
     BH_POINTS(isStackable = false, isPhysical = false) {
         override fun toString(): String = "bounty hunter points"
     },
-    AFK_POINTS(isStackable = false, isPhysical = false) {
-        override fun toString(): String = "Afk points"
-    },
+
     LOYALTY_POINTS(isStackable = false, isPhysical = false) {
         override fun toString(): String = "loyalty points"
     },

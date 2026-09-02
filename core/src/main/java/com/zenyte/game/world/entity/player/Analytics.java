@@ -66,8 +66,8 @@ public class Analytics {
 			statement.setBoolean(8, checkInteraction(flags, InteractionType.BRIMSTONE_CHEST));
 			statement.setBoolean(9, checkInteraction(flags, InteractionType.LOOT_CHEST));
 			statement.setBoolean(10, checkInteraction(flags, InteractionType.SHOP_NPCS));
-			statement.setBoolean(11, checkInteraction(flags, InteractionType.AFK_SKILLING));
-			statement.setBoolean(12, checkInteraction(flags, InteractionType.HOME_STALLS));
+			statement.setBoolean(11, false);
+			statement.setBoolean(12, false);
 			statement.setBoolean(13, checkInteraction(flags, InteractionType.DEATHS_DOMAIN));
 			statement.setBoolean(14, checkInteraction(flags, InteractionType.TELEPORT_INTERFACE));
 			statement.setBoolean(15, checkInteraction(flags, InteractionType.HISCORES));
@@ -149,8 +149,8 @@ public class Analytics {
 		BRIMSTONE_CHEST(4),
 		LOOT_CHEST(5),
 		SHOP_NPCS(6),
-		AFK_SKILLING(7),
-		HOME_STALLS(8),
+
+
 		DEATHS_DOMAIN(9),
 		TELEPORT_INTERFACE(10),
 		HISCORES(11),
@@ -159,7 +159,8 @@ public class Analytics {
 		DAILY_CHALLENGES(14),
 		PREMIUM_TOGGLES(15),
 		CHECK_BOOSTERS(16),
-		NEAR_REALITY_CHEST(17),
+
+
 		;
 
 		private final int index;

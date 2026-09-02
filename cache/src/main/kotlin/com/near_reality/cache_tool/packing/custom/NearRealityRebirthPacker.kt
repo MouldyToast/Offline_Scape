@@ -21,21 +21,6 @@ object NearRealityRebirthPacker {
         assetsBase("assets/rebirth/home_2025/") {
             defaultModels()
         }
-
-        /* GE Corner Booth */
-        60400.cloneObject(24393)
-            .modelList("rebirth_ge_straight_wall".model(), "rebirth_ge_corner".model())
-            .packNew()
-
-        60401.cloneObject(374)
-            .modelList("rebirth_slayer_helm_stand_empty".model())
-            .named("Slayer helmet stand")
-            .sizeScale(2, 1)
-            .modelScale(128, 128, 128)
-            .changeOption(1, "Information")
-            .changeOption(2, null)
-            .packNew()
-
     }
 
     @JvmStatic fun packCustoms2023AndMisc() {

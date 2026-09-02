@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.farming;
 
-import com.near_reality.game.item.CustomObjectId;
+
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.object.ObjectId;
@@ -26,25 +26,6 @@ public enum FarmingPatch {
     /*PRIF_CRYSTAL_TREE(PatchType.CRYSTAL_TREE_PATCH, 34906, new Location(3291, 6118, 0), new PatchGardener(9241, 1),
             "crystal tree", -1),*/
 
-
-    RDI_HERB(PatchType.HERB_PATCH, 60472, new Location(1718, 2611, 0), -1),
-    RDI_COMPOST(PatchType.COMPOST_BIN, 7837, new Location(1718, 2615, 0), 70),
-
-    DI_HERB(PatchType.HERB_PATCH, 60474, new Location(1640, 2630, 2), -1),
-    DI_COMPOST(PatchType.COMPOST_BIN, 7837, new Location(1639, 2634, 0), 71),
-
-    DIE_HERB(PatchType.HERB_PATCH, 60473, new Location(1678, 2671, 2), -1),
-    DIE_COMPOST(PatchType.COMPOST_BIN, 7837, new Location(1675, 2670, 0), 72),
-
-    UDI_HERB(PatchType.HERB_PATCH, 60475, new Location(1643, 2597, 0), -1),
-    UDI_TREE(PatchType.TREE_PATCH, 60476, new Location(1647, 2601, 0), -1),
-    UDI_COMPOST(PatchType.COMPOST_BIN, 7837, new Location(1647, 2596, 0), 73),
-
-
-
-    HOME_COMPOST(PatchType.COMPOST_BIN, 41426, new Location(3082, 3476, 0), 69),
-    HOME_HERB(PatchType.HERB_PATCH, CustomObjectId.HOME_HERB, new Location(3077, 3479, 0), -1),
-    HOME_ALLOTMENT(PatchType.ALLOTMENT, CustomObjectId.HOME_ALLOTMENT, new Location(3076, 3476, 0), -1),
 
 
     FALADOR_ALLOTMENT_NW(PatchType.ALLOTMENT, 8550, new Location(3052, 3310, 0), new PatchGardener(2663, 3), "North" +

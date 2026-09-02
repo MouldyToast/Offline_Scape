@@ -28,13 +28,6 @@ public enum StallType {
 	SCIMITAR_STALL(65, 100, 133, true, new ImmutableItem(1323)),
 	GEM_STALL(75, 160, 300, false, new ImmutableItem(1623, 1, 1, 44), new ImmutableItem(1621, 1, 1, 30), new ImmutableItem(1619, 1, 1, 20), new ImmutableItem(1617, 1, 1, 6)),
 
-	COIN_STALL_BEGINNER(1, 8, 17, true),
-	COIN_STALL_EASY(25, 26, 17, true),
-	COIN_STALL_MEDIUM(45, 65, 17, true),
-	COIN_STALL_HARD(65, 137, 17, true),
-	COIN_STALL_MASTER(90, 353, 17, true),
-
-	COIN_STALL_LDI(50, 220, 17, false, new ImmutableItem(995, 500, 2500), new ImmutableItem(1623, 1, 1, 44), new ImmutableItem(1621, 1, 1, 30), new ImmutableItem(1619, 1, 1, 20), new ImmutableItem(1617, 1, 1, 6)),
 
     TZHAAR_GEM_COUNTER(75, 160, 300, false, new ImmutableItem(1623, 1, 1, 23),
             new ImmutableItem(1621, 1, 1, 12), new ImmutableItem(1619, 1, 1, 10),

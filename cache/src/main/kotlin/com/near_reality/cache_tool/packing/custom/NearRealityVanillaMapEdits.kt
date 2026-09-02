@@ -89,43 +89,6 @@ object NearRealityVanillaMapEdits {
             bankChest(2338, 9883, 0, rotation = 1)
         }
 
-        /* RDI */
-        edit(11605) {
-            remove(12613, 12614, 12619, 12620, 12621, 12622, 12623) //winter
-            remove(11989, 11990, 11991, 11993, 11994, 11995) // spring
-            remove(12726, 12727, 12728, 12729, 12721) // summer
-            remove(12635, 12636, 12641, 12642, 12643, 12644, 12645, 12646, 12647) //desert
-            remove(4982, 4979, 4980, 4981) /* herbs */
-            remove(13406, 13405, 13407, 12943) /* trees */
-            remove(12716, 11963) /* floating arches */
-            remove(11962, 12715) /* floating arch support */
-            remove(12941) /* fountain */
-            remove(11962, 12637, 12615, 11964) /* Entrance archways */
-            60426(2911, 5471, 0)
-            bankChest(2911, 5465, 0, rotation = 2)
-            bankChest(2905, 5472, 0, rotation = 3)
-            bankChest(2912, 5478, 0, rotation = 0)
-            bankChest(2918, 5471, 0, rotation = 1)
-
-            magicTree(2915, 5458, 0)
-            magicTree(2915, 5454, 0)
-            magicTree(2915, 5450, 0)
-
-            yewTree(2910, 5448, 0)
-            yewTree(2906, 5448, 0)
-            yewTree(2902, 5448, 0)
-
-            furnace(2898, 5450, 0)
-
-            runiteRock(2898, 5453, 0)
-            runiteRock(2898, 5454, 0)
-            runiteRock(2898, 5455, 0)
-            coalRock(2898, 5456, 0)
-            coalRock(2898, 5457, 0)
-            coalRock(2898, 5458, 0)
-            coalRock(2898, 5459, 0)
-            coalRock(2898, 5460, 0)
-        }
 
         edit(11681) {
             replace(46702, 46701)
@@ -161,12 +124,7 @@ object NearRealityVanillaMapEdits {
             replace(54270, 54149)
         }
 
-        edit(6696) {
-            replace(REJUVENATION_FANCY, REJUVENATION_DIVINE)
-        }
-        edit(12598) {
-            AFK_FARMING_PLOT(3141, 3492, 0)
-        }
+
         edit(6696) {
             47345(1695, 2573, 0)
             47345(1679, 2591, 0)

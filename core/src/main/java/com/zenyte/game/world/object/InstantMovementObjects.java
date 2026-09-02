@@ -269,16 +269,12 @@ public enum InstantMovementObjects {
 	JORGUMUNDS_ENTRANCE(37433, new Location(2464, 4011, 0), new Location( 2461, 10417, 0), true),
 	JORGUMUNDS_EXIT(37411, new Location(2460, 10418, 0), new Location( 2465, 4010, 0), true),
 
-	RDI_SHIP_ENTRANCE(32319, new Location(3373, 8003, 0), new Location( 3371, 8003, 2)),
-	RDI_SHIP_EXIT(32238, new Location( 3372, 8003, 2), new Location(3374, 8003, 0)),
-
 	RANTS_CAVE_ENTRANCE(3379, new Location(2629, 2998,0), new Location(2647, 9378)),
 	RANTS_CAVE_ENTRANCE2(3381, new Location(2647, 9377,0), new Location(2629, 2997)),
 
 	ASGARNIAN_CAVE_SHORTCUT(42506, new Location(3025, 9570, 0), new Location(3035, 9557, 0)),
 	ASGARNIAN_CAVE_SHORTCUT2(42507, new Location(3034, 9558,0), new Location(3026, 9572, 0)),
-	LDI_REV_DUNGEON(50098, new Location(3410, 7607,0), new Location(3369, 15247, 0)),
-	UDI_REV_DUNGEON(60470, new Location(1673, 2585,0), new Location(3369, 15375, 0)),
+
 
 	ESCAPE_CAVES_EXIT_1(47147, new Location(3358, 10244, 0), new Location(3283, 3773, 0), new Animation(2796)),
 	ESCAPE_CAVES_EXIT_2(47148, new Location(3382, 10287, 0), new Location(3321, 3829, 0), new Animation(2796)),

@@ -443,6 +443,27 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         WorldTasksManager.schedule(this::startWave, 4); // 0-indexed: 4 = 5 ticks later
     }
 
+    /**
+     * Factory: returns the right ColosseumWaveNpc subclass for NPCs with custom
+     * combat scripts, or plain ColosseumWaveNpc for NPCs without one yet.
+     * Add one case per combat script as they're built (Phase A, sections 1A–1F).
+     */
+    private ColosseumWaveNpc createWaveNpc(int npcId, Location spawnLoc) {
+        return switch (npcId) {
+            case NpcId.MANTICORE -> new ManticoreCombat(npcId, spawnLoc, this);
+            case NpcId.FREMENNIK_WARBAND_BERSERKER,
+                 NpcId.FREMENNIK_WARBAND_ARCHER,
+                 NpcId.FREMENNIK_WARBAND_SEER -> new FremennikWarbandCombat(npcId, spawnLoc, this);
+            // case NpcId.SERPENT_SHAMAN -> new SerpentShamanCombat(npcId, spawnLoc, this);
+            // case NpcId.JAGUAR_WARRIOR -> new JaguarWarriorCombat(npcId, spawnLoc, this);
+            case NpcId.JAVELIN_COLOSSUS -> new JavelinColossusCombat(npcId, spawnLoc, this);
+            // case NpcId.SHOCKWAVE_COLOSSUS -> new ShockwaveColossusCombat(npcId, spawnLoc, this);
+            // case NpcId.MINOTAUR_12812 -> new MinotaurCombat(npcId, spawnLoc, this);
+            // case NpcId.MINOTAUR_12813 -> new MinotaurCombat(npcId, spawnLoc, this);
+            default -> new ColosseumWaveNpc(npcId, spawnLoc, this);
+        };
+    }
+
     private void startWave() {
         // Set wave start tick
         waveStartTick = WorldThread.getCurrentCycle();
@@ -483,9 +504,15 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
                 int[] point = WaveData.getRandomSpawnPoint(usedSpawnIndices, excludedIndices);
                 spawnLoc = getLocation(point[0], point[1]);
             }
-            ColosseumWaveNpc npc = new ColosseumWaveNpc(npcId, spawnLoc, this);
+            ColosseumWaveNpc npc = createWaveNpc(npcId, spawnLoc);
             npc.spawn();
-            npc.getCombat().setCombatDelay(WaveData.SPAWN_ATTACK_DELAY_TICKS);
+            // Fremennik stagger (Wiki + RSProx waves 3-5): berserker(+0) → seer(+1) → archer(+2), 6-tick cycle
+            int staggerOffset = switch (npcId) {
+                case NpcId.FREMENNIK_WARBAND_SEER -> 1;
+                case NpcId.FREMENNIK_WARBAND_ARCHER -> 2;
+                default -> 0;
+            };
+            npc.getCombat().setCombatDelay(WaveData.SPAWN_ATTACK_DELAY_TICKS + staggerOffset);
             npc.getCombat().setTarget(player);
             waveNpcs.add(npc);
         }
@@ -515,7 +542,7 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
 
         for (int npcId : reinforcements) {
             Location spawnLoc = getLocation(gateX + Utils.random(-2, 2), gateY);
-            ColosseumWaveNpc npc = new ColosseumWaveNpc(npcId, spawnLoc, this);
+            ColosseumWaveNpc npc = createWaveNpc(npcId, spawnLoc);
             npc.spawn();
             npc.getCombat().setTarget(player);
             waveNpcs.add(npc);
@@ -575,6 +602,7 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         Location spawnLocation = getBaseLocation(33, 31);
         player.setLocation(spawnLocation);
 
+        solHeredit = new SolHeredit(getLocation(1823, 3108), this);
         solHeredit.lock();
         solHeredit.spawn();
         solHeredit.lock(3);

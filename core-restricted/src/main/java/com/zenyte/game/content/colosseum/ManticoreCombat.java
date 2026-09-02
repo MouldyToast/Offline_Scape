@@ -2,7 +2,6 @@ package com.zenyte.game.content.colosseum;
 
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
-import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;
@@ -12,8 +11,6 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
-import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
 /**
@@ -46,7 +43,7 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
  * - 10868 = triple_charge,  10869 = triple_throw
  * - 10870 = spawn_01,  10871 = spawn_02 (no flinch or block anim exists)
  */
-public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
+public class ManticoreCombat extends ColosseumWaveNpc implements CombatScript {
 
     private static final Animation CHARGE_ANIM = new Animation(10868);
     private static final Animation THROW_ANIM = new Animation(10869);
@@ -86,8 +83,8 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
     private static final Projectile SLOT2_RANGED_PROJ = new Projectile(PROJ_RANGED, 65, 31, 5, 0, 25, 0, 0);
     private static final Projectile SLOT3_MELEE_PROJ = new Projectile(PROJ_MELEE, 80, 31, 0, 0, 25, 0, 0);
 
-    public ManticoreCombat(int id, Location tile, Direction facing, int radius) {
-        super(id, tile, facing, radius);
+    public ManticoreCombat(int id, Location tile, ColosseumInstance instance) {
+        super(id, tile, instance);
     }
 
     @Override
@@ -230,8 +227,4 @@ public class ManticoreCombat extends NPC implements CombatScript, Spawnable {
         return combatDefinitions.getAttackSpeed();
     }
 
-    @Override
-    public boolean validate(int id, String name) {
-        return id == 12818;
-    }
 }

@@ -575,6 +575,7 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         Location spawnLocation = getBaseLocation(33, 31);
         player.setLocation(spawnLocation);
 
+        solHeredit = new SolHeredit(getLocation(1823, 3108), this);
         solHeredit.lock();
         solHeredit.spawn();
         solHeredit.lock(3);

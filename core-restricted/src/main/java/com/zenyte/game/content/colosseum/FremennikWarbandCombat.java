@@ -8,6 +8,11 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPCCombat;
 import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.world.entity.pathfinding.RouteFinder;
+import com.zenyte.game.world.entity.pathfinding.RouteResult;
+import com.zenyte.game.world.entity.pathfinding.strategy.EntityStrategy;
+import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;
+import com.zenyte.game.world.Position;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
 /**
@@ -153,6 +158,45 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     @Override
     public boolean isIntelligent() {
         return true;
+    }
+
+    /**
+     * Overrides pathfinding to use {@link RouteFinder#findConditionalRoute},
+     * which includes {@code OCCUPIED_BLOCK_NPC} in its collision checks.
+     * The default {@link RouteFinder#findRoute} ignores NPC occupation flags,
+     * so warbanders plan paths straight through each other and get stuck
+     * single-file. With this override they route around each other and
+     * surround the player in a V-shape at melee distance.
+     */
+    @Override
+    public boolean calcFollow(Position target, int maxStepsCount, boolean calculate,
+                              boolean intelligent, boolean checkEntities) {
+        if (intelligent) {
+            final RouteResult steps = RouteFinder.findConditionalRoute(
+                    this, getSize(),
+                    target instanceof Entity ? new EntityStrategy((Entity) target)
+                            : new TileStrategy(target.getPosition()),
+                    true);
+            if (steps == RouteResult.ILLEGAL) {
+                return false;
+            }
+            if (steps.getSteps() == 0) {
+                return true;
+            }
+            final int[] bufferX = steps.getXBuffer();
+            final int[] bufferY = steps.getYBuffer();
+            int stepCount = 0;
+            for (int step = steps.getSteps() - 1; step >= 0; step--) {
+                if (!addWalkStepsInteract(bufferX[step], bufferY[step], maxStepsCount, getSize(), true)) {
+                    break;
+                }
+                if (maxStepsCount != -1 && ++stepCount >= maxStepsCount) {
+                    break;
+                }
+            }
+            return true;
+        }
+        return super.calcFollow(target, maxStepsCount, calculate, intelligent, checkEntities);
     }
 
     /**

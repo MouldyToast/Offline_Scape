@@ -64,6 +64,14 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     private final HitType hitType;
     private final HitType weakToHitType;
 
+    /**
+     * Preferred standing tile relative to the player (RSProx-verified all 11 waves):
+     * Berserker (0,+1) north, Archer (-1,0) west, Seer (+1,0) east.
+     * Quartet extra archer overridden to (0,-1) south via {@link #setPreferredOffset}.
+     */
+    private int preferredDx;
+    private int preferredDy;
+
     // Berserker — melee, weak to magic
     private static final Animation BERSERKER_ANIM = new Animation(10856);
 
@@ -104,21 +112,57 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
                 projectile = null;
                 hitType = HitType.MELEE;
                 weakToHitType = HitType.MAGIC;
+                preferredDx = 0; preferredDy = 1;   // north
             }
             case NpcId.FREMENNIK_WARBAND_ARCHER -> {
                 attackAnim = ARCHER_ANIM;
                 projectile = ARCHER_PROJ;
                 hitType = HitType.RANGED;
                 weakToHitType = HitType.MELEE;
+                preferredDx = -1; preferredDy = 0;  // west (Quartet extra: overridden to south)
             }
             case NpcId.FREMENNIK_WARBAND_SEER -> {
                 attackAnim = SEER_ANIM;
                 projectile = SEER_PROJ;
                 hitType = HitType.MAGIC;
                 weakToHitType = HitType.RANGED;
+                preferredDx = 1; preferredDy = 0;   // east
             }
             default -> throw new IllegalArgumentException("Unknown Fremennik warband NPC: " + id);
         }
+        // NPCCombat override: force melee-style diagonal rejection and preferred-tile movement.
+        // isMelee(): two code paths in NPCCombat check diagonals separately —
+        //   combatAttack() line 60 uses virtual isMelee(), appendMovement() line 328 reads
+        //   JSON directly. Overriding both here handles both paths.
+        // appendMovement(): re-paths whenever the NPC is not on its preferred cardinal tile
+        //   relative to the player, not just when out of generic melee range.
+        this.combat = new NPCCombat(this) {
+            @Override
+            public boolean isMelee() {
+                return true;
+            }
+
+            @Override
+            protected boolean appendMovement() {
+                final boolean onPreferred = npc.getX() == target.getX() + preferredDx
+                        && npc.getY() == target.getY() + preferredDy;
+                if (!onPreferred || npc.isProjectileClipped(target, true)) {
+                    npc.resetWalkSteps();
+                    npc.calcFollow(target, npc.isRun() ? 2 : 1, true, npc.isIntelligent(), npc.isEntityClipped());
+                }
+                return true;
+            }
+        };
+    }
+
+    /**
+     * Override preferred standing direction for this NPC. Used by
+     * {@link ColosseumInstance#startWave()} to assign the Quartet extra archer
+     * to south (0, -1) instead of the default west (-1, 0).
+     */
+    void setPreferredOffset(int dx, int dy) {
+        this.preferredDx = dx;
+        this.preferredDy = dy;
     }
 
     @Override
@@ -161,42 +205,60 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     }
 
     /**
-     * Overrides pathfinding to use {@link RouteFinder#findConditionalRoute},
-     * which includes {@code OCCUPIED_BLOCK_NPC} in its collision checks.
-     * The default {@link RouteFinder#findRoute} ignores NPC occupation flags,
-     * so warbanders plan paths straight through each other and get stuck
-     * single-file. With this override they route around each other and
-     * surround the player in a V-shape at melee distance.
+     * Pathfind to the preferred cardinal tile relative to the player
+     * (RSProx-verified: Berserker→north, Seer→east, Archer→west, 100% of attacks).
+     * <p>
+     * Uses {@link RouteFinder#findConditionalRoute} which includes
+     * {@code OCCUPIED_BLOCK_NPC} in collision checks, so warbanders route
+     * around each other rather than stacking single-file.
+     * <p>
+     * If the preferred tile is unreachable (e.g. pillar between player and
+     * that side), falls back to {@link EntityStrategy} for any adjacent tile.
      */
     @Override
     public boolean calcFollow(Position target, int maxStepsCount, boolean calculate,
                               boolean intelligent, boolean checkEntities) {
-        if (intelligent) {
-            final RouteResult steps = RouteFinder.findConditionalRoute(
-                    this, getSize(),
-                    target instanceof Entity ? new EntityStrategy((Entity) target)
-                            : new TileStrategy(target.getPosition()),
-                    true);
-            if (steps == RouteResult.ILLEGAL) {
-                return false;
-            }
-            if (steps.getSteps() == 0) {
+        if (intelligent && target instanceof Entity entity) {
+            final int prefX = entity.getX() + preferredDx;
+            final int prefY = entity.getY() + preferredDy;
+            // Already on the preferred tile
+            if (getX() == prefX && getY() == prefY) {
                 return true;
             }
-            final int[] bufferX = steps.getXBuffer();
-            final int[] bufferY = steps.getYBuffer();
-            int stepCount = 0;
-            for (int step = steps.getSteps() - 1; step >= 0; step--) {
-                if (!addWalkStepsInteract(bufferX[step], bufferY[step], maxStepsCount, getSize(), true)) {
-                    break;
-                }
-                if (maxStepsCount != -1 && ++stepCount >= maxStepsCount) {
-                    break;
-                }
+            // Try preferred tile first
+            RouteResult steps = RouteFinder.findConditionalRoute(
+                    this, getSize(), new TileStrategy(prefX, prefY), true);
+            if (steps != RouteResult.ILLEGAL && steps.getSteps() > 0) {
+                return applyRoute(steps, maxStepsCount);
             }
-            return true;
+            // Preferred tile unreachable — fall back to any adjacent tile
+            return applyRoute(
+                    RouteFinder.findConditionalRoute(this, getSize(), new EntityStrategy(entity), true),
+                    maxStepsCount);
         }
         return super.calcFollow(target, maxStepsCount, calculate, intelligent, checkEntities);
+    }
+
+    /** Walk along a computed route, returning false only if the route is illegal. */
+    private boolean applyRoute(RouteResult steps, int maxStepsCount) {
+        if (steps == RouteResult.ILLEGAL) {
+            return false;
+        }
+        if (steps.getSteps() == 0) {
+            return true;
+        }
+        final int[] bufferX = steps.getXBuffer();
+        final int[] bufferY = steps.getYBuffer();
+        int stepCount = 0;
+        for (int step = steps.getSteps() - 1; step >= 0; step--) {
+            if (!addWalkStepsInteract(bufferX[step], bufferY[step], maxStepsCount, getSize(), true)) {
+                break;
+            }
+            if (maxStepsCount != -1 && ++stepCount >= maxStepsCount) {
+                break;
+            }
+        }
+        return true;
     }
 
     /**

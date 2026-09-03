@@ -490,21 +490,44 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         // Spawn NPCs
         waveNpcs.clear();
         reinforcementsSpawned = false;
-        int fremOffset = 0;
+        // Fremennik spawn at a random base tile within the centre zone, then each NPC
+        // is placed at a fixed offset forming an inverted-V (RSProx-verified all 11 waves):
+        //     B (0, +1)       Berserker at north tip
+        // A (-1, 0)  S (+1, 0)   Archer west, Seer east
+        //    ExA (0, -1)      Quartet 4th archer at south point (diamond)
+        int fremBaseX = Utils.random(WaveData.FREMENNIK_ZONE_MIN_X, WaveData.FREMENNIK_ZONE_MAX_X);
+        int fremBaseY = Utils.random(WaveData.FREMENNIK_ZONE_MIN_Y, WaveData.FREMENNIK_ZONE_MAX_Y);
+        boolean fremBerserkerPlaced = false;
+        boolean fremArcherPlaced = false;
+        boolean fremSeerPlaced = false;
         for (int npcId : npcIds) {
             Location spawnLoc;
+            int fremDx = 0, fremDy = 0;
             if (WaveData.isFremennik(npcId)) {
-                // Fremennik spawn at arena centre, clustered
-                spawnLoc = getLocation(
-                        WaveData.FREMENNIK_CENTRE_X + (fremOffset % 2 == 0 ? 0 : (fremOffset % 2)),
-                        WaveData.FREMENNIK_CENTRE_Y + (fremOffset / 2)
-                );
-                fremOffset++;
+                if (npcId == NpcId.FREMENNIK_WARBAND_BERSERKER && !fremBerserkerPlaced) {
+                    fremDx = 0; fremDy = 1;  // north
+                    fremBerserkerPlaced = true;
+                } else if (npcId == NpcId.FREMENNIK_WARBAND_ARCHER && !fremArcherPlaced) {
+                    fremDx = -1; fremDy = 0; // west
+                    fremArcherPlaced = true;
+                } else if (npcId == NpcId.FREMENNIK_WARBAND_SEER && !fremSeerPlaced) {
+                    fremDx = 1; fremDy = 0;  // east
+                    fremSeerPlaced = true;
+                } else {
+                    // Quartet extra archer → south point of diamond
+                    fremDx = 0; fremDy = -1;
+                }
+                spawnLoc = getLocation(fremBaseX + fremDx, fremBaseY + fremDy);
             } else {
                 int[] point = WaveData.getRandomSpawnPoint(usedSpawnIndices, excludedIndices);
                 spawnLoc = getLocation(point[0], point[1]);
             }
             ColosseumWaveNpc npc = createWaveNpc(npcId, spawnLoc);
+            // Set preferred standing direction (same offsets as spawn formation).
+            // Defaults match for normal trio; Quartet extra archer needs the override.
+            if (npc instanceof FremennikWarbandCombat fwc) {
+                fwc.setPreferredOffset(fremDx, fremDy);
+            }
             npc.spawn();
             // Fremennik stagger (Wiki + RSProx waves 3-5): berserker(+0) → seer(+1) → archer(+2), 6-tick cycle
             int staggerOffset = switch (npcId) {
@@ -634,10 +657,15 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         };
     }
 
+    /**
+     * Check if a spawn point is within the exclusion zone of the player.
+     * Uses Chebyshev distance from the player to the spawn point's SW corner coordinate,
+     * ignoring NPC size. RSProx W11 confirms this: a size-3 Manticore spawned at
+     * (1824, 3099) with the player at (1824, 3104) — edge-to-edge distance was 3
+     * (would be excluded), but SW corner distance was 5 (correctly allowed).
+     */
     private boolean isWithinExclusionZone(Location player, Location spawnSW, int npcSize, int range) {
-        int closestX = Math.max(spawnSW.getX(), Math.min(player.getX(), spawnSW.getX() + npcSize - 1));
-        int closestY = Math.max(spawnSW.getY(), Math.min(player.getY(), spawnSW.getY() + npcSize - 1));
-        int dist = Math.max(Math.abs(player.getX() - closestX), Math.abs(player.getY() - closestY));
+        int dist = Math.max(Math.abs(player.getX() - spawnSW.getX()), Math.abs(player.getY() - spawnSW.getY()));
         return dist <= range;
     }
 

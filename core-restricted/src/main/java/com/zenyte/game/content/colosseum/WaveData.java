@@ -34,9 +34,17 @@ public class WaveData {
             {1836, 3104},  // #12 Far east-south   (LoS 28,19)
     };
 
-    /** Fremennik spawn near arena centre. */
-    public static final int FREMENNIK_CENTRE_X = 1824;
-    public static final int FREMENNIK_CENTRE_Y = 3107;
+    /**
+     * Fremennik spawn zone bounds (RSProx-verified across 12 waves, 2 runs).
+     * The trio spawns at a random base tile within this zone, then each NPC is
+     * placed at a fixed offset from that base — see {@code ColosseumInstance#startWave()}.
+     * <p>
+     * Observed base positions: X 1821–1827, Y 3105–3111 (~7×7 zone around arena centre).
+     */
+    public static final int FREMENNIK_ZONE_MIN_X = 1821;
+    public static final int FREMENNIK_ZONE_MAX_X = 1827;
+    public static final int FREMENNIK_ZONE_MIN_Y = 3105;
+    public static final int FREMENNIK_ZONE_MAX_Y = 3111;
 
     /** Reinforcement timer: 67 ticks = 40 seconds. */
     public static final int REINFORCEMENT_DELAY_TICKS = 67;

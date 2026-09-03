@@ -543,8 +543,26 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
 
     @Override
     public void process() {
+        if (currentWave < 1 || currentWave > 11 || waveNpcs.isEmpty()) {
+            return;
+        }
+
+        // Tick-based wave completion check: if every NPC in the list is dead or
+        // finished, the wave is over.  This catches simultaneous AoE kills —
+        // GlobalAreaManager.process() runs BEFORE WorldTasksManager.processTasks()
+        // in the game loop, so dead NPCs whose onFinish hasn't fired yet still
+        // sit in waveNpcs when this method runs.  Without this check, process()
+        // would see a non-empty list and spawn reinforcements into it; those
+        // reinforcements then survive the subsequent onFinish removals, leaving
+        // the wave stuck.
+        if (waveNpcs.stream().allMatch(n -> n.isDead() || n.isFinished())) {
+            waveNpcs.clear();
+            completeWave();
+            return;
+        }
+
         // Handle reinforcement spawning
-        if (currentWave >= 1 && currentWave <= 11 && !reinforcementsSpawned && !waveNpcs.isEmpty()) {
+        if (!reinforcementsSpawned) {
             long elapsed = WorldThread.getCurrentCycle() - waveStartTick;
             if (elapsed >= WaveData.REINFORCEMENT_DELAY_TICKS) {
                 spawnReinforcements();
@@ -573,8 +591,7 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
     }
 
     public void onWaveNpcDeath(ColosseumWaveNpc npc) {
-        waveNpcs.remove(npc);
-        if (waveNpcs.isEmpty()) {
+        if (waveNpcs.remove(npc) && waveNpcs.isEmpty()) {
             completeWave();
         }
     }
@@ -595,8 +612,20 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
 
         player.sendMessage("Wave " + currentWave + " completed! Duration: " + Colour.RED.wrap(formatted));
 
-        // Respawn Minimus at (1824, 3107) — RSProx: Y+1 from initial spawn
-        minimusInside = new NPC(NpcId.MINIMUS_12808, getLocation(1824, 3107), Direction.SOUTH, 0);
+        // Respawn Minimus one tile north of the player (RSProx-verified all 11 waves).
+        // Try north first, fall back to other cardinals if the tile is blocked (pillars).
+        Location spawnLoc = new Location(player.getX(), player.getY() + 1, player.getPlane());
+        if (!World.isFloorFree(spawnLoc)) {
+            int[][] fallbacks = {{0, -1}, {1, 0}, {-1, 0}};
+            for (int[] off : fallbacks) {
+                Location candidate = new Location(player.getX() + off[0], player.getY() + off[1], player.getPlane());
+                if (World.isFloorFree(candidate)) {
+                    spawnLoc = candidate;
+                    break;
+                }
+            }
+        }
+        minimusInside = new NPC(NpcId.MINIMUS_12808, spawnLoc, Direction.SOUTH, 0);
         minimusInside.spawn();
 
         // Player clicks Start-wave on Minimus to continue (opnpc1 → openIntermission)

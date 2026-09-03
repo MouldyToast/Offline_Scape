@@ -2,7 +2,6 @@ package com.zenyte.plugins.item;
 
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.impl.BlessedFromAbove;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -55,8 +54,6 @@ public final class AshSanctifier extends ItemPlugin {
 
         final double xp = bone.getXp();
         double experienceGained = DiaryUtil.eligibleFor(DiaryReward.RADAS_BLESSING4, player) ? xp : xp / 2;
-        if(player.hasBoon(BlessedFromAbove.class))
-            experienceGained *= 4;
         player.getSkills().addXp(SkillConstants.PRAYER, experienceGained);
 
         player.sendMessage("Your Ash sanctifier automatically scatters the ashes leave " + newCharges + " charges left.");

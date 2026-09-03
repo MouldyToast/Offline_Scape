@@ -5,7 +5,6 @@ import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
-import com.zenyte.game.content.boons.impl.SleightOfHand;
 import com.zenyte.game.content.skills.magic.spells.arceuus.ShadowVeilKt;
 import com.zenyte.game.content.skills.thieving.CoinPouch;
 import com.zenyte.game.content.skills.thieving.PocketData;
@@ -235,14 +234,6 @@ public class Pickpocket extends Action {
 	@Override
 	public int processWithDelay() {
 		attemptPickPocket();
-		boolean shouldRepeat = player.getBoonManager().hasBoon(SleightOfHand.class) &&
-			((data.getCoinPouch() != null &&
-				player.getInventory().getAmountOf(data.getCoinPouch().getItemId()) < 28) ||
-				(data.getCoinPouch() == null && player.getInventory().hasFreeSlots())
-			);
-		// allows player to move after first initial pickpocket
-		if (shouldRepeat)
-			player.unlock();
 		final Inventory inventory = player.getInventory();
 		if (!Thieving.success(player, data.getSuccessLevel())) {
 			handleFailedAttempt();
@@ -255,7 +246,7 @@ public class Pickpocket extends Action {
 			player.sendMessage("You should empty your pockets before trying to thieve any more loot.");
 			return -1;
 		}
-		return shouldRepeat ? 3 : -1;
+		return -1;
 	}
 
 	@Override

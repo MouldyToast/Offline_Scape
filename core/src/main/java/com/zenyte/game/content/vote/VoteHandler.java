@@ -1,6 +1,5 @@
 package com.zenyte.game.content.vote;
 
-import com.zenyte.game.content.boons.impl.IVoted;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.World;
@@ -44,8 +43,6 @@ public class VoteHandler {
     public static double getVotePointsModifier(Player player) {
         double mod = 0.0;
         if(isBonusVote())
-            mod += 2.0;
-        if(player.getBoonManager().hasBoon(IVoted.class))
             mod += 2.0;
         if(player.getMemberRank().equalToOrGreaterThan(MemberRank.ONYX))
             mod += 2.0;

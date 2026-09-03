@@ -2,7 +2,6 @@ package com.zenyte.game.content.chompy.plugins;
 
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.impl.NoPetDebt;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.follower.impl.MiscPet;
@@ -36,9 +35,6 @@ public class DeadChompy extends NPCPlugin {
     }
 
     public static boolean roll(final Player player, int rarity) {
-        if(player.getBoonManager().hasBoon(NoPetDebt.class)) {
-            rarity /= 2;
-        }
         if (rarity == -1 || Utils.random(rarity) != 0) {
             return false;
         }

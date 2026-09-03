@@ -8,7 +8,6 @@ import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.advent.AdventCalendarManager;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.minigame.castlewars.CastlewarsRockPatch;
 import com.zenyte.game.content.minigame.motherlode.OreVein;
 import com.zenyte.game.content.minigame.motherlode.Paydirt;
@@ -380,8 +379,7 @@ public class Mining extends Action {
 
         int exp = (int) (ore.equals(OreDefinitions.DAEYALT_ESSENCE) ? ore.getXp() : (amount * ore.getXp()));
 
-        if (ore.getIncinerationExperience() > 0 && (player.hasBoon(SwissArmyMan.class) ||
-            pickaxe.getCharges() > 0) && tool.equals(PickaxeDefinitions.INFERNAL) && Utils.random(2) == 0) {
+        if (ore.getIncinerationExperience() > 0 && pickaxe.getCharges() > 0 && tool.equals(PickaxeDefinitions.INFERNAL) && Utils.random(2) == 0) {
 
             skills.addXp(SkillConstants.SMITHING, ore.getIncinerationExperience());
             if(slotId != -1)

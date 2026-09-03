@@ -1,6 +1,5 @@
 package com.zenyte.game.content.multicannon;
 
-import com.zenyte.game.content.boons.impl.DoubleTap;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.ProjectileUtils;
 import com.zenyte.game.util.Utils;
@@ -216,8 +215,6 @@ public final class Multicannon extends WorldObject {
         if (target == null) {
             return false;
         }
-        if(!skipRoll && player.getBoonManager().hasBoon(DoubleTap.class) && DoubleTap.roll() && !fire(true))
-            return false;
         this.setHighestAccuracyBonus();
         final Projectile projectile = cannon.getCannonballs() == 0 ? GRANITE_PROJECTILE : PROJECTILE;
         World.sendProjectile(center, target, projectile);

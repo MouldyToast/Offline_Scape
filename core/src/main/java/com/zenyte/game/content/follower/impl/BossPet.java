@@ -3,7 +3,6 @@ package com.zenyte.game.content.follower.impl;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.boons.impl.NoPetDebt;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
@@ -444,9 +443,6 @@ public enum BossPet implements Pet {
 
     @Override
     public boolean roll(final Player player, int rarity) {
-        if(player.getBoonManager().hasBoon(NoPetDebt.class)) {
-            rarity /= 2;
-        }
         if (rarity == -1 || Utils.random(rarity) != 0) {
             return false;
         }

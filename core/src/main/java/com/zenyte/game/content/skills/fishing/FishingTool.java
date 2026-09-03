@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.fishing;
 
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
@@ -45,10 +44,6 @@ public enum FishingTool {
     final Tool[] tools;
 
     public Optional<Tool> getTool(@NotNull final Player player) {
-        if(player.getBoonManager().hasBoon(SwissArmyMan.class)) {
-            return Optional.of(tools[0]);
-        }
-
         final int weapon = player.getEquipment().getId(EquipmentSlot.WEAPON);
         final Inventory inventory = player.getInventory();
         for (int i = tools.length - 1; i >= 0; i--) {

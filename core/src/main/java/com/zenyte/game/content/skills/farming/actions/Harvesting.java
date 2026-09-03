@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
 import com.zenyte.game.content.achievementdiary.diaries.*;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.farming.FarmingPatch;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
@@ -80,7 +79,7 @@ public class Harvesting extends Action {
         }*/
         if (spot.getPatch().getType().equals(PatchType.CELASTRUS_PATCH)) {
             final Optional<Woodcutting.AxeResult> axe = Woodcutting.getAxe(player);
-            if (!player.hasBoon(SwissArmyMan.class) && !axe.isPresent()) {
+            if (!axe.isPresent()) {
                 player.sendMessage("You need an axe to harvest the Celastrus tree.");
                 return false;
             }

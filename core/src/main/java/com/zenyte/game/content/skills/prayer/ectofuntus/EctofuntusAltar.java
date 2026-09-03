@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.prayer.ectofuntus;
 
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
-import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.WorldThread;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -49,8 +48,7 @@ public class EctofuntusAltar implements ObjectAction {
             player.getAchievementDiaries().update(MorytaniaDiary.OFFER_SOME_BONEMEAL);
             player.setAnimation(praying);
             inventory.deleteItem(4286, 1);
-            boolean rolledPerk = player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll();
-            if(!rolledPerk) inventory.deleteItem(bonemeal.getBonemeal(), 1);
+            inventory.deleteItem(bonemeal.getBonemeal(), 1);
             inventory.addItem(1931, 1);
             inventory.addItem(1925, 1);
             player.getSkills().addXp(SkillConstants.PRAYER, bonemeal.getBones().getXp() * 4.0F);

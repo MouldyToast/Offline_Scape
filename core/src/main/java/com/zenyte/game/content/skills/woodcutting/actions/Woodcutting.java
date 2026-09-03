@@ -7,7 +7,6 @@ import com.near_reality.game.model.item.leagues.raging_echo.EchoAxe;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.advent.AdventCalendarManager;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.firemaking.Firemaking;
 import com.zenyte.game.content.skills.woodcutting.AxeDefinitions;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
@@ -147,10 +146,6 @@ public class Woodcutting extends Action {
         final int level = player.getSkills().getLevel(SkillConstants.WOODCUTTING);
         final Container inventory = player.getInventory().getContainer();
         final int weapon = player.getEquipment().getId(EquipmentSlot.WEAPON);
-        if (player.getBoonManager().hasBoon(SwissArmyMan.class)) {
-            AxeDefinitions axe = SwissArmyMan.getAxeForLevel(player);
-            return Optional.of(new AxeResult(axe, player.getBank().getContainer(), -1, new Item(axe.getItemId())));
-        }
         final AxeDefinition[] values = AxeDefinitions.VALUES;
         for (final AxeDefinition def : values) {
             if (level < def.getLevelRequired()) continue;
@@ -304,7 +299,7 @@ public class Woodcutting extends Action {
                 EchoAxe.Companion.processChoppedLog(player, definitions.getLogsId());
         }
         else if (axe.getDefinition() == AxeDefinitions.INFERNAL && definitions.getLogsId() != -1
-            && (player.hasBoon(SwissArmyMan.class) || axe.getItem().getCharges() > 0) && Utils.random(2) == 0) {
+            && axe.getItem().getCharges() > 0 && Utils.random(2) == 0) {
             if (axe.getSlot() != -1)
                 player.getChargesManager().removeCharges(axe.getItem(), 1, axe.getContainer(), axe.getSlot());
             player.setGraphics(BURN_GFX);

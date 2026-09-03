@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.construction.objects.chapel;
 
-import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -188,16 +187,10 @@ public final class Altar implements ObjectInteraction, ItemOnObjectAction {
             }
             if (altar.getId() != ObjectId.CHAOS_ALTAR_411) {
                 player.sendFilteredMessage(OFFERING_MESSAGE);
-                boolean rolledPerk = player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll();
-                if(!rolledPerk) player.getInventory().deleteItem(item);
+                player.getInventory().deleteItem(item);
             } else {
-                boolean rolledChaos = Utils.random(1) == 0;
-                boolean rolledPerk = player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll();
-
-                if (rolledChaos) {
+                if (Utils.random(1) == 0) {
                     player.sendFilteredMessage(CHAOS_ALTAR_MESSAGE);
-                } else if(rolledPerk) {
-                    player.sendFilteredMessage("Your bone crusher boon saves your bones from destruction.");
                 } else {
                     player.getInventory().deleteItem(item);
                 }

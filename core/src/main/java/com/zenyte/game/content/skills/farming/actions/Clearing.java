@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming.actions;
 
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.item.Item;
@@ -36,7 +35,7 @@ public class Clearing extends Action {
             player.getDialogueManager().start(new PlainChat(player, "This looks like a rather complicated job to take on yourself.<br>Perhaps Alexandra is willing to clear this out for you instead."));
             return false;
         }
-        if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItems(SPADE)) {
+        if (!player.getInventory().containsItems(SPADE)) {
             player.sendMessage("You need a spade to clear this patch.");
             return false;
         }

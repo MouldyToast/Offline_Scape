@@ -2,7 +2,6 @@ package com.zenyte.game.content.skills.smithing;
 
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.*;
-import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.content.treasuretrails.clues.CharlieTask;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
@@ -128,7 +127,7 @@ public class Smithing extends Action {
 
 	@Override
 	public int processWithDelay() {
-		int tickCount = player.getBoonManager().hasBoon(MasterOfTheCraft.class) ? 2 : 4;
+		int tickCount = 4;
 		final Item product = PRODUCTS[tier][componentId];
 		String name = PRODUCTS[tier][componentId].getDefinitions().getName();
 		name = name.replace(BARS[tier].getName().replace("bar", ""), "");

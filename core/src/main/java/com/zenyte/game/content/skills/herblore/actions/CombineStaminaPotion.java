@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.herblore.actions;
 
-import com.zenyte.game.content.boons.impl.Mixologist;
 import com.zenyte.game.content.consumables.drinks.Potion;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -43,13 +42,7 @@ public class CombineStaminaPotion extends Action {
         final Item potion = player.getInventory().getAny(potionToUpgrade);
         player.getInventory().deleteItem(ItemId.AMYLASE_CRYSTAL, dose);
         player.getInventory().deleteItem(potion);
-        var amount = 1;
-        if(player.getBoonManager().hasBoon(Mixologist.class) && Mixologist.roll()) {
-            player.sendFilteredMessage("Your Mixology boon grants you an additional potion.");
-            amount += 1;
-            player.getSkills().addXp(SkillConstants.HERBLORE, 25.5 * dose);
-        }
-        player.getInventory().addOrDrop(upgradedPotion, amount);
+        player.getInventory().addOrDrop(upgradedPotion, 1);
         player.getSkills().addXp(SkillConstants.HERBLORE, 25.5 * dose);
         completed++;
         return 1;

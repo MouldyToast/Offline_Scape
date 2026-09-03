@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
-import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.GemCuttingData;
 import com.zenyte.game.item.Item;
@@ -65,20 +64,6 @@ public class GemCuttingCrafting extends Action {
 			}
 			cycle++;
 		});
-		if(player.getBoonManager().hasBoon(MasterOfTheCraft.class) && cycle < amount) {
-			player.getInventory().deleteItemsIfContains(new Item[] {data.getMaterial()}, () -> {
-				if ((data.equals(GemCuttingData.OPAL) || data.equals(GemCuttingData.JADE) || data.equals(GemCuttingData.RED_TOPAZ)) && !successful(player, data.getLevel())) {
-					player.sendFilteredMessage("You mis-hit the chisel and smash the " + data.getProducts()[slot].getDefinitions().getName().toLowerCase() + " to pieces!");
-					player.getSkills().addXp(SkillConstants.CRAFTING, 3.8);
-					player.getInventory().addItem(CraftingDefinitions.CRUSHED_GEM);
-				} else {
-					player.sendFilteredMessage("You cut the " + (data.equals(GemCuttingData.AMETHYST) ? "amethyst" : data.getProducts()[slot].getDefinitions().getName().toLowerCase()) + ".");
-					player.getSkills().addXp(SkillConstants.CRAFTING, data.getXp());
-					player.getInventory().addItem(data.getProducts()[slot]);
-				}
-				cycle++;
-			});
-		}
 		return 1;
 	}
 }

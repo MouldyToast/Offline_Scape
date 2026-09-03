@@ -1,6 +1,5 @@
 package com.near_reality.game.content.araxxor.items.venom
 
-import com.zenyte.game.content.boons.impl.Mixologist
 import com.zenyte.game.content.consumables.drinks.Potion
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.*
@@ -27,13 +26,7 @@ class CombineAntiVenomPotion(
         val potion = player.inventory.getAny(potToUpgrade)
         val dose = Potion.EXTENDED_ANTI_VENOM.getDoses(upgradedPot)
         if (player.inventory.deleteItems(Item(ARAXYTE_VENOM_SACK, dose), potion).result == RequestResult.SUCCESS) {
-            var amt = 1
-            if (player.boonManager.hasBoon(Mixologist::class.java) && Mixologist.roll()) {
-                player.sendFilteredMessage("Your Mixology boon grants you an additional potion.")
-                amt += 1
-                player.skills.addXp(SkillConstants.HERBLORE, 25.5 * dose)
-            }
-            player.inventory.addOrDrop(upgradedPot, amt)
+            player.inventory.addOrDrop(upgradedPot, 1)
             player.skills.addXp(SkillConstants.HERBLORE, 25.5 * dose)
             completed++
             return 1

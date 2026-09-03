@@ -1,6 +1,5 @@
 package com.zenyte.plugins.object;
 
-import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
@@ -117,13 +116,8 @@ public class ChaosAltar implements ItemOnObjectAction {
             if (Utils.random(1) == 0) {
                 player.sendFilteredMessage(CHAOS_ALTAR_MESSAGE);
             } else {
-                if(player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll()) {
-                    player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
-                    player.sendFilteredMessage(Colour.RS_GREEN.wrap("Your Bone Cruncher perk has saved your resources"));
-                } else {
-                    player.getInventory().deleteItem(item);
-                    player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
-                }
+                player.getInventory().deleteItem(item);
+                player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
             }
             player.getSkills().addXp(SkillConstants.PRAYER, bone.getXp() * 3.5F);
             return 3;

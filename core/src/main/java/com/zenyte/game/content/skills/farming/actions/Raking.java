@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming.actions;
 
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -27,7 +26,7 @@ public class Raking extends Action {
 
     @Override
     public boolean start() {
-        if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItem(RAKE.getId(), RAKE.getAmount())) {
+        if (!player.getInventory().containsItem(RAKE.getId(), RAKE.getAmount())) {
             player.sendMessage("You need a rake to get rid of the weeds.");
             return false;
         }

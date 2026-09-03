@@ -65,11 +65,6 @@ class NezikchenedsDroptable : NPCDropTableScript() {
                 DRAGON_SPEAR quantity 1 rarity 4
 
 
-                /* 1 in 2000 drops (6pts) */
-                REMNANT_WHEEL quantity 1 rarity 2
-                REMNANT_COG quantity 1 rarity 2
-                REMNANT_TOOLS quantity 1 rarity 2
-
                 /* 1 in 4000 drops (6pts) */
                 SKILLING_MYSTERY_BOX quantity 1 rarity 1
                 OSNR_MYSTERY_BOX quantity 1 rarity 1 announce everywhere

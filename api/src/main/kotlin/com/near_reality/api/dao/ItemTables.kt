@@ -13,7 +13,6 @@ object ItemConfigs : LongIdTable("item_configs_v2") {
     val ecoValue = integer("custom_price").nullable()
     val generalStorePrice = integer("gen_store_price").nullable()
     val protectionValue = integer("protection_value").nullable()
-    val remnantValue = integer("remnant_value").nullable()
 }
 
 class ItemConfigEntity(id: EntityID<Long>) : ModelEntity<ItemConfig>(id) {
@@ -31,7 +30,6 @@ class ItemConfigEntity(id: EntityID<Long>) : ModelEntity<ItemConfig>(id) {
     var ecoValue by ItemConfigs.ecoValue
     var generalStorePrice by ItemConfigs.generalStorePrice
     var protectionValue by ItemConfigs.protectionValue
-    var remnantValue by ItemConfigs.remnantValue
 
     fun setFrom(itemDetails: ItemConfig) {
         itemId = itemDetails.id
@@ -40,7 +38,6 @@ class ItemConfigEntity(id: EntityID<Long>) : ModelEntity<ItemConfig>(id) {
         ecoValue = itemDetails.ecoValue
         generalStorePrice = itemDetails.generalStore
         protectionValue = itemDetails.protectionValue
-        remnantValue = itemDetails.remnantValue
     }
 
     override fun toModel(): ItemConfig {
@@ -50,8 +47,7 @@ class ItemConfigEntity(id: EntityID<Long>) : ModelEntity<ItemConfig>(id) {
             tradeable = canTrade,
             ecoValue = ecoValue,
             generalStore = generalStorePrice,
-            protectionValue = protectionValue,
-            remnantValue = remnantValue
+            protectionValue = protectionValue
         )
     }
 }

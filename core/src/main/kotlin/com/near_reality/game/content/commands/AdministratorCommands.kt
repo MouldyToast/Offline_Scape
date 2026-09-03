@@ -406,16 +406,6 @@ object AdministratorCommands {
             p.temporaryAttributes["combat" + " " + "debug"] = Boolean.valueOf(args[0])
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "perks") { p: Player, args: Array<String?>? ->
-            val builder = StringBuilder()
-            builder.append("Unlocked perks:<br>")
-            for ((_, value) in p.perkManager.perks) {
-                builder.append("- <col=00080>")
-                builder.append(value.name)
-                builder.append("</col><br>")
-            }
-            p.sendMessage(builder.toString())
-        }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "open") { p: Player?, args: Array<String?> ->
             val name = StringUtilities.compile(args, 0, args.size, ' ')
@@ -555,12 +545,6 @@ object AdministratorCommands {
                 }
                 p.interfaceHandler.sendInterface(InterfacePosition.CENTRAL, id)
             })
-        Command(PlayerPrivilege.ADMINISTRATOR, "buyperks") { p: Player?, _: Array<String?>? ->
-            GameInterface.PVPW_PERKS.open(p)
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "openexch") { p: Player?, _: Array<String?>? ->
-            GameInterface.REMNANT_EXCHANGE.open(p)
-        }
         Command(PlayerPrivilege.DEVELOPER, "amasks") { p: Player, args: Array<String> ->
             val interfaceID = args[0].toInt()
             for (childID in 0..99) {

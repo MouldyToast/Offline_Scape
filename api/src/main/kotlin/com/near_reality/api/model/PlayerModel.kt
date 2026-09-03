@@ -4,7 +4,6 @@ import com.near_reality.api.model.ItemContainer.Policy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-var PlayerData.exchangePoints: Int by attribute("exchangePoints", 0)
 val PlayerData.totalVoteCredits: Int by attribute("vote_points", 0)
 val PlayerData.registered: Boolean by attribute<PlayerData, Int>("registered", 0).asBoolean()
 

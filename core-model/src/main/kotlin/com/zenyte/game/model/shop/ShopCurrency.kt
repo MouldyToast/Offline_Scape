@@ -30,9 +30,6 @@ enum class ShopCurrency(
     LOYALTY_POINTS(isStackable = false, isPhysical = false) {
         override fun toString(): String = "loyalty points"
     },
-    EXCHANGE_POINTS(isStackable = false, isPhysical = false) {
-        override fun toString(): String = "exchange points"
-    },
     MOLCH_PEARL(22820) {
         override fun toString(): String = "molch pearls"
     },

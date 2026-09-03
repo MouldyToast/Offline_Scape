@@ -23,7 +23,6 @@ import com.near_reality.api.dao.logs.PrimalExchangeLogs
 import com.near_reality.api.dao.logs.PrivateMessageLogs
 import com.near_reality.api.dao.logs.PublicMessageLogs
 import com.near_reality.api.dao.logs.RareDropLogs
-import com.near_reality.api.dao.logs.RemnantExchangeLogs
 import com.near_reality.api.dao.logs.ShopTransactionLogs
 import com.near_reality.api.dao.logs.TeleGrabItemLogs
 import com.near_reality.api.dao.logs.TradeLogs
@@ -105,7 +104,6 @@ object Db {
                 create(PublicMessageLogs)
                 create(RareDropLogs)
                 create(CreditStoreCheckoutLogs)
-                create(RemnantExchangeLogs)
                 create(PrimalExchangeLogs)
                 create(VoteLogs)
                 create(ShopTransactionLogs)

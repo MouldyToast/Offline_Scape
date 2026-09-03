@@ -143,27 +143,6 @@ public final class RunePouchInterface extends Interface implements SwitchPlugin 
         }
     }
 
-    private boolean addRuneItem(Player player, int slotId, int option, Item item, Rune r) {
-        int quantityRemoved = getApplicableQuantity(player, option, slotId);
-        if(quantityRemoved == -99) {
-            player.sendDeveloperMessage("Error in additional rune perk.");
-            return false;
-        }
-        player.getAttributes().put("boonQuantStored", quantityRemoved);
-        int oldQuant = item.getAmount();
-        Item newItem = new Item(r.getId(), oldQuant - quantityRemoved);
-        player.getInventory().deleteItem(item);
-        player.getInventory().addItem(newItem);
-        return true;
-    }
-
-    private int getApplicableQuantity(Player p, int option, int slotId) {
-        int amount = option == 1 ? 1 : option == 2 ? 5 : p.getInventory().getItem(slotId).getAmount();
-
-        int resultant = -99;
-        if(amount > 16000) { resultant = amount - 16000; } else { resultant = amount; }
-        return resultant;
-    }
 
     @Override
     public GameInterface getInterface() {

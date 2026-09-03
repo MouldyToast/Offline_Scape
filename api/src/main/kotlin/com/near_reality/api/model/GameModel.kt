@@ -15,7 +15,6 @@ data class ItemConfig(
     val ecoValue: Int?,
     val generalStore: Int?,
     val protectionValue: Int?,
-    val remnantValue: Int?,
 ) {
     fun getSellPrice() : Int {
         return generalStore ?: -99

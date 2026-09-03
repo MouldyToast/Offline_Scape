@@ -36,8 +36,6 @@ import com.zenyte.game.content.RespawnPoint;
 import com.zenyte.game.content.StorageRoom;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.boons.Boon;
-import com.zenyte.game.content.boons.BoonManager;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.content.bountyhunter.BountyHunter;
 import com.zenyte.game.content.breaches.BreachManager;
@@ -172,7 +170,6 @@ import com.zenyte.game.world.entity.player.dailychallenge.DailyChallengeManager;
 import com.zenyte.game.world.entity.player.dialogue.DialogueManager;
 import com.zenyte.game.world.entity.player.login.Authenticator;
 import com.zenyte.game.world.entity.player.loyalty.LoyaltyManager;
-import com.zenyte.game.world.entity.player.perk.PerkManager;
 import com.zenyte.game.world.entity.player.privilege.Crown;
 import com.zenyte.game.world.entity.player.privilege.ExpConfiguration;
 import com.zenyte.game.world.entity.player.privilege.ExpConfigurations;
@@ -400,8 +397,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final SocialManager socialManager = new SocialManager(this);
     @Expose
     private CombatDefinitions combatDefinitions = new CombatDefinitions(this);
-    @Expose
-    private final BoonManager boonManager = new BoonManager(this);
 
     @Expose
     private final CollectionLogRewardManager clRewardManager = new CollectionLogRewardManager(this);
@@ -410,9 +405,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return clRewardManager;
     }
 
-    public BoonManager getBoonManager() {
-        return this.boonManager;
-    }
 
     private final MagicStorageUnit magicStorageUnit = new MagicStorageUnit();
     @Expose
@@ -489,7 +481,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient Bonuses bonuses = new Bonuses(this);
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
-    private PerkManager perkManager = new PerkManager(this);
     private transient ChatMessage chatMessage = new ChatMessage();
     private Barrows barrows = new Barrows(this);
     private ItemRetrievalService retrievalService = new ItemRetrievalService(this);
@@ -2083,9 +2074,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         };
     }
 
-    public boolean hasBoon(Class<? extends Boon> lookupBoon) {
-        return boonManager.hasBoon(lookupBoon);
-    }
 
     private boolean torvaHPBoosted = false;
 
@@ -4913,9 +4901,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return attackedByPlayers;
     }
 
-    public PerkManager getPerkManager() {
-        return perkManager;
-    }
 
     public ChatMessage getChatMessage() {
         return chatMessage;

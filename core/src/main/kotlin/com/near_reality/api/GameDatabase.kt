@@ -36,7 +36,6 @@ import com.near_reality.api.dao.logs.PrimalExchangeLogEntity
 import com.near_reality.api.dao.logs.PrivateMessageLogEntity
 import com.near_reality.api.dao.logs.PublicMessageLogEntity
 import com.near_reality.api.dao.logs.RareDropLogEntity
-import com.near_reality.api.dao.logs.RemnantExchangeLogEntity
 import com.near_reality.api.dao.logs.ShopTransactionLogEntity
 import com.near_reality.api.dao.logs.TeleGrabItemLogEntity
 import com.near_reality.api.dao.logs.TradeLogEntity
@@ -360,13 +359,6 @@ object GameDatabase {
                     items1 = log.items.toSlotItemMapAdminCp()
                     items2 = log.otherItems.toSlotItemMapAdminCp()
                     location = log.location.toLocationAdminCp()
-                }
-                is GameLogMessage.RemnantExchange -> RemnantExchangeLogEntity.new {
-                    time = log.time.toLocalDateTime(defaultTimeZone)
-                    username = log.username
-                    itemId = log.item.id
-                    amount = log.item.amount
-                    value = log.value
                 }
                 is GameLogMessage.PrimalExchange -> PrimalExchangeLogEntity.new {
                     time = log.time.toLocalDateTime(defaultTimeZone)

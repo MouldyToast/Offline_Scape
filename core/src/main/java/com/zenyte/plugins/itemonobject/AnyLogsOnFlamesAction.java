@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.object.WorldObject;
 
-public class AnyLogsOnFlamesBoonAction implements ItemOnObjectAction {
+public class AnyLogsOnFlamesAction implements ItemOnObjectAction {
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
         Firemaking logs = null;

@@ -70,9 +70,6 @@ var Player.sacrificedScytheOfVitur: Boolean by persistentAttribute("sacrificedSc
 var Player.sacrificedTumekensShadow: Boolean by persistentAttribute("sacrificedTumekensShadow", false)
 
 var Player.manuallyLeftHelpChat: Boolean by persistentAttribute("manuallyLeftHelpChat", false)
-var Player.exchangePoints: Int by persistentAttribute("exchangePoints", 0)
-var Player.boonRuneStored: Int by persistentAttribute("boonRuneStored", null)
-var Player.boonQuantStored: Int by persistentAttribute("boonQuantStored", 0)
 
 var Player.toaPetAkkhito: Boolean by persistentAttribute("toa-pet-akkha", false)
 var Player.toaPetBabi: Boolean by persistentAttribute("toa-pet-baba", false)

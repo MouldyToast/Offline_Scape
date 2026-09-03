@@ -92,7 +92,6 @@ import com.zenyte.game.world.entity.player.cutscene.actions.CameraLookAction;
 import com.zenyte.game.world.entity.player.cutscene.actions.CameraPositionAction;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.login.InvitedPlayersList;
-import com.zenyte.game.world.entity.player.perk.PerkCommands;
 import com.zenyte.game.world.entity.player.privilege.ExpConfiguration;
 import com.zenyte.game.world.entity.player.privilege.ExpConfigurations;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
@@ -179,7 +178,6 @@ public final class GameCommands {
         SanctionCommands.INSTANCE.register();
         BotPrevention.INSTANCE.registerCommands();
         ChambersCommands.INSTANCE.register();
-        PerkCommands.INSTANCE.register();
         UniversalShopCommands.INSTANCE.register();
 
         new Command(PlayerPrivilege.ADMINISTRATOR, "bcp", "Opens the breach control panel", (p, args) -> {

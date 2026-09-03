@@ -32,7 +32,6 @@ object CollectionLogRewards {
     private const val venatorKit = ItemId.ECHO_VENATOR_BOW_ORNAMENT_KIT
     private const val herbBox = ItemId.HERB_BOX
     private const val venatorShard = ItemId.VENATOR_SHARD
-    private const val remnantPoint = CustomItemId.REMNANT_POINT_VOUCHER_1
     private const val asgarniaOrb = ItemId.ASGARNIA_ECHO_ORB
     private const val tirannwnOrb = ItemId.TIRANNWN_ECHO_ORB
     private const val morytaniaOrb = ItemId.MORYTANIA_ECHO_ORB
@@ -198,11 +197,11 @@ object CollectionLogRewards {
                     cerberus,
                     arrayOf(ultraMB x 1, superMB x 2, slayerTaskPicker x 10, asgarniaOrb x 1)
                 ),
-                CollectionLogReward(chaosElemental, arrayOf(superMB x 2, larransBooster x 3, remnantPoint x 500)),
-                CollectionLogReward(chaosFanatic, arrayOf(superMB x 2, remnantPoint x 500)),
-                CollectionLogReward(commanderZilyana, arrayOf(ultraMB x 1, superMB x 2, remnantPoint x 2000)),
+                CollectionLogReward(chaosElemental, arrayOf(superMB x 2, larransBooster x 3)),
+                CollectionLogReward(chaosFanatic, arrayOf(superMB x 2)),
+                CollectionLogReward(commanderZilyana, arrayOf(ultraMB x 1, superMB x 2)),
                 CollectionLogReward(corporealBeast, arrayOf(dpin25 x 1, ultraMB x 3, superMB x 2)),
-                CollectionLogReward(crazyArcheologist, arrayOf(superMB x 2, remnantPoint x 500)),
+                CollectionLogReward(crazyArcheologist, arrayOf(superMB x 2)),
                 CollectionLogReward(dagannothKings, arrayOf(imbueScroll x 1, superMB x 1, standardMB x 2)),
                 CollectionLogReward(
                     dukeSucellus,
@@ -214,7 +213,7 @@ object CollectionLogRewards {
                     ganodermicBeast,
                     arrayOf(dpin25 x 1, ultraMB x 1, bloodMoney x 5_000, ganoBooster x 5)
                 ),
-                CollectionLogReward(generalGraardor, arrayOf(ultraMB x 1, superMB x 2, remnantPoint x 2000)),
+                CollectionLogReward(generalGraardor, arrayOf(ultraMB x 1, superMB x 2)),
                 CollectionLogReward(
                     grotesqueGuardians,
                     arrayOf(doubleAmmoMold x 1, slayerTaskPicker x 5, slayerBooster x 5, morytaniaOrb x 1)
@@ -233,8 +232,8 @@ object CollectionLogRewards {
                     kraken,
                     arrayOf(superMB x 1, slayerTaskPicker x 5, slayerBooster x 5, standardMB x 1)
                 ),
-                CollectionLogReward(kreearra, arrayOf(superMB x 1, standardMB x 2, remnantPoint x 2000)),
-                CollectionLogReward(krilTsutsaroth, arrayOf(superMB x 1, standardMB x 2, remnantPoint x 2000)),
+                CollectionLogReward(kreearra, arrayOf(superMB x 1, standardMB x 2)),
+                CollectionLogReward(krilTsutsaroth, arrayOf(superMB x 1, standardMB x 2)),
                 CollectionLogReward(leviathan, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
                 CollectionLogReward(nex, arrayOf(dpin25 x 1, nexBooster x 10, bandosComp x 3, armadylComp x 3)),
                 CollectionLogReward(nightmare, arrayOf(ultraMB x 1, superMB x 2, petBooster x 3, dpin10 x 1)),
@@ -267,7 +266,7 @@ object CollectionLogRewards {
                     vetionAndCalvarion,
                     arrayOf(superMB x 1, standardMB x 2, bloodMoneyBooster x 3, larransBooster x 3)
                 ),
-                CollectionLogReward(vorkath, arrayOf(superMB x 2, standardMB x 3, remnantPoint x 1000)),
+                CollectionLogReward(vorkath, arrayOf(superMB x 2, standardMB x 3)),
                 CollectionLogReward(whisperer, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
                 CollectionLogReward(wildMole, arrayOf(ultraMB x 1, superMB x 2, standardMB x 3)),
                 CollectionLogReward(wintertodt, arrayOf(superMB x 1, standardMB x 2, wintertodtCrate x 25)),

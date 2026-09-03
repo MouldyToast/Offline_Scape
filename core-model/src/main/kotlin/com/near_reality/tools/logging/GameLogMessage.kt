@@ -217,14 +217,6 @@ sealed interface GameLogMessage {
     ) : GameLogMessage, PlayerWithOther, ItemContainerWithOther, LocationLog
 
     @Serializable
-    data class RemnantExchange(
-        override val time: Instant = Clock.System.now(),
-        override val username: String,
-        override val item: @Contextual _Item,
-        val value: Int,
-    ) : GameLogMessage, Player, ItemLog
-
-    @Serializable
     data class PrimalExchange(
         override val time: Instant = Clock.System.now(),
         override val username: String,

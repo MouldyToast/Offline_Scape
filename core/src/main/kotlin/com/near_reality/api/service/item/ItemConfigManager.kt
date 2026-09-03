@@ -75,7 +75,6 @@ object ItemConfigManager {
     fun sellPrice(id: Int): Optional<Int> = itemConfigs[id]?.generalStore?.let { Optional.of(it) } ?: Optional.empty()
     fun protectValue(id: Int): Optional<Int> = itemConfigs[id]?.protectionValue?.let { Optional.of(it) } ?: Optional.empty()
     fun tradeable(id: Int): Optional<Boolean> = itemConfigs[id]?.tradeable?.let { Optional.of(it) } ?: Optional.empty()
-    fun remnantValue(id: Int): Optional<Int> = itemConfigs[id]?.remnantValue?.let { Optional.of(it) } ?: Optional.empty()
 
     operator fun get(itemId: Int) = itemConfigs[itemId]?: error("Item config not found for item id: $itemId")
 }

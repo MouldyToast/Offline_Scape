@@ -156,13 +156,6 @@ tasks.register<JavaExec>("runProduction") {
     jvmArgs(*defaultJvmArgs)
 }
 
-tasks.register<JavaExec>("generateBoonData") {
-    group = "_nr_data"
-    mainClass.set("com.zenyte.game.content.boons.BoonDataGenerator")
-    classpath = sourceSets["main"].runtimeClasspath
-    workingDir = layout.projectDirectory.dir("../").asFile
-    jvmArgs(*defaultJvmArgs)
-}
 
 //tasks.register<JavaExec>("generateCache") {
 //    group = "_nr_data"

@@ -229,13 +229,6 @@ data class CreditStoreCheckoutLog(
     val cart: List<CreditStoreCartItem>
 ) : Log()
 
-@Serializable
-data class RemnantExchangeLog(
-    override val time: Instant = Clock.System.now(),
-    val username: String,
-    val item: Item,
-    val value: Int, // per item
-) : Log()
 
 
 @Serializable

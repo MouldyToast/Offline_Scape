@@ -84,8 +84,6 @@ import mgi.custom.DiceBag;
 import mgi.custom.FramePacker;
 import mgi.custom.HighDefinitionPets;
 import mgi.custom.Korasi;
-import mgi.custom.relaunch.PerkPacker;
-import mgi.custom.relaunch.RemnantExchangeValuePacker;
 import mgi.custom.relaunch.SoloChallengePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
@@ -243,8 +241,6 @@ public class TypeParser {
         }
         duelArena(cache);
         new BountyHunter().packAll();
-        new PerkPacker().packAll();
-        new RemnantExchangeValuePacker().packAll();
         new SoloChallengePacker().packAll();
         if (!isProductionCacheGen) {
             //packPreservedCS2(cache);
@@ -361,10 +357,6 @@ public class TypeParser {
 
 //    private static void handleSavor() throws Exception {
 //        Cache cache = Cache.openCache("data/cache-staging");
-//        /* Perks Purchase */
-//        preserveCS2s(cache, 12575, 12576, 12577, 12578, 12579, 12580, 12581, 12582, 12583, 12584, 12585, 12586);
-//        /* Remnant Exchange */
-//        preserveCS2s(cache, 34000, 34001, 34002, 34003, 34004, 34005, 34006, 34007, 34008, 34009, 34010);
 //        /* Next-Gen Store */
 //        preserveCS2s(cache, 12538, 12539, 12540, 12541, 12542, 12543, 12544, 12545, 12546, 12547, 12548, 12549, 12550,
 //                12551, 12552, 12553, 12554, 12555, 12556, 12557, 12558, 12559, 12560, 12561, 12562, 12563, 12564, 12565, 12566,
@@ -781,7 +773,6 @@ public class TypeParser {
 //            var id = Integer.parseInt(file.getName().replaceAll(".cs2", ""));
 //            packClientScript(id, java.nio.file.Files.readAllBytes(file.toPath()));
 //        }
-        // packCs2FromDirectory("assets/cs2/perks/");
 
 //        packClientScript(393,
 //               java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/skill_tab_construction/393.cs2")));

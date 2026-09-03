@@ -1,6 +1,5 @@
 package com.near_reality.game.content.commands
 
-import com.near_reality.game.content.shop.ShopCurrencyHandler
 import com.near_reality.game.content.slayer.*
 import com.near_reality.game.model.ui.credit_store.CreditStoreModel
 import com.near_reality.game.model.ui.credit_store.coinbaseEnabled
@@ -35,7 +34,6 @@ import com.zenyte.game.content.treasuretrails.clues.SherlockTask
 import com.zenyte.game.content.treasuretrails.clues.*
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Utils
@@ -390,16 +388,6 @@ object DeveloperCommands {
         }
         Command(PlayerPrivilege.DEVELOPER, "atts") { p, args ->
             p.dialogueManager.start(PlayerAttributesEditor(p))
-        }
-        Command(PlayerPrivilege.DEVELOPER, "addexchpts") { p, args ->
-            val points = args[0].toInt()
-            ShopCurrencyHandler.add(ShopCurrency.EXCHANGE_POINTS, p, points)
-            p.sendMessage("Added $points Exchange Points to ${p.username}'s account.")
-        }
-        Command(PlayerPrivilege.DEVELOPER, "delexchpts") { p, args ->
-            val points = args[0].toInt()
-            ShopCurrencyHandler.remove(ShopCurrency.EXCHANGE_POINTS, p, points)
-            p.sendMessage("Removed $points Exchange Points to ${p.username}'s account.")
         }
         Command(PlayerPrivilege.DEVELOPER, "toggledpins") { p, _ ->
             enabledDPinRedeeming = !enabledDPinRedeeming

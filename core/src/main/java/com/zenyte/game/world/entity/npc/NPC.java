@@ -1483,10 +1483,6 @@ public class NPC extends AbstractEntity {
             killer.sendFilteredMessage(Colour.GREEN.wrap("You spot a shimmer of crystal coming from the floor beneath you."));
             dropItemAtKiller(killer, new Item(ItemId.CRYSTAL_KEY));
         }
-        if (random((int) ((double) 45000 / Math.max(1, getCombatLevel()))) == 0) {
-            killer.sendFilteredMessage(Colour.GREEN.wrap("You spot a stack of vouchers under your feet."));
-            dropItemAtKiller(killer, new Item(ItemId.REMNANT_POINT_VOUCHER_1, Math.max(10, Utils.randomNoPlus(25) + 1)));
-        }
         evaluateExtraGPDrop(killer, getCombatLevel(), getMaxHitpoints());
         final NPCDrops.DropTable drops = NPCDrops.getTable(getId());
         if (drops == null) {

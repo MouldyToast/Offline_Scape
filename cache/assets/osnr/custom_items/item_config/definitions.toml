@@ -6175,27 +6175,6 @@ offsety = 0
 zoom = 0
 
 [[item]]
-id=32951
-inherit=10875
-name="Remnant wheel"
-notedid=-1
-placeholderid=-1
-
-[[item]]
-id=32952
-inherit=9725
-name="Remnant cog"
-notedid=-1
-placeholderid=-1
-
-[[item]]
-id=32953
-inherit=4051
-name="Remnant tools"
-notedid=-1
-placeholderid=-1
-
-[[item]]
 id=32954
 inherit=28674
 name="Primal components"

@@ -21,8 +21,6 @@ import com.near_reality.util.gson.Object2IntMapDeserializer;
 import com.near_reality.util.gson.ObjectCollectionDeserializer;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.boons.Boon;
-import com.zenyte.game.content.boons.BoonAdapter;
 import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.task.WorldTasksManager;
@@ -33,8 +31,6 @@ import com.zenyte.game.world.entity.player.PlayerInformation;
 import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.dailychallenge.ChallengeAdapter;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.DailyChallenge;
-import com.zenyte.game.world.entity.player.perk.Perk;
-import com.zenyte.game.world.entity.player.perk.PerkAdapter;
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.PluginManager;
@@ -115,9 +111,7 @@ public final class LoginManager {
     public static final ThreadLocal<Gson> gson = ThreadLocal.withInitial(() -> new GsonBuilder()
             .disableHtmlEscaping()
             .setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
-            .registerTypeAdapter(Perk.class, new PerkAdapter())
             .registerTypeAdapter(Date.class, new DateTypeAdapter())
-            .registerTypeAdapter(Boon.class, new BoonAdapter())
             .registerTypeAdapter(FarmingSpot.class, Farming.deserializer())
             .registerTypeAdapter(VarManager.class, VarManager.deserializer())
             .registerTypeAdapter(DailyChallenge.class, new ChallengeAdapter())
@@ -731,10 +725,8 @@ public final class LoginManager {
         player.getGrandExchange().initialize(parser.getGrandExchange());
         player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
-        player.getPerkManager().initialize(parser.getPerkManager());
         player.getKillstreakLog().initialize(parser.getKillstreakLog());
         player.getTOAManager().initialize(parser.getTOAManager());
-        player.getBoonManager().initialize(parser.getBoonManager());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)

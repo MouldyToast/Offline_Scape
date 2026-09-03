@@ -18,8 +18,6 @@ import com.zenyte.game.world.region.area.plugins.LayableObjectPlugin;
 
 import java.util.Optional;
 
-import static com.near_reality.game.world.entity.player.PlayerSkillingModifiersKt.onBurn;
-import static com.near_reality.game.world.entity.player.PlayerSkillingModifiersKt.onGather;
 
 public class FiremakingAction extends Action {
     public static final Item TINDERBOX = new Item(590);
@@ -147,7 +145,6 @@ public class FiremakingAction extends Action {
         World.destroyFloorItem(player, item, object);
         player.getTemporaryAttributes().put("BurnDelay", Utils.currentTimeMillis() + 1800);
         WorldTasksManager.schedule(() -> player.setFaceLocation(location));
-        onBurn(player);
 
         //});
     }

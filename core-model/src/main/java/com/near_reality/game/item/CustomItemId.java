@@ -97,9 +97,6 @@ public class CustomItemId
 	public static final int ARMADYL_MAX_CAPE = 32360;
 	public static final int BANDOS_MAX_CAPE = 32361;
 	public static final int SEREN_MAX_CAPE = 32362;
-	public static final int REMNANT_POINT_VOUCHER_1 = 32363;
-	public static final int REMNANT_POINT_VOUCHER_5 = 32364;
-	public static final int REMNANT_POINT_VOUCHER_10 = 32365;
 	public static final int PVP_TOURNEY_MYSTERY_BOX = 32368;
 	public static final int ORB_OF_XERIC = 32369;
 	public static final int ORB_OF_BLOOD = 32370;
@@ -296,9 +293,6 @@ public class CustomItemId
 	public static final int PRIMAL_BATTLEAXE = 32946;
 	public static final int PRIMAL_KITESHIELD = 32948;
 	/* reserve 32950 */
-	public static final int REMNANT_WHEEL = 32951;
-	public static final int REMNANT_COG = 32952;
-	public static final int REMNANT_TOOLS = 32953;
 	public static final int PRIMAL_COMPONENTS = 32954;
 	public static final int DIVINE_SIGIL = 32955;
 	public static final int DIVINE_SPIRIT_SHIELD = 32956;

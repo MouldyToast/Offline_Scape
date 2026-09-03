@@ -10,7 +10,6 @@ import com.zenyte.game.world.entity.npc.NPCCombat;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.pathfinding.RouteFinder;
 import com.zenyte.game.world.entity.pathfinding.RouteResult;
-import com.zenyte.game.world.entity.pathfinding.strategy.EntityStrategy;
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;
 import com.zenyte.game.world.Position;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
@@ -72,6 +71,9 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     private int preferredDx;
     private int preferredDy;
 
+    /** The four attack positions: N, S, E, W. */
+    private static final int[][] CARDINALS = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
     // Berserker — melee, weak to magic
     private static final Animation BERSERKER_ANIM = new Animation(10856);
 
@@ -80,8 +82,8 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     // Projectile constructor: graphicsId, startHeight, endHeight, delay, angle, duration, distanceOffset, multiplier
     private static final Projectile ARCHER_PROJ = new Projectile(
             9,    // iron_arrow_travel
-            163,  // startHeight (RSProx)
-            146,  // endHeight (RSProx)
+            40,  // startHeight (RSProx)
+            36,  // endHeight (RSProx)
             10,   // delay (RSProx: starttime=10)
             15,   // angle (RSProx: angle=15)
             20,   // duration (RSProx: endtime=30 minus starttime=10)
@@ -93,8 +95,8 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     private static final Animation SEER_ANIM = new Animation(10853);
     private static final Projectile SEER_PROJ = new Projectile(
             130,  // fireblast_travel
-            172,  // startHeight (RSProx)
-            124,  // endHeight (RSProx)
+            43,  // startHeight (RSProx)
+            31,  // endHeight (RSProx)
             10,   // delay (RSProx: starttime=10)
             16,   // angle (RSProx: angle=16)
             20,   // duration (RSProx: endtime=30 minus starttime=10)
@@ -140,6 +142,16 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
             @Override
             public boolean isMelee() {
                 return true;
+            }
+
+            /**
+             * Never take the random cardinal "collision" step. RSProx W6: when the
+             * player and a warbander share a tile, the warbander simply routes one
+             * step to its preferred tile on the next tick.
+             */
+            @Override
+            public boolean colliding() {
+                return false;
             }
 
             @Override
@@ -205,15 +217,26 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     }
 
     /**
+     * Warbanders do not clip their tiles and are not blocked by other entities
+     * (RSProx W6: seer stood on the player's tile, then on a Javelin Colossus tile).
+     * Disables step-time NPC/player occupancy checks in {@code NPC#checkWalkStep}.
+     */
+    @Override
+    public boolean isEntityClipped() {
+        return false;
+    }
+
+    /**
      * Pathfind to the preferred cardinal tile relative to the player
      * (RSProx-verified: Berserker→north, Seer→east, Archer→west, 100% of attacks).
      * <p>
-     * Uses {@link RouteFinder#findConditionalRoute} which includes
-     * {@code OCCUPIED_BLOCK_NPC} in collision checks, so warbanders route
-     * around each other rather than stacking single-file.
+     * Uses {@link RouteFinder#findRoute} (plain finder, ignores NPC/player
+     * occupancy). RSProx W6/W10: warbanders pass through the player and overlap
+     * other NPCs; the formation translates rigidly because the four preferred
+     * tiles are a pure translation of the spawn diamond, so no contention arises.
      * <p>
-     * If the preferred tile is unreachable (e.g. pillar between player and
-     * that side), falls back to {@link EntityStrategy} for any adjacent tile.
+     * If the preferred tile is unwalkable (pillar), falls back to the one cardinal
+     * tile not claimed by a sibling warbander; if none, holds position.
      */
     @Override
     public boolean calcFollow(Position target, int maxStepsCount, boolean calculate,
@@ -225,18 +248,54 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
             if (getX() == prefX && getY() == prefY) {
                 return true;
             }
-            // Try preferred tile first
-            RouteResult steps = RouteFinder.findConditionalRoute(
+            // Try preferred tile first. Only accept an exact route: if the finder
+            // returned an alternative, the preferred tile is unwalkable (pillar) and
+            // the alternative could be the player's own tile, which must never be
+            // a standing position.
+            RouteResult steps = RouteFinder.findRoute(
                     this, getSize(), new TileStrategy(prefX, prefY), true);
-            if (steps != RouteResult.ILLEGAL && steps.getSteps() > 0) {
+            if (steps != RouteResult.ILLEGAL && !steps.isAlternative()) {
                 return applyRoute(steps, maxStepsCount);
             }
-            // Preferred tile unreachable — fall back to any adjacent tile
-            return applyRoute(
-                    RouteFinder.findConditionalRoute(this, getSize(), new EntityStrategy(entity), true),
-                    maxStepsCount);
+            // Preferred tile blocked (pillar). The warband holds formation: the
+            // only fallback is a cardinal tile that no other living warbander has
+            // claimed as its preferred tile. Trio: exactly one spare tile.
+            // Quartet: none. Re-evaluated every tick, so the NPC returns to its
+            // preferred tile as soon as it is walkable.
+            RouteResult best = RouteResult.ILLEGAL;
+            for (int[] off : CARDINALS) {
+                if (off[0] == preferredDx && off[1] == preferredDy) {
+                    continue;
+                }
+                if (isClaimedBySibling(off[0], off[1])) {
+                    continue;
+                }
+                final RouteResult r = RouteFinder.findRoute(this, getSize(),
+                        new TileStrategy(entity.getX() + off[0], entity.getY() + off[1]), false);
+                if (r != RouteResult.ILLEGAL
+                        && (best == RouteResult.ILLEGAL || r.getSteps() < best.getSteps())) {
+                    best = r;
+                }
+            }
+            if (best == RouteResult.ILLEGAL) {
+                // No unclaimed walkable tile: hold position. Never stand on the
+                // player or on a sibling's tile.
+                return true;
+            }
+            return applyRoute(best, maxStepsCount);
         }
         return super.calcFollow(target, maxStepsCount, calculate, intelligent, checkEntities);
+    }
+
+    /** True if another living warbander in this wave has (dx, dy) as its preferred tile. */
+    private boolean isClaimedBySibling(int dx, int dy) {
+        for (ColosseumWaveNpc n : getInstance().getWaveNpcs()) {
+            if (n != this && n instanceof FremennikWarbandCombat f && !f.isDead()
+                    && f.preferredDx == dx && f.preferredDy == dy) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** Walk along a computed route, returning false only if the route is illegal. */

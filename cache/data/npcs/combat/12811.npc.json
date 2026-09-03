@@ -25,11 +25,22 @@
       "graphicsId": 1459,
       "startHeight": 43,
       "endHeight": 31,
-      "delay": 51,
-      "angle": 16,
-      "duration": 5,
+      "delay": 67,
+      "angle": 14,
+      "duration": 10,
       "distanceOffset": 64,
-      "multiplier": 5
+      "multiplier": 3
+    },
+    "impactGraphics": {
+      "id": 1460,
+      "delay": 0,
+      "height": 124
+    },
+    "impactSound": {
+      "id": 8339,
+      "delay": 0,
+      "radius": 10,
+      "repetitions": 1
     }
   },
   "spawnDefinitions": {

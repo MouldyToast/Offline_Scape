@@ -33,8 +33,8 @@ public class JavelinColossusCombat extends ColosseumWaveNpc implements CombatScr
     private static final Animation RANGED_ANIM = new Animation(10892);
     private static final Projectile RANGED_PROJ = new Projectile(
             2673,   // graphicsId: npc_colossi_javelin_01_spearhead
-            200,    // startHeight (RSProx: 200, not JSON's 70)
-            138,    // endHeight   (RSProx: 138, not JSON's 36)
+            70,    // startHeight (RSProx: 200, not JSON's 70)
+            36,    // endHeight   (RSProx: 138, not JSON's 36)
             58,     // delay       (RSProx: starttime=58)
             16,     // angle
             90 - 58,// duration    (RSProx: endtime=90 minus starttime=58 = 32)

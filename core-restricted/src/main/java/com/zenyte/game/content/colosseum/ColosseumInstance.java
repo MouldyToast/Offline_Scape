@@ -579,6 +579,11 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         }
     }
 
+    /** Live wave NPCs (read-only). Used by warbanders to see siblings' claimed tiles. */
+    java.util.List<ColosseumWaveNpc> getWaveNpcs() {
+        return java.util.Collections.unmodifiableList(waveNpcs);
+    }
+
     private void completeWave() {
         long durationTicks = WorldThread.getCurrentCycle() - waveStartTick;
         double durationSeconds = durationTicks * 0.6;

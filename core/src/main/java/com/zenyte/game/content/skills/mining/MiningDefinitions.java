@@ -3,7 +3,6 @@ package com.zenyte.game.content.skills.mining;
 import com.near_reality.game.content.crystal.TrahaearnMineRocks;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -166,10 +165,6 @@ public class MiningDefinitions {
             final int level = player.getSkills().getLevel(SkillConstants.MINING);
             final Container inventory = player.getInventory().getContainer();
             final int weapon = player.getEquipment().getId(EquipmentSlot.WEAPON);
-            if(player.getBoonManager().hasBoon(SwissArmyMan.class)) {
-                PickaxeDefinitions pick = SwissArmyMan.pickaxeForLevel(player);
-                return Optional.of(new PickaxeResult(pick, player.getBank().getContainer(), -1, new Item(pick.id)));
-            }
             for (PickAxeDefinition def : tools.values()){
                 if (level < def.getLevel()) continue;
                 if (weapon == def.getId()) {

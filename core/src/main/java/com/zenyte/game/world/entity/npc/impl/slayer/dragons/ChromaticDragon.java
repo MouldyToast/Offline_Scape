@@ -17,7 +17,6 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
 import com.zenyte.game.world.entity.player.calog.CAType;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 
 /**
  * @author Tommeh | 15 jan. 2018 : 18:45:43
@@ -41,17 +40,11 @@ public final class ChromaticDragon extends NPC implements CombatScript, Spawnabl
 			setAnimation(ANIMATION);
 			setGraphics(GRAPHICS);
 			final Player player = (Player) target;
-			final boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-			final double modifier = !perk ? 1 : Math.max(0, Utils.randomDouble() - 0.25F);
 			final Dragonfire dragonfire = new Dragonfire(DragonfireType.CHROMATIC_DRAGONFIRE, 50, DragonfireProtection.getProtection(this, player, true));
-			final int deflected = !perk ? 0 : ((int) Math.floor(dragonfire.getMaximumDamage() * modifier));
 			PlayerCombat.appendDragonfireShieldCharges(player);
 			World.sendSoundEffect(getMiddleLocation(), fireSound);
 			player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's fiery breath"));
-			delayHit(0, target, new Hit(this, Utils.random(Math.max(0, dragonfire.getDamage() - deflected)), HitType.REGULAR));
-			if (perk) {
-				dragonfire.backfire(this, player, 1, deflected);
-			}
+			delayHit(0, target, new Hit(this, Utils.random(dragonfire.getDamage()), HitType.REGULAR));
 		} else {
 			attackSound();
 			setAnimation(Utils.random(2) == 0 ? MELEE_ANIMATION : SECOND_MELEE_ANIMATION);

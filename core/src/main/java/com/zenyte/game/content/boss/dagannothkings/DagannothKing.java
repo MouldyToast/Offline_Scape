@@ -2,7 +2,6 @@ package com.zenyte.game.content.boss.dagannothkings;
 
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
-import com.zenyte.game.content.boons.impl.DagaWHO;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.Projectile;
@@ -137,14 +136,13 @@ public class DagannothKing extends NPC implements Spawnable, CombatScript {
 
     @Override public void handleIngoingHit(Hit hit) {
         if(!bypassSpecificStyleReq && hit.getSource() instanceof Player player) {
-            boolean bypass = player.getBoonManager().hasBoon(DagaWHO.class);
-            if (!bypass && getId() == NpcId.DAGANNOTH_SUPREME && hit.getHitType() != HitType.MELEE) {
+            if (getId() == NpcId.DAGANNOTH_SUPREME && hit.getHitType() != HitType.MELEE) {
                 hit.setDamage(0);
             }
-            if (!bypass && getId() == NpcId.DAGANNOTH_REX && hit.getHitType() != HitType.MAGIC) {
+            if (getId() == NpcId.DAGANNOTH_REX && hit.getHitType() != HitType.MAGIC) {
                 hit.setDamage(0);
             }
-            if (!bypass && getId() == NpcId.DAGANNOTH_PRIME && hit.getHitType() != HitType.RANGED) {
+            if (getId() == NpcId.DAGANNOTH_PRIME && hit.getHitType() != HitType.RANGED) {
                 hit.setDamage(0);
             }
         }

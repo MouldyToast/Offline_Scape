@@ -60,7 +60,6 @@ public class WiseOldManD extends Dialogue {
                 continue;
             }
             final Item scrollBox = generateRandomClue(twoFactorAuthenticator);
-            player.remnantPetManager.handleDoubleClueScrollDrop(scrollBox);
             inventory.addOrDrop(scrollBox);
             map.put(scrollBox.getId(), map.get(scrollBox.getId()) + scrollBox.getAmount());
         }

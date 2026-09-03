@@ -26,25 +26,15 @@ public class SeedPack extends ItemPlugin {
             final int mediumRolls = seedPack.getNumericAttribute(FarmingContract.SEED_PACK_MEDIUM_ROLLS_ATTR).intValue();
             final int lowRolls = seedPack.getNumericAttribute(FarmingContract.SEED_PACK_LOW_ROLLS_ATTR).intValue();
             final Inventory inventory = player.getInventory();
-            final boolean skipConsumeRoll = player.remnantPetManager.skipSeedPackRollConsume();
-            if(skipConsumeRoll) {
-                player.sendFilteredMessage("Your pet saves you from consuming a roll on this seed pack");
-            }
             if (highRolls > 0) {
                 inventory.addOrDrop(HighSeedTable.roll());
-                if (!skipConsumeRoll) {
-                    seedPack.setAttribute(FarmingContract.SEED_PACK_HIGH_ROLLS_ATTR, highRolls - 1);
-                }
+                seedPack.setAttribute(FarmingContract.SEED_PACK_HIGH_ROLLS_ATTR, highRolls - 1);
             } else if (mediumRolls > 0) {
                 inventory.addOrDrop(MediumSeedTable.roll());
-                if(!skipConsumeRoll) {
-                    seedPack.setAttribute(FarmingContract.SEED_PACK_MEDIUM_ROLLS_ATTR, mediumRolls - 1);
-                }
+                seedPack.setAttribute(FarmingContract.SEED_PACK_MEDIUM_ROLLS_ATTR, mediumRolls - 1);
             } else if (lowRolls > 0) {
                 inventory.addOrDrop(LowSeedTable.roll());
-                if(!skipConsumeRoll) {
-                    seedPack.setAttribute(FarmingContract.SEED_PACK_LOW_ROLLS_ATTR, lowRolls - 1);
-                }
+                seedPack.setAttribute(FarmingContract.SEED_PACK_LOW_ROLLS_ATTR, lowRolls - 1);
             }
             deleteIfEmpty(player, seedPack, slotId);
         });

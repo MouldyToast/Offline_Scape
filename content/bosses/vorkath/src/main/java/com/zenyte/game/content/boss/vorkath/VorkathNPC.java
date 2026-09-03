@@ -27,7 +27,6 @@ import com.zenyte.game.world.entity.npc.impl.slayer.dragons.DragonfireType;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
 import com.zenyte.game.world.entity.player.calog.CAType;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import org.jetbrains.annotations.NotNull;
@@ -425,13 +424,7 @@ public final class VorkathNPC extends NPC implements CombatScript {
                         fireLandSound.sendLocal(player);
                         if (player.getLocation().getPositionHash() == tile.getPositionHash()) {
                             final int damage = Utils.random(30, 40);
-                            final boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-                            final double modifier = Math.max(0, Utils.randomDouble() - 0.25F);
-                            final int deflected = !perk ? 0 : ((int) Math.floor(damage * modifier));
-                            delayHit(VorkathNPC.this, -1, player, new Hit(VorkathNPC.this, damage - deflected, HitType.REGULAR));
-                            if (perk) {
-                                WorldTasksManager.scheduleOrExecute(() -> VorkathNPC.this.applyHit(new Hit(player, deflected, HitType.REGULAR)), 0);
-                            }
+                            delayHit(VorkathNPC.this, -1, player, new Hit(VorkathNPC.this, damage, HitType.REGULAR));
                         }
                     }
                     if (ticks < 25) {

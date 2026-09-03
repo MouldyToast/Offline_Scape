@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
-import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.player.Action;
@@ -56,7 +55,7 @@ public class CannonballSmithing extends Action {
 
     @Override
     public int processWithDelay() {
-        int actionDelay = player.getBoonManager().hasBoon(MasterOfTheCraft.class) ? 1 : 3;
+        int actionDelay = 3;
         if (ticks == 0) {
             player.sendFilteredMessage("You heat the steel bar into a liquid state.");
             player.setAnimation(Smelting.ANIMATION);

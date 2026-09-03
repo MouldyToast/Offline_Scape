@@ -23,7 +23,6 @@ import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.Diary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.advent.AdventCalendarRaffle;
-import com.zenyte.game.content.boons.impl.AnimalTamer;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.content.boss.cerberus.area.CerberusLairInstance;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
@@ -2484,11 +2483,8 @@ public final class GameCommands {
             double gameMode = configuration.dropRateIncrease() / 100.0D;
             double donor = p.getMemberRank().getDR();
             double pin = p.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-            double pet = p.getBoonManager().hasBoon(AnimalTamer.class) && p.getFollower() != null ? 0.02D : 0.0D;
-            double remPet = p.remnantPetManager.getGlobalDropRateIncrease();
-            double finalPet = Math.max(pet, remPet);
             double compCape = p.getCompletionistCapeDRBoost();
-            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin + finalPet + compCape) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%. Pet: " + (int) (finalPet * 100D) + "%");
+            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin + compCape) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
         });
 
         new Command(PlayerPrivilege.DEVELOPER, new String[]{"b", "bank"}, "Opens the bank.",

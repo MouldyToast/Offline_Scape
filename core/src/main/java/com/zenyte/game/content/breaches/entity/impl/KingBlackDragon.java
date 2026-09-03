@@ -21,10 +21,7 @@ import com.zenyte.game.world.entity.npc.impl.slayer.dragons.DragonfireProtection
 import com.zenyte.game.world.entity.npc.impl.slayer.dragons.DragonfireType;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 
-import static java.lang.Math.floor;
-import static java.lang.Math.max;
 
 public class KingBlackDragon extends BreachEntity implements Spawnable, CombatScript {
 
@@ -56,25 +53,19 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
         if (random == 0) {
             npc.setAnimation(DRAGONFIRE_ANIM);
             World.sendProjectile(npc, target, DRAGONFIRE_PROJ);
-            boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-            double modifier = !perk ? 1.0 : max(0.0, Utils.randomDouble() - 0.25f);
             Dragonfire dragonfire = new Dragonfire(DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(this, player));
-            int deflected = !perk ? 0 : (int) floor(dragonfire.getMaximumDamage() * modifier);
             delayHit(
                 npc,
                 DRAGONFIRE_PROJ.getTime(npc, target),
                 target,
                 new Hit(
                     npc,
-                    Utils.random((int) max(0.0, (dragonfire.getDamage() - deflected))),
+                    Utils.random(dragonfire.getDamage()),
                     HitType.REGULAR
                 ).onLand((hit) -> {
                     player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's fiery breath"));
                     PlayerCombat.appendDragonfireShieldCharges(player);
                     target.setGraphics(DRAGONFIRE_GFX);
-                    if (perk) {
-                        dragonfire.backfire(npc, player, 0, deflected);
-                    }
                 })
             );
         }
@@ -94,8 +85,6 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                 case 0 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM);
                     World.sendProjectile(npc, target, POISON_PROJ);
-                    boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-                    double modifier = !perk ? 1.0 : max(0.0, Utils.randomDouble() - 0.25f);
                     Dragonfire.DragonfireBuilder dragonfire = new Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(this, player)
                     ) {
@@ -109,22 +98,18 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                             return 10;
                         }
                     };
-                    int deflected = !perk ? 0 : (int) floor(dragonfire.getMaximumDamage() * modifier);
                     delayHit(
                         npc,
                         POISON_PROJ.getTime(npc, target),
                         target,
                         new Hit(
                             npc,
-                            Utils.random((int) max(0.0, (dragonfire.getDamage() - deflected))),
+                            Utils.random(dragonfire.getDamage()),
                             HitType.REGULAR
                         ).onLand(hit -> {
                             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's poisonous breath"));
                             if (Utils.random(3) == 0) {
                                 target.getToxins().applyToxin(Toxins.ToxinType.POISON, 8, npc);
-                            }
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected);
                             }
                             target.setGraphics(POISON_GFX);
                             PlayerCombat.appendDragonfireShieldCharges(player);
@@ -134,8 +119,6 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                 case 1 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM);
                     World.sendProjectile(npc, target, FREEZING_PROJ);
-                    boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-                    double modifier = !perk ? 1.0 : max(0.0, Utils.randomDouble() - 0.25f);
                     Dragonfire.DragonfireBuilder dragonfire = new Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(this, player)
                     ) {
@@ -149,22 +132,18 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                             return 10;
                         }
                     };
-                    int deflected = !perk ? 0 : (int) floor(dragonfire.getMaximumDamage() * modifier);
                     delayHit(
                         npc,
                         FREEZING_PROJ.getTime(npc, target),
                         target,
                         new Hit(
                             npc,
-                            Utils.random((int) max(0.0, (dragonfire.getDamage() - deflected))),
+                            Utils.random(dragonfire.getDamage()),
                             HitType.REGULAR
                         ).onLand(hit -> {
                             target.setGraphics(FREEZING_GFX);
                             PlayerCombat.appendDragonfireShieldCharges(player);
                             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's icy breath"));
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected);
-                            }
                             if (Utils.random(3) == 0) {
                                 player.freeze(
                                     16,
@@ -178,8 +157,6 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                 case 2 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM);
                     World.sendProjectile(npc, target, SHOCKING_PROJ);
-                    boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-                    double modifier = !perk ? 1.0 : max(0.0, Utils.randomDouble() - 0.25f);
                     Dragonfire.DragonfireBuilder dragonfire = new Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(this, player)
                     ) {
@@ -193,22 +170,18 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
                             return 10;
                         }
                     };
-                    int deflected = !perk ? 0 : (int) floor(dragonfire.getMaximumDamage() * modifier);
                     delayHit(
                         npc,
                         SHOCKING_PROJ.getTime(npc, target),
                         target,
                         new Hit(
                             npc,
-                            Utils.random((int) max(0.0, (dragonfire.getDamage() - deflected))),
+                            Utils.random(dragonfire.getDamage()),
                             HitType.REGULAR
                         ).onLand(hit -> {
                             target.setGraphics(SHOCKING_GFX);
                             PlayerCombat.appendDragonfireShieldCharges(player);
                             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's shocking breath"));
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected);
-                            }
                             if (Utils.random(3) == 0) {
                                 player.getSkills().drainCombatSkills(2);
                                 player.sendMessage("The dragon's shocking attack drains your stats.");

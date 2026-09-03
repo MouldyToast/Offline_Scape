@@ -7,7 +7,6 @@ import com.near_reality.game.model.item.leagues.raging_echo.EchoAxe;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.advent.AdventCalendarManager;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.firemaking.Firemaking;
 import com.zenyte.game.content.skills.woodcutting.AxeDefinitions;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
@@ -30,7 +29,6 @@ import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.object.WorldObject;
@@ -147,10 +145,6 @@ public class Woodcutting extends Action {
         final int level = player.getSkills().getLevel(SkillConstants.WOODCUTTING);
         final Container inventory = player.getInventory().getContainer();
         final int weapon = player.getEquipment().getId(EquipmentSlot.WEAPON);
-        if (player.getBoonManager().hasBoon(SwissArmyMan.class)) {
-            AxeDefinitions axe = SwissArmyMan.getAxeForLevel(player);
-            return Optional.of(new AxeResult(axe, player.getBank().getContainer(), -1, new Item(axe.getItemId())));
-        }
         final AxeDefinition[] values = AxeDefinitions.VALUES;
         for (final AxeDefinition def : values) {
             if (level < def.getLevelRequired()) continue;
@@ -304,7 +298,7 @@ public class Woodcutting extends Action {
                 EchoAxe.Companion.processChoppedLog(player, definitions.getLogsId());
         }
         else if (axe.getDefinition() == AxeDefinitions.INFERNAL && definitions.getLogsId() != -1
-            && (player.hasBoon(SwissArmyMan.class) || axe.getItem().getCharges() > 0) && Utils.random(2) == 0) {
+            && axe.getItem().getCharges() > 0 && Utils.random(2) == 0) {
             if (axe.getSlot() != -1)
                 player.getChargesManager().removeCharges(axe.getItem(), 1, axe.getContainer(), axe.getSlot());
             player.setGraphics(BURN_GFX);
@@ -317,14 +311,11 @@ public class Woodcutting extends Action {
                 if (axe.getDefinition() instanceof Degradeable && axe.getSlot() != -1)
                     player.getChargesManager().removeCharges(axe.getItem(), 1, axe.getContainer(), axe.getSlot());
                 player.sendFilteredMessage("You get some " + logName + ".");
-                final boolean activateLumberJackPerk = player.getPerkManager().isValid(PerkWrapper.LUMBERJACK) && Utils.random(100) <= 20;
-                int amount = activateLumberJackPerk ? 2 : 1;
+                int amount = 1;
                 amount = (int) (amount * determineGatheringMultiplier(player).orElse(1.0));
 
                 onGather(player);
 
-                if (activateLumberJackPerk)
-                    player.getPerkManager().consume(PerkWrapper.LUMBERJACK);
                 if (definitions.getLogsId() == 1511 && player.getEquipment().getItem(EquipmentSlot.HELMET) != null
                     && player.getEquipment().getItem(EquipmentSlot.HELMET).getName().contains("Kandarin headgear")) {
                     amount += 1;

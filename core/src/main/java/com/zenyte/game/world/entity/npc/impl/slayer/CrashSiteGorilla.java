@@ -1,6 +1,5 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
-import com.zenyte.game.content.boons.impl.UnholyIntervention;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.task.WorldTasksManager;
@@ -252,11 +251,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
         World.sendSoundEffect(collisionTile, boulderSound);
         WorldTasksManager.schedule(() -> {
             if (target.matches(collisionTile)) {
-                if(target instanceof Player player && player.getBoonManager().hasBoon(UnholyIntervention.class)) {
-                    player.heal(Utils.random(UnholyIntervention.MIN_HEAL, UnholyIntervention.MAX_HEAL));
-                } else {
-                    delayHit(this, -1, target, new Hit(this, Math.min(99, target.getHitpoints() / 3), HitType.REGULAR));
-                }
+                delayHit(this, -1, target, new Hit(this, Math.min(99, target.getHitpoints() / 3), HitType.REGULAR));
             }
         }, 3);
     }

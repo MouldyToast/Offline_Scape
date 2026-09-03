@@ -3,7 +3,6 @@ package com.zenyte.game.content.skills.prayer.ectofuntus;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.impl.BlessedFromAbove;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -90,11 +89,7 @@ public class Bonecrusher extends ItemPlugin {
 	}
 
 	private static void applyExperience(@NotNull final Player player, final Bones bone) {
-		boolean hasBoon = player.getBoonManager().hasBoon(BlessedFromAbove.class);
-
 		float boost = DiaryUtil.eligibleFor(DiaryReward.MORYTANIA_LEGS4, player) ? 1.0F : 0.5F;
-		if(hasBoon)
-			boost += 3.0F;
 		player.getSkills().addXp(SkillConstants.PRAYER, boost * bone.getXp());
 	}
 

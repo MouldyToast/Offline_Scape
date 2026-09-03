@@ -15,7 +15,6 @@ import com.near_reality.game.content.bountyhunter.WildyExtKt;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.middleman.MiddleManManager;
-import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
@@ -39,10 +38,6 @@ import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.boons.Boon;
 import com.zenyte.game.content.boons.BoonManager;
-import com.zenyte.game.content.boons.impl.AnimalTamer;
-import com.zenyte.game.content.boons.impl.DivinedDefense;
-import com.zenyte.game.content.boons.impl.ImRubberYoureGlue;
-import com.zenyte.game.content.boons.impl.LunarEnthusiast;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.content.bountyhunter.BountyHunter;
 import com.zenyte.game.content.breaches.BreachManager;
@@ -178,7 +173,6 @@ import com.zenyte.game.world.entity.player.dialogue.DialogueManager;
 import com.zenyte.game.world.entity.player.login.Authenticator;
 import com.zenyte.game.world.entity.player.loyalty.LoyaltyManager;
 import com.zenyte.game.world.entity.player.perk.PerkManager;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.Crown;
 import com.zenyte.game.world.entity.player.privilege.ExpConfiguration;
 import com.zenyte.game.world.entity.player.privilege.ExpConfigurations;
@@ -503,7 +497,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient boolean needRegionUpdate;
     private transient boolean initialized;
     private transient ActionManager actionManager = new ActionManager(this);
-    public transient RemnantPetManager remnantPetManager = new RemnantPetManager(this);
     @Expose
     private PrivateStorage privateStorage = new PrivateStorage(this);
     @Expose
@@ -1973,9 +1966,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 if (EquipmentUtils.containsFullGraceful(this)) {
                     boost += 0.3F;
                 }
-                if (perkManager.ifValidConsume(PerkWrapper.ATHLETIC_RUNNER) && !inWildy) {
-                    boost += 0.25F;
-                }
                 if (getSkillingXPRate() == 10) {
                     boost += 0.02F;
                 }
@@ -2042,11 +2032,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = getMemberRank().getDR();
         double pin = getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double pet = getBoonManager().hasBoon(AnimalTamer.class) && getFollower() != null ? 0.02D : 0.0D;
-        double remPet = remnantPetManager.getGlobalDropRateIncrease();
-        double finalPet = Math.max(pet, remPet);
         double compCape = getCompletionistCapeDRBoost();
-        return ((gameMode + donor + pin + finalPet + compCape) * 100.0D);
+        return ((gameMode + donor + pin + compCape) * 100.0D);
     }
 
     public double getExchangeBonus() {
@@ -2805,7 +2792,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             this.follower.finish();
             petId = -1;
             this.follower = null;
-            remnantPetManager.removePet();
             return;
         }
         this.follower = follower;
@@ -2813,7 +2799,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (follower != null) {
             follower.spawn();
         }
-        remnantPetManager.updatePet(follower);
         varManager.sendVar(447, follower == null ? -1 : follower.getIndex());
     }
 
@@ -2962,12 +2947,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (source == null)
             return;
 
-        boolean recoiled = false;
-        if (getBoonManager().hasBoon(ImRubberYoureGlue.class) && hit.getHitType() != HitType.VENOM && hit.getHitType() != HitType.POISON && hit.getHitType() != HitType.TYPELESS && !(hit.getSource() instanceof Player)) {
-            recoiled = true;
-            final int reflected = (int) Math.floor(damage / 10.0F) + 1;
-            WorldTasksManager.schedule(() -> source.applyHit(new Hit(this, reflected, HitType.REGULAR)));
-        }
         if (hit.getHitType() == HitType.REGULAR) {
             return;
         }
@@ -2979,7 +2958,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         final boolean hasVengeance = getAttributes().remove("vengeance") != null;
         if (hasVengeance && (hit.getHitType() != HitType.POISON && hit.getHitType() != HitType.VENOM)) {
             setForceTalk(VENGEANCE);
-            float multiplier = (getBoonManager().hasBoon(LunarEnthusiast.class) && !(hit.getSource() instanceof Player)) ? 1.50F : 0.75F;
+            float multiplier = 0.75F;
             final Hit vengHit = new Hit(this, Math.max(1, (int) Math.floor(damage * multiplier)), HitType.REGULAR);
             vengHit.putAttribute("vengeance_spell", Boolean.TRUE);
             source.applyHit(vengHit);
@@ -2990,7 +2969,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 getCombatAchievements().complete(CAType.SNAKE_REBOUND);
             }
         }
-        if (!recoiled) {
+        {
             final int ring = getEquipment().getId(EquipmentSlot.RING);
             switch (ring) {
                 case ItemId.RING_OF_RECOIL:
@@ -3073,7 +3052,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                     damage -= reduced;
                 }
             }
-            damage = remnantPetManager.modifyIncomingDamage(damage);
         }
         if (type != HitType.DEFAULT && CombatUtilities.isElysianSpiritShield(shieldId)) {
             if (Utils.randomDouble() < 0.7F) {
@@ -3083,7 +3061,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
         }
         if (type != HitType.DEFAULT && CombatUtilities.isDivineSpiritShield(shieldId)) {
-            double drainFactor = (boonManager.hasBoon(DivinedDefense.class) && source.getEntityType() != EntityType.PLAYER) ? 0.00F : 0.2F;
+            double drainFactor = 0.2F;
             int prayerPointCheck = (int) Math.floor(damage * 0.3F * drainFactor);
             if (prayerManager.getPrayerPoints() >= prayerPointCheck) {
                 final int reduced = (int) (damage * 0.3F);

@@ -24,9 +24,6 @@ import com.zenyte.game.world.entity.npc.impl.slayer.dragons.DragonfireType
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat
 import com.zenyte.game.world.entity.player.calog.CAType
-import com.zenyte.game.world.entity.player.perk.PerkWrapper
-import kotlin.math.floor
-import kotlin.math.max
 
 /**
  * @author Kris | 23. apr 2018 : 15:46.37
@@ -65,26 +62,19 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
         if (random == 0) {
             npc.setAnimation(DRAGONFIRE_ANIM)
             World.sendProjectile(npc, target, DRAGONFIRE_PROJ)
-            val perk = player.perkManager.isValid(PerkWrapper.BACKFIRE)
-            val modifier: Double = if (!perk) 1.0 else max(0.0, Utils.randomDouble() - 0.25f)
             val dragonfire = Dragonfire(DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(this, player))
-            val deflected = if (!perk) 0 else (floor(dragonfire.maximumDamage * modifier)
-                .toInt())
             delayHit(
                 npc,
                 DRAGONFIRE_PROJ.getTime(npc, target),
                 target,
                 Hit(
                     npc,
-                    Utils.random(max(0.0, (dragonfire.damage - deflected).toDouble()).toInt()),
+                    Utils.random(dragonfire.damage),
                     HitType.REGULAR
                 ).onLand {
                     player.sendFilteredMessage(String.format(dragonfire.message, "dragon\'s fiery breath"))
                     PlayerCombat.appendDragonfireShieldCharges(player)
                     target.setGraphics(DRAGONFIRE_GFX)
-                    if (perk) {
-                        dragonfire.backfire(npc, player, 0, deflected)
-                    }
                 })
         } else if (random == 2) {
             if (Utils.random(1) == 0) {
@@ -99,8 +89,6 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                 0 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM)
                     World.sendProjectile(npc, target, POISON_PROJ)
-                    val perk = player.perkManager.isValid(PerkWrapper.BACKFIRE)
-                    val modifier: Double = if (!perk) 1.0 else max(0.0, Utils.randomDouble() - 0.25f)
                     val dragonfire: Dragonfire.DragonfireBuilder = object : Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(
                             this, player
@@ -111,23 +99,18 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                             return if (tier == 0.0f) 65 else if (tier == 0.25f) 60 else if (tier == 0.5f) 35 else if (tier == 0.75f) 25 else 10
                         }
                     }
-                    val deflected = if (!perk) 0 else (floor(dragonfire.maximumDamage * modifier)
-                        .toInt())
                     delayHit(
                         npc,
                         POISON_PROJ.getTime(npc, target),
                         target,
                         Hit(
                             npc,
-                            Utils.random(max(0.0, (dragonfire.damage - deflected).toDouble()).toInt()),
+                            Utils.random(dragonfire.damage),
                             HitType.REGULAR
                         ).onLand { hit: Hit? ->
                             player.sendFilteredMessage(String.format(dragonfire.message, "dragon\'s poisonous breath"))
                             if (Utils.random(3) == 0) {
                                 target.getToxins().applyToxin(Toxins.ToxinType.POISON, 8, npc)
-                            }
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected)
                             }
                             target.setGraphics(POISON_GFX)
                             PlayerCombat.appendDragonfireShieldCharges(player)
@@ -137,8 +120,6 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                 1 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM)
                     World.sendProjectile(npc, target, FREEZING_PROJ)
-                    val perk = player.perkManager.isValid(PerkWrapper.BACKFIRE)
-                    val modifier: Double = if (!perk) 1.0 else max(0.0, Utils.randomDouble() - 0.25f)
                     val dragonfire: Dragonfire.DragonfireBuilder = object : Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(
                             this, player
@@ -149,23 +130,18 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                             return if (tier == 0.0f) 65 else if (tier == 0.25f) 60 else if (tier == 0.5f) 35 else if (tier == 0.75f) 25 else 10
                         }
                     }
-                    val deflected = if (!perk) 0 else (floor(dragonfire.maximumDamage * modifier)
-                        .toInt())
                     delayHit(
                         npc,
                         FREEZING_PROJ.getTime(npc, target),
                         target,
                         Hit(
                             npc,
-                            Utils.random(max(0.0, (dragonfire.damage - deflected).toDouble()).toInt()),
+                            Utils.random(dragonfire.damage),
                             HitType.REGULAR
                         ).onLand { hit: Hit? ->
                             target.setGraphics(FREEZING_GFX)
                             PlayerCombat.appendDragonfireShieldCharges(player)
                             player.sendFilteredMessage(String.format(dragonfire.message, "dragon\'s icy breath"))
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected)
-                            }
                             if (Utils.random(3) == 0) {
                                 player.freeze(
                                     16,
@@ -178,8 +154,6 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                 2 -> {
                     npc.setAnimation(DRAGONFIRE_ANIM)
                     World.sendProjectile(npc, target, SHOCKING_PROJ)
-                    val perk = player.perkManager.isValid(PerkWrapper.BACKFIRE)
-                    val modifier: Double = if (!perk) 1.0 else max(0.0, Utils.randomDouble() - 0.25f)
                     val dragonfire: Dragonfire.DragonfireBuilder = object : Dragonfire.DragonfireBuilder(
                         DragonfireType.STRONG_DRAGONFIRE, 65, DragonfireProtection.getProtection(
                             this, player
@@ -190,23 +164,18 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
                             return if (tier == 0.0f) 65 else if (tier == 0.25f) 60 else if (tier == 0.5f) 35 else if (tier == 0.75f) 25 else 10
                         }
                     }
-                    val deflected = if (!perk) 0 else (floor(dragonfire.maximumDamage * modifier)
-                        .toInt())
                     delayHit(
                         npc,
                         SHOCKING_PROJ.getTime(npc, target),
                         target,
                         Hit(
                             npc,
-                            Utils.random(max(0.0, (dragonfire.damage - deflected).toDouble()).toInt()),
+                            Utils.random(dragonfire.damage),
                             HitType.REGULAR
                         ).onLand { hit: Hit? ->
                             target.setGraphics(SHOCKING_GFX)
                             PlayerCombat.appendDragonfireShieldCharges(player)
                             player.sendFilteredMessage(String.format(dragonfire.message, "dragon\'s shocking breath"))
-                            if (perk) {
-                                dragonfire.backfire(npc, player, 0, deflected)
-                            }
                             if (Utils.random(3) == 0) {
                                 player.skills.drainCombatSkills(2)
                                 player.sendMessage("The dragon\'s shocking attack drains your stats.")

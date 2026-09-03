@@ -1,7 +1,6 @@
 package com.near_reality.game.content.elven.obj
 
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary
-import com.zenyte.game.content.boons.impl.Locksmith
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Utils
@@ -35,11 +34,7 @@ class CrystalChest : ObjectAction{
 
             player.animation = Animation(832)
             player.lock(2)
-            if(player.boonManager.hasBoon(Locksmith::class.java) && Locksmith.roll()) {
-                player.sendFilteredMessage("Your Locksmith perk saves your key from being consumed.")
-            } else {
-                player.inventory.deleteItem(ItemId.CRYSTAL_KEY, 1)
-            }
+            player.inventory.deleteItem(ItemId.CRYSTAL_KEY, 1)
 
             if (player.memberRank.equalToOrGreaterThan(MemberRank.SAPPHIRE) && Utils.random(getChance(player)) == 0) {
                 player.sendMessage(Colour.RS_GREEN.wrap("You find double the loot from the crystal chest."))

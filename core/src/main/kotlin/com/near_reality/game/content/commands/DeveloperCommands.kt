@@ -14,7 +14,6 @@ import com.zenyte.game.GameConstants.isOwner
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.achievementdiary.Diary
 import com.zenyte.game.content.compcapes.CompletionistCape
-import com.zenyte.game.content.serverevent.WorldBoost
 import com.zenyte.game.content.stars.ShootingStars
 import com.zenyte.game.content.treasuretrails.ClueItem
 import com.zenyte.game.content.treasuretrails.ClueLevel
@@ -34,7 +33,6 @@ import com.zenyte.game.content.treasuretrails.clues.MapClue
 import com.zenyte.game.content.treasuretrails.clues.MusicClue
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask
 import com.zenyte.game.content.treasuretrails.clues.*
-import com.zenyte.game.content.well.WellPerk
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.shop.ShopCurrency
@@ -201,42 +199,6 @@ object DeveloperCommands {
         Command(PlayerPrivilege.TRUE_DEVELOPER, "addreferral") { player, args ->
             val referral = args.getOrNull(0)?.toString()?.lowercase() ?: return@Command
             PlayerCommands.referralList.add(referral)
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "doubledrops") { player, _ ->
-            if(isOwner(player)) {
-                val mssg = "<col=" + BroadcastType.WELL_OF_GOODWILL.color + "><shad=000000><img=49>News: Double Drops activated! Thanks to " + player.titleName + " for contributing the most (" + Utils.formatNumWDot(WellPerk.DOUBLE_DROPS.amount) + ")"
-                WorldBroadcasts.sendMessage(mssg, BroadcastType.WELL_OF_GOODWILL, false)
-                val endTime = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)
-                val worldBoost = WorldBoost(WellPerk.DOUBLE_DROPS, endTime, TimeUnit.DAYS.toHours(1))
-                worldBoost.activate(false)
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "doubleuniques") { player, _ ->
-            if(isOwner(player)) {
-                val mssg = "<col=" + BroadcastType.WELL_OF_GOODWILL.color + "><shad=000000><img=49>News: Double Unique Drops activated! Thanks to " + player.titleName + " for contributing the most (" + Utils.formatNumWDot(WellPerk.DOUBLE_DROPS.amount) + ")"
-                WorldBroadcasts.sendMessage(mssg, BroadcastType.WELL_OF_GOODWILL, false)
-                val endTime = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)
-                val worldBoost = WorldBoost(WellPerk.DOUBLE_UNIQUES, endTime, TimeUnit.DAYS.toHours(1))
-                worldBoost.activate(false)
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "doubleuniques") { player, _ ->
-            if(isOwner(player)) {
-                val mssg = "<col=" + BroadcastType.WELL_OF_GOODWILL.color + "><shad=000000><img=49>News: +50% Exp activated! Thanks to " + player.titleName + " for contributing the most (" + Utils.formatNumWDot(WellPerk.DOUBLE_DROPS.amount) + ")"
-                WorldBroadcasts.sendMessage(mssg, BroadcastType.WELL_OF_GOODWILL, false)
-                val endTime = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)
-                val worldBoost = WorldBoost(WellPerk.BONUS_XP, endTime, TimeUnit.DAYS.toHours(1))
-                worldBoost.activate(false)
-            } else {
-                player.sendMessage("Try again next time.")
-            }
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "cannon") { player, _ ->

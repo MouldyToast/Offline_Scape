@@ -8,7 +8,6 @@ import com.zenyte.game.GameClock;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.Diary;
-import com.zenyte.game.content.boons.impl.AnimalTamer;
 import com.zenyte.game.content.donation.DonationToggle;
 import com.zenyte.game.model.BonusXpManager;
 import com.zenyte.game.model.ui.GameTab;
@@ -223,11 +222,8 @@ public final class GameNoticeboardInterface extends Interface {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = player.getMemberRank().getDR();
         double pin = player.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double pet = player.getBoonManager().hasBoon(AnimalTamer.class) && player.getFollower() != null ? 0.02D : 0.0D;
         double compCape = player.getCompletionistCapeDRBoost();
-        double remPet = player.remnantPetManager.getGlobalDropRateIncrease();
-        double finalPet = Math.max(pet, remPet);
-        int percent = (int) ((gameMode + donor + pin + finalPet + compCape) * 100.0D);
+        int percent = (int) ((gameMode + donor + pin + compCape) * 100.0D);
         player.getPacketDispatcher().sendComponentText(GameInterface.GAME_NOTICEBOARD, 46, "Drop Rate Boost: " + Colour.WHITE.wrap(percent + "%"));
     }
 

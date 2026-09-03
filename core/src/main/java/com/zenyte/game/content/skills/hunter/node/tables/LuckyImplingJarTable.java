@@ -26,7 +26,6 @@ public class LuckyImplingJarTable implements ImplingJarTable {
         final List<Item> itemsList = Utils.getRandomElement(validLevels).getTable().roll(1, 1, player.inArea(Entrana.class), false);
         if (Utils.random(20) == 0) {
             Item clue = new Item(ClueItem.MASTER.getScrollBox());
-            player.remnantPetManager.handleDoubleClueScrollDrop(clue);
             itemsList.add(clue);
         }
 

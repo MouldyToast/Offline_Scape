@@ -2,7 +2,6 @@ package com.zenyte.game.world.entity.npc;
 
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.near_reality.game.content.remnantpets.RemnantPetDropModifier;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.SlayerHelper;
 import com.near_reality.game.content.slayer.SlayerMaster;
@@ -14,8 +13,6 @@ import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.DiaryComplexity;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
-import com.zenyte.game.content.boons.impl.ClueCollector;
-import com.zenyte.game.content.boons.impl.HoarderMentality;
 import com.zenyte.game.content.boss.dagannothkings.DagannothKing;
 import com.zenyte.game.content.breaches.entity.BreachEntity;
 import com.zenyte.game.content.donation.DonationToggle;
@@ -24,7 +21,6 @@ import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.supplycaches.SupplyCache;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
-import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
@@ -119,7 +115,6 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -1334,9 +1329,6 @@ public class NPC extends AbstractEntity {
             setAnimation(null);
             if (source instanceof Player player) {
                 player.getSlayer().checkAssignment(this);
-                if(getCombatLevel() >= 100) {
-                    player.remnantPetManager.restoreSpecialEnergy();
-                }
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
                 if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea() instanceof AbstractTOARaidArea) {
@@ -1650,9 +1642,6 @@ public class NPC extends AbstractEntity {
             return;
 
         Item item = new Item(drop.getItemId(), random(drop.getMinAmount(), drop.getMaxAmount()));
-        if (killer.getBoonManager().hasBoon(HoarderMentality.class) && (item != null && item.getName() != null && item.getName().contains("dragonhide") || item.getName().contains("ragon bones"))) {
-            item = item.toNote();
-        }
         final List<DropProcessor> processors = DropProcessorLoader.get(id);
         if (processors != null) {
             final Item baseItem = item;
@@ -1669,9 +1658,6 @@ public class NPC extends AbstractEntity {
 
     public final void dropItemExcludeProcessor(final Player killer, final Drop drop, final Location location) {
         Item item = new Item(drop.getItemId(), random(drop.getMinAmount(), drop.getMaxAmount()));
-        if (killer.getBoonManager().hasBoon(HoarderMentality.class) && (item != null && item.getName() != null && item.getName().contains("dragonhide") || item.getName().contains("ragon bones"))) {
-            item = item.toNote();
-        }
         //do NOT reference 'drop' after this line, rely on 'item' only!
         dropItem(killer, item, location, drop.isAlways());
     }
@@ -1693,17 +1679,7 @@ public class NPC extends AbstractEntity {
 
             DonationToggle.processNote(killer, item);
 
-            if(RemnantPetDropModifier.process(killer, item) && item.getAmount() == 0)
-                return;
-
             if (DonationToggle.processPickup(killer, item)) {
-                return;
-            }
-
-            if (killer.getBoonManager().hasBoon(ClueCollector.class)
-                    && (Arrays.stream(ClueItem.getCluesArray()).anyMatch(it -> it == item.getId())
-                    || Arrays.stream(ClueItem.getBoxesArray()).anyMatch(it -> it == item.getId()))) {
-                killer.getInventory().addOrDrop(item);
                 return;
             }
 

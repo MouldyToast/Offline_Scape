@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.prayer.actions;
 
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
-import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -112,11 +111,7 @@ public enum Bones {
 
 		if (bone.ashes) {
 			player.getSkills().addXp(SkillConstants.PRAYER, bone.xp);
-			if(player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll()) {
-				player.sendMessage("Your Bone Cruncher perk has saved your resources");
-			} else {
-				player.getInventory().deleteItem(slot, item);
-			}
+			player.getInventory().deleteItem(slot, item);
 			player.sendSound(2444);
 			player.sendMessage("You scatter the " + item.getName() + ".");
 			player.setAnimation(SCATTER_ANIMATION);
@@ -140,13 +135,8 @@ public enum Bones {
 		}
 
 		player.getSkills().addXp(SkillConstants.PRAYER, xp);
-		boolean savedResources = false;
-		if(player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll()) {
-			player.sendMessage("Your Bone Cruncher perk has saved your resources");
-		} else {
-			player.getInventory().deleteItem(slot, item);
-			player.sendMessage("You bury the " + bone.name + ".");
-		}
+		player.getInventory().deleteItem(slot, item);
+		player.sendMessage("You bury the " + bone.name + ".");
 		player.sendSound(2738);
 		final com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher.CrusherType crusherType = Bonecrusher.CrusherType.get(player);
 		if (crusherType != null) {

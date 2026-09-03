@@ -1,14 +1,12 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.google.common.collect.ImmutableList;
-import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.zenyte.game.world.entity.player.action.combat.ranged.MorriganBHWeaponsCombat;
 import com.near_reality.game.content.combat.CombatUtility;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.world.entity.CombatCooldownKt;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.content.skills.magic.spells.MagicSpell;
@@ -778,21 +776,12 @@ public abstract class PlayerCombat extends Action {
             if (attacker instanceof Player) {
                 return (int) (bonus * GameConstants.defenceMultiplier);
             }
-            if(t.hasBoon(BrawnOfJustice.class) && BrawnOfJustice.applies(t) && t.getBooleanTemporaryAttribute("TOB_inside"))
-                bonus *= 1.2;
             return (int) bonus;
         } else {
             final NPC npc = (NPC) target;
             {
                 effectiveLevel = npc.getCombatDefinitions().getStatDefinitions().get(type == AttackType.MAGIC && !(npc instanceof IceDemon) ? StatType.MAGIC : StatType.DEFENCE);
                 equipmentBonus = npc.getCombatDefinitions().getStatDefinitions().get(StatType.getDefenceType(type));
-
-                if(type == AttackType.CRUSH && attacker instanceof Player p && p.hasBoon(CrushingBlow.class))
-                    effectiveLevel *= 0.95;
-                if(type == AttackType.STAB && attacker instanceof Player p && p.hasBoon(ThePointyEnd.class))
-                    effectiveLevel *= 0.95;
-                if(type == AttackType.SLASH && attacker instanceof Player p && p.hasBoon(HashSlingingSlasher.class))
-                    effectiveLevel *= 0.95;
             }
 
             if (type == AttackType.MAGIC && attacker.getEntityType() == EntityType.PLAYER) {
@@ -819,9 +808,6 @@ public abstract class PlayerCombat extends Action {
     }
 
     public int calculateMinimumHit(Player player, int maxHit) {
-        if (player.hasBoon(SoulStealer.class)) {
-            return (int) Math.ceil(maxHit * 0.1) + 1;
-        }
         return 1;
     }
 
@@ -1157,13 +1143,6 @@ public abstract class PlayerCombat extends Action {
             if (hit == null)
                 continue;
 
-            if(target instanceof NPC) {
-                RemnantPetManager mgr = player.remnantPetManager;
-                mgr.healPlayerOnDamage(hit.getDamage());
-                mgr.restorePrayerOnDamage(hit.getDamage());
-                hit.setDamage(mgr.modifyOutgoingDamage(hit.getDamage()));
-            }
-
             if (hit.getWeapon() == null)
                 hit.setWeapon(player.getWeapon());
 
@@ -1285,9 +1264,6 @@ public abstract class PlayerCombat extends Action {
 
         // actually apply the damage
         for (final Hit hit : filteredHits) {
-            if(source.getHitpoints() <= 10
-                    && source.getBoonManager().hasBoon(DharoksBlessing.class))
-                hit.setDamage((int) (hit.getDamage() * 1.1F));
             target.applyHit(hit);
             final Consumer<Hit> consumer = hit.getOnLandConsumer();
             if (consumer != null) {
@@ -1425,9 +1401,6 @@ public abstract class PlayerCombat extends Action {
 
         double baseMultiplier = 1.0F;
 
-        if (slayerHelmOrStatue(player) && player.hasBoon(SlayersSpite.class))
-            baseMultiplier += 0.05F;
-
         if (!hasTask)
             return baseMultiplier;
 
@@ -1446,9 +1419,6 @@ public abstract class PlayerCombat extends Action {
 
         double baseMultiplier = 1.0F;
 
-        if (slayerHelmOrStatue(player) && player.hasBoon(SlayersSpite.class))
-            baseMultiplier += 0.05F;
-
         if (!hasTask)
             return baseMultiplier;
 
@@ -1466,27 +1436,12 @@ public abstract class PlayerCombat extends Action {
         }
 
         if(type == HitType.MELEE) {
-            boolean hasPerk = player.getBoonManager().hasBoon(NoShardRequired.class);
             Item item = player.getEquipment().getItem(EquipmentSlot.AMULET);
             boolean hasItem = item != null && item.getId() == ItemId.AMULET_OF_BLOOD_FURY;
-            boolean hasEffect = hasPerk || hasItem;
-            if (hasEffect && hit.getDamage() > 3 && Utils.randomBoolean(hasPerk ? 9 : 4)) {
+            if (hasItem && hit.getDamage() > 3 && Utils.randomBoolean(4)) {
                 target.setGraphics(BLOOD_FURY_GFX);
                 player.heal((int) (hit.getDamage() * 0.3D));
-                if (!hasPerk)
-                    player.getChargesManager().removeCharges(item, 1, player.getEquipment().getContainer(), EquipmentSlot.AMULET.getSlot());
-            }
-        } else if(type == HitType.RANGED) {
-            boolean hasPerk = player.getBoonManager().hasBoon(NoShardRequiredII.class);
-            if(hasPerk && hit.getDamage() > 3 && Utils.randomBoolean(9)) {
-                target.setGraphics(BLOOD_FURY_GFX);
-                player.heal((int) (hit.getDamage() * 0.3D));
-            }
-        } else if (type == HitType.MAGIC) {
-            boolean hasPerk = player.getBoonManager().hasBoon(NoShardRequiredIII.class);
-            if(hasPerk && hit.getDamage() > 3 && Utils.randomBoolean(9)) {
-                target.setGraphics(BLOOD_FURY_GFX);
-                player.heal((int) (hit.getDamage() * 0.3D));
+                player.getChargesManager().removeCharges(item, 1, player.getEquipment().getContainer(), EquipmentSlot.AMULET.getSlot());
             }
         }
     }

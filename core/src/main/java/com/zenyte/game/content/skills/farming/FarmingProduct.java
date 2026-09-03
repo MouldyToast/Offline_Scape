@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.farming;
 
-import com.zenyte.game.content.boons.BoonManager;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -533,7 +532,6 @@ public enum FarmingProduct {
     }
 
     public Item getProductHarvest(Player p) {
-        final BoonManager boons = p.getBoonManager();
         double modifier = 1.0;
         if (p.inArea(WildernessResourceArea.class))
             modifier += WildernessResourceArea.GATHER_QUANTITY_MULTIPLIER;

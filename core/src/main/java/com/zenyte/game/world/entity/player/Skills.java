@@ -7,10 +7,8 @@ import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.impl.FamiliarsFortune;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.minigame.wintertodt.RewardCrate;
-import com.zenyte.game.content.well.WellPerk;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.net.packet.PacketDispatcher;
@@ -305,9 +303,6 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
         final double baseXp = exp;
         final int oldLevel = getLevelForXp(skill);
         final double oldExperience = getExperience(skill);
-        if (FamiliarsFortune.shouldBoostXp(player, skill))
-            exp *= 1.5F;
-
         exp *= player.getExperienceRate(skill);
         if (GameConstants.BOOSTED_XP) {
             exp *= (1.0F + GameConstants.BOOSTED_XP_MODIFIER / 100.0);
@@ -345,9 +340,6 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
 				exp *= 1.5;
 			}
 		}*/
-        if (World.hasBoost(WellPerk.BONUS_XP))
-            exp *= 1.5;
-
         if (!fake) {
             getExperience()[skill] += exp;
             World.postEvent(new PlayerEvent.ExperienceGained(player, skill, baseXp, exp));

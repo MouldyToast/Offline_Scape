@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
-import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions.BoltTipFletchingData;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
@@ -32,7 +31,7 @@ public class BoltTipFletching extends Action {
 
 	@Override
 	public int processWithDelay() {
-		int tickCount = player.getBoonManager().hasBoon(MasterOfTheCraft.class) ? 2 : 3;
+		int tickCount = 3;
 
 		if (ticks == 0) {
 			player.setAnimation(data.getAnimation());

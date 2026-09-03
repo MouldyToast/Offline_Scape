@@ -6,7 +6,6 @@ import com.near_reality.game.content.dt2.npc.deathsToAwakenedDuke
 import com.near_reality.game.content.dt2.npc.deathsToDuke
 import com.near_reality.game.content.dt2.npc.findObject
 import com.near_reality.game.content.dt2.npc.theduke.*
-import com.zenyte.game.content.boons.impl.DukeDanger
 import com.zenyte.game.content.skills.slayer.SlayerEquipment
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.music.Music
@@ -379,7 +378,7 @@ data class DukeSucellusInstance(
     }
 
     private fun processNosePeg() {
-        if (!(SlayerEquipment.NOSE_PEG.isWielding(player) || player.hasBoon(DukeDanger::class.java))) {
+        if (!SlayerEquipment.NOSE_PEG.isWielding(player)) {
             gasVentPatterns[gasVentRotation]?.forEach { vent ->
                 player.let {
                     if (it.position.withinDistance(vent, 1)) it.applyHit(

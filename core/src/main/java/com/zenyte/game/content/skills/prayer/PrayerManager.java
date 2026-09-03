@@ -490,9 +490,6 @@ public class PrayerManager {
 		if (points >= level) {
 			return;
 		}
-		if(!ignoreRemPet) {
-			amount = player.remnantPetManager.modifyPrayerRestore(amount);
-		}
 		setPrayerPoints(Math.min((points + amount), level));
 	}
 

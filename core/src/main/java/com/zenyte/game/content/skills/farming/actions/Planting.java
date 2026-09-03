@@ -1,8 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
-import com.zenyte.game.content.boons.impl.FarmersFortune;
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
@@ -84,12 +82,12 @@ public class Planting extends Action {
         }
         final boolean tree = product.isTree();
         if (tree) {
-            if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItem(FarmingConstants.SPADE)) {
+            if (!player.getInventory().containsItem(FarmingConstants.SPADE)) {
                 player.sendMessage("You need a spade to plant this.");
                 return false;
             }
         } else {
-            if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItem(SEED_DIBBER)) {
+            if (!player.getInventory().containsItem(SEED_DIBBER)) {
                 player.sendMessage("You need a seed dibber to plant this.");
                 return false;
             }
@@ -134,11 +132,7 @@ public class Planting extends Action {
                 }
             }
         }
-        if(player.hasBoon(FarmersFortune.class) && FarmersFortune.roll()) {
-            player.sendFilteredMessage(Colour.RS_GREEN.wrap("Your Farmer's Fortune perk saves your supplies from being used"));
-        } else {
-            player.getInventory().deleteItem(item);
-        }
+        player.getInventory().deleteItem(item);
         spot.setProduct(product);
         if (product.isTree()) {
             player.getInventory().addItem(EMPTY_POT);

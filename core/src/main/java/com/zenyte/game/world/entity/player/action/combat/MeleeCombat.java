@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
-import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
@@ -99,7 +98,7 @@ public class MeleeCombat extends PlayerCombat {
             result *= (amuletId == 4081 || amuletId == 12017) ? (7.0F / 6.0F) : 1.2F;
         }
 
-        boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         result *= determineSlayerHelmetDamageBoost(hasTask, HitType.MELEE, player, target);
         result = Math.floor(result);
 
@@ -139,9 +138,6 @@ public class MeleeCombat extends PlayerCombat {
         result *= activeModifier;
         result = Math.floor(result);
 
-        if(target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc))
-            result *= 1.1F;
-
         //Castle wars bracelet effect
         if (player.getTemporaryAttributes().containsKey("castle wars bracelet effect") && player.inArea("Castle Wars")) {
             if (target instanceof Player) {
@@ -155,10 +151,6 @@ public class MeleeCombat extends PlayerCombat {
             if (tp.getVariables().getTime(TickVariable.POWER_OF_DEATH) > 0) {
                 result *= 0.5F;
             }
-        }
-        if(target instanceof NPC) {
-            if(player.hasBoon(VigourOfInquisition.class) && VigourOfInquisition.applies(player) && player.getWeapon() != null && attackType == AttackType.CRUSH)
-                result *= 1.05;
         }
         return (int) Math.floor(result);
     }
@@ -224,12 +216,9 @@ public class MeleeCombat extends PlayerCombat {
             result *= (amuletId == 4081 || amuletId == 12017) ? (7.0F / 6.0F) : 1.2F;
         }
 
-        boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MELEE, player, target);
         result = Math.floor(result);
-
-        if(target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc))
-            result *= 1.1F;
 
         result *= resultModifier;
         if (isDemonbaneWeapon(weaponId) && CombatUtilities.isDemon(target)) {
@@ -239,12 +228,6 @@ public class MeleeCombat extends PlayerCombat {
         }
         if (obsidianWeaponry.contains(weaponId) && CombatUtilities.hasFullObisidian(player)) {
             result *= 1.1F;
-        }
-        if(target instanceof NPC) {
-            if (player.hasBoon(BrawnOfJustice.class) && BrawnOfJustice.applies(player) && player.getBooleanTemporaryAttribute("TOB_inside"))
-                result *= 1.2;
-            if(player.hasBoon(VigourOfInquisition.class) && VigourOfInquisition.applies(player) && player.getWeapon() != null && attackType == AttackType.CRUSH)
-                result *= 1.05;
         }
         return (int) result;
     }

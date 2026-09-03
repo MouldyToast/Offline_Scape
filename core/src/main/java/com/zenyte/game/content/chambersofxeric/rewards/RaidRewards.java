@@ -242,7 +242,6 @@ public final class RaidRewards {
 		}
 		if (Utils.secureRandom(11) == 0) {
 			Item clueScroll = new Item(ClueItem.ELITE.getScrollBox());
-			player.remnantPetManager.handleDoubleClueScrollDrop(clueScroll);
 			addReward(player, clueScroll);
 		}
 		addReward(player, new Item(995, Utils.random(50_000, 100_000)));
@@ -278,7 +277,6 @@ public final class RaidRewards {
 		}
 		if (Utils.secureRandom(11) == 0) {
 			Item clueScroll = new Item(ClueItem.ELITE.getScrollBox());
-			player.remnantPetManager.handleDoubleClueScrollDrop(clueScroll);
 			addReward(player, clueScroll);
 		}
 		addReward(player, new Item(995, Utils.random(50_000, 100_000)));

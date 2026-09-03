@@ -3,7 +3,6 @@ package com.near_reality.game.content.dt2.npc.theduke
 import com.near_reality.game.content.dt2.npc.playSound
 import com.near_reality.game.content.offset
 import com.zenyte.game.GameInterface
-import com.zenyte.game.content.boons.impl.DukeDanger
 import com.zenyte.game.content.skills.slayer.SlayerEquipment
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager
@@ -89,9 +88,7 @@ sealed interface DukeSpecialAttack {
                             if (!safe) {
                                 target.graphics = Graphics(369)
                                 target.freeze(3, 0)
-                                val dmg = if (target.hasBoon(DukeDanger::class.java)) Utils.random(30, 34)
-                                else Utils.random(88, 101)
-                                target.applyHit(Hit(duke, dmg, HitType.TYPELESS))
+                                target.applyHit(Hit(duke, Utils.random(88, 101), HitType.TYPELESS))
                             } else {
                                 target.playSound(168)
                                 target.sendMessage(Colour.RS_GREEN.wrap("You manage to avoid Duke Sucellus' gaze."))
@@ -184,8 +181,6 @@ sealed interface DukeSpecialAttack {
         }
 
         private fun checkTargetForGas(target: Player, location: Location) {
-            if (target.hasBoon(DukeDanger::class.java) && SlayerEquipment.FACE_MASK.isWielding(target))
-                return
 
             if (target.location.withinDistance(location, 2)) {
                 target.applyHit(Hit(Utils.random(8, 15), HitType.POISON))
@@ -255,8 +250,6 @@ sealed interface DukeSpecialAttack {
         }
 
         private fun checkTargetForGas(target: Player, location: Location) {
-            if (target.hasBoon(DukeDanger::class.java) && SlayerEquipment.FACE_MASK.isWielding(target))
-                return
 
             if (target.location.withinDistance(location, 2)) {
                 target.applyHit(Hit(Utils.random(8, 15), HitType.POISON))

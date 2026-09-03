@@ -1,6 +1,5 @@
 package com.zenyte.game.content.follower.impl;
 
-import com.zenyte.game.content.boons.impl.NoPetDebt;
 import com.zenyte.game.content.event.christmas2019.SnowImpFollowerD;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
@@ -162,9 +161,6 @@ public enum MiscPet implements Pet {
     }
 
     public boolean roll(final Player player, int rarity) {
-        if (player.getBoonManager().hasBoon(NoPetDebt.class)) {
-            rarity /= 2;
-        }
         if (this != BLOODHOUND || rarity == -1 || Utils.random(rarity) != 0) {
             return false;
         }

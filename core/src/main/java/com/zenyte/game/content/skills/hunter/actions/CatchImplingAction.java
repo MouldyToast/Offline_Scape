@@ -1,7 +1,6 @@
 package com.zenyte.game.content.skills.hunter.actions;
 
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
-import com.zenyte.game.content.boons.impl.FirstImpressions;
 import com.zenyte.game.content.minigame.puropuro.PuroPuroArea;
 import com.zenyte.game.content.skills.hunter.node.Impling;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
@@ -194,12 +193,6 @@ public class CatchImplingAction extends Action {
                 } else {
                     player.sendFilteredMessage("You manage to catch the impling and acquire some loot.");
                     player.getInventory().addItems(impling.getJar().generateLoot(player));
-                    boolean hasBoon = player.getBoonManager().hasBoon(FirstImpressions.class);
-                    if(hasBoon) {
-                        for (final Item it : impling.getJar().generateLoot(player)) {
-                            player.getInventory().addOrDrop(it);
-                        }
-                    }
                 }
                 final boolean isPuro = (player.getArea() instanceof PuroPuroArea);
                 final String key = (isPuro ? Impling.PURO_IMPLING_TRACKER_ATTRIBUTE_KEY : Impling.SURFACE_IMPLING_TRACKER_ATTRIBUTE_KEY) + impling.getNpcId();

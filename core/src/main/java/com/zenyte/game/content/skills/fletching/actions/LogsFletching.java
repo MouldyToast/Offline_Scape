@@ -2,7 +2,6 @@ package com.zenyte.game.content.skills.fletching.actions;
 
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
-import com.zenyte.game.content.boons.impl.MasterOfTheCraft;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -47,7 +46,7 @@ public class LogsFletching extends Action {
 
 	@Override
 	public int processWithDelay() {
-		int tickCount = player.getBoonManager().hasBoon(MasterOfTheCraft.class) ? 1 : 2;
+		int tickCount = 2;
 
 		final Item product = PRODUCTS[category][slotId];
 		final String name = PRODUCTS[category][slotId].getDefinitions().getName().toLowerCase();

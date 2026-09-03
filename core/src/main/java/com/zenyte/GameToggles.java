@@ -11,6 +11,4 @@ public class GameToggles {
 
     public static boolean UNIVERSAL_SHOP_FLOODGATE = true;
     public static boolean BH2020_ENABLED = true;
-    public static boolean ORIGINS_PRIMAL_WORKBENCH_ENABLED = true;
-    public static boolean ORIGINS_PRIMAL_FIRE_ENABLED = true;
 }

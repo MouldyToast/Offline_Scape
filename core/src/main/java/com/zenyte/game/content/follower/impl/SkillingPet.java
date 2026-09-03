@@ -1,7 +1,6 @@
 package com.zenyte.game.content.follower.impl;
 
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.boons.impl.NoPetDebt;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
@@ -150,10 +149,6 @@ public enum SkillingPet implements Pet {
 
         if (player != null && player.getVariables().getPetBoosterTick() > 0) {
             roll *= 0.9;
-        }
-
-        if(player.getBoonManager().hasBoon(NoPetDebt.class)) {
-            roll /= 2;
         }
 
         if (Utils.random(roll) != 0) {

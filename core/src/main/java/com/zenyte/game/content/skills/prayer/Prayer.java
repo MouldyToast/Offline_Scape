@@ -1,8 +1,5 @@
 package com.zenyte.game.content.skills.prayer;
 
-import com.zenyte.game.content.boons.impl.HolyInterventionI;
-import com.zenyte.game.content.boons.impl.HolyInterventionII;
-import com.zenyte.game.content.boons.impl.HolyInterventionIII;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.utils.TextUtils;
@@ -116,18 +113,7 @@ public enum Prayer {
 	}
 
 	public float getDrainRate(Player player) {
-		double multiplier = 1.0D;
-
-		if(player == null)
-			return drainRate;
-
-		if(player.hasBoon(HolyInterventionIII.class))
-			multiplier = 0.5D;
-		else if (player.hasBoon(HolyInterventionII.class))
-			multiplier = 0.75D;
-		else if (player.hasBoon(HolyInterventionI.class))
-			multiplier = 0.90D;
-		return (float) (drainRate * multiplier);
+		return drainRate;
 	}
 
 	public int[] getCollisions() {

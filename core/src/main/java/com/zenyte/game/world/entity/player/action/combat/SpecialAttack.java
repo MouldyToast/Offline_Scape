@@ -6,7 +6,6 @@ import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
-import com.zenyte.game.content.boons.impl.HammerDown;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
 import com.zenyte.game.content.boss.wildernessbosses.callisto.Callisto;
 import com.zenyte.game.content.chambersofxeric.npc.Tekton;
@@ -98,14 +97,9 @@ public enum SpecialAttack implements ISpecialAttack {
     }, WEAPON_SPEED, MELEE,
         new Animation(11124), new Graphics(2804, 0, 0), (player, combat, target) -> {
         player.sendSound(SHIELD_BASH_SOUND);
-        boolean hasBoon = player.getBoonManager().hasBoon(HammerDown.class);
-        double multiplier = hasBoon ? 1.65 : 1.5;
-        final Hit hit = combat.getHit(player, target, 1.25, multiplier, 1, false);
-        if (hasBoon && hit.getDamage() <= 4) {
-            hit.setDamage(5);
-        }
+        final Hit hit = combat.getHit(player, target, 1.25, 1.5, 1, false);
 
-        boolean shouldApplyHit = hasBoon || combat.isSuccessful(player, target, 1, AttackType.CRUSH);
+        boolean shouldApplyHit = combat.isSuccessful(player, target, 1, AttackType.CRUSH);
 
         if (target instanceof Tekton tekton) {
             if (player.getBooleanAttribute("firstElderMaulSpecOnTekton")) {
@@ -259,11 +253,7 @@ public enum SpecialAttack implements ISpecialAttack {
         CustomItemId.HOLY_GREAT_WARHAMMER,
         ItemId.DRAGON_WARHAMMER_OR
     }, WEAPON_SPEED, MELEE, new Animation(1378), new Graphics(1292), (player, combat, target) -> {
-        boolean hasDWHBoon = player.getBoonManager().hasBoon(HammerDown.class);
-        double multiplier = hasDWHBoon ? 1.65 : 1.5;
-        final Hit hit = combat.getHit(player, target, 1.75, multiplier, 1, false);
-        if (hasDWHBoon && hit.getDamage() <= 4)
-            hit.setDamage(5);
+        final Hit hit = combat.getHit(player, target, 1.75, 1.5, 1, false);
         combat.delayHit(0, hit);
         final boolean tekton = target instanceof Tekton;
         if (!tekton && hit.getDamage() == 0) {

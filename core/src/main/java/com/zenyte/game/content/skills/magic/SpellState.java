@@ -9,7 +9,6 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.action.combat.magic.CombatSpell;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import mgi.types.config.enums.EnumDefinitions;
@@ -224,12 +223,6 @@ public final class SpellState {
 	 * Removes all of the cached runes by {@link #check()} from the resources found when requested.
 	 */
 	public void remove() {
-
-		if (player.getPerkManager().isValid(PerkWrapper.AUBURYS_APPRENTICE) && Utils.random(100) <= 10) {
-			player.getPerkManager().consume(PerkWrapper.AUBURYS_APPRENTICE);
-			return;
-		}
-
 
 		if(spell != null) {
 			Integer resourceToConsume = BLIGHTED_SACKS_MAP.get(spell.getSpellName());

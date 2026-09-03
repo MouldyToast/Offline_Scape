@@ -7,8 +7,6 @@ import com.near_reality.game.world.entity.player.SkillRestoration;
 import com.zenyte.Main;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.boons.impl.RunForrestRun;
-import com.zenyte.game.content.boons.impl.SpecialBreed;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
 import com.zenyte.game.model.ui.InterfacePosition;
@@ -418,9 +416,6 @@ public final class PlayerVariables {
             specRegeneration = 0;
         }
         int regenTickCount = player.getEquipment().getId(EquipmentSlot.RING) == ItemId.LIGHTBEARER ? SPEC_REGEN_TICKS_LIGHTBEARER : SPEC_REGEN_TICKS;
-        // TODO: If the player is not in a Tournament
-        if (player.getBoonManager().hasBoon(SpecialBreed.class))
-            regenTickCount *= 0.9;
         if (specRegeneration % regenTickCount == 0 && energy < 100) {
             player.getCombatDefinitions().setSpecialEnergy(Math.min(100, energy + 10));
         }
@@ -472,8 +467,6 @@ public final class PlayerVariables {
         } else if (runEnergy < 0) {
             runEnergy = 0;
         }
-        if (player.getBoonManager().hasBoon(RunForrestRun.class) && !wilderness)
-            runEnergy = 100;
         if (this.runEnergy == runEnergy) {
             return;
         }

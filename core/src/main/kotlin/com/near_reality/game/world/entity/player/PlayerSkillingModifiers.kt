@@ -29,7 +29,7 @@ fun onGather(player: Player) {
     val chance: Int = Utils.random(250)
     if (Utils.random(chance) == 1) {
         val artifactRoll: Int = Utils.random(100)
-        val quantity = if(player.remnantPetManager.checkDoubleSkillingRemnantDrop()) 2 else 1
+        val quantity = 1
         if(artifactRoll <= 66) {
             player.inventory.addOrDrop(Item(ItemId.REMNANT_WHEEL, quantity))
             player.sendMessage(Colour.RS_GREEN.wrap("You find a remnant wheel among the supplies you gathered."))
@@ -47,7 +47,7 @@ fun onBurn(player: Player) {
     val chance: Int = Utils.random(400)
     if (Utils.random(chance) == 1) {
         val artifactRoll: Int = Utils.random(100)
-        val quantity = if(player.remnantPetManager.checkDoubleSkillingRemnantDrop()) 2 else 1
+        val quantity = 1
         if(artifactRoll <= 66) {
             player.inventory.addOrDrop(Item(ItemId.REMNANT_WHEEL, quantity))
             player.sendMessage(Colour.RS_GREEN.wrap("You find a remnant wheel among the logs you just burned."))

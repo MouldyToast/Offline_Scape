@@ -1,7 +1,6 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.content.achievementdiary.diaries.*;
-import com.zenyte.game.content.boons.impl.BoneCruncher;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
@@ -167,13 +166,8 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
             if (bone.equals(Bones.DRAGON_BONES)) {
                 player.getDailyChallengeManager().update(SkillingChallenge.OFFER_DRAGON_BONES);
             }
-            if(player.getBoonManager().hasBoon(BoneCruncher.class) && BoneCruncher.roll()) {
-                player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
-                player.sendFilteredMessage(Colour.RS_GREEN.wrap("Your Bone Cruncher perk has saved your resources"));
-            } else {
-                player.getInventory().deleteItem(item);
-                player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
-            }
+            player.getInventory().deleteItem(item);
+            player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
             player.getSkills().addXp(SkillConstants.PRAYER, bone.getXp() * modifier);
             World.sendGraphics(OFFERING_GFX, altar);
             return 3;

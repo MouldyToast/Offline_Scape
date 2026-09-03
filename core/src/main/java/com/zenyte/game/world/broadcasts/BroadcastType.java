@@ -27,9 +27,7 @@ public enum BroadcastType {
     WORLD_BOSS("00FF00", 68, Optional.empty()),
     SUPER_RARE_DROP("B22222", 51, Optional.empty()),
 
-    WILDERNESS_VAULT("e59400", 13, Optional.empty()),
     LOTTERY("e59400", 50, Optional.empty()),
-    WELL_OF_GOODWILL("e59400", 49, Optional.empty()),
     NEW_PLAYER("e59400", 53, Optional.of(GameSetting.NEW_PLAYERS)),
     SUPPORT_LOGIN("00b8ff", 53, Optional.empty()),
     MOD_LOGIN("c6cad1", 53, Optional.empty()),

@@ -4,7 +4,6 @@ import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.*;
-import com.zenyte.game.content.boons.impl.Mixologist;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -386,11 +385,6 @@ public class Combine extends Action {
 					}
 				}
 			}
-		}
-		if(data != ANCIENT_ICON && data != HerbloreData.VENATOR_SHARD && player.getBoonManager().hasBoon(Mixologist.class) && Mixologist.roll()) {
-			player.sendFilteredMessage("Your Mixology boon grants you an additional potion.");
-			player.getSkills().addXp(SkillConstants.HERBLORE, data.getXp());
-			item.setAmount(item.getAmount() + 1);
 		}
 		player.getInventory().addItem(item);
 		if (data.getXp() != 0) {

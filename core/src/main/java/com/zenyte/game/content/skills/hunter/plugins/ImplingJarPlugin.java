@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
-import com.zenyte.game.content.boons.impl.FirstImpressions;
 import com.zenyte.game.content.drops.table.DropTable;
 import com.zenyte.game.content.skills.hunter.node.tables.*;
 import com.zenyte.game.content.treasuretrails.ClueItem;
@@ -36,12 +35,6 @@ public class ImplingJarPlugin extends ItemPlugin {
             inventory.deleteItem(item);
             for (final Item it : jar.generateLoot(player)) {
                 inventory.addOrDrop(it);
-            }
-            boolean hasBoon = player.getBoonManager().hasBoon(FirstImpressions.class);
-            if(hasBoon) {
-                for (final Item it : jar.generateLoot(player)) {
-                    inventory.addOrDrop(it);
-                }
             }
             if (!breakJar) {
                 inventory.addOrDrop(new Item(ItemId.IMPLING_JAR));
@@ -132,7 +125,6 @@ public class ImplingJarPlugin extends ItemPlugin {
                 }
                 if (Utils.random(chance) == 0) {
                     Item clue = new Item(drop.itemId());
-                    player.remnantPetManager.handleDoubleClueScrollDrop(clue);
                     return new Item[]{table.rollItem(), clue};
                 }
             }

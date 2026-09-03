@@ -1,6 +1,5 @@
 package com.zenyte.game.content.minigame.wintertodt;
 
-import com.zenyte.game.content.boons.impl.SwissArmyMan;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTasksManager;
@@ -172,7 +171,7 @@ public class Brazier {
         public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
             final Brazier brazier = Wintertodt.Corner.getFromBrazier(object.getX(), object.getY()).getBrazier();
             if (option.equalsIgnoreCase("light") && brazier.isUnlit()) {
-                if (!player.hasBoon(SwissArmyMan.class) && !player.getInventory().containsItem(TINDERBOX, 1) && !player.carryingItem(LightSourceItem.LightSource.BRUMA_TORCH.getLitId())) {
+                if (!player.getInventory().containsItem(TINDERBOX, 1) && !player.carryingItem(LightSourceItem.LightSource.BRUMA_TORCH.getLitId())) {
                     player.sendMessage("You need a tinderbox or bruma torch to light that brazier.");
                     return;
                 }

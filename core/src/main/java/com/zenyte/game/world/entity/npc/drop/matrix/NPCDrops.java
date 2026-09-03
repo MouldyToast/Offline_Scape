@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.follower.impl.BossPet;
-import com.zenyte.game.content.well.WellPerk;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.DefaultGson;
@@ -372,16 +371,6 @@ public class NPCDrops {
 
 	public static void rollTable(Player player, final DropTable drops, final Consumer<Drop> consumer) {
 		rollDropOnce(player, drops, consumer, false);
-
-		if(World.hasBoost(WellPerk.DOUBLE_DROPS)) {
-			rollDropOnce(player, drops, consumer, true);
-		} if(player.remnantPetManager.checkDoubleDropsPvm()) {
-			player.sendMessage("Your pet has given you bonus loot on this kill.");
-			rollDropOnce(player, drops, consumer, true);
-		} else if(player.remnantPetManager.checkDoubleDropsWildy()) {
-			player.sendMessage("Your pet has given you bonus loot on this kill.");
-			rollDropOnce(player, drops, consumer, true);
-		}
 	}
 
 	public static void rollDropOnce(Player player, final DropTable drops, final Consumer<Drop> consumer, boolean ignoreAlways) {

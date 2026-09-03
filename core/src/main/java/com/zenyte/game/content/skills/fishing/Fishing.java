@@ -29,7 +29,6 @@ import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
 import com.zenyte.plugins.dialogue.PlainChat;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -247,7 +246,7 @@ public class Fishing extends Action {
                     diaryChance = entry.getValue();
                 }
             }
-            int amount = (player.getPerkManager().isValid(PerkWrapper.MASTER_FISHERMAN) && Utils.random(100) <= 15 || diaryChance > 0 && Utils.random(100) <= diaryChance) ? 2 : 1;
+            int amount = (diaryChance > 0 && Utils.random(100) <= diaryChance) ? 2 : 1;
             amount = (int) (amount * determineGatheringMultiplier(player).orElse(1.0));
 
             onGather(player);
@@ -264,9 +263,6 @@ public class Fishing extends Action {
                 player.sendFilteredMessage("You catch " + Utils.checkPlural(fish.getName()) + ".");
             } else {
                 player.sendFilteredMessage("Your infernal harpoon instantly incinerates the " + fish.getName() + ".");
-            }
-            if (amount == 2) {
-                player.getPerkManager().consume(PerkWrapper.MASTER_FISHERMAN);
             }
         }
         player.getSkills().addXp(SkillConstants.FISHING, fish.getXp());

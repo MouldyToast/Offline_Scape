@@ -4,7 +4,6 @@ import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
-import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.Spellbook;
@@ -185,13 +184,10 @@ public class MagicCombat extends PlayerCombat {
             result *= amuletId == 12017 ? 1.15F : 1.2F;
         }
 
-        boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MAGIC, player, target);
         result += determineBountyHunterAccBoost(player, target);
         result = Math.floor(result);
-
-        if (target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc))
-            result *= 1.1F;
 
         //If the weapon is smoke battlestaff and the player is on normal spellbook.
         final int weapon = player.getEquipment().getId(EquipmentSlot.WEAPON);
@@ -213,10 +209,6 @@ public class MagicCombat extends PlayerCombat {
         if (CombatUtilities.applyPvmArenaBoost(player, target))
             resultModifier += 0.05F;
         result *= resultModifier;
-        if (target instanceof NPC) {
-            if (player.hasBoon(BrawnOfJustice.class) && BrawnOfJustice.applies(player) && player.getBooleanTemporaryAttribute("TOB_inside"))
-                result *= 1.2;
-        }
 
         if (getAncientScepterType() == AncientScepterType.SHADOW && isShadowSpell(spell)) {
             result *= 1.10;
@@ -386,12 +378,9 @@ public class MagicCombat extends PlayerCombat {
             situationalModifier += amuletId == 12017 ? 0.15F : 0.2F;
         }
 
-        boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         situationalModifier *= determineSlayerHelmetDamageBoost(hasTask, HitType.MAGIC, player, target);
 
-        if (target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc)) {
-            situationalModifier *= 1.1F;
-        }
         if (CombatUtilities.applyForinthrySurge(player, target)) {
             situationalModifier += 0.15F;
         }
@@ -697,33 +686,12 @@ public class MagicCombat extends PlayerCombat {
 
         boolean ignorePrayers = false;
 
-        if (target instanceof NPC npc) {
-            if (player.hasBoon(InfallibleShackles.class) && InfallibleShackles.applies(spell) && !npc.isFrozen() && npc.isFreezeable()) {
-                accuracyModifier = 100.0F;
-                ignorePrayers = true;
-            }
-        }
-
         final float passive = passiveModifier;
         final float accuracy = accuracyModifier;
         final Hit primaryHit = getHit(player, target, accuracy, passive, 1, ignorePrayers);
         extra(primaryHit);
         final Projectile projectile = spell.getProjectile();
         final int clientCycles = projectile.getProjectileDuration(player.getLocation(), target.getLocation());
-        if (player.getWeapon() != null && this.spell == CombatSpell.TUMEKENS_SHADOW && player.getBoonManager().hasBoon(DivineHealing.class)) {
-            DivineHealing.Special special = DivineHealing.determineBoost();
-            switch (special) {
-                case NONE -> {
-                }
-                case BOTH -> {
-                    player.heal(primaryHit.getDamage());
-                    player.getPrayerManager().restorePrayerPoints(primaryHit.getDamage());
-                }
-                case HEAL_HP -> player.heal(primaryHit.getDamage());
-                case HEAL_PRAY -> player.getPrayerManager().restorePrayerPoints(primaryHit.getDamage());
-            }
-        }
-
         applyHit(target, primaryHit, splash, delay, clientCycles);
         if (multiSpells.contains(spell)) {
             attackTarget(getMultiAttackTargets(player), originalTarget -> {

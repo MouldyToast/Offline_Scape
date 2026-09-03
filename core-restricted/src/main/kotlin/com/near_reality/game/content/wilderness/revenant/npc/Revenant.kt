@@ -3,7 +3,6 @@ package com.near_reality.game.content.wilderness.revenant.npc
 import com.near_reality.game.content.wilderness.revenant.npc.RevenantMaledictus.Companion.onRevenantDeath
 import com.near_reality.game.content.wilderness.revenant.npc.drop.GoodRevenantDrop
 import com.near_reality.game.content.wilderness.revenant.npc.drop.MediocreReventantDrop
-import com.zenyte.game.content.boons.impl.RevItUp
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
@@ -159,9 +158,6 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
             }
             val a = Utils.random(chanceA - 1)
             var amount: Int = Utils.random(1, max(1.0, sqrt(level * 3.0)).toInt())
-            if (amount > 0) {
-                if (killer.boonManager.hasBoon(RevItUp::class.java)) amount *= 2
-            }
             if (killer.getNumericAttribute("ethereum absorption").toInt() == 1) {
                 val bracelet = killer.equipment.getId(EquipmentSlot.HANDS)
                 if (bracelet == ItemId.BRACELET_OF_ETHEREUM || bracelet == ItemId.BRACELET_OF_ETHEREUM_UNCHARGED) {
@@ -187,10 +183,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
                 a == 0 -> dropItem(killer, GoodRevenantDrop.get(killer), tile, false)
                 a < (chanceB + 1) -> dropItem(killer, MediocreReventantDrop.get(), tile, false)
                 else -> {
-                    val coinRewardDrop = if (killer.boonManager.hasBoon(RevItUp::class.java))
-                        Utils.random(10_000, 35_000)
-                    else
-                        Utils.random(5_000, 17_500)
+                    val coinRewardDrop = Utils.random(5_000, 17_500)
                     dropItem(killer, Item(ItemId.COINS_995, coinRewardDrop), tile, true)
                 }
             }

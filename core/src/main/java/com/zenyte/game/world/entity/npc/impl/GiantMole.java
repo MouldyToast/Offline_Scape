@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
-import com.zenyte.game.content.boons.impl.NoMoleHoles;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.model.HintArrowPosition;
 import com.zenyte.game.task.WorldTasksManager;
@@ -140,11 +139,6 @@ public class GiantMole extends NPC implements Spawnable {
         if (burrowing) return;
         if (!canBurrow) return;
         super.handleIngoingHit(hit);
-        if(hit.getSource() instanceof Player player) {
-            if(player.getBoonManager().hasBoon(NoMoleHoles.class)) {
-                return;
-            }
-        }
         if (!isDead() && getHitpoints() <= getMaxHitpoints() / 2 && Utils.random(4) == 0) {
             final Entity target = hit.getSource();
             if (target == null) {

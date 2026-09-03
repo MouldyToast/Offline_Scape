@@ -11,7 +11,6 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.container.impl.bank.BankPolygons;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.flooritem.FloorItem;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.RegionArea;
@@ -30,7 +29,6 @@ public class FiremakingAction extends Action {
     private final boolean floor;
     private final FiremakingTool tool;
     private final Optional<FloorItem> floorItem;
-    private boolean pyromancer;
 
     private boolean check() {
         if (tool == FiremakingTool.TINDERBOX && !player.getInventory().containsItem(TINDERBOX)) {
@@ -82,10 +80,6 @@ public class FiremakingAction extends Action {
         }
         if (!floor) {
             player.getInventory().deleteItem(slot, data.getLogs());
-            if (player.getPerkManager().isValid(PerkWrapper.PYROMANCER) && player.getInventory().containsItem(data.getLogs())) {
-                player.getInventory().deleteItem(data.getLogs());
-                pyromancer = true;
-            }
             World.spawnFloorItem(data.getLogs(), player);
         }
         return true;
@@ -149,7 +143,7 @@ public class FiremakingAction extends Action {
 
         AdventCalendarManager.increaseChallengeProgress(player, 2022, 24, 1);
         player.sendFilteredMessage("The fire catches and the " + (data.equals(Firemaking.KINDLING) ? "kindlings begin to burn." : "logs begin to burn."));
-        player.getSkills().addXp(SkillConstants.FIREMAKING, data.getXp() * (pyromancer ? 2 : 1));
+        player.getSkills().addXp(SkillConstants.FIREMAKING, data.getXp());
         World.destroyFloorItem(player, item, object);
         player.getTemporaryAttributes().put("BurnDelay", Utils.currentTimeMillis() + 1800);
         WorldTasksManager.schedule(() -> player.setFaceLocation(location));

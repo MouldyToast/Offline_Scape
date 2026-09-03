@@ -28,7 +28,6 @@ import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.container.impl.RunePouch;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.plugins.events.InitializationEvent;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import mgi.tools.jagcached.cache.Cache;
@@ -167,7 +166,7 @@ public final class Barrows {
         container.clear();
         looted = false;
         slainWights.clear();
-        puzzleSolved = player != null && player.getPerkManager().isValid(PerkWrapper.RIDDLE_IN_THE_TUNNELS);
+        puzzleSolved = false;
         skipTunnels = Utils.random(3) == 0;
     }
 
@@ -360,7 +359,7 @@ public final class Barrows {
 
     void shiftDoorways() {
         shutDoorways.clear();
-        if (true || player.getPerkManager().isValid(PerkWrapper.RIDDLE_IN_THE_TUNNELS)) {
+        if (true) {
             return;
         }
         final ArrayList<CryptDoorway> cornerDoorways = new ArrayList<CryptDoorway>(SHUT_DOORWAYS >> 1);

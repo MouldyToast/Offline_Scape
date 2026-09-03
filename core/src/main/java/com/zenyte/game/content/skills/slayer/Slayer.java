@@ -21,7 +21,6 @@ import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.*;
 import com.zenyte.game.world.entity.player.calog.CATierType;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.region.GlobalAreaManager;
 import com.zenyte.game.world.region.RegionArea;
@@ -389,9 +388,6 @@ public class Slayer {
         int amount = pointsPerTask * multiplier;
         if (DOUBLE_POINTS) {
             amount *= 2;
-        }
-        if (player.getPerkManager().isValid(PerkWrapper.MASTER_SLAYER)) {
-            amount *= 1.15;
         }
         addSlayerPoints(amount);
         var message =

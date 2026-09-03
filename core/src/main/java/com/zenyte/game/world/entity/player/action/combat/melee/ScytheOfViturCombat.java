@@ -1,6 +1,5 @@
 package com.zenyte.game.world.entity.player.action.combat.melee;
 
-import com.zenyte.game.content.boons.impl.FourSure;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -53,8 +52,7 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 		sendSoundEffect();
 		final Item weapon = player.getWeapon();
 		final boolean christmasScythe = player.getEquipment().getId(EquipmentSlot.WEAPON) == ChristmasConstants.CHRISTMAS_SCYTHE;
-		boolean hasBoon = player.hasBoon(FourSure.class);
-		if (hasBoon || (weapon != null && weapon.getCharges() > 0 || christmasScythe)) {
+		if (weapon != null && weapon.getCharges() > 0 || christmasScythe) {
 			specialAttack();
 		} else {
 			final Hit hit = getHit(player, target, 1, 1, 1, false);
@@ -64,8 +62,7 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 		}
 		animate();
 		if (!christmasScythe) {
-			if(!hasBoon)
-				player.getChargesManager().removeCharges(DegradeType.OUTGOING_HIT);
+			player.getChargesManager().removeCharges(DegradeType.OUTGOING_HIT);
 		}
 		resetFlag();
 		checkIfShouldTerminate(HitType.MELEE);
@@ -113,9 +110,6 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 				return;
 			}
 			int maxHits = 3;
-			if(player.hasBoon(FourSure.class)) {
-				maxHits = 4;
-			}
 
 			if (hitcount < maxHits) {
 				for (final Entity t : targets) {

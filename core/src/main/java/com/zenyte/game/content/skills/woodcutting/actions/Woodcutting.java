@@ -29,7 +29,6 @@ import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.object.WorldObject;
@@ -312,14 +311,11 @@ public class Woodcutting extends Action {
                 if (axe.getDefinition() instanceof Degradeable && axe.getSlot() != -1)
                     player.getChargesManager().removeCharges(axe.getItem(), 1, axe.getContainer(), axe.getSlot());
                 player.sendFilteredMessage("You get some " + logName + ".");
-                final boolean activateLumberJackPerk = player.getPerkManager().isValid(PerkWrapper.LUMBERJACK) && Utils.random(100) <= 20;
-                int amount = activateLumberJackPerk ? 2 : 1;
+                int amount = 1;
                 amount = (int) (amount * determineGatheringMultiplier(player).orElse(1.0));
 
                 onGather(player);
 
-                if (activateLumberJackPerk)
-                    player.getPerkManager().consume(PerkWrapper.LUMBERJACK);
                 if (definitions.getLogsId() == 1511 && player.getEquipment().getItem(EquipmentSlot.HELMET) != null
                     && player.getEquipment().getItem(EquipmentSlot.HELMET).getName().contains("Kandarin headgear")) {
                     amount += 1;

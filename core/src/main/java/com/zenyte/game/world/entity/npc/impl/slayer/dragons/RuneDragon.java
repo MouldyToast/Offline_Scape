@@ -19,7 +19,6 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.AmmunitionDefinitions;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 
 /**
  * @author Tommeh | 29-4-2019 | 18:15
@@ -145,16 +144,10 @@ public class RuneDragon extends NPC implements CombatScript, Spawnable {
     private int dragonfire(final Entity target) {
         setAnimation(DISTANCE_ATTACK_ANIM);
         final Player player = (Player) target;
-        final boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-        final double modifier = !perk ? 1 : Math.max(0, Utils.randomDouble() - 0.25F);
         final Dragonfire dragonfire = new Dragonfire(DragonfireType.CHROMATIC_DRAGONFIRE, 50, DragonfireProtection.getProtection(this, player));
-        final int deflected = !perk ? 0 : ((int) Math.floor(dragonfire.getMaximumDamage() * modifier));
-        delayHit(World.sendProjectile(this, target, DRAGONFIRE_PROJ), target, new Hit(this, Utils.random(Math.max(0, dragonfire.getDamage() - deflected)), HitType.REGULAR).onLand(hit -> {
+        delayHit(World.sendProjectile(this, target, DRAGONFIRE_PROJ), target, new Hit(this, Utils.random(dragonfire.getDamage()), HitType.REGULAR).onLand(hit -> {
             PlayerCombat.appendDragonfireShieldCharges(player);
             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's fiery breath"));
-            if (perk) {
-                dragonfire.backfire(this, player, 0, deflected);
-            }
         }));
         return getCombatDefinitions().getAttackSpeed();
     }

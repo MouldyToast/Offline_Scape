@@ -1,6 +1,5 @@
 package com.zenyte.game.content.breaches.entity.impl;
 
-import com.zenyte.game.content.boons.impl.DagaWHO;
 import com.zenyte.game.content.breaches.entity.BreachEntity;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -52,14 +51,13 @@ public class DagannothKing extends BreachEntity implements Spawnable, CombatScri
     @Override
     public void handleIngoingHit(Hit hit) {
         if(hit.getSource() instanceof Player player) {
-            boolean bypass = player.getBoonManager().hasBoon(DagaWHO.class);
-            if (!bypass && getId() == NpcId.DAGANNOTH_SUPREME_12441 && hit.getHitType() != HitType.MELEE) {
+            if (getId() == NpcId.DAGANNOTH_SUPREME_12441 && hit.getHitType() != HitType.MELEE) {
                 hit.setDamage(0);
             }
-            if (!bypass && getId() == NpcId.DAGANNOTH_REX_12439 && hit.getHitType() != HitType.MAGIC) {
+            if (getId() == NpcId.DAGANNOTH_REX_12439 && hit.getHitType() != HitType.MAGIC) {
                 hit.setDamage(0);
             }
-            if (!bypass && getId() == NpcId.DAGANNOTH_PRIME_12442 && hit.getHitType() != HitType.RANGED) {
+            if (getId() == NpcId.DAGANNOTH_PRIME_12442 && hit.getHitType() != HitType.RANGED) {
                 hit.setDamage(0);
             }
         }

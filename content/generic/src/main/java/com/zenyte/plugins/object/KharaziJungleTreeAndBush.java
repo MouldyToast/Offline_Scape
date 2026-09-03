@@ -19,7 +19,6 @@ import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
@@ -122,7 +121,7 @@ public class KharaziJungleTreeAndBush implements ObjectAction {
                         player.getSkills().addXp(SkillConstants.FIREMAKING, fm.getXp() / 2.0F);
                     } else {
                         player.sendFilteredMessage("You get some wood.");
-                        int amount = player.getPerkManager().isValid(PerkWrapper.LUMBERJACK) && Utils.random(100) <= 20 ? 2 : 1;
+                        int amount = 1;
                         if (player.getEquipment().getItem(EquipmentSlot.HELMET) != null && player.getEquipment().getItem(EquipmentSlot.HELMET).getName().contains("Kandarin headgear")) {
                             amount += 1;
                         }

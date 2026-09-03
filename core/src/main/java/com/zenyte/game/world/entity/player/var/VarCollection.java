@@ -6,8 +6,6 @@ import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.BoonLoader;
-import com.zenyte.game.content.boons.BoonWrapper;
 import com.zenyte.game.content.compcapes.CompletionistCape;
 import com.zenyte.game.content.skills.magic.spells.arceuus.ThrallSpellKt;
 import com.zenyte.game.model.shop.ShopCurrency;
@@ -96,7 +94,6 @@ public enum VarCollection {
     OVERLOAD_REFRESHES_REMAINING(VARBIT, 5418, p -> p.getVarManager().getBitValue(5418), PRE_LOGIN),
     THRALL_ACTIVE(VARBIT, 12413, p -> ThrallSpellKt.getCurrentThrall(p) != null ? 1 : 0, PRE_LOGIN),
     TOA_ENTRANCE(VARBIT, 13837, p -> 1, POST_LOGIN),
-    BOON_UNLOCKS(VARBIT, 19500, 19500 + BoonLoader.boonTypes.size(), ((player, idx) -> player.getBoonManager().hasBoon(BoonWrapper.get(idx).getPerk()) ? 1 : 0), POST_LOGIN),
     EXCHANGE_POINTS(VAR, 4506, p -> ShopCurrencyHandler.getAmount(ShopCurrency.EXCHANGE_POINTS, p), POST_LOGIN),
     DIZANAS_QUIVER_AMMO(VAR, 4142, PlayerAttributesKt::getDizanasQuiverAmmo, POST_LOGIN),
     DIZANAS_QUIVER_AMMO_AMOUNT(VAR, 4141, PlayerAttributesKt::getDizanasQuiverAmmoAmount, POST_LOGIN),

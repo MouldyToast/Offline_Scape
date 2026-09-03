@@ -1,7 +1,6 @@
 package com.zenyte.game.content.boss.phantommuspah;
 
 import com.near_reality.game.content.scoreboard.ScoreboardModule;
-import com.zenyte.game.content.boons.impl.IgnoranceIsBliss;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -280,11 +279,7 @@ public class PhantomMuspah extends NPC implements CombatScript {
 					setForceAggressive(true);
 					if (id != MUSPAH_RANGE_FAST_ID) {
 						if(instance.getPlayer() != null) {
-							boolean hasBoon = instance.getPlayer().hasBoon(IgnoranceIsBliss.class);
-							if(hasBoon)
-								startLastPhase();
-							else
-								startShieldPhase();
+							startShieldPhase();
 						}
 					}
 					specialActive = false;

@@ -1,7 +1,6 @@
 package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.BiMap
-import com.zenyte.game.content.boons.impl.LethalAttunement
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.ItemOnItemAction
@@ -104,8 +103,6 @@ abstract class AbstractRevenantWeaponPlugin(
      * Charges removed through usage of the item.
      */
     final override fun removeCharges(player: Player, item: Item, wrapper: ContainerWrapper, slotId: Int, amount: Int) {
-        if (amount == 1 && player.boonManager.hasBoon(LethalAttunement::class.java))
-            return
         val previousCharges = item.charges
         val unchargedId = chargedToUnchargedIdMap[item.id]
         if (unchargedId == null) {
@@ -125,7 +122,7 @@ abstract class AbstractRevenantWeaponPlugin(
      */
     final override fun checkCharges(player: Player, item: Item) {
         val name = item.name
-        val minimumCharge = if (player.boonManager.hasBoon(LethalAttunement::class.java)) 0 else 1000
+        val minimumCharge = 1000
 
         if (item.charges <= minimumCharge) {
             val activationString = if (item.charges > 0) "has been activated" else "has not been activated"
@@ -149,11 +146,12 @@ abstract class AbstractRevenantWeaponPlugin(
      * Handles the charging of revenant items with revenant ether.
      */
     final override fun handleItemOnItemAction(player: Player?, from: Item?, to: Item?, fromSlot: Int, toSlot: Int) {
+        player!!
         val ether = if (from!!.id == ItemId.REVENANT_ETHER) from else to!!
         val weapon = if (ether === from) to!! else from
         val existing = weapon.charges
         val toAdd = min((17000 - existing).toDouble(), ether.amount.toDouble()).toInt()
-        val minimumCharge = if (player!!.boonManager.hasBoon(LethalAttunement::class.java)) 1 else 1000
+        val minimumCharge = 1000
         if (toAdd < minimumCharge && existing == 0) {
             player.sendMessage("You need to charge the " + weapon.name + " with at least $minimumCharge revenant ether.")
             return

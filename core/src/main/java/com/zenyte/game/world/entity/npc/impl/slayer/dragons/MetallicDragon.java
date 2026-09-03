@@ -16,7 +16,6 @@ import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 
 /**
  * @author Kris | 12. veebr 2018 : 12:18.50
@@ -55,16 +54,10 @@ public final class MetallicDragon extends NPC implements CombatScript, Spawnable
 		if (style == 0 && target instanceof Player) {
 			setAnimation(DRAGONFIRE_ANIM);
 			final Player player = (Player) target;
-			final boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-			final double modifier = !perk ? 1 : Math.max(0, Utils.randomDouble() - 0.25F);
 			final Dragonfire dragonfire = new Dragonfire(DragonfireType.CHROMATIC_DRAGONFIRE, 50, DragonfireProtection.getProtection(this, player));
-			final int deflected = !perk ? 0 : ((int) Math.floor(dragonfire.getMaximumDamage() * modifier));
-			delayHit(World.sendProjectile(this, target, DRAGONFIRE_PROJ), target, new Hit(this, Utils.random(Math.max(0, dragonfire.getDamage() - deflected)), HitType.REGULAR).onLand(hit -> {
+			delayHit(World.sendProjectile(this, target, DRAGONFIRE_PROJ), target, new Hit(this, Utils.random(dragonfire.getDamage()), HitType.REGULAR).onLand(hit -> {
 				PlayerCombat.appendDragonfireShieldCharges(player);
 				player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's fiery breath"));
-				if (perk) {
-					dragonfire.backfire(this, player, 0, deflected);
-				}
 			}));
 		} else {
 			setAnimation(Utils.random(1) == 0 ? ATTACK_ANIM : SECONDARY_ATTACK_ANIM);

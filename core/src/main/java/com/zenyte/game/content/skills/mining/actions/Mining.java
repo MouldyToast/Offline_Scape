@@ -50,7 +50,6 @@ import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.dailychallenge.DailyChallengeManager;
 import com.zenyte.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.CharacterLoop;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;
@@ -309,8 +308,7 @@ public class Mining extends Action {
             WorldTasksManager.schedule(() -> World.spawnObject(rock), ore.getTime());
             return 1;
         }
-        final boolean valid = player.getPerkManager().isValid(PerkWrapper.MASTER_MINER);
-        int amount = ore.equals(OreDefinitions.DAEYALT_ESSENCE) ? Utils.random(2,3) : player.getPerkManager().isValid(PerkWrapper.MASTER_MINER) && Utils.random(0, 100) <= 15 ? 2 : 1;
+        int amount = ore.equals(OreDefinitions.DAEYALT_ESSENCE) ? Utils.random(2,3) : 1;
         amount = (int) (amount * determineGatheringMultiplier(player).orElse(1.0));
         if (ore.isExtraOre() && Utils.random(99) < 5 && SkillcapePerk.MINING.isEffective(player)) {
             amount++;
@@ -357,13 +355,13 @@ public class Mining extends Action {
             final int type = Utils.random(3);
             final int ore = 6971 + (type * 2);
             final int experience = 30 + (type * 10);
-            mineOre(skills, inventory, valid, amount, ore, experience, "sandstone");
+            mineOre(skills, inventory, amount, ore, experience, "sandstone");
             return -1;
         } else if (ore.equals(OreDefinitions.GRANITE)) {
             final int type = Utils.random(2);
             final int ore = 6979 + (type * 2);
             final int experience = type == 0 ? 50 : type == 1 ? 60 : 75;
-            mineOre(skills, inventory, valid, amount, ore, experience, "granite");
+            mineOre(skills, inventory, amount, ore, experience, "granite");
             return -1;
         }
         if (ore.equals(OreDefinitions.RUNITE_GOLEM_ROCKS)) {
@@ -458,9 +456,6 @@ public class Mining extends Action {
                 }
             }
         }
-        if (valid) {
-            player.getPerkManager().consume(PerkWrapper.MASTER_MINER);
-        }
         return ore.equals(OreDefinitions.ESSENCE) || ore.equals(OreDefinitions.DAEYALT_ESSENCE) ? 1 : deplete ? -1 : tool.getMineTime();
     }
 
@@ -519,13 +514,11 @@ public class Mining extends Action {
             }
     }
 
-    private void mineOre(Skills skills, Inventory inventory, boolean valid, int amount, int ore, int experience, String oreName) {
+    private void mineOre(Skills skills, Inventory inventory, int amount, int ore, int experience, String oreName) {
         skills.addXp(SkillConstants.MINING, experience);
         inventory.addOrDrop(new Item(ore, amount));
         ClueItemUtil.roll(player, this.ore.getBaseClueGeodeChance(), skills.getLevel(SkillConstants.MINING), ClueItem::getClueGeode);
         player.sendFilteredMessage("You manage to mine some " + oreName + ".");
-        if (valid)
-            player.getPerkManager().consume(PerkWrapper.MASTER_MINER);
         if (player.inArea("Trahaearn mine"))
             CrystalShardKt.tryFindRandom(player, 127);
         releaseChargeIfCrystalPickaxe();

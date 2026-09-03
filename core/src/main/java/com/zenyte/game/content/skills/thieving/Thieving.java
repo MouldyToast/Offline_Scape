@@ -7,7 +7,6 @@ import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 
 /**
@@ -20,9 +19,6 @@ public final class Thieving {
 		final double baseChance = 5.0 / 833 * level;
 		final double reqChance = 0.49 - (requirement * 0.0032) - 0.02;
 		double chance = baseChance + reqChance;
-		if (player.getPerkManager().isValid(PerkWrapper.SLEIGHT_OF_HAND)) {
-			chance *= 1.15F;
-		}
 		if (SkillcapePerk.THIEVING.isEffective(player)) {
 			chance *= 1.1F;
 		}

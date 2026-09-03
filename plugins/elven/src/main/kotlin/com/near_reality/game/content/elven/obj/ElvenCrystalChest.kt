@@ -1,6 +1,5 @@
 package com.near_reality.game.content.elven.obj
 
-import com.zenyte.game.content.boons.impl.Locksmith
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Colour
@@ -53,11 +52,7 @@ class ElvenCrystalChest : ObjectAction {
             player.variables.timesOpenedEnhancedCrystalChest++
         player.animation = animation
         player.lock(2)
-        if(player.boonManager.hasBoon(Locksmith::class.java) && Locksmith.roll()) {
-            player.sendFilteredMessage("Your Locksmith perk saves your key from being consumed.")
-        } else {
-            player.inventory.deleteItem(itemId, 1)
-        }
+        player.inventory.deleteItem(itemId, 1)
         if (player.memberRank.equalToOrGreaterThan(MemberRank.SAPPHIRE) && Utils.random(getChance(player)) == 0) {
             player.sendMessage(Colour.RS_GREEN.wrap("You find double the loot from the elven crystal chest."))
             rollLoot(itemId, player)

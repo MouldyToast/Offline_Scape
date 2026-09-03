@@ -16,7 +16,6 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
 import com.zenyte.game.world.entity.player.action.combat.magic.CombatSpell;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 
 /**
  * @author Kris | 20/08/2019 23:32
@@ -53,16 +52,10 @@ public class BrutalDragon extends NPC implements Spawnable, CombatScript {
             npc.setAnimation(dragonfireAnimation);
             npc.setGraphics(dragonfireGraphics);
             final Player player = (Player) target;
-            final boolean perk = player.getPerkManager().isValid(PerkWrapper.BACKFIRE);
-            final double modifier = !perk ? 1 : Math.max(0, Utils.randomDouble() - 0.25F);
             final Dragonfire dragonfire = new Dragonfire(DragonfireType.CHROMATIC_DRAGONFIRE, 50, DragonfireProtection.getProtection(this, player, true));
-            final int deflected = !perk ? 0 : ((int) Math.floor(dragonfire.getMaximumDamage() * modifier));
             PlayerCombat.appendDragonfireShieldCharges(player);
             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon's fiery breath"));
-            delayHit(npc, 0, target, new Hit(npc, Utils.random(Math.max(0, dragonfire.getDamage() - deflected)), HitType.REGULAR));
-            if (perk) {
-                dragonfire.backfire(npc, player, 1, deflected);
-            }
+            delayHit(npc, 0, target, new Hit(npc, Utils.random(dragonfire.getDamage()), HitType.REGULAR));
         } else if (style == 1) {
             npc.setAnimation(magicalAnimation);
             final String name = npc.getDefinitions().getName().toLowerCase();

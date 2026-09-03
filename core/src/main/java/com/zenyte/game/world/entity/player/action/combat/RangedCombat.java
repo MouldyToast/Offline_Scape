@@ -5,7 +5,6 @@ import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
-import com.zenyte.game.content.boons.impl.*;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -17,7 +16,6 @@ import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;
-import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;
@@ -223,13 +221,9 @@ public class RangedCombat extends PlayerCombat {
             maxhit *= amuletId == ItemId.SALVE_AMULETI ? 1.15F : 1.2F;
         }
 
-        boolean hasTask = (player.getSlayer().isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         maxhit *= determineSlayerHelmetDamageBoost(hasTask, HitType.RANGED, player, target);
         maxhit = Math.floor(maxhit);
-
-        if (target instanceof NPC npc && MinionsMight.shouldBoostCombat(player, npc)) {
-            maxhit *= 1.1F;
-        }
 
         if (boltSpecial == EnchantedBoltSpecial.ARMOUR_PIERCING) {
             maxhit *= wearingZaryteCrossbow() ? 1.25F : 1.15F;
@@ -360,8 +354,7 @@ public class RangedCombat extends PlayerCombat {
         int styleBonusLevels = player.getCombatDefinitions().getStyle() == 0 ? 3 : 0;
         final double effectiveLevel = Math.floor(Math.floor(skillLevel * prayerBonus) + (styleBonusLevels) + 8.0F) * (voidBoost);
 
-        boolean hasTask = (player.getSlayer()
-                .isCurrentAssignment(target) || player.hasBoon(SlayersSovereignty.class)) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
 
         float gearBonus = 1.0F;
         gearBonus *= determineAmuletBonus(player);
@@ -384,7 +377,6 @@ public class RangedCombat extends PlayerCombat {
         double attackRoll = effectiveLevel * (equipmentRangedAttack + 64.0F) * gearBonus;
 
         attackRoll *= getTwistedBowAccuracyBoost(player, target, target.getMagicLevel(), player.isInRaid());
-        attackRoll *= determinePerkAccuracyBonuses(player, target);
 
         attackRoll *= resultModifier;
         attackRoll = Math.floor(attackRoll);
@@ -395,20 +387,6 @@ public class RangedCombat extends PlayerCombat {
         return (int) attackRoll;
     }
 
-
-    private double determinePerkAccuracyBonuses(Player player, Entity target) {
-        double boost = 1.0F;
-        if (target instanceof NPC npc) {
-            if (player.hasBoon(BrawnOfJustice.class) && BrawnOfJustice.applies(player) && player.getBooleanTemporaryAttribute("TOB_inside")) {
-                boost += 0.20F;
-            }
-
-            if (MinionsMight.shouldBoostCombat(player, npc)) {
-                boost += 0.10F;
-            }
-        }
-        return boost;
-    }
 
     /**
      * Determines the bonus accuracy granted by various amulets
@@ -642,31 +620,6 @@ public class RangedCombat extends PlayerCombat {
             successfulHit = true;
             player.sendDeveloperMessage("Bypassed range accuracy calc due to bolts");
         }
-        boolean hasBonusHit = false;
-        Hit bonusHit = null;
-
-        if (hasTwistedBow() && player.getBoonManager().hasBoon(RelentlessPrecision.class)) {
-            RelentlessPrecision.Special boost = RelentlessPrecision.determineBoost();
-            switch (boost) {
-                case BOTH -> {
-                    successfulHit = true;
-                    hasBonusHit = true;
-                    bonusHit = new Hit(player, getHit(getMaxHit(player, 1.0, 1.0, false), true), HitType.RANGED);
-                }
-                case EXTRA_HIT -> {
-                    hasBonusHit = true;
-                    bonusHit = new Hit(player, getHit(getMaxHit(player, 1.0, 1.0, false), true), HitType.RANGED);
-                }
-                case BYPASS_DEF -> {
-                    successfulHit = true;
-                    player.sendFilteredMessage(Colour.MAROON.wrap("Your arrow manages to bypass the target's defense."));
-                }
-                case NONE -> {
-                }
-            }
-
-        }
-
         final Hit hit = getHit(player, target, successfulHit ? 10000 : 1, 1, 1, false);
         extra(hit);
         animate();
@@ -681,10 +634,6 @@ public class RangedCombat extends PlayerCombat {
             addPoisonTask(ticks);
         }
         delayHit(ticks, hit);
-        if (hasBonusHit) {
-            player.sendFilteredMessage(Colour.MAROON.wrap("Your bow transforms your single arrow into two mid-air."));
-            delayHit(ticks, bonusHit);
-        }
         drawback();
         dropAmmunition(ticks, !ammunitionSource.getAmmunitionDefinition().isRetrievable());
         checkIfShouldTerminate(HitType.RANGED);
@@ -1018,9 +967,6 @@ public class RangedCombat extends PlayerCombat {
             speed = Math.max(MIN_ATTACK_SPEED, definitions.getAttackSpeed());
 
             if (player.getCombatDefinitions().getStyle() == 1) {
-                speed -= 1;
-            }
-            if (AttackStyleDefinition.values[definitions.getInterfaceVarbit()] == AttackStyleDefinition.CROSSBOW && !isPvp() && player.getBoonManager().hasBoon(DrawPartner.class)) {
                 speed -= 1;
             }
         }

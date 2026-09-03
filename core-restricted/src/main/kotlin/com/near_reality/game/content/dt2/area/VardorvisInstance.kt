@@ -8,7 +8,6 @@ import com.near_reality.game.content.dt2.npc.entangled
 import com.near_reality.game.content.dt2.npc.vardorvis.Vardorvis
 import com.near_reality.game.content.seq
 import com.near_reality.game.world.Boundary
-import com.zenyte.game.content.boons.impl.CantBeAxed
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.model.ui.InterfacePosition
 import com.zenyte.game.task.WorldTasksManager.schedule
@@ -209,23 +208,16 @@ class VardorvisInstance(
     }
 
     fun applyAxeDamage() {
-        val scalar =
-            if (player.boonManager.hasBoon(CantBeAxed::class.java))
-                0.66
-            else
-                1.00
-
         val maxDamage =
             if (player.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE))
-                (17 * scalar).toInt()
+                17
             else
-                (35 * scalar).toInt()
+                35
 
         val applyDamage = Utils.random(maxDamage).coerceAtLeast(1)
 
         player.applyHit(Hit(applyDamage, HitType.TYPELESS))
-        if (!player.boonManager.hasBoon(CantBeAxed::class.java))
-            player.variables.schedule(15, TickVariable.VARDORVIS_BLEED)
+        player.variables.schedule(15, TickVariable.VARDORVIS_BLEED)
     }
 
     private fun initSpikes() {

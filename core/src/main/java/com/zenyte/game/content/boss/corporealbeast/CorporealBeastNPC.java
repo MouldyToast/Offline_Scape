@@ -1,7 +1,6 @@
 package com.zenyte.game.content.boss.corporealbeast;
 
 import com.near_reality.game.world.entity.AbstractEntityDropExtKt;
-import com.zenyte.game.content.boons.impl.CorporealScrutiny;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.task.WorldTask;
@@ -200,23 +199,6 @@ public class CorporealBeastNPC extends NPC implements CombatScript {
 
 
     private boolean halve(final Hit hit) {
-        if(hit.getSource() instanceof Player player && player.getBoonManager().hasBoon(CorporealScrutiny.class)) {
-            if(player.getWeapon() == null)
-                return true;
-            ItemDefinitions defs = ItemDefinitions.get(player.getWeapon().getId());
-            if(defs == null)
-                return true;
-            var applicableItemIds = List.of(
-                ItemId.OSMUMTENS_FANG,
-                ItemId.OSMUMTENS_FANG_OR,
-                ItemId.GHRAZI_RAPIER,
-                ItemId.HOLY_GHRAZI_RAPIER
-            );
-            if (applicableItemIds.contains(defs.getId()))
-                return false;
-        }
-
-
         final HitType type = hit.getHitType();
         if (type == HitType.MAGIC) return false;
         if (type != HitType.MELEE || hit.isSpecial()) return true;

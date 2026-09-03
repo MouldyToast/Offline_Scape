@@ -1,8 +1,6 @@
 package com.zenyte.game.content.treasuretrails;
 
 import com.google.common.base.Preconditions;
-import com.zenyte.game.content.boons.impl.HardWorkPaysOff;
-import com.zenyte.game.content.boons.impl.LessIsMore;
 import com.zenyte.game.content.treasuretrails.challenges.*;
 import com.zenyte.game.content.treasuretrails.clues.*;
 import com.zenyte.game.content.treasuretrails.clues.emote.ItemRequirement;
@@ -125,7 +123,7 @@ public class TreasureTrail {
     private static final boolean advance(@NotNull final Item item, Player player) {
         final int currentSteps = item.getNumericAttribute(Constants.CLUE_SCROLL_CURRENT_STEPS).intValue();
         final int totalSteps = item.getNumericAttribute(Constants.CLUE_SCROLL_TOTAL_STEPS).intValue();
-        int reduction = player.getBoonManager().hasBoon(LessIsMore.class) ? 2 : 1;
+        int reduction = 1;
         if (currentSteps >= (totalSteps - reduction)) {
             return false;
         }
@@ -253,8 +251,6 @@ public class TreasureTrail {
             return;
         }
         boolean advanceStep = TreasureTrail.advance(item, player);
-        final boolean hasRolledPerk = player.getBoonManager().hasBoon(HardWorkPaysOff.class) && HardWorkPaysOff.roll();
-        if(hasRolledPerk) advanceStep = false;
         final Item dialogueItem = advanceStep ? item : new Item(Objects.requireNonNull(ClueItem.getMap().get(item.getId())).getCasket());
         if (!advanceStep) {
             final Inventory inventory = player.getInventory();

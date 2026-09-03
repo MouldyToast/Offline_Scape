@@ -11,7 +11,6 @@ import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
-import com.zenyte.game.world.entity.player.perk.PerkWrapper;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
@@ -458,10 +457,6 @@ public final class FarmingSpot {
         }
         final int roll = Utils.random(127);
         int chance = product.getDiseaseChance();
-        final boolean perk = player.getPerkManager().isValid(PerkWrapper.FERTILIZER);
-        if (perk) {
-            chance *= 0.5F;
-        }
         final Optional<PatchFlag> compost = this.getCompostFlag();
         if (compost.isPresent()) {
             switch (compost.get()) {

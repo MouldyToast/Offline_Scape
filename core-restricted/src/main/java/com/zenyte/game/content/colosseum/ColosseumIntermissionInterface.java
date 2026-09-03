@@ -19,10 +19,11 @@ public class ColosseumIntermissionInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(15, "mod-1");   // mod_button_1, op1=Set
-        put(16, "mod-2");   // mod_button_2, op1=Set
-        put(17, "mod-3");   // mod_button_3, op1=Set
-        put(41, "confirm"); // right_button, op1=Continue
+        put(15, "mod-1");          // mod_button_1, op1=Set
+        put(16, "mod-2");          // mod_button_2, op1=Set
+        put(17, "mod-3");          // mod_button_3, op1=Set
+        put(22, "forfeit-confirm"); // confirm_confirm, op1=Confirm (forfeit overlay)
+        put(41, "confirm");        // right_button, op1=Continue
     }
 
     @Override
@@ -30,6 +31,14 @@ public class ColosseumIntermissionInterface extends Interface {
         bind("mod-1", player -> selectModifier(player, 1));
         bind("mod-2", player -> selectModifier(player, 2));
         bind("mod-3", player -> selectModifier(player, 3));
+
+        bind("forfeit-confirm", player -> {
+            RegionArea area = player.getArea();
+            if (!(area instanceof ColosseumInstance instance)) {
+                return;
+            }
+            instance.forfeitRun();
+        });
 
         bind("confirm", player -> {
             RegionArea area = player.getArea();

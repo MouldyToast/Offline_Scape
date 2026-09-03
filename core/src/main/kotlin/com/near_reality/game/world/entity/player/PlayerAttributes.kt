@@ -153,7 +153,6 @@ var Player.echoPickaxeBanking: Boolean by persistentAttribute("echoPickaxeBankin
 var Player.echoHarpoonCookingFish: Boolean by persistentAttribute("echoHarpoonCookingFish", true)
 var Player.echoHarpoonBanking: Boolean by persistentAttribute("echoHarpoonBanking", false)
 
-var Player.solHereditQuiverDryStreak by persistentAttribute("sol_heredit_dry_streak", 0)
 var Player.echoBootsActive by persistentAttribute("echo_boots_active", true)
 
 var Player.dizanasQuiverAmmo by persistentAttribute("dizanas_quiver_ammo", -1)

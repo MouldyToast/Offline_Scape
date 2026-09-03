@@ -1,6 +1,5 @@
 package com.zenyte.game.content.colosseum;
 
-import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -36,8 +35,6 @@ import com.zenyte.game.world.region.dynamicregion.AllocatedArea;
 import com.zenyte.game.world.region.dynamicregion.MapBuilder;
 import com.zenyte.game.world.region.dynamicregion.OutOfSpaceException;
 import com.zenyte.logger.NearRealityPrintStream;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -61,6 +58,8 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
     private SolHeredit solHeredit;
     private final Location[] arena = new Location[2];
     private final Container rewards;
+    private final Container rewardsFuture;
+    private final Container rewardsPrevious;
 
     // Wave state
     private int currentWave = 0;
@@ -72,13 +71,19 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
 
     // Modifier state
     private int activeModifierBitmask = 0;
-    private int totalLootGp = 0;
     private int[] offeredModifiers = new int[3];
+
+    // Loot GP tracking for CS2 4931 intermission UI
+    private int currentWaveLootGp = 0;
+    private int nextWaveLootGp = 0;
+    private int totalLootGp = 0;
 
     protected ColosseumInstance(AllocatedArea allocatedArea, Player player) {
         super(allocatedArea, 7216);
         this.player = player;
         this.rewards = new Container(ContainerPolicy.ALWAYS_STACK, ContainerType.COLOSSEUM_REWARDS, Optional.of(player));
+        this.rewardsFuture = new Container(ContainerPolicy.ALWAYS_STACK, ContainerType.COLOSSEUM_REWARDS_FUTURE, Optional.of(player));
+        this.rewardsPrevious = new Container(ContainerPolicy.ALWAYS_STACK, ContainerType.COLOSSEUM_REWARDS_PREVIOUS, Optional.of(player));
     }
 
     @Override
@@ -147,6 +152,10 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         if (solHeredit != null) {
             solHeredit.say(Utils.random(SolHeredit.KILL_PLAYER_MESSAGES));
         }
+        // Death during waves = all accumulated rewards lost. No chest spawns.
+        rewards.clear();
+        rewardsFuture.clear();
+        rewardsPrevious.clear();
         return false;
     }
 
@@ -211,46 +220,36 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         return rewards;
     }
 
+    public Container getRewardsFuture() {
+        return rewardsFuture;
+    }
+
+    public Container getRewardsPrevious() {
+        return rewardsPrevious;
+    }
+
+    /**
+     * Grant wave 12 (Sol Heredit completion) rewards.
+     * Appends to the existing inv 843 which already contains waves 1–11 loot.
+     * <p>
+     * Wave 12 grants:
+     * 1. Guaranteed Dizana's quiver (uncharged)
+     * 2. Flat 1/200 Smol Heredit pet roll
+     * 3. One item from the wave 12 weighted table
+     */
     public void grantRewards() {
-        rewards.clear();
+        // 1. Guaranteed Dizana's quiver
+        rewards.add(new Item(ItemId.DIZANAS_QUIVER_UNCHARGED, 1));
 
-        Item item = null;
-        int dryStreak = PlayerAttributesKt.getSolHereditQuiverDryStreak(player);
-        int newDryStreak = dryStreak + 1;
-        //Unlike other boss pets which are generally a tertiary drop after defeating the boss, Smol Heredit is not, being awarded as a main drop if rolled on.
-        if (Utils.randomBoolean(200)) {
-            BossPet.SMOL_HEREDIT.roll(player, BossPet.SMOL_HEREDIT.getRarity(player, -1));
-        } else if (newDryStreak >= 30 || Utils.randomBoolean(30)) {
-            item = new Item(ItemId.DIZANAS_QUIVER_UNCHARGED);
-            newDryStreak = 0;
-        } else {
-            ColosseumRewards colosseumRewards = ColosseumRewards.getRandom();
-            if (colosseumRewards != null) {//Should never be null, but just in sanity of intellij code checker
-                if (colosseumRewards == ColosseumRewards.DROP_12) {
-                    final Int2IntOpenHashMap pieces = new Int2IntOpenHashMap(3);
-                    pieces.addTo(ItemId.SUNFIRE_FANATIC_HELM, player.getAmountOf(ItemId.SUNFIRE_FANATIC_HELM));
-                    pieces.addTo(ItemId.SUNFIRE_FANATIC_CHAUSSES, player.getAmountOf(ItemId.SUNFIRE_FANATIC_CHAUSSES));
-                    pieces.addTo(ItemId.SUNFIRE_FANATIC_CUIRASS, player.getAmountOf(ItemId.SUNFIRE_FANATIC_CUIRASS));
-                    int smallestAmountItemId = -1;
-                    int smallestAmountItemAmount = Integer.MAX_VALUE;
-                    for (final Int2IntMap.Entry entry : pieces.int2IntEntrySet()) {
-                        if (entry.getIntValue() <= smallestAmountItemAmount) {
-                            smallestAmountItemId = entry.getIntKey();
-                            smallestAmountItemAmount = entry.getIntValue();
-                        }
-                    }
-                    item = new Item(smallestAmountItemId, Utils.random(colosseumRewards.getMin(), colosseumRewards.getMax()));
-                } else {
-                    item = new Item(colosseumRewards.getItemId(), Utils.random(colosseumRewards.getMin(), colosseumRewards.getMax()));
-                }
-            }
-        }
+        // 2. Flat 1/200 Smol Heredit pet roll
+        BossPet.SMOL_HEREDIT.roll(player, 200);
 
-        PlayerAttributesKt.setSolHereditQuiverDryStreak(player, newDryStreak);
-        if (item != null) {
-            rewards.add(new Item(ItemId.SUNFIRE_SPLINTERS, 1_500 + Utils.random(50)));
-            rewards.add(item);
-        }
+        // 3. Regular wave 12 table roll
+        Item tableDrop = ColosseumWaveLoot.roll(player, 12);
+        rewards.add(tableDrop);
+
+        // Update total GP for the reward chest interface
+        totalLootGp = (int) rewards.calculateValue();
     }
 
     public void fillLine(int startX, int startY, Direction direction, int length, BiConsumer<Location, Integer> tileConsumer, BiConsumer<Location, Integer> endConsumer) {
@@ -311,6 +310,31 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         WorldTasksManager.schedule(() -> minimus.setOptionMask(30));
     }
 
+    /**
+     * Forfeit flow: player clicked Claim → Confirm on the intermission UI.
+     * RSProx sequence:
+     * 1. Message "Search the chest nearby to retrieve your earned rewards!"
+     * 2. Despawn intermission Minimus, respawn near exit at (1830, 3103) facing west
+     * 3. Close intermission interface
+     * 4. Spawn reward chest at (1829, 3105)
+     */
+    public void forfeitRun() {
+        // Close intermission interface
+        player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
+
+        // Message
+        player.sendMessage(Colour.RS_GREEN.wrap("Search the chest nearby to retrieve your earned rewards!"));
+
+        // Despawn intermission Minimus and respawn near exit
+        if (minimusInside != null) {
+            minimusInside.finish();
+            minimusInside = null;
+        }
+
+        // Spawn chest and exit Minimus (reuses existing spawnChest method)
+        spawnChest();
+    }
+
     public static void createInstance(Player player) {
         AllocatedArea allocatedArea;
         try {
@@ -353,7 +377,12 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         // Reset wave state
         currentWave = 0;
         activeModifierBitmask = 0;
+        currentWaveLootGp = 0;
+        nextWaveLootGp = 0;
         totalLootGp = 0;
+        rewards.clear();
+        rewardsFuture.clear();
+        rewardsPrevious.clear();
         waveNpcs.clear();
     }
 
@@ -391,17 +420,20 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
         // Open interface 865 as modal
         player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 865);
 
+        // Send full inventory updates for all three reward containers (RSProx: update_inv_full on intermission open)
+        player.getPacketDispatcher().sendUpdateItemContainer(rewards);
+        player.getPacketDispatcher().sendUpdateItemContainer(rewardsFuture);
+        player.getPacketDispatcher().sendUpdateItemContainer(rewardsPrevious);
+
         // Fire CS2 4931 with modifier args
         // [completed_wave, mod1, mod2, mod3, current_gp, next_gp, total_gp, bitmask]
-        int currentLootGp = 0; // Placeholder — loot tables are future work
-        int nextLootGp = 0;
         player.getPacketDispatcher().sendClientScript(4931,
                 currentWave,
                 offeredModifiers[0],
                 offeredModifiers[1],
                 offeredModifiers[2],
-                currentLootGp,
-                nextLootGp,
+                currentWaveLootGp,
+                nextWaveLootGp,
                 totalLootGp,
                 activeModifierBitmask
         );
@@ -611,6 +643,37 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
                 : String.format("0:%05.2f", seconds);
 
         player.sendMessage("Wave " + currentWave + " completed! Duration: " + Colour.RED.wrap(formatted));
+
+        // ── Roll loot for this wave and pre-roll next wave ──
+        Item thisWaveLoot = ColosseumWaveLoot.roll(player, currentWave);
+
+        // Add to cumulative rewards (inv 843)
+        rewards.add(thisWaveLoot);
+
+        // Set "previous" container (inv 845) — what the player just earned
+        rewardsPrevious.clear();
+        rewardsPrevious.add(new Item(thisWaveLoot));
+
+        // Set "future" container (inv 844) — preview of next wave
+        rewardsFuture.clear();
+        if (currentWave < 11) {
+            Item nextWaveLoot = ColosseumWaveLoot.roll(player, currentWave + 1);
+            rewardsFuture.add(nextWaveLoot);
+        } else if (currentWave == 11) {
+            // Wave 12 preview: guaranteed Dizana's quiver (RSProx-verified)
+            rewardsFuture.add(new Item(ItemId.DIZANAS_QUIVER_UNCHARGED, 1));
+        }
+        // After wave 12 there is no next wave — rewardsFuture stays empty
+
+        // Calculate GP values for the intermission UI (CS2 4931 args)
+        currentWaveLootGp = (int) ColosseumWaveLoot.gpValue(thisWaveLoot);
+        nextWaveLootGp = rewardsFuture.isEmpty() ? 0 : (int) ColosseumWaveLoot.gpValue(rewardsFuture.get(0));
+        totalLootGp = (int) rewards.calculateValue();
+
+        // Send inventory updates (RSProx: update_inv_partial on wave complete)
+        player.getPacketDispatcher().sendUpdateItemContainer(rewards);
+        player.getPacketDispatcher().sendUpdateItemContainer(rewardsFuture);
+        player.getPacketDispatcher().sendUpdateItemContainer(rewardsPrevious);
 
         // Respawn Minimus one tile north of the player (RSProx-verified all 11 waves).
         // Try north first, fall back to other cardinals if the tile is blocked (pillars).

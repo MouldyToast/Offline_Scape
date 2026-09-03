@@ -18,22 +18,17 @@ Active cleanup is underway to remove NR custom content (donator systems, custom 
    ./gradlew :cache:setupCache
    ```
 
-3. Generate boon/remnant data (NR custom — still required until the boon system is fully removed):
-   ```
-   ./gradlew :app:generateBoonData
-   ```
-
-4. Pack custom content from `cache/assets/` into the base cache:
+3. Pack custom content from `cache/assets/` into the base cache:
    ```
    ./gradlew :cache:generateCache
    ```
 
-5. Generate the plugin class index:
+4. Generate the plugin class index:
    ```
    ./gradlew :app:runPluginScanner
    ```
 
-6. Start the server:
+5. Start the server:
    ```
    ./gradlew :app:runDev
    ```
@@ -59,7 +54,6 @@ Select "Offline\_Scape" in RSProx and connect. World config is in `worlds.json` 
 |---|---|
 | `./gradlew :cache:setupCache` | Download base cache + XTEAs from OpenRS2 (one-time) |
 | `./gradlew :cache:resetCache` | Wipe and re-extract cache from the local zip (no download) |
-| `./gradlew :app:generateBoonData` | Generate boon/remnant exchange data |
 | `./gradlew :cache:generateCache` | Run TypeParser — pack custom content into the base cache |
 | `./gradlew :app:runPluginScanner` | Scan for plugin classes, write `data/plugins.dat` |
 | `./gradlew :app:runDev` | Start server (localhost, dev mode) |
@@ -72,18 +66,15 @@ Select "Offline\_Scape" in RSProx and connect. World config is in `worlds.json` 
 |---|---|
 | TOML definitions or cache assets | `generateCache` |
 | Added/removed a plugin class | `runPluginScanner` |
-| Boon definitions | `generateBoonData` |
 | Code only (no new plugin classes) | Just rebuild and run |
 
 ## Cache Pipeline
 
 1. **`setupCache`** downloads a vanilla OSRS rev-228 cache from the [OpenRS2 Archive](https://archive.openrs2.org/caches) (ID 2043) into `cache/data/cache/`, and XTEA keys into `cache/data/objects/xteas.json`. Change the `openrs2CacheId` variable in `cache/build.gradle.kts` to use a different build.
 
-2. **`generateBoonData`** generates `cache/data/dynamic/perk_data.json` and remnant exchange values. NR custom content — will be removed once the boon system is fully cleaned up.
+2. **`generateCache`** runs `TypeParser`, which loads the vanilla cache, applies TOML definition overrides from `cache/assets/types/`, runs custom content packers, and writes the modified cache back to `cache/data/cache/`.
 
-3. **`generateCache`** runs `TypeParser`, which loads the vanilla cache, applies TOML definition overrides from `cache/assets/types/`, runs custom content packers, and writes the modified cache back to `cache/data/cache/`.
-
-4. At server startup, `CacheManager` loads the final cache and `PluginLoader` reads `data/plugins.dat` to discover plugin classes.
+3. At server startup, `CacheManager` loads the final cache and `PluginLoader` reads `data/plugins.dat` to discover plugin classes.
 
 ## Project Structure
 
@@ -106,4 +97,4 @@ Select "Offline\_Scape" in RSProx and connect. World config is in `worlds.json` 
 
 ## Origin
 
-Forked from the Near Reality rev-228 server (Zenyte-based). Ongoing cleanup is removing NR custom content (donator islands, custom weapons, seasonal events, wilderness vault, boon/perk system, etc.) to produce a clean vanilla base suitable for revision upgrades. The `cloud.rsps` opaque dependencies have been replaced with local implementations and the base cache source switched from Jire's CDN to the OpenRS2 Archive.
+Forked from the Near Reality rev-228 server (Zenyte-based). Ongoing cleanup is removing NR custom content (donator islands, custom weapons, seasonal events, wilderness vault, etc.) to produce a clean vanilla base suitable for revision upgrades. The boon/perk/remnant system, Wilderness Vault, and Well of Goodwill have already been removed. The `cloud.rsps` opaque dependencies have been replaced with local implementations and the CDN to the OpenRS2 Archive.

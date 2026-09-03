@@ -26,7 +26,6 @@ public class ClueItemUtil {
                         throw new IllegalStateException();
                     }
                     final Item skillingItem = new Item(itemId);
-                    player.remnantPetManager.handleDoubleClueScrollDrop(skillingItem);
                     player.getInventory().addOrDrop(skillingItem);
                     final String name = skillingItem.getName().toLowerCase();
                     final String itemTypeName = name.substring(0, name.indexOf(" ("));

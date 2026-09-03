@@ -67,7 +67,6 @@ public final class RuneDate {
 			player.getAttributes().put("daily-toa-capes-remaining", 5);
 			player.getAttributes().put("daily-mystery-box-nezicheneds", false);
 			player.getAttributes().put("daily-extra-mystery-box-nezicheneds", false);
-			player.remnantPetManager.resetNewDay();
 			VarCollection.DAILY_BATTLESTAVES_COLLECTED.updateSingle(player);
 			final DailyChallenge challenge = player.getDailyChallengeManager().getRandomChallenge();
 			if (challenge != null) {

@@ -227,8 +227,6 @@ public class Pickpocket extends Action {
 			distributeOutfit();
 
 		data.generateRandomLoot(isDoubleLoot()).forEach(item -> {
-			if(ClueItem.isScrollBox(item.getId()))
-				player.remnantPetManager.handleDoubleClueScrollDrop(item);
 			inventory.addOrDrop(item);
 			player.getCollectionLog().add(item);
 		});

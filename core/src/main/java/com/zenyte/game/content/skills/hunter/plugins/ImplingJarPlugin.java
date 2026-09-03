@@ -132,7 +132,6 @@ public class ImplingJarPlugin extends ItemPlugin {
                 }
                 if (Utils.random(chance) == 0) {
                     Item clue = new Item(drop.itemId());
-                    player.remnantPetManager.handleDoubleClueScrollDrop(clue);
                     return new Item[]{table.rollItem(), clue};
                 }
             }

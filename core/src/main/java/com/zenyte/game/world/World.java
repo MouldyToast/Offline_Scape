@@ -22,8 +22,6 @@ import com.zenyte.game.content.serverevent.WorldBoostType;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.content.skills.magic.Rune;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
-import com.zenyte.game.content.well.WellConstants;
-import com.zenyte.game.content.well.WellPerk;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.containers.DragonhidePouch;
@@ -1859,9 +1857,6 @@ public final class World {
     private static final ObjectArrayList<WorldBoost> worldBoosts = new ObjectArrayList<>();
 
     public static boolean hasBoost(WorldBoostType boost) {
-        if (boost instanceof WellPerk && WellConstants.WELL_DISABLED)
-            return false;
-
         for (WorldBoost worldBoost : worldBoosts) {
             if (worldBoost.getBoostType().equals(boost))
                 return true;

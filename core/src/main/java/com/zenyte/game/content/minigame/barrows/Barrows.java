@@ -288,7 +288,6 @@ public final class Barrows {
                 if (Utils.random(199) == 0) {
                     clue = true;
                     Item clueScroll = new Item(ClueItem.ELITE.getScrollBox());
-                    player.remnantPetManager.handleDoubleClueScrollDrop(clueScroll);
                     container.add(clueScroll);
                 }
             }

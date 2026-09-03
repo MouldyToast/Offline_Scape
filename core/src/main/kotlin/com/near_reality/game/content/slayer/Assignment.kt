@@ -143,12 +143,10 @@ class Assignment {
         player.skills.addXp(SkillConstants.SLAYER, experience.toDouble())
         val braceletId = player.equipment.getId(EquipmentSlot.HANDS)
 
-        val petManager = player.remnantPetManager
-
-        val hasSlaughter = braceletId == ItemId.BRACELET_OF_SLAUGHTER || petManager.hasSlaughterEffect()
-        val hasExpeditious = braceletId == ItemId.EXPEDITIOUS_BRACELET || petManager.hasExpeditiousEffect()
+        val hasSlaughter = braceletId == ItemId.BRACELET_OF_SLAUGHTER
+        val hasExpeditious = braceletId == ItemId.EXPEDITIOUS_BRACELET
         if (hasSlaughter || hasExpeditious) {
-            val rate = player.remnantPetManager.modifySlaughterExpeditiousRate(25)
+            val rate = 25
             val hasRolledEffect = Utils.random(99) <= rate
             if (hasRolledEffect) {
                 if (task !== RegularTask.TZTOK_JAD && task !== RegularTask.TZKAL_ZUK) {
@@ -193,13 +191,6 @@ class Assignment {
                             player.equipment[EquipmentSlot.HANDS] =
                                 null
                         }
-                        amount = max(0.0, (amount - 2).toDouble()).toInt()
-                        finish(npc)
-                    } else if (petManager.hasSlaughterEffect()) {
-                        player.sendFilteredMessage("Your pet prevents your slayer count decreasing.")
-                        finish(npc)
-                    } else if (petManager.hasExpeditiousEffect()) {
-                        player.sendFilteredMessage("Your pet helps you progress your slayer task faster.")
                         amount = max(0.0, (amount - 2).toDouble()).toInt()
                         finish(npc)
                     }

@@ -254,8 +254,7 @@ public class TreasureTrail {
         }
         boolean advanceStep = TreasureTrail.advance(item, player);
         final boolean hasRolledPerk = player.getBoonManager().hasBoon(HardWorkPaysOff.class) && HardWorkPaysOff.roll();
-        final boolean hasRolledPetPerk = player.remnantPetManager.checkInstantSolveClueStep();
-        if(hasRolledPerk || hasRolledPetPerk) advanceStep = false;
+        if(hasRolledPerk) advanceStep = false;
         final Item dialogueItem = advanceStep ? item : new Item(Objects.requireNonNull(ClueItem.getMap().get(item.getId())).getCasket());
         if (!advanceStep) {
             final Inventory inventory = player.getInventory();

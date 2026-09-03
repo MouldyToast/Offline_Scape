@@ -17,7 +17,6 @@ import com.zenyte.game.content.grandexchange.GrandExchangeHandler
 import com.zenyte.game.content.grandexchange.GrandExchangePriceManager
 import com.zenyte.game.content.partyroom.PartyRoomVariables
 import com.zenyte.game.content.skills.farming.hespori.HesporiInstance
-import com.zenyte.game.content.well.WellConstants
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.music.Music
 import com.zenyte.game.model.ui.Interface
@@ -273,11 +272,6 @@ object AdministratorCommands {
             FlowerPokerManager.FLOWER_POKER_ENABLED = !FlowerPokerManager.FLOWER_POKER_ENABLED
             p.sendMessage("FP is " + if (FlowerPokerManager.FLOWER_POKER_ENABLED) "Enabled" else "Disabled")
             FlowerPokerManager.FLOWER_POKER_AREAS.forEach { (_: FlowerPokerAreas?, s: FlowerPokerSession?) -> if (s?.planting != null) s.planting.cancelAndRefund() }
-        }
-
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablewell") { p: Player, _: Array<String?>? ->
-            WellConstants.WELL_DISABLED = !WellConstants.WELL_DISABLED
-            p.sendMessage("Well is " + if (WellConstants.WELL_DISABLED) "Enabled" else "Disabled")
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "disableworldboosts") { p: Player, _: Array<String?>? ->

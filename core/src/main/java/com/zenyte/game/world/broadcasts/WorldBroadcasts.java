@@ -14,7 +14,6 @@ import com.zenyte.game.content.minigame.inferno.model.InfernoCompletions;
 import com.zenyte.game.content.serverevent.WorldBoost;
 import com.zenyte.game.content.treasuretrails.rewards.BroadcastedTreasure;
 import com.zenyte.game.content.vote.VoteHandler;
-import com.zenyte.game.content.well.WellPerk;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.enums.RareDrop;
 import com.zenyte.game.util.Utils;
@@ -124,7 +123,6 @@ public class WorldBroadcasts {
 //            case INFERNO_COMPLETION -> sendInfernoCompletion(player); // TODO: Test!!
 //            case TREASURE_TRAILS -> sendTreasureTrailsReward(player, args);
 //            case WILDERNESS_EVENT -> sendGanodermicBeast(args);
-//            case WILDERNESS_VAULT -> sendWildernessVault(args); // TODO: Test!!
     ////            case BOUNTY_HUNTER -> sendBountyHotSpot(args); // TODO: Test!!
 //            case BREACHES -> sendBreach(args);
 //            default -> logger.debug("Ignored broadcast type {}", type);
@@ -206,7 +204,6 @@ public class WorldBroadcasts {
                 if (!(args[0] instanceof final Item item)
                         || !(args[1] instanceof String rewardFrom)) return;
                 if (!RareDrop.contains(item)) return;
-                if (World.hasBoost(WellPerk.DOUBLE_UNIQUES) && BossPet.getByItem(item.getId()) == null) item.setAmount(item.getAmount() * 2);
                 if(WORLD_PROFILE.isLogsDatabaseEnabled())
                     GameLogger.log(Level.INFO, () ->
                             new GameLogMessage.RareDrop(GameLogMessage.TimeProvider.getCurrentInstant(), player.getDbUsername(), item, rewardFrom));
@@ -404,11 +401,6 @@ public class WorldBroadcasts {
             case COLOSSAL_CHICKEN: {
                 builder.append("Event: ");
                 secondaryBuilder.append("The Colossal Chicken has been spawned, defeat her at ::easter!");
-                builder.append(secondaryBuilder);
-                break;
-            }
-            case WILDERNESS_VAULT: {
-                builder.append("Event: ");
                 builder.append(secondaryBuilder);
                 break;
             }

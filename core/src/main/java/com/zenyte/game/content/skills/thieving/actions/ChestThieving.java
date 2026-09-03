@@ -158,9 +158,6 @@ public class ChestThieving extends Action {
             player.getInventory().addOrDrop(loot);
         } else {
             Item[] loot = chest.getLootTable().generateLoot();
-            if(Arrays.stream(loot).anyMatch(it -> ClueItem.isScrollBox(it.getId())))
-                for(Item loots: loot)
-                    player.remnantPetManager.handleDoubleClueScrollDrop(loots);
             player.getInventory().addOrDrop(loot);
         }
         player.setAnimation(LOOT_ANIM);

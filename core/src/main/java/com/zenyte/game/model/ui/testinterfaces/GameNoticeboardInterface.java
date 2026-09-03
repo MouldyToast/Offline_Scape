@@ -225,9 +225,7 @@ public final class GameNoticeboardInterface extends Interface {
         double pin = player.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
         double pet = player.getBoonManager().hasBoon(AnimalTamer.class) && player.getFollower() != null ? 0.02D : 0.0D;
         double compCape = player.getCompletionistCapeDRBoost();
-        double remPet = player.remnantPetManager.getGlobalDropRateIncrease();
-        double finalPet = Math.max(pet, remPet);
-        int percent = (int) ((gameMode + donor + pin + finalPet + compCape) * 100.0D);
+        int percent = (int) ((gameMode + donor + pin + pet + compCape) * 100.0D);
         player.getPacketDispatcher().sendComponentText(GameInterface.GAME_NOTICEBOARD, 46, "Drop Rate Boost: " + Colour.WHITE.wrap(percent + "%"));
     }
 

@@ -3,7 +3,6 @@ package com.zenyte.game.content.killstreak;
 import com.google.common.eventbus.Subscribe;
 import com.near_reality.game.world.PlayerEvent;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
-import com.zenyte.game.content.well.WellPerk;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Colour;
@@ -43,14 +42,10 @@ public class Killstreaks {
 
         double rankBoost = 1.0d + getRankBoost(attacker.getMemberRank());
         int totalBloodmoney = (int) (getTotalBloodmoneyForKill(attacker, victim) * rankBoost);
-        if(World.hasBoost(WellPerk.DOUBLE_BLOOD_MONEY))
-            totalBloodmoney *= 2;
         if (attacker.getVariables().getBloodMoneyBoosterLeft() > 0) {
             attacker.getVariables().setBloodMoneyBoosterLeft(attacker.getVariables().getBloodMoneyBoosterLeft() - 1);
             totalBloodmoney *= 1.25;
         }
-
-        totalBloodmoney = attacker.remnantPetManager.modifyBloodMoneyDrop(totalBloodmoney);
 
         int attackerCurrentStreak = PlayerAttributesKt.getPvpKillStreak(attacker) + 1;
         PlayerAttributesKt.setPvpKillStreak(attacker, attackerCurrentStreak);

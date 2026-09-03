@@ -15,7 +15,6 @@ import com.near_reality.game.content.bountyhunter.WildyExtKt;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.middleman.MiddleManManager;
-import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.near_reality.game.item.CustomItemId;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
@@ -503,7 +502,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient boolean needRegionUpdate;
     private transient boolean initialized;
     private transient ActionManager actionManager = new ActionManager(this);
-    public transient RemnantPetManager remnantPetManager = new RemnantPetManager(this);
     @Expose
     private PrivateStorage privateStorage = new PrivateStorage(this);
     @Expose
@@ -2043,10 +2041,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         double donor = getMemberRank().getDR();
         double pin = getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
         double pet = getBoonManager().hasBoon(AnimalTamer.class) && getFollower() != null ? 0.02D : 0.0D;
-        double remPet = remnantPetManager.getGlobalDropRateIncrease();
-        double finalPet = Math.max(pet, remPet);
         double compCape = getCompletionistCapeDRBoost();
-        return ((gameMode + donor + pin + finalPet + compCape) * 100.0D);
+        return ((gameMode + donor + pin + pet + compCape) * 100.0D);
     }
 
     public double getExchangeBonus() {
@@ -2805,7 +2801,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             this.follower.finish();
             petId = -1;
             this.follower = null;
-            remnantPetManager.removePet();
             return;
         }
         this.follower = follower;
@@ -2813,7 +2808,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (follower != null) {
             follower.spawn();
         }
-        remnantPetManager.updatePet(follower);
         varManager.sendVar(447, follower == null ? -1 : follower.getIndex());
     }
 
@@ -3073,7 +3067,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                     damage -= reduced;
                 }
             }
-            damage = remnantPetManager.modifyIncomingDamage(damage);
         }
         if (type != HitType.DEFAULT && CombatUtilities.isElysianSpiritShield(shieldId)) {
             if (Utils.randomDouble() < 0.7F) {

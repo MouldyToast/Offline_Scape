@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.google.common.collect.ImmutableList;
-import com.near_reality.game.content.remnantpets.RemnantPetManager;
 import com.zenyte.game.world.entity.player.action.combat.ranged.MorriganBHWeaponsCombat;
 import com.near_reality.game.content.combat.CombatUtility;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
@@ -1156,13 +1155,6 @@ public abstract class PlayerCombat extends Action {
 
             if (hit == null)
                 continue;
-
-            if(target instanceof NPC) {
-                RemnantPetManager mgr = player.remnantPetManager;
-                mgr.healPlayerOnDamage(hit.getDamage());
-                mgr.restorePrayerOnDamage(hit.getDamage());
-                hit.setDamage(mgr.modifyOutgoingDamage(hit.getDamage()));
-            }
 
             if (hit.getWeapon() == null)
                 hit.setWeapon(player.getWeapon());

@@ -2,7 +2,6 @@ package com.zenyte.game.world.entity.npc;
 
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.near_reality.game.content.remnantpets.RemnantPetDropModifier;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.SlayerHelper;
 import com.near_reality.game.content.slayer.SlayerMaster;
@@ -1334,9 +1333,6 @@ public class NPC extends AbstractEntity {
             setAnimation(null);
             if (source instanceof Player player) {
                 player.getSlayer().checkAssignment(this);
-                if(getCombatLevel() >= 100) {
-                    player.remnantPetManager.restoreSpecialEnergy();
-                }
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
                 if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea() instanceof AbstractTOARaidArea) {
@@ -1692,9 +1688,6 @@ public class NPC extends AbstractEntity {
             }
 
             DonationToggle.processNote(killer, item);
-
-            if(RemnantPetDropModifier.process(killer, item) && item.getAmount() == 0)
-                return;
 
             if (DonationToggle.processPickup(killer, item)) {
                 return;

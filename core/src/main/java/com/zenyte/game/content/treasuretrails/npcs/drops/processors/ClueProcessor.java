@@ -78,7 +78,6 @@ public abstract class ClueProcessor extends DropProcessor {
         final double rate = ArrayUtils.contains(faladorGuardIds, npc.getId()) ? (constant.getRate() * 0.9) : boosted ? (constant.getRate() / 2) : constant.getRate();
         if (Utils.randomDouble() < 1F / rate) {
             Item clue = new Item(itemId);
-            killer.remnantPetManager.handleDoubleClueScrollDrop(clue);
             npc.dropItem(killer, clue);
         }
     }

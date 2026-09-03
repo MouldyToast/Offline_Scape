@@ -337,8 +337,6 @@ public class Slayer {
         final int completedTasks = player.getNumericAttribute("completed tasks").intValue() + 1;
         player.addAttribute("completed tasks", completedTasks);
 
-        player.remnantPetManager.processBoostersCheck();
-
         World.postEvent(new SlayerTaskCompleted(player, assignment));
 
         switch (master) {
@@ -394,13 +392,6 @@ public class Slayer {
         }
         if (player.getPerkManager().isValid(PerkWrapper.MASTER_SLAYER)) {
             amount *= 1.15;
-        }
-        boolean hasPerk = player.remnantPetManager.hasDoubleSlayerPoints();
-        boolean hasWorldBoost = false;
-        if(hasPerk && hasWorldBoost) {
-            amount *= 3;
-        } else if (hasPerk || hasWorldBoost) {
-            amount *= 2;
         }
         addSlayerPoints(amount);
         var message =

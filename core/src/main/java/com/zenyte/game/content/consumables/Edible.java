@@ -68,7 +68,6 @@ public interface Edible extends Consumable {
     default void heal(final Player player) {
         int heal = healedAmount(player);
         if (heal > 0) {
-            heal = player.remnantPetManager.modifyHealingEffect(heal);
             player.heal(heal);
         }
     }

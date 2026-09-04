@@ -25,7 +25,6 @@ dependencies {
     runtimeOnly(projects.plugins.interfaces.teleports)
     runtimeOnly(projects.plugins.item.actions.deathItems)
     runtimeOnly(projects.plugins.item.actions)
-    runtimeOnly(projects.plugins.larranskey)
 
     runtimeOnly(projects.plugins.rewards)
     runtimeOnly(projects.plugins.shops)

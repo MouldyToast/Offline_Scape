@@ -9,6 +9,7 @@ import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.model.ui.testinterfaces.EquipmentTabInterface;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
+import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.calog.CATierType;
 import com.zenyte.game.world.entity.player.container.ContainerWrapper;
@@ -83,21 +84,49 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 	}
 
 	@Override
-	public ItemPair[] getMatchingPairs() {
-		return new ItemPair[]{
-				new ItemPair(DIZANAS_QUIVER_UNCHARGED, SUNFIRE_SPLINTERS),
-				new ItemPair(DIZANAS_QUIVER_UNCHARGED_L, SUNFIRE_SPLINTERS),
-				new ItemPair(DIZANAS_QUIVER, SUNFIRE_SPLINTERS),
-				new ItemPair(DIZANAS_QUIVER_L, SUNFIRE_SPLINTERS),
-		};
+	public boolean allItems() {
+		return true;
+	}
+
+	private static boolean isQuiver(int id) {
+		return id == DIZANAS_QUIVER_UNCHARGED || id == DIZANAS_QUIVER_UNCHARGED_L
+				|| id == DIZANAS_QUIVER || id == DIZANAS_QUIVER_L
+				|| id == BLESSED_DIZANAS_QUIVER || id == BLESSED_DIZANAS_QUIVER_L;
 	}
 
 	@Override
 	public void handleItemOnItemAction(Player player, Item from, Item to, int fromSlot, int toSlot) {
-		final boolean toIsSplinters = to.getId() == SUNFIRE_SPLINTERS;
-		final Item quiver = toIsSplinters ? from : to;
-		final Item splinters = toIsSplinters ? to : from;
-		final int quiverId = quiver.getId();
+		final boolean fromIsQuiver = isQuiver(from.getId());
+		final Item quiver = fromIsQuiver ? from : to;
+		final int quiverSlot = fromIsQuiver ? fromSlot : toSlot;
+		final Item other = fromIsQuiver ? to : from;
+		final int otherSlot = fromIsQuiver ? toSlot : fromSlot;
+
+		if (other.getId() == SUNFIRE_SPLINTERS) {
+			// Blessed quivers cannot be charged with splinters.
+			if (quiver.getId() == BLESSED_DIZANAS_QUIVER || quiver.getId() == BLESSED_DIZANAS_QUIVER_L) {
+				player.sendMessage("Nothing interesting happens.");
+				return;
+			}
+			handleSplinterCharging(player, quiver, other, quiverSlot);
+			return;
+		}
+
+		// Ammo storage — validate the item is an arrow or bolt (not javelin/atlatl).
+		if (!other.isRangedAmmo()) {
+			player.sendMessage("Nothing interesting happens.");
+			return;
+		}
+		final String ammoName = other.getName().toLowerCase();
+		if (ammoName.contains("javelin") || ammoName.contains("atlatl")) {
+			player.sendMessage("You can't store this ammunition in your Dizana's Quiver.");
+			return;
+		}
+
+		handleAmmoStorage(player, other, otherSlot);
+	}
+
+	private void handleSplinterCharging(Player player, Item quiver, Item splinters, int quiverSlot) {
 		if (quiver.getCharges() == MAX_CHARGES) {
 			player.sendMessage("Your quiver is already fully charged.");
 			return;
@@ -112,12 +141,52 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 				int idSwap = unchargedToCharged(quiver);
 				if (idSwap != -1) {
 					quiver.setId(idSwap);
-					player.getInventory().refresh(toIsSplinters ? fromSlot : toSlot);
+					player.getInventory().refresh(quiverSlot);
 				}
 				quiver.setCharges(quiver.getCharges() + addedCharges);
 				player.getDialogueManager().start(new ItemChat(player, quiver, "You use " + addedCharges + " " + splinters.getName() + " to charge Dizana's quiver. It now has " + Utils.pluralizedFormattedColorized("charge", quiver.getCharges(), Colour.RED) + "."));
 			});
 		});
+	}
+
+	private void handleAmmoStorage(Player player, Item ammo, int ammoSlot) {
+		final int currentAmmoId = PlayerAttributesKt.getDizanasQuiverAmmo(player);
+		final int currentAmmoAmount = PlayerAttributesKt.getDizanasQuiverAmmoAmount(player);
+		final boolean hasStoredAmmo = currentAmmoId != -1 && currentAmmoAmount > 0;
+
+		if (hasStoredAmmo && currentAmmoId != ammo.getId()) {
+			// Different ammo type stored — swap: delete new ammo, return old ammo, store new.
+			final int newAmmoId = ammo.getId();
+			final int newAmmoAmount = ammo.getAmount();
+			player.getInventory().deleteItem(ammoSlot, ammo);
+			player.getInventory().addItem(new Item(currentAmmoId, currentAmmoAmount)).onFailure(overflow -> {
+				player.sendFilteredMessage("Some ammunition was dropped on the ground.");
+				World.spawnFloorItem(overflow, player);
+			});
+			PlayerAttributesKt.setDizanasQuiver(player, newAmmoId, newAmmoAmount);
+		} else if (hasStoredAmmo) {
+			// Same ammo type — add to existing count.
+			final long newTotal = (long) currentAmmoAmount + ammo.getAmount();
+			if (newTotal > Integer.MAX_VALUE) {
+				final int canStore = Integer.MAX_VALUE - currentAmmoAmount;
+				if (canStore <= 0) {
+					player.sendMessage("Your quiver cannot hold any more of this ammunition.");
+					return;
+				}
+				player.getInventory().deleteItem(ammoSlot, new Item(ammo.getId(), canStore));
+				PlayerAttributesKt.setDizanasQuiver(player, ammo.getId(), Integer.MAX_VALUE);
+			} else {
+				player.getInventory().deleteItem(ammoSlot, ammo);
+				PlayerAttributesKt.setDizanasQuiver(player, ammo.getId(), (int) newTotal);
+			}
+		} else {
+			// Nothing stored — straight store.
+			player.getInventory().deleteItem(ammoSlot, ammo);
+			PlayerAttributesKt.setDizanasQuiver(player, ammo.getId(), ammo.getAmount());
+		}
+
+		player.sendFilteredMessage("You put the ammo into Dizana's Quiver.");
+		player.sendSound(2244);
 	}
 
 	private static int chargedToBlessed(final Item item) {

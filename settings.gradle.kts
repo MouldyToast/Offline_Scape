@@ -74,7 +74,6 @@ include(
 
 include(
 
-    ":plugins:interfaces:characterdesign",
 
     ":plugins:interfaces:teleports",
     ":plugins:item:actions:death-items",

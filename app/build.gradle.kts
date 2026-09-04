@@ -20,7 +20,6 @@ dependencies {
     runtimeOnly(projects.coreRestricted)
 
 
-    runtimeOnly(projects.plugins.interfaces.characterdesign)
 
     runtimeOnly(projects.plugins.interfaces.teleports)
     runtimeOnly(projects.plugins.item.actions.deathItems)

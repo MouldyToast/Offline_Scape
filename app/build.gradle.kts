@@ -19,26 +19,18 @@ dependencies {
 
     runtimeOnly(projects.coreRestricted)
 
-    runtimeOnly(projects.plugins.area.feroxEnclave)
 
-    runtimeOnly(projects.plugins.boss.zalcano)
     runtimeOnly(projects.plugins.elven)
-    runtimeOnly(projects.plugins.groundItems)
     runtimeOnly(projects.plugins.interfaces.characterdesign)
 
-    runtimeOnly(projects.plugins.interfaces.slayer)
     runtimeOnly(projects.plugins.interfaces.teleports)
-    runtimeOnly(projects.plugins.interfaces.worldswitcher)
     runtimeOnly(projects.plugins.item.actions.deathItems)
     runtimeOnly(projects.plugins.item.actions)
-    runtimeOnly(projects.plugins.item.staffOfBalance)
     runtimeOnly(projects.plugins.larranskey)
-    runtimeOnly(projects.plugins.npc.drops)
 
     runtimeOnly(projects.plugins.rewards)
     runtimeOnly(projects.plugins.shops)
     runtimeOnly(projects.plugins.spawns.custom)
-    runtimeOnly(projects.plugins.spawns.nex)
     runtimeOnly(projects.plugins.spawns.region10xxx)
     runtimeOnly(projects.plugins.spawns.region11xxx)
     runtimeOnly(projects.plugins.spawns.region12xxx)

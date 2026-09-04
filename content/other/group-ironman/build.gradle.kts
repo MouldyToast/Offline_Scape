@@ -13,7 +13,7 @@ dependencies {
     implementation(projects.scripts.player.actions)
     implementation(projects.scripts.`object`.actions)
     implementation(projects.scripts.interfaces)
-    implementation(projects.plugins.larranskey)
+    implementation(projects.content.other.larransKey)
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.serialization.json)
 }

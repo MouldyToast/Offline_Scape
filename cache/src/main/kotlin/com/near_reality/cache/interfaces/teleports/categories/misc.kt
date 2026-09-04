@@ -6,7 +6,6 @@ internal fun TeleportsBuilder.misc() = "Misc Teleports"(10009) {
     "Barbarian Outpost"(-10551, 2548, 3569, 0, "")
     "Braindeath Island"(-6714, 2149, 5097, 0, "")
     "Crandor"(-11279, 2834, 3259, 0, "")
-    "Gambling"(-30050, 3090, 3467, 0, "")
     "Isafdar"(-23991, 2223, 3211, 0, "")
     "Lunar Isle"(-9075, 2105, 3914, 0, "")
     "Tyras Camp"(-9629, 2186, 3147, 0, "")

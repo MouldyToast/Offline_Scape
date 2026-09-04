@@ -3,7 +3,6 @@ package com.near_reality.cache.interfaces.teleports.categories
 import com.near_reality.cache.interfaces.teleports.builder.TeleportsBuilder
 
 internal fun TeleportsBuilder.wilderness() = "Wilderness Teleports"(10004) {
-    "Balance Elementals (55)"(-32856, 2987,3959, 0, "")
     "Black Chinchompas"(-11959, 3144, 3770, 0, "")
     "Demonic Ruins"(-13501, 3288, 3886, 0, "")
     "Eastern Dragons"(-13510, 3346, 3666, 0, "")

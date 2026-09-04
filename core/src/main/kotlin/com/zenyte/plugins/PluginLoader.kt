@@ -50,7 +50,9 @@ object PluginLoader {
             try {
                 val loadedPluginClass = Class.forName(pluginClassName)
                 pluginType.pluginTypeLoader?.loadClass(loadedPluginClass)
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
+                // Catch Throwable, not just Exception: a failed static initializer surfaces as an
+                // Error, and letting it escape would abort loading of every remaining plugin.
                 log.error("Failed to load plugin \"$pluginClassName\"", e)
             }
         }

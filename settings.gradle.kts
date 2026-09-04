@@ -72,26 +72,6 @@ include(
     ":core-restricted",
 )
 
-include(
-
-
-
-    ":plugins:spawns:region10xxx",
-    ":plugins:spawns:region11xxx",
-    ":plugins:spawns:region12xxx",
-    ":plugins:spawns:region13xxx",
-    ":plugins:spawns:region14xxx",
-    ":plugins:spawns:region15xxx",
-    ":plugins:spawns:region16xxx",
-    ":plugins:spawns:region17xxx",
-    ":plugins:spawns:region4xxx",
-    ":plugins:spawns:region5xxx",
-    ":plugins:spawns:region6xxx",
-    ":plugins:spawns:region7xxx",
-    ":plugins:spawns:region8xxx",
-    ":plugins:spawns:region9xxx",
-)
-
 include(":app")
 
 // Auto-discovered content and tools modules.

@@ -537,17 +537,16 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
             int fremDx = 0, fremDy = 0;
             if (WaveData.isFremennik(npcId)) {
                 if (npcId == NpcId.FREMENNIK_WARBAND_BERSERKER && !fremBerserkerPlaced) {
-                    fremDx = 0; fremDy = 1;  // north
+                    fremDy = 1;              // (0, +1) north
                     fremBerserkerPlaced = true;
                 } else if (npcId == NpcId.FREMENNIK_WARBAND_ARCHER && !fremArcherPlaced) {
-                    fremDx = -1; fremDy = 0; // west
+                    fremDx = -1;             // (-1, 0) west
                     fremArcherPlaced = true;
                 } else if (npcId == NpcId.FREMENNIK_WARBAND_SEER && !fremSeerPlaced) {
-                    fremDx = 1; fremDy = 0;  // east
+                    fremDx = 1;              // (+1, 0) east
                     fremSeerPlaced = true;
                 } else {
-                    // Quartet extra archer → south point of diamond
-                    fremDx = 0; fremDy = -1;
+                    fremDy = -1;             // (0, -1) south — quartet extra archer
                 }
                 spawnLoc = getLocation(fremBaseX + fremDx, fremBaseY + fremDy);
             } else {

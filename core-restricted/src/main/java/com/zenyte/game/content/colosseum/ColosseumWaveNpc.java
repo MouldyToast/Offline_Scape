@@ -31,6 +31,12 @@ public class ColosseumWaveNpc extends NPC {
     }
 
     @Override
+    protected void drop(final Location tile) {
+        // Colosseum wave NPCs do not drop items on the ground.
+        // All rewards come from ColosseumWaveLoot via the wave completion system.
+    }
+
+    @Override
     protected void onFinish(final Entity source) {
         super.onFinish(source);
         instance.onWaveNpcDeath(this);

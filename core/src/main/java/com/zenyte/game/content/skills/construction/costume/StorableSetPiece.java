@@ -1,4 +1,4 @@
-package com.zenyte.game.content.magicstorageunit;
+package com.zenyte.game.content.skills.construction.costume;
 
 /**
  * @author Kris | 15/09/2020

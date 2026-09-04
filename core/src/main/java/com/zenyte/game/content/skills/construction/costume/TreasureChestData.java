@@ -1,6 +1,5 @@
 package com.zenyte.game.content.skills.construction.costume;
 
-import com.zenyte.game.content.magicstorageunit.StorableSetPiece;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.container.ItemContainer;
 

@@ -1,11 +1,8 @@
 package com.zenyte.game.content.skills.construction.costume;
 
 import com.google.gson.annotations.Expose;
-import com.zenyte.game.content.magicstorageunit.StorableSetPiece;
-import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.util.AccessMask;
-import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import mgi.types.config.enums.EnumDefinitions;
@@ -23,18 +20,15 @@ public final class TreasureChest {
 	
 	private transient Player player;
 	@Expose private final Map<Integer, int[]> items = new HashMap<>(TreasureChestData.VALUES.length);
-	private transient int page;
-	
+	private transient int currentEnumId;
+
 	/**
-	 * Takes an armour set from the treasure chest if possible.
-	 * @param slotId slot id of the armour on the interface.
+	 * Takes a clue reward set from the treasure chest if possible.
+	 * @param itemId the display item id of the set on the interface.
 	 */
-	public void takeSet(final int slotId) {
-		final Item item = TreasureChestData.CONTAINERS[page].get(slotId / 4);
-		if (item == null) {
-			return;
-		}
-		final TreasureChestData set = TreasureChestData.DISPLAY_MAP.get(item.getId());
+	public void takeSet(final int itemId) {
+		TreasureChestData set = TreasureChestData.DISPLAY_MAP.get(itemId);
+		if (set == null) set = TreasureChestData.MAP.get(itemId);
 		if (set == null) {
 			return;
 		}
@@ -147,42 +141,23 @@ public final class TreasureChest {
 	 * Refreshes the armour set interface values.
 	 */
 	private void refresh() {
-		final TreasureChestData[] data = TreasureChestData.VALUES;
-		int firstHash = 0;
-		int secondHash = 0;
-		int count = page;
-		for (int i = (page * 39); i < (page * 39) + 39; i++) {
-			if (i >= data.length) {
-				break;
-			}
-			final TreasureChestData d = data[i];
-			if (items.containsKey(d.getDisplayItem())) {
-				if (count < 32) {
-					firstHash = Utils.getShiftedValue(firstHash, count);
-				} else {
-					secondHash = Utils.getShiftedValue(firstHash, count - 32);
-				}
-			}
-			count++;
-		}
-		secondHash = Utils.getShiftedValue(secondHash, 8);
-		if (page > 0) {
-			firstHash = Utils.getShiftedValue(firstHash, 0);
-		}
-		player.getPacketDispatcher().sendClientScript(417, 100, firstHash, secondHash, "Treasure chest");
-		player.getPacketDispatcher().sendComponentSettings(592, 2, 0, 156, AccessMask.CLICK_OP1, AccessMask.CLICK_OP10);
+		player.getConstruction().sendCostumeContainer(player);
+		player.getPacketDispatcher().sendClientScript(3532, currentEnumId, 1, 0);
 	}
-	
+
 	/**
-	 * Opens the treasure chest interface on the specificied page.
-	 * @param page the page to open up at.
+	 * Opens the treasure chest interface on the selected reward tier.
+	 * @param enumId the category enum of the tier to display.
 	 */
-	public void open(final int page) {
+	public void open(final int enumId) {
+		this.currentEnumId = enumId;
 		player.getTemporaryAttributes().put("costumeRoomObject", "TREASURE_CHEST");
-		this.page = page;
-		player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 592);
-		player.getPacketDispatcher().sendUpdateItemContainer(100, TreasureChestData.CONTAINERS[page]);
-		refresh();
+		player.getVarManager().sendVarInstant(262, -1);
+		player.getVarManager().sendVarInstant(261, 25);
+		player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 675);
+		player.getConstruction().sendCostumeContainer(player);
+		player.getPacketDispatcher().sendComponentSettings(675, 4, 0, 3311, AccessMask.CLICK_OP1, AccessMask.CLICK_OP10);
+		player.getPacketDispatcher().sendClientScript(3532, enumId, 1, 1);
 	}
 	
 	public void setPlayer(Player player) {
@@ -191,10 +166,6 @@ public final class TreasureChest {
 	
 	public Map<Integer, int[]> getItems() {
 	    return items;
-	}
-	
-	public int getPage() {
-	    return page;
 	}
 
 }

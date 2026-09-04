@@ -11,6 +11,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
+import com.zenyte.plugins.dialogue.OptionsMenuD;
 
 /**
  * @author Kris | 6. march 2018 : 2:35.12
@@ -37,7 +38,25 @@ public final class TreasureChestOA implements ObjectInteraction, ItemOnObjectAct
                 player.sendMessage("Only the owner of the house can use the treasure chest.");
                 return;
             }
-            construction.getTreasureChest().open(0);
+            final String[] tierNames;
+            final int[] tierEnums;
+            final int id = object.getId();
+            if (id == 18805) {
+                tierNames = new String[]{"Beginner rewards", "Easy rewards"};
+                tierEnums = new int[]{3293, 3294};
+            } else if (id == 18807) {
+                tierNames = new String[]{"Beginner rewards", "Easy rewards", "Medium rewards"};
+                tierEnums = new int[]{3293, 3294, 3295};
+            } else {
+                tierNames = new String[]{"Beginner rewards", "Easy rewards", "Medium rewards", "Hard rewards", "Elite rewards", "Master rewards"};
+                tierEnums = new int[]{3293, 3294, 3295, 3296, 3297, 3298};
+            }
+            player.getDialogueManager().start(new OptionsMenuD(player, "Which rewards would you like to view?", tierNames) {
+                @Override
+                public void handleClick(final int slotId) {
+                    construction.getTreasureChest().open(tierEnums[slotId]);
+                }
+            });
         }
     }
 

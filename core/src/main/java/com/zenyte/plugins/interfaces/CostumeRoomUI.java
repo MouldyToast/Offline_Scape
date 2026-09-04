@@ -132,7 +132,7 @@ public final class CostumeRoomUI implements UserInterface {
 
 	@Override
 	public int[] getInterfaceIds() {
-		return new int[] { 592 };
+		return new int[] { 675 };
 	}
 
 }

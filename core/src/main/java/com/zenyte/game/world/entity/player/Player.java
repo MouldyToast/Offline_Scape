@@ -3573,6 +3573,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
 
         final int blockAnimation = weaponDefinitions.getBlockAnimation();
+        if (blockAnimation == 0) {
+            return PLAIN_DEFENCE_ANIM;
+        }
         return new Animation(blockAnimation);
     }
 

@@ -2,7 +2,6 @@ package com.near_reality.plugins.interfaces.characterdesign
 
 import com.zenyte.game.world.entity.masks.UpdateFlag
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.entity.player.privilege.MemberRank
 import mgi.types.config.identitykit.IdentityKitDefinitions
 import com.near_reality.scripts.interfaces.InterfaceScript
 import com.zenyte.game.model.ui.InterfacePosition.*
@@ -47,9 +46,7 @@ class CharacterDesignerInterface : InterfaceScript() {
                 current--
                 if (current < 0) current = colour.count - 1
             }
-            val skinColour = SkinColour[current]
-            val hasSkinColourUnlocked = skinColour != null && memberRank.equalToOrGreaterThan(skinColour.rank)
-            found = colour != CharacterCreatorColour.Skin || current < 8 || hasSkinColourUnlocked
+            found = true
         } while (!found)
         appearance.colours[colour.id] = current.toByte()
         updateFlags.flag(UpdateFlag.APPEARANCE)
@@ -96,29 +93,6 @@ class CharacterDesignerInterface : InterfaceScript() {
         Legs(2, 29),
         Feet(3, 6),
         Skin(4, 13),
-    }
-
-    private enum class SkinColour(val index: Int, val rank: MemberRank) {
-        BLACK(9, MemberRank.SAPPHIRE),
-        WHITE(10, MemberRank.SAPPHIRE),
-        GREEN(8, MemberRank.EMERALD),
-        TURQOISE(11, MemberRank.RUBY),
-        PURPLE(12, MemberRank.DIAMOND);
-
-        companion object {
-            private val all: Array<SkinColour> = entries.toTypedArray()
-            private val map: MutableMap<Int, SkinColour> = HashMap(all.size)
-
-            init {
-                for (colour in all) {
-                    map[colour.index] = colour
-                }
-            }
-
-            operator fun get(index: Int): SkinColour? {
-                return map[index]
-            }
-        }
     }
 
     init {

@@ -20,7 +20,6 @@ dependencies {
     runtimeOnly(projects.coreRestricted)
 
 
-    runtimeOnly(projects.plugins.elven)
     runtimeOnly(projects.plugins.interfaces.characterdesign)
 
     runtimeOnly(projects.plugins.interfaces.teleports)

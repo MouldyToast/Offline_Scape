@@ -74,7 +74,6 @@ include(
 
 include(
 
-    ":plugins:elven",
     ":plugins:interfaces:characterdesign",
 
     ":plugins:interfaces:teleports",

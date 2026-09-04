@@ -76,9 +76,6 @@ include(
 
 
 
-    ":plugins:rewards",
-    ":plugins:shops",
-    ":plugins:spawns:custom",
     ":plugins:spawns:region10xxx",
     ":plugins:spawns:region11xxx",
     ":plugins:spawns:region12xxx",

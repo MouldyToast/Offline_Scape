@@ -2,9 +2,6 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
-group = "com.near_reality.plugins.spawns"
-version = "0.1.0"
-
 kotlin {
     sourceSets.main {
         kotlin {
@@ -15,6 +12,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(projects.plugins.spawns)
+    api(projects.scripts.shops)
+    implementation(kotlin("script-runtime"))
     compileOnly(projects.core)
 }

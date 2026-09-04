@@ -11,5 +11,5 @@ kotlin {
 
 dependencies {
     compileOnly(projects.core)
-    implementation(projects.plugins.rewards)
+    implementation(projects.content.other.rewards)
 }

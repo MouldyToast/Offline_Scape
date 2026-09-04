@@ -76,8 +76,6 @@ include(
 
 
     ":plugins:interfaces:teleports",
-    ":plugins:item:actions:death-items",
-    ":plugins:item:actions",
 
     ":plugins:rewards",
     ":plugins:shops",

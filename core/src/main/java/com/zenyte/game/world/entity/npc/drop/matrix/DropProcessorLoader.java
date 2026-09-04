@@ -57,7 +57,8 @@ public enum DropProcessorLoader {
                 list.add(dropProcessor);
             }
         } catch (final Exception e) {
-            log.error("", e);
+            log.error("Failed to attach drop processor " + c.getName()
+                    + " - its drops will be missing from drop tables and the drop viewer.", e);
         }
     }
 

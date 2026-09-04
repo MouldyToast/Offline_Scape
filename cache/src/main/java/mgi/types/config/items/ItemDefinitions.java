@@ -298,7 +298,9 @@ public final class ItemDefinitions implements Definitions, Cloneable {
                 int itemID = jsonDefs.getId();
                 ItemDefinitions def = ItemDefinitions.get(itemID);
                 if (def == null) {
-                    log.warn("JSON item def was defined for " + itemID + " but definition was null");
+                    log.warn("JSON item def was defined for " + itemID + " but no item with that id exists in the "
+                            + "loaded cache - stale entry in data/items/ItemDefinitions.json; remove the entry or "
+                            + "add the item to the cache. The override is skipped.");
                     continue;
                 }
                 apply(def, jsonDefs);

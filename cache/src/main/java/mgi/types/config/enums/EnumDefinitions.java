@@ -66,7 +66,9 @@ public final class EnumDefinitions implements Definitions, Cloneable {
     public static IntEnum getIntEnumOrEmpty(final int id) {
         final Enum<?> e = map.get(id);
         if (!(e instanceof IntEnum)) {
-            Definitions.logger.warn("Enum {} is missing from the cache or isn't an int enum; substituting an empty enum.", id);
+            Definitions.logger.warn("Enum {} is missing from the cache or isn't an int enum; substituting an empty enum. "
+                    + "Content reading it will see no entries - remove the Enums constant if the enum is dead, "
+                    + "or add the enum to the cache.", id);
             return new IntEnum(id, 'i', 'i', -1, java.util.Collections.emptyMap());
         }
         return (IntEnum) e;
@@ -79,7 +81,9 @@ public final class EnumDefinitions implements Definitions, Cloneable {
     public static StringEnum getStringEnumOrEmpty(final int id) {
         final Enum<?> e = map.get(id);
         if (!(e instanceof StringEnum)) {
-            Definitions.logger.warn("Enum {} is missing from the cache or isn't a string enum; substituting an empty enum.", id);
+            Definitions.logger.warn("Enum {} is missing from the cache or isn't a string enum; substituting an empty enum. "
+                    + "Content reading it will see no entries - remove the Enums constant if the enum is dead, "
+                    + "or add the enum to the cache.", id);
             return new StringEnum(id, 'i', 's', "", java.util.Collections.emptyMap());
         }
         return (StringEnum) e;

@@ -27,6 +27,9 @@ class DegradableItemsItemaction : ItemActionScript() {
                     || it == BOW_OF_FAERDHINEN_C
                     || it == DIZANAS_QUIVER
                     || it == DIZANAS_QUIVER_L
+                    || it == CRYSTAL_HELM
+                    || it == CRYSTAL_BODY
+                    || it == CRYSTAL_LEGS
         }
 
     init {

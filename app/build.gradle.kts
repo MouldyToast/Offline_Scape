@@ -19,24 +19,6 @@ dependencies {
 
     runtimeOnly(projects.coreRestricted)
 
-
-
-
-    runtimeOnly(projects.plugins.spawns.region10xxx)
-    runtimeOnly(projects.plugins.spawns.region11xxx)
-    runtimeOnly(projects.plugins.spawns.region12xxx)
-    runtimeOnly(projects.plugins.spawns.region13xxx)
-    runtimeOnly(projects.plugins.spawns.region14xxx)
-    runtimeOnly(projects.plugins.spawns.region15xxx)
-    runtimeOnly(projects.plugins.spawns.region16xxx)
-    runtimeOnly(projects.plugins.spawns.region17xxx)
-    runtimeOnly(projects.plugins.spawns.region4xxx)
-    runtimeOnly(projects.plugins.spawns.region5xxx)
-    runtimeOnly(projects.plugins.spawns.region6xxx)
-    runtimeOnly(projects.plugins.spawns.region7xxx)
-    runtimeOnly(projects.plugins.spawns.region8xxx)
-    runtimeOnly(projects.plugins.spawns.region9xxx)
-
     // Auto-discovered content and tools modules
     findContentModules().forEach { runtimeOnly(it) }
     findToolModules().forEach { runtimeOnly(it) }

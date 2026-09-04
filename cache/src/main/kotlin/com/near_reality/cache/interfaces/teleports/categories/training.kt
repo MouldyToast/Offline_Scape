@@ -4,7 +4,6 @@ import com.near_reality.cache.interfaces.teleports.builder.TeleportsBuilder
 
 internal fun TeleportsBuilder.training() = "Training Teleports"(10001) {
     "Ammonite Crabs"(-21562, 3703, 3879, 0, "")
-    "Armoured Zombies"(-30324, 2757, 10259, 0, "")
     "Bandit Camp"(-4611, 3174, 3002, 0, "")
     "Cave Horrors"(-8921, 3746, 9372, 0, "")
     "Chickens"(-314, 3238, 3294, 0, "")

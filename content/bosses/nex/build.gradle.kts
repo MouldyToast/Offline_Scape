@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.scripts.npc.actions)
     implementation(projects.scripts.npc.definitions)
     implementation(projects.scripts.npc.drops)
+    implementation(projects.scripts.npc.spawns)
     implementation(projects.scripts.item.actions)
     implementation(projects.scripts.item.equip)
     implementation(projects.scripts.item.definitions)

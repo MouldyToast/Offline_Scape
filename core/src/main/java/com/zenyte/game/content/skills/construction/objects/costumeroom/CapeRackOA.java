@@ -32,7 +32,7 @@ public final class CapeRackOA implements ObjectInteraction, ItemOnObjectAction {
                 player.sendMessage("Only the owner of the house can use the cape rack.");
                 return;
             }
-            construction.getCapeRack().open(0);
+            construction.getCapeRack().open();
         }
     }
 

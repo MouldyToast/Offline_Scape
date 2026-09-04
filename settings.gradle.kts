@@ -73,26 +73,12 @@ include(
 )
 
 include(
-    ":plugins:area:ferox_enclave",
 
-    ":plugins:boss:zalcano",
-    ":plugins:elven",
-    ":plugins:ground-items",
-    ":plugins:interfaces:characterdesign",
 
-    ":plugins:interfaces:slayer",
-    ":plugins:interfaces:teleports",
-    ":plugins:interfaces:worldswitcher",
-    ":plugins:item:actions:death-items",
-    ":plugins:item:actions",
-    ":plugins:item:staff-of-balance",
-    ":plugins:larranskey",
-    ":plugins:npc:drops",
 
     ":plugins:rewards",
     ":plugins:shops",
     ":plugins:spawns:custom",
-    ":plugins:spawns:nex",
     ":plugins:spawns:region10xxx",
     ":plugins:spawns:region11xxx",
     ":plugins:spawns:region12xxx",

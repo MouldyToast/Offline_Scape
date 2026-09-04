@@ -37,7 +37,7 @@ public final class ToyBoxOA implements ObjectInteraction, ItemOnObjectAction {
                 player.sendMessage("Only the owner of the house can use the toy box.");
                 return;
             }
-            construction.getToyBox().open(0);
+            construction.getToyBox().open();
         }
     }
 

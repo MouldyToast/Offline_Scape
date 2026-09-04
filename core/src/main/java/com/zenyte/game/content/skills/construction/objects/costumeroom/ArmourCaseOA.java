@@ -37,7 +37,7 @@ public final class ArmourCaseOA implements ObjectInteraction, ItemOnObjectAction
                 player.sendMessage("Only the owner of the house can use the armour case.");
                 return;
             }
-            construction.getArmourCase().open(0);
+            construction.getArmourCase().open();
         }
     }
 

@@ -21,6 +21,9 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity._Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
+import com.zenyte.game.world.entity.player.container.Container;
+import com.zenyte.game.world.entity.player.container.ContainerPolicy;
+import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.object.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static com.zenyte.game.content.skills.construction.ConstructionConstants.*;
 
@@ -1062,6 +1066,24 @@ public final class Construction {
 
     public TreasureChest getTreasureChest() {
         return treasureChest;
+    }
+
+    public void sendCostumeContainer(Player player) {
+        Container container = new Container(ContainerPolicy.ALWAYS_STACK, ContainerType.STORAGE_ROOM, Optional.empty());
+        for (int[] pieces : armourCase.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        for (int[] pieces : capeRack.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        for (int[] pieces : fancyDressBox.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        for (int[] pieces : magicWardrobe.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        for (int[] pieces : toyBox.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        for (int[] pieces : treasureChest.getItems().values())
+            for (int id : pieces) container.add(new Item(id, 1));
+        container.setFullUpdate(true);
+        player.getPacketDispatcher().sendUpdateItemContainer(32768 + ContainerType.STORAGE_ROOM.getId(), -1, 0, container);
     }
 
     public Player getPlayer() {

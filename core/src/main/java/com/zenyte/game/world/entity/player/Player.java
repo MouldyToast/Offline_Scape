@@ -33,7 +33,6 @@ import com.zenyte.game.content.AvasDevice;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.StorageRoom;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
@@ -56,7 +55,6 @@ import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.gravestones.Gravestone;
 import com.zenyte.game.content.killstreak.KillstreakLog;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
-import com.zenyte.game.content.magicstorageunit.MagicStorageUnit;
 import com.zenyte.game.content.minigame.barrows.Barrows;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -406,7 +404,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
 
-    private final MagicStorageUnit magicStorageUnit = new MagicStorageUnit();
     @Expose
     private final KillstreakLog killstreakLog = new KillstreakLog();
     private final HpHud hpHud = new HpHud(this);
@@ -415,11 +412,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private LootkeySettings lootkeySettings;
 
 
-    public StorageRoom getStorageRoom() {
-        return storageRoom;
-    }
-
-    private StorageRoom storageRoom = new StorageRoom();
     @Expose
     private DwarfMultiCannon dwarfMulticannon = new DwarfMultiCannon(this);
     /**
@@ -4732,10 +4724,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             combatDefinitions = new CombatDefinitions(this);
         return combatDefinitions;
 
-    }
-
-    public MagicStorageUnit getMagicStorageUnit() {
-        return magicStorageUnit;
     }
 
     public DwarfMultiCannon getDwarfMulticannon() {

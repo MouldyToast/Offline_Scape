@@ -2,11 +2,8 @@ package com.near_reality.game.content.elven.obj
 
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.util.Colour
-import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
-import com.zenyte.game.world.entity.player.privilege.MemberRank
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
 import com.zenyte.game.world.`object`.ObjectId
@@ -36,26 +33,9 @@ class CrystalChest : ObjectAction{
             player.lock(2)
             player.inventory.deleteItem(ItemId.CRYSTAL_KEY, 1)
 
-            if (player.memberRank.equalToOrGreaterThan(MemberRank.SAPPHIRE) && Utils.random(getChance(player)) == 0) {
-                player.sendMessage(Colour.RS_GREEN.wrap("You find double the loot from the crystal chest."))
-                NewCrystalChestLoot.rollTable(player, false).forEach(player.inventory::addOrDrop)
-            }
             NewCrystalChestLoot.rollTable(player, false).forEach(player.inventory::addOrDrop)
         } else
             player.sendMessage("This chest is securely locked shut.")
-    }
-
-    private fun getChance(player: Player): Int {
-        val memberRank: MemberRank = player.memberRank
-        return when {
-            memberRank.equalToOrGreaterThan(MemberRank.ONYX) -> 3
-            memberRank.equalToOrGreaterThan(MemberRank.DRAGONSTONE) -> 3
-            memberRank.equalToOrGreaterThan(MemberRank.DIAMOND) -> 4
-            memberRank.equalToOrGreaterThan(MemberRank.RUBY) -> 6
-            memberRank.equalToOrGreaterThan(MemberRank.EMERALD) -> 6
-            memberRank.equalToOrGreaterThan(MemberRank.SAPPHIRE) -> 9
-            else -> 9
-        }
     }
 
     override fun getObjects() = arrayOf(ObjectId.CLOSED_CHEST_172)

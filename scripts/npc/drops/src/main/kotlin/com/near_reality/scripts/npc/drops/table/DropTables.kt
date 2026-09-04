@@ -29,7 +29,8 @@ object DropTables {
         for (npcId in npcIds) {
             Preconditions.checkArgument(
                 NPCDefinitions.get(npcId) != null,
-                "NPC with id $npcIds was not found in definitions."
+                "NPC id $npcId does not exist in the loaded cache (drop table registered for npc ids " +
+                        "${npcIds.contentToString()}). Fix or remove the drop table script registering these ids."
             )
             dropsTables[npcId] = npcDropsTable
         }

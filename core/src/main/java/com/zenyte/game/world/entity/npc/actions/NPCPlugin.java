@@ -219,8 +219,11 @@ public abstract class NPCPlugin implements Plugin {
         option = option.toLowerCase();
         for (int i : getCachedNPCs()) {
             if (handlerMap.containsKey(i + "|" + option)) {
-                log.warn("Overlapping handler found for option: " + option + ", " + getClass().getSimpleName() + ", " + handlerMap.get(i + "|" + option)
-                        .plugin.getClass().getSimpleName());
+                log.warn("Overlapping NPC handler for npc " + i + " option '" + option + "': "
+                        + getClass().getSimpleName() + " overrides "
+                        + handlerMap.get(i + "|" + option).plugin.getClass().getSimpleName()
+                        + " - only " + getClass().getSimpleName()
+                        + " will handle it; remove the npc/option from one of the two plugins.");
             }
             handlerMap.put(i + "|" + option, new NPCPluginHandler(this, handler));
         }

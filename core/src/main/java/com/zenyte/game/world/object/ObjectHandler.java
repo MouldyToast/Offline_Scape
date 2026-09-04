@@ -122,13 +122,16 @@ public enum ObjectHandler {
                         ? nameToAction.put(((String) object).toLowerCase(), action)
                         : idToAction.put((int) object, action);
                 if (previous != null && isErrorEnabled) {
-                    log.error("OVERLAPPING object handler: {}, {}", previous.getClass().getSimpleName(),
+                    log.error("OVERLAPPING object handler for object {}: {} overrides {} - only {} will handle it; "
+                                    + "remove the object from one of the two plugins.",
+                            object, action.getClass().getSimpleName(), previous.getClass().getSimpleName(),
                             action.getClass().getSimpleName());
                 }
             }
         } catch (final Exception e) {
             if (isErrorEnabled)
-                log.error("", e);
+                log.error("Failed to register object handler " + c.getName()
+                        + " - its object actions will not work.", e);
         }
     }
 

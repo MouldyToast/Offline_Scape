@@ -22,9 +22,6 @@ dependencies {
 
 
 
-    runtimeOnly(projects.plugins.rewards)
-    runtimeOnly(projects.plugins.shops)
-    runtimeOnly(projects.plugins.spawns.custom)
     runtimeOnly(projects.plugins.spawns.region10xxx)
     runtimeOnly(projects.plugins.spawns.region11xxx)
     runtimeOnly(projects.plugins.spawns.region12xxx)

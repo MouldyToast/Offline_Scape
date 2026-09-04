@@ -36,6 +36,8 @@ object PluginLoader {
         }
         data.flip()
 
+        val failedPlugins = mutableListOf<String>()
+
         val loadedPlugins = data.int.toLong() and 0xFFFF_FFFF
         for (i in 1..loadedPlugins) {
             val id = data.get().toInt() and 0xFF
@@ -50,13 +52,22 @@ object PluginLoader {
             try {
                 val loadedPluginClass = Class.forName(pluginClassName)
                 pluginType.pluginTypeLoader?.loadClass(loadedPluginClass)
-            } catch (e: Exception) {
-                log.error("Failed to load plugin \"$pluginClassName\"", e)
+            } catch (e: Throwable) {
+                // Catch Throwable, not just Exception: a failed static initializer surfaces as an
+                // Error, and letting it escape would abort loading of every remaining plugin.
+                failedPlugins += "$pluginClassName ($pluginType)"
+                log.error("Failed to load plugin \"$pluginClassName\" ($pluginType) - it is skipped; its content will not work.", e)
             }
         }
 
         val elapsed = stopwatch.elapsed(TimeUnit.MILLISECONDS)
         log.info("Loaded {} plugins in {} ms.", loadedPlugins, elapsed)
+        if (failedPlugins.isNotEmpty()) {
+            log.warn(
+                "{} of {} plugins FAILED to load and were skipped (see stack traces above for the causes):\n\t{}",
+                failedPlugins.size, loadedPlugins, failedPlugins.joinToString("\n\t")
+            )
+        }
     }
 
     @JvmStatic

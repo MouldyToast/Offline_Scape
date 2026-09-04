@@ -158,7 +158,7 @@ public final class StringEnum extends AbstractEnum<String> {
      * @throws RuntimeException if the enum is empty.
      */
     public Optional<String> getValue(final int key) {
-        if (!getValues().containsKey(key)) {
+        if (stringMap == null || !getValues().containsKey(key)) {
             return Optional.empty();
         }
         return Optional.of(stringMap.get(key));
@@ -171,7 +171,7 @@ public final class StringEnum extends AbstractEnum<String> {
      * @throws IllegalArgumentException if the enum contains overlapping values.
      */
     public OptionalInt getKey(final String value) {
-        if (!getReverseValues().containsKey(value)) {
+        if (reverseStringMap == null || !getReverseValues().containsKey(value)) {
             return OptionalInt.empty();
         }
         return OptionalInt.of(reverseStringMap.getInt(value));

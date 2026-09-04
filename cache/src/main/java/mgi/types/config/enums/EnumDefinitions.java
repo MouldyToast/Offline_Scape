@@ -57,6 +57,46 @@ public final class EnumDefinitions implements Definitions, Cloneable {
         return new StringEnumLC((StringEnum) e);
     }
 
+    /**
+     * Variant of {@link EnumDefinitions#getIntEnum(int)} that degrades gracefully when the enum is
+     * absent from the loaded cache (e.g. a custom enum id that does not exist in a vanilla cache):
+     * a warning is logged and an empty enum is returned instead of throwing, so that a single
+     * missing enum cannot fail the initialization of the {@link Enums} interface.
+     */
+    public static IntEnum getIntEnumOrEmpty(final int id) {
+        final Enum<?> e = map.get(id);
+        if (!(e instanceof IntEnum)) {
+            Definitions.logger.warn("Enum {} is missing from the cache or isn't an int enum; substituting an empty enum. "
+                    + "Content reading it will see no entries - remove the Enums constant if the enum is dead, "
+                    + "or add the enum to the cache.", id);
+            return new IntEnum(id, 'i', 'i', -1, java.util.Collections.emptyMap());
+        }
+        return (IntEnum) e;
+    }
+
+    /**
+     * Variant of {@link EnumDefinitions#getStringEnum(int)} that degrades gracefully when the enum
+     * is absent from the loaded cache; see {@link EnumDefinitions#getIntEnumOrEmpty(int)}.
+     */
+    public static StringEnum getStringEnumOrEmpty(final int id) {
+        final Enum<?> e = map.get(id);
+        if (!(e instanceof StringEnum)) {
+            Definitions.logger.warn("Enum {} is missing from the cache or isn't a string enum; substituting an empty enum. "
+                    + "Content reading it will see no entries - remove the Enums constant if the enum is dead, "
+                    + "or add the enum to the cache.", id);
+            return new StringEnum(id, 'i', 's', "", java.util.Collections.emptyMap());
+        }
+        return (StringEnum) e;
+    }
+
+    /**
+     * Variant of {@link EnumDefinitions#getStringEnumLowercase(int)} that degrades gracefully when
+     * the enum is absent from the loaded cache; see {@link EnumDefinitions#getIntEnumOrEmpty(int)}.
+     */
+    public static StringEnumLC getStringEnumLowercaseOrEmpty(final int id) {
+        return new StringEnumLC(getStringEnumOrEmpty(id));
+    }
+
     public static IntEnum getIntEnumOrNull(final int id) {
         final Enum<?> e = map.get(id);
         if (!(e instanceof IntEnum)) {

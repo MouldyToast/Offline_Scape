@@ -8,9 +8,6 @@ import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.item.ItemId.*
-import com.near_reality.game.content.universalshop.*
-import com.near_reality.game.content.universalshop.UnivShopItem
-import com.near_reality.game.content.universalshop.UnivShopItem.*
 
 class BloodMoney : ShopScript() {
 
@@ -20,10 +17,6 @@ class BloodMoney : ShopScript() {
             ARMADYL_GODSWORD(100, 0, 2500, ironmanRestricted = true)
             BLESSED_SPIRIT_SHIELD(100, 0, 2000, ironmanRestricted = true)
             THREAD_OF_ELIDINIS(100, 0, 2000, ironmanRestricted = true)
-            32149(100, 0, 200) // larrans booster
-            32150(100, 0, 150) // gano booster
-            32154(100, 0, 300) // blood money booster
-            32166(100, 0, 400) // rev booster
             ORNATE_MAUL_HANDLE(100, 0, 150)
         //    24187(100, 0,2000)
             SWIFT_BLADE(100, 0, 1000)
@@ -104,7 +97,6 @@ class BloodMoney : ShopScript() {
             ANCIENT_HALO(100, 0, 250)
             BRASSICA_HALO(100, 0, 250)
             CRYSTAL_SEED(100, 0, 250)
-            PVP_MYSTERY_BOX(100, 0, 6000)
         }
     }
 }

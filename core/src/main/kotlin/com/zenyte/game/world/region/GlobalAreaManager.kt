@@ -78,7 +78,8 @@ object GlobalAreaManager {
                 }
             }
         } catch (e: Exception) {
-            log.error("", e)
+            log.error("Failed to register area ${areaClass.name} - it will not exist at runtime and " +
+                    "getArea() calls for it will throw.", e)
         }
     }
 
@@ -281,7 +282,7 @@ object GlobalAreaManager {
             }
             (area as? CycleProcessPlugin)?.process()
         } catch (e: Exception) {
-            log.error("", e)
+            log.error("Error processing area ${area.javaClass.simpleName}", e)
         }
     }
 
@@ -300,7 +301,7 @@ object GlobalAreaManager {
         try {
             (area as? CycleProcessPlugin)?.postProcess()
         } catch (e: Exception) {
-            log.error("", e)
+            log.error("Error post-processing area ${area.javaClass.simpleName}", e)
         }
     }
 

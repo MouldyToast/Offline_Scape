@@ -21,7 +21,6 @@ dependencies {
 
 
 
-    runtimeOnly(projects.plugins.interfaces.teleports)
 
     runtimeOnly(projects.plugins.rewards)
     runtimeOnly(projects.plugins.shops)

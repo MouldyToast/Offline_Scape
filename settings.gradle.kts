@@ -75,7 +75,6 @@ include(
 include(
 
 
-    ":plugins:interfaces:teleports",
 
     ":plugins:rewards",
     ":plugins:shops",

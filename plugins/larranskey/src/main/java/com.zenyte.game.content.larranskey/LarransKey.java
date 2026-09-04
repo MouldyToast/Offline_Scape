@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.near_reality.game.item.CustomItemId.PRIMAL_BATTLEAXE;
-
 
 public class LarransKey {
 
@@ -145,15 +143,7 @@ public class LarransKey {
                         player.getInventory().addOrDrop(item);
                         player.getCollectionLog().add(item);
                     }
-                    player.getInventory().addOrDrop(ItemId.BLOOD_MONEY, Utils.random(5, 25));
                     player.getInventory().addOrDrop(new Item(995, Utils.random(50_000, 250_000)));
-
-                    if(Utils.random(499) == 0) {
-                        Item pbx = new Item(PRIMAL_BATTLEAXE, 1);
-                        player.getCollectionLog().add(pbx);
-                        player.getInventory().addOrDrop(pbx);
-                        WorldBroadcasts.sendMessage(player.getUsername() + " has just received a Primal Battleaxe from Larran's Chest!", BroadcastType.RARE_DROP, false);
-                    }
 
                     if(chest.getId() == LARRANS_CHEST_SMALL_OBJECT_ID) {
                         final WorldObject smallLarensChest = new WorldObject(LarransKey.LARRANS_CHEST_SMALL_OBJECT_ID, 10, 1, 3281, 3659, 0);

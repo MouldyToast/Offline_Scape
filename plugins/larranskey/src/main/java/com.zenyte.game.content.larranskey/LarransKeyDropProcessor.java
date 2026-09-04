@@ -12,7 +12,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.npc.spawns.NPCSpawn;
 import com.zenyte.game.world.entity.npc.spawns.NPCSpawnLoader;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
@@ -21,23 +20,10 @@ import mgi.Indice;
 import mgi.types.config.npcs.NPCDefinitions;
 import mgi.utilities.CollectionUtils;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.IntPredicate;
 
 @SuppressWarnings("unused")
 public class LarransKeyDropProcessor extends DropProcessor {
-
-    public static final Map<MemberRank, Float> RANK_DROP_BOOST = new HashMap<>();
-
-    static {
-        RANK_DROP_BOOST.put(MemberRank.TOPAZ, 10F);
-        RANK_DROP_BOOST.put(MemberRank.SAPPHIRE, 15F);
-        RANK_DROP_BOOST.put(MemberRank.EMERALD, 20F);
-        RANK_DROP_BOOST.put(MemberRank.RUBY, 25F);
-        RANK_DROP_BOOST.put(MemberRank.DIAMOND, 30F);
-        RANK_DROP_BOOST.put(MemberRank.DRAGONSTONE, 40F);
-    }
 
     @Override
     public void attach() {
@@ -56,13 +42,7 @@ public class LarransKeyDropProcessor extends DropProcessor {
             appendDrop(new DisplayedDrop(LarransKey.LARRANS_KEY.getId(), 1, 1, fraction, (player, npcId) -> npcId == i, i) {
                 @Override
                 public double getRate(Player player, int id) {
-                    Float getRank = RANK_DROP_BOOST.get(player.getMemberRank());
-                    if (getRank == null) {
-                        return super.getRate(player, id) / 2;
-                    }
-                    else {
-                        return (getRate() - ((getRate() / 100) * getRank)) / 2;
-                    }
+                    return super.getRate(player, id) / 2;
                 }
             });
 
@@ -101,14 +81,6 @@ public class LarransKeyDropProcessor extends DropProcessor {
                 && killer.getSlayer().isCurrentAssignment(npc)
                 && killer.getSlayer().getMaster() == SlayerMaster.KRYSTILIA) {
             var boost = 115F;
-
-            if (RANK_DROP_BOOST.get(killer.getMemberRank()) != null) {
-                boost += RANK_DROP_BOOST.get(killer.getMemberRank());
-            }
-
-            if (killer.getVariables().getLarransKeyBoosterTick() > 0) {
-                boost += 25;
-            }
 
             var shouldDrop = shouldDrop(npc.getCombatLevel(), boost);
             if (shouldDrop) {

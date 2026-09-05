@@ -62,7 +62,6 @@ class RsprotSession(
     override fun isExpired(currentCycle: Long): Boolean {
         val timeout = when {
             WildernessArea.isWithinWilderness(player) -> SESSION_EXPIRATION_TIMEOUT_WILDERNESS
-            player.getBooleanTemporaryAttribute("gambling") -> SESSION_EXPIRATION_TIMEOUT_WILDERNESS
             else -> SESSION_EXPIRATION_TIMEOUT_SAFE
         }
         return currentCycle - lastPacketProcessedTick.get() >= timeout

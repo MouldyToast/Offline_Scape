@@ -1,7 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.ItemUtil;
@@ -31,30 +30,16 @@ public class TradeInventoryInterface extends Interface {
                 return;
             }
 
-            if (FlowerPokerManager.get(player).inInterface) {
-                FlowerPokerManager flowerPokerManager = FlowerPokerManager.get(player);
-                final Item item = player.getInventory().getItem(slotId);
-                if (item == null) {
-                    return;
-                }
-                if (option == 5) {
-                    player.sendInputInt("Enter amount:", amount -> flowerPokerManager.addItem(slotId, amount));
-                } else {
-                    final int amount = option == 1 ? 1 : option == 2 ? 5 : option == 3 ? 10 : player.getInventory().getAmountOf(item.getId());
-                    flowerPokerManager.addItem(slotId, amount);
-                }
+            final Trade trade = player.getTrade();
+            final Item item = player.getInventory().getItem(slotId);
+            if (item == null) {
+                return;
+            }
+            if (option == 5) {
+                player.sendInputInt("Enter amount:", amount -> trade.addItem(slotId, amount));
             } else {
-                final Trade trade = player.getTrade();
-                final Item item = player.getInventory().getItem(slotId);
-                if (item == null) {
-                    return;
-                }
-                if (option == 5) {
-                    player.sendInputInt("Enter amount:", amount -> trade.addItem(slotId, amount));
-                } else {
-                    final int amount = option == 1 ? 1 : option == 2 ? 5 : option == 3 ? 10 : player.getInventory().getAmountOf(item.getId());
-                    trade.addItem(slotId, amount);
-                }
+                final int amount = option == 1 ? 1 : option == 2 ? 5 : option == 3 ? 10 : player.getInventory().getAmountOf(item.getId());
+                trade.addItem(slotId, amount);
             }
         });
     }

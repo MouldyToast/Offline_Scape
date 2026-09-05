@@ -46,7 +46,6 @@ import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.compcapes.CompletionistCape;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.content.event.easter2020.EasterConstants;
-import com.zenyte.game.content.flowerpoker.GambleBan;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
@@ -546,7 +545,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient int pid;
     private transient boolean loadingRegion;
     private transient long movementLock;
-    private transient long diceDelay;
     private transient String[] nametags;
     @Expose
     private GameMode gameMode = GameMode.REGULAR;
@@ -1904,12 +1902,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 PlayerAttributesKt.setSanityValue(this, (sanity + sanityValue));
                 addTemporaryAttribute("dt2_whispy_sanity_delay", sanityTick);
             }
-
-            // Very bad to do this here, should be applied once, when entering a bound ot area
-            if (Boundary.isIn(this, new Boundary(3075, 3446, 3104, 3460)))
-                setPlayerOption(1, "Gamble-With", false);
-            else
-                clearPlayerOptionRow(1, "Gamble-With");
 
             if (ticker++ % BURN_TICK_INTERVAL == 0) {
                 var attribute = getNumericTemporaryAttribute(BURNING_DAMAGE_KEY);
@@ -4154,15 +4146,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
-    public void setPlayerGambleable(boolean gambleable) {
-        if (gambleable) {
-            setPlayerOption(1, "Gamble-With", false);
-        }
-        else {
-            clearPlayerOptionRow(1, "Gamble-With");
-        }
-    }
-
     public void setPlayerTradeable(boolean tradeable) {
         if (tradeable) {
             setPlayerOption(4, "Trade with", false);
@@ -4333,13 +4316,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             attributes.put("treasure trails broadcasting", 1);
             if (getNumericAttribute(GameSetting.TREASURE_TRAILS_BROADCASTS.toString()).intValue() == 0) {
                 GameSetting.TREASURE_TRAILS_BROADCASTS.handleSetting(this);
-            }
-        }
-
-        if (GambleBan.hasGambleBan(this)) {
-            if (!GambleBan.isGambleBanValid(this)) {
-                sendMessage("Your gamble ban has expired.");
-                getAttributes().remove("GAMBLE_BAN");
             }
         }
 
@@ -5106,14 +5082,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.movementLock = movementLock;
     }
 
-    public long getDiceDelay() {
-        return diceDelay;
-    }
-
-    public void setDiceDelay(long diceDelay) {
-        this.diceDelay = diceDelay;
-    }
-
     public String[] getNametags() {
         return nametags;
     }
@@ -5143,8 +5111,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     @Override
     public boolean isLogoutPrevented(int ticksAfterAttacked) {
-        return super.isLogoutPrevented(ticksAfterAttacked)
-                || getBooleanTemporaryAttribute("gambling");
+        return super.isLogoutPrevented(ticksAfterAttacked);
     }
 
     public LogoutType getLogoutType() {

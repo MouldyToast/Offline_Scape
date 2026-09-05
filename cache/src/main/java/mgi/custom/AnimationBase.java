@@ -17,7 +17,6 @@ import java.io.IOException;
  */
 public enum AnimationBase {
     PLAYER(5000, "assets/animations/bases/player base.dat"),
-    DICE_GRAPHICS(5001, "assets/animations/bases/dice bag graphics base.dat"),
     TRICK_HALLOWEEN_EMOTE(5002, "assets/animations/bases/trick halloween emote base.dat"),
     THANKSGIVING_TURKEY(5003, "assets/animations/bases/thanksgiving 2019 turkey base.dat"),
     THANKSGIVING_POOF(5004, "assets/animations/bases/thanksgiving 2019 poof base.dat"),
@@ -218,11 +217,6 @@ public enum AnimationBase {
     TELEPORT_BASE_5190(5190, "assets/teleportation/animations/bases/Base 5190.dat"),
     TRICK_BASE_5191(5191, "assets/halloween/animations/bases/Base 5191.dat"),
     TRICK_BASE_5192(5192, "assets/halloween/animations/bases/Base 5192.dat"),
-    DICE_BASE_5193(5193, "assets/dice bag/animations/bases/Base 5193.dat"),
-    DICE_BASE_5194(5194, "assets/dice bag/animations/bases/Base 5194.dat"),
-    DICE_BASE_5195(5195, "assets/dice bag/animations/bases/Base 5195.dat"),
-    DICE_BASE_5196(5196, "assets/dice bag/animations/bases/Base 5196.dat"),
-    DICE_BASE_5197(5197, "assets/dice bag/animations/bases/Base 5197.dat"),
 
     KORASI_GRAPHICS(32766, "assets/korasi/animations/bases/korasi_graphics.dat"),
     NEW_HUMAN(32767, "assets/korasi/animations/bases/new_human.dat"),

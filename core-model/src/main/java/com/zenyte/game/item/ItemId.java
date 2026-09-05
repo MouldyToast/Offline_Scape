@@ -12395,7 +12395,6 @@ public class ItemId extends CustomItemId {
     public static final int _200_DONATOR_SCROLL = 60018;
     public static final int ENHANCED_ICE_GLOVES = 30030;
     public static final int PET_MYSTERY_BOX = 30031;
-    public static final int DICE_UP_TO_100 = 30050;
     public static final int _10_DONATOR_SCROLL = 30051;
     public static final int _1_BOND = 30060;
     public static final int BEDSHEETS = 30100;

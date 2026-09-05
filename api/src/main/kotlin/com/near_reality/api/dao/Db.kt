@@ -7,7 +7,6 @@ import com.near_reality.api.dao.logs.CommandLogs
 import com.near_reality.api.dao.logs.CreditStoreCheckoutLogs
 import com.near_reality.api.dao.logs.DropItemLogs
 import com.near_reality.api.dao.logs.DuelLogs
-import com.near_reality.api.dao.logs.FlowerPokerSessionLogs
 import com.near_reality.api.dao.logs.GameServerLogs
 import com.near_reality.api.dao.logs.GrandExchangeOfferLogs
 import com.near_reality.api.dao.logs.GrandExchangeTransactionLogs
@@ -94,8 +93,6 @@ object Db {
                 create(TeleGrabItemLogs)
                 create(DropItemLogs)
                 create(MiddleManLogs)
-                create(FlowerPokerSessionLogs)
-                create(FlowerPokerSessionLogItems)
                 create(GrandExchangeOfferLogs)
                 create(GrandExchangeTransactionLogs)
                 create(DuelLogs)

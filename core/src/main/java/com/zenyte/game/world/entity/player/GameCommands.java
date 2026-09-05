@@ -115,7 +115,6 @@ import com.zenyte.game.world.region.dynamicregion.OutOfSpaceException;
 import com.zenyte.logger.NearRealityLogger;
 import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.dialogue.OptionsMenuD;
-import com.zenyte.plugins.item.DiceItem;
 import com.zenyte.tools.AnimationExtractor;
 import com.zenyte.utils.StringUtilities;
 import com.zenyte.utils.TextUtils;
@@ -590,70 +589,6 @@ public final class GameCommands {
 
             p.sendMessage("Your combat XP gain is currently " + (current ? "un" : "") + "locked.");
         });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"gambling", "gamble", "dice", "dicing", "fp", "flowerpoker",
-                "flower"}, "Teleports you to the gambling zone.", (p, args) -> {
-            if (p.isLocked()) {
-                return;
-            }
-            p.getDialogueManager().start(new Dialogue(p) {
-                @Override
-                public void buildDialogue() {
-                    plain(DiceItem.GAMBLE_WARNING);
-                    options(TITLE, "Take me there", "Cancel").onOptionOne(() -> {
-                        final Teleport teleport = new Teleport() {
-                            @Override
-                            public TeleportType getType() {
-                                return TeleportType.NEAR_REALITY_PORTAL_TELEPORT;
-                            }
-
-                            @Override
-                            public Location destination() {
-                                return new Location(3089, 3464, 0);
-                            }
-
-                            @Override
-                            public int getLevel() {
-                                return 0;
-                            }
-
-                            @Override
-                            public double getExperience() {
-                                return 0;
-                            }
-
-                            @Override
-                            public int getRandomizationDistance() {
-                                return 0;
-                            }
-
-                            @Override
-                            public Item[] getRunes() {
-                                return new Item[0];
-                            }
-
-                            @Override
-                            public int getWildernessLevel() {
-                                return 0;
-                            }
-
-                            @Override
-                            public boolean isCombatRestricted() {
-                                return true;
-                            }
-
-                            @Override
-                            public void onUsage(Player player) {
-                                player.lock(3);
-                                new FadeScreen(player, () -> {
-                                }).fade(3);
-                            }
-                        };
-                        teleport.teleport(player);
-                    });
-                }
-            });
-        });
-
         new Command(PlayerPrivilege.PLAYER, "skull", "Skulls your character without another player.", (p, args) -> {
             p.getDialogueManager().start(new Dialogue(p) {
                 @Override

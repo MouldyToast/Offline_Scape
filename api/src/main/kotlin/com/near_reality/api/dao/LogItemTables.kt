@@ -1,7 +1,6 @@
 package com.near_reality.api.dao
 
 import com.near_reality.api.dao.logs.DuelLogs
-import com.near_reality.api.dao.logs.FlowerPokerSessionLogs
 import com.near_reality.api.dao.logs.KilledByNpcLogs
 import com.near_reality.api.dao.logs.KilledByPlayerLogs
 import com.near_reality.api.dao.logs.MiscDeathLogs
@@ -50,5 +49,4 @@ object TradeLogItems : LogItems("trade_log_items_v2", TradeLogs)
 object KilledByPlayerLogItems : LogItems("killed_by_player_log_items_v2", KilledByPlayerLogs)
 object KilledByNpcLogItems : LogItems("killed_by_npc_log_items_v2", KilledByNpcLogs)
 object MiscDeathLogItems : LogItems("death_misc_log_items_v2", MiscDeathLogs)
-object FlowerPokerSessionLogItems : LogItems("flower_poker_session_log_items_v2", FlowerPokerSessionLogs)
 object DuelLogItems : LogItems("duel_log_items_v2", DuelLogs)

@@ -1,7 +1,5 @@
 package com.zenyte.game.world.entity.player.action.misc;
 
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager;
-import com.zenyte.game.content.flowerpoker.FlowerPokerSession;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
@@ -34,7 +32,6 @@ public class MithrilSeedPlanting extends Action {
     @Override
     public boolean start() {
         // Quick checks to see if this event can run
-        if (player.getBooleanTemporaryAttribute("gambling")) return true;
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return false;
 
         var location = new Location(player.getLocation());
@@ -57,11 +54,6 @@ public class MithrilSeedPlanting extends Action {
 
     @Override
     public int processWithDelay() {
-        if (player.getBooleanTemporaryAttribute("gambling")) {
-            FlowerPokerSession session = FlowerPokerManager.get(player).session;
-            session.planting.plantAndWalk(player, session.arena.getDirection());
-            return -1;
-        }
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return -1;
         var location = new Location(player.getLocation());
         if (isValidMovementTile(location) || (player.getDuel() != null && player.getDuel().inDuel())) {

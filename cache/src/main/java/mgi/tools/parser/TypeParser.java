@@ -80,7 +80,6 @@ import kotlin.text.Charsets;
 import mgi.custom.AnimationBase;
 import mgi.custom.BountyHunter;
 import mgi.custom.CustomTeleport;
-import mgi.custom.DiceBag;
 import mgi.custom.FramePacker;
 import mgi.custom.HighDefinitionPets;
 import mgi.custom.Korasi;
@@ -600,7 +599,6 @@ public class TypeParser {
     }
 
     private static void packHighRevision() throws IOException {
-        // new DiceBagPacker().pack();
         // new TrickPacker().pack();
         //new ThanksgivingPacker().pack();
         //new ChristmasMapPacker().pack();
@@ -608,7 +606,6 @@ public class TypeParser {
         //new EasterMapPacker().packAll();
         new CustomTeleport().packAll();
         //new TrickEmote().packAll();
-        new DiceBag().packAll();
         new Korasi().pack();
         InquisitorsGreatFlailPacker.pack();
         //new MusicEnumPacker().pack();

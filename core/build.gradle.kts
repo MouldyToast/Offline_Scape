@@ -24,7 +24,7 @@ dependencies {
     implementation(libs.apache.commons.codec)
     implementation(libs.jctools.core)
     implementation(libs.jackson.module.afterburner)
-    implementation(libs.jackson.module.kotlin)
+    api(libs.jackson.module.kotlin)
     //implementation(libs.logstash.gelf)
     implementation(libs.mXparser)
 

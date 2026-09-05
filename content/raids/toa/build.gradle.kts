@@ -13,5 +13,6 @@ kotlin {
 
 dependencies {
     compileOnly(projects.core)
+    compileOnly(libs.jackson.module.kotlin)
     implementation(projects.scripts.interfaces)
 }

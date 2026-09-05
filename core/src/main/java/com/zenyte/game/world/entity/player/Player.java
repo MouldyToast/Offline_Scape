@@ -447,7 +447,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private PriceChecker priceChecker = new PriceChecker(this);
     @Expose
     private transient Trade trade = new Trade(this);
-    private SeedVault seedVault = new SeedVault(this);
+    /**
+     * @deprecated Legacy persistence slot for the seed vault, superseded by
+     * attrPersistence["seed_vault"] (see SeedVaultKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "seedVault" key entirely. Delete field and getter with the D3 save
+     * rotation.
+     */
+    @Deprecated
+    private SeedVault seedVault;
     /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
@@ -4739,6 +4748,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return trade;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only SeedVault.onInit may call
+     * this, and only on the parser player. Live access goes through
+     * SeedVaultKeys.seedVault. Removed with the D3 save rotation.
+     */
+    @Deprecated
     public SeedVault getSeedVault() {
         return seedVault;
     }

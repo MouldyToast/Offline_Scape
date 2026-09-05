@@ -22,10 +22,16 @@ public class SeedVault {
     public static final void onInit(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
-        final SeedVault vault = player.getSeedVault();
-        if (savedPlayer == null) {
+        final boolean hadPersistedAttr = SeedVaultKeys.rawSeedVaultAttr(player) != null;
+        final SeedVault vault = SeedVaultKeys.seedVault(player);
+        if (hadPersistedAttr || savedPlayer == null) {
             return;
         }
+        // Legacy path: pre-migration saves keep the vault under the top-level
+        // "seedVault" JSON key on the parser player. The copy below migrates it
+        // into the attr; the next save persists it under
+        // attrPersistence["seed_vault"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final SeedVault savedVault = savedPlayer.getSeedVault();
         if (savedVault == null) return;
         vault.container.setContainer(savedVault.container);

@@ -78,10 +78,6 @@ import kotlin.jvm.optionals.getOrNull
 
 
 object DeveloperCommands {
-    var newStoreEnabled = true
-    var automatedSanctions = false
-    var ipBasedDetections = false
-    var anticheatEnabled = false
     var enabledGauntlet = true
     var toggledDT2Off = false
     var enabledLootKeys = true
@@ -282,16 +278,6 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleautosanction") { p, _ ->
-            if(automatedSanctions) {
-                automatedSanctions = false
-                p.sendMessage("Automated Sanctions have been disabled")
-            } else {
-                automatedSanctions = true
-                p.sendMessage("Automated Sanctions have been enabled")
-            }
-        }
-
         Command(PlayerPrivilege.DEVELOPER, "toggledt2") { p, _ ->
             if(toggledDT2Off) {
                 toggledDT2Off = false
@@ -302,26 +288,6 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleipfilter") { p, _ ->
-            if(ipBasedDetections) {
-                ipBasedDetections = false
-                p.sendMessage("IP-based checks have been disabled")
-            } else {
-                ipBasedDetections = true
-                p.sendMessage("IP-based checks have been enabled")
-            }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleanticheat") { p, _ ->
-            if(anticheatEnabled) {
-                anticheatEnabled = false
-                p.sendMessage("Anti-Cheat has been disabled")
-            } else {
-                anticheatEnabled = true
-                p.sendMessage("Anti-Cheat has been enabled")
-            }
-        }
-
         Command(PlayerPrivilege.DEVELOPER, "immune") { p, _ ->
             if(!p.immune) {
                 p.sendMessage("Immunity enabled")
@@ -329,16 +295,6 @@ object DeveloperCommands {
             } else {
                 p.sendMessage("Immunity disabled")
                 p.immune = false
-            }
-        }
-
-        Command(PlayerPrivilege.DEVELOPER, "newstore") { p, _ ->
-            if(!newStoreEnabled) {
-                p.sendMessage("New store enabled")
-                newStoreEnabled = true
-            } else {
-                p.sendMessage("New store disabled")
-                newStoreEnabled = false
             }
         }
 
@@ -717,11 +673,7 @@ object DeveloperCommands {
 
     @JvmStatic
     fun openStore(player: Player) {
-        if (newStoreEnabled) {
-            GameInterface.DONATION_STORE.open(player)
-        } else {
-            GameInterface.CREDIT_STORE.open(player)
-        }
+        GameInterface.CREDIT_STORE.open(player)
     }
 
     private fun makeClueTypeMenu(

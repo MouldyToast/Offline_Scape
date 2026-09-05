@@ -45,7 +45,7 @@ public class InterfaceHandler {
 	}
 
 	private static final IntSet EXPANDED_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {12, 139, 400, 345, 310, 700, 1704, 1709, 675, 724, 1614, 772, 774});
-	private static final IntSet EXPANDED_WIDTH_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {1622});
+	private static final IntSet EXPANDED_WIDTH_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {});
 	private static final Object[] EXPANDED_HEIGHT_ARGS = new Object[]{-1, -2};
 	private static final Object[] EXPANDED_WIDTH_HEIGHT_ARGS = new Object[]{-1, -3};
 	private static final Object[] DEFAULT_ARGS = new Object[] {-1, -1};

@@ -17,8 +17,6 @@ dependencies {
 
     runtimeOnly(projects.core)
 
-    runtimeOnly(projects.coreRestricted)
-
     // Auto-discovered content and tools modules
     findContentModules().forEach { runtimeOnly(it) }
     findToolModules().forEach { runtimeOnly(it) }

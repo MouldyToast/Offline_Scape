@@ -1,4 +1,6 @@
-plugins { id("org.jetbrains.kotlin.jvm") }
+plugins {
+    id("org.jetbrains.kotlin.jvm")
+}
 
 kotlin {
     sourceSets.main {
@@ -11,6 +13,4 @@ kotlin {
 
 dependencies {
     compileOnly(projects.core)
-    implementation(projects.scripts.npc.drops)
-    implementation(projects.scripts.groundItems)
 }

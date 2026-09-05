@@ -35,24 +35,18 @@ import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.content.bountyhunter.BountyHunter;
-import com.zenyte.game.content.breaches.BreachManager;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.clans.ClanManager;
-import com.zenyte.game.content.compcapes.CompletionistCape;
-import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
-import com.zenyte.game.content.event.easter2020.EasterConstants;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.gravestones.Gravestone;
-import com.zenyte.game.content.killstreak.KillstreakLog;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.minigame.barrows.Barrows;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
@@ -74,14 +68,10 @@ import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.content.skills.slayer.Slayer;
-import com.zenyte.game.content.tombsofamascut.AbstractTOAManager;
-import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
-import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
-import com.zenyte.game.content.wheeloffortune.WheelOfFortune;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
@@ -233,6 +223,10 @@ import net.rsprot.protocol.game.outgoing.info.worldentityinfo.WorldEntityInfo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.rsmod.api.attr.AttributeMap;
+import org.rsmod.game.events.PlayerDamageReceivedEvent;
+import org.rsmod.game.events.PlayerLoginEvent;
+import org.rsmod.game.events.PlayerLogoutEvent;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
@@ -365,16 +359,36 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return toaPlayerData;
     }
 
-    @Expose(deserialize = false, serialize = false)
-    private final transient AbstractTOAManager toaManager = AbstractTOAManager.getForPlayer(this);
-
-    public AbstractTOAManager getTOAManager() {
-        return toaManager;
-    }
 
     private final transient DialogueManager dialogueManager = new DialogueManager(this);
     @Expose
     private final Map<String, Object> attributes = new ConcurrentHashMap<>();
+
+    /**
+     * OpenRune-pattern typed content state (org.rsmod.api.attr). Coexists
+     * with the legacy 'attributes' map above; new extractions use this.
+     * Transient — GSON must never serialize the typed map directly.
+     */
+    private final transient AttributeMap attr = new AttributeMap();
+
+    /**
+     * Serialization surface for {@link #attr}: refreshed from
+     * attr.toPersistentMap() immediately before save (LoginManager) and
+     * restored into attr via putAllFromPersistence at load.
+     */
+    private Map<String, Object> attrPersistence = new HashMap<>();
+
+    public AttributeMap getAttr() {
+        return attr;
+    }
+
+    public Map<String, Object> getAttrPersistenceRaw() {
+        return attrPersistence == null ? new HashMap<>() : attrPersistence;
+    }
+
+    public void refreshAttrPersistence() {
+        attrPersistence = new HashMap<>(attr.toPersistentMap());
+    }
     @Expose
     private Map<Integer, Boolean> playerTitleStatus = new HashMap<>();
     @Expose
@@ -404,7 +418,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
 
     @Expose
-    private final KillstreakLog killstreakLog = new KillstreakLog();
     private final HpHud hpHud = new HpHud(this);
 
     @Expose
@@ -530,7 +543,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);
-    private transient Optional<GrotesqueGuardiansInstance> grotesqueGuardiansInstance = Optional.empty();
 
     private transient AraneaBoots araneaBoots = new AraneaBoots(this);
 
@@ -554,7 +566,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient LogoutType logoutType = LogoutType.NONE;
     @Nullable
     private transient volatile WorldSwitchTarget worldSwitchTarget;
-    private WheelOfFortune wheelOfFortune = new WheelOfFortune(this);
     private transient boolean updatingNPCOptions = true;
     private transient boolean updateNPCOptions;
     private transient IntSet pendingVars = new IntLinkedOpenHashSet(100);
@@ -1014,8 +1025,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (HitType.HEALED.equals(type)) {
             heal(hit.getDamage());
         } else if (!HitType.SHIELD_DOWN.equals(type) && !HitType.CORRUPTION.equals(type)) {
-            if (hit.getSource() instanceof AbstractTOANPC) {
-                toaManager.setDamageTaken(toaManager.getDamageTaken() + Math.min(hitpoints, hit.getDamage()));
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerDamageReceivedEvent(this, hit.getSource(), hit.getDamage(), hit.getHitType()));
             }
             removeHitpoints(hit);
         }
@@ -1828,12 +1839,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         try {
             try {
-                BreachManager.processPlayer(this);
-            }
-            catch (final Exception e) {
-                log.error("", e);
-            }
-            try {
                 actionManager.process();
             }
             catch (final Exception e) {
@@ -2007,8 +2012,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = getMemberRank().getDR();
         double pin = getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double compCape = getCompletionistCapeDRBoost();
-        return ((gameMode + donor + pin + compCape) * 100.0D);
+        return ((gameMode + donor + pin) * 100.0D);
     }
 
     public double getExchangeBonus() {
@@ -2045,18 +2049,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return this.gameMode.isGroupIronman();
     }
 
-    public double getCompletionistCapeDRBoost() {
-        Item cape = getCape();
-        if (cape == null)
-            return 0.0D;
-        int tier = CompletionistCape.getCompletionistCapeTier(getCape().getId());
-        return switch (tier) {
-            case 1 -> 0.01D;
-            case 2 -> 0.02D;
-            case 3 -> 0.03D;
-            default -> 0.0D;
-        };
-    }
 
 
     private boolean torvaHPBoosted = false;
@@ -2153,7 +2145,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (source != null) {
             final Hit hit = entry.getHit();
             final HitType type = hit.getHitType();
-            final float multiplierAddition = getArea() instanceof final AbstractTOARaidArea area && area.isQuietPrayers() ? .1F : 0;
+            final float multiplierAddition = getArea() != null && getArea().isQuietPrayers() ? .1F : 0;
             if (type == HitType.MELEE) {
                 if (prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMeleePrayerMultiplier() + multiplierAddition)));
@@ -2221,6 +2213,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
             interfaceHandler.closeInterfaces();
             MethodicPluginHandler.invokePlugins(ListenerType.LOGOUT, this);
             PluginManager.post(new LogoutEvent(this));
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerLogoutEvent(this));
+            }
             MiddleManManager.INSTANCE.onLogout(this);
             if (logger != null) {
                 CoresManager.getServiceProvider().submit(logger::shutdown);
@@ -3251,7 +3246,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 getEquipment().refresh();
             }
             if (!HitType.HEALED.equals(hit.getHitType()) && hit.getSource() != null && !hit.getSource().equals(this)
-                    && getArea() instanceof final AbstractTOARaidArea toaRaidArea && toaRaidArea.isDeadlyPrayers()) {
+                    && getArea() != null && getArea().isDeadlyPrayers()) {
                 prayerManager.drainPrayerPoints(damage / 5);
             }
             if (getHitpoints() <= (getMaxHitpoints() * 0.1F)) {
@@ -3521,19 +3516,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return middleTile;
     }
 
-    private static final Animation candyCaneBlockAnimation = new Animation(15086);
-    private static final Animation easterCarrotBlockAnimation = new Animation(15162);
 
     private Animation getDefenceAnimation() {
         final int weaponId = getEquipment().getId(EquipmentSlot.WEAPON);
         if (weaponId == 21015) {
             return BULWARK_ANIM;
-        }
-        if (weaponId == ChristmasConstants.CANDY_CANE) {
-            return candyCaneBlockAnimation;
-        }
-        if (weaponId == EasterConstants.EasterItem.EASTER_CARROT.getItemId()) {
-            return easterCarrotBlockAnimation;
         }
         if (weaponId == 4084) {
             return new Animation(1466);
@@ -4392,7 +4379,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         GlobalAreaManager.update(this, true, false);
         World.updateEntityChunk(this, false);
         Analytics.logLogin(this);
-        toaManager.onLogin();
+        if (CoresManager.worldThread != null) {
+            CoresManager.worldThread.getEventBus().publish(new PlayerLoginEvent(this));
+        }
         clip();
         LocationMap.add(this);
         final Calendar calendar = Calendar.getInstance();
@@ -5042,21 +5031,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
 
-    public KillstreakLog getKillstreakLog() {
-        return killstreakLog;
-    }
 
     public DailyChallengeManager getDailyChallengeManager() {
         return dailyChallengeManager;
     }
 
-    public GrotesqueGuardiansInstance getGrotesqueGuardiansInstance() {
-        return grotesqueGuardiansInstance.orElse(null);
-    }
-
-    public void setGrotesqueGuardiansInstance(GrotesqueGuardiansInstance grotesqueGuardiansInstance) {
-        this.grotesqueGuardiansInstance = Optional.ofNullable(grotesqueGuardiansInstance);
-    }
 
     public int getPid() {
         return pid;
@@ -5131,9 +5110,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.worldSwitchTarget = worldSwitchTarget;
     }
 
-    public WheelOfFortune getWheelOfFortune() {
-        return wheelOfFortune;
-    }
 
     public boolean isUpdatingNPCOptions() {
         return updatingNPCOptions;

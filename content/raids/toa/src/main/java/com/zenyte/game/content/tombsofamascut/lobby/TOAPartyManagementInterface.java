@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.lobby;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
@@ -90,7 +92,7 @@ public class TOAPartyManagementInterface extends Interface {
 			if (viewingParty == null) {
 				return;
 			}
-			switch(player.getTOAManager().getViewingValue()) {
+			switch(TOAAccess.getToaManager(player).getViewingValue()) {
 				case NON_MEMBER_VIEW_VALUE -> {
 					TOALobbyParty currentLobbyParty = TOALobbyParty.getCurrentParty(player);
 					if (currentLobbyParty != null && currentLobbyParty.insideRaid()) {
@@ -107,8 +109,8 @@ public class TOAPartyManagementInterface extends Interface {
 					final Runnable applyRunnable = () -> {
 						if (viewingParty.apply(player)) {
 							player.sendMessage("You have applied to join the party of " + viewingParty.getLeaderDisplayName() + ".");
-							if (player.getTOAManager().getCurrentInterfaceTab() != 1) {
-								player.getTOAManager().setCurrentInterfaceTab(1);
+							if (TOAAccess.getToaManager(player).getCurrentInterfaceTab() != 1) {
+								TOAAccess.getToaManager(player).setCurrentInterfaceTab(1);
 							}
 							updatePartyManagementInterface(player);
 							final Player leader = viewingParty.getLeader();
@@ -184,7 +186,7 @@ public class TOAPartyManagementInterface extends Interface {
 		});
 		for (int slot = 8; slot < 12; slot++) {
 			bind("Tab select " + slot, (player, slotId, itemId, option) -> {
-				player.getTOAManager().setCurrentInterfaceTab(slotId - 8);
+				TOAAccess.getToaManager(player).setCurrentInterfaceTab(slotId - 8);
 				updatePartyManagementInterface(player);
 			});
 		}
@@ -204,10 +206,10 @@ public class TOAPartyManagementInterface extends Interface {
 				} else if (viewingParty.getPlayers().contains(p)) {
 					viewingParty.removePlayer(p);
 					updatePartyManagementInterface(player);
-					if (p.getTOAManager().viewingManagementInterface(viewingParty.getLeaderDisplayName())) {
+					if (TOAAccess.getToaManager(p).viewingManagementInterface(viewingParty.getLeaderDisplayName())) {
 						updatePartyManagementInterface(p);
 					}
-					p.getTOAManager().sendEmptyPartyList();
+					TOAAccess.getToaManager(p).sendEmptyPartyList();
 					p.sendMessage("You have been kicked from the party of " + player.getName() + ".");
 					p.sendSound(2277);
 					player.sendMessage("You have kicked " + p.getName() + " from your party.");
@@ -227,7 +229,7 @@ public class TOAPartyManagementInterface extends Interface {
 					return;
 				}
 				if (p != null && viewingParty.handleAcceptant(p, accept)) {
-					if (p.getTOAManager().viewingManagementInterface(viewingParty.getLeaderDisplayName())) {
+					if (TOAAccess.getToaManager(p).viewingManagementInterface(viewingParty.getLeaderDisplayName())) {
 						updatePartyManagementInterface(p);
 					}
 					if (accept) {
@@ -249,7 +251,7 @@ public class TOAPartyManagementInterface extends Interface {
 			bind("Invocation select " + slot, (player, slotId, itemId, option) -> {
 				final TOALobbyParty viewingParty = checkViewingParty(player);
 				if (viewingParty != null && viewingParty.isLeader(player)) {
-					player.getTOAManager().toggleInvocation(InvocationType.VALUES[slotId - 52], player);
+					TOAAccess.getToaManager(player).toggleInvocation(InvocationType.VALUES[slotId - 52], player);
 					updatePartyManagementInterface(player);
 				}
 			});
@@ -271,11 +273,11 @@ public class TOAPartyManagementInterface extends Interface {
 				} else {
 					final OptionDialogue dialogue = new OptionDialogue(player, "Are you sure you wish to clear this preset?", new String[] {"Clear this preset.", "Cancel"},
 							new Runnable[] {() -> {
-								player.getTOAManager().clearInvocationPreset(slotId);
+								TOAAccess.getToaManager(player).clearInvocationPreset(slotId);
 								updatePartyManagementInterface(player);
 								player.sendMessage("Your preset has been cleared.");
 								player.sendSound(2381);
-								player.getTOAManager().clearInvocationPreset(slotId);
+								TOAAccess.getToaManager(player).clearInvocationPreset(slotId);
 							}, () -> updatePartyManagementInterface(player)});
 					player.getDialogueManager().start(dialogue);
 				}
@@ -291,12 +293,12 @@ public class TOAPartyManagementInterface extends Interface {
 				} else {
 					final Runnable runnable = () -> {
 						player.getVarManager().sendBitInstant(PRESET_SELECT_VARBIT, 0);
-						player.getTOAManager().saveInvocationPreset(currentPresetSlot);
+						TOAAccess.getToaManager(player).saveInvocationPreset(currentPresetSlot);
 						updatePartyManagementInterface(player);
 						player.sendMessage("Your preset has been saved.");
 						player.sendSound(2655);
 					};
-					if (!player.getTOAManager().isPresetEmpty(currentPresetSlot)) {
+					if (!TOAAccess.getToaManager(player).isPresetEmpty(currentPresetSlot)) {
 						final OptionDialogue dialogue = new OptionDialogue(player, "You already have a preset saved in this slot.", new String[] {"Save and overwrite this preset.", "Cancel"},
 								new Runnable[] { () -> {
 									runnable.run();
@@ -317,11 +319,11 @@ public class TOAPartyManagementInterface extends Interface {
 				if (currentPresetSlot == -1) {
 					player.sendMessage("You do not have a valid preset selected to load from.");
 					updatePartyManagementInterface(player);
-				} else if (player.getTOAManager().isPresetEmpty(currentPresetSlot)) {
+				} else if (TOAAccess.getToaManager(player).isPresetEmpty(currentPresetSlot)) {
 					player.sendMessage("You do not have any invocations stored in this preset.");
 					updatePartyManagementInterface(player);
 				} else {
-					viewingParty.getPartySettings().loadInvocationPreset(player.getTOAManager().getInvocationPreset(currentPresetSlot));
+					viewingParty.getPartySettings().loadInvocationPreset(TOAAccess.getToaManager(player).getInvocationPreset(currentPresetSlot));
 					player.sendMessage("Your preset has been loaded.");
 					player.sendSound(2655);
 					updatePartyManagementInterface(player);
@@ -353,8 +355,8 @@ public class TOAPartyManagementInterface extends Interface {
 		updatePartyApplicants(player);
 		final TOAPartySettings partySettings = viewingParty.getPartySettings();
 		final int[] bitMaps = viewingParty.getPartySettings().getInvocationBitmaps();
-		player.getPacketDispatcher().sendClientScript(6729, player.getTOAManager().getViewingValue(), partySettings.getKcRequirement(),
-				partySettings.getActiveInvocations(), partySettings.getRaidLevel(), player.getTOAManager().getCurrentInterfaceTab(), bitMaps[0], bitMaps[1], bitMaps[2]);
+		player.getPacketDispatcher().sendClientScript(6729, TOAAccess.getToaManager(player).getViewingValue(), partySettings.getKcRequirement(),
+				partySettings.getActiveInvocations(), partySettings.getRaidLevel(), TOAAccess.getToaManager(player).getCurrentInterfaceTab(), bitMaps[0], bitMaps[1], bitMaps[2]);
 		if (viewingParty.isLeader(player)) {
 			player.getPacketDispatcher().sendComponentSettings(GameInterface.TOA_PARTY_MANAGEMENT.getId(), 98, 0, 5, AccessMask.CLICK_OP1, AccessMask.CLICK_OP2);
 			player.getPacketDispatcher().sendComponentSettings(GameInterface.TOA_PARTY_MANAGEMENT.getId(), 1, 0, 79, AccessMask.CONTINUE);
@@ -390,7 +392,7 @@ public class TOAPartyManagementInterface extends Interface {
 		} else if (viewingParty.getBlockedPlayers().contains(player)) {
 			viewingValue = KICKED_VIEW_VALUE;
 		}
-		player.getTOAManager().setViewingValue(viewingValue);
+		TOAAccess.getToaManager(player).setViewingValue(viewingValue);
 	}
 
 

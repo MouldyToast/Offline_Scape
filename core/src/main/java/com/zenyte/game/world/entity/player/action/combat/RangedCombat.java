@@ -8,8 +8,6 @@ import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC;
-import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
@@ -482,7 +480,7 @@ public class RangedCombat extends PlayerCombat {
     }
 
     public static double getTwistedBowDamageBoost(Player player, Entity target, int magicLevel, boolean inRaid) {
-        if (target instanceof AbstractTOANPC || target instanceof AbstractTheatreNPC) {
+        if (target instanceof NPC npc && npc.isRaidNpcForTwistedBow()) {
             inRaid = true;
         }
 
@@ -505,7 +503,7 @@ public class RangedCombat extends PlayerCombat {
             return 1.0;
         }
 
-        if (target instanceof AbstractTOANPC || target instanceof AbstractTheatreNPC) {
+        if (target instanceof NPC npc && npc.isRaidNpcForTwistedBow()) {
             inRaid = true;
         }
 

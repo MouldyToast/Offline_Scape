@@ -3,7 +3,7 @@ package com.zenyte.game.content.theatreofblood.room
 import com.zenyte.game.content.theatreofblood.insideTob
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikViturPhase
-import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC
+import com.zenyte.game.content.theatreofblood.AbstractTheatreNPC
 import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Hit

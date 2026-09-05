@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.item;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.TOAManager;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -16,7 +18,7 @@ public class SuppliesBagItemOnItemAction implements ItemOnItemAction {
 			return;
 		}
 		final boolean fromIsSupplies = from.getId() == ItemId.SUPPLIES;
-		player.getTOAManager().storeSupply(fromIsSupplies ? toSlot : fromSlot, fromIsSupplies ? to : from);
+		TOAAccess.getToaManager(player).storeSupply(fromIsSupplies ? toSlot : fromSlot, fromIsSupplies ? to : from);
 	}
 
 	@Override public int[] getItems() {

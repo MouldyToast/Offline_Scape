@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.npc.BaboonNPC;
 import com.zenyte.game.content.tombsofamascut.npc.TOANPC;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterStage;
@@ -375,7 +377,7 @@ public class ApmekenEncounter extends TOARaidArea implements CycleProcessPlugin 
             sightPlayer.getTemporaryAttributes().put(SIGHT_PLAYER_ATTRIBUTE, Boolean.TRUE);
             sightPlayer.setGraphics(SIGHT_GRANTED_GFX);
         }
-        getPlayers().stream().filter(Objects::nonNull).forEach(p -> p.getTOAManager().refreshHudStates());
+        getPlayers().stream().filter(Objects::nonNull).forEach(p -> TOAAccess.getToaManager(p).refreshHudStates());
         for (Player p : players) {
             p.sendSound(CYCLE_SOUND);
             p.sendMessage("<col=3366ff>" + (p.getUsername().equals(sightPlayer.getUsername()) ? "You have" : (sightPlayer.getName() + " has")) + " been granted Apmeken's Sight.");

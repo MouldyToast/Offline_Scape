@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.lobby;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
 import com.zenyte.game.content.tombsofamascut.TOAPartySettings;
@@ -34,7 +36,7 @@ public class TOALobbyParty {
 	public TOALobbyParty(final Player owner) {
 		addPlayer(owner);
 		leaderDisplayName = owner.getName();
-		partySettings = (TOAPartySettings) owner.getTOAManager().getPartySettings();
+		partySettings = (TOAPartySettings) TOAAccess.getToaManager(owner).getPartySettings();
 	}
 
 	public static void setPartyList(Player p, List<TOALobbyParty> parties) {
@@ -42,23 +44,23 @@ public class TOALobbyParty {
 	}
 
 	public static void setViewingParty(Player player, TOALobbyParty party) {
-		player.getTOAManager().setViewingParty(party);
+		TOAAccess.getToaManager(player).setViewingParty(party);
 	}
 
 	public static void setCurrentParty(Player player, TOALobbyParty party) {
-		player.getTOAManager().setCurrentParty(party);
+		TOAAccess.getToaManager(player).setCurrentParty(party);
 	}
 
 	public static TOALobbyParty getCurrentParty(Player player) {
-		return (TOALobbyParty) player.getTOAManager().getCurrentParty();
+		return (TOALobbyParty) TOAAccess.getToaManager(player).getCurrentParty();
 	}
 
 	public static void setAppliedParty(Player player, TOALobbyParty party) {
-		player.getTOAManager().setAppliedParty(party);
+		TOAAccess.getToaManager(player).setAppliedParty(party);
 	}
 
 	public static TOALobbyParty getAppliedParty(Player player) {
-		return (TOALobbyParty) player.getTOAManager().getAppliedParty();
+		return (TOALobbyParty) TOAAccess.getToaManager(player).getAppliedParty();
 	}
 
 
@@ -79,9 +81,9 @@ public class TOALobbyParty {
 
 	void disband() {
 		players.removeIf(p -> {
-			p.getTOAManager().sendEmptyPartyList();
+			TOAAccess.getToaManager(p).sendEmptyPartyList();
 			setCurrentParty(p, null);
-			if (p.getTOAManager().viewingManagementInterface(leaderDisplayName)) {
+			if (TOAAccess.getToaManager(p).viewingManagementInterface(leaderDisplayName)) {
 				p.getDialogueManager().start(new PlainChat(p, "Your party has disbanded.").setOnCloseRunnable(() -> GameInterface.TOA_PARTY_OVERVIEW.open(p)));
 			} else {
 				p.sendMessage("Your party has disbanded.");
@@ -90,7 +92,7 @@ public class TOALobbyParty {
 		});
 		applicants.forEach(p -> {
 			setAppliedParty(p, null);
-			if (p.getTOAManager().viewingManagementInterface(leaderDisplayName)) {
+			if (TOAAccess.getToaManager(p).viewingManagementInterface(leaderDisplayName)) {
 				p.getDialogueManager().start(new PlainChat(p, "That party is no longer recruiting.").setOnCloseRunnable(() -> GameInterface.TOA_PARTY_OVERVIEW.open(p)));
 			} else {
 				p.sendMessage("The party to which you were applying has disbanded.");
@@ -98,7 +100,7 @@ public class TOALobbyParty {
 		});
 		blockedPlayers.forEach(p -> {
 			setAppliedParty(p, null);
-			if (p.getTOAManager().viewingManagementInterface(leaderDisplayName)) {
+			if (TOAAccess.getToaManager(p).viewingManagementInterface(leaderDisplayName)) {
 				p.getDialogueManager().start(new PlainChat(p, "That party has disbanded.").setOnCloseRunnable(() -> GameInterface.TOA_PARTY_OVERVIEW.open(p)));
 			}
 		});
@@ -145,8 +147,8 @@ public class TOALobbyParty {
 					final Player newLeader = getLeader();
 					leaderDisplayName = newLeader.getName();
 					if (!insideRaid()) {
-						((TOAPartySettings) newLeader.getTOAManager().getPartySettings()).copyPartySettings(partySettings);
-						partySettings = (TOAPartySettings) newLeader.getTOAManager().getPartySettings();
+						((TOAPartySettings) TOAAccess.getToaManager(newLeader).getPartySettings()).copyPartySettings(partySettings);
+						partySettings = (TOAPartySettings) TOAAccess.getToaManager(newLeader).getPartySettings();
 					}
 				}
 			}
@@ -154,7 +156,7 @@ public class TOALobbyParty {
 				removeFromList();
 			}
 			if (updatePartyList) {
-				player.getTOAManager().sendEmptyPartyList();
+				TOAAccess.getToaManager(player).sendEmptyPartyList();
 			}
 			if (raidParty != null) {
 				raidParty.leave(player, false);
@@ -179,7 +181,7 @@ public class TOALobbyParty {
 
 	static TOALobbyParty getParty(int index) { return index >= LOBBY_PARTIES.size() ? null : LOBBY_PARTIES.get(index); }
 	static TOALobbyParty getViewingParty(Player player) {
-		return (TOALobbyParty) player.getTOAManager().getViewingParty();
+		return (TOALobbyParty) TOAAccess.getToaManager(player).getViewingParty();
 	}
 
 	static boolean partyExists(TOALobbyParty party) { return LOBBY_PARTIES.contains(party); }

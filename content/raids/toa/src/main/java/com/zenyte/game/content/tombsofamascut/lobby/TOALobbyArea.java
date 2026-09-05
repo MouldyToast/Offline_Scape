@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.lobby;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidArea;
 import com.zenyte.game.model.ui.InterfacePosition;
@@ -20,7 +22,7 @@ public class TOALobbyArea extends PolygonRegionArea {
 
 	@Override public void enter(Player player) {
 		player.getInterfaceHandler().sendInterface(InterfacePosition.OVERLAY, GameInterface.TOA_PARTY.getId());
-		player.getTOAManager().sendEmptyPartyList();
+		TOAAccess.getToaManager(player).sendEmptyPartyList();
 	}
 
 	@Override public void leave(Player player, boolean logout) {

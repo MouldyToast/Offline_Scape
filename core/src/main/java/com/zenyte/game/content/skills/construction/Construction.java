@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
@@ -35,6 +36,7 @@ import com.zenyte.logger.NearRealityLogger;
 import com.zenyte.plugins.dialogue.PlainChat;
 import com.zenyte.plugins.dialogue.RoomCreationD;
 import com.zenyte.plugins.dialogue.RoomRemovingD;
+import com.zenyte.plugins.events.InitializationEvent;
 import mgi.types.config.ObjectDefinitions;
 import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
@@ -125,6 +127,15 @@ public final class Construction {
         this.player = player;
         houseViewer = new HouseViewer(player);
         tipJar = new TipJar(player);
+    }
+
+    @Subscribe
+    public static final void onInit(final InitializationEvent event) {
+        final Construction parserConstruction = event.getSavedPlayer().getConstruction();
+        if (parserConstruction == null) {
+            return;
+        }
+        event.getPlayer().getConstruction().setFields(parserConstruction);
     }
 
     public final void setFields(final Construction construction) {

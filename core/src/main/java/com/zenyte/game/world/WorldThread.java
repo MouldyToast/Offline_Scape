@@ -9,6 +9,7 @@ import com.near_reality.game.world.WorldEvent;
 import com.near_reality.game.world.WorldHooks;
 import com.near_reality.game.world.entity.player.FakePlayer;
 import com.near_reality.threads.MainThread;
+import org.rsmod.events.EventBus;
 import com.zenyte.Main;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameClock;
@@ -77,6 +78,9 @@ public final class WorldThread extends MainThread {
     private final NetworkService<Session> networkService;
 
     private final WorldHooks hooks = new WorldHooks();
+
+    /** OpenRune-pattern event bus. Coexists with WorldHooks; new lifecycle events publish here. */
+    private final EventBus eventBus = new EventBus();
 
     private boolean purgeMoreChunksNextCycle;
 
@@ -692,6 +696,10 @@ public final class WorldThread extends MainThread {
 
     public WorldHooks getHooks() {
         return hooks;
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
     }
 
 }

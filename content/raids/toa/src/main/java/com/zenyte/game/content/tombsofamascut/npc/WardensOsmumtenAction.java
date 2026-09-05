@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.encounter.WardenEncounter;
 import com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidArea;
@@ -23,7 +25,7 @@ public class WardensOsmumtenAction extends NPCPlugin {
     }
 
     private void handle(final Player player) {
-        TOARaidParty party = (TOARaidParty) player.getTOAManager().getRaidParty();
+        TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(player).getRaidParty();
         if (party == null) {
             return;
         }

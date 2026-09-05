@@ -3,7 +3,7 @@ package com.zenyte.game.content.consumables.drinks;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.consumables.Drinkable;
-import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
+import com.zenyte.game.world.region.RegionArea;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.ProjectileUtils;
@@ -343,7 +343,7 @@ public enum Potion implements Drinkable {
 
         @Override
         public boolean canConsume(final Player player) {
-            return super.canConsume(player) && player.getArea() instanceof AbstractTOARaidArea;
+            return super.canConsume(player) && player.getArea() != null && player.getArea().isTombsOfAmascutArea();
         }
 
         @Override
@@ -362,12 +362,13 @@ public enum Potion implements Drinkable {
 
         @Override
         public boolean canConsume(final Player player) {
-            return  super.canConsume(player) && player.getArea() instanceof AbstractTOARaidArea;
+            return  super.canConsume(player) && player.getArea() != null && player.getArea().isTombsOfAmascutArea();
         }
 
         @Override
         public void onConsumption(Player player) {
-            if (player.getArea() instanceof final AbstractTOARaidArea area) {
+            final RegionArea area = player.getArea();
+            if (area != null && area.isTombsOfAmascutArea()) {
                 player.getPrayerManager().restorePrayerPoints((player.getSkills().getLevelForXp(SkillConstants.PRAYER) / 4) + 10, false);
                 for (Player p : area.getPlayers()) {
                     if (p != null && !p.getAppearance().isTransformedIntoNpc() && !p.isFinished() && !p.isDying()
@@ -391,7 +392,8 @@ public enum Potion implements Drinkable {
     TOA_AMBROSIA(new int[] {ItemId.AMBROSIA_1, ItemId.AMBROSIA_2}) {
         @Override
         public boolean canConsume(final Player player) {
-            if (player.getArea() instanceof final AbstractTOARaidArea area) {
+            final RegionArea area = player.getArea();
+            if (area != null && area.isTombsOfAmascutArea()) {
                 if (area.isDeHydration()) {
                     player.sendMessage("You've been prevented from drinking this potion within the Tombs of Amascut");
                     return false;
@@ -428,7 +430,7 @@ public enum Potion implements Drinkable {
 
         @Override
         public boolean canConsume(final Player player) {
-            return super.canConsume(player) && player.getArea() instanceof AbstractTOARaidArea;
+            return super.canConsume(player) && player.getArea() != null && player.getArea().isTombsOfAmascutArea();
         }
 
         @Override
@@ -462,7 +464,7 @@ public enum Potion implements Drinkable {
     BLESSED_CRYSTAL_SCARAB(new int[] {ItemId.BLESSED_CRYSTAL_SCARAB_1, ItemId.BLESSED_CRYSTAL_SCARAB_2}) {
         @Override
         public boolean canConsume(final Player player) {
-            return super.canConsume(player) && player.getArea() instanceof AbstractTOARaidArea;
+            return super.canConsume(player) && player.getArea() != null && player.getArea().isTombsOfAmascutArea();
         }
 
         @Override
@@ -496,7 +498,7 @@ public enum Potion implements Drinkable {
 
         @Override
         public boolean canConsume(final Player player) {
-            return super.canConsume(player) &&  player.getArea() instanceof AbstractTOARaidArea;
+            return super.canConsume(player) &&  player.getArea() != null && player.getArea().isTombsOfAmascutArea();
         }
 
         @Override

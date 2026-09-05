@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.Interface;
@@ -14,8 +16,8 @@ import com.zenyte.game.world.entity.player.container.Container;
 public class TOASupplyBagInterface extends Interface implements SwitchPlugin {
 
 	@Override public void open(Player player) {
-		if (player.getTOAManager().getSuppliesContainer() != null) {
-			player.getPacketDispatcher().sendUpdateItemContainer(player.getTOAManager().getSuppliesContainer());
+		if (TOAAccess.getToaManager(player).getSuppliesContainer() != null) {
+			player.getPacketDispatcher().sendUpdateItemContainer(TOAAccess.getToaManager(player).getSuppliesContainer());
 		}
 		super.open(player);
 		player.getPacketDispatcher().sendComponentSettings(getInterface(), getComponent("Container"), 0, 27, AccessMask.CLICK_OP1, AccessMask.CLICK_OP2, AccessMask.CLICK_OP3, AccessMask.CLICK_OP4, AccessMask.CLICK_OP9, AccessMask.DRAG_DEPTH1, AccessMask.DRAG_TARGETABLE);
@@ -26,7 +28,7 @@ public class TOASupplyBagInterface extends Interface implements SwitchPlugin {
 	}
 
 	@Override protected void build() {
-		bind("Container", (player, slotId, itemId, option) -> player.getTOAManager().withdrawSpecificSupplies(slotId, option));
+		bind("Container", (player, slotId, itemId, option) -> TOAAccess.getToaManager(player).withdrawSpecificSupplies(slotId, option));
 	}
 
 	@Override public GameInterface getInterface() {
@@ -34,7 +36,7 @@ public class TOASupplyBagInterface extends Interface implements SwitchPlugin {
 	}
 
 	@Override public boolean switchItem(Player player, int fromComponent, int toComponent, int fromSlot, int toSlot) {
-		final Container container = player.getTOAManager().getSuppliesContainer();
+		final Container container = TOAAccess.getToaManager(player).getSuppliesContainer();
 		if (container != null) {
 			final Item from = container.get(fromSlot);
 			final Item to = container.get(toSlot);

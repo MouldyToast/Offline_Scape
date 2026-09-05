@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.encounter.MainHallEncounter;
 import com.zenyte.game.item.Item;
@@ -59,16 +61,16 @@ public class TOASupplySelectInterface extends Interface {
 				} else {
 					final Container container = new Container(ContainerType.TOA_SUPPLY_BAG, ContainerPolicy.NEVER_STACK, 28, Optional.of(player));
 					container.addAll(toAdd);
-					player.getTOAManager().setSuppliesContainer(container);
-					player.getTOAManager().setCanClaimSupplies(false);
+					TOAAccess.getToaManager(player).setSuppliesContainer(container);
+					TOAAccess.getToaManager(player).setCanClaimSupplies(false);
 					player.getInventory().addItem(new Item(ItemId.SUPPLIES));
 				}
-			} else if (player.getTOAManager().getSuppliesContainer() != null) {
-				if (player.getTOAManager().getSuppliesContainer().getFreeSlotsSize() < toAdd.size()) {
+			} else if (TOAAccess.getToaManager(player).getSuppliesContainer() != null) {
+				if (TOAAccess.getToaManager(player).getSuppliesContainer().getFreeSlotsSize() < toAdd.size()) {
 					player.getDialogueManager().start(new PlainChat(player, "You need more space in your supply bag for additional supplies."));
 				} else {
-					player.getTOAManager().getSuppliesContainer().addAll(toAdd);
-					player.getTOAManager().setCanClaimSupplies(false);
+					TOAAccess.getToaManager(player).getSuppliesContainer().addAll(toAdd);
+					TOAAccess.getToaManager(player).setCanClaimSupplies(false);
 				}
 			} else {
 				player.getInventory().deleteItem(new Item(ItemId.SUPPLIES));

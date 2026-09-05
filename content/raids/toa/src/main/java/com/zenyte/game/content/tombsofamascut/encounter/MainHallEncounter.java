@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
@@ -53,13 +55,13 @@ public class MainHallEncounter extends TOARaidArea {
 		for (int i = 0; i < bossLevelIncreases.length; i++) {
 			if (bossLevelIncreases[i] != 0) {
 				player.sendMessage("You hear a mysterious rumbling coming from the Path of " + TOAPathType.getForIndex(i).getPathName() + ".");
-				player.getTOAManager().refreshPathLevel(i);
+				TOAAccess.getToaManager(player).refreshPathLevel(i);
 			}
 		}
 		if (supplyNpc != null && eligibleSupplyPlayerUsernames.contains(player.getUsername())) {
 			player.sendMessage("<col=0000b2>A helpful spirit has arrived with some supplies.");
 			eligibleSupplyPlayerUsernames.remove(player.getUsername());
-			player.getTOAManager().setCanClaimSupplies(true);
+			TOAAccess.getToaManager(player).setCanClaimSupplies(true);
 		}
 	}
 
@@ -166,7 +168,7 @@ public class MainHallEncounter extends TOARaidArea {
 	public void handleWardensEnter(final Player player, boolean quickEnter) {
 		final boolean isLeader = party.isLeader(player);
 		final Runnable runnable = () -> {
-			if (player.getTOAManager().enter(true, EncounterType.WARDENS_FIRST_ROOM)) {
+			if (TOAAccess.getToaManager(player).enter(true, EncounterType.WARDENS_FIRST_ROOM)) {
 				player.getVarManager().sendBit(TOAManager.HUD_PATH_VARBIT, 5);
 			}
 		};
@@ -179,7 +181,7 @@ public class MainHallEncounter extends TOARaidArea {
 				}
 			});
 		};
-		final boolean needsAbandon = player.getTOAManager().needsAbandonRequest();
+		final boolean needsAbandon = TOAAccess.getToaManager(player).needsAbandonRequest();
 		final Runnable confirmRunnable = () -> {
 			if (isLeader) {
 				if (!quickEnter && !needsAbandon) {
@@ -193,7 +195,7 @@ public class MainHallEncounter extends TOARaidArea {
 			}
 		};
 		if (needsAbandon && isLeader) {
-			player.getTOAManager().startAbandonDialogue("Do you wish to proceed to the lower level?", confirmRunnable);
+			TOAAccess.getToaManager(player).startAbandonDialogue("Do you wish to proceed to the lower level?", confirmRunnable);
 		} else {
 			confirmRunnable.run();
 		}
@@ -205,7 +207,7 @@ public class MainHallEncounter extends TOARaidArea {
 		}
 		if (startedPath != null) {
 			if (startedPath.equals(pathType)) {
-				if (player.getTOAManager().enter(true, pathType.getFirstEncounter())) {
+				if (TOAAccess.getToaManager(player).enter(true, pathType.getFirstEncounter())) {
 					player.getVarManager().sendBit(TOAManager.HUD_PATH_VARBIT, pathType.ordinal() + 1);
 				}
 			} else {
@@ -214,7 +216,7 @@ public class MainHallEncounter extends TOARaidArea {
 		} else {
 			final boolean isLeader = party.isLeader(player);
 			final Runnable runnable = () -> {
-				if (player.getTOAManager().enter(true, pathType.getFirstEncounter())) {
+				if (TOAAccess.getToaManager(player).enter(true, pathType.getFirstEncounter())) {
 					player.getVarManager().sendBit(TOAManager.HUD_PATH_VARBIT, pathType.ordinal() + 1);
 				}
 			};
@@ -228,7 +230,7 @@ public class MainHallEncounter extends TOARaidArea {
 					}
 				});
 			};
-			final boolean needsAbandon = player.getTOAManager().needsAbandonRequest();
+			final boolean needsAbandon = TOAAccess.getToaManager(player).needsAbandonRequest();
 			final Runnable confirmRunnable = () -> {
 				if (isLeader) {
 					if (!quickEnter && !needsAbandon) {
@@ -242,7 +244,7 @@ public class MainHallEncounter extends TOARaidArea {
 				}
 			};
 			if (needsAbandon && isLeader) {
-				player.getTOAManager().startAbandonDialogue("Do you wish to walk the Path of " + pathType.getPathName(), confirmRunnable);
+				TOAAccess.getToaManager(player).startAbandonDialogue("Do you wish to walk the Path of " + pathType.getPathName(), confirmRunnable);
 			} else {
 				confirmRunnable.run();
 			}

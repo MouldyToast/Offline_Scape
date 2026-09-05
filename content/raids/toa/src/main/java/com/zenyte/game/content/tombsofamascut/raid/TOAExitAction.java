@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.TOAManager;
 import com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty;
 import com.zenyte.game.world.entity.player.Player;
@@ -13,12 +15,12 @@ import com.zenyte.plugins.dialogue.OptionDialogue;
 public class TOAExitAction implements ObjectAction {
 
 	@Override public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-		TOARaidParty party = (TOARaidParty) player.getTOAManager().getRaidParty();
+		TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(player).getRaidParty();
 		if (party == null) {
 			player.setLocation(TOAManager.OUTSIDE_LOCATION);
 			return;
 		}
-		player.getTOAManager().startLeaveDialogue();
+		TOAAccess.getToaManager(player).startLeaveDialogue();
 	}
 
 	@Override public Object[] getObjects() {

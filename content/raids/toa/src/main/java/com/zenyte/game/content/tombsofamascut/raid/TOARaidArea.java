@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.consumables.ConsumableEffects;
@@ -96,8 +98,8 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 	}
 
 	@Override public void enter(Player player) {
-		player.getTOAManager().sendHud();
-		party.getPlayers().forEach(p -> p.getTOAManager().refreshHudStates());
+		TOAAccess.getToaManager(player).sendHud();
+		party.getPlayers().forEach(p -> TOAAccess.getToaManager(p).refreshHudStates());
 		player.setViewDistance(Player.SCENE_DIAMETER);
 	}
 
@@ -112,7 +114,7 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 				player.getInterfaceHandler().closeInterface(InterfacePosition.OVERLAY);
 			}
 			if (!player.isFinished()) {
-				player.getTOAManager().removeTOAItems();
+				TOAAccess.getToaManager(player).removeTOAItems();
 			}
 			party.leave(player, false);
 			player.getAppearance().resetRenderAnimation();
@@ -128,11 +130,11 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 			GameInterface.EQUIPMENT_TAB.open(player);
 			GameInterface.INVENTORY_TAB.open(player);
 		} else {
-			player.getTOAManager().sendHud();
+			TOAAccess.getToaManager(player).sendHud();
 		}
 		player.blockIncomingHits(5);
 		party.getPlayers().forEach(p -> {
-			p.getTOAManager().refreshHudStates();
+			TOAAccess.getToaManager(p).refreshHudStates();
 			if (!(nextArea instanceof SecondWardenEncounter)) {
 				p.getHpHud().close();
 			}
@@ -165,8 +167,8 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 			if (EncounterStage.STARTED.equals(stage)) {
 				enterRunnable.run();
 			} else {
-				if (player.getTOAManager().needsAbandonRequest()) {
-					player.getTOAManager().startAbandonDialogue("Begin the challenge", enterRunnable);
+				if (TOAAccess.getToaManager(player).needsAbandonRequest()) {
+					TOAAccess.getToaManager(player).startAbandonDialogue("Begin the challenge", enterRunnable);
 				} else if (!quickUse) {
 					player.getDialogueManager().start(new OptionDialogue(player, "Begin the challenge?", new String[] {"Yes.", "No."}, new Runnable[] {enterRunnable, null}));
 				} else {
@@ -200,8 +202,8 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 			}
 		};
 		if (!isWardens && EncounterStage.NOT_STARTED.equals(stage)) {
-			if (player.getTOAManager().needsAbandonRequest()) {
-				player.getTOAManager().startAbandonDialogue("Begin the challenge", enterRunnable);
+			if (TOAAccess.getToaManager(player).needsAbandonRequest()) {
+				TOAAccess.getToaManager(player).startAbandonDialogue("Begin the challenge", enterRunnable);
 			} else if (!quickUse) {
 				player.getDialogueManager().start(new OptionDialogue(player, "Begin the challenge?", new String[] {"Yes.", "No."}, new Runnable[] {enterRunnable, null}));
 			} else {
@@ -270,11 +272,11 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 
 	@Override public void onLogout(@NotNull Player player) {
 		final boolean die = EncounterStage.STARTED.equals(stage) && insideChallengeArea(player) && party.getCurrentRaidArea() != null;
-		player.getTOAManager().setToaPlayerLogoutState(new TOAPlayerLogoutState(encounterType.toBase(), EncounterStage.STARTED.equals(stage) && insideChallengeArea(player),
+		TOAAccess.getToaManager(player).setToaPlayerLogoutState(new TOAPlayerLogoutState(encounterType.toBase(), EncounterStage.STARTED.equals(stage) && insideChallengeArea(player),
 				die ? party.getCurrentRaidArea().getLocation(encounterType.getRandomizedSpawnTile()) : player.getLocation(), party.getPermittedTeamDeaths() == -1));
 		ConsumableEffects.resetSalt(player);
 		if (die) {
-			player.getTOAManager().setIndividualDeaths(player.getTOAManager().getIndividualDeaths() + 1);
+			TOAAccess.getToaManager(player).setIndividualDeaths(TOAAccess.getToaManager(player).getIndividualDeaths() + 1);
 			party.increaseTotalDeaths();
 			party.getCurrentRaidArea().getPlayers().stream().filter(p -> p != null && !p.getUsername().equals(player.getUsername())).forEach(
 					p -> p.sendMessage("<col=ff0000>" + player.getName() + "</col> has logged out. Total deaths: <col=ff0000>" + party.getTotalDeaths() + "</col>."));
@@ -330,12 +332,12 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 				p.sendMessage("Challenge complete: " + challengeName + ". Duration: <col=ef1020>"
 						+ challengeDuration + "</col>. Total: <col=ef1020>" + totalChallengeDuration + "</col>");
 			} else {
-				p.getTOAManager().removeTOAItems();
+				TOAAccess.getToaManager(p).removeTOAItems();
 				p.sendMessage("Challenge complete: " + challengeName + ". Duration: <col=ef1020>" + challengeDuration + "</col>");
 				final String mode = party.getPartySettings().getMode();
 				p.sendMessage("Tombs of Amascut: " + mode + " Mode challenge completion time: <col=ef1020>" + totalChallengeDuration + "</col>");
 				p.sendMessage("Tombs of Amascut: " + mode + " Mode total completion time: <col=ef1020>" + formatTime(party.getTotalTime()) + "</col>");
-				p.sendMessage("Tombs of Amascut: Your Points:<col=ef1020>" + p.getTOAManager().getCurrentPoints() + "</col>");
+				p.sendMessage("Tombs of Amascut: Your Points:<col=ef1020>" + TOAAccess.getToaManager(p).getCurrentPoints() + "</col>");
 				p.getNotificationSettings().increaseKill("tombs of amascut: " + mode.toLowerCase() + " mode");
 				p.getNotificationSettings().sendBossKillCountNotification("tombs of amascut: " + mode.toLowerCase() + " mode");
 				if (party.getTimeLimitMinutes() != -1) {
@@ -405,9 +407,9 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 	@Override public boolean hit(Player source, Entity target, Hit hit, float modifier) {
 		if (target instanceof final TOANPC toaNpc && toaNpc.getPointMultiplier() > 0) {
 			final int damageDone = Math.min(hit.getDamage(), target.getHitpoints());
-			source.getTOAManager().setDamageDone(source.getTOAManager().getDamageDone() + damageDone);
+			TOAAccess.getToaManager(source).setDamageDone(TOAAccess.getToaManager(source).getDamageDone() + damageDone);
 			final int points = (int) Math.floor(damageDone * toaNpc.getPointMultiplier());
-			source.getTOAManager().setCurrentPoints(source.getTOAManager().getCurrentPoints() + points);
+			TOAAccess.getToaManager(source).setCurrentPoints(TOAAccess.getToaManager(source).getCurrentPoints() + points);
 		}
 		return true;
 	}
@@ -514,9 +516,9 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 							player.sendMessage("You will respawn when your party completes the challenge.");
 						}
 					}
-					final int currentPoints = player.getTOAManager().getCurrentPoints();
-					player.getTOAManager().setIndividualDeaths(player.getTOAManager().getIndividualDeaths() + 1);
-					player.getTOAManager().setCurrentPoints(Math.max(0, currentPoints - Math.max(1000, (int) (currentPoints * .2F))));
+					final int currentPoints = TOAAccess.getToaManager(player).getCurrentPoints();
+					TOAAccess.getToaManager(player).setIndividualDeaths(TOAAccess.getToaManager(player).getIndividualDeaths() + 1);
+					TOAAccess.getToaManager(player).setCurrentPoints(Math.max(0, currentPoints - Math.max(1000, (int) (currentPoints * .2F))));
 					player.reset();
 					player.setAnimation(Animation.STOP);
 					player.getVariables().setSkull(false);
@@ -548,7 +550,7 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 		player.getInterfaceHandler().closeInterface(InterfacePosition.INVENTORY_TAB);
 		player.getInterfaceHandler().closeInterface(InterfacePosition.EQUIPMENT_TAB);
 		player.setRun(false);
-		getPlayers().stream().filter(Objects::nonNull).forEach(p -> p.getTOAManager().refreshHudStates());
+		getPlayers().stream().filter(Objects::nonNull).forEach(p -> TOAAccess.getToaManager(p).refreshHudStates());
 	}
 
 	public void checkRoomReset() {
@@ -570,11 +572,11 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 					if (resetRoom) {
 						p.sendMessage("Your party failed to complete the challenge. " + (party.getPermittedTeamDeaths() == -1 ? "You may try again..." : ("You have <col=ff0000>" + (party.getPermittedTeamDeaths() - party.getTeamDeaths()) + "</col> attempts remaining...")));
 					} else {
-						p.getTOAManager().triggerTOAFailure(false);
+						TOAAccess.getToaManager(p).triggerTOAFailure(false);
 					}
 				});
 				fadeScreen.fade();
-				WorldTasksManager.schedule(() -> fadeScreen.unfade(true, () -> p.getTOAManager().sendHud()), 2);
+				WorldTasksManager.schedule(() -> fadeScreen.unfade(true, () -> TOAAccess.getToaManager(p).sendHud()), 2);
 			}
 		}
 		if (resetRoom) {

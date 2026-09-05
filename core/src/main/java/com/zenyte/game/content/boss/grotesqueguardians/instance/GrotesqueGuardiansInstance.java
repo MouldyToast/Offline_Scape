@@ -1,5 +1,7 @@
 package com.zenyte.game.content.boss.grotesqueguardians.instance;
 
+import com.zenyte.game.content.boss.grotesqueguardians.GrotesqueGuardiansKeys;
+
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.boss.grotesqueguardians.EnergySphere;
 import com.zenyte.game.content.boss.grotesqueguardians.FightPhase;
@@ -105,7 +107,7 @@ public class GrotesqueGuardiansInstance extends DynamicArea implements LogoutPlu
 
     @Override
     public void constructed() {
-        player.setGrotesqueGuardiansInstance(this);
+        player.getAttr().set(GrotesqueGuardiansKeys.GARG_INSTANCE_KEY, this);
         player.getInterfaceHandler().closeInterfaces();
         player.setLocation(getLocation(INSIDE_LOCATION));
         /*for (int x = 0; x < 50000; x++) {
@@ -608,7 +610,7 @@ public class GrotesqueGuardiansInstance extends DynamicArea implements LogoutPlu
     public void cleared() {
         if (players.isEmpty()) {
             destroyRegion();
-            player.setGrotesqueGuardiansInstance(null);
+            player.getAttr().remove(GrotesqueGuardiansKeys.GARG_INSTANCE_KEY);
         }
     }
 

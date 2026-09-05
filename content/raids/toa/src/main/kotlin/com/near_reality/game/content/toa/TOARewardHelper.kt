@@ -2,6 +2,7 @@ package com.near_reality.game.content.toa
 
 import com.zenyte.game.content.tombsofamascut.InvocationCategoryType
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidParty
+import com.zenyte.game.content.tombsofamascut.toaManager
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Utils

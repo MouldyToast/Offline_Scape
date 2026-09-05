@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.AbstractTOAClazz;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
@@ -125,21 +127,21 @@ public class TOARaidParty extends AbstractTOAClazz {
 
 	public void add(Player player) {
 		if (!players.contains(player)) {
-			player.getTOAManager().setRaidParty(this);
+			TOAAccess.getToaManager(player).setRaidParty(this);
 			players.add(player);
 			generateHudPlayerList();
 			players.forEach(p -> {
-				p.getTOAManager().refreshHudPlayers();
-				p.getTOAManager().refreshHudStates();
+				TOAAccess.getToaManager(p).refreshHudPlayers();
+				TOAAccess.getToaManager(p).refreshHudStates();
 			});
 		}
 	}
 
 	public void leave(Player player, boolean logout) {
 		if (players.contains(player)) {
-			player.getTOAManager().setRaidParty(null);
+			TOAAccess.getToaManager(player).setRaidParty(null);
 			if (!logout && !player.isFinished()) {
-				player.getTOAManager().resetSessionAttributes();
+				TOAAccess.getToaManager(player).resetSessionAttributes();
 			}
 			players.remove(player);
 			if(isLeader(player) && players.size() != 0) {
@@ -149,8 +151,8 @@ public class TOARaidParty extends AbstractTOAClazz {
 			lobbyParty.leave(player, false);
 			generateHudPlayerList();
 			players.forEach(p -> {
-				p.getTOAManager().refreshHudPlayers();
-				p.getTOAManager().refreshHudStates();
+				TOAAccess.getToaManager(p).refreshHudPlayers();
+				TOAAccess.getToaManager(p).refreshHudStates();
 			});
 			if(this.getPlayers().isEmpty()) {
 				RAID_PARTIES.remove(this);

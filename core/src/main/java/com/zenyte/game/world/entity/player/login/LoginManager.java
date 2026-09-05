@@ -627,6 +627,7 @@ public final class LoginManager {
             return;
         }
 
+        player.refreshAttrPersistence();
         String json = null;
         int attempts = 0;
         while(json == null && ++attempts <= 3) {
@@ -725,20 +726,15 @@ public final class LoginManager {
         player.getGrandExchange().initialize(parser.getGrandExchange());
         player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
-        player.getKillstreakLog().initialize(parser.getKillstreakLog());
-        player.getTOAManager().initialize(parser.getTOAManager());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)
             player.getPlayerTitleStatus().putAll(parser.getPlayerTitleStatus());
-        if (player.getGrotesqueGuardiansInstance() == null) {
-            player.setGrotesqueGuardiansInstance(null);
-        }
-
         player.setLootkeySettings(parser.getLootkeySettings());
         player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 
         player.getBankPin().initialize(parser.getBankPin());
+        player.getAttr().putAllFromPersistence(parser.getAttrPersistenceRaw());
         if(!skipInitEvents) {
             PluginManager.post(new InitializationEvent(player, parser));
             PluginManager.post(new PostInitializationEvent(player));

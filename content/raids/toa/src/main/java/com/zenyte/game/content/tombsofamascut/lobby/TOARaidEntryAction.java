@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.lobby;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -22,7 +24,7 @@ public class TOARaidEntryAction implements ObjectAction {
 					new Runnable[] {() -> ObjectHandler.handle(player, 46068, OBELISK_LOCATION, false, 1), null});
 			player.getDialogueManager().start(dialogue);
 		} else {
-			player.getTOAManager().enterRaid();
+			TOAAccess.getToaManager(player).enterRaid();
 		}
 	}
 

@@ -14,13 +14,11 @@ import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.DiaryComplexity;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.boss.dagannothkings.DagannothKing;
-import com.zenyte.game.content.breaches.entity.BreachEntity;
 import com.zenyte.game.content.donation.DonationToggle;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.supplycaches.SupplyCache;
-import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
@@ -477,7 +475,7 @@ public class NPC extends AbstractEntity {
         despawnWhenStuck = definitions.containsOption("Pickpocket");
         aggressionDistance = combatDefinitions.getAggressionDistance();
         this.inWilderness = WildernessArea.isWithinWilderness(getX(), getY());
-        if (inWilderness && !(this instanceof BreachEntity)) {
+        if (inWilderness) {
             aggressionDistance /= 2;
         }
         combat = new NPCCombat(this);
@@ -1331,7 +1329,7 @@ public class NPC extends AbstractEntity {
                 player.getSlayer().checkAssignment(this);
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
-                if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea() instanceof AbstractTOARaidArea) {
+                if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
                     final int prayerLevel = player.getPrayerManager().getPrayerPoints();
                     final int overhealAmount = (int) (player.getMaxHitpoints() * 1.20);
                     final int currentHitpoints = player.getHitpoints();
@@ -1458,8 +1456,28 @@ public class NPC extends AbstractEntity {
         return killer;
     }
 
-    public void dropBreachLoot(Location location, Player killer) {
-        drop(location, killer);
+
+    /**
+     * Whether the twisted bow treats this NPC as a raid target (350 magic
+     * cap instead of 250). Overridden by ToA and Theatre NPC base classes.
+     */
+    public boolean isRaidNpcForTwistedBow() {
+        return false;
+    }
+
+    /** ToA Warden (moving phase). Replaces the IMovingWarden marker interface. */
+    public boolean isMovingWarden() {
+        return false;
+    }
+
+    /** ToA Warden core. Replaces the IWardenCore marker interface. */
+    public boolean isWardenCore() {
+        return false;
+    }
+
+    /** Counts as vampyric for combat effects (e.g. Theatre of Blood NPCs). */
+    public boolean isVampyric() {
+        return false;
     }
 
     protected void drop(final Location tile) {

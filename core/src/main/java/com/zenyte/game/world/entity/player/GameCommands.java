@@ -26,7 +26,6 @@ import com.zenyte.game.content.advent.AdventCalendarRaffle;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.content.boss.cerberus.area.CerberusLairInstance;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
-import com.zenyte.game.content.breaches.BreachControlPanel;
 import com.zenyte.game.content.chambersofxeric.ChambersCommands;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
@@ -179,9 +178,6 @@ public final class GameCommands {
         ChambersCommands.INSTANCE.register();
         UniversalShopCommands.INSTANCE.register();
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "bcp", "Opens the breach control panel", (p, args) -> {
-            p.getDialogueManager().start(new BreachControlPanel(p));
-        });
 
         new Command(PlayerPrivilege.PLAYER, "boosters", "Opens your active boosters.", (p, args) -> {
             openBoosters(p);
@@ -413,9 +409,6 @@ public final class GameCommands {
 
             inventory.addOrDrop(ItemID.LOOT_KEY_26652, 1);
 
-        });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "addspins", (p, args) -> {
-            p.getWheelOfFortune().setSpins(p.getWheelOfFortune().getSpins() + parseInt(args[0]));
         });
         new Command(PlayerPrivilege.SENIOR_MODERATOR, "addbroadcast", (p, args) -> {
             final int id = parseInt(args[0]);
@@ -2416,8 +2409,7 @@ public final class GameCommands {
             double gameMode = configuration.dropRateIncrease() / 100.0D;
             double donor = p.getMemberRank().getDR();
             double pin = p.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-            double compCape = p.getCompletionistCapeDRBoost();
-            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin + compCape) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
+            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
         });
 
         new Command(PlayerPrivilege.DEVELOPER, new String[]{"b", "bank"}, "Opens the bank.",

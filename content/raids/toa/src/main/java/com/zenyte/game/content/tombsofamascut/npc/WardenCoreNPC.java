@@ -17,7 +17,12 @@ import com.zenyte.game.world.entity.player.Player;
 /**
  * @author Savions
  */
-public class WardenCoreNPC extends NPC implements IWardenCore {
+public class WardenCoreNPC extends NPC {
+
+    @Override
+    public boolean isWardenCore() {
+        return true;
+    }
 
     private static final int ID = 11771;
     private static final SoundEffect LANDING_SOUND = new SoundEffect(6201, 15);

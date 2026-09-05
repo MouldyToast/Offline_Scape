@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.object;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.encounter.SecondWardenEncounter;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterType;
 import com.zenyte.game.world.entity.Location;
@@ -23,7 +25,7 @@ public class RewardCrystalAction implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (player.getArea() instanceof final SecondWardenEncounter encounter) {
-            player.getTOAManager().enter(false, EncounterType.REWARD_ROOM);
+            TOAAccess.getToaManager(player).enter(false, EncounterType.REWARD_ROOM);
             encounter.getPlayers().forEach(p -> {
                 if (p != null && !player.getUsername().equals(p.getUsername())) {
                     p.sendMessage(player.getName() + " has proceeded to Osmumten's Burial Chamber. Join " +

@@ -26,7 +26,12 @@ import java.util.function.Consumer;
 /**
  * @author Savions
  */
-public class MovingWardenNPC extends TOANPC implements CombatScript, IMovingWarden {
+public class MovingWardenNPC extends TOANPC implements CombatScript {
+
+    @Override
+    public boolean isMovingWarden() {
+        return true;
+    }
 
     private static final Animation AWAKE_ANIMATION = new Animation(9663);
     private static final Animation MELEE_ANIMATION = new Animation(9659);

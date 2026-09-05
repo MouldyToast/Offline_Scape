@@ -158,11 +158,6 @@
             "maxAmount": 1
           },
           {
-            "itemId": 19780, // Korasis sword
-            "minAmount": 1,
-            "maxAmount": 1
-          },
-          {
             "itemId": 41785, // Armadyl crossbow
             "minAmount": 1,
             "maxAmount": 1

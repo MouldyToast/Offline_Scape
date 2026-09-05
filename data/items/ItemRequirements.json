@@ -22890,20 +22890,6 @@
     ]
   },
   {
-    "id": 32001,
-    "description": "Korasi's sword",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 78
-      },
-      {
-        "skill": "Strength",
-        "level": 78
-      }
-    ]
-  },
-  {
     "id": 24417,
     "description": "Inquisitor's mace",
     "requirements": [

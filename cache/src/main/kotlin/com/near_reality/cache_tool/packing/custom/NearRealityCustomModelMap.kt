@@ -670,11 +670,6 @@ val map: Map<String, CustomDefinition> = mapOf(
 
     "origins_handcannon_gfx_start_anim" to CustomDefinition.Model(modelId = 65529),
     "origins_handcannon_gfx_proj_anim" to CustomDefinition.Model(modelId = 65530),
-    "korasi_1" to CustomDefinition.Model(modelId = 65531),
-    "korasi_2" to CustomDefinition.Model(modelId = 65532),
-    "korasi_3" to CustomDefinition.Model(modelId = 65533),
-    "korasi_4" to CustomDefinition.Model(modelId = 65534),
-    "korasi_5" to CustomDefinition.Model(modelId = 65535),
 )
 
 fun String.model(): Int = ((map[this] ?: error("no id mapping found for $this")) as CustomDefinition.Model).modelId

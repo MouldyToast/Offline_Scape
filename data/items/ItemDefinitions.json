@@ -191766,39 +191766,6 @@
     }
   },
   {
-    "id": 32001,
-    "tradable": true,
-    "weight": 0.45,
-    "slot": 3,
-    "equipmentType": "DEFAULT",
-    "equipmentDefinition": {
-      "weaponDefinition": {
-        "twoHanded": false,
-        "blockAnimation": 32765,
-        "standAnimation": 808,
-        "walkAnimation": 819,
-        "runAnimation": 824,
-        "standTurnAnimation": 823,
-        "rotate90Animation": 821,
-        "rotate180Animation": 820,
-        "rotate270Animation": 822,
-        "accurateAnimation": 32766,
-        "aggressiveAnimation": 32766,
-        "controlledAnimation": 32767,
-        "defensiveAnimation": 32766,
-        "attackSpeed": 4,
-        "interfaceVarbit": 9,
-        "normalAttackDistance": 0,
-        "longAttackDistance": 0
-      },
-      "requirements": {
-        "0": 78,
-        "2": 78
-      },
-      "bonuses": "60, 70, -2, 0, 0, 0, 1, 0, 0, 0, 70, 0, 0, 0"
-    }
-  },
-  {
     "id": 32026,
     "tradable": false,
     "weight": 0.4,

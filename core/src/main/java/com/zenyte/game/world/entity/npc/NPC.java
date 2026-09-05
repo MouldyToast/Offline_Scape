@@ -14,7 +14,6 @@ import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.DiaryComplexity;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.boss.dagannothkings.DagannothKing;
-import com.zenyte.game.content.breaches.entity.BreachEntity;
 import com.zenyte.game.content.donation.DonationToggle;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
@@ -477,7 +476,7 @@ public class NPC extends AbstractEntity {
         despawnWhenStuck = definitions.containsOption("Pickpocket");
         aggressionDistance = combatDefinitions.getAggressionDistance();
         this.inWilderness = WildernessArea.isWithinWilderness(getX(), getY());
-        if (inWilderness && !(this instanceof BreachEntity)) {
+        if (inWilderness) {
             aggressionDistance /= 2;
         }
         combat = new NPCCombat(this);
@@ -1458,9 +1457,6 @@ public class NPC extends AbstractEntity {
         return killer;
     }
 
-    public void dropBreachLoot(Location location, Player killer) {
-        drop(location, killer);
-    }
 
     protected void drop(final Location tile) {
         drop(tile, null);

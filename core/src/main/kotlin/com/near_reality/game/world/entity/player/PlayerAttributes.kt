@@ -138,8 +138,6 @@ var Player.wildernessResourceAreaPaidFeeAmount: Int by attribute("wildernessReso
 var Player.blackSkulled : Boolean by persistentAttribute("blackSkulled", false)
 var Player.sanityValue by attribute("dt2_whispy_sanity", 100)
 
-var Player.hasBreachesHintArrow: Boolean by persistentAttribute("hasBreachesHintArrow", false)
-
 var Player.firstElderMaulSpecOnTekton: Boolean by persistentAttribute("firstElderMaulSpecOnTekton", true)
 
 var Player.pinProtectedItemValue: Int by persistentAttribute("pinProtectedItemValue", 50_000)

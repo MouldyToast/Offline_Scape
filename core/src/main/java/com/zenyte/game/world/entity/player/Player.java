@@ -37,22 +37,17 @@ import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.content.bountyhunter.BountyHunter;
-import com.zenyte.game.content.breaches.BreachManager;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.clans.ClanManager;
-import com.zenyte.game.content.compcapes.CompletionistCape;
-import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
-import com.zenyte.game.content.event.easter2020.EasterConstants;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.gravestones.Gravestone;
-import com.zenyte.game.content.killstreak.KillstreakLog;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.minigame.barrows.Barrows;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
@@ -81,7 +76,6 @@ import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
-import com.zenyte.game.content.wheeloffortune.WheelOfFortune;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
@@ -404,7 +398,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
 
     @Expose
-    private final KillstreakLog killstreakLog = new KillstreakLog();
     private final HpHud hpHud = new HpHud(this);
 
     @Expose
@@ -554,7 +547,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient LogoutType logoutType = LogoutType.NONE;
     @Nullable
     private transient volatile WorldSwitchTarget worldSwitchTarget;
-    private WheelOfFortune wheelOfFortune = new WheelOfFortune(this);
     private transient boolean updatingNPCOptions = true;
     private transient boolean updateNPCOptions;
     private transient IntSet pendingVars = new IntLinkedOpenHashSet(100);
@@ -1828,12 +1820,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         try {
             try {
-                BreachManager.processPlayer(this);
-            }
-            catch (final Exception e) {
-                log.error("", e);
-            }
-            try {
                 actionManager.process();
             }
             catch (final Exception e) {
@@ -2007,8 +1993,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = getMemberRank().getDR();
         double pin = getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double compCape = getCompletionistCapeDRBoost();
-        return ((gameMode + donor + pin + compCape) * 100.0D);
+        return ((gameMode + donor + pin) * 100.0D);
     }
 
     public double getExchangeBonus() {
@@ -2045,18 +2030,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return this.gameMode.isGroupIronman();
     }
 
-    public double getCompletionistCapeDRBoost() {
-        Item cape = getCape();
-        if (cape == null)
-            return 0.0D;
-        int tier = CompletionistCape.getCompletionistCapeTier(getCape().getId());
-        return switch (tier) {
-            case 1 -> 0.01D;
-            case 2 -> 0.02D;
-            case 3 -> 0.03D;
-            default -> 0.0D;
-        };
-    }
 
 
     private boolean torvaHPBoosted = false;
@@ -3521,19 +3494,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return middleTile;
     }
 
-    private static final Animation candyCaneBlockAnimation = new Animation(15086);
-    private static final Animation easterCarrotBlockAnimation = new Animation(15162);
 
     private Animation getDefenceAnimation() {
         final int weaponId = getEquipment().getId(EquipmentSlot.WEAPON);
         if (weaponId == 21015) {
             return BULWARK_ANIM;
-        }
-        if (weaponId == ChristmasConstants.CANDY_CANE) {
-            return candyCaneBlockAnimation;
-        }
-        if (weaponId == EasterConstants.EasterItem.EASTER_CARROT.getItemId()) {
-            return easterCarrotBlockAnimation;
         }
         if (weaponId == 4084) {
             return new Animation(1466);
@@ -5042,9 +5007,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
 
-    public KillstreakLog getKillstreakLog() {
-        return killstreakLog;
-    }
 
     public DailyChallengeManager getDailyChallengeManager() {
         return dailyChallengeManager;
@@ -5131,9 +5093,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.worldSwitchTarget = worldSwitchTarget;
     }
 
-    public WheelOfFortune getWheelOfFortune() {
-        return wheelOfFortune;
-    }
 
     public boolean isUpdatingNPCOptions() {
         return updatingNPCOptions;

@@ -251,7 +251,6 @@ object NearRealityStoreInterfacePacker {
 			defaultInt = -1
 			var idx = 0
 
-			//Killstreaks.java
 			StructDefinitions(10600).apply {
 				parameters = Int2ObjectOpenHashMap(16)
 				parameters[BENEFITS_BENEFIT_DESC_PARAM] = "Blood Money Boost on Kills"

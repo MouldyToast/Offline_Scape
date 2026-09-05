@@ -78,7 +78,6 @@ import kotlin.jvm.optionals.getOrNull
 
 
 object DeveloperCommands {
-    var newStoreEnabled = true
     var enabledGauntlet = true
     var toggledDT2Off = false
     var enabledLootKeys = true
@@ -296,16 +295,6 @@ object DeveloperCommands {
             } else {
                 p.sendMessage("Immunity disabled")
                 p.immune = false
-            }
-        }
-
-        Command(PlayerPrivilege.DEVELOPER, "newstore") { p, _ ->
-            if(!newStoreEnabled) {
-                p.sendMessage("New store enabled")
-                newStoreEnabled = true
-            } else {
-                p.sendMessage("New store disabled")
-                newStoreEnabled = false
             }
         }
 
@@ -684,11 +673,7 @@ object DeveloperCommands {
 
     @JvmStatic
     fun openStore(player: Player) {
-        if (newStoreEnabled) {
-            GameInterface.DONATION_STORE.open(player)
-        } else {
-            GameInterface.CREDIT_STORE.open(player)
-        }
+        GameInterface.CREDIT_STORE.open(player)
     }
 
     private fun makeClueTypeMenu(

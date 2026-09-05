@@ -35,7 +35,6 @@ import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.content.bountyhunter.BountyHunter;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
@@ -552,7 +551,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);
-    private transient Optional<GrotesqueGuardiansInstance> grotesqueGuardiansInstance = Optional.empty();
 
     private transient AraneaBoots araneaBoots = new AraneaBoots(this);
 
@@ -5050,13 +5048,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return dailyChallengeManager;
     }
 
-    public GrotesqueGuardiansInstance getGrotesqueGuardiansInstance() {
-        return grotesqueGuardiansInstance.orElse(null);
-    }
-
-    public void setGrotesqueGuardiansInstance(GrotesqueGuardiansInstance grotesqueGuardiansInstance) {
-        this.grotesqueGuardiansInstance = Optional.ofNullable(grotesqueGuardiansInstance);
-    }
 
     public int getPid() {
         return pid;

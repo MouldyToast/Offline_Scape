@@ -731,10 +731,6 @@ public final class LoginManager {
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)
             player.getPlayerTitleStatus().putAll(parser.getPlayerTitleStatus());
-        if (player.getGrotesqueGuardiansInstance() == null) {
-            player.setGrotesqueGuardiansInstance(null);
-        }
-
         player.setLootkeySettings(parser.getLootkeySettings());
         player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 

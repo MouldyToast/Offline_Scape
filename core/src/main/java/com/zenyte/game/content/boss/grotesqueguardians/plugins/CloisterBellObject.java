@@ -1,5 +1,7 @@
 package com.zenyte.game.content.boss.grotesqueguardians.plugins;
 
+import com.zenyte.game.content.boss.grotesqueguardians.GrotesqueGuardiansKeys;
+
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
@@ -18,7 +20,7 @@ public class CloisterBellObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-        final var instance = player.getGrotesqueGuardiansInstance();
+        final var instance = player.getAttr().get(GrotesqueGuardiansKeys.GARG_INSTANCE_KEY);
         if (instance == null) {
             player.sendMessage("Nothing interesting happens.");
             return;

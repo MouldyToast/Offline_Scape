@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.npc.FlyingWardenNPC;
@@ -145,7 +147,7 @@ public class SecondWardenEncounter extends TOARaidArea implements CycleProcessPl
         final Location spawnLocation = getLocation(PLAYER_SPAWN_LOCATION);
         encounter.getPlayers().forEach(p -> {
             if (p != null) {
-                p.getTOAManager().setCurrentEncounter(EncounterType.WARDENS_SECOND_ROOM);
+                TOAAccess.getToaManager(p).setCurrentEncounter(EncounterType.WARDENS_SECOND_ROOM);
                 p.faceDirection(Direction.NORTH);
                 p.getPacketDispatcher().resetCamera();
                 p.getInterfaceHandler().closeInterface(InterfacePosition.OVERLAY);
@@ -196,7 +198,7 @@ public class SecondWardenEncounter extends TOARaidArea implements CycleProcessPl
         phaseId = 4;
         players.forEach(p -> {
             if (p != null) {
-                p.getTOAManager().sendHud();
+                TOAAccess.getToaManager(p).sendHud();
                 p.getPacketDispatcher().resetCamera();
                 for (SoundEffect sound : LAID_TO_REST_SOUNDS) {
                     p.sendSound(sound);
@@ -222,7 +224,7 @@ public class SecondWardenEncounter extends TOARaidArea implements CycleProcessPl
             if (area != null) {
                 players.forEach(p -> {
                     if (p != null) {
-                        p.getTOAManager().setCurrentEncounter(EncounterType.WARDENS_FIRST_ROOM);
+                        TOAAccess.getToaManager(p).setCurrentEncounter(EncounterType.WARDENS_FIRST_ROOM);
                         p.setLocation(area.getLocation(EncounterType.WARDENS_FIRST_ROOM.getRandomizedSpawnTile()));
                     }
                 });

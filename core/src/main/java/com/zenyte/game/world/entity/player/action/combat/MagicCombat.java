@@ -170,7 +170,7 @@ public class MagicCombat extends PlayerCombat {
         effectiveLevel = Math.floor(effectiveLevel);
         int effectiveBonus = player.getBonuses().getBonus(Bonuses.Bonus.ATT_MAGIC);
         if (this instanceof TumekensShadowCombat) {
-            if (player.getTOAManager().getRaidParty() != null) {
+            if (player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
                 effectiveBonus *= 4;
             } else {
                 effectiveBonus *= 3;
@@ -435,7 +435,7 @@ public class MagicCombat extends PlayerCombat {
 
     private int evalTumekensBoost(int bonus) {
         if (this instanceof TumekensShadowCombat) {
-            if (player.getTOAManager().getRaidParty() != null) {
+            if (player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
                 bonus = Math.min(bonus * 4, 100);
             } else {
                 bonus = Math.min(bonus * 3, 100);

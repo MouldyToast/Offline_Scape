@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty;
 import com.zenyte.game.item.Item;
@@ -27,7 +29,7 @@ public class TOAScoreBoardInterface extends Interface {
     @Override
     public void open(Player player) {
         super.open(player);
-        TOARaidParty party = (TOARaidParty) player.getTOAManager().getRaidParty();
+        TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(player).getRaidParty();
         if (party != null) {
             player.getPacketDispatcher().sendComponentText(GameInterface.TOA_SCOREBOARD, 58, party.getPartySettings().getRaidLevel());
             player.getPacketDispatcher().sendComponentText(GameInterface.TOA_SCOREBOARD, 59, party.getPartySettings().getActiveInvocations());
@@ -45,7 +47,7 @@ public class TOAScoreBoardInterface extends Interface {
             final Map<Integer, Player> playerMap = new TreeMap<>(Collections.reverseOrder());
             for (Player p : party.getPlayers()) {
                 if (p != null) {
-                    final int damageDone = p.getTOAManager().getDamageDone();
+                    final int damageDone = TOAAccess.getToaManager(p).getDamageDone();
                     playerMap.put(damageDone, player);
                 }
             }
@@ -54,9 +56,9 @@ public class TOAScoreBoardInterface extends Interface {
             for (Player p : players) {
                 final Object[] args = new Object[9];
                 args[0] = p.getName();
-                args[1] = p.getTOAManager().getDamageDone();
-                args[2] = p.getTOAManager().getDamageTaken();
-                args[3] = p.getTOAManager().getIndividualDeaths();
+                args[1] = TOAAccess.getToaManager(p).getDamageDone();
+                args[2] = TOAAccess.getToaManager(p).getDamageTaken();
+                args[3] = TOAAccess.getToaManager(p).getIndividualDeaths();
                 final ScoreBoardTitleType title = getPlayerTitle(p, players);
                 args[4] = title == null ? -1 : title.getStructId();
                 args[5] = -1;
@@ -70,7 +72,7 @@ public class TOAScoreBoardInterface extends Interface {
     }
 
     private void sendEncounterTime(Player player, int componentId, EncounterType encounterType) {
-        TOARaidParty party = (TOARaidParty) player.getTOAManager().getRaidParty();
+        TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(player).getRaidParty();
         for (ChallengeResult result : party.getChallengeResults()) {
             if (result != null && encounterType.equals(result.getEncounterType())) {
                 player.getPacketDispatcher().sendComponentText(GameInterface.TOA_SCOREBOARD, componentId, TOARaidArea.formatTime(result.getTime()));
@@ -105,10 +107,10 @@ public class TOAScoreBoardInterface extends Interface {
                 final int currentLoadOut = getLoadOut(p);
                 highestLoadOut = Math.max(highestLoadOut, currentLoadOut);
                 lowestLoadOut = Math.min(lowestLoadOut, currentLoadOut);
-                lowestDamageDone = Math.min(lowestDamageDone, p.getTOAManager().getDamageDone());
-                damageDone = Math.max(damageDone, p.getTOAManager().getDamageDone());
-                damageTaken = Math.max(damageTaken, p.getTOAManager().getDamageTaken());
-                maxDeaths = Math.max(maxDeaths, p.getTOAManager().getIndividualDeaths());
+                lowestDamageDone = Math.min(lowestDamageDone, TOAAccess.getToaManager(p).getDamageDone());
+                damageDone = Math.max(damageDone, TOAAccess.getToaManager(p).getDamageDone());
+                damageTaken = Math.max(damageTaken, TOAAccess.getToaManager(p).getDamageTaken());
+                maxDeaths = Math.max(maxDeaths, TOAAccess.getToaManager(p).getIndividualDeaths());
             }
             final int playerLoadOut = getLoadOut(player);
             if (playerLoadOut >= highestLoadOut) {
@@ -117,16 +119,16 @@ public class TOAScoreBoardInterface extends Interface {
             if (playerLoadOut <= lowestLoadOut) {
                 potentialTitles.add(ScoreBoardTitleType.THE_PEASANT);
             }
-            if (player.getTOAManager().getDamageTaken() >= damageTaken) {
+            if (TOAAccess.getToaManager(player).getDamageTaken() >= damageTaken) {
                 potentialTitles.add(ScoreBoardTitleType.THE_TANK);
             }
-            if (player.getTOAManager().getDamageDone() >= damageDone) {
+            if (TOAAccess.getToaManager(player).getDamageDone() >= damageDone) {
                 potentialTitles.add(ScoreBoardTitleType.CARRY);
             }
-            if (maxDeaths > 0 && player.getTOAManager().getIndividualDeaths() >= maxDeaths) {
+            if (maxDeaths > 0 && TOAAccess.getToaManager(player).getIndividualDeaths() >= maxDeaths) {
                 potentialTitles.add(ScoreBoardTitleType.ANCHOR);
             }
-            if (player.getTOAManager().getDamageDone() <= lowestDamageDone) {
+            if (TOAAccess.getToaManager(player).getDamageDone() <= lowestDamageDone) {
                 potentialTitles.add(ScoreBoardTitleType.LEECH);
             } else {
                 potentialTitles.add(ScoreBoardTitleType.BRAWLER);

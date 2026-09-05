@@ -68,9 +68,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.content.skills.slayer.Slayer;
-import com.zenyte.game.content.tombsofamascut.AbstractTOAManager;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
-import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
@@ -361,12 +359,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return toaPlayerData;
     }
 
-    @Expose(deserialize = false, serialize = false)
-    private final transient AbstractTOAManager toaManager = AbstractTOAManager.getForPlayer(this);
-
-    public AbstractTOAManager getTOAManager() {
-        return toaManager;
-    }
 
     private final transient DialogueManager dialogueManager = new DialogueManager(this);
     @Expose
@@ -1033,9 +1025,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (HitType.HEALED.equals(type)) {
             heal(hit.getDamage());
         } else if (!HitType.SHIELD_DOWN.equals(type) && !HitType.CORRUPTION.equals(type)) {
-            if (hit.getSource() instanceof AbstractTOANPC) {
-                toaManager.setDamageTaken(toaManager.getDamageTaken() + Math.min(hitpoints, hit.getDamage()));
-            }
             if (CoresManager.worldThread != null) {
                 CoresManager.worldThread.getEventBus().publish(new PlayerDamageReceivedEvent(this, hit.getSource(), hit.getDamage(), hit.getHitType()));
             }
@@ -4384,16 +4373,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         sendPlayerOptions();
         MethodicPluginHandler.invokePlugins(ListenerType.LOGIN, this);
         PluginManager.post(new LoginEvent(this));
-        if (CoresManager.worldThread != null) {
-            CoresManager.worldThread.getEventBus().publish(new PlayerLoginEvent(this));
-        }
         MiddleManManager.INSTANCE.onLogin(this);
         WorldBroadcasts.onLogin(this);
         controllerManager.login();
         GlobalAreaManager.update(this, true, false);
         World.updateEntityChunk(this, false);
         Analytics.logLogin(this);
-        toaManager.onLogin();
+        if (CoresManager.worldThread != null) {
+            CoresManager.worldThread.getEventBus().publish(new PlayerLoginEvent(this));
+        }
         clip();
         LocationMap.add(this);
         final Calendar calendar = Calendar.getInstance();

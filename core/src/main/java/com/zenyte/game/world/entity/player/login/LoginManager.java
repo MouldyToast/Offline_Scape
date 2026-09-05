@@ -726,7 +726,6 @@ public final class LoginManager {
         player.getGrandExchange().initialize(parser.getGrandExchange());
         player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
-        player.getTOAManager().initialize(parser.getTOAManager());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)

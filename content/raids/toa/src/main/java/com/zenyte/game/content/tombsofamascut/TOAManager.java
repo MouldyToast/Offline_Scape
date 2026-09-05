@@ -282,7 +282,7 @@ public class TOAManager extends AbstractTOAManager {
 		fadeScreen.fade();
 		WorldTasksManager.schedule(() -> fadeScreen.unfade(true), 2);
 		setCurrentEncounter(encounterType);
-		raidParty.getPlayers().forEach(p -> p.getTOAManager().refreshHudStates());
+		raidParty.getPlayers().forEach(p -> TOAAccess.getToaManager(p).refreshHudStates());
 		return true;
 	}
 
@@ -290,7 +290,7 @@ public class TOAManager extends AbstractTOAManager {
 		player.getInterfaceHandler().sendInterface(InterfacePosition.OVERLAY, 481);
 		if (raidParty != null) {
 			sendRaidLevel();
-			raidParty.getPlayers().forEach(p -> p.getTOAManager().refreshHudStates());
+			raidParty.getPlayers().forEach(p -> TOAAccess.getToaManager(p).refreshHudStates());
 			refreshHudPlayers();
 			refreshTimer();
 			for (int i = 0; i < raidParty.getBossLevels().length; i++) {
@@ -322,7 +322,7 @@ public class TOAManager extends AbstractTOAManager {
 						player.getVarManager().sendBit(HUD_PLAYER_ME_VARBIT, i + 1);
 					}
 					player.getVarManager().sendBit(HUD_PLAYER_SIGHT_VARBIT + i, p.getTemporaryAttributes().containsKey(ApmekenEncounter.SIGHT_PLAYER_ATTRIBUTE) ? 1 : 0);
-					if (currentEncounterType != null && !currentEncounterType.equals(p.getTOAManager().getCurrentEncounter())) {
+					if (currentEncounterType != null && !currentEncounterType.equals(TOAAccess.getToaManager(p).getCurrentEncounter())) {
 						player.getVarManager().sendBit(HUD_PLAYER_LIST_BASE_VARBIT + i, 31);
 					} else if (p.getAppearance().isTransformedIntoNpc()) {
 						player.getVarManager().sendBit(HUD_PLAYER_LIST_BASE_VARBIT + i, 30);
@@ -423,7 +423,7 @@ public class TOAManager extends AbstractTOAManager {
 			return false;
 		}
 		final EncounterType currentEncounterType = raidParty.getCurrentEncounterType();
-		return raidParty.getPlayers().stream().anyMatch(p -> !currentEncounterType.equals(p.getTOAManager().getCurrentEncounter()));
+		return raidParty.getPlayers().stream().anyMatch(p -> !currentEncounterType.equals(TOAAccess.getToaManager(p).getCurrentEncounter()));
 	}
 
 	@Override public void startAbandonDialogue(final String action, final Runnable runnable) {
@@ -444,7 +444,7 @@ public class TOAManager extends AbstractTOAManager {
 						} else {
 							TOALobbyParty.setCurrentParty(player, null);
 							raidParty.leave(p, false);
-							p.getTOAManager().sendEmptyPartyList();
+							TOAAccess.getToaManager(p).sendEmptyPartyList();
 						}
 					});
 					runnable.run();
@@ -476,7 +476,7 @@ public class TOAManager extends AbstractTOAManager {
 			final RegionArea regionArea = GlobalAreaManager.getArea(toaPlayerLogoutState.getLogoutLocation());
 			if (regionArea instanceof final TOARaidArea area && area.getParty().getOriginalPlayers().contains(player.getUsername())) {
 				if (area.hasFailedTombs()) {
-					player.getTOAManager().triggerTOAFailure(true);
+					TOAAccess.getToaManager(player).triggerTOAFailure(true);
 				} else {
 					player.sendMessage("You have rejoined your party");
 					raidParty = area.getParty();
@@ -494,7 +494,7 @@ public class TOAManager extends AbstractTOAManager {
 				}
 			} else {
 				if (toaPlayerLogoutState.isDuringChallenge() && !toaPlayerLogoutState.isSafeDeath()) {
-					player.getTOAManager().triggerTOAFailure(true);
+					TOAAccess.getToaManager(player).triggerTOAFailure(true);
 				} else {
 					removeTOAItems();
 					player.sendMessage("You were unable to rejoin your party.");

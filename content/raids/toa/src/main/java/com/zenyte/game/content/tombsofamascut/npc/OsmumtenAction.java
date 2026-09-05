@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterType;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidArea;
@@ -18,12 +20,12 @@ public class OsmumtenAction extends NPCPlugin {
 	}
 
 	private void handle(final Player player) {
-		TOARaidParty party = (TOARaidParty) player.getTOAManager().getRaidParty();
+		TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(player).getRaidParty();
 		if (party == null) {
 			return;
 		}
 		final EncounterType current = party.getCurrentEncounterType();
-		player.getTOAManager().enter(false, EncounterType.MAIN_HALL);
+		TOAAccess.getToaManager(player).enter(false, EncounterType.MAIN_HALL);
 		if (!party.getCurrentEncounterType().equals(current)) {
 			party.getPlayers().stream().filter(p -> !player.getUsername().equals(p.getUsername())).forEach(
 					p -> p.sendMessage(player.getUsername() + " has returned to the Nexus. Join " + (player.getAppearance().isMale() ? "him" : "her") + "..."));

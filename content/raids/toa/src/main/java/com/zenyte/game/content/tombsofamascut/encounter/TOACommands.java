@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.near_reality.api.resources.Vote;
 import com.near_reality.game.content.toa.TOARewardHelper;
 import com.near_reality.game.content.toa.TOARewards;
@@ -24,7 +26,7 @@ public class TOACommands {
         new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "toatest", (p, args) -> {
             final TOALobbyParty party = new TOALobbyParty(p);
             TOALobbyParty.addLobbyParty(party);
-            p.getTOAManager().enterRaid();
+            TOAAccess.getToaManager(p).enterRaid();
         });
         new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "settoarewardmx", (p, args) -> {
             if(GameConstants.isOwner(p)) {
@@ -38,13 +40,13 @@ public class TOACommands {
             int level = Integer.parseInt(args[0]);
             int points = Integer.parseInt(args[1]);
             boolean overridePurple = Integer.parseInt(args[2]) == 1;
-            TOARaidParty party = (TOARaidParty) p.getTOAManager().getRaidParty();
+            TOARaidParty party = (TOARaidParty) TOAAccess.getToaManager(p).getRaidParty();
             party.overrideRaidLevel(level);
-            p.getTOAManager().setCurrentPoints(points);
+            TOAAccess.getToaManager(p).setCurrentPoints(points);
             p.putBooleanTemporaryAttribute("overridePurple", overridePurple);
             WorldTasksManager.schedule(() -> {
                 for(Player pl: party.getPlayers())
-                    pl.getTOAManager().enter(false, EncounterType.REWARD_ROOM);
+                    TOAAccess.getToaManager(pl).enter(false, EncounterType.REWARD_ROOM);
             }, 1);
 
         });
@@ -55,17 +57,17 @@ public class TOACommands {
             boolean overridePurple = true;
             final TOALobbyParty party = new TOALobbyParty(p);
             TOALobbyParty.addLobbyParty(party);
-            p.getTOAManager().enterRaid();
+            TOAAccess.getToaManager(p).enterRaid();
             WorldTasksManager.schedule(() -> {
-                var raidParty = (TOARaidParty) p.getTOAManager().getRaidParty();
+                var raidParty = (TOARaidParty) TOAAccess.getToaManager(p).getRaidParty();
                 raidParty.overrideRaidLevel(level);
-                p.getTOAManager().setCurrentPoints(points);
+                TOAAccess.getToaManager(p).setCurrentPoints(points);
                 p.putBooleanTemporaryAttribute("overridePurple", overridePurple);
             }, 4);
 
             WorldTasksManager.schedule(() -> {
                 for(Player pl: party.getPlayers())
-                    pl.getTOAManager().enter(false, EncounterType.REWARD_ROOM);
+                    TOAAccess.getToaManager(pl).enter(false, EncounterType.REWARD_ROOM);
             }, 8);
 
         });
@@ -81,32 +83,32 @@ public class TOACommands {
                             new DialogueOption("Akkha", () -> {
                                 final TOALobbyParty party = new TOALobbyParty(p);
                                 TOALobbyParty.addLobbyParty(party);
-                                p.getTOAManager().enterRaid();
-                                p.getTOAManager().enter(false, EncounterType.HET_BOSS);
+                                TOAAccess.getToaManager(p).enterRaid();
+                                TOAAccess.getToaManager(p).enter(false, EncounterType.HET_BOSS);
                              }),
                             new DialogueOption("Ba-Ba", () -> {
                                 final TOALobbyParty party = new TOALobbyParty(p);
                                 TOALobbyParty.addLobbyParty(party);
-                                p.getTOAManager().enterRaid();
-                                p.getTOAManager().enter(false, EncounterType.APMEKEN_BOSS);
+                                TOAAccess.getToaManager(p).enterRaid();
+                                TOAAccess.getToaManager(p).enter(false, EncounterType.APMEKEN_BOSS);
                             }),
                             new DialogueOption("Zebak", () -> {
                                 final TOALobbyParty party = new TOALobbyParty(p);
                                 TOALobbyParty.addLobbyParty(party);
-                                p.getTOAManager().enterRaid();
-                                p.getTOAManager().enter(false, EncounterType.CRONDIS_BOSS);
+                                TOAAccess.getToaManager(p).enterRaid();
+                                TOAAccess.getToaManager(p).enter(false, EncounterType.CRONDIS_BOSS);
                             }),
                             new DialogueOption("Kephri", () -> {
                                 final TOALobbyParty party = new TOALobbyParty(p);
                                 TOALobbyParty.addLobbyParty(party);
-                                p.getTOAManager().enterRaid();
-                                p.getTOAManager().enter(false, EncounterType.SCABARIS_BOSS);
+                                TOAAccess.getToaManager(p).enterRaid();
+                                TOAAccess.getToaManager(p).enter(false, EncounterType.SCABARIS_BOSS);
                             }),
                             new DialogueOption("Wardens", () -> {
                                 final TOALobbyParty party = new TOALobbyParty(p);
                                 TOALobbyParty.addLobbyParty(party);
-                                p.getTOAManager().enterRaid();
-                                p.getTOAManager().enter(false, EncounterType.WARDENS_FIRST_ROOM);
+                                TOAAccess.getToaManager(p).enterRaid();
+                                TOAAccess.getToaManager(p).enter(false, EncounterType.WARDENS_FIRST_ROOM);
                             })
                     );
                 }

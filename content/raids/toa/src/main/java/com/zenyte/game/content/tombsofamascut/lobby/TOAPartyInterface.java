@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.lobby;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterType;
@@ -29,7 +31,7 @@ public class TOAPartyInterface extends Interface {
 	}
 
 	@Override public void open(Player player) {
-		player.getTOAManager().setViewingParty(null);
+		TOAAccess.getToaManager(player).setViewingParty(null);
 		TOALobbyParty currentLobbyParty = TOALobbyParty.getCurrentParty(player);
 
 		player.getVarManager().sendVar(CURRENT_PARTY_VAR, currentLobbyParty != null ? 0 : -1);
@@ -50,10 +52,10 @@ public class TOAPartyInterface extends Interface {
 				final TOALobbyParty party = new TOALobbyParty(player);
 				TOALobbyParty.addLobbyParty(party);
 				TOALobbyParty.setViewingParty(player, party);
-				player.getTOAManager().setCurrentInterfaceTab(1);
+				TOAAccess.getToaManager(player).setCurrentInterfaceTab(1);
 			} else {
 				TOALobbyParty.setViewingParty(player, TOALobbyParty.getCurrentParty(player));
-				player.getTOAManager().setCurrentInterfaceTab(0);
+				TOAAccess.getToaManager(player).setCurrentInterfaceTab(0);
 			}
 			GameInterface.TOA_PARTY_MANAGEMENT.open(player);
 		});

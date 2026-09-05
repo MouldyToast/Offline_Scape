@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -29,7 +31,7 @@ public class TOARewardInterface extends Interface {
     @Override
     protected void build() {
         bind("Bank-all", (player, slotId, itemId, option) -> {
-            final Container container = player.getTOAManager().getRewardContainer();
+            final Container container = TOAAccess.getToaManager(player).getRewardContainer();
             if (container == null || container.isEmpty()) {
                 player.sendMessage("There is nothing to bank.");
             } else {
@@ -54,7 +56,7 @@ public class TOARewardInterface extends Interface {
             }
         });
         bind("Inventory-all", (player, slotId, itemId, option) -> {
-            final Container container = player.getTOAManager().getRewardContainer();
+            final Container container = TOAAccess.getToaManager(player).getRewardContainer();
             if (container == null || container.isEmpty()) {
                 player.sendMessage("There is nothing to put in your inventory.");
             } else {
@@ -79,7 +81,7 @@ public class TOARewardInterface extends Interface {
             }
         });
         bind("Discard-all", (player, slotId, itemId, option) -> {
-            final Container container = player.getTOAManager().getRewardContainer();
+            final Container container = TOAAccess.getToaManager(player).getRewardContainer();
             if (container == null || container.isEmpty()) {
                 player.sendMessage("There is nothing to discard.");
             } else {
@@ -92,7 +94,7 @@ public class TOARewardInterface extends Interface {
             }
         });
         bind("Take-x", (player, slotId, itemId, option) -> {
-            final Container container = player.getTOAManager().getRewardContainer();
+            final Container container = TOAAccess.getToaManager(player).getRewardContainer();
             if (container == null || container.isEmpty() || slotId >= container.getSize()) {
                 player.getInterfaceHandler().closeInterfaces();
             } else {
@@ -129,7 +131,7 @@ public class TOARewardInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        var rewardContainer = player.getTOAManager().getRewardContainer();
+        var rewardContainer = TOAAccess.getToaManager(player).getRewardContainer();
         if (rewardContainer != null && !rewardContainer.isEmpty()) {
             rewardContainer.setContainerSize(6);
             player.getPacketDispatcher().sendUpdateItemContainer(rewardContainer);

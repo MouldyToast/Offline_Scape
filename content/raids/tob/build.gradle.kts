@@ -13,6 +13,7 @@ kotlin {
 
 dependencies {
     compileOnly(projects.core)
+    compileOnly(projects.content.raids.toa)
     implementation(projects.scripts.interfaces)
     implementation(projects.scripts.npc.drops)
     implementation(projects.scripts.item.actions)

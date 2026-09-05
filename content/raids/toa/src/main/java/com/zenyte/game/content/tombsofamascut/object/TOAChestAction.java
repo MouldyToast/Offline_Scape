@@ -1,5 +1,7 @@
 package com.zenyte.game.content.tombsofamascut.object;
 
+import com.zenyte.game.content.tombsofamascut.TOAAccess;
+
 import com.zenyte.game.content.tombsofamascut.encounter.RewardEncounter;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidParty;
 import com.zenyte.game.world.entity.player.Player;
@@ -14,7 +16,7 @@ public class TOAChestAction implements ObjectAction {
 
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-        if(player.getTOAManager().getRaidParty() instanceof TOARaidParty party && party.getCurrentRaidArea() instanceof RewardEncounter encounter)
+        if(TOAAccess.getToaManager(player).getRaidParty() instanceof TOARaidParty party && party.getCurrentRaidArea() instanceof RewardEncounter encounter)
             encounter.forwardObject(player, object);
     }
 

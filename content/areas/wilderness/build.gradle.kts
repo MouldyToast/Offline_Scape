@@ -1,3 +1,16 @@
 plugins { id("org.jetbrains.kotlin.jvm") }
-dependencies { compileOnly(projects.core) }
 
+kotlin {
+    sourceSets.main {
+        kotlin {
+            setSrcDirs(listOf("src/main/kotlin", "src/main/java"))
+            include("**/*.kt", "**/*.java")
+        }
+    }
+}
+
+dependencies {
+    compileOnly(projects.core)
+    implementation(projects.scripts.npc.drops)
+    implementation(projects.scripts.groundItems)
+}

@@ -16,6 +16,9 @@ dependencies {
     compileOnly(projects.cache)
     compileOnly(projects.coreModel)
     compileOnly(projects.core)
+    // Temporary until PvM Arena moves out: PvmArenaKingBlackDragon extends
+    // KingBlackDragon, now in content/areas/wilderness.
+    compileOnly(projects.content.areas.wilderness)
 
     implementation(projects.scripts.npc.spawns)
     implementation(projects.scripts.npc)

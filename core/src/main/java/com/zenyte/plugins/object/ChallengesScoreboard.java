@@ -13,7 +13,6 @@ public class ChallengesScoreboard implements ObjectAction {
 		if(option.equalsIgnoreCase("View")) {
 			if(player.getGameMode().isGroupIronman())
 				GameInterface.CHALLENGES.open(player);
-			else GameInterface.CHALLENGES_SOLO.open(player);
 		}
 	}
 

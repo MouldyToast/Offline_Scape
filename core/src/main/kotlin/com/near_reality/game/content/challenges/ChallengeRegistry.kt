@@ -25,9 +25,6 @@ abstract class ChallengeRegistry<T : ChallengeType> : ScheduledExternalizable {
             .comparingInt<Pair<UUID, ChallengeProgress>> { it.second.count }
             .reversed()
             .thenComparingLong { it.second.lastUpdate }
-        private val comparatorReversed = Comparator
-            .comparingInt<Pair<UUID, ChallengeProgress>> { it.second.count }
-            .thenComparingLong { it.second.lastUpdate }
     }
 
     protected fun register(structId: Int, name: String, function: T.() -> Int) {
@@ -79,13 +76,10 @@ abstract class ChallengeRegistry<T : ChallengeType> : ScheduledExternalizable {
 
     fun buildTransmit(structId: Int): String? =
         if (challenges.containsKey(structId)) {
-
-            val comp = if(structId == 10419) comparatorReversed else comparator
-
             challengeProgress
                 .filter { it.value[structId]?.count != 0 }
                 .mapNotNull { (uuid, progressMap) -> progressMap[structId]?.let { uuid to it } }
-                .sortedWith(comp)
+                .sortedWith(comparator)
                 .joinToString(separator = "") { (uuid, progress) ->
                     val type: T? = resolveType(uuid)
                     if (type != null) {

@@ -627,6 +627,7 @@ public final class LoginManager {
             return;
         }
 
+        player.refreshAttrPersistence();
         String json = null;
         int attempts = 0;
         while(json == null && ++attempts <= 3) {
@@ -738,6 +739,7 @@ public final class LoginManager {
         player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 
         player.getBankPin().initialize(parser.getBankPin());
+        player.getAttr().putAllFromPersistence(parser.getAttrPersistenceRaw());
         if(!skipInitEvents) {
             PluginManager.post(new InitializationEvent(player, parser));
             PluginManager.post(new PostInitializationEvent(player));

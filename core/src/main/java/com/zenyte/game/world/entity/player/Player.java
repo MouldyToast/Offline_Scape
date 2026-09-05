@@ -226,6 +226,10 @@ import net.rsprot.protocol.game.outgoing.info.worldentityinfo.WorldEntityInfo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.rsmod.api.attr.AttributeMap;
+import org.rsmod.game.events.PlayerDamageReceivedEvent;
+import org.rsmod.game.events.PlayerLoginEvent;
+import org.rsmod.game.events.PlayerLogoutEvent;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
@@ -368,6 +372,32 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final transient DialogueManager dialogueManager = new DialogueManager(this);
     @Expose
     private final Map<String, Object> attributes = new ConcurrentHashMap<>();
+
+    /**
+     * OpenRune-pattern typed content state (org.rsmod.api.attr). Coexists
+     * with the legacy 'attributes' map above; new extractions use this.
+     * Transient — GSON must never serialize the typed map directly.
+     */
+    private final transient AttributeMap attr = new AttributeMap();
+
+    /**
+     * Serialization surface for {@link #attr}: refreshed from
+     * attr.toPersistentMap() immediately before save (LoginManager) and
+     * restored into attr via putAllFromPersistence at load.
+     */
+    private Map<String, Object> attrPersistence = new HashMap<>();
+
+    public AttributeMap getAttr() {
+        return attr;
+    }
+
+    public Map<String, Object> getAttrPersistenceRaw() {
+        return attrPersistence == null ? new HashMap<>() : attrPersistence;
+    }
+
+    public void refreshAttrPersistence() {
+        attrPersistence = new HashMap<>(attr.toPersistentMap());
+    }
     @Expose
     private Map<Integer, Boolean> playerTitleStatus = new HashMap<>();
     @Expose
@@ -1007,6 +1037,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         } else if (!HitType.SHIELD_DOWN.equals(type) && !HitType.CORRUPTION.equals(type)) {
             if (hit.getSource() instanceof AbstractTOANPC) {
                 toaManager.setDamageTaken(toaManager.getDamageTaken() + Math.min(hitpoints, hit.getDamage()));
+            }
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerDamageReceivedEvent(this, hit.getSource(), hit.getDamage(), hit.getHitType()));
             }
             removeHitpoints(hit);
         }
@@ -2193,6 +2226,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
             interfaceHandler.closeInterfaces();
             MethodicPluginHandler.invokePlugins(ListenerType.LOGOUT, this);
             PluginManager.post(new LogoutEvent(this));
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerLogoutEvent(this));
+            }
             MiddleManManager.INSTANCE.onLogout(this);
             if (logger != null) {
                 CoresManager.getServiceProvider().submit(logger::shutdown);
@@ -4350,6 +4386,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         sendPlayerOptions();
         MethodicPluginHandler.invokePlugins(ListenerType.LOGIN, this);
         PluginManager.post(new LoginEvent(this));
+        if (CoresManager.worldThread != null) {
+            CoresManager.worldThread.getEventBus().publish(new PlayerLoginEvent(this));
+        }
         MiddleManManager.INSTANCE.onLogin(this);
         WorldBroadcasts.onLogin(this);
         controllerManager.login();

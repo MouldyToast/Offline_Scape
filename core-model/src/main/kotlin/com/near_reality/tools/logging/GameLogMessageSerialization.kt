@@ -4,7 +4,6 @@ package com.near_reality.tools.logging
 import com.near_reality.tools.logging.GameLogMessage.Command
 import com.near_reality.tools.logging.GameLogMessage.Death
 import com.near_reality.tools.logging.GameLogMessage.Duel
-import com.near_reality.tools.logging.GameLogMessage.FlowerPokerSession
 import com.near_reality.tools.logging.GameLogMessage.GrandExchangeOffer
 import com.near_reality.tools.logging.GameLogMessage.GrandExchangeTransaction
 import com.near_reality.tools.logging.GameLogMessage.GroundItem
@@ -54,7 +53,6 @@ val nrSerializerModule = SerializersModule {
     contextual(ItemContainerSerializer)
     contextual(ExchangeOfferSerializer)
     polymorphic(GameLogMessage::class) {
-        subclass(FlowerPokerSession::class)
         subclass(Login::class)
         subclass(GrandExchangeOffer::class)
         subclass(GrandExchangeTransaction.Purchase::class)

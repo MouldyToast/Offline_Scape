@@ -1,7 +1,6 @@
 package mgi.custom;
 
 import it.unimi.dsi.fastutil.ints.*;
-import mgi.custom.christmas.ChristmasMapPacker;
 import mgi.tools.parser.TypeParser;
 import mgi.types.config.AnimationDefinitions;
 import mgi.types.config.SpotAnimationDefinition;
@@ -21,6 +20,10 @@ import java.util.Iterator;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class CustomTeleport {
+    private static int soundEffectId = 17506;
+    private static int animationIndex = 15000;
+    private static int graphicsId = 12500;
+
     private final Int2IntMap transformedAnimations = new Int2IntOpenHashMap();
 
     public final void packAll() throws IOException {
@@ -46,7 +49,7 @@ public class CustomTeleport {
         }
         for (final Int2ObjectMap.Entry<File> entry : sortedMap.int2ObjectEntrySet()) {
             final File file = entry.getValue();
-            TypeParser.packSound(ChristmasMapPacker.soundEffectId++, IOUtils.toByteArray(new FileInputStream(file)));
+            TypeParser.packSound(soundEffectId++, IOUtils.toByteArray(new FileInputStream(file)));
         }
     }
 
@@ -66,7 +69,7 @@ public class CustomTeleport {
                     altIds[i] = (altIds[i] & 65535) | (base.getBaseId() << 16);
                 }
             }
-            definitions.setId(ChristmasMapPacker.animationIndex++);
+            definitions.setId(animationIndex++);
             transformedAnimations.put(anim, definitions.getId());
             definitions.pack();
             packFrames(ids);
@@ -98,7 +101,7 @@ public class CustomTeleport {
         }
         for (final Int2ObjectMap.Entry<File> entry : sortedMap.int2ObjectEntrySet()) {
             final File file = entry.getValue();
-            final SpotAnimationDefinition def = new SpotAnimationDefinition(ChristmasMapPacker.graphicsId++, new ByteBuffer(FileUtils.readFileToByteArray(file)));
+            final SpotAnimationDefinition def = new SpotAnimationDefinition(graphicsId++, new ByteBuffer(FileUtils.readFileToByteArray(file)));
             def.setModelId(62003);
             def.setAnimationId(transformedAnimations.getOrDefault(def.getAnimationId(), def.getAnimationId()));
             def.pack();

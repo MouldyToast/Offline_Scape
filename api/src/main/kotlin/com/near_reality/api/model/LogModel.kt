@@ -136,16 +136,6 @@ data class MiddleManLog(
 ) : Log()
 
 @Serializable
-data class FlowerPokerSessionLog(
-    override val time: Instant = Clock.System.now(),
-    val player1: String,
-    val player2: String,
-    val player1Items: SlotItemMap,
-    val player2Items: SlotItemMap,
-    val winner: String
-) : Log()
-
-@Serializable
 data class GrandExchangeOfferLog(
     override val time: Instant = Clock.System.now(),
     val creator: String,

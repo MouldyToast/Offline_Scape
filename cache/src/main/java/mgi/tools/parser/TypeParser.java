@@ -78,13 +78,8 @@ import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.custom.AnimationBase;
-import mgi.custom.BountyHunter;
 import mgi.custom.CustomTeleport;
-import mgi.custom.DiceBag;
 import mgi.custom.FramePacker;
-import mgi.custom.HighDefinitionPets;
-import mgi.custom.Korasi;
-import mgi.custom.relaunch.SoloChallengePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
@@ -240,8 +235,6 @@ public class TypeParser {
             System.out.println("Skipping NearRealityCustomMapsPacker.pack();");
         }
         duelArena(cache);
-        new BountyHunter().packAll();
-        new SoloChallengePacker().packAll();
         if (!isProductionCacheGen) {
             //packPreservedCS2(cache);
         } else {
@@ -600,21 +593,10 @@ public class TypeParser {
     }
 
     private static void packHighRevision() throws IOException {
-        // new DiceBagPacker().pack();
-        // new TrickPacker().pack();
-        //new ThanksgivingPacker().pack();
-        //new ChristmasMapPacker().pack();
-        new HighDefinitionPets().packFull();
-        //new EasterMapPacker().packAll();
         new CustomTeleport().packAll();
-        //new TrickEmote().packAll();
-        new DiceBag().packAll();
-        new Korasi().pack();
         InquisitorsGreatFlailPacker.pack();
-        //new MusicEnumPacker().pack();
         FramePacker.write();
         AnimationBase.pack();
-        // new HalloweenMapPacker().pack();
         GanodermicBeastsPacker.pack();
     }
 

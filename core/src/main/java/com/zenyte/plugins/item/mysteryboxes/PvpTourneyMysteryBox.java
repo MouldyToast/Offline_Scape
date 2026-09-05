@@ -74,7 +74,6 @@ public class PvpTourneyMysteryBox extends ItemPlugin {
                 new MysteryItem(ItemId.BANDOS_TASSETS, 1, 1, 1000),
                 new MysteryItem(ItemId.BANDOS_BOOTS, 1, 1, 1000),
                 new MysteryItem(ItemId.SARADOMIN_SWORD, 1, 1, 1000),
-                new MysteryItem(CustomItemId.KORASI, 1, 1, 1000),
                 new MysteryItem(ItemId.DRAGON_CLAWS, 1, 1, 1000),
                 new MysteryItem(ItemId.VOIDWAKER_27690, 1, 1, 1000),
                 new MysteryItem(ItemId.BLADE_OF_SAELDOR, 1, 1, 1000),

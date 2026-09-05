@@ -3,7 +3,6 @@ package com.zenyte.game.world.entity.player;
 import com.near_reality.game.content.middleman.MiddleManManager;
 import com.near_reality.game.world.entity.player.PlayerActionPlugin;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager;
 import com.zenyte.game.content.minigame.castlewars.CastleWars;
 import com.zenyte.game.content.minigame.castlewars.CastleWarsArea;
 import com.zenyte.game.content.minigame.castlewars.CastleWarsTeam;
@@ -89,7 +88,6 @@ public final class PlayerHandler {
 
     private static void handleDefault(Player player, Player p2, String option) {
         switch (option) {
-            case "Gamble-With" -> FlowerPokerManager.get(player).request(p2);
             case "Challenge" -> handleChallengeRequest(player, p2);
             case "Trade with" -> handleTradeRequest(player, p2);
             case "Take-from" -> handleTakeFlagAttempt(player, p2);

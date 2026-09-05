@@ -6,8 +6,6 @@ import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.plugins.dialogue.PlainChat
-import com.zenyte.plugins.item.DiceItem
 import com.zenyte.utils.TextUtils
 import java.util.*
 
@@ -727,11 +725,6 @@ enum class PortalTeleport(
         UnlockType.DEFAULT,
         Location(2223, 3211, 0)
     ),
-    GAMBLING(TeleportCategory.MISC, "Gambling", "Location: Castle-Wars", UnlockType.DEFAULT, Location(2441, 3090, 0)) {
-        override fun onArrival(player: Player) {
-            player.dialogueManager.start(PlainChat(player, DiceItem.GAMBLE_WARNING))
-        }
-    },
     WATSON(
         TeleportCategory.MISC,
         "Watson\'s house",

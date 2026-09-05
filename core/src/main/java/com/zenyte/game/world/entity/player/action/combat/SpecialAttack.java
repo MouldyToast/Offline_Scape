@@ -46,7 +46,6 @@ import com.zenyte.game.world.entity.player.action.combat.special.ScorchingShackl
 import com.zenyte.game.world.entity.player.action.combat.special.VirulenceSpecial;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
-import mgi.custom.Korasi;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -1315,40 +1314,6 @@ public enum SpecialAttack implements ISpecialAttack {
 
     BEHEAD(AttackType.SLASH, new int[] {SOULREAPER_AXE_28338}, WEAPON_SPEED, MELEE, new Animation(10173), new Graphics(2430),
         SoulreaperCombat::special),
-
-    KORASI(AttackType.SLASH, new int[] {Korasi.ITEM_ID}, WEAPON_SPEED, MELEE, new Animation(32764), new Graphics(32767), (player, combat, target) -> {
-        final List<Entity> possibleTargets = player.getPossibleTargets(EntityType.BOTH);
-        final List<Entity> toRemove = new ArrayList<>();
-        for (final Entity e : possibleTargets) {
-            if (!e.getLocation().withinDistance(target.getLocation(), 1) || (e instanceof Player && !player.canHit((Player) e))) {
-                toRemove.add(e);
-            }
-        }
-        player.sendSound(new SoundEffect(2945, 5, 25));
-        possibleTargets.remove(target);
-        possibleTargets.removeAll(toRemove);
-
-        target.setGraphics(new Graphics(32766, 30, 0));
-        final int halvedMax = combat.getMaxHit(player, 1.0, 1.0, false) / 2;
-        final int addition = !possibleTargets.isEmpty() ? Utils.random(halvedMax) : halvedMax;
-        final Hit hit = combat.getHit(player, target, 1, 1, 1, false);
-        final int damage = hit.getDamage() + addition + Utils.random(0, 5);
-        hit.setHitType(HitType.MAGIC);
-        hit.setDamage(damage);
-        combat.delayHit(target, 0, hit);
-
-        int count = 1;
-        for (Entity e : possibleTargets) {
-            if (!e.isMultiArea()) {
-                continue;
-            }
-            e.setGraphics(new Graphics(32766, 30 * (count + 1), 0));
-            final Hit targetHit = combat.getHit(player, e, 1, 1, 1, false);
-            targetHit.setDamage(count == 1 ? (damage / 2) : (damage / 4));
-            combat.delayHit(e, count, targetHit);
-            if (++count >= 3) break;
-        }
-    }),
 
     BLOOD_SACRIFICE(AttackType.SLASH, new int[] {ItemId.ANCIENT_GODSWORD}, WEAPON_SPEED, MELEE, null, new Graphics(1996), (player, combat, target) -> {
         player.setAnimation(new Animation(9171));

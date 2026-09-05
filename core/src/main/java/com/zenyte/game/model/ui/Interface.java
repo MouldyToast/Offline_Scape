@@ -187,8 +187,7 @@ public abstract class Interface implements Plugin {
             }
             return false;
         }
-        boolean gamble = itemId == 299 && player.getBooleanTemporaryAttribute("gambling");
-        if (isInterruptedOnLock() && (player.isLocked() && !gamble)) return true;
+        if (isInterruptedOnLock() && player.isLocked()) return true;
         handler.handle(player, slotId, itemId, option);
         return true;
     }

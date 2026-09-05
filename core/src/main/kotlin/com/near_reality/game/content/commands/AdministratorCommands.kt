@@ -9,9 +9,6 @@ import com.zenyte.game.GameInterface
 import com.zenyte.game.content.boss.phantommuspah.PhantomInstance
 import com.zenyte.game.content.clans.ClanManager
 import com.zenyte.game.content.event.christmas2019.AChristmasWarble
-import com.zenyte.game.content.flowerpoker.FlowerPokerAreas
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager
-import com.zenyte.game.content.flowerpoker.FlowerPokerSession
 import com.zenyte.game.content.grandexchange.GrandExchange
 import com.zenyte.game.content.grandexchange.GrandExchangeHandler
 import com.zenyte.game.content.grandexchange.GrandExchangePriceManager
@@ -176,10 +173,6 @@ object AdministratorCommands {
             MysteryBoxMan.enabled = !MysteryBoxMan.enabled
             p.sendMessage("Mystery box claiming is now " + if (MysteryBoxMan.enabled) "enabled" else "disabled")
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "resetfplane", "Resets FP lane being stood in") { p: Player, _: Array<String?> ->
-            FlowerPokerAreas.resetArea(p.location)
-            p.sendMessage("This lane has been reset.")
-        }
         Command(PlayerPrivilege.MODERATOR, "flagbot") { p, _ ->
             p.sendInputName("Enter name of botter") { botName ->
                 val targetPlayer = World.getPlayer(botName).getOrNull()
@@ -267,11 +260,6 @@ object AdministratorCommands {
         Command(PlayerPrivilege.ADMINISTRATOR, "disablege") { p: Player, _: Array<String?>? ->
             GrandExchange.ENABLED = !GrandExchange.ENABLED
             p.sendMessage("GE is " + if (GrandExchange.ENABLED) "Enabled" else "Disabled")
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablefp") { p: Player, _: Array<String?>? ->
-            FlowerPokerManager.FLOWER_POKER_ENABLED = !FlowerPokerManager.FLOWER_POKER_ENABLED
-            p.sendMessage("FP is " + if (FlowerPokerManager.FLOWER_POKER_ENABLED) "Enabled" else "Disabled")
-            FlowerPokerManager.FLOWER_POKER_AREAS.forEach { (_: FlowerPokerAreas?, s: FlowerPokerSession?) -> if (s?.planting != null) s.planting.cancelAndRefund() }
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "disableworldboosts") { p: Player, _: Array<String?>? ->

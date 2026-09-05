@@ -80,9 +80,8 @@ public enum ItemActionHandler {
             ItemUtil.sendItemExamine(player, item);
             return;
         }
-        boolean gamble = itemId == 299 && player.getBooleanTemporaryAttribute("gambling");
         if (!(player instanceof FakePlayer)) {
-            if ((player.isLocked() && !gamble) || player.isFullMovementLocked() || !player.getInterfaceHandler().isPresent(GameInterface.INVENTORY_TAB)) {
+            if (player.isLocked() || player.isFullMovementLocked() || !player.getInterfaceHandler().isPresent(GameInterface.INVENTORY_TAB)) {
                 return;
             }
         }

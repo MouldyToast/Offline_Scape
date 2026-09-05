@@ -7,7 +7,6 @@ public class CustomItemId
 	public static final int CANNONBALL_PACK = 31301;
 	public static final int DRAGON_BONES_PACK = 31313;
 	public static final int GRANITE_CANNONBALL_PACK = 31314;
-	public static final int KORASI = 32001;
 	public static final int ANCIENT_EYE = 32002;
 	public static final int DRAGON_KITE = 32022;
 	public static final int POLYPORE_SPORES = 32038;

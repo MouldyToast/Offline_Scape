@@ -30,19 +30,6 @@ sealed interface GameLogMessage {
     }
 
     @Serializable
-    data class FlowerPokerSession(
-        override val time: Instant = Clock.System.now(),
-        override val username: String,
-        override val otherUsername: String,
-        override val items: SlotItemMap,
-        override val otherItems: SlotItemMap,
-        val winnerUsername: String,
-    ) : GameLogMessage, PlayerWithOther, ItemContainerWithOther {
-        val loserUsername: String
-            get() = if (username == winnerUsername) otherUsername else username
-    }
-
-    @Serializable
     data class GrandExchangeOffer(
         override val time: Instant = Clock.System.now(),
         override val username: String,

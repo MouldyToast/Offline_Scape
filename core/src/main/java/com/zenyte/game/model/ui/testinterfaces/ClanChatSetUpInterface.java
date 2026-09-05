@@ -8,13 +8,10 @@ import com.zenyte.game.content.clans.ClanRank;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.net.packet.PacketDispatcher;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.plugins.InitPlugin;
 import com.zenyte.plugins.events.LoginEvent;
 import com.zenyte.utils.TextUtils;
 import mgi.utilities.StringFormatUtil;
-
-import java.util.Objects;
 
 import static com.zenyte.game.content.clans.ClanManager.refreshChannel;
 
@@ -33,21 +30,6 @@ public class ClanChatSetUpInterface extends Interface implements InitPlugin {
 
     @Override
     public void open(Player player) {
-        ClanChannel currentChannel = ClanManager.getCurrentChannel(player);
-        if (currentChannel != null && currentChannel.getOwner().equalsIgnoreCase("help")) {
-            if(!currentChannel.getRankedMembers().containsKey(player.getUsername().toLowerCase())) {
-                player.sendMessage("You are not a ranked member of this chat and do not have access.");
-            } else {
-                player.getInterfaceHandler().sendInterface(getInterface());
-                player.getPacketDispatcher().initFriendsList();
-                final PacketDispatcher dispatcher = player.getPacketDispatcher();
-                dispatcher.sendComponentText(getInterface(), getComponent("Disable/set prefix"), currentChannel.isDisabled() ? "Chat disabled" : TextUtils.capitalize(currentChannel.getPrefix()));
-                dispatcher.sendComponentText(getInterface(), getComponent("Set enter rank"), currentChannel.getEnterRank().getLabel());
-                dispatcher.sendComponentText(getInterface(), getComponent("Set talk rank"), currentChannel.getTalkRank().getLabel());
-                dispatcher.sendComponentText(getInterface(), getComponent("Set kick rank"), currentChannel.getKickRank().getLabel());
-            }
-            return;
-        }
         player.getInterfaceHandler().sendInterface(getInterface());
         final String username = player.getUsername();
         final String usernameKey = StringFormatUtil.formatUsername(username);
@@ -125,17 +107,12 @@ public class ClanChatSetUpInterface extends Interface implements InitPlugin {
 
     @Subscribe
     public static void onLogin(final LoginEvent event) {
-        Player player = event.getPlayer();
-        if(!(boolean) player.getAttributes().getOrDefault("manuallyLeftHelpChat", false)) {
-            if(player.getSettings().getChannelOwner() == null || Objects.equals(player.getSettings().getChannelOwner(), ""))
-                ClanManager.join(player, "help");
-        }
-        if(player.getPrivilege().eligibleTo(PlayerPrivilege.ADMINISTRATOR)) {
-            ClanManager.getChannel("help").get().getRankedMembers().put(player.getUsername(), ClanRank.ADMINISTRATOR);
-        } else if (player.getPrivilege().eligibleTo(PlayerPrivilege.MODERATOR)) {
-            ClanManager.getChannel("help").get().getRankedMembers().put(player.getUsername(), ClanRank.GENERAL);
-        } else if (player.getPrivilege().eligibleTo(PlayerPrivilege.SUPPORT)) {
-            ClanManager.getChannel("help").get().getRankedMembers().put(player.getUsername(), ClanRank.CAPTAIN);
+        final Player player = event.getPlayer();
+        final String lastChannel = player.getSettings().getChannelOwner();
+        if (lastChannel != null && !lastChannel.isEmpty()) {
+            ClanManager.join(player, lastChannel);
+        } else if (!(boolean) player.getAttributes().getOrDefault("manuallyLeftHelpChat", false)) {
+            ClanManager.join(player, "help");
         }
     }
 }

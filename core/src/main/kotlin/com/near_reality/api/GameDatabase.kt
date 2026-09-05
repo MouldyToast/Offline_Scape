@@ -20,7 +20,6 @@ import com.near_reality.api.dao.logs.CommandLogEntity
 import com.near_reality.api.dao.logs.CreditStoreCheckoutLogEntity
 import com.near_reality.api.dao.logs.DropItemLogEntity
 import com.near_reality.api.dao.logs.DuelLogEntity
-import com.near_reality.api.dao.logs.FlowerPokerSessionLogEntity
 import com.near_reality.api.dao.logs.GameServerLogEntity
 import com.near_reality.api.dao.logs.GrandExchangeOfferLogEntity
 import com.near_reality.api.dao.logs.GrandExchangeTransactionLogEntity
@@ -250,14 +249,6 @@ object GameDatabase {
                     player2 = log.otherUsername
                     player1Items = log.items.toSlotItemMapAdminCp()
                     player2Items = log.otherItems.toSlotItemMapAdminCp()
-                }
-                is GameLogMessage.FlowerPokerSession -> FlowerPokerSessionLogEntity.new {
-                    time = log.time.toLocalDateTime(defaultTimeZone)
-                    player1 = log.username
-                    player2 = log.otherUsername
-                    player1Items = log.items.toSlotItemMapAdminCp()
-                    player2Items = log.otherItems.toSlotItemMapAdminCp()
-                    winner = log.winnerUsername
                 }
                 is GameLogMessage.GrandExchangeOffer -> GrandExchangeOfferLogEntity.new {
                     time = log.time.toLocalDateTime(defaultTimeZone)

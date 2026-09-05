@@ -1,8 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager;
-import com.zenyte.game.content.flowerpoker.FlowerPokerStatus;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.TradeStatus;
@@ -28,20 +26,14 @@ public class TradeStage2Interface extends Interface {
 
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
-        if(FlowerPokerManager.get(player).inInterface)
-            FlowerPokerManager.get(player).closeStake(FlowerPokerStatus.CANCEL);
-        else
-            player.getTrade().closeTrade(TradeStatus.CANCEL);
+        player.getTrade().closeTrade(TradeStatus.CANCEL);
         player.getInterfaceHandler().closeInterfaces();
     }
 
     @Override
     protected void build() {
         bind("Accept", player ->  {
-            if(FlowerPokerManager.get(player).inInterface)
-                FlowerPokerManager.get(player).accept(2);
-            else
-                player.getTrade().accept(2);
+            player.getTrade().accept(2);
         });
         bind("Decline", player -> player.getInterfaceHandler().closeInterfaces());
     }

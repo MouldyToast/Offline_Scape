@@ -3,6 +3,7 @@ package com.zenyte.game.content.clans;
 import com.google.gson.annotations.Expose;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
+import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -21,6 +23,8 @@ import java.util.function.Consumer;
  * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>}
  */
 public final class ClanChannel {
+	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ClanChannel.class);
+
 	/**
 	 * The owner of the clan channel, this variable can never change.
 	 */
@@ -85,23 +89,27 @@ public final class ClanChannel {
 	private transient RaidParty raidParty;
 
 	/**
-	 * Lazy-loads the owner character if it hasn't been already loaded. Executes the consumer instantly otherwise.
-	 * @param consumer the consumer that accepts the loaded player.
+	 * Resolves the owner as a Player and passes them to the consumer.
+	 * Checks online players first, falls back to the save file.
+	 * If neither is available, passes {@code null} — callers must
+	 * handle a null owner gracefully.
+	 *
+	 * @param consumer the consumer that accepts the owner, or null.
 	 */
 	void loadOwner(@NotNull final Consumer<Player> consumer) {
-		/*if (ownerPlayer == null) {
-            val optional = World.getPlayer(owner);
-            val optPlayer = optional.orElse(null);
-            if (optPlayer != null && !optPlayer.isNulled()) {
-                this.ownerPlayer = optPlayer;
-            } else {
-                CoresManager.getLoginManager().load(owner, true, optionalPlayer -> consumer.accept(ownerPlayer =
-                        optionalPlayer.orElseThrow(RuntimeException::new)));
-                return;
-            }
-        }
-        consumer.accept(Objects.requireNonNull(ownerPlayer));*/
-		CoresManager.getLoginManager().load(true, owner, optionalPlayer -> consumer.accept(optionalPlayer.orElseThrow(RuntimeException::new)));
+		final Optional<Player> online = World.getPlayer(owner);
+		if (online.isPresent() && !online.get().isNulled()) {
+			consumer.accept(online.get());
+			return;
+		}
+		CoresManager.getLoginManager().load(true, owner, optionalPlayer -> {
+			if (optionalPlayer.isPresent()) {
+				consumer.accept(optionalPlayer.get());
+			} else {
+				log.debug("Clan channel owner '{}' not online and no save file — passing null.", owner);
+				consumer.accept(null);
+			}
+		});
 	}
 
 	public Set<String> getPermBannedMembers() {

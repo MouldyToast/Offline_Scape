@@ -11,7 +11,6 @@ import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
 import com.zenyte.cores.CoresManager
 import com.zenyte.game.GameConstants
-import com.zenyte.game.content.flowerpoker.FlowerPokerManager
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.Player
@@ -270,9 +269,6 @@ object MiddleManManager {
 
         if (players.any { GlobalAreaManager.getArea(it.position)?.isWildernessArea(it.position) == true })
             return false to "outside of the wilderness"
-
-        if (players.any { FlowerPokerManager.get(it).let { it.accepted || it.started || it.inInterface || it.isStaking } })
-            return false to "out of a flower poker session"
 
         if (players.any { it.duel?.inDuel() == true })
             return false to "out of a duel session"

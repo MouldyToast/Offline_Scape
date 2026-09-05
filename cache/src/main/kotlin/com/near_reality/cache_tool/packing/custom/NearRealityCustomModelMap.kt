@@ -488,7 +488,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "sherlock_notes_stack3" to CustomDefinition.Model(modelId = 60452),
     "sherlock_notes_stack4" to CustomDefinition.Model(modelId = 60453),
     "sherlock_notes_stack5" to CustomDefinition.Model(modelId = 60454),
-    "dice_bag_inv" to CustomDefinition.Model(modelId = 60455),
     "rebirth_obj_tourny_supplies" to CustomDefinition.Model(modelId = 60456),
     "pet_cute_creature" to CustomDefinition.Model(modelId = 60457),
     "pet_evil_creature" to CustomDefinition.Model(modelId = 60458),
@@ -557,7 +556,6 @@ val map: Map<String, CustomDefinition> = mapOf(
 
     "gano_beast_1" to CustomDefinition.Model(modelId = 62000),
     "gano_beast_2" to CustomDefinition.Model(modelId = 62001),
-    "dice_bag_legacy" to CustomDefinition.Model(modelId = 62002),
     "teleport_model_legacy" to CustomDefinition.Model(modelId = 62003),
 
     "rebirth_npc_mac" to CustomDefinition.Model(modelId = 64000),
@@ -672,11 +670,6 @@ val map: Map<String, CustomDefinition> = mapOf(
 
     "origins_handcannon_gfx_start_anim" to CustomDefinition.Model(modelId = 65529),
     "origins_handcannon_gfx_proj_anim" to CustomDefinition.Model(modelId = 65530),
-    "korasi_1" to CustomDefinition.Model(modelId = 65531),
-    "korasi_2" to CustomDefinition.Model(modelId = 65532),
-    "korasi_3" to CustomDefinition.Model(modelId = 65533),
-    "korasi_4" to CustomDefinition.Model(modelId = 65534),
-    "korasi_5" to CustomDefinition.Model(modelId = 65535),
 )
 
 fun String.model(): Int = ((map[this] ?: error("no id mapping found for $this")) as CustomDefinition.Model).modelId

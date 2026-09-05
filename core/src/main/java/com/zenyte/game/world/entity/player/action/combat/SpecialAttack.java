@@ -46,7 +46,6 @@ import com.zenyte.game.world.entity.player.action.combat.special.ScorchingShackl
 import com.zenyte.game.world.entity.player.action.combat.special.VirulenceSpecial;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
-import mgi.custom.Korasi;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -1316,7 +1315,7 @@ public enum SpecialAttack implements ISpecialAttack {
     BEHEAD(AttackType.SLASH, new int[] {SOULREAPER_AXE_28338}, WEAPON_SPEED, MELEE, new Animation(10173), new Graphics(2430),
         SoulreaperCombat::special),
 
-    KORASI(AttackType.SLASH, new int[] {Korasi.ITEM_ID}, WEAPON_SPEED, MELEE, new Animation(32764), new Graphics(32767), (player, combat, target) -> {
+    KORASI(AttackType.SLASH, new int[] {32001}, WEAPON_SPEED, MELEE, new Animation(32764), new Graphics(32767), (player, combat, target) -> {
         final List<Entity> possibleTargets = player.getPossibleTargets(EntityType.BOTH);
         final List<Entity> toRemove = new ArrayList<>();
         for (final Entity e : possibleTargets) {

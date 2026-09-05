@@ -1,24 +1,22 @@
 package com.zenyte.game.content.clans;
 
-import com.google.common.eventbus.Subscribe;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.cores.ScheduledExternalizable;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.logger.NearRealityLogger;
 import com.zenyte.plugins.PluginManager;
 import com.zenyte.plugins.events.ClanLeaveEvent;
-import com.zenyte.plugins.events.LoginEvent;
 import com.zenyte.utils.TextUtils;
 import com.zenyte.utils.TimeUnit;
 import mgi.utilities.StringFormatUtil;
 import net.rsprot.protocol.game.outgoing.friendchat.UpdateFriendChatChannelFull;
 import net.rsprot.protocol.game.outgoing.friendchat.UpdateFriendChatChannelSingleUser;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.BufferedReader;
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -64,13 +61,6 @@ public final class ClanManager implements ScheduledExternalizable {
         return player.getSettings().getChannel();
     }
 
-    @Subscribe
-    public static void onLdogin(@NotNull final LoginEvent event) {
-        final Player player = event.getPlayer();
-        final String lastClan = player.getSettings().getChannelOwner();
-        join(player, Objects.requireNonNullElse(lastClan, "help"));
-    }
-
     /**
      * Attempts to enqueue the player to the requested clan channel.
      *
@@ -99,7 +89,7 @@ public final class ClanManager implements ScheduledExternalizable {
                 return;
             }
             final ClanRank rank = getRank(player, channel);
-            if (channel.getMembers().size() >= 500 && !rq.equals("help")) {
+            if (channel.getMembers().size() >= 500) {
                 final Player playerToKick = findMember(channel, rank);
                 if (playerToKick == null) {
                     player.sendMessage("That clan channel is currently full.");
@@ -112,7 +102,7 @@ public final class ClanManager implements ScheduledExternalizable {
                     player.sendMessage("You are not high enough rank to join this clan channel.");
                     return;
                 }
-                if (!player.getPrivilege().inherits(PlayerPrivilege.SUPPORT) && owner.getSocialManager().getIgnores().contains(player.getUsername())) {
+                if (owner != null && !player.getPrivilege().inherits(PlayerPrivilege.SUPPORT) && owner.getSocialManager().getIgnores().contains(player.getUsername())) {
                     player.sendMessage("You cannot join this channel as the owner has ignored you.");
                     return;
                 }
@@ -384,18 +374,18 @@ public final class ClanManager implements ScheduledExternalizable {
         });
     }
 
-    private static int getRank(final ClanRank rank, final Player member, final Player owner) {
-        if (owner.getUsername().equals(member.getUsername())) {
+    private static int getRank(final ClanRank rank, final Player member, @Nullable final Player owner) {
+        if (owner != null && owner.getUsername().equals(member.getUsername())) {
             return 7;
         } else if (member.getPrivilege().inherits(PlayerPrivilege.ADMINISTRATOR)) {
             return 127;
         } else if (rank != null) {
             if (rank == ClanRank.FRIENDS) {
-                return owner.getSocialManager().containsFriend(member.getUsername()) ? 0 : -1;
+                return owner != null && owner.getSocialManager().containsFriend(member.getUsername()) ? 0 : -1;
             }
             return rank.getId();
         }
-        return owner.getSocialManager().containsFriend(member.getUsername()) ? 0 : -1;
+        return owner != null && owner.getSocialManager().containsFriend(member.getUsername()) ? 0 : -1;
     }
 
     public static void refreshPartial(@NotNull final ClanChannel channel,
@@ -449,24 +439,6 @@ public final class ClanManager implements ScheduledExternalizable {
                 );
             }
         });
-    }
-
-    public static void setDefaultChannel() {
-        final String username = "relic";
-        final String usernameKey = StringFormatUtil.formatUsername(username);
-        ClanChannel channel = ClanManager.CLAN_CHANNELS.get(usernameKey);
-        if (channel == null) {
-            ClanManager.CLAN_CHANNELS.put(usernameKey, new ClanChannel(usernameKey));
-        }
-        final Optional<ClanChannel> optional = getChannel("relic");
-        if (optional.isEmpty()) {
-            return;
-        }
-        channel = optional.get();
-        final String prefix = "relic";
-        channel.setPrefix(prefix);
-        channel.setDisabled(false);
-        refreshChannel(channel);
     }
 
     public static void setPrefix(@NotNull final Player player, final boolean active) {
@@ -530,14 +502,17 @@ public final class ClanManager implements ScheduledExternalizable {
      * @param channel the channel to check
      * @return whether the player can enter that channel or not.
      */
-    private static boolean canEnter(@NotNull final Player player, @NotNull final Player clanOwner,
+    private static boolean canEnter(@NotNull final Player player, @Nullable final Player clanOwner,
                                     @NotNull final ClanChannel channel) {
-        if (player.isNulled() || clanOwner.isNulled()) {
+        if (player.isNulled()) {
             return false;
         }
         final ClanRank rank = channel.getEnterRank();
         if (rank == ClanRank.ANYONE || isOwner(player, channel) || player.getPrivilege().inherits(PlayerPrivilege.ADMINISTRATOR)) {
             return true;
+        }
+        if (clanOwner == null || clanOwner.isNulled()) {
+            return false;
         }
 
         final String username = player.getPlayerInformation().getUsername();
@@ -588,11 +563,14 @@ public final class ClanManager implements ScheduledExternalizable {
      * @param channel the channel the player is attempting to talk in.
      * @return whether the player can talk or not.
      */
-    private static int canTalk(@NotNull final Player player, @NotNull final Player clanOwner,
+    private static int canTalk(@NotNull final Player player, @Nullable final Player clanOwner,
                                @NotNull final ClanChannel channel) {
-        if (!player.isStaff() && (player.getAttributes().get("cc_last_talk") != null) && (long) player.getAttributes().get("cc_last_talk") >= (System.currentTimeMillis() - (player.getMemberRank().equalToOrGreaterThan(MemberRank.TOPAZ) ? TimeUnit.TICKS.toMillis(2) : TimeUnit.TICKS.toMillis(5)))) {
-            player.sendMessage("Please wait a few moments before sending another message.");
-            return 2;
+        if (!player.isStaff()) {
+            final Object lastTalk = player.getAttributes().get("cc_last_talk");
+            if (lastTalk != null && (long) lastTalk >= (System.currentTimeMillis() - TimeUnit.TICKS.toMillis(5))) {
+                player.sendMessage("Please wait a few moments before sending another message.");
+                return 2;
+            }
         }
         if (player.isNulled()) {
             return 0;
@@ -602,6 +580,9 @@ public final class ClanManager implements ScheduledExternalizable {
                 || isOwner(player, channel)
                 || player.getPrivilege().inherits(PlayerPrivilege.ADMINISTRATOR)) {
             return 1;
+        }
+        if (clanOwner == null) {
+            return 0;
         }
         final String username = player.getPlayerInformation().getUsername();
         if (rank == ClanRank.FRIENDS) {

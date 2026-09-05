@@ -5,7 +5,6 @@ import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 
 import com.near_reality.game.model.item.degrading.Degradeable;
-import com.zenyte.game.content.tombsofamascut.TOAConstants;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.plugins.item.BloodEssence;
@@ -257,7 +256,7 @@ public enum DegradableItem implements Degradeable {
     SANGUINESTI_STAFF(DegradeType.TRIDENT, ItemId.SANGUINESTI_STAFF, ItemId.SANGUINESTI_STAFF_UNCHARGED, 20000, 0),
     HOLY_SANGUINESTI_STAFF(DegradeType.TRIDENT, ItemId.HOLY_SANGUINESTI_STAFF, ItemId.HOLY_SANGUINESTI_STAFF_UNCHARGED, 20000, 0),
     TUMEKENS_SHADOW(DegradeType.TRIDENT, ItemId.TUMEKENS_SHADOW, ItemId.TUMEKENS_SHADOW_UNCHARGED, 20000, 0,
-            item -> new Item[]{new Item(ItemId.SOUL_RUNE, item.getCharges() * TOAConstants.SOUL_RUNES_MOD), new Item(ItemId.CHAOS_RUNE, item.getCharges() * TOAConstants.CHAOS_RUNES_MOD)}),
+            item -> new Item[]{new Item(ItemId.SOUL_RUNE, item.getCharges() * 2), new Item(ItemId.CHAOS_RUNE, item.getCharges() * 5)}), // 2 soul / 5 chaos per charge (ex-TOAConstants.SOUL_RUNES_MOD/CHAOS_RUNES_MOD)
     CRAWS_BOW(DegradeType.OUTGOING_HIT, 22550, 22547, 17000, 0),
 
     WEBWEAVER_BOW(DegradeType.OUTGOING_HIT, 27655, 27652, 17000, 0),

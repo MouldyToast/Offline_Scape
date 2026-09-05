@@ -8,6 +8,11 @@ public abstract class AbstractTOARaidArea extends DynamicArea {
         super(allocatedArea, copiedChunkX, copiedChunkY);
     }
 
+    @Override
+    public boolean isTombsOfAmascutArea() {
+        return true;
+    }
+
     public boolean isOverlyDraining(){
         return false;
     }

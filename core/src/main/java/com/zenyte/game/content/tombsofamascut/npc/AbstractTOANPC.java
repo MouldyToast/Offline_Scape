@@ -8,4 +8,9 @@ public abstract class AbstractTOANPC extends NPC {
     public AbstractTOANPC(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);
     }
+
+    @Override
+    public boolean isRaidNpcForTwistedBow() {
+        return true;
+    }
 }

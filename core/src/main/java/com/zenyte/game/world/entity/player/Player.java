@@ -70,7 +70,6 @@ import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.tombsofamascut.AbstractTOAManager;
-import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
@@ -2126,7 +2125,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (source != null) {
             final Hit hit = entry.getHit();
             final HitType type = hit.getHitType();
-            final float multiplierAddition = getArea() instanceof final AbstractTOARaidArea area && area.isQuietPrayers() ? .1F : 0;
+            final float multiplierAddition = getArea() != null && getArea().isQuietPrayers() ? .1F : 0;
             if (type == HitType.MELEE) {
                 if (prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMeleePrayerMultiplier() + multiplierAddition)));
@@ -3224,7 +3223,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 getEquipment().refresh();
             }
             if (!HitType.HEALED.equals(hit.getHitType()) && hit.getSource() != null && !hit.getSource().equals(this)
-                    && getArea() instanceof final AbstractTOARaidArea toaRaidArea && toaRaidArea.isDeadlyPrayers()) {
+                    && getArea() != null && getArea().isDeadlyPrayers()) {
                 prayerManager.drainPrayerPoints(damage / 5);
             }
             if (getHitpoints() <= (getMaxHitpoints() * 0.1F)) {

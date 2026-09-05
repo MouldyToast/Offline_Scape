@@ -4,9 +4,6 @@ import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.content.minigame.fightcaves.npcs.FightCavesNPC;
 import com.zenyte.game.content.minigame.inferno.npc.InfernoNPC;
-import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC;
-import com.zenyte.game.content.tombsofamascut.npc.IMovingWarden;
-import com.zenyte.game.content.tombsofamascut.npc.IWardenCore;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -129,11 +126,11 @@ public class CombatUtilities {
     }
 
     public static boolean isMovingWarden(@NotNull final Entity target) {
-        return target instanceof IMovingWarden;
+        return target instanceof final NPC npc && npc.isMovingWarden();
     }
 
     public static boolean isWardenCore(@NotNull final Entity target) {
-        return target instanceof IWardenCore;
+        return target instanceof final NPC npc && npc.isWardenCore();
     }
 
     public static boolean isUndeadCombatDummy(@NotNull final Entity target) {
@@ -518,7 +515,7 @@ public class CombatUtilities {
     }
 
     public static boolean isVampyric(Entity entity) {
-        return entity instanceof Vampyre || entity instanceof AbstractTheatreNPC;
+        return entity instanceof Vampyre || (entity instanceof final NPC npc && npc.isVampyric());
     }
 
     public static boolean isTzhaar(Entity entity) {

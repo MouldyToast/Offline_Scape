@@ -8,4 +8,14 @@ public abstract class AbstractTheatreNPC extends NPC {
     public AbstractTheatreNPC(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);
     }
+
+    @Override
+    public boolean isRaidNpcForTwistedBow() {
+        return true;
+    }
+
+    @Override
+    public boolean isVampyric() {
+        return true;
+    }
 }

@@ -11,7 +11,6 @@ import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.content.skills.magic.spells.MagicSpell;
 import com.zenyte.game.content.skills.magic.spells.arceuus.GreaterCorruptionKt;
-import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.task.WorldTask;
@@ -710,7 +709,7 @@ public abstract class PlayerCombat extends Action {
             return 0;
         }
         int requiredSpecial = SPECIAL_ENUM.getIntValue(weapon.getId());
-        if (player.getArea() instanceof final AbstractTOARaidArea area && area.isOverlyDraining()) {
+        if (player.getArea() != null && player.getArea().isOverlyDraining()) {
             requiredSpecial = 1000;
         }
         return requiredSpecial / (player.getVariables().getTime(TickVariable.LIQUID_ADRENALINE) > 0 ? 20 : 10);

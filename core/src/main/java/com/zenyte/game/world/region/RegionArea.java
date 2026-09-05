@@ -20,6 +20,26 @@ public interface RegionArea extends Plugin {
         return false;
     }
 
+    default boolean isTombsOfAmascutArea() {
+        return false;
+    }
+
+    default boolean isOverlyDraining() {
+        return false;
+    }
+
+    default boolean isQuietPrayers() {
+        return false;
+    }
+
+    default boolean isDeadlyPrayers() {
+        return false;
+    }
+
+    default boolean isDeHydration() {
+        return false;
+    }
+
     default boolean isDynamicArea() {
         return false;
     }

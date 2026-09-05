@@ -68,10 +68,6 @@ include(
     ":scripts:shops",
 )
 
-include(
-    ":core-restricted",
-)
-
 include(":app")
 
 // Auto-discovered content and tools modules.

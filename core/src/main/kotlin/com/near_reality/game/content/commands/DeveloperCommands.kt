@@ -79,9 +79,6 @@ import kotlin.jvm.optionals.getOrNull
 
 object DeveloperCommands {
     var newStoreEnabled = true
-    var automatedSanctions = false
-    var ipBasedDetections = false
-    var anticheatEnabled = false
     var enabledGauntlet = true
     var toggledDT2Off = false
     var enabledLootKeys = true
@@ -282,16 +279,6 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleautosanction") { p, _ ->
-            if(automatedSanctions) {
-                automatedSanctions = false
-                p.sendMessage("Automated Sanctions have been disabled")
-            } else {
-                automatedSanctions = true
-                p.sendMessage("Automated Sanctions have been enabled")
-            }
-        }
-
         Command(PlayerPrivilege.DEVELOPER, "toggledt2") { p, _ ->
             if(toggledDT2Off) {
                 toggledDT2Off = false
@@ -299,26 +286,6 @@ object DeveloperCommands {
             } else {
                 toggledDT2Off = true
                 p.sendMessage("DT2 Bosses have been enabled")
-            }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleipfilter") { p, _ ->
-            if(ipBasedDetections) {
-                ipBasedDetections = false
-                p.sendMessage("IP-based checks have been disabled")
-            } else {
-                ipBasedDetections = true
-                p.sendMessage("IP-based checks have been enabled")
-            }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleanticheat") { p, _ ->
-            if(anticheatEnabled) {
-                anticheatEnabled = false
-                p.sendMessage("Anti-Cheat has been disabled")
-            } else {
-                anticheatEnabled = true
-                p.sendMessage("Anti-Cheat has been enabled")
             }
         }
 

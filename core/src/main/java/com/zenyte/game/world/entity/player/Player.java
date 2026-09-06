@@ -1857,7 +1857,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                     sanityValue = -3;
                     if (sanityTick.intValue() == 1) {
                         applyHit(new Hit(Math.abs(sanityValue), HitType.SANITY_DRAIN));
-                        PrayerManagerKeys.prayerManager(this).drainPrayerPoints(Math.abs(sanityValue));
+                        drainSkill(SkillConstants.PRAYER, Math.abs(sanityValue));
                     }
                 }
                 // Real World
@@ -2932,8 +2932,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         final int damage = Math.min(hit.getDamage(), getHitpoints());
         if (((Player) source).getVarManager().getBitValue(PrayerVarbits.SMITE) == 1) {
             final int drain = damage / 4;
-            if (drain > 0 && PrayerManagerKeys.prayerManager(this) != null) {
-                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(drain);
+            if (drain > 0) {
+                drainSkill(SkillConstants.PRAYER, drain);
             }
         }
     }
@@ -3186,7 +3186,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             if (!HitType.HEALED.equals(hit.getHitType()) && hit.getSource() != null && !hit.getSource().equals(this)
                     && getArea() != null && getArea().isDeadlyPrayers()) {
-                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(damage / 5);
+                drainSkill(SkillConstants.PRAYER, damage / 5);
             }
             if (getHitpoints() <= (getMaxHitpoints() * 0.1F)) {
                 final int ring = getEquipment().getId(EquipmentSlot.RING);

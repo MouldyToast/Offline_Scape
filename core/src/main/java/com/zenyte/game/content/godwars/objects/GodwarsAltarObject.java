@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.objects;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.godwars.GodwarsInstancePortal;
 import com.zenyte.game.content.godwars.instance.GodwarsInstance;
@@ -36,7 +37,7 @@ public class GodwarsAltarObject implements ObjectAction {
                 player.sendMessage("You need to be out of combat to use this altar.");
                 return;
             }
-            player.getPrayerManager().setPrayerPoints(player.getSkills().getLevelForXp(SkillConstants.PRAYER));
+            PrayerManagerKeys.prayerManager(player).setPrayerPoints(player.getSkills().getLevelForXp(SkillConstants.PRAYER));
             player.setAnimation(new Animation(645));
             player.sendMessage("You recharge your prayer.");
             player.sendSound(2674);

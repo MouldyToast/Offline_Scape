@@ -1,5 +1,6 @@
 package com.near_reality.game.content.gauntlet.map;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.gauntlet.*;
 import com.near_reality.game.content.gauntlet.hunllef.Hunllef;
 import com.near_reality.game.content.gauntlet.hunllef.HunllefType;
@@ -652,8 +653,8 @@ public final class GauntletMap extends DynamicArea implements TempPlayerStatePlu
             GauntletModule.updateDeathStatistics();
         }
 
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
 
         WorldTasksManager.schedule(new WorldTask() {

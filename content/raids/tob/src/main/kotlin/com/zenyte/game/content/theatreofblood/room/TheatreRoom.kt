@@ -1,5 +1,6 @@
 package com.zenyte.game.content.theatreofblood.room
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.world.spawnFloorItem
 import com.zenyte.cores.CoresManager
 import com.zenyte.game.GameInterface
@@ -323,7 +324,7 @@ internal abstract class TheatreRoom(
             player.sendMessage(message)
 
             player.heal(player.maxHitpoints)
-            player.prayerManager.restorePrayerPoints(99)
+            player.prayerManager().restorePrayerPoints(99)
             player.combatDefinitions.specialEnergy = 100
             player.variables.runEnergy = 100.0
 
@@ -418,8 +419,8 @@ internal abstract class TheatreRoom(
             player.theatreContributionPoints -= DEATH_CONTRIBUTION_POINTS_PENALTY
             player.tobPoints -= ENCOUNTER_PARTICIPATION_CONTRIBUTION_POINTS_REWARD
 
-            if (player.prayerManager.isActive(Prayer.RETRIBUTION))
-                player.prayerManager.applyRetributionEffect(source)
+            if (player.prayerManager().isActive(Prayer.RETRIBUTION))
+                player.prayerManager().applyRetributionEffect(source)
             WorldTasksManager.schedule(object : WorldTask {
                 var ticks = 0
 

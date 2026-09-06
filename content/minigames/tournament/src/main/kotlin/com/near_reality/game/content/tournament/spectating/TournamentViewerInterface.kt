@@ -1,5 +1,6 @@
 package com.near_reality.game.content.tournament.spectating
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.tournament.TournamentState
 import com.near_reality.game.content.tournament.area.TournamentLobbyArea
 import com.near_reality.game.content.tournament.tournamentPairSpectating
@@ -80,7 +81,7 @@ class TournamentViewerInterface : Interface() {
                     2180 + index,
                     player.hitpoints,
                     player.maxHitpoints,
-                    player.prayerManager.prayerPoints,
+                    player.prayerManager().prayerPoints,
                     player.skills.getLevelForXp(SkillConstants.PRAYER),
                     player.combatDefinitions.specialEnergy * 10,
                     0,

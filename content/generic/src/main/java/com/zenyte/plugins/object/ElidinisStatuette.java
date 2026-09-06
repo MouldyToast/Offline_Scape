@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.task.WorldTasksManager;
@@ -21,7 +22,7 @@ public class ElidinisStatuette implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (option.equals("Pray-at") || option.equals("Pray")) {
-            final int toRestore = player.getSkills().getLevelForXp(SkillConstants.PRAYER) - player.getPrayerManager().getPrayerPoints();
+            final int toRestore = player.getSkills().getLevelForXp(SkillConstants.PRAYER) - PrayerManagerKeys.prayerManager(player).getPrayerPoints();
             if (EquipmentUtils.containsFullInitiate(player) && object.getId() == 410) {
                 player.getAchievementDiaries().update(FaladorDiary.PRAY_ALTAR_OF_GUTHIX);
             } else if (EquipmentUtils.containsFullProselyte(player)) {
@@ -30,7 +31,7 @@ public class ElidinisStatuette implements ObjectAction {
                 player.getAchievementDiaries().update(DesertDiary.PRAY_AT_ELIDINIS_STATUETTE);
             } else if (toRestore >= 85 && object.getId() == 20377) {
                 player.getAchievementDiaries().update(DesertDiary.RESTORE_85_PRAYER_POINTS);
-            } else if (player.getPrayerManager().isActive(Prayer.SMITE)) {
+            } else if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.SMITE)) {
                 player.getAchievementDiaries().update(VarrockDiary.PRAY_AT_VARROCK_ALTAR);
                 player.getAchievementDiaries().update(LumbridgeDiary.RECHARGE_PRAYER);
             }
@@ -41,7 +42,7 @@ public class ElidinisStatuette implements ObjectAction {
             player.setAnimation(PRAY_ANIM);
             player.sendSound(2674);
             WorldTasksManager.schedule(() -> {
-                player.getPrayerManager().restorePrayerPoints(99);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(99);
                 final int hp = player.getMaxHitpoints() + 7;
                 if (player.getHitpoints() < hp) {
                     player.setHitpoints(hp);

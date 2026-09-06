@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.bryophyta;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -102,7 +103,7 @@ public class Bryophyta extends NPC implements CombatScript {
                 player.getCombatAchievements().complete(CAType.PREPARATION_IS_KEY);
             }
 
-            if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 player.getCombatAchievements().complete(CAType.PROTECTION_FROM_MOSS);
             }
         }

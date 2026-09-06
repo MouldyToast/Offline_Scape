@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
@@ -151,7 +152,7 @@ public class MagicCombat extends PlayerCombat {
 
     @Override
     public int getAccuracy(Player player, Entity target, double resultModifier) {
-        double effectiveLevel = Math.floor(player.getSkills().getLevel(SkillConstants.MAGIC) * player.getPrayerManager().getMagicBoost(SkillConstants.ATTACK));
+        double effectiveLevel = Math.floor(player.getSkills().getLevel(SkillConstants.MAGIC) * PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.ATTACK));
         final CombatDefinitions combatDefinitions = player.getCombatDefinitions();
         if (combatDefinitions.getStyleDefinition() == AttackStyleDefinition.THROWN_MAGIC) {
             final int style = combatDefinitions.getStyle();
@@ -298,7 +299,7 @@ public class MagicCombat extends PlayerCombat {
             if (player.getCombatDefinitions().getSpellbook() == Spellbook.NORMAL) {
                 modifier += 0.1F;
             }
-            modifier += player.getPrayerManager().getMagicBoost(SkillConstants.MAGIC);
+            modifier += PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.MAGIC);
         }
         //If the player has full elite magic void.
         if (CombatUtilities.hasFullMagicVoid(player, true)) {
@@ -355,9 +356,9 @@ public class MagicCombat extends PlayerCombat {
         double prayerBoost = 1.0;
         if (!ignorePrayers) {
             // Get prayer multiplier
-            prayerBoost = player.getPrayerManager().getMagicBoost(SkillConstants.MAGIC); // Best Case: 1.25
+            prayerBoost = PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.MAGIC); // Best Case: 1.25
             if (target instanceof Player) {
-                if (((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                     damage *= target.getMagicPrayerMultiplier();
                     damage = Math.floor(damage);
                 }

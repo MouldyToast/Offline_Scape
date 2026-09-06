@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerEquipment;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
@@ -49,7 +50,7 @@ public class BasiliskKnight extends NPC implements Spawnable, CombatScript {
 						continue;
 					}
 					if (i == 5) {
-						player.getPrayerManager().setPrayerPoints((int) (player.getPrayerManager().getPrayerPoints() * 0.4078947368421053));
+						PrayerManagerKeys.prayerManager(player).setPrayerPoints((int) (PrayerManagerKeys.prayerManager(player).getPrayerPoints() * 0.4078947368421053));
 					} else {
 						player.getSkills().setLevel(i, (int) (player.getSkills().getLevel(i) * 0.4078947368421053));
 					}

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.cerberus;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Direction;
@@ -206,13 +207,13 @@ public class SummonedSoul extends NPC {
      */
     private void scheduleHit(final int delay, @NotNull final Player player, @NotNull final Prayer prayer, @NotNull final SpiritShieldType spiritShieldType) {
         player.addPostProcessRunnable(() -> {
-            final boolean hasPrayerUp = player.getPrayerManager().isActive(prayer);
+            final boolean hasPrayerUp = PrayerManagerKeys.prayerManager(player).isActive(prayer);
             if (hasPrayerUp) {
                 final Cerberus cerberus = this.cerberus.get();
                 if (cerberus != null) {
                     cerberus.addSummonedSoulMitigation();
                 }
-                player.getPrayerManager().drainPrayerPoints(spiritShieldType == SpiritShieldType.SPECTRAL ? 15 : 30);
+                PrayerManagerKeys.prayerManager(player).drainPrayerPoints(spiritShieldType == SpiritShieldType.SPECTRAL ? 15 : 30);
             } else {
                 CombatUtilities.delayHit(this, delay, player, new Hit(spiritShieldType == SpiritShieldType.ELYSIAN ? 15 : 30, HitType.REGULAR));
             }

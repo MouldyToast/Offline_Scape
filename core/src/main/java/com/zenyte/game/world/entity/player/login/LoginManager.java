@@ -701,7 +701,6 @@ public final class LoginManager {
         player.getEquipment().setEquipment(parser.getEquipment());
         player.getAchievementDiaries().initialize(player, parser);
         player.getVariables().set(parser.getVariables());
-        player.getPrayerManager().setPrayer(parser.getPrayerManager());
         player.init(parser);
         player.getInterfaceHandler().initialize(parser.getInterfaceHandler());
         player.getBossTimer().setBossTimers(parser.getBossTimer());

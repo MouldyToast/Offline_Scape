@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.npc.Baba;
@@ -392,7 +393,7 @@ public class BabaEncounter extends TOARaidArea implements CycleProcessPlugin, Pa
 						if (tile.equals(p.getLocation())) {
 							int baseDamage = (int) Math.floor(8 * party.getDamageMultiplier());
 							if (gottaHaveFaith) {
-								final int prayerPointsDiff = Math.min(0, p.getSkills().getLevelForXp(SkillConstants.PRAYER) - p.getPrayerManager().getPrayerPoints());
+								final int prayerPointsDiff = Math.min(0, p.getSkills().getLevelForXp(SkillConstants.PRAYER) - PrayerManagerKeys.prayerManager(p).getPrayerPoints());
 								baseDamage += (prayerPointsDiff * 0.15F);
 							}
 							p.applyHit(new Hit(baba, baseDamage + Utils.random(1), HitType.DEFAULT));

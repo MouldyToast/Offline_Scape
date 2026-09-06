@@ -1,5 +1,6 @@
 package com.near_reality.game.content.tormented_demon.attacks.impl
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.damage
 import com.near_reality.game.content.hit
 import com.near_reality.game.content.seq
@@ -29,7 +30,7 @@ class RangedAttack : Attack {
         if (target == null) return
         demon seq demon.getRangeAttackAnimation()
         var damageMax = 31
-        if (target is Player && target.prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES))
+        if (target is Player && target.prayerManager().isActive(Prayer.PROTECT_FROM_MISSILES))
             damageMax = 0
         val damage = CombatUtilities.getRandomMaxHit(demon, damageMax, AttackType.RANGED, target)
         val delay = World.sendProjectile(demon, target, projectile)

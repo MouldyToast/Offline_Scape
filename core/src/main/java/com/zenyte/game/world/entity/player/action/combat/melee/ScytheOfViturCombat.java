@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.melee;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -136,7 +137,7 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 		final int weapon = player.getWeapon().getId();
 		switch(weapon){
 			case ItemId.HOLY_SCYTHE_OF_VITUR: {
-				player.getPrayerManager().restorePrayerPoints(1);
+				PrayerManagerKeys.prayerManager(player).restorePrayerPoints(1);
 				break;
 			}
 			case ItemId.SANGUINE_SCYTHE_OF_VITUR: {

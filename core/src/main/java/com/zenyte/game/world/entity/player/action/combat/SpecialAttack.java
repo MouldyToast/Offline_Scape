@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 
@@ -217,7 +218,7 @@ public enum SpecialAttack implements ISpecialAttack {
         player.sendSound(SEVER_SOUND);
         if (target.getEntityType() == EntityType.PLAYER && hit.getDamage() > 0) {
             final Player p2 = (Player) target;
-            final PrayerManager prayers = p2.getPrayerManager();
+            final PrayerManager prayers = PrayerManagerKeys.prayerManager(p2);
             if (prayers.isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 prayers.deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
             }
@@ -309,12 +310,12 @@ public enum SpecialAttack implements ISpecialAttack {
             prayer = 5;
         }
         player.heal(hitpoints);
-        player.getPrayerManager().restorePrayerPoints(prayer);
+        PrayerManagerKeys.prayerManager(player).restorePrayerPoints(prayer);
     }),
 
     PENANCE(AttackType.CRUSH, 13263, WEAPON_SPEED, MELEE, new Animation(3299), null, (player, combat, target) -> {
         final int max = player.getSkills().getLevelForXp(SkillConstants.PRAYER);
-        final int points = player.getPrayerManager().getPrayerPoints();
+        final int points = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
         final int missing = (points > max) ? 0 : max - points;
         final int maxHit = combat.getMaxHit(player, 1, 1, false);
         final float strengthModifier = (missing == 0 ? 1 : (1 + (missing * 0.005F)));
@@ -330,7 +331,7 @@ public enum SpecialAttack implements ISpecialAttack {
     }),
 
     TUMEKENS_LIGHT(AttackType.STAB, ItemId.KERIS_PARTISAN_OF_THE_SUN, WEAPON_SPEED, MELEE, TUMEKENS_LIGHT_ANIM, TUMEKENS_LIGHT_GFX, (player, combat, target) -> {
-        player.getPrayerManager().drainPrayerPoints(50);
+        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(50);
         player.setHitpoints((int) (player.getMaxHitpoints() * 1.20));
         player.getToxins().cureToxin(ToxinType.VENOM);
         player.getVariables().setRunEnergy(100);
@@ -1006,14 +1007,14 @@ public enum SpecialAttack implements ISpecialAttack {
         final Hit hit = combat.getHit(player, target, 1, 1, 1, true);
         combat.delayHit(0, hit);
         int amount = hit.getDamage();
-        final int amt = player.getPrayerManager().getPrayerPoints();
+        final int amt = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
         player.sendSound(FAVOUR_OF_THE_WAR_GOD_SOUND);
-        player.getPrayerManager().setPrayerPoints((Math.min(amt, player.getSkills().getLevelForXp(SkillConstants.PRAYER))) + amount);
+        PrayerManagerKeys.prayerManager(player).setPrayerPoints((Math.min(amt, player.getSkills().getLevelForXp(SkillConstants.PRAYER))) + amount);
         if (target.getEntityType() == EntityType.PLAYER) {
             final Player p2 = (Player) target;
-            final int prayer = p2.getPrayerManager().getPrayerPoints();
+            final int prayer = PrayerManagerKeys.prayerManager(p2).getPrayerPoints();
             amount = Math.min(prayer, hit.getDamage());
-            p2.getPrayerManager().drainPrayerPoints(amount);
+            PrayerManagerKeys.prayerManager(p2).drainPrayerPoints(amount);
         }
         else if (target instanceof final PhantomMuspah muspah && muspah.getShieldHitBar() != null) {
             hit.setHitType(HitType.SHIELD_DOWN);
@@ -1363,8 +1364,8 @@ public enum SpecialAttack implements ISpecialAttack {
         combat.delayHit(2, hit);
 
         final int amount = hit.getDamage() * 50 / 100;
-        final int amt = player.getPrayerManager().getPrayerPoints();
-        player.getPrayerManager().setPrayerPoints(Math.min(120, amt + amount));
+        final int amt = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
+        PrayerManagerKeys.prayerManager(player).setPrayerPoints(Math.min(120, amt + amount));
     }),
     IMMOLATE(AttackType.MAGIC, new int[] {
         CORRUPTED_VOLATILE_NIGHTMARE_STAFF,
@@ -1394,7 +1395,7 @@ public enum SpecialAttack implements ISpecialAttack {
         final double percentageModifier = (CombatUtilities.isCombatDummy(target) ? 150 : Utils.random(50, 150)) / 100d;
         int adjustedDamage = (int) (max * percentageModifier);
         if (target instanceof Player) {
-            if (((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 // Praying against does reduce damage, but it's still guaranteed!
                 adjustedDamage *= 0.50;
             }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -278,7 +279,7 @@ public final class Duel {
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 17, Utils.getLevelColour(player.getSkills().getLevelForXp(SkillConstants.DEFENCE), opponent.getSkills().getLevelForXp(SkillConstants.DEFENCE)) + opponent.getSkills().getLevelForXp(SkillConstants.DEFENCE));
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 20, Utils.getLevelColour(player.getSkills().getLevel(SkillConstants.HITPOINTS), opponent.getSkills().getLevel(SkillConstants.HITPOINTS)) + opponent.getSkills().getLevel(SkillConstants.HITPOINTS));
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 21, Utils.getLevelColour(player.getSkills().getLevelForXp(SkillConstants.HITPOINTS), opponent.getSkills().getLevelForXp(SkillConstants.HITPOINTS)) + opponent.getSkills().getLevelForXp(SkillConstants.HITPOINTS));
-        player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 24, Utils.getLevelColour(player.getPrayerManager().getPrayerPoints(), opponent.getPrayerManager().getPrayerPoints()) + opponent.getPrayerManager().getPrayerPoints());
+        player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 24, Utils.getLevelColour(PrayerManagerKeys.prayerManager(player).getPrayerPoints(), PrayerManagerKeys.prayerManager(opponent).getPrayerPoints()) + PrayerManagerKeys.prayerManager(opponent).getPrayerPoints());
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 25, Utils.getLevelColour(player.getSkills().getLevelForXp(SkillConstants.PRAYER), opponent.getSkills().getLevelForXp(SkillConstants.PRAYER)) + opponent.getSkills().getLevelForXp(SkillConstants.PRAYER));
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 28, Utils.getLevelColour(player.getSkills().getLevel(SkillConstants.RANGED), opponent.getSkills().getLevel(SkillConstants.RANGED)) + opponent.getSkills().getLevel(SkillConstants.RANGED));
         player.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 29, Utils.getLevelColour(player.getSkills().getLevelForXp(SkillConstants.RANGED), opponent.getSkills().getLevelForXp(SkillConstants.RANGED)) + opponent.getSkills().getLevelForXp(SkillConstants.RANGED));
@@ -298,7 +299,7 @@ public final class Duel {
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 17, Utils.getLevelColour(opponent.getSkills().getLevelForXp(SkillConstants.DEFENCE), player.getSkills().getLevelForXp(SkillConstants.DEFENCE)) + player.getSkills().getLevelForXp(SkillConstants.DEFENCE));
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 20, Utils.getLevelColour(opponent.getSkills().getLevel(SkillConstants.HITPOINTS), player.getSkills().getLevel(SkillConstants.HITPOINTS)) + player.getSkills().getLevel(SkillConstants.HITPOINTS));
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 21, Utils.getLevelColour(opponent.getSkills().getLevelForXp(SkillConstants.HITPOINTS), player.getSkills().getLevelForXp(SkillConstants.HITPOINTS)) + player.getSkills().getLevelForXp(SkillConstants.HITPOINTS));
-        opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 24, Utils.getLevelColour(opponent.getPrayerManager().getPrayerPoints(), player.getPrayerManager().getPrayerPoints()) + player.getPrayerManager().getPrayerPoints());
+        opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 24, Utils.getLevelColour(PrayerManagerKeys.prayerManager(opponent).getPrayerPoints(), PrayerManagerKeys.prayerManager(player).getPrayerPoints()) + PrayerManagerKeys.prayerManager(player).getPrayerPoints());
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 25, Utils.getLevelColour(opponent.getSkills().getLevelForXp(SkillConstants.PRAYER), player.getSkills().getLevelForXp(SkillConstants.PRAYER)) + player.getSkills().getLevelForXp(SkillConstants.PRAYER));
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 28, Utils.getLevelColour(opponent.getSkills().getLevel(SkillConstants.RANGED), player.getSkills().getLevel(SkillConstants.RANGED)) + player.getSkills().getLevel(SkillConstants.RANGED));
         opponent.getPacketDispatcher().sendComponentText(SETTINGS_INTERFACE, 29, Utils.getLevelColour(opponent.getSkills().getLevelForXp(SkillConstants.RANGED), player.getSkills().getLevelForXp(SkillConstants.RANGED)) + player.getSkills().getLevelForXp(SkillConstants.RANGED));

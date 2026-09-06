@@ -1,5 +1,6 @@
 package com.zenyte.game.content.consumables.drinks;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.consumables.Drinkable;
@@ -369,12 +370,12 @@ public enum Potion implements Drinkable {
         public void onConsumption(Player player) {
             final RegionArea area = player.getArea();
             if (area != null && area.isTombsOfAmascutArea()) {
-                player.getPrayerManager().restorePrayerPoints((player.getSkills().getLevelForXp(SkillConstants.PRAYER) / 4) + 10, false);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints((player.getSkills().getLevelForXp(SkillConstants.PRAYER) / 4) + 10, false);
                 for (Player p : area.getPlayers()) {
                     if (p != null && !p.getAppearance().isTransformedIntoNpc() && !p.isFinished() && !p.isDying()
                             && player.getLocation().getTileDistance(p.getLocation()) <= 1 && !ProjectileUtils.isProjectileClipped(player, p, player.getPosition(), p.getPosition(), true)
-                            && p.getPrayerManager().getPrayerPoints() < p.getSkills().getLevelForXp(Skills.PRAYER)) {
-                        p.getPrayerManager().restorePrayerPoints((p.getSkills().getLevelForXp(SkillConstants.PRAYER) / 10) + 10, false);
+                            && PrayerManagerKeys.prayerManager(p).getPrayerPoints() < p.getSkills().getLevelForXp(Skills.PRAYER)) {
+                        PrayerManagerKeys.prayerManager(p).restorePrayerPoints((p.getSkills().getLevelForXp(SkillConstants.PRAYER) / 10) + 10, false);
                         p.sendMessage(player.getName() + " has restored some of your prayer points.");
                     }
                 }
@@ -415,7 +416,7 @@ public enum Potion implements Drinkable {
             player.getToxins().cureToxin(Toxins.ToxinType.VENOM);
             player.getVariables().schedule(1200, TickVariable.POISON_IMMUNITY);
             player.setHitpoints(player.getMaxHitpoints() + (int) Math.floor(player.getSkills().getLevelForXp(Skills.HITPOINTS) * .25F) + 2);
-            player.getPrayerManager().setPrayerPoints(player.getPrayerManager().getPrayerPoints() + (int) Math.floor(player.getSkills().getLevelForXp(Skills.PRAYER) * .2F) + 5);
+            PrayerManagerKeys.prayerManager(player).setPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints() + (int) Math.floor(player.getSkills().getLevelForXp(Skills.PRAYER) * .2F) + 5);
         }
 
         @Override

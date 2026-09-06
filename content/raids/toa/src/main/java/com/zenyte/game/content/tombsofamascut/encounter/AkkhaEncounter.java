@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.encounter;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.npc.*;
@@ -384,9 +385,9 @@ public class AkkhaEncounter extends TOARaidArea implements PartialMovementPlugin
 			player.getTemporaryAttributes().put("akkha_lightening_time", WorldThread.getCurrentCycle());
 			player.getPacketDispatcher().sendGameMessage("<col=ff3045>You have been struck by lightning and can't use protection prayers!</col>", true);
 			player.getTemporaryAttributes().put("prayer delay", WorldThread.getCurrentCycle() + TimeUnit.SECONDS.toTicks(5));
-			player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
-			player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
-			player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
+			PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
+			PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
+			PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
 		}
 	}
 

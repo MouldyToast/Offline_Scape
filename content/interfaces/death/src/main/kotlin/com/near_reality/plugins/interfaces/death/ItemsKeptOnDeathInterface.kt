@@ -2,6 +2,7 @@
 
 package com.near_reality.plugins.interfaces.death
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.model.item.protectionValue
 import com.near_reality.scripts.interfaces.InterfaceScript
 import com.zenyte.game.GameInterface
@@ -36,7 +37,7 @@ class ItemsKeptOnDeathInterface : InterfaceScript() {
     private val lostToKiller = ItemId.JUG_OF_BAD_WINE
 
     private var Player.protectItemSetting by attribute("ikod_protect_item") {
-        prayerManager.isActive(Prayer.PROTECT_ITEM)
+        prayerManager().isActive(Prayer.PROTECT_ITEM)
     }
     private var Player.skulledSetting by attribute("ikod_skulled") {
         variables.isSkulled

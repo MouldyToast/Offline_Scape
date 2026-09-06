@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.phantommuspah;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.scoreboard.ScoreboardModule;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -380,7 +381,7 @@ public class PhantomInstance extends DynamicArea implements CycleProcessPlugin, 
 		}
 		final Item weapon = hit.getWeapon() instanceof Item ? (Item) hit.getWeapon() : null;
 		if (!HitType.SHIELD_DOWN.equals(hit.getHitType())) {
-			if (player.getPrayerManager().isActive(Prayer.SMITE)) {
+			if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.SMITE)) {
 				hit.setDamage((int) (hit.getDamage() * 0.25));
 				hit.setHitType(HitType.SHIELD_DOWN);
 			} else if (!"Thrall".equals(hit.getWeapon()) &&

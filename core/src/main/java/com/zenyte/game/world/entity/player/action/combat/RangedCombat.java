@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
@@ -167,7 +168,7 @@ public class RangedCombat extends PlayerCombat {
         int effectiveLevel = scalesWithStr ? player.getSkills()
                 .getLevel(SkillConstants.STRENGTH) : player.getSkills()
                 .getLevel(SkillConstants.RANGED);
-        effectiveLevel = (int) Math.floor(effectiveLevel * player.getPrayerManager().getRangedBoost(SkillConstants.STRENGTH));
+        effectiveLevel = (int) Math.floor(effectiveLevel * PrayerManagerKeys.prayerManager(player).getRangedBoost(SkillConstants.STRENGTH));
         if (player.getCombatDefinitions().getStyle() == 0) {
             effectiveLevel += 3;
         }
@@ -234,7 +235,7 @@ public class RangedCombat extends PlayerCombat {
         maxhit *= getTwistedBowDamageBoost(player, target, target.getMagicLevel(), player.isInRaid());
 
         if (!ignorePrayers) {
-            if (target instanceof Player && ((Player) target).getPrayerManager()
+            if (target instanceof Player && PrayerManagerKeys.prayerManager((Player) target)
                     .isActive(Prayer.PROTECT_FROM_MISSILES)) {
                 maxhit *= target.getRangedPrayerMultiplier();
             }
@@ -349,7 +350,7 @@ public class RangedCombat extends PlayerCombat {
         float voidBoost = determineVoidBoost(player, false);
 
         int skillLevel = player.getSkills().getLevel(SkillConstants.RANGED);
-        double prayerBonus = player.getPrayerManager().getRangedBoost(SkillConstants.ATTACK);
+        double prayerBonus = PrayerManagerKeys.prayerManager(player).getRangedBoost(SkillConstants.ATTACK);
         int styleBonusLevels = player.getCombatDefinitions().getStyle() == 0 ? 3 : 0;
         final double effectiveLevel = Math.floor(Math.floor(skillLevel * prayerBonus) + (styleBonusLevels) + 8.0F) * (voidBoost);
 
@@ -661,15 +662,15 @@ public class RangedCombat extends PlayerCombat {
             hit.putAttribute("sapphire-proc", "true");
             if (target instanceof Player) {
                 final Player p = (Player) target;
-                final int points = player.getPrayerManager().getPrayerPoints();
-                final int drained = p.getPrayerManager().drainPrayerPoints(points / drainFraction);
-                player.getPrayerManager().restorePrayerPoints(drained);
+                final int points = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
+                final int drained = PrayerManagerKeys.prayerManager(p).drainPrayerPoints(points / drainFraction);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(drained);
                 target.setGraphics(boltSpecial.graphics);
                 World.sendSoundEffect(new Location(target.getLocation()), boltSpecial.sound);
             } else if (target instanceof final PhantomMuspah muspah && muspah.getShieldHitBar() != null) {
-                final int points = player.getPrayerManager().getPrayerPoints();
+                final int points = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
                 final int drained = points / drainFraction;
-                player.getPrayerManager().restorePrayerPoints(drained);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(drained);
                 hit.setDamage((int) (player.getSkills()
                         .getLevelForXp(SkillConstants.RANGED) / (wearingZaryteCrossbow() ? 2.75F : 3F)));
                 hit.setHitType(HitType.SHIELD_DOWN);

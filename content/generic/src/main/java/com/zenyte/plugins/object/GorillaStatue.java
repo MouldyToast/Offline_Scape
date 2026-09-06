@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -18,7 +19,7 @@ public class GorillaStatue implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (option.equals("Pray-at")) {
-            if (player.getPrayerManager().getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+            if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
                 player.sendMessage("You already have full prayer points.");
                 return;
             }
@@ -27,7 +28,7 @@ public class GorillaStatue implements ObjectAction {
             player.sendSound(2674);
             player.setAnimation(PRAY_ANIM);
             WorldTasksManager.schedule(() -> {
-                player.getPrayerManager().restorePrayerPoints(99);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(99);
                 player.sendMessage("... and recharge your prayer.");
                 player.unlock();
             });

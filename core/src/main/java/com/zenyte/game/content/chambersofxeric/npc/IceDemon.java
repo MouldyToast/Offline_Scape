@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.ScalingMechanics;
 import com.zenyte.game.content.chambersofxeric.room.IceDemonRoom;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -222,7 +223,7 @@ public final class IceDemon extends RaidNPC<IceDemonRoom> implements CombatScrip
         final MutableBoolean rangedPrayer = new MutableBoolean();
         getPossibleTargets(EntityType.PLAYER).forEach(t -> {
             final Player player = (Player) t;
-            final PrayerManager prayers = player.getPrayerManager();
+            final PrayerManager prayers = PrayerManagerKeys.prayerManager(player);
             if (prayers.isActive(Prayer.PROTECT_FROM_MISSILES)) {
                 if (!prayedRange.contains(player.getUsername())) {
                     prayedRange.add(player.getUsername());

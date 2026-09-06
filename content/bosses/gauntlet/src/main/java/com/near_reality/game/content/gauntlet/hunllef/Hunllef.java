@@ -1,5 +1,6 @@
 package com.near_reality.game.content.gauntlet.hunllef;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.gauntlet.Gauntlet;
 import com.near_reality.game.content.gauntlet.GauntletPlayerAttributesKt;
 import com.near_reality.game.content.gauntlet.GauntletArmorTier;
@@ -305,9 +306,9 @@ public final class Hunllef extends NPC implements CombatScript {
             int delay = World.sendProjectile(this, target, deactivate ? deactivateProjectile : magicProjectile);
             if (deactivate) {
                 WorldTasksManager.schedule(() -> {
-                    if (!player.getPrayerManager().getActivePrayers().isEmpty()) {
+                    if (!PrayerManagerKeys.prayerManager(player).getActivePrayers().isEmpty()) {
                         player.sendMessage("<col=ff0000>Your prayers have been disabled!");
-                        player.getPrayerManager().deactivateActivePrayers();
+                        PrayerManagerKeys.prayerManager(player).deactivateActivePrayers();
                     }
                 }, delay);
             }
@@ -538,8 +539,8 @@ public final class Hunllef extends NPC implements CombatScript {
         final Entity source = hit.getSource();
         if (source instanceof final Player player) {
             final HitType type = hit.getHitType();
-            if (type == HitType.MELEE && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MISSILES) ||
-                    type == HitType.MAGIC && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (type == HitType.MELEE && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MISSILES) ||
+                    type == HitType.MAGIC && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 prayedCorrectly = false;
             }
         }

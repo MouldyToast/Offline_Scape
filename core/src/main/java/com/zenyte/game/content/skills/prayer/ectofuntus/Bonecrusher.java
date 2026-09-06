@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.prayer.ectofuntus;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -95,13 +96,13 @@ public class Bonecrusher extends ItemPlugin {
 
 	public static void restorePrayer(@NotNull final Player player, final Bones bone) {
 		if (bone.equals(Bones.BONES)) {
-			player.getPrayerManager().restorePrayerPoints(1);
+			PrayerManagerKeys.prayerManager(player).restorePrayerPoints(1);
 		} else if (bone.equals(Bones.BIG_BONES)) {
-			player.getPrayerManager().restorePrayerPoints(2);
+			PrayerManagerKeys.prayerManager(player).restorePrayerPoints(2);
 		} else if (bone.equals(Bones.DRAGON_BONES) || bone.equals(Bones.WYRM_BONES) || bone.equals(Bones.DRAKE_BONES) || bone.equals(Bones.HYDRA_BONES)) {
-			player.getPrayerManager().restorePrayerPoints(4);
+			PrayerManagerKeys.prayerManager(player).restorePrayerPoints(4);
 		} else if (bone.equals(Bones.SUPERIOR_DRAGON_BONES)) {
-			player.getPrayerManager().restorePrayerPoints(5);
+			PrayerManagerKeys.prayerManager(player).restorePrayerPoints(5);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.task.WorldTasksManager;
@@ -26,11 +27,11 @@ public class SilverSickle extends ItemPlugin {
     }
 
     private void bloom(final Player player) {
-        if (player.getPrayerManager().getPrayerPoints() <= 0) {
+        if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() <= 0) {
             player.sendMessage("You don't have enough prayer points to do this.");
             return;
         }
-        player.getPrayerManager().drainPrayerPoints(Utils.random(1, 6));
+        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(Utils.random(1, 6));
         player.lock(1);
         player.setAnimation(bloomAnimation);
         for (int x = -1; x <= 1; x++) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
@@ -49,7 +50,7 @@ public class SpiritualRanger extends SpawnableKillcountNPC implements Spawnable,
             WorldTasksManager.schedule(() -> {
                 if (target.getLocation().matches(arrowLocation)) {
                     if (target instanceof Player) {
-                        Lightning.deactivateOverheadProtectionPrayers(((Player) target), ((Player) target).getPrayerManager(), true);
+                        Lightning.deactivateOverheadProtectionPrayers(((Player) target), PrayerManagerKeys.prayerManager((Player) target), true);
                     }
                     target.scheduleHit(this, new Hit(Utils.random(35), HitType.REGULAR), -1);
                     target.freeze(8);

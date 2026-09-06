@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
@@ -47,7 +48,7 @@ public class MageOfZamorak extends NPCPlugin {
                 player.getAchievementDiaries().update(WildernessDiary.TELEPORT_TO_ABYSS);
                 if (!EquipmentUtils.containsAbyssalBracelet(player)) {
                     player.getVariables().setSkull(true);
-                    player.getPrayerManager().drainPrayerPoints(100.0, 0);
+                    PrayerManagerKeys.prayerManager(player).drainPrayerPoints(100.0, 0);
                 } else {
                     final Item braclet = player.getEquipment().getItem(EquipmentSlot.HANDS);
                     final Integer charges = Integer.valueOf(braclet.getName().substring(17, 18));

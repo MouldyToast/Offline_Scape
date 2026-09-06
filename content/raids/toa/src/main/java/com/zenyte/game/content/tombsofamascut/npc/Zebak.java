@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
@@ -231,7 +232,7 @@ public class Zebak extends TOANPC implements CombatScript {
 					for (Player player : players) {
 						final int base = (int) Math.floor(7 * zebakEncounter.getParty().getDamageMultiplier());
 						final int damage = Utils.random(base, base + 7);
-						if (!player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+						if (!PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
 							totalHeal += damage * 0.66;
 						}
 						delayHit(0, player, new Hit(Zebak.this, damage, HitType.MAGIC));
@@ -239,7 +240,7 @@ public class Zebak extends TOANPC implements CombatScript {
 						for (Player p : players) {
 							if (!player.getUsername().equals(p.getUsername())
 									&& player.getLocation().getTileDistance(p.getLocation()) <= (spreadBarrage ? 2 : 1)) {
-								if (!p.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+								if (!PrayerManagerKeys.prayerManager(p).isActive(Prayer.PROTECT_FROM_MAGIC)) {
 									totalHeal += damage * 0.66;
 								}
 								delayHit(0, p, new Hit(Zebak.this, damage, HitType.MAGIC));

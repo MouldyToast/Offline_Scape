@@ -1,5 +1,6 @@
 package com.zenyte.game.content.xamphur
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
@@ -20,7 +21,7 @@ fun applyCorruptionEffect(target: Player) {
         return
     val probability = 66
     if (Utils.random(100) >= probability) return
-    if(target.prayerManager.prayerPoints == 0)
+    if(target.prayerManager().prayerPoints == 0)
         return
     target.sendMessage("<col=ef0083>You have been corrupted!</col>")
     target.corruptionCycle = 1
@@ -38,9 +39,9 @@ fun Player.scheduleCorruptionEffect(interval: Int) = WorldTasksManager.schedule(
         }
         val nextCycle = ++corruptionCycle
         val drainAmount = nextCycle.dec()
-        if(prayerManager.prayerPoints == 0)
+        if(prayerManager().prayerPoints == 0)
             return
-        prayerManager.drainPrayerPoints(drainAmount)
+        prayerManager().drainPrayerPoints(drainAmount)
         applyHit(Hit(drainAmount, HitType.CORRUPTION))
         if (nextCycle == 4) {
             sendMessage("<col=ef0083>You are no longer afflicted with corruption.</col>")

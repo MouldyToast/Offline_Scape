@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.fightcaves;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -231,8 +232,8 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         //player.getItemsKeptOnDeath().setContainers(source);
         WorldTasksManager.schedule(new WorldTask() {

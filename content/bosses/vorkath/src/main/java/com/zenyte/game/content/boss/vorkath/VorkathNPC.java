@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.vorkath;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTask;
@@ -461,7 +462,7 @@ public final class VorkathNPC extends NPC implements CombatScript {
             PlayerCombat.appendDragonfireShieldCharges(player);
             player.sendFilteredMessage(String.format(dragonfire.getMessage(), "dragon\'s corrupting breath"));
             player.sendMessage("<col=ff0000>Your prayers have been disabled!");
-            player.getPrayerManager().deactivateActivePrayers();
+            PrayerManagerKeys.prayerManager(player).deactivateActivePrayers();
         }));
         return 5;
     }

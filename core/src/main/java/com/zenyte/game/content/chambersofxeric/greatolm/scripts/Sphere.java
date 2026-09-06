@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.greatolm.scripts;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.greatolm.GreatOlm;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmCombatScript;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -51,11 +52,11 @@ public final class Sphere implements OlmCombatScript {
 			if (player == null) {
 				continue;
 			}
-			final PrayerManager prayer = player.getPrayerManager();
+			final PrayerManager prayer = PrayerManagerKeys.prayerManager(player);
 			final boolean overhead = prayer.isActive(Prayer.PROTECT_FROM_MAGIC) || prayer.isActive(Prayer.PROTECT_FROM_MELEE) || prayer.isActive(Prayer.PROTECT_FROM_MISSILES);
 			if (overhead) {
 				Lightning.deactivateOverheadProtectionPrayers(player, prayer, false);
-				player.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints() / 2);
+				PrayerManagerKeys.prayerManager(player).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints() / 2);
 			}
 			switch (type) {
 			case 0: 

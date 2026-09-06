@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.chapel;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -78,7 +79,7 @@ public final class Altar implements ObjectInteraction, ItemOnObjectAction {
     @Override
     public void handleObjectAction(final Player player, final Construction construction, final RoomReference reference, final WorldObject object, final int optionId, final String option) {
         if (option.equals("Pray") || option.equals("Inspect")) {
-            if (player.getPrayerManager().getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+            if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
                 player.sendMessage("You already have full prayer points.");
                 return;
             }
@@ -87,7 +88,7 @@ public final class Altar implements ObjectInteraction, ItemOnObjectAction {
             player.sendSound(2674);
             player.setAnimation(PRAY_ANIM);
             WorldTasksManager.schedule(() -> {
-                player.getPrayerManager().restorePrayerPoints(99);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(99);
                 player.sendMessage("... and recharge your prayer.");
                 player.unlock();
             });

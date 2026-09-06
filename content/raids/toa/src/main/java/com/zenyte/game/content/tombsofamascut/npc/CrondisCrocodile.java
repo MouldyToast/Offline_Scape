@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.encounter.CrondisPuzzleEncounter;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterStage;
@@ -94,9 +95,9 @@ public class CrondisCrocodile extends TOANPC implements CombatScript {
 				if (lastHit <= WorldThread.getCurrentCycle() + 98) {
 					damage += 3;
 				}
-				if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+				if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
 					damage /= 3;
-					player.getPrayerManager().drainPrayerPoints(12);
+					PrayerManagerKeys.prayerManager(player).drainPrayerPoints(12);
 				}
 				delayHit(this, 0, target, new Hit(this, damage, HitType.MELEE));
 			}

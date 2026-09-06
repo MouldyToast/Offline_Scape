@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
@@ -1331,11 +1332,11 @@ public class NPC extends AbstractEntity {
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
                 if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
-                    final int prayerLevel = player.getPrayerManager().getPrayerPoints();
+                    final int prayerLevel = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
                     final int overhealAmount = (int) (player.getMaxHitpoints() * 1.20);
                     final int currentHitpoints = player.getHitpoints();
                     if (prayerLevel >= 5 && currentHitpoints <= overhealAmount) {
-                        player.getPrayerManager().drainPrayerPoints(5);
+                        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(5);
                         player.setHitpoints(Math.min(overhealAmount, currentHitpoints + 12));
                     }
                 }

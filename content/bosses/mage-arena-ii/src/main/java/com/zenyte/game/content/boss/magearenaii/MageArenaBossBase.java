@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.magearenaii;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -222,7 +223,7 @@ public abstract class MageArenaBossBase extends NPC implements CombatScript {
                 final SoundEffect sound = spell.getHitSound();
                 final Graphics gfx = hitGraphics();
                 final Hit hit = magic(target, 43);
-                final boolean splash = hit.getDamage() <= ((target instanceof Player && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
+                final boolean splash = hit.getDamage() <= ((target instanceof Player && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
                 World.sendSoundEffect(target.getLocation(), splash ? new SoundEffect(227, 10, clientDelay) : new SoundEffect(sound.getId(), sound.getRadius(), clientDelay));
                 target.setGraphics(splash ? new Graphics(85, clientDelay, 124) : new Graphics(gfx.getId(), clientDelay, gfx.getHeight()));
                 delayHit(delay, target, hit);
@@ -238,13 +239,13 @@ public abstract class MageArenaBossBase extends NPC implements CombatScript {
             final Graphics gfx = spell.getHitGfx();
             final Hit hit = magic(target, 43);
             World.sendProjectile(this, target, spell.getProjectile());
-            final boolean splash = hit.getDamage() <= ((target instanceof Player && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
+            final boolean splash = hit.getDamage() <= ((target instanceof Player && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
             World.sendSoundEffect(target.getLocation(), splash ? new SoundEffect(227, 10, clientDelay) : new SoundEffect(sound.getId(), sound.getRadius(), clientDelay));
             target.setGraphics(splash ? new Graphics(85, clientDelay, 124) : new Graphics(gfx.getId(), clientDelay, gfx.getHeight()));
             if (!splash) {
                 if (target instanceof Player) {
                     final Player p = (Player) target;
-                    final boolean halved = p.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC);
+                    final boolean halved = PrayerManagerKeys.prayerManager(p).isActive(Prayer.PROTECT_FROM_MAGIC);
                     p.getVariables().schedule(halved ? 100 : 200, TickVariable.TELEBLOCK);
                     p.getVariables().schedule(halved ? 200 : 300, TickVariable.TELEBLOCK_IMMUNITY);
                     p.sendMessage("<col=4f006f>A teleblock spell has been cast on you. It will expire in " + (halved ? "1 minute, 0 seconds." : "2 minutes, 0 seconds.") + "</col>");
@@ -257,7 +258,7 @@ public abstract class MageArenaBossBase extends NPC implements CombatScript {
             final SoundEffect sound = spell.getHitSound();
             final Graphics gfx = spell.getHitGfx();
             final Hit hit = magic(target, 43);
-            final boolean splash = hit.getDamage() <= ((target instanceof Player && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
+            final boolean splash = hit.getDamage() <= ((target instanceof Player && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC) ? 1 : 0));
             World.sendProjectile(this, target.getLocation(), projectile);
             final int position = target.getLocation().getPositionHash();
             WorldTasksManager.schedule(() -> {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.treasuretrails.npcs;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.ForceTalk;
@@ -31,7 +32,7 @@ public class SaradominWizard extends TreasureGuardian implements CombatScript {
         AttackType style = isWithinMeleeDistance(this, target) ? MELEE : AttackType.MAGIC;
         if (target instanceof Player) {
             final Player player = (Player) target;
-            if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 if (style != AttackType.MELEE) {
                     resetWalkSteps();
                     calcFollow(target, -1, true, false, false);
@@ -39,7 +40,7 @@ public class SaradominWizard extends TreasureGuardian implements CombatScript {
                         return 0;
                     }
                 }
-            } else if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+            } else if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
                 style = AttackType.MAGIC;
             }
         }

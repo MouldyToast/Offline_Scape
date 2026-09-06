@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.attacks.impl
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.araxxor.Araxxor
 import com.near_reality.game.content.araxxor.attacks.Attack
 import com.near_reality.game.content.damage
@@ -27,7 +28,7 @@ class MagicAttack: Attack {
         if (target == null) return
         araxxor seq 11479
         var maxHit = 21
-        if ((target as Player).prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC))
+        if ((target as Player).prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC))
             maxHit = (maxHit * 0.20).toInt()
         val damage = CombatUtilities.getRandomMaxHit(araxxor, maxHit, AttackType.MAGIC, target)
         val delay = World.sendProjectile(araxxor, target, projectileBlob)

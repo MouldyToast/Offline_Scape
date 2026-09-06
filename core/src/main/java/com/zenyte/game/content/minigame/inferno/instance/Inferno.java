@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.inferno.instance;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
@@ -389,8 +390,8 @@ public class Inferno extends DynamicArea implements CycleProcessPlugin, LogoutPl
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new TickTask() {
             @Override

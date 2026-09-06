@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
@@ -1984,8 +1985,8 @@ public final class GameCommands {
                 amount = parseInt(args[0]);
             }
             p.setHitpoints(amount);
-            if (p.getPrayerManager().getPrayerPoints() < p.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
-                p.getPrayerManager().setPrayerPoints(p.getSkills().getLevelForXp(SkillConstants.PRAYER));
+            if (PrayerManagerKeys.prayerManager(p).getPrayerPoints() < p.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+                PrayerManagerKeys.prayerManager(p).setPrayerPoints(p.getSkills().getLevelForXp(SkillConstants.PRAYER));
             }
             if (p.getCombatDefinitions().getSpecialEnergy() < 100) {
                 p.getCombatDefinitions().setSpecialEnergy(100);
@@ -1997,7 +1998,7 @@ public final class GameCommands {
             if (args.length > 0) {
                 amount = parseInt(args[0]);
             }
-            p.getPrayerManager().setPrayerPoints(amount);
+            PrayerManagerKeys.prayerManager(p).setPrayerPoints(amount);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, new String[]{"run", "runenergy"}, "Sets your run energy to your " +
                 "max or " +
@@ -2010,7 +2011,7 @@ public final class GameCommands {
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "replenish", (p, args) -> {
             p.setHitpoints(1000000);
-            p.getPrayerManager().setPrayerPoints(1000000);
+            PrayerManagerKeys.prayerManager(p).setPrayerPoints(1000000);
             p.getCombatDefinitions().setSpecialEnergy(1000000);
             p.getVariables().forceRunEnergy(1000000);
         });

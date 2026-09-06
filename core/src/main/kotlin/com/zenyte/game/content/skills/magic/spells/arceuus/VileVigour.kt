@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.task.WorldTasksManager
@@ -31,14 +32,14 @@ class VileVigour : DefaultSpell {
             player.sendMessage("You can only cast Vile Vigour every 10 seconds.")
             return false
         }
-        if (player.prayerManager.prayerPoints <= 0) {
+        if (player.prayerManager().prayerPoints <= 0) {
             player.sendMessage("You don't have enough prayer points to cast that spell.")
             return false
         }
-        val maxToRestore = min(player.prayerManager.prayerPoints, 100 - player.variables.runEnergy.toInt())
+        val maxToRestore = min(player.prayerManager().prayerPoints, 100 - player.variables.runEnergy.toInt())
         require(maxToRestore in 0..100)
         player.vileVigourCooldown = true
-        player.prayerManager.prayerPoints -= maxToRestore
+        player.prayerManager().prayerPoints -= maxToRestore
         player.variables.runEnergy += maxToRestore.toDouble()
         player.animation = Animation(8978)
         player.graphics = Graphics(1876)

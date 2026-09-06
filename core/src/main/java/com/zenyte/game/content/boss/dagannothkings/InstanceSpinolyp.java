@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.Projectile;
@@ -68,10 +69,10 @@ public class InstanceSpinolyp extends NPC implements CombatScript {
                     final Player player = ((Player) target);
                     if (player.getEquipment().getId(EquipmentSlot.SHIELD) == 12821) {
                         if (Utils.random(1) == 0) {
-                            player.getPrayerManager().drainPrayerPoints(1);
+                            PrayerManagerKeys.prayerManager(player).drainPrayerPoints(1);
                         }
                     } else {
-                        player.getPrayerManager().drainPrayerPoints(1);
+                        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(1);
                     }
                 }
             }));

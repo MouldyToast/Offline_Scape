@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.area
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.dt2.area.obj.VardorvisBoundaryObj
 import com.near_reality.game.content.dt2.npc.DT2BossDifficulty
 import com.near_reality.game.content.dt2.npc.deathsToAwakenedVardorvis
@@ -209,7 +210,7 @@ class VardorvisInstance(
 
     fun applyAxeDamage() {
         val maxDamage =
-            if (player.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE))
+            if (player.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE))
                 17
             else
                 35

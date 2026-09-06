@@ -1,5 +1,6 @@
 package com.zenyte.game.content.achievementdiary.plugins.item;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.plugins.DiaryItem;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Utils;
@@ -35,13 +36,13 @@ public class FaladorShield extends DiaryItem {
             player.sendMessage("You have already used all available recharges today. Try again tomorrow when the shield has recharged.");
             return;
         }
-        if (player.getPrayerManager().getPrayerPoints() == player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+        if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() == player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
             player.sendMessage("Your prayer is already full!");
             return;
         }
         int points = player.getSkills().getLevelForXp(SkillConstants.PRAYER);
         points *= percentage;
-        player.getPrayerManager().restorePrayerPoints(points);
+        PrayerManagerKeys.prayerManager(player).restorePrayerPoints(points);
         player.getVariables().setFaladorPrayerRecharges(player.getVariables().getFaladorPrayerRecharges() + 1);
         player.sendMessage("The shield restores some of your prayer points.");
     }

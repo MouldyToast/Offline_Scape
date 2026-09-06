@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
@@ -87,7 +88,7 @@ public class MeleeCombat extends PlayerCombat {
         boost += determineBountyHunterDmgBoost(player, target);
         if (attackType == AttackType.CRUSH)
             boost += CombatUtilities.getInquisitorSetBoost(player);
-        final double a = (Math.floor(player.getSkills().getLevel(SkillConstants.STRENGTH) * player.getPrayerManager().getSkillBoost(SkillConstants.STRENGTH)) + (attackExperienceType == STRENGTH_XP ? 3 : attackExperienceType == SHARED_XP ? 1 : 0) + 8) * (boost);
+        final double a = (Math.floor(player.getSkills().getLevel(SkillConstants.STRENGTH) * PrayerManagerKeys.prayerManager(player).getSkillBoost(SkillConstants.STRENGTH)) + (attackExperienceType == STRENGTH_XP ? 3 : attackExperienceType == SHARED_XP ? 1 : 0) + 8) * (boost);
         final float b = (float) player.getBonuses().getBonus(10);
         double result = Math.floor(0.5F + a * (b + 64.0F) / 640.0F);
         final int amuletId = player.getEquipment().getId(EquipmentSlot.AMULET);
@@ -112,7 +113,7 @@ public class MeleeCombat extends PlayerCombat {
         result = Math.floor(result);
         if (!ignorePrayers) {
             if (target instanceof Player) {
-                if (((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                     result *= target.getMeleePrayerMultiplier();
                     result = Math.floor(result);
                 }
@@ -207,7 +208,7 @@ public class MeleeCombat extends PlayerCombat {
         if (CombatUtilities.applyPvmArenaBoost(player, target))
             boost += 0.05F;
         boost += determineBountyHunterAccBoost(player, target);
-        final double a = Math.floor(Math.floor(player.getSkills().getLevel(SkillConstants.ATTACK) * player.getPrayerManager().getSkillBoost(SkillConstants.ATTACK)) + (type == ATTACK_XP ? 3 : type == SHARED_XP ? 1 : 0) + 8.0F) * (boost);
+        final double a = Math.floor(Math.floor(player.getSkills().getLevel(SkillConstants.ATTACK) * PrayerManagerKeys.prayerManager(player).getSkillBoost(SkillConstants.ATTACK)) + (type == ATTACK_XP ? 3 : type == SHARED_XP ? 1 : 0) + 8.0F) * (boost);
         final int b = player.getBonuses().getBonus(attackType.ordinal());
         double result = a * (b + 64.0F);
         final int amuletId = player.getEquipment().getId(EquipmentSlot.AMULET);

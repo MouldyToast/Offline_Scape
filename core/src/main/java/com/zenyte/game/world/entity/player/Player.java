@@ -74,6 +74,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
@@ -524,8 +525,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
      */
     @Deprecated
     private Construction construction;
-    @Expose
-    private PrayerManager prayerManager = new PrayerManager(this);
+    /**
+     * @deprecated Legacy persistence slot for the prayer state, superseded by
+     * attrPersistence["prayer_manager"] (see PrayerManagerKeys). Kept
+     * non-transient so pre-migration saves still deserialize into the parser
+     * player; the live player no longer populates it, so post-migration saves
+     * omit the "prayerManager" key entirely. Delete field and getter with the
+     * save-rotation phase.
+     */
+    @Deprecated
+    private PrayerManager prayerManager;
     @Expose
     private TeleportManager teleportManager = new TeleportManager(this);
     private VarManager varManager = new VarManager(this);
@@ -1588,7 +1597,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 log.error("", e);
             }
             try {
-                prayerManager.deactivateActivePrayers();
+                PrayerManagerKeys.prayerManager(this).deactivateActivePrayers();
             }
             catch (Exception e) {
                 log.error("", e);
@@ -2005,7 +2014,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             FarmingKeys.farming(this).processAll();
             HunterKeys.hunter(this).process();
-            prayerManager.process();
+            PrayerManagerKeys.prayerManager(this).process();
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
             if (acidPool != null) {
                 applyHit(new Hit(4, HitType.VENOM));
@@ -2025,7 +2034,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                     sanityValue = -3;
                     if (sanityTick.intValue() == 1) {
                         applyHit(new Hit(Math.abs(sanityValue), HitType.SANITY_DRAIN));
-                        prayerManager.drainPrayerPoints(Math.abs(sanityValue));
+                        PrayerManagerKeys.prayerManager(this).drainPrayerPoints(Math.abs(sanityValue));
                     }
                 }
                 // Real World
@@ -2282,17 +2291,17 @@ public class Player extends AbstractEntity implements UsernameProvider {
             final HitType type = hit.getHitType();
             final float multiplierAddition = getArea() != null && getArea().isQuietPrayers() ? .1F : 0;
             if (type == HitType.MELEE) {
-                if (prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MELEE)) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMeleePrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.RANGED) {
-                if (prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES)) {
+                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MISSILES)) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getRangedPrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.MAGIC) {
-                if (prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMagicPrayerMultiplier() + multiplierAddition)));
                 }
             }
@@ -3113,10 +3122,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
             return;
         }
         final int damage = Math.min(hit.getDamage(), getHitpoints());
-        if (((Player) source).getPrayerManager() != null && ((Player) source).getPrayerManager().isActive(Prayer.SMITE)) {
+        if (PrayerManagerKeys.prayerManager((Player) source) != null && PrayerManagerKeys.prayerManager((Player) source).isActive(Prayer.SMITE)) {
             final int drain = damage / 4;
-            if (drain > 0 && prayerManager != null) {
-                prayerManager.drainPrayerPoints(drain);
+            if (drain > 0 && PrayerManagerKeys.prayerManager(this) != null) {
+                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(drain);
             }
         }
     }
@@ -3152,7 +3161,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (type != HitType.DEFAULT && CombatUtilities.isDivineSpiritShield(shieldId)) {
             double drainFactor = 0.2F;
             int prayerPointCheck = (int) Math.floor(damage * 0.3F * drainFactor);
-            if (prayerManager.getPrayerPoints() >= prayerPointCheck) {
+            if (PrayerManagerKeys.prayerManager(this).getPrayerPoints() >= prayerPointCheck) {
                 final int reduced = (int) (damage * 0.3F);
                 setGraphics(ELYSIAN_EFFECT_GFX);
                 damage -= reduced;
@@ -3350,13 +3359,13 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (dead)
             PlayerAttributesKt.setKillingBlowHit(this, hit);
         if (!isDead()) {
-            if (getHitpoints() < getMaxHitpoints() * 0.1F && prayerManager.isActive(Prayer.REDEMPTION)) {
-                prayerManager.applyRedemptionEffect();
+            if (getHitpoints() < getMaxHitpoints() * 0.1F && PrayerManagerKeys.prayerManager(this).isActive(Prayer.REDEMPTION)) {
+                PrayerManagerKeys.prayerManager(this).applyRedemptionEffect();
             }
             if (getHitpoints() < getMaxHitpoints() * 0.2F) {
                 if (getEquipment().getId(EquipmentSlot.AMULET) == 21157) {
                     getEquipment().set(EquipmentSlot.AMULET, null);
-                    prayerManager.restorePrayerPoints((int) (getSkills().getLevelForXp(SkillConstants.PRAYER) * 0.1F));
+                    PrayerManagerKeys.prayerManager(this).restorePrayerPoints((int) (getSkills().getLevelForXp(SkillConstants.PRAYER) * 0.1F));
                     sendFilteredMessage("Your necklace of faith degrades to dust.");
                 }
             }
@@ -3369,7 +3378,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             if (!HitType.HEALED.equals(hit.getHitType()) && hit.getSource() != null && !hit.getSource().equals(this)
                     && getArea() != null && getArea().isDeadlyPrayers()) {
-                prayerManager.drainPrayerPoints(damage / 5);
+                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(damage / 5);
             }
             if (getHitpoints() <= (getMaxHitpoints() * 0.1F)) {
                 final int ring = getEquipment().getId(EquipmentSlot.RING);
@@ -3463,8 +3472,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
             PlayerExtKt.handleAdminHealthEvent(this, source);
             return;
         }
-        if (prayerManager.isActive(Prayer.RETRIBUTION)) {
-            prayerManager.applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(this).applyRetributionEffect(source);
         }
 
         if (source != null) {
@@ -3702,7 +3711,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Override
     public int drainSkill(final int skill, final double percentage) {
         if (skill == SkillConstants.PRAYER) {
-            return prayerManager.drainPrayerPoints(percentage, 0);
+            return PrayerManagerKeys.prayerManager(this).drainPrayerPoints(percentage, 0);
         }
         return getSkills().drainSkill(skill, percentage, 0);
     }
@@ -3710,7 +3719,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Override
     public int drainSkill(final int skill, final double percentage, final int minimumDrain) {
         if (skill == SkillConstants.PRAYER) {
-            return prayerManager.drainPrayerPoints(percentage, minimumDrain);
+            return PrayerManagerKeys.prayerManager(this).drainPrayerPoints(percentage, minimumDrain);
         }
         return getSkills().drainSkill(skill, percentage, minimumDrain);
     }
@@ -3718,7 +3727,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Override
     public int drainSkill(final int skill, final int amount) {
         if (skill == SkillConstants.PRAYER) {
-            return prayerManager.drainPrayerPoints(amount);
+            return PrayerManagerKeys.prayerManager(this).drainPrayerPoints(amount);
         }
         return getSkills().drainSkill(skill, amount);
     }
@@ -4577,7 +4586,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         pollManager.loadAnsweredPolls();
         varManager.sendVar(1050, 90);// chivalry/piety
         varManager.sendBit(598, 2);
-        prayerManager.refreshQuickPrayers();
+        PrayerManagerKeys.prayerManager(this).refreshQuickPrayers();
         if (petId != -1 && PetWrapper.getByPet(petId) != null) {
             if (FollowerKeys.follower(this) == null) {
                 FollowerKeys.setFollower(this, new Follower(petId, this));
@@ -4965,6 +4974,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return construction;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only PrayerManager.onInit may
+     * call this, and only on the parser player. Live access goes through
+     * PrayerManagerKeys.prayerManager. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public PrayerManager getPrayerManager() {
         return prayerManager;
     }

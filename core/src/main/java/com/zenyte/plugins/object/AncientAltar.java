@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -15,12 +16,12 @@ public class AncientAltar implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (player.getCombatDefinitions().getSpellbook() == Spellbook.ANCIENT) {
-            player.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints());
+            PrayerManagerKeys.prayerManager(player).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints());
             player.sendMessage("You feel a strange wisdom drain upon your memory...");
             player.getCombatDefinitions().setSpellbook(Spellbook.NORMAL, true);
             return;
         }
-        player.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints());
+        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints());
         player.sendMessage("You feel a strange wisdom fill your mind...");
         player.getCombatDefinitions().setSpellbook(Spellbook.ANCIENT, true);
     }

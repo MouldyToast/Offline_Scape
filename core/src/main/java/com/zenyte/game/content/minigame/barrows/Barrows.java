@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.CacheManager;
 import com.zenyte.game.GameInterface;
@@ -447,7 +448,7 @@ public final class Barrows {
             player.getCombatAchievements().addCurrentTaskFlag(CAType.CANT_TOUCH_ME, CA_TASK_NO_MELEE_DAMAGE_DHAROCK);
             player.getCombatAchievements().addCurrentTaskFlag(CAType.CANT_TOUCH_ME, CA_TASK_NO_MELEE_DAMAGE_VERAC);
             player.getCombatAchievements().addCurrentTaskFlag(CAType.CANT_TOUCH_ME, CA_TASK_NO_MELEE_DAMAGE_GUTHAN);
-            if (player.getPrayerManager().getPrayerPoints() == 0) {
+            if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() == 0) {
                 player.getCombatAchievements().addCurrentTaskFlag(CAType.FAITHLESS_CRYPT_RUN, CA_TASK_FAITHLESS_RUN);
             }
         }

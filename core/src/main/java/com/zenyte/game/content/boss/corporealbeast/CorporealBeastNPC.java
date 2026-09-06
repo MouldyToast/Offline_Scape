@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.corporealbeast;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.AbstractEntityDropExtKt;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -309,7 +310,7 @@ public class CorporealBeastNPC extends NPC implements CombatScript {
                     final Player player = (Player) target;
                     final int skill = Utils.random(1) == 0 ? SkillConstants.PRAYER : SkillConstants.MAGIC;
                     if (skill == SkillConstants.PRAYER) {
-                        player.getPrayerManager().drainPrayerPoints(Utils.random(1, 5));
+                        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(Utils.random(1, 5));
                     } else {
                         player.getSkills().drainSkill(SkillConstants.MAGIC, Utils.random(1, 5));
                     }

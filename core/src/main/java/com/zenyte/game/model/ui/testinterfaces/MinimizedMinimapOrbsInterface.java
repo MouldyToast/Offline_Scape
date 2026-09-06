@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.consumables.drinks.BarbarianMix;
@@ -167,13 +168,13 @@ public class MinimizedMinimapOrbsInterface extends Interface {
         });
         bind("Prayer", (player, slotId, itemId, option) -> {
             if (option == 1) {
-                player.getPrayerManager().toggleQuickPrayers();
+                PrayerManagerKeys.prayerManager(player).toggleQuickPrayers();
             } else if (option == 2) {
                 if (player.isLocked() || player.getInterfaceHandler().containsInterface(InterfacePosition.CENTRAL)) {
                     player.sendMessage("You can't set up your prayers at the moment.");
                     return;
                 }
-                player.getPrayerManager().openQuickPrayers();
+                PrayerManagerKeys.prayerManager(player).openQuickPrayers();
             }
         });
         bind("Run", player -> player.setRun(!player.isRun()));

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.objects;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -58,7 +59,7 @@ public class GodwarsZamorakBridgeObject implements ObjectAction {
                             player.setLocation(new Location(2885, 5332, 2));
                         }
                         player.sendMessage("Dripping, you climb out of the water.<br>The extreme evil of this area leaves your Prayer drained.");
-                        player.getPrayerManager().setPrayerPoints(0);
+                        PrayerManagerKeys.prayerManager(player).setPrayerPoints(0);
                         player.lock(1);
                         break;
                 }

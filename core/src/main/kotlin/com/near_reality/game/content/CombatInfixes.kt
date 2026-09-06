@@ -1,5 +1,6 @@
 package com.near_reality.game.content
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.bountyhunter.BountyHunterConstants
 import com.near_reality.game.world.entity.player.sanityValue
 import com.zenyte.game.content.skills.prayer.Prayer
@@ -59,7 +60,7 @@ infix fun Player.effectSanity(dmg: Int) : Player = run {
 infix fun AbstractEntity.prayerActive(prayer: Prayer) : Boolean {
     if(this !is Player)
         return false
-    return this.prayerManager.isActive(prayer)
+    return this.prayerManager().isActive(prayer)
 }
 
 infix fun AbstractEntity.under(entity: AbstractEntity) : Boolean = !this.collides(listOf(entity), entity.x, entity.y)

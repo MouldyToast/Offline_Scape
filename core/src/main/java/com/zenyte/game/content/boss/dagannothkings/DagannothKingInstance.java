@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -133,8 +134,8 @@ public class DagannothKingInstance extends DynamicArea implements CannonRestrict
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new WorldTask() {
             int ticks;

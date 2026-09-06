@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.collect.Iterables;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.chambersofxeric.Raid;
@@ -403,7 +404,7 @@ public final class VasaNistirio extends RaidNPC<VasaNistirioRoom> {
         }
         distantPlayers.forEach(player -> {
             if (player.getLocation().withinDistance(center, 4)) {
-                final int amount = !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC) ? damage : (damage / 2);
+                final int amount = !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC) ? damage : (damage / 2);
                 player.applyHit(new Hit(this, Math.min(99, amount), HitType.DEFAULT));
             }
         });
@@ -540,7 +541,7 @@ public final class VasaNistirio extends RaidNPC<VasaNistirioRoom> {
             p.setLocation(getNearbyLocation(middle));
             p.setAnimation(Animation.STOP);
             p.getTemporaryAttributes().put("prayerDelay", Utils.currentTimeMillis() + 5000);
-            p.getPrayerManager().deactivateActivePrayers();
+            PrayerManagerKeys.prayerManager(p).deactivateActivePrayers();
             p.setGraphics(stunGraphics);
             p.sendSound(stunSound);
         });

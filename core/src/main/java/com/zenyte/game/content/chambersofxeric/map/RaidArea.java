@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.map;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
@@ -503,8 +504,8 @@ public abstract class RaidArea extends DynamicArea implements RoomController, Dr
         player.getTemporaryAttributes().remove("acidDrip");
         player.getPacketDispatcher().resetCamera();
         player.getTemporaryAttributes().put("deathSpot", new Location(player.getLocation()));
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         final PacketDispatcher dispatcher = player.getPacketDispatcher();
         WorldTasksManager.schedule(new WorldTask() {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.superiorgarden;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -40,7 +41,7 @@ public final class Pool implements ObjectInteraction {
         if (type >= 1)
             player.getVariables().setRunEnergy(100);
         if (type >= 2)
-            player.getPrayerManager().restorePrayerPoints(99);
+            PrayerManagerKeys.prayerManager(player).restorePrayerPoints(99);
         if (type >= 3) {
             for (int i = 0; i < 22; i++) {
                 if (i == SkillConstants.HITPOINTS || i == SkillConstants.PRAYER)

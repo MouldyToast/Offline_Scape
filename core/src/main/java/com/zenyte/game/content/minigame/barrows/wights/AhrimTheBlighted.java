@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows.wights;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.minigame.barrows.BarrowsWightNPC;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.util.Direction;
@@ -48,7 +49,7 @@ public class AhrimTheBlighted extends BarrowsWightNPC implements Spawnable, Comb
 			}
 			if (target instanceof Player) {
 				final Player player = (Player) target;
-				if (!player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+				if (!PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
 					if (Utils.random(3) == 0) {
 						target.setGraphics(AHRIMS_GFX);
 						target.drainSkill(SkillConstants.STRENGTH, 5);

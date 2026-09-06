@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.attacks.impl
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.araxxor.Araxxor
 import com.near_reality.game.content.araxxor.attacks.Attack
 import com.near_reality.game.content.damage
@@ -27,7 +28,7 @@ class RangedAttack: Attack {
         if (target == null) return
         araxxor seq 11478
         var maxHit = 34
-        if ((target as Player).prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES))
+        if ((target as Player).prayerManager().isActive(Prayer.PROTECT_FROM_MISSILES))
             maxHit = (maxHit * 0.20).toInt()
         val damage = CombatUtilities.getRandomMaxHit(araxxor, maxHit, AttackType.RANGED, target)
         val delay = World.sendProjectile(araxxor, target, projectileBlob)

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
@@ -39,11 +40,11 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (option.equals("Pray-at") || option.equals("Pray")) {
-            if (player.getPrayerManager().getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+            if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() >= player.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
                 player.sendMessage("You already have full prayer points.");
                 return;
             }
-            final int toRestore = player.getSkills().getLevelForXp(SkillConstants.PRAYER) - player.getPrayerManager().getPrayerPoints();
+            final int toRestore = player.getSkills().getLevelForXp(SkillConstants.PRAYER) - PrayerManagerKeys.prayerManager(player).getPrayerPoints();
             if (EquipmentUtils.containsFullInitiate(player) && object.getId() == 410) {
                 player.getAchievementDiaries().update(FaladorDiary.PRAY_ALTAR_OF_GUTHIX);
             } else if (EquipmentUtils.containsFullProselyte(player)) {
@@ -52,7 +53,7 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
                 player.getAchievementDiaries().update(DesertDiary.PRAY_AT_ELIDINIS_STATUETTE);
             } else if (toRestore >= 85 && object.getId() == 20377) {
                 player.getAchievementDiaries().update(DesertDiary.RESTORE_85_PRAYER_POINTS);
-            } else if (player.getPrayerManager().isActive(Prayer.SMITE)) {
+            } else if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.SMITE)) {
                 player.getAchievementDiaries().update(VarrockDiary.PRAY_AT_VARROCK_ALTAR);
                 player.getAchievementDiaries().update(LumbridgeDiary.RECHARGE_PRAYER);
             }
@@ -64,7 +65,7 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
             player.setAnimation(PRAY_ANIM);
             player.sendSound(2674);
             WorldTasksManager.schedule(() -> {
-                player.getPrayerManager().restorePrayerPoints(99);
+                PrayerManagerKeys.prayerManager(player).restorePrayerPoints(99);
                 player.sendMessage("... and recharge your prayer.");
                 player.unlock();
             });

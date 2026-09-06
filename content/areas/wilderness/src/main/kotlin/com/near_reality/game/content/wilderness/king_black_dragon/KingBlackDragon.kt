@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.king_black_dragon
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.boss.BossRespawnTimer
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.util.Direction
@@ -201,7 +202,7 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
             source.combatAchievements.complete(CAType.BIG_BLACK_AND_FIERY)
             source.combatAchievements.checkKcTask("king black dragon", 10, CAType.KING_BLACK_DRAGON_NOVICE)
             source.combatAchievements.checkKcTask("king black dragon", 25, CAType.KING_BLACK_DRAGON_CHAMPION)
-            if (source.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
+            if (source.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
                 source.combatAchievements.complete(CAType.CLAW_CLIPPER)
             }
 

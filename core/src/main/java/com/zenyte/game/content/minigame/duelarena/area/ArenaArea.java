@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.area;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.consumables.Drinkable;
 import com.zenyte.game.content.consumables.Edible;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -83,8 +84,8 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new WorldTask() {
             int ticks;

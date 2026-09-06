@@ -1,5 +1,6 @@
 package com.near_reality.game.content.boss.nex.`object`.actions
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.boss.nex.NexGodwarsInstance
 import com.zenyte.game.content.godwars.GodType
 import com.zenyte.game.content.godwars.instance.GodwarsInstance
@@ -49,7 +50,7 @@ class AncientAltarObjectaction : ObjectActionScript() {
                     player.sendMessage("You recharge your prayer.")
                     player.sendSound(2674)
                     player.animation = Animation(645)
-                    player.prayerManager.restorePrayerPoints(99)
+                    player.prayerManager().restorePrayerPoints(99)
                     if (GodType.ANCIENT.isWieldingProtectiveItem(player)) {
                         player.heal(player.maxHitpoints - player.hitpoints)
                         player.variables.runEnergy = 100.0

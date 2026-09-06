@@ -60,18 +60,12 @@ fun rawGravestoneAttr(player: Player): Any? {
  * Read-only snapshot for OFFLINE scans over parser players
  * (LoginManager.deserializePlayerFromFile — WealthScanner and friends).
  * Parser players are Unsafe-allocated, so their transient attr map is null
- * and [gravestone] cannot be used on them. Reads the legacy top-level field
- * first (pre-migration saves), then the raw attrPersistence["gravestone"]
- * shape (post-migration saves). Returns null when the save carries neither.
- * The snapshot is unparented (transient player is null) — container reads
- * only; never store it in a live player's attr.
+ * and [gravestone] cannot be used on them. Reads the raw
+ * attrPersistence["gravestone"] shape; returns null when the save carries
+ * none. The snapshot is unparented (transient player is null) — container
+ * reads only; never store it in a live player's attr.
  */
 fun scanGravestone(parser: Player): Gravestone? {
-    @Suppress("DEPRECATION")
-    val legacy = parser.gravestone
-    if (legacy != null) {
-        return legacy
-    }
     val raw = parser.attrPersistenceRaw?.get(GRAVESTONE_KEY.persistenceKey) ?: return null
     val gson = LoginManager.gson.get()
     return gson.fromJson(gson.toJsonTree(raw), Gravestone::class.java)

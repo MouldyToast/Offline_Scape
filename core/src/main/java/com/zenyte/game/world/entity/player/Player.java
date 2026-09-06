@@ -33,9 +33,7 @@ import com.zenyte.game.content.AvasDevice;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.bountyhunter.BountyHunter;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
@@ -46,26 +44,17 @@ import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
-import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
-import com.zenyte.game.content.gravestones.Gravestone;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
-import com.zenyte.game.content.minigame.barrows.Barrows;
-import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
-import com.zenyte.game.content.multicannon.DwarfMultiCannon;
-import com.zenyte.game.content.preset.PresetManager;
 import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
-import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.farming.seedvault.SeedVault;
-import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
@@ -73,9 +62,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
@@ -344,17 +331,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         UserPlayerAttributesKt.onSetUser(this, user);
     }
 
-    /**
-     * @deprecated Legacy persistence slot for the achievement-diary state,
-     * superseded by attrPersistence["achievement_diaries"] (see
-     * AchievementDiariesKeys). Kept non-transient so pre-migration saves
-     * still deserialize into the parser player; the live player no longer
-     * populates it, so post-migration saves omit the "achievementDiaries"
-     * key entirely. Was final before the extraction. Delete field and getter
-     * with the save-rotation phase.
-     */
-    @Deprecated
-    private AchievementDiaries achievementDiaries;
     private final transient CutsceneManager cutsceneManager = new CutsceneManager(this);
     private final transient PuzzleBox puzzleBox = new PuzzleBox(this);
     private final transient LightBox lightBox = new LightBox(this);
@@ -413,16 +389,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final ControllerManager controllerManager = new ControllerManager(this);
     @Expose
     private final MusicHandler music = new MusicHandler(this);
-    /**
-     * @deprecated Legacy persistence slot for the preset manager, superseded by
-     * attrPersistence["preset_manager"] (see PresetManagerKeys). Was final
-     * pre-migration; the live player no longer populates it, so post-migration
-     * saves omit the "presetManager" key entirely. Kept non-transient so
-     * pre-migration saves still deserialize into the parser player. Delete
-     * field and getter with the save-rotation phase.
-     */
-    @Deprecated
-    private PresetManager presetManager;
     @Expose
     private final EmotesHandler emotesHandler = new EmotesHandler(this);
     @Expose
@@ -447,31 +413,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private final HpHud hpHud = new HpHud(this);
 
-    @Expose
-    /**
-     * @deprecated Legacy persistence slot for the loot key settings, superseded
-     * by attrPersistence["lootkey_settings"] (see LootkeySettingsKeys). Was
-     * already nullable (null = loot keys never enabled). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "lootkeySettings" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private LootkeySettings lootkeySettings;
-
-
-    @Expose
-    /**
-     * @deprecated Legacy persistence slot for the dwarf multicannon, superseded
-     * by attrPersistence["dwarf_multicannon"] (see DwarfMultiCannonKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "dwarfMulticannon" key entirely. Delete field and getter with
-     * the save-rotation phase.
-     */
-    @Deprecated
-    private DwarfMultiCannon dwarfMulticannon;
     /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
@@ -494,16 +435,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private transient Trade trade = new Trade(this);
     /**
-     * @deprecated Legacy persistence slot for the seed vault, superseded by
-     * attrPersistence["seed_vault"] (see SeedVaultKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "seedVault" key entirely. Delete field and getter with the D3 save
-     * rotation.
-     */
-    @Deprecated
-    private SeedVault seedVault;
-    /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
     @Expose
@@ -525,57 +456,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private Skills skillsTemp = new Skills(this, true);
     @Expose
     private Settings settings = new Settings(this);
-    /**
-     * @deprecated Legacy persistence slot for the construction (house) state,
-     * superseded by attrPersistence["construction"] (see ConstructionKeys).
-     * Kept non-transient so pre-migration saves still deserialize into the
-     * parser player; the live player no longer populates it, so
-     * post-migration saves omit the "construction" key entirely. Delete field
-     * and getter with the save-rotation phase.
-     */
-    @Deprecated
-    private Construction construction;
-    /**
-     * @deprecated Legacy persistence slot for the prayer state, superseded by
-     * attrPersistence["prayer_manager"] (see PrayerManagerKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "prayerManager" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private PrayerManager prayerManager;
     @Expose
     private TeleportManager teleportManager = new TeleportManager(this);
     private VarManager varManager = new VarManager(this);
     @Expose
     private PlayerVariables variables = new PlayerVariables(this);
     private transient WorldMap worldMap = new WorldMap(this);
-    @Expose
-    /**
-     * @deprecated Legacy persistence slot for the grand exchange, superseded by
-     * attrPersistence["grand_exchange"] (see GrandExchangeKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "grandExchange" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private GrandExchange grandExchange;
     private transient Bonuses bonuses = new Bonuses(this);
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
     private transient ChatMessage chatMessage = new ChatMessage();
-    /**
-     * @deprecated Legacy persistence slot for barrows, superseded by
-     * attrPersistence["barrows"] (see BarrowsKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "barrows" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Barrows barrows;
     private ItemRetrievalService retrievalService = new ItemRetrievalService(this);
     public transient Runnable closeInterfacesEvent;
     private transient boolean needRegionUpdate;
@@ -589,16 +479,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private PlayerInformation playerInformation;
     private transient Entity lastTarget;
     private transient DelayedActionManager delayedActionManager = new DelayedActionManager(this);
-    /**
-     * @deprecated Legacy persistence slot for the farming state, superseded by
-     * attrPersistence["farming"] (see FarmingKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "farming" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Farming farming;
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
     private PetInsurance petInsurance = new PetInsurance(this);
     @Expose
@@ -614,26 +494,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private BankPin bankPin = new BankPin(this);
     private transient AtomicBoolean forceReloadMap = new AtomicBoolean(false);
     private transient int viewDistance = 15;
-    /**
-     * @deprecated Legacy persistence slot for the slayer state, superseded by
-     * attrPersistence["slayer"] (see SlayerKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "slayer" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Slayer slayer;
-    /**
-     * @deprecated Legacy persistence slot for the hunter, superseded by
-     * attrPersistence["hunter"] (see HunterKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "hunter" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Hunter hunter;
 
 
     private transient PlayerInfo playerInfo;
@@ -644,41 +504,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     private transient BuildAreaManager buildAreaManager = new BuildAreaManager(this);
 
-    /**
-     * @deprecated Legacy load-path accessor: only Gravestone.onInitialization
-     * and GravestoneKeys.scanGravestone (offline save scans) may call this,
-     * and only on parser players. Live access goes through
-     * GravestoneKeys.gravestone. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Gravestone getGravestone() {
-        return gravestone;
-    }
-
     public BankPin getBankPin() {
         return bankPin;
     }
 
-    /**
-     * @deprecated Legacy persistence slot for the gravestone, superseded by
-     * attrPersistence["gravestone"] (see GravestoneKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "gravestone" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private Gravestone gravestone;
-    /**
-     * @deprecated Legacy persistence slot for the blast furnace, superseded by
-     * attrPersistence["blast_furnace"] (see BlastFurnaceKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "blastFurnace" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private BlastFurnace blastFurnace;
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);
@@ -1497,27 +1326,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         setLogoutType(force ? LogoutType.FORCE : LogoutType.REQUESTED);
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only BountyHunter.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * BountyHunterKeys.bountyHunter. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public BountyHunter getBountyHunter() {
-        return bountyHunter;
-    }
-
-    /**
-     * @deprecated Legacy persistence slot for the bounty hunter, superseded by
-     * attrPersistence["bounty_hunter"] (see BountyHunterKeys). Was final
-     * pre-migration. Kept non-transient so pre-migration saves still
-     * deserialize into the parser player; the live player no longer populates
-     * it, so post-migration saves omit the "bountyHunter" key entirely.
-     * Delete field and getter with the save-rotation phase.
-     */
-    @Deprecated
-    private BountyHunter bountyHunter;
-
     public void sendInputString(final String question, final StringDialogue dialogue) {
         packetDispatcher.sendClientScript(110, question);
         temporaryAttributes.put("interfaceInput", dialogue);
@@ -2144,17 +1952,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (interfaceHandler.isVisible(GameInterface.WORLD_MAP.getId())) {
             worldMap.updateLocation();
         }
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only LootkeySettings.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * LootkeySettingsKeys.lootkeySettings. Removed with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    public LootkeySettings getLootkeySettings() {
-        return lootkeySettings;
     }
 
 
@@ -4730,17 +4527,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return memberRank != MemberRank.NONE;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only AchievementDiaries.onInit
-     * may call this, and only on the parser player. Live access goes through
-     * AchievementDiariesKeys.achievementDiaries. Removed with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    public AchievementDiaries getAchievementDiaries() {
-        return achievementDiaries;
-    }
-
     public CutsceneManager getCutsceneManager() {
         return cutsceneManager;
     }
@@ -4805,16 +4591,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return music;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only PresetManager.onInitialization
-     * may call this, and only on the parser player. Live access goes through
-     * PresetManagerKeys.presetManager. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public PresetManager getPresetManager() {
-        return presetManager;
-    }
-
     public EmotesHandler getEmotesHandler() {
         return emotesHandler;
     }
@@ -4844,17 +4620,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             combatDefinitions = new CombatDefinitions(this);
         return combatDefinitions;
 
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only DwarfMultiCannon.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * DwarfMultiCannonKeys.dwarfMulticannon. Removed with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    public DwarfMultiCannon getDwarfMulticannon() {
-        return dwarfMulticannon;
     }
 
     public Equipment getEquipmentTemp() {
@@ -4899,16 +4664,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public Trade getTrade() {
         return trade;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only SeedVault.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * SeedVaultKeys.seedVault. Removed with the D3 save rotation.
-     */
-    @Deprecated
-    public SeedVault getSeedVault() {
-        return seedVault;
     }
 
     public RunePouch getRunePouch() {
@@ -4981,26 +4736,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return settings;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only Construction.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * ConstructionKeys.construction. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Construction getConstruction() {
-        return construction;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only PrayerManager.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * PrayerManagerKeys.prayerManager. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public PrayerManager getPrayerManager() {
-        return prayerManager;
-    }
-
     public TeleportManager getTeleportManager() {
         return teleportManager;
     }
@@ -5021,16 +4756,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return worldMap;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only GrandExchange.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * GrandExchangeKeys.grandExchange. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public GrandExchange getGrandExchange() {
-        return grandExchange;
-    }
-
     public Bonuses getBonuses() {
         return bonuses;
     }
@@ -5046,16 +4771,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public ChatMessage getChatMessage() {
         return chatMessage;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Barrows.onInit may call this,
-     * and only on the parser player. Live access goes through
-     * BarrowsKeys.barrows. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Barrows getBarrows() {
-        return barrows;
     }
 
     public ItemRetrievalService getRetrievalService() {
@@ -5120,16 +4835,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public DelayedActionManager getDelayedActionManager() {
         return delayedActionManager;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Farming.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * FarmingKeys.farming. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Farming getFarming() {
-        return farming;
     }
 
     public PacketDispatcher getPacketDispatcher() {
@@ -5198,40 +4903,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public int getViewDistance() {
         return viewDistance;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Slayer.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * SlayerKeys.slayer. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Slayer getSlayer() {
-        return slayer;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Hunter.onInitialization may
-     * call this, and only on the parser player. Live access goes through
-     * HunterKeys.hunter. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Hunter getHunter() {
-        return hunter;
-    }
-
-    public void setHunter(Hunter hunter) {
-        this.hunter = hunter;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only BlastFurnace.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * BlastFurnaceKeys.blastFurnace. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public BlastFurnace getBlastFurnace() {
-        return blastFurnace;
     }
 
     public RespawnPoint getRespawnPoint() {

@@ -132,32 +132,13 @@ public class LootkeySettings {
     }
 
     /**
-     * Attr-first load with parser-legacy fallback (Phase E5). Replaces the
-     * former setFields whitelist line
-     * player.setLootkeySettings(parser.getLootkeySettings()). Null stays
+     * Eager attr rehydration at login: converts the raw attrPersistence shape
+     * into the typed instance before any game code touches the key. Null stays
      * null: loot keys were never enabled for this player.
      */
     @Subscribe
     public static void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = LootkeySettingsKeys.rawLootkeySettingsAttr(player) != null;
-        LootkeySettingsKeys.lootkeySettings(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the settings under the
-        // top-level "lootkeySettings" JSON key on the parser player. The copy
-        // below migrates them into the attr; the next save persists them under
-        // attrPersistence["lootkey_settings"] and drops the legacy key. The
-        // pure-data holder is adopted by reference, exactly as the legacy
-        // whitelist line did.
-        @SuppressWarnings("deprecation")
-        final LootkeySettings legacy = savedPlayer.getLootkeySettings();
-        if (legacy == null) {
-            return;
-        }
-        LootkeySettingsKeys.setLootkeySettings(player, legacy);
+        LootkeySettingsKeys.lootkeySettings(event.getPlayer());
     }
 
     public static void sendOpenChest(Player player) {

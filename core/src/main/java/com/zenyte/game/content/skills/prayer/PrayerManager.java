@@ -62,24 +62,9 @@ public class PrayerManager {
 
 	@Subscribe
 	public static void onInit(final InitializationEvent event) {
-		final Player player = event.getPlayer();
-		final Player savedPlayer = event.getSavedPlayer();
-		final boolean hadPersistedAttr = PrayerManagerKeys.rawPrayerManagerAttr(player) != null;
-		final PrayerManager manager = PrayerManagerKeys.prayerManager(player);
-		if (hadPersistedAttr || savedPlayer == null) {
-			return;
-		}
-		// Legacy path: pre-migration saves keep the prayer state under the
-		// top-level "prayerManager" JSON key on the parser player. The copy
-		// below migrates it into the attr (running the same setPrayer copy the
-		// legacy setFields load path always ran); the next save persists it
-		// under attrPersistence["prayer_manager"] and drops the legacy key.
-		@SuppressWarnings("deprecation")
-		final PrayerManager savedManager = savedPlayer.getPrayerManager();
-		if (savedManager == null) {
-			return;
-		}
-		manager.setPrayer(savedManager);
+		// Eager rehydration: converts the raw attrPersistence shape into the
+		// typed instance at login, before any game code touches the key.
+		PrayerManagerKeys.prayerManager(event.getPlayer());
 	}
 
 	public int getPrayerPoints() {

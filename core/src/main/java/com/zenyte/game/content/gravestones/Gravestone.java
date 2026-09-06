@@ -59,23 +59,9 @@ public class Gravestone {
 
     @Subscribe
     public static void onInitialization(@NotNull final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = GravestoneKeys.rawGravestoneAttr(player) != null;
-        final Gravestone live = GravestoneKeys.gravestone(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the gravestone under the
-        // top-level "gravestone" JSON key on the parser player. The copy below
-        // migrates it into the attr; the next save persists it under
-        // attrPersistence["gravestone"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final Gravestone gravestone = savedPlayer.getGravestone();
-        if (gravestone == null) {
-            return;
-        }
-        live.copyFrom(gravestone);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        GravestoneKeys.gravestone(event.getPlayer());
     }
 
     /**

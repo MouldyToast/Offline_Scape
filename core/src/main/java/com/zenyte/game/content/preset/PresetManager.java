@@ -28,23 +28,9 @@ public class PresetManager {
 
     @Subscribe
     public static final void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = PresetManagerKeys.rawPresetManagerAttr(player) != null;
-        final PresetManager thisManager = PresetManagerKeys.presetManager(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the manager under the top-level
-        // "presetManager" JSON key on the parser player. The copy below migrates
-        // it into the attr; the next save persists it under
-        // attrPersistence["preset_manager"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final PresetManager manager = savedPlayer.getPresetManager();
-        if (manager == null) {
-            return;
-        }
-        thisManager.copyFrom(manager);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        PresetManagerKeys.presetManager(event.getPlayer());
     }
 
     /**

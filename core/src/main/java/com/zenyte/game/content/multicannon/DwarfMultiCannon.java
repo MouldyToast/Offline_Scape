@@ -82,23 +82,9 @@ public final class DwarfMultiCannon {
 
 	@Subscribe
 	public static void onInit(final InitializationEvent event) {
-		final Player player = event.getPlayer();
-		final Player savedPlayer = event.getSavedPlayer();
-		final boolean hadPersistedAttr = DwarfMultiCannonKeys.rawDwarfMulticannonAttr(player) != null;
-		final DwarfMultiCannon cannon = DwarfMultiCannonKeys.dwarfMulticannon(player);
-		if (hadPersistedAttr || savedPlayer == null) {
-			return;
-		}
-		// Legacy path: pre-migration saves keep the cannon under the top-level
-		// "dwarfMulticannon" JSON key on the parser player. The copy below
-		// migrates it into the attr; the next save persists it under
-		// attrPersistence["dwarf_multicannon"] and drops the legacy key.
-		@SuppressWarnings("deprecation")
-		final DwarfMultiCannon savedCannon = savedPlayer.getDwarfMulticannon();
-		if (savedCannon == null) {
-			return;
-		}
-		cannon.copyFrom(savedCannon);
+		// Eager rehydration: converts the raw attrPersistence shape into the
+		// typed instance at login, before any game code touches the key.
+		DwarfMultiCannonKeys.dwarfMulticannon(event.getPlayer());
 	}
 
 	/**

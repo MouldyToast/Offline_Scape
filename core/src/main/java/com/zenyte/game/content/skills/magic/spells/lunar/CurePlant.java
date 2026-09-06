@@ -56,35 +56,6 @@ public final class CurePlant implements ObjectSpell {
 			player.unlock();
 			player.sendMessage("The produce in this patch has been restored to its natural health.");
 		}, 8);
-		/*final FarmingPatch patch = player.getFarming().getPatch(object);
-		if (patch == null) {
-			player.sendMessage("You can only cast this spell on diseased plants.");
-			return false;
-		}
-		final FarmingSpot spot = player.getFarming().getSpot(patch);
-		if (spot == null) {
-			player.sendMessage("You can only cast this spell on diseased plants.");
-			return false;
-		}
-		if (spot.isDead()) {
-			player.sendMessage("I don't think curing this will bring it back to life.");
-			return false;
-		}
-		if (!spot.isDiseased()) {
-			player.sendMessage("You can only cast this spell on diseased plants.");
-			return false;
-		}
-		player.lock();
-		player.faceObject(object);
-		player.setGraphics(GFX);
-		player.setAnimation(ANIM);
-		WorldTasksManager.schedule(() -> {
-			this.addXp(player, 91.5);
-			spot.setDiseased(false);
-			player.getFarming().refreshPatch(spot);
-			player.unlock();
-			player.sendMessage("The produce in this patch has been restored to its natural health.");
-		}, 8);*/
 		return true;
 	}
 

@@ -61,29 +61,12 @@ public class GrandExchange {
     }
 
     /**
-     * Attr-first load with parser-legacy fallback (Phase E4). Replaces the
-     * former setFields whitelist line
-     * player.getGrandExchange().initialize(parser.getGrandExchange()).
+     * Eager attr rehydration at login: converts the raw attrPersistence shape
+     * into the typed instance before any game code touches the key.
      */
     @Subscribe
     public static void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = GrandExchangeKeys.rawGrandExchangeAttr(player) != null;
-        final GrandExchange exchange = GrandExchangeKeys.grandExchange(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the exchange under the
-        // top-level "grandExchange" JSON key on the parser player. The copy
-        // below migrates it into the attr; the next save persists it under
-        // attrPersistence["grand_exchange"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final GrandExchange savedExchange = savedPlayer.getGrandExchange();
-        if (savedExchange == null) {
-            return;
-        }
-        exchange.initialize(savedExchange);
+        GrandExchangeKeys.grandExchange(event.getPlayer());
     }
 
     public final void initialize(final GrandExchange exchange) {

@@ -133,24 +133,9 @@ public final class Construction {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = ConstructionKeys.rawConstructionAttr(player) != null;
-        final Construction construction = ConstructionKeys.construction(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the house under the top-level
-        // "construction" JSON key on the parser player. The copy below
-        // migrates it into the attr (running the same setFields copy-into the
-        // Phase 0 load path always ran); the next save persists it under
-        // attrPersistence["construction"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final Construction parserConstruction = savedPlayer.getConstruction();
-        if (parserConstruction == null) {
-            return;
-        }
-        construction.setFields(parserConstruction);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        ConstructionKeys.construction(event.getPlayer());
     }
 
     public final void setFields(final Construction construction) {

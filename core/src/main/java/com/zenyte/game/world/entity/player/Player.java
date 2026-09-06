@@ -52,7 +52,6 @@ import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
@@ -217,6 +216,8 @@ import org.rsmod.api.attr.AttributeMap;
 import org.rsmod.game.events.PlayerDamageReceivedEvent;
 import org.rsmod.game.events.PlayerLoginEvent;
 import org.rsmod.game.events.PlayerLogoutEvent;
+import org.rsmod.game.events.PlayerDeathStartEvent;
+import org.rsmod.game.events.PlayerPostDamageEvent;
 import org.rsmod.game.timer.PlayerTimerMap;
 import org.rsmod.game.timer.PlayerTimerProcessor;
 import org.slf4j.Logger;
@@ -1420,12 +1421,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             try {
                 variables.resetScheduled();
-            }
-            catch (Exception e) {
-                log.error("", e);
-            }
-            try {
-                PrayerManagerKeys.prayerManager(this).deactivateActivePrayers();
             }
             catch (Exception e) {
                 log.error("", e);
@@ -3172,8 +3167,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (dead)
             PlayerAttributesKt.setKillingBlowHit(this, hit);
         if (!isDead()) {
-            if (getHitpoints() < getMaxHitpoints() * 0.1F && varManager.getBitValue(PrayerVarbits.REDEMPTION) == 1) {
-                PrayerManagerKeys.prayerManager(this).applyRedemptionEffect();
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerPostDamageEvent(this, hit, damage));
             }
             if (getHitpoints() < getMaxHitpoints() * 0.2F) {
                 if (getEquipment().getId(EquipmentSlot.AMULET) == 21157) {
@@ -3285,12 +3280,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
             PlayerExtKt.handleAdminHealthEvent(this, source);
             return;
         }
-        if (varManager.getBitValue(PrayerVarbits.RETRIBUTION) == 1) {
-            PrayerManagerKeys.prayerManager(this).applyRetributionEffect(source);
+        if (CoresManager.worldThread != null) {
+            CoresManager.worldThread.getEventBus().publish(new PlayerDeathStartEvent(this, source));
         }
 
         if (source != null) {
-            DeathChargeKt.invokeDeathChargeEffect(source);
             if (WildyExtKt.isBountyPaired(this)) {
                 WildyExtKt.processBountyDeath(this);
                 BountyHunterController.completeBounty(source, this);
@@ -4399,7 +4393,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         pollManager.loadAnsweredPolls();
         varManager.sendVar(1050, 90);// chivalry/piety
         varManager.sendBit(598, 2);
-        PrayerManagerKeys.prayerManager(this).refreshQuickPrayers();
         /*
          * if (player.getHelmet() != null && player.getHelmet().getId() >= 5525 && player.getHelmet().getId() <=
          * 5547) { final int bitId =

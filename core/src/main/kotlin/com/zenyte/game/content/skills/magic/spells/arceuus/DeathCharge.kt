@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.gameClock
@@ -10,6 +11,8 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.booleanVarbit
 import com.zenyte.game.world.entity.player.clock
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerDeathStartEvent
 
 /**
  * @author Kris | 19/06/2022
@@ -67,4 +70,12 @@ class DeathCharge : DefaultSpell {
         sendSound(5056)
         deathChargeEffect = false
     }, skills.getLevel(SkillConstants.MAGIC))
+}
+
+/** T2-a: death-charge proc moved off Player.sendDeath. Only a Player killer procs it (unchanged). */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    event.worldThread.eventBus.subscribeUnbound(PlayerDeathStartEvent::class.java) {
+        (source as? Player)?.invokeDeathChargeEffect()
+    }
 }

@@ -63,7 +63,6 @@ import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
@@ -469,16 +468,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private Skills skillsTemp = new Skills(this, true);
     @Expose
     private Settings settings = new Settings(this);
-    /**
-     * @deprecated Legacy persistence slot for the prayer state, superseded by
-     * attrPersistence["prayer_manager"] (see PrayerManagerKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "prayerManager" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private PrayerManager prayerManager;
     @Expose
     private TeleportManager teleportManager = new TeleportManager(this);
     private VarManager varManager = new VarManager(this);
@@ -4768,16 +4757,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public Settings getSettings() {
         return settings;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only PrayerManager.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * PrayerManagerKeys.prayerManager. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public PrayerManager getPrayerManager() {
-        return prayerManager;
     }
 
     public TeleportManager getTeleportManager() {

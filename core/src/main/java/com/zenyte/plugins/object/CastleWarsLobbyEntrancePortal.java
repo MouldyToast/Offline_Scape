@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.minigame.castlewars.CastleWars;
@@ -39,7 +40,7 @@ public class CastleWarsLobbyEntrancePortal implements ObjectAction {
         if (player.inArea("Castle Wars Lobby") || player.inArea("Castle Wars")) {
             return;
         }
-        final MutableBoolean mutableBool = new MutableBoolean(player.getFollower() != null);
+        final MutableBoolean mutableBool = new MutableBoolean(FollowerKeys.follower(player) != null);
         for (final Item item : player.getInventory().getContainer().getItems().values()) {
             if (item == null || CastleWars.allowedItems.contains(item.getId())) {
                 continue;

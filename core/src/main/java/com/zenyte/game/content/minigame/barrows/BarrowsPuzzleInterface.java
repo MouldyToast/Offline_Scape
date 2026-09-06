@@ -28,7 +28,7 @@ public class BarrowsPuzzleInterface extends Interface {
         if (!player.inArea("Barrows chambers")) {
             throw new RuntimeException("Player " + player + " attempting to open barrows puzzle outside of chambers.");
         }
-        final BarrowsPuzzle puzzle = player.getBarrows().getPuzzle();
+        final BarrowsPuzzle puzzle = BarrowsKeys.barrows(player).getPuzzle();
         player.getInterfaceHandler().sendInterface(getInterface());
         final PacketDispatcher dispatcher = player.getPacketDispatcher();
         for (int i = 0; i < BarrowsPuzzle.OPTIONS_SIZE; i++) {
@@ -39,9 +39,9 @@ public class BarrowsPuzzleInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Select option 0", player -> player.getBarrows().getPuzzle().select(0));
-        bind("Select option 1", player -> player.getBarrows().getPuzzle().select(1));
-        bind("Select option 2", player -> player.getBarrows().getPuzzle().select(2));
+        bind("Select option 0", player -> BarrowsKeys.barrows(player).getPuzzle().select(0));
+        bind("Select option 1", player -> BarrowsKeys.barrows(player).getPuzzle().select(1));
+        bind("Select option 2", player -> BarrowsKeys.barrows(player).getPuzzle().select(2));
     }
 
     @Override

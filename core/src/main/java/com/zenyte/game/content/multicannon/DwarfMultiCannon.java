@@ -64,7 +64,7 @@ public final class DwarfMultiCannon {
 
 	@Listener(type = ListenerType.LOGIN)
 	private static void onLogin(final Player player) {
-		final DwarfMultiCannon multicannon = player.getDwarfMulticannon();
+		final DwarfMultiCannon multicannon = DwarfMultiCannonKeys.dwarfMulticannon(player);
 		if (multicannon.setupTime == 0) {
 			return;
 		}
@@ -84,17 +84,36 @@ public final class DwarfMultiCannon {
 	public static void onInit(final InitializationEvent event) {
 		final Player player = event.getPlayer();
 		final Player savedPlayer = event.getSavedPlayer();
-		final DwarfMultiCannon cannon = player.getDwarfMulticannon();
-		cannon.player = player;
-		if (savedPlayer == null) {
+		final boolean hadPersistedAttr = DwarfMultiCannonKeys.rawDwarfMulticannonAttr(player) != null;
+		final DwarfMultiCannon cannon = DwarfMultiCannonKeys.dwarfMulticannon(player);
+		if (hadPersistedAttr || savedPlayer == null) {
 			return;
 		}
+		// Legacy path: pre-migration saves keep the cannon under the top-level
+		// "dwarfMulticannon" JSON key on the parser player. The copy below
+		// migrates it into the attr; the next save persists it under
+		// attrPersistence["dwarf_multicannon"] and drops the legacy key.
+		@SuppressWarnings("deprecation")
 		final DwarfMultiCannon savedCannon = savedPlayer.getDwarfMulticannon();
-		cannon.setCannonballs(savedCannon.cannonballs);
-		cannon.setGraniteballs(savedCannon.graniteballs);
-		cannon.setupTime = savedCannon.setupTime;
-		cannon.setupStage = savedCannon.setupStage;
-		cannon.type = savedCannon.type;
+		if (savedCannon == null) {
+			return;
+		}
+		cannon.copyFrom(savedCannon);
+	}
+
+	/**
+	 * Copies the persisted state of another cannon into this one. Used by the
+	 * legacy load path above and by DwarfMultiCannonKeys' attr rehydration.
+	 * The transient player back-ref is NOT copied: the receiving instance is
+	 * always constructed with its player (legacy onInit re-parented manually;
+	 * accessor construction makes that redundant).
+	 */
+	public void copyFrom(final DwarfMultiCannon other) {
+		setCannonballs(other.cannonballs);
+		setGraniteballs(other.graniteballs);
+		this.setupTime = other.setupTime;
+		this.setupStage = other.setupStage;
+		this.type = other.type;
 	}
 
 	@Subscribe
@@ -105,7 +124,7 @@ public final class DwarfMultiCannon {
 				if (player == null) {
 					continue;
 				}
-				player.getDwarfMulticannon().setupTime = 1;// Force the cannon to be picked up at Nulodion.
+				DwarfMultiCannonKeys.dwarfMulticannon(player).setupTime = 1;// Force the cannon to be picked up at Nulodion.
 			}
 		} catch (Exception e){
 			log.error("Failed to shutdown cannons successfully.", e);
@@ -125,7 +144,7 @@ public final class DwarfMultiCannon {
 						cannonIterator.remove();
 						PluginManager.post(new CannonRemoveEvent(cannon));
 						Optional.ofNullable(cannon.getPlayer().get())
-								.ifPresent(player -> player.getDwarfMulticannon().cannon = null);
+								.ifPresent(player -> DwarfMultiCannonKeys.dwarfMulticannon(player).cannon = null);
 					}
 				} catch (Exception e){
 					log.error("Failed to process cannon {}", cannon, e);

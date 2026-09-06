@@ -131,13 +131,13 @@ public class BlastFurnace {
 
     public Item[] constructBarArray() {
         final List<Item> list = new ArrayList<>();
-        for (final Int2IntOpenHashMap.Entry entry : player.getBlastFurnace().getBars().int2IntEntrySet()) if (entry.getIntValue() > 0) list.add(new Item(entry.getIntKey(), entry.getIntValue()));
+        for (final Int2IntOpenHashMap.Entry entry : BlastFurnaceKeys.blastFurnace(player).getBars().int2IntEntrySet()) if (entry.getIntValue() > 0) list.add(new Item(entry.getIntKey(), entry.getIntValue()));
         return list.toArray(new Item[list.size()]);
     }
 
     public void processVarbits() {
         for (final BlastFurnaceOre ore : BlastFurnaceOre.VALUES) {
-            final int oreAmt = player.getBlastFurnace().getOre(ore);
+            final int oreAmt = BlastFurnaceKeys.blastFurnace(player).getOre(ore);
             final BlastFurnaceVarbit varbit = BlastFurnaceVarbit.oreVarbits.get(ore);
             if (player.getVarManager().getBitValue(varbit.getVarbit()) != oreAmt) {
                 player.getVarManager().sendBit(varbit.getVarbit(), oreAmt);
@@ -147,7 +147,7 @@ public class BlastFurnace {
             if (bar.equals(SmeltableBar.BLURITE_BAR)) {
                 continue;
             }
-            final int barAmt = player.getBlastFurnace().getBar(bar);
+            final int barAmt = BlastFurnaceKeys.blastFurnace(player).getBar(bar);
             final BlastFurnaceVarbit varbit = BlastFurnaceVarbit.barVarbits.get(bar);
             if (player.getVarManager().getBitValue(varbit.getVarbit()) != barAmt) {
                 player.getVarManager().sendBit(varbit.getVarbit(), barAmt);
@@ -282,12 +282,37 @@ public class BlastFurnace {
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
         final Player player = event.getPlayer();
+        final boolean hadPersistedAttr = BlastFurnaceKeys.rawBlastFurnaceAttr(player) != null;
+        final BlastFurnace furnace = BlastFurnaceKeys.blastFurnace(player);
+        if (hadPersistedAttr || event.getSavedPlayer() == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the furnace under the top-level
+        // "blastFurnace" JSON key on the parser player. The copy below migrates
+        // it into the attr; the next save persists it under
+        // attrPersistence["blast_furnace"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final BlastFurnace parserData = event.getSavedPlayer().getBlastFurnace();
         if (parserData == null) {
             return;
         }
-        player.getBlastFurnace().getOres().putAll(parserData.ores);
-        player.getBlastFurnace().getBars().putAll(parserData.bars);
+        furnace.copyFrom(parserData);
+    }
+
+    /**
+     * Copies the persisted state (ore and bar tallies) of another furnace into
+     * this one. Used by the legacy load path above and by BlastFurnaceKeys'
+     * attr rehydration. Null-guards cover Gson snapshots whose final-field
+     * initializers never ran (Unsafe allocation with absent JSON keys); the
+     * legacy path never trips them.
+     */
+    public void copyFrom(final BlastFurnace other) {
+        if (other.ores != null) {
+            this.ores.putAll(other.ores);
+        }
+        if (other.bars != null) {
+            this.bars.putAll(other.bars);
+        }
     }
 
     public int getOresOnBelt() {

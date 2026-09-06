@@ -76,13 +76,35 @@ public class BountyHunter {
     public static void onInit(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
-        final BountyHunter bounty = player.getBountyHunter();
-        final BountyHunter savedBounty = savedPlayer.getBountyHunter();
-        if (savedBounty == null || savedBounty.lastSkips == null) {
+        final boolean hadPersistedAttr = BountyHunterKeys.rawBountyHunterAttr(player) != null;
+        final BountyHunter bounty = BountyHunterKeys.bountyHunter(player);
+        if (hadPersistedAttr || savedPlayer == null) {
             return;
         }
-        savedBounty.lastSkips.forEach(bounty::addSkipEntry);
-        bounty.filterSkips();
+        // Legacy path: pre-migration saves keep the bounty hunter under the
+        // top-level "bountyHunter" JSON key on the parser player. The copy
+        // below migrates it into the attr; the next save persists it under
+        // attrPersistence["bounty_hunter"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final BountyHunter savedBounty = savedPlayer.getBountyHunter();
+        if (savedBounty == null) {
+            return;
+        }
+        bounty.copyFrom(savedBounty);
+    }
+
+    /**
+     * Copies the persisted state (skip entries) of another bounty hunter into
+     * this one. Used by the legacy load path above and by BountyHunterKeys'
+     * attr rehydration; entries flow through addSkipEntry + filterSkips
+     * exactly as the legacy load path always did.
+     */
+    public void copyFrom(final BountyHunter other) {
+        if (other.lastSkips == null) {
+            return;
+        }
+        other.lastSkips.forEach(this::addSkipEntry);
+        filterSkips();
     }
 
     /**
@@ -95,7 +117,7 @@ public class BountyHunter {
         final Player player = event.getPlayer();
         availablePlayers.remove(player);
         player.getVariables().cancel(TickVariable.BOUNTY_HUNTER_TARGET_LOSS);
-        final BountyHunter bounty = player.getBountyHunter();
+        final BountyHunter bounty = BountyHunterKeys.bountyHunter(player);
         bounty.abandonTarget();
         bounty.filterSkips();
         if (bounty.lastSkips == null) {
@@ -110,7 +132,7 @@ public class BountyHunter {
     public static void onDeath(final PlayerDeathEvent event) {
         final Player player = event.getPlayer();
         final Entity source = event.getSource();
-        final BountyHunter bh = player.getBountyHunter();
+        final BountyHunter bh = BountyHunterKeys.bountyHunter(player);
         final Player target = bh.target;
         if (source == null) {
             bh.reset();
@@ -154,8 +176,8 @@ public class BountyHunter {
         availablePlayers.remove(player);
         availablePlayers.remove(target);
         targetPairs.add(new Pair<>(player, target));
-        player.getBountyHunter().target = target;
-        target.getBountyHunter().target = player;
+        BountyHunterKeys.bountyHunter(player).target = target;
+        BountyHunterKeys.bountyHunter(target).target = player;
         setTargetIndividually(player);
         setTargetIndividually(target);
     }
@@ -166,7 +188,7 @@ public class BountyHunter {
      * @param player the player whose information to update.
      */
     private static void setTargetIndividually(@NotNull final Player player) {
-        final BountyHunter bh = player.getBountyHunter();
+        final BountyHunter bh = BountyHunterKeys.bountyHunter(player);
         final Player target = Objects.requireNonNull(bh.target);
         bh.player.sendMessage(Colour.RED.wrap("You've been assigned a target: " + target.getName()));
         requestTargetInformationUpdate(player);
@@ -271,7 +293,7 @@ public class BountyHunter {
         if (target == null) {
             return;
         }
-        final BountyHunter bh = target.getBountyHunter();
+        final BountyHunter bh = BountyHunterKeys.bountyHunter(target);
         bh.target = null;
     }
 

@@ -1,6 +1,8 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.preset.PresetManagerKeys;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectId;
@@ -18,7 +20,7 @@ public class GrandExchangeBoothObject implements ObjectAction {
         if (option.equals("Bank")) {
             GameInterface.BANK.open(player);
         } else if (option.equals("Exchange")) {
-            player.getGrandExchange().openOffersInterface();
+            GrandExchangeKeys.grandExchange(player).openOffersInterface();
         } else if (option.equals("Collect")) {
             GameInterface.GRAND_EXCHANGE_COLLECTION_BOX.open(player);
         } else if (option.equals("Offers Viewer")) {
@@ -26,7 +28,7 @@ public class GrandExchangeBoothObject implements ObjectAction {
         } else if (option.equalsIgnoreCase("Presets")) {
             GameInterface.PRESET_MANAGER.open(player);
         } else if (option.equalsIgnoreCase("Last-preset")) {
-            player.getPresetManager().loadLastPreset();
+            PresetManagerKeys.presetManager(player).loadLastPreset();
         }
     }
 

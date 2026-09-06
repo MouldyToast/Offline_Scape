@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.blastfurnace;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceArea;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceOre;
 import com.zenyte.game.item.Item;
@@ -25,7 +26,7 @@ public class ConveyerBeltOreNPC extends NPC {
     public ConveyerBeltOreNPC(final int id, final Location tile, final Direction facing, final int radius, final Player player, final Item ore) {
         super(id, tile, facing, radius);
 
-        player.getBlastFurnace().addOre(BlastFurnaceOre.getOre(ore.getId()), ore.getAmount());
+        BlastFurnaceKeys.blastFurnace(player).addOre(BlastFurnaceOre.getOre(ore.getId()), ore.getAmount());
 
         this.player = player;
         this.ore = ore;
@@ -54,10 +55,10 @@ public class ConveyerBeltOreNPC extends NPC {
             ORE_DEPOSIT = true;
             setInvalidAnimation(BlastFurnaceArea.ORE_FALL);
             WorldTasksManager.schedule(() -> {
-                player.getBlastFurnace().setOresOnBelt(player.getBlastFurnace().getOresOnBelt()-1);
+                BlastFurnaceKeys.blastFurnace(player).setOresOnBelt(BlastFurnaceKeys.blastFurnace(player).getOresOnBelt()-1);
 
-                if(player.getBlastFurnace().getOresOnBelt() == 0)
-                    player.getBlastFurnace().processBars();
+                if(BlastFurnaceKeys.blastFurnace(player).getOresOnBelt() == 0)
+                    BlastFurnaceKeys.blastFurnace(player).processBars();
 
                 finish();
             }, 1);

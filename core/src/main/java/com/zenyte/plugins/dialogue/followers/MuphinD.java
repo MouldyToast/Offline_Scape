@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue.followers;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -35,8 +36,8 @@ public class MuphinD extends Dialogue {
 	}
 
 	private void transform(Player player, NPC npc, final int npcId) {
-		if(player.getFollower().getId() == npc.getId()) {
-			player.getFollower().setTransformation(npcId);
+		if(FollowerKeys.follower(player).getId() == npc.getId()) {
+			FollowerKeys.follower(player).setTransformation(npcId);
 			player.setPetId(npcId);
 		} else {
 			player.sendMessage("You cannot do this to someone else's pet");

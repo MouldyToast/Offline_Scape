@@ -1,5 +1,6 @@
 package com.zenyte.game.model.item;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.model.item.degrading.Degradeable;
 import com.near_reality.game.world.entity.player.FakePlayer;
 import com.near_reality.tools.logging.GameLogMessage;
@@ -183,7 +184,7 @@ public enum ItemActionHandler {
                         ".");
                 return;
             }
-            if (player.getFollower() != null) {
+            if (FollowerKeys.follower(player) != null) {
                 player.sendMessage("You already have a follower!");
                 return;
             }
@@ -197,7 +198,7 @@ public enum ItemActionHandler {
                 return;
             }
             player.getInventory().deleteItem(slotId, item);
-            player.setFollower(new Follower(pet.petId(), player));
+            FollowerKeys.setFollower(player, new Follower(pet.petId(), player));
             player.setAnimation(PetWrapper.DROP_ANIMATION);
             return;
         }

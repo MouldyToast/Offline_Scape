@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.model.ui.PaneType;
 import com.zenyte.game.world.entity.Location;
@@ -25,7 +26,7 @@ public class WorldMap {
                 1749,
                 location.getPositionHash(),
                 -1,
-                player.getGravestone().getGravestoneLocationBitpacked()
+                GravestoneKeys.gravestone(player).getGravestoneLocationBitpacked()
         );
     }
 

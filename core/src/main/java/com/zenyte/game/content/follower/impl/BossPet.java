@@ -1,5 +1,6 @@
 package com.zenyte.game.content.follower.impl;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.GameConstants;
@@ -386,54 +387,54 @@ public enum BossPet implements Pet {
             for (int index = 0; index < snakelings.length; index++) {
                 ids[index] = snakelings[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(snakelings, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(snakelings, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (isKQ(this)) {
             final int[] ids = new int[kalphiteQueens.length];
             for (int index = 0; index < kalphiteQueens.length; index++) {
                 ids[index] = kalphiteQueens[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(kalphiteQueens, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(kalphiteQueens, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (isYoungllef(this)) {
             final int[] ids = new int[youngllefPets.length];
             for (int index = 0; index < youngllefPets.length; index++) {
                 ids[index] = youngllefPets[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(youngllefPets, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(youngllefPets, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (isVetion(this)) {
             final int[] ids = new int[vetions.length];
             for (int index = 0; index < vetions.length; index++) {
                 ids[index] = vetions[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(vetions, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(vetions, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (isGrotesqueGuardian(this)) {
             final int[] ids = new int[grotesqueGuardians.length];
             for (int index = 0; index < grotesqueGuardians.length; index++) {
                 ids[index] = grotesqueGuardians[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(grotesqueGuardians, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(grotesqueGuardians, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (this.equals(PET_DARK_CORE) || this.equals(PET_CORPOREAL_CRITTER)) {
-            return (PetWrapper.checkFollower(player) && (player.getFollower().getPet().equals(PET_DARK_CORE) || player.getFollower().getPet().equals(PET_CORPOREAL_CRITTER))) || player.containsItem(PET_DARK_CORE.getItemId()) || player.containsItem(PET_CORPOREAL_CRITTER.getItemId());
+            return (PetWrapper.checkFollower(player) && (FollowerKeys.follower(player).getPet().equals(PET_DARK_CORE) || FollowerKeys.follower(player).getPet().equals(PET_CORPOREAL_CRITTER))) || player.containsItem(PET_DARK_CORE.getItemId()) || player.containsItem(PET_CORPOREAL_CRITTER.getItemId());
         }
         if (this.equals(JAL_NIB_REK) || this.equals(TZREK_ZUK)) {
             final int[] ids = new int[infernoPets.length];
             for (int index = 0; index < infernoPets.length; index++) {
                 ids[index] = infernoPets[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(infernoPets, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(infernoPets, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
         if (this.equals(MUPHIN_RANGED) || this.equals(MUPHIN_MELEE) || this.equals(MUPHIN_SHIELD)) {
             final int[] ids = new int[muphins.length];
             for (int index = 0; index < muphins.length; index++) {
                 ids[index] = muphins[index].itemId();
             }
-            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(muphins, player.getFollower().getPet())) || player.containsAny(ids);
+            return (PetWrapper.checkFollower(player) && ArrayUtils.contains(muphins, FollowerKeys.follower(player).getPet())) || player.containsAny(ids);
         }
-        return (PetWrapper.checkFollower(player) && player.getFollower().getPet().equals(this)) || player.containsItem(this.getItemId());
+        return (PetWrapper.checkFollower(player) && FollowerKeys.follower(player).getPet().equals(this)) || player.containsItem(this.getItemId());
     }
 
     @Override
@@ -453,7 +454,7 @@ public enum BossPet implements Pet {
             WorldBroadcasts.broadcast(player, BroadcastType.PET, this);
             return false;
         }
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             if (player.getInventory().addItem(item).isFailure()) {
                 if (player.getBank().add(item).isFailure()) {
                     player.sendMessage("There was not enough space in your bank, and therefore the pet was lost.");
@@ -467,7 +468,7 @@ public enum BossPet implements Pet {
             WorldBroadcasts.broadcast(player, BroadcastType.PET, this);
         } else {
             player.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>");
-            player.setFollower(new Follower(petId, player));
+            FollowerKeys.setFollower(player, new Follower(petId, player));
             WorldBroadcasts.broadcast(player, BroadcastType.PET, this);
         }
         return true;

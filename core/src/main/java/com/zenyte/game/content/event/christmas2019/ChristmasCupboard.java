@@ -1,5 +1,6 @@
 package com.zenyte.game.content.event.christmas2019;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Location;
@@ -19,7 +20,7 @@ public class ChristmasCupboard implements ObjectAction {
         int x, y;
     
         if (object.getPositionHash() == ChristmasConstants.homeChristmasCupboardLocation.getPositionHash()) {
-            if (player.getFollower() != null) {
+            if (FollowerKeys.follower(player) != null) {
                 player.sendMessage("The Queen of Snow has forbidden all pets in her domain. You'll have to pick up your follower if you want to travel to the Land of Snow.");
                 return;
             }

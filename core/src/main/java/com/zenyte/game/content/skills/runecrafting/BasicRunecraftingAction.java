@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.runecrafting;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -194,11 +195,11 @@ public final class BasicRunecraftingAction extends Action {
 		player.getInventory().addItem(new Item(rune.getRuneId(), amount));
 		player.sendFilteredMessage("You bind the Temple's power into " + rune.toString().replace("_", " ").toLowerCase() + "s.");
 		player.sendFilteredMessage("The gods bless your efforts and grant you extra runes.");
-		if (player.getFollower() != null) {
-			final Pet pet = player.getFollower().getPet();
+		if (FollowerKeys.follower(player) != null) {
+			final Pet pet = FollowerKeys.follower(player).getPet();
 			if (SkillingPet.isRiftGuardian(pet) && !player.getBooleanAttribute("rift_guardian_colour_lock")) {
 				player.setPetId(rune.getPet().getPetId());
-				player.getFollower().setTransformation(rune.getPet().getPetId());
+				FollowerKeys.follower(player).setTransformation(rune.getPet().getPetId());
 			}
 		}
 		final double chance = experience > 2500000 ? 0.5F : (experience / 5000000);

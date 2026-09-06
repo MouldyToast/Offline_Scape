@@ -28,13 +28,13 @@ public class WildernessLootKeyInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Item", player -> player.getLootkeySettings().setWithdrawAsNote(false));
-        bind("Note", player -> player.getLootkeySettings().setWithdrawAsNote(true));
+        bind("Item", player -> LootkeySettingsKeys.lootkeySettings(player).setWithdrawAsNote(false));
+        bind("Note", player -> LootkeySettingsKeys.lootkeySettings(player).setWithdrawAsNote(true));
 
         bind("Withdraw all to inventory", player -> {
             if (player.isIronman()) return;
             // TODO: withdraw all to inventory
-            var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+            var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
             for (int i = 0; i <= container.getContainerSize(); i++) {
                 var item = container.get(i);
                 if (item == null) continue;
@@ -43,7 +43,7 @@ public class WildernessLootKeyInterface extends Interface {
         });
         bind("Withdraw all to bank", player -> {
             if (player.isIronman()) return;
-            var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+            var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
             for (int i = 0; i <= container.getContainerSize(); i++) {
                 var item = container.get(i);
                 if (item == null) continue;
@@ -57,7 +57,7 @@ public class WildernessLootKeyInterface extends Interface {
             public void buildDialogue() {
                 options("Are you sure you want to destroy the items?", "<col=ff0000>DESTROY!", "Cancel")
                         .onOptionOne(() -> {
-                            var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+                            var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
                             for (int i = 0; i <= container.getContainerSize(); i++) {
                                 var item = container.get(i);
                                 if (item == null) continue;
@@ -89,7 +89,7 @@ public class WildernessLootKeyInterface extends Interface {
     public void open(Player player) {
         player.getInterfaceHandler().sendInterface(this);
 
-        var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+        var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
         player.getPacketDispatcher().sendUpdateItemContainer(container, ContainerType.WILDERNESS_LOOT_KEY);
 
         if (player.isIronman()) {
@@ -102,7 +102,7 @@ public class WildernessLootKeyInterface extends Interface {
             player.getPacketDispatcher().sendComponentText(getInterface(), 29, size - player.getBank().getContainer().getFreeSlotsSize());
             player.getPacketDispatcher().sendComponentText(getInterface(), 31, size);
             player.getPacketDispatcher().sendComponentSettings(getInterface(), 3, 0, 27, AccessMask.CLICK_OP1, AccessMask.CLICK_OP2, AccessMask.CLICK_OP3, AccessMask.CLICK_OP4, AccessMask.CLICK_OP5, AccessMask.CLICK_OP6, AccessMask.CLICK_OP7, AccessMask.CLICK_OP8, AccessMask.CLICK_OP9, AccessMask.CLICK_OP10);
-            player.getVarManager().sendBit(4843, player.getLootkeySettings().isWithdrawAsNote() ? 1 : 0);
+            player.getVarManager().sendBit(4843, LootkeySettingsKeys.lootkeySettings(player).isWithdrawAsNote() ? 1 : 0);
             player.getPacketDispatcher().sendClientScript(150, 48627715, 797, 7, 4, 0, -1, "Take", "Take-5", "Take-10", "Take-X", "Take-All", "Bank-X", "Bank-All", "Destroy-X", "Destroy-All");
         }
 
@@ -167,49 +167,49 @@ public class WildernessLootKeyInterface extends Interface {
     }
 
     private void withdrawItemsToInventory(Player player, int itemId, int amountToTake) {
-        var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+        var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
         var removalAmount = container.remove(new Item(itemId, amountToTake)).getSucceededAmount();
 
         if (removalAmount == 0) return;
 
         var itemToAdd = new Item(itemId, removalAmount);
 
-        if(player.getLootkeySettings().isWithdrawAsNote()) {
+        if(LootkeySettingsKeys.lootkeySettings(player).isWithdrawAsNote()) {
             itemToAdd.setId(itemToAdd.getDefinitions().getNotedOrDefault());
         }
 
-        player.getLootkeySettings().incrementTotalValueClaimed((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
+        LootkeySettingsKeys.lootkeySettings(player).incrementTotalValueClaimed((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
         player.getInventory().addOrDrop(itemToAdd);
-        player.getLootkeySettings().setCurrentItemsInChest(container.getItems());
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(container.getItems());
 
         updateContainer(player, container);
     }
 
     private void destroyItemsFromContainer(Player player, int itemId, int amountToTake)
     {
-        var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+        var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
         var removalAmount = container.remove(new Item(itemId, amountToTake)).getSucceededAmount();
 
         if (removalAmount == 0) return;
         var itemToAdd = new Item(itemId, removalAmount);
 
-        player.getLootkeySettings().incrementDestroyedValue((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
-        player.getLootkeySettings().setCurrentItemsInChest(container.getItems());
+        LootkeySettingsKeys.lootkeySettings(player).incrementDestroyedValue((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(container.getItems());
 
         updateContainer(player, container);
     }
 
     private void withdrawItemToBank(Player player, int itemId, int amountToTake) {
-        var container = player.getLootkeySettings().getCurrentItemsInChest(player);
+        var container = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest(player);
         var removalAmount = container.remove(new Item(itemId, amountToTake)).getSucceededAmount();
 
         if (removalAmount == 0) return;
         var itemToAdd = new Item(itemId, removalAmount);
         container.getItems().remove(itemId);
 
-        player.getLootkeySettings().incrementTotalValueClaimed((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
+        LootkeySettingsKeys.lootkeySettings(player).incrementTotalValueClaimed((long) itemToAdd.getDefinitions().getPrice() * itemToAdd.getAmount());
         player.getBank().add(itemToAdd);
-        player.getLootkeySettings().setCurrentItemsInChest(container.getItems());
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(container.getItems());
 
         container.refresh(player);
         updateContainer(player, container);
@@ -217,7 +217,7 @@ public class WildernessLootKeyInterface extends Interface {
 
 
     private void updateContainer(Player player, Container container) {
-        player.getLootkeySettings().setCurrentItemsInChest(container.getItems());
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(container.getItems());
         container.refresh(player);
         var value = getValue(container);
         player.getPacketDispatcher().sendComponentText(getInterface(), 6, "Value in chest: "

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.barrows.BarrowsKeys;
 import com.zenyte.game.content.minigame.barrows.BarrowsWight;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -32,9 +33,9 @@ public class Spade extends ItemPlugin {
 				if (TreasureTrail.dig(player)) {
 					return;
 				}
-				final Optional<BarrowsWight> mound = player.getBarrows().getMound();
+				final Optional<BarrowsWight> mound = BarrowsKeys.barrows(player).getMound();
 				if (mound.isPresent()) {
-					player.getBarrows().enter(mound.get());
+					BarrowsKeys.barrows(player).enter(mound.get());
 					return;
 				}
 				if (player.getLocation().getPositionHash() == BRINE_RATS_DIG_SPOT_HASH) {

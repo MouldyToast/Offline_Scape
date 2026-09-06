@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.multicannon.DwarfMultiCannonKeys;
 import com.zenyte.game.content.multicannon.DwarfMultiCannon;
 import com.zenyte.game.content.multicannon.DwarfMultiCannonType;
 import com.zenyte.game.item.Item;
@@ -18,7 +19,7 @@ public class CannonLoadAction implements ItemOnObjectAction {
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
         if (object.equals(DwarfMultiCannon.placedCannons.get(player.getUsername()))) {
-            player.getDwarfMulticannon().loadCannon();
+            DwarfMultiCannonKeys.dwarfMulticannon(player).loadCannon();
         } else {
             player.sendMessage("This is not your cannon.");
         }

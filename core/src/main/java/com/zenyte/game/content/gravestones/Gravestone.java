@@ -61,19 +61,42 @@ public class Gravestone {
     public static void onInitialization(@NotNull final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = GravestoneKeys.rawGravestoneAttr(player) != null;
+        final Gravestone live = GravestoneKeys.gravestone(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the gravestone under the
+        // top-level "gravestone" JSON key on the parser player. The copy below
+        // migrates it into the attr; the next save persists it under
+        // attrPersistence["gravestone"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final Gravestone gravestone = savedPlayer.getGravestone();
         if (gravestone == null) {
             return;
         }
-        player.getGravestone().gravestoneLocation = gravestone.gravestoneLocation;
-        if (gravestone.container != null) player.getGravestone().container.setContainer(gravestone.container);
-        player.getGravestone().coinsInCoffer = gravestone.coinsInCoffer;
+        live.copyFrom(gravestone);
+    }
+
+    /**
+     * Copies the persisted state of another gravestone into this one. Used by
+     * the legacy load path above and by GravestoneKeys' attr rehydration. The
+     * container null-guard covers Gson snapshots whose final-field initializer
+     * never ran (Unsafe allocation with an absent JSON key), mirroring the
+     * guard the legacy load path always had.
+     */
+    public void copyFrom(final Gravestone other) {
+        this.gravestoneLocation = other.gravestoneLocation;
+        if (other.container != null) {
+            this.container.setContainer(other.container);
+        }
+        this.coinsInCoffer = other.coinsInCoffer;
     }
 
     @Subscribe
     public static void onLogin(@NotNull final LoginEvent event) {
         final Player player = event.getPlayer();
-        final Gravestone gravestone = player.getGravestone();
+        final Gravestone gravestone = GravestoneKeys.gravestone(player);
         if (player.getVarManager().getBitValue(10465) > 0) {
             gravestone.reinstateGravestone();
         }

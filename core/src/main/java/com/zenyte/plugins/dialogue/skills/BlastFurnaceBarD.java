@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue.skills;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.content.skills.smithing.SmeltableBar;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Player;
@@ -28,7 +29,7 @@ public class BlastFurnaceBarD extends SkillDialogue {
         final int inventorySpace = player.getInventory().getFreeSlots();
         final SmeltableBar bar = SmeltableBar.getDataByBar(data.getId());
         if (bar == null) return;
-        int amt = player.getBlastFurnace().getBar(bar);
+        int amt = BlastFurnaceKeys.blastFurnace(player).getBar(bar);
         if (player.getMemberRank().equalToOrGreaterThan(MemberRank.DIAMOND))
             amt = player.getInventory()
                     .hasSpaceFor(data.getDefinitions().getNotedId()) ? Math.min(amt, amount) : 0;
@@ -39,18 +40,18 @@ public class BlastFurnaceBarD extends SkillDialogue {
             player.sendMessage("You don't have any inventory space to grab bars!");
             return;
         }
-        player.getBlastFurnace().subBars(bar, amt);
+        BlastFurnaceKeys.blastFurnace(player).subBars(bar, amt);
         if (player.getMemberRank().equalToOrGreaterThan(MemberRank.DIAMOND))
             player.getInventory().addItem(data.getDefinitions().getNotedId(), amt);
         else
             player.getInventory().addItem(data.getId(), amt);
 
-        if (!player.getBlastFurnace().hasBars()) {
-            player.getBlastFurnace().setDispenser(0);
+        if (!BlastFurnaceKeys.blastFurnace(player).hasBars()) {
+            BlastFurnaceKeys.blastFurnace(player).setDispenser(0);
         }
         final String payload = amt > 1 ? data.getName().toLowerCase() + "s" : data.getName()
                 .toLowerCase();
-        player.getBlastFurnace().processVarbits();
+        BlastFurnaceKeys.blastFurnace(player).processVarbits();
         player.getDialogueManager().start(new BlastFurnaceBarFinishD(player, amt, payload));
     }
 }

@@ -38,22 +38,46 @@ public class Hunter {
     public static final void onInitialization(@NotNull final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = HunterKeys.rawHunterAttr(player) != null;
+        final Hunter live = HunterKeys.hunter(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the hunter under the top-level
+        // "hunter" JSON key on the parser player. The copy below migrates it
+        // into the attr; the next save persists it under
+        // attrPersistence["hunter"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final Hunter otherHunter = savedPlayer.getHunter();
         if (otherHunter == null) {
             return;
         }
-        final List<Birdhouse> birdHouses = otherHunter.builtBirdhouses;
+        live.copyFrom(otherHunter);
+    }
+
+    /**
+     * Copies the persisted state (built birdhouses) of another hunter into
+     * this one. Used by the legacy load path above and by HunterKeys' attr
+     * rehydration. Mirrors the legacy semantics exactly: each Birdhouse is
+     * re-parented to this hunter's player and the list is adopted by
+     * reference.
+     */
+    public void copyFrom(final Hunter other) {
+        final List<Birdhouse> birdHouses = other.builtBirdhouses;
         if (birdHouses == null) {
             return;
         }
-        otherHunter.builtBirdhouses.forEach(birdhouse -> birdhouse.setPlayerReference(player));
-        player.getHunter().builtBirdhouses = otherHunter.builtBirdhouses;
+        final Player p = player.get();
+        if (p != null) {
+            birdHouses.forEach(birdhouse -> birdhouse.setPlayerReference(p));
+        }
+        this.builtBirdhouses = birdHouses;
     }
 
     @Subscribe
     public static final void onLogout(@NotNull final LogoutEvent event) {
         final Player player = event.getPlayer();
-        final Hunter hunter = player.getHunter();
+        final Hunter hunter = HunterKeys.hunter(player);
         final List<HunterTrap> traps = hunter.traps;
         for (HunterTrap trap : traps) {
             final Runnable removalRunnable = trap.getRemovalRunnable();
@@ -68,7 +92,7 @@ public class Hunter {
 
     @Subscribe
     public static final void onLogin(@NotNull final LoginEvent event) {
-        event.getPlayer().getHunter().builtBirdhouses.forEach(Birdhouse::refreshVarbits);
+        HunterKeys.hunter(event.getPlayer()).builtBirdhouses.forEach(Birdhouse::refreshVarbits);
     }
 
     public Optional<Birdhouse> findBirdhouse(final int objectId) {

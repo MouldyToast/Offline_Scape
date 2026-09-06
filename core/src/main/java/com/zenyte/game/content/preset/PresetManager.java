@@ -30,16 +30,35 @@ public class PresetManager {
     public static final void onInitialization(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = PresetManagerKeys.rawPresetManagerAttr(player) != null;
+        final PresetManager thisManager = PresetManagerKeys.presetManager(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the manager under the top-level
+        // "presetManager" JSON key on the parser player. The copy below migrates
+        // it into the attr; the next save persists it under
+        // attrPersistence["preset_manager"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final PresetManager manager = savedPlayer.getPresetManager();
         if (manager == null) {
             return;
         }
-        final PresetManager thisManager = player.getPresetManager();
-        thisManager.defaultPreset = manager.defaultPreset;
-        thisManager.unlockedSlots = manager.unlockedSlots;
-        if (manager.presets != null) {
-            for (final Preset preset : manager.presets) {
-                thisManager.presets.add(new Preset(preset));
+        thisManager.copyFrom(manager);
+    }
+
+    /**
+     * Copies the persisted state of another manager into this one. Used by the
+     * legacy load path above and by PresetManagerKeys' attr rehydration; the
+     * preset list is deep-copied so this manager never shares Preset instances
+     * with a parser or Gson-rehydrated snapshot.
+     */
+    public void copyFrom(final PresetManager other) {
+        this.defaultPreset = other.defaultPreset;
+        this.unlockedSlots = other.unlockedSlots;
+        if (other.presets != null) {
+            for (final Preset preset : other.presets) {
+                this.presets.add(new Preset(preset));
             }
         }
     }

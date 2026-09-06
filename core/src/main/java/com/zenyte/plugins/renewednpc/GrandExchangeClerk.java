@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
@@ -35,7 +36,7 @@ public class GrandExchangeClerk extends NPCPlugin {
 
             @Override
             public void handle(Player player, NPC npc) {
-                player.getGrandExchange().openOffersInterface();
+                GrandExchangeKeys.grandExchange(player).openOffersInterface();
             }
 
             @Override
@@ -71,7 +72,7 @@ public class GrandExchangeClerk extends NPCPlugin {
 
             @Override
             public void handle(Player player, NPC npc) {
-                player.getGrandExchange().openItemSetsInterface();
+                GrandExchangeKeys.grandExchange(player).openItemSetsInterface();
             }
 
             @Override

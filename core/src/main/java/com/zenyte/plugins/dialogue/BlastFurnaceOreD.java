@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceOre;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -20,7 +21,7 @@ public class BlastFurnaceOreD extends Dialogue {
         super(player);
         int counter = 0;
         for (final BlastFurnaceOre ore : BlastFurnaceOre.VALUES) {
-            final String payload = TextUtils.capitalizeFirstCharacter(ore.toString().toLowerCase().replace("_", " ")) + ": " + player.getBlastFurnace().getOre(ore) + "<br>";
+            final String payload = TextUtils.capitalizeFirstCharacter(ore.toString().toLowerCase().replace("_", " ")) + ": " + BlastFurnaceKeys.blastFurnace(player).getOre(ore) + "<br>";
             (counter < 5 ? page1 : page2).add(payload);
             counter++;
         }

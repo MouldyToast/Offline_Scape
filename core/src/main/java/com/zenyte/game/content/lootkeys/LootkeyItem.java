@@ -15,7 +15,7 @@ public class LootkeyItem extends ItemPlugin {
             var index = Arrays.binarySearch(LootkeyConstants.LOOT_KEY_ORDER, item.getId());
             if (index < 0) return;
 
-            var settings = player.getLootkeySettings();
+            var settings = LootkeySettingsKeys.lootkeySettings(player);
             if (settings == null) return;
 
             var keyContainer = settings.getContainer(index);

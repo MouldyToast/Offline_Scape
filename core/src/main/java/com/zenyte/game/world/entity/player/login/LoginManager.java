@@ -723,14 +723,12 @@ public final class LoginManager {
         player.getBonePouch().initialize(parser.getBonePouch());
         player.getDragonhidePouch().initialize(parser.getDragonhidePouch());
         player.getGemBag().initialize(parser.getGemBag());
-        player.getGrandExchange().initialize(parser.getGrandExchange());
         player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)
             player.getPlayerTitleStatus().putAll(parser.getPlayerTitleStatus());
-        player.setLootkeySettings(parser.getLootkeySettings());
         player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 
         player.getBankPin().initialize(parser.getBankPin());

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.gauntlet.plugins;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.content.gauntlet.GauntletPlayerAttributesKt;
 import com.near_reality.game.content.gauntlet.Gauntlet;
 import com.near_reality.game.content.gauntlet.GauntletConstants;
@@ -46,7 +47,7 @@ public final class GauntletEntrance implements ObjectAction {
         }
 
         // Don't allow players to enter Gauntlet with a pet.
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             player.getDialogueManager().start(new NPCChat(player, GauntletConstants.BRYN, "Don't think you can be taking any plus ones down there with you."));
             return;
         }

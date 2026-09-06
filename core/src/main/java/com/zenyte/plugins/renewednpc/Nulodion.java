@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.multicannon.DwarfMultiCannonKeys;
 import com.zenyte.game.content.multicannon.DwarfMultiCannon;
 import com.zenyte.game.content.multicannon.DwarfMultiCannonType;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -18,7 +19,7 @@ public class Nulodion extends NPCPlugin {
 
             @Override
             public void buildDialogue() {
-                final DwarfMultiCannon cannon = player.getDwarfMulticannon();
+                final DwarfMultiCannon cannon = DwarfMultiCannonKeys.dwarfMulticannon(player);
                 if (!cannon.isDecayed()) {
                     npc("Go away, I'm busy.");
                 } else {

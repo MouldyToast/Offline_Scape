@@ -1,6 +1,8 @@
 package com.near_reality.game.content.araxxor.rewards
 
 import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.content.follower.follower
+import com.zenyte.game.content.follower.setFollower
 import com.zenyte.game.content.follower.Follower
 import com.zenyte.game.content.follower.PetWrapper
 import com.zenyte.game.content.follower.impl.BossPet
@@ -115,10 +117,10 @@ class Reward: DropProcessor() {
             val nid = BossPet.NID
             val item = Item(nid.itemId)
             player.collectionLog.add(item)
-            if ((PetWrapper.checkFollower(player) && player.follower.pet == nid) || player.containsItem(nid.itemId))
+            if ((PetWrapper.checkFollower(player) && player.follower()!!.pet == nid) || player.containsItem(nid.itemId))
                 player.sendMessage("<col=ff0000>You have a funny feeling like you would have been followed...</col>")
 
-            else if (player.follower != null) {
+            else if (player.follower() != null) {
                 if (player.inventory.addItem(item).isFailure) {
                     if (player.bank.add(item).isFailure)
                         player.sendMessage("There was not enough space in your bank, and therefore the pet was lost.")
@@ -131,7 +133,7 @@ class Reward: DropProcessor() {
             }
             else {
                 player.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>")
-                player.follower = Follower(nid.petId, player)
+                player.setFollower(Follower(nid.petId, player))
                 WorldBroadcasts.broadcast(player, BroadcastType.PET, nid)
             }
         }

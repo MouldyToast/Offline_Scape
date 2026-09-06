@@ -63,26 +63,26 @@ public class BlastFurnaceArea extends PolygonRegionArea implements CannonRestric
             if (player == null) {
                 continue;
             }
-            if (player.getBlastFurnace().getCoffer() == 0) {
+            if (BlastFurnaceKeys.blastFurnace(player).getCoffer() == 0) {
                 if (player.getVarManager().getBitValue(5357) != 0) {
                     player.getVarManager().sendBit(5357, 0);
                 }
                 continue;
             }
-            if (player.getBlastFurnace().isProcessBarsFromDialogue()) {
+            if (BlastFurnaceKeys.blastFurnace(player).isProcessBarsFromDialogue()) {
                 if (!player.getInterfaceHandler().containsInterface(InterfacePosition.CHATBOX)) {
-                    player.getBlastFurnace().processBars();
-                    player.getBlastFurnace().setProcessBarsFromDialogue(false);
+                    BlastFurnaceKeys.blastFurnace(player).processBars();
+                    BlastFurnaceKeys.blastFurnace(player).setProcessBarsFromDialogue(false);
                 }
             }
             // The false response of 15 is for players below 60 smithing, this is a modified rate to match OSRS' 15k/hr fee from paying the foreman when under 60 smithing.
             final int removalAmt = player.getSkills().getLevel(SkillConstants.SMITHING) >= 60 ? 12 : 15;
-            final int coffer = player.getBlastFurnace().getCoffer();
-            player.getBlastFurnace().setCoffer(coffer >= removalAmt ? (coffer - removalAmt) : 0);
+            final int coffer = BlastFurnaceKeys.blastFurnace(player).getCoffer();
+            BlastFurnaceKeys.blastFurnace(player).setCoffer(coffer >= removalAmt ? (coffer - removalAmt) : 0);
             if (coffer < removalAmt) {
                 player.getVarManager().sendBit(5356, 0);
             }
-            player.getVarManager().sendBit(5357, player.getBlastFurnace().getCoffer());
+            player.getVarManager().sendBit(5357, BlastFurnaceKeys.blastFurnace(player).getCoffer());
         }
     }
 
@@ -105,10 +105,10 @@ public class BlastFurnaceArea extends PolygonRegionArea implements CannonRestric
     @Override
     public void enter(final Player player) {
         GameInterface.BLAST_FURNACE_COFFER.open(player);
-        player.getBlastFurnace().processVarbits();
-        player.getBlastFurnace().processBars();
-        if (player.getBlastFurnace().getDispenserState() == 2) {
-            player.getBlastFurnace().processCooling();
+        BlastFurnaceKeys.blastFurnace(player).processVarbits();
+        BlastFurnaceKeys.blastFurnace(player).processBars();
+        if (BlastFurnaceKeys.blastFurnace(player).getDispenserState() == 2) {
+            BlastFurnaceKeys.blastFurnace(player).processCooling();
         }
     }
 

@@ -15,7 +15,7 @@ public class BarrowsOverlayInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        final Barrows barrows = player.getBarrows();
+        final Barrows barrows = BarrowsKeys.barrows(player);
         if (barrows.isLooted()) {
             return;
         }

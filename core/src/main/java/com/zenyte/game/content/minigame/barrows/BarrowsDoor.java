@@ -53,14 +53,14 @@ public class BarrowsDoor implements ObjectAction {
         }
 
         if (ArrayUtils.contains(puzzleDoorTiles, player.getLocation().getPositionHash())) {
-            if (!player.getBarrows().isPuzzleSolved()) {
+            if (!BarrowsKeys.barrows(player).isPuzzleSolved()) {
                 player.sendMessage("The door is locked with a strange puzzle.");
-                player.getBarrows().getPuzzle().reset();
+                BarrowsKeys.barrows(player).getPuzzle().reset();
                 GameInterface.BARROWS_PUZZLE.open(player);
                 return;
             }
         }
-        TemporaryDoubleDoor.executeBarrowsDoors(player, object, location -> player.getBarrows().sendRandomTarget(location));
+        TemporaryDoubleDoor.executeBarrowsDoors(player, object, location -> BarrowsKeys.barrows(player).sendRandomTarget(location));
     }
 
     private static void enterRots(Player player, RotsInstance area, WorldObject object) {

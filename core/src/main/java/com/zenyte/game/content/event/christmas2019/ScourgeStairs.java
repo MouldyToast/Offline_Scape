@@ -1,5 +1,6 @@
 package com.zenyte.game.content.event.christmas2019;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.event.christmas2019.cutscenes.FutureScourgeCutscene;
 import com.zenyte.game.content.event.christmas2019.cutscenes.PastScourgeCutsceneP1;
 import com.zenyte.game.content.event.christmas2019.cutscenes.PresentScourgeCutscene;
@@ -113,7 +114,7 @@ public class ScourgeStairs implements ObjectAction {
             player.getDialogueManager().start(new Dialogue(player, ChristmasConstants.PERSONAL_SNOW_IMP) {
                 @Override
                 public void buildDialogue() {
-                    player.faceEntity(player.getFollower());
+                    player.faceEntity(FollowerKeys.follower(player));
                     npc(ChristmasUtils.getImpName(player), "You can't go up there without the costume on!", Expression.HIGH_REV_NORMAL);
                 }
             });
@@ -123,7 +124,7 @@ public class ScourgeStairs implements ObjectAction {
             player.getDialogueManager().start(new Dialogue(player, ChristmasConstants.PERSONAL_SNOW_IMP) {
                 @Override
                 public void buildDialogue() {
-                    player.faceEntity(player.getFollower());
+                    player.faceEntity(FollowerKeys.follower(player));
                     npc(ChristmasUtils.getImpName(player), "You won't look much like a Ghost if ya wearing a cape, " +
                             "matey.", Expression.HIGH_REV_SCARED);
                     plain("The cape detracts from your disguise. You should take it off before climbing these stairs.");
@@ -135,7 +136,7 @@ public class ScourgeStairs implements ObjectAction {
             player.getDialogueManager().start(new Dialogue(player, ChristmasConstants.PERSONAL_SNOW_IMP) {
                 @Override
                 public void buildDialogue() {
-                    player.faceEntity(player.getFollower());
+                    player.faceEntity(FollowerKeys.follower(player));
                     npc(ChristmasUtils.getImpName(player), "You won't look much like a Ghost if ya holding a weapon, " +
                             "matey.", Expression.HIGH_REV_SCARED);
                     plain("The weapon detracts from your disguise. You should take it off before climbing these stairs.");
@@ -147,7 +148,7 @@ public class ScourgeStairs implements ObjectAction {
             player.getDialogueManager().start(new Dialogue(player, ChristmasConstants.PERSONAL_SNOW_IMP) {
                 @Override
                 public void buildDialogue() {
-                    player.faceEntity(player.getFollower());
+                    player.faceEntity(FollowerKeys.follower(player));
                     npc(ChristmasUtils.getImpName(player), "You won't look much like a Ghost if ya wielding a shield," +
                             " matey.", Expression.HIGH_REV_SCARED);
                     plain("The shield detracts from your disguise. You should take it off before climbing these stairs.");

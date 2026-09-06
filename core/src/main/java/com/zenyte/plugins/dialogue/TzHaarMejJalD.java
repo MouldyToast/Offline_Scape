@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.zenyte.game.content.area.tzhaar.TzHaar;
 import com.zenyte.game.content.follower.impl.BossPet;
@@ -31,7 +32,7 @@ public class TzHaarMejJalD extends Dialogue {
                 player.sendMessage(Colour.RS_RED.wrap("You have no firecape to exchange!"));
                 return;
             }
-            if (player.containsItem(13225) || player.getFollower() != null && player.getFollower().getPet() == BossPet.TZREK_JAD) {
+            if (player.containsItem(13225) || FollowerKeys.follower(player) != null && FollowerKeys.follower(player).getPet() == BossPet.TZREK_JAD) {
                 npc("You seem to already have a Tzrek-Jad, I'm not giving you more than one!");
                 return;
             }

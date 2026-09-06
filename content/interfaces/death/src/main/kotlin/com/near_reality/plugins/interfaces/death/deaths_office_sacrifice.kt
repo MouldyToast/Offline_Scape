@@ -2,6 +2,7 @@ package com.near_reality.plugins.interfaces.death
 
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.entity.SoundEffect
+import com.zenyte.game.content.gravestones.gravestone
 import com.zenyte.game.world.entity.player.Player
 import kotlin.math.min
 import com.near_reality.scripts.interfaces.InterfaceScript
@@ -17,7 +18,7 @@ class DeathsOfficeSacrificeInterface : InterfaceScript() {
 
     fun Player.resetSelectedItem(componentId: Int, portalComponent: Int) {
         varManager.sendVarInstant(262, -1)
-        varManager.sendVarInstant(261, gravestone.coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
+        varManager.sendVarInstant(261, gravestone().coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
         packetDispatcher.sendComponentItem(id, componentId, 6512, 400)
         packetDispatcher.sendComponentAnimation(id, portalComponent, 7301)
         varManager.sendVarInstant(263, 0)
@@ -73,7 +74,7 @@ class DeathsOfficeSacrificeInterface : InterfaceScript() {
                 }
                 val success = player.inventory.deleteItem(Item(itemInSlot.id, quantity))
                 val successfulAmount = success.succeededAmount
-                player.gravestone.coinsInCoffer += successfulAmount * price.toLong()
+                player.gravestone().coinsInCoffer += successfulAmount * price.toLong()
                 player.resetSelectedItem(itemComponent.componentID, portalComponent.componentID)
                 player.sendSound(1595)
                 player.sendSound(SoundEffect(2115, 0, 10))

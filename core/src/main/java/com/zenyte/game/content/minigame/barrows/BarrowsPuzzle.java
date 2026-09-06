@@ -36,12 +36,12 @@ class BarrowsPuzzle {
     void select(int slot) {
         if (slot == correctSlot) {
             player.sendMessage("You hear the doors' locking mechanism grind open.");
-            player.getBarrows().setPuzzleSolved(true);
+            BarrowsKeys.barrows(player).setPuzzleSolved(true);
         } else {
             player.sendMessage("You hear the doors' locking mechanism shut down.");
-            player.getBarrows().shiftCorner();
-            player.getBarrows().shiftDoorways();
-            player.getBarrows().refreshDoors();
+            BarrowsKeys.barrows(player).shiftCorner();
+            BarrowsKeys.barrows(player).shiftDoorways();
+            BarrowsKeys.barrows(player).refreshDoors();
         }
         player.getInterfaceHandler().closeInterface(GameInterface.BARROWS_PUZZLE);
     }

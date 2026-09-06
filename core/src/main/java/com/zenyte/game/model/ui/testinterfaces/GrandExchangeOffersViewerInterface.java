@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.grandexchange.ExchangeOffer;
 import com.zenyte.game.content.grandexchange.ExchangeType;
@@ -85,7 +86,7 @@ public class GrandExchangeOffersViewerInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Exchange", player -> player.getGrandExchange().openOffersInterface());
+        bind("Exchange", player -> GrandExchangeKeys.grandExchange(player).openOffersInterface());
         bind("Search for item", player -> player.sendInputItem("Check offers for:", item -> {
             player.getPacketDispatcher().sendComponentItem(getId(), getComponent("Item sprite in search"), item.getId(), 1);
             player.getPacketDispatcher().sendComponentText(getId(), getComponent("Item name"), item.getName());
@@ -173,7 +174,7 @@ public class GrandExchangeOffersViewerInterface extends Interface {
             if (offer == null) {
                 return;
             }
-            final GrandExchange exchange = player.getGrandExchange();
+            final GrandExchange exchange = GrandExchangeKeys.grandExchange(player);
             final int freeSlot = exchange.getFreeSlot();
             int availableAmount = offer.getItem().getAmount() - offer.getAmount();
             final int id = offer.getItem().getId();

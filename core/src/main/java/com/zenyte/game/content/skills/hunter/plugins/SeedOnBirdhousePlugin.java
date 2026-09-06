@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseState;
 import com.zenyte.game.content.skills.hunter.object.Birdhouse;
@@ -96,7 +97,7 @@ public class SeedOnBirdhousePlugin implements ItemOnObjectAction {
             player.sendMessage("That seed can't be put in this birdhouse.");
             return;
         }
-        final Optional<Birdhouse> optionalBirdhouse = player.getHunter().findBirdhouse(object.getId());
+        final Optional<Birdhouse> optionalBirdhouse = HunterKeys.hunter(player).findBirdhouse(object.getId());
         if (!optionalBirdhouse.isPresent()) {
             player.sendMessage("You need to place a birdhouse here first.");
             return;

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.grandexchange;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
 import com.near_reality.tools.logging.GameLogMessage;
 import com.near_reality.tools.logging.GameLogger;
@@ -18,6 +19,7 @@ import com.zenyte.game.world.entity.player.container.ContainerResult;
 import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.game.world.region.area.plugins.TempPlayerStatePlugin;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectCollection;
@@ -56,6 +58,32 @@ public class GrandExchange {
 
     public GrandExchange(final Player player) {
         this.player = player;
+    }
+
+    /**
+     * Attr-first load with parser-legacy fallback (Phase E4). Replaces the
+     * former setFields whitelist line
+     * player.getGrandExchange().initialize(parser.getGrandExchange()).
+     */
+    @Subscribe
+    public static void onInit(final InitializationEvent event) {
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = GrandExchangeKeys.rawGrandExchangeAttr(player) != null;
+        final GrandExchange exchange = GrandExchangeKeys.grandExchange(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the exchange under the
+        // top-level "grandExchange" JSON key on the parser player. The copy
+        // below migrates it into the attr; the next save persists it under
+        // attrPersistence["grand_exchange"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final GrandExchange savedExchange = savedPlayer.getGrandExchange();
+        if (savedExchange == null) {
+            return;
+        }
+        exchange.initialize(savedExchange);
     }
 
     public final void initialize(final GrandExchange exchange) {

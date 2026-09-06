@@ -30,7 +30,7 @@ public class LootkeyConstants {
         if (lost.isEmpty())
             return;
         if (playerKiller != null) {
-            var killerSettings = playerKiller.getLootkeySettings();
+            var killerSettings = LootkeySettingsKeys.lootkeySettings(playerKiller);
             var lootKeyUnlocked = !playerKiller.isIronman() && killerSettings != null;
             if (lootKeyUnlocked) {
                 var lootKeyEnabled = killerSettings.isEnabled();
@@ -61,7 +61,7 @@ public class LootkeyConstants {
         // Check over the killers inventory for any keys, removing the choice if they have the key
         choices.removeIf(id -> to.getInventory().containsItem(id));
 
-        var settings = to.getLootkeySettings();
+        var settings = LootkeySettingsKeys.lootkeySettings(to);
         if (settings == null || !settings.isEnabled())
             choices.clear();
 
@@ -135,7 +135,7 @@ public class LootkeyConstants {
         if (index < 0) {
             return null;
         }
-        var settings = player.getLootkeySettings();
+        var settings = LootkeySettingsKeys.lootkeySettings(player);
         return settings == null ? null : settings.getContainer(index);
     }
 

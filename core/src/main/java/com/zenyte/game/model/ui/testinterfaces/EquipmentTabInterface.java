@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.follower.Follower;
@@ -194,7 +195,7 @@ public class EquipmentTabInterface extends Interface {
             if (player.isLocked()) {
                 return;
             }
-            Follower follower = player.getFollower();
+            Follower follower = FollowerKeys.follower(player);
             if (follower == null) {
                 player.sendMessage("You do not have a follower.");
                 return;

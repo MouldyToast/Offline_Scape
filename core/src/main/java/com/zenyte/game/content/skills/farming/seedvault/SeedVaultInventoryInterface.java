@@ -12,8 +12,8 @@ import static com.zenyte.game.util.AccessMask.*;
 
 public class SeedVaultInventoryInterface extends Interface implements SwitchPlugin {
     public static void deposit(final Player player, final int slotId, final int amount, boolean notifyOnFailure) {
-        player.getSeedVault().deposit(player.getInventory().getContainer(), slotId, amount, notifyOnFailure);
-        player.getSeedVault().getContainer().refresh(player);
+        SeedVaultKeys.seedVault(player).deposit(player.getInventory().getContainer(), slotId, amount, notifyOnFailure);
+        SeedVaultKeys.seedVault(player).getContainer().refresh(player);
         player.getInventory().refreshAll();
     }
 

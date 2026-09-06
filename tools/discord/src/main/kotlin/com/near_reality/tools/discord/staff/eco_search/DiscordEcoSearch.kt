@@ -1,5 +1,6 @@
 package com.near_reality.tools.discord.staff.eco_search
 
+import com.zenyte.game.content.gravestones.scanGravestone
 import com.near_reality.tools.WealthScanner
 import com.near_reality.tools.discord.DiscordServer
 import com.near_reality.tools.discord.calculateValue
@@ -169,7 +170,7 @@ private suspend fun DiscordStaffBot.searchValue(interaction: ActionInteraction) 
             totalValue += it.inventory.container.items.calculateValue()
             totalValue += it.equipment.container.items.calculateValue()
             totalValue += it.lootingBag.container.items.calculateValue()
-            totalValue += it.gravestone.container.items.calculateValue()
+            totalValue += (scanGravestone(it)?.container?.items?.calculateValue() ?: 0L)
             totalValue += it.runePouch.container.items.calculateValue()
             totalValue += it.secondaryRunePouch.container.items.calculateValue()
             it.name to totalValue
@@ -235,7 +236,7 @@ private suspend fun DiscordStaffBot.searchItem(
                 count += player.inventory.container.countOf(item)
                 count += player.equipment.container.countOf(item)
                 count += player.lootingBag.container.countOf(item)
-                count += player.gravestone.container.countOf(item)
+                count += (scanGravestone(player)?.container?.countOf(item) ?: 0)
                 count += player.runePouch.container.countOf(item)
                 count += player.secondaryRunePouch.container.countOf(item)
                 count

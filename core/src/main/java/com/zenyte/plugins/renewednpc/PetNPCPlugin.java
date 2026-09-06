@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
@@ -38,7 +39,7 @@ public class PetNPCPlugin extends NPCPlugin {
             if (player.getCurrentHouse() != null) {
                 player.getCurrentHouse().getCatsOnBlanket().remove(player);
             }
-            player.setFollower(null);
+            FollowerKeys.setFollower(player, null);
             player.setAnimation(PetWrapper.DROP_ANIMATION);
             player.getInventory().addItem(pet.itemId(), 1);
             npc.finish();

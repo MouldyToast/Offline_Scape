@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.event.christmas2019.AChristmasWarble;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.content.follower.Follower;
@@ -35,10 +36,10 @@ public class LandOfSnowArea extends PolygonRegionArea {
 
     public static final void spawnPet(@NotNull final Player player) {
         //Just in case, not to override the player's own pet.
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             return;
         }
-        player.setFollower(new Follower(MiscPet.AREA_LOCKED_SNOW_IMP.petId(), player));
+        FollowerKeys.setFollower(player, new Follower(MiscPet.AREA_LOCKED_SNOW_IMP.petId(), player));
     }
 
     @Override
@@ -58,8 +59,8 @@ public class LandOfSnowArea extends PolygonRegionArea {
 
     @Override
     public void leave(Player player, boolean logout) {
-        if (player.getFollower() != null && player.getFollower().getPet() == MiscPet.AREA_LOCKED_SNOW_IMP) {
-                player.setFollower(null);
+        if (FollowerKeys.follower(player) != null && FollowerKeys.follower(player).getPet() == MiscPet.AREA_LOCKED_SNOW_IMP) {
+                FollowerKeys.setFollower(player, null);
         }
         player.getInventory().deleteItems(new Item(ChristmasConstants.BEDSHEETS_ID, 28), new Item(ChristmasConstants.CHAINS_ID, 28), new Item(ChristmasConstants.MULLED_WINE, 28),
                 new Item(ChristmasConstants.YULE_LOG, 28), new Item(ChristmasConstants.TURKEY_DRUMSTICK, 28), new Item(ChristmasConstants.ROAST_POTATOES, 28)); // just in case

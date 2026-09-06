@@ -3,6 +3,7 @@ package com.near_reality.plugins.interfaces.death
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
+import com.zenyte.game.content.gravestones.gravestone
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.start
@@ -21,8 +22,8 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
 
     fun Player.claimAll() {
         var runs = 0
-        while (!gravestone.container.isEmpty) {
-            val itemInSlot = gravestone.container.get(0) ?: return
+        while (!gravestone().container.isEmpty) {
+            val itemInSlot = gravestone().container.get(0) ?: return
             val sellPrice = itemInSlot.sellPrice
             val multiplier = if (isIronman) 2 else 1
             val threshold = 100_000 * multiplier
@@ -39,7 +40,7 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
         }
     }
 
-    fun Player.totalFeeSum(): Long = gravestone.container.items.values.sumOf { item ->
+    fun Player.totalFeeSum(): Long = gravestone().container.items.values.sumOf { item ->
         val sellPrice = item.sellPrice
         val multiplier = if (isIronman) 2 else 1
         val threshold = 100_000 * multiplier
@@ -53,8 +54,8 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
 
     fun Player.selectItem(slot: Int) {
         varManager.sendVarInstant(262, slot)
-        val itemInSlot = gravestone.container.get(slot)
-        varManager.sendVarInstant(261, gravestone.coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
+        val itemInSlot = gravestone().container.get(slot)
+        varManager.sendVarInstant(261, gravestone().coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
         val sellPrice = itemInSlot?.sellPrice ?: 0
         val multiplier = if (isIronman) 2 else 1
         val threshold = 100_000 * multiplier
@@ -75,7 +76,7 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
     }
 
     fun Player.claimItem(amount: Int, slot: Int = getCurrentSelectedSlot(), fee: Int = getFee()): Boolean {
-        val item = gravestone.container.get(slot) ?: return false
+        val item = gravestone().container.get(slot) ?: return false
         var totalAmount = amount.coerceAtMost(item.amount)
         if (item.isStackable) {
             val inInventory = inventory.getAmountOf(item.id)
@@ -90,7 +91,7 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
             return false
         }
         val totalCost = fee * totalAmount.toLong()
-        val inGravestone = gravestone.coinsInCoffer
+        val inGravestone = gravestone().coinsInCoffer
         val inInventory = inventory.getAmountOf(ItemId.COINS_995)
         val inBank = bank.getAmountOf(ItemId.COINS_995)
         val totalCarried = inGravestone + inInventory + inBank
@@ -102,7 +103,7 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
         if (amountToRemove > 0 && inGravestone > 0) {
             val toRemove = min(amountToRemove, inGravestone)
             amountToRemove -= toRemove
-            gravestone.coinsInCoffer -= toRemove
+            gravestone().coinsInCoffer -= toRemove
             sendMessage("Payment has been taken from your coffer: ${toRemove.format()} coins")
         }
         if (amountToRemove > 0 && inBank > 0) {
@@ -119,13 +120,13 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
             inventory.refresh()
             sendMessage("Payment has been taken from your inventory: ${toRemove.format()} coins")
         }
-        inventory.container.deposit(this, gravestone.container, slot, totalAmount)
+        inventory.container.deposit(this, gravestone().container, slot, totalAmount)
         inventory.container.refresh(this)
-        gravestone.container.refresh(this)
-        varManager.sendVarInstant(261, gravestone.coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
+        gravestone().container.refresh(this)
+        varManager.sendVarInstant(261, gravestone().coinsInCoffer.coerceIn(0..Int.MAX_VALUE.toLong()).toInt())
         if (totalAmount >= item.amount) {
-            gravestone.container.shift()
-            gravestone.container.refresh(this)
+            gravestone().container.shift()
+            gravestone().container.refresh(this)
             selectItem(-1)
         }
         return true
@@ -176,8 +177,8 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
             }
 
             opened {
-                gravestone.container.isFullUpdate = true
-                gravestone.container.refresh(this)
+                gravestone().container.isFullUpdate = true
+                gravestone().container.refresh(this)
                 selectItem(-1)
                 sendInterface()
                 itemsLayer.sendComponentSettings(this, 119, CLICK_OP1, CLICK_OP10)

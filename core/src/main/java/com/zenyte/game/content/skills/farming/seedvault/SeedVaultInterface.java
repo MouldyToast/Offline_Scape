@@ -64,7 +64,7 @@ public class SeedVaultInterface extends Interface implements SwitchPlugin {
         dispatcher.sendComponentSettings(getInterface(), getComponent("Container"), 0, vaultSize, CLICK_OP1, CLICK_OP2, CLICK_OP3, CLICK_OP4, CLICK_OP5, CLICK_OP6, CLICK_OP7, CLICK_OP8, CLICK_OP9, CLICK_OP10, DRAG_DEPTH2, DRAG_TARGETABLE);
         GameInterface.SEED_VAULT_INVENTORY.open(player);
         player.getVarManager().sendBit(CATEGORY_VARBIT, 0);
-        final SeedVaultContainer container = player.getSeedVault().getContainer();
+        final SeedVaultContainer container = SeedVaultKeys.seedVault(player).getContainer();
         container.setFullUpdate(true);
         container.refresh(player);
     }
@@ -81,12 +81,12 @@ public class SeedVaultInterface extends Interface implements SwitchPlugin {
             final SeedVaultExchangeOption option = SeedVaultExchangeOption.of(optionId);
             switch (option) {
             case REMOVE_ALL_PLACE: 
-                player.getSeedVault().releasePlaceholders();
+                SeedVaultKeys.seedVault(player).releasePlaceholders();
                 break;
             case NOTE_OR_REMOVE_PLACE: 
                 final ItemDefinitions def = ItemDefinitions.getOrThrow(itemId);
                 if (def.isPlaceholder()) {
-                    player.getSeedVault().releasePlaceholder(seedSlot);
+                    SeedVaultKeys.seedVault(player).releasePlaceholder(seedSlot);
                 } else {
                     withdraw(player, seedSlot, player.getVarManager().getValue(AMOUNT_VAR), true);
                 }
@@ -148,10 +148,10 @@ public class SeedVaultInterface extends Interface implements SwitchPlugin {
                 return;
             }
             player.sendMessage("Your favourite slots are full.");
-            player.getSeedVault().getContainer().refresh(player);
+            SeedVaultKeys.seedVault(player).getContainer().refresh(player);
             return;
         }
-        final SeedVault vault = player.getSeedVault();
+        final SeedVault vault = SeedVaultKeys.seedVault(player);
         final SeedVaultContainer container = vault.getContainer();
         final Item fromItem = container.get(fromSlot);
         final Item toItem = container.get(toSlot);
@@ -168,7 +168,7 @@ public class SeedVaultInterface extends Interface implements SwitchPlugin {
     }
 
     private void withdraw(final Player player, final int slotId, final int amount, final boolean note) {
-        final SeedVaultContainer seedVault = player.getSeedVault().getContainer();
+        final SeedVaultContainer seedVault = SeedVaultKeys.seedVault(player).getContainer();
         //player.sendMessage("Not enough space in your " + container.getType().getName() + ".")
         final int inVault = seedVault.get(slotId).getAmount();
         seedVault.withdraw(player, player.getInventory().getContainer(), slotId, amount, note, true);
@@ -187,13 +187,13 @@ public class SeedVaultInterface extends Interface implements SwitchPlugin {
             player.sendMessage("You can only have eight types of seeds as favorites.");
             return;
         }
-        final Item seed = player.getSeedVault().getContainer().get(seedSlot);
+        final Item seed = SeedVaultKeys.seedVault(player).getContainer().get(seedSlot);
         player.sendMessage("You add " + getSeedName(seed) + " to your favourites.");
         player.getVarManager().sendBit(favouriteSlot.get().getVarbit(), seedSlot);
     }
 
     private void unfavourite(final Player player, final FavouriteSlot favouriteSlot, final int seedSlot) {
-        final Item seed = player.getSeedVault().getContainer().get(seedSlot);
+        final Item seed = SeedVaultKeys.seedVault(player).getContainer().get(seedSlot);
         player.getVarManager().sendBit(favouriteSlot.getVarbit(), 255);
         player.sendMessage("You remove " + getSeedName(seed) + " from your favourites.");
     }

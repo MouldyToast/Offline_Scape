@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.multicannon.DwarfMultiCannonKeys;
 import com.zenyte.game.content.multicannon.DwarfMultiCannonType;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -14,7 +15,7 @@ public final class DwarfMultiCannonObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        if (!player.getDwarfMulticannon().handleCannon(object, optionId)) {
+        if (!DwarfMultiCannonKeys.dwarfMulticannon(player).handleCannon(object, optionId)) {
             player.sendMessage("This is not your cannon.");
         }
     }

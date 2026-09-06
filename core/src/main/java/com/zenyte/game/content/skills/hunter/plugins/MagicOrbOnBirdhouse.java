@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.hunter.object.Birdhouse;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -15,7 +16,7 @@ public class MagicOrbOnBirdhouse implements ItemOnObjectAction {
 
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-        final Birdhouse birdhouse = player.getHunter().findBirdhouse(object.getId()).orElseThrow(RuntimeException::new);
+        final Birdhouse birdhouse = HunterKeys.hunter(player).findBirdhouse(object.getId()).orElseThrow(RuntimeException::new);
         final long fillTime = birdhouse.getFillTime();
         if (fillTime != 0 && fillTime != Long.MAX_VALUE) {
             birdhouse.setFillTime(1);

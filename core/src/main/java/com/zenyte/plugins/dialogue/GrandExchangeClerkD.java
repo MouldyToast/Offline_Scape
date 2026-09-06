@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -38,8 +39,8 @@ public class GrandExchangeClerkD extends Dialogue {
 			.onOptionTwo(() -> setKey(20))
 		    .onOptionThree(() -> setKey(25))
 		    .onOptionFour(() -> setKey(30));
-		player(15, "I'd like to set up trade offers please.").executeAction(() -> player.getGrandExchange().openOffersInterface());
-		player(20, "Can you help me with item sets?").executeAction(() -> player.getGrandExchange().openItemSetsInterface());
+		player(15, "I'd like to set up trade offers please.").executeAction(() -> GrandExchangeKeys.grandExchange(player).openOffersInterface());
+		player(20, "Can you help me with item sets?").executeAction(() -> GrandExchangeKeys.grandExchange(player).openItemSetsInterface());
 		player(25, "Show me my trade history.").executeAction(() -> GRAND_EXCHANGE_HISTORY.open(player));
 		player(30, "I'm fine, thanks.");
 	}

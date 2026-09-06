@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.plugins;
 
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.hunter.BirdHousePosition;
 import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseState;
@@ -41,7 +42,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
 
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-        final Hunter hunter = player.getHunter();
+        final Hunter hunter = HunterKeys.hunter(player);
         final Optional<Birdhouse> existingBirdhouse = hunter.findBirdhouse(object.getId());
         if (existingBirdhouse.isPresent()) {
             player.sendMessage("You've already placed a bird house here.");
@@ -55,7 +56,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
         if (!inventory.containsItem(item)) {
             return;
         }
-        final Hunter hunter = player.getHunter();
+        final Hunter hunter = HunterKeys.hunter(player);
         final BirdHouseType type = BirdHouseType.findThroughBirdhouse(item.getId()).orElseThrow(RuntimeException::new);
         final BirdHousePosition position = BirdHousePosition.findPosition(object.getId()).orElseThrow(RuntimeException::new);
         if ((player.getSkills().getLevelForXp(SkillConstants.HUNTER)) < type.getHunterRequirement()) {
@@ -93,7 +94,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
             build(player, new Item(bestBirdhouse.get().getBirdhouseId()), OptionalInt.empty(), object);
             return;
         }
-        final Birdhouse birdhouse = player.getHunter().findBirdhouse(object.getId()).orElseThrow(RuntimeException::new);
+        final Birdhouse birdhouse = HunterKeys.hunter(player).findBirdhouse(object.getId()).orElseThrow(RuntimeException::new);
         switch(option) {
             case "Seeds":
                 checkSeeds(player, birdhouse);
@@ -177,7 +178,7 @@ public class BirdhouseObjectPlugin implements ItemOnObjectAction, ObjectAction {
         player.setAnimation(animation);
         player.sendSound(2433);
         player.sendSound(dismantleSound);
-        player.getHunter().removeBirdhouse(birdhouse);
+        HunterKeys.hunter(player).removeBirdhouse(birdhouse);
     }
 
     private final void checkSeeds(@NotNull final Player player, @NotNull final Birdhouse birdhouse) {

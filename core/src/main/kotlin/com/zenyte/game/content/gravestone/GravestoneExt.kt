@@ -15,6 +15,7 @@ import com.zenyte.game.model.item.containers.LootingBag
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.Location
+import com.zenyte.game.content.gravestones.gravestone
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import kotlin.math.min
@@ -41,7 +42,7 @@ object GravestoneExt {
         packetDispatcher.sendClientScript(3478, -1, -1)
         varManager.sendBitInstant(10465, 0)
         varManager.sendBitInstant(10464, 0)
-        gravestone.removeGravestone()
+        gravestone().removeGravestone()
     }
 
     fun Player.informGravestone() {
@@ -100,7 +101,7 @@ object GravestoneExt {
 
     fun Player.createGravestone(location: Location, killer: Player? = null): Pair<List<Item>, List<Item>> {
         val (itemsLost, gravestoneItems) = calculateGravestoneItems(killer != null)
-        gravestone.createGravestone(location, gravestoneItems.subList(0, min(120, gravestoneItems.size)))
+        gravestone().createGravestone(location, gravestoneItems.subList(0, min(120, gravestoneItems.size)))
         retrievalService.isLocked = true
         retrievalService.container.addAll(gravestoneItems)
         retrievalService.type = ItemRetrievalService.RetrievalServiceType.GRAVESTONE
@@ -240,9 +241,9 @@ object GravestoneExt {
     fun Player.moveItemsToDeathsOffice() {
         for (i in 0 until 120) {
             val item = retrievalService.container.get(i) ?: continue
-            gravestone.container.deposit(this, retrievalService.container, i, item.amount)
+            gravestone().container.deposit(this, retrievalService.container, i, item.amount)
         }
-        gravestone.container.refresh(this)
+        gravestone().container.refresh(this)
         retrievalService.container.refresh(this)
     }
 

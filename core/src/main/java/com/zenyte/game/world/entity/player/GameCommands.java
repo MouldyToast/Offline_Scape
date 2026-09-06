@@ -1,5 +1,7 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.near_reality.api.service.sanction.SanctionCommands;
@@ -38,6 +40,7 @@ import com.zenyte.game.content.event.christmas2019.cutscenes.ScourgeHouseInstanc
 import com.zenyte.game.content.event.halloween2019.HalloweenUtils;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.minigame.barrows.Barrows;
+import com.zenyte.game.content.minigame.barrows.BarrowsKeys;
 import com.zenyte.game.content.minigame.fightcaves.FightCaves;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.minigame.inferno.model.InfernoWave;
@@ -393,16 +396,16 @@ public final class GameCommands {
             LootkeySettings.clear(p);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "lt-n", (p, args) -> {
-            p.setLootkeySettings(new LootkeySettings(true, false, false, 5_000_000, 0, 0));
+            LootkeySettingsKeys.setLootkeySettings(p, new LootkeySettings(true, false, false, 5_000_000, 0, 0));
 
             var inventory = p.getInventory();
-            var firstLootKey = p.getLootkeySettings().getContainer(0);
+            var firstLootKey = LootkeySettingsKeys.lootkeySettings(p).getContainer(0);
             firstLootKey.add(new Item(ItemID.ABYSSAL_ASHES, 1));
             firstLootKey.add(new Item(ItemID.ABYSSAL_WHIP, 1));
             firstLootKey.add(new Item(ItemID.DRAGON_DAGGER, 1));
             inventory.addOrDrop(ItemID.LOOT_KEY, 1);
 
-            var secondLootKey = p.getLootkeySettings().getContainer(1);
+            var secondLootKey = LootkeySettingsKeys.lootkeySettings(p).getContainer(1);
             secondLootKey.add(new Item(ItemID.ABYSSAL_ASHES, 2));
             secondLootKey.add(new Item(ItemID.ABYSSAL_WHIP, 2));
             secondLootKey.add(new Item(ItemID.DRAGON_DAGGER, 2));
@@ -849,7 +852,7 @@ public final class GameCommands {
             p.sendMessage("JS5 duplicates filtering: " + GameConstants.FILTERING_DUPLICATE_JS5_REQUESTS);
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "resetge", (p, args) -> p.getGrandExchange().resetExistingOffers());
+        new Command(PlayerPrivilege.DEVELOPER, "resetge", (p, args) -> GrandExchangeKeys.grandExchange(p).resetExistingOffers());
         new Command(PlayerPrivilege.DEVELOPER, "multigfx", (p, args) -> {
             int id = parseInt(args[0]);
             final int px = p.getX();
@@ -867,7 +870,7 @@ public final class GameCommands {
                 p.sendMessage("Arguments are <Number of kills> <Reward potential>");
                 return;
             }
-            final Barrows barrows = p.getBarrows();
+            final Barrows barrows = BarrowsKeys.barrows(p);
             final int number = Math.min(100, parseInt(args[0]));
             final int rp = Math.max(0, parseInt(args[1]) - 668);
             for (int i = 0; i < number; i++) {

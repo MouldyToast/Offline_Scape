@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.multicannon.DwarfMultiCannonKeys;
 import com.zenyte.game.content.multicannon.DwarfMultiCannonType;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -14,7 +15,7 @@ public class CannonBase extends ItemPlugin {
 
 	@Override
 	public void handle() {
-		bind("Set-up", (player, item, slotId) -> player.getDwarfMulticannon().setupCannon(DwarfMultiCannonType.list(item)));
+		bind("Set-up", (player, item, slotId) -> DwarfMultiCannonKeys.dwarfMulticannon(player).setupCannon(DwarfMultiCannonType.list(item)));
 		bind("Dismantle", Dismantleable::dismantle);
 	}
 

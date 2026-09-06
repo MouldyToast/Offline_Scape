@@ -1,6 +1,7 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.preset.PresetManagerKeys;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectId;
@@ -18,7 +19,7 @@ public final class BankObject implements ObjectAction {
 		} else if (option.equalsIgnoreCase("Presets")) {
 			GameInterface.PRESET_MANAGER.open(player);
 		} else if (option.equalsIgnoreCase("Last-preset")) {
-			player.getPresetManager().loadLastPreset();
+			PresetManagerKeys.presetManager(player).loadLastPreset();
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chompy.plugins;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.follower.Follower;
@@ -41,11 +42,11 @@ public class DeadChompy extends NPCPlugin {
         final MiscPet pet = MiscPet.CHOMPY_CHICK;
         final Item item = new Item(pet.getItemId());
         player.getCollectionLog().add(item);
-        if ((PetWrapper.checkFollower(player) && player.getFollower().getPet().equals(pet)) || player.containsItem(pet.getItemId())) {
+        if ((PetWrapper.checkFollower(player) && FollowerKeys.follower(player).getPet().equals(pet)) || player.containsItem(pet.getItemId())) {
             player.sendMessage("<col=ff0000>You have a funny feeling like you would have been followed...</col>");
             return false;
         }
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             if (player.getInventory().addItem(item).isFailure()) {
                 if (player.getBank().add(item).isFailure()) {
                     player.sendMessage("There was not enough space in your bank, and therefore the pet was lost.");
@@ -59,7 +60,7 @@ public class DeadChompy extends NPCPlugin {
             WorldBroadcasts.broadcast(player, BroadcastType.PET, pet);
         } else {
             player.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>");
-            player.setFollower(new Follower(pet.getPetId(), player));
+            FollowerKeys.setFollower(player, new Follower(pet.getPetId(), player));
             WorldBroadcasts.broadcast(player, BroadcastType.PET, pet);
         }
         return true;

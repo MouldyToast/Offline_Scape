@@ -95,8 +95,23 @@ repo-wide core→content (excl. /content/) 1181; PrayerManagerKeys tokens
   references those two properties, verified). Historical "mirrors the
   legacy semantics" provenance notes were deliberately kept — they are
   still true and explain non-obvious copy behavior.
+- The E6 follower rider LANDED in this session (commit after this doc),
+  under Jesse's ruling "move pet spawn behind PlayerLoginEvent, timing
+  change accepted": the spawn block left Player.onLobbyClose for a
+  PlayerLoginEvent subscriber in FollowerKeys.kt (pet now appears at
+  world entry, during the login sequence — after LOGIN plugins, before
+  clip()/LocationMap.add — instead of at the lobby "Play" click), and the
+  logout finish() block moved behind PlayerLogoutEvent (published ~9
+  lines later in the same logout method, same try envelope — finish now
+  runs after ClanManager.leave/interface close/LOGOUT plugins, still the
+  same tick, before session close). The null-follower spawn guard was
+  kept, preserving lobby-hop idempotence. Player.java lost its last
+  follower references: Follower/FollowerKeys/PetWrapper imports deleted
+  (content imports 37 → 34, repo-wide 1181 → 1178); getPetId/setPetId
+  stay by design. Play-test: pet out → relog → pet present at world
+  entry; pick up/drop; insurance reclaim; metamorphosis; lobby-hop
+  without full logout → no duplicate pet.
 - Remaining campaign threads: the out-of-scope Player member inventory
-  (HANDOVER_after_rotation.md §6), the E6 follower rider (still
-  unauthorized — needs Jesse's ruling between the two spawn-timing
-  options), and the recorded soft-timer end-state for PlayerProcessEvent
-  and the nightmare-curse reimplementation (§4 above).
+  (HANDOVER_after_rotation.md §6), and the recorded soft-timer end-state
+  for PlayerProcessEvent and the nightmare-curse reimplementation (§4
+  above).

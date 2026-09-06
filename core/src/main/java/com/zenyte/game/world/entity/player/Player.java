@@ -39,10 +39,7 @@ import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.clans.ClanManager;
-import com.zenyte.game.content.follower.Follower;
-import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.PetInsurance;
-import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
@@ -2155,10 +2152,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             GlobalAreaManager.update(this, false, true);
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();
-            }
-            final Follower follower = FollowerKeys.follower(this);
-            if (follower != null) {
-                follower.finish();
             }
             ClanManager.leave(this, false);
             socialManager.updateStatus();
@@ -4394,11 +4387,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         varManager.sendVar(1050, 90);// chivalry/piety
         varManager.sendBit(598, 2);
         PrayerManagerKeys.prayerManager(this).refreshQuickPrayers();
-        if (petId != -1 && PetWrapper.getByPet(petId) != null) {
-            if (FollowerKeys.follower(this) == null) {
-                FollowerKeys.setFollower(this, new Follower(petId, this));
-            }
-        }
         /*
          * if (player.getHelmet() != null && player.getHelmet().getId() >= 5525 && player.getHelmet().getId() <=
          * 5547) { final int bitId =

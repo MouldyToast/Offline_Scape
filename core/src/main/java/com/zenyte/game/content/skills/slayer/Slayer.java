@@ -107,24 +107,9 @@ public class Slayer {
 
     @Subscribe
     public static void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = SlayerKeys.rawSlayerAttr(player) != null;
-        final Slayer slayer = SlayerKeys.slayer(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the slayer state under the
-        // top-level "slayer" JSON key on the parser player. The copy below
-        // migrates it into the attr (running the same copy the legacy
-        // setFields initialize always ran); the next save persists it under
-        // attrPersistence["slayer"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final Slayer savedSlayer = savedPlayer.getSlayer();
-        if (savedSlayer == null) {
-            return;
-        }
-        slayer.copyFrom(savedSlayer);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        SlayerKeys.slayer(event.getPlayer());
     }
 
     void addSlayerPoints(int amount) {

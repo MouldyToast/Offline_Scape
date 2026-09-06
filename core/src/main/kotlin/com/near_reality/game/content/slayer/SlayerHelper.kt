@@ -47,7 +47,7 @@ object SlayerHelper {
         var max: Int = taskSet.maximumAmount
         val range: RegularTask.Range? = task.extendedRange
         if (range != null) {
-            if (slayer.isUnlocked(range.extensionName)) {
+            if (slayer().isUnlocked(range.extensionName)) {
                 min = range.min
                 max = range.max
                 return Utils.random(min, max)
@@ -59,9 +59,9 @@ object SlayerHelper {
 
     fun Player.getAssignment(task: RegularTask): Assignment {
         if (task === RegularTask.BOSS) {
-            return generateBossTask(slayer.master)
+            return generateBossTask(slayer().master)
         }
-        return getAssignment(this, task, slayer.master)
+        return getAssignment(this, task, slayer().master)
     }
 
     private fun Player.generateBossTask(master: SlayerMaster): Assignment {

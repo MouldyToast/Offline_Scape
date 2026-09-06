@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTasksManager;
@@ -29,8 +30,8 @@ public class WaterBucketOnBarDispenser implements ItemOnObjectAction {
                 player.setAnimation(THROW_WATER);
                 WorldTasksManager.schedule(() -> {
                     player.getInventory().replaceItem(1925, 1, player.getInventory().getContainer().getSlot(item));
-                    player.getBlastFurnace().setDispenser(3);
-                    player.getBlastFurnace().setEarlyCool(true);
+                    BlastFurnaceKeys.blastFurnace(player).setDispenser(3);
+                    BlastFurnaceKeys.blastFurnace(player).setEarlyCool(true);
                 }, 0);
             }));
         }

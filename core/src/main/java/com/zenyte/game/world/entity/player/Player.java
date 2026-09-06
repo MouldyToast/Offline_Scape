@@ -566,7 +566,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     private Gravestone gravestone = new Gravestone(this);
-    private BlastFurnace blastFurnace = new BlastFurnace(this);
+    /**
+     * @deprecated Legacy persistence slot for the blast furnace, superseded by
+     * attrPersistence["blast_furnace"] (see BlastFurnaceKeys). Kept
+     * non-transient so pre-migration saves still deserialize into the parser
+     * player; the live player no longer populates it, so post-migration saves
+     * omit the "blastFurnace" key entirely. Delete field and getter with the
+     * save-rotation phase.
+     */
+    @Deprecated
+    private BlastFurnace blastFurnace;
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);
@@ -5067,6 +5076,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.hunter = hunter;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only BlastFurnace.onInit may call
+     * this, and only on the parser player. Live access goes through
+     * BlastFurnaceKeys.blastFurnace. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public BlastFurnace getBlastFurnace() {
         return blastFurnace;
     }

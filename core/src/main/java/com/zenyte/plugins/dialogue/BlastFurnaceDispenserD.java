@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.content.skills.smithing.SmeltableBar;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -21,7 +22,7 @@ public class BlastFurnaceDispenserD extends Dialogue {
         int counter = 0;
         for (final SmeltableBar bar : SmeltableBar.VALUES) {
             if (bar.equals(SmeltableBar.BLURITE_BAR)) continue;
-            final String payload = TextUtils.capitalizeFirstCharacter(bar.toString().toLowerCase().replace("_", " ")) + ": " + player.getBlastFurnace().getBar(bar) + "<br>";
+            final String payload = TextUtils.capitalizeFirstCharacter(bar.toString().toLowerCase().replace("_", " ")) + ": " + BlastFurnaceKeys.blastFurnace(player).getBar(bar) + "<br>";
             (counter < 4 ? page1 : page2).add(payload);
             counter++;
         }

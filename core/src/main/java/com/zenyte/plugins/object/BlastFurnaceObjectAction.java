@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceArea;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceOre;
@@ -56,12 +57,12 @@ public class BlastFurnaceObjectAction implements ObjectAction {
         }
         // conveyer belt
         if (object.getId() == ObjectId.CONVEYOR_BELT) {
-            final int primaryOres = player.getBlastFurnace().checkPrimaryOres();
-            if (player.getBlastFurnace().getCoffer() == 0) {
+            final int primaryOres = BlastFurnaceKeys.blastFurnace(player).checkPrimaryOres();
+            if (BlastFurnaceKeys.blastFurnace(player).getCoffer() == 0) {
                 player.getDialogueManager().start(new ItemChat(player, COINS_PLACEHOLDER, "You must put money in the coffer to pay the workers."));
                 return;
             }
-            if (primaryOres >= 28 && !player.getBlastFurnace().hasSecondaryOres()) {
+            if (primaryOres >= 28 && !BlastFurnaceKeys.blastFurnace(player).hasSecondaryOres()) {
                 player.getDialogueManager().start(new PlainChat(player, "You should make sure all your ore smelts before adding any more."));
                 return;
             }
@@ -69,7 +70,7 @@ public class BlastFurnaceObjectAction implements ObjectAction {
                 player.getDialogueManager().start(new PlainChat(player, "You don't have any suitable ores to place onto the conveyor belt."));
                 return;
             }
-            if (player.getBlastFurnace().getTotalBars() >= 28 && !player.getBlastFurnace().hasSecondaryOres()) {
+            if (BlastFurnaceKeys.blastFurnace(player).getTotalBars() >= 28 && !BlastFurnaceKeys.blastFurnace(player).hasSecondaryOres()) {
                 player.getDialogueManager().start(new PlainChat(player, "You should collect your bars before making any more."));
                 return;
             }
@@ -92,21 +93,21 @@ public class BlastFurnaceObjectAction implements ObjectAction {
                         continue;
                     }
                     if (!ore.isPrimaryOre()) {
-                        if (player.getBlastFurnace().getOre(BlastFurnaceOre.COAL) == 254 && !player.getInventory().containsItem(BlastFurnaceOre.TIN_ORE.getItemId(), 1)) {
+                        if (BlastFurnaceKeys.blastFurnace(player).getOre(BlastFurnaceOre.COAL) == 254 && !player.getInventory().containsItem(BlastFurnaceOre.TIN_ORE.getItemId(), 1)) {
                             hasSecondaryOverflow = true;
                             continue;
                         }
-                        if (player.getBlastFurnace().getOre(BlastFurnaceOre.TIN_ORE) == 254 && !player.getInventory().containsItem(BlastFurnaceOre.COAL.getItemId(), 1)) {
+                        if (BlastFurnaceKeys.blastFurnace(player).getOre(BlastFurnaceOre.TIN_ORE) == 254 && !player.getInventory().containsItem(BlastFurnaceOre.COAL.getItemId(), 1)) {
                             hasSecondaryOverflow = true;
                             continue;
                         }
                     }
                     int amount = player.getInventory().getAmountOf(ore.getItemId());
                     // amount = ore.equals(BlastFurnaceOre.COAL) ? (coal + amount > 254 ? (254-coal) : amount) : (primaryOres + amount > 28 ? (28-primaryOres) : amount);
-                    amount = !ore.isPrimaryOre() ? (player.getBlastFurnace().getOre(ore) + amount > 254 ? (254 - player.getBlastFurnace().getOre(ore)) : amount) : (primaryOres + amount > 28 ? (28 - primaryOres) : amount);
+                    amount = !ore.isPrimaryOre() ? (BlastFurnaceKeys.blastFurnace(player).getOre(ore) + amount > 254 ? (254 - BlastFurnaceKeys.blastFurnace(player).getOre(ore)) : amount) : (primaryOres + amount > 28 ? (28 - primaryOres) : amount);
                     final Item ores = new Item(ore.getItemId(), amount);
                     player.getInventory().deleteItem(ores);
-                    player.getBlastFurnace().setOresOnBelt(player.getBlastFurnace().getOresOnBelt() + 1);
+                    BlastFurnaceKeys.blastFurnace(player).setOresOnBelt(BlastFurnaceKeys.blastFurnace(player).getOresOnBelt() + 1);
                     World.spawnNPC(new ConveyerBeltOreNPC(ore.getNpcId(), BlastFurnaceArea.ORE_CONVEYER_START, Direction.SOUTH, 0, player, ores));
                     npcSpawned = true;
                 }
@@ -119,7 +120,7 @@ public class BlastFurnaceObjectAction implements ObjectAction {
         }
         // coffer functionality
         if (object.getId() == 29330) {
-            if (player.getBlastFurnace().getCoffer() == 0 && !player.getInventory().containsItem(995, 1)) {
+            if (BlastFurnaceKeys.blastFurnace(player).getCoffer() == 0 && !player.getInventory().containsItem(995, 1)) {
                 player.getDialogueManager().start(new ItemChat(player, COINS_PLACEHOLDER, "There are no coins in the coffer or your inventory."));
                 return;
             }
@@ -144,15 +145,15 @@ public class BlastFurnaceObjectAction implements ObjectAction {
                 }
                 if (gloves != null) {
                     if (gloves.getId() == ICE_GLOVES.getId() || gloves.getId() == ENHANCED_ICE_GLOVES.getId()) {
-                        Item[] barsArray = player.getBlastFurnace().constructBarArray();
+                        Item[] barsArray = BlastFurnaceKeys.blastFurnace(player).constructBarArray();
                         ArrayUtils.reverse(barsArray);
                         if (barsArray.length == 0) {
-                            player.getBlastFurnace().setDispenser(0);
+                            BlastFurnaceKeys.blastFurnace(player).setDispenser(0);
                             player.getDialogueManager().start(new PlainChat(player, "You have no bars. Please attempt to recreate this and report it to an administrator."));
                             return;
                         }
-                        player.getBlastFurnace().setDispenser(3);
-                        player.getBlastFurnace().setEarlyCool(true);
+                        BlastFurnaceKeys.blastFurnace(player).setDispenser(3);
+                        BlastFurnaceKeys.blastFurnace(player).setEarlyCool(true);
                         if (player.getInventory().hasFreeSlots() || player.getMemberRank().equalToOrGreaterThan(MemberRank.DRAGONSTONE)) {
                             player.getDialogueManager().start(new BlastFurnaceBarD(player, barsArray));
                         } else {
@@ -163,7 +164,7 @@ public class BlastFurnaceObjectAction implements ObjectAction {
                 }
             }
             if (WorldObjectUtils.getObjectIdOfPlayer(object, player) == 9096) {
-                Item[] barsArray = player.getBlastFurnace().constructBarArray();
+                Item[] barsArray = BlastFurnaceKeys.blastFurnace(player).constructBarArray();
                 ArrayUtils.reverse(barsArray);
                 if (barsArray.length != 0) {
                     if (player.getInventory().hasFreeSlots() || player.getMemberRank().equalToOrGreaterThan(MemberRank.DRAGONSTONE))
@@ -171,7 +172,7 @@ public class BlastFurnaceObjectAction implements ObjectAction {
                     else
                         player.sendMessage("You don't have any inventory space to grab bars!");
                 } else {
-                    player.getBlastFurnace().setDispenser(0);
+                    BlastFurnaceKeys.blastFurnace(player).setDispenser(0);
                     player.getDialogueManager().start(new PlainChat(player, "You have no bars. Please attempt to recreate this and report it to an administrator."));
                 }
                 return;

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceArea;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceOre;
 import com.zenyte.game.content.skills.smithing.SmeltableBar;
@@ -30,17 +31,17 @@ public class OreOnConveyorBelt implements ItemOnObjectAction {
         if (!player.getSkills().checkLevel(SkillConstants.SMITHING, bar.getLevel(), "do this")) {
             return;
         }
-        if (player.getBlastFurnace().getBar(bar) >= 28) {
+        if (BlastFurnaceKeys.blastFurnace(player).getBar(bar) >= 28) {
             player.getDialogueManager().start(new PlainChat(player, "You should collect your bars before making any more."));
             return;
         }
-        final boolean oreOverflow = ore.isPrimaryOre() ? player.getBlastFurnace().getOre(ore) + 1 >= 28 : player.getBlastFurnace().getOre(ore) + 1 >= 254;
-        if (oreOverflow || player.getBlastFurnace().checkPrimaryOres() >= 28) {
+        final boolean oreOverflow = ore.isPrimaryOre() ? BlastFurnaceKeys.blastFurnace(player).getOre(ore) + 1 >= 28 : BlastFurnaceKeys.blastFurnace(player).getOre(ore) + 1 >= 254;
+        if (oreOverflow || BlastFurnaceKeys.blastFurnace(player).checkPrimaryOres() >= 28) {
             player.getDialogueManager().start(new PlainChat(player, "You should make sure all your ore smelts before adding any more."));
             return;
         }
         player.getInventory().deleteItem(slot, item);
-        player.getBlastFurnace().setOresOnBelt(player.getBlastFurnace().getOresOnBelt() + 1);
+        BlastFurnaceKeys.blastFurnace(player).setOresOnBelt(BlastFurnaceKeys.blastFurnace(player).getOresOnBelt() + 1);
         World.spawnNPC(new ConveyerBeltOreNPC(ore.getNpcId(), BlastFurnaceArea.ORE_CONVEYER_START, Direction.SOUTH, 0, player, item));
     }
 

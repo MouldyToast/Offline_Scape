@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceKeys;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 
@@ -17,7 +18,7 @@ public class BlastFurnaceBarFinishD extends Dialogue {
         
         this.amount = amount;
         this.payload = payload;
-        player.getBlastFurnace().setProcessBarsFromDialogue(true);
+        BlastFurnaceKeys.blastFurnace(player).setProcessBarsFromDialogue(true);
     }
     
     @Override

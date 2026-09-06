@@ -20,7 +20,7 @@ public class BlastFurnaceOverlay extends Interface {
     @Override
     public void open(Player player) {
         player.getInterfaceHandler().sendInterface(this);
-        player.getVarManager().sendBit(COFFER_VARBIT, player.getBlastFurnace().getCoffer());
+        player.getVarManager().sendBit(COFFER_VARBIT, BlastFurnaceKeys.blastFurnace(player).getCoffer());
     }
     
     @Override

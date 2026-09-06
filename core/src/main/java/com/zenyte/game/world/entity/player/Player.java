@@ -64,7 +64,6 @@ import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.farming.seedvault.SeedVault;
 import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
@@ -493,16 +492,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private PriceChecker priceChecker = new PriceChecker(this);
     @Expose
     private transient Trade trade = new Trade(this);
-    /**
-     * @deprecated Legacy persistence slot for the seed vault, superseded by
-     * attrPersistence["seed_vault"] (see SeedVaultKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "seedVault" key entirely. Delete field and getter with the D3 save
-     * rotation.
-     */
-    @Deprecated
-    private SeedVault seedVault;
     /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
@@ -4899,16 +4888,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public Trade getTrade() {
         return trade;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only SeedVault.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * SeedVaultKeys.seedVault. Removed with the D3 save rotation.
-     */
-    @Deprecated
-    public SeedVault getSeedVault() {
-        return seedVault;
     }
 
     public RunePouch getRunePouch() {

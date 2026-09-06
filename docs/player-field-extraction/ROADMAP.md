@@ -36,8 +36,8 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 25
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1150
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 21
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1146
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
@@ -152,11 +152,25 @@ drainSkill overrides ~3504/~3512/~3520.
 |---|---|
 | Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
 | Teleport, ForceTeleport, TeleportType | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
-| Raid, RaidParty, Inferno | Phase-B flag lift on RegionArea (isRaid…/isInferno…) like ToA |
+| Raid, RaidParty | Phase-B flag lift on RegionArea (isRaid…) like ToA (~~Inferno~~ DONE in T2-b: isShiftTeleportationProhibited) |
 | ClanChannel | ~~ClanManager~~ DONE in T2-a follow-up (ClanLifecycleHooks.kt); ClanChannel stays for the getRaid body — dies in T2-d |
-| Construction, RoomReference, ConstructionKeys | `getCurrentHouse()` instanceof-check — flag lift on RegionArea; Keys import then reviewable (tip-jar logout DONE in T2-a; DEFER-2 roomPreview stays) |
-| CharterLocation, AdventurersLogIcon | small one-off lifts/moves; batch into one session (~~AvasDevice~~ DONE in T2-a) |
+| RoomReference, ConstructionKeys | ~~Construction~~ DONE in T2-b (currentHouse accessor); Keys stays for DEFER-2 roomPreview (tip-jar logout DONE in T2-a) |
+| ~~CharterLocation, AdventurersLogIcon, AvasDevice~~ | ALL DONE (AvasDevice T2-a; CharterLocation resolver + AdventurersLogIcon deletion T2-b) |
 | FarmingKeys | ~~GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings~~ DONE in T2-a; FarmingKeys stays for the two movement-path refreshes ~1079/~1221 (DEFER-3) |
+
+T2-b landed (2026-09-06, 4 commits): Inferno shift-teleport check →
+RegionArea.isShiftTeleportationProhibited() flag lift (the flag exists
+for future area lifts; Inferno is the sole overrider);
+Player.getCurrentHouse → ConstructionKeys.currentHouse(player) (17
+sites, 10 files); Trader Stan charter resolution →
+CharterLocation.traderStanShopName (openShop is generic; both live call
+paths resolve first); dead adventurer's-log surface deleted per D-2 (16
+no-op sites, 6 files; AdventurersLogIcon enum retained for the NR
+track). Divergence in Barrows: the plan's orphan guard hit — the
+equipmentPieces/chestCount/joinedEquipmentLootString computation fed
+ONLY the deleted log entry, so the whole dead block went with it
+(behavior-neutral, pure reads). Player imports 25 → 21 (−AdventurersLogIcon
+−Inferno −CharterLocation −Construction).
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 

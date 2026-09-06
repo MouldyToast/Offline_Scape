@@ -31,6 +31,27 @@ BOOTSTRAP (stop and report on failure):
   `AchievementDiariesKeys.achievementDiaries(` in *.java = 397, Kotlin
   accessor calls 18 (+1 declaration).
 
+ANSWERS FROM OPENRUNE (verified against OpenRune-Server @ `abc80a8`,
+cloned 2026-09-06; re-clone to `/tmp/openrune` to re-check). These settle
+what the gold standard actually does — the master plan's "~100+ calls
+replaced by an XP subscriber" is now DOUBLY suspect:
+
+- **OpenRune has no achievement diaries at all** (no diary module under
+  content/) — there is no direct upstream precedent for this migration.
+- **OpenRune has no per-XP broadcast event either.** XP grants
+  (PlayerSkillXP.kt) fire engine queues ONLY on LEVEL-UP
+  (`engineQueueChangeStat` / `engineQueueAdvanceStat` inside checkLevelUp),
+  consumed by content via `onAdvanceStat` (api/script-advanced) —
+  optionally per-stat. Nothing upstream reacts to every XP drop.
+- **Consequence for the classification below:** the OpenRune-aligned
+  migration target is level/stat-ADVANCE objectives specifically —
+  category (a). Our repo's nearest existing signal is WorldHooks'
+  `PlayerEvent.ExperienceGained` (fires per XP gain, which supersets
+  level-ups); using it for category (a) is acceptable as the local analog,
+  but the bar for migrating anything in category (c) is now even higher:
+  OpenRune itself would model those as action hooks, not XP hooks. Do not
+  force them.
+
 GOAL — replace diary `update(...)` calls that are PURELY experience-driven
 with one `ExperienceGained` subscriber, and ONLY those. Verified anchors at
 fc106725:

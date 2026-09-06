@@ -26,6 +26,33 @@ BOOTSTRAP (stop and report on failure):
   persistenceKey 15; Player @Deprecated 30;
   `PrayerManagerKeys.prayerManager(` in *.java = 293.
 
+ANSWERS FROM OPENRUNE (verified against OpenRune-Server @ `abc80a8`,
+cloned 2026-09-06; re-clone to `/tmp/openrune` to re-check). The DIRECTION
+question is settled — do not re-litigate it; the repo-local equivalence
+proof below remains mandatory:
+
+- **OpenRune keeps NO in-memory active-prayer map at all.** The varbit IS
+  the source of truth: `varbit.prayer_allactive` is a bitmask of enabled
+  prayers, accessed through a typed delegate at ENGINE level
+  (`internal var Player.enabledPrayers by intVarBit("varbit.prayer_allactive")`,
+  api/player/vars/PlayerCommonVarExtensions.kt); drain counter and drain
+  resistance are varbits too; prayer points are the prayer STAT; drain is a
+  content-side soft-timer script (PrayerDrainScript) and depletion calls an
+  engine-level `disablePrayers()`. Reading prayer state from vars is not
+  merely acceptable — it is THE OpenRune model, and the eventual end-state
+  goes further than this session (no manager map at all; record that as
+  follow-up in your handover).
+- **Scope guard this implies:** OpenRune uses ONE bitmask varbit; our
+  rev-228 client uses PER-PRAYER varbits (Prayer.getVarbit()). Do NOT
+  restructure toward the bitmask — that is a cache/client matter. This
+  session converts READS only, against the per-prayer varbits that exist
+  today.
+- Why the equivalence table is still required: OpenRune never has a
+  map-vs-varbit sync problem because there is no map. Our legacy
+  PrayerManager DOES keep a transient `activePrayers` map beside the
+  varbits, so the proof that they never disagree during a combat read is
+  entirely a property of OUR code — OpenRune cannot answer it.
+
 GOAL — in CORE ENGINE HOT PATHS ONLY (combat classes, NPC.java, Player.java
 protection/effect checks), replace
 `PrayerManagerKeys.prayerManager(x).isActive(Prayer.Y)` with a server-side

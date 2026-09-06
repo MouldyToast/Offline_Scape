@@ -25,6 +25,40 @@ BOOTSTRAP (stop and report on failure):
 - Baselines at fc106725 (re-derive with explanation if Main moved):
   persistenceKey 15; Player @Deprecated 30; Player content imports 51.
 
+ANSWERS FROM OPENRUNE (verified against OpenRune-Server @ `abc80a8`,
+cloned 2026-09-06 with the master plan's B5.1 command; re-clone to
+`/tmp/openrune` if you need to re-check — its `api/attr` files are still
+39+184 lines, exactly what our B5 copy expected, so upstream has not
+drifted). These settle questions earlier drafts left open — do not
+re-litigate them, but DO flag if the repo contradicts them:
+
+- **OpenRune has NO per-player broadcast process event.** Its
+  `GameCycle.tick()` (api/game-process/.../GameCycle.kt) publishes only
+  cycle-level `GameLifecycle.StartCycle/LateCycle/EndCycle` and runs a fixed
+  processor pipeline. Per-player periodic content work is TIMER-driven:
+  content registers `softTimer(...)` at login and handles
+  `onPlayerSoftTimer("timer.x")` (precedents: StatRegenScript,
+  PrayerDrainScript), processed at a fixed slot in PlayerMainProcess's
+  per-player order (queues → timers → areas → engineQueues → interactions),
+  with each player wrapped in `tryOrDisconnect` (a throwing player is
+  disconnected; others are unaffected).
+- **Consequence:** `PlayerProcessEvent` is a TRANSITIONAL zenyte-bridge
+  sanctioned by the master plan, not the OpenRune end-state (which is
+  per-system timers — record that as follow-up work in your handover).
+  Since WorldThread-loop placement buys nothing toward that end-state,
+  DEFAULT to the Player-position publish (byte-identical ordering, see
+  Task 1) unless the ordering investigation proves the loop placement
+  identical anyway.
+- **EventBus semantics (answered from OUR verbatim copy, EventBus.kt +
+  EventMap.kt):** `subscribeUnbound` appends to a per-type MutableList ⇒
+  subscribers run in REGISTRATION ORDER; `publish` has NO try/catch ⇒ a
+  throwing subscriber propagates to the publish site. The single-subscriber
+  shape below therefore preserves inter-driver order by construction; the
+  remaining exception question is repo-local only (Task 2's last bullet:
+  what try/catch surrounds today's three calls in Player).
+- OpenRune has no farming or hunter content yet — no upstream tick
+  precedent for those two beyond the general timer idiom.
+
 GOAL — move the three per-tick content drivers out of Player's tick block
 onto the OpenRune EventBus, matching how C2 moved the ToA hooks. Verified
 anchors at fc106725 (re-anchor by grep before editing):
@@ -61,19 +95,19 @@ TASK — INVESTIGATION FIRST, then mini-plan, then execute:
    - Add `class PlayerProcessEvent(val player: Player) : UnboundEvent` to
      PlayerEvents.kt. Publish unconditionally (locked decision: EventBus has
      no hasListenersFor; a zero-subscriber publish is a cheap map miss).
-   - ONE subscriber preserving today's inter-driver order. Verify
-     EventBus.kt's subscribeUnbound invocation-order semantics from source;
-     regardless of the answer, the safe shape is a single
+   - ONE subscriber preserving today's inter-driver order: a single
      `bus.subscribeUnbound(PlayerProcessEvent::class.java)` lambda calling
      farming → hunter → prayer in today's exact order, registered from one
      `@Subscribe fun onServerLaunch(ServerLaunchEvent)` in a new hooks file
      (suggested: core/src/main/kotlin/com/zenyte/game/content/PlayerTickHooks.kt
-     or per-skill files — pick ONE shape, justify in the mini-plan, match
-     TOAAccess idiom).
-   - Exception semantics: check what a throw inside today's tick-block calls
-     does (propagates to what catch?) vs what EventBus.publish does with a
-     throwing subscriber (read EventBus.kt). If they differ, wrap the
-     subscriber body to reproduce today's behavior; note it.
+     — match the TOAAccess idiom). Registration-order and no-catch publish
+     semantics are already settled (see ANSWERS above).
+   - Exception semantics, repo-local half: find what try/catch surrounds
+     today's three calls in Player's tick method (and WorldThread's
+     per-player loop). EventBus.publish propagates subscriber throws to the
+     publish site (settled); if today's calls sit inside a catch that the
+     publish site would not reproduce, wrap the subscriber body to match
+     today's behavior; note it.
 3. **Cleanup accounting.** After the move, check which Keys imports Player
    still needs: FarmingKeys stays (three refresh() calls remain),
    PrayerManagerKeys stays (~19 other uses); HunterKeys may become unused —

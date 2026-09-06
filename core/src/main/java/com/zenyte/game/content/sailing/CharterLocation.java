@@ -1,6 +1,8 @@
 package com.zenyte.game.content.sailing;
 
+import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Location;
+import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.utils.TextUtils;
 
 import java.util.HashMap;
@@ -52,6 +54,12 @@ public enum CharterLocation {
 			}
 		}
 		return null;
+	}
+
+	/** T2-b: the location-suffixed Trader Stan shop name; logic moved verbatim from Player.openShop. */
+	public static String traderStanShopName(final Player player) {
+		final CharterLocation charterLocation = Utils.getOrDefault(getLocation(player.getLocation()), BRIMHAVEN);
+		return "Trader Stan's Trading Post<" + charterLocation.getShopPrefix() + ">";
 	}
 
 	@Override

@@ -40,7 +40,6 @@ import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
-import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
@@ -1661,13 +1660,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public void openShop(final String name) {
         // check if we require a PIN to be "Unlocked"
         if (getBankPin().requiresVerification(this, () -> openShop(name))) return;
-
-        //Different shop across the world, same npc.
-        if (name.equals("Trader Stan's Trading Post")) {
-            final CharterLocation charterLocation = Utils.getOrDefault(CharterLocation.getLocation(getLocation()), CharterLocation.BRIMHAVEN);
-            Shop.get(name + "<" + charterLocation.getShopPrefix() + ">", isIronman(), this).open(this);
-            return;
-        }
         Shop.get(name, isIronman(), this).open(this);
     }
 

@@ -45,7 +45,6 @@ import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
-import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
@@ -512,17 +511,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private PlayerVariables variables = new PlayerVariables(this);
     private transient WorldMap worldMap = new WorldMap(this);
-    @Expose
-    /**
-     * @deprecated Legacy persistence slot for the grand exchange, superseded by
-     * attrPersistence["grand_exchange"] (see GrandExchangeKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "grandExchange" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private GrandExchange grandExchange;
     private transient Bonuses bonuses = new Bonuses(this);
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
@@ -4877,16 +4865,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public WorldMap getWorldMap() {
         return worldMap;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only GrandExchange.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * GrandExchangeKeys.grandExchange. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public GrandExchange getGrandExchange() {
-        return grandExchange;
     }
 
     public Bonuses getBonuses() {

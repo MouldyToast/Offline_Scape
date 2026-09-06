@@ -2,9 +2,15 @@
 
 package com.zenyte.game.content.gravestones
 
+import com.google.common.eventbus.Subscribe
+import com.zenyte.game.world.WorldThread
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.login.LoginManager
 import org.rsmod.api.attr.AttributeKey
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerLoginEvent
+import org.rsmod.game.events.PlayerTimerEvent
+import org.rsmod.game.timer.PlayerTimers
 
 /**
  * Persisted gravestone state. Saved under attrPersistence["gravestone"] as the
@@ -69,4 +75,24 @@ fun scanGravestone(parser: Player): Gravestone? {
     val raw = parser.attrPersistenceRaw?.get(GRAVESTONE_KEY.persistenceKey) ?: return null
     val gson = LoginManager.gson.get()
     return gson.fromJson(gson.toJsonTree(raw), Gravestone::class.java)
+}
+
+/**
+ * T2-a: gravestone countdown on a soft timer (id reserved in T3.2).
+ * The old inline call had its own try/catch inside processEntity —
+ * preserved here so a gravestone throw cannot skip later timers.
+ */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    val bus = event.worldThread.eventBus
+    bus.subscribeUnbound(PlayerLoginEvent::class.java) {
+        player.softTimers.schedule(PlayerTimers.GRAVESTONE, WorldThread.getCurrentCycle().toInt(), interval = 1)
+    }
+    bus.subscribeKeyed(PlayerTimerEvent.Soft::class.java, PlayerTimers.GRAVESTONE.toLong()) {
+        try {
+            player.gravestone().process()
+        } catch (e: Exception) {
+            org.slf4j.LoggerFactory.getLogger("GravestoneKeys").error("", e)
+        }
+    }
 }

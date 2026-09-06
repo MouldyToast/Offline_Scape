@@ -2,9 +2,12 @@
 
 package com.zenyte.game.content.skills.construction
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.login.LoginManager
 import org.rsmod.api.attr.AttributeKey
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerLogoutEvent
 
 /**
  * Persisted construction (player-owned house) state. Saved under
@@ -54,4 +57,12 @@ fun Player.construction(): Construction {
 fun rawConstructionAttr(player: Player): Any? {
     @Suppress("UNCHECKED_CAST")
     return player.attr[CONSTRUCTION_KEY as AttributeKey<Any>]
+}
+
+/** T2-a: tip-jar bank-out moved off the Player logout block. Pure bank mutation, no packets (verified); persisted outcome identical. */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    event.worldThread.eventBus.subscribeUnbound(PlayerLogoutEvent::class.java) {
+        player.construction().tipJar.onLogout()
+    }
 }

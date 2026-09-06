@@ -29,7 +29,6 @@ import com.zenyte.Main;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.AvasDevice;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
@@ -42,7 +41,6 @@ import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
-import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -52,7 +50,6 @@ import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
@@ -1808,17 +1805,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 log.error("", e);
             }
             variables.process();
-            if (getCape() != null) {
-                AvasDevice.collectMetal(this);
-            }
             try {
                 controllerManager.process();
-            }
-            catch (final Exception e) {
-                log.error("", e);
-            }
-            try {
-                GravestoneKeys.gravestone(this).process();
             }
             catch (final Exception e) {
                 log.error("", e);
@@ -2140,7 +2128,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                         getDbUsername(),
                         getIP()
                 ));
-            SpellbookSwap.checkSpellbook(this);
             final Object loc = getTemporaryAttributes().get("oculusStart");
             if (loc instanceof Location) {
                 setLocation((Location) loc);
@@ -2152,7 +2139,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (area instanceof LogoutPlugin) {
                 ((LogoutPlugin) area).onLogout(this);
             }
-            ConstructionKeys.construction(this).getTipJar().onLogout();
             setFinished(true);
             World.updateEntityChunk(this, true);
             LocationMap.remove(this);

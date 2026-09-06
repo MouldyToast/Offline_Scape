@@ -21,7 +21,7 @@ public class SkullyNPC extends NPCPlugin {
         return new Dialogue(player, npc) {
             @Override
             public void buildDialogue() {
-                var hasLootKeyEnabled = player.getLootkeySettings() != null;
+                var hasLootKeyEnabled = LootkeySettingsKeys.lootkeySettings(player) != null;
                 options("Select an Option",
                     "How does the chest work?",
                     hasLootKeyEnabled ? "Can I change how these loot keys work?" : "Can I have access to the chest?",
@@ -47,7 +47,7 @@ public class SkullyNPC extends NPCPlugin {
 
             @Override
             public void buildDialogue() {
-                LootkeySettings settings = player.getLootkeySettings();
+                LootkeySettings settings = LootkeySettingsKeys.lootkeySettings(player);
                 if (settings == null) {
                     finish();
                     return;
@@ -131,7 +131,7 @@ public class SkullyNPC extends NPCPlugin {
 
     private Dialogue changeThreshold(Player player, NPC npc) {
 
-        LootkeySettings settings = player.getLootkeySettings();
+        LootkeySettings settings = LootkeySettingsKeys.lootkeySettings(player);
         if (settings == null) return sendLootKeysNotEnabled(player, npc);
 
         int threshold = settings.getThreshold();
@@ -291,11 +291,11 @@ public class SkullyNPC extends NPCPlugin {
         return new Dialogue(player, npc) {
             @Override
             public void buildDialogue() {
-                if (player.getLootkeySettings() != null) {
-                    long key = player.getLootkeySettings().getKeysClaimed();
+                if (LootkeySettingsKeys.lootkeySettings(player) != null) {
+                    long key = LootkeySettingsKeys.lootkeySettings(player).getKeysClaimed();
                     if (key <= 0) npc("Well, seeing as you haven't claimed a key yet, I reckon you've claimed a total of 0gp worth of loot.");
                     else {
-                        long total = player.getLootkeySettings().getTotalValueClaimed();
+                        long total = LootkeySettingsKeys.lootkeySettings(player).getTotalValueClaimed();
                         npc("You have claimed " + key + " keys, I reckon you've claimed a total of " + Utils.formatNumberWithCommas(total) + "gp worth of loot.");
                     }
                 }
@@ -351,7 +351,7 @@ public class SkullyNPC extends NPCPlugin {
                         int coins = player.getInventory().getAmountOf(995);
                         if (coins >= 5_000_000) {
                             player.getInventory().deleteItem(995, 5_000_000);
-                            player.setLootkeySettings(
+                            LootkeySettingsKeys.setLootkeySettings(player, 
                                 new LootkeySettings(true, false, false, 5_000_000, 0, 0));
                             player.getDialogueManager().start(new Dialogue(player, npc) {
                                 @Override

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.container.impl.death;
 
+import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.near_reality.api.service.user.UserPlayerHandler;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.model.item.ItemValueExtKt;
@@ -197,7 +198,7 @@ public class DeathMechanics {
 
         if (DeveloperCommands.INSTANCE.getEnabledLootKeys()) {
             if (receiver != player) {
-                LootkeySettings settings = receiver.getLootkeySettings();
+                LootkeySettings settings = LootkeySettingsKeys.lootkeySettings(receiver);
                 if (settings != null) {
                     if (settings.isEnabled()) {
                         LootkeyConstants.addDroppedItems(player, receiver, lostToKiller);

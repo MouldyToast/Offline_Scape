@@ -50,6 +50,7 @@ import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.content.gravestones.Gravestone;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
+import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.minigame.barrows.Barrows;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -433,6 +434,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final HpHud hpHud = new HpHud(this);
 
     @Expose
+    /**
+     * @deprecated Legacy persistence slot for the loot key settings, superseded
+     * by attrPersistence["lootkey_settings"] (see LootkeySettingsKeys). Was
+     * already nullable (null = loot keys never enabled). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "lootkeySettings" key entirely. Delete field and getter with the
+     * save-rotation phase.
+     */
+    @Deprecated
     private LootkeySettings lootkeySettings;
 
 
@@ -2093,13 +2104,17 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only LootkeySettings.onInit may
+     * call this, and only on the parser player. Live access goes through
+     * LootkeySettingsKeys.lootkeySettings. Removed with the save-rotation
+     * phase.
+     */
+    @Deprecated
     public LootkeySettings getLootkeySettings() {
         return lootkeySettings;
     }
 
-    public void setLootkeySettings(LootkeySettings lootkeySettings) {
-        this.lootkeySettings = lootkeySettings;
-    }
 
     /**
      * @return the fractional bonus appended to a 100% drop rate (i.e. 0.10D for a 10% boost)
@@ -4421,7 +4436,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
 //            emotesHandler.unlock(Emote.RABBIT_HOP);
 //        }
 
-        if (getLootkeySettings() != null) {
+        final LootkeySettings lootkeySettings = LootkeySettingsKeys.lootkeySettings(this);
+        if (lootkeySettings != null) {
             if (lootkeySettings.getCurrentItemsInChest() != null)
                 if (!lootkeySettings.getCurrentItemsInChest().isEmpty())
                     LootkeySettings.sendOpenChest(this);

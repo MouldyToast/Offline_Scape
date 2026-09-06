@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -395,16 +396,16 @@ public final class GameCommands {
             LootkeySettings.clear(p);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "lt-n", (p, args) -> {
-            p.setLootkeySettings(new LootkeySettings(true, false, false, 5_000_000, 0, 0));
+            LootkeySettingsKeys.setLootkeySettings(p, new LootkeySettings(true, false, false, 5_000_000, 0, 0));
 
             var inventory = p.getInventory();
-            var firstLootKey = p.getLootkeySettings().getContainer(0);
+            var firstLootKey = LootkeySettingsKeys.lootkeySettings(p).getContainer(0);
             firstLootKey.add(new Item(ItemID.ABYSSAL_ASHES, 1));
             firstLootKey.add(new Item(ItemID.ABYSSAL_WHIP, 1));
             firstLootKey.add(new Item(ItemID.DRAGON_DAGGER, 1));
             inventory.addOrDrop(ItemID.LOOT_KEY, 1);
 
-            var secondLootKey = p.getLootkeySettings().getContainer(1);
+            var secondLootKey = LootkeySettingsKeys.lootkeySettings(p).getContainer(1);
             secondLootKey.add(new Item(ItemID.ABYSSAL_ASHES, 2));
             secondLootKey.add(new Item(ItemID.ABYSSAL_WHIP, 2));
             secondLootKey.add(new Item(ItemID.DRAGON_DAGGER, 2));

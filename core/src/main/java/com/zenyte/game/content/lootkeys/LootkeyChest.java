@@ -26,7 +26,7 @@ public class LootkeyChest implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (option.equals("Loot")) {
-            if (player.getLootkeySettings() == null) {
+            if (LootkeySettingsKeys.lootkeySettings(player) == null) {
                 player.getDialogueManager().start(new Dialogue(player, 10382) {
                     @Override
                     public void buildDialogue() {
@@ -36,10 +36,10 @@ public class LootkeyChest implements ObjectAction {
                 return;
             }
 
-            boolean containsItems = player.getLootkeySettings().getCurrentItemsInChest() != null;
-            if (containsItems && player.getLootkeySettings().getCurrentItemsInChest().isEmpty()) {
+            boolean containsItems = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest() != null;
+            if (containsItems && LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest().isEmpty()) {
                 LootkeySettings.clear(player);
-                containsItems = player.getLootkeySettings().getCurrentItemsInChest() != null;
+                containsItems = LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest() != null;
             }
 
             if (!containsItems) {
@@ -64,7 +64,7 @@ public class LootkeyChest implements ObjectAction {
             public void buildDialogue() {
                 var keys = player.getInventory().getContainer().findAllByIds(LootkeyConstants.LOOT_KEY_ORDER);
                 var keysToIndex = keys.values().stream().map(item -> Arrays.binarySearch(LOOT_KEY_ORDER, item.getId())).collect(Collectors.toUnmodifiableSet());
-                var values = keysToIndex.stream().map(index -> new Pair<>(index, player.getLootkeySettings().getContainer(index)))
+                var values = keysToIndex.stream().map(index -> new Pair<>(index, LootkeySettingsKeys.lootkeySettings(player).getContainer(index)))
                         .sorted(Comparator.comparingInt(Pair::getFirst)).toArray(Pair[]::new);
 
                 var options = new String[values.length];
@@ -92,7 +92,7 @@ public class LootkeyChest implements ObjectAction {
 
 
     private static void claimLootkey(Player player, int itemSlotOrder) {
-        if (player.getLootkeySettings().getCurrentItemsInChest() != null) {
+        if (LootkeySettingsKeys.lootkeySettings(player).getCurrentItemsInChest() != null) {
             return;
         }
 
@@ -114,8 +114,8 @@ public class LootkeyChest implements ObjectAction {
 
         player.getUpdateFlags().flag(UpdateFlag.APPEARANCE);
 
-        player.getLootkeySettings().setCurrentItemsInChest(container.getItems());
-        player.getLootkeySettings().incrementKeysClaimed();
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(container.getItems());
+        LootkeySettingsKeys.lootkeySettings(player).incrementKeysClaimed();
 
         LootkeySettings.sendOpenChest(player);
         WorldTasksManager.schedule(() -> openInterface(player));

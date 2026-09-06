@@ -729,7 +729,6 @@ public final class LoginManager {
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)
             player.getPlayerTitleStatus().putAll(parser.getPlayerTitleStatus());
-        player.setLootkeySettings(parser.getLootkeySettings());
         player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 
         player.getBankPin().initialize(parser.getBankPin());

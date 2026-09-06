@@ -1,11 +1,13 @@
 package com.zenyte.game.content.lootkeys;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
+import com.zenyte.plugins.events.InitializationEvent;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
 
 import java.util.Optional;
@@ -129,6 +131,35 @@ public class LootkeySettings {
         return keyContainers[index];
     }
 
+    /**
+     * Attr-first load with parser-legacy fallback (Phase E5). Replaces the
+     * former setFields whitelist line
+     * player.setLootkeySettings(parser.getLootkeySettings()). Null stays
+     * null: loot keys were never enabled for this player.
+     */
+    @Subscribe
+    public static void onInit(final InitializationEvent event) {
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = LootkeySettingsKeys.rawLootkeySettingsAttr(player) != null;
+        LootkeySettingsKeys.lootkeySettings(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the settings under the
+        // top-level "lootkeySettings" JSON key on the parser player. The copy
+        // below migrates them into the attr; the next save persists them under
+        // attrPersistence["lootkey_settings"] and drops the legacy key. The
+        // pure-data holder is adopted by reference, exactly as the legacy
+        // whitelist line did.
+        @SuppressWarnings("deprecation")
+        final LootkeySettings legacy = savedPlayer.getLootkeySettings();
+        if (legacy == null) {
+            return;
+        }
+        LootkeySettingsKeys.setLootkeySettings(player, legacy);
+    }
+
     public static void sendOpenChest(Player player) {
         player.getVarManager().sendBit(13651, 1);
     }
@@ -139,7 +170,7 @@ public class LootkeySettings {
 
     public static void clear(Player player) {
         sendClosedChest(player);
-        player.getLootkeySettings().setCurrentItemsInChest(null);
+        LootkeySettingsKeys.lootkeySettings(player).setCurrentItemsInChest(null);
     }
 
 }

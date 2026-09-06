@@ -36,8 +36,8 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 34
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1178
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 33
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1160
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
@@ -126,7 +126,7 @@ Current import list with the expected treatment:
 
 | Import(s) | Treatment |
 |---|---|
-| Prayer, PrayerManagerKeys | unblocked (T3.1a landed): varbit reads + id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
+| Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
 | Teleport, ForceTeleport, TeleportType, SpellbookSwap, DeathChargeKt | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session |
 | Raid, RaidParty, Inferno | Phase-B flag lift on RegionArea (isRaid…/isInferno…) like ToA |
 | ClanChannel, ClanManager | settings-driven; likely a core-side interface + content impl |
@@ -136,14 +136,15 @@ Current import list with the expected treatment:
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 
-1. **Nightmare curse reimplementation** → ~~route the protection-prayer
-   scramble at activation input (`cursePrayerTypeReverse` already exists)
-   so varbits always reflect true effect~~ (DONE, T3.1a; G3 re-audited in
-   HANDOVER_after_G3.md §7). Then re-run the G3 audit (one
-   table row changes) and convert the ~25 engine `isActive` reads to
-   `varManager.getBitValue(prayer.getVarbit()) == 1`. End-state after
-   that: delete the `activePrayers` map, varbit becomes the sole truth
-   (the OpenRune model). Requires Nightmare play-testing.
+1. **Nightmare curse reimplementation** → curse fix + engine varbit
+   reads DONE (T3.1a routed the scramble at activation input so varbits
+   always reflect true effect, G3 re-audited in HANDOVER_after_G3.md §7;
+   T3.1b converted all 32 engine `isActive` reads — 31 greppable + 1
+   dynamic — to `getBitValue` via the new core-side `PrayerVarbits`
+   holder). Remaining: map deletion end-state — delete the
+   `activePrayers` map so varbit becomes the sole truth (the OpenRune
+   model) — needs soft timers (Track 3.2) for the drain accumulator.
+   Requires Nightmare play-testing.
 2. **Soft-timer system** → an OpenRune-style per-player timer slot in the
    tick (register at login, fixed processing order, per-player throw
    isolation). Migrate farming/hunter/prayer drain onto it and DELETE

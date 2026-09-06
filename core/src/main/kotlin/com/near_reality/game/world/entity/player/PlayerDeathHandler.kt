@@ -2,7 +2,7 @@ package com.near_reality.game.world.entity.player
 
 import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.skills.magic.spells.arceuus.invokeDeathChargeEffect
-import com.zenyte.game.content.skills.prayer.Prayer
+import com.zenyte.game.world.entity.player.PrayerVarbits
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.entity.Entity
@@ -13,7 +13,7 @@ fun Player.sendDeath(source: Entity? = null, onDeath: () -> Unit) {
     animation = Animation.STOP
     lock()
     stopAll()
-    if (prayerManager().isActive(Prayer.RETRIBUTION))
+    if (varManager.getBitValue(PrayerVarbits.RETRIBUTION) == 1)
         prayerManager().applyRetributionEffect(source)
     if (source is Player)
         source.invokeDeathChargeEffect()

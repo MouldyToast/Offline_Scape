@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.magic.spelleffect;
 
-import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.skills.prayer.Prayer;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Entity.EntityType;
 import com.zenyte.game.world.entity.player.Player;
@@ -18,7 +17,7 @@ public class TeleblockEffect implements SpellEffect {
 		if (p.getVariables().getTime(TickVariable.TELEBLOCK) > 0 || p.getVariables().getTime(TickVariable.TELEBLOCK_IMMUNITY) > 0) {
 			return;
 		}
-		final boolean halved = PrayerManagerKeys.prayerManager(p).isActive(Prayer.PROTECT_FROM_MAGIC);
+		final boolean halved = p.getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1;
 
 		if(caster instanceof Player)
 			p.getTemporaryAttributes().put("tb_name", ((Player) caster).getName());

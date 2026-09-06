@@ -1,9 +1,8 @@
 package com.zenyte.game.world.region.area;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
-import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
 
@@ -16,7 +15,7 @@ public class SeersVillageCourthouseArea extends KingdomOfKandarin {
     @Override
     public void enter(Player player) {
         super.enter(player);
-        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PIETY)) {
+        if (player.getVarManager().getBitValue(PrayerVarbits.PIETY) == 1) {
             AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.ENTER_SEERS_VILLAGE_COURTHOUSE);
         }
     }

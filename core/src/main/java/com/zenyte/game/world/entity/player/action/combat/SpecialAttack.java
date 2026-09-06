@@ -1,6 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 
@@ -219,13 +220,13 @@ public enum SpecialAttack implements ISpecialAttack {
         if (target.getEntityType() == EntityType.PLAYER && hit.getDamage() > 0) {
             final Player p2 = (Player) target;
             final PrayerManager prayers = PrayerManagerKeys.prayerManager(p2);
-            if (prayers.isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (p2.getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1) {
                 prayers.deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
             }
-            if (prayers.isActive(Prayer.PROTECT_FROM_MISSILES)) {
+            if (p2.getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MISSILES) == 1) {
                 prayers.deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
             }
-            if (prayers.isActive(Prayer.PROTECT_FROM_MELEE)) {
+            if (p2.getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1) {
                 prayers.deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
             }
             p2.getTemporaryAttributes().put("SeverEffect", Utils.currentTimeMillis() + 5000);
@@ -1395,7 +1396,7 @@ public enum SpecialAttack implements ISpecialAttack {
         final double percentageModifier = (CombatUtilities.isCombatDummy(target) ? 150 : Utils.random(50, 150)) / 100d;
         int adjustedDamage = (int) (max * percentageModifier);
         if (target instanceof Player) {
-            if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (((Player) target).getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1) {
                 // Praying against does reduce damage, but it's still guaranteed!
                 adjustedDamage *= 0.50;
             }

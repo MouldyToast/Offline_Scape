@@ -1,7 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
-import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.skills.prayer.Prayer;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Entity;
@@ -57,7 +56,7 @@ public class Gorak extends NPC implements Spawnable, CombatScript {
             final int skill = drainableSkills.getInt(Utils.random(drainableSkills.size() - 1));
             player.getSkills().drainSkill(skill, 1);
         }
-        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
+        if (player.getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1) {
             player.sendMessage("Your protection prayer doesn't seem to work!");
         }
         return combatDefinitions.getAttackSpeed();

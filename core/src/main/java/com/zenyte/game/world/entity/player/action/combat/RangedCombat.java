@@ -1,6 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
@@ -9,7 +10,6 @@ import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
 import com.zenyte.game.content.minigame.duelarena.Duel;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
@@ -235,8 +235,7 @@ public class RangedCombat extends PlayerCombat {
         maxhit *= getTwistedBowDamageBoost(player, target, target.getMagicLevel(), player.isInRaid());
 
         if (!ignorePrayers) {
-            if (target instanceof Player && PrayerManagerKeys.prayerManager((Player) target)
-                    .isActive(Prayer.PROTECT_FROM_MISSILES)) {
+            if (target instanceof Player && ((Player) target).getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MISSILES) == 1) {
                 maxhit *= target.getRangedPrayerMultiplier();
             }
         }

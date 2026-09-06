@@ -57,7 +57,6 @@ import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
@@ -2095,17 +2094,17 @@ public class Player extends AbstractEntity implements UsernameProvider {
             final HitType type = hit.getHitType();
             final float multiplierAddition = getArea() != null && getArea().isQuietPrayers() ? .1F : 0;
             if (type == HitType.MELEE) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMeleePrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.RANGED) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MISSILES)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MISSILES) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getRangedPrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.MAGIC) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMagicPrayerMultiplier() + multiplierAddition)));
                 }
             }
@@ -2922,7 +2921,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             return;
         }
         final int damage = Math.min(hit.getDamage(), getHitpoints());
-        if (PrayerManagerKeys.prayerManager((Player) source) != null && PrayerManagerKeys.prayerManager((Player) source).isActive(Prayer.SMITE)) {
+        if (((Player) source).getVarManager().getBitValue(PrayerVarbits.SMITE) == 1) {
             final int drain = damage / 4;
             if (drain > 0 && PrayerManagerKeys.prayerManager(this) != null) {
                 PrayerManagerKeys.prayerManager(this).drainPrayerPoints(drain);
@@ -3159,7 +3158,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (dead)
             PlayerAttributesKt.setKillingBlowHit(this, hit);
         if (!isDead()) {
-            if (getHitpoints() < getMaxHitpoints() * 0.1F && PrayerManagerKeys.prayerManager(this).isActive(Prayer.REDEMPTION)) {
+            if (getHitpoints() < getMaxHitpoints() * 0.1F && varManager.getBitValue(PrayerVarbits.REDEMPTION) == 1) {
                 PrayerManagerKeys.prayerManager(this).applyRedemptionEffect();
             }
             if (getHitpoints() < getMaxHitpoints() * 0.2F) {
@@ -3272,7 +3271,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             PlayerExtKt.handleAdminHealthEvent(this, source);
             return;
         }
-        if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.RETRIBUTION)) {
+        if (varManager.getBitValue(PrayerVarbits.RETRIBUTION) == 1) {
             PrayerManagerKeys.prayerManager(this).applyRetributionEffect(source);
         }
 

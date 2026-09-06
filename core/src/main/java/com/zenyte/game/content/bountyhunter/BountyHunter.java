@@ -3,14 +3,12 @@ package com.zenyte.game.content.bountyhunter;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.util.Colour;
-import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
 import com.zenyte.plugins.SkipPluginScan;
 import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.LogoutEvent;
-import com.zenyte.plugins.events.PlayerDeathEvent;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import kotlin.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -110,33 +108,6 @@ public class BountyHunter {
         }
         if (bounty.lastSkips.isEmpty()) {
             bounty.lastSkips = null;
-        }
-    }
-
-    @Subscribe
-    public static void onDeath(final PlayerDeathEvent event) {
-        final Player player = event.getPlayer();
-        final Entity source = event.getSource();
-        final BountyHunter bh = BountyHunterKeys.bountyHunter(player);
-        final Player target = bh.target;
-        if (source == null) {
-            bh.reset();
-            requestTargetInformationUpdate(player);
-            if (target != null) {
-                requestTargetInformationUpdate(target);
-            }
-            return;
-        }
-        if (source == target) {
-            bh.upgradeHighestEmblem();
-            bh.setValue(BountyHunterVar.CURRENT_HUNTER_KILLS, bh.getValue(BountyHunterVar.CURRENT_HUNTER_KILLS) + 1);
-        } else {
-            bh.setValue(BountyHunterVar.CURRENT_ROGUE_KILLS, bh.getValue(BountyHunterVar.CURRENT_ROGUE_KILLS) + 1);
-        }
-        bh.reset();
-        requestTargetInformationUpdate(player);
-        if (target != null) {
-            requestTargetInformationUpdate(target);
         }
     }
 

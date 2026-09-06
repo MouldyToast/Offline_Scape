@@ -723,7 +723,6 @@ public final class LoginManager {
         player.getBonePouch().initialize(parser.getBonePouch());
         player.getDragonhidePouch().initialize(parser.getDragonhidePouch());
         player.getGemBag().initialize(parser.getGemBag());
-        player.getGrandExchange().initialize(parser.getGrandExchange());
         player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());

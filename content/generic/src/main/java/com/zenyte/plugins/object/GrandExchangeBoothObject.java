@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.preset.PresetManagerKeys;
 import com.zenyte.game.world.entity.player.Player;
@@ -19,7 +20,7 @@ public class GrandExchangeBoothObject implements ObjectAction {
         if (option.equals("Bank")) {
             GameInterface.BANK.open(player);
         } else if (option.equals("Exchange")) {
-            player.getGrandExchange().openOffersInterface();
+            GrandExchangeKeys.grandExchange(player).openOffersInterface();
         } else if (option.equals("Collect")) {
             GameInterface.GRAND_EXCHANGE_COLLECTION_BOX.open(player);
         } else if (option.equals("Offers Viewer")) {

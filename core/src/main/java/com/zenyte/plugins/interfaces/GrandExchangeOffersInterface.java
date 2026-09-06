@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.near_reality.game.model.item.ItemValueExtKt;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.grandexchange.ExchangeType;
@@ -22,7 +23,7 @@ public final class GrandExchangeOffersInterface implements UserInterface {
     public void handleComponentClick(final Player player, final int interfaceId, final int componentId, final int slotId, final int itemId, final int optionId, final String option) {
         final boolean buying = player.getVarManager().getBitValue(GrandExchange.TYPE_VARPBIT) == 0;
         final int currentItemId = player.getVarManager().getValue(GrandExchange.ITEM_VARP);
-        final GrandExchange exchange = player.getGrandExchange();
+        final GrandExchange exchange = GrandExchangeKeys.grandExchange(player);
         if (interfaceId == GrandExchange.INTERFACE) {
             switch (componentId) {
             case 3:

@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.grandexchange.ExchangeHistory;
 import com.zenyte.game.content.grandexchange.ExchangeType;
@@ -30,7 +31,7 @@ public class GrandExchangeHistoryInterface extends Interface {
             player.sendMessage("As an Iron Man, you cannot use the Grand Exchange.");
             return;
         }
-        final LinkedList<ExchangeHistory> history = player.getGrandExchange().getHistory();
+        final LinkedList<ExchangeHistory> history = GrandExchangeKeys.grandExchange(player).getHistory();
         player.getInterfaceHandler().sendInterface(getInterface());
         GameInterface.INVENTORY_TAB.open(player);
         player.getPacketDispatcher().sendClientScript(1644);
@@ -46,9 +47,9 @@ public class GrandExchangeHistoryInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Open Offers", player -> player.getGrandExchange().openOffersInterface());
+        bind("Open Offers", player -> GrandExchangeKeys.grandExchange(player).openOffersInterface());
         bind("Click history entry", (player, slotId, itemId, option) -> {
-            final GrandExchange exchange = player.getGrandExchange();
+            final GrandExchange exchange = GrandExchangeKeys.grandExchange(player);
             final ExchangeHistory record = exchange.getHistory().get((exchange.getHistory().size() - (slotId / 6)) - 1);
             if (record == null) {
                 return;

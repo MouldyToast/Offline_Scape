@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.near_reality.api.service.sanction.SanctionCommands;
@@ -850,7 +851,7 @@ public final class GameCommands {
             p.sendMessage("JS5 duplicates filtering: " + GameConstants.FILTERING_DUPLICATE_JS5_REQUESTS);
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "resetge", (p, args) -> p.getGrandExchange().resetExistingOffers());
+        new Command(PlayerPrivilege.DEVELOPER, "resetge", (p, args) -> GrandExchangeKeys.grandExchange(p).resetExistingOffers());
         new Command(PlayerPrivilege.DEVELOPER, "multigfx", (p, args) -> {
             int id = parseInt(args[0]);
             final int px = p.getX();

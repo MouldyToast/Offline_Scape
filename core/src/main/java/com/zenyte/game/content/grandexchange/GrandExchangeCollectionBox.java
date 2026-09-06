@@ -34,8 +34,8 @@ public class GrandExchangeCollectionBox extends Interface {
         // If the account has a PIN & Required unlocking; STOP HERE
         if (player.getBankPin().requiresVerification(player, () -> open(player))) return;
 
-        player.getGrandExchange().refreshOffers();
-        player.getGrandExchange().resetGEVars();
+        GrandExchangeKeys.grandExchange(player).refreshOffers();
+        GrandExchangeKeys.grandExchange(player).resetGEVars();
         player.getInterfaceHandler().sendInterface(this);
         final PacketDispatcher dispatcher = player.getPacketDispatcher();
         for (int i = 0; i < 8; i++) {
@@ -48,12 +48,12 @@ public class GrandExchangeCollectionBox extends Interface {
         for (int i = 0; i < 8; i++) {
             final int slot = i;
             bind("Slot " + i, (player, slotId, itemId, option) -> {
-                final GrandExchange ge = player.getGrandExchange();
+                final GrandExchange ge = GrandExchangeKeys.grandExchange(player);
                 ge.collectFromBox(false, slot, option, slotId - 3);
             });
         }
-        bind("Collect to inventory", player -> player.getGrandExchange().collectAll(true, false));
-        bind("Collect to bank", player -> player.getGrandExchange().collectAll(false, false));
+        bind("Collect to inventory", player -> GrandExchangeKeys.grandExchange(player).collectAll(true, false));
+        bind("Collect to bank", player -> GrandExchangeKeys.grandExchange(player).collectAll(false, false));
     }
 
     @Override

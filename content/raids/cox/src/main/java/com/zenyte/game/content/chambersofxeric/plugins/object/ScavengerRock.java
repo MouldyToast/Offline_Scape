@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.LargeScavengerRoom;
 import com.zenyte.game.content.skills.mining.MiningDefinitions;
 import com.zenyte.game.util.Utils;
@@ -23,7 +24,7 @@ public class ScavengerRock implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (option.equalsIgnoreCase("Mine")) {
                 if (!(object instanceof LargeScavengerRoom.BlockingObject)) {
                     throw new IllegalStateException("Object not instanceof blocking object.");

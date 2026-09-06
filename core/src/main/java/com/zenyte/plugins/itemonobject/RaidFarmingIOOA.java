@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.player.Player;
@@ -25,7 +26,7 @@ public final class RaidFarmingIOOA implements ItemOnObjectAction {
 
 	@Override
 	public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-		player.getRaid().ifPresent(raid -> {
+		RaidAccess.raid(player).ifPresent(raid -> {
 			if (item.getId() == 952) {
 				raid.getFarming().handle(player, object, "Clear");
 				return;

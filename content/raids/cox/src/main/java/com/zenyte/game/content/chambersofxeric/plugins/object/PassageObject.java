@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
@@ -15,7 +16,7 @@ public class PassageObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             final RaidArea room = raid.getRoom(player.getLocation());
             if (room == null) {
                 return;

@@ -31,13 +31,13 @@ public class Raids1BypassTask extends TickTask {
         if(!(player.getArea() instanceof RaidArea)){
             unlockStopTask("You have left the raid somehow during this period.");
         }
-        if(ticks <= 0 && player.getRaid().isEmpty()) {
+        if(ticks <= 0 && RaidAccess.raid(player).isEmpty()) {
             unlockStopTask("You are not in a valid raid session. Please try again.");
         }
-        if(player.getRaid().get().getPlayers().size() != 1) {
+        if(RaidAccess.raid(player).get().getPlayers().size() != 1) {
             unlockStopTask("You can only use this when there are no other players in your party.");
         }
-        if(ticks <= 0 && player.getRaid().get().isBypassed) {
+        if(ticks <= 0 && RaidAccess.raid(player).get().isBypassed) {
             unlockStopTask("You have already activated an orb for this raid. This would be pointless.");
         }
         switch (ticks) {
@@ -49,7 +49,7 @@ public class Raids1BypassTask extends TickTask {
                 }
             }
             case 1 -> player.sendMessage("Please wait as we are modifying your experience.");
-            case 2 -> player.getRaid().get().runBypassMode(player);
+            case 2 -> RaidAccess.raid(player).get().runBypassMode(player);
             case 3 -> finishTask();
             case 4 -> addSupplies();
             case 5 -> stop();
@@ -74,12 +74,12 @@ public class Raids1BypassTask extends TickTask {
     }
 
     private void finishTask() {
-        if(player.getRaid().isEmpty()) {
+        if(RaidAccess.raid(player).isEmpty()) {
             player.sendMessage("Raid is empty apparently...");
             return;
         }
         player.sendDeveloperMessage("Completed Orb of Xeric bypass task");
-        player.getRaid().get().isBypassed = true;
+        RaidAccess.raid(player).get().isBypassed = true;
         player.pendingRaidBypass = false;
     }
 }

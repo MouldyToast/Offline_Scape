@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.item;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
@@ -13,7 +14,7 @@ import com.zenyte.game.world.object.WorldObject;
 public class ItemOnStorageUnit implements ItemOnObjectAction {
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, final int slot, final WorldObject object) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (object.getId() == StorageUnit.UNIT_HOTSPOT_OBJECT) {
                 StorageUnit.openCreationMenu(player, object);
             } else {

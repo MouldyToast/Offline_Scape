@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.VespulaRoom;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
@@ -24,7 +25,7 @@ public class MedivaemiaRootObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player.getLocation(), VespulaRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player.getLocation(), VespulaRoom.class, room -> {
             if (option.equalsIgnoreCase("Pick")) {
                 if (object.isLocked() || room.isFinished()) {
                     return;

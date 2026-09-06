@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.skills;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
@@ -319,7 +320,7 @@ public final class RaidFarming {
         @Override
         public int processWithDelay() {
             player.sendMessage("You clear the patch...");
-            player.getRaid().ifPresent(raid -> raid.sendGlobalMessage(player.getName() + " has cleared the farming patch."));
+            RaidAccess.raid(player).ifPresent(raid -> raid.sendGlobalMessage(player.getName() + " has cleared the farming patch."));
             patch.lives = 0;
             farming.patches.remove(patch.patch.getPositionHash());
             World.spawnObject(patch.patch);

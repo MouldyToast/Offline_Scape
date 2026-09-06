@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.dialogue.LeaveRaidD;
 import com.zenyte.game.content.chambersofxeric.dialogue.ReloadRaidD;
 import com.zenyte.game.world.entity.player.Player;
@@ -22,7 +23,7 @@ public class SurfaceSteps implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name,
                                    final int optionId, final String option) {
-        final var optionalRaid = player.getRaid();
+        final var optionalRaid = RaidAccess.raid(player);
         if (optionalRaid.isEmpty()) {
             player.setLocation(outsideTile);
             return;

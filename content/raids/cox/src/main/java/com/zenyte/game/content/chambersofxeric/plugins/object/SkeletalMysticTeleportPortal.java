@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.content.chambersofxeric.room.DarkAltarRoom;
 import com.zenyte.game.world.entity.Location;
@@ -20,7 +21,7 @@ import static com.zenyte.game.world.object.ObjectId.*;
 public class SkeletalMysticTeleportPortal implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (object.getDefinitions() == null) return;
             RaidArea room = raid.getRoom(player.getLocation());
             if (room instanceof DarkAltarRoom altarRoom) {

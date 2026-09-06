@@ -32,10 +32,7 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.chambersofxeric.Raid;
-import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
-import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -3608,27 +3605,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return this.privilege.inherits(privilege);
     }
 
-    public Optional<Raid> getRaid() {
-        if (isNulled()) {
-            return Optional.empty();
-        }
-        final ClanChannel channel = settings.getChannel();
-        if (channel == null) {
-            return Optional.empty();
-        }
-        final RaidParty party = channel.getRaidParty();
-        if (party == null) {
-            return Optional.empty();
-        }
-        final Raid raid = party.getRaid();
-        if (raid == null) {
-            return Optional.empty();
-        }
-        if (!raid.getPlayers().contains(this)) {
-            return Optional.empty();
-        }
-        return Optional.of(raid);
-    }
 
     public void setGameMode(final GameMode mode) {
         setGameMode(mode, false);

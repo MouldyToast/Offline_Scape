@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.npc.DeathlyNPC;
 import com.zenyte.game.content.chambersofxeric.room.DeathlyRoom;
 import com.zenyte.game.task.WorldTask;
@@ -28,7 +29,7 @@ public class Tightrope implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, DeathlyRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, DeathlyRoom.class, room -> {
             if (player.getSkills().getLevel(SkillConstants.AGILITY) < room.getRequirement()) {
                 player.getDialogueManager().start(new PlainChat(player, "You need an Agility level of " + room.getRequirement() + " to cross this tightrope."));
                 return;

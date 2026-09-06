@@ -1,6 +1,7 @@
 package com.zenyte.game.content.rottenpotato.handler.player;
 
 import com.zenyte.game.content.chambersofxeric.Raid;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.rottenpotato.handler.PlayerRottenPotatoActionHandler;
 import com.zenyte.game.world.entity.player.LogLevel;
@@ -13,7 +14,7 @@ public class TeleTo implements PlayerRottenPotatoActionHandler {
     @Override
     public void execute(Player user, Player target) {
         if (!user.getPrivilege().eligibleTo(PlayerPrivilege.DEVELOPER)) {
-            final Optional<Raid> raid = target.getRaid();
+            final Optional<Raid> raid = RaidAccess.raid(target);
             if (raid.isPresent() && !user.getPrivilege().eligibleTo(PlayerPrivilege.ADMINISTRATOR)) {
                 user.sendMessage("You cannot teleport to a player in a raid as a non-administrator.");
                 return;

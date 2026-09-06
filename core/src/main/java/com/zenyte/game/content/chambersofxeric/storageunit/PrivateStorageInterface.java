@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.storageunit;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.item.Item;
@@ -55,7 +56,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
 
     @Override
     protected void build() {
-        bind("Shared storage button", player -> player.getRaid().ifPresent(raid -> GameInterface.RAIDS_SHARED_STORAGE.open(player)));
+        bind("Shared storage button", player -> RaidAccess.raid(player).ifPresent(raid -> GameInterface.RAIDS_SHARED_STORAGE.open(player)));
         bind("Interact with item", (player, slotId, itemId, option) -> {
             final PrivateStorage storage = player.getPrivateStorage();
             final Container container = storage.getContainer();
@@ -64,14 +65,14 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
             if (item == null) {
                 return;
             }
-            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && player.getRaid().isPresent()) {
+            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && RaidAccess.raid(player).isPresent()) {
                 player.sendMessage("You cannot use the storage units as an ultimate ironman.");
                 return;
             }
             handleInteraction(player, storage, option, slot, item);
         });
         bind("Withdraw all", player -> {
-            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && player.getRaid().isPresent()) {
+            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && RaidAccess.raid(player).isPresent()) {
                 player.sendMessage("You cannot use the storage units as an ultimate ironman.");
                 return;
             }
@@ -95,11 +96,11 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
             }
         });
         bind("Deposit/Bank all", player -> {
-            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && player.getRaid().isPresent()) {
+            if (player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN) && RaidAccess.raid(player).isPresent()) {
                 player.sendMessage("You cannot use the storage units as an ultimate ironman.");
                 return;
             }
-            final Optional<Raid> raid = player.getRaid();
+            final Optional<Raid> raid = RaidAccess.raid(player);
             final PrivateStorage storage = player.getPrivateStorage();
             if (raid.isPresent()) {
                 final Inventory inventory = player.getInventory();

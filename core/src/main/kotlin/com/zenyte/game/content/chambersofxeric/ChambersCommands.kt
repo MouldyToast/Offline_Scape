@@ -17,7 +17,7 @@ object ChambersCommands {
                 p.sendMessage("CoX Masses are currently disabled. Please ask a manager to enable them.")
                 return@Command
             }
-            val raid = p.raid
+            val raid = p.raid()
             if(raid.isPresent && args.isNotEmpty()) {
                 val scale = args[0].toIntOrNull()
                 if (scale == null) {
@@ -34,7 +34,7 @@ object ChambersCommands {
                 p.sendMessage("CoX Masses are currently disabled. Please ask a manager to enable them.")
                 return@Command
             }
-            val raid = p.raid
+            val raid = p.raid()
             if(raid.isPresent) {
                 raid.get().constructOrGetSharedStorage().depositFromGod(Item(20996, 250), true)
                 raid.get().constructOrGetSharedStorage().depositFromGod(Item(20972, 250), true)

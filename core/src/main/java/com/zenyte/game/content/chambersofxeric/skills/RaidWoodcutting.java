@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.skills;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.IceDemonRoom;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
 import com.zenyte.game.item.ItemId;
@@ -123,7 +124,7 @@ public final class RaidWoodcutting extends Action {
      * @param player the player who is chopping the tree.
      */
     private void addLog(final Player player) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             final MutableInt amount = new MutableInt(1);
             raid.ifInRoom(player, IceDemonRoom.class, room -> amount.setValue(Math.min(player.getInventory().getFreeSlots(), Utils.random(1, getMaximumAmountKindling(player)))));
             final float experience = this.experience[amount.intValue() - 1];

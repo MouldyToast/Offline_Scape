@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.dialogue.MysticalBarrierD;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.world.entity.player.Player;
@@ -16,7 +17,7 @@ public class MysticalBarrierObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, OlmRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, OlmRoom.class, room -> {
             if (room.getRaid().isCompleted()) {
                 MysticalBarrierD.passBarrier(player, room, object);
                 return;

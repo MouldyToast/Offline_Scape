@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.TektonRoom;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.masks.Hit;
@@ -18,7 +19,7 @@ public class TektonFire implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, TektonRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, TektonRoom.class, room -> {
             if (room.isFinished()) {
                 player.sendMessage("The fire is about to go out!");
                 return;

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.FloorEdgeRoom;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
@@ -19,7 +20,7 @@ public class RaidDownstairsHole implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, FloorEdgeRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, FloorEdgeRoom.class, room -> {
             player.lock();
             player.setAnimation(CLIMB_DOWN);
             player.getPacketDispatcher().sendClientScript(1512);

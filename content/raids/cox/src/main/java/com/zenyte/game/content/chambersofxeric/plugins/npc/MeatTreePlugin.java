@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.npc;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.npc.MeatTree;
 import com.zenyte.game.content.chambersofxeric.room.MuttadileRoom;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
@@ -12,7 +13,7 @@ public class MeatTreePlugin extends NPCPlugin {
 
     @Override
     public void handle() {
-        bind("Cut", (player, npc) -> player.getRaid().ifPresent(raid -> player.getActionManager().setAction(new MuttadileRoom.MeatTreeWoodcutting(npc, raid))));
+        bind("Cut", (player, npc) -> RaidAccess.raid(player).ifPresent(raid -> player.getActionManager().setAction(new MuttadileRoom.MeatTreeWoodcutting(npc, raid))));
     }
 
     @Override

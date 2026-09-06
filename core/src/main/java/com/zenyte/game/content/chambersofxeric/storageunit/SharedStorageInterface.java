@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.storageunit;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.item.Item;
@@ -24,7 +25,7 @@ public class SharedStorageInterface extends StorageInterface {
 
     @Override
     public void open(final Player player) {
-        final Raid raid = player.getRaid().orElseThrow(RuntimeException::new);
+        final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);
         final SharedStorage storage = raid.constructOrGetSharedStorage();
         storage.getViewingPlayers().add(player);
         final Container container = storage.getContainer();
@@ -38,7 +39,7 @@ public class SharedStorageInterface extends StorageInterface {
 
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
-        final Raid raid = player.getRaid().orElseThrow(RuntimeException::new);
+        final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);
         final SharedStorage storage = raid.constructOrGetSharedStorage();
         storage.getViewingPlayers().remove(player);
     }
@@ -46,13 +47,13 @@ public class SharedStorageInterface extends StorageInterface {
     @Override
     protected void build() {
         bind("Switch to private storage", player -> {
-            final Raid raid = player.getRaid().orElseThrow(RuntimeException::new);
+            final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);
             final SharedStorage storage = raid.constructOrGetSharedStorage();
             final int size = storage.getContainer().getContainerSize();
             player.getPrivateStorage().open(size == 250 ? 30 : size == 500 ? 60 : 90);
         });
         bind("Interact with item", (player, slotId, itemId, option) -> {
-            final Raid raid = player.getRaid().orElseThrow(RuntimeException::new);
+            final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);
             final SharedStorage storage = raid.constructOrGetSharedStorage();
             final Container container = storage.getContainer();
             final int slot = container.getSlotOf(itemId);

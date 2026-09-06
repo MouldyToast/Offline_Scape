@@ -1,6 +1,7 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.skills.magic.spells.teleports.MinigameGroupFinder;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
@@ -26,7 +27,7 @@ public class GroupingTabInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        if (player.getRaid().isPresent()) {
+        if (RaidAccess.raid(player).isPresent()) {
             GameInterface.RAID_PARTY_TAB.open(player);
             return;
         }

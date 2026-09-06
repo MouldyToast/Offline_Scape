@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.skills;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.ResourcesRoom;
 import com.zenyte.game.content.skills.fishing.FishingTool;
 import com.zenyte.game.util.Utils;
@@ -61,7 +62,7 @@ public final class RaidFishing extends Action {
             this.fishType = data;
         }
         final MutableBoolean bool = new MutableBoolean();
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, ResourcesRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, ResourcesRoom.class, room -> {
             if (room.getFishingSpotPosition().matches(spot)) {
                 bool.setTrue();
                 room.riseSnake();
@@ -101,7 +102,7 @@ public final class RaidFishing extends Action {
             return false;
         }
         final MutableBoolean bool = new MutableBoolean();
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, ResourcesRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, ResourcesRoom.class, room -> {
             if (room.getFishingSpotPosition().matches(spot)) {
                 bool.setTrue();
                 room.riseSnake();

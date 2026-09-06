@@ -281,22 +281,9 @@ public class BlastFurnace {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final boolean hadPersistedAttr = BlastFurnaceKeys.rawBlastFurnaceAttr(player) != null;
-        final BlastFurnace furnace = BlastFurnaceKeys.blastFurnace(player);
-        if (hadPersistedAttr || event.getSavedPlayer() == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the furnace under the top-level
-        // "blastFurnace" JSON key on the parser player. The copy below migrates
-        // it into the attr; the next save persists it under
-        // attrPersistence["blast_furnace"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final BlastFurnace parserData = event.getSavedPlayer().getBlastFurnace();
-        if (parserData == null) {
-            return;
-        }
-        furnace.copyFrom(parserData);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        BlastFurnaceKeys.blastFurnace(event.getPlayer());
     }
 
     /**

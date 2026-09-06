@@ -52,7 +52,6 @@ import com.zenyte.game.content.gravestones.Gravestone;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
-import com.zenyte.game.content.minigame.blastfurnace.BlastFurnace;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.multicannon.DwarfMultiCannon;
@@ -636,16 +635,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
      */
     @Deprecated
     private Gravestone gravestone;
-    /**
-     * @deprecated Legacy persistence slot for the blast furnace, superseded by
-     * attrPersistence["blast_furnace"] (see BlastFurnaceKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "blastFurnace" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private BlastFurnace blastFurnace;
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);
@@ -5159,16 +5148,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public void setHunter(Hunter hunter) {
         this.hunter = hunter;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only BlastFurnace.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * BlastFurnaceKeys.blastFurnace. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public BlastFurnace getBlastFurnace() {
-        return blastFurnace;
     }
 
     public RespawnPoint getRespawnPoint() {

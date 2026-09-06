@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -20,12 +21,12 @@ public class RoomRemovingD extends Dialogue {
 
 	@Override
 	public void buildDialogue() {
-		if (player.getPlane() == 1 && player.getConstruction().getReference(reference.getX(), reference.getY(), 2) != null) {
+		if (player.getPlane() == 1 && ConstructionKeys.construction(player).getReference(reference.getX(), reference.getY(), 2) != null) {
 			plain("You can't remove a room supporting another room.");
 			return;
 		}
 		options("Remove the " + reference.getRoom().toString().toLowerCase() + "?", "Yes", "No").onOptionOne(() -> {
-			player.getConstruction().removeRoom(reference);
+			ConstructionKeys.construction(player).removeRoom(reference);
 			finish();
 		}).onOptionTwo(() -> finish());
 	}

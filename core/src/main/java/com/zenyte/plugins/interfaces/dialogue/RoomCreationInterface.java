@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.model.ui.UserInterface;
 import com.zenyte.game.world.entity.player.Player;
 
@@ -14,9 +15,9 @@ public final class RoomCreationInterface implements UserInterface {
 	public void handleComponentClick(final Player player, final int interfaceId, final int componentId, final int slotId, final int itemId, final int optionId, final String option) {
 		if (componentId == 4) {
 			if (player.getTemporaryAttributes().get("houseviewerRoomAdd") != null) {
-				player.getConstruction().getHouseViewer().addRoom(componentId, slotId);
+				ConstructionKeys.construction(player).getHouseViewer().addRoom(componentId, slotId);
 			} else {
-				player.getConstruction().createRoom(slotId);
+				ConstructionKeys.construction(player).createRoom(slotId);
 			}
 		}
 	}

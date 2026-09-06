@@ -60,6 +60,7 @@ import com.zenyte.game.content.multicannon.DwarfMultiCannon;
 import com.zenyte.game.content.preset.PresetManager;
 import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.Construction;
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
@@ -513,8 +514,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private Skills skillsTemp = new Skills(this, true);
     @Expose
     private Settings settings = new Settings(this);
-    @Expose
-    private Construction construction = new Construction(this);
+    /**
+     * @deprecated Legacy persistence slot for the construction (house) state,
+     * superseded by attrPersistence["construction"] (see ConstructionKeys).
+     * Kept non-transient so pre-migration saves still deserialize into the
+     * parser player; the live player no longer populates it, so
+     * post-migration saves omit the "construction" key entirely. Delete field
+     * and getter with the save-rotation phase.
+     */
+    @Deprecated
+    private Construction construction;
     @Expose
     private PrayerManager prayerManager = new PrayerManager(this);
     @Expose
@@ -2313,7 +2322,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (area instanceof LogoutPlugin) {
                 ((LogoutPlugin) area).onLogout(this);
             }
-            construction.getTipJar().onLogout();
+            ConstructionKeys.construction(this).getTipJar().onLogout();
             setFinished(true);
             World.updateEntityChunk(this, true);
             LocationMap.remove(this);
@@ -2927,7 +2936,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         varManager.sendBit(10670, 0);
         if (getTemporaryAttributes().get("CreatingRoom") != null) {
-            construction.roomPreview((RoomReference) getTemporaryAttributes().get("CreatingRoom"), true);
+            ConstructionKeys.construction(this).roomPreview((RoomReference) getTemporaryAttributes().get("CreatingRoom"), true);
             getTemporaryAttributes().remove("CreatingRoom");
         }
         interfaceHandler.closeInput();
@@ -2986,7 +2995,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             varManager.sendBit(10670, 0);
         }
         if (getTemporaryAttributes().get("CreatingRoom") != null) {
-            construction.roomPreview((RoomReference) getTemporaryAttributes().get("CreatingRoom"), true);
+            ConstructionKeys.construction(this).roomPreview((RoomReference) getTemporaryAttributes().get("CreatingRoom"), true);
             getTemporaryAttributes().remove("CreatingRoom");
         }
         getTemporaryAttributes().remove("skillDialogue");
@@ -4937,6 +4946,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return settings;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Construction.onInit may
+     * call this, and only on the parser player. Live access goes through
+     * ConstructionKeys.construction. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public Construction getConstruction() {
         return construction;
     }

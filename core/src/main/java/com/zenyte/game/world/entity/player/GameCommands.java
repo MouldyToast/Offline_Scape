@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
@@ -1918,10 +1919,10 @@ public final class GameCommands {
         new Command(PlayerPrivilege.ADMINISTRATOR, "raids", "Teleports you to raids recruiting board.",
                 (p, args) -> p.setLocation(new Location(1246, 3562, 0)));
         new Command(PlayerPrivilege.ADMINISTRATOR, "enter", (p, args) -> {
-            p.getConstruction().enterHouse(p.getConstruction().isBuildingMode());
+            ConstructionKeys.construction(p).enterHouse(ConstructionKeys.construction(p).isBuildingMode());
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "leave", (p, args) -> {
-            p.getConstruction().leaveHouse();
+            ConstructionKeys.construction(p).leaveHouse();
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "spellbook", "Switches your spellbook to the requested book. " +
                 "Argument: " +

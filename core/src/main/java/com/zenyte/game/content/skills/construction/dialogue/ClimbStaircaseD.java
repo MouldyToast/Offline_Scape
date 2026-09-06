@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
@@ -49,8 +50,8 @@ public final class ClimbStaircaseD extends Dialogue {
 				return;
 			}
 			final Location tile = new Location(player.getX(), player.getY(), player.getPlane() + 1);
-			final RoomReference ref = player.getConstruction().getReference(tile);
-			final RoomReference reference = player.getConstruction().getReference(player.getLocation());
+			final RoomReference ref = ConstructionKeys.construction(player).getReference(tile);
+			final RoomReference reference = ConstructionKeys.construction(player).getReference(player.getLocation());
 			if (ref == null) 
 				player.getDialogueManager().start(new ClimbEmptyStaircaseD(player, reference, true, object));
 			else 
@@ -62,8 +63,8 @@ public final class ClimbStaircaseD extends Dialogue {
 				return;
 			}
 			final Location tile = new Location(player.getX(), player.getY(), player.getPlane() - 1);
-			final RoomReference ref = player.getConstruction().getReference(tile);
-			final RoomReference reference = player.getConstruction().getReference(player.getLocation());
+			final RoomReference ref = ConstructionKeys.construction(player).getReference(tile);
+			final RoomReference reference = ConstructionKeys.construction(player).getReference(player.getLocation());
 			if (ref == null) 
 				player.getDialogueManager().start(new ClimbEmptyStaircaseD(player, reference, false, object));
 			else 

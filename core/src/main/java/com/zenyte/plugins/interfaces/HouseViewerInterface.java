@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.model.ui.UserInterface;
 import com.zenyte.game.world.entity.player.Player;
 
@@ -12,7 +13,7 @@ public final class HouseViewerInterface implements UserInterface {
 
 	@Override
 	public void handleComponentClick(final Player player, final int interfaceId, final int componentId, final int slotId, final int itemId, final int optionId, final String option) {
-		player.getConstruction().getHouseViewer().handleInterface(interfaceId, componentId, slotId - 1, itemId, optionId);
+		ConstructionKeys.construction(player).getHouseViewer().handleInterface(interfaceId, componentId, slotId - 1, itemId, optionId);
 	}
 
 	@Override

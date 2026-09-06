@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.superiorgarden;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.FurnitureData;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
@@ -110,9 +111,9 @@ public final class TopiaryBush implements ObjectInteraction {
             }
             player.lock();
             data.setFurniture(furn);
-            final int x = (reference.getX() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-            final int y = (reference.getY() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-            final Location tile = new Location(player.getConstruction().getChunkX() * 8 + x + data.getLocation().getX(), player.getConstruction().getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
+            final int x = (reference.getX() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+            final int y = (reference.getY() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+            final Location tile = new Location(ConstructionKeys.construction(player).getChunkX() * 8 + x + data.getLocation().getX(), ConstructionKeys.construction(player).getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
             if (player.getInventory().containsItem(7409, 1))
                 player.setAnimation(MAGIC_SECATEURS_ANIM);
             else

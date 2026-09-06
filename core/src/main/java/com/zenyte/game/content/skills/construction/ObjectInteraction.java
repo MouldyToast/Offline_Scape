@@ -27,7 +27,7 @@ public interface ObjectInteraction extends ObjectAction {
 			if (!(player.getControllerManager().getController() instanceof ConstructionController)) {
 				return;
 			}
-			handleObjectAction(player, player.getConstruction(), player.getConstruction().getReference(object), object, optionId, option);
+			handleObjectAction(player, ConstructionKeys.construction(player), ConstructionKeys.construction(player).getReference(object), object, optionId, option);
 		}));
 	}
 	

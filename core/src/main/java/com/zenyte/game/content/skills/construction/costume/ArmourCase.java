@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.costume;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.util.AccessMask;
@@ -143,7 +144,7 @@ public final class ArmourCase {
 	 * Refreshes the armour set interface values.
 	 */
 	private void refresh() {
-		player.getConstruction().sendCostumeContainer(player);
+		ConstructionKeys.construction(player).sendCostumeContainer(player);
 		player.getPacketDispatcher().sendClientScript(3532, 3290, 1, 0);
 	}
 
@@ -155,7 +156,7 @@ public final class ArmourCase {
         player.getVarManager().sendVarInstant(262, -1);
         player.getVarManager().sendVarInstant(261, 25);
         player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 675);
-        player.getConstruction().sendCostumeContainer(player);
+        ConstructionKeys.construction(player).sendCostumeContainer(player);
         player.getPacketDispatcher().sendComponentSettings(675, 4, 0, 3311, AccessMask.CLICK_OP1, AccessMask.CLICK_OP10);
         player.getPacketDispatcher().sendClientScript(3532, 3290, 1, 1);
     }

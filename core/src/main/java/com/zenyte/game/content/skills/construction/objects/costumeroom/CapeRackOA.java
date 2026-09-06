@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.costumeroom;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -42,7 +43,7 @@ public final class CapeRackOA implements ObjectInteraction, ItemOnObjectAction {
             player.sendMessage("You can't put this on the cape rack.");
             return;
         }
-        if (player.getConstruction().getCapeRack().addSet(item.getId())) {
+        if (ConstructionKeys.construction(player).getCapeRack().addSet(item.getId())) {
             player.setAnimation(ANIM);
             return;
         }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.FurnitureData;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.world.entity.player.Player;
@@ -31,11 +32,11 @@ public final class BuildStaircaseD extends Dialogue {
 		options("Build stairs in which direction?", "Up", "Down")
 		.onOptionOne(() -> {
 			finish();
-			player.getConstruction().buildStaircase(true, object, reference, data, slotId);
+			ConstructionKeys.construction(player).buildStaircase(true, object, reference, data, slotId);
 		})
 		.onOptionTwo(() -> {
 			finish();
-			player.getConstruction().buildStaircase(false, object, reference, data, slotId);
+			ConstructionKeys.construction(player).buildStaircase(false, object, reference, data, slotId);
 		});
 	}
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.garden;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -25,7 +26,7 @@ public final class DungeonEntrance implements ObjectInteraction {
     @Override
     public void handleObjectAction(Player player, Construction construction, RoomReference reference, WorldObject object, int optionId, String option) {
         if (optionId == 1) {
-            for (RoomReference room : player.getConstruction().getReferences()) {
+            for (RoomReference room : ConstructionKeys.construction(player).getReferences()) {
                 if (reference.getX() == room.getX() && reference.getY() == room.getY() && room.getPlane() == 0) {
                     player.setLocation(new Location(player.getX(), player.getY(), 0));
                     return;

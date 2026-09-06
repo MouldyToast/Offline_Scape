@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.achievementgallery;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.google.common.collect.ImmutableMap;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.FurnitureData;
@@ -49,7 +50,7 @@ public final class BossLairDisplay implements ObjectInteraction, ItemOnObjectAct
             player.sendMessage("You can only store jars with boss souls in them here.");
             return;
         }
-        final List<Integer> jars = player.getConstruction().getDisplayJars();
+        final List<Integer> jars = ConstructionKeys.construction(player).getDisplayJars();
         if (!jars.contains(id)) {
             if (!player.getInventory().containsItem(id, 1)) {
                 player.sendMessage("You need a " + ItemDefinitions.get(id).getName().toLowerCase() + " to enqueue it to the display.");
@@ -77,7 +78,7 @@ public final class BossLairDisplay implements ObjectInteraction, ItemOnObjectAct
 
         public static final ImmutableMap<Integer, Integer> MAP = ImmutableMap.<Integer, Integer>builder().put(12007, 0).put(12885, 1).put(12936, 2).put(13245, 3).put(13277, 4).put(19701, 5).put(21745, 6).put(22106, 7).build();
 
-        private final List<Integer> jars = player.getConstruction().getDisplayJars();
+        private final List<Integer> jars = ConstructionKeys.construction(player).getDisplayJars();
 
         private final RoomReference reference;
 
@@ -112,7 +113,7 @@ public final class BossLairDisplay implements ObjectInteraction, ItemOnObjectAct
         }
 
         private void handleJar(final int id) {
-            if (!player.getConstruction().getDisplayJars().contains(id)) {
+            if (!ConstructionKeys.construction(player).getDisplayJars().contains(id)) {
                 player.sendMessage("You haven't added that jar to the display case yet.");
                 return;
             }
@@ -133,9 +134,9 @@ public final class BossLairDisplay implements ObjectInteraction, ItemOnObjectAct
                 return;
             }
             data.setFurniture(furn);
-            final int x = (reference.getX() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-            final int y = (reference.getY() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-            final Location tile = new Location(player.getConstruction().getChunkX() * 8 + x + data.getLocation().getX(), player.getConstruction().getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
+            final int x = (reference.getX() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+            final int y = (reference.getY() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+            final Location tile = new Location(ConstructionKeys.construction(player).getChunkX() * 8 + x + data.getLocation().getX(), ConstructionKeys.construction(player).getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
             World.spawnObject(new WorldObject(data.getFurniture().getObjectId(), 10, data.getRotation(), tile));
         }
     }
@@ -154,7 +155,7 @@ public final class BossLairDisplay implements ObjectInteraction, ItemOnObjectAct
 
         private final WorldObject object;
 
-        private final List<Integer> jars = player.getConstruction().getDisplayJars();
+        private final List<Integer> jars = ConstructionKeys.construction(player).getDisplayJars();
 
         @Override
         public void buildDialogue() {

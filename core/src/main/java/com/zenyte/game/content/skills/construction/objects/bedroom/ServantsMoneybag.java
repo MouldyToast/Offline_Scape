@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.bedroom;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -24,15 +25,15 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
 
     @Override
     public void handleObjectAction(final Player player, final Construction construction, final RoomReference reference, final WorldObject object, final int optionId, final String option) {
-        if (player.getCurrentHouse() != player.getConstruction()) {
+        if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
             player.sendMessage("You cannot interact with someone else's servant's moneybag!");
             return;
         }
-        player.getDialogueManager().start(new OptionDialogue(player, "Servant's moneybag: " + player.getConstruction().getServantsCash() + " coins.", new String[] { "Withdraw money.", "Add money.", "Nothing." }, new Runnable[] { () -> withdraw(player), () -> add(player), null }));
+        player.getDialogueManager().start(new OptionDialogue(player, "Servant's moneybag: " + ConstructionKeys.construction(player).getServantsCash() + " coins.", new String[] { "Withdraw money.", "Add money.", "Nothing." }, new Runnable[] { () -> withdraw(player), () -> add(player), null }));
     }
 
     private void add(final Player player) {
-        if (player.getConstruction().getServantsCash() >= 3000000) {
+        if (ConstructionKeys.construction(player).getServantsCash() >= 3000000) {
             player.sendMessage("Your servant's moneybag is already full.");
             return;
         }
@@ -40,17 +41,17 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
             if (amount > player.getInventory().getAmountOf(995)) {
                 amount = player.getInventory().getAmountOf(995);
             }
-            if (amount > (3000000 - player.getConstruction().getServantsCash())) {
-                amount = (3000000 - player.getConstruction().getServantsCash());
+            if (amount > (3000000 - ConstructionKeys.construction(player).getServantsCash())) {
+                amount = (3000000 - ConstructionKeys.construction(player).getServantsCash());
             }
-            player.getConstruction().setServantsCash(player.getConstruction().getServantsCash() + amount);
+            ConstructionKeys.construction(player).setServantsCash(ConstructionKeys.construction(player).getServantsCash() + amount);
             player.getInventory().deleteItem(995, amount);
             player.sendMessage("You deposit " + amount + " coins into the servant's moneybag.");
         });
     }
 
     private void withdraw(final Player player) {
-        if (player.getConstruction().getServantsCash() <= 0) {
+        if (ConstructionKeys.construction(player).getServantsCash() <= 0) {
             player.sendMessage("Your servant's moneybag is already empty.");
             return;
         }
@@ -59,8 +60,8 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
                 player.sendMessage("You need some more free space to remove the coins.");
                 return;
             }
-            if (amount > player.getConstruction().getServantsCash()) {
-                amount = player.getConstruction().getServantsCash();
+            if (amount > ConstructionKeys.construction(player).getServantsCash()) {
+                amount = ConstructionKeys.construction(player).getServantsCash();
             }
             final int inInv = player.getInventory().getAmountOf(995);
             if (amount + inInv < 0) {
@@ -69,7 +70,7 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
             if (amount == 0) {
                 return;
             }
-            player.getConstruction().setServantsCash(player.getConstruction().getServantsCash() - amount);
+            ConstructionKeys.construction(player).setServantsCash(ConstructionKeys.construction(player).getServantsCash() - amount);
             player.getInventory().addItem(995, amount);
             player.sendMessage("You withdraw " + amount + " coins from the servant's moneybag.");
         });
@@ -77,7 +78,7 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
 
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-        if (player.getCurrentHouse() != player.getConstruction()) {
+        if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
             player.sendMessage("You cannot interact with someone else's servant's moneybag!");
             return;
         }

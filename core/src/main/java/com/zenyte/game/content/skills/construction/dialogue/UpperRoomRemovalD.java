@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -24,8 +25,8 @@ public final class UpperRoomRemovalD extends Dialogue {
 		options(TITLE, "Yes, remove it.", "No, don't remove it.")
 		.onOptionOne(() -> {
 			finish();
-			player.getConstruction().getReferences().remove(ref);
-			player.getConstruction().enterHouse(true, player.getConstruction().getRelationalSpawnTile());
+			ConstructionKeys.construction(player).getReferences().remove(ref);
+			ConstructionKeys.construction(player).enterHouse(true, ConstructionKeys.construction(player).getRelationalSpawnTile());
 		})
 		.onOptionTwo(() -> finish());
 	}

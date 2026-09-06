@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.costumeroom;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -52,7 +53,7 @@ public final class FancyDressBoxOA implements ObjectInteraction, ItemOnObjectAct
             player.sendMessage("You need to open the box first.");
             return;
         }
-        if (player.getConstruction().getFancyDressBox().addSet(item.getId())) {
+        if (ConstructionKeys.construction(player).getFancyDressBox().addSet(item.getId())) {
             player.setAnimation(ANIM);
             return;
         }

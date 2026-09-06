@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.achievementgallery;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.*;
 import com.zenyte.game.content.skills.construction.constants.Furniture;
 import com.zenyte.game.item.Item;
@@ -57,13 +58,13 @@ public final class CapeHanger implements ObjectInteraction, ItemOnObjectAction {
 
 	@Override
 	public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-		if (player.getCurrentHouse() != player.getConstruction()) {
+		if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
 			player.sendMessage("You can only do this in your own house.");
 			return;
 		}
 		if (!(player.getControllerManager().getController() instanceof ConstructionController))
 			return;
-		final Construction construction = player.getConstruction();
+		final Construction construction = ConstructionKeys.construction(player);
 		final RoomReference room = construction.getReference(player.getLocation());
 		if (room == null)
 			return;
@@ -132,7 +133,7 @@ public final class CapeHanger implements ObjectInteraction, ItemOnObjectAction {
 			player.setAnimation(ANIM);
 			player.sendMessage("You admire the " + object.getName().toLowerCase() + ".");
 		} else if (option.equals("take")) {
-			if (player.getCurrentHouse() != player.getConstruction()) {
+			if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
 				player.sendMessage("You can only do this in your own house.");
 				return;
 			}

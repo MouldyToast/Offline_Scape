@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.model.ui.UserInterface;
 import com.zenyte.game.world.entity.player.Player;
 
@@ -17,28 +18,28 @@ public final class HouseOptionsTab implements UserInterface {
 		}
 		switch(componentId) {
 		case 1:
-			player.getConstruction().getHouseViewer().openHouseViewer();
+			ConstructionKeys.construction(player).getHouseViewer().openHouseViewer();
 			return;
 		case 5:
-			player.getConstruction().setBuildingMode(true);
+			ConstructionKeys.construction(player).setBuildingMode(true);
 			break;
 		case 6:
-			player.getConstruction().setBuildingMode(false);
+			ConstructionKeys.construction(player).setBuildingMode(false);
 			break;
 		case 8:
-			player.getConstruction().setRenderDoorsOpen(true);
+			ConstructionKeys.construction(player).setRenderDoorsOpen(true);
 			break;
 		case 9:
-			player.getConstruction().setRenderDoorsOpen(false);
+			ConstructionKeys.construction(player).setRenderDoorsOpen(false);
 			break;
 		case 11:
-			player.getConstruction().setTeleportInside(true);
+			ConstructionKeys.construction(player).setTeleportInside(true);
 			break;
 		case 12:
-			player.getConstruction().setTeleportInside(false);
+			ConstructionKeys.construction(player).setTeleportInside(false);
 			break;
 		}
-		player.getConstruction().refreshHouseOptions();
+		ConstructionKeys.construction(player).refreshHouseOptions();
 	}
 
 	@Override

@@ -101,7 +101,7 @@ public final class HouseViewer {
 		player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
 		plane = player.getPlane();
 			size = 9;
-			for (final RoomReference room : player.getConstruction().getReferences()) {
+			for (final RoomReference room : ConstructionKeys.construction(player).getReferences()) {
 				if (room.getPlane() == 0) {
 					displayDungeon = true;
 				} else if (room.getPlane() == 2) {
@@ -111,9 +111,9 @@ public final class HouseViewer {
 		displayDungeon = true;
 		displayUpperFloor = true;
 		player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, INTERFACE_ID);
-		final int size = player.getConstruction().getReferences().size();
+		final int size = ConstructionKeys.construction(player).getReferences().size();
 		int count = 1;
-		final Iterator<RoomReference> it = player.getConstruction().getReferences().iterator();
+		final Iterator<RoomReference> it = ConstructionKeys.construction(player).getReferences().iterator();
 		while(it.hasNext()) {
 			final RoomReference ref = it.next();
 			final int settings = ((ref.getY() * 8) + ref.getX()) | ref.getPlane() << 6 | ref.getRotation() << 8 | ref.getRoom().getInterfaceSlot() << 10 | getRoomContents(ref);
@@ -134,7 +134,7 @@ public final class HouseViewer {
 	public void handleInterface(final int interfaceId, final int componentId, final int slotId, final int itemId, final int option) {
 		if (componentId > 5 && componentId < 39) {
 			player.getTemporaryAttributes().remove("houseviewerMove");
-			room = player.getConstruction().getReferences().get(componentId - 6);
+			room = ConstructionKeys.construction(player).getReferences().get(componentId - 6);
 			index = GRIDS[size - 5][2] + (82 * room.getPlane()) + (room.getY() * 9) + room.getX() + (2 - room.getPlane());
 			player.getVarManager().sendBit(5330, 0);
 			player.getVarManager().sendBit(5329, roomComponent = (componentId - 5));
@@ -150,7 +150,7 @@ public final class HouseViewer {
 		} else if (componentId == 60 || componentId == 61) {
 			rotate(componentId == 60);
 		} else if (componentId == 62) {
-			player.getConstruction().getReferences().remove(room);
+			ConstructionKeys.construction(player).getReferences().remove(room);
 			for (int i = 5329; i < 5335; i++) {
 				player.getVarManager().sendBit(i, 0);
 			}
@@ -196,8 +196,8 @@ public final class HouseViewer {
 			slot -= (size == 5 ? 9 : 0) + (plane * 80);
 			y = (slot - 1) / size;
 			x = slot - (y * size) - plane;
-			y+= player.getConstruction().getYardOffset();
-			x+= player.getConstruction().getYardOffset();
+			y+= ConstructionKeys.construction(player).getYardOffset();
+			x+= ConstructionKeys.construction(player).getYardOffset();
 			final Object moving = player.getTemporaryAttributes().remove("houseviewerMove");
 			if (x == 0 || y == 0 || x == 8 || y == 8) {
 				player.sendMessage("You cannot " + (moving == null ? "build" : "move") + " rooms on the edge of the map.");
@@ -218,7 +218,7 @@ public final class HouseViewer {
 	
 	private void reopen() {
 		player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
-		player.getConstruction().enterHouse(true, player.getConstruction().getRelationalSpawnTile());
+		ConstructionKeys.construction(player).enterHouse(true, ConstructionKeys.construction(player).getRelationalSpawnTile());
 		WorldTasksManager.schedule(() -> openHouseViewer(), 3);
 	}
 	
@@ -268,9 +268,9 @@ public final class HouseViewer {
 		coordinateSlot -= (size == 5 ? 9 : 0) + (plane * 80);
 		y = (coordinateSlot - 1) / size;
 		x = coordinateSlot - (y * size) - plane;
-		y+= player.getConstruction().getYardOffset();
-		x+= player.getConstruction().getYardOffset();
-		player.getConstruction().getReferences().add(new RoomReference(room, x, y, plane, 0));
+		y+= ConstructionKeys.construction(player).getYardOffset();
+		x+= ConstructionKeys.construction(player).getYardOffset();
+		ConstructionKeys.construction(player).getReferences().add(new RoomReference(room, x, y, plane, 0));
 		this.plane = plane;
 		reopen();
 	}

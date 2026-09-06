@@ -132,11 +132,24 @@ public final class Construction {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Construction parserConstruction = event.getSavedPlayer().getConstruction();
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = ConstructionKeys.rawConstructionAttr(player) != null;
+        final Construction construction = ConstructionKeys.construction(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the house under the top-level
+        // "construction" JSON key on the parser player. The copy below
+        // migrates it into the attr (running the same setFields copy-into the
+        // Phase 0 load path always ran); the next save persists it under
+        // attrPersistence["construction"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final Construction parserConstruction = savedPlayer.getConstruction();
         if (parserConstruction == null) {
             return;
         }
-        event.getPlayer().getConstruction().setFields(parserConstruction);
+        construction.setFields(parserConstruction);
     }
 
     public final void setFields(final Construction construction) {
@@ -146,7 +159,11 @@ public final class Construction {
         if (construction.armourCase != null) {
             armourCase.getItems().putAll(construction.armourCase.getItems());
         }
-        player.getConstruction().getArmourCase().setPlayer(player);
+        // Direct field access like the five boxes below: the old read through
+        // the player's getter resolved to this same instance on every legacy
+        // call path, but reads the deprecated null slot (or re-enters the
+        // accessor mid-copy) under the attr pattern.
+        armourCase.setPlayer(player);
         if (construction.fancyDressBox != null) {
             fancyDressBox.getItems().putAll(construction.fancyDressBox.getItems());
         }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.costumeroom;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -71,7 +72,7 @@ public final class TreasureChestOA implements ObjectInteraction, ItemOnObjectAct
             player.sendMessage("You need to open the treasure chest first.");
             return;
         }
-        if (player.getConstruction().getTreasureChest().addSet(item.getId())) {
+        if (ConstructionKeys.construction(player).getTreasureChest().addSet(item.getId())) {
             player.setAnimation(ANIM);
             return;
         }

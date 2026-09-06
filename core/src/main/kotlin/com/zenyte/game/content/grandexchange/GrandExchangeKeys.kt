@@ -2,9 +2,12 @@
 
 package com.zenyte.game.content.grandexchange
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.login.LoginManager
 import org.rsmod.api.attr.AttributeKey
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerLoginEvent
 
 /**
  * Persisted grand exchange state. Saved under
@@ -52,4 +55,12 @@ fun Player.grandExchange(): GrandExchange {
 fun rawGrandExchangeAttr(player: Player): Any? {
     @Suppress("UNCHECKED_CAST")
     return player.attr[GRAND_EXCHANGE_KEY as AttributeKey<Any>]
+}
+
+/** T2-a: GE offer resend at login (was onLobbyClose; E6 timing precedent). */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    event.worldThread.eventBus.subscribeUnbound(PlayerLoginEvent::class.java) {
+        player.grandExchange().updateOffers()
+    }
 }

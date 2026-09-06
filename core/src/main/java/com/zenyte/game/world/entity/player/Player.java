@@ -40,9 +40,6 @@ import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
-import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
-import com.zenyte.game.content.lootkeys.LootkeySettings;
-import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.sailing.CharterLocation;
@@ -4248,12 +4245,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 //            emotesHandler.unlock(Emote.RABBIT_HOP);
 //        }
 
-        final LootkeySettings lootkeySettings = LootkeySettingsKeys.lootkeySettings(this);
-        if (lootkeySettings != null) {
-            if (lootkeySettings.getCurrentItemsInChest() != null)
-                if (!lootkeySettings.getCurrentItemsInChest().isEmpty())
-                    LootkeySettings.sendOpenChest(this);
-        }
 
 //        varManager.sendBit(15026, attributes.containsKey("Christmas 2019 event") ? 1 : 0);
 //        final boolean christmasEventCompleted = AChristmasWarble.progressedAtLeast(this,
@@ -4393,15 +4384,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
          * channel.getOwner()); } else { ClanManager.join(player, "kris"); }
          */
         socialManager.updateStatus();
-        try {
-            FarmingKeys.farming(this).refresh();
-        }
-        catch (Exception ex) {
-            log.error("farming not working", ex);
-        }
 
         getRunePouch().getContainer().refresh(this);
-        GrandExchangeKeys.grandExchange(this).updateOffers();
         VarCollection.updateType(this, EventType.POST_LOGIN);
 
         packetDispatcher.privateChatFilter();

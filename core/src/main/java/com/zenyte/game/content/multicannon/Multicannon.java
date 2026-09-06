@@ -71,7 +71,7 @@ public final class Multicannon extends WorldObject {
         direction = MulticannonDirection.NORTH;
         decayTimer = 3000;
         center = new Location(tile.getX() + 1, tile.getY() + 1, tile.getPlane());
-        cannon = player.getDwarfMulticannon();
+        cannon = DwarfMultiCannonKeys.dwarfMulticannon(player);
         polygons = MulticannonDirection.create(center);
     }
 
@@ -229,7 +229,7 @@ public final class Multicannon extends WorldObject {
         }, PROJECTILE.getTime(center, t));
         if(cannon.getCannonballs() == 1) {
             if(player.getMemberRank().equalToOrGreaterThan(MemberRank.RUBY) && cannon.getCannon().getLocation().withinDistance(player.getLocation(), 20))
-                player.getDwarfMulticannon().loadCannon();
+                DwarfMultiCannonKeys.dwarfMulticannon(player).loadCannon();
         }
         return true;
     }

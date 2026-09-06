@@ -434,7 +434,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
 
     @Expose
-    private DwarfMultiCannon dwarfMulticannon = new DwarfMultiCannon(this);
+    /**
+     * @deprecated Legacy persistence slot for the dwarf multicannon, superseded
+     * by attrPersistence["dwarf_multicannon"] (see DwarfMultiCannonKeys). Kept
+     * non-transient so pre-migration saves still deserialize into the parser
+     * player; the live player no longer populates it, so post-migration saves
+     * omit the "dwarfMulticannon" key entirely. Delete field and getter with
+     * the save-rotation phase.
+     */
+    @Deprecated
+    private DwarfMultiCannon dwarfMulticannon;
     /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
@@ -4733,6 +4742,13 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only DwarfMultiCannon.onInit may
+     * call this, and only on the parser player. Live access goes through
+     * DwarfMultiCannonKeys.dwarfMulticannon. Removed with the save-rotation
+     * phase.
+     */
+    @Deprecated
     public DwarfMultiCannon getDwarfMulticannon() {
         return dwarfMulticannon;
     }

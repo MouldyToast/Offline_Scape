@@ -116,6 +116,11 @@ public class Inferno extends DynamicArea implements CycleProcessPlugin, LogoutPl
     }
 
     @Override
+    public boolean isShiftTeleportationProhibited() {
+        return true;
+    }
+
+    @Override
     public void constructed() {
         player.getAppearance().setInvisible(false);
         player.setViewDistance(Player.LARGE_VIEWPORT_RADIUS);

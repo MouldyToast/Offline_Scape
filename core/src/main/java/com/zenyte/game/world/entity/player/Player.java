@@ -40,7 +40,6 @@ import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
-import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
@@ -809,7 +808,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     public boolean eligibleForShiftTeleportation() {
-        return privilege.inherits(PlayerPrivilege.DEVELOPER) || (privilege.inherits(PlayerPrivilege.ADMINISTRATOR) && !(getArea() instanceof Inferno));
+        return privilege.inherits(PlayerPrivilege.DEVELOPER) || (privilege.inherits(PlayerPrivilege.ADMINISTRATOR) && (getArea() == null || !getArea().isShiftTeleportationProhibited()));
     }
 
     public void notification(String title, String text, int color) {

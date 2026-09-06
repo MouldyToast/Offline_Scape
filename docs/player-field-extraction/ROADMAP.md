@@ -126,7 +126,7 @@ Current import list with the expected treatment:
 
 | Import(s) | Treatment |
 |---|---|
-| Prayer, PrayerManagerKeys | BLOCKED on Track 3.1 (nightmare curse); afterwards: varbit reads + id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
+| Prayer, PrayerManagerKeys | unblocked (T3.1a landed): varbit reads + id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
 | Teleport, ForceTeleport, TeleportType, SpellbookSwap, DeathChargeKt | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session |
 | Raid, RaidParty, Inferno | Phase-B flag lift on RegionArea (isRaid…/isInferno…) like ToA |
 | ClanChannel, ClanManager | settings-driven; likely a core-side interface + content impl |
@@ -136,9 +136,10 @@ Current import list with the expected treatment:
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 
-1. **Nightmare curse reimplementation** → route the protection-prayer
+1. **Nightmare curse reimplementation** → ~~route the protection-prayer
    scramble at activation input (`cursePrayerTypeReverse` already exists)
-   so varbits always reflect true effect. Then re-run the G3 audit (one
+   so varbits always reflect true effect~~ (DONE, T3.1a; G3 re-audited in
+   HANDOVER_after_G3.md §7). Then re-run the G3 audit (one
    table row changes) and convert the ~25 engine `isActive` reads to
    `varManager.getBitValue(prayer.getVarbit()) == 1`. End-state after
    that: delete the `activePrayers` map, varbit becomes the sole truth

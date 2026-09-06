@@ -86,7 +86,10 @@ public class NightmareBossArea extends PolygonRegionArea implements DeathPlugin,
 
 	private static void togglePrayer(Player player, Prayer prayer) {
 		final Prayer nextPrayer;
-		if (player.getBooleanTemporaryAttribute("nightmare_curse")) {
+		// Scramble activations only: clicking the lit (true-effect) prayer
+		// deactivates it instead of rotating to the next prayer.
+		if (player.getBooleanTemporaryAttribute("nightmare_curse")
+				&& !PrayerManagerKeys.prayerManager(player).isActive(prayer)) {
 			nextPrayer = BaseNightmareNPC.cursePrayerType(prayer);
 		} else {
 			nextPrayer = prayer;

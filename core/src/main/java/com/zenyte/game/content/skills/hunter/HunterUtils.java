@@ -110,7 +110,7 @@ public class HunterUtils {
     public static boolean hasMaxTrapsLaid(@NotNull final Player player) {
         final int maximumLayableTraps = getMaximumLayableTraps(player.getSkills().getLevel(SkillConstants.HUNTER))
                 + BooleanUtils.toInteger(WildernessArea.isWithinWilderness(player));
-        final int trapCount = player.getHunter().getLaidTrapsSize();
+        final int trapCount = HunterKeys.hunter(player).getLaidTrapsSize();
         if (trapCount >= maximumLayableTraps) {
             player.sendMessage("You may setup only " + maximumLayableTraps + " trap" + (maximumLayableTraps == 1 ?
                     "" : "s") + " at a time at your Hunter level.");

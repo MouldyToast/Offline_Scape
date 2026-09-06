@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.object;
 
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.skills.hunter.TrapState;
 import com.zenyte.game.content.skills.hunter.node.PreyObject;
@@ -142,7 +143,7 @@ public final class HunterTrap {
         }
         final Player player = this.player.get();
         if (player != null) {
-            player.getHunter().appendTrap(this);
+            HunterKeys.hunter(player).appendTrap(this);
         }
         onSetup.ifPresent(Runnable::run);
     }
@@ -209,7 +210,7 @@ public final class HunterTrap {
         }
         final Player player = this.player.get();
         if (player != null) {
-            player.getHunter().removeTrap(this);
+            HunterKeys.hunter(player).removeTrap(this);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.actions;
 
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.hunter.node.TrapType;
 import com.zenyte.game.content.skills.hunter.npc.HunterDummyNPC;
 import com.zenyte.game.content.skills.hunter.object.HunterTrap;
@@ -27,7 +28,7 @@ public final class CreateDeadfallAction extends ConstructableHunterTrapAction {
         if (object.isLocked()) {
             return false;
         }
-        if (player.getHunter().hasDeadfallLaid()) {
+        if (HunterKeys.hunter(player).hasDeadfallLaid()) {
             player.sendMessage("You cannot lay more than one deadfall trap.");
             return false;
         }

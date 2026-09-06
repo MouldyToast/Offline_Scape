@@ -61,6 +61,7 @@ import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.seedvault.SeedVault;
 import com.zenyte.game.content.skills.hunter.Hunter;
+import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
@@ -556,7 +557,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient AtomicBoolean forceReloadMap = new AtomicBoolean(false);
     private transient int viewDistance = 15;
     private Slayer slayer = new Slayer(this);
-    private Hunter hunter = new Hunter(this);
+    /**
+     * @deprecated Legacy persistence slot for the hunter, superseded by
+     * attrPersistence["hunter"] (see HunterKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "hunter" key entirely. Delete field and getter with the save-rotation
+     * phase.
+     */
+    @Deprecated
+    private Hunter hunter;
 
 
     private transient PlayerInfo playerInfo;
@@ -1935,7 +1945,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 tickDegradable = 0;
             }
             farming.processAll();
-            hunter.process();
+            HunterKeys.hunter(this).process();
             prayerManager.process();
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
             if (acidPool != null) {
@@ -5101,6 +5111,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.slayer = slayer;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Hunter.onInitialization may
+     * call this, and only on the parser player. Live access goes through
+     * HunterKeys.hunter. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public Hunter getHunter() {
         return hunter;
     }

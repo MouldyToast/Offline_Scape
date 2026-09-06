@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.world.entity.Entity;
@@ -29,7 +30,7 @@ public class TaskOnlyBlueDragonTaverleyDungeon extends TaverleyDungeon implement
     @Override
     public boolean attack(Player player, Entity entity, PlayerCombat combat) {
         if (entity instanceof NPC && ((NPC) entity).getName(player).equalsIgnoreCase("blue dragon")) {
-            final Assignment assignment = player.getSlayer().getAssignment();
+            final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
             if (assignment == null || assignment.getTask() != RegularTask.BLUE_DRAGONS) {
                 player.getDialogueManager().start(new Dialogue(player, NpcId.EVE) {
                     @Override

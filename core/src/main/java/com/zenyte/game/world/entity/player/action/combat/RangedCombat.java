@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalArmour;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
@@ -219,7 +220,7 @@ public class RangedCombat extends PlayerCombat {
             maxhit *= amuletId == ItemId.SALVE_AMULETI ? 1.15F : 1.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         maxhit *= determineSlayerHelmetDamageBoost(hasTask, HitType.RANGED, player, target);
         maxhit = Math.floor(maxhit);
 
@@ -352,7 +353,7 @@ public class RangedCombat extends PlayerCombat {
         int styleBonusLevels = player.getCombatDefinitions().getStyle() == 0 ? 3 : 0;
         final double effectiveLevel = Math.floor(Math.floor(skillLevel * prayerBonus) + (styleBonusLevels) + 8.0F) * (voidBoost);
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
 
         float gearBonus = 1.0F;
         gearBonus *= determineAmuletBonus(player);

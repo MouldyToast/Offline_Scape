@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.slayer.dialogue;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -20,19 +21,19 @@ public final class TuraelAssignmentD extends Dialogue {
 
     @Override
     public void buildDialogue() {
-        if (player.getSlayer().getAssignment() != null) {
+        if (SlayerKeys.slayer(player).getAssignment() != null) {
             npc("You're still on an assignment. You need to finish that one first.");
-            npc("You need to kill " + player.getSlayer().getAssignment().getAmount() + " " + player.getSlayer().getAssignment().getTask().toString() + ".");
-            final RegularTask data = player.getSlayer().getAssignment().getTask() instanceof BossTask ? null : ((RegularTask) player.getSlayer().getAssignment().getTask());
-            if (data == null || (player.getSlayer().getMaster() == SlayerMaster.KRYSTILIA || data.getCertainTaskSet(SlayerMaster.TURAEL) == null || data.getCertainTaskSet(SlayerMaster.TURAEL).getMaximumAmount() < player.getSlayer().getAssignment().getAmount())) {
-                npc("You're still hunting " + player.getSlayer().getAssignment().getTask().toString() + ", you have " + player.getSlayer().getAssignment().getAmount() + " to go.");
+            npc("You need to kill " + SlayerKeys.slayer(player).getAssignment().getAmount() + " " + SlayerKeys.slayer(player).getAssignment().getTask().toString() + ".");
+            final RegularTask data = SlayerKeys.slayer(player).getAssignment().getTask() instanceof BossTask ? null : ((RegularTask) SlayerKeys.slayer(player).getAssignment().getTask());
+            if (data == null || (SlayerKeys.slayer(player).getMaster() == SlayerMaster.KRYSTILIA || data.getCertainTaskSet(SlayerMaster.TURAEL) == null || data.getCertainTaskSet(SlayerMaster.TURAEL).getMaximumAmount() < SlayerKeys.slayer(player).getAssignment().getAmount())) {
+                npc("You're still hunting " + SlayerKeys.slayer(player).getAssignment().getTask().toString() + ", you have " + SlayerKeys.slayer(player).getAssignment().getAmount() + " to go.");
                 npc("Although it's not an assignment that I'd normally give... I guess I could  give you a new " +
                         "assignment, if you'd like.");
-                npc("If you do get a new one, you will reset your standard task streak of " + player.getSlayer().getCurrentStreak() + ".");
+                npc("If you do get a new one, you will reset your standard task streak of " + SlayerKeys.slayer(player).getCurrentStreak() + ".");
                 options(TITLE, "Yes please.", "No, thanks.").onOptionOne(() -> {
-                    final Assignment task = player.getSlayer().generateTask(SlayerMaster.TURAEL);
-                    player.getSlayer().setCurrentStreak(0);
-                    player.getSlayer().setAssignment(task);
+                    final Assignment task = SlayerKeys.slayer(player).generateTask(SlayerMaster.TURAEL);
+                    SlayerKeys.slayer(player).setCurrentStreak(0);
+                    SlayerKeys.slayer(player).setAssignment(task);
                     player.getDialogueManager().finish();
                     player.getDialogueManager().start(new Dialogue(player, npc) {
                         @Override
@@ -45,12 +46,12 @@ public final class TuraelAssignmentD extends Dialogue {
             }
             return;
         }
-        final Slayer slayer = player.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(player);
         final Assignment task = slayer.generateTask(SlayerMaster.TURAEL);
         if (slayer.getMaster() != SlayerMaster.TURAEL) {
             slayer.setMaster(SlayerMaster.TURAEL);
         }
-        player.getSlayer().setAssignment(task);
+        SlayerKeys.slayer(player).setAssignment(task);
         npc("Your new task is to kill " + task.getAmount() + " " + task.getTask().toString() + ".");
         options(TITLE, "Got any tips for me?", "Okay, great!").onOptionOne(() -> setKey(100));
         npc(100, task.getTask().getTip());

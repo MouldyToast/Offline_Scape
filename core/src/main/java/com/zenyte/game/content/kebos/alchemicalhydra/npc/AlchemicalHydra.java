@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.alchemicalhydra.npc;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.BossTask;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.boss.BossRespawnTimer;
@@ -235,7 +236,7 @@ public class AlchemicalHydra extends NPC implements CombatScript {
             source.sendMessage("You cannot attack the Alchemical Hydra while it's transforming.");
             return false;
         }
-        final Assignment assignment = source.getSlayer().getAssignment();
+        final Assignment assignment = SlayerKeys.slayer(source).getAssignment();
         if (assignment == null || !assignment.getTask().equals(RegularTask.HYDRAS) && !assignment.getTask().equals(BossTask.ALCHEMICAL_HYDRA)) {
             source.sendMessage("You can only attack the Alchemical Hydra while on a Hydras slayer task.");
             return false;

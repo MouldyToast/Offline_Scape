@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.slayer.dialogue.KrystiliaAssignmentD;
 import com.zenyte.game.content.skills.slayer.dialogue.KrystiliaD;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -53,7 +54,7 @@ public class Krystilia extends NPCPlugin {
         bind("Rewards", new OptionHandler() {
             @Override
             public void handle(Player player, NPC npc) {
-                player.getSlayer().openInterface();
+                SlayerKeys.slayer(player).openInterface();
             }
 
             @Override

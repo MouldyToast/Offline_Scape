@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.objects
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.araxxor.AraxxorInstance
 import com.zenyte.game.GameConstants.WORLD_PROFILE
 import com.zenyte.game.world.entity.player.Player
@@ -22,7 +23,7 @@ class AraxxorTunnelEntrance : ObjectAction {
             player.sendMessage("Zaros himself permits you to enter this cave right now.")
             AraxxorInstance(player).constructRegion()
         } else {
-            val assignment = player.slayer.assignment
+            val assignment = player.slayer().assignment
             if (assignment != null) {
                 val task = assignment.task
                 if (task != null) {

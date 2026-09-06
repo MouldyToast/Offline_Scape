@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.taskonlyareas;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -38,7 +39,7 @@ public class KalphiteCave extends PolygonRegionArea implements EntityAttackPlugi
         if (entity instanceof NPC npc) {
             final String name = npc.getDefinitions().getName();
             if (name.contains("Kalphite") || name.contains("kalphite")) {
-                if (!player.getSlayer().isCurrentAssignment(entity)) {
+                if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                     player.getDialogueManager().start(new Dialogue(player, 491) {
                         @Override
                         public void buildDialogue() {

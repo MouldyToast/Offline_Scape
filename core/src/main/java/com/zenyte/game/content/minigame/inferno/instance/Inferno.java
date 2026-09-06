@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.inferno.instance;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -108,7 +109,7 @@ public class Inferno extends DynamicArea implements CycleProcessPlugin, LogoutPl
         wallPatches = new WorldObject[] {new WorldObject(30339, 10, 3, getLocation(2275, 5364, 0)), new WorldObject(30340, 10, 1, getLocation(2267, 5364, 0)), new WorldObject(30341, 10, 3, getLocation(2275, 5366, 0)), new WorldObject(30342, 10, 1, getLocation(2267, 5366, 0))};
         fallingRocks = new WorldObject[] {new WorldObject(30343, 10, 3, getLocation(2273, 5364, 0)), new WorldObject(30344, 10, 3, getLocation(2268, 5364, 0))};
         room = World.getRectangle(getX(2257), getX(2285), getY(5329), getY(5358));
-        final Assignment task = player.getSlayer().getAssignment();
+        final Assignment task = SlayerKeys.slayer(player).getAssignment();
         onAssignment = task != null && task.getTask().equals(RegularTask.TZKAL_ZUK);
         state = InfernoState.START_CUTSCENE;
     }
@@ -242,9 +243,9 @@ public class Inferno extends DynamicArea implements CycleProcessPlugin, LogoutPl
             tokkul.setAmount(tokkul.getAmount() * 2);
         }
         if (!practiceMode) {
-            final Assignment task = player.getSlayer().getAssignment();
+            final Assignment task = SlayerKeys.slayer(player).getAssignment();
             if (task != null && task.getTask() == RegularTask.TZKAL_ZUK) {
-                player.getSlayer().removeTask();
+                SlayerKeys.slayer(player).removeTask();
             }
         }
         player.setViewDistance(Player.SMALL_VIEWPORT_RADIUS);

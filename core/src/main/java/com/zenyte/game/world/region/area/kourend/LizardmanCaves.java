@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.kourend;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -34,7 +35,7 @@ public class LizardmanCaves extends LizardmanSettlement implements EntityAttackP
     @Override
     public boolean attack(Player player, Entity entity, PlayerCombat combat) {
         if (entity instanceof NPC) {
-            if (!player.getSlayer().isCurrentAssignment(entity)) {
+            if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                 player.getDialogueManager().start(new NPCChat(player, 7742, "You can only kill these lizardman shamans while on a slayer assignment."));
                 return false;
             }

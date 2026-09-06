@@ -1,5 +1,6 @@
 package com.zenyte.game.content.universalshop
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.api.service.vote.totalVoteCredits
 import com.near_reality.game.content.UniversalShop
 import com.near_reality.game.content.universalshop.UniversalShopTable
@@ -157,7 +158,7 @@ class UniversalShopInterface : Interface(), Plugin {
 
     private fun appendCategoryCurrency(player: Player, categoryId: Int): String {
         return when(categoryId) {
-            8 -> " (You have ${Colour.RED.wrap(player.slayer.slayerPoints)})"
+            8 -> " (You have ${Colour.RED.wrap(player.slayer().slayerPoints)})"
             9 -> " (You have ${Colour.RED.wrap(player.bountyHunterPoints)})"
             12 -> " (You have ${Colour.RED.wrap(player.loyaltyManager.loyaltyPoints)})"
             13 -> " (You have ${Colour.RED.wrap(player.totalVoteCredits)})"

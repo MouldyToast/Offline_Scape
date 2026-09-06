@@ -1,5 +1,6 @@
 package com.zenyte.game.content.larranskey;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.content.slayer.SlayerMaster;
@@ -78,8 +79,8 @@ public class LarransKeyDropProcessor extends DropProcessor {
     @Override
     public void onDeath(NPC npc, Player killer) {
         if(WildernessArea.isWithinWilderness(killer)
-                && killer.getSlayer().isCurrentAssignment(npc)
-                && killer.getSlayer().getMaster() == SlayerMaster.KRYSTILIA) {
+                && SlayerKeys.slayer(killer).isCurrentAssignment(npc)
+                && SlayerKeys.slayer(killer).getMaster() == SlayerMaster.KRYSTILIA) {
             var boost = 115F;
 
             var shouldDrop = shouldDrop(npc.getCombatLevel(), boost);

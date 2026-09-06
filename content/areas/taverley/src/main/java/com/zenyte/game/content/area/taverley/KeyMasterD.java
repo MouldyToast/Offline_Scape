@@ -1,5 +1,6 @@
 package com.zenyte.game.content.area.taverley;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.boss.cerberus.area.CerberusLairInstance;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -28,7 +29,7 @@ public final class KeyMasterD extends Dialogue {
 
 	@Override
 	public void buildDialogue() {
-		var task = player.getSlayer().getAssignment();
+		var task = SlayerKeys.slayer(player).getAssignment();
 		if (Objects.isNull(task) || Objects.isNull(task.getTask())) {
 			plain("You can only create an instance when you have a hellhound or Cerberus task.");
 			return;

@@ -699,7 +699,6 @@ public final class LoginManager {
         player.getCombatDefinitions().setSpellbook(parser.getCombatDefinitions().getSpellbook(), false);
         player.getInventory().setInventory(parser.getInventory());
         player.getEquipment().setEquipment(parser.getEquipment());
-        player.getSlayer().initialize(player, parser);
         player.getAchievementDiaries().initialize(player, parser);
         player.getVariables().set(parser.getVariables());
         player.getPrayerManager().setPrayer(parser.getPrayerManager());

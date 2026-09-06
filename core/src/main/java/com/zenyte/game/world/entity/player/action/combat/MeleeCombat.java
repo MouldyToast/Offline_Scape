@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -98,7 +99,7 @@ public class MeleeCombat extends PlayerCombat {
             result *= (amuletId == 4081 || amuletId == 12017) ? (7.0F / 6.0F) : 1.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         result *= determineSlayerHelmetDamageBoost(hasTask, HitType.MELEE, player, target);
         result = Math.floor(result);
 
@@ -216,7 +217,7 @@ public class MeleeCombat extends PlayerCombat {
             result *= (amuletId == 4081 || amuletId == 12017) ? (7.0F / 6.0F) : 1.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MELEE, player, target);
         result = Math.floor(result);
 

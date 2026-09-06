@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.item.Item;
@@ -28,10 +29,10 @@ public class SlayerRingItem extends ItemPlugin {
     public void handle() {
         bind("Rub", this::teleport);
         bind("Teleport", this::teleport);
-        bind("Check", (player, item, slotId) -> player.getSlayer().sendTaskInformation());
+        bind("Check", (player, item, slotId) -> SlayerKeys.slayer(player).sendTaskInformation());
         bind("Partner", (player, item, slotId) -> {
             player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 68);
-            player.getSlayer().refreshPartnerInterface();
+            SlayerKeys.slayer(player).refreshPartnerInterface();
         });
         bind("Log", (player, item, slotId) -> player.getNotificationSettings().sendKillLog(NotificationSettings.SLAYER_NPC_NAMES, true));
     }

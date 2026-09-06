@@ -7,6 +7,7 @@ import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.content.slayer.SlayerMaster;
 import com.near_reality.game.content.slayer.SlayerTask;
 import com.near_reality.game.world.PlayerEvent.SlayerTaskCompleted;
+import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -27,6 +28,7 @@ import com.zenyte.game.world.region.RegionArea;
 import com.zenyte.game.world.region.area.Keldagrim;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.utils.StaticInitializer;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
@@ -96,11 +98,33 @@ public class Slayer {
 
     @Listener(type = ListenerType.LOGOUT)
     private static void onLogout(final Player player) {
-        final Slayer slayer = player.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(player);
         if (slayer.partner != null) {
-            slayer.partner.getSlayer().setPartner(null);
+            SlayerKeys.slayer(slayer.partner).setPartner(null);
             slayer.partner.sendMessage("Your Slayer partner has logged out.");
         }
+    }
+
+    @Subscribe
+    public static void onInit(final InitializationEvent event) {
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = SlayerKeys.rawSlayerAttr(player) != null;
+        final Slayer slayer = SlayerKeys.slayer(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the slayer state under the
+        // top-level "slayer" JSON key on the parser player. The copy below
+        // migrates it into the attr (running the same copy the legacy
+        // setFields initialize always ran); the next save persists it under
+        // attrPersistence["slayer"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final Slayer savedSlayer = savedPlayer.getSlayer();
+        if (savedSlayer == null) {
+            return;
+        }
+        slayer.copyFrom(savedSlayer);
     }
 
     void addSlayerPoints(int amount) {
@@ -485,17 +509,24 @@ public class Slayer {
         return new com.near_reality.game.content.slayer.Assignment(player, this, com.near_reality.game.content.slayer.RegularTask.TZKAL_ZUK, com.near_reality.game.content.slayer.RegularTask.TZKAL_ZUK.getEnumName(), amount, amount, master);
     }
 
-    public void initialize(final Player player, final Player parser) {
-        this.player = player;
-        bannedTasks = parser.getSlayer().bannedTasks;
-        master = parser.getSlayer().master;
-        if (parser.getSlayer().assignment != null) {
+    /**
+     * Copies the persisted state of another slayer into this one. Used by the
+     * legacy load path above and by SlayerKeys' attr rehydration. Mirrors the
+     * legacy setFields initialize exactly: the banned-task map is adopted by
+     * reference, assignments are rebuilt and re-parented, and
+     * lastAssignmentName is deliberately NOT copied (the legacy load path
+     * never copied it either — do not "fix" silently).
+     */
+    public void copyFrom(final Slayer other) {
+        bannedTasks = other.bannedTasks;
+        master = other.master;
+        if (other.assignment != null) {
             assignment = new com.near_reality.game.content.slayer.Assignment();
-            assignment.initialize(player, parser.getSlayer().assignment);
+            assignment.initialize(player, other.assignment);
         }
-        if (parser.getSlayer().storedAssignment != null) {
+        if (other.storedAssignment != null) {
             storedAssignment = new com.near_reality.game.content.slayer.Assignment();
-            storedAssignment.initialize(player, parser.getSlayer().storedAssignment);
+            storedAssignment.initialize(player, other.storedAssignment);
         }
     }
 

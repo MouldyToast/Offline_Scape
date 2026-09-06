@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.map;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.kebos.konar.npc.Drake;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -24,7 +25,7 @@ public class DrakeTaskOnlyArea extends KaruulmSlayerDungeon implements EntityAtt
     @Override
     public boolean attack(Player player, Entity entity, PlayerCombat combat) {
         if (entity instanceof Drake) {
-            final Assignment assignment = player.getSlayer().getAssignment();
+            final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
             if (assignment == null || assignment.getTask() != RegularTask.DRAKES) {
                 player.getDialogueManager().start(new Dialogue(player, SlayerMaster.KONAR_QUO_MATEN.getNpcId()) {
                     @Override

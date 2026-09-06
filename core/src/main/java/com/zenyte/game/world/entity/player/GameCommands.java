@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
@@ -980,14 +981,14 @@ public final class GameCommands {
         });
 
         new Command(PlayerPrivilege.DEVELOPER, "completetask", "Completes a slayer task.", (p, args) -> {
-            Assignment assignment = p.getSlayer().getAssignment();
+            Assignment assignment = SlayerKeys.slayer(p).getAssignment();
             if (assignment == null) {
                 p.sendMessage("No assignment to complete.");
                 return;
             }
 
             assignment.setAmount(0);
-            p.getSlayer().finishAssignment(null);
+            SlayerKeys.slayer(p).finishAssignment(null);
         });
 
 
@@ -1410,7 +1411,7 @@ public final class GameCommands {
         });
         new Command(PlayerPrivilege.DEVELOPER, "slayerpoints", "Sets your slayer points to the defined value.", (p,
                                                                                                                  args) -> {
-            p.getSlayer().setSlayerPoints(parseInt(args[0]), true);
+            SlayerKeys.slayer(p).setSlayerPoints(parseInt(args[0]), true);
         });
         new Command(PlayerPrivilege.DEVELOPER, "loyaltypoints", "Sets your loyalty points to the defined value.", (p,
                                                                                                                    args) -> {
@@ -2492,7 +2493,7 @@ public final class GameCommands {
             final String name = StringUtilities.compile(args, 1, args.length, ' ');
             World.getPlayer(name).ifPresent(a -> {
                 a.addAttribute("slayer_points", a.getNumericAttribute("slayer_points").intValue() + points);
-                a.getSlayer().refreshSlayerPoints();
+                SlayerKeys.slayer(a).refreshSlayerPoints();
                 p.sendMessage("Added slayer points to user " + name + "; Amount: " + points);
             });
         });

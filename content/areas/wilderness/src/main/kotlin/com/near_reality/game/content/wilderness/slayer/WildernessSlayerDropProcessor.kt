@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.slayer
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.slayer.Assignment
 import com.near_reality.game.content.slayer.BossTask
 import com.near_reality.game.content.slayer.RegularTask
@@ -67,7 +68,7 @@ class WildernessSlayerDropProcessor : DropProcessor() {
     override fun onDeath(npc: NPC, killer: Player) {
         if (!WildernessArea.isWithinWilderness(npc.x, npc.y))
             return
-        val slayer = killer.slayer
+        val slayer = killer.slayer()
         val wildernessAssignment = slayer.assignment
             ?.takeIf { it.master == SlayerMaster.KRYSTILIA && it.isValid(killer, npc) }
             ?: return

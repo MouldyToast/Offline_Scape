@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.slayer.dialogue;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.RespawnPoint;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -32,7 +33,7 @@ public final class KrystiliaD extends Dialogue {
         npc("I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale.");
         options(TITLE, "Look at rewards.", "Look at shop.", "Cancel.").onOptionOne(() -> {
                     finish();
-                    player.getSlayer().openInterface();
+                    SlayerKeys.slayer(player).openInterface();
                 }).onOptionTwo(() -> player.openShop("Slayer Equipment"))
                 .onOptionThree(this::finish);
         player(30, "Let's talk about the difficulty of my assignments.");
@@ -80,7 +81,7 @@ public final class KrystiliaD extends Dialogue {
                     || player.getInventory().deleteItem(995, 150_000).isFailure()) {
                 player.sendMessage("You do not have the required funds to do that.");
             } else {
-                player.getSlayer().removeTask();
+                SlayerKeys.slayer(player).removeTask();
             }
         });
     }

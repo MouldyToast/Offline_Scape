@@ -1,5 +1,6 @@
 package com.near_reality.game.content.commands
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.slayer.*
 import com.near_reality.game.model.ui.credit_store.CreditStoreModel
 import com.near_reality.game.model.ui.credit_store.coinbaseEnabled
@@ -108,10 +109,10 @@ object DeveloperCommands {
                     }
                     val task: SlayerTask = tasks[slotId]
                     player.sendInputInt("Enter kill count requirement:") { amount ->
-                        val assignment = Assignment(player, player.slayer, task, task.enumName, amount, amount, SlayerMaster.SUMONA)
-                        p.slayer.assignment = assignment
-                        p.slayer.master = SlayerMaster.SUMONA
-                        p.dialogueManager.start(object : Dialogue(p, p.slayer.master.npcId) {
+                        val assignment = Assignment(player, player.slayer(), task, task.enumName, amount, amount, SlayerMaster.SUMONA)
+                        p.slayer().assignment = assignment
+                        p.slayer().master = SlayerMaster.SUMONA
+                        p.dialogueManager.start(object : Dialogue(p, p.slayer().master.npcId) {
                             override fun buildDialogue() {
                                 npc("Your new task is to kill " + assignment.amount + " " + assignment.task.toString() + ".")
                             }
@@ -137,9 +138,9 @@ object DeveloperCommands {
 
                     val task: SlayerTask = tasks[slotId]
                     player.sendInputInt("Enter kill count requirement:") { amount ->
-                        val assignment = Assignment(player, player.slayer, task, task.enumName, amount, amount, player.slayer.master)
-                        p.slayer.assignment = assignment
-                        p.dialogueManager.start(object : Dialogue(p, p.slayer.master.npcId) {
+                        val assignment = Assignment(player, player.slayer(), task, task.enumName, amount, amount, player.slayer().master)
+                        p.slayer().assignment = assignment
+                        p.dialogueManager.start(object : Dialogue(p, p.slayer().master.npcId) {
                             override fun buildDialogue() {
                                 npc("Your new task is to kill " + assignment.amount + " " + assignment.task.toString() + ".")
                             }

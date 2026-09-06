@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.cerberus.area;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.SlayerMaster;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Entity;
@@ -42,7 +43,7 @@ public class StaticCerberusLair extends PolygonRegionArea implements AbstractCer
         if (entity instanceof NPC) {
             final String name = ((NPC) entity).getDefinitions().getName();
             if (name.equals("Cerberus")) {
-                if (!player.getSlayer().isCurrentAssignment(entity) || player.getSlayer().getMaster() == SlayerMaster.KRYSTILIA) {
+                if (!SlayerKeys.slayer(player).isCurrentAssignment(entity) || SlayerKeys.slayer(player).getMaster() == SlayerMaster.KRYSTILIA) {
                     player.sendMessage("You can only kill Cerberus while you're on a slayer task.");
                     return false;
                 }

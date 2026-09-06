@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.zulrah;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.boss.zulrah.combat.*;
@@ -301,13 +302,13 @@ public final class ZulrahNPC extends NPC {
 					long diff = System.currentTimeMillis() - player.getBossTimer().getCurrentTracker();
 					player.getBossTimer().inform("Zulrah", diff);
 					long seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
-					if (seconds < 80 && !player.getSlayer().isCurrentAssignment(ZulrahNPC.this)) {
+					if (seconds < 80 && !SlayerKeys.slayer(player).isCurrentAssignment(ZulrahNPC.this)) {
 						player.getCombatAchievements().complete(CAType.ZULRAH_SPEED_TRIALIST);
 					}
-					if (seconds < 60 && !player.getSlayer().isCurrentAssignment(ZulrahNPC.this)) {
+					if (seconds < 60 && !SlayerKeys.slayer(player).isCurrentAssignment(ZulrahNPC.this)) {
 						player.getCombatAchievements().complete(CAType.ZULRAH_SPEED_CHASER);
 					}
-					if (seconds < 54 && !player.getSlayer().isCurrentAssignment(ZulrahNPC.this)) {
+					if (seconds < 54 && !SlayerKeys.slayer(player).isCurrentAssignment(ZulrahNPC.this)) {
 						player.getCombatAchievements().complete(CAType.ZULRAH_SPEED_RUNNER);
 					}
 					reset();

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.objects
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.araxxor.cave_hunt.AraxyteCaveHunt
 import com.near_reality.game.content.slayer.RegularTask
 import com.zenyte.game.world.entity.Location
@@ -35,7 +36,7 @@ open class WebTunnel : ObjectAction {
         }
 
     private fun isPlayerOnAraxyteTask(player: Player): Boolean =
-        player.slayer.assignment?.task == RegularTask.ARAXYTES
+        player.slayer().assignment?.task == RegularTask.ARAXYTES
 
     private fun isPlayerEnteringSecretTunnel(player: Player): Boolean =
         player.location.x == 3682 &&

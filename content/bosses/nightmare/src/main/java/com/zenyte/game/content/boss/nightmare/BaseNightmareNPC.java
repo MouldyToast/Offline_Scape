@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.nightmare;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.boss.nightmare.area.NightmareBossArea;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
@@ -1156,7 +1157,7 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 				player.getNotificationSettings().increaseKill(name);
 				player.getNotificationSettings().sendBossKillCountNotification(name);
 				player.getBossTimer().inform(name, killTime);
-				player.getSlayer().checkAssignment(this);
+				SlayerKeys.slayer(player).checkAssignment(this);
 
 				if (name.equalsIgnoreCase("the nightmare")) {
 					player.getCombatAchievements().checkKcTask(name, 1, CAType.NIGHTMARE_ADEPT);

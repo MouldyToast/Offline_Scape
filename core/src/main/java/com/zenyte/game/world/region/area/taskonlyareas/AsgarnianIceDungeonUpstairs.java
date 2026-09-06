@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.taskonlyareas;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -27,7 +28,7 @@ public class AsgarnianIceDungeonUpstairs extends AsgarnianIceDungeon implements 
     @Override
     public boolean attack(Player player, Entity entity, PlayerCombat combat) {
         if (entity instanceof NPC) {
-            if (!player.getSlayer().isCurrentAssignment(entity)) {
+            if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                 if (((NPC) entity).getDefinitions().getName().equalsIgnoreCase("Skeletal Wyvern")) {
                     player.getDialogueManager().start(new Dialogue(player, 6799) {
                         @Override

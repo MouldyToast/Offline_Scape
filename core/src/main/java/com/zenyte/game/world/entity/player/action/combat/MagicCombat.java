@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
@@ -184,7 +185,7 @@ public class MagicCombat extends PlayerCombat {
             result *= amuletId == 12017 ? 1.15F : 1.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MAGIC, player, target);
         result += determineBountyHunterAccBoost(player, target);
         result = Math.floor(result);
@@ -378,7 +379,7 @@ public class MagicCombat extends PlayerCombat {
             situationalModifier += amuletId == 12017 ? 0.15F : 0.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         situationalModifier *= determineSlayerHelmetDamageBoost(hasTask, HitType.MAGIC, player, target);
 
         if (CombatUtilities.applyForinthrySurge(player, target)) {

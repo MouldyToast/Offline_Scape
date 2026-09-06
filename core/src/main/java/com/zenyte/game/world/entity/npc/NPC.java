@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.slayer.Assignment;
@@ -1326,7 +1327,7 @@ public class NPC extends AbstractEntity {
             combat.removeTarget();
             setAnimation(null);
             if (source instanceof Player player) {
-                player.getSlayer().checkAssignment(this);
+                SlayerKeys.slayer(player).checkAssignment(this);
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
                 if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
@@ -1564,7 +1565,7 @@ public class NPC extends AbstractEntity {
 
         if(!SlayerHelper.shouldSpawnSuperior(player, inferior)) return;
 
-        final Slayer slayer = player.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(player);
         if (slayer.getMaster() == SlayerMaster.KONAR_QUO_MATEN) {
             final Assignment assignment = slayer.getAssignment();
             final Class<? extends RegionArea> area = assignment.getArea();

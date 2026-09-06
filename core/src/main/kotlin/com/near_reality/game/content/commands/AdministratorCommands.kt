@@ -1,5 +1,6 @@
 package com.near_reality.game.content.commands
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.model.item.getItemValue
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop
 import com.near_reality.game.world.entity.player.flaggedAsBot
@@ -560,7 +561,7 @@ object AdministratorCommands {
 
         Command(PlayerPrivilege.ADMINISTRATOR, "resettask", "Reset a user's slayer task. Usage: ::resettask player name") { _: Player?, args: Array<String?> ->
             val player: Optional<Player> = World.getPlayer(StringUtilities.compile(args, 0, args.size, ' '))
-            player.ifPresent { a: Player -> a.slayer.removeTask() }
+            player.ifPresent { a: Player -> a.slayer().removeTask() }
         }
         Command(PlayerPrivilege.ADMINISTRATOR, "cs2") { p: Player, args: Array<String> -> p.packetDispatcher.sendClientScript(args[0].toInt()) }
         Command(PlayerPrivilege.ADMINISTRATOR, "phantom") { p: Player?, _: Array<String?>? -> PhantomInstance.start(p) }

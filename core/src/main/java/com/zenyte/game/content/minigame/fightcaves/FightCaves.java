@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.fightcaves;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
@@ -73,7 +74,7 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
     private FightCaves(final AllocatedArea allocatedArea, final Player player) {
         super(allocatedArea, 296, 632);
         this.player = player;
-        final Assignment task = player.getSlayer().getAssignment();
+        final Assignment task = SlayerKeys.slayer(player).getAssignment();
         this.isOnJadAssignment = task != null && task.getTask() == RegularTask.TZTOK_JAD;
     }
 
@@ -359,11 +360,11 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         } else {
             player.getAttributes().remove("Fight caves progress");
             player.getAttributes().remove("Fight caves duration");
-            final Assignment task = player.getSlayer().getAssignment();
+            final Assignment task = SlayerKeys.slayer(player).getAssignment();
             if (task == null || task.getTask() != RegularTask.TZTOK_JAD) {
                 return;
             }
-            player.getSlayer().removeTask();
+            SlayerKeys.slayer(player).removeTask();
         }
     }
 

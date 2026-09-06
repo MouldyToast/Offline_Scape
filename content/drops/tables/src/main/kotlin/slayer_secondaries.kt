@@ -1,5 +1,6 @@
 package com.zenyte.game.content
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.game.content.slayer.RegularTask
 import com.near_reality.game.content.slayer.BossTask
@@ -38,7 +39,7 @@ class SlayerSecondariesDroptable : NPCDropTableScript() {
 
         onDeath {
             rollStaticTableAndDrop(killer, Main)
-            if (killer.slayer.isCurrentAssignment(npc)) {
+            if (killer.slayer().isCurrentAssignment(npc)) {
                 if (rollStaticTableAndDrop(killer, Tertiary).isNotEmpty())
                     killer.sendMessage(Colour.RS_PURPLE.wrap("A mysterious casket has materialised on the ground."))
             }

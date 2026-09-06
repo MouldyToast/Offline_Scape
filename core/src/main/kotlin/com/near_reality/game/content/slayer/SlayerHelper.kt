@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary
@@ -31,7 +32,7 @@ object SlayerHelper {
         task: RegularTask,
         master: SlayerMaster
     ): Assignment {
-        val slayer = player.slayer
+        val slayer = player.slayer()
         val taskSet: Task = task.getCertainTaskSet(master) ?: task.taskSet.random()
         val amount: Int = player.getAssigmentAmount(task, taskSet)
         val areas: MutableSet<Class<out RegionArea?>> = taskSet.areas
@@ -71,7 +72,7 @@ object SlayerHelper {
 
     private infix fun BossTask.createAssignmentFor(player: Player)= Assignment(
         player,
-        player.slayer,
+        player.slayer(),
         this,
         this.enumName,
         0,
@@ -79,8 +80,8 @@ object SlayerHelper {
         SlayerMaster.DURADEL
     )
     private infix fun Assignment.withMaster(master: SlayerMaster) = this.apply { this.master = master }
-    private infix fun Player.banned(task: RegularTask) = slayer.bannedTasks.containsValue(task)
-    private infix fun Player.underCombatFor(task: RegularTask): Boolean = slayer.master != SlayerMaster.KRYSTILIA && slayer.isCheckingCombat && getSkills().getCombatLevel() < task.combatRequirement
+    private infix fun Player.banned(task: RegularTask) = slayer().bannedTasks.containsValue(task)
+    private infix fun Player.underCombatFor(task: RegularTask): Boolean = slayer().master != SlayerMaster.KRYSTILIA && slayer().isCheckingCombat && getSkills().getCombatLevel() < task.combatRequirement
     private infix fun Player.underSlayerFor(task: RegularTask): Boolean = getSkills().getLevelForXp(SkillConstants.SLAYER) < task.slayerRequirement
 
     private fun Player.getPossibleBossAssignments(master: SlayerMaster, lastAssignment: SlayerTask?): List<BossTask> = buildList {
@@ -122,7 +123,7 @@ object SlayerHelper {
 
         if (lastAssignment != null && SkillcapePerk.SLAYER.isEffective(this) && Utils.random(9) == 0) {
             if (lastAssignment is BossTask) {
-                return Assignment(this, this.slayer, lastAssignment, lastAssignment.enumName, 0, 0, master)
+                return Assignment(this, this.slayer(), lastAssignment, lastAssignment.enumName, 0, 0, master)
             }
             val regularTask: RegularTask = lastAssignment as RegularTask
             if (!(this banned regularTask)) {
@@ -192,8 +193,8 @@ object SlayerHelper {
     @JvmStatic fun shouldSpawnSuperior(player: Player, npc: NPC): Boolean {
         /* Pre-emptive checks before we math */
         if (player.hasActiveSuperior) return false
-        if (!player.slayer.isBiggerAndBadder) return false
-        if (!player.slayer.isCurrentAssignment(npc)) return false
+        if (!player.slayer().isBiggerAndBadder) return false
+        if (!player.slayer().isCurrentAssignment(npc)) return false
 
         var worldRate = 100
         if(player.overrideSuperiorRate != 0) worldRate = player.overrideSuperiorRate

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonitem;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
@@ -48,7 +49,7 @@ public class SlayerHelmItemCreation implements ItemOnItemAction {
 			return;
 		}
 
-		if (!player.getSlayer().isUnlocked("Malevolent masquerade")) {
+		if (!SlayerKeys.slayer(player).isUnlocked("Malevolent masquerade")) {
 			player.sendMessage("You must unlock the slayer reward Malevolent masquerade in order to assemble a slayer helmet");
 			return;
 		}

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.grotesqueguardians.plugins;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.near_reality.game.content.slayer.Assignment;
@@ -46,7 +47,7 @@ public class SlayerTowerRoofEntranceObject implements ObjectAction {
             player.getInventory().deleteItem(BRITTLE_KEY);
             player.getDialogueManager().start(new ItemChat(player, BRITTLE_KEY, "You use the key and it is absorbed by the gateway as<br><br> it activates..."));
         } else if (option.equals("Go-through")) {
-            final Assignment assignment = player.getSlayer().getAssignment();
+            final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
             if (assignment == null || (!assignment.getTask().equals(RegularTask.GARGOYLES) && !assignment.getTask().equals(BossTask.GROTESQUE_GUARDIANS))) {
                 player.getDialogueManager().start(new PlainChat(player, "You need a Gargoyle slayer task or Grotesque Guardians boss task to enter the roof."));
                 return;

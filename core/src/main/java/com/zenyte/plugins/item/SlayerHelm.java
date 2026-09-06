@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -97,11 +98,11 @@ public class SlayerHelm extends ItemPlugin {
 				}
 			}
 		});
-		bind("Check", (player, item, slotId) -> player.getSlayer().sendTaskInformation());
+		bind("Check", (player, item, slotId) -> SlayerKeys.slayer(player).sendTaskInformation());
 		bind("Log", (player, item, slotId) -> player.getNotificationSettings().sendKillLog(NotificationSettings.SLAYER_NPC_NAMES, true));
 		bind("Partner", (player, item, slotId) -> {
 			player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 68);
-			player.getSlayer().refreshPartnerInterface();
+			SlayerKeys.slayer(player).refreshPartnerInterface();
 		});
 	}
 

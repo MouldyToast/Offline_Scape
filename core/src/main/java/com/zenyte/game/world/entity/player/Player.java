@@ -595,7 +595,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private BankPin bankPin = new BankPin(this);
     private transient AtomicBoolean forceReloadMap = new AtomicBoolean(false);
     private transient int viewDistance = 15;
-    private Slayer slayer = new Slayer(this);
+    /**
+     * @deprecated Legacy persistence slot for the slayer state, superseded by
+     * attrPersistence["slayer"] (see SlayerKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "slayer" key entirely. Delete field and getter with the save-rotation
+     * phase.
+     */
+    @Deprecated
+    private Slayer slayer;
     /**
      * @deprecated Legacy persistence slot for the hunter, superseded by
      * attrPersistence["hunter"] (see HunterKeys). Kept non-transient so
@@ -5159,12 +5168,14 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return viewDistance;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Slayer.onInit may call
+     * this, and only on the parser player. Live access goes through
+     * SlayerKeys.slayer. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public Slayer getSlayer() {
         return slayer;
-    }
-
-    public void setSlayer(Slayer slayer) {
-        this.slayer = slayer;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.araxxor.araxytes.Araxyte
 import com.near_reality.game.content.araxxor.araxytes.AraxytePattern
 import com.near_reality.game.content.araxxor.attacks.AcidPool
@@ -90,7 +91,7 @@ data class AraxxorInstance(
     fun spawnAraxxorAndEggs() {
         player ?: return
         if (player.mapInstance != this@AraxxorInstance) return
-        val assignment = player.slayer.assignment
+        val assignment = player.slayer().assignment
         if(!player.isDeveloper && !WORLD_PROFILE.isBeta()) {
             if (assignment == null) {
                 player.dialogue { plain("You need to be on a task to fight this boss. He will no longer respawn.") }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -42,7 +43,7 @@ public class DagannothKingsSlayerOnlyLair extends WaterbirthDungeon implements R
             if (npc.getName(player).equalsIgnoreCase("Spinolyp")) {
                 return true;
             }
-            if (!player.getSlayer().isCurrentAssignment(entity)) {
+            if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                 player.getDialogueManager().start(new PlainChat(player, "You can only kill these dagannoths while on a slayer assignment."));
                 return false;
             }

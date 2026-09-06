@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -33,7 +34,7 @@ public class DesertLizard extends NPC implements Spawnable {
 		if (getHitpoints() > 0) {
 			return;
 		}
-		final boolean unlocked = source.getSlayer().isUnlocked("Reptile freezer") && source.getInventory().containsItem(ItemId.ICE_COOLER);
+		final boolean unlocked = SlayerKeys.slayer(source).isUnlocked("Reptile freezer") && source.getInventory().containsItem(ItemId.ICE_COOLER);
 		if (unlocked) {
 			setGraphics(GFX);
 			source.setAnimation(ANIM);

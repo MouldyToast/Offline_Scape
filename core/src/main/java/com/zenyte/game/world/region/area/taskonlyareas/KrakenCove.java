@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.taskonlyareas;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -40,7 +41,7 @@ public class KrakenCove extends PolygonRegionArea implements EntityAttackPlugin 
         if (entity instanceof NPC) {
             final int id = ((NPC) entity).getId();
             if (id == 492 || id == 493) {
-                final Assignment assignment = player.getSlayer().getAssignment();
+                final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
                 if (assignment == null || assignment.getTask() != RegularTask.CAVE_KRAKEN) {
                     player.getDialogueManager().start(new Dialogue(player, 7412) {
                         @Override
@@ -51,7 +52,7 @@ public class KrakenCove extends PolygonRegionArea implements EntityAttackPlugin 
                     return false;
                 }
             } else if (id == 494 || id == 496) {
-                final Assignment assignment = player.getSlayer().getAssignment();
+                final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
                 if (assignment != null && (assignment.getTask() == RegularTask.CAVE_KRAKEN || assignment.getTask() == BossTask.KRAKEN)) {
                     return true;
                 }

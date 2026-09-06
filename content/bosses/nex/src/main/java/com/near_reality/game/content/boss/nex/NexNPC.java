@@ -1,5 +1,6 @@
 package com.near_reality.game.content.boss.nex;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
@@ -1272,7 +1273,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 		forEachPlayerInPrison(player -> {
 			player.sendMessage("The MVP for this fight was: "+getMostDamagePlayer().getName());
 			player.getHpHud().close();
-			player.getSlayer().checkAssignment(this);
+			SlayerKeys.slayer(player).checkAssignment(this);
 		});
 		say("Taste my wrath!");
 		setTransformation(WRATH);

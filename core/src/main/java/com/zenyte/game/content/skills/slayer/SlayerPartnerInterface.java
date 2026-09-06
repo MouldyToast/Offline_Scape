@@ -21,7 +21,7 @@ public class SlayerPartnerInterface implements UserInterface {
         if (componentId != 7) {
             return;
         }
-        final Player partner = player.getSlayer().getPartner();
+        final Player partner = SlayerKeys.slayer(player).getPartner();
         if (partner == null) {
             player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
             player.sendInputName("Who would you like as your partner?", name -> {
@@ -55,12 +55,12 @@ public class SlayerPartnerInterface implements UserInterface {
                             }
                             player.sendMessage(requestingPlayer.getName() + "(" + requestingPlayer.getSkills().getLevelForXp(SkillConstants.SLAYER) + ") is now your Slayer Partner.");
                             requestingPlayer.sendMessage(player.getName() + "(" + player.getSkills().getLevelForXp(SkillConstants.SLAYER) + ") is now your Slayer Partner.");
-                            player.getSlayer().setPartner(requestingPlayer);
-                            requestingPlayer.getSlayer().setPartner(player);
+                            SlayerKeys.slayer(player).setPartner(requestingPlayer);
+                            SlayerKeys.slayer(requestingPlayer).setPartner(player);
                             player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 68);
-                            player.getSlayer().refreshPartnerInterface();
+                            SlayerKeys.slayer(player).refreshPartnerInterface();
                             requestingPlayer.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 68);
-                            requestingPlayer.getSlayer().refreshPartnerInterface();
+                            SlayerKeys.slayer(requestingPlayer).refreshPartnerInterface();
                         }), new DialogueOption("Decline.", () -> {
                             player.sendMessage("Declining offer.");
                             requestingPlayer.getDialogueManager().start(new PlainChat(requestingPlayer, player.getName() + " declined the offer."));
@@ -69,11 +69,11 @@ public class SlayerPartnerInterface implements UserInterface {
                 });
             });
         } else {
-            player.getSlayer().setPartner(null);
-            partner.getSlayer().setPartner(null);
-            player.getSlayer().refreshPartnerInterface();
+            SlayerKeys.slayer(player).setPartner(null);
+            SlayerKeys.slayer(partner).setPartner(null);
+            SlayerKeys.slayer(player).refreshPartnerInterface();
             if (partner.getInterfaceHandler().isVisible(68)) {
-                partner.getSlayer().refreshPartnerInterface();
+                SlayerKeys.slayer(partner).refreshPartnerInterface();
             }
             partner.sendMessage(player.getName() + " is no longer your Slayer Partner.");
         }

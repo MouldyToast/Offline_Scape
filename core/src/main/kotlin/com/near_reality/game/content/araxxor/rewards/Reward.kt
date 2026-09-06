@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.rewards
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.item.CustomItemId
 import com.zenyte.game.content.follower.follower
 import com.zenyte.game.content.follower.setFollower
@@ -40,7 +41,7 @@ class Reward: DropProcessor() {
             items.add(Item(COAGULATED_VENOM, 1))
 
         // Konar -> 1/50 to drop `Brimstone key`
-        val master = player.slayer.master
+        val master = player.slayer().master
         if (master != null) {
             if (master == SlayerMaster.KONAR_QUO_MATEN)
                 if (ThreadLocalRandom.current().nextDouble() < 1/50.0)

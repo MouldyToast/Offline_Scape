@@ -55,7 +55,6 @@ import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
@@ -222,6 +221,7 @@ import org.rsmod.api.attr.AttributeMap;
 import org.rsmod.game.events.PlayerDamageReceivedEvent;
 import org.rsmod.game.events.PlayerLoginEvent;
 import org.rsmod.game.events.PlayerLogoutEvent;
+import org.rsmod.game.events.PlayerProcessEvent;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
@@ -1830,9 +1830,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
             } else if(tickDegradable > 0) {
                 tickDegradable = 0;
             }
-            FarmingKeys.farming(this).processAll();
-            HunterKeys.hunter(this).process();
-            PrayerManagerKeys.prayerManager(this).process();
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerProcessEvent(this));
+            }
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
             if (acidPool != null) {
                 applyHit(new Hit(4, HitType.VENOM));

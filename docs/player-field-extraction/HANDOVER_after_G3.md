@@ -84,9 +84,19 @@ repo-wide core→content (excl. /content/) 1181; PrayerManagerKeys tokens
   HANDOVER_after_G2.md).
 - **G3 CLOSED, not safe** (this document; re-openable only after the
   nightmare-curse reimplementation above).
-- The G-series is complete. Remaining campaign threads: the cheap-cleanup
-  candidates (FarmingKeys.adoptFarming, stale copyFrom javadoc halves,
-  api/PlayerModel.kt), the out-of-scope Player member inventory
+- The G-series is complete. The cheap-cleanup pass LANDED in this session
+  (same branch, commit after this doc): FarmingKeys.adoptFarming deleted
+  (orphaned since rotation), the nine stale "legacy load path above/in
+  onInit" copyFrom javadoc halves rewritten to name only the Keys attr
+  rehydration, and api/PlayerModel.kt's two doubly-dead legacy top-level
+  key mappings (seedVault, gravestone) removed from PlayerData and
+  containerWrapperList (note: :api IS compiled — core → core-model → api —
+  contrary to the rotation handover's "nothing consumes :api"; nothing
+  references those two properties, verified). Historical "mirrors the
+  legacy semantics" provenance notes were deliberately kept — they are
+  still true and explain non-obvious copy behavior.
+- Remaining campaign threads: the out-of-scope Player member inventory
   (HANDOVER_after_rotation.md §6), the E6 follower rider (still
-  unauthorized), and the recorded soft-timer end-state for
-  PlayerProcessEvent.
+  unauthorized — needs Jesse's ruling between the two spawn-timing
+  options), and the recorded soft-timer end-state for PlayerProcessEvent
+  and the nightmare-curse reimplementation (§4 above).

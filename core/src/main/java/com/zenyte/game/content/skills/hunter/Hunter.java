@@ -43,8 +43,8 @@ public class Hunter {
 
     /**
      * Copies the persisted state (built birdhouses) of another hunter into
-     * this one. Used by the legacy load path above and by HunterKeys' attr
-     * rehydration. Mirrors the legacy semantics exactly: each Birdhouse is
+     * this one. Used by HunterKeys' attr rehydration. Mirrors the legacy
+     * semantics exactly: each Birdhouse is
      * re-parented to this hunter's player and the list is adopted by
      * reference.
      */

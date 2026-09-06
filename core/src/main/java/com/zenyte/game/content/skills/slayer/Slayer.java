@@ -495,8 +495,8 @@ public class Slayer {
     }
 
     /**
-     * Copies the persisted state of another slayer into this one. Used by the
-     * legacy load path above and by SlayerKeys' attr rehydration. Mirrors the
+     * Copies the persisted state of another slayer into this one. Used by
+     * SlayerKeys' attr rehydration. Mirrors the
      * legacy setFields initialize exactly: the banned-task map is adopted by
      * reference, assignments are rebuilt and re-parented, and
      * lastAssignmentName is deliberately NOT copied (the legacy load path

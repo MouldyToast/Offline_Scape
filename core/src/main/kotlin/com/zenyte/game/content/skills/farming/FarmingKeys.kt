@@ -48,16 +48,6 @@ fun Player.farming(): Farming {
 }
 
 /**
- * Adopts legacy farming state (the parser player's deserialized field) into
- * [player]'s attr, replacing whatever the accessor constructed. Runs the same
- * copy constructor the legacy setFields wholesale setter-replace always ran.
- * Used only by Farming.onInit's legacy fallback branch.
- */
-fun adoptFarming(player: Player, farming: Farming) {
-    player.attr[FARMING_KEY] = Farming(player, farming)
-}
-
-/**
  * Untyped view of the value stored under [FARMING_KEY]: the raw Map produced
  * by putAllFromPersistence before rehydration, the typed [Farming] after, or
  * null. Exists because AttributeMap.get's unchecked cast makes a typed read

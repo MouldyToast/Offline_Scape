@@ -1,5 +1,6 @@
 package com.near_reality.tools
 
+import com.zenyte.game.content.gravestones.scanGravestone
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.Container
 
@@ -39,7 +40,7 @@ object EcoSearch {
                     count += p.inventory.container.countOf(itemID)
                     count += p.equipment.container.countOf(itemID)
                     count += p.lootingBag.container.countOf(itemID)
-                    count += p.gravestone.container.countOf(itemID)
+                    count += (scanGravestone(p)?.container?.countOf(itemID) ?: 0)
                     count += p.retrievalService.container.countOf(itemID)
                 p to count
             }

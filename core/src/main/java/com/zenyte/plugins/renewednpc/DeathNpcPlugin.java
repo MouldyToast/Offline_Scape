@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -25,7 +26,7 @@ public class DeathNpcPlugin extends NPCPlugin {
     }
     
     private void openCollectionInterface(Player player) {
-        player.getGravestone().removeGravestone();
+        GravestoneKeys.gravestone(player).removeGravestone();
         GameInterface.DEATHS_OFFICE_RETRIEVAL.open(player);
     }
 
@@ -58,7 +59,7 @@ public class DeathNpcPlugin extends NPCPlugin {
                         player(500, "Not just now, thanks.");
                         player(400, "Can I choose a different-looking gravestone?");
                         itemOptions(401,
-                                "Death's coffer: " + NumberFormat.getIntegerInstance().format(player.getGravestone().getCoinsInCoffer()) + " coins",
+                                "Death's coffer: " + NumberFormat.getIntegerInstance().format(GravestoneKeys.gravestone(player).getCoinsInCoffer()) + " coins",
                                 24418,
                                 24524,
                                 "<br><br><br><br>Basic: Free",
@@ -68,7 +69,7 @@ public class DeathNpcPlugin extends NPCPlugin {
                             setKey(420);
                         }).onOptionTwo(() -> {
                             player.getVarManager().sendVarInstant(262, 1);
-                            if (player.getGravestone().getCoinsInCoffer() + player.getInventory().getAmountOf(ItemId.COINS_995) >= 200_000) {
+                            if (GravestoneKeys.gravestone(player).getCoinsInCoffer() + player.getInventory().getAmountOf(ItemId.COINS_995) >= 200_000) {
                                 setKey(420);
                             } else {
                                 setKey(410);
@@ -89,10 +90,10 @@ public class DeathNpcPlugin extends NPCPlugin {
                             final int option = player.getVarManager().getValue(262);
                             player.getVarManager().sendBitInstant(10467, option);
                             int amountToRemove = option == 0 ? 0 : 200_000;
-                            if (amountToRemove > 0 && player.getGravestone().getCoinsInCoffer() > 0) {
-                                final long toRemove = Math.min(amountToRemove, player.getGravestone().getCoinsInCoffer());
+                            if (amountToRemove > 0 && GravestoneKeys.gravestone(player).getCoinsInCoffer() > 0) {
+                                final long toRemove = Math.min(amountToRemove, GravestoneKeys.gravestone(player).getCoinsInCoffer());
                                 amountToRemove -= toRemove;
-                                player.getGravestone().setCoinsInCoffer(player.getGravestone().getCoinsInCoffer() - toRemove);
+                                GravestoneKeys.gravestone(player).setCoinsInCoffer(GravestoneKeys.gravestone(player).getCoinsInCoffer() - toRemove);
                             }
                             if (amountToRemove > 0) {
                                 player.getInventory().deleteItem(new Item(ItemId.COINS_995, amountToRemove));

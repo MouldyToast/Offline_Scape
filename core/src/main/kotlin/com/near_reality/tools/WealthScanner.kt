@@ -1,6 +1,7 @@
 package com.near_reality.tools
 
 import com.zenyte.CacheManager
+import com.zenyte.game.content.gravestones.scanGravestone
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.Container
 import com.zenyte.game.world.entity.player.login.LoginManager
@@ -44,7 +45,7 @@ object WealthScanner {
                 value += p.inventory.container.value()
                 value += p.equipment.container.value()
                 value += p.lootingBag.container.value()
-                value += p.gravestone.container.value()
+                value += (scanGravestone(p)?.container?.value() ?: BigInteger.ZERO)
                 p to value
             }
             .filter { it.second > BigInteger.ZERO }

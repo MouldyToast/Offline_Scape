@@ -59,7 +59,6 @@ import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
@@ -577,16 +576,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
      */
     @Deprecated
     private Slayer slayer;
-    /**
-     * @deprecated Legacy persistence slot for the hunter, superseded by
-     * attrPersistence["hunter"] (see HunterKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "hunter" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Hunter hunter;
 
 
     private transient PlayerInfo playerInfo;
@@ -5089,20 +5078,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Deprecated
     public Slayer getSlayer() {
         return slayer;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Hunter.onInitialization may
-     * call this, and only on the parser player. Live access goes through
-     * HunterKeys.hunter. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Hunter getHunter() {
-        return hunter;
-    }
-
-    public void setHunter(Hunter hunter) {
-        this.hunter = hunter;
     }
 
     public RespawnPoint getRespawnPoint() {

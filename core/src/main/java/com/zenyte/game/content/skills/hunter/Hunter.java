@@ -36,23 +36,9 @@ public class Hunter {
 
     @Subscribe
     public static final void onInitialization(@NotNull final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = HunterKeys.rawHunterAttr(player) != null;
-        final Hunter live = HunterKeys.hunter(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the hunter under the top-level
-        // "hunter" JSON key on the parser player. The copy below migrates it
-        // into the attr; the next save persists it under
-        // attrPersistence["hunter"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final Hunter otherHunter = savedPlayer.getHunter();
-        if (otherHunter == null) {
-            return;
-        }
-        live.copyFrom(otherHunter);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        HunterKeys.hunter(event.getPlayer());
     }
 
     /**

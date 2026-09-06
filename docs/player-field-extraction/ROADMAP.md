@@ -36,8 +36,8 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 18
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1091 (includes the one planned TeleportType structures.* wildcard)
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 15
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1094 (includes the TeleportType structures.* wildcard + the 6 planned T2-d D-3 RaidAccess import lines)
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
@@ -152,7 +152,7 @@ drainSkill overrides ~3504/~3512/~3520.
 |---|---|
 | Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
 | ~~Teleport, ForceTeleport, TeleportType~~ | DONE in T2-c (package move to core) (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
-| Raid, RaidParty | Phase-B flag lift on RegionArea (isRaid…) like ToA (~~Inferno~~ DONE in T2-b: isShiftTeleportationProhibited) |
+| ~~Raid, RaidParty, ClanChannel~~ | DONE in T2-d (RaidAccess accessor; getRaid deleted) (~~Inferno~~ DONE in T2-b) |
 | ClanChannel | ~~ClanManager~~ DONE in T2-a follow-up (ClanLifecycleHooks.kt); ClanChannel stays for the getRaid body — dies in T2-d |
 | RoomReference, ConstructionKeys | ~~Construction~~ DONE in T2-b (currentHouse accessor); Keys stays for DEFER-2 roomPreview (tip-jar logout DONE in T2-a) |
 | ~~CharterLocation, AdventurersLogIcon, AvasDevice~~ | ALL DONE (AvasDevice T2-a; CharterLocation resolver + AdventurersLogIcon deletion T2-b) |
@@ -181,6 +181,20 @@ import in a core-path file; enum→structure decoupling is future design
 work. Follow-up inventory: 19 engine files import the non-moved teleport
 classes (ItemTeleport 6, TeleportCollection 9, SpellbookTeleport 2,
 MinigameGroupFinder 2).
+
+T2-d landed (2026-09-06, 1 commit) — **TRACK 2 CAMPAIGN CLOSED**:
+Player.getRaid → RaidAccess.raid(player) (86 Player-receiver sites; 59
+files by count-gated sed + 6 verbatim; census corrected — 4 getRaid
+definers, only Player's moved; SharedStorageUI left the D-3 list, its
+receiver is raidController). Java subpackages needed the RaidAccess
+import (50 files — the plan's same-package claim held only for the exact
+package); +6 D-3 baseline import lines (the planned 5 + StorageUnitOPlugin,
+whose file already had cox imports but the baseline counts lines).
+Player's 15 remaining content imports are exactly Track 1's eleven field
+types (GodBooks, ItemRetrievalService, RespawnPoint, PrivateStorage,
+PetInsurance, GauntletItemStorage, Duel, TOAPlayerData, LightBox,
+PuzzleBox, Stash) + the four deferral imports (PrayerManagerKeys
+DEFER-1, ConstructionKeys/RoomReference DEFER-2, FarmingKeys DEFER-3).
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 

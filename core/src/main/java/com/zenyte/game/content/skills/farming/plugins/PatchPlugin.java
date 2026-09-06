@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.skills.farming.actions.*;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
@@ -23,7 +24,7 @@ public final class PatchPlugin implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        final FarmingSpot spot = player.getFarming().create(object);
+        final FarmingSpot spot = FarmingKeys.farming(player).create(object);
         final ActionManager manager = player.getActionManager();
         switch (option) {
             case "Guide" -> {

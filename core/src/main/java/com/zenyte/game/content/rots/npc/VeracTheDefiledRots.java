@@ -1,5 +1,6 @@
 package com.zenyte.game.content.rots.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.rots.RotsInstance;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.util.Utils;
@@ -27,7 +28,7 @@ public class VeracTheDefiledRots extends RotsBrother implements CombatScript {
 			target.setGraphics(VERACS_GFX);
 			if (target instanceof final Player player) {
 				type = HitType.DEFAULT;
-				if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+				if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
 					max *= 0.667F;
 				}
 			}
@@ -37,8 +38,8 @@ public class VeracTheDefiledRots extends RotsBrother implements CombatScript {
 			return combatDefinitions.getAttackSpeed();
 		}
 		if (Utils.randomBoolean(11) && target instanceof Player player) {
-			if (player.getPrayerManager().getActivePrayers().size() > 0) {
-				player.getPrayerManager().deactivateActivePrayers();
+			if (PrayerManagerKeys.prayerManager(player).getActivePrayers().size() > 0) {
+				PrayerManagerKeys.prayerManager(player).deactivateActivePrayers();
 				setForceTalk("Where is your god now?");
 			}
 		}

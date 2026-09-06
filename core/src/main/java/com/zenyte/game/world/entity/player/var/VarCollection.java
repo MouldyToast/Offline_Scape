@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.var;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.ItemRetrievalService;
@@ -47,7 +48,7 @@ public enum VarCollection {
     BROADCAST_TREASURE_TRAILS(VAR, 3623, p -> attribute(p, "BROADCAST_TREASURE_TRAILS"), POST_LOGIN),
     SLAYER_STATUES(VAR, 3811, p -> {
         int value = p.getVarManager().getValue(3811);
-        if (p.getSlayer().isUnlocked("Slayer Statues") && value <= 0) {
+        if (SlayerKeys.slayer(p).isUnlocked("Slayer Statues") && value <= 0) {
             value = 1;
             p.getVarManager().sendVar(3811, value);
         }

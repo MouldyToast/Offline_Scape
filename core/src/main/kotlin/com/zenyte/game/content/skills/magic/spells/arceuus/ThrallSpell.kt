@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.google.common.base.CaseFormat
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
@@ -61,11 +62,11 @@ enum class ThrallSpell(
             player.sendMessage("You must have a Book of the Dead in your possession to use this spell.")
             return false
         }
-        if (player.prayerManager.prayerPoints < prayerDrain) {
+        if (player.prayerManager().prayerPoints < prayerDrain) {
             player.sendMessage("You don't have enough Prayer points to cast that spell.")
             return false
         }
-        player.prayerManager.prayerPoints -= prayerDrain
+        player.prayerManager().prayerPoints -= prayerDrain
         player.thrallCooldown = true
         val currentThrall = player.currentThrall
         if (currentThrall != null && !currentThrall.isFinished) {

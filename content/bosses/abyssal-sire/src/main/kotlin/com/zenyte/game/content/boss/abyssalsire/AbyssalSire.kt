@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.abyssalsire
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.boss.abyssalsire.WeakReferenceHelper.exists
 import com.zenyte.game.content.boss.abyssalsire.WeakReferenceHelper.invoke
 import com.zenyte.game.content.boss.abyssalsire.poisonfumes.AbyssalSirePoisonFumes
@@ -87,9 +88,9 @@ internal class AbyssalSire(
         val source = hit.source
         if (source is Player) {
             val type = hit.hitType
-            if (type == HitType.MELEE && !source.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !source.prayerManager.isActive(
+            if (type == HitType.MELEE && !source.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !source.prayerManager().isActive(
                     Prayer.PROTECT_FROM_MISSILES
-                ) || type == HitType.MAGIC && !source.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)
+                ) || type == HitType.MAGIC && !source.prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)
             ) {
                 perfectSire = false
             }

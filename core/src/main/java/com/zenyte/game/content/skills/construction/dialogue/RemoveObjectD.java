@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.construction.constants.RoomType;
 import com.zenyte.game.world.entity.player.Player;
@@ -25,14 +26,14 @@ public final class RemoveObjectD extends Dialogue {
 		options("Remove the " + object.getName() + "?", "Remove it.", "No, keep it.")
 		.onOptionOne(() -> {
 					finish();
-					final RoomReference reference = player.getConstruction().getReference(object);
+					final RoomReference reference = ConstructionKeys.construction(player).getReference(object);
 					if (reference == null)
 						return;
 					if (reference.getRoom() == RoomType.QUEST_HALL_DS || reference.getRoom() == RoomType.SKILL_HALL_DS || reference.getRoom() == RoomType.DUNGEON_STAIRS_ROOM) {
-						player.getConstruction().removeStaircase(reference, object);
+						ConstructionKeys.construction(player).removeStaircase(reference, object);
 						return;
 					}
-					player.getConstruction().removeObject(reference, object);
+					ConstructionKeys.construction(player).removeObject(reference, object);
 				}).onOptionTwo(() -> finish());
 	}
 

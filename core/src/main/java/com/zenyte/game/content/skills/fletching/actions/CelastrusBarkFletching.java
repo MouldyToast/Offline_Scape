@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions;
 import com.zenyte.game.item.Item;
@@ -54,7 +55,7 @@ public class CelastrusBarkFletching extends Action {
             player.getInventory().ifDeleteItem(celastrusBark, () -> {
                 player.getInventory().addItem(battlestaff);
                 player.getSkills().addXp(SkillConstants.FLETCHING, 80);
-                player.getAchievementDiaries().update(KourendDiary.CREATE_BATTLESTAFF, 0x2);
+                AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CREATE_BATTLESTAFF, 0x2);
             });
             cycle++;
             return ticks = 0;

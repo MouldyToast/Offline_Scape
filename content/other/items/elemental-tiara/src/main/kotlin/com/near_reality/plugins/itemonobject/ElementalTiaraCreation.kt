@@ -1,5 +1,6 @@
 package com.near_reality.plugins.itemonobject
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary
 import com.zenyte.game.content.skills.runecrafting.BasicRunecraftingAction
 import com.zenyte.game.content.skills.runecrafting.Runecrafting
@@ -47,7 +48,7 @@ class ElementalTiaraCreation : ItemOnObjectAction {
                 player.lock(2)
                 WorldTasksManager.schedule({
                     if (elementalTiara == ElementalTiara.MIND_TIARA) {
-                        player.achievementDiaries.update(FaladorDiary.MAKE_MIND_TIARA)
+                        player.achievementDiaries().update(FaladorDiary.MAKE_MIND_TIARA)
                     }
                     player.skills.addXp(SkillConstants.RUNECRAFTING, 45.0)
                     player.inventory.addItem(Item(elementalTiara.elementalTiaraItemId))

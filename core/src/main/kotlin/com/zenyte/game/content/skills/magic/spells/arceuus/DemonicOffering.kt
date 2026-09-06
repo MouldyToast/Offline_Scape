@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.content.skills.prayer.actions.Bones
@@ -60,7 +61,7 @@ class DemonicOffering : DefaultSpell {
             prayerRestored += if (bone == Bones.INFERNAL_ASHES) 2 else 1
             if (--count <= 0) break
         }
-        prayerManager.restorePrayerPoints(prayerRestored)
+        prayerManager().restorePrayerPoints(prayerRestored)
     }
 
     private fun Player.cooldown() = WorldTasksManager.schedule({

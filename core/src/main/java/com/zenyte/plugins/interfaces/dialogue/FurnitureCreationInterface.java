@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.model.ui.Interface;
@@ -35,7 +36,7 @@ public class FurnitureCreationInterface extends Interface {
             if (player.getTemporaryAttributes().containsKey("raidsStorageUnit")) {
                 StorageUnit.build(player, slotId - 1);
             } else {
-                player.getConstruction().buildFurniture(slotId - 1);
+                ConstructionKeys.construction(player).buildFurniture(slotId - 1);
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
@@ -166,13 +167,13 @@ public enum FairyRing {
 				} else if (ticks == 4) {
 					if (ring != null) {
 						if (ring.equals(FairyRing.WIZARDS_TOWER)) {
-							player.getAchievementDiaries().update(LumbridgeDiary.TRAVEL_TO_WIZARDS_TOWER);
+							AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.TRAVEL_TO_WIZARDS_TOWER);
 						} else if (ring.equals(FairyRing.MISCELLANIA)) {
-							player.getAchievementDiaries().update(FremennikDiary.TRAVEL_TO_MISCELLANIA);
+							AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.TRAVEL_TO_MISCELLANIA);
 						} else if (ring.equals(FairyRing.MCGRUBBORS_WOOD)) {
-							player.getAchievementDiaries().update(KandarinDiary.TRAVEL_TO_MCGRUBORS_WOODS);
+							AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.TRAVEL_TO_MCGRUBORS_WOODS);
 						} else if (ring.equals(FairyRing.FARMING_GUILD)) {
-							player.getAchievementDiaries().update(KourendDiary.FAIRY_RING_TO_MT_KARUULM);
+							AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.FAIRY_RING_TO_MT_KARUULM);
 						}
 						player.setLocation(new Location(ring.getTile()));
 					} else {

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.model.ui.InterfacePosition;
@@ -16,11 +17,11 @@ import mgi.utilities.StringFormatUtil;
 public class EnchantedGem extends ItemPlugin {
 	@Override
 	public void handle() {
-		bind("Check", (player, item, slotId) -> player.getSlayer().sendTaskInformation());
+		bind("Check", (player, item, slotId) -> SlayerKeys.slayer(player).sendTaskInformation());
 		bind("Log", (player, item, slotId) -> player.getNotificationSettings().sendKillLog(NotificationSettings.SLAYER_NPC_NAMES, true));
 		bind("Partner", (player, item, slotId) -> {
 			player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 68);
-			player.getSlayer().refreshPartnerInterface();
+			SlayerKeys.slayer(player).refreshPartnerInterface();
 		});
 		bind("Activate", (player, item, slotId) -> player.getDialogueManager().start(new ActivateDialogue(player)));
 	}
@@ -33,14 +34,14 @@ public class EnchantedGem extends ItemPlugin {
 
 	public static final class ActivateDialogue extends Dialogue {
 		public ActivateDialogue(final Player player) {
-			super(player, player.getSlayer().getMaster().getNpcId());
+			super(player, SlayerKeys.slayer(player).getMaster().getNpcId());
 		}
 
 		@Override
 		public void buildDialogue() {
 			npc("Hello there " + player.getName() + ", what can I help you with?");
 			options();
-			final Assignment assignment = player.getSlayer().getAssignment();
+			final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
 			player(5, "How am I doing so far?");
 			if (assignment == null) {
 				npc("You're not assigned to kill anything right now. Come find me to get a new assignment.");
@@ -49,11 +50,11 @@ public class EnchantedGem extends ItemPlugin {
 			}
 			options();
 			player(100, "Who are you?");
-			npc("My name's " + StringFormatUtil.formatString(player.getSlayer().getMaster().toString()) + ", I'm your" +
+			npc("My name's " + StringFormatUtil.formatString(SlayerKeys.slayer(player).getMaster().toString()) + ", I'm your" +
                     " Slayer Master.");
 			options();
 			player(200, "Where are you?");
-			npc("You'll find me " + player.getSlayer().getMaster().getLocation() + ".<br>I'l be here when you need a " +
+			npc("You'll find me " + SlayerKeys.slayer(player).getMaster().getLocation() + ".<br>I'l be here when you need a " +
                     "new task.");
 			options();
 			player(300, "Got any tips for me?");

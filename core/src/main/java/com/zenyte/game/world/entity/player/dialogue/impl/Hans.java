@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.dialogue.impl;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -31,7 +32,7 @@ public class Hans extends Dialogue {
 		player(9, "I don't know. I'm lost. Where am I?");
 		npc("You are in Lumbridge Castle.");
 		player(12, "Can you tell me how long I've been here?");
-		npc("Ahh, I see all the newcomers arriving in Lumbridge,<br>fresh-faced and eager for adventure. I remember you...").executeAction(() -> player.getAchievementDiaries().update(LumbridgeDiary.LEARN_YOUR_AGE));
+		npc("Ahh, I see all the newcomers arriving in Lumbridge,<br>fresh-faced and eager for adventure. I remember you...").executeAction(() -> AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.LEARN_YOUR_AGE));
 		npc("You've spent " + days + (days > 1 || days == 0 ? " days" : " day") + ", " + hours + (hours > 1 || hours == 0 ? " hours" : " hour") + ", " + minutes + (minutes > 1 || minutes == 0 ? " minutes" : " minute") + " in the world since you arrived in " + GameConstants.SERVER_NAME + ", " + StringFormatUtil.format(player.getPlayerInformation().getDaysSinceRegistry()) + " days ago.");
 		player(16, "Nothing.");
 	}

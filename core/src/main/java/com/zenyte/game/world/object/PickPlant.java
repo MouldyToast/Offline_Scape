@@ -1,5 +1,6 @@
 package com.zenyte.game.world.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
@@ -65,7 +66,7 @@ public class PickPlant extends Action {
 		player.sendSound(2581);
 		player.getInventory().addItem(entry.getItem());
 		if (entry.equals(Pickables.FLAX)) {
-			player.getAchievementDiaries().update(KandarinDiary.COLLECT_FLAX);
+			AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.COLLECT_FLAX);
 		}
 		WorldTasksManager.schedule(() -> World.spawnObject(object), 25);
 	}

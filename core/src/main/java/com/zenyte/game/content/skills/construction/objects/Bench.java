@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionController;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
@@ -44,7 +45,7 @@ public final class Bench implements ObjectInteraction {
             if (!(player.getControllerManager().getController() instanceof ConstructionController)) {
                 return;
             }
-            handleObjectAction(player, player.getConstruction(), player.getConstruction().getReference(object), object, optionId, option);
+            handleObjectAction(player, ConstructionKeys.construction(player), ConstructionKeys.construction(player).getReference(object), object, optionId, option);
         }));
     }
 

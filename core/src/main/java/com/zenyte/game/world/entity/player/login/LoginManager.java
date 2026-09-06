@@ -693,17 +693,13 @@ public final class LoginManager {
         player.setPersonalBank(new SinglePlayerBank(player, parser.getPersonalBank()));
         player.forceLocation(new Location(location));
         player.setUUID();
-        player.setFarming(parser.getFarming());
         player.getToxins().initialize(parser.getToxins());
         player.setPetId(parser.getPetId());
         player.getSkills().setSkills(parser.getSkills());
         player.getCombatDefinitions().setSpellbook(parser.getCombatDefinitions().getSpellbook(), false);
         player.getInventory().setInventory(parser.getInventory());
         player.getEquipment().setEquipment(parser.getEquipment());
-        player.getSlayer().initialize(player, parser);
-        player.getAchievementDiaries().initialize(player, parser);
         player.getVariables().set(parser.getVariables());
-        player.getPrayerManager().setPrayer(parser.getPrayerManager());
         player.init(parser);
         player.getInterfaceHandler().initialize(parser.getInterfaceHandler());
         player.getBossTimer().setBossTimers(parser.getBossTimer());

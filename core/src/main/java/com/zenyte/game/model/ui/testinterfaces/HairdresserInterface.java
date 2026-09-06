@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.model.ui.Interface;
@@ -61,7 +62,7 @@ public class HairdresserInterface extends Interface {
             player.getAppearance().modifyAppearance((byte) (haircut ? 0 : 1), (short) style);
             player.getAppearance().modifyColour((byte) 0, (byte) colour);
             player.getInventory().deleteItem(HairdresserD.PRICE);
-            player.getAchievementDiaries().update(FaladorDiary.GET_A_HAIRCUT);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.GET_A_HAIRCUT);
             player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
             if (npcId == -1) {
                 return;

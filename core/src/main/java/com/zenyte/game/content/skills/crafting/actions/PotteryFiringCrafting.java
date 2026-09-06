@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.PotteryFiringData;
 import com.zenyte.game.item.Item;
@@ -55,7 +56,7 @@ public class PotteryFiringCrafting extends Action {
         } else if (ticks == 5) {
             player.getInventory().deleteItemsIfContains(new Item[]{data.getMaterial()}, () -> {
                 if (data.equals(PotteryFiringData.BOWL)) {
-                    player.getAchievementDiaries().update(VarrockDiary.SPIN_AND_FIRE_A_BOWL, 0x2);
+                    AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.SPIN_AND_FIRE_A_BOWL, 0x2);
                 }
                 player.getSkills().addXp(SkillConstants.CRAFTING, data.getXp());
                 player.getInventory().addItem(data.getProduct());

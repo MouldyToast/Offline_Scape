@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
@@ -37,7 +38,7 @@ public class ShantayPassObject implements ObjectAction {
         player.setRunSilent(2);
         player.addWalkSteps(player.getX(), player.getY() + (north ? -2 : 2), 2, false);
         if (north && EquipmentUtils.containsFullDesertRobes(player)) {
-            player.getAchievementDiaries().update(DesertDiary.ENTER_DESERT_WITH_DESERT_ROBES);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.ENTER_DESERT_WITH_DESERT_ROBES);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.multicannon;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.ProjectileUtils;
 import com.zenyte.game.util.Utils;
@@ -163,7 +164,7 @@ public final class Multicannon extends WorldObject {
             }
         }
         float effectiveLevel = player.getSkills().getLevel(style) + 8;
-        effectiveLevel *= player.getPrayerManager().getSkillBoost(style == 3 ? SkillConstants.MAGIC : style == 4 ? SkillConstants.RANGED : SkillConstants.ATTACK);
+        effectiveLevel *= PrayerManagerKeys.prayerManager(player).getSkillBoost(style == 3 ? SkillConstants.MAGIC : style == 4 ? SkillConstants.RANGED : SkillConstants.ATTACK);
         final AttackType type = player.getCombatDefinitions().getAttackType();
         final AttackStyle.AttackExperienceType attackType = player.getCombatDefinitions().getAttackExperienceType();
         effectiveLevel += attackType == AttackStyle.AttackExperienceType.ATTACK_XP ? 3 : attackType == AttackStyle.AttackExperienceType.SHARED_XP ? 1 : 0;

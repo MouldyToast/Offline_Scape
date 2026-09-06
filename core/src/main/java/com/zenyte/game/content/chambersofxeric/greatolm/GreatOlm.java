@@ -1,5 +1,7 @@
 package com.zenyte.game.content.chambersofxeric.greatolm;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.chambersofxeric.Raid;
@@ -611,8 +613,8 @@ public final class GreatOlm extends RaidNPC<OlmRoom> implements CombatScript {
                            p.sendMessage("As the Great Olm collapses, the crystal blocking your exit has been shattered.");
                            p.getMusic().stop();
                            p.getMusic().playJingle(152);
-                           p.getAchievementDiaries().update(KourendDiary.COMPLETE_A_RAID);
-                           p.getSlayer().checkAssignment(GreatOlm.this);
+                           AchievementDiariesKeys.achievementDiaries(p).update(KourendDiary.COMPLETE_A_RAID);
+                           SlayerKeys.slayer(p).checkAssignment(GreatOlm.this);
                         } catch (Exception e) {
                            log.error("", e);
                         }

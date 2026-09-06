@@ -1,5 +1,6 @@
 package com.zenyte.game.content.theatreofblood.room.maidenofsugadinti.npc
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.theatreofblood.room.TheatreBossNPC
 import com.zenyte.game.content.theatreofblood.room.maidenofsugadinti.MaidenOfSugadintiPhase
 import com.zenyte.game.content.theatreofblood.room.maidenofsugadinti.MaidenOfSugadintiPhase.Companion.appropriateNewPhase
@@ -248,7 +249,7 @@ internal class MaidenOfSugadinti(room: MaidenOfSugadintiRoom) :
             if (bloodSplatTiles.contains(p.location.positionHash)) {
                 val damage = Utils.random(Utils.getRandom(), BLOOD_SPLAT_MIN_HIT, maxBloodSplatHit.toInt())
                 p.applyHit(Hit(damage, HitType.REGULAR))
-                p.prayerManager.drainPrayerPoints(damage / 2)
+                p.prayerManager().drainPrayerPoints(damage / 2)
                 hitsplatHeal(damage)
             }
         }

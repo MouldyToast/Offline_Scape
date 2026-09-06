@@ -1,5 +1,7 @@
 package com.zenyte.game.content.boss.nightmare;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.boss.nightmare.area.NightmareBossArea;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
@@ -370,7 +372,7 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 					case 25:
 						player.setForceTalk("*yawn*");
 						if (player.getBooleanTemporaryAttribute("nightmare_drowsy_phosanis")) {
-							player.getPrayerManager().drainPrayerPoints(6);
+							PrayerManagerKeys.prayerManager(player).drainPrayerPoints(6);
 						}
 						break;
 				}
@@ -405,16 +407,16 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 			player.getTemporaryAttributes().remove("nightmare_curse");
 			player.sendMessage("<col=229628>You feel the effects of the Nightmare's curse wear off.");
 			for (Prayer prayerType : protectionPrayers) {
-				if (player.getPrayerManager().isActive(prayerType)) {
-					player.getPrayerManager().activatePrayer(PrayerManager.cursePrayerTypeReverse(prayerType));
+				if (PrayerManagerKeys.prayerManager(player).isActive(prayerType)) {
+					PrayerManagerKeys.prayerManager(player).activatePrayer(PrayerManager.cursePrayerTypeReverse(prayerType));
 					break;
 				}
 			}
 		}, 34);
 
 		for (Prayer prayerType : protectionPrayers) {
-			if (player.getPrayerManager().isActive(prayerType)) {
-				player.getPrayerManager().activatePrayer(cursePrayerType(prayerType));
+			if (PrayerManagerKeys.prayerManager(player).isActive(prayerType)) {
+				PrayerManagerKeys.prayerManager(player).activatePrayer(cursePrayerType(prayerType));
 				break;
 			}
 		}
@@ -823,7 +825,7 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 		}
 
 		if (hitInt > 0) {
-			PrayerManager prayerManager = player.getPrayerManager();
+			PrayerManager prayerManager = PrayerManagerKeys.prayerManager(player);
 			boolean protMelee = prayerManager.isActive(Prayer.PROTECT_FROM_MELEE);
 			boolean protRanged = prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES);
 			boolean protMagic = prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC);
@@ -1156,7 +1158,7 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 				player.getNotificationSettings().increaseKill(name);
 				player.getNotificationSettings().sendBossKillCountNotification(name);
 				player.getBossTimer().inform(name, killTime);
-				player.getSlayer().checkAssignment(this);
+				SlayerKeys.slayer(player).checkAssignment(this);
 
 				if (name.equalsIgnoreCase("the nightmare")) {
 					player.getCombatAchievements().checkKcTask(name, 1, CAType.NIGHTMARE_ADEPT);

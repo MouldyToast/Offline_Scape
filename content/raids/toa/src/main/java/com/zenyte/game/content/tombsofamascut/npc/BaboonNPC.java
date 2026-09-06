@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.tombsofamascut.encounter.ApmekenEncounter;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterStage;
@@ -192,7 +193,7 @@ public class BaboonNPC extends TOANPC implements CombatScript {
 				final boolean accurate = CombatUtilities.getHitAccuracy(this, target, AttackType.CRUSH) >= Utils.randomDouble();
 				delayHit(0, target, new Hit(this, accurate ? CombatUtilities.getAccurateRandomMaxHit(this, target, maxHit) : 0, HitType.MELEE));
 				if (accurate && id == ApmekenEncounter.BABOON_THRALL_ID && target instanceof final Player player) {
-					player.getPrayerManager().drainPrayerPoints(2);
+					PrayerManagerKeys.prayerManager(player).drainPrayerPoints(2);
 				}
 			}
 			case ApmekenEncounter.BABOON_RANGE_ID , ApmekenEncounter.BABOON_STRONGER_RANGE_ID -> {
@@ -211,7 +212,7 @@ public class BaboonNPC extends TOANPC implements CombatScript {
 					if (id == ApmekenEncounter.BABOON_SHAMAN_ID) {
 						hit.onLand(h -> {
 							if (target instanceof final Player player) {
-								player.getPrayerManager().drainPrayerPoints(hit.getDamage());
+								PrayerManagerKeys.prayerManager(player).drainPrayerPoints(hit.getDamage());
 							}
 						});
 					}

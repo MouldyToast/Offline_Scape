@@ -1,5 +1,6 @@
 package com.zenyte.game.content.area.strongholdofsecurity;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
@@ -92,7 +93,7 @@ public class SkullSceptre extends ItemPlugin {
 
 		@Override
 		public void onArrival(final Player player) {
-			player.getAchievementDiaries().update(VarrockDiary.TELEPORT_TO_BARBARIAN_VILLAGE);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.TELEPORT_TO_BARBARIAN_VILLAGE);
 			item.setCharges(item.getCharges() - 1);
 			if (item.getCharges() <= 0) {
 				if (item.getId() == 9013) {

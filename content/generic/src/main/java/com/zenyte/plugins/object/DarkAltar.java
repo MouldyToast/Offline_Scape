@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
@@ -34,7 +35,7 @@ public class DarkAltar implements ObjectAction {
                 return;
             }
             player.getSkills().addXp(SkillConstants.RUNECRAFTING, 2.5F * count);
-            player.getPrayerManager().drainPrayerPoints(count);
+            PrayerManagerKeys.prayerManager(player).drainPrayerPoints(count);
             player.setAnimation(PRAY_ANIM);
             inventory.refreshAll();
         }

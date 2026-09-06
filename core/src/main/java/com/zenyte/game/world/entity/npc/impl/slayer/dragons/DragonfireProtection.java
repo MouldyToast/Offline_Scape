@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.dragons;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -41,7 +42,7 @@ public enum DragonfireProtection {
     public static List<DragonfireProtection> getProtection(NPC source, final Player target, final boolean leather) {
         final List<DragonfireProtection> list = new ArrayList<>(3);
         if (leather) {
-            if (target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 list.add(PROTECT_FROM_MAGIC);
             }
         }

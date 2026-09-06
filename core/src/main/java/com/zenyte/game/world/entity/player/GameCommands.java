@@ -1,5 +1,10 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.google.gson.Gson;
@@ -960,7 +965,7 @@ public final class GameCommands {
             }
         });
         new Command(PlayerPrivilege.DEVELOPER, "resetfarming", (p, args) -> {
-            p.getFarming().reset();
+            FarmingKeys.farming(p).reset();
         });
         new Command(PlayerPrivilege.DEVELOPER, "cycle", (p, args) -> {
             GameConstants.CYCLE_DEBUG = !GameConstants.CYCLE_DEBUG;
@@ -978,14 +983,14 @@ public final class GameCommands {
         });
 
         new Command(PlayerPrivilege.DEVELOPER, "completetask", "Completes a slayer task.", (p, args) -> {
-            Assignment assignment = p.getSlayer().getAssignment();
+            Assignment assignment = SlayerKeys.slayer(p).getAssignment();
             if (assignment == null) {
                 p.sendMessage("No assignment to complete.");
                 return;
             }
 
             assignment.setAmount(0);
-            p.getSlayer().finishAssignment(null);
+            SlayerKeys.slayer(p).finishAssignment(null);
         });
 
 
@@ -1408,7 +1413,7 @@ public final class GameCommands {
         });
         new Command(PlayerPrivilege.DEVELOPER, "slayerpoints", "Sets your slayer points to the defined value.", (p,
                                                                                                                  args) -> {
-            p.getSlayer().setSlayerPoints(parseInt(args[0]), true);
+            SlayerKeys.slayer(p).setSlayerPoints(parseInt(args[0]), true);
         });
         new Command(PlayerPrivilege.DEVELOPER, "loyaltypoints", "Sets your loyalty points to the defined value.", (p,
                                                                                                                    args) -> {
@@ -1917,10 +1922,10 @@ public final class GameCommands {
         new Command(PlayerPrivilege.ADMINISTRATOR, "raids", "Teleports you to raids recruiting board.",
                 (p, args) -> p.setLocation(new Location(1246, 3562, 0)));
         new Command(PlayerPrivilege.ADMINISTRATOR, "enter", (p, args) -> {
-            p.getConstruction().enterHouse(p.getConstruction().isBuildingMode());
+            ConstructionKeys.construction(p).enterHouse(ConstructionKeys.construction(p).isBuildingMode());
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "leave", (p, args) -> {
-            p.getConstruction().leaveHouse();
+            ConstructionKeys.construction(p).leaveHouse();
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "spellbook", "Switches your spellbook to the requested book. " +
                 "Argument: " +
@@ -1981,8 +1986,8 @@ public final class GameCommands {
                 amount = parseInt(args[0]);
             }
             p.setHitpoints(amount);
-            if (p.getPrayerManager().getPrayerPoints() < p.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
-                p.getPrayerManager().setPrayerPoints(p.getSkills().getLevelForXp(SkillConstants.PRAYER));
+            if (PrayerManagerKeys.prayerManager(p).getPrayerPoints() < p.getSkills().getLevelForXp(SkillConstants.PRAYER)) {
+                PrayerManagerKeys.prayerManager(p).setPrayerPoints(p.getSkills().getLevelForXp(SkillConstants.PRAYER));
             }
             if (p.getCombatDefinitions().getSpecialEnergy() < 100) {
                 p.getCombatDefinitions().setSpecialEnergy(100);
@@ -1994,7 +1999,7 @@ public final class GameCommands {
             if (args.length > 0) {
                 amount = parseInt(args[0]);
             }
-            p.getPrayerManager().setPrayerPoints(amount);
+            PrayerManagerKeys.prayerManager(p).setPrayerPoints(amount);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, new String[]{"run", "runenergy"}, "Sets your run energy to your " +
                 "max or " +
@@ -2007,7 +2012,7 @@ public final class GameCommands {
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "replenish", (p, args) -> {
             p.setHitpoints(1000000);
-            p.getPrayerManager().setPrayerPoints(1000000);
+            PrayerManagerKeys.prayerManager(p).setPrayerPoints(1000000);
             p.getCombatDefinitions().setSpecialEnergy(1000000);
             p.getVariables().forceRunEnergy(1000000);
         });
@@ -2470,7 +2475,7 @@ public final class GameCommands {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
-                    p.getAchievementDiaries().finish(d);
+                    AchievementDiariesKeys.achievementDiaries(p).finish(d);
                 }
             }
         });
@@ -2478,7 +2483,7 @@ public final class GameCommands {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
-                    p.getAchievementDiaries().reset(d);
+                    AchievementDiariesKeys.achievementDiaries(p).reset(d);
                 }
             }
         });
@@ -2490,7 +2495,7 @@ public final class GameCommands {
             final String name = StringUtilities.compile(args, 1, args.length, ' ');
             World.getPlayer(name).ifPresent(a -> {
                 a.addAttribute("slayer_points", a.getNumericAttribute("slayer_points").intValue() + points);
-                a.getSlayer().refreshSlayerPoints();
+                SlayerKeys.slayer(a).refreshSlayerPoints();
                 p.sendMessage("Added slayer points to user " + name + "; Amount: " + points);
             });
         });

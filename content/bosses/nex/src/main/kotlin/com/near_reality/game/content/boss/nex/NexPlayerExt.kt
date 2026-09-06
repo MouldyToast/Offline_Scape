@@ -1,5 +1,6 @@
 package com.near_reality.game.content.boss.nex
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.attribute
@@ -75,7 +76,7 @@ fun Player.processChoking() {
             if (nexChokesCount == CHOKES || variables.ticksInterval % 4 == 0)
                 setForceTalk("*Cough*")
 
-            prayerManager.drainPrayerPoints(if (wearSpectralSpiritShield()) 2 else 1)
+            prayerManager().drainPrayerPoints(if (wearSpectralSpiritShield()) 2 else 1)
             graphics = Graphics(1103, 0, 160)
 
             val meleeBonus = getBestMeleeBonus()

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonitem;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
@@ -24,7 +25,7 @@ public class UnpoweredSymbolBlessingAction implements PairedItemOnItemPlugin {
             WorldTasksManager.schedule(() -> {
                 final int slot = from.getId() == ItemId.UNPOWERED_SYMBOL ? fromSlot : toSlot;
                 player.getInventory().replaceItem(ItemId.UNHOLY_SYMBOL, 1, slot);
-                player.getPrayerManager().drainPrayerPoints((int) (player.getPrayerManager().getPrayerPoints() * 0.1 + 2));
+                PrayerManagerKeys.prayerManager(player).drainPrayerPoints((int) (PrayerManagerKeys.prayerManager(player).getPrayerPoints() * 0.1 + 2));
                 player.sendFilteredMessage("You bless the unholy symbol.");
             }, 5);
         }

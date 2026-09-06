@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.godwars.GodType;
@@ -121,8 +122,8 @@ public class SpiritualMage extends SpawnableKillcountNPC implements CombatScript
         super.onDeath(source);
         if (source instanceof final Player player) {
             if (id != NpcId.SARADOMIN_PRIEST) {
-                player.getAchievementDiaries().update(FremennikDiary.SLAY_A_SPIRITUAL_MAGE);
-                player.getAchievementDiaries().update(WildernessDiary.SLAY_A_SPIRITRUAL_MAGE);
+                AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.SLAY_A_SPIRITUAL_MAGE);
+                AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.SLAY_A_SPIRITRUAL_MAGE);
             }
         }
     }

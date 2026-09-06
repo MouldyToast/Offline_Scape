@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.plugins.processors;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.kebos.alchemicalhydra.processor.AlchemicalHydraProcessor;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -33,15 +34,15 @@ public class HydraProcessor extends DropProcessor {
     @Override
     public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
         if (!drop.isAlways()) {
-            int rate = killer.getSlayer().isCurrentAssignment(npc) ? 1500 : 7500;
+            int rate = SlayerKeys.slayer(killer).isCurrentAssignment(npc) ? 1500 : 7500;
             if (random(rate) == 0) {
                 return new Item(Utils.random(1) == 0 ? ItemId.DRAGON_THROWNAXE : ItemId.DRAGON_KNIFE, Utils.random(200, 400));
             }
-            rate = killer.getSlayer().isCurrentAssignment(npc) ? 750 : 3750;
+            rate = SlayerKeys.slayer(killer).isCurrentAssignment(npc) ? 750 : 3750;
             if (random(rate) == 0) {
                 return new Item(ItemId.HYDRA_TAIL);
             }
-            rate = killer.getSlayer().isCurrentAssignment(npc) ? 275 : 1375;
+            rate = SlayerKeys.slayer(killer).isCurrentAssignment(npc) ? 275 : 1375;
             if ((random(rate * 3)) < 3) {
                 return new Item(AlchemicalHydraProcessor.findLowestQuantityRingPart(killer));
             }

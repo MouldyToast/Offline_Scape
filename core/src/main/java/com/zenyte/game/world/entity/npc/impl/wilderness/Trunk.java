@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
 import com.zenyte.game.item.Item;
@@ -123,7 +124,7 @@ public class Trunk extends NPC {
                     player.getSkills().addXp(SkillConstants.WOODCUTTING, 25);
                     final Trunk.TrunkPlugin.TrunkLogs log = Utils.getRandomCollectionElement(logs);
                     if (log == TrunkLogs.YEW_LOGS) {
-                        player.getAchievementDiaries().update(WildernessDiary.CHOP_YEW_LOGS);
+                        AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CHOP_YEW_LOGS);
                     }
                     player.getInventory().addItem(log.logs);
                     animate();

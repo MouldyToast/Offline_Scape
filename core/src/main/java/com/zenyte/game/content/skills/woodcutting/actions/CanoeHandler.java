@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.woodcutting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.woodcutting.CanoeDefinitions;
@@ -118,7 +119,7 @@ public class CanoeHandler {
 					player.setAnimation(animation);
 				} else if (ticks == (canoe.ordinal() + 3)) {
 					if (canoe.equals(CanoeDefinitions.WAKA) && object.withinDistance(EDGEVILLE_CANOE_LOCATION, 10)) {
-						player.getAchievementDiaries().update(VarrockDiary.MAKE_WAKA_CANOE);
+						AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.MAKE_WAKA_CANOE);
 					}
 					player.getTemporaryAttributes().put("CanoeDefinitions", canoe);
 					player.getVarManager().sendBit(object.getDefinitions().getVarbit(), canoe.getBit());
@@ -163,7 +164,7 @@ public class CanoeHandler {
 		player.lock(6);
 		new FadeScreen(player, () -> {
 			if (Objects.equals(canoe, CanoeDefinitions.WAKA) && player.getLocation().withinDistance(LUMBRIDGE_CANOE_LOCATION, 10) && location.equals(CanoeLocation.EDGEVILLE)) {
-				player.getAchievementDiaries().update(LumbridgeDiary.TRAVEL_TO_EDGEVILLE_ON_CANOE);
+				AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.TRAVEL_TO_EDGEVILLE_ON_CANOE);
 			}
 			player.getVarManager().sendBit(object.getDefinitions().getVarbit(), 0);
 			player.setLocation(location.getTile());

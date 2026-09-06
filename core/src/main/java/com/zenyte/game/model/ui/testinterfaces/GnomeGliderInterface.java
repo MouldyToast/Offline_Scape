@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
@@ -52,12 +53,12 @@ public class GnomeGliderInterface extends Interface {
             return;
         }
         if (destinationGlider.equals(GliderLocation.LEMANTOLLY_UNDRI)) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.TRAVEL_TO_FELDIP_HILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TRAVEL_TO_FELDIP_HILLS);
         }
         player.lock(4);
         player.getVarManager().sendVar(153, currentGlider.ordinal() << 14 | destinationGlider.ordinal());
         new FadeScreen(player, () -> {
-            player.getAchievementDiaries().update(KaramjaDiary.USE_GNOME_GLIDER);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.USE_GNOME_GLIDER);
             player.setLocation(destinationGlider.getLocation());
             player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
         }).fade(3);

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Entity;
@@ -21,7 +22,7 @@ public class Lizardman extends NPC implements Spawnable {
     public void onDeath(final Entity source) {
         super.onDeath(source);
         if (source instanceof Player player) {
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_LIZARDMAN);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_LIZARDMAN);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.pvm_arena.item
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.pvm_arena.area.PvmArenaFightArea
 import com.zenyte.game.content.consumables.drinks.Potion
 import com.zenyte.game.item.Item
@@ -83,7 +84,7 @@ fun applyBandage(
         else
             player.sendMessage("You apply the bandage to yourself.")
         target.heal(20)
-        target.prayerManager.restorePrayerPoints(29)
+        target.prayerManager().restorePrayerPoints(29)
         target.toxins.cureToxin(Toxins.ToxinType.POISON)
         Potion.STAMINA_POTION.onConsumption(target)
         listOf(

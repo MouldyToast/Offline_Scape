@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.JewelleryData;
 import com.zenyte.game.content.skills.crafting.actions.JewelleryCrafting;
@@ -68,7 +69,7 @@ public class GoldJewelleryInterface extends Interface {
                 continue;
             }
             bind(data.name(), player -> {
-                if (JewelleryData.SLAYER_RING.equals(data) && !player.getSlayer().isUnlocked("Ring bling")) {
+                if (JewelleryData.SLAYER_RING.equals(data) && !SlayerKeys.slayer(player).isUnlocked("Ring bling")) {
                     player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
                     player.sendMessage("You have not unlocked the ability to make slayer rings.");
                     return;

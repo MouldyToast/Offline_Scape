@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.king_black_dragon
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Colour
@@ -36,7 +37,7 @@ class KingBlackDragonInstance(player: Player, allocatedArea: AllocatedArea?, cop
 
     override fun enter(player: Player) {
         player.viewDistance = Player.LARGE_VIEWPORT_RADIUS
-        player.achievementDiaries.update(WildernessDiary.ENTER_KING_BLACK_DRAGON_LAIR)
+        player.achievementDiaries().update(WildernessDiary.ENTER_KING_BLACK_DRAGON_LAIR)
         player.sendMessage(Colour.RED.wrap("Should you die in the instance, your items will be permanently lost!"))
         if (player.getNumericAttribute("king black dragon instance warning").toInt() == 0) {
             player.addAttribute("king black dragon instance warning", 1)

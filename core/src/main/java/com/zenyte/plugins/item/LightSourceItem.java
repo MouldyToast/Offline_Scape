@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.MaxCape;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.item.Item;
@@ -264,7 +265,7 @@ public class LightSourceItem extends ItemPlugin implements ItemOnItemAction {
             return;
         }
         if (source.equals(LightSource.BULLSEYE_LANTERN)) {
-            player.getAchievementDiaries().update(FaladorDiary.LIGHT_BULLSEYE_LANTERN);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.LIGHT_BULLSEYE_LANTERN);
         }
         player.getInventory().set(lightSource == from ? fromSlot : toSlot, new Item(source.litId));
         player.getPacketDispatcher().sendSoundEffect(LightSource.LIGHT_SOUND);

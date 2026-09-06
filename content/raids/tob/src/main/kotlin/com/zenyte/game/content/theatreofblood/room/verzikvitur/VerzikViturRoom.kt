@@ -1,5 +1,6 @@
 package com.zenyte.game.content.theatreofblood.room.verzikvitur
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.zenyte.cores.CoresManager
 import com.zenyte.game.content.theatreofblood.*
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
@@ -92,7 +93,7 @@ internal class VerzikViturRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, ro
             for (m in raid.party.members) {
                 val p = RaidingParty.getPlayer(m) ?: continue
 
-                p.slayer.checkAssignment(verzikVitur)
+                p.slayer().checkAssignment(verzikVitur)
                 p.varManager.sendBit(THRONE_VARBIT, 0) // ensure it's hidden
                 if (raid.hardMode) {
                     if (!p.hasPrivilege(PlayerPrivilege.ADMINISTRATOR)) {

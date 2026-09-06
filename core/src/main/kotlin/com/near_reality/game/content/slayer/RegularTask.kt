@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.area.IorwerthDungeon
 import com.zenyte.game.GameConstants
 import com.zenyte.game.content.kebos.alchemicalhydra.npc.AlchemicalHydra
@@ -661,7 +662,7 @@ enum class RegularTask(
             slayer(40)
             combat(40)
             tip("Basilisks are deadly creatures with possessing the eyes of evil. A mirror shield is suggested when fighting them.")
-            predicate { player -> player.skills.getLevelForXp(SkillConstants.DEFENCE) >= 20 && player.slayer.isUnlocked("Basilocked") }
+            predicate { player -> player.skills.getLevelForXp(SkillConstants.DEFENCE) >= 20 && player.slayer().isUnlocked("Basilocked") }
             registerNames("Basilisk", "Monstrous basilisk", "Basilisk Knight", "basilisk sentinel")
             extension(Range.of("Basilonger", 200, 250))
         }
@@ -1017,7 +1018,7 @@ enum class RegularTask(
             slayer(63)
             combat(60)
             wildernessLvl(29)
-            predicate { p -> !p.slayer.bannedTasks.containsValue(SPIRITUAL_MAGE) }
+            predicate { p -> !p.slayer().bannedTasks.containsValue(SPIRITUAL_MAGE) }
             extension(Range.of("Spiritual Fervour", 181, 250))
             tip("Spiritual creatures are religious monsters found in the god wars dungeon.")
             registerNames("Spiritual ranger", "Spiritual mage", "Spiritual warrior")
@@ -1084,7 +1085,7 @@ enum class RegularTask(
             combat(0)
             wildernessLvl(29)
             tip("Aviansies are strong vicious birds known to only be found in the Godwars dungeon.")
-            predicate { player -> player.slayer.isUnlocked("Watch the Birdie") }
+            predicate { player -> player.slayer().isUnlocked("Watch the Birdie") }
             extension(Range.of("Birds of a feather", 200, 250))
             registerNames(
                 "Aviansie", "Kree'arra", "Flight kilisa",
@@ -1152,7 +1153,7 @@ enum class RegularTask(
             slayer(66)
             combat(80)
             tip("Fossil island wyvern are flying wyverns found only on the Fossil island. They're large and have many different shapes.")
-            predicate { player -> !player.slayer.isUnlocked("Stop the Wyvern") || player.settings.valueOf(Setting.STOP_THE_WYVERN_SLAYER_REWARD) != 0 }
+            predicate { player -> !player.slayer().isUnlocked("Stop the Wyvern") || player.settings.valueOf(Setting.STOP_THE_WYVERN_SLAYER_REWARD) != 0 }
             extension(Range.of("Wyver-nother two", 55, 75))
             registerNames("Spitting wyvern", "Taloned wyvern", "Long-tailed wyvern", "Ancient wyvern")
         }
@@ -1186,7 +1187,7 @@ enum class RegularTask(
             slayer(1)
             combat(0)
             tip("Lizardmen are reptilian humanoids found on their canyon and settlement.")
-            predicate { player -> player.slayer.isUnlocked("Reptile got ripped") }
+            predicate { player -> player.slayer().isUnlocked("Reptile got ripped") }
             registerNames("Lizardman", "Lizardman shaman", "Lizardman brute")
         }
     ),
@@ -1262,7 +1263,7 @@ enum class RegularTask(
             slayer(1)
             combat(0)
             tip("TzHaar are google-like creatures found inhabiting the city of fire.")
-            predicate { player -> player.slayer.isUnlocked("Hot stuff") }
+            predicate { player -> player.slayer().isUnlocked("Hot stuff") }
             registerNames(
                 "TzHaar-Ket", "TzHaar-Xil", "TzHaar-Mej", "TzHaar-Hur", "Tz-Kih",
                 "Tz-Kek", "Tok-Xil", "Yt-MejKot", "Ket-Zek", "TzTok-Jad",
@@ -1324,7 +1325,7 @@ enum class RegularTask(
             slayer(1)
             combat(0)
             tip("Mithril dragons are one of the most dangerous dragons in all of " + GameConstants.SERVER_NAME + ". You might want to use magic to defeat them.")
-            predicate { player -> player.slayer.isUnlocked("I hope you mith me") }
+            predicate { player -> player.slayer().isUnlocked("I hope you mith me") }
             extension(Range.of("I really mith you", 25, 35))
             registerNames("Mithril dragon")
         }
@@ -1340,7 +1341,7 @@ enum class RegularTask(
             slayer(1)
             combat(68)
             tip("Red dragons are powerful chromatic dragons found in the Brimhaven dungeon.")
-            predicate { player -> player.slayer.isUnlocked("Seeing red") }
+            predicate { player -> player.slayer().isUnlocked("Seeing red") }
             registerNames("Red dragon", "Baby red dragon", "Brutal red dragon")
             registerIds(244, 245, 246)
         }
@@ -1514,7 +1515,7 @@ enum class RegularTask(
             id(109)
             slayer(0)
             combat(35)
-            predicate { player -> player.slayer.isUnlocked("Actual Vampyre Slayer") }
+            predicate { player -> player.slayer().isUnlocked("Actual Vampyre Slayer") }
             tip("")
             registerNames(
                 "Vampyre Juvinate", "Vampyre Juvenile", "Vyre",
@@ -1641,7 +1642,7 @@ enum class RegularTask(
             slayer(1)
             combat(0)
             tip("")
-            predicate { player -> player.slayer.isUnlocked("Like a Boss") }
+            predicate { player -> player.slayer().isUnlocked("Like a Boss") }
         }
     ),
 

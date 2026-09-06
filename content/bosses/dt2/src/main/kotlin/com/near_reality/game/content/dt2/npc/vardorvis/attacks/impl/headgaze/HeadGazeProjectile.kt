@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.npc.vardorvis.attacks.impl.headgaze
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.api.model.Skill
 import com.near_reality.game.content.dt2.area.VardorvisInstance
 import com.near_reality.game.content.dt2.npc.DT2BossDifficulty
@@ -42,10 +43,10 @@ class HeadGazeProjectile(
 
             override fun run() {
                 if (ticks == timer) {
-                    if (magicRoll && !player.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC))
-                        player.prayerManager.deactivateActivePrayers()
-                    if (!magicRoll && !player.prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES))
-                        player.prayerManager.deactivateActivePrayers()
+                    if (magicRoll && !player.prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC))
+                        player.prayerManager().deactivateActivePrayers()
+                    if (!magicRoll && !player.prayerManager().isActive(Prayer.PROTECT_FROM_MISSILES))
+                        player.prayerManager().deactivateActivePrayers()
                     stop()
                 }
                 ticks++

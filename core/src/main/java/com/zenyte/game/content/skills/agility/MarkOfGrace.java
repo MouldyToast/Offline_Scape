@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.item.Item;
@@ -44,19 +45,19 @@ public class MarkOfGrace {
 	private static Integer getRarity(Player player, int base) {
 		int endRarity = base;
 		if (player.getLocation().getRegionId() == 1111) {
-			if (player.getAchievementDiaries().isAllCompleted(ArdougneDiary.ELITE))
+			if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(ArdougneDiary.ELITE))
 				endRarity *= 0.75; //25%
 		}
 		if (player.getLocation().getRegionId() == 10806) {
-			if (player.getAchievementDiaries().isAllCompleted(KandarinDiary.EASY))
+			if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KandarinDiary.EASY))
 				endRarity *= 0.95; //5%
 		}
 		if (player.getLocation().getRegionId() == 10806) {
-			if (player.getAchievementDiaries().isAllCompleted(KandarinDiary.MEDIUM))
+			if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KandarinDiary.MEDIUM))
 				endRarity *= 0.90; //10%
 		}
 		if (player.getLocation().getRegionId() == 10806) {
-			if (player.getAchievementDiaries().isAllCompleted(KandarinDiary.HARD))
+			if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KandarinDiary.HARD))
 				endRarity *= 0.85; //15%
 		}
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -43,7 +44,7 @@ public class EdgevilleDungeonPipe implements Shortcut {
                     World.sendAttachedObject(player, west ? PIPE_END_OBJ : PIPE_START_OBJ);
                     player.setForceMovement(new ForceMovement(west ? EAST : WEST, 90, west ? ForceMovement.EAST : ForceMovement.WEST));
                 } else if (ticks == 7) {
-                    player.getAchievementDiaries().update(VarrockDiary.SQUEEZE_THROUGH_OBSTACLE_PIPE);
+                    AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.SQUEEZE_THROUGH_OBSTACLE_PIPE);
                     player.setLocation(west ? EAST : WEST);
                     stop();
                 }

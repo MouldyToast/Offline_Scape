@@ -1,5 +1,6 @@
 package com.zenyte.game.model.item.actions;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.SoundEffect;
@@ -31,18 +32,18 @@ public class SuperiorBell extends ItemPlugin {
                 return;
             }
 
-            if (!player.getSlayer().isBiggerAndBadder()) {
+            if (!SlayerKeys.slayer(player).isBiggerAndBadder()) {
                 player.getDialogueManager().start(new ItemChat(player, item, "You can only use this item when you have the slayer unlock Bigger and Badder."));
                 return;
             }
 
-            var slayerAssignment = player.getSlayer().getAssignment();
+            var slayerAssignment = SlayerKeys.slayer(player).getAssignment();
             if (slayerAssignment == null) {
                 player.getDialogueManager().start(new ItemChat(player, item, "You can only use this when on a slayer task."));
                 return;
             }
 
-            var task = player.getSlayer().getAssignment().getTask();
+            var task = SlayerKeys.slayer(player).getAssignment().getTask();
 
             Optional<NPC> matchingNpc = player.getNpcViewport().stream()
                     .filter(npc -> task.validate(npc.getName(player), npc))

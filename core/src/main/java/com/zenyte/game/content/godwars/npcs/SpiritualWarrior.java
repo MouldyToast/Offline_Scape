@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
@@ -65,7 +66,7 @@ public class SpiritualWarrior extends SpawnableKillcountNPC implements CombatScr
 	public void onDeath(Entity source) {
 		super.onDeath(source);
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_A_SPIRITUAL_WARRIOR);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_A_SPIRITUAL_WARRIOR);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.prayer;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.model.ui.GameTab;
@@ -28,6 +29,7 @@ import com.zenyte.game.world.region.RegionArea;
 import com.zenyte.game.world.region.area.plugins.PrayerPlugin;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;
 import com.zenyte.plugins.dialogue.PlainChat;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.utils.TextUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
@@ -56,6 +58,28 @@ public class PrayerManager {
 
 	public void setPrayer(final PrayerManager prayerManager) {
 		setQuickPrayerSettings(prayerManager.getQuickPrayerSettings());
+	}
+
+	@Subscribe
+	public static void onInit(final InitializationEvent event) {
+		final Player player = event.getPlayer();
+		final Player savedPlayer = event.getSavedPlayer();
+		final boolean hadPersistedAttr = PrayerManagerKeys.rawPrayerManagerAttr(player) != null;
+		final PrayerManager manager = PrayerManagerKeys.prayerManager(player);
+		if (hadPersistedAttr || savedPlayer == null) {
+			return;
+		}
+		// Legacy path: pre-migration saves keep the prayer state under the
+		// top-level "prayerManager" JSON key on the parser player. The copy
+		// below migrates it into the attr (running the same setPrayer copy the
+		// legacy setFields load path always ran); the next save persists it
+		// under attrPersistence["prayer_manager"] and drops the legacy key.
+		@SuppressWarnings("deprecation")
+		final PrayerManager savedManager = savedPlayer.getPrayerManager();
+		if (savedManager == null) {
+			return;
+		}
+		manager.setPrayer(savedManager);
 	}
 
 	public int getPrayerPoints() {

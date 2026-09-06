@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.util.Utils;
@@ -192,7 +193,7 @@ public final class Toxins {
 			final Player player = (Player) entity;
 			final int randomSkill = Utils.random(22);
 			if (randomSkill == SkillConstants.PRAYER) {
-				player.getPrayerManager().drainPrayerPoints(hit);
+				PrayerManagerKeys.prayerManager(player).drainPrayerPoints(hit);
 			} else if (randomSkill == SkillConstants.HITPOINTS) {
 				final int hitpoints = player.getHitpoints() - hit;
 				player.setHitpoints(Math.max(hitpoints, 0));

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -93,7 +94,7 @@ public class CannonballSmithing extends Action {
     }
 
     private void smithCannonball(int productAmount) {
-        player.getAchievementDiaries().update(MorytaniaDiary.MAKE_CANNONBALLS);
+        AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.MAKE_CANNONBALLS);
         player.getInventory().addItem(new Item(ItemId.CANNONBALL, productAmount ));
         player.getSkills().addXp(SkillConstants.SMITHING, XP);
         player.sendFilteredMessage("You pour the molten metal into your cannonball mould.");

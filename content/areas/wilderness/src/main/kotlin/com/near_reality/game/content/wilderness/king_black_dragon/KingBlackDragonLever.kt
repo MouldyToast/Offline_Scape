@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.king_black_dragon
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary
 import com.zenyte.game.content.skills.magic.spells.teleports.structures.LeverTeleport
 import com.zenyte.game.world.entity.player.Player
@@ -33,7 +34,7 @@ class KingBlackDragonLever : ObjectAction {
                 `object`,
                 "... and teleport into the Dragon\'s lair."
             ) {
-                player.achievementDiaries.update(
+                player.achievementDiaries().update(
                     WildernessDiary.ENTER_KING_BLACK_DRAGON_LAIR
                 )
             }.teleport(player)

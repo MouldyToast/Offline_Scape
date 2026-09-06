@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.varrockrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -39,7 +40,7 @@ public final class FinishCourse extends AgilityCourseObstacle {
 					player.setAnimation(LAND);
 				} else if(ticks == 2) {
 					player.getDailyChallengeManager().update(SkillingChallenge.COMPLETE_LAPS_VARROCK_COURSE);
-					player.getAchievementDiaries().update(VarrockDiary.COMPLETE_AGILITY_COURSE_LAP);
+					AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.COMPLETE_AGILITY_COURSE_LAP);
 					player.setLocation(finish);
 					MarkOfGrace.spawn(player, VarrockRooftopCourse.MARK_LOCATIONS, 40, 30);
 					stop();

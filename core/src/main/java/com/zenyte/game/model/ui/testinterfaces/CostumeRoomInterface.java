@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.skills.construction.costume.*;
 import com.zenyte.game.model.ui.Interface;
@@ -30,22 +31,22 @@ public class CostumeRoomInterface extends Interface {
                 if (type == null) return;
                 switch (type.toString()) {
                     case "ARMOUR_CASE":
-                        player.getConstruction().getArmourCase().takeSet(itemId);
+                        ConstructionKeys.construction(player).getArmourCase().takeSet(itemId);
                         break;
                     case "CAPE_RACK":
-                        player.getConstruction().getCapeRack().takeSet(itemId);
+                        ConstructionKeys.construction(player).getCapeRack().takeSet(itemId);
                         break;
                     case "FANCY_DRESS_BOX":
-                        player.getConstruction().getFancyDressBox().takeSet(itemId);
+                        ConstructionKeys.construction(player).getFancyDressBox().takeSet(itemId);
                         break;
                     case "MAGIC_WARDROBE":
-                        player.getConstruction().getMagicWardrobe().takeSet(itemId);
+                        ConstructionKeys.construction(player).getMagicWardrobe().takeSet(itemId);
                         break;
                     case "TOY_BOX":
-                        player.getConstruction().getToyBox().takeSet(itemId);
+                        ConstructionKeys.construction(player).getToyBox().takeSet(itemId);
                         break;
                     case "TREASURE_CHEST":
-                        player.getConstruction().getTreasureChest().takeSet(itemId);
+                        ConstructionKeys.construction(player).getTreasureChest().takeSet(itemId);
                         break;
                 }
             }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.draynorrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -53,7 +54,7 @@ public final class Crate extends AgilityCourseObstacle {
 					player.setAnimation(SECOND_ANIM);
 					break;
 				case 3:
-					player.getAchievementDiaries().update(LumbridgeDiary.COMPLETE_DRAYNOR_VILLAGE_COURSE);
+					AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.COMPLETE_DRAYNOR_VILLAGE_COURSE);
 					player.setAnimation(Animation.STOP);
 					MarkOfGrace.spawn(player, DraynorRooftopCourse.MARK_LOCATIONS, 40, 10);
 					stop();

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.smokedevil;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.minigame.barrows.BarrowsWight;
 import com.zenyte.game.content.skills.slayer.SlayerEquipment;
@@ -103,7 +104,7 @@ public class SmokeDevil extends NPC implements CombatScript, Spawnable {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (isBoss() && source instanceof final Player player) {
-			player.getAchievementDiaries().update(WesternProvincesDiary.KILL_THERMONUCLEAR_SMOKE_DEVIL);
+			AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.KILL_THERMONUCLEAR_SMOKE_DEVIL);
 			player.getCombatAchievements().checkKcTask("thermonuclear smoke devil", 20, CAType.THERMONUCLEAR_VETERAN);
 			if (specHits) {
 				player.getCombatAchievements().complete(CAType.SPECD_OUT);

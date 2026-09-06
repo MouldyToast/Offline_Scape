@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.npc.leviathan
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.dt2.area.DT2Module
 import com.near_reality.game.content.dt2.npc.*
 import com.near_reality.game.content.dt2.npc.leviathan.LeviathanConstants.BOULDER_PROJECTILE
@@ -313,15 +314,15 @@ class Leviathan(id: Int, position: Location, val instance: LeviathanInstance) : 
         var drain = if (isEnraged) if (insidePathfinder(null)) 0.0 else 0.20 else 0.0
 
         if (type == HitType.MELEE) {
-            if (!prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
+            if (!prayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
                 drain = 1.0
             }
         } else if (type == HitType.RANGED) {
-            if (!prayerManager.isActive(Prayer.PROTECT_FROM_MISSILES)) {
+            if (!prayerManager().isActive(Prayer.PROTECT_FROM_MISSILES)) {
                 drain = 1.0
             }
         } else if (type == HitType.MAGIC) {
-            if (!prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (!prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 drain = 1.0
             }
         }

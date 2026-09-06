@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.agility.Failable;
 import com.zenyte.game.content.skills.agility.Shortcut;
@@ -53,7 +54,7 @@ public class TaverleyDungeonStrangeFloor implements Shortcut, Failable {
 				else if (ticks == 3)
 					player.setLocation(west ? WEST_END : EAST_END);
 				else if (ticks == 4) {
-					player.getAchievementDiaries().update(FaladorDiary.JUMP_OVER_STRANGE_FLOOR);
+					AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.JUMP_OVER_STRANGE_FLOOR);
 					stop();
 				}
 				

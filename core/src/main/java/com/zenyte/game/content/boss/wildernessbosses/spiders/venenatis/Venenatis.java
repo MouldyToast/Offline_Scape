@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses.spiders.venenatis;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.content.boss.wildernessbosses.spiders.WebObject;
@@ -96,7 +97,7 @@ public class Venenatis extends NPC implements LogoutPlugin, CombatScript, Spawna
     public void onDeath(final Entity source) {
         super.onDeath(source);
         if (source instanceof final Player player) {
-            player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 2);
             if (showHpHud)
                 player.getHpHud().close();
         }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.colosseum;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
@@ -288,14 +289,14 @@ public class SolHeredit extends NPC implements CombatScript {
             boolean prayerWasActive = false;
 
             private void checkPrayer() {
-                if (!prayerWasActive && target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (!prayerWasActive && PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                     prayerWasActive = true;
                     target.sendMessage(Colour.RED.wrap("Sol Heredit doesn't take kindly to your eager prayer."));
                 }
             }
 
             private void injure() {
-                Lightning.deactivateOverheadProtectionPrayers(target, target.getPrayerManager(), false);
+                Lightning.deactivateOverheadProtectionPrayers(target, PrayerManagerKeys.prayerManager(target), false);
             }
 
             @Override
@@ -314,7 +315,7 @@ public class SolHeredit extends NPC implements CombatScript {
                         injure();
                     }
                 } else if (ticks == 2) {
-                    if (prayerWasActive || !target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                    if (prayerWasActive || !PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                         delayHit(SolHeredit.this, -1, target, new Hit(SolHeredit.this, 15, HitType.REGULAR));
                     }
                     prayerWasActive = false;
@@ -326,7 +327,7 @@ public class SolHeredit extends NPC implements CombatScript {
                         injure();
                     }
                 } else if (ticks == 5) {
-                    if (prayerWasActive || !target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                    if (prayerWasActive || !PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                         delayHit(SolHeredit.this, -1, target, new Hit(SolHeredit.this, isShort ? 25 : 30, HitType.REGULAR));
                     }
                     prayerWasActive = false;
@@ -342,7 +343,7 @@ public class SolHeredit extends NPC implements CombatScript {
                             injure();
                         }
                     } else if (ticks == 8) {
-                        if (prayerWasActive || !target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                        if (prayerWasActive || !PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                             delayHit(SolHeredit.this, -1, target, new Hit(SolHeredit.this, 35, HitType.REGULAR));
                         }
                     } else if (ticks == 9) {
@@ -360,7 +361,7 @@ public class SolHeredit extends NPC implements CombatScript {
                             injure();
                         }
                     } else if (ticks == 9) {
-                        if (prayerWasActive || !target.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+                        if (prayerWasActive || !PrayerManagerKeys.prayerManager(target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                             delayHit(SolHeredit.this, -1, target, new Hit(SolHeredit.this, 45, HitType.REGULAR));
                         }
                     } else if (ticks == 10) {

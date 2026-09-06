@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.prayer.ectofuntus;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.WorldThread;
@@ -45,7 +46,7 @@ public class EctofuntusAltar implements ObjectAction {
                 player.getDialogueManager().start(new DoubleItemChat(player, new Item(4286), new Item(4255), "You need a bucket of slime and some bonemeal to do this."));
                 return;
             }
-            player.getAchievementDiaries().update(MorytaniaDiary.OFFER_SOME_BONEMEAL);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.OFFER_SOME_BONEMEAL);
             player.setAnimation(praying);
             inventory.deleteItem(4286, 1);
             inventory.deleteItem(bonemeal.getBonemeal(), 1);

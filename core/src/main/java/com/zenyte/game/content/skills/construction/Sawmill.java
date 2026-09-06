@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.InterfacePosition;
@@ -52,7 +53,7 @@ public class Sawmill extends Action {
 	@Override
 	public int processWithDelay() {
 		player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
-		player.getAchievementDiaries().update(VarrockDiary.MAKE_A_PLANK);
+		AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.MAKE_A_PLANK);
 		int completed = 0;
 		for (int i = 0; i < amount; i++) {
 			if (!check(false)) {
@@ -64,7 +65,7 @@ public class Sawmill extends Action {
             completed++;
         }
         if (completed >= 20 && plank.equals(Plank.MAHOGANY)) {
-            player.getAchievementDiaries().update(VarrockDiary.MAKE_MAHOGANY_PLANKS);
+            AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.MAKE_MAHOGANY_PLANKS);
         }
         return -1;
     }

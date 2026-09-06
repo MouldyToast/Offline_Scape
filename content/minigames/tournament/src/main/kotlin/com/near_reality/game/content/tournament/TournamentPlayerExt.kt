@@ -1,5 +1,6 @@
 package com.near_reality.game.content.tournament
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.tournament.area.TournamentArea
 import com.near_reality.game.content.tournament.loc.TournamentPortalObject
 import com.near_reality.game.content.tournament.preset.TournamentPresetSave
@@ -56,7 +57,7 @@ internal fun Player.moveToFightZone(location: Location, other: Player) {
     setFaceEntity(other)
     variables.resetScheduled()
     reset()
-    prayerManager.deactivateActivePrayers()
+    prayerManager().deactivateActivePrayers()
     WorldTasksManager.schedule({
         refreshDirection()
         setFaceEntity(null)

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxyte
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.slayer.RegularTask
 import com.near_reality.scripts.npc.drops.table.chance.dynamic.DynamicRollItemOneIn
 import com.zenyte.game.item.Item
@@ -37,7 +38,7 @@ class AraxyteLv96Droptable : NPCDropTableScript() {
                 RUNE_MED_HELM quantity 1 oneIn 63
                 RUNE_PLATELEGS quantity 1 oneIn 63
                 ARANEA_BOOTS quantity 1 dynamicOneIn {
-                    if(this.slayer.assignment.task == RegularTask.ARAXYTES)
+                    if(this.slayer().assignment.task == RegularTask.ARAXYTES)
                         600
                     else
                         4000

@@ -1,5 +1,8 @@
 package com.zenyte.game.content.minigame.fightcaves;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
@@ -73,7 +76,7 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
     private FightCaves(final AllocatedArea allocatedArea, final Player player) {
         super(allocatedArea, 296, 632);
         this.player = player;
-        final Assignment task = player.getSlayer().getAssignment();
+        final Assignment task = SlayerKeys.slayer(player).getAssignment();
         this.isOnJadAssignment = task != null && task.getTask() == RegularTask.TZTOK_JAD;
     }
 
@@ -230,8 +233,8 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         //player.getItemsKeptOnDeath().setContainers(source);
         WorldTasksManager.schedule(new WorldTask() {
@@ -290,7 +293,7 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         player.setLocation(getLocation(2412, 5114, 0));
         player.lock(1);
         WorldTasksManager.schedule(() -> {
-            player.getAchievementDiaries().update(KaramjaDiary.ATTEMPT_FIGHT_PITS_OR_CAVES);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.ATTEMPT_FIGHT_PITS_OR_CAVES);
             sendStartDialogue();
             player.resetWalkSteps();
             if (player.isRun()) {
@@ -359,11 +362,11 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         } else {
             player.getAttributes().remove("Fight caves progress");
             player.getAttributes().remove("Fight caves duration");
-            final Assignment task = player.getSlayer().getAssignment();
+            final Assignment task = SlayerKeys.slayer(player).getAssignment();
             if (task == null || task.getTask() != RegularTask.TZTOK_JAD) {
                 return;
             }
-            player.getSlayer().removeTask();
+            SlayerKeys.slayer(player).removeTask();
         }
     }
 

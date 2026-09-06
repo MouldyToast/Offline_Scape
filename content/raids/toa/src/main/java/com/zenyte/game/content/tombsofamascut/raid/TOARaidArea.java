@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.raid;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.tombsofamascut.TOAAccess;
 
 import com.zenyte.game.GameInterface;
@@ -483,8 +484,8 @@ public abstract class TOARaidArea extends AbstractTOARaidArea implements HitProc
 		player.lock();
 		player.stopAll();
 		final boolean intoGap = player.getTemporaryAttributes().remove(BabaEncounter.APMEKEN_BABA_DEATH_ATTRIBUTE, Boolean.TRUE);
-		if (!intoGap && player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-			player.getPrayerManager().applyRetributionEffect(source);
+		if (!intoGap && PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+			PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
 		}
 		WorldTasksManager.schedule(new WorldTask() {
 			int ticks;

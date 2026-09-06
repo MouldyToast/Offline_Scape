@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.collect.ImmutableList;
 import com.zenyte.game.world.entity.player.action.combat.ranged.MorriganBHWeaponsCombat;
 import com.near_reality.game.content.combat.CombatUtility;
@@ -305,7 +306,7 @@ public abstract class PlayerCombat extends Action {
                     player.getCombatDefinitions().setSpecial(false, true);
                     return;
                 }
-                if (player.getPrayerManager().getPrayerPoints() < 50) {
+                if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() < 50) {
                     player.sendMessage("You need to have at least 50 prayer points to use the special attack.");
                     player.getCombatDefinitions().setSpecial(false, true);
                     return;
@@ -739,8 +740,8 @@ public abstract class PlayerCombat extends Action {
             effectiveLevel = t.getSkills().getLevel(SkillConstants.DEFENCE);
             //We multiply by all prayer bonuses since you can only have one styles' prayers enabled at once, making
             //it safe to do so.
-            effectiveLevel *= t.getPrayerManager().getSkillBoost(SkillConstants.DEFENCE);
-            effectiveLevel *= t.getPrayerManager().getRangedBoost(SkillConstants.DEFENCE);
+            effectiveLevel *= PrayerManagerKeys.prayerManager(t).getSkillBoost(SkillConstants.DEFENCE);
+            effectiveLevel *= PrayerManagerKeys.prayerManager(t).getRangedBoost(SkillConstants.DEFENCE);
             effectiveLevel = Math.floor(effectiveLevel);
             final AttackStyle.AttackExperienceType attackType = t.getCombatDefinitions().getAttackExperienceType();
             effectiveLevel += (attackType == AttackExperienceType.DEFENCE_XP || attackType == AttackExperienceType.MAGIC_DEFENCE_XP || attackType == AttackExperienceType.RANGED_DEFENCE_XP) ? 3 : attackType == AttackExperienceType.SHARED_XP ? 1 : 0;
@@ -758,7 +759,7 @@ public abstract class PlayerCombat extends Action {
             if (type == AttackType.MAGIC) {
                 effectiveLevel = Math.floor(effectiveLevel * 0.3F);
                 double magicEffectiveDefence = t.getSkills().getLevel(SkillConstants.MAGIC);
-                magicEffectiveDefence *= t.getPrayerManager().getMagicBoost(SkillConstants.DEFENCE);
+                magicEffectiveDefence *= PrayerManagerKeys.prayerManager(t).getMagicBoost(SkillConstants.DEFENCE);
                 magicEffectiveDefence = Math.floor(magicEffectiveDefence);
                 magicEffectiveDefence *= 0.7F;
                 if (attacker.getEntityType() == EntityType.PLAYER) {

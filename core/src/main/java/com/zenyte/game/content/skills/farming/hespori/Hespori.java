@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.hespori;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Direction;
@@ -74,7 +75,7 @@ public class Hespori extends NPC implements CombatScript {
         super(8583, instance.getLocation(1246, 10086, 0), Direction.SOUTH, 0);
         this.instance = instance;
         this.spawned = true;
-        this.startingPrayerPoints = instance.owner.getPrayerManager().getPrayerPoints();
+        this.startingPrayerPoints = PrayerManagerKeys.prayerManager(instance.owner).getPrayerPoints();
     }
 
     /**
@@ -303,7 +304,7 @@ public class Hespori extends NPC implements CombatScript {
     @Override
     public void processEntity() {
         super.processEntity();
-        if (instance.owner.getPrayerManager().getPrayerPoints() < startingPrayerPoints) {
+        if (PrayerManagerKeys.prayerManager(instance.owner).getPrayerPoints() < startingPrayerPoints) {
             plantBasedDiet = false;
         }
     }

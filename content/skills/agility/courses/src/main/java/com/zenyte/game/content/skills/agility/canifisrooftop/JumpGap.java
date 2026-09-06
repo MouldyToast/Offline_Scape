@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.canifisrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -41,7 +42,7 @@ public final class JumpGap extends AgilityCourseObstacle {
                     player.setAnimation(JUMP);
                 } else if (ticks == 1) {
                     if (gap.equals(GapInfo.FIFTH)) {
-                        player.getAchievementDiaries().update(MorytaniaDiary.COMPLETE_CANIFIS_COURSE_LAP);
+                        AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.COMPLETE_CANIFIS_COURSE_LAP);
                     }
                     player.setAnimation(LAND);
                     player.setLocation(gap.getFinish());

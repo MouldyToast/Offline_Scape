@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.FurnitureData;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.construction.constants.Furniture;
@@ -34,7 +35,7 @@ public final class ClimbEmptyStaircaseD extends Dialogue {
 				final int slot = getFurnitureSlot(FurnitureSpace.SKILL_HALL_STAIRCASE);
 				final Furniture furniture = FurnitureSpace.SKILL_HALL_STAIRCASE_DS.getFurnitures()[slot];
 				ref.getFurnitureData().add(new FurnitureData(FurnitureSpace.SKILL_HALL_STAIRCASE_DS, furniture, new Location(object.getXInChunk(), object.getYInChunk(), 2), object.getType(), object.getRotation()));
-				player.getConstruction().createRoom(ref);
+				ConstructionKeys.construction(player).createRoom(ref);
 			})
 			.onOptionTwo(() -> {
 				finish();
@@ -42,7 +43,7 @@ public final class ClimbEmptyStaircaseD extends Dialogue {
 				final int slot = getFurnitureSlot(FurnitureSpace.SKILL_HALL_STAIRCASE);
 				final Furniture furniture = FurnitureSpace.QUEST_HALL_STAIRCASE_DS.getFurnitures()[slot];
 				ref.getFurnitureData().add(new FurnitureData(FurnitureSpace.QUEST_HALL_STAIRCASE_DS, furniture, new Location(object.getXInChunk(), object.getYInChunk(), 2), object.getType(), object.getRotation()));
-				player.getConstruction().createRoom(ref);
+				ConstructionKeys.construction(player).createRoom(ref);
 			})
 			.onOptionThree(() -> finish());
 		} else {
@@ -57,7 +58,7 @@ public final class ClimbEmptyStaircaseD extends Dialogue {
 					slot = 0;
 				final Furniture furniture = FurnitureSpace.SKILL_HALL_STAIRCASE.getFurnitures()[slot];
 				ref.getFurnitureData().add(new FurnitureData(FurnitureSpace.SKILL_HALL_STAIRCASE, furniture, new Location(object.getXInChunk(), object.getYInChunk(), 0), object.getType(), object.getRotation()));
-				player.getConstruction().createRoom(ref);
+				ConstructionKeys.construction(player).createRoom(ref);
 			})
 			.onOptionTwo(() -> {
 				finish();
@@ -67,7 +68,7 @@ public final class ClimbEmptyStaircaseD extends Dialogue {
 					slot = 0;
 				final Furniture furniture = FurnitureSpace.QUEST_HALL_STAIRCASE.getFurnitures()[slot];
 				ref.getFurnitureData().add(new FurnitureData(FurnitureSpace.QUEST_HALL_STAIRCASE, furniture, new Location(object.getXInChunk(), object.getYInChunk(), 0), object.getType(), object.getRotation()));
-				player.getConstruction().createRoom(ref);
+				ConstructionKeys.construction(player).createRoom(ref);
 			})
 			.onOptionThree(() -> {
 				finish();
@@ -77,7 +78,7 @@ public final class ClimbEmptyStaircaseD extends Dialogue {
 					slot = 0;
 				final Furniture furniture = FurnitureSpace.QUEST_HALL_STAIRCASE.getFurnitures()[slot];
 				ref.getFurnitureData().add(new FurnitureData(FurnitureSpace.QUEST_HALL_STAIRCASE, furniture, new Location(object.getXInChunk(), object.getYInChunk(), 0), object.getType(), object.getRotation()));
-				player.getConstruction().createRoom(ref);	
+				ConstructionKeys.construction(player).createRoom(ref);	
 			})
 			.onOptionFour(() -> finish());
 		}

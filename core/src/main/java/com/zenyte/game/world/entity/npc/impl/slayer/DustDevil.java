@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.skills.slayer.SlayerEquipment;
 import com.zenyte.game.util.Direction;
@@ -58,7 +59,7 @@ public class DustDevil extends NPC implements CombatScript, Spawnable {
 		if (source instanceof Player) {
 			final Player player = (Player) source;
 			if (SlayerEquipment.SLAYER_HELM.isWielding(player)) {
-				player.getAchievementDiaries().update(DesertDiary.SLAY_DUST_DEVIL);
+				AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.SLAY_DUST_DEVIL);
 			}
 		}
 	}

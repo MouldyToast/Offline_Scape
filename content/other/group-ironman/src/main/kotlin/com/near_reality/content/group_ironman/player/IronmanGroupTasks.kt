@@ -1,5 +1,6 @@
 package com.near_reality.content.group_ironman.player
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants.*
@@ -60,10 +61,10 @@ enum class IronmanGroupTasks(val enumIndex: Int, val taskCompleted: (Player) -> 
 	CMB_LVL_50(33, { player -> player.skills.combatLevel >= 50 }),
 	CMB_LVL_100(34, { player -> player.skills.combatLevel >= 100 }),
 	CMB_LVL_126(35, { player -> player.skills.combatLevel >= 126 }),
-	EASY_TASKS(36, { player -> player.achievementDiaries.isAllCompleted(DiaryComplexity.EASY) }),
-	MEDIUM_TASKS(37, { player -> player.achievementDiaries.isAllCompleted(DiaryComplexity.MEDIUM) }),
-	HARD_TASKS(38, { player -> player.achievementDiaries.isAllCompleted(DiaryComplexity.HARD) }),
-	ELITE_TASKS(39, { player -> player.achievementDiaries.isAllCompleted(DiaryComplexity.ELITE) }),
+	EASY_TASKS(36, { player -> player.achievementDiaries().isAllCompleted(DiaryComplexity.EASY) }),
+	MEDIUM_TASKS(37, { player -> player.achievementDiaries().isAllCompleted(DiaryComplexity.MEDIUM) }),
+	HARD_TASKS(38, { player -> player.achievementDiaries().isAllCompleted(DiaryComplexity.HARD) }),
+	ELITE_TASKS(39, { player -> player.achievementDiaries().isAllCompleted(DiaryComplexity.ELITE) }),
 	EASY_COMBAT_TASKS(40, { true }),
 	MEDIUM_COMBAT_TASKS(41, { true }),
 	HARD_COMBAT_TASKS(42, { true }),

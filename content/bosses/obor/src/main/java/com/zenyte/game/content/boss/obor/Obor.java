@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.obor;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.model.CameraShakeType;
 import com.zenyte.game.task.WorldTask;
@@ -156,8 +157,8 @@ public class Obor extends NPC implements CombatScript {
         final Entity source = hit.getSource();
         if (source instanceof final Player player) {
             final HitType type = hit.getHitType();
-            if (type == HitType.MELEE && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MISSILES) ||
-                    type == HitType.MAGIC && !player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+            if (type == HitType.MELEE && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE) || type == HitType.RANGED && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MISSILES) ||
+                    type == HitType.MAGIC && !PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                 prayedCorrectly = false;
             }
         }

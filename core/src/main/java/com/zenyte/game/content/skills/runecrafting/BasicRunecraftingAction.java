@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.runecrafting;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
@@ -148,36 +149,36 @@ public final class BasicRunecraftingAction extends Action {
 			SherlockTask.CRAFT_MULTIPLE_COSMIC_RUNES.progress(player);
 		}
 		if (amount >= 140 && rune.equals(Runecrafting.MIND_RUNE)) {
-			player.getAchievementDiaries().update(FaladorDiary.CRAFT_MIND_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CRAFT_MIND_RUNES);
 		} else if (amount >= 252 && rune.equals(Runecrafting.AIR_RUNE)) {
-			player.getAchievementDiaries().update(FaladorDiary.CRAFT_AIR_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CRAFT_AIR_RUNES);
 		} else if (rune.equals(Runecrafting.COSMIC_RUNE)) {
 			if (amount >= 56) {
-				player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_COSMIC_RUNES);
+				AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_COSMIC_RUNES);
 			}
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_COSMIC_RUNES, amount * 2);
 		} else if (amount >= 56 && rune.equals(Runecrafting.ASTRAL_RUNE)) {
-			player.getAchievementDiaries().update(FremennikDiary.CRAFT_ASTRAL_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CRAFT_ASTRAL_RUNES);
 		} else if (rune.equals(Runecrafting.DEATH_RUNE)) {
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_DEATH_RUNES, amount * 2);
-			player.getAchievementDiaries().update(ArdougneDiary.CRAFT_DEATH_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CRAFT_DEATH_RUNES);
 		} else if (rune.equals(Runecrafting.NATURE_RUNE)) {
 			if (amount >= 56) {
-				player.getAchievementDiaries().update(KaramjaDiary.CRAFT_56_NATURE_RUNES);
+				AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CRAFT_56_NATURE_RUNES);
 			}
 			SherlockTask.CRAFT_A_NATURE_RUNE.progress(player);
-			player.getAchievementDiaries().update(KaramjaDiary.CRAFT_NATURE_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CRAFT_NATURE_RUNES);
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_NATURE_RUNES, amount * 2);
 		} else if (rune.equals(Runecrafting.EARTH_RUNE)) {
 			if (amount >= 100) {
-				player.getAchievementDiaries().update(VarrockDiary.CRAFT_100_EARTH_RUNES);
+				AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CRAFT_100_EARTH_RUNES);
 			}
-			player.getAchievementDiaries().update(VarrockDiary.CRAFT_EARTH_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CRAFT_EARTH_RUNES);
 		} else if (rune.equals(Runecrafting.WATER_RUNE)) {
 			if (amount >= 140) {
-				player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_140_WATER_RUNES);
+				AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_140_WATER_RUNES);
 			}
-			player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_WATER_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_WATER_RUNES);
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_WATER_RUNES, amount * 2);
 		} else if (rune.equals(Runecrafting.FIRE_RUNE)) {
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_FIRE_RUNES, amount * 2);
@@ -188,7 +189,7 @@ public final class BasicRunecraftingAction extends Action {
 		} else if (rune.equals(Runecrafting.WRATH_RUNE)) {
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_WRATH_RUNES, amount * 2);
 		} else if (rune.equals(Runecrafting.BLOOD_RUNE)) {
-			player.getAchievementDiaries().update(KourendDiary.CRAFT_ONE_OR_MORE_BLOOD_RUNES);
+			AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CRAFT_ONE_OR_MORE_BLOOD_RUNES);
 			AdventCalendarManager.increaseChallengeProgress(player, 2022, 12, amount * 2);
 		}
 		player.getSkills().addXp(SkillConstants.RUNECRAFTING, useDaeyalt ? experience * 1.5 : experience);

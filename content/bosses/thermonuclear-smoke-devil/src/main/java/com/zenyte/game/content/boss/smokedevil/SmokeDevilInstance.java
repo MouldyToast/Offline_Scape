@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.smokedevil;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.Position;
 import com.zenyte.game.world.World;
@@ -96,12 +97,12 @@ public class SmokeDevilInstance extends DynamicArea implements DeathPlugin, Cann
         if (entity instanceof NPC) {
             final String name = ((NPC) entity).getDefinitions().getName();
             if (name.equals("Thermonuclear smoke devil") && player.getKillcount((NPC) entity) > 0) {
-                if (!player.getSlayer().isCurrentAssignment(entity)) {
+                if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                     player.sendMessage("You can only kill the Thermonuclear smoke devil while you\'re on a slayer task.");
                     return false;
                 }
             } else if (name.equals("Smoke devil")) {
-                if (!player.getSlayer().isCurrentAssignment(entity)) {
+                if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                     player.sendMessage("You can only kill Smoke devils while you\'re on a slayer task.");
                     return false;
                 }

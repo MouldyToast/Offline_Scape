@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.seersrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -47,7 +48,7 @@ public final class FinishCourse extends AgilityCourseObstacle {
                     player.setAnimation(Animation.LEAP);
                 else if (ticks == 1) {
                     player.getDailyChallengeManager().update(SkillingChallenge.COMPLETE_LAPS_SEERS_COURSE);
-                    player.getAchievementDiaries().update(KandarinDiary.COMPLETE_SEERS_VILLAGE_AGILITY_COURSE_LAP);
+                    AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.COMPLETE_SEERS_VILLAGE_AGILITY_COURSE_LAP);
                     player.setAnimation(Animation.LAND);
                     player.setLocation(FINISH);
                     MarkOfGrace.spawn(player, SeersRooftopCourse.MARK_LOCATIONS, 60, 20);

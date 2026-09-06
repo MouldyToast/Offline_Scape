@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.fightcaves.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.minigame.fightcaves.FightCaves;
 import com.zenyte.game.util.Utils;
@@ -37,7 +38,7 @@ final class KetZek extends FightCavesNPC implements CombatScript {
         super.onDeath(source);
         if (source instanceof Player) {
             final Player player = (Player) source;
-            player.getAchievementDiaries().update(KaramjaDiary.KILL_KET_ZEK);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.KILL_KET_ZEK);
         }
     }
 

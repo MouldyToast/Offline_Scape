@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
@@ -52,7 +53,7 @@ public class BarrowsRewardsInterface extends Interface {
             barrows.getContainer().setFullUpdate(true);
             player.getPacketDispatcher().sendUpdateItemContainer(barrows.getContainer());
             if (CombatUtilities.hasAnyBarrowsSet(player)) {
-                player.getAchievementDiaries().update(MorytaniaDiary.LOOT_BARROWS_CHEST);
+                AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.LOOT_BARROWS_CHEST);
             }
             player.getNotificationSettings().increaseKill("barrows");
             player.getNotificationSettings().sendBossKillCountNotification("barrows");

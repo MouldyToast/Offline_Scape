@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.task.WorldTasksManager;
@@ -128,7 +129,7 @@ public class ChaosElemental extends NPC implements CombatScript, Spawnable {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (source instanceof Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_THE_CHAOS_ELEMENTAL);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_THE_CHAOS_ELEMENTAL);
 		}
 	}
 

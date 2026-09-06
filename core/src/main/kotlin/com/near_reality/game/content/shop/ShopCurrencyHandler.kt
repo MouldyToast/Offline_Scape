@@ -1,5 +1,6 @@
 package com.near_reality.game.content.shop
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.api.service.vote.totalVoteCredits
 import com.near_reality.game.world.entity.player.bountyHunterPoints
 import com.near_reality.game.world.entity.player.pvmArenaPoints
@@ -22,7 +23,7 @@ object ShopCurrencyHandler {
             ShopCurrency.LOYALTY_POINTS -> player.loyaltyManager.loyaltyPoints
             ShopCurrency.TOURNAMENT_POINTS -> player.getNumericAttribute("tournament points").toInt()
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints.toInt()
-            ShopCurrency.SLAYER_POINTS -> player.slayer.slayerPoints
+            ShopCurrency.SLAYER_POINTS -> player.slayer().slayerPoints
             else -> {
                 if (type.isPhysical) {
                     val itemId = type.id.takeIf { it > 0 } ?: error("Invalid item id: ${type.id} for currency type: ${type::class.simpleName}")
@@ -45,7 +46,7 @@ object ShopCurrencyHandler {
             }
             ShopCurrency.TOURNAMENT_POINTS -> player.incrementNumericAttribute("tournament points", -amount)
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints -= amount
-            ShopCurrency.SLAYER_POINTS -> player.slayer.setSlayerPoints(player.slayer.slayerPoints - amount, true)
+            ShopCurrency.SLAYER_POINTS -> player.slayer().setSlayerPoints(player.slayer().slayerPoints - amount, true)
             else -> {
                 if (type.isPhysical) {
                     val itemId = type.id.takeIf { it > 0 } ?: error("Invalid item id: ${type.id} for currency type: ${type::class.simpleName}")
@@ -68,7 +69,7 @@ object ShopCurrencyHandler {
             }
             ShopCurrency.TOURNAMENT_POINTS -> player.incrementNumericAttribute("tournament points", amount)
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints += amount
-            ShopCurrency.SLAYER_POINTS -> player.slayer.setSlayerPoints(player.slayer.slayerPoints + amount, true)
+            ShopCurrency.SLAYER_POINTS -> player.slayer().setSlayerPoints(player.slayer().slayerPoints + amount, true)
             else -> {
                 if (type.isPhysical) {
                     val itemId = type.id.takeIf { it > 0 } ?: error("Invalid item id: ${type.id} for currency type: ${type::class.simpleName}")

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -93,7 +94,7 @@ public class Scorpia extends NPC implements CombatScript, Spawnable {
 			}
 		}
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 4);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 4);
 		}
 	}
 

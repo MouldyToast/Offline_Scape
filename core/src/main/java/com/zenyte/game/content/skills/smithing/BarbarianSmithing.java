@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
@@ -59,9 +60,9 @@ public class BarbarianSmithing extends Action {
         } else if (ticks == 4) {
             player.getInventory().deleteItemsIfContains(new Item[]{weapon.getBar(), weapon.getLogs()}, () -> {
                 if (index == 0 && weapon.getSpear().getId() == 1245) {
-                    player.getAchievementDiaries().update(KandarinDiary.SMITH_ADAMANT_SPEAR);
+                    AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.SMITH_ADAMANT_SPEAR);
                 } else if (index == 1 && weapon.getHasta().getId() == 11377) {
-                    player.getAchievementDiaries().update(KandarinDiary.SMITH_A_RUNE_HASTA);
+                    AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.SMITH_A_RUNE_HASTA);
                 }
                 player.getInventory().addItem(index == 0 ? weapon.getSpear() : weapon.getHasta());
                 player.getSkills().addXp(SkillConstants.SMITHING, weapon.getExperience());

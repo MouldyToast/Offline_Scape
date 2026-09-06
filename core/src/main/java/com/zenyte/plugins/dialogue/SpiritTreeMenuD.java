@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
@@ -40,9 +41,9 @@ public final class SpiritTreeMenuD extends OptionsMenuD {
 			return;
 		}
 		if (tree.equals(SpiritTree.GRAND_EXCHANGE)) {
-			player.getAchievementDiaries().update(VarrockDiary.USE_SPIRIT_TREE);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.USE_SPIRIT_TREE);
 		} else if (destinationTree.equals(SpiritTree.GNOME_STRONGHOLD)) {
-			player.getAchievementDiaries().update(WesternProvincesDiary.TRAVEL_TO_GNOME_STRONGHOLD);
+			AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TRAVEL_TO_GNOME_STRONGHOLD);
 		}
 		if (destinationTree.equals(SpiritTree.PORT_SARIM) || destinationTree.equals(SpiritTree.ETCETERIA) || destinationTree.equals(SpiritTree.BRIMHAVEN) || destinationTree.equals(SpiritTree.HOSIDIUS) || destinationTree.equals(SpiritTree.FARMING_GUILD)) {
 			SherlockTask.TELEPORT_TO_PLANTED_SPIRIT_TREE.progress(player);

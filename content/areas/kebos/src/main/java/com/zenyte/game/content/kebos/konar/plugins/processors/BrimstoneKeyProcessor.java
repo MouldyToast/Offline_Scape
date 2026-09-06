@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.plugins.processors;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.content.skills.slayer.Slayer;
 import com.near_reality.game.content.slayer.SlayerMaster;
@@ -52,7 +53,7 @@ public class BrimstoneKeyProcessor extends DropProcessor {
         super.onDeath(npc, killer);
 
         if (killer == null) return;
-        final Slayer slayer = killer.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(killer);
         if (!slayer.isCurrentAssignment(npc) || slayer.getMaster() != SlayerMaster.KONAR_QUO_MATEN) return;
 
         int rate = (int) getBasicDrops().get(0).getRate(killer, npc.getId());

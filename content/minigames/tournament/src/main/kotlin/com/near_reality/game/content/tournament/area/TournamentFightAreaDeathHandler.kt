@@ -1,5 +1,6 @@
 package com.near_reality.game.content.tournament.area
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.tournament.Tournament
 import com.near_reality.game.content.tournament.TournamentState
 import com.near_reality.game.content.tournament.findOther
@@ -38,8 +39,8 @@ class TournamentFightAreaDeathHandler(
         player.animation = null
         player.lock()
         player.stopAll()
-        if (player.prayerManager.isActive(Prayer.RETRIBUTION)) {
-            player.prayerManager.applyRetributionEffect(source)
+        if (player.prayerManager().isActive(Prayer.RETRIBUTION)) {
+            player.prayerManager().applyRetributionEffect(source)
         }
         WorldTasksManager.schedule(object : WorldTask {
             var ticks: Int = 0

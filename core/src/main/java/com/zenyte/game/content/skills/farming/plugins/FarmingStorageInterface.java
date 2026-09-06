@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.skills.farming.FarmingStorage;
 import com.zenyte.game.content.skills.farming.Storable;
@@ -41,7 +42,7 @@ public class FarmingStorageInterface extends Interface {
     public void open(Player player) {
         player.getInterfaceHandler().sendInterface(getInterface());
         player.getInterfaceHandler().sendInterface(GameInterface.FARMING_STORAGE_INVENTORY);
-        player.getFarming().getStorage().refresh();
+        FarmingKeys.farming(player).getStorage().refresh();
         final PacketDispatcher dispatcher = player.getPacketDispatcher();
         dispatcher.sendComponentSettings(getInterface(), getComponent("Quantity 1"), -1, -1, AccessMask.CLICK_OP1);
         dispatcher.sendComponentSettings(getInterface(), getComponent("Quantity 5"), -1, -1, AccessMask.CLICK_OP1);
@@ -75,7 +76,7 @@ public class FarmingStorageInterface extends Interface {
     }
 
     private static final void remove(@NotNull final Player player, @NotNull final Storable storable, int option) {
-        final FarmingStorage storage = player.getFarming().getStorage();
+        final FarmingStorage storage = FarmingKeys.farming(player).getStorage();
         final FarmingStorageInterface.Option op = storage.getOption(option);
         final Item item = storage.getItem(storable);
         switch (op) {

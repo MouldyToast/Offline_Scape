@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.runecrafting.CombinationRunecrafting;
 import com.zenyte.game.content.skills.runecrafting.CombinationRunecraftingAction;
@@ -34,7 +35,7 @@ public final class TalismanItemOnRunecraftingAltarAction implements ItemOnObject
 			if (tiara != null) {
 				player.getDialogueManager().start(new OptionDialogue(player, "Do you want to enchant the tiara?", new String[] {"Yes.", "No."}, new Runnable[] {() -> {
 					if (tiara.equals(Tiara.MIND)) {
-						player.getAchievementDiaries().update(FaladorDiary.MAKE_MIND_TIARA);
+						AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.MAKE_MIND_TIARA);
 					}
 					player.getInventory().deleteItem(tiara.getTalisman(), 1);
 					player.getInventory().deleteItem(5525, 1);

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
@@ -87,9 +88,9 @@ public enum Emote {
 			return;
 		}
 		if (cape.equals(CapesData.QUEST_POINT)) {
-			player.getAchievementDiaries().update(LumbridgeDiary.PERFORM_QUEST_CAPE_EMOTE);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.PERFORM_QUEST_CAPE_EMOTE);
 		}
-		player.getAchievementDiaries().update(FaladorDiary.PERFORM_SKILLCAPE_EMOTE);
+		AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.PERFORM_SKILLCAPE_EMOTE);
 		final int delay = cape.getAnimation() == null ? 7200 : AnimationUtil.getDuration(cape.getAnimation());
 		addDelay(player, delay);
 		player.lock(delay / 600);
@@ -248,7 +249,7 @@ public enum Emote {
 		}
 		if (ArrayUtils.contains(SOS_EMOTES, emote)) {
 			final int index = ArrayUtils.indexOf(SOS_EMOTES, emote);
-			player.getAchievementDiaries().update(VarrockDiary.PERFORM_SOS_EMOTES, (int) Math.pow(2, index));
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.PERFORM_SOS_EMOTES, (int) Math.pow(2, index));
 		}
 		if (emote.sequence != null) {
 			emote.sequence.play(player);

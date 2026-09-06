@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.world.entity.Entity;
@@ -42,7 +43,7 @@ public class TaskOnlyWyvernCave extends PolygonRegionArea implements CannonRestr
     @Override
     public boolean attack(Player player, Entity entity, PlayerCombat combat) {
         if (entity instanceof Wyvern && !(entity instanceof SkeletalWyvern)) {
-            final Assignment assignment = player.getSlayer().getAssignment();
+            final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
             if (assignment == null || assignment.getTask() != RegularTask.FOSSIL_ISLAND_WYVERN) {
                 player.getDialogueManager().start(new Dialogue(player, NpcId.WEVE) {
                     @Override

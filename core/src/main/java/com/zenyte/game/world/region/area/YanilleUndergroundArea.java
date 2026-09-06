@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -39,7 +40,7 @@ public class YanilleUndergroundArea extends PolygonRegionArea implements EntityA
 		if (entity instanceof NPC) {
 			final String name = ((NPC) entity).getDefinitions().getName();
 			if (name.equals("Smoke devil")) {
-				if (!player.getSlayer().isCurrentAssignment(entity)) {
+				if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
 					player.sendMessage("You can only kill Smoke devils while you're on a slayer task.");
 					return false;
 				}

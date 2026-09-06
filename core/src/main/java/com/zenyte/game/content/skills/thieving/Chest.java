@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.thieving;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.drops.AllotmentSeedTable;
 import com.zenyte.game.content.drops.CommonSeedTable;
@@ -132,7 +133,7 @@ public enum Chest {
     }) {
         @Override
         public void onSuccess(Player player) {
-            player.getAchievementDiaries().update(WildernessDiary.STEAL_FROM_ROGUES_CHEST);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.STEAL_FROM_ROGUES_CHEST);
             final List<NPC> list = CharacterLoop.find(player.getLocation(), 30, NPC.class, n -> {
                 final String name = n.getDefinitions().getName().toLowerCase();
                 return !n.isDead() && name.contains("rogue");

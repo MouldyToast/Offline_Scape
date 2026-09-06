@@ -1,5 +1,6 @@
 package com.zenyte.game.content.theatreofblood.room.sotetseg.npc
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.util.Utils
@@ -41,8 +42,8 @@ internal enum class BallAttack(
 
         sotetseg.performHit(target)
 
-        if (!target.prayerManager.isActive(requiredPrayer)) {
-            Lightning.deactivateOverheadProtectionPrayers(target, target.prayerManager, true)
+        if (!target.prayerManager().isActive(requiredPrayer)) {
+            Lightning.deactivateOverheadProtectionPrayers(target, target.prayerManager(), true)
         }
     }
 

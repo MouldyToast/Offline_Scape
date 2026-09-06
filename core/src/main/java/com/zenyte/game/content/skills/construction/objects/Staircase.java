@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -36,7 +37,7 @@ public final class Staircase implements ObjectInteraction {
                 return;
             }
             final Location tile = new Location(player.getX(), player.getY(), player.getPlane() + 1);
-            final RoomReference ref = player.getConstruction().getReference(tile);
+            final RoomReference ref = ConstructionKeys.construction(player).getReference(tile);
             if (ref == null) {
                 boolean upstairs = player.getPlane() == 1 || reference.getRoom() == RoomType.SKILL_HALL || reference.getRoom() == RoomType.QUEST_HALL;
                 player.getDialogueManager().start(new ClimbEmptyStaircaseD(player, reference, upstairs, object));
@@ -48,7 +49,7 @@ public final class Staircase implements ObjectInteraction {
                 return;
             }
             final Location tile = new Location(player.getX(), player.getY(), player.getPlane() - 1);
-            final RoomReference ref = player.getConstruction().getReference(tile);
+            final RoomReference ref = ConstructionKeys.construction(player).getReference(tile);
             if (ref == null)
                 player.getDialogueManager().start(new ClimbEmptyStaircaseD(player, reference, reference.getRoom() == RoomType.SKILL_HALL || reference.getRoom() == RoomType.QUEST_HALL, object));
             else
@@ -58,7 +59,7 @@ public final class Staircase implements ObjectInteraction {
                 player.getDialogueManager().start(new PlainChat(player, "You cannot remove a room supporting another room."));
                 return;
             }
-            final RoomReference ref = player.getConstruction().getReference(new Location(player.getX(), player.getY(), player.getPlane() + 1));
+            final RoomReference ref = ConstructionKeys.construction(player).getReference(new Location(player.getX(), player.getY(), player.getPlane() + 1));
             if (ref == null) {
                 player.getDialogueManager().start(new PlainChat(player, "There's no room above to remove."));
                 return;

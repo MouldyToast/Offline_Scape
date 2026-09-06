@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.zenyte.game.content.skills.farming.contract.FarmingContract;
@@ -8,6 +9,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.object.WorldObject;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.utils.DefaultLogger;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
@@ -45,6 +47,29 @@ public class Farming {
         this.spots.addAll(farming.spots);
         this.spots.forEach(spot -> spot.setPlayer(player));
         this.storage = new FarmingStorage(player, farming.storage.getStorage());
+    }
+
+    @Subscribe
+    public static void onInit(final InitializationEvent event) {
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = FarmingKeys.rawFarmingAttr(player) != null;
+        FarmingKeys.farming(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the farming state under the
+        // top-level "farming" JSON key on the parser player. The adopt below
+        // migrates it into the attr (running the same copy constructor the
+        // legacy setFields wholesale replace always ran); the next save
+        // persists it under attrPersistence["farming"] and drops the legacy
+        // key.
+        @SuppressWarnings("deprecation")
+        final Farming savedFarming = savedPlayer.getFarming();
+        if (savedFarming == null) {
+            return;
+        }
+        FarmingKeys.adoptFarming(player, savedFarming);
     }
 
     public void refresh() {

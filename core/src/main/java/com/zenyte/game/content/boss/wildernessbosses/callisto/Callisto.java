@@ -1,5 +1,7 @@
 package com.zenyte.game.content.boss.wildernessbosses.callisto;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
@@ -114,7 +116,7 @@ public class Callisto extends NPC implements CombatScript {
             int delay = World.sendProjectile(this, aoeTarget, magic ? MAGIC_PROJECTILE : RANGED_PROJECTILE);
             if (magic) {
                 delayHit(delay, aoeTarget, magic(aoeTarget, artio ? 40 : 60).onLand(hit -> {
-                    if (!((Player) aoeTarget).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                    if (!PrayerManagerKeys.prayerManager((Player) aoeTarget).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                         knockback(aoeTarget);
                     }
                 }));
@@ -314,7 +316,7 @@ public class Callisto extends NPC implements CombatScript {
     public void onDeath(final Entity source) {
         super.onDeath(source);
         if (source instanceof Player player) {
-            player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 1);
         }
     }
 

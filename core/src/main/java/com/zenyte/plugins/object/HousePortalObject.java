@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.WorldObject;
@@ -18,9 +19,9 @@ public final class HousePortalObject implements ObjectAction {
 		if (optionId == 1) {
 			player.getDialogueManager().start(new HousePortal(player));
 		} else if (optionId == 2) {
-			player.getConstruction().enterHouse(false);
+			ConstructionKeys.construction(player).enterHouse(false);
 		} else if (optionId == 3) {
-			player.getConstruction().enterHouse(true);
+			ConstructionKeys.construction(player).enterHouse(true);
 		} else {
 			player.sendMessage("This feature hasn't been added yet.");
 		}

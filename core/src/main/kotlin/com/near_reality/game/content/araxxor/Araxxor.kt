@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.araxxor.araxytes.Araxyte
 import com.near_reality.game.content.araxxor.araxytes.impl.AcidicAraxyte
 import com.near_reality.game.content.araxxor.araxytes.impl.MirrorbackAraxyte
@@ -238,7 +239,7 @@ data class Araxxor(
                     if (NotificationSettings.BOSS_NPC_NAMES.contains(name.lowercase(Locale.getDefault())))
                         player.notificationSettings.sendBossKillCountNotification(name)
                 }
-                player.slayer.checkAssignment(this)
+                player.slayer().checkAssignment(this)
                 ScoreboardModule.updateAraxxorStatistics(player.bossTimer.currentTracker)
                 player.bossTimer.finishTracking("Araxxor")
             }

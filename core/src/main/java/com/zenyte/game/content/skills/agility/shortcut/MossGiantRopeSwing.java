@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTasksManager;
@@ -29,7 +30,7 @@ public final class MossGiantRopeSwing implements Shortcut {
         player.setFaceLocation(fm.getToSecondTile());
         player.setForceMovement(fm);
         WorldTasksManager.schedule(() -> player.setLocation(fm.getToSecondTile()), 1);
-        player.getAchievementDiaries().update(KaramjaDiary.USE_ROPE_SWING);
+        AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.USE_ROPE_SWING);
     }
     
     @Override

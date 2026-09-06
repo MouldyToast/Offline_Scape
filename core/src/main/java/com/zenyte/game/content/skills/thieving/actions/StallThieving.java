@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.thieving.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
@@ -130,12 +131,12 @@ public class StallThieving extends Action {
 
 	private void addLoot() {
 		switch (stall) {
-			case ARDOUGNE_AND_KOUREND_BAKERS_STALL -> player.getAchievementDiaries().update(ArdougneDiary.STEAL_CAKE);
-			case VARROCK_AND_KOUREND_TEA_STALL -> player.getAchievementDiaries().update(VarrockDiary.STEAL_FROM_TEA_STALL);
-			case KELDAGRIM_BAKERY_STALL, KELDAGRIM_CRAFTING_STALL -> player.getAchievementDiaries().update(FremennikDiary.STEAL_FROM_CRAFTING_STALL);
-			case RELLEKKA_FISH_STALL -> player.getAchievementDiaries().update(FremennikDiary.STEAL_FROM_RELLEKKA_FISH_STALLS);
-			case KELDAGRIM_GEM_STALL -> player.getAchievementDiaries().update(FremennikDiary.STEAL_FROM_GEM_STALL);
-			case KOUREND_FRUIT_STALL -> player.getAchievementDiaries().update(KourendDiary.STEAL_FROM_FOOD_STALL);
+			case ARDOUGNE_AND_KOUREND_BAKERS_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.STEAL_CAKE);
+			case VARROCK_AND_KOUREND_TEA_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.STEAL_FROM_TEA_STALL);
+			case KELDAGRIM_BAKERY_STALL, KELDAGRIM_CRAFTING_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.STEAL_FROM_CRAFTING_STALL);
+			case RELLEKKA_FISH_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.STEAL_FROM_RELLEKKA_FISH_STALLS);
+			case KELDAGRIM_GEM_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.STEAL_FROM_GEM_STALL);
+			case KOUREND_FRUIT_STALL -> AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.STEAL_FROM_FOOD_STALL);
 			case TZHAAR_GEM_SHOP_COUNTER -> player.getDailyChallengeManager().update(SkillingChallenge.PICKPOCKET_GEM_STALL_TZHAARS);
 
 		}

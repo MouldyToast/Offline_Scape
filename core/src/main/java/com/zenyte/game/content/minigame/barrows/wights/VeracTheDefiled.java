@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows.wights;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.minigame.barrows.BarrowsWightNPC;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.util.Direction;
@@ -36,7 +37,7 @@ public class VeracTheDefiled extends BarrowsWightNPC implements Spawnable, Comba
 			if (target instanceof Player) {
 				type = HitType.DEFAULT;
 				final Player player = (Player) target;
-				if (player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+				if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
 					max *= 0.667F;
 				}
 			}

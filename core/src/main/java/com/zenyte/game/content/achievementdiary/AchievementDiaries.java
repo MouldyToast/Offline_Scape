@@ -12,6 +12,7 @@ import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
 import com.zenyte.plugins.dialogue.PlainChat;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.LoginEvent;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -64,14 +65,39 @@ public final class AchievementDiaries {
 		}
 	}
 
-	public void initialize(final Player player, final Player parser) {
-		this.player = player;
-		final AchievementDiaries parserData = parser.getAchievementDiaries();
-		if (parserData == null) {
+	/**
+	 * Copies the persisted state of another diary manager into this one. Used
+	 * by the legacy load path in onInit and by AchievementDiariesKeys' attr
+	 * rehydration. Mirrors the legacy setFields initialize exactly: the
+	 * progress map entries are copied and the pending-reward per-area maps
+	 * are adopted by reference.
+	 */
+	public void copyFrom(final AchievementDiaries other) {
+		map.putAll(other.map);
+		pendingRewards.putAll(other.pendingRewards);
+	}
+
+	@Subscribe
+	public static void onInit(final InitializationEvent event) {
+		final Player player = event.getPlayer();
+		final Player savedPlayer = event.getSavedPlayer();
+		final boolean hadPersistedAttr = AchievementDiariesKeys.rawAchievementDiariesAttr(player) != null;
+		final AchievementDiaries diaries = AchievementDiariesKeys.achievementDiaries(player);
+		if (hadPersistedAttr || savedPlayer == null) {
 			return;
 		}
-		map.putAll(parserData.map);
-		pendingRewards.putAll(parserData.pendingRewards);
+		// Legacy path: pre-migration saves keep the diary state under the
+		// top-level "achievementDiaries" JSON key on the parser player. The
+		// copy below migrates it into the attr (running the same putAll copy
+		// the legacy setFields initialize always ran); the next save persists
+		// it under attrPersistence["achievement_diaries"] and drops the
+		// legacy key.
+		@SuppressWarnings("deprecation")
+		final AchievementDiaries savedDiaries = savedPlayer.getAchievementDiaries();
+		if (savedDiaries == null) {
+			return;
+		}
+		diaries.copyFrom(savedDiaries);
 	}
 
 	/**
@@ -143,7 +169,7 @@ public final class AchievementDiaries {
 
 	@Listener(type = ListenerType.LOBBY_CLOSE)
 	private static void onLogin(final Player player) {
-		final AchievementDiaries manager = player.getAchievementDiaries();
+		final AchievementDiaries manager = AchievementDiariesKeys.achievementDiaries(player);
 		for (final Diary[] diary : ALL_DIARIES) {
 			manager.refresh(diary[0]);
 		}
@@ -244,7 +270,7 @@ public final class AchievementDiaries {
 	@Subscribe
 	public static void onLogin(final LoginEvent event) {
 		final Player player = event.getPlayer();
-		final AchievementDiaries achDiaries = player.getAchievementDiaries();
+		final AchievementDiaries achDiaries = AchievementDiariesKeys.achievementDiaries(player);
 		for (final Diary[] allDiaries : ALL_DIARIES) {
 			for (final Diary diary : allDiaries) {
 				if (diary.autoCompleted()) {

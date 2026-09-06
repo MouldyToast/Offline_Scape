@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.fishing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.collect.ImmutableMap;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.model.item.leagues.raging_echo.EchoAxe;
@@ -157,30 +158,30 @@ public class Fishing extends Action {
         }
         final FishDefinitions fish = this.fish.get(Utils.random(this.fish.size() - 1));
         if (fish.equals(FishDefinitions.TROUT)) {
-            player.getAchievementDiaries().update(VarrockDiary.CATCH_TROUT);
+            AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CATCH_TROUT);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_TROUT);
-            player.getAchievementDiaries().update(KourendDiary.FISH_A_TROUT);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.FISH_A_TROUT);
         } else if (fish.equals(FishDefinitions.SALMON)) {
-            player.getAchievementDiaries().update(LumbridgeDiary.CATCH_SALMON);
+            AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CATCH_SALMON);
         } else if (fish.equals(FishDefinitions.ANCHOVIES)) {
-            player.getAchievementDiaries().update(LumbridgeDiary.CATCH_ANCHOVIES);
+            AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CATCH_ANCHOVIES);
         } else if (fish.equals(FishDefinitions.KARAMBWAN)) {
-            player.getAchievementDiaries().update(KaramjaDiary.CATCH_A_KARAMBWAN);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CATCH_A_KARAMBWAN);
         } else if (fish.equals(FishDefinitions.DARK_CRAB)) {
-            player.getAchievementDiaries().update(WildernessDiary.FISH_AND_COOK_DARK_CRAB, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.FISH_AND_COOK_DARK_CRAB, 1);
         } else if (fish.equals(FishDefinitions.MACKERAL)) {
-            player.getAchievementDiaries().update(KandarinDiary.CATCH_A_MACKEREL);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CATCH_A_MACKEREL);
         } else if (fish.equals(FishDefinitions.BASS)) {
-            player.getAchievementDiaries().update(KandarinDiary.CATCH_AND_COOK_BASS, 1);
-            player.getAchievementDiaries().update(WesternProvincesDiary.FISH_BASS);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CATCH_AND_COOK_BASS, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.FISH_BASS);
         } else if (fish.equals(FishDefinitions.LEAPING_STURGEON)) {
-            player.getAchievementDiaries().update(KandarinDiary.CATCH_LEAPING_STURGEON);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CATCH_LEAPING_STURGEON);
         } else if (fish.equals(FishDefinitions.SHARK)) {
             AdventCalendarManager.increaseChallengeProgress(player, 2022, 18, 1);
             SherlockTask.CATCH_RAW_SHARK.progress(player);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_SHARKS);
         } else if (fish.equals(FishDefinitions.ANGLERFISH)) {
-            player.getAchievementDiaries().update(KourendDiary.CATCH_ANGLERFISH, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CATCH_ANGLERFISH, 1);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_ANGLERFISH);
             AdventCalendarManager.increaseChallengeProgress(player, 2022, 6, 1);
         } else if (fish.equals(FishDefinitions.KARAMBWANJI)) {
@@ -190,7 +191,7 @@ public class Fishing extends Action {
         } else if (fish.equals(FishDefinitions.SWORDFISH)) {
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_SWORDFISH);
         } else if (fish.equals(FishDefinitions.LAVA_EEL)) {
-            player.getAchievementDiaries().update(WildernessDiary.FISH_RAW_LAVA_EEL);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.FISH_RAW_LAVA_EEL);
         }
         if (fish.equals(FishDefinitions.HERRING)) {
             CharlieTask.FISH_A_HERRING.progress(player);
@@ -219,8 +220,8 @@ public class Fishing extends Action {
         }
 
         //TODO
-        //player.getAchievementDiaries().update(ArdougneDiary.CATCH_FISH_ON_FISHING_PLATFORM);
-        player.getAchievementDiaries().update(KaramjaDiary.USE_FISHING_SPOTS);
+        //AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CATCH_FISH_ON_FISHING_PLATFORM);
+        AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.USE_FISHING_SPOTS);
         if (defs == SpotDefinitions.MINNOW) {
             final int amount = 10 + Math.min(4, ((player.getSkills().getLevel(SkillConstants.FISHING) - 82) / 3));
             player.getInventory().addOrDrop(new Item(fish.getId(), amount));

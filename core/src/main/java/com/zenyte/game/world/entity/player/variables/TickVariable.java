@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.variables;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.bountyhunter.BountyHunterKeys;
 import com.near_reality.game.content.consumables.drinks.DivinePotion;
 import com.zenyte.game.content.consumables.ConsumableEffects;
@@ -195,12 +196,12 @@ public enum TickVariable {
     }),
     BLESSED_SCARAB((player, ticks) -> {
         if (ticks % 4 == 0) {
-            player.getPrayerManager().restorePrayerPoints(8);
+            PrayerManagerKeys.prayerManager(player).restorePrayerPoints(8);
         }
     }),
     PRAYER_ENHANCE((player, ticks) -> {
         if (ticks % 6 == 0) {
-            player.getPrayerManager().restorePrayerPoints(1);
+            PrayerManagerKeys.prayerManager(player).restorePrayerPoints(1);
         }
     }, new VariableMessage(0, Colour.RED + "Your prayer enhance effect has worn off.")),
     IMBUED_HEART_COOLDOWN(new VariableMessage(0, "<col=ef1020>Your imbued heart has regained its magical power.")),

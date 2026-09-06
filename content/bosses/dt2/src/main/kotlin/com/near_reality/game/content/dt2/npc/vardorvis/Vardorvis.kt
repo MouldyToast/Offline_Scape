@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.npc.vardorvis
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.dt2.area.DT2Module
 import com.near_reality.game.content.dt2.area.VardorvisInstance
 import com.near_reality.game.content.dt2.npc.*
@@ -366,7 +367,7 @@ internal class Vardorvis(
         }
         val hit = Hit(this, damage, HitType.MELEE)
         delayHit(this, 0, target, hit)
-        if (hit.damage > 0 && hit.isAccurate && (target is Player) && !target.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE))
+        if (hit.damage > 0 && hit.isAccurate && (target is Player) && !target.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE))
             hit.source.applyHit(Hit(hit.damage / 2, HitType.HEALED))
 
         this.setAnimation(defs.attackAnim)

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.follower.impl;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.near_reality.game.item.CustomItemId;
@@ -323,9 +324,9 @@ public enum BossPet implements Pet {
         if (this.equals(PET_CHAOS_ELEMENTAL)) {
             finalRarity = bossId == 2054 ? (boosted ? 170 : 200) : (boosted ? 850 : 1000);
         } else if (this.equals(TZREK_JAD)) {
-            finalRarity = player != null && (player.getSlayer().getAssignment() != null && player.getSlayer().getAssignment().getTask().equals(RegularTask.TZTOK_JAD)) ? 100 : 200;
+            finalRarity = player != null && (SlayerKeys.slayer(player).getAssignment() != null && SlayerKeys.slayer(player).getAssignment().getTask().equals(RegularTask.TZTOK_JAD)) ? 100 : 200;
         } else if (this.equals(JAL_NIB_REK)) {
-            finalRarity = player != null && (player.getSlayer().getAssignment() != null && player.getSlayer().getAssignment().getTask().equals(RegularTask.TZKAL_ZUK)) ? 75 : 100;
+            finalRarity = player != null && (SlayerKeys.slayer(player).getAssignment() != null && SlayerKeys.slayer(player).getAssignment().getTask().equals(RegularTask.TZKAL_ZUK)) ? 75 : 100;
         }
 
         if (player != null && player.getVariables().getPetBoosterTick() > 0) {

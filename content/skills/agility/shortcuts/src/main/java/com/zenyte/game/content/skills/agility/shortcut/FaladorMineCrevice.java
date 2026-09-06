@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -46,7 +47,7 @@ public class FaladorMineCrevice implements Shortcut {
                     player.setAnimation(CRAWL_OUT);
                     player.setForceMovement(new ForceMovement(west ? EAST_EXIT : WEST_EXIT, 60, west ? ForceMovement.EAST : ForceMovement.WEST));
                 } else if(ticks == 8) {
-                    player.getAchievementDiaries().update(FaladorDiary.SQUEEZE_THROUGH_CREVICE);
+                    AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.SQUEEZE_THROUGH_CREVICE);
                     player.setLocation(west ? EAST_EXIT : WEST_EXIT);
                     stop();
                 }

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.PolygonRegionArea;
@@ -19,7 +20,7 @@ public class TrollStrongholdArea extends PolygonRegionArea {
 
     @Override
     public void enter(Player player) {
-        player.getAchievementDiaries().update(FremennikDiary.ENTER_TROLL_STRONGHOLD);
+        AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.ENTER_TROLL_STRONGHOLD);
     }
 
     @Override

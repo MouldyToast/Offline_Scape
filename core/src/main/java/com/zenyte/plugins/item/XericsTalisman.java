@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
@@ -188,7 +189,7 @@ public class XericsTalisman extends ItemPlugin implements PairedItemOnItemPlugin
                 }
                 if (destination.getX() == 1643 && destination.getY() == 3671) {
                     //Xeric's heart
-                    player.getAchievementDiaries().update(KourendDiary.TELEPORT_TO_XERICS_HEART);
+                    AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.TELEPORT_TO_XERICS_HEART);
                 }
             }
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.area.strongholdofsecurity;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Emote;
@@ -82,7 +83,7 @@ public final class SOSChest implements ObjectAction {
 							player.sendMessage("You feel refreshed and renewed.");
 							player.addAttribute("sos third claimed", 1);
 							player.heal(player.getMaxHitpoints());
-							player.getPrayerManager().restorePrayerPoints(player.getSkills().getLevelForXp(SkillConstants.PRAYER));
+							PrayerManagerKeys.prayerManager(player).restorePrayerPoints(player.getSkills().getLevelForXp(SkillConstants.PRAYER));
 						});
 						plain("...congratulations adventurer, you have been deemed worthy of this reward. You have also unlocked the Idea emote!");
 					}

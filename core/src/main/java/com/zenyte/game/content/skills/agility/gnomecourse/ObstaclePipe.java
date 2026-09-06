@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.gnomecourse;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourse;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
@@ -69,7 +70,7 @@ public final class ObstaclePipe extends AgilityCourseObstacle {
                         break;
                     case 10:
                         player.setLocation(new Location(obj.getX(), obj.getY() + 7, 0));
-                        player.getAchievementDiaries().update(WesternProvincesDiary.COMPLETE_GNOME_COURSE_LAP);
+                        AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.COMPLETE_GNOME_COURSE_LAP);
                         stop();
                         break;
                 }

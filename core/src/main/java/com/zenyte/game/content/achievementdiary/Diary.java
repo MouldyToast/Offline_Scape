@@ -75,7 +75,7 @@ public interface Diary {
 		final String name = firstEntry.area().getAreaName();
 		final ArrayList<String> list = new ArrayList<>(100);
 		final String prefix = "<str>";
-		final AchievementDiaries diaries = player.getAchievementDiaries();
+		final AchievementDiaries diaries = AchievementDiariesKeys.achievementDiaries(player);
 		final boolean ironman = player.isIronman();
 		for (final DiaryComplexity difficulty : DiaryComplexity.VALUES) {
 			final List<Diary> diary = values.get(difficulty);

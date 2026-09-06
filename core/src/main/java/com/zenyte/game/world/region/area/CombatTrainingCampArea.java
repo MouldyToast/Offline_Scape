@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
@@ -22,7 +23,7 @@ public class CombatTrainingCampArea extends KingdomOfKandarin {
 	@Override
 	public void enter(final Player player) {
 	    super.enter(player);
-		player.getAchievementDiaries().update(ArdougneDiary.ENTER_COMBAT_TRAINING_CAMP);
+		AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.ENTER_COMBAT_TRAINING_CAMP);
 	}
 
 	@Override

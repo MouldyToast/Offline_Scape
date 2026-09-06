@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.slayer.dialogue.SumonaAssignmentD.Companion.SUMMONA_TASK_COST
 import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
@@ -25,9 +26,9 @@ fun Player.getSumonaTasks(wildernessIncluded: Boolean = false) = BossTask.entrie
     .filter { it.predicate.test(this) }
     .toTypedArray()
 
-fun Player.lookupLastAssignment() = if (slayer.lastAssignmentName == null) null else Assignment.getTask(slayer.lastAssignmentName)
-infix fun Player.setSlayerMaster(master: SlayerMaster) { slayer.master = master }
-infix fun Player.setTask(task: Assignment) { slayer.assignment = task }
+fun Player.lookupLastAssignment() = if (slayer().lastAssignmentName == null) null else Assignment.getTask(slayer().lastAssignmentName)
+infix fun Player.setSlayerMaster(master: SlayerMaster) { slayer().master = master }
+infix fun Player.setTask(task: Assignment) { slayer().assignment = task }
 infix fun Player.hasSlayerLevel(level: Int) : Boolean = skills.getLevel(SkillConstants.SLAYER) >= level
 fun SlayerMaster.isKonar() = this == SlayerMaster.KONAR_QUO_MATEN
 
@@ -36,9 +37,9 @@ fun Player.underSumonaGP() = inventory.getAmountOf(ItemId.COINS_995) < SUMMONA_T
 var Player.hasActiveSuperior: Boolean by attribute("superior monster", false)
 var Player.overrideSuperiorRate: Int by attribute("superior rate", 0)
 fun Player.generateSumonaTask(): Assignment {
-    val last: SlayerTask? = this.slayer.lastAssignmentName?.let { Assignment.getTask(it) }
+    val last: SlayerTask? = this.slayer().lastAssignmentName?.let { Assignment.getTask(it) }
     val possible = BossTask.VALUES.filter { task ->
-        (slayer.sumonaAssignWildernessTasks() || !task.wilderness) && task.predicate.test(this) && task != last
+        (slayer().sumonaAssignWildernessTasks() || !task.wilderness) && task.predicate.test(this) && task != last
     }.toMutableList()
 
     if (possible.isEmpty()) {
@@ -61,7 +62,7 @@ fun Player.generateSumonaTask(): Assignment {
 
     return Assignment(
         this,
-        this.slayer,
+        this.slayer(),
         chosen,
         chosen.enumName,
         amount,

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -26,7 +27,7 @@ public class DagannothKingsDiamondLadder implements ObjectAction {
                     options(TITLE, new DialogueOption("Standard", () -> {
                         player.useStairs(828, new Location(2900, 4449, 0), 1, 2);
                     }), new DialogueOption("Slayer", () -> {
-                        final Assignment assignment = player.getSlayer().getAssignment();
+                        final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
                         if (assignment == null || (assignment.getTask() != RegularTask.DAGANNOTH && assignment.getTask() != BossTask.DAGANNOTH_KINGS)) {
                             player.getDialogueManager().start(new PlainChat(player, "You need to be on a dagannoths slayer task to access the slayer-only dungeon."));
                             return;

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.rellekkarooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -58,7 +59,7 @@ public final class PileOfFish extends AgilityCourseObstacle {
                     case 1:
                         player.setAnimation(ANIM2);
                         player.setLocation(LOCATION1);
-                        player.getAchievementDiaries().update(FremennikDiary.COMPLETE_RELLEKKA_AGILITY_COURSE_LAP);
+                        AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.COMPLETE_RELLEKKA_AGILITY_COURSE_LAP);
                     case 2:
                         player.addWalkSteps(2652, 3676, -1, false);
                         break;

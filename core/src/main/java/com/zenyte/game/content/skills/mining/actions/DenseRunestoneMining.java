@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.mining.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.mining.MiningDefinitions;
@@ -75,7 +76,7 @@ public class DenseRunestoneMining extends Action {
 
         player.getInventory().addOrDrop(denseEssBlock);
 
-        if (player.getAchievementDiaries().isAllCompleted(KourendDiary.MEDIUM)) {
+        if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KourendDiary.MEDIUM)) {
             // 5% chance to mine two blocks
             if (Utils.random(99) < 5) {
                 player.getInventory().addOrDrop(denseEssBlock);

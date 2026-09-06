@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.inferno.npc.impl;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.collect.ImmutableMap;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.minigame.inferno.model.WaveNPC;
@@ -81,7 +82,7 @@ public class JalAk extends InfernoNPC {
     }
 
     private void switchStyle(@NotNull final Player player) {
-        final PrayerManager prayer = player.getPrayerManager();
+        final PrayerManager prayer = PrayerManagerKeys.prayerManager(player);
         if (prayer.isActive(Prayer.PROTECT_FROM_MAGIC)) {
             combatDefinitions.setAttackStyle(AttackType.RANGED);
         } else if (prayer.isActive(Prayer.PROTECT_FROM_MISSILES)) {

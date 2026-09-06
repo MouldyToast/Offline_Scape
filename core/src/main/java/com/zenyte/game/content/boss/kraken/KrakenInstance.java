@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.kraken;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -91,7 +92,7 @@ public class KrakenInstance extends DynamicArea implements EntityAttackPlugin, D
         if (entity instanceof NPC) {
             final int id = ((NPC) entity).getId();
             if (id == 492 || id == 493) {
-                final Assignment assignment = player.getSlayer().getAssignment();
+                final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
                 if (assignment == null || assignment.getTask() != RegularTask.CAVE_KRAKEN) {
                     player.getDialogueManager().start(new Dialogue(player, 7412) {
                         @Override
@@ -102,7 +103,7 @@ public class KrakenInstance extends DynamicArea implements EntityAttackPlugin, D
                     return false;
                 }
             } else if (id == 494 || id == 496) {
-                final Assignment assignment = player.getSlayer().getAssignment();
+                final Assignment assignment = SlayerKeys.slayer(player).getAssignment();
                 if (assignment != null && (assignment.getTask() == RegularTask.CAVE_KRAKEN || assignment.getTask() == BossTask.KRAKEN)) {
                     return true;
                 }

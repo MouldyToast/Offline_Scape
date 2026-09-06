@@ -1,5 +1,6 @@
 package com.zenyte.plugins.drop.dragons;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -21,10 +22,10 @@ public class MithrilDragonProcessor extends DropProcessor {
 
     @Override
     public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
-        if (item.getId() == 2359 && killer != null && killer.getSlayer() != null
-                && killer.getSlayer().isUnlocked("Duly noted")
-                && killer.getSlayer().getAssignment() != null
-                && killer.getSlayer().getAssignment().getTask() == RegularTask.MITHRIL_DRAGONS) {
+        if (item.getId() == 2359 && killer != null && SlayerKeys.slayer(killer) != null
+                && SlayerKeys.slayer(killer).isUnlocked("Duly noted")
+                && SlayerKeys.slayer(killer).getAssignment() != null
+                && SlayerKeys.slayer(killer).getAssignment().getTask() == RegularTask.MITHRIL_DRAGONS) {
             return new Item(2360, item.getAmount());
         } else if (!drop.isAlways()) {
             if (random(32768) == 0) {

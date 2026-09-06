@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.runecrafting;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -72,7 +73,7 @@ public final class CombinationRunecraftingAction extends Action {
 				}
 			}
 			if (cRune.equals(CombinationRunecrafting.LAVA_RUNE_FIRE)) {
-				player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_LAVA_RUNES);
+				AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_LAVA_RUNES);
 			}
 			player.getInventory().addItem(new Item(cRune.getRuneId(), runes * 2));
 			player.sendFilteredMessage("You bind the temple's power into " + name + "s.");

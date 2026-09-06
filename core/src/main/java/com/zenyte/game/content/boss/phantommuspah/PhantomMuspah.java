@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.phantommuspah;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.scoreboard.ScoreboardModule;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
@@ -562,7 +563,7 @@ public class PhantomMuspah extends NPC implements CombatScript {
 							}
 							if (++ticks == 1) {
 								World.sendProjectile(PhantomMuspah.this, target, MAGE_PROJECTILE);
-								missed = instance.getPlayer().getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC);
+								missed = PrayerManagerKeys.prayerManager(instance.getPlayer()).isActive(Prayer.PROTECT_FROM_MAGIC);
 								if (missed) {
 									delayHit(1, target, new Hit(PhantomMuspah.this, 0, HitType.MAGIC));
 								}
@@ -588,7 +589,7 @@ public class PhantomMuspah extends NPC implements CombatScript {
 					World.sendProjectile(this, target, RANGE_PROJECTILE);
 					final Hit rangeHit = new Hit(this, getRandomMaxHit(this, id == MUSPAH_SHIELD_ID ? 72 : 61, RANGED, AttackType.RANGED, target), HitType.RANGED).onLand(PhantomMuspah.this::handleSoulSplit);
 					delayHit(1, target, rangeHit);
-					if (!instance.getPlayer().getPrayerManager().isActive(Prayer.PROTECT_FROM_MISSILES) && rangeHit.getDamage() > 0) {
+					if (!PrayerManagerKeys.prayerManager(instance.getPlayer()).isActive(Prayer.PROTECT_FROM_MISSILES) && rangeHit.getDamage() > 0) {
 						takenAvoidableDamage = true;
 					}
 				}

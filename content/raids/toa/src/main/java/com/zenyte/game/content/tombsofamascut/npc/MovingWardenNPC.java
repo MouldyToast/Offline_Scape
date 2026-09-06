@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.encounter.WardenEncounter;
@@ -328,9 +329,9 @@ public class MovingWardenNPC extends TOANPC implements CombatScript {
                         if (p != null) {
                             if (divineType != null) {
                                 World.sendProjectile(MovingWardenNPC.this, p, divineType.getProjectile());
-                                p.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
-                                p.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
-                                p.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
+                                PrayerManagerKeys.prayerManager(p).deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
+                                PrayerManagerKeys.prayerManager(p).deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
+                                PrayerManagerKeys.prayerManager(p).deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
                                 p.sendMessage("<col=ff3045>Your protection prayers have been disabled!</col>");
                                 p.sendMessage(divineType.getMessage());
                             } else {
@@ -343,7 +344,7 @@ public class MovingWardenNPC extends TOANPC implements CombatScript {
                         if (p != null) {
                             if (divineType != null) {
                                 p.sendSound(divineType.getSoundEffect());
-                                final boolean isActive = p.getPrayerManager().isActive(divineType.getPrayer());
+                                final boolean isActive = PrayerManagerKeys.prayerManager(p).isActive(divineType.getPrayer());
                                 p.applyHit(new Hit(MovingWardenNPC.this, isActive ? 0 : (getMaxHit(22) + Utils.random(10)), isActive ? HitType.MISSED : HitType.DEFAULT));
                             } else {
                                 p.sendSound(onHitSound);

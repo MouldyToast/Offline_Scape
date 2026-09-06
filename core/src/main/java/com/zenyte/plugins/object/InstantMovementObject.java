@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.WorldThread;
@@ -27,7 +28,7 @@ public class InstantMovementObject implements ObjectAction {
 			player.setAnimation(entry.getAnimation());
 		}
 		if (entry.equals(InstantMovementObjects.BRIMHAVEN_DUNG_LARGE_STAIRS_BOTTOM) || entry.equals(InstantMovementObjects.BRIMHAVEN_DUNG_LARGE_STAIRS_TOP) || entry.equals(InstantMovementObjects.BRIMHAVEN_DUNG_DEMON_STAIRS_TOP) || entry.equals(InstantMovementObjects.BRIMHAVEN_DUNG_DEMON_STAIRS_BOTTOM)) {
-			player.getAchievementDiaries().update(KaramjaDiary.CLIMB_THE_STAIRS_IN_BRIMHAVEN_DUNGEON);
+			AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CLIMB_THE_STAIRS_IN_BRIMHAVEN_DUNGEON);
 		}
 		player.addTemporaryAttribute("tb_remove_delay", (int) (WorldThread.getCurrentCycle() + 1 + delay));
 		WorldTasksManager.schedule(() -> {

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.buffs
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.zenyte.game.world.entity.AbstractEntity
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.masks.HitType
@@ -18,7 +19,7 @@ fun Player.target() : Entity? = if(this.actionManager.action !is PlayerCombat) n
 fun Player.magicDartDamage(target: Entity): Double {
     val staffId   = equipment.getId(EquipmentSlot.WEAPON)
     val magicLvl  = skills.getLevel(SkillConstants.MAGIC)    // e.g. 99
-    val usesMax   = slayer.isCurrentAssignment(target) ||
+    val usesMax   = slayer().isCurrentAssignment(target) ||
             CombatUtilities.isAlwaysTakeMaxHit(target, HitType.MAGIC)
 
     // if wielding the special staff (4170) OR not in one of the “always max” cases

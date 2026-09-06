@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.npc.whisperer
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.dt2.area.DT2Module
 import com.near_reality.game.content.dt2.area.WhispererInstance
 import com.near_reality.game.content.dt2.npc.*
@@ -457,7 +458,7 @@ class WhispererNPC(
     fun Npc.restorePrayer(percentage: Double) {
         instance.players?.forEach {
             val prayerLevelFixed = it.skills.getLevelForXp(SkillConstants.PRAYER) * percentage
-            it.prayerManager.restorePrayerPoints(prayerLevelFixed.roundToInt())
+            it.prayerManager().restorePrayerPoints(prayerLevelFixed.roundToInt())
         }
     }
 
@@ -1148,7 +1149,7 @@ class WhispererNPC(
 
     fun performBasicMelee(target: Player) {
         val maximumDamageBase = if (awakened) 57 else 42
-        val maximumDamage = if (target.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
+        val maximumDamage = if (target.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
             maximumDamageBase / 2
         } else {
             maximumDamageBase

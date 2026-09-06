@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.fightcaves.npcs;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.minigame.fightcaves.FightCaves;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
@@ -25,7 +26,7 @@ final class TzKih extends FightCavesNPC implements CombatScript {
         playSound(attackSound);
         delayHit(0, target, melee(target, 4).onLand(hit -> {
             if (target instanceof Player) {
-                ((Player) target).getPrayerManager().drainPrayerPoints(1);
+                PrayerManagerKeys.prayerManager((Player) target).drainPrayerPoints(1);
             }
         }));
         return combatDefinitions.getAttackSpeed();

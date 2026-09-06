@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
@@ -27,7 +28,7 @@ public class Hans extends NPCPlugin {
             final int days = seconds / 86400;
             final int hours = (seconds / 3600) - (days * 24);
             final int minutes = (seconds / 60) - (days * 1440) - (hours * 60);
-            player.getAchievementDiaries().update(LumbridgeDiary.LEARN_YOUR_AGE);
+            AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.LEARN_YOUR_AGE);
             player.getDialogueManager().start(new NPCChat(player, npc.getId(), "You've spent " + days + (days > 1 || days == 0 ? " days" : " day") + ", " + hours + (hours > 1 || hours == 0 ? " hours" : " hour") + ", " + minutes + (minutes > 1 || minutes == 0 ? " minutes" : " minute") + " in the world since you arrived in " + GameConstants.SERVER_NAME + ", " + StringFormatUtil.format(player.getPlayerInformation().getDaysSinceRegistry()) + " days ago."));
         });
     }

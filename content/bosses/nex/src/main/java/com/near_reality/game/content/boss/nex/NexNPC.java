@@ -1,5 +1,7 @@
 package com.near_reality.game.content.boss.nex;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
@@ -306,7 +308,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 						player.sendMessage(Colour.RS_PINK.wrap("You've been trapped in an ice prison!"));
 						player.lock();
 						player.stopAll();
-						Lightning.deactivateOverheadProtectionPrayers(player, player.getPrayerManager(), true);
+						Lightning.deactivateOverheadProtectionPrayers(player, PrayerManagerKeys.prayerManager(player), true);
 						playersInPrison.add(player);
 					}
 				});
@@ -357,7 +359,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 			forEachPlayerInPrison(player -> {
 				if (zoneBorders.insideBorder(player)) {
 					player.setAnimation(new Animation(1114));
-					Lightning.deactivateOverheadProtectionPrayers(player, player.getPrayerManager(), true);
+					Lightning.deactivateOverheadProtectionPrayers(player, PrayerManagerKeys.prayerManager(player), true);
 					player.scheduleHit(this, new Hit(Utils.random(60), HitType.DEFAULT), 1);
 					player.stun(10);
 					player.addMovementLock(new MovementLock(System.currentTimeMillis() + TimeUnit.TICKS.toMillis(10), null, () -> player.sendSound(Lightning.walkFailSound)));
@@ -422,14 +424,14 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 					int damage = Utils.random(50);
 					int heal = damage;
 					player.applyHit(new Hit(damage, HitType.DEFAULT));
-					player.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints() / 3);
+					PrayerManagerKeys.prayerManager(player).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints() / 3);
 
 					List<Player> nearbyPlayers = CharacterLoop.find(playerLocation, 1, Player.class, p2 -> !p2.isDead() && !p2.isFinished());
 					for (Player p2 : nearbyPlayers) {
 						if (p2 == null || player.equals(p2)) continue;
 						int damage2 = Utils.random(12);
 						heal += damage2;
-						p2.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints() / 3);
+						PrayerManagerKeys.prayerManager(p2).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints() / 3);
 					}
 
 					scheduleHit(this, new Hit(heal, HitType.HEALED), 0);
@@ -976,7 +978,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 						prayerDrain /= 2;
 					}
 
-					player.getPrayerManager().drainPrayerPoints(prayerDrain);
+					PrayerManagerKeys.prayerManager(player).drainPrayerPoints(prayerDrain);
 					handleSoulSplit(player, hit.getDamage());
 					Graphics graphics = hit.getDamage() <= 0
 							? new Graphics(85, 0, 124)
@@ -1017,7 +1019,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 					} else {
 						prayerDrain /= 2;
 					}
-					player.getPrayerManager().drainPrayerPoints(prayerDrain);
+					PrayerManagerKeys.prayerManager(player).drainPrayerPoints(prayerDrain);
 
 					Graphics graphic;
 					if (hit.getDamage() <= 0) {
@@ -1027,7 +1029,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 					}
 					player.setGraphics(graphic);
 
-					if (!player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+					if (!PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC)) {
 						player.freeze(8);
 					}
 				}), 0), ticks);
@@ -1072,7 +1074,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 						if (player.getShield() != null && player.getShield().getId() == ItemId.SPECTRAL_SPIRIT_SHIELD) {
 							prayerDrain /= 2;
 						}
-						player.getPrayerManager().drainPrayerPoints(prayerDrain);
+						PrayerManagerKeys.prayerManager(player).drainPrayerPoints(prayerDrain);
 
 						int heal = damage / 4;
 						if (heal > 0) {
@@ -1216,7 +1218,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 
 		targetPlayer.lock(1);
 		targetPlayer.setAnimation(new Animation(7208));
-		Lightning.deactivateOverheadProtectionPrayers(targetPlayer, targetPlayer.getPrayerManager(), true);
+		Lightning.deactivateOverheadProtectionPrayers(targetPlayer, PrayerManagerKeys.prayerManager(targetPlayer), true);
 
 		int forceMoveDirection = OlmRoom.getMovementDirection(getMiddleLocation(), nexBase);
 		Direction direction = ForceMovement.direction(getMiddleLocation(), nexBase);
@@ -1272,7 +1274,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 		forEachPlayerInPrison(player -> {
 			player.sendMessage("The MVP for this fight was: "+getMostDamagePlayer().getName());
 			player.getHpHud().close();
-			player.getSlayer().checkAssignment(this);
+			SlayerKeys.slayer(player).checkAssignment(this);
 		});
 		say("Taste my wrath!");
 		setTransformation(WRATH);

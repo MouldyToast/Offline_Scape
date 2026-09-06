@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
 import com.zenyte.game.task.WorldTasksManager;
@@ -108,7 +109,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
                 final ObjectArrayList<AttackType> availableAttackStyle = new ObjectArrayList<>(Arrays.asList(MAGIC, RANGED));
                 final Entity source = hit.getSource();
                 if (source instanceof Player) {
-                    final PrayerManager prayers = ((Player) source).getPrayerManager();
+                    final PrayerManager prayers = PrayerManagerKeys.prayerManager((Player) source);
                     if (prayers.isActive(Prayer.PROTECT_FROM_MAGIC)) {
                         availableAttackStyle.remove(MAGIC);
                     } else if (prayers.isActive(Prayer.PROTECT_FROM_MISSILES)) {
@@ -161,7 +162,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     private final void onFailedCloseAttack(@NotNull final Entity target) {
         //If the third "missed" hit is not currently prayed against, the gorilla will either keep using the same attack style for the next 3 attacks or switch to another style. If the third
         //"missed" hit was either a ranged or magic hit, however, the following attack will always be the same as the one just used, or a melee attack.
-        final boolean isCorrectlyPrayedAgainst = target instanceof Player && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE);
+        final boolean isCorrectlyPrayedAgainst = target instanceof Player && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MELEE);
         final ObjectArrayList<AttackType> nextPossibleAttacks = new ObjectArrayList<AttackType>();
         nextPossibleAttacks.addAll(possibleAttackStyles);
         if (isCorrectlyPrayedAgainst) {
@@ -173,7 +174,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     private final void onFailedDistancedAttack(@NotNull final Entity target, @NotNull final Prayer prayer) {
         //If the third "missed" hit is not currently prayed against, the gorilla will either keep using the same attack style for the next 3 attacks or switch to another style. If the third
         //"missed" hit was either a ranged or magic hit, however, the following attack will always be the same as the one just used, or a melee attack.
-        final boolean isCorrectlyPrayedAgainst = target instanceof Player && ((Player) target).getPrayerManager().isActive(prayer);
+        final boolean isCorrectlyPrayedAgainst = target instanceof Player && PrayerManagerKeys.prayerManager((Player) target).isActive(prayer);
         final ObjectArrayList<AttackType> nextPossibleAttacks = new ObjectArrayList<AttackType>();
         if (isCorrectlyPrayedAgainst) {
             nextPossibleAttacks.addAll(possibleAttackStyles);
@@ -201,7 +202,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     private void meleeAttack(final Entity target) {
         setAnimation(meleeAnimation);
         final Hit hit = new Hit(this, getRandomMaxHit(this, getCombatDefinitions().getMaxHit(), MELEE, target), HitType.MELEE);
-        if (hit.getDamage() == 0 || (target instanceof Player) && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+        if (hit.getDamage() == 0 || (target instanceof Player) && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MELEE)) {
             if (++missedHits >= failedHitsUntilSwitch()) {
                 onFailedCloseAttack(target);
             }
@@ -214,7 +215,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     private void rangedAttack(final Entity target) {
         setAnimation(rangedAnimation);
         final Hit hit = new Hit(this, getRandomMaxHit(this, getCombatDefinitions().getMaxHit(), RANGED, target), HitType.RANGED);
-        if (hit.getDamage() == 0 || (target instanceof Player) && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MISSILES)) {
+        if (hit.getDamage() == 0 || (target instanceof Player) && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MISSILES)) {
             if (++missedHits >= failedHitsUntilSwitch()) {
                 onFailedDistancedAttack(target, Prayer.PROTECT_FROM_MISSILES);
             }
@@ -229,7 +230,7 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     private void magicAttack(final Entity target) {
         setAnimation(magicAnimation);
         final Hit hit = new Hit(this, getRandomMaxHit(this, getCombatDefinitions().getMaxHit(), MAGIC, target), HitType.MAGIC);
-        if (hit.getDamage() == 0 || (target instanceof Player) && ((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+        if (hit.getDamage() == 0 || (target instanceof Player) && PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
             if (++missedHits >= failedHitsUntilSwitch()) {
                 onFailedDistancedAttack(target, Prayer.PROTECT_FROM_MAGIC);
             }

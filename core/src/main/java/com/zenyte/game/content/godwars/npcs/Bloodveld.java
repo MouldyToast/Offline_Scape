@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;
@@ -51,7 +52,7 @@ public class Bloodveld extends SpawnableKillcountNPC implements Spawnable, Comba
             return;
         }
         final Player player = (Player) source;
-        player.getAchievementDiaries().update(WildernessDiary.KILL_A_BLOODVELD);
+        AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_A_BLOODVELD);
         player.getCombatAchievements().complete(CAType.THE_DEMONIC_PUNCHING_BAG);
     }
 }

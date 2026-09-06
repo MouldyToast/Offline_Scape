@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -54,7 +55,7 @@ public class Gargoyle extends NPC implements Spawnable {
             super.sendDeath();
             return;
         }
-        final boolean isUnlocked = source.getSlayer().isUnlocked("Gargoyle smasher");
+        final boolean isUnlocked = SlayerKeys.slayer(source).isUnlocked("Gargoyle smasher");
         final Object obj = getTemporaryAttributes().get("used_rock_hammer");
         if ((obj != null && (boolean) obj) || (getHitpoints() <= 9 && isUnlocked && (source.getInventory().containsItem(ROCK_HAMMER) || source.getInventory().containsItem(GRANITE_HAMMER) || source.getInventory().containsItem(21754, 1)))) {
             if (isUnlocked) {

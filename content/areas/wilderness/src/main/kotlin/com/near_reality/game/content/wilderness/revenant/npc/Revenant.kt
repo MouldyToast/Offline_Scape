@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.revenant.npc
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.wilderness.revenant.npc.RevenantMaledictus.Companion.onRevenantDeath
 import com.near_reality.game.content.wilderness.revenant.npc.drop.GoodRevenantDrop
 import com.near_reality.game.content.wilderness.revenant.npc.drop.MediocreReventantDrop
@@ -80,7 +81,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
             healedAmount += amount
             setHitpoints(getHitpoints() + (amount))
         } else {
-            val style = if (target.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) "Ranged" else "Magic"
+            val style = if (target.prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) "Ranged" else "Magic"
             getCombatDefinitions().setAttackStyle(style)
             if (style == "Magic") {
                 val projectile = Projectile(1415, constants!!.startHeight, 25, constants.delay, 15, 15, 0, 5)

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.vorkath;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
@@ -46,7 +47,7 @@ public final class VorkathInstance extends DynamicArea implements CycleProcessPl
     public VorkathInstance(final Player player, final AllocatedArea area) {
         super(area, 280, 504);
         this.player = player;
-        this.startingPrayerPoints = player.getPrayerManager().getPrayerPoints();
+        this.startingPrayerPoints = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
     }
 
     @Override
@@ -110,7 +111,7 @@ public final class VorkathInstance extends DynamicArea implements CycleProcessPl
             System.err.println("VorkathInstance.process -> Player is null or finished.");
             return;
         }
-        if (player.getPrayerManager().getPrayerPoints() < startingPrayerPoints) {
+        if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() < startingPrayerPoints) {
             faithlessEncounter = false;
         }
         if (player.getActionManager().getAction() instanceof RangedCombat || player.getActionManager().getAction() instanceof MagicCombat) {
@@ -182,8 +183,8 @@ public final class VorkathInstance extends DynamicArea implements CycleProcessPl
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new WorldTask() {
             int ticks;

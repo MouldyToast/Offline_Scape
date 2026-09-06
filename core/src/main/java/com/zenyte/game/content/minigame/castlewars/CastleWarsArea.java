@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.castlewars;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.minigame.castlewars.CastleWarsOverlay.CWarsOverlayVarbit;
@@ -109,8 +110,8 @@ public class CastleWarsArea extends PolygonRegionArea implements LoginPlugin, Ca
         player.setAnimation(null);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new WorldTask() {
             int ticks;

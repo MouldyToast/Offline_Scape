@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -360,7 +361,7 @@ public final class FarmingSpot {
 
     @Listener(type = ListenerType.LOGIN)
     private static final void onLogin(final Player player) {
-        player.getFarming().refreshPatch(FarmingPatch.FARMING_GUILD_HESPORI);
+        FarmingKeys.farming(player).refreshPatch(FarmingPatch.FARMING_GUILD_HESPORI);
     }
 
     public void setTreated() {
@@ -399,7 +400,7 @@ public final class FarmingSpot {
     }
 
     private boolean disease(final PatchState state) {
-        if (player.getAchievementDiaries().isAllCompleted(KourendDiary.EASY)) {
+        if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KourendDiary.EASY)) {
             FarmingPatch patch = this.getPatch();
             if (patch == FarmingPatch.KOUREND_ALLOTMENT_NE ||
                     patch == FarmingPatch.KOUREND_ALLOTMENT_SW ||
@@ -430,7 +431,7 @@ public final class FarmingSpot {
             return false;
         }
         if (this.getPatch().getType() == PatchType.ALLOTMENT) {
-            final Optional<FarmingSpot> flowerPatch = player.getFarming().getNearbyFlowerPatch(this);
+            final Optional<FarmingSpot> flowerPatch = FarmingKeys.farming(player).getNearbyFlowerPatch(this);
             if (flowerPatch.isPresent()) {
                 final FarmingProduct flower = flowerPatch.get().getProduct();
                 if (flower == FarmingProduct.WHITE_LILY) {

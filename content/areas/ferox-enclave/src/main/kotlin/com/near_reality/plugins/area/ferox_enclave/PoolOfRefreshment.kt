@@ -1,5 +1,6 @@
 package com.near_reality.plugins.area.ferox_enclave
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
@@ -27,7 +28,7 @@ class PoolOfRefreshment : ObjectAction {
     ) {
         player.apply {
             animation = Animation.GRAB
-            prayerManager.deactivateActivePrayers()
+            prayerManager().deactivateActivePrayers()
             hitpoints = maxHitpoints
             for (i in 0..22)
                 skills.setLevel(i, skills.getLevelForXp(i))

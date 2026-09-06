@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Entity;
@@ -22,7 +23,7 @@ public final class Ankou extends NPC implements Spawnable {
 		super.onDeath(source);
 		if (source instanceof Player) {
 			final Player player = (Player) source;
-			player.getAchievementDiaries().update(WildernessDiary.KILL_AN_ANKOU);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_AN_ANKOU);
 		}
 	}
 

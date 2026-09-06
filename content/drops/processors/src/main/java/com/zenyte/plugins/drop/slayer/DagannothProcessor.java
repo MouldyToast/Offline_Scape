@@ -1,6 +1,7 @@
 
 package com.zenyte.plugins.drop.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -32,7 +33,7 @@ public class DagannothProcessor extends DropProcessor {
         if (random <= 3) {
             return new Item(3749 + (random * 2));
         }
-        if (killer.getAchievementDiaries().isAllCompleted(FremennikDiary.ELITE)) {
+        if (AchievementDiariesKeys.achievementDiaries(killer).isAllCompleted(FremennikDiary.ELITE)) {
             if (item.getId() == ItemId.DAGANNOTH_BONES)
                 return item.toNote();
         }

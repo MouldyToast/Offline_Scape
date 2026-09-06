@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.nightmare.area;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.player.PlayerDeathHandlerKt;
 import com.near_reality.game.world.entity.player.TempIntefaceHandlerKt;
 import com.zenyte.game.GameInterface;
@@ -91,7 +92,7 @@ public class NightmareBossArea extends PolygonRegionArea implements DeathPlugin,
 			nextPrayer = prayer;
 		}
 
-		player.getPrayerManager().togglePrayer(nextPrayer, false);
+		PrayerManagerKeys.prayerManager(player).togglePrayer(nextPrayer, false);
 	}
 
 	@Override

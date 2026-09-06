@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.greatolm.scripts;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.ScalingMechanics;
 import com.zenyte.game.content.chambersofxeric.greatolm.GreatOlm;
 import com.zenyte.game.content.chambersofxeric.greatolm.LeftClaw;
@@ -104,7 +105,7 @@ public final class Lightning implements OlmCombatScript {
 						if (player.getLocation().getPositionHash() == spiral.getTile().getPositionHash()) {
 							player.applyHit(new Hit(olm, Utils.random(15, 25), HitType.REGULAR));
 							player.sendMessage("<col=ff0000>You've been electrocuted to the spot!");
-							deactivateOverheadProtectionPrayers(player, player.getPrayerManager(), true);
+							deactivateOverheadProtectionPrayers(player, PrayerManagerKeys.prayerManager(player), true);
 							player.setAnimation(electrocutionAnimation);
 							player.addMovementLock(new MovementLock(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(5), null, () -> player.sendSound(walkFailSound)));
 						}

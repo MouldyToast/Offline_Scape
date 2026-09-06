@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTasksManager;
@@ -39,7 +40,7 @@ public class ZanarisJuttingWall implements Shortcut {
             player.setAnimation(player.getY() >= y ? new Animation(3276) : new Animation(3277));
             player.autoForceMovement(player.getY() >= y ? object.transform(0, -1, 0) : object.transform(0, 1, 0), 0, 120);
         }
-        WorldTasksManager.schedule(() -> player.getAchievementDiaries().update(LumbridgeDiary.SQUEEZE_PAST_JUTTING_WALL), 3);
+        WorldTasksManager.schedule(() -> AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.SQUEEZE_PAST_JUTTING_WALL), 3);
     }
 
     @Override

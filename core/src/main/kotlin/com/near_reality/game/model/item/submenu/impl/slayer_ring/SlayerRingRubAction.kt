@@ -1,5 +1,6 @@
 package com.near_reality.game.model.item.submenu.impl.slayer_ring
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.model.item.submenu.ISubMenuAction
 import com.zenyte.game.model.ui.InterfacePosition
 import com.zenyte.game.world.entity.player.NotificationSettings
@@ -23,7 +24,7 @@ class SlayerRingRubAction(
             contactMaster -> player.dialogueManager.start(ActivateDialogue(player))
             partner -> {
                 player.interfaceHandler.sendInterface(InterfacePosition.CENTRAL, 68)
-                player.slayer.refreshPartnerInterface()
+                player.slayer().refreshPartnerInterface()
             }
             openLog -> player.notificationSettings.sendKillLog(NotificationSettings.SLAYER_NPC_NAMES, true)
         }

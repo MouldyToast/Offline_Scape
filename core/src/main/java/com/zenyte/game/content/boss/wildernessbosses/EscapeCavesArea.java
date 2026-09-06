@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;
@@ -47,7 +48,7 @@ public final class EscapeCavesArea extends WildernessArea {
                     player.sendMessage(Colour.RED.wrap("You feel a chill down your spine as the air in the cave weakens you, the air seems to be getting thicker over time"));
                 }
                 if (ticks % 5 == 0) {
-                    player.getPrayerManager().drainPrayerPoints(Math.max(1, ticks / 20));
+                    PrayerManagerKeys.prayerManager(player).drainPrayerPoints(Math.max(1, ticks / 20));
                 }
                 ticks++;
             }

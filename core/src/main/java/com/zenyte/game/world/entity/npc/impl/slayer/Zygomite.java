@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.enums.FungicideSpray;
 import com.zenyte.game.util.Direction;
@@ -76,7 +77,7 @@ public class Zygomite extends NPC implements Spawnable {
             super.sendDeath();
             return;
         }
-        final boolean isUnlocked = source.getSlayer().isUnlocked("'Shroom sprayer");
+        final boolean isUnlocked = SlayerKeys.slayer(source).isUnlocked("'Shroom sprayer");
         final Object usedOn = getTemporaryAttributes().remove("used_fungicide_spray");
         final Object obj = isUnlocked && usedOn == null ? FungicideSpray.get(source) : usedOn;
         if (getHitpoints() == 0 && obj == null) {

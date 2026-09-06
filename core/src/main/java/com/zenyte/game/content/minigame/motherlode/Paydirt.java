@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.motherlode;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
@@ -33,7 +34,7 @@ public enum Paydirt {
                 player.getSkills().getLevelForXp(SkillConstants.MINING)
         );
 
-        final boolean completedElite = player.getAchievementDiaries().isAllCompleted(FaladorDiary.ELITE);
+        final boolean completedElite = AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(FaladorDiary.ELITE);
         int totalWeight = 0;
         for (final Paydirt value : values) {
             if (value.level <= effectiveLevel) {

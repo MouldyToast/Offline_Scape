@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.encounter.WardenEncounter;
@@ -347,9 +348,9 @@ public class WardensObelisk extends TOANPC {
     }
 
     private void disableProtectionPrayers(final Player player) {
-        player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
-        player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
-        player.getPrayerManager().deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
+        PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MELEE);
+        PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MAGIC);
+        PrayerManagerKeys.prayerManager(player).deactivatePrayer(Prayer.PROTECT_FROM_MISSILES);
         player.sendMessage("<col=ff3045>Your protection prayers have been disabled!</col>");
         player.getTemporaryAttributes().put("prayer delay", WorldThread.getCurrentCycle() + TimeUnit.SECONDS.toTicks(5));
     }

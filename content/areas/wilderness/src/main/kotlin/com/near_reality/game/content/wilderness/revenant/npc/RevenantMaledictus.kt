@@ -1,5 +1,6 @@
 package com.near_reality.game.content.wilderness.revenant.npc
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.wilderness.revenant.npc.drop.GoodRevenantDrop
 import com.near_reality.game.content.wilderness.revenant.npc.drop.MediocreReventantDrop
 import com.zenyte.game.content.skills.prayer.Prayer
@@ -127,7 +128,7 @@ class RevenantMaledictus(val spawn: Spawn) :
                         if (distance < 3) {
                             var damage = Utils.random(25)
                             (it as Player).run {
-                                if (this.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                                if (this.prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
                                     damage /= 2
                                 }
                             }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.magearenaii;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;
@@ -87,11 +88,11 @@ public class Porazdir extends MageArenaBossBase {
         player.sendMessage(Colour.RED.wrap("Porazdir fires a ball of energy directly linked to his power!"));
         WorldTasksManager.schedule(() -> {
             final double distance = target.getLocation().getDistance(getLocation());
-            final int damage = (int) ((distance >= 8 ? 0 : ((25 / distance) + Utils.random(5))) * (!player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC) ? 1.5F : 1.0F));
+            final int damage = (int) ((distance >= 8 ? 0 : ((25 / distance) + Utils.random(5))) * (!PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MAGIC) ? 1.5F : 1.0F));
             target.setGraphics(new Graphics(131, 0, 124));
             delayHit(-1, target, new Hit(this, damage, HitType.REGULAR));
             if (damage > 3) {
-                player.getPrayerManager().drainPrayerPoints(damage / 3);
+                PrayerManagerKeys.prayerManager(player).drainPrayerPoints(damage / 3);
                 player.sendMessage("Your prayer is drained.");
             }
             if (damage > 0) {

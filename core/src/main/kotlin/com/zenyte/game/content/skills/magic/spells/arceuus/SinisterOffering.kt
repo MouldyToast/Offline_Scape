@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.content.skills.prayer.actions.Bones
@@ -60,7 +61,7 @@ class SinisterOffering : DefaultSpell {
             prayerRestored += if (bone == Bones.SUPERIOR_DRAGON_BONES || bone == Bones.OURG_BONES || bone == Bones.DAGANNOTH_BONES || bone == Bones.HYDRA_BONES) 2 else 1
             if (--count <= 0) break
         }
-        prayerManager.restorePrayerPoints(prayerRestored)
+        prayerManager().restorePrayerPoints(prayerRestored)
     }
 
     private fun Player.cooldown() = WorldTasksManager.schedule({

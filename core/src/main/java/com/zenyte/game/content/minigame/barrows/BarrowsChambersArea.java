@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.MinimapState;
@@ -77,7 +78,7 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 	public void process() {
 		if (players.isEmpty()) return;
 		for (final Player player : players) {
-			if (player.getPrayerManager().getPrayerPoints() > 0
+			if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() > 0
 					&& player.getCombatAchievements().hasCurrentTaskFlags(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN)) {
 				player.getCombatAchievements().removeCurrentTaskFlag(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN);
 			}
@@ -94,7 +95,7 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 			final int itemId = player.getEquipment().getId(EquipmentSlot.SHIELD);
 			if (!((itemId >= ItemId.GHOMMALS_HILT_2 && itemId <= ItemId.GHOMMALS_HILT_6)
 					|| (itemId >= ItemId.GHOMMALS_AVERNIC_DEFENDER_5 && itemId <= ItemId.GHOMMALS_AVERNIC_DEFENDER_6_L))) {
-				player.getPrayerManager().drainPrayerPoints(BASE_PRAYER_DRAIN + Utils.random(barrows.getSlainWights().size()));
+				PrayerManagerKeys.prayerManager(player).drainPrayerPoints(BASE_PRAYER_DRAIN + Utils.random(barrows.getSlainWights().size()));
 			}
 			optionalWight.ifPresent(wight -> player.getPacketDispatcher().sendClientScript(WIGHT_SCRIPT, getRandomComponent(), wight.getModel(player)));
 		}

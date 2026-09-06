@@ -1,5 +1,6 @@
 package com.near_reality.game.content.araxxor.attacks.impl
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.araxxor.Araxxor
 import com.near_reality.game.content.araxxor.debug
 import com.near_reality.game.content.araxxor.attacks.Attack
@@ -44,7 +45,7 @@ class CleaveAttack: Attack {
         if (target is Player && target.mapInstance != null) {
             if(araxxor.debugCleaveAttack) araxxor.debug("Araxxor: Calculating stomp, initial checks are success")
             var maxHit = 38
-            if (target.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE))
+            if (target.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE))
                 maxHit = (maxHit * 0.20).toInt()
             val damage = CombatUtilities.getRandomMaxHit(araxxor, maxHit, AttackType.CRUSH, target)
             if (target.location == centerTile) {

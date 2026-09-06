@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.taskonlyareas;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
@@ -37,7 +38,7 @@ public class KuraskArea extends FremennikSlayerDungeon implements EntityAttackPl
         if (entity instanceof NPC) {
             final String name = ((NPC) entity).getDefinitions().getName();
             if (name.equalsIgnoreCase("Kurask")) {
-                if (!player.getSlayer().isCurrentAssignment(entity)) {
+                if (!SlayerKeys.slayer(player).isCurrentAssignment(entity)) {
                     player.getDialogueManager().start(new Dialogue(player, 7518) {
                         @Override
                         public void buildDialogue() {

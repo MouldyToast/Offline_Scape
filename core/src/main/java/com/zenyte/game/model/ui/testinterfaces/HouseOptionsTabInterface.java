@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.model.ui.Interface;
@@ -36,20 +37,20 @@ public class HouseOptionsTabInterface extends Interface {
         }
         player.getInterfaceHandler().closeInterfaces();
         player.getInterfaceHandler().sendInterface(getInterface());
-        player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Number of rooms"), "Number of rooms: " + player.getConstruction().getAmountOfRooms());
-        player.getConstruction().refreshHouseOptions();
+        player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Number of rooms"), "Number of rooms: " + ConstructionKeys.construction(player).getAmountOfRooms());
+        ConstructionKeys.construction(player).refreshHouseOptions();
     }
 
     @Override
     protected void build() {
-        bind("Open house viewer", player -> player.getConstruction().getHouseViewer().openHouseViewer());
-        bind("Building mode ON", player -> player.getConstruction().setBuildingMode(true));
-        bind("Building mode OFF", player -> player.getConstruction().setBuildingMode(false));
-        bind("Teleport inside ON", player -> player.getConstruction().setTeleportInside(true));
-        bind("Teleport inside OFF", player -> player.getConstruction().setTeleportInside(false));
-        bind("Render doors open", player -> player.getConstruction().setRenderDoorsOpen(true));
-        bind("Render doors closed", player -> player.getConstruction().setRenderDoorsOpen(false));
-        bind("Render no doors", player -> player.getConstruction().setRenderDoorsOpen(false));//TODO
+        bind("Open house viewer", player -> ConstructionKeys.construction(player).getHouseViewer().openHouseViewer());
+        bind("Building mode ON", player -> ConstructionKeys.construction(player).setBuildingMode(true));
+        bind("Building mode OFF", player -> ConstructionKeys.construction(player).setBuildingMode(false));
+        bind("Teleport inside ON", player -> ConstructionKeys.construction(player).setTeleportInside(true));
+        bind("Teleport inside OFF", player -> ConstructionKeys.construction(player).setTeleportInside(false));
+        bind("Render doors open", player -> ConstructionKeys.construction(player).setRenderDoorsOpen(true));
+        bind("Render doors closed", player -> ConstructionKeys.construction(player).setRenderDoorsOpen(false));
+        bind("Render no doors", player -> ConstructionKeys.construction(player).setRenderDoorsOpen(false));//TODO
     }
 
     @Override

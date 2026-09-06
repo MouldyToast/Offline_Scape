@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.Leather;
 import com.zenyte.game.item.Item;
@@ -50,7 +51,7 @@ public class Tanning extends Action {
 	public int processWithDelay() {
 		player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
 		if (amount > 0) {
-			player.getAchievementDiaries().update(MorytaniaDiary.HAVE_SBOTT_TAN_ITEMS);
+			AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.HAVE_SBOTT_TAN_ITEMS);
 		}
 		int i;
 		for (i = 0; i < amount; i++) {

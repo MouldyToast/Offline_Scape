@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.ranged;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.Position;
@@ -149,7 +150,7 @@ public final class SalamanderCombat extends RangedCombat {
 			return hit;
 		}
 		float effectiveLevel = player.getSkills().getLevel(Skills.ATTACK) + 8;
-		effectiveLevel *= player.getPrayerManager().getSkillBoost(Skills.ATTACK);
+		effectiveLevel *= PrayerManagerKeys.prayerManager(player).getSkillBoost(Skills.ATTACK);
 		final AttackType type = player.getCombatDefinitions().getAttackType();
 		final AttackExperienceType attackType = player.getCombatDefinitions().getAttackExperienceType();
 		effectiveLevel += attackType == AttackExperienceType.ATTACK_XP ? 3 : attackType == AttackExperienceType.SHARED_XP ? 1 : 0;
@@ -174,7 +175,7 @@ public final class SalamanderCombat extends RangedCombat {
 	}*/
 	public int getMeleeMaxHit(final Player player, final double modifier) {
 		float effectiveLevel = player.getSkills().getLevel(SkillConstants.STRENGTH) + 8;
-		effectiveLevel *= player.getPrayerManager().getSkillBoost(SkillConstants.STRENGTH);
+		effectiveLevel *= PrayerManagerKeys.prayerManager(player).getSkillBoost(SkillConstants.STRENGTH);
 		final AttackExperienceType attackType = player.getCombatDefinitions().getAttackExperienceType();
 		effectiveLevel += attackType == AttackExperienceType.STRENGTH_XP ? 3 : attackType == AttackExperienceType.SHARED_XP ? 1 : 0;
 		effectiveLevel *= maxhitModifier;
@@ -224,7 +225,7 @@ public final class SalamanderCombat extends RangedCombat {
 			return hit;
 		}
 		float effectiveLevel = player.getSkills().getLevel(Skills.MAGIC) + 8;
-		effectiveLevel *= player.getPrayerManager().getMagicBoost(Skills.ATTACK);
+		effectiveLevel *= PrayerManagerKeys.prayerManager(player).getMagicBoost(Skills.ATTACK);
 		final int targetRoll = getTargetDefenceRoll(target, oppositeIndex);
 		final int accuracyBoost = player.getBonuses().getBonus(3);
 		float roll = effectiveLevel * (accuracyBoost + 64);

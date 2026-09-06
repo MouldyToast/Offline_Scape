@@ -1,5 +1,7 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.farming.FarmingPatch;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
@@ -95,7 +97,7 @@ public class Harvesting extends Action {
     public void harvestLimpwurt() {
         updateDiaries();
         updateChallenges();
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
 
         final PatchType type = spot.getPatch().getType();
         final Animation animation = type.getHarvestAnimation();
@@ -159,7 +161,7 @@ public class Harvesting extends Action {
         updateDiaries();
         updateChallenges();
         if (spot.getProduct().equals(FarmingProduct.CELASTRUS)) {
-            player.getAchievementDiaries().update(KourendDiary.CREATE_BATTLESTAFF, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CREATE_BATTLESTAFF, 1);
         }
         final HerbSack herbSack = player.getHerbSack();
         if(herbSack != null && spot.getPatch().getType() == PatchType.HERB_PATCH &&
@@ -177,7 +179,7 @@ public class Harvesting extends Action {
         spot.removeFruit();
         if (spot.getValue() <= 3) {
             player.sendFilteredMessage("The " + spot.getPatch().getType().getSanitizedName() + " is now empty.");
-            player.getFarming().handleContractCompletion(player, product);
+            FarmingKeys.farming(player).handleContractCompletion(player, product);
             spot.clear();
             if(Utils.random(500) == 1) {
                 player.sendMessage(Colour.RS_RED.wrap("You find a piece of a farmer's outfit when clearing the patch."));
@@ -222,15 +224,15 @@ public class Harvesting extends Action {
         final FarmingPatch patch = spot.getPatch();
         final FarmingProduct product = spot.getProduct();
         if (patch.equals(FarmingPatch.CATHERBY_FLOWER) && id == 225) {
-            player.getAchievementDiaries().update(KandarinDiary.PICK_LIMPWURT_ROOT);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.PICK_LIMPWURT_ROOT);
         } else if (patch.equals(FarmingPatch.CATHERBY_HERB) && id == 217) {
-            player.getAchievementDiaries().update(KandarinDiary.PICK_DWARF_WEED);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.PICK_DWARF_WEED);
         } else if (patch.equals(FarmingPatch.ARDOUGNE_HERB) && id == 219) {
-            player.getAchievementDiaries().update(ArdougneDiary.PICK_TORSTOL);
+            AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.PICK_TORSTOL);
         } else if (patch.equals(FarmingPatch.ARDOUGNE_BUSH) && product.equals(FarmingProduct.POISON_IVY)) {
-            player.getAchievementDiaries().update(ArdougneDiary.PICK_POISON_IVY_BERRIES);
+            AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.PICK_POISON_IVY_BERRIES);
         } else if (patch.equals(FarmingPatch.CANIFIS_MUSHROOM) && product.equals(FarmingProduct.MUSHROOM)) {
-            player.getAchievementDiaries().update(MorytaniaDiary.HARVEST_BITTERCAP_MUSHROOMS);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.HARVEST_BITTERCAP_MUSHROOMS);
         }
     }
 
@@ -239,7 +241,7 @@ public class Harvesting extends Action {
         updateDiaries();
         player.getSkills().addXp(SkillConstants.FARMING, spot.getProduct().getHarvestExperience());
         player.getInventory().addOrDrop(spot.getProduct().getProductHarvest(player));
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
         player.sendFilteredMessage("The " + spot.getPatch().getType().getSanitizedName() + " is now empty.");
         spot.clear();
         spot.refresh();
@@ -256,9 +258,9 @@ public class Harvesting extends Action {
             player.sendMessage("You have been poisoned by the belladonna!");
             return;
         }
-        player.getAchievementDiaries().update(LumbridgeDiary.PICK_BELLADONNA);
+        AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.PICK_BELLADONNA);
         player.getSkills().addXp(SkillConstants.FARMING, spot.getProduct().getHarvestExperience());
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
         final Container container = player.getInventory().getContainer();
         int count = 100;
         final FarmingProduct product = spot.getProduct();
@@ -289,9 +291,9 @@ public class Harvesting extends Action {
         }
         final FarmingProduct product = spot.getProduct();
         if (product == FarmingProduct.STRAWBERRY) {
-            player.getAchievementDiaries().update(ArdougneDiary.HARVEST_STRAWBERRIES);
+            AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.HARVEST_STRAWBERRIES);
         } else if (product == FarmingProduct.WATERMELON) {
-            player.getAchievementDiaries().update(MorytaniaDiary.HARVEST_WATERMELON);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.HARVEST_WATERMELON);
         }
         final Animation animation = type.getHarvestAnimation();
         final SoundEffect sound = type.getHarvestSoundEffect();

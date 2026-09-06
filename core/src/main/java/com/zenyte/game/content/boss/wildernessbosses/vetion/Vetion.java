@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses.vetion;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
@@ -437,7 +438,7 @@ public final class Vetion extends NPC implements CombatScript {
         super.onFinish(source);
         List<Entity> targets = getPossibleTargets(EntityType.PLAYER);
         if (source instanceof final Player player) {
-            player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 4);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 4);
         }
         for (Entity entity : targets) {
             if (entity instanceof final Player player) {

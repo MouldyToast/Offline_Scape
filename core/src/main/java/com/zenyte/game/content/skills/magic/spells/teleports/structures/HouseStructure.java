@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.teleports.structures;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.AnimationUtil;
@@ -24,7 +25,7 @@ public class HouseStructure extends RegularStructure {
 			player.sendMessage("Construction is incomplete, therefore disabled.");
 			return true;
 		}
-		if (player.getConstruction().getHouse() == null) {
+		if (ConstructionKeys.construction(player).getHouse() == null) {
 			player.sendMessage("You need to purchase yourself a house before you may use this teleport.");
 			return true;
 		}
@@ -53,7 +54,7 @@ public class HouseStructure extends RegularStructure {
 	@Override
 	public void stop(final Player player, final Teleport teleport) {
 		super.stop(player, teleport);
-		player.getConstruction().enterHouse(false);
+		ConstructionKeys.construction(player).enterHouse(false);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions.CookingData;
 import com.zenyte.game.content.skills.magic.SpellState;
@@ -89,7 +90,7 @@ public class BakePie implements DefaultSpell {
 					if (pie.equals(CookingData.WILD_PIE)) {
 						player.getDailyChallengeManager().update(SkillingChallenge.COOK_WILD_PIES);
 					} else if (pie.equals(CookingData.SUMMER_PIE)) {
-						player.getAchievementDiaries().update(VarrockDiary.BAKE_A_SUMMER_PIE);
+						AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.BAKE_A_SUMMER_PIE);
 						player.getDailyChallengeManager().update(SkillingChallenge.COOK_SUMMER_PIES);
 					}
 					state.remove();

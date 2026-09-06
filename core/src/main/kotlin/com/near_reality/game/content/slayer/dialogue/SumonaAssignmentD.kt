@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer.dialogue
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.game.content.slayer.*
 import com.near_reality.game.content.slayer.SlayerMaster
 import com.near_reality.game.content.slayer.SlayerMaster.SUMONA
@@ -14,7 +15,7 @@ import java.util.*
 class SumonaAssignmentD(player: Player, npc: NPC) : Dialogue(player, npc) {
     override fun buildDialogue() {
         val master = SlayerMaster.mappedMasters[npc.id] ?: return
-        val slayer = player.slayer
+        val slayer = player.slayer()
         val currentTask = slayer.assignment
         if (currentTask != null) {
             val clazz = currentTask.area
@@ -34,7 +35,7 @@ class SumonaAssignmentD(player: Player, npc: NPC) : Dialogue(player, npc) {
         }
 
         if (player.underSumonaReqs()) {
-            npc("Sorry, but you're not skilled enough to be taught by<br><br>me. Your best trainer would be " + player.slayer.advisedMaster + ".")
+            npc("Sorry, but you're not skilled enough to be taught by<br><br>me. Your best trainer would be " + player.slayer().advisedMaster + ".")
             return
         }
 

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.dialogue.SumonaAssignmentD;
 import com.near_reality.game.content.slayer.SlayerMaster;
 import com.zenyte.game.content.skills.slayer.dialogue.*;
@@ -92,7 +93,7 @@ public class SlayerMasterNPC extends NPCPlugin {
         return new OptionHandler() {
             @Override
             public void handle(Player player, NPC npc) {
-                player.getSlayer().openInterface();
+                SlayerKeys.slayer(player).openInterface();
                 Analytics.flagInteraction(player, Analytics.InteractionType.SLAYER_MASTER);
             }
 

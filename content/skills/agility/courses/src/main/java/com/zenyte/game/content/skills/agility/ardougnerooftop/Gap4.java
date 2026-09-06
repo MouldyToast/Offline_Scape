@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.ardougnerooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -86,7 +87,7 @@ public final class Gap4 extends AgilityCourseObstacle {
                     case 16:
                         player.setAnimation(ANIM2);
                         player.setLocation(LOCATION2);
-                        player.getAchievementDiaries().update(ArdougneDiary.COMPLETE_ARDOUGNE_ROOFTOP_LAP);
+                        AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.COMPLETE_ARDOUGNE_ROOFTOP_LAP);
                         MarkOfGrace.spawn(player, ArdougneRooftopCourse.MARK_LOCATIONS, 40, 90);
                         break;
                 }

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
@@ -53,7 +54,7 @@ public class ClanWarsFFAArea extends PolygonRegionArea implements RandomEventRes
         player.getVariables().setRunEnergy(100);
         player.getToxins().reset();
         player.getVariables().resetScheduled();
-        player.getPrayerManager().deactivateActivePrayers();
+        PrayerManagerKeys.prayerManager(player).deactivateActivePrayers();
         player.resetFreeze();
     }
 

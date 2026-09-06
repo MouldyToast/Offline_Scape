@@ -1,5 +1,7 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.skills.farming.actions.Saturating;
@@ -32,7 +34,7 @@ public final class FertileSoil implements ObjectSpell {
 
 	@Override
 	public boolean spellEffect(final Player player, final WorldObject object) {
-		final FarmingSpot spot = player.getFarming().getPatch(object).isPresent() ? player.getFarming().create(object) : null;
+		final FarmingSpot spot = FarmingKeys.farming(player).getPatch(object).isPresent() ? FarmingKeys.farming(player).create(object) : null;
 		if (spot == null) {
 			player.getDialogueManager().start(new PlayerChat(player, "Um... I don't want to fertilize that!"));
 			return false;
@@ -71,7 +73,7 @@ public final class FertileSoil implements ObjectSpell {
 		this.addXp(player, SkillConstants.FARMING, 18);
 		player.sendFilteredMessage("You saturate the patch with " + (type == 3 ? "ultracompost" : "supercompost") + ".");
 		if (spot.getPatch().equals(FarmingPatch.PHASMATYS_HERB)) {
-			player.getAchievementDiaries().update(MorytaniaDiary.FERTILIZE_MORYTANIA_HERB_PATCH);
+			AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.FERTILIZE_MORYTANIA_HERB_PATCH);
 		}
 		return true;
 	}

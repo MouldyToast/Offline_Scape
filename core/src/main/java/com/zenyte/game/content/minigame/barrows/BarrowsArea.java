@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.calog.CAType;
@@ -56,7 +57,7 @@ public final class BarrowsArea extends Morytania implements CycleProcessPlugin, 
 
 	@Override public void process() {
 		for (final Player player : players) {
-			if (player.getPrayerManager().getPrayerPoints() > 0
+			if (PrayerManagerKeys.prayerManager(player).getPrayerPoints() > 0
 					&& player.getCombatAchievements().hasCurrentTaskFlags(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN)) {
 				player.getCombatAchievements().removeCurrentTaskFlag(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN);
 			}

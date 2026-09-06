@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.slayer.dialogue;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.BossTask;
 import com.near_reality.game.content.slayer.RegularTask;
@@ -35,7 +36,7 @@ public class SlayerMasterAssignmentD extends Dialogue {
         if (master == null) {
             return;
         }
-        final Slayer slayer = player.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(player);
         final Assignment currentTask = slayer.getAssignment();
         final int zukKc = player.getNotificationSettings().getKillcount("tzkal-zuk");
         if (currentTask != null) {
@@ -68,7 +69,7 @@ public class SlayerMasterAssignmentD extends Dialogue {
                         slayer.setAssignment(task);
                         player.getDialogueManager().start(new BossAssignmentExtension(player, npc, task));
                         if (partner != null) {
-                            final Slayer partnerSlayer = partner.getSlayer();
+                            final Slayer partnerSlayer = SlayerKeys.slayer(partner);
                             if (partnerSlayer.getAssignment() == null && partner.getSkills().getLevelForXp(SkillConstants.SLAYER) >= task.getTask().getSlayerRequirement() && partnerSlayer.isAssignable(task.getTask(), master)) {
                                 partner.getDialogueManager().start(new PartnerAssignmentExtension(player, task, master, npc));
                             } else {
@@ -82,7 +83,7 @@ public class SlayerMasterAssignmentD extends Dialogue {
                 return;
             }
             if (partner != null) {
-                final Slayer partnerSlayer = partner.getSlayer();
+                final Slayer partnerSlayer = SlayerKeys.slayer(partner);
                 if (partnerSlayer.getAssignment() == null && partner.getSkills().getLevelForXp(SkillConstants.SLAYER) >= task.getTask().getSlayerRequirement() && partnerSlayer.isAssignable(task.getTask(), master)) {
                     partner.getDialogueManager().start(new PartnerAssignmentExtension(partner, task, master, npc));
                 } else {
@@ -117,7 +118,7 @@ public class SlayerMasterAssignmentD extends Dialogue {
                     npc(20000, "Ah... Tzhaar... as you are undertaking this task alone, for an extra reward you could choose to slay TzKal-Zuk instead of the TzHaar.");
                     options("Switch task to TzKal-Zuk?", new DialogueOption("Yeah, I can beat TzKal-Zuk.", key(1000)), new DialogueOption("No thanks, I'll stick with TzHaar!", key(3000)));
                     player(1000, "Yeah, I can beat TzKal-Zuk.").executeAction(() -> {
-                        task = player.getSlayer().getTzKalZukAssignment(master);
+                        task = SlayerKeys.slayer(player).getTzKalZukAssignment(master);
                         slayer.setAssignment(task);
                         /* Replace existing string in the dialogue with new task. */
                         dialogue.put(1001, new NPCMessage(npc.getId(), Expression.DEFAULT, "Your new task is to kill " + task.getAmount() + " " + task.getTask().toString() + "."));
@@ -130,7 +131,7 @@ public class SlayerMasterAssignmentD extends Dialogue {
                     npc(10000, "Ah... Tzhaar... as you are undertaking this task alone, for an extra reward you could choose to slay TzTok-Jad instead of the TzHaar.");
                     options("Switch task to TzTok-Jad?", new DialogueOption("Yeah, I can beat TzTok-Jad.", key(2000)), new DialogueOption("No thanks, I'll stick with TzHaar!", key(3000)));
                     player(2000, "Yeah, I can beat TzTok-Jad.").executeAction(() -> {
-                        task = player.getSlayer().getTzTokJadAssignment(master);
+                        task = SlayerKeys.slayer(player).getTzTokJadAssignment(master);
                         slayer.setAssignment(task);
                         /* Replace existing string in the dialogue with new task. */
                         dialogue.put(2001, new NPCMessage(npc.getId(), Expression.DEFAULT, "Your new task is to kill " + task.getAmount() + " " + task.getTask().toString() + "."));
@@ -159,8 +160,8 @@ public class SlayerMasterAssignmentD extends Dialogue {
 
         @Override
         public void buildDialogue() {
-            player.getSlayer().setAssignment(assignment);
-            player.getSlayer().setMaster(assignment.getMaster());
+            SlayerKeys.slayer(player).setAssignment(assignment);
+            SlayerKeys.slayer(player).setMaster(assignment.getMaster());
             npc("Your new task is to kill " + assignment.getAmount() + " " + assignment.getTask().toString() + ".");
             options(TITLE, "Got any tips for me?", "Okay, great!").onOptionOne(() -> setKey(5));
             npc(5, assignment.getTask().getTip());
@@ -172,9 +173,9 @@ public class SlayerMasterAssignmentD extends Dialogue {
         public PartnerAssignmentExtension(final Player player, final Assignment task, final SlayerMaster master, final NPC npc) {
             super(player, npc);
             if (task.getTask() instanceof BossTask) {
-                this.task = new Assignment(player, player.getSlayer(), task.getTask(), task.getTask().getEnumName(), 0, 0, master);
+                this.task = new Assignment(player, SlayerKeys.slayer(player), task.getTask(), task.getTask().getEnumName(), 0, 0, master);
             } else {
-                this.task = player.getSlayer().getAssignment((RegularTask) task.getTask(), master);
+                this.task = SlayerKeys.slayer(player).getAssignment((RegularTask) task.getTask(), master);
             }
             this.master = master;
         }
@@ -204,14 +205,14 @@ public class SlayerMasterAssignmentD extends Dialogue {
                     });
                 });
             } else {
-                player.getSlayer().setAssignment(task);
+                SlayerKeys.slayer(player).setAssignment(task);
                 npc("Your new task is to kill " + task.getAmount() + " " + task.getTask().toString() + ".");
                 if (task.getTask() == RegularTask.TZHAAR) {
                     npc("Ah... Tzhaar... as you are undertaking this task alone, for an extra reward you could choose to slay TzTok-Jad instead of the TzHaar.");
                     options("Switch task to TzTok-Jad?", new DialogueOption("Yeah, I can beat jad.", key(1000)), new DialogueOption("No thanks, I'll stick with TzHaar!", key(2000)));
                     player(1000, "Yeah, I can beat jad.").executeAction(() -> {
-                        final Assignment task = player.getSlayer().getTzTokJadAssignment(master);
-                        player.getSlayer().setAssignment(task);
+                        final Assignment task = SlayerKeys.slayer(player).getTzTokJadAssignment(master);
+                        SlayerKeys.slayer(player).setAssignment(task);
                         /** Replace existing string in the dialogue with new task. */
                         dialogue.put(1001, new NPCMessage(npc.getId(), Expression.DEFAULT, "Your new task is to kill " + task.getAmount() + " " + task.getTask().toString() + "."));
                         dialogue.put(5, new NPCMessage(npc.getId(), Expression.DEFAULT, task.getTask().getTip()));

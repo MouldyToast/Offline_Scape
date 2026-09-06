@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.model.ui.Interface;
@@ -22,7 +23,7 @@ public class PrayerTab extends Interface {
         return (player, componentId, slotId, itemId, optionId) -> {
             var prayer = Prayer.getComponent(componentId);
             if (prayer != null) {
-                player.getPrayerManager().togglePrayer(prayer, false);
+                PrayerManagerKeys.prayerManager(player).togglePrayer(prayer, false);
             } else if (componentId == getComponent("spell filter")) {
                 if (slotId == 0) {
                     player.getSettings().toggleSetting(Setting.PRAYER_FILTER_LOW_TIER);

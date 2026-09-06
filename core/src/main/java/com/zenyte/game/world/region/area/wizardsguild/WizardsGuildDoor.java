@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area.wizardsguild;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -22,7 +23,7 @@ public final class WizardsGuildDoor implements ObjectAction {
             player.getDialogueManager().start(new PlainChat(player, "You need a Magic level of at least 66 to enter the Wizards guild."));
             return;
         }
-        player.getAchievementDiaries().update(ArdougneDiary.ENTER_THE_MAGIC_GUILD);
+        AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.ENTER_THE_MAGIC_GUILD);
         TemporaryDoubleDoor.handleDoubleDoor(player, object);
     }
 

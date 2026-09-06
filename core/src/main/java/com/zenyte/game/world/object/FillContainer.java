@@ -1,5 +1,6 @@
 package com.zenyte.game.world.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.minigame.blastfurnace.BlastFurnaceArea;
@@ -96,8 +97,8 @@ public class FillContainer extends Action {
                     }
                 }
                 if (item.getId() == 1925) {
-                    player.getAchievementDiaries().update(FremennikDiary.FILL_A_BUCKET);
-                    player.getAchievementDiaries().update(FaladorDiary.FILL_A_BUCKET);
+                    AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.FILL_A_BUCKET);
+                    AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.FILL_A_BUCKET);
                 }
                 player.sendFilteredMessage("You fill the " + (item.getId() == 20800 ? "gourd vial" : item.getName().replaceAll(" .*", "").toLowerCase()) + " from the " + object.getName().toLowerCase() + ".");
             }

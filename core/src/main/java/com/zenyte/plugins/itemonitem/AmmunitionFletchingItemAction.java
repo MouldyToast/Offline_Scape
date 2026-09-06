@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonitem;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions;
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions.AmmunitionFletchingData;
 import com.zenyte.game.content.skills.fletching.actions.AmmunitionFletching;
@@ -21,7 +22,7 @@ public final class AmmunitionFletchingItemAction implements ItemOnItemAction {
 	public void handleItemOnItemAction(final Player player, final Item from, final Item to, final int fromSlot, final int toSlot) {
 		final FletchingDefinitions.AmmunitionFletchingData ammunition = AmmunitionFletchingData.getDataByMaterial(from, to);
 		if (ammunition != null) {
-			if ((ammunition.equals(AmmunitionFletchingData.BROAD_ARROW) || ammunition.equals(AmmunitionFletchingData.BROAD_BOLT) || ammunition.equals(AmmunitionFletchingData.AMETHYST_BROAD_BOLT)) && !player.getSlayer().isUnlocked("Broader fletching")) {
+			if ((ammunition.equals(AmmunitionFletchingData.BROAD_ARROW) || ammunition.equals(AmmunitionFletchingData.BROAD_BOLT) || ammunition.equals(AmmunitionFletchingData.AMETHYST_BROAD_BOLT)) && !SlayerKeys.slayer(player).isUnlocked("Broader fletching")) {
 				player.sendMessage("You have not unlocked the ability to make broad ammunition.");
 				return;
 			}

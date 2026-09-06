@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.world.Boundary;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
@@ -68,11 +69,11 @@ public final class WildernessLeverObject implements ObjectAction {
     private void teleport(final Player player, final Location location, final WorldObject object, final String message) {
         new LeverTeleport(location, object, message, () -> {
             if (object.getId() == ObjectId.LEVER_1814) {
-                player.getAchievementDiaries().update(ArdougneDiary.USE_ARDOUGNE_LEVER);
-                player.getAchievementDiaries().update(WildernessDiary.USE_LEVER);
+                AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.USE_ARDOUGNE_LEVER);
+                AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.USE_LEVER);
             }
             else if (object.getId() == ObjectId.LEVER) {
-                player.getAchievementDiaries().update(WildernessDiary.USE_LEVER);
+                AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.USE_LEVER);
             }
         }).teleport(player);
     }

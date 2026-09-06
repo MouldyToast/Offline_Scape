@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Location;
@@ -38,7 +39,7 @@ public class Rockslug extends NPC implements Spawnable {
             super.sendDeath();
             return;
         }
-        final boolean isUnlocked = source.getSlayer().isUnlocked("Slug salter");
+        final boolean isUnlocked = SlayerKeys.slayer(source).isUnlocked("Slug salter");
         if (getHitpoints() == 0 && ((source.getEquipment().getId(EquipmentSlot.WEAPON) != BRINE_SABRE.getId()) && (!isUnlocked || !source.getInventory().containsItem(BAG_OF_SALT)))) {
             heal(1);
         } else {

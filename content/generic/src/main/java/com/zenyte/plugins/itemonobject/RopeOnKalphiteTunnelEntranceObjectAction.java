@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
@@ -28,7 +29,7 @@ public class RopeOnKalphiteTunnelEntranceObjectAction implements ItemOnObjectAct
             player.getInventory().deleteItem(item);
             player.getSettings().setSetting(setting, 1);
             WorldTasksManager.schedule(() -> {
-                player.getAchievementDiaries().update(DesertDiary.ENTER_KALPHITE_HIVE);
+                AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.ENTER_KALPHITE_HIVE);
                 player.useStairs(828, location, 1, 2);
             });
         } else {

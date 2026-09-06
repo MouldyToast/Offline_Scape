@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonitem;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
@@ -22,7 +23,7 @@ public final class SlayerHelmRecolourItemAction implements ItemOnItemAction {
 			final String reward = r.getSlayerReward();
 			final int base = r.getBase();
 			if (recolour.getId() == base && (helmet.getId() == SLAYER_HELMET || helmet.getId() == SLAYER_HELMET_I)) {
-				if (base != ARAXYTE_HEAD && !player.getSlayer().isUnlocked(reward)) {
+				if (base != ARAXYTE_HEAD && !SlayerKeys.slayer(player).isUnlocked(reward)) {
 					player.sendMessage("You need to unlock the slayer ability <col=00080>" + reward + "</col> before you can do this recolour.");
 					return;
 				}

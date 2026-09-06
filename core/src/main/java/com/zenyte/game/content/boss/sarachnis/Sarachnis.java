@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.sarachnis;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.AnimationUtil;
@@ -136,10 +137,10 @@ public final class Sarachnis extends NPC implements CombatScript, Spawnable {
         }
 
         Hit hit = new Hit(this, getRandomMaxHit(this, getCombatDefinitions().getMaxHit(), type, target), type == MELEE ? HitType.MELEE : HitType.RANGED).onLand(h -> {
-            if (type == MELEE && !((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+            if (type == MELEE && !PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MELEE)) {
                 processHit(new Hit(5, HitType.HEALED));
                 ((Player) target).sendFilteredMessage("Sarachnis leeches some health as she damages you.");
-            } else if (type == RANGED && !((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MISSILES)) {
+            } else if (type == RANGED && !PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MISSILES)) {
                 processHit(new Hit(10, HitType.HEALED));
                 ((Player) target).sendFilteredMessage("Sarachnis leeches some health as she damages you.");
             }

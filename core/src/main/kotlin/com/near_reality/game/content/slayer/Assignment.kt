@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer
 
+import com.zenyte.game.content.skills.slayer.slayer
 import com.zenyte.game.content.achievementdiary.DiaryReward
 import com.zenyte.game.content.achievementdiary.DiaryUtil
 import com.zenyte.game.content.boss.cerberus.Cerberus
@@ -67,7 +68,7 @@ class Assignment {
 
     fun initialize(player: Player, old: Assignment) {
         this.player = player
-        slayer = player.slayer
+        slayer = player.slayer()
         initialAmount = old.initialAmount
         amount = old.amount
         master = old.master

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
@@ -627,7 +628,7 @@ public class Kephri extends TOANPC implements CombatScript {
 					for (Player p : players1) {
 						if (p.getLocation().equals(tile)) {
 							int base1 = getMaxHit(regular ? 8 : 5);
-							if (p.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+							if (PrayerManagerKeys.prayerManager(p).isActive(Prayer.PROTECT_FROM_MAGIC)) {
 								base1 /= 3;
 							}
 							p.applyHit(new Hit(Kephri.this, Utils.random(base1, base1 * 2), HitType.MAGIC));

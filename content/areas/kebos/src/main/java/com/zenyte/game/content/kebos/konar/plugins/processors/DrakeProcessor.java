@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.plugins.processors;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
@@ -28,11 +29,11 @@ public class DrakeProcessor extends DropProcessor {
     @Override
     public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
         if (!drop.isAlways()) {
-            int rate = killer.getSlayer().isCurrentAssignment(npc) ? 384 : 1920;
+            int rate = SlayerKeys.slayer(killer).isCurrentAssignment(npc) ? 384 : 1920;
             if (random(rate) == 0) {
                 return new Item(Utils.random(1) == 0 ? ItemId.DRAKES_TOOTH : ItemId.DRAKES_CLAW);
             }
-            rate = killer.getSlayer().isCurrentAssignment(npc) ? 1500 : 7500;
+            rate = SlayerKeys.slayer(killer).isCurrentAssignment(npc) ? 1500 : 7500;
             if (random(rate) == 0) {
                 return new Item(Utils.random(1) == 0 ? ItemId.DRAGON_THROWNAXE : ItemId.DRAGON_KNIFE, Utils.random(100, 200));
             }

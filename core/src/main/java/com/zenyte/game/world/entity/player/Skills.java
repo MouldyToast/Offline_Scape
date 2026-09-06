@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.google.gson.annotations.Expose;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.PlayerEvent;
@@ -397,7 +398,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
                         player.heal(lv - oldLevel);
                     }
                     if (skill == SkillConstants.PRAYER) {
-                        player.getPrayerManager().restorePrayerPoints(lv - oldLevel);
+                        PrayerManagerKeys.prayerManager(player).restorePrayerPoints(lv - oldLevel);
                     }
                 }
                 player.getUpdateFlags().flag(UpdateFlag.APPEARANCE);

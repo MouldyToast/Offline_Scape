@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.teleports.structures;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.donation.HomeTeleport;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
@@ -239,31 +240,31 @@ public interface TeleportStructure {
 	}
 	/*default void updateDiaries(final Player player, final Teleport teleport) {
 		if (teleport.equals(VARROCK_TELEPORT)) {
-			player.getAchievementDiaries().update(VarrockDiary.CAST_VARROCK_TELEPORT);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CAST_VARROCK_TELEPORT);
 		} else if (teleport.equals(FALADOR_TELEPORT)) {
-			player.getAchievementDiaries().update(FaladorDiary.TELEPORT_FALADOR);
+			AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.TELEPORT_FALADOR);
 		} else if (teleport.equals(ARDOUGNE_TELEPORT)) {
-			player.getAchievementDiaries().update(ArdougneDiary.CAST_ARDOUGNE_TELEPORT_SPELL);
+			AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CAST_ARDOUGNE_TELEPORT_SPELL);
 		} else if (teleport.equals(PADDEWWA_TELEPORT)) {
-			player.getAchievementDiaries().update(VarrockDiary.TELEPORT_TO_PADDEWWA);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.TELEPORT_TO_PADDEWWA);
 		} else if (teleport.equals(LUMBRIDGE_TELEPORT)) {
-			player.getAchievementDiaries().update(LumbridgeDiary.CAST_LUMBRIDGE_TELEPORT);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CAST_LUMBRIDGE_TELEPORT);
 		} else if (teleport.equals(GHORROCK_TELEPORT)) {
-			player.getAchievementDiaries().update(WildernessDiary.TELEPORT_TO_GHORROCK);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.TELEPORT_TO_GHORROCK);
 		} else if (teleport.equals(TROLLHEIM_TELEPORT)) {
-			player.getAchievementDiaries().update(FremennikDiary.TELEPORT_TO_TROLLHEIM);
+			AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.TELEPORT_TO_TROLLHEIM);
 		} else if (teleport.equals(WATERBIRTH_TELEPORT)) {
-			player.getAchievementDiaries().update(FremennikDiary.TELEPORT_TO_WATERBIRTH_ISLAND);
+			AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.TELEPORT_TO_WATERBIRTH_ISLAND);
 		} else if (teleport.equals(CAMELOT_TELEPORT)) {
-			player.getAchievementDiaries().update(KandarinDiary.TELEPORT_TO_CAMELOT);
+			AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.TELEPORT_TO_CAMELOT);
 		} else if (teleport.equals(CATHERBY_TELEPORT)) {
-			player.getAchievementDiaries().update(KandarinDiary.TELEPORT_TO_CATHERBY);
+			AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.TELEPORT_TO_CATHERBY);
 		} else if (teleport.equals(WATCHTOWER_TELEPORT)) {
-			player.getAchievementDiaries().update(ArdougneDiary.TELEPORT_WATCHTOWER);
+			AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.TELEPORT_WATCHTOWER);
 		} else if (teleport.equals(APE_ATOLL_TELEPORT_REG)) {
-			player.getAchievementDiaries().update(WesternProvincesDiary.TELEPORT_TO_APE_ATOLL);
+			AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TELEPORT_TO_APE_ATOLL);
 		} else if (teleport.equals(PEST_CONTROL)) {
-			player.getAchievementDiaries().update(WesternProvincesDiary.TELEPORT_TO_PEST_CONTROL)
+			AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TELEPORT_TO_PEST_CONTROL)
 		}
 	}*/
 

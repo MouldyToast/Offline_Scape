@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
@@ -46,18 +47,18 @@ public class BowFletching extends Action {
         player.setAnimation(data.getAnimation());
         player.getInventory().deleteItemsIfContains(data.getMaterials(), () -> {
             if (data.equals(BowFletchingData.RUNE_CROSSBOW_U)) {
-                player.getAchievementDiaries().update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 0x4);
+                AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 0x4);
             } else if (data.equals(BowFletchingData.RUNE_CROSSBOW)) {
-                player.getAchievementDiaries().update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 0x16);
+                AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 0x16);
             } else if (data.equals(BowFletchingData.MAPLE_SHORTBOW)) {
-                player.getAchievementDiaries().update(KandarinDiary.STRING_MAPLE_SHORTBOW);
+                AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.STRING_MAPLE_SHORTBOW);
             } else if (data.equals(BowFletchingData.YEW_LONGBOW)) {
-                player.getAchievementDiaries().update(KandarinDiary.CREATE_YEW_LONGBOW, 0x4);
+                AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CREATE_YEW_LONGBOW, 0x4);
                 SherlockTask.STRING_YEW_LONGBOW.progress(player);
             } else if (data.equals(BowFletchingData.OAK_SHORTBOW)) {
-                player.getAchievementDiaries().update(WesternProvincesDiary.FLETCH_OAK_SHORTBOW);
+                AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.FLETCH_OAK_SHORTBOW);
             } else if (data.equals(BowFletchingData.MAGIC_LONGBOW)) {
-                player.getAchievementDiaries().update(WesternProvincesDiary.FLETCH_MAGIC_LONGBOW);
+                AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.FLETCH_MAGIC_LONGBOW);
             }
             player.getInventory().addItem(data.getProduct());
             player.getSkills().addXp(SkillConstants.FLETCHING, data.getXp());

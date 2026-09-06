@@ -20,7 +20,7 @@ public final class ConstructionController extends Controller {
 	@Override
 	public boolean processObjectClick1(final WorldObject object) {
 		if (object.getId() == ConstructionConstants.EXIT_PORTAL) {
-			player.getConstruction().leaveHouse();
+			ConstructionKeys.construction(player).leaveHouse();
 			return false;
 		}
 		return true;
@@ -34,10 +34,10 @@ public final class ConstructionController extends Controller {
 		}
 		if (option.equalsIgnoreCase("Build")) {
 			if (ConstructionConstants.isDoor(object)) {
-				player.getConstruction().sendRoomCreationMenu(object);
+				ConstructionKeys.construction(player).sendRoomCreationMenu(object);
 				return false;
 			} else {
-				player.getConstruction().sendFurnitureCreationMenu(object);
+				ConstructionKeys.construction(player).sendFurnitureCreationMenu(object);
 				return false;
 			}
 		} else if (option.equals("Remove")) {
@@ -67,7 +67,7 @@ public final class ConstructionController extends Controller {
 	
 	@Override
 	public boolean removeOnLogout() {
-		player.forceLocation(player.getConstruction().getHouse().getLocation());
+		player.forceLocation(ConstructionKeys.construction(player).getHouse().getLocation());
 		return true;
 	}
 

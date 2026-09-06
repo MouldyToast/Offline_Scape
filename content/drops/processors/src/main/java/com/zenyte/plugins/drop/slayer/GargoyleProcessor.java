@@ -1,5 +1,6 @@
 package com.zenyte.plugins.drop.slayer;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
@@ -28,7 +29,7 @@ public class GargoyleProcessor extends DropProcessor {
     @Override
     public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
         if (!drop.isAlways()) {
-            if (killer.getSlayer().isCurrentAssignment(npc) && !killer.getBooleanAttribute("brittle-entrance_unlocked") && !killer.containsItem(BRITTLE_KEY) && random(50) == 0) {
+            if (SlayerKeys.slayer(killer).isCurrentAssignment(npc) && !killer.getBooleanAttribute("brittle-entrance_unlocked") && !killer.containsItem(BRITTLE_KEY) && random(50) == 0) {
                 return new Item (BRITTLE_KEY);
             }
             if (random(204) == 0) {

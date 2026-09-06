@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.mining.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
@@ -287,7 +288,7 @@ public class Mining extends Action {
                 return -1;
             }
             if (gem.getId() == ItemId.UNCUT_RED_TOPAZ) {
-                player.getAchievementDiaries().update(KaramjaDiary.MINE_A_RED_TOPAZ);
+                AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.MINE_A_RED_TOPAZ);
             }
             player.sendFilteredMessage("You manage to mine some " + gem.getName().toLowerCase().replace("uncut ", "") + ".");
 
@@ -468,7 +469,7 @@ public class Mining extends Action {
     }
 
     private void updateMiningDiaries() {
-        final AchievementDiaries diaries = player.getAchievementDiaries();
+        final AchievementDiaries diaries = AchievementDiariesKeys.achievementDiaries(player);
         final DailyChallengeManager daily = player.getDailyChallengeManager();
         if (ore.equals(OreDefinitions.ESSENCE)) {
             daily.update(SkillingChallenge.MINE_ESSENCE);

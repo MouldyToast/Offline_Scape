@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.world.entity.TargetSwitchCause;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -154,9 +155,9 @@ public final class Crab extends NPC implements Spawnable {
 		if (source instanceof Player) {
 			final Player player = (Player) source;
 			if (getName(player).contains("Sand")) {
-				player.getAchievementDiaries().update(KourendDiary.KILL_A_SANDCRAB);
+				AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_SANDCRAB);
 			} else {
-				player.getAchievementDiaries().update(FremennikDiary.KILL_ROCK_CRABS);
+				AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.KILL_ROCK_CRABS);
 			}
 		}
 	}

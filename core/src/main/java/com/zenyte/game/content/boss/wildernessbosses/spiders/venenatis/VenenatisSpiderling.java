@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses.spiders.venenatis;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
@@ -40,7 +41,7 @@ public final class VenenatisSpiderling extends NPC implements CombatScript {
         attackSound();
         delayHit(0, target, melee(target, 3).onLand(hit -> {
             if (target instanceof Player player) {
-                player.getPrayerManager().drainPrayerPoints(1);
+                PrayerManagerKeys.prayerManager(player).drainPrayerPoints(1);
                 player.sendFilteredMessage("You feel yourself drained by the spiderling");
             }
         }));

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -34,7 +35,7 @@ public class FaladorCrumblingWall implements Shortcut {
 					player.setForceMovement(direction ? GO_EAST : GO_WEST);
 				} else if(ticks == 2) {
 					player.setLocation(direction ? EAST : WEST);
-					player.getAchievementDiaries().update(FaladorDiary.CLIMB_OVER_FALADOR_WALL);
+					AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CLIMB_OVER_FALADOR_WALL);
 					stop();
 				}
 				ticks++;

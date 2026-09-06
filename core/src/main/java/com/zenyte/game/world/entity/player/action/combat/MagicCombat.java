@@ -1,5 +1,8 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
@@ -150,7 +153,7 @@ public class MagicCombat extends PlayerCombat {
 
     @Override
     public int getAccuracy(Player player, Entity target, double resultModifier) {
-        double effectiveLevel = Math.floor(player.getSkills().getLevel(SkillConstants.MAGIC) * player.getPrayerManager().getMagicBoost(SkillConstants.ATTACK));
+        double effectiveLevel = Math.floor(player.getSkills().getLevel(SkillConstants.MAGIC) * PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.ATTACK));
         final CombatDefinitions combatDefinitions = player.getCombatDefinitions();
         if (combatDefinitions.getStyleDefinition() == AttackStyleDefinition.THROWN_MAGIC) {
             final int style = combatDefinitions.getStyle();
@@ -184,7 +187,7 @@ public class MagicCombat extends PlayerCombat {
             result *= amuletId == 12017 ? 1.15F : 1.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MAGIC, player, target);
         result += determineBountyHunterAccBoost(player, target);
         result = Math.floor(result);
@@ -297,7 +300,7 @@ public class MagicCombat extends PlayerCombat {
             if (player.getCombatDefinitions().getSpellbook() == Spellbook.NORMAL) {
                 modifier += 0.1F;
             }
-            modifier += player.getPrayerManager().getMagicBoost(SkillConstants.MAGIC);
+            modifier += PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.MAGIC);
         }
         //If the player has full elite magic void.
         if (CombatUtilities.hasFullMagicVoid(player, true)) {
@@ -354,9 +357,9 @@ public class MagicCombat extends PlayerCombat {
         double prayerBoost = 1.0;
         if (!ignorePrayers) {
             // Get prayer multiplier
-            prayerBoost = player.getPrayerManager().getMagicBoost(SkillConstants.MAGIC); // Best Case: 1.25
+            prayerBoost = PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.MAGIC); // Best Case: 1.25
             if (target instanceof Player) {
-                if (((Player) target).getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
                     damage *= target.getMagicPrayerMultiplier();
                     damage = Math.floor(damage);
                 }
@@ -378,7 +381,7 @@ public class MagicCombat extends PlayerCombat {
             situationalModifier += amuletId == 12017 ? 0.15F : 0.2F;
         }
 
-        boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
+        boolean hasTask = SlayerKeys.slayer(player).isCurrentAssignment(target) || CombatUtilities.isCombatDummy(target);
         situationalModifier *= determineSlayerHelmetDamageBoost(hasTask, HitType.MAGIC, player, target);
 
         if (CombatUtilities.applyForinthrySurge(player, target)) {
@@ -615,9 +618,9 @@ public class MagicCombat extends PlayerCombat {
             state.remove();
         }
         if (spell.equals(CombatSpell.ICE_BARRAGE)) {
-            player.getAchievementDiaries().update(DesertDiary.CAST_ICE_BARRAGE);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CAST_ICE_BARRAGE);
         }
-        //player.getAchievementDiaries().update(ArdougneDiary.CAST_ICE_BARRAGE_ON_PLAYER_IN_CW);
+        //AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CAST_ICE_BARRAGE_ON_PLAYER_IN_CW);
         if (spell == CombatSpell.TELE_BLOCK) {
             World.sendProjectile(player, target, this.splash ? teleblock : spell.getProjectile());
         }

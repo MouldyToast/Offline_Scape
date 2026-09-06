@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.task.TickTask
@@ -42,7 +43,7 @@ fun Player.scheduleCorruptionEffect(interval: Int) = WorldTasksManager.schedule(
     override fun run() {
         val nextCycle = ++corruptionCycle
         val drainAmount = nextCycle.dec()
-        prayerManager.prayerPoints -= drainAmount
+        prayerManager().prayerPoints -= drainAmount
         applyHit(Hit(drainAmount, HitType.CORRUPTION))
         if (nextCycle == 4) {
             sendMessage("<col=ef0083>You are no longer afflicted with corruption.</col>")

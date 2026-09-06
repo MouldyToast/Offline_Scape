@@ -1,6 +1,8 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
 /*
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.util.Direction;
@@ -42,7 +44,7 @@ public class Venenatis extends NPC implements CombatScript, Spawnable {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 2);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 2);
 		}
 	}
 
@@ -84,7 +86,7 @@ public class Venenatis extends NPC implements CombatScript, Spawnable {
 			getCombatDefinitions().setAttackStyle("Magic");
 			setAnimation(MAGIC_ATTACK_ANIM);
 			player.setGraphics(PRAYER_DRAIN_GFX);
-			player.getPrayerManager().drainPrayerPoints((int) (player.getSkills().getLevelForXp(SkillConstants.PRAYER) * 0.35F));
+			PrayerManagerKeys.prayerManager(player).drainPrayerPoints((int) (player.getSkills().getLevelForXp(SkillConstants.PRAYER) * 0.35F));
 			player.sendMessage("Your prayer was drained!");
 			break;
 		case 5: 

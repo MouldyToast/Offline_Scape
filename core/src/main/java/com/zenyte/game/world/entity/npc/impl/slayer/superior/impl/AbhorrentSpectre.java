@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.superior.impl;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerEquipment;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;
@@ -37,8 +38,8 @@ public class AbhorrentSpectre extends SuperiorNPC implements CombatScript {
                             continue;
                         }
                         if (i == 5) {
-                            player.getPrayerManager()
-                                    .setPrayerPoints((int) (player.getPrayerManager().getPrayerPoints() * 0.2105263157894737));
+                            PrayerManagerKeys.prayerManager(player)
+                                    .setPrayerPoints((int) (PrayerManagerKeys.prayerManager(player).getPrayerPoints() * 0.2105263157894737));
                         } else {
                             player.getSkills().setLevel(i, (int) (player.getSkills().getLevel(i) * 0.2105263157894737));
                         }

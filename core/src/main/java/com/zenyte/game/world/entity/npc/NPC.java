@@ -1,5 +1,8 @@
 package com.zenyte.game.world.entity.npc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import cloud.rsps.rsprot.Session;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.slayer.Assignment;
@@ -1326,15 +1329,15 @@ public class NPC extends AbstractEntity {
             combat.removeTarget();
             setAnimation(null);
             if (source instanceof Player player) {
-                player.getSlayer().checkAssignment(this);
+                SlayerKeys.slayer(player).checkAssignment(this);
                 DeathChargeKt.invokeDeathChargeEffect(player);
                 checkCombatAchievements(player);
                 if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.KERIS_PARTISAN_OF_THE_SUN && player.getArea() != null && player.getArea().isTombsOfAmascutArea()) {
-                    final int prayerLevel = player.getPrayerManager().getPrayerPoints();
+                    final int prayerLevel = PrayerManagerKeys.prayerManager(player).getPrayerPoints();
                     final int overhealAmount = (int) (player.getMaxHitpoints() * 1.20);
                     final int currentHitpoints = player.getHitpoints();
                     if (prayerLevel >= 5 && currentHitpoints <= overhealAmount) {
-                        player.getPrayerManager().drainPrayerPoints(5);
+                        PrayerManagerKeys.prayerManager(player).drainPrayerPoints(5);
                         player.setHitpoints(Math.min(overhealAmount, currentHitpoints + 12));
                     }
                 }
@@ -1564,7 +1567,7 @@ public class NPC extends AbstractEntity {
 
         if(!SlayerHelper.shouldSpawnSuperior(player, inferior)) return;
 
-        final Slayer slayer = player.getSlayer();
+        final Slayer slayer = SlayerKeys.slayer(player);
         if (slayer.getMaster() == SlayerMaster.KONAR_QUO_MATEN) {
             final Assignment assignment = slayer.getAssignment();
             final Class<? extends RegionArea> area = assignment.getArea();
@@ -1714,7 +1717,7 @@ public class NPC extends AbstractEntity {
                 return;
             }
             // if fremenik Elite is complete and the item is Dag bones, note them
-            var isEliteComplete = killer.getAchievementDiaries().isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES);
+            var isEliteComplete = AchievementDiariesKeys.achievementDiaries(killer).isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES);
             if (this instanceof DagannothKing) {
                 if (isEliteComplete && item.getId() == ItemId.DAGANNOTH_BONES) {
                     killer.getNotificationSettings().sendDropNotification(item.toNote());

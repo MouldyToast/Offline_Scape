@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.boss.BossRespawnTimer;
@@ -185,7 +186,7 @@ public abstract class GodwarsBossNPC extends SpawnableKillcountNPC implements Sp
             return;
         }
         final Player player = (Player) source;
-        player.getAchievementDiaries().update(FremennikDiary.KILL_GODWARS_GENERALS, diaryFlag());
+        AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.KILL_GODWARS_GENERALS, diaryFlag());
         AdventCalendarManager.increaseChallengeProgress(player, 2022, 9, 1);
         minionTarget = null;
         if (player.getAttributes().containsKey(GodwarsInstance.CA_TASK_INSTANCE_ENTERED_ATT)) {

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
@@ -62,13 +63,13 @@ public class Aubury extends NPCPlugin {
                         break;
                     case 2:
                         if (npc.getId() == NpcId.AUBURY_11435 || npc.getId() == 2886) {
-                            player.getAchievementDiaries().update(VarrockDiary.TELEPORT_TO_ESSENCE_MINE);
+                            AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.TELEPORT_TO_ESSENCE_MINE);
                         } else if (npc.getId() == 5314) {
-                            player.getAchievementDiaries().update(ArdougneDiary.TELEPORT_RUNE_ESSENCE_MINE);
+                            AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.TELEPORT_RUNE_ESSENCE_MINE);
                         } else if (npc.getId() == 5034) {
-                            player.getAchievementDiaries().update(LumbridgeDiary.TELEPORT_TO_ESSENCE_MINE);
+                            AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.TELEPORT_TO_ESSENCE_MINE);
                         } else if (npc.getId() == NpcId.BRIMSTAIL_11431 || npc.getId() == 4913) {
-                            player.getAchievementDiaries().update(WesternProvincesDiary.TELEPORT_ESSENCE_MINE);
+                            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TELEPORT_ESSENCE_MINE);
                         }
                         player.setLocation(CAVE_LOCATION);
                         player.unlock();

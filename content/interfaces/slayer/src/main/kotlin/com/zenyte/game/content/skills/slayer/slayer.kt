@@ -73,16 +73,16 @@ class SlayerInterface : InterfaceScript() {
             val unlock = "Unlock/extend perk | Manage task"(8) {
                 when {
                     slotID < size -> {
-                        val unlocked = player.slayer.isUnlocked(slotID)
-                        if (!unlocked) player.slayer.confirmPurchase(slotID)
-                        else player.slayer.disable(slotID)
+                        val unlocked = player.slayer().isUnlocked(slotID)
+                        if (!unlocked) player.slayer().confirmPurchase(slotID)
+                        else player.slayer().disable(slotID)
                     }
-                    slotID == size -> player.slayer.confirmTaskCancellation()
-                    slotID == size + 1 -> player.slayer.confirmTaskBlock()
-                    slotID >= size + 2 && slotID <= size + 7 -> player.slayer.confirmTaskUnblock(slotID - (size + 2))
-                    slotID == size + 8 -> player.slayer.confirmFullExtensionUnlock()
-                    slotID == size + 9 -> player.slayer.confirmTaskStore()
-                    slotID == size + 10 -> player.slayer.confirmTaskUnstore()
+                    slotID == size -> player.slayer().confirmTaskCancellation()
+                    slotID == size + 1 -> player.slayer().confirmTaskBlock()
+                    slotID >= size + 2 && slotID <= size + 7 -> player.slayer().confirmTaskUnblock(slotID - (size + 2))
+                    slotID == size + 8 -> player.slayer().confirmFullExtensionUnlock()
+                    slotID == size + 9 -> player.slayer().confirmTaskStore()
+                    slotID == size + 10 -> player.slayer().confirmTaskUnstore()
                     else -> throw IllegalStateException("Slot: $slotID")
                 }
             }
@@ -101,7 +101,7 @@ class SlayerInterface : InterfaceScript() {
                         return@suspend
                     }
                     val cost = SLAYER_REWARDS_COST.getValue(itemID).orElseThrow { RuntimeException() }
-                    val slayerPoints = player.slayer.slayerPoints
+                    val slayerPoints = player.slayer().slayerPoints
                     val affordableAmount = min(slayerPoints / cost, amount)
                     stop(affordableAmount <= 0, "You don't have enough Slayer points to purchase this.")
                     if (affordableAmount < amount) player.sendMessage("You don't have enough Slayer points to purchase this many.")
@@ -115,7 +115,7 @@ class SlayerInterface : InterfaceScript() {
                     }
                     val result = player.inventory.addItem(Item(itemID, affordableAmount * itemAmount))
                     val amountBought = result.succeededAmount / itemAmount
-                    player.slayer.addSlayerPoints(-(amountBought * cost))
+                    player.slayer().addSlayerPoints(-(amountBought * cost))
 
                     if (result.result == NOT_ENOUGH_SPACE) player.sendMessage("Not enough space in your inventory.")
                 }
@@ -124,17 +124,17 @@ class SlayerInterface : InterfaceScript() {
                 settings.refreshSetting(Setting.BIGGER_AND_BADDER_SLAYER_REWARD)
                 settings.refreshSetting(Setting.STOP_THE_WYVERN_SLAYER_REWARD)
 
-                varManager.sendBit(12442, if (slayer.isUnlocked("Task Storage")) 1 else 0)
+                varManager.sendBit(12442, if (slayer().isUnlocked("Task Storage")) 1 else 0)
                 varManager.sendBit(
                     Slayer.LUMBRIDGE_ELITE_DIARY_COMPLETED_BIT,
                     DiaryUtil.eligibleFor(DiaryReward.EXPLORERS_RING4, this)
                 )
 
-                slayer.refreshCurrentAssignment()
-                slayer.refreshAssignmentForRewards()
-                slayer.refreshSlayerPoints()
-                slayer.refreshRewards()
-                slayer.refreshBlockedTasks()
+                slayer().refreshCurrentAssignment()
+                slayer().refreshAssignmentForRewards()
+                slayer().refreshSlayerPoints()
+                slayer().refreshRewards()
+                slayer().refreshBlockedTasks()
 
                 sendInterface()
 

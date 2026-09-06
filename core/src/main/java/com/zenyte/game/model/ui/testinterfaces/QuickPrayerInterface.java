@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.world.entity.player.Player;
@@ -22,7 +23,7 @@ public class QuickPrayerInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Select prayer", (player, slotId, itemId, option) -> player.getPrayerManager().setQuickPrayer(slotId));
+        bind("Select prayer", (player, slotId, itemId, option) -> PrayerManagerKeys.prayerManager(player).setQuickPrayer(slotId));
         bind("Confirm", GameInterface.PRAYER_TAB_INTERFACE::open);
     }
 

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.pvm_arena
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.pvm_arena.PvmArenaManager.state
 import com.near_reality.game.content.pvm_arena.area.PvmArenaFightArea
 import com.near_reality.game.content.pvm_arena.area.PvmArenaLobbyArea
@@ -300,7 +301,7 @@ internal object PvmArenaManager {
 
 private fun replenishHealthAndPrayer(player: Player) {
     player.heal(99)
-    player.prayerManager.restorePrayerPoints(99)
+    player.prayerManager().restorePrayerPoints(99)
 }
 
 private fun applySirEldricCombatBoost(player: Player) {

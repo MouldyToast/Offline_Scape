@@ -1,5 +1,6 @@
 package com.zenyte.game.content
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.misc.TalismanDropTable
@@ -27,7 +28,7 @@ class DagannothSupremeDroptable : NPCDropTableScript() {
         buildTable {
             Always {
                 DAGANNOTH_BONES quantity 1 rarity always transformItem {item ->
-                    if(this.achievementDiaries.isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES))
+                    if(this.achievementDiaries().isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES))
                         item.toNote()
                     item
                 }

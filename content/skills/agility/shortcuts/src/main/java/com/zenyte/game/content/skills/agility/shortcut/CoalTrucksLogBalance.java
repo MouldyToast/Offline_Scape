@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTasksManager;
@@ -51,7 +52,7 @@ public class CoalTrucksLogBalance implements Shortcut {
         } else {
             player.addWalkSteps(2598, 3477, -1, false);
         }
-        WorldTasksManager.schedule(() -> player.getAchievementDiaries().update(KandarinDiary.CROSS_COAL_TRUCK_LOG), 2);
+        WorldTasksManager.schedule(() -> AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CROSS_COAL_TRUCK_LOG), 2);
     }
 
     @Override

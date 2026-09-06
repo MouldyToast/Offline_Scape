@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.grotesqueguardians.boss;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.boss.grotesqueguardians.FightPhase;
 import com.zenyte.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
 import com.zenyte.game.task.WorldTask;
@@ -454,7 +455,7 @@ public class Dusk extends NPC implements CombatScript {
             return;
         }
         final Player source = instance.getPlayer();
-        final boolean isUnlocked = source.getSlayer().isUnlocked("Gargoyle smasher");
+        final boolean isUnlocked = SlayerKeys.slayer(source).isUnlocked("Gargoyle smasher");
         final Object attr = getTemporaryAttributes().get("used_rock_hammer");
         if ((attr != null && (boolean) attr) || (getHitpoints() <= 9 && isUnlocked && (source.getInventory().containsItem(Gargoyle.ROCK_HAMMER) || source.getInventory().containsItem(Gargoyle.GRANITE_HAMMER) || source.getInventory().containsItem(21754, 1)))) {
             dying = true;

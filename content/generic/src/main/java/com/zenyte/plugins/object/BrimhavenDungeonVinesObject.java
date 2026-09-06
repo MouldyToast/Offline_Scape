@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.skills.woodcutting.AxeDefinition;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
@@ -77,7 +78,7 @@ public class BrimhavenDungeonVinesObject implements ObjectAction {
                     }
                 } else if (ticks == 4) {
                     player.setRunSilent(false);
-                    player.getAchievementDiaries().update(KaramjaDiary.CHOP_THE_BRIMHAVEN_DUNGEON_VINES);
+                    AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CHOP_THE_BRIMHAVEN_DUNGEON_VINES);
                     player.unlock();
                 } else if (ticks == 6) {
                     ZoneManager.INSTANCE.locAddChange(object.getChunkHash(), object);

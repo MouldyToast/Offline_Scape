@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
@@ -155,7 +156,7 @@ public class DigsitePendantItem extends ItemPlugin {
             container.set(slotId, result);
             container.refresh(player);
             if (destination.equals(digsiteLocation)) {
-                player.getAchievementDiaries().update(VarrockDiary.TELEPORT_TO_DIGSITE);
+                AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.TELEPORT_TO_DIGSITE);
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.near_reality.game.content.dt2.npc.theduke
 
+import com.zenyte.game.content.skills.prayer.prayerManager
 import com.near_reality.game.content.dt2.area.DT2Module
 import com.near_reality.game.content.dt2.area.DukeSucellusInstance
 import com.near_reality.game.content.dt2.npc.*
@@ -296,7 +297,7 @@ class DukeSucellusEntity(val arena: DukeSucellusInstance) :
             DT2BossDifficulty.QUEST -> 20
         }
         var dmgReduction = 1.0
-        if (player.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) {
+        if (player.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
             dmgReduction = when (this) {
                 DT2BossDifficulty.NORMAL -> 0.5
                 DT2BossDifficulty.AWAKENED -> 0.3
@@ -306,7 +307,7 @@ class DukeSucellusEntity(val arena: DukeSucellusInstance) :
 
         var damage = (Utils.random(minHit, maxHit) * dmgReduction)
         if (reduced)
-            damage = if (player.prayerManager.isActive(Prayer.PROTECT_FROM_MELEE)) 5.0 else 11.0
+            damage = if (player.prayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) 5.0 else 11.0
         return Hit(duke, damage.toInt(), HitType.MELEE)
     }
 
@@ -323,7 +324,7 @@ class DukeSucellusEntity(val arena: DukeSucellusInstance) :
             DT2BossDifficulty.QUEST -> 20
         }
         var dmgReduction = 1.0
-        if (player.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) {
+        if (player.prayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
             dmgReduction = when (this) {
                 DT2BossDifficulty.NORMAL -> 0.5
                 DT2BossDifficulty.AWAKENED -> 0.3

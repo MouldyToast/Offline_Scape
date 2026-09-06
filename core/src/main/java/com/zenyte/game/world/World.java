@@ -1,5 +1,6 @@
 package com.zenyte.game.world;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import cloud.rsps.rsprot.Session;
 import cloud.rsps.worlds.WorldsManager;
 import com.google.common.base.Preconditions;
@@ -1499,13 +1500,13 @@ public final class World {
             player.sendSound(itemTakeSound);
             switch (id) {
                 case ItemId.SNAPE_GRASS:
-                    player.getAchievementDiaries().update(FremennikDiary.COLLECT_SNAPE_GRASS);
+                    AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.COLLECT_SNAPE_GRASS);
                     break;
                 case ItemId.SWAMP_TOAD:
-                    player.getAchievementDiaries().update(WesternProvincesDiary.COLLECT_SWAMP_TOAD);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.COLLECT_SWAMP_TOAD);
                     break;
                 case ItemId.RED_SPIDERS_EGGS:
-                    player.getAchievementDiaries().update(WildernessDiary.COLLECT_SPIDERS_EGGS);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.COLLECT_SPIDERS_EGGS);
                     break;
             }
         }

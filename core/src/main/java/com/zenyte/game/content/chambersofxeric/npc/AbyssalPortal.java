@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.npc;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.room.VespulaRoom;
 import com.zenyte.game.task.WorldTasksManager;
@@ -119,8 +120,8 @@ public class AbyssalPortal extends RaidNPC<VespulaRoom> implements CombatScript 
         World.sendProjectile(room.getPortalProjectileStartTile(), destinationTile, projectile);
         WorldTasksManager.schedule(() -> room.getPlayers().forEach(p -> {
             if (p.getLocation().matches(destinationTile)) {
-                if (p.getPrayerManager().getPrayerPoints() > 0) {
-                    p.getPrayerManager().drainPrayerPoints(1 + (int) Math.round((p.getPrayerManager().getPrayerPoints() * 0.03)));
+                if (PrayerManagerKeys.prayerManager(p).getPrayerPoints() > 0) {
+                    PrayerManagerKeys.prayerManager(p).drainPrayerPoints(1 + (int) Math.round((PrayerManagerKeys.prayerManager(p).getPrayerPoints() * 0.03)));
                 } else {
                     p.applyHit(new Hit(AbyssalPortal.this, Utils.random(1, 2), HitType.DEFAULT));
                 }

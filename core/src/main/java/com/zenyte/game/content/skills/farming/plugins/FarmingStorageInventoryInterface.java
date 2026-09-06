@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.skills.farming.FarmingStorage;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class FarmingStorageInventoryInterface extends Interface {
     private static final void add(@NotNull final Player player, @NotNull final Storable storable, int option) {
-        final FarmingStorage storage = player.getFarming().getStorage();
+        final FarmingStorage storage = FarmingKeys.farming(player).getStorage();
         final FarmingStorageInterface.Option op = storage.getOption(option);
         final Item item = storage.getItem(storable);
         switch (op) {

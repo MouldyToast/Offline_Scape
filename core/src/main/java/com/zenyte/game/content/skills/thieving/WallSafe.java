@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.thieving;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.item.Item;
@@ -89,7 +90,7 @@ public class WallSafe extends Action {
             player.setAnimation(endAnim);
             player.sendSound(attemptSound);
             WorldTasksManager.schedule(() -> {
-                player.getAchievementDiaries().update(FaladorDiary.CRACK_WALL_SAFE);
+                AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CRACK_WALL_SAFE);
                 player.sendSound(successSound);
                 player.setAnimation(Animation.STOP);
                 player.getSkills().addXp(SkillConstants.THIEVING, 70);

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.dragons;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.util.Direction;
@@ -41,9 +42,9 @@ public final class MetallicDragon extends NPC implements CombatScript, Spawnable
 			final Player player = (Player) source;
 			final String name = getName(player);
 			if (name.contains("Mithril")) {
-				player.getAchievementDiaries().update(KandarinDiary.KILL_A_MITHRIL_DRAGON);
+				AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.KILL_A_MITHRIL_DRAGON);
 			} else {
-				player.getAchievementDiaries().update(KaramjaDiary.KILL_A_METAL_DRAGON);
+				AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.KILL_A_METAL_DRAGON);
 			}
 		}
 	}

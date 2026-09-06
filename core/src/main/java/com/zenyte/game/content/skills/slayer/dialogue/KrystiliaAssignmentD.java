@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.slayer.dialogue;
 
+import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -16,12 +17,12 @@ public class KrystiliaAssignmentD extends Dialogue {
 
     @Override
     public void buildDialogue() {
-        if (player.getSlayer().getAssignment() != null) {
+        if (SlayerKeys.slayer(player).getAssignment() != null) {
             npc("You're already on an assignment.");
-            npc("Your assignment is to slay " + player.getSlayer().getAssignment().getAmount() + " "
-                    + player.getSlayer().getAssignment().getTask().toString() + ".");
+            npc("Your assignment is to slay " + SlayerKeys.slayer(player).getAssignment().getAmount() + " "
+                    + SlayerKeys.slayer(player).getAssignment().getTask().toString() + ".");
             return;
-        } else if (player.getSlayer().getKrystiliaStreak() > 0) {
+        } else if (SlayerKeys.slayer(player).getKrystiliaStreak() > 0) {
             player.getDialogueManager().start(new SlayerMasterAssignmentD(player, npc));
             return;
         }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.grotesqueguardians.instance;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.boss.grotesqueguardians.GrotesqueGuardiansKeys;
 
 import com.zenyte.game.content.ItemRetrievalService;
@@ -225,8 +226,8 @@ public class GrotesqueGuardiansInstance extends DynamicArea implements LogoutPlu
         player.setAnimation(Animation.STOP);
         player.lock();
         player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
+        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.RETRIBUTION)) {
+            PrayerManagerKeys.prayerManager(player).applyRetributionEffect(source);
         }
         WorldTasksManager.schedule(new WorldTask() {
             int ticks;

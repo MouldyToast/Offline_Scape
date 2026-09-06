@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.boss.BossRespawnTimer;
 import com.zenyte.game.content.godwars.GodType;
 import com.zenyte.game.content.godwars.instance.GodwarsInstance;
@@ -118,11 +119,11 @@ public class KrilTsutsaroth extends GodwarsBossNPC implements Spawnable, CombatS
     @Override
     public int attack(final Entity target) {
         final int style = Utils.random(15);
-        if (style == 15 && target instanceof Player player && player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MELEE)) {
+        if (style == 15 && target instanceof Player player && PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_FROM_MELEE)) {
             setAnimation(magicAnimation);
             setForceTalk(forceTalk);
             player.sendMessage(message);
-            player.getPrayerManager().drainPrayerPoints(player.getPrayerManager().getPrayerPoints() / 2);
+            PrayerManagerKeys.prayerManager(player).drainPrayerPoints(PrayerManagerKeys.prayerManager(player).getPrayerPoints() / 2);
             delayHit(this, 0, target, new Hit(this, getRandomMaxHit(this, 49, MELEE, target), HitType.REGULAR));
             usedSpecial = true;
         } else if (style < 10) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.nightmare;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.boss.nightmare.area.PhosaniInstance;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
@@ -260,7 +261,7 @@ public class PhosanisNightmareNPC extends BaseNightmareNPC {
 			return;
 		}
 
-		PrayerManager prayerManager = ((Player) target).getPrayerManager();
+		PrayerManager prayerManager = PrayerManagerKeys.prayerManager((Player) target);
 		if (prayerManager.isActive(prayer)) {
 			prayerManager.deactivatePrayer(prayer);
 			setPrayerDisabled(true);

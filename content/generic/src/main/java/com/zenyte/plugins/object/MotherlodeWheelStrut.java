@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.minigame.motherlode.MotherlodeArea;
 import com.zenyte.game.content.skills.smithing.Smithing;
@@ -100,7 +101,7 @@ public final class MotherlodeWheelStrut implements ObjectAction {
                     World.spawnObject(BOTTOM_BUBBLES_WEST);
                 player.unlock();
                 player.getSkills().addXp(SkillConstants.SMITHING, (player.getSkills().getLevelForXp(SkillConstants.SMITHING) * 1.5));
-                player.getAchievementDiaries().update(FaladorDiary.REPAIR_BROKEN_STRUT);
+                AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.REPAIR_BROKEN_STRUT);
             }, 6);
             WorldTasksManager.schedule(() -> {
                 World.spawnObject(top ? STRUT_BROKEN_TOP : STRUT_BROKEN_BOTTOM);

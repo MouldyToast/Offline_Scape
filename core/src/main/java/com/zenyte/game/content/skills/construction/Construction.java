@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
@@ -132,11 +133,24 @@ public final class Construction {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Construction parserConstruction = event.getSavedPlayer().getConstruction();
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = ConstructionKeys.rawConstructionAttr(player) != null;
+        final Construction construction = ConstructionKeys.construction(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the house under the top-level
+        // "construction" JSON key on the parser player. The copy below
+        // migrates it into the attr (running the same setFields copy-into the
+        // Phase 0 load path always ran); the next save persists it under
+        // attrPersistence["construction"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final Construction parserConstruction = savedPlayer.getConstruction();
         if (parserConstruction == null) {
             return;
         }
-        event.getPlayer().getConstruction().setFields(parserConstruction);
+        construction.setFields(parserConstruction);
     }
 
     public final void setFields(final Construction construction) {
@@ -146,7 +160,11 @@ public final class Construction {
         if (construction.armourCase != null) {
             armourCase.getItems().putAll(construction.armourCase.getItems());
         }
-        player.getConstruction().getArmourCase().setPlayer(player);
+        // Direct field access like the five boxes below: the old read through
+        // the player's getter resolved to this same instance on every legacy
+        // call path, but reads the deprecated null slot (or re-enters the
+        // accessor mid-copy) under the attr pattern.
+        armourCase.setPlayer(player);
         if (construction.fancyDressBox != null) {
             fancyDressBox.getItems().putAll(construction.fancyDressBox.getItems());
         }
@@ -193,9 +211,9 @@ public final class Construction {
     public Location getRelationalSpawnTile() {
         final int xInChunk = player.getLocation().getXInChunk();
         final int yInChunk = player.getLocation().getYInChunk();
-        final int roomX = player.getLocation().getChunkX() - chunkX + yardOffset;
-        final int roomY = player.getLocation().getChunkY() - chunkY + yardOffset;
-        return new Location(roomX * 8 + xInChunk, roomY * 8 + yInChunk, player.getPlane());
+        final int relChunkX = player.getLocation().getChunkX() - chunkX;
+        final int relChunkY = player.getLocation().getChunkY() - chunkY;
+        return new Location(relChunkX * 8 + xInChunk, relChunkY * 8 + yInChunk, player.getPlane());
     }
 
     public void enterHouse(final boolean building) {
@@ -209,7 +227,7 @@ public final class Construction {
         }
         try {
             if (house.equals(House.YANILLE)) {
-                player.getAchievementDiaries().update(ArdougneDiary.ENTER_YOUR_POH);
+                AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.ENTER_YOUR_POH);
             }
             player.getTemporaryAttributes().put("VisitingHouse", this);
             buildingMode = building;
@@ -336,7 +354,7 @@ public final class Construction {
             }
             final int minX = (room.getX() * 8 - (yardOffset * 8)) % 64;
             final int minY = (room.getY() * 8 - (yardOffset * 8)) % 64;
-            final int regionId = ((((chunkX + room.getX()) * 8 >> 6) << 8) + (((chunkY + room.getY()) * 8) >> 6));
+            final int regionId = ((((chunkX + room.getX() - yardOffset) * 8 >> 6) << 8) + (((chunkY + room.getY() - yardOffset) * 8) >> 6));
             final int regionX = (regionId >> 8) << 6;
             final int regionY = (regionId & 255) << 6;
             for (int i = 0; i < DOOR_POSITIONS.length; i++) {
@@ -482,7 +500,7 @@ public final class Construction {
         final int roomY = loc.getChunkY() - chunkY + yardOffset;
         final RoomReference reference = getReference(roomX, roomY, player.getPlane());
         final Location chunkCoords = (Location) data[1];
-        final Location objectCoords = getWorldTile((reference.getX() * 8) + chunkCoords.getX(), (reference.getY() * 8) + chunkCoords.getY(), chunkCoords.getPlane());
+        final Location objectCoords = getWorldTile(((reference.getX() - yardOffset) * 8) + chunkCoords.getX(), ((reference.getY() - yardOffset) * 8) + chunkCoords.getY(), chunkCoords.getPlane());
         final FurnitureSpace space = (FurnitureSpace) data[0];
         final int type = (int) data[2];
         final int rotation = (int) data[3];
@@ -701,7 +719,7 @@ public final class Construction {
     private void refreshWindows(final RoomReference room) {
         final int minX = (room.getX() * 8 - (yardOffset * 8)) % 64;
         final int minY = (room.getY() * 8 - (yardOffset * 8)) % 64;
-        final int regionId = ((((chunkX + room.getX()) * 8 >> 6) << 8) + (((chunkY + room.getY()) * 8) >> 6));
+        final int regionId = ((((chunkX + room.getX() - yardOffset) * 8 >> 6) << 8) + (((chunkY + room.getY() - yardOffset) * 8) >> 6));
         final Region region = World.getRegion(regionId, true);
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
@@ -741,9 +759,32 @@ public final class Construction {
      * Refreshes a certain built hotspot.
      */
     private void refreshObject(final RoomReference room, final FurnitureData data, final boolean remove, final boolean adjustingFurniture) {
+        // Data-driven rebuild: spawn directly from stored FurnitureData.
+        // fillRooms() runs before the dynamic region finishes loading, so
+        // refreshObjectsInChunk's region.getObjects() scan finds nothing.
+        // buildFurniture's direct World.spawnObject is the only reason live
+        // building works; we replicate that here for the initial load path.
+        if (!adjustingFurniture && !remove) {
+            final Furniture furniture = data.getFurniture();
+            final Location loc = data.getLocation();
+            final Location worldTile = getWorldTile(((room.getX() - yardOffset) * 8) + loc.getX(), ((room.getY() - yardOffset) * 8) + loc.getY(), loc.getPlane());
+            final WorldObject o = new WorldObject(furniture.getObjectId(), data.getType(), data.getRotation(), worldTile);
+            if (furniture.getAction() != null) {
+                furniture.getAction().onRefresh(this, room, data, o, true);
+            }
+            if (!buildingMode && o.getId() == 0) {
+                World.removeObject(o);
+            } else {
+                World.spawnObject(o);
+            }
+            if (o.getId() == 4525 && portal == null) {
+                portal = new Location(o.getX() - 1, o.getY() - 1, o.getPlane());
+            }
+            return;
+        }
         final int minX = (room.getX() * 8 - (yardOffset * 8)) % 64;
         final int minY = (room.getY() * 8 - (yardOffset * 8)) % 64;
-        final int regionId = ((((chunkX + room.getX()) * 8 >> 6) << 8) + (((chunkY + room.getY()) * 8) >> 6));
+        final int regionId = ((((chunkX + room.getX() - yardOffset) * 8 >> 6) << 8) + (((chunkY + room.getY() - yardOffset) * 8) >> 6));
         final Region region = World.getRegion(regionId, true);
         if (data.getSpace() == FurnitureSpace.QUEST_HALL_STAIRCASE || data.getSpace() == FurnitureSpace.QUEST_HALL_STAIRCASE_DS || data.getSpace() == FurnitureSpace.SKILL_HALL_STAIRCASE || data.getSpace() == FurnitureSpace.SKILL_HALL_STAIRCASE_DS) {
             refreshHalls(data, true, room.getPlane(), minX, minY, region);
@@ -952,7 +993,7 @@ public final class Construction {
         final int realChunkY = reference.getRoom().getChunkY();
         final int boundX = (chunkX * 8 + reference.getX() * 8) - (yardOffset * 8);
         final int boundY = (chunkY * 8 + reference.getY() * 8) - (yardOffset * 8);
-        final Region region = World.getRegion(_Location.getRegionId(realChunkX >> 3, realChunkY >> 3), true);
+        final Region region = World.getRegion(_Location.getRegionId(realChunkX * 8, realChunkY * 8), true);
         if (reference.getPlane() == 0) {
             for (int x = 0; x < 8; x++) {
                 for (int y = 0; y < 8; y++) {

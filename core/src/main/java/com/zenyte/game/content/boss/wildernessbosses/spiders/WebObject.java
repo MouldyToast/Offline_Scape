@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses.spiders;
 
+import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
@@ -34,7 +35,7 @@ public class WebObject extends WorldObject {
                 if (p.getAraneaBoots().isPlayerWebImmune()) return;
                 p.applyHit(new Hit(boss, 3, HitType.DEFAULT, 0));
                 p.getVariables().setRunEnergy(p.getVariables().getRunEnergy() - 10);
-                p.getPrayerManager().drainPrayerPoints(3);
+                PrayerManagerKeys.prayerManager(p).drainPrayerPoints(3);
                 p.setGraphics(WEB_HURTING_GFX);
             });
         }

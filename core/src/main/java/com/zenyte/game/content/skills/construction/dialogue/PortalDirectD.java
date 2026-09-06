@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.dialogue;
 
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.FurnitureData;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.construction.TeleportPortal;
@@ -67,9 +68,9 @@ public final class PortalDirectD extends OptionsMenuD {
 				return;
 			}
 			data.setFurniture(furn);
-			final int x = (room.getX() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-			final int y = (room.getY() * 8 - (player.getConstruction().getYardOffset() * 8)) % 64;
-			final Location tile = new Location(player.getConstruction().getChunkX() * 8 + x + data.getLocation().getX(), player.getConstruction().getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
+			final int x = (room.getX() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+			final int y = (room.getY() * 8 - (ConstructionKeys.construction(player).getYardOffset() * 8)) % 64;
+			final Location tile = new Location(ConstructionKeys.construction(player).getChunkX() * 8 + x + data.getLocation().getX(), ConstructionKeys.construction(player).getChunkY() * 8 + y + data.getLocation().getY(), player.getPlane());
 			player.setAnimation(ANIM);
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override

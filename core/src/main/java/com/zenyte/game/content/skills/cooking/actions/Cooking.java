@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.cooking.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions.CookingData;
@@ -73,20 +74,20 @@ public class Cooking extends Action {
             final String message = data.getMessage().equals("") ? "You successfully cook the " + ItemDefinitions.get(data.getCooked()).getName().toLowerCase() + "." : data.getMessage();
             if (data.equals(CookingData.WILD_PIE)) {
                 if (object.getId() == ObjectId.CLAY_OVEN) {
-                    player.getAchievementDiaries().update(DesertDiary.BAKE_WILD_PIE);
+                    AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.BAKE_WILD_PIE);
                 }
                 player.getDailyChallengeManager().update(SkillingChallenge.COOK_WILD_PIES);
             } else if (data.equals(CookingData.BREAD)) {
-                player.getAchievementDiaries().update(LumbridgeDiary.BAKE_BREAD);
+                AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.BAKE_BREAD);
             } else if (data.equals(CookingData.KARAMBWAN)) {
-                player.getAchievementDiaries().update(KaramjaDiary.COOK_A_KARAMBWAN);
+                AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.COOK_A_KARAMBWAN);
                 player.getDailyChallengeManager().update(SkillingChallenge.COOK_KARAMBWAN);
             } else if (data.equals(CookingData.DARK_CRAB)) {
-                player.getAchievementDiaries().update(WildernessDiary.FISH_AND_COOK_DARK_CRAB, 2);
+                AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.FISH_AND_COOK_DARK_CRAB, 2);
             } else if (data.equals(CookingData.BASS)) {
-                player.getAchievementDiaries().update(KandarinDiary.CATCH_AND_COOK_BASS, 2);
+                AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CATCH_AND_COOK_BASS, 2);
             } else if (data.equals(CookingData.SUMMER_PIE)) {
-                player.getAchievementDiaries().update(VarrockDiary.BAKE_A_SUMMER_PIE);
+                AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.BAKE_A_SUMMER_PIE);
                 player.getDailyChallengeManager().update(SkillingChallenge.COOK_SUMMER_PIES);
             } else if (data.equals(CookingData.SWORDFISH)) {
                 SherlockTask.COOK_A_SWORDFISH.progress(player);
@@ -98,7 +99,7 @@ public class Cooking extends Action {
             } else if (data.equals(CookingData.MONKFISH)) {
                 player.getDailyChallengeManager().update(SkillingChallenge.COOK_MONKFISH);
             } else if (data.equals(CookingData.ANGLERFISH)) {
-                player.getAchievementDiaries().update(KourendDiary.CATCH_ANGLERFISH, 2);
+                AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CATCH_ANGLERFISH, 2);
             }
             if (data.equals(CookingData.TROUT)) {
                 CharlieTask.COOK_A_TROUT.progress(player);

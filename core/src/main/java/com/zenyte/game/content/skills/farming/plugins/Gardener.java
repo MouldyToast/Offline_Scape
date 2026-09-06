@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
@@ -309,7 +310,7 @@ public class Gardener extends NPCPlugin {
                 player(15, "Okay, it's a deal.").executeAction(() -> {
                     removePayment(player, payment);
                     if (spot.getProduct() == MAGIC) {
-                        player.getAchievementDiaries().update(WesternProvincesDiary.PROTECT_MAGIC_TREE);
+                        AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.PROTECT_MAGIC_TREE);
                     }
                     spot.setFlag(PatchFlag.WATCHED_OVER);
                     if (state == DISEASED) {

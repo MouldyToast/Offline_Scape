@@ -1,5 +1,6 @@
 package com.near_reality.game.content.elven.obj
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.world.entity.Location
@@ -27,7 +28,7 @@ class CrystalChest : ObjectAction{
         if (player.inventory.containsItem(ItemId.CRYSTAL_KEY)) {
 
             if (obj.positionHash == taverlyChest.positionHash)
-                player.achievementDiaries.update(FaladorDiary.UNLOCK_CRYSTAL_CHEST)
+                player.achievementDiaries().update(FaladorDiary.UNLOCK_CRYSTAL_CHEST)
 
             player.animation = Animation(832)
             player.lock(2)

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.hunter.TrapState;
 import com.zenyte.game.content.skills.hunter.node.TrapPrey;
@@ -151,29 +152,29 @@ public class CheckPlacedTrap extends BuiltHunterTrapAction {
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_BLACK_CHINCHOMPAS);
         }
         else if (prey.equals(TrapPrey.CHINCHOMPA)) {
-            player.getAchievementDiaries().update(KourendDiary.CATCH_A_CHINCHOMPA);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CATCH_A_CHINCHOMPA);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_GREY_CHINCHOMPAS);
         }
         else if (prey == TrapPrey.RED_SALAMANDER) {
-            player.getAchievementDiaries().update(ArdougneDiary.CATCH_RED_SALAMANDER);
+            AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CATCH_RED_SALAMANDER);
         }
         else if (prey == TrapPrey.ORANGE_SALAMANDER) {
-            player.getAchievementDiaries().update(DesertDiary.CATCH_ORANGE_SALAMANDER);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CATCH_ORANGE_SALAMANDER);
         }
         else if (prey == TrapPrey.CERULEAN_TWITCH) {
-            player.getAchievementDiaries().update(FremennikDiary.CATCH_CERULEAN_TWITCH);
+            AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CATCH_CERULEAN_TWITCH);
         }
         else if (prey == TrapPrey.SWAMP_LIZARD) {
-            player.getAchievementDiaries().update(MorytaniaDiary.CATCH_SWAMP_LIZARD);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.CATCH_SWAMP_LIZARD);
         }
         else if (prey == TrapPrey.COPPER_LONGTAIL) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CATCH_COPPER_LONGTAIL);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CATCH_COPPER_LONGTAIL);
         }
         else if (prey == TrapPrey.BLACK_SALAMANDER) {
-            player.getAchievementDiaries().update(WildernessDiary.CATCH_A_BLACK_SALAMANDER);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CATCH_A_BLACK_SALAMANDER);
         }
         else if (prey == TrapPrey.GOLDEN_WARBLER) {
-            player.getAchievementDiaries().update(DesertDiary.CATCH_GOLDEN_WARBLER);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CATCH_GOLDEN_WARBLER);
         }
     }
 

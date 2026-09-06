@@ -1,5 +1,6 @@
 package com.zenyte.game.content.area.strongholdofsecurity;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;
@@ -75,7 +76,7 @@ public final class SOSLadder implements ObjectAction {
                 player.sendMessage("You climb up the ladder which seems to twist and wind in all directions.");
             }
             if (ladder.equals(Ladder.FIRST_FLOOR_LADDER_DOWN)) {
-                player.getAchievementDiaries().update(VarrockDiary.ENTER_SECOND_LEVEL_SOS);
+                AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.ENTER_SECOND_LEVEL_SOS);
             }
             player.setLocation(ladder.destination);
             player.unlock();

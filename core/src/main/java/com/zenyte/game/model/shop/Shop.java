@@ -1,5 +1,6 @@
 package com.zenyte.game.model.shop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.shop.ShopCurrencyHandler;
 import com.near_reality.tools.logging.GameLogMessage;
 import com.near_reality.tools.logging.GameLogger;
@@ -65,12 +66,12 @@ public final class Shop {
     static {
         appendConsumer("Culinaromancer's Chest", (player, item) -> {
             if (item.getId() == 7462) {
-                player.getAchievementDiaries().update(LumbridgeDiary.PURCHASE_BARROWS_GLOVES);
+                AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.PURCHASE_BARROWS_GLOVES);
             }
         });
         appendConsumer("Candle Shop", (player, item) -> {
             if (item.getId() == 36) {
-                player.getAchievementDiaries().update(KandarinDiary.BUY_CANDLE);
+                AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.BUY_CANDLE);
             }
         });
         appendConsumer("Alry The Angler's Angling Accessories", (player, item) -> {
@@ -188,7 +189,7 @@ public final class Shop {
                 return false;
             }
             if (cape.equals(AccomplishmentCape.DIARY)) {
-                if (!player.getAchievementDiaries().isAllCompleted()) {
+                if (!AchievementDiariesKeys.achievementDiaries(player).isAllCompleted()) {
                     player.sendMessage("You need to complete all the Achievement diaries to buy this cape");
                     return false;
                 }
@@ -207,10 +208,10 @@ public final class Shop {
         });
         //On open consumers
         bind("Aleck's Hunter Emporium",
-                p -> p.getAchievementDiaries().update(ArdougneDiary.VIEW_ALECKS_HUNTER_EMPORIUM));
-        bind("Sarah's Farming Shop", p -> p.getAchievementDiaries().update(FaladorDiary.BROWSE_SARAHS_FARM_SHOP));
-        bind("Keldagrim Stonemason", p -> p.getAchievementDiaries().update(FremennikDiary.BROWSE_THE_STONEMASONS_SHOP));
-        bind("Thessalia's Fine Clothes", p -> p.getAchievementDiaries().update(VarrockDiary.BROWSE_THESSELIA_STORE));
+                p -> AchievementDiariesKeys.achievementDiaries(p).update(ArdougneDiary.VIEW_ALECKS_HUNTER_EMPORIUM));
+        bind("Sarah's Farming Shop", p -> AchievementDiariesKeys.achievementDiaries(p).update(FaladorDiary.BROWSE_SARAHS_FARM_SHOP));
+        bind("Keldagrim Stonemason", p -> AchievementDiariesKeys.achievementDiaries(p).update(FremennikDiary.BROWSE_THE_STONEMASONS_SHOP));
+        bind("Thessalia's Fine Clothes", p -> AchievementDiariesKeys.achievementDiaries(p).update(VarrockDiary.BROWSE_THESSELIA_STORE));
 
         appendConsumer("Dusuri's Star Store", (player, item) -> {
             if (item.getId() == ItemId.CELESTIAL_RING_UNCHARGED || item.getId() == ItemId.STAR_FRAGMENT) {

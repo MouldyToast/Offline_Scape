@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.AmuletStringingData;
@@ -35,7 +36,7 @@ public class AmuletStringingCrafting extends Action {
 	@Override
 	public int processWithDelay() {
 		if (data.equals(AmuletStringingData.DIAMOND_AMULET)) {
-			player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 2);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 2);
 		}
 		for (final Item item : data.getMaterials()) {
 			player.getInventory().deleteItem(item);

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.WeavingData;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -47,7 +48,7 @@ public class Weaving extends Action {
 			player.setAnimation(ANIMATION);
 		} else if (ticks == 2) {
 			if (data.equals(WeavingData.BASKET)) {
-				player.getAchievementDiaries().update(FaladorDiary.CRAFT_FRUIT_BASKET);
+				AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CRAFT_FRUIT_BASKET);
 			}
 			player.getSkills().addXp(SkillConstants.CRAFTING, data.getXp());
 			player.getInventory().deleteItem(data.getMaterial());

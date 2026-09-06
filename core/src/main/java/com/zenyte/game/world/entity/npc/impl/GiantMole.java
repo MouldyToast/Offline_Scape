@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.model.HintArrowPosition;
@@ -97,7 +98,7 @@ public class GiantMole extends NPC implements Spawnable {
         }
         if (source instanceof Player player) {
             player.getPacketDispatcher().resetHintArrow();
-            player.getAchievementDiaries().update(FaladorDiary.KILL_GIANT_MOLE);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.KILL_GIANT_MOLE);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Action;
@@ -56,7 +57,7 @@ public class DragonSqShieldCreationAction extends Action {
 			player.setAnimation(Smithing.ANIMATION);
 			break;
 		case 9:
-			player.getAchievementDiaries().update(ArdougneDiary.SMITH_DRAGON_SQ_SHIELD);
+			AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.SMITH_DRAGON_SQ_SHIELD);
 			player.getDialogueManager().start(new PlainChat(player, "Even for an experienced armourer it is not an easy task, but<br><br>eventually it is ready. You have restored the dragon square shield to<br><br>its former glory."));
 			player.getInventory().deleteItem(SHIELD_LEFT_HALF);
 			player.getInventory().deleteItem(SHIELD_RIGHT_HALF);

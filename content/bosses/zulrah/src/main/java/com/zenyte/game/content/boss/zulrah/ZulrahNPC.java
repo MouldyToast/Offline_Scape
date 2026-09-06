@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.zulrah;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
@@ -325,7 +326,7 @@ public final class ZulrahNPC extends NPC {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (source instanceof Player) {
-			player.getAchievementDiaries().update(WesternProvincesDiary.KILL_ZULRAH);
+			AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.KILL_ZULRAH);
 			AdventCalendarManager.increaseChallengeProgress(player, 2022, 22, 1);
 
 			player.getCombatAchievements().checkKcTask("zulrah", 25, CAType.ZULRAH_ADEPT);

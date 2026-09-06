@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
@@ -19,7 +20,7 @@ public class MortMyreSwampArea extends Morytania implements CannonRestrictionPlu
     @Override
     public void enter(Player player) {
         super.enter(player);
-        player.getAchievementDiaries().update(MorytaniaDiary.ENTER_MORT_MYRE_SWAMP);
+        AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.ENTER_MORT_MYRE_SWAMP);
     }
 
     @Override

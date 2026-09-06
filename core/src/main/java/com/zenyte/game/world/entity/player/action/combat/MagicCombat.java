@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.buffs.BuffCategory;
@@ -617,9 +618,9 @@ public class MagicCombat extends PlayerCombat {
             state.remove();
         }
         if (spell.equals(CombatSpell.ICE_BARRAGE)) {
-            player.getAchievementDiaries().update(DesertDiary.CAST_ICE_BARRAGE);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CAST_ICE_BARRAGE);
         }
-        //player.getAchievementDiaries().update(ArdougneDiary.CAST_ICE_BARRAGE_ON_PLAYER_IN_CW);
+        //AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CAST_ICE_BARRAGE_ON_PLAYER_IN_CW);
         if (spell == CombatSpell.TELE_BLOCK) {
             World.sendProjectile(player, target, this.splash ? teleblock : spell.getProjectile());
         }

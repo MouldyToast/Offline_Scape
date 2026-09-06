@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
@@ -75,7 +76,7 @@ public class BrimhavenSteppingStone implements Shortcut {
 					player.setAnimation(JUMP);
 					player.setForceMovement(new ForceMovement(player.getLocation(), 15, shore, 35, direction));
 				} else if(ticks == 7) {
-					player.getAchievementDiaries().update(KaramjaDiary.CROSS_THE_LAVA);
+					AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CROSS_THE_LAVA);
 					player.setLocation(shore);
 					stop();
 				}

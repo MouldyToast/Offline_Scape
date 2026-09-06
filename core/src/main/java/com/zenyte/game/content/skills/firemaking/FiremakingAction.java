@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.firemaking;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
@@ -113,23 +114,23 @@ public class FiremakingAction extends Action {
         final WorldObject object = new FireObject(player, data.getObjectId(), 10, 1, location);
         World.spawnTemporaryObject(object, ASHES, 200);
         if (data.equals(Firemaking.WILLOW)) {
-            player.getAchievementDiaries().update(FaladorDiary.CHOP_BURN_WILLOW_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CHOP_BURN_WILLOW_LOGS, 2);
         } else if (data.equals(Firemaking.YEW) && location.getX() >= 3438 && location.getX() <= 3441 && location.getY() >= 2909 && location.getY() <= 2923 && location.getPlane() == 1) {
-            player.getAchievementDiaries().update(DesertDiary.BURN_YEW_LOGS);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.BURN_YEW_LOGS);
         } else if (data.equals(Firemaking.YEW) && location.getX() >= 3254 && location.getX() <= 3259 && location.getY() >= 3484 && location.getY() <= 3488 && location.getPlane() == 3) {
-            player.getAchievementDiaries().update(VarrockDiary.CHOP_AND_BURN_YEW_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CHOP_AND_BURN_YEW_LOGS, 2);
         } else if (data.equals(Firemaking.OAK)) {
-            player.getAchievementDiaries().update(LumbridgeDiary.CHOP_AND_BURN_LOGS, 2);
-            player.getAchievementDiaries().update(FremennikDiary.CHOP_AND_BURN_OAK_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CHOP_AND_BURN_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CHOP_AND_BURN_OAK_LOGS, 2);
         } else if (data.equals(Firemaking.MAGIC)) {
-            player.getAchievementDiaries().update(WildernessDiary.CUT_AND_BURN_MAGIC_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CUT_AND_BURN_MAGIC_LOGS, 2);
         } else if (data.equals(Firemaking.MAPLE) && !tool.equals(FiremakingTool.TINDERBOX)) {
-            player.getAchievementDiaries().update(KandarinDiary.BURN_MAPLE_LOGS);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.BURN_MAPLE_LOGS);
         } else if (data.equals(Firemaking.TEAK)) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CHOP_AND_BURN_TEAK_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CHOP_AND_BURN_TEAK_LOGS, 2);
         } else if (data.equals(Firemaking.MAHOGANY)) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 2);
-            player.getAchievementDiaries().update(MorytaniaDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 2);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 2);
         }
         if (data.equals(Firemaking.YEW)) {
             SherlockTask.BURN_A_YEW_LOG.progress(player);

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.sailing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.collect.ImmutableMap;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
@@ -35,11 +36,11 @@ public class Sailing {
 		player.getVarManager().sendVar(75, value);
 		WorldTasksManager.schedule(() -> {
 			if (destination.equals("Entrana")) {
-				player.getAchievementDiaries().update(FaladorDiary.TAKE_BOAT_TO_ENTRANA);
+				AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.TAKE_BOAT_TO_ENTRANA);
 			} else if (departure.equals("Karamja") && destination.equals("Port Sarim")) {
-				player.getAchievementDiaries().update(KaramjaDiary.TRAVEL_TO_PORT_SARIM);
+				AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.TRAVEL_TO_PORT_SARIM);
 			} else if (departure.equals("Brimhaven") && destination.equals("Ardougne")) {
-				player.getAchievementDiaries().update(KaramjaDiary.TRAVEL_TO_ARDOUGNE);
+				AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.TRAVEL_TO_ARDOUGNE);
 			}
 			player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
 			player.setLocation(location);
@@ -51,7 +52,7 @@ public class Sailing {
 		final Location location = destination.equals("Port Sarim") ? PORT_SARIM_LOCATION : destination.equals("Piscarilius House") ? PISCARILIUS_LOCATION : LANDS_END_LOCATION;
 		new FadeScreen(player, () -> {
 			if (destination.equals("Land's End")) {
-				player.getAchievementDiaries().update(KourendDiary.TAKE_LANDS_END_BOAT);
+				AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.TAKE_LANDS_END_BOAT);
 			}
 			player.sendMessage("You board the ship and sail to " + destination + ".");
 			player.setLocation(location);

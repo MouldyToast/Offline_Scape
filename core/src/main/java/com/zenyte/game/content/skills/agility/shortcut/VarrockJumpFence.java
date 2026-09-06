@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -56,7 +57,7 @@ public class VarrockJumpFence implements Shortcut {
 				} else if (ticks == 3) {
 					player.setLocation(north ? SOUTH : NORTH);
 				} else if (ticks == 4) {
-					player.getAchievementDiaries().update(VarrockDiary.JUMP_OVER_VARROCK_FENCE);
+					AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.JUMP_OVER_VARROCK_FENCE);
 					player.unlock();
 					stop();
 				}

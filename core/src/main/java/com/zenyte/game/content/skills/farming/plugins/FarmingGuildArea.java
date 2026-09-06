@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
@@ -22,7 +23,7 @@ public class FarmingGuildArea extends GreatKourend implements FullMovementPlugin
 
     @Override
     public void enter(final Player player) {
-        player.getAchievementDiaries().update(KourendDiary.ENTER_FARMING_GUILD);
+        AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.ENTER_FARMING_GUILD);
     }
 
     @Override

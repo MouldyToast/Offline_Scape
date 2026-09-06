@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.alkharidrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -42,7 +43,7 @@ public final class Gap extends AgilityCourseObstacle {
 					player.setLocation(END_LOC);
 					break;
 				case 1:
-					player.getAchievementDiaries().update(LumbridgeDiary.COMPLETE_ALKHARID_COURSE);
+					AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.COMPLETE_ALKHARID_COURSE);
 					player.setAnimation(Animation.STOP);
 					MarkOfGrace.spawn(player, AlKharidRooftopCourse.MARK_LOCATIONS, 40, 20);
 					stop();

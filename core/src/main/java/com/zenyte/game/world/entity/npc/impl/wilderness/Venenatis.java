@@ -1,6 +1,7 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
 /*
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.boss.BossRespawnTimer;
@@ -43,7 +44,7 @@ public class Venenatis extends NPC implements CombatScript, Spawnable {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 2);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 2);
 		}
 	}
 

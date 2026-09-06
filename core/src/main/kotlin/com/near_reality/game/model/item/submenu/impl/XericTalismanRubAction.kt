@@ -1,5 +1,6 @@
 package com.near_reality.game.model.item.submenu.impl
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.near_reality.game.model.item.submenu.ISubMenuAction
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
@@ -77,7 +78,7 @@ data class TalismanTeleport(
         if (item.charges <= 0)
             player.sendMessage(Colour.RED.wrap("Your talisman has run out of charges."))
         if (destination.x == 1643 && destination.y == 3671)
-            player.achievementDiaries.update(KourendDiary.TELEPORT_TO_XERICS_HEART)
+            player.achievementDiaries().update(KourendDiary.TELEPORT_TO_XERICS_HEART)
     }
 
     private fun removeCharge(player: Player, item: Item) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.minigame.puropuro.PuroPuroArea;
 import com.zenyte.game.content.skills.hunter.node.Impling;
@@ -198,7 +199,7 @@ public class CatchImplingAction extends Action {
                 final String key = (isPuro ? Impling.PURO_IMPLING_TRACKER_ATTRIBUTE_KEY : Impling.SURFACE_IMPLING_TRACKER_ATTRIBUTE_KEY) + impling.getNpcId();
                 player.addAttribute(key, player.getNumericAttribute(key).intValue() + 1);
                 if (isPuro && (impling == Impling.ECLECTIC || impling == Impling.ESSENCE)) {
-                    player.getAchievementDiaries().update(LumbridgeDiary.CATCH_IMPLING);
+                    AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CATCH_IMPLING);
                 }
                 return;
             } else {

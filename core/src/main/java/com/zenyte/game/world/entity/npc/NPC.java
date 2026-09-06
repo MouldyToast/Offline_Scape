@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import cloud.rsps.rsprot.Session;
@@ -1716,7 +1717,7 @@ public class NPC extends AbstractEntity {
                 return;
             }
             // if fremenik Elite is complete and the item is Dag bones, note them
-            var isEliteComplete = killer.getAchievementDiaries().isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES);
+            var isEliteComplete = AchievementDiariesKeys.achievementDiaries(killer).isAllSetCompleted(DiaryComplexity.ELITE, FremennikDiary.VALUES);
             if (this instanceof DagannothKing) {
                 if (isEliteComplete && item.getId() == ItemId.DAGANNOTH_BONES) {
                     killer.getNotificationSettings().sendDropNotification(item.toNote());

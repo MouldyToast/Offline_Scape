@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.alchemicalhydra.npc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.slayer.BossTask;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -348,7 +349,7 @@ public class AlchemicalHydra extends NPC implements CombatScript {
         super.onFinish(source);
 
         if (source instanceof final Player player) {
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_HYDRA);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_HYDRA);
             player.getCombatAchievements().checkKcTask("alchemical hydra", 75, CAType.ALCHEMICAL_VETERAN);
             player.getCombatAchievements().checkKcTask("alchemical hydra", 150, CAType.ALCHEMICAL_MASTER);
             if (TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - player.getBossTimer().getCurrentTracker()) <= 105) {

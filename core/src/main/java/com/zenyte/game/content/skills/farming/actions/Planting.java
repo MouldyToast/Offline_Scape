@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.farming.*;
@@ -110,7 +111,7 @@ public class Planting extends Action {
     @Override
     public int processWithDelay() {
         if (spot.getPatch().equals(FarmingPatch.MCGRUBOR_HOPS) && product.equals(FarmingProduct.JUTE)) {
-            player.getAchievementDiaries().update(KandarinDiary.PLANT_JUTE_SEEDS);
+            AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.PLANT_JUTE_SEEDS);
         }
         player.sendMessage("You plant " + product.getSeedName() + " in the " + product.getType().getSanitizedName() + ".");
         if (product == FarmingProduct.WATERMELON) {

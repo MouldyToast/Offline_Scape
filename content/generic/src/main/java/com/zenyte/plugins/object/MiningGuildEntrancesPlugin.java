@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -57,7 +58,7 @@ public final class MiningGuildEntrancesPlugin implements ObjectAction {
                             return;
                         case 3:
                             if (Skills.ExperienceBoost.PROSPECTOR.hasFull(player) || Skills.ExperienceBoost.GOLDEN_PROSPECTOR.hasFull(player)) {
-                                player.getAchievementDiaries().update(FaladorDiary.ENTER_MINING_GUILD);
+                                AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.ENTER_MINING_GUILD);
                             }
                             Door.handleGraphicalDoor(door, object);
                             stop();

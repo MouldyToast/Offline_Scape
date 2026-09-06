@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.farming.FarmingPatch;
@@ -45,9 +46,9 @@ public class ScarecrowPlacement extends Action {
     @Override
     public int processWithDelay() {
         if (spot.getPatch().equals(FarmingPatch.PHASMATYS_FLOWER)) {
-            player.getAchievementDiaries().update(MorytaniaDiary.PLACE_A_SCARECROW);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.PLACE_A_SCARECROW);
         } else if (spot.getPatch().equals(FarmingPatch.FALADOR_FLOWER)) {
-            player.getAchievementDiaries().update(FaladorDiary.PLACE_A_SCARECROW);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.PLACE_A_SCARECROW);
         }
         player.getInventory().deleteItem(new Item(6059));
         spot.setScarecrow(FarmingProduct.SCARECROW);

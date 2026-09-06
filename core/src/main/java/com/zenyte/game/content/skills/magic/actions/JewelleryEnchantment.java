@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.spells.ItemSpell;
@@ -176,7 +177,7 @@ public class JewelleryEnchantment extends Action {
 		}
 
 		if (data.equals(JewelleryEnchantmentItem.DIAMOND_AMULET)) {
-			player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 0x4);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 0x4);
 		}
 		if (spell.getClass() == Lvl5Enchant.class) {
             SherlockTask.CAST_LV_FIVE_ENCHANT.progress(player);

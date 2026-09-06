@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTasksManager;
@@ -88,7 +89,7 @@ public class TrollStrongholdWildyRocks implements Shortcut {
                     ForceMovement finalFm = new ForceMovement(EASTERN_WILDY_BOTTOM, 30, ForceMovement.SOUTH);
                     player.setForceMovement(finalFm);
                     WorldTasksManager.schedule(() -> {
-                        player.getAchievementDiaries().update(WildernessDiary.TAKE_AGILITY_SHORTCUT);
+                        AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.TAKE_AGILITY_SHORTCUT);
                         player.setLocation(EASTERN_WILDY_BOTTOM);
                         player.setAnimation(Animation.STOP);
                     });

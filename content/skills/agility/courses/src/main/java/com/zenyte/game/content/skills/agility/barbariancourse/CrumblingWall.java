@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.barbariancourse;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.task.WorldTasksManager;
@@ -39,7 +40,7 @@ public final class CrumblingWall extends AgilityCourseObstacle {
 		player.setForceMovement(new ForceMovement(destination, 90, ForceMovement.EAST));
 		WorldTasksManager.schedule(() -> {
 			if (destination.getX() == 2543) {
-				player.getAchievementDiaries().update(KandarinDiary.COMPLETE_BARBARIAN_AGILITY_COURSE_LAP);
+				AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.COMPLETE_BARBARIAN_AGILITY_COURSE_LAP);
 			}
 			player.setLocation(destination);
 		}, 2);

@@ -1,5 +1,6 @@
 package com.zenyte.plugins.equipment.equip;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -13,7 +14,7 @@ public class FireCapeEquipPlugin implements EquipPlugin {
     @Override
     public boolean handle(final Player player, final Item item, final int slotId, final int equipmentSlot) {
         if (slotId != -1) {
-            player.getAchievementDiaries().update(KaramjaDiary.EQUIP_FIRE_CAPE);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.EQUIP_FIRE_CAPE);
         }
         return true;
     }

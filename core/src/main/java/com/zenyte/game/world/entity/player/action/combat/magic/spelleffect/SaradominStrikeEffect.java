@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.magic.spelleffect;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.world.entity.Entity;
@@ -17,7 +18,7 @@ public final class SaradominStrikeEffect implements SpellEffect {
 		if (target.getEntityType() == EntityType.PLAYER) {
 			if (player instanceof Player) {
 				final Player p = (Player) player;
-				p.getAchievementDiaries().update(WildernessDiary.CAST_GOD_SPELL);
+				AchievementDiariesKeys.achievementDiaries(p).update(WildernessDiary.CAST_GOD_SPELL);
 			}
 			PrayerManagerKeys.prayerManager((Player) target).drainPrayerPoints(1);
 		}

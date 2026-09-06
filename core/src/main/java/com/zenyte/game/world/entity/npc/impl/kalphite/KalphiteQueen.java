@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.kalphite;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.item.Item;
@@ -193,7 +194,7 @@ public class KalphiteQueen extends NPC implements CombatScript, Spawnable {
         if (singlePhaseOnly || id == PHASE2_NPC) {
             super.sendDeath();
             if (source != null) {
-                source.getAchievementDiaries().update(DesertDiary.KILL_KALPHITE_QUEEN);
+                AchievementDiariesKeys.achievementDiaries(source).update(DesertDiary.KILL_KALPHITE_QUEEN);
                 source.getNotificationSettings().increaseKill("Kalphite Queen");
                 source.getNotificationSettings().sendBossKillCountNotification("Kalphite Queen");
                 source.getCombatAchievements().checkKcTask("Kalphite Queen", 25, CAType.KALPHITE_QUEEN_ADEPT);

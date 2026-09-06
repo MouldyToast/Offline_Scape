@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.wildernessbosses.callisto;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -315,7 +316,7 @@ public class Callisto extends NPC implements CombatScript {
     public void onDeath(final Entity source) {
         super.onDeath(source);
         if (source instanceof Player player) {
-            player.getAchievementDiaries().update(WildernessDiary.KILL_CALLISTO, 1);
+            AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CALLISTO, 1);
         }
     }
 

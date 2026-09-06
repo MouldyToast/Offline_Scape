@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.AccessMask;
@@ -80,7 +81,7 @@ public class HairdresserD extends Dialogue {
 		HAIRDRESSER.open(player);
 		// TODO: Fix the UI to allow people to honestly unlock it.
 		//  Temp fix
-		player.getAchievementDiaries().update(FaladorDiary.GET_A_HAIRCUT);
+		AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.GET_A_HAIRCUT);
 		player.getPacketDispatcher().sendComponentSettings(82, 2, 0, 23, AccessMask.CLICK_OP1);
 		player.getPacketDispatcher().sendComponentSettings(82, 8, 0, 24, AccessMask.CLICK_OP1);
 		player.getPacketDispatcher().sendComponentText(82, 9, "CONFIRM - (" + PRICE.getAmount() + " coins)");

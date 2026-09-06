@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonnpc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary; // Import for Kandarin diaries
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnNPCAction;
@@ -25,7 +26,7 @@ public class ZamorakianSpearOnOttoNPCAction implements ItemOnNPCAction {
     @Override
     public void handleItemOnNPCAction(final Player player, final Item item, final int slot, final NPC npc) {
         final boolean canWield = player.getSkills().getLevel(SkillConstants.ATTACK) >= 70;
-        final boolean hasDiaryCompletion = player.getAchievementDiaries().isAllCompleted(KandarinDiary.ELITE);
+        final boolean hasDiaryCompletion = AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KandarinDiary.ELITE);
         final int cost = hasDiaryCompletion ? (int) (NORMAL_COST * DISCOUNT_RATE) : NORMAL_COST;
 
         player.getDialogueManager().start(new Dialogue(player, npc) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
@@ -131,8 +132,8 @@ public class LizardmanShaman extends NPC implements Spawnable, CombatScript {
     public void onDeath(final Entity source) {
         super.onDeath(source);
         if (source instanceof Player player) {
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_LIZARDMAN);
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_LIZARDMAN_SHAMAN);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_LIZARDMAN);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_LIZARDMAN_SHAMAN);
             AdventCalendarManager.increaseChallengeProgress(player, 2022, 2, 1);
             player.getCombatAchievements().complete(CAType.A_SCALEY_ENCOUNTER);
             if (!hitAnyone) player.getCombatAchievements().complete(CAType.SHAYZIEN_PROTECTOR);

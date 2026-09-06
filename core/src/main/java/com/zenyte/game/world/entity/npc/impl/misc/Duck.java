@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.misc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.DirectionUtil;
@@ -132,7 +133,7 @@ public final class Duck extends NPC implements Spawnable {
 		super.onDeath(source);
 		if (source instanceof Player) {
 			final Player player = (Player) source;
-			player.getAchievementDiaries().update(FaladorDiary.KILL_A_DUCK);
+			AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.KILL_A_DUCK);
 		}
 	}
 

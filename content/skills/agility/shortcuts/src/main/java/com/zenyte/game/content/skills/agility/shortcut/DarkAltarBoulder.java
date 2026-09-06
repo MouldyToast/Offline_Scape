@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -42,7 +43,7 @@ public class DarkAltarBoulder implements Shortcut {
                         player.sendMessage("You climb over the rocks.");
                     } else if (ticks == 3) {
                         player.addWalkSteps(1776, 3880, -1, false);
-                        player.getAchievementDiaries().update(KourendDiary.USE_BOULDER_LEAP);
+                        AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.USE_BOULDER_LEAP);
                         stop();
                     }
                     ticks++;

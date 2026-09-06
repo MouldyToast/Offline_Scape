@@ -1,5 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
@@ -180,8 +181,8 @@ public class EstateAgentD extends Dialogue {
 			npc("I'm afraid you don't have enough coins on you to redecorate your house");
 		} else {
 			npc("There you go! Your house was redecorated.").executeAction(() -> {
-				player.getAchievementDiaries().update(VarrockDiary.DECORATE_HOUSE_WITH_FANCY_STONE);
-				player.getAchievementDiaries().update(KandarinDiary.DECORATE_HOUSE_WITH_FANCY_STONE);
+				AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.DECORATE_HOUSE_WITH_FANCY_STONE);
+				AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.DECORATE_HOUSE_WITH_FANCY_STONE);
 				ConstructionKeys.construction(player).setDecoration(5);
 				player.getInventory().deleteItem(new Item(995, 25000));
 			});

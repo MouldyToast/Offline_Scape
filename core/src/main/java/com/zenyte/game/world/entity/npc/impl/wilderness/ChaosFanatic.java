@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
@@ -133,7 +134,7 @@ public class ChaosFanatic extends NPC implements CombatScript, Spawnable {
 	public void onDeath(final Entity source) {
 		super.onDeath(source);
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 2);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 2);
 		}
 	}
 

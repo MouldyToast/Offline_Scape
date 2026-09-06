@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
@@ -2474,7 +2475,7 @@ public final class GameCommands {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
-                    p.getAchievementDiaries().finish(d);
+                    AchievementDiariesKeys.achievementDiaries(p).finish(d);
                 }
             }
         });
@@ -2482,7 +2483,7 @@ public final class GameCommands {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
-                    p.getAchievementDiaries().reset(d);
+                    AchievementDiariesKeys.achievementDiaries(p).reset(d);
                 }
             }
         });

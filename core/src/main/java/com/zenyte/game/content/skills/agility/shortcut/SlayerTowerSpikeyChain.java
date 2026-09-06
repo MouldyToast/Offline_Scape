@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.content.skills.slayer.SlayerEquipment;
@@ -44,7 +45,7 @@ public class SlayerTowerSpikeyChain implements Shortcut {
                     player.setAnimation(SlayerTowerSpikeyChain.CLIMB);
                 } else if (ticks == 1) {
                     if (hash == NORTH_BOTTOM.getPositionHash()) {
-                        player.getAchievementDiaries().update(MorytaniaDiary.CLIMB_SPIKED_CHAIN_IN_SLAYER_TOWER);
+                        AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.CLIMB_SPIKED_CHAIN_IN_SLAYER_TOWER);
                     }
                     player.setLocation(new Location(player.getX(), player.getY(), chain));
                     player.getSkills().addXp(SkillConstants.AGILITY, 3);

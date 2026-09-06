@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.magic.SpellState;
@@ -102,11 +103,11 @@ public class ChargeOrbSpell extends Action {
 		}
 		state.remove();
 		if (data.equals(ChargeOrbSpellData.CHARGE_EARTH_ORB)) {
-			player.getAchievementDiaries().update(WildernessDiary.CHARGE_AN_EARTH_ORB);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CHARGE_AN_EARTH_ORB);
 		} else if (data.equals(ChargeOrbSpellData.CHARGE_AIR_ORB)) {
-			player.getAchievementDiaries().update(WildernessDiary.CHARGE_AIR_ORB);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CHARGE_AIR_ORB);
 		} else if (data.equals(ChargeOrbSpellData.CHARGE_WATER_ORB)) {
-			player.getAchievementDiaries().update(KandarinDiary.CHARGE_WATER_ORB);
+			AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CHARGE_WATER_ORB);
 		}
 		player.setAnimation(ANIMATION);
 		player.setGraphics(data.getGraphics());

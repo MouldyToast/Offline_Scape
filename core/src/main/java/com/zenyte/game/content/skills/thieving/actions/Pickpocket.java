@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.thieving.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
@@ -204,19 +205,19 @@ public class Pickpocket extends Action {
 
 		player.sendFilteredMessage("You pick the " + npc.getName(player).toLowerCase() + "'s pocket.");
 		switch (data) {
-			case HERO -> player.getAchievementDiaries().update(ArdougneDiary.PICKPOCKET_A_HERO);
-			case GUARD -> player.getAchievementDiaries().update(FaladorDiary.PICKPOCKET_FALADOR_GUARD);
+			case HERO -> AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.PICKPOCKET_A_HERO);
+			case GUARD -> AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.PICKPOCKET_FALADOR_GUARD);
 			case MASTER_FARMER -> {
 				if (npc.getName(player).contains("Martin"))
-					player.getAchievementDiaries().update(LumbridgeDiary.PICKPOCKET_MASTER_GARDENER);
+					AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.PICKPOCKET_MASTER_GARDENER);
 				player.getDailyChallengeManager().update(SkillingChallenge.PICKPOCKET_MASTER_FARMERS);
-				player.getAchievementDiaries().update(ArdougneDiary.PICKPOCKET_MASTER_FARMER);
+				AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.PICKPOCKET_MASTER_FARMER);
 			}
-			case MAN -> player.getAchievementDiaries().update(LumbridgeDiary.PICKPOCKET_A_MAN);
-			case GNOME -> player.getAchievementDiaries().update(WesternProvincesDiary.PICKPOCKET_A_GNOME);
+			case MAN -> AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.PICKPOCKET_A_MAN);
+			case GNOME -> AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.PICKPOCKET_A_GNOME);
 			case ELF -> {
 				player.getDailyChallengeManager().update(SkillingChallenge.PICKPOCKET_ELVES);
-				player.getAchievementDiaries().update(WesternProvincesDiary.PICKPOCKET_ELF);
+				AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.PICKPOCKET_ELF);
 				SherlockTask.PICKPOCKET_AN_ELF.progress(player);
 			}
 			case FEMALE_HAM_MEMBER, MALE_HAM_MEMBER -> player.getDailyChallengeManager().update(SkillingChallenge.PICKPOCKET_HAM_MEMBERS);

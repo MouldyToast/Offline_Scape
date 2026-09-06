@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -114,7 +115,7 @@ public class Smelting extends Action {
 	}
 
 	private static void handleDiary(final Player player, final SmeltableBar bar) {
-		final AchievementDiaries dairies = player.getAchievementDiaries();
+		final AchievementDiaries dairies = AchievementDiariesKeys.achievementDiaries(player);
 		if (bar.equals(SmeltableBar.SILVER_BAR)) {
 			dairies.update(FremennikDiary.CRAFT_A_TIARA, 2);
 		} else if (bar.equals(SmeltableBar.ADAMANTITE_BAR)) {

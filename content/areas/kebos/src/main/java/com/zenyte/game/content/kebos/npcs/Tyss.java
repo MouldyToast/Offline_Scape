@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.npcs;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -27,7 +28,7 @@ public class Tyss extends NPCPlugin {
                             player.getCombatDefinitions().setSpellbook(Spellbook.NORMAL, true);
                         } else {
                             player.getCombatDefinitions().setSpellbook(Spellbook.ARCEUUS, true);
-                            player.getAchievementDiaries().update(KourendDiary.SWITCH_TO_NECROMANCY_SPELLBOOK);
+                            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.SWITCH_TO_NECROMANCY_SPELLBOOK);
                         }
                     });
                 }
@@ -39,7 +40,7 @@ public class Tyss extends NPCPlugin {
                 player.getCombatDefinitions().setSpellbook(Spellbook.NORMAL, true);
             } else {
                 player.getCombatDefinitions().setSpellbook(Spellbook.ARCEUUS, true);
-                player.getAchievementDiaries().update(KourendDiary.SWITCH_TO_NECROMANCY_SPELLBOOK);
+                AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.SWITCH_TO_NECROMANCY_SPELLBOOK);
             }
         });
     }

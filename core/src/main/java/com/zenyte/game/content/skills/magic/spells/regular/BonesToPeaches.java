@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.regular;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell;
@@ -22,7 +23,7 @@ public final class BonesToPeaches implements DefaultSpell {
 	public boolean spellEffect(final Player player, final int optionId, final String option) {
 		final int amount = BonesTablet.convertBones(player, BonesTablet.PEACHES);
 		if (amount > 0) {
-			player.getAchievementDiaries().update(LumbridgeDiary.CAST_BONES_TO_PEACHES);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CAST_BONES_TO_PEACHES);
 			player.setAnimation(BonesTablet.animation);
 			player.setGraphics(BonesTablet.graphics);
 			player.sendSound(BonesTablet.sound);

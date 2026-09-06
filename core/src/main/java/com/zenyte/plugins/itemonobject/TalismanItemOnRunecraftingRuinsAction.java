@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonobject;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.runecrafting.CombinationRunecrafting;
 import com.zenyte.game.content.skills.runecrafting.Runecrafting;
@@ -25,7 +26,7 @@ public final class TalismanItemOnRunecraftingRuinsAction implements ItemOnObject
 		}
 		if (item.getId() == rune.getTalismanId()) {
 			if (rune.equals(Runecrafting.CHAOS_RUNE)) {
-				player.getAchievementDiaries().update(WildernessDiary.ENTER_CHAOS_RUNECRAFTING_TEMPLE);
+				AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.ENTER_CHAOS_RUNECRAFTING_TEMPLE);
 			}
 			player.setLocation(rune.getPortalCoords());
 		} else {

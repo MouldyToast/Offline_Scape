@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.runecrafting.Runecrafting;
 import com.zenyte.game.world.entity.player.Player;
@@ -33,7 +34,7 @@ public class AbyssRuinsEntranceObject implements ObjectAction {
 				}
 			}
 			case CHAOS_RUNE: {
-				player.getAchievementDiaries().update(WildernessDiary.ENTER_CHAOS_RUNECRAFTING_TEMPLE);
+				AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.ENTER_CHAOS_RUNECRAFTING_TEMPLE);
 			}
 		}
 		player.setLocation(rune.getPortalCoords());

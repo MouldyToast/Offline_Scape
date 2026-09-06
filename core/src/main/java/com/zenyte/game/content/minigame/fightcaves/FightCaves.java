@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.fightcaves;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
@@ -292,7 +293,7 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
         player.setLocation(getLocation(2412, 5114, 0));
         player.lock(1);
         WorldTasksManager.schedule(() -> {
-            player.getAchievementDiaries().update(KaramjaDiary.ATTEMPT_FIGHT_PITS_OR_CAVES);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.ATTEMPT_FIGHT_PITS_OR_CAVES);
             sendStartDialogue();
             player.resetWalkSteps();
             if (player.isRun()) {

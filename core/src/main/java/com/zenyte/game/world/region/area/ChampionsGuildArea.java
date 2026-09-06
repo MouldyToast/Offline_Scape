@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
@@ -19,7 +20,7 @@ public class ChampionsGuildArea extends KingdomOfMisthalin {
 	@Override
 	public void enter(Player player) {
 	    super.enter(player);
-		player.getAchievementDiaries().update(VarrockDiary.ENTER_CHAMPIONS_GUILD);
+		AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.ENTER_CHAMPIONS_GUILD);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.wildernesscourse;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.task.WorldTasksManager;
@@ -34,7 +35,7 @@ public final class Rocks extends AgilityCourseObstacle {
 		player.setForceMovement(new ForceMovement(new Location(object.getX(), object.getY() - 3, object.getPlane()), 120, ForceMovement.SOUTH));
 		WorldTasksManager.schedule(() -> {
 			player.getDailyChallengeManager().update(SkillingChallenge.COMPLETE_LAPS_WILDERNESS_AGILITY_COURSE);
-			player.getAchievementDiaries().update(WildernessDiary.COMPLETE_AGILITY_COURSE_LAP);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.COMPLETE_AGILITY_COURSE_LAP);
 			player.setAnimation(Animation.STOP);
 			player.setLocation(new Location(object.getX(), object.getY() - 3, object.getPlane()));
 		}, 3);

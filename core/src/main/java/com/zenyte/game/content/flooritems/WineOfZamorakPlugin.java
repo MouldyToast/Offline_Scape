@@ -1,5 +1,6 @@
 package com.zenyte.game.content.flooritems;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
@@ -38,7 +39,7 @@ public class WineOfZamorakPlugin implements FloorItemPlugin {
         }
         World.destroyFloorItem(item);
         final Item addedItem = new Item(item);
-        player.getAchievementDiaries().update(FaladorDiary.TELEGRAB_WINE_OF_ZAMORAK);
+        AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.TELEGRAB_WINE_OF_ZAMORAK);
         if (WINE_OF_ZAMORAK_LOCATION.matches(item.getLocation()) && DiaryUtil.eligibleFor(DiaryReward.WILDERNESS_SWORD3, player)) {
             addedItem.setId(246);
         } else if (FALADOR_WINE_OF_ZAMORAK_LOCATION.matches(item.getLocation()) || FALADOR_UPSTAIRS_WINE_OF_ZAMORAK_LOCATION.matches(item.getLocation())) {

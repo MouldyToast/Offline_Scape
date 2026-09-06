@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;
@@ -123,7 +124,7 @@ public class CrazyArchaeologist extends NPC implements CombatScript, Spawnable {
 		super.onDeath(source);
 		setForceTalk(DEATH_MESSAGE);
 		if (source instanceof final Player player) {
-			player.getAchievementDiaries().update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 1);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_CRAZY_ARCHEAOLOGIST, 1);
 		}
 	}
 

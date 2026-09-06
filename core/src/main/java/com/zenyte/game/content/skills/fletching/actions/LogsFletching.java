@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.item.Item;
@@ -56,9 +57,9 @@ public class LogsFletching extends Action {
 		} else if (ticks == tickCount) {
 			player.getInventory().deleteItemsIfContains(new Item[] {MATERIALS[category][slotId]}, () -> {
 				if (product.getId() == 9452) {
-					player.getAchievementDiaries().update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 1);
+					AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 1);
 				} else if (product.getId() == 66) {
-					player.getAchievementDiaries().update(KandarinDiary.CREATE_YEW_LONGBOW, 2);
+					AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CREATE_YEW_LONGBOW, 2);
 				} else if (product.getId() == 72) {
 					player.getDailyChallengeManager().update(SkillingChallenge.FLETCH_MAGIC_SHORTBOWS);
 				}

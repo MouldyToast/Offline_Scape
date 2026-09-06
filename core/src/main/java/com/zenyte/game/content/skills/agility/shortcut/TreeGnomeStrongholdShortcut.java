@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTasksManager;
@@ -51,7 +52,7 @@ public class TreeGnomeStrongholdShortcut implements Shortcut {
             player.setAnimation(CLIMB);
             player.setForceMovement(fm);
             WorldTasksManager.schedule(() -> {
-                player.getAchievementDiaries().update(WesternProvincesDiary.TAKE_GRAND_TREE_AGILITY_SHORTCUT);
+                AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TAKE_GRAND_TREE_AGILITY_SHORTCUT);
                 player.setAnimation(Animation.STOP);
                 player.setLocation(dest);
             }, t - 1);

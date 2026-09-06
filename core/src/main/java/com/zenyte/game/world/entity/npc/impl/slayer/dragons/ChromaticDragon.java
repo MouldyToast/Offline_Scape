@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.dragons;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -59,9 +60,9 @@ public final class ChromaticDragon extends NPC implements CombatScript, Spawnabl
 		if (source instanceof Player) {
 			final Player player = (Player) source;
 			if (getName(player).equals("Green dragon")) {
-				player.getAchievementDiaries().update(WildernessDiary.KILL_A_GREEN_DRAGON);
+				AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_A_GREEN_DRAGON);
 			} else if (getName(player).equals("Lava dragon")) {
-				player.getAchievementDiaries().update(WildernessDiary.KILL_A_LAVA_DRAGON, 1);
+				AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_A_LAVA_DRAGON, 1);
 			} else if (getName(player).equalsIgnoreCase("black dragon")) {
 				player.getCombatAchievements().complete(CAType.BIG_BLACK_AND_FIERY);
 			}

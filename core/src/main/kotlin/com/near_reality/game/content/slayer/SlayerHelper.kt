@@ -1,5 +1,6 @@
 package com.near_reality.game.content.slayer
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.zenyte.game.content.skills.slayer.slayer
 import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
@@ -156,10 +157,10 @@ object SlayerHelper {
             val `$taskWeight`: Int = `$taskSet`.weight
             if ((`$taskWeight`.let { currentWeight += it; currentWeight }) >= `$randomTask`) {
                 when (master) {
-                    SlayerMaster.VANNAKA -> achievementDiaries.update(VarrockDiary.SLAYER_TASK_FROM_VANNAKA)
-                    SlayerMaster.CHAELDAR -> achievementDiaries.update(LumbridgeDiary.GET_SLAYER_TASK_FROM_CHAELDAR)
-                    SlayerMaster.DURADEL -> achievementDiaries.update(KaramjaDiary.SLAYER_TASK_BY_DURADEL)
-                    SlayerMaster.MAZCHNA -> achievementDiaries.update(MorytaniaDiary.GET_A_SLAYER_TASK_FROM_MAZCHNA)
+                    SlayerMaster.VANNAKA -> achievementDiaries().update(VarrockDiary.SLAYER_TASK_FROM_VANNAKA)
+                    SlayerMaster.CHAELDAR -> achievementDiaries().update(LumbridgeDiary.GET_SLAYER_TASK_FROM_CHAELDAR)
+                    SlayerMaster.DURADEL -> achievementDiaries().update(KaramjaDiary.SLAYER_TASK_BY_DURADEL)
+                    SlayerMaster.MAZCHNA -> achievementDiaries().update(MorytaniaDiary.GET_A_SLAYER_TASK_FROM_MAZCHNA)
                     else -> {}
                 }
                 if (`$task` === RegularTask.BOSS) {

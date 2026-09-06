@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.faladorrooftop;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.content.skills.agility.MarkOfGrace;
@@ -44,7 +45,7 @@ public final class FinishCourse extends AgilityCourseObstacle {
 				} else if(ticks == 3) {
 					player.setAnimation(JUMP);
 				} else if(ticks == 4) {
-					player.getAchievementDiaries().update(FaladorDiary.COMPLETE_ROOFTOP_COURSE);
+					AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.COMPLETE_ROOFTOP_COURSE);
 					player.setAnimation(LAND);
 					player.setLocation(finish);
 					MarkOfGrace.spawn(player, FaladorRooftopCourse.MARK_LOCATIONS, 50, 50);

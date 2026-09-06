@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.fletching.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions.AmmunitionFletchingData;
@@ -71,11 +72,11 @@ public class AmmunitionFletching extends Action {
 		final int productMultiplier = (amount > sets ? sets : quantity) * data.getProduct().getAmount();
 		final int materialMultiplier = (amount > sets ? sets : quantity);
 		if (data.equals(AmmunitionFletchingData.DRAGON_DART)) {
-			player.getAchievementDiaries().update(DesertDiary.FLETCH_DRAGON_DARTS, productMultiplier);
+			AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.FLETCH_DRAGON_DARTS, productMultiplier);
 		} else if (data.equals(AmmunitionFletchingData.RUNE_DART)) {
 			SherlockTask.FLETCH_RUNE_DART.progress(player);
 			if (productMultiplier >= 10) {
-				player.getAchievementDiaries().update(VarrockDiary.SMITH_AND_FLETCH_10_RUNE_DARTS, 2);
+				AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.SMITH_AND_FLETCH_10_RUNE_DARTS, 2);
 			}
 		} else if (data.equals(AmmunitionFletchingData.RUBY_BOLT)) {
 			player.getDailyChallengeManager().update(SkillingChallenge.FLETCH_RUBY_BOLTS, productMultiplier);

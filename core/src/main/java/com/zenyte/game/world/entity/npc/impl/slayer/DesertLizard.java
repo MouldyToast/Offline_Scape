@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.item.Item;
@@ -46,7 +47,7 @@ public class DesertLizard extends NPC implements Spawnable {
 	}
 
 	public void kill(final Player player) {
-		player.getAchievementDiaries().update(DesertDiary.SLAY_DESERT_LIZARD);
+		AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.SLAY_DESERT_LIZARD);
 		player.sendMessage("The lizard shudders and collapses from the freezing water.");
 		super.sendDeath();
 	}

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.PolygonRegionArea;
@@ -19,7 +20,7 @@ public class HAMCultArea extends PolygonRegionArea {
 
 	@Override
 	public void enter(Player player) {
-		player.getAchievementDiaries().update(LumbridgeDiary.ENTER_HAM_HIDEOUT);
+		AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.ENTER_HAM_HIDEOUT);
 	}
 
 	@Override

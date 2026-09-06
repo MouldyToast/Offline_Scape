@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
@@ -44,16 +45,16 @@ public class HealthChecking extends Action {
             player.sendMessage("You find a Hespori seed.");
         }
         if (type.equals(PatchType.CALQUAT_PATCH)) {
-            player.getAchievementDiaries().update(KaramjaDiary.CHECK_CALQUAT_HEALTH);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CHECK_CALQUAT_HEALTH);
         } else if (type.equals(PatchType.FRUIT_TREE_PATCH)) {
-            player.getAchievementDiaries().update(KaramjaDiary.GROW_A_HEALTHY_FRUIT_TREE);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.GROW_A_HEALTHY_FRUIT_TREE);
             if (product.equals(FarmingProduct.PALM)) {
                 //TODO: Verify conditions for these dangling diary!
-                player.getAchievementDiaries().update(KaramjaDiary.CHECK_PALM_TREE_HEALTH);
+                AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CHECK_PALM_TREE_HEALTH);
                 if (spot.getPatch().equals(FarmingPatch.GNOME_MAZE_FRUIT_TREE)) {
-                    player.getAchievementDiaries().update(ArdougneDiary.CHECK_PALM_TREE_HEALTH);
+                    AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CHECK_PALM_TREE_HEALTH);
                 } else if (spot.getPatch().equals(FarmingPatch.LLETYA_FRUIT_TREE)) {
-                    player.getAchievementDiaries().update(WesternProvincesDiary.CHECK_PALM_TREE_HEALTH);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CHECK_PALM_TREE_HEALTH);
                 }
             } else if (product.equals(FarmingProduct.PAPAYA)) {
                 player.getDailyChallengeManager().update(SkillingChallenge.CHECK_HEALTH_PAPAYA_TREES);

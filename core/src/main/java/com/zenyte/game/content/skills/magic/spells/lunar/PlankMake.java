@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.collect.ImmutableMap;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
 import com.zenyte.game.content.skills.magic.Spellbook;
@@ -39,7 +40,7 @@ public final class PlankMake implements ItemSpell {
 			return false;
 		}
 		if (data.equals(PlankData.MAHOGANY_LOGS)) {
-			player.getAchievementDiaries().update(VarrockDiary.MAKE_20_MAHOGANY_PLANKS);
+			AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.MAKE_20_MAHOGANY_PLANKS);
 		}
 		item.setId(data.getPlank());
 		player.getInventory().refresh(slot);

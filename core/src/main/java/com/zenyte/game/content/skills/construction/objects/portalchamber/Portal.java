@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction.objects.portalchamber;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ObjectInteraction;
@@ -34,7 +35,7 @@ public final class Portal implements ObjectInteraction {
 				return;
 			}
 			if (portal.equals(TeleportPortal.KHARYRLL_PORTAL)) {
-				player.getAchievementDiaries().update(MorytaniaDiary.ENTER_KHARYRLL_PORTAL);
+				AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.ENTER_KHARYRLL_PORTAL);
 			}
 			player.setLocation(portal.getTeleport().destination());
 		}

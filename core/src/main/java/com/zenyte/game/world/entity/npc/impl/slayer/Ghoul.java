@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Entity;
@@ -22,7 +23,7 @@ public class Ghoul extends NPC implements Spawnable {
         super.onDeath(source);
         if (source instanceof Player) {
             final Player player = (Player) source;
-            player.getAchievementDiaries().update(MorytaniaDiary.KILL_A_GHOUL);
+            AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.KILL_A_GHOUL);
         }
     }
 

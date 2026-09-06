@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -71,7 +72,7 @@ public class AbyssalDemon extends NPC implements Spawnable, CombatScript {
 		super.onDeath(source);
 		if (source instanceof Player) {
 			final Player player = (Player) source;
-			player.getAchievementDiaries().update(MorytaniaDiary.KILL_ABYSSAL_DEMON);
+			AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.KILL_ABYSSAL_DEMON);
 		}
 	}
 

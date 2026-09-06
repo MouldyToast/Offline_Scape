@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.npc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.kebos.alchemicalhydra.npc.combat.phases.PoisonPhase;
 import com.zenyte.game.task.TickTask;
@@ -157,7 +158,7 @@ public class Hydra extends NPC implements CombatScript, Spawnable {
         super.onDeath(source);
         if (source instanceof Player) {
             final Player player = (Player) source;
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_HYDRA);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_HYDRA);
         }
     }
 

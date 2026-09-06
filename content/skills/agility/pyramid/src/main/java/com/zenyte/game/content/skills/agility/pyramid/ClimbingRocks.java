@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.pyramid;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.skills.agility.AgilityCourseObstacle;
 import com.zenyte.game.item.Item;
@@ -32,7 +33,7 @@ public final class ClimbingRocks extends AgilityCourseObstacle {
                         player.getDialogueManager().start(new ItemChat(player, reward, "You find a golden pyramid!"));
                         player.getVarManager().sendBit(AgilityPyramid.HIDE_PYRAMID_VARBIT, true);
                         inventory.addOrDrop(reward);
-                        player.getAchievementDiaries().update(DesertDiary.CLIMB_AGILITY_PYRAMID);
+                        AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CLIMB_AGILITY_PYRAMID);
                     });
                 } else {
                     player.sendMessage("You don\'t have enough inventory space to pick up this item.");

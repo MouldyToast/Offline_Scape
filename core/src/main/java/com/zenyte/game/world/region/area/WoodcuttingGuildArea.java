@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
@@ -18,7 +19,7 @@ public class WoodcuttingGuildArea extends GreatKourend {
 
     @Override
     public void enter(final Player player) {
-        player.getAchievementDiaries().update(KourendDiary.ENTER_WOODCUTTING_GUILD);
+        AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.ENTER_WOODCUTTING_GUILD);
     }
 
     @Override

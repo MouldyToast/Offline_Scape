@@ -1,5 +1,6 @@
 package com.zenyte.game.content.achievementdiary.plugins;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.*;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -26,7 +27,7 @@ public class TaskmasterD extends Dialogue {
         if (diary == null) {
             return;
         }
-        final Map<DiaryArea, Map<DiaryReward, Boolean>> pendingRewards = player.getAchievementDiaries().getPendingRewards();
+        final Map<DiaryArea, Map<DiaryReward, Boolean>> pendingRewards = AchievementDiariesKeys.achievementDiaries(player).getPendingRewards();
         if (!pendingRewards.get(diary.area()).isEmpty()) {
             final List<DiaryReward> unclaimedRewards = pendingRewards.get(diary.area()).entrySet().stream().filter(bool -> bool.getValue().equals(false)).map(Map.Entry::getKey).collect(Collectors.toList());
             if (!unclaimedRewards.isEmpty()) {
@@ -56,7 +57,7 @@ public class TaskmasterD extends Dialogue {
                         lampItem.setCharges(1);
                     }
                     player.getInventory().addItem(lampItem);
-                    player.getAchievementDiaries().getPendingRewards().get(diary.area()).put(pendingReward, true);
+                    AchievementDiariesKeys.achievementDiaries(player).getPendingRewards().get(diary.area()).put(pendingReward, true);
                 }
             });
             doubleItem(5, pendingReward.getItem(), pendingReward.getLamp().getItem(), "The taskmaster gives you your rewards.");

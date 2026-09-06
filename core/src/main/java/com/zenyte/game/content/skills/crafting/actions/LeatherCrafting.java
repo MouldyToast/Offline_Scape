@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
@@ -140,10 +141,10 @@ public class LeatherCrafting extends Action {
 			}
 		} else if (ticks == 3) {
 			if (product.getId() == PRODUCTS[0][6].getId()) {
-				player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_A_COIF);
+				AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_A_COIF);
 			} else if (product.getId() == PRODUCTS[7][2].getId()) {
 				player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_BLACK_DRAGONHIDE_BODIES);
-				player.getAchievementDiaries().update(MorytaniaDiary.CRAFT_BLACK_DRAGONHIDE_BODY);
+				AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.CRAFT_BLACK_DRAGONHIDE_BODY);
 			}
 			if (product.getId() == ItemId.LEATHER_BODY) {
 				CharlieTask.CRAFT_A_LEATHER_BODY.progress(player);

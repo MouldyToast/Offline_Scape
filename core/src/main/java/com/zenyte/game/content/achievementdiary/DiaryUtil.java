@@ -28,7 +28,7 @@ public class DiaryUtil {
     public static boolean eligibleFor(final DiaryReward diaryReward, final Player player) {
         for (final Diary diary : diaryReward.getRequiredTasks()) {
             if (diary.autoCompleted()) continue;
-            if (player.getAchievementDiaries().getProgress(diary) != diary.objectiveLength()) {
+            if (AchievementDiariesKeys.achievementDiaries(player).getProgress(diary) != diary.objectiveLength()) {
                 return false;
             }
         }

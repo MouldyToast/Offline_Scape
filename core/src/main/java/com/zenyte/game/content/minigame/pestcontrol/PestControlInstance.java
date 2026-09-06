@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.pestcontrol;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
@@ -377,11 +378,11 @@ public final class PestControlInstance extends DynamicArea implements DeathPlugi
                 player.addAttribute("pest_control_points", player.getNumericAttribute("pest_control_points").intValue() + points);
                 player.getInventory().addOrDrop(new Item(995, player.getSkills().getCombatLevel() * 250));
                 if (type.equals(PestControlGameType.NOVICE)) {
-                    player.getAchievementDiaries().update(WesternProvincesDiary.COMPLETE_PEST_CONTROL_NOVICE);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.COMPLETE_PEST_CONTROL_NOVICE);
                 } else if (type.equals(PestControlGameType.INTERMEDIATE)) {
-                    player.getAchievementDiaries().update(WesternProvincesDiary.COMPLETE_INTERMEDIATE_PEST_CONTROL_GAME);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.COMPLETE_INTERMEDIATE_PEST_CONTROL_GAME);
                 } else if (type.equals(PestControlGameType.VETERAN)) {
-                    player.getAchievementDiaries().update(WesternProvincesDiary.COMPLETE_VETERAN_PEST_CONTROL_GAME);
+                    AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.COMPLETE_VETERAN_PEST_CONTROL_GAME);
                 }
                 player.getDialogueManager().start(new NPCChat(player, type.getSquireId(), "Congratulations! You managed to " + (timer == GAME_DURATION ? "protect the Void Knight" : "destroy all the portals") + "! We've awarded you " + points + " Void Knight Commendation points. Please also accept these coins as a reward."));
             } else {

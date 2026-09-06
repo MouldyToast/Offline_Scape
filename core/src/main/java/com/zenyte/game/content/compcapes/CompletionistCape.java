@@ -1,5 +1,6 @@
 package com.zenyte.game.content.compcapes;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.Diary;
@@ -131,7 +132,7 @@ public class CompletionistCape {
 			return 0;
 		}
 
-		if (!player.getAchievementDiaries().isAllCompleted()) {
+		if (!AchievementDiariesKeys.achievementDiaries(player).isAllCompleted()) {
 			return 0;
 		}
 
@@ -173,7 +174,7 @@ public class CompletionistCape {
 		final Diary firstEntry = values.get(Diary.EASY).get(0);
 		final ObjectArrayList<String> list = new ObjectArrayList<>(100);
 		final String prefix = "<str>";
-		final AchievementDiaries diaries = player.getAchievementDiaries();
+		final AchievementDiaries diaries = AchievementDiariesKeys.achievementDiaries(player);
 		final boolean ironman = player.isIronman();
 		for (final DiaryComplexity difficulty : DiaryComplexity.VALUES) {
 			final List<Diary> diary = values.get(difficulty);

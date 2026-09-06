@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.collect.ImmutableMap;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.chambersofxeric.greatolm.FireWallNPC;
@@ -58,7 +59,7 @@ public final class Humidify implements DefaultSpell, NPCSpell {
 			final Item it = new Item(response);
 			item.setId(it.getId());
 			if (item.getName().contains("Waterskin")) {
-				player.getAchievementDiaries().update(DesertDiary.REFILL_WATERSKINS_WITH_HUMIDIFY);
+				AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.REFILL_WATERSKINS_WITH_HUMIDIFY);
 			}
 		}
 		player.getInventory().refreshAll();

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.hunter.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
@@ -75,11 +76,11 @@ public class DismantlePitfallAction extends BuiltHunterTrapAction {
      */
     private void checkDiaries(@NotNull final TrapPrey prey) {
         if (prey.equals(TrapPrey.HORNED_GRAAHK)) {
-            player.getAchievementDiaries().update(KaramjaDiary.TRAP_A_HORNED_GRAAHK);
+            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.TRAP_A_HORNED_GRAAHK);
         } else if (prey.equals(TrapPrey.SABRE_TOOTHED_KYATT)) {
-            player.getAchievementDiaries().update(FremennikDiary.CATCH_SABRE_TOOTHED_KYATT);
+            AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CATCH_SABRE_TOOTHED_KYATT);
         } else if (prey.equals(TrapPrey.SPINED_LARUPIA)) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.TRAP_A_SPINED_LARUPIA);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.TRAP_A_SPINED_LARUPIA);
         }
     }
 

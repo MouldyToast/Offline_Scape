@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.wyverns;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -64,7 +65,7 @@ public class SkeletalWyvern extends Wyvern {
         super.onDeath(source);
         if (source instanceof Player) {
             final Player player = (Player) source;
-            player.getAchievementDiaries().update(FaladorDiary.KILL_SKELETAL_WYVERN);
+            AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.KILL_SKELETAL_WYVERN);
             player.getCombatAchievements().complete(CAType.A_FROZEN_FOE_FROM_THE_PAST);
         }
     }

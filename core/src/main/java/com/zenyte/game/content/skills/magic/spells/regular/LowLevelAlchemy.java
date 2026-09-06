@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.regular;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.model.item.ItemValueExtKt;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
@@ -129,7 +130,7 @@ public final class LowLevelAlchemy implements ItemSpell {
 			SpellbookSwap.checkSpellbook(player);
 			final int value = ItemValueExtKt.getItemLowAlchValue(item.getId());
 			player.log(LogLevel.INFO, "Low alchemy used on item " + item + " for a value of " + value + ".");
-			player.getAchievementDiaries().update(WildernessDiary.CAST_LOW_ALCHEMY);
+			AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CAST_LOW_ALCHEMY);
 			player.getInventory().deleteItem(item.getId(), 1);
 			player.getInventory().addItem(new Item(995, value)).onFailure(it -> World.spawnFloorItem(it, player));
 			player.sendSound(new SoundEffect(98));

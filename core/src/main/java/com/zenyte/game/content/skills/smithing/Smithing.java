@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.smithing;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.treasuretrails.clues.CharlieTask;
@@ -141,18 +142,18 @@ public class Smithing extends Action {
 			final boolean isBot = PlayerAttributesKt.getFlaggedAsBot(player);
 			player.getInventory().deleteItemsIfContains(new Item[] {bar}, () -> {
 				if (product.getId() == PRODUCTS[6][1].getId() && objectId == 2031) {
-					player.getAchievementDiaries().update(FaladorDiary.SMITH_BLURITE_LIMBS);
+					AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.SMITH_BLURITE_LIMBS);
 				} else if (product.getId() == PRODUCTS[3][13].getId()) {
-					player.getAchievementDiaries().update(DesertDiary.CREATE_MITHRIL_PLATEBODY);
-					player.getAchievementDiaries().update(ArdougneDiary.SMITH_MITHRIL_PLATEBODY);
+					AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CREATE_MITHRIL_PLATEBODY);
+					AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.SMITH_MITHRIL_PLATEBODY);
 				} else if (product.getId() == PRODUCTS[5][26].getId()) {
-					player.getAchievementDiaries().update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 2);
+					AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 2);
 				} else if (product.getId() == PRODUCTS[5][20].getId()) {
-					player.getAchievementDiaries().update(VarrockDiary.SMITH_AND_FLETCH_10_RUNE_DARTS, 1);
+					AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.SMITH_AND_FLETCH_10_RUNE_DARTS, 1);
 				} else if (product.getId() == PRODUCTS[4][13].getId()) {
-					player.getAchievementDiaries().update(LumbridgeDiary.SMITH_ADAMANT_PLATEBODY);
+					AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.SMITH_ADAMANT_PLATEBODY);
 				} else if (product.getId() == PRODUCTS[4][2].getId()) {
-					player.getAchievementDiaries().update(WildernessDiary.SMITH_ADAMANT_SCIMITAR);
+					AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.SMITH_ADAMANT_SCIMITAR);
 				} else if (product.getId() == 1315) {
 					SherlockTask.SMITH_MITHRIL_2H.progress(player);
 				} else if (product.getId() == 1147) {

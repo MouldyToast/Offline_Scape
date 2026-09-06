@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -38,7 +39,7 @@ public class BrimhavenSixStones implements Shortcut {
 					player.autoForceMovement(destination, 0, 30);
 					player.setAnimation(JUMP);
 				} else if (ticks == 13) {
-					player.getAchievementDiaries().update(KaramjaDiary.CROSS_THE_LAVA);
+					AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CROSS_THE_LAVA);
 					player.unlock();
 				}
 				ticks++;

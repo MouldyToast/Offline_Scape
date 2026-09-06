@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.follower.InsurableVariablePet;
@@ -84,7 +85,7 @@ public class PetInsuranceInterface extends Interface {
         player.getPacketDispatcher().sendComponentSettings(getInterface(), getComponent("Confirm"), 0, 0, AccessMask.CLICK_OP1);
 
         player.getPacketDispatcher().sendComponentSettings(getInterface(), getComponent("Reclaim Insured Pet"), 0, 400, AccessMask.CLICK_OP1, AccessMask.CLICK_OP10);
-        player.getAchievementDiaries().update(ArdougneDiary.CHECK_INSURED_PETS);
+        AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.CHECK_INSURED_PETS);
     }
 
     @Override

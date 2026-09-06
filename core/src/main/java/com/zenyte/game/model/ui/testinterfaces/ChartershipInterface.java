@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.sailing.CharterLocation;
@@ -72,7 +73,7 @@ public class ChartershipInterface extends Interface {
                     player.lock(3);
                     new FadeScreen(player, () -> {
                         if (location.equals(CharterLocation.SHIPYARD)) {
-                            player.getAchievementDiaries().update(KaramjaDiary.CHARTER_A_SHIP_FROM_SHIPYARD);
+                            AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CHARTER_A_SHIP_FROM_SHIPYARD);
                         }
                         player.getInventory().deleteItem(cost);
                         player.setLocation(destination.getLocation());

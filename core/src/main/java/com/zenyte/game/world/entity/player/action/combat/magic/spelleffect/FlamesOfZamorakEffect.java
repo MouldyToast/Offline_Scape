@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.magic.spelleffect;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Entity.EntityType;
@@ -21,7 +22,7 @@ public final class FlamesOfZamorakEffect implements SpellEffect {
 		if (target.getEntityType() == EntityType.PLAYER) {
 			if (player instanceof Player) {
 				final Player p = (Player) player;
-				p.getAchievementDiaries().update(WildernessDiary.CAST_GOD_SPELL);
+				AchievementDiariesKeys.achievementDiaries(p).update(WildernessDiary.CAST_GOD_SPELL);
 			}
 			final Player p2 = (Player) target;
 			if (p2.getSkills().getLevel(SkillConstants.MAGIC) < p2.getSkills().getLevelForXp(SkillConstants.MAGIC)) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.prayer.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WildernessDiary;
 import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
 import com.zenyte.game.item.Item;
@@ -127,7 +128,7 @@ public enum Bones {
 		switch (bone) {
 			case BIG_BONES -> player.getDailyChallengeManager().update(SkillingChallenge.BURY_BIG_BONES);
 			case LAVA_DRAGON_BONES -> {
-				player.getAchievementDiaries().update(WildernessDiary.KILL_A_LAVA_DRAGON, 2);
+				AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.KILL_A_LAVA_DRAGON, 2);
 				if (player.inArea(LavaDragonIsle.class)) {
 					xp *= 4;
 				}

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.JewelleryData;
@@ -68,11 +69,11 @@ public class JewelleryCrafting extends Action {
 		} else if (ticks == 2) {
 			player.getInventory().deleteItemsIfContains(data.getMaterials(), () -> {
 				if (data.equals(JewelleryData.DIAMOND_AMULET)) {
-					player.getAchievementDiaries().update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 1);
+					AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CRAFT_AMULET_OF_POWER, 1);
 				} else if (data.equals(JewelleryData.TIARA)) {
-					player.getAchievementDiaries().update(FremennikDiary.CRAFT_A_TIARA, 4);
+					AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CRAFT_A_TIARA, 4);
 				} else if (data.equals(JewelleryData.DRAGONSTONE_AMULET)) {
-					player.getAchievementDiaries().update(FremennikDiary.CREATE_A_DRAGONSTONE_AMULET);
+					AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CREATE_A_DRAGONSTONE_AMULET);
 					player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_DRAGONSTONE_AMULETS);
 					SherlockTask.CREATE_UNSTRUNG_DRAGONSTONE_AMULET.progress(player);
 				} else if (data.equals(JewelleryData.GOLD_BRACELET)) {

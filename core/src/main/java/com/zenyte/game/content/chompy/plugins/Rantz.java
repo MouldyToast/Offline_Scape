@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chompy.plugins;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.chompy.Chompy;
 import com.zenyte.game.content.chompy.ChompyBirdHat;
@@ -82,16 +83,16 @@ public class Rantz extends NPCPlugin {
 
     // Repetitive code, idc.
     private void updateDiaries(final Player player, final ChompyBirdHat hat) {
-        player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT);
+        AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT);
         if (hat == ChompyBirdHat.OGRE_FORESTER) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_300_KILLS);
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_1000_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_300_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_1000_KILLS);
         } else if (hat == ChompyBirdHat.MARKSMAN) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_300_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_300_KILLS);
         } else if (hat == ChompyBirdHat.YEOMAN) {
-            player.getAchievementDiaries().update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
+            AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CLAIM_CHOMPY_BIRD_HAT_125_KILLS);
         }
     }
 

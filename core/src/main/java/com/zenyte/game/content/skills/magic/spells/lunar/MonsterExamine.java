@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -179,7 +180,7 @@ public final class MonsterExamine extends Interface implements NPCSpell {
 			target.performDefenceAnimation(player);
 			player.getTemporaryAttributes().put("monster examine npc", target);
 			if (target.getName(player).contains("troll")) {
-				player.getAchievementDiaries().update(KourendDiary.CAST_MONSTER_EXAMINE);
+				AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CAST_MONSTER_EXAMINE);
 			}
 			GameInterface.MONSTER_EXAMINE.open(player);
 			return -1;

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.herblore.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
@@ -348,21 +349,21 @@ public class Combine extends Action {
 		switch (data) {
 			case SARADOMIN_BREW -> {
 				player.getDailyChallengeManager().update(SkillingChallenge.MAKE_SARADOMIN_BREWS);
-				player.getAchievementDiaries().update(FaladorDiary.MIX_SARADOMIN_BREW);
+				AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.MIX_SARADOMIN_BREW);
 			}
-			case COMBAT -> player.getAchievementDiaries().update(DesertDiary.CREATE_COMBAT_POTION);
+			case COMBAT -> AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CREATE_COMBAT_POTION);
 			case SUPER_COMBAT_WITH_HERB, SUPER_COMBAT_WITH_UNF -> {
 				player.getDailyChallengeManager().update(SkillingChallenge.MAKE_SUPER_COMBAT_POTIONS);
-				player.getAchievementDiaries().update(VarrockDiary.CREATE_SUPERCOMBAT_POTION);
+				AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CREATE_SUPERCOMBAT_POTION);
 			}
 			case SUPER_DEFENCE -> {
-				player.getAchievementDiaries().update(FremennikDiary.MIX_SUPER_DEFENCE);
+				AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.MIX_SUPER_DEFENCE);
 				SherlockTask.CREATE_SUPER_DEFENCE_POTION.progress(player);
 			}
-			case IRIT_POTION_UNF -> player.getAchievementDiaries().update(KandarinDiary.CREATE_SUPER_ANTIPOISON, 1);
-			case SUPER_ANTIPOISON -> player.getAchievementDiaries().update(KandarinDiary.CREATE_SUPER_ANTIPOISON, 2);
-			case GUTHIX_BALANCE_1, GUTHIX_BALANCE_2, GUTHIX_BALANCE_3, GUTHIX_BALANCE_4 -> player.getAchievementDiaries().update(MorytaniaDiary.MIX_A_GUTHIX_BALANCE);
-			case STRENGTH -> player.getAchievementDiaries().update(KourendDiary.CREATE_STRENGTH_POTION);
+			case IRIT_POTION_UNF -> AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CREATE_SUPER_ANTIPOISON, 1);
+			case SUPER_ANTIPOISON -> AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CREATE_SUPER_ANTIPOISON, 2);
+			case GUTHIX_BALANCE_1, GUTHIX_BALANCE_2, GUTHIX_BALANCE_3, GUTHIX_BALANCE_4 -> AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.MIX_A_GUTHIX_BALANCE);
+			case STRENGTH -> AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CREATE_STRENGTH_POTION);
 			case ANTI_VENOM_PLUS_4 -> SherlockTask.MIX_ANTIVENOM.progress(player);
 			case WEAPON_POISON_PLUS_PLUS -> player.getDailyChallengeManager().update(SkillingChallenge.MAKE_WEAPON_POISON_PLUS_PLUS_POTIONS);
 			case PRAYER -> player.getDailyChallengeManager().update(SkillingChallenge.MAKE_PRAYER_POTIONS);

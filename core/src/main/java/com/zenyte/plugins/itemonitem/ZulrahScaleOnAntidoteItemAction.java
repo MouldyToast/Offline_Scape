@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonitem;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
@@ -28,7 +29,7 @@ public class ZulrahScaleOnAntidoteItemAction implements ItemOnItemAction {
 			player.sendMessage("You don't have enough zulrah's scales.");
 			return;
 		}
-		player.getAchievementDiaries().update(KaramjaDiary.CREATE_AN_ANTIVENOM_POTION);
+		AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CREATE_AN_ANTIVENOM_POTION);
 		player.getInventory().deleteItem(12934, dose * 5);
 		player.getInventory().set(slot, new Item(POTS.get(potion.getId())));
 		player.getSkills().addXp(SkillConstants.HERBLORE, dose * 30);

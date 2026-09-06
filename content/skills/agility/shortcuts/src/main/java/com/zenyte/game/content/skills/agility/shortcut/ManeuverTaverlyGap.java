@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.skills.agility.Shortcut;
 import com.zenyte.game.task.WorldTask;
@@ -30,7 +31,7 @@ public class ManeuverTaverlyGap implements Shortcut {
 
 			private boolean canUseShortcut() {
 				if (!player.getSkills().checkLevel(16, 14, "maneuver taverly shortcut") ||
-						!player.getAchievementDiaries().isAllCompleted(FaladorDiary.ELITE)) {
+						!AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(FaladorDiary.ELITE)) {
 					if (ticks == 0) {
 						player.sendMessage("You need to complete the Falador easy diaries first in order to use this shortcut.");
 					}

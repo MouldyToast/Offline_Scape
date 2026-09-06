@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.konar.npc;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
@@ -105,7 +106,7 @@ public class Wyrm extends NPC implements CombatScript, Spawnable {
         super.onDeath(source);
         if (source instanceof Player) {
             final Player player = (Player) source;
-            player.getAchievementDiaries().update(KourendDiary.KILL_A_WYRM);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.KILL_A_WYRM);
             player.getCombatAchievements().complete(CAType.A_SLITHERY_ENCOUNTER);
         }
     }

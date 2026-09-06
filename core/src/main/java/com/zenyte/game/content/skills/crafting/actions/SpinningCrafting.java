@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.crafting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions.SpinningData;
@@ -63,9 +64,9 @@ public class SpinningCrafting extends Action {
 	@Override
 	public int processWithDelay() {
 		if (data.equals(SpinningData.CROSSBOW_STRING)) {
-			player.getAchievementDiaries().update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 8);
+			AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.MAKE_RUNE_CROSSBOW, 8);
 		} else if (data.equals(SpinningData.BOW_STRING)) {
-			player.getAchievementDiaries().update(KandarinDiary.CREATE_YEW_LONGBOW, 1);
+			AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.CREATE_YEW_LONGBOW, 1);
 		}
 		World.sendObjectAnimation(object, OBJECT_ANIMATION);
 		player.setAnimation(ANIMATION);

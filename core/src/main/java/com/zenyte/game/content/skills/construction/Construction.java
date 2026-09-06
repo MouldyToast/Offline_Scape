@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
@@ -226,7 +227,7 @@ public final class Construction {
         }
         try {
             if (house.equals(House.YANILLE)) {
-                player.getAchievementDiaries().update(ArdougneDiary.ENTER_YOUR_POH);
+                AchievementDiariesKeys.achievementDiaries(player).update(ArdougneDiary.ENTER_YOUR_POH);
             }
             player.getTemporaryAttributes().put("VisitingHouse", this);
             buildingMode = building;

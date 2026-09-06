@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.woodcutting.actions;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.near_reality.game.content.crystal.CrystalShardKt;
 import com.near_reality.game.content.skills.woodcutting.AxeDefinition;
 import com.near_reality.game.model.item.degrading.Degradeable;
@@ -219,7 +220,7 @@ public class Woodcutting extends Action {
 
         switch (definitions) {
             case MAPLE_TREE: {
-                if (player.getLocation().getRegionId() == 10806 && player.getAchievementDiaries().isAllCompleted(KandarinDiary.MEDIUM)) {
+                if (player.getLocation().getRegionId() == 10806 && AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KandarinDiary.MEDIUM)) {
                     experience = experience * 1.20;
                 }
                 break;
@@ -227,50 +228,50 @@ public class Woodcutting extends Action {
 
             case WILLOW_TREE: {
                 player.getDailyChallengeManager().update(SkillingChallenge.CHOP_WILLOW_LOGS);
-                player.getAchievementDiaries().update(LumbridgeDiary.CHOP_WILLOWS);
-                player.getAchievementDiaries().update(FaladorDiary.CHOP_BURN_WILLOW_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CHOP_WILLOWS);
+                AchievementDiariesKeys.achievementDiaries(player).update(FaladorDiary.CHOP_BURN_WILLOW_LOGS, 1);
                 break;
             }
             case TEAK_TREE: {
                 if (tree.getX() == 3510 && tree.getY() == 3073) {
-                    player.getAchievementDiaries().update(DesertDiary.CHOP_TEAK_LOGS);
+                    AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.CHOP_TEAK_LOGS);
                 }
-                player.getAchievementDiaries().update(KaramjaDiary.CUT_A_TEAK_LOG);
-                player.getAchievementDiaries().update(WesternProvincesDiary.CHOP_AND_BURN_TEAK_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CUT_A_TEAK_LOG);
+                AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CHOP_AND_BURN_TEAK_LOGS, 1);
                 break;
             }
             case MAHOGANY_TREE: {
                 player.getDailyChallengeManager().update(SkillingChallenge.CHOP_MAHOGANY_LOGS);
-                player.getAchievementDiaries().update(KaramjaDiary.CUT_A_MAHOGANY_LOG);
-                player.getAchievementDiaries().update(WesternProvincesDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 1);
-                player.getAchievementDiaries().update(MorytaniaDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 1);
-                player.getAchievementDiaries().update(KourendDiary.CHOP_SOME_MAHOGANY);
+                AchievementDiariesKeys.achievementDiaries(player).update(KaramjaDiary.CUT_A_MAHOGANY_LOG);
+                AchievementDiariesKeys.achievementDiaries(player).update(WesternProvincesDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(MorytaniaDiary.CHOP_AND_BURN_MAHOGANY_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CHOP_SOME_MAHOGANY);
                 break;
             }
             case YEW_TREE: {
-                player.getAchievementDiaries().update(VarrockDiary.CHOP_AND_BURN_YEW_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CHOP_AND_BURN_YEW_LOGS, 1);
                 SherlockTask.CHOP_YEW_TREE.progress(player);
                 break;
             }
             case OAK: {
-                player.getAchievementDiaries().update(LumbridgeDiary.CHOP_AND_BURN_LOGS, 1);
-                player.getAchievementDiaries().update(FremennikDiary.CHOP_AND_BURN_OAK_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CHOP_AND_BURN_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.CHOP_AND_BURN_OAK_LOGS, 1);
                 break;
             }
             case MAGIC_TREE: {
                 player.getDailyChallengeManager().update(SkillingChallenge.CHOP_MAGIC_LOGS);
-                player.getAchievementDiaries().update(LumbridgeDiary.CHOP_MAGIC_LOGS);
-                player.getAchievementDiaries().update(WildernessDiary.CUT_AND_BURN_MAGIC_LOGS, 1);
+                AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.CHOP_MAGIC_LOGS);
+                AchievementDiariesKeys.achievementDiaries(player).update(WildernessDiary.CUT_AND_BURN_MAGIC_LOGS, 1);
                 break;
             }
             case REDWOOD_TREE: {
                 player.getDailyChallengeManager().update(SkillingChallenge.CHOP_REDWOOD_LOGS);
-                player.getAchievementDiaries().update(KourendDiary.CHOP_REDWOODS);
+                AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.CHOP_REDWOODS);
                 break;
             }
             case TREE: {
                 if (tree.getName().equalsIgnoreCase("dying tree")) {
-                    player.getAchievementDiaries().update(VarrockDiary.CHOP_DOWN_DYING_TREE);
+                    AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.CHOP_DOWN_DYING_TREE);
                 }
                 break;
             }

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.region.area;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
@@ -13,7 +14,7 @@ public class RangingGuildArea extends KingdomOfKandarin {
     @Override
     public void enter(Player player) {
         super.enter(player);
-        player.getAchievementDiaries().update(KandarinDiary.ENTER_RANGING_GUILD);
+        AchievementDiariesKeys.achievementDiaries(player).update(KandarinDiary.ENTER_RANGING_GUILD);
     }
 
     @Override

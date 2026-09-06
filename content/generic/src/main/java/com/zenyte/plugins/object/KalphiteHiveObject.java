@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;
@@ -31,7 +32,7 @@ public class KalphiteHiveObject implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (object.getId() == 3827) {
-            player.getAchievementDiaries().update(DesertDiary.ENTER_KALPHITE_HIVE);
+            AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.ENTER_KALPHITE_HIVE);
             player.useStairs(828, INSIDE_LAIR_LOCATION, 1, 2);
         } else if (object.getId() == ObjectId.ROPE_3829) {
             player.useStairs(828, OUTSIDE_LAIR_LOCATION, 1, 2);

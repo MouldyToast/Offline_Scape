@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
@@ -399,7 +400,7 @@ public final class FarmingSpot {
     }
 
     private boolean disease(final PatchState state) {
-        if (player.getAchievementDiaries().isAllCompleted(KourendDiary.EASY)) {
+        if (AchievementDiariesKeys.achievementDiaries(player).isAllCompleted(KourendDiary.EASY)) {
             FarmingPatch patch = this.getPatch();
             if (patch == FarmingPatch.KOUREND_ALLOTMENT_NE ||
                     patch == FarmingPatch.KOUREND_ALLOTMENT_SW ||

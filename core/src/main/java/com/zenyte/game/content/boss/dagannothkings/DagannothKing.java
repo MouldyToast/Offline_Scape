@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.util.Direction;
@@ -47,7 +48,7 @@ public class DagannothKing extends NPC implements Spawnable, CombatScript {
         super.onDeath(source);
         if (source instanceof Player player) {
             final int flag = id == 2265 ? 1 : id == 2266 ? 2 : 4;
-            player.getAchievementDiaries().update(FremennikDiary.KILL_DAGANNOTH_KINGS, flag);
+            AchievementDiariesKeys.achievementDiaries(player).update(FremennikDiary.KILL_DAGANNOTH_KINGS, flag);
             AdventCalendarManager.increaseChallengeProgress(player, 2022, 10, 1);
         }
     }

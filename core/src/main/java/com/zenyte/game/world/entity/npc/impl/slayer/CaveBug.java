@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Entity;
@@ -22,7 +23,7 @@ public final class CaveBug extends NPC implements Spawnable {
 		super.onDeath(source);
 		if (source instanceof Player) {
 			final Player player = (Player) source;
-			player.getAchievementDiaries().update(LumbridgeDiary.SLAY_A_CAVE_BUG);
+			AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.SLAY_A_CAVE_BUG);
 		}
 	}
 

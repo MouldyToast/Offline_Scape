@@ -1,5 +1,6 @@
 package com.near_reality.content.group_ironman.challenges
 
+import com.zenyte.game.content.achievementdiary.achievementDiaries
 import com.near_reality.content.group_ironman.IronmanGroup
 import com.near_reality.content.group_ironman.IronmanGroupMember
 import com.near_reality.game.content.challenges.ChallengeRegistry
@@ -42,7 +43,7 @@ object IronmanGroupChallenges : ChallengeRegistry<IronmanGroup>() {
                     for (list in map.values) {
                         for (entry in list) {
                             taskAmount++
-                            if (achievementDiaries.getProgress(entry) == entry.objectiveLength()) {
+                            if (achievementDiaries().getProgress(entry) == entry.objectiveLength()) {
                                 completedAmount++
                             }
                         }

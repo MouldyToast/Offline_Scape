@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.wintertodt;
 
+import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Colour;
@@ -175,7 +176,7 @@ public class Wintertodt {
     private static void finishRound() {
         for (final Player player : GlobalAreaManager.get("Wintertodt").getPlayers()) {
             final int points = getPoints(player);
-            player.getAchievementDiaries().update(KourendDiary.SUBDUE_WINTERTODT);
+            AchievementDiariesKeys.achievementDiaries(player).update(KourendDiary.SUBDUE_WINTERTODT);
             player.getInventory().deleteItems(new Item(RejuvenationPotion.BRUMA_HERB, 28), new Item(BrumaRoot.ROOT, 28), new Item(BrumaRoot.KINDLING, 28));
             player.getActionManager().forceStop();
             if (points < 500) {

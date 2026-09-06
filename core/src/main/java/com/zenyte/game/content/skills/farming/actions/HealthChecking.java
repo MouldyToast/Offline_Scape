@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.achievementdiary.diaries.KaramjaDiary;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
@@ -66,7 +67,7 @@ public class HealthChecking extends Action {
             player.sendMessage("You examine the " + (spot.getProduct().getType() == PatchType.BUSH_PATCH ? "bush" : spot.getProduct().getType() == PatchType.CACTUS_PATCH ? "cactus" : "tree") + " for signs of disease and find that it is in perfect health.");
         }
         player.getSkills().addXp(SkillConstants.FARMING, spot.getProduct().getCheckHealthXP());
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
         spot.setHealthChecked();
         return -1;
     }

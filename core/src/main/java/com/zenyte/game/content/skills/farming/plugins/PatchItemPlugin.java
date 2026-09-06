@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.skills.farming.actions.*;
 import com.zenyte.game.item.Item;
@@ -19,7 +20,7 @@ import java.util.List;
 public final class PatchItemPlugin implements ItemOnObjectAction {
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-        final FarmingSpot spot = player.getFarming().create(object);
+        final FarmingSpot spot = FarmingKeys.farming(player).create(object);
         final int id = item.getId();
         if (id == 6951) {
             spot.forceGrowForDebug();

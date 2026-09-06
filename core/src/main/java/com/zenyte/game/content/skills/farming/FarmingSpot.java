@@ -360,7 +360,7 @@ public final class FarmingSpot {
 
     @Listener(type = ListenerType.LOGIN)
     private static final void onLogin(final Player player) {
-        player.getFarming().refreshPatch(FarmingPatch.FARMING_GUILD_HESPORI);
+        FarmingKeys.farming(player).refreshPatch(FarmingPatch.FARMING_GUILD_HESPORI);
     }
 
     public void setTreated() {
@@ -430,7 +430,7 @@ public final class FarmingSpot {
             return false;
         }
         if (this.getPatch().getType() == PatchType.ALLOTMENT) {
-            final Optional<FarmingSpot> flowerPatch = player.getFarming().getNearbyFlowerPatch(this);
+            final Optional<FarmingSpot> flowerPatch = FarmingKeys.farming(player).getNearbyFlowerPatch(this);
             if (flowerPatch.isPresent()) {
                 final FarmingProduct flower = flowerPatch.get().getProduct();
                 if (flower == FarmingProduct.WHITE_LILY) {

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.content.skills.farming.FarmingPatch;
 import com.zenyte.game.content.skills.farming.FarmingProduct;
@@ -95,7 +96,7 @@ public class Harvesting extends Action {
     public void harvestLimpwurt() {
         updateDiaries();
         updateChallenges();
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
 
         final PatchType type = spot.getPatch().getType();
         final Animation animation = type.getHarvestAnimation();
@@ -177,7 +178,7 @@ public class Harvesting extends Action {
         spot.removeFruit();
         if (spot.getValue() <= 3) {
             player.sendFilteredMessage("The " + spot.getPatch().getType().getSanitizedName() + " is now empty.");
-            player.getFarming().handleContractCompletion(player, product);
+            FarmingKeys.farming(player).handleContractCompletion(player, product);
             spot.clear();
             if(Utils.random(500) == 1) {
                 player.sendMessage(Colour.RS_RED.wrap("You find a piece of a farmer's outfit when clearing the patch."));
@@ -239,7 +240,7 @@ public class Harvesting extends Action {
         updateDiaries();
         player.getSkills().addXp(SkillConstants.FARMING, spot.getProduct().getHarvestExperience());
         player.getInventory().addOrDrop(spot.getProduct().getProductHarvest(player));
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
         player.sendFilteredMessage("The " + spot.getPatch().getType().getSanitizedName() + " is now empty.");
         spot.clear();
         spot.refresh();
@@ -258,7 +259,7 @@ public class Harvesting extends Action {
         }
         player.getAchievementDiaries().update(LumbridgeDiary.PICK_BELLADONNA);
         player.getSkills().addXp(SkillConstants.FARMING, spot.getProduct().getHarvestExperience());
-        player.getFarming().handleContractCompletion(player, spot.getProduct());
+        FarmingKeys.farming(player).handleContractCompletion(player, spot.getProduct());
         final Container container = player.getInventory().getContainer();
         int count = 100;
         final FarmingProduct product = spot.getProduct();

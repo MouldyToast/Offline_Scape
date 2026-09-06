@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
 import com.google.gson.Gson;
@@ -960,7 +961,7 @@ public final class GameCommands {
             }
         });
         new Command(PlayerPrivilege.DEVELOPER, "resetfarming", (p, args) -> {
-            p.getFarming().reset();
+            FarmingKeys.farming(p).reset();
         });
         new Command(PlayerPrivilege.DEVELOPER, "cycle", (p, args) -> {
             GameConstants.CYCLE_DEBUG = !GameConstants.CYCLE_DEBUG;

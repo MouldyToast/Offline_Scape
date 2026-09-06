@@ -693,7 +693,6 @@ public final class LoginManager {
         player.setPersonalBank(new SinglePlayerBank(player, parser.getPersonalBank()));
         player.forceLocation(new Location(location));
         player.setUUID();
-        player.setFarming(parser.getFarming());
         player.getToxins().initialize(parser.getToxins());
         player.setPetId(parser.getPetId());
         player.getSkills().setSkills(parser.getSkills());

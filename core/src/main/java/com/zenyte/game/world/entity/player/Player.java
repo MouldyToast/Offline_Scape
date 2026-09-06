@@ -62,6 +62,7 @@ import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.Farming;
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.farming.seedvault.SeedVault;
 import com.zenyte.game.content.skills.hunter.Hunter;
 import com.zenyte.game.content.skills.hunter.HunterKeys;
@@ -560,8 +561,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private PlayerInformation playerInformation;
     private transient Entity lastTarget;
     private transient DelayedActionManager delayedActionManager = new DelayedActionManager(this);
-    @Expose
-    private Farming farming = new Farming(this);
+    /**
+     * @deprecated Legacy persistence slot for the farming state, superseded by
+     * attrPersistence["farming"] (see FarmingKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "farming" key entirely. Delete field and getter with the save-rotation
+     * phase.
+     */
+    @Deprecated
+    private Farming farming;
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
     private PetInsurance petInsurance = new PetInsurance(this);
     @Expose
@@ -1193,7 +1202,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             World.updateEntityChunk(this, false);
             controllerManager.teleport(location);
-            farming.refresh();
+            FarmingKeys.farming(this).refresh();
             setAvatarPosition(getX(), getY(), getPlane());
             if (needMapUpdate()) {
                 setNeedRegionUpdate(true);
@@ -1335,7 +1344,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         refreshToleranceRectangle();
         //TODO check why double.
         World.updateEntityChunk(this, false);
-        farming.refresh();
+        FarmingKeys.farming(this).refresh();
         if (this.avatar != null) {
             avatar.updateCoord(getPlane(), getX(), getY());
         }
@@ -1828,10 +1837,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         Shop.get(name, isIronman(), this).open(this);
     }
 
-    public void setFarming(final Farming farming) {
-        this.farming = new Farming(this, farming);
-    }
-
     @Override
     public double getMagicPrayerMultiplier() {
         return 0.6;
@@ -1980,7 +1985,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             } else if(tickDegradable > 0) {
                 tickDegradable = 0;
             }
-            farming.processAll();
+            FarmingKeys.farming(this).processAll();
             HunterKeys.hunter(this).process();
             prayerManager.process();
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
@@ -4575,7 +4580,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
          */
         socialManager.updateStatus();
         try {
-            farming.refresh();
+            FarmingKeys.farming(this).refresh();
         }
         catch (Exception ex) {
             log.error("farming not working", ex);
@@ -5061,6 +5066,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return delayedActionManager;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Farming.onInit may call
+     * this, and only on the parser player. Live access goes through
+     * FarmingKeys.farming. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public Farming getFarming() {
         return farming;
     }

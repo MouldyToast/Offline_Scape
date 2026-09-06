@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.actions;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KandarinDiary;
 import com.zenyte.game.content.skills.farming.*;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
@@ -69,7 +70,7 @@ public class Planting extends Action {
         if (type == PatchType.SPIRIT_TREE_PATCH) {
             final int level = (player.getSkills().getLevel(SkillConstants.FARMING));
             if (level < 99) {
-                final int spiritTreeCount = player.getFarming().getGrownCount(PatchType.SPIRIT_TREE_PATCH, spot -> !spot.getState().equals(WEEDS));
+                final int spiritTreeCount = FarmingKeys.farming(player).getGrownCount(PatchType.SPIRIT_TREE_PATCH, spot -> !spot.getState().equals(WEEDS));
                 if (spiritTreeCount >= 2 || spiritTreeCount >= 1 && level < 91) {
                     player.getDialogueManager().start(new ItemChat(player, new Item(6063), "You can only have " + (level < 91 ? "one" : "two") + " spirit tree" + (level < 91 ? "" : "s") + " planted at a time."));
                     return false;

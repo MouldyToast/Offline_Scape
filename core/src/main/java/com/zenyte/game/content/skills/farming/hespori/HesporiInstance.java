@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.hespori;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.content.skills.prayer.Prayer;
@@ -153,7 +154,7 @@ public final class HesporiInstance extends DynamicArea implements FullMovementPl
      */
     void finish() {
         World.spawnObject(patch);
-        final FarmingSpot spot = owner.getFarming().create(patch);
+        final FarmingSpot spot = FarmingKeys.farming(owner).create(patch);
         spot.setValue(HESPORI_PATCH_GROWN);
         spot.refresh();
         long diff = System.currentTimeMillis() - owner.getBossTimer().getCurrentTracker();

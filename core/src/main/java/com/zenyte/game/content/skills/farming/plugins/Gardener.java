@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import com.zenyte.game.content.skills.farming.*;
@@ -38,7 +39,7 @@ public class Gardener extends NPCPlugin {
     public void handle() {
         bindOptions(option -> option.startsWith("Pay"), (player, npc, option) -> {
             final FarmingPatch patch = FarmingPatch.getPatchByGardener(npc.getId(), option.getId()).orElseThrow(RuntimeException::new);
-            final FarmingSpot spot = player.getFarming().create(patch);
+            final FarmingSpot spot = FarmingKeys.farming(player).create(patch);
             final PatchState state = spot.getState();
             if (spot.isTreePatch() && (state == GROWN || state == DISEASED || state == DEAD || state == REGAINING_PRODUCE)) {
                 startChopDownDialogue(player, npc, patch);
@@ -66,7 +67,7 @@ public class Gardener extends NPCPlugin {
             // If multiple patches tied to the gardener, it is guaranteed to be an allotment patch.
             final boolean multiple = set.size() > 1;
             final FarmingPatch patch = set.stream().findFirst().orElseThrow(RuntimeException::new);
-            final FarmingSpot spot = player.getFarming().create(patch);
+            final FarmingSpot spot = FarmingKeys.farming(player).create(patch);
             final PatchState state = spot.getState();
             final boolean chopOptions = spot.getProduct().isTree() && (state == GROWN || state == DEAD || state == DISEASED || state == REGAINING_PRODUCE);
             player.getDialogueManager().start(new Dialogue(player, npc) {
@@ -129,7 +130,7 @@ public class Gardener extends NPCPlugin {
                         return;
                     }
                     options(TITLE, new DialogueOption("Here's 200 Coins - chop my tree down please.", key(30)), new DialogueOption("I don't want to pay that much, sorry.", key(40)));
-                    player(30, "Here's 200 Coins - chop my tree down please.").executeAction(() -> player.getInventory().ifDeleteItem(new Item(995, 200), () -> player.getFarming().create(patch).clear()));
+                    player(30, "Here's 200 Coins - chop my tree down please.").executeAction(() -> player.getInventory().ifDeleteItem(new Item(995, 200), () -> FarmingKeys.farming(player).create(patch).clear()));
                     player(40, "I don't want to pay that much, sorry.");
                 }
 
@@ -214,7 +215,7 @@ public class Gardener extends NPCPlugin {
 
     private void startChopDownDialogue(final Player player, final NPC npc, final FarmingPatch patch) {
         player.getDialogueManager().finish();
-        final FarmingSpot spot = player.getFarming().create(patch);
+        final FarmingSpot spot = FarmingKeys.farming(player).create(patch);
         player.getDialogueManager().start(new Dialogue(player, npc) {
 
             @Override
@@ -233,12 +234,12 @@ public class Gardener extends NPCPlugin {
                     player.getInventory().ifDeleteItem(new Item(995, cost), () -> {
                         if (spot.getPatch().getType() == PatchType.REDWOOD_PATCH) {
                             new FadeScreen(player, () -> {
-                                player.getFarming().create(patch).clear();
+                                FarmingKeys.farming(player).create(patch).clear();
                                 player.getDialogueManager().start(new PlainChat(player, npc.getName(player) + " chops the tree down for you."));
                             }).fade(3);
                             return;
                         }
-                        player.getFarming().create(patch).clear();
+                        FarmingKeys.farming(player).create(patch).clear();
                         player.getDialogueManager().start(new PlainChat(player, npc.getName(player) + " chops the tree down for you."));
                     });
                 }), new DialogueOption("No."));
@@ -248,7 +249,7 @@ public class Gardener extends NPCPlugin {
 
     private void startPaymentDialogue(final Player player, final NPC npc, final FarmingPatch patch, final boolean quickPay) {
         player.getDialogueManager().finish();
-        final FarmingSpot spot = player.getFarming().create(patch);
+        final FarmingSpot spot = FarmingKeys.farming(player).create(patch);
         player.getDialogueManager().start(new Dialogue(player, npc) {
 
             @Override

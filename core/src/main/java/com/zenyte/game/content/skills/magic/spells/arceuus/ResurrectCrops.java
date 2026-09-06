@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.arceuus;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.content.skills.farming.PatchFlag;
 import com.zenyte.game.content.skills.farming.PatchState;
@@ -28,11 +29,11 @@ public final class ResurrectCrops implements ObjectSpell {
 
 	@Override
 	public boolean spellEffect(final Player player, final WorldObject object) {
-		if (!player.getFarming().getPatch(object).isPresent()) {
+		if (!FarmingKeys.farming(player).getPatch(object).isPresent()) {
 			player.sendMessage("You can only cast this spell on dead crops.");
 			return false;
 		}
-		final FarmingSpot spot = player.getFarming().create(object);
+		final FarmingSpot spot = FarmingKeys.farming(player).create(object);
 		if (spot.isClear()) {
 			player.sendMessage("This farming patch is empty.");
 			return false;

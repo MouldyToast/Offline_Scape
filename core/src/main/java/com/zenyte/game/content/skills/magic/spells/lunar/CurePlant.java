@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.content.skills.farming.PatchState;
 import com.zenyte.game.content.skills.magic.Spellbook;
@@ -27,11 +28,11 @@ public final class CurePlant implements ObjectSpell {
 
 	@Override
 	public boolean spellEffect(final Player player, final WorldObject object) {
-		if (!player.getFarming().getPatch(object).isPresent()) {
+		if (!FarmingKeys.farming(player).getPatch(object).isPresent()) {
 			player.sendMessage("Umm... this spell won't cure that!");
 			return false;
 		}
-		final FarmingSpot spot = player.getFarming().create(object);
+		final FarmingSpot spot = FarmingKeys.farming(player).create(object);
 		if (spot == null) {
 			player.getDialogueManager().start(new PlayerChat(player, "Um... this spell won't cure that!"));
 			return false;

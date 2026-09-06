@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.PlayerEvent;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.follower.impl.SkillingPet;
@@ -384,9 +383,6 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
                 //		: "Congratulations, you just advanced " + getSkillName(skill) + " level. You are now level " + lv + ".");
                 if (SkillConstants.MILESTONES.contains(getTotalLevel())) {
                     player.sendMessage("Congratulations, you've reached a total level of " + getTotalLevel() + ".");
-                }
-                if (getTotalLevel() % 500 == 0) {
-                    player.sendAdventurersEntry(AdventurersLogIcon.OVERALL_SKILLING, player.getName() + " has just reached a total level of " + getTotalLevel() + "!");
                 }
                 if (getLevelForXp(skill) >= player.getNumericAttribute(GameSetting.LEVEL_99_DIALOGUES.toString()).intValue()) {
                     LevelUpDialogue.sendSkillDialogue(player, skill, rollPet);

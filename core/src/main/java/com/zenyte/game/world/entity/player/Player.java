@@ -32,7 +32,6 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
@@ -1001,13 +1000,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
-    public void sendAdventurersEntry(final AdventurersLogIcon icon, final String message) {
-        sendAdventurersEntry(icon.getLink(), message, false);
-    }
-
-    public void sendAdventurersEntry(final String icon, final String message, final boolean pvp) {
-//        CoresManager.getServiceProvider().submit(() -> new ApiAdventurersLogRequest(this, icon, message).execute());
-    }
 
     public void refreshDirection() {
         if (faceEntity >= 0) {

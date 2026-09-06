@@ -247,7 +247,6 @@ public final class AchievementDiaries {
 			}
 			final String claimString = alreadyClaimed ? "" : " Speak to " + NPCDefinitions.get(diary.taskMaster()).getName() + " to claim your reward.";
 			player.getDialogueManager().start(new PlainChat(player, "Congratulations! You have completed all of the " + complexity.toString().toLowerCase() + " tasks in the<br><br>" + diary.area().getAreaName() + " area." + claimString));
-			player.sendAdventurersEntry(AdventurersLogIcon.DIARY_COMPLETION, player.getName() + " has just completed the " + diary.area().getAreaName() + " " + complexity + " diary!");
 		}
 	}
 

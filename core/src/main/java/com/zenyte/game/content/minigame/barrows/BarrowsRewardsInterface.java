@@ -5,7 +5,6 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.diaries.MorytaniaDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.content.rots.RotsInstance;
-import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.util.ItemUtil;
@@ -15,7 +14,6 @@ import com.zenyte.game.world.entity.player.calog.CAType;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -81,23 +79,6 @@ public class BarrowsRewardsInterface extends Interface {
         if (player.inArea("Rise of the Six")) {
             ((RotsInstance) player.getArea()).addLoot();
         } else {
-            final ArrayList<Item> equipmentPieces = new ArrayList<>();
-            BarrowsKeys.barrows(player).getContainer().getItems().int2ObjectEntrySet().fastForEach(loot -> {
-                // check if loot is barrows piece or amulet of the damned
-                if (BarrowsWight.ALL_WIGHT_EQUIPMENT.contains(loot.getValue()) || loot.getValue().getId() == 12851) {
-                    equipmentPieces.add(loot.getValue());
-                }
-            });
-            if (equipmentPieces.size() > 0) {
-                final int chestCount = player.getNotificationSettings().getKillcount("barrows");
-                final String icon = equipmentPieces.get(0).getId() + ".png"; // use the first piece as the adv log entry icon
-                final ArrayList<String> equipmentPieceNames = new ArrayList<>(equipmentPieces.size());
-                for (final Item piece : equipmentPieces) {
-                    equipmentPieceNames.add(piece.getName()); // no stream, you're welcome Kris
-                }
-                final String joinedEquipmentLootString = String.join(", ", equipmentPieceNames);
-                player.sendAdventurersEntry(icon, player.getName() + " opened Barrows chest " + chestCount + " and received: " + joinedEquipmentLootString, false);
-            }
             BarrowsKeys.barrows(player).addLoot();
         }
     }

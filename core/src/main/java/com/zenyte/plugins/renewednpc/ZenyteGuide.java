@@ -3,7 +3,6 @@ package com.zenyte.plugins.renewednpc;
 import com.near_reality.api.service.user.UserPlayerHandler;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
@@ -225,7 +224,6 @@ public class ZenyteGuide extends NPCPlugin {
 
     private static void setMode(Player player, ExpConfiguration expConfiguration) {
         player.setExperienceMultiplier(expConfiguration);
-        player.sendAdventurersEntry(AdventurersLogIcon.OVERALL_SKILLING, player.getName() + " has just changed exp mode - they are now playing under the " + expConfiguration + " mode!");
     }
 
 

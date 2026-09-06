@@ -103,21 +103,9 @@ public final class Barrows {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player parser = event.getSavedPlayer();
-        final boolean hadPersistedAttr = BarrowsKeys.rawBarrowsAttr(player) != null;
-        final Barrows barrows = BarrowsKeys.barrows(player);
-        if (hadPersistedAttr || parser == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep barrows under the top-level
-        // "barrows" JSON key on the parser player. The copy below migrates it
-        // into the attr; the next save persists it under
-        // attrPersistence["barrows"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final Barrows parserBarrows = parser.getBarrows();
-        if (parserBarrows == null) return;
-        barrows.copyFrom(parserBarrows);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        BarrowsKeys.barrows(event.getPlayer());
     }
 
     /**

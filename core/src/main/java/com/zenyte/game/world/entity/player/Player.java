@@ -41,7 +41,6 @@ import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.sailing.CharterLocation;
-import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
@@ -1362,13 +1361,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         temporaryAttributes.put("interfaceInput", dialogue);
     }
 
-    public Construction getCurrentHouse() {
-        final Object object = getTemporaryAttributes().get("VisitingHouse");
-        if (!(object instanceof Construction)) {
-            return null;
-        }
-        return (Construction) object;
-    }
 
     @Override
     public void reset() {

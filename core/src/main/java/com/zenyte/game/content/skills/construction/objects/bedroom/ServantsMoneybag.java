@@ -25,7 +25,7 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
 
     @Override
     public void handleObjectAction(final Player player, final Construction construction, final RoomReference reference, final WorldObject object, final int optionId, final String option) {
-        if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
+        if (ConstructionKeys.currentHouse(player) != ConstructionKeys.construction(player)) {
             player.sendMessage("You cannot interact with someone else's servant's moneybag!");
             return;
         }
@@ -78,7 +78,7 @@ public final class ServantsMoneybag implements ObjectInteraction, ItemOnObjectAc
 
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-        if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
+        if (ConstructionKeys.currentHouse(player) != ConstructionKeys.construction(player)) {
             player.sendMessage("You cannot interact with someone else's servant's moneybag!");
             return;
         }

@@ -1,6 +1,7 @@
 package com.zenyte.game.content.skills.construction.objects.study;
 
 import com.zenyte.game.item.Item;
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -150,9 +151,9 @@ public final class CrystalBall implements ItemOnObjectAction {
 
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-        if (player.getCurrentHouse() == null)
+        if (ConstructionKeys.currentHouse(player) == null)
             return;
-        if (player.getCurrentHouse().isBuildingMode()) {
+        if (ConstructionKeys.currentHouse(player).isBuildingMode()) {
             player.sendMessage("You can't do this in build mode.");
             return;
         }

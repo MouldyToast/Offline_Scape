@@ -1,6 +1,7 @@
 package com.zenyte.game.content.skills.construction.objects.kitchen;
 
 import com.zenyte.game.content.follower.Follower;
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.item.Item;
@@ -36,14 +37,14 @@ public final class CatBlanket implements ItemOnObjectAction {
         if (pet == null) {
             return;
         }
-        if (player.getCurrentHouse() == null) {
+        if (ConstructionKeys.currentHouse(player) == null) {
             return;
         }
-        if (player.getCurrentHouse().isBuildingMode()) {
+        if (ConstructionKeys.currentHouse(player).isBuildingMode()) {
             return;
         }
         player.getInventory().deleteItem(item);
-        player.getCurrentHouse().getCatsOnBlanket().put(player, item.getId());
+        ConstructionKeys.currentHouse(player).getCatsOnBlanket().put(player, item.getId());
         player.setAnimation(PUTTING_CAT_DOWN);
         WorldTasksManager.schedule(new WorldTask() {
 

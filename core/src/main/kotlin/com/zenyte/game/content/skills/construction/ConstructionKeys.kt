@@ -59,6 +59,15 @@ fun rawConstructionAttr(player: Player): Any? {
     return player.attr[CONSTRUCTION_KEY as AttributeKey<Any>]
 }
 
+/**
+ * The house the player is currently VISITING (which may be someone
+ * else's), or null when not in one. Mirrors the legacy
+ * Player.getCurrentHouse temp-attribute read verbatim; distinct from
+ * [construction], the player's OWN house state.
+ */
+fun Player.currentHouse(): Construction? =
+    temporaryAttributes["VisitingHouse"] as? Construction
+
 /** T2-a: tip-jar bank-out moved off the Player logout block. Pure bank mutation, no packets (verified); persisted outcome identical. */
 @Subscribe
 fun onServerLaunch(event: ServerLaunchEvent) {

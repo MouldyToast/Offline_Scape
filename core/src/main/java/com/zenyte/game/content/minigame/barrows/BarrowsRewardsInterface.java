@@ -45,7 +45,7 @@ public class BarrowsRewardsInterface extends Interface {
                 player.getPacketDispatcher().sendUpdateItemContainer(area.getContainer());
             }
         } else {
-            final Barrows barrows = player.getBarrows();
+            final Barrows barrows = BarrowsKeys.barrows(player);
             barrows.setLooted(true);
             barrows.refreshShaking();
             barrows.calculateLoot();
@@ -81,7 +81,7 @@ public class BarrowsRewardsInterface extends Interface {
             ((RotsInstance) player.getArea()).addLoot();
         } else {
             final ArrayList<Item> equipmentPieces = new ArrayList<>();
-            player.getBarrows().getContainer().getItems().int2ObjectEntrySet().fastForEach(loot -> {
+            BarrowsKeys.barrows(player).getContainer().getItems().int2ObjectEntrySet().fastForEach(loot -> {
                 // check if loot is barrows piece or amulet of the damned
                 if (BarrowsWight.ALL_WIGHT_EQUIPMENT.contains(loot.getValue()) || loot.getValue().getId() == 12851) {
                     equipmentPieces.add(loot.getValue());
@@ -97,7 +97,7 @@ public class BarrowsRewardsInterface extends Interface {
                 final String joinedEquipmentLootString = String.join(", ", equipmentPieceNames);
                 player.sendAdventurersEntry(icon, player.getName() + " opened Barrows chest " + chestCount + " and received: " + joinedEquipmentLootString, false);
             }
-            player.getBarrows().addLoot();
+            BarrowsKeys.barrows(player).addLoot();
         }
     }
 

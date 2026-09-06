@@ -33,9 +33,9 @@ public final class BarrowsArea extends Morytania implements CycleProcessPlugin, 
 	@Override
 	public void enter(final Player player) {
 	    super.enter(player);
-        if (player.getBarrows().isLooted()) {
-            player.getBarrows().reset();
-            player.getBarrows().shiftDoorways();
+        if (BarrowsKeys.barrows(player).isLooted()) {
+            BarrowsKeys.barrows(player).reset();
+            BarrowsKeys.barrows(player).shiftDoorways();
             player.getVarManager().sendBit(Barrows.CHEST_VARBIT, 0);
         }
         GameInterface.BARROWS_OVERLAY.open(player);

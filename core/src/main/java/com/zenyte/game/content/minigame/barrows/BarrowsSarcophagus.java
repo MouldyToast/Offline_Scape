@@ -20,15 +20,15 @@ public class BarrowsSarcophagus implements ObjectAction {
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (option.equals("Search")) {
             final BarrowsWight wight = CollectionUtils.findMatching(BarrowsWight.values, npc -> npc.getSarcophagusId() == object.getId());
-            if (wight != null && player.getBarrows().getCurrentWight() == null) {
-                final Barrows barrows = player.getBarrows();
+            if (wight != null && BarrowsKeys.barrows(player).getCurrentWight() == null) {
+                final Barrows barrows = BarrowsKeys.barrows(player);
                 if (wight.equals(barrows.getHiddenWight())) {
                     player.getDialogueManager().start(new Dialogue(player) {
                         @Override
                         public void buildDialogue() {
                             final ObjectArrayList<Dialogue.DialogueOption> options = new ObjectArrayList<DialogueOption>();
                             options.add(new DialogueOption("Yes, I'm fearless.", () -> {
-                                final Barrows barrows = player.getBarrows();
+                                final Barrows barrows = BarrowsKeys.barrows(player);
                                 player.setLocation(new Location(3551 + Utils.random(1), 9691, 0));
                                 barrows.refreshDoors();
                             }));

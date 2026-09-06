@@ -104,15 +104,35 @@ public final class Barrows {
     public static final void onInit(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player parser = event.getSavedPlayer();
+        final boolean hadPersistedAttr = BarrowsKeys.rawBarrowsAttr(player) != null;
+        final Barrows barrows = BarrowsKeys.barrows(player);
+        if (hadPersistedAttr || parser == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep barrows under the top-level
+        // "barrows" JSON key on the parser player. The copy below migrates it
+        // into the attr; the next save persists it under
+        // attrPersistence["barrows"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final Barrows parserBarrows = parser.getBarrows();
         if (parserBarrows == null) return;
-        final Barrows barrows = player.getBarrows();
-        barrows.hiddenWight = parserBarrows.hiddenWight;
-        barrows.slainWights = parserBarrows.slainWights;
-        barrows.corner = parserBarrows.corner;
-        barrows.potential = parserBarrows.potential;
-        barrows.looted = parserBarrows.looted;
-        barrows.skipTunnels = parserBarrows.skipTunnels;
+        barrows.copyFrom(parserBarrows);
+    }
+
+    /**
+     * Copies the persisted state of another Barrows into this one. Used by the
+     * legacy load path above and by BarrowsKeys' attr rehydration. Deliberately
+     * copies ONLY the six fields the legacy load path copied: shutDoorways,
+     * openDoorway and puzzleSolved are persisted in old saves but have always
+     * been discarded on load — resurrecting them here would change behavior.
+     */
+    public void copyFrom(final Barrows other) {
+        this.hiddenWight = other.hiddenWight;
+        this.slainWights = other.slainWights;
+        this.corner = other.corner;
+        this.potential = other.potential;
+        this.looted = other.looted;
+        this.skipTunnels = other.skipTunnels;
     }
 
     public void resetTimer() {

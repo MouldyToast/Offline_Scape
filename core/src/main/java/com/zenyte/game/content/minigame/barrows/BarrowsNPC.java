@@ -33,7 +33,7 @@ public class BarrowsNPC extends NPC implements Spawnable {
             return;
         if(!GameToggles.BARROWS_OLD_DISABLED || (source instanceof Player p && p.getPlane() > 0)) {
             if (source instanceof Player) {
-                ((Player) source).getBarrows().onDeath(this);
+                BarrowsKeys.barrows((Player) source).onDeath(this);
             }
         }
     }
@@ -57,7 +57,7 @@ public class BarrowsNPC extends NPC implements Spawnable {
             return;
         if(!GameToggles.BARROWS_OLD_DISABLED || (source instanceof Player p && p.getPlane() > 0)) {
             if (source instanceof Player) {
-                ((Player) source).getBarrows().onFinish(this);
+                BarrowsKeys.barrows((Player) source).onFinish(this);
             }
             if (!wight) {
                 if (owner != null) {
@@ -113,7 +113,7 @@ public class BarrowsNPC extends NPC implements Spawnable {
             }
             if (owner.getLocation().getDistance(this.getLocation()) >= 15) {
                 if (wight) {
-                    owner.getBarrows().removeTarget();
+                    BarrowsKeys.barrows(owner).removeTarget();
                 }
                 finish();
             }

@@ -38,6 +38,7 @@ import com.zenyte.game.content.event.christmas2019.cutscenes.ScourgeHouseInstanc
 import com.zenyte.game.content.event.halloween2019.HalloweenUtils;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.minigame.barrows.Barrows;
+import com.zenyte.game.content.minigame.barrows.BarrowsKeys;
 import com.zenyte.game.content.minigame.fightcaves.FightCaves;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.minigame.inferno.model.InfernoWave;
@@ -867,7 +868,7 @@ public final class GameCommands {
                 p.sendMessage("Arguments are <Number of kills> <Reward potential>");
                 return;
             }
-            final Barrows barrows = p.getBarrows();
+            final Barrows barrows = BarrowsKeys.barrows(p);
             final int number = Math.min(100, parseInt(args[0]));
             final int rp = Math.max(0, parseInt(args[1]) - 668);
             for (int i = 0; i < number; i++) {

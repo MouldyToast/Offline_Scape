@@ -41,7 +41,7 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 
 	@Override
 	public void enter(final Player player) {
-		final Barrows barrows = player.getBarrows();
+		final Barrows barrows = BarrowsKeys.barrows(player);
 		barrows.refreshLadder(player.getLocation());
 		barrows.refreshDoors();
 		barrows.refreshShaking();
@@ -55,7 +55,7 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 		player.getInterfaceHandler().closeInterface(GameInterface.BARROWS_OVERLAY);
 		final PacketDispatcher dispatcher = player.getPacketDispatcher();
 		dispatcher.sendMinimapState(MinimapState.ENABLED);
-		final Barrows barrows = player.getBarrows();
+		final Barrows barrows = BarrowsKeys.barrows(player);
 		barrows.removeTarget();
 		barrows.resetTimer();
 		if (barrows.isLooted()) {
@@ -81,7 +81,7 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 					&& player.getCombatAchievements().hasCurrentTaskFlags(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN)) {
 				player.getCombatAchievements().removeCurrentTaskFlag(CAType.FAITHLESS_CRYPT_RUN, Barrows.CA_TASK_FAITHLESS_RUN);
 			}
-			final Barrows barrows = player.getBarrows();
+			final Barrows barrows = BarrowsKeys.barrows(player);
 			final int timer = barrows.getAndDecrementTimer();
 			if (timer > 0) continue;
 			if (barrows.isLooted()) {
@@ -102,13 +102,13 @@ public final class BarrowsChambersArea extends PolygonRegionArea implements Cycl
 
 	@Override
 	public boolean processMovement(Player player, int x, int y) {
-		player.getBarrows().refreshLadder(player.getLocation());
+		BarrowsKeys.barrows(player).refreshLadder(player.getLocation());
 		return true;
 	}
 
 	@Override
 	public void processMovement(Player player, Location destination) {
-		player.getBarrows().refreshLadder(destination);
+		BarrowsKeys.barrows(player).refreshLadder(destination);
 	}
 
 	@Override

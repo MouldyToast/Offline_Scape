@@ -504,7 +504,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
     private transient ChatMessage chatMessage = new ChatMessage();
-    private Barrows barrows = new Barrows(this);
+    /**
+     * @deprecated Legacy persistence slot for barrows, superseded by
+     * attrPersistence["barrows"] (see BarrowsKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "barrows" key entirely. Delete field and getter with the save-rotation
+     * phase.
+     */
+    @Deprecated
+    private Barrows barrows;
     private ItemRetrievalService retrievalService = new ItemRetrievalService(this);
     public transient Runnable closeInterfacesEvent;
     private transient boolean needRegionUpdate;
@@ -4892,6 +4901,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return chatMessage;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Barrows.onInit may call this,
+     * and only on the parser player. Live access goes through
+     * BarrowsKeys.barrows. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public Barrows getBarrows() {
         return barrows;
     }

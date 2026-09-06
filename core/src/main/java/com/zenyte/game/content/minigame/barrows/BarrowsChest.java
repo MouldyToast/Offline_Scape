@@ -28,7 +28,7 @@ public class BarrowsChest implements ObjectAction {
         if (!player.inArea("Barrows chambers")) {
             throw new RuntimeException("Unable to interact with the chest outside of barrows.");
         }
-        final Barrows barrows = player.getBarrows();
+        final Barrows barrows = BarrowsKeys.barrows(player);
         switch(option) {
             case "Search":
                 if (barrows.isLooted()) {

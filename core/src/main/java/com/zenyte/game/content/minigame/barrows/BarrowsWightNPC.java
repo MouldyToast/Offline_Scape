@@ -77,7 +77,7 @@ public abstract class BarrowsWightNPC extends BarrowsNPC {
 		if (owner == null) {
 			return;
 		}
-		owner.getBarrows().removeTarget();
+		BarrowsKeys.barrows(owner).removeTarget();
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public abstract class BarrowsWightNPC extends BarrowsNPC {
 			if (owner == null) {
 				return;
 			}
-			owner.getBarrows().onDeath(this);
+			BarrowsKeys.barrows(owner).onDeath(this);
 			if (owner.getCombatAchievements().hasCurrentTaskFlags(CAType.DEFENCE_WHAT_DEFENCE, Barrows.CA_TASK_MAGIC_DAMAGE_ONLY)) {
 				owner.getCombatAchievements().complete(CAType.DEFENCE_WHAT_DEFENCE);
 			}

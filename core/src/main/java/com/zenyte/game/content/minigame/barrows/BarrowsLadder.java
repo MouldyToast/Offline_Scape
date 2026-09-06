@@ -14,7 +14,7 @@ public class BarrowsLadder implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (option.equals("Climb-up")) {
-            final Barrows barrows = player.getBarrows();
+            final Barrows barrows = BarrowsKeys.barrows(player);
             final BarrowsWight hiddenWight = barrows.getHiddenWight();
             player.setLocation(hiddenWight.getBySarcophagus());
         }

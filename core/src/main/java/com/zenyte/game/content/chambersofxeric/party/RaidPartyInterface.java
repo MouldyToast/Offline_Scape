@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.party;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.Raid;
@@ -45,13 +46,13 @@ public class RaidPartyInterface extends Interface {
     @Override
     public void open(final Player player) {
         ChatChannelPlayerExtKt.getChatChannelInterfaceType(player).sendTabInterface(player, getInterface());
-        player.getRaid().ifPresent(raid -> raid.getParty().refreshTab(player));
+        RaidAccess.raid(player).ifPresent(raid -> raid.getParty().refreshTab(player));
     }
 
     @Override
     protected void build() {
-        bind("Refresh", player -> refresh(player, player.getRaid().orElseThrow(RuntimeException::new)));
-        bind("Start raid", player -> player.getRaid().ifPresent(raid -> player.getDialogueManager().start(new Dialogue(player) {
+        bind("Refresh", player -> refresh(player, RaidAccess.raid(player).orElseThrow(RuntimeException::new)));
+        bind("Start raid", player -> RaidAccess.raid(player).ifPresent(raid -> player.getDialogueManager().start(new Dialogue(player) {
             @Override
             public void buildDialogue() {
                 options("No-one may join the party after the raid begins.", new DialogueOption("Begin the raid.", raid::load), new DialogueOption("Don't begin the raid yet."));

@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.player.container.impl.death;
 
-import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.near_reality.api.service.user.UserPlayerHandler;
@@ -17,7 +17,6 @@ import com.zenyte.game.content.follower.plugin.Probita;
 import com.zenyte.game.content.gravestone.GravestoneExt;
 import com.zenyte.game.content.lootkeys.LootkeyConstants;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.thieving.CoinPouch;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -479,7 +478,7 @@ public class DeathMechanics {
         if (!player.getVariables().isSkulled()) {
             count += 3;
         }
-        if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.PROTECT_ITEM)) {
+        if (player.getVarManager().getBitValue(PrayerVarbits.PROTECT_ITEM) == 1) {
             count++;
         }
         return count;

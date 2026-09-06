@@ -11,7 +11,7 @@ import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.content.chambersofxeric.npc.JewelledCrab;
 import com.zenyte.game.content.chambersofxeric.npc.RaidNPC;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.music.Music;

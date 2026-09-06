@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.room.DeathlyRoom;
 import com.zenyte.game.content.rots.RotsInstance;
@@ -49,7 +50,7 @@ public class ShimmeringBarrier implements ObjectAction, ItemOnObjectAction {
             return;
         }
 
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, DeathlyRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, DeathlyRoom.class, room -> {
             if (!player.getInventory().containsItem(keystoneCrystal)) {
                 player.sendMessage("You're going to need a magical keystone to dispel this barrier.");
                 return;

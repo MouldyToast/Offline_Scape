@@ -1,6 +1,8 @@
 package com.zenyte.game.content.skills.magic.spells.teleports;
 
 import com.zenyte.game.item.Item;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.world.entity.Location;
 
 /**

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.storageunit;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.item.Item;
@@ -65,7 +66,7 @@ public class StorageInventoryInterface extends Interface implements SwitchPlugin
                 }
                 ItemUtil.sendItemExamine(player, item);
             }
-            final Optional<Raid> optionalRaid = player.getRaid();
+            final Optional<Raid> optionalRaid = RaidAccess.raid(player);
             if (!optionalRaid.isPresent()) {
                 player.sendMessage("You can't store items now.");
                 return;

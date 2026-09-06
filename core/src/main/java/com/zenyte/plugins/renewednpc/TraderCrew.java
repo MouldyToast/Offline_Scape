@@ -1,6 +1,7 @@
 package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -38,7 +39,7 @@ public class TraderCrew extends NPCPlugin {
                         npc("We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?");
                     }
                     options(TITLE, new DialogueOption("Yes, let's see what you're trading.", () -> setKey(110000)), new DialogueOption("Yes, I would like to charter a ship.", () -> setKey(120000)), new DialogueOption("No thanks.", () -> setKey(130000)));
-                    player(110000, "Yes, let's see what you're trading.").executeAction(() -> player.openShop("Trader Stan's Trading Post"));
+                    player(110000, "Yes, let's see what you're trading.").executeAction(() -> player.openShop(CharterLocation.traderStanShopName(player)));
 
 
                     player(120000, "Yes, I would like to charter a ship.");

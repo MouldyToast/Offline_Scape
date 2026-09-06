@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.rewards;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.Interface;
@@ -27,7 +28,7 @@ public class RaidRewardsInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Take item", (player, slotId, itemId, option) -> player.getRaid().ifPresent(raid -> {
+        bind("Take item", (player, slotId, itemId, option) -> RaidAccess.raid(player).ifPresent(raid -> {
             final RaidRewards rewards = raid.getRewards();
             if (rewards == null) {
                 return;

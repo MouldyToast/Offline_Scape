@@ -1,8 +1,8 @@
 package com.zenyte.game.content.itemtransportation;
 
 import com.near_reality.game.item.CustomItemId;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.Location;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

@@ -185,7 +185,7 @@ public final class Raid {
         if (player == null || player.isNulled() || player.isFinished()) {
             return;
         }
-        player.getRaid().ifPresent(raid -> WorldTasksManager.schedule(new WorldTask() {
+        RaidAccess.raid(player).ifPresent(raid -> WorldTasksManager.schedule(new WorldTask() {
             @Override
             public void run() {
                 if (raid.isDestroyed() || player.isNulled()) {
@@ -204,7 +204,7 @@ public final class Raid {
 
     public static void applyPotionEffect(@NotNull final Player player, @NotNull final GourdPotion potion,
                                          @NotNull final Item item) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (raid.potionsCap <= 0) {
                 return;
             }
@@ -221,7 +221,7 @@ public final class Raid {
     }
 
     public static void applyPsykkEffect(@NotNull final Player player, @NotNull final Item item) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (raid.psykkCap <= 0) {
                 return;
             }
@@ -232,7 +232,7 @@ public final class Raid {
     }
 
     public static void incrementPoints(final Player player, final int amount) {
-        player.getRaid().ifPresent(raid -> raid.addPoints(player, amount));
+        RaidAccess.raid(player).ifPresent(raid -> raid.addPoints(player, amount));
     }
 
     private void addRaid(final Raid raid) {

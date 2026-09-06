@@ -1,6 +1,7 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.content.chambersofxeric.Raid;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -21,7 +22,7 @@ public final class StorageUnitOPlugin implements ObjectAction {
             player.getPrivateStorage().open(-1);
             return;
         }
-        final Optional<Raid> optionalRaid = player.getRaid();
+        final Optional<Raid> optionalRaid = RaidAccess.raid(player);
         if (!optionalRaid.isPresent()) {
             return;
         }

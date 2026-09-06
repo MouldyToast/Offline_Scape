@@ -1,6 +1,7 @@
 package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.content.follower.FollowerKeys;
+import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetWrapper;
@@ -36,8 +37,8 @@ public class PetNPCPlugin extends NPCPlugin {
                 player.sendMessage("You need some free inventory space to pick the pet up.");
                 return;
             }
-            if (player.getCurrentHouse() != null) {
-                player.getCurrentHouse().getCatsOnBlanket().remove(player);
+            if (ConstructionKeys.currentHouse(player) != null) {
+                ConstructionKeys.currentHouse(player).getCatsOnBlanket().remove(player);
             }
             FollowerKeys.setFollower(player, null);
             player.setAnimation(PetWrapper.DROP_ANIMATION);

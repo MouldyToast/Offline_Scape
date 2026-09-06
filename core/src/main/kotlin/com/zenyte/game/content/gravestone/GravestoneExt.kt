@@ -2,12 +2,11 @@
 
 package com.zenyte.game.content.gravestone
 
-import com.zenyte.game.content.skills.prayer.prayerManager
+import com.zenyte.game.world.entity.player.PrayerVarbits
 import com.near_reality.game.item.CustomItemId.*
 import com.near_reality.game.model.item.protectionValue
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.ItemRetrievalService
-import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.content.trouver.TrouverData
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
@@ -111,7 +110,7 @@ object GravestoneExt {
 
     fun Player.calculateGravestoneItems(pvp: Boolean, bypassGravestone: Boolean = false): Pair<List<Item>, List<Item>> {
         var keptCount = 0
-        if (prayerManager().isActive(Prayer.PROTECT_ITEM)) keptCount++
+        if (varManager.getBitValue(PrayerVarbits.PROTECT_ITEM) == 1) keptCount++
         if (!variables.isSkulled) keptCount += 3
         val wildernessLevel = WildernessArea.getWildernessLevel(location).orElse(0)
         val gravestoneItems = mutableListOf<Item>()

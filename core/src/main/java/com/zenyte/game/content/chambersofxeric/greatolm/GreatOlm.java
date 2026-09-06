@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.greatolm;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.google.common.eventbus.Subscribe;
@@ -238,7 +239,7 @@ public final class GreatOlm extends RaidNPC<OlmRoom> implements CombatScript {
     * @param npc    the fire wall npc being doused.
     */
    public static void douseFirewall(final Player player, final NPC npc) {
-      player.getRaid().ifPresent(raid -> raid.ifInRoom(player.getLocation(), OlmRoom.class, room -> {
+      RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player.getLocation(), OlmRoom.class, room -> {
          if (!room.inChamber(player.getLocation())) {
             player.sendMessage("You can't reach that.");
             return;

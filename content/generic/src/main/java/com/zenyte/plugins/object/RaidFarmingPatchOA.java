@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.WorldObject;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public final class RaidFarmingPatchOA implements ObjectAction {
 	@Override
 	public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-		player.getRaid().ifPresent(raid -> raid.getFarming().handle(player, object, option));
+		RaidAccess.raid(player).ifPresent(raid -> raid.getFarming().handle(player, object, option));
 	}
 
 	@Override

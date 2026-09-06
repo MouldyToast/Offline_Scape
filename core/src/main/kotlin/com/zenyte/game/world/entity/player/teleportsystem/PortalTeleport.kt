@@ -1,8 +1,8 @@
 package com.zenyte.game.world.entity.player.teleportsystem
 
 import com.near_reality.util.capitalize
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
+import com.zenyte.game.world.entity.player.teleport.Teleport
+import com.zenyte.game.world.entity.player.teleport.TeleportType
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player

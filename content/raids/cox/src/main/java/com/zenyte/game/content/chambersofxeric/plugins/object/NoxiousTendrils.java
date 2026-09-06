@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.MuttadileRoom;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
@@ -21,7 +22,7 @@ public class NoxiousTendrils implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, MuttadileRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, MuttadileRoom.class, room -> {
             if (room.isFinished()) {
                 player.sendMessage("The tendril is about to collapse!");
                 return;

@@ -1,12 +1,11 @@
 package com.near_reality.game.content.araxxor.attacks.impl
 
-import com.zenyte.game.content.skills.prayer.prayerManager
+import com.zenyte.game.world.entity.player.PrayerVarbits
 import com.near_reality.game.content.araxxor.Araxxor
 import com.near_reality.game.content.araxxor.attacks.Attack
 import com.near_reality.game.content.damage
 import com.near_reality.game.content.hit
 import com.near_reality.game.content.seq
-import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
@@ -23,7 +22,7 @@ class MeleeAttack: Attack {
         if (target == null) return
         araxxor seq 11480
         var maxHit = 38
-        if ((target as Player).prayerManager().isActive(Prayer.PROTECT_FROM_MELEE))
+        if ((target as Player).varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1)
             maxHit = (maxHit * 0.20).toInt()
         val damage = CombatUtilities.getRandomMaxHit(araxxor, maxHit, AttackType.CRUSH, target)
         target.scheduleHit(araxxor, araxxor hit target damage damage, 0)

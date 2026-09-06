@@ -3,7 +3,7 @@ package com.zenyte.plugins.object;
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.achievementdiary.diaries.*;
-import com.zenyte.game.content.skills.prayer.Prayer;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
@@ -54,7 +54,7 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
                 AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.PRAY_AT_ELIDINIS_STATUETTE);
             } else if (toRestore >= 85 && object.getId() == 20377) {
                 AchievementDiariesKeys.achievementDiaries(player).update(DesertDiary.RESTORE_85_PRAYER_POINTS);
-            } else if (PrayerManagerKeys.prayerManager(player).isActive(Prayer.SMITE)) {
+            } else if (player.getVarManager().getBitValue(PrayerVarbits.SMITE) == 1) {
                 AchievementDiariesKeys.achievementDiaries(player).update(VarrockDiary.PRAY_AT_VARROCK_ALTAR);
                 AchievementDiariesKeys.achievementDiaries(player).update(LumbridgeDiary.RECHARGE_PRAYER);
             }

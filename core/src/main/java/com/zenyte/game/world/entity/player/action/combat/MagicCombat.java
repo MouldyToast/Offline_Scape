@@ -2,6 +2,7 @@ package com.zenyte.game.world.entity.player.action.combat;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.content.buffs.BuffCategory;
 import com.near_reality.game.content.buffs.BuffSubcategory;
@@ -12,7 +13,6 @@ import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.arceuus.MarkOfDarknessEffectKt;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
@@ -359,7 +359,7 @@ public class MagicCombat extends PlayerCombat {
             // Get prayer multiplier
             prayerBoost = PrayerManagerKeys.prayerManager(player).getMagicBoost(SkillConstants.MAGIC); // Best Case: 1.25
             if (target instanceof Player) {
-                if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (((Player) target).getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1) {
                     damage *= target.getMagicPrayerMultiplier();
                     damage = Math.floor(damage);
                 }

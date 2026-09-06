@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.CreatureKeeperRoom;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -14,7 +15,7 @@ public class TroughObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.deposit(player, object)));
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.deposit(player, object)));
     }
 
     @Override

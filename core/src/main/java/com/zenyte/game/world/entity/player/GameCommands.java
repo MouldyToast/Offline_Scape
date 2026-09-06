@@ -1,6 +1,7 @@
 package com.zenyte.game.world.entity.player;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
@@ -57,8 +58,8 @@ import com.zenyte.game.content.serverevent.WorldBoost;
 import com.zenyte.game.content.serverevent.WorldBoostType;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.teleports.SpellbookTeleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.content.stars.ScheduledShootingStarSpawn;
 import com.zenyte.game.content.stars.ShootingStarLocation;
 import com.zenyte.game.content.stars.ShootingStars;
@@ -2366,7 +2367,7 @@ public final class GameCommands {
         new Command(PlayerPrivilege.SUPPORT, "teletome", "Teleports the requested player to you. Usage: ::teletome playername", (p, args) -> {
             World.getPlayer(StringUtilities.compile(args, 0, args.length, ' ')).ifPresent(t -> {
                 if (!p.getPrivilege().inherits(PlayerPrivilege.DEVELOPER)) {
-                    final Optional<Raid> raid = t.getRaid();
+                    final Optional<Raid> raid = RaidAccess.raid(t);
                     if (raid.isPresent() && !t.getPrivilege().inherits(PlayerPrivilege.ADMINISTRATOR)) {
                         p.sendMessage("You cannot teleport non-administrators into a raid.");
                         return;
@@ -2385,7 +2386,7 @@ public final class GameCommands {
                 return;
             World.getPlayer(StringUtilities.compile(args, 0, args.length, ' ')).ifPresent(t -> {
                 if (!p.getPrivilege().inherits(PlayerPrivilege.DEVELOPER)) {
-                    final Optional<Raid> raid = t.getRaid();
+                    final Optional<Raid> raid = RaidAccess.raid(t);
                     if (raid.isPresent() && !p.getPrivilege().inherits(PlayerPrivilege.ADMINISTRATOR)) {
                         p.sendMessage("You cannot teleport to a player in a raid as a non-administrator.");
                         return;

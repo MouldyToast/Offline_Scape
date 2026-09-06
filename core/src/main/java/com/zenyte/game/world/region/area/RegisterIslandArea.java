@@ -1,7 +1,7 @@
 package com.zenyte.game.world.region.area;
 
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.task.WorldTasksManager;

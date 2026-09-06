@@ -29,35 +29,19 @@ import com.zenyte.Main;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.AvasDevice;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.chambersofxeric.Raid;
-import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
-import com.zenyte.game.content.clans.ClanChannel;
-import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
-import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
-import com.zenyte.game.content.gravestones.GravestoneKeys;
-import com.zenyte.game.content.lootkeys.LootkeySettings;
-import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.zenyte.game.content.minigame.duelarena.Duel;
-import com.zenyte.game.content.minigame.inferno.instance.Inferno;
-import com.zenyte.game.content.sailing.CharterLocation;
-import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
-import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
-import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
-import com.zenyte.game.content.skills.magic.spells.teleports.ForceTeleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
-import com.zenyte.game.content.skills.prayer.Prayer;
+import com.zenyte.game.world.entity.player.teleport.ForceTeleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
@@ -218,7 +202,10 @@ import org.rsmod.api.attr.AttributeMap;
 import org.rsmod.game.events.PlayerDamageReceivedEvent;
 import org.rsmod.game.events.PlayerLoginEvent;
 import org.rsmod.game.events.PlayerLogoutEvent;
-import org.rsmod.game.events.PlayerProcessEvent;
+import org.rsmod.game.events.PlayerDeathStartEvent;
+import org.rsmod.game.events.PlayerPostDamageEvent;
+import org.rsmod.game.timer.PlayerTimerMap;
+import org.rsmod.game.timer.PlayerTimerProcessor;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
@@ -368,6 +355,19 @@ public class Player extends AbstractEntity implements UsernameProvider {
      * restored into attr via putAllFromPersistence at load.
      */
     private Map<String, Object> attrPersistence = new HashMap<>();
+
+    /**
+     * OpenRune-pattern per-player soft timers (org.rsmod.game.timer),
+     * processed once per tick from processEntity at the position the
+     * PlayerProcessEvent publish (and before it, the direct
+     * farming/hunter/prayer driver calls) used to occupy. Transient:
+     * timers are re-scheduled at login.
+     */
+    private final transient PlayerTimerMap softTimers = new PlayerTimerMap();
+
+    public PlayerTimerMap getSoftTimers() {
+        return softTimers;
+    }
 
     public AttributeMap getAttr() {
         return attr;
@@ -802,7 +802,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     public boolean eligibleForShiftTeleportation() {
-        return privilege.inherits(PlayerPrivilege.DEVELOPER) || (privilege.inherits(PlayerPrivilege.ADMINISTRATOR) && !(getArea() instanceof Inferno));
+        return privilege.inherits(PlayerPrivilege.DEVELOPER) || (privilege.inherits(PlayerPrivilege.ADMINISTRATOR) && (getArea() == null || !getArea().isShiftTeleportationProhibited()));
     }
 
     public void notification(String title, String text, int color) {
@@ -997,13 +997,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
-    public void sendAdventurersEntry(final AdventurersLogIcon icon, final String message) {
-        sendAdventurersEntry(icon.getLink(), message, false);
-    }
-
-    public void sendAdventurersEntry(final String icon, final String message, final boolean pvp) {
-//        CoresManager.getServiceProvider().submit(() -> new ApiAdventurersLogRequest(this, icon, message).execute());
-    }
 
     public void refreshDirection() {
         if (faceEntity >= 0) {
@@ -1356,13 +1349,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         temporaryAttributes.put("interfaceInput", dialogue);
     }
 
-    public Construction getCurrentHouse() {
-        final Object object = getTemporaryAttributes().get("VisitingHouse");
-        if (!(object instanceof Construction)) {
-            return null;
-        }
-        return (Construction) object;
-    }
 
     @Override
     public void reset() {
@@ -1407,12 +1393,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             try {
                 variables.resetScheduled();
-            }
-            catch (Exception e) {
-                log.error("", e);
-            }
-            try {
-                PrayerManagerKeys.prayerManager(this).deactivateActivePrayers();
             }
             catch (Exception e) {
                 log.error("", e);
@@ -1669,13 +1649,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public void openShop(final String name) {
         // check if we require a PIN to be "Unlocked"
         if (getBankPin().requiresVerification(this, () -> openShop(name))) return;
-
-        //Different shop across the world, same npc.
-        if (name.equals("Trader Stan's Trading Post")) {
-            final CharterLocation charterLocation = Utils.getOrDefault(CharterLocation.getLocation(getLocation()), CharterLocation.BRIMHAVEN);
-            Shop.get(name + "<" + charterLocation.getShopPrefix() + ">", isIronman(), this).open(this);
-            return;
-        }
         Shop.get(name, isIronman(), this).open(this);
     }
 
@@ -1800,17 +1773,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 log.error("", e);
             }
             variables.process();
-            if (getCape() != null) {
-                AvasDevice.collectMetal(this);
-            }
             try {
                 controllerManager.process();
-            }
-            catch (final Exception e) {
-                log.error("", e);
-            }
-            try {
-                GravestoneKeys.gravestone(this).process();
             }
             catch (final Exception e) {
                 log.error("", e);
@@ -1828,7 +1792,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 tickDegradable = 0;
             }
             if (CoresManager.worldThread != null) {
-                CoresManager.worldThread.getEventBus().publish(new PlayerProcessEvent(this));
+                PlayerTimerProcessor.processSoftTimers(this, (int) WorldThread.getCurrentCycle(), CoresManager.worldThread.getEventBus());
             }
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
             if (acidPool != null) {
@@ -1849,7 +1813,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                     sanityValue = -3;
                     if (sanityTick.intValue() == 1) {
                         applyHit(new Hit(Math.abs(sanityValue), HitType.SANITY_DRAIN));
-                        PrayerManagerKeys.prayerManager(this).drainPrayerPoints(Math.abs(sanityValue));
+                        drainSkill(SkillConstants.PRAYER, Math.abs(sanityValue));
                     }
                 }
                 // Real World
@@ -2095,17 +2059,17 @@ public class Player extends AbstractEntity implements UsernameProvider {
             final HitType type = hit.getHitType();
             final float multiplierAddition = getArea() != null && getArea().isQuietPrayers() ? .1F : 0;
             if (type == HitType.MELEE) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMeleePrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.RANGED) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MISSILES)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MISSILES) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getRangedPrayerMultiplier() + multiplierAddition)));
                 }
             }
             else if (type == HitType.MAGIC) {
-                if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.PROTECT_FROM_MAGIC)) {
+                if (varManager.getBitValue(PrayerVarbits.PROTECT_FROM_MAGIC) == 1) {
                     hit.setDamage((int) Math.ceil(hit.getDamage() * Math.min(1, source.getMagicPrayerMultiplier() + multiplierAddition)));
                 }
             }
@@ -2132,7 +2096,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
                         getDbUsername(),
                         getIP()
                 ));
-            SpellbookSwap.checkSpellbook(this);
             final Object loc = getTemporaryAttributes().get("oculusStart");
             if (loc instanceof Location) {
                 setLocation((Location) loc);
@@ -2144,7 +2107,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (area instanceof LogoutPlugin) {
                 ((LogoutPlugin) area).onLogout(this);
             }
-            ConstructionKeys.construction(this).getTipJar().onLogout();
             setFinished(true);
             World.updateEntityChunk(this, true);
             LocationMap.remove(this);
@@ -2153,7 +2115,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();
             }
-            ClanManager.leave(this, false);
             socialManager.updateStatus();
             interfaceHandler.closeInterfaces();
             MethodicPluginHandler.invokePlugins(ListenerType.LOGOUT, this);
@@ -2922,10 +2883,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
             return;
         }
         final int damage = Math.min(hit.getDamage(), getHitpoints());
-        if (PrayerManagerKeys.prayerManager((Player) source) != null && PrayerManagerKeys.prayerManager((Player) source).isActive(Prayer.SMITE)) {
+        if (((Player) source).getVarManager().getBitValue(PrayerVarbits.SMITE) == 1) {
             final int drain = damage / 4;
-            if (drain > 0 && PrayerManagerKeys.prayerManager(this) != null) {
-                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(drain);
+            if (drain > 0) {
+                drainSkill(SkillConstants.PRAYER, drain);
             }
         }
     }
@@ -3159,8 +3120,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (dead)
             PlayerAttributesKt.setKillingBlowHit(this, hit);
         if (!isDead()) {
-            if (getHitpoints() < getMaxHitpoints() * 0.1F && PrayerManagerKeys.prayerManager(this).isActive(Prayer.REDEMPTION)) {
-                PrayerManagerKeys.prayerManager(this).applyRedemptionEffect();
+            if (CoresManager.worldThread != null) {
+                CoresManager.worldThread.getEventBus().publish(new PlayerPostDamageEvent(this, hit, damage));
             }
             if (getHitpoints() < getMaxHitpoints() * 0.2F) {
                 if (getEquipment().getId(EquipmentSlot.AMULET) == 21157) {
@@ -3178,7 +3139,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
             if (!HitType.HEALED.equals(hit.getHitType()) && hit.getSource() != null && !hit.getSource().equals(this)
                     && getArea() != null && getArea().isDeadlyPrayers()) {
-                PrayerManagerKeys.prayerManager(this).drainPrayerPoints(damage / 5);
+                drainSkill(SkillConstants.PRAYER, damage / 5);
             }
             if (getHitpoints() <= (getMaxHitpoints() * 0.1F)) {
                 final int ring = getEquipment().getId(EquipmentSlot.RING);
@@ -3272,12 +3233,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
             PlayerExtKt.handleAdminHealthEvent(this, source);
             return;
         }
-        if (PrayerManagerKeys.prayerManager(this).isActive(Prayer.RETRIBUTION)) {
-            PrayerManagerKeys.prayerManager(this).applyRetributionEffect(source);
+        if (CoresManager.worldThread != null) {
+            CoresManager.worldThread.getEventBus().publish(new PlayerDeathStartEvent(this, source));
         }
 
         if (source != null) {
-            DeathChargeKt.invokeDeathChargeEffect(source);
             if (WildyExtKt.isBountyPaired(this)) {
                 WildyExtKt.processBountyDeath(this);
                 BountyHunterController.completeBounty(source, this);
@@ -3645,27 +3605,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return this.privilege.inherits(privilege);
     }
 
-    public Optional<Raid> getRaid() {
-        if (isNulled()) {
-            return Optional.empty();
-        }
-        final ClanChannel channel = settings.getChannel();
-        if (channel == null) {
-            return Optional.empty();
-        }
-        final RaidParty party = channel.getRaidParty();
-        if (party == null) {
-            return Optional.empty();
-        }
-        final Raid raid = party.getRaid();
-        if (raid == null) {
-            return Optional.empty();
-        }
-        if (!raid.getPlayers().contains(this)) {
-            return Optional.empty();
-        }
-        return Optional.of(raid);
-    }
 
     public void setGameMode(final GameMode mode) {
         setGameMode(mode, false);
@@ -4255,12 +4194,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 //            emotesHandler.unlock(Emote.RABBIT_HOP);
 //        }
 
-        final LootkeySettings lootkeySettings = LootkeySettingsKeys.lootkeySettings(this);
-        if (lootkeySettings != null) {
-            if (lootkeySettings.getCurrentItemsInChest() != null)
-                if (!lootkeySettings.getCurrentItemsInChest().isEmpty())
-                    LootkeySettings.sendOpenChest(this);
-        }
 
 //        varManager.sendBit(15026, attributes.containsKey("Christmas 2019 event") ? 1 : 0);
 //        final boolean christmasEventCompleted = AChristmasWarble.progressedAtLeast(this,
@@ -4357,9 +4290,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 //            addAttribute("registered", 1);
             gameMode = GameMode.REGULAR;
             setLocation(GameConstants.REGISTRATION_LOCATION);
-            if (getSettings().getChannelOwner() == null) {
-                ClanManager.join(this, GameConstants.SERVER_CHANNEL_NAME);
-            }
         }
         int unreadMessageCount = getNumericAttribute("unread message count").intValue();
         if (unreadMessageCount > 0) {
@@ -4386,7 +4316,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         pollManager.loadAnsweredPolls();
         varManager.sendVar(1050, 90);// chivalry/piety
         varManager.sendBit(598, 2);
-        PrayerManagerKeys.prayerManager(this).refreshQuickPrayers();
         /*
          * if (player.getHelmet() != null && player.getHelmet().getId() >= 5525 && player.getHelmet().getId() <=
          * 5547) { final int bitId =
@@ -4395,21 +4324,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         combatDefinitions.refresh();
         socialManager.loadFriends();
         socialManager.loadIgnores();
-        /*
-         * final ClanChannel channel = player.getSettings().getChannel(); if (channel != null) { ClanManager.join
-         * (player,
-         * channel.getOwner()); } else { ClanManager.join(player, "kris"); }
-         */
         socialManager.updateStatus();
-        try {
-            FarmingKeys.farming(this).refresh();
-        }
-        catch (Exception ex) {
-            log.error("farming not working", ex);
-        }
 
         getRunePouch().getContainer().refresh(this);
-        GrandExchangeKeys.grandExchange(this).updateOffers();
         VarCollection.updateType(this, EventType.POST_LOGIN);
 
         packetDispatcher.privateChatFilter();

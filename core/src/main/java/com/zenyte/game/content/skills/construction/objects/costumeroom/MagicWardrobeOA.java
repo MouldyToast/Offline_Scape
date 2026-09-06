@@ -34,7 +34,7 @@ public final class MagicWardrobeOA implements ObjectInteraction, ItemOnObjectAct
         } else if (option.equals("close")) {
             World.spawnObject(new WorldObject(object.getId() - 1, object.getType(), object.getRotation(), object));
         } else if (option.equals("search")) {
-            if (player.getCurrentHouse() != construction) {
+            if (ConstructionKeys.currentHouse(player) != construction) {
                 player.sendMessage("Only the owner of the house can use the magic wardrobe.");
                 return;
             }

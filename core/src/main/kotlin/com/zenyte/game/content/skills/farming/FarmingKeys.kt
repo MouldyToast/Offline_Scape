@@ -2,9 +2,12 @@
 
 package com.zenyte.game.content.skills.farming
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.login.LoginManager
 import org.rsmod.api.attr.AttributeKey
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerLoginEvent
 
 /**
  * Persisted farming state. Saved under attrPersistence["farming"] as the
@@ -56,4 +59,16 @@ fun Player.farming(): Farming {
 fun rawFarmingAttr(player: Player): Any? {
     @Suppress("UNCHECKED_CAST")
     return player.attr[FARMING_KEY as AttributeKey<Any>]
+}
+
+/** T2-a: lobby-close farming refresh at login; the old site's own try/catch preserved. */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    event.worldThread.eventBus.subscribeUnbound(PlayerLoginEvent::class.java) {
+        try {
+            player.farming().refresh()
+        } catch (e: Exception) {
+            org.slf4j.LoggerFactory.getLogger("FarmingKeys").error("farming not working", e)
+        }
+    }
 }

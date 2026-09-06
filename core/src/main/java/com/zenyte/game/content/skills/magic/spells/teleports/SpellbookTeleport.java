@@ -1,6 +1,8 @@
 package com.zenyte.game.content.skills.magic.spells.teleports;
 
 import com.google.common.base.CaseFormat;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.google.common.base.Preconditions;
 import com.near_reality.game.content.bountyhunter.teleport.TeleportToTarget;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
@@ -21,7 +23,7 @@ import com.zenyte.plugins.dialogue.PlainChat;
 
 import static com.zenyte.game.content.bountyhunter.BountyHunter.TELEPORT_TO_TARGET_UNLOCKED_VAR;
 import static com.zenyte.game.content.skills.magic.Spellbook.*;
-import static com.zenyte.game.content.skills.magic.spells.teleports.TeleportType.*;
+import static com.zenyte.game.world.entity.player.teleport.TeleportType.*;
 
 /**
  * @author Kris | 11. dets 2017 : 4:01.56

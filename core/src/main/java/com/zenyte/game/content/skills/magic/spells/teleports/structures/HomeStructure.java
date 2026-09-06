@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.magic.spells.teleports.structures;
 
 import com.zenyte.game.content.donation.HomeTeleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;

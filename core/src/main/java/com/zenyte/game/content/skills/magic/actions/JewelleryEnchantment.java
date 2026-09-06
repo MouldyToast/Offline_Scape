@@ -1,6 +1,7 @@
 package com.zenyte.game.content.skills.magic.actions;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.spells.ItemSpell;
@@ -148,7 +149,7 @@ public class JewelleryEnchantment extends Action {
 		if (player.isDead() || player.isFinished()) {
 			return false;
 		}
-		if (player.getRaid().isPresent()) {
+		if (RaidAccess.raid(player).isPresent()) {
 		    player.sendMessage("You can't enchant jewellery within the Chambers of Xerics.");
 		    return false;
         }

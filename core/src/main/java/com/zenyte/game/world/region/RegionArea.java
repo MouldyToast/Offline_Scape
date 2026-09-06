@@ -40,6 +40,11 @@ public interface RegionArea extends Plugin {
         return false;
     }
 
+    /** True where admin shift-teleportation is prohibited (Phase-B-style flag lift; sole overrider today: Inferno). */
+    default boolean isShiftTeleportationProhibited() {
+        return false;
+    }
+
     default boolean isDynamicArea() {
         return false;
     }

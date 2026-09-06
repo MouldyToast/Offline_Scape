@@ -58,7 +58,7 @@ public final class CapeHanger implements ObjectInteraction, ItemOnObjectAction {
 
 	@Override
 	public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-		if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
+		if (ConstructionKeys.currentHouse(player) != ConstructionKeys.construction(player)) {
 			player.sendMessage("You can only do this in your own house.");
 			return;
 		}
@@ -133,7 +133,7 @@ public final class CapeHanger implements ObjectInteraction, ItemOnObjectAction {
 			player.setAnimation(ANIM);
 			player.sendMessage("You admire the " + object.getName().toLowerCase() + ".");
 		} else if (option.equals("take")) {
-			if (player.getCurrentHouse() != ConstructionKeys.construction(player)) {
+			if (ConstructionKeys.currentHouse(player) != ConstructionKeys.construction(player)) {
 				player.sendMessage("You can only do this in your own house.");
 				return;
 			}

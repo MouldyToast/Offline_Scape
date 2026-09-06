@@ -36,12 +36,12 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 34
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1178
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 15
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1094 (includes the TeleportType structures.* wildcard + the 6 planned T2-d D-3 RaidAccess import lines)
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
-plugins.dat: 4346 plugins (untracked file; regenerate with
+plugins.dat: 4355 plugins (untracked file; regenerate with
 `./gradlew :app:runPluginScanner` after any @Subscribe/annotation change,
 never commit it).
 
@@ -124,29 +124,97 @@ Track 1 removes ~13 of the 34 imports.
 One inventory/sequencing session first, then ~3–4 execution sessions.
 Current import list with the expected treatment:
 
+T2-a landed (2026-09-06, 5 commits): PlayerDeathStartEvent (published
+from BOTH death paths — Player.sendDeath and PlayerDeathHandler; future
+death-work hook) + PlayerPostDamageEvent; retribution/redemption/
+death-charge/reset/quick-prayers off Player; prayer drains via own
+drainSkill; spellbook-swap + tip-jar onto PlayerLogoutEvent; gravestone
++ Ava's onto the T3.2 soft timers (reserved ids); GE/lootkey/farming
+login refreshes onto PlayerLoginEvent; dead PlayerDeathEvent +
+BountyHunter.onDeath deleted (D-4). The clan move initially hit the
+plan's pre-move audit (ClanChannel.onLogout, a ListenerType.LOGOUT
+listener, also removed the player from channel.members — running leave()
+after the LOGOUT plugins would have early-returned and dropped
+ClanLeaveEvent + empty-channel cleanup) and was RESOLVED in two follow-up
+commits: ClanChannel.onLogout deleted as provably dead (the
+canLeaveClanChannel veto it backstopped returns true in the Controller
+base with zero overrides repo-wide, and ListenerType.LOGOUT fires only
+from Player.finish, right after leave() — so its remove was a no-op in
+every reachable state; if a real canLeaveClanChannel override is ever
+added, the logout path must handle a vetoed leave deliberately), then
+leave/first-login join moved onto PlayerLogoutEvent/PlayerLoginEvent
+(ClanLifecycleHooks.kt). ClanManager is out of Player; ClanChannel stays
+(getRaid body: dies in T2-d). DEFER-1 residue is exactly 5 sites: Elysian
+getPrayerPoints ~2955, faith-necklace restore ~3159, and the three
+drainSkill overrides ~3504/~3512/~3520.
+
 | Import(s) | Treatment |
 |---|---|
-| Prayer, PrayerManagerKeys | BLOCKED on Track 3.1 (nightmare curse); afterwards: varbit reads + id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
-| Teleport, ForceTeleport, TeleportType, SpellbookSwap, DeathChargeKt | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session |
-| Raid, RaidParty, Inferno | Phase-B flag lift on RegionArea (isRaid…/isInferno…) like ToA |
-| ClanChannel, ClanManager | settings-driven; likely a core-side interface + content impl |
-| Construction, RoomReference, ConstructionKeys | `getCurrentHouse()` instanceof-check — flag lift on RegionArea; Keys import then reviewable |
-| CharterLocation, AdventurersLogIcon, AvasDevice | small one-off lifts/moves; batch into one session |
-| GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings, FarmingKeys | accessor residue — these die only if the remaining in-Player calls move behind events (login refresh, death pipeline, per-tick already done); judge per site in the inventory session, forcing nothing |
+| Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
+| ~~Teleport, ForceTeleport, TeleportType~~ | DONE in T2-c (package move to core) (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
+| ~~Raid, RaidParty, ClanChannel~~ | DONE in T2-d (RaidAccess accessor; getRaid deleted) (~~Inferno~~ DONE in T2-b) |
+| ClanChannel | ~~ClanManager~~ DONE in T2-a follow-up (ClanLifecycleHooks.kt); ClanChannel stays for the getRaid body — dies in T2-d |
+| RoomReference, ConstructionKeys | ~~Construction~~ DONE in T2-b (currentHouse accessor); Keys stays for DEFER-2 roomPreview (tip-jar logout DONE in T2-a) |
+| ~~CharterLocation, AdventurersLogIcon, AvasDevice~~ | ALL DONE (AvasDevice T2-a; CharterLocation resolver + AdventurersLogIcon deletion T2-b) |
+| FarmingKeys | ~~GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings~~ DONE in T2-a; FarmingKeys stays for the two movement-path refreshes ~1079/~1221 (DEFER-3) |
+
+T2-b landed (2026-09-06, 4 commits): Inferno shift-teleport check →
+RegionArea.isShiftTeleportationProhibited() flag lift (the flag exists
+for future area lifts; Inferno is the sole overrider);
+Player.getCurrentHouse → ConstructionKeys.currentHouse(player) (17
+sites, 10 files); Trader Stan charter resolution →
+CharterLocation.traderStanShopName (openShop is generic; both live call
+paths resolve first); dead adventurer's-log surface deleted per D-2 (16
+no-op sites, 6 files; AdventurersLogIcon enum retained for the NR
+track). Divergence in Barrows: the plan's orphan guard hit — the
+equipmentPieces/chestCount/joinedEquipmentLootString computation fed
+ONLY the deleted log entry, so the whole dead block went with it
+(behavior-neutral, pure reads). Player imports 25 → 21 (−AdventurersLogIcon
+−Inferno −CharterLocation −Construction).
+
+T2-c landed (2026-09-06, 1 commit): Teleport/TeleportType/ForceTeleport
+moved to core (com.zenyte.game.world.entity.player.teleport; 83-file
+import retarget; Magic.logger decoupled first). The structures/
+subpackage and the six other teleports classes stay in content.
+TeleportType keeps the structures.* wildcard — the one planned content
+import in a core-path file; enum→structure decoupling is future design
+work. Follow-up inventory: 19 engine files import the non-moved teleport
+classes (ItemTeleport 6, TeleportCollection 9, SpellbookTeleport 2,
+MinigameGroupFinder 2).
+
+T2-d landed (2026-09-06, 1 commit) — **TRACK 2 CAMPAIGN CLOSED**:
+Player.getRaid → RaidAccess.raid(player) (86 Player-receiver sites; 59
+files by count-gated sed + 6 verbatim; census corrected — 4 getRaid
+definers, only Player's moved; SharedStorageUI left the D-3 list, its
+receiver is raidController). Java subpackages needed the RaidAccess
+import (50 files — the plan's same-package claim held only for the exact
+package); +6 D-3 baseline import lines (the planned 5 + StorageUnitOPlugin,
+whose file already had cox imports but the baseline counts lines).
+Player's 15 remaining content imports are exactly Track 1's eleven field
+types (GodBooks, ItemRetrievalService, RespawnPoint, PrivateStorage,
+PetInsurance, GauntletItemStorage, Duel, TOAPlayerData, LightBox,
+PuzzleBox, Stash) + the four deferral imports (PrayerManagerKeys
+DEFER-1, ConstructionKeys/RoomReference DEFER-2, FarmingKeys DEFER-3).
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 
-1. **Nightmare curse reimplementation** → route the protection-prayer
-   scramble at activation input (`cursePrayerTypeReverse` already exists)
-   so varbits always reflect true effect. Then re-run the G3 audit (one
-   table row changes) and convert the ~25 engine `isActive` reads to
-   `varManager.getBitValue(prayer.getVarbit()) == 1`. End-state after
-   that: delete the `activePrayers` map, varbit becomes the sole truth
-   (the OpenRune model). Requires Nightmare play-testing.
-2. **Soft-timer system** → an OpenRune-style per-player timer slot in the
-   tick (register at login, fixed processing order, per-player throw
-   isolation). Migrate farming/hunter/prayer drain onto it and DELETE
-   `PlayerProcessEvent`. One infra session + one migration session.
+1. **Nightmare curse reimplementation** → curse fix + engine varbit
+   reads DONE (T3.1a routed the scramble at activation input so varbits
+   always reflect true effect, G3 re-audited in HANDOVER_after_G3.md §7;
+   T3.1b converted all 32 engine `isActive` reads — 31 greppable + 1
+   dynamic — to `getBitValue` via the new core-side `PrayerVarbits`
+   holder). Remaining: map deletion end-state — delete the
+   `activePrayers` map so varbit becomes the sole truth (the OpenRune
+   model) — needs soft timers (Track 3.2) for the drain accumulator.
+   Requires Nightmare play-testing.
+2. **Soft-timer system** → DONE (T3.2, one session): OpenRune-shape
+   `PlayerTimerMap`/`PlayerTimers`/`PlayerTimerEvent.Soft`/
+   `PlayerTimerProcessor` in org.rsmod.game.timer + events;
+   farming/hunter/prayer drain migrated onto soft timers (scheduled in
+   one PlayerLoginEvent subscriber, fire order preserved by insertion
+   order); `PlayerProcessEvent` retired — zero code references remain.
+   Timer ids GRAVESTONE=4 and AVAS_DEVICE=5 are reserved for the T2-a
+   tick-driver moves.
 3. *(Optional, out of campaign)* per-action content events (catch-fish,
    burn-log…) if diary progress should ever be event-driven — the G2
    census showed an XP broadcast is the wrong shape.

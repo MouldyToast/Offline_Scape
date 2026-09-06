@@ -29,7 +29,7 @@ public final class CapeRackOA implements ObjectInteraction, ItemOnObjectAction {
     @Override
     public void handleObjectAction(Player player, Construction construction, RoomReference reference, WorldObject object, int optionId, String option) {
         if (option.equals("search")) {
-            if (player.getCurrentHouse() != construction) {
+            if (ConstructionKeys.currentHouse(player) != construction) {
                 player.sendMessage("Only the owner of the house can use the cape rack.");
                 return;
             }

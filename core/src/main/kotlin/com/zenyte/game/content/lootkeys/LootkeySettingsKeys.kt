@@ -2,9 +2,12 @@
 
 package com.zenyte.game.content.lootkeys
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.login.LoginManager
 import org.rsmod.api.attr.AttributeKey
+import com.zenyte.plugins.events.ServerLaunchEvent
+import org.rsmod.game.events.PlayerLoginEvent
 
 /**
  * Persisted loot key settings. Saved under attrPersistence["lootkey_settings"]
@@ -56,4 +59,15 @@ fun Player.setLootkeySettings(settings: LootkeySettings?) {
 fun rawLootkeySettingsAttr(player: Player): Any? {
     @Suppress("UNCHECKED_CAST")
     return player.attr[LOOTKEY_SETTINGS_KEY as AttributeKey<Any>]
+}
+
+/** T2-a: loot-chest interface resend at login (was in the login block; guards mirrored verbatim). */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    event.worldThread.eventBus.subscribeUnbound(PlayerLoginEvent::class.java) {
+        val settings = player.lootkeySettings()
+        if (settings?.currentItemsInChest?.isEmpty() == false) {
+            LootkeySettings.sendOpenChest(player)
+        }
+    }
 }

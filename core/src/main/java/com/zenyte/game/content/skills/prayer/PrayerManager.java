@@ -119,13 +119,7 @@ public class PrayerManager {
 
 	private void handleActivation(Prayer prayer) {
 		deactivateCollisions(prayer);
-		if (player.getBooleanTemporaryAttribute("nightmare_curse")) {
-			final Prayer originalPrayer = cursePrayerTypeReverse(prayer);
-			player.getVarManager().sendBit(prayer.getVarbit(), 0);
-			player.getVarManager().sendBit(originalPrayer.getVarbit(), 1);
-		} else {
-			player.getVarManager().sendBit(prayer.getVarbit(), 1);
-		}
+		player.getVarManager().sendBit(prayer.getVarbit(), 1);
 
 		activePrayers.put(prayer, (int) WorldThread.getCurrentCycle());
 		player.getPacketDispatcher().sendSoundEffect(prayer.getSoundEffect());
@@ -232,12 +226,7 @@ public class PrayerManager {
 	}
 
 	private void deactivateWithoutRemoving(final Prayer prayer) {
-		if (player.getBooleanTemporaryAttribute("nightmare_curse")) {
-			final Prayer originalPrayer = cursePrayerTypeReverse(prayer);
-			player.getVarManager().sendBit(originalPrayer.getVarbit(), 0);
-		} else {
-			player.getVarManager().sendBit(prayer.getVarbit(), 0);
-		}
+		player.getVarManager().sendBit(prayer.getVarbit(), 0);
 		player.getVarManager().sendBit(4103, 0);
 		if (getPrayerPoints() == 0) {
 			player.getPacketDispatcher().sendSoundEffect(OUT_OF_PRAY_SOUND);

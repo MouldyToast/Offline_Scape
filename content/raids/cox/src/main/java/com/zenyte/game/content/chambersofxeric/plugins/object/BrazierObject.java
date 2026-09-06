@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.chambersofxeric.npc.IcefiendNPC;
 import com.zenyte.game.content.chambersofxeric.room.IceDemonRoom;
@@ -30,7 +31,7 @@ public class BrazierObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, IceDemonRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, IceDemonRoom.class, room -> {
             final int chance = player.getSkills().getLevel(SkillConstants.FIREMAKING) / 6;
             player.getActionManager().setAction(new Action() {
 
@@ -83,7 +84,7 @@ public class BrazierObject implements ObjectAction {
     }
 
     private void light(@NotNull final Player player, @NotNull final WorldObject object) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, IceDemonRoom.class, room -> {
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, IceDemonRoom.class, room -> {
             if (object.getId() == ObjectId.BRAZIER_29747) {
                 if (room.getDemon().getStage() != 0) {
                     player.sendMessage("That\'s not going to help now.");

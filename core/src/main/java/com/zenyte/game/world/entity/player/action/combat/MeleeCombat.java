@@ -1,10 +1,10 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
+import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
-import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
@@ -113,7 +113,7 @@ public class MeleeCombat extends PlayerCombat {
         result = Math.floor(result);
         if (!ignorePrayers) {
             if (target instanceof Player) {
-                if (PrayerManagerKeys.prayerManager((Player) target).isActive(Prayer.PROTECT_FROM_MELEE)) {
+                if (((Player) target).getVarManager().getBitValue(PrayerVarbits.PROTECT_FROM_MELEE) == 1) {
                     result *= target.getMeleePrayerMultiplier();
                     result = Math.floor(result);
                 }

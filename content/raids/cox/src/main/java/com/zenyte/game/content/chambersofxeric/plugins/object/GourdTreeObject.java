@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.skills.GourdPicking;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -15,7 +16,7 @@ public class GourdTreeObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> player.getActionManager().setAction(new GourdPicking(option.equalsIgnoreCase("Pick"))));
+        RaidAccess.raid(player).ifPresent(raid -> player.getActionManager().setAction(new GourdPicking(option.equalsIgnoreCase("Pick"))));
     }
 
     @Override

@@ -7,7 +7,6 @@ import com.near_reality.tools.logging.GameLogMessage;
 import com.near_reality.tools.logging.GameLogger;
 import com.zenyte.GameToggles;
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.content.minigame.inferno.model.InfernoCompletions;
@@ -172,7 +171,6 @@ public class WorldBroadcasts {
                 secondaryBuilder.append(boxName);
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(it.getId() + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case TREASURE_TRAILS: {
@@ -197,7 +195,6 @@ public class WorldBroadcasts {
                         .append(player.getNumericAttribute("completed " + tier + " treasure  trails"));
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(id + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case RARE_DROP: {
@@ -245,7 +242,6 @@ public class WorldBroadcasts {
                 }
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(item.getId() + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case LVL_99: {
@@ -264,7 +260,6 @@ public class WorldBroadcasts {
                 }
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(skillName.toLowerCase() + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case MAXED: {
@@ -278,7 +273,6 @@ public class WorldBroadcasts {
                 }
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(AdventurersLogIcon.OVERALL_SKILLING, secondaryBuilder.toString());
                 String gamemode = "";
                 if(player.getGameMode().toApi() == ApiGameMode.ULTIMATE_IRON_MAN)
                     gamemode = "uim";
@@ -308,7 +302,6 @@ public class WorldBroadcasts {
                 }
                 secondaryBuilder.append("!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(name.toLowerCase() + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case PET: {
@@ -320,7 +313,6 @@ public class WorldBroadcasts {
                 secondaryBuilder.append(Objects.requireNonNull(NPCDefinitions.get(pet.petId())).getName());
                 secondaryBuilder.append(" pet!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(pet.itemId() + ".png", secondaryBuilder.toString(), false);
                 break;
             }
             case GAMBLE_FIRECAPE: {
@@ -329,7 +321,6 @@ public class WorldBroadcasts {
                 secondaryBuilder.append(player.getName());
                 secondaryBuilder.append(" has received the TzRek-Jad pet by gambling their fire cape!");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry("13225.png", secondaryBuilder.toString(), false);
                 break;
             }
             case HCIM_DEATH: {
@@ -343,7 +334,6 @@ public class WorldBroadcasts {
                 secondaryBuilder.append(player.getSkills().getTotalLevel());
                 appendCauseOfDeath(player, secondaryBuilder, args);
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(AdventurersLogIcon.HCIM_DEATH, secondaryBuilder.toString());
                 break;
             }
             case GROUP_HCIM_DEATH: {
@@ -364,7 +354,6 @@ public class WorldBroadcasts {
                 else
                     secondaryBuilder.append("The group is out of lives and has been reverted back to a regular Iron group.");
                 builder.append(secondaryBuilder);
-                player.sendAdventurersEntry(AdventurersLogIcon.GROUP_HCIM_DEATH, secondaryBuilder.toString());
                 break;
             }
             case HELPFUL_TIP: {

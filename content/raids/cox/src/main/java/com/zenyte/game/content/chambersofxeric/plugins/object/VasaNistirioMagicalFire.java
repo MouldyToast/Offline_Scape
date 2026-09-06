@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.SoundEffect;
@@ -21,7 +22,7 @@ public class VasaNistirioMagicalFire implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (player.getNumericTemporaryAttribute("tendril_cox_delay").longValue() > System.currentTimeMillis()) {
                 return;
             }

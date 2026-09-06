@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.dialogue;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.content.chambersofxeric.map.RaidMap;
@@ -25,7 +26,7 @@ public final class RaidFloorOverviewD extends OptionsMenuD {
 
 	@Override
 	public void handleClick(final int slotId) {
-		final Optional<Raid> optionalRaid = player.getRaid();
+		final Optional<Raid> optionalRaid = RaidAccess.raid(player);
 		if (!optionalRaid.isPresent()) {
 			player.sendMessage("You need to be in a raid to view the floors.");
 			return;
@@ -44,7 +45,7 @@ public final class RaidFloorOverviewD extends OptionsMenuD {
 	}
 
 	public static final void open(final Player player) {
-		final Optional<Raid> optionalRaid = player.getRaid();
+		final Optional<Raid> optionalRaid = RaidAccess.raid(player);
 		if (!optionalRaid.isPresent()) {
 			player.sendMessage("You need to be in a raid to view the floors.");
 			return;

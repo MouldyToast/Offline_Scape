@@ -1,6 +1,7 @@
 package com.zenyte.game.world.entity.player;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
@@ -202,7 +203,7 @@ public enum Emote {
 			if (player.isLocked()) {
 				return;
 			}
-			if (player.getRaid().isPresent()) {
+			if (RaidAccess.raid(player).isPresent()) {
 				player.sendMessage("You can't do that here.");
 				return;
 			}

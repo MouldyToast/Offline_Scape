@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.player.Player;
@@ -11,7 +12,7 @@ public class IronPickaxeObject implements ObjectAction {
 
 	@Override
 	public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-		player.getRaid().ifPresent(raid -> {
+		RaidAccess.raid(player).ifPresent(raid -> {
 			if (!player.getInventory().hasFreeSlots()) {
 				player.sendMessage("You need some free inventory space to take the tools.");
 				return;

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.CreatureKeeperRoom;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnObjectAction;
@@ -16,12 +17,12 @@ public class CreatureKeeperChest implements ObjectAction, ItemOnObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.openChest(player, object)));
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.openChest(player, object)));
     }
 
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, final int slot, final WorldObject object) {
-        player.getRaid().ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.openChest(player, object)));
+        RaidAccess.raid(player).ifPresent(raid -> raid.ifInRoom(player, CreatureKeeperRoom.class, room -> room.openChest(player, object)));
     }
 
     @Override

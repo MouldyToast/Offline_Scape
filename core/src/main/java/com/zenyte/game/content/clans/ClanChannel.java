@@ -5,8 +5,6 @@ import com.zenyte.cores.CoresManager;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.plugins.Listener;
-import com.zenyte.plugins.ListenerType;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import org.jetbrains.annotations.NotNull;
@@ -67,15 +65,6 @@ public final class ClanChannel {
 		enterRank = ClanRank.ANYONE;
 		talkRank = ClanRank.ANYONE;
 		kickRank = ClanRank.OWNER;
-	}
-
-	@Listener(type = ListenerType.LOGOUT)
-	public static void onLogout(final Player player) {
-		final ClanChannel channel = player.getSettings().getChannel();
-		if (channel == null) {
-			return;
-		}
-		channel.members.remove(player);
 	}
 
 	public void setTransientVariables() {

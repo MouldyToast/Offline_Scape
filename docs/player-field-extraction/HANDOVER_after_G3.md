@@ -115,3 +115,12 @@ repo-wide core→content (excl. /content/) 1181; PrayerManagerKeys tokens
   (HANDOVER_after_rotation.md §6), and the recorded soft-timer end-state
   for PlayerProcessEvent and the nightmare-curse reimplementation (§4
   above).
+
+## 7. POST-FIX ADDENDUM (T3.1a, 2026-09-06): rows 2 and 5 now YES
+
+The curse branches in handleActivation and deactivateWithoutRemoving were
+deleted; the input scramble in NightmareBossArea.togglePrayer and the
+curse start/end shifts in BaseNightmareNPC are the sole curse mechanism
+and route through the normal activation path. Every row of §3's table now
+reads YES: isActive(p) ⇔ getBitValue(p.getVarbit()) == 1 in all engine-
+observable states. G3 is re-opened and executed as T3.1b.

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.content.chambersofxeric.room.LargeScavengerRoom;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.DirectionUtil;
@@ -31,7 +32,7 @@ public class ScavengerBoulder implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (option.equalsIgnoreCase("Push")) {
                 if (!(object instanceof LargeScavengerRoom.BlockingObject)) {
                     return;

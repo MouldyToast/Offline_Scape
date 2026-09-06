@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.plugins.object;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -16,7 +17,7 @@ public class HammerObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (!player.getInventory().hasFreeSlots()) {
                 player.sendMessage("You need some free inventory space to take a hammer.");
                 return;

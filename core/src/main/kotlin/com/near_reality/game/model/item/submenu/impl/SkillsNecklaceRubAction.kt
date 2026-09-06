@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.impl
 
 import com.near_reality.game.model.item.submenu.ISubMenuAction
 import com.near_reality.game.model.item.submenu.NecklaceTeleport
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
+import com.zenyte.game.world.entity.player.teleport.Teleport
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 

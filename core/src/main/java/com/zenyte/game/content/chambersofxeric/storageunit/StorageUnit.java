@@ -1,5 +1,6 @@
 package com.zenyte.game.content.chambersofxeric.storageunit;
 
+import com.zenyte.game.content.chambersofxeric.RaidAccess;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
@@ -143,7 +144,7 @@ public enum StorageUnit {
         if (!World.exists(object)) {
             return;
         }
-        player.getRaid().ifPresent(raid -> {
+        RaidAccess.raid(player).ifPresent(raid -> {
             if (raid.isConstructingStorage()) {
                 player.sendMessage("Someone else is already building a storage unit.");
                 return;

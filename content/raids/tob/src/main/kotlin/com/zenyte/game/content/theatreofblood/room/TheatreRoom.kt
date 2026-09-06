@@ -5,7 +5,7 @@ import com.near_reality.game.world.spawnFloorItem
 import com.zenyte.cores.CoresManager
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.ItemRetrievalService
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
+import com.zenyte.game.world.entity.player.teleport.Teleport
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportCollection
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.content.theatreofblood.*

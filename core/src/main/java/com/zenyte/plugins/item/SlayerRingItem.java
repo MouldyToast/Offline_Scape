@@ -1,8 +1,8 @@
 package com.zenyte.plugins.item;
 
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;

@@ -259,10 +259,6 @@ public class Brazier {
                 brazier.transitionState(State.UNLIT);
                 player.sendMessage("You fix the brazier.");
                 Wintertodt.addPoints(player, 25);
-                // TODO only award construction exp if user has a house already
-//                if (player.getConstruction().getHouse() != null) {
-//                    player.getSkills().addXp(Skills.CONSTRUCTION, 4 * player.getSkills().getLevelForXp(Skills.CONSTRUCTION));
-//                }
                 player.getTemporaryAttributes().remove("fixing_wintertodt_brazier");
             }, 2);
         }

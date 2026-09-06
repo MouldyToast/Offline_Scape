@@ -34,8 +34,8 @@ public class PresetManager {
     }
 
     /**
-     * Copies the persisted state of another manager into this one. Used by the
-     * legacy load path above and by PresetManagerKeys' attr rehydration; the
+     * Copies the persisted state of another manager into this one. Used by
+     * PresetManagerKeys' attr rehydration; the
      * preset list is deep-copied so this manager never shares Preset instances
      * with a parser or Gson-rehydrated snapshot.
      */

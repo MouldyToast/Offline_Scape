@@ -66,7 +66,7 @@ public class Gravestone {
 
     /**
      * Copies the persisted state of another gravestone into this one. Used by
-     * the legacy load path above and by GravestoneKeys' attr rehydration. The
+     * GravestoneKeys' attr rehydration. The
      * container null-guard covers Gson snapshots whose final-field initializer
      * never ran (Unsafe allocation with an absent JSON key), mirroring the
      * guard the legacy load path always had.

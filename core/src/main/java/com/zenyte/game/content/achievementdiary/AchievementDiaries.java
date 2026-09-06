@@ -67,7 +67,7 @@ public final class AchievementDiaries {
 
 	/**
 	 * Copies the persisted state of another diary manager into this one. Used
-	 * by the legacy load path in onInit and by AchievementDiariesKeys' attr
+	 * by AchievementDiariesKeys' attr
 	 * rehydration. Mirrors the legacy setFields initialize exactly: the
 	 * progress map entries are copied and the pending-reward per-area maps
 	 * are adopted by reference.

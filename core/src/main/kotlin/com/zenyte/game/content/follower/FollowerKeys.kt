@@ -2,8 +2,12 @@
 
 package com.zenyte.game.content.follower
 
+import com.google.common.eventbus.Subscribe
 import com.zenyte.game.world.entity.player.Player
+import com.zenyte.plugins.events.ServerLaunchEvent
 import org.rsmod.api.attr.AttributeKey
+import org.rsmod.game.events.PlayerLoginEvent
+import org.rsmod.game.events.PlayerLogoutEvent
 
 /**
  * Transient session key for the player's follower (pet). No persistenceKey:
@@ -19,6 +23,28 @@ val FOLLOWER_KEY: AttributeKey<Follower> = AttributeKey()
  * Java callers use FollowerKeys.follower(player).
  */
 fun Player.follower(): Follower? = attr[FOLLOWER_KEY]
+
+/**
+ * Spawns the pet from the persisted petId at login and finishes it at
+ * logout — the blocks formerly hardcoded in Player.onLobbyClose and
+ * Player's logout path (E6 ruling: pet now appears at world entry, during
+ * the login sequence, instead of at the lobby "Play" click; timing change
+ * accepted). The null-follower guard keeps the spawn idempotent, exactly
+ * as the lobby-close block was across lobby hops.
+ */
+@Subscribe
+fun onServerLaunch(event: ServerLaunchEvent) {
+    val bus = event.worldThread.eventBus
+    bus.subscribeUnbound(PlayerLoginEvent::class.java) {
+        val petId = player.petId
+        if (petId != -1 && PetWrapper.getByPet(petId) != null && player.follower() == null) {
+            player.setFollower(Follower(petId, player))
+        }
+    }
+    bus.subscribeUnbound(PlayerLogoutEvent::class.java) {
+        player.follower()?.finish()
+    }
+}
 
 /**
  * Replaces Player.setFollower with identical semantics: clearing an existing

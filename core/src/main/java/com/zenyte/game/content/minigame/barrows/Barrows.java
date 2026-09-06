@@ -109,8 +109,8 @@ public final class Barrows {
     }
 
     /**
-     * Copies the persisted state of another Barrows into this one. Used by the
-     * legacy load path above and by BarrowsKeys' attr rehydration. Deliberately
+     * Copies the persisted state of another Barrows into this one. Used by
+     * BarrowsKeys' attr rehydration. Deliberately
      * copies ONLY the six fields the legacy load path copied: shutDoorways,
      * openDoorway and puzzleSolved are persisted in old saves but have always
      * been discarded on load — resurrecting them here would change behavior.

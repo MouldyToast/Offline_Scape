@@ -14,7 +14,6 @@ data class PlayerData(
     val skills: Skills = Skills(),
     val equipment: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
     val inventory: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
-    val seedVault: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
     val runePouch: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
     val seedBox: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
     val lootingBag: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
@@ -25,12 +24,11 @@ data class PlayerData(
     val retrievalService: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
     val privateStorage: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
     val bank: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
-    val gravestone: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
     override val attributes: Attributes = Attributes()
 ) : AttributeHolder {
 
     val username get() = playerInformation.username
-    val containerWrapperList get() = listOf(equipment, inventory, seedVault, runePouch, seedBox, lootingBag, herbSack, bonePouch, dragonhidePouch, gemBag, retrievalService, privateStorage, bank, gravestone)
+    val containerWrapperList get() = listOf(equipment, inventory, runePouch, seedBox, lootingBag, herbSack, bonePouch, dragonhidePouch, gemBag, retrievalService, privateStorage, bank)
 
     @Serializable
     data class MetaInformation(

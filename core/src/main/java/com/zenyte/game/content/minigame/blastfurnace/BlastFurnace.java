@@ -288,7 +288,7 @@ public class BlastFurnace {
 
     /**
      * Copies the persisted state (ore and bar tallies) of another furnace into
-     * this one. Used by the legacy load path above and by BlastFurnaceKeys'
+     * this one. Used by BlastFurnaceKeys'
      * attr rehydration. Null-guards cover Gson snapshots whose final-field
      * initializers never ran (Unsafe allocation with absent JSON keys); the
      * legacy path never trips them.

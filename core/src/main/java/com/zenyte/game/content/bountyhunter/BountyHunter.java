@@ -80,7 +80,7 @@ public class BountyHunter {
 
     /**
      * Copies the persisted state (skip entries) of another bounty hunter into
-     * this one. Used by the legacy load path above and by BountyHunterKeys'
+     * this one. Used by BountyHunterKeys'
      * attr rehydration; entries flow through addSkipEntry + filterSkips
      * exactly as the legacy load path always did.
      */

@@ -88,8 +88,8 @@ public final class DwarfMultiCannon {
 	}
 
 	/**
-	 * Copies the persisted state of another cannon into this one. Used by the
-	 * legacy load path above and by DwarfMultiCannonKeys' attr rehydration.
+	 * Copies the persisted state of another cannon into this one. Used by
+	 * DwarfMultiCannonKeys' attr rehydration.
 	 * The transient player back-ref is NOT copied: the receiving instance is
 	 * always constructed with its player (legacy onInit re-parented manually;
 	 * accessor construction makes that redundant).

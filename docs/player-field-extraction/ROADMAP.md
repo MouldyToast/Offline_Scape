@@ -36,8 +36,8 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 21
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1146
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 18
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1091 (includes the one planned TeleportType structures.* wildcard)
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
@@ -151,7 +151,7 @@ drainSkill overrides ~3504/~3512/~3520.
 | Import(s) | Treatment |
 |---|---|
 | Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
-| Teleport, ForceTeleport, TeleportType | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
+| ~~Teleport, ForceTeleport, TeleportType~~ | DONE in T2-c (package move to core) (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
 | Raid, RaidParty | Phase-B flag lift on RegionArea (isRaid…) like ToA (~~Inferno~~ DONE in T2-b: isShiftTeleportationProhibited) |
 | ClanChannel | ~~ClanManager~~ DONE in T2-a follow-up (ClanLifecycleHooks.kt); ClanChannel stays for the getRaid body — dies in T2-d |
 | RoomReference, ConstructionKeys | ~~Construction~~ DONE in T2-b (currentHouse accessor); Keys stays for DEFER-2 roomPreview (tip-jar logout DONE in T2-a) |
@@ -171,6 +171,16 @@ equipmentPieces/chestCount/joinedEquipmentLootString computation fed
 ONLY the deleted log entry, so the whole dead block went with it
 (behavior-neutral, pure reads). Player imports 25 → 21 (−AdventurersLogIcon
 −Inferno −CharterLocation −Construction).
+
+T2-c landed (2026-09-06, 1 commit): Teleport/TeleportType/ForceTeleport
+moved to core (com.zenyte.game.world.entity.player.teleport; 83-file
+import retarget; Magic.logger decoupled first). The structures/
+subpackage and the six other teleports classes stay in content.
+TeleportType keeps the structures.* wildcard — the one planned content
+import in a core-path file; enum→structure decoupling is future design
+work. Follow-up inventory: 19 engine files import the non-moved teleport
+classes (ItemTeleport 6, TeleportCollection 9, SpellbookTeleport 2,
+MinigameGroupFinder 2).
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 

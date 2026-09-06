@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.bountyhunter.BountyHunterKeys;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.model.ui.Interface;
@@ -21,7 +22,7 @@ public class BountyHunterStoreInterface extends Interface {
     public void open(final Player player) {
         /*inal PacketDispatcher dispatcher = player.getPacketDispatcher();
         final VarManager varManager = player.getVarManager();
-        final BountyHunter bounty = player.getBountyHunter();
+        final BountyHunter bounty = BountyHunterKeys.bountyHunter(player);
         final IntEnum layerEnum = Enums.BOUNTY_HUNTER_REWARDS;
         player.getInterfaceHandler().sendInterface(this);
         varManager.sendVarInstant(1137, bounty.getValue(BountyHunterVar.CURRENT_HUNTER_KILLS));
@@ -59,7 +60,7 @@ public class BountyHunterStoreInterface extends Interface {
                 return;
             }
             int amount = option.amount;
-            final int points = player.getBountyHunter().getPoints();
+            final int points = BountyHunterKeys.bountyHunter(player).getPoints();
             final int cost = reward.getCost();
             if (amount > (points / cost)) {
                 amount = points / cost;
@@ -103,7 +104,7 @@ public class BountyHunterStoreInterface extends Interface {
                     player.sendMessage("You can only own one rune pouch at a time!");
                 }
             }
-            player.getBountyHunter().setPoints(points - (cost * amount));
+            BountyHunterKeys.bountyHunter(player).setPoints(points - (cost * amount));
             player.getInventory().addOrDrop(new Item(item, amount));*/
         });
     }

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.variables;
 
+import com.zenyte.game.content.bountyhunter.BountyHunterKeys;
 import com.near_reality.game.content.consumables.drinks.DivinePotion;
 import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.kebos.alchemicalhydra.instance.AlchemicalHydraInstance;
@@ -52,9 +53,9 @@ public enum TickVariable {
 
     BOUNTY_HUNTER_TARGET_LOSS((player, ticks) -> {
         if (ticks == 100) {
-            player.getBountyHunter().halfTimeNotification();
+            BountyHunterKeys.bountyHunter(player).halfTimeNotification();
         } else if (ticks == 0) {
-            player.getBountyHunter().abandonTarget();
+            BountyHunterKeys.bountyHunter(player).abandonTarget();
         }
     }),
     BH_V2_COOLDOWN,

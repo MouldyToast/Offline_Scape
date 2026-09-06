@@ -39,7 +39,7 @@ public class WildernessOverlay extends Interface {
         dispatcher.sendComponentVisibility(getInterface(), getComponent("Red circle"), true);
         /* BH not used so lets skip. */
         /*if (GameConstants.BOUNTY_HUNTER) {
-            final BountyHunter bountyhunter = player.getBountyHunter();
+            final BountyHunter bountyhunter = BountyHunterKeys.bountyHunter(player);
             dispatcher.sendComponentText(getInterface(), getComponent("Current rogue streak"), bountyhunter.getValue(BountyHunterVar.CURRENT_ROGUE_KILLS));
             dispatcher.sendComponentText(getInterface(), getComponent("Current hunter streak"), bountyhunter.getValue(BountyHunterVar.CURRENT_HUNTER_KILLS));
             dispatcher.sendComponentText(getInterface(), getComponent("Rogue streak record"), bountyhunter.getValue(BountyHunterVar.ROGUE_KILLS_RECORD));
@@ -56,7 +56,7 @@ public class WildernessOverlay extends Interface {
         if (!GameConstants.BOUNTY_HUNTER) {
             return;
         }
-        final BountyHunter bounty = player.getBountyHunter();
+        final BountyHunter bounty = BountyHunterKeys.bountyHunter(player);
         final Player target = bounty.getTarget();
         if (target == null) {
             return;

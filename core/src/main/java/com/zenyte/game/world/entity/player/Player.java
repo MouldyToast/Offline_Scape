@@ -55,7 +55,6 @@ import com.zenyte.game.content.sailing.CharterLocation;
 import com.zenyte.game.content.skills.construction.Construction;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
-import com.zenyte.game.content.skills.farming.Farming;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
 import com.zenyte.game.content.skills.hunter.HunterKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
@@ -514,16 +513,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private PlayerInformation playerInformation;
     private transient Entity lastTarget;
     private transient DelayedActionManager delayedActionManager = new DelayedActionManager(this);
-    /**
-     * @deprecated Legacy persistence slot for the farming state, superseded by
-     * attrPersistence["farming"] (see FarmingKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "farming" key entirely. Delete field and getter with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    private Farming farming;
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
     private PetInsurance petInsurance = new PetInsurance(this);
     @Expose
@@ -4921,16 +4910,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public DelayedActionManager getDelayedActionManager() {
         return delayedActionManager;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only Farming.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * FarmingKeys.farming. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Farming getFarming() {
-        return farming;
     }
 
     public PacketDispatcher getPacketDispatcher() {

@@ -51,25 +51,9 @@ public class Farming {
 
     @Subscribe
     public static void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = FarmingKeys.rawFarmingAttr(player) != null;
-        FarmingKeys.farming(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the farming state under the
-        // top-level "farming" JSON key on the parser player. The adopt below
-        // migrates it into the attr (running the same copy constructor the
-        // legacy setFields wholesale replace always ran); the next save
-        // persists it under attrPersistence["farming"] and drops the legacy
-        // key.
-        @SuppressWarnings("deprecation")
-        final Farming savedFarming = savedPlayer.getFarming();
-        if (savedFarming == null) {
-            return;
-        }
-        FarmingKeys.adoptFarming(player, savedFarming);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        FarmingKeys.farming(event.getPlayer());
     }
 
     public void refresh() {

@@ -1,6 +1,7 @@
 package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.preset.PresetManagerKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -71,7 +72,7 @@ public class DistancedBanker extends NPCPlugin implements ItemOnNPCAction {
         bind("Last-Preset", new OptionHandler() {
             @Override
             public void handle(Player player, NPC npc) {
-                player.getPresetManager().loadLastPreset();
+                PresetManagerKeys.presetManager(player).loadLastPreset();
             }
             @Override
             public void click(final Player player, final NPC npc, final NPCOption option) {

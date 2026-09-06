@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.preset.Preset;
+import com.zenyte.game.content.preset.PresetManagerKeys;
 import com.zenyte.game.content.preset.PresetManager;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.item.Item;
@@ -69,7 +70,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
         if (!containsPresetManagerInterface) {
             return;
         }
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         final List<Preset> availablePresets = presetManager.getPresets();
         if (availablePresets.isEmpty()) {
             refresh(player, OptionalInt.empty(), false);
@@ -77,7 +78,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private static void refresh(final Player player, @NotNull final OptionalInt optionalSlot, final boolean reselectPreset) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         final boolean isViewingPreset = optionalSlot.isPresent();
         if (isViewingPreset) {
             final int slot = optionalSlot.getAsInt();
@@ -132,7 +133,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
 
     @Override
     public void open(final Player player) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         presetManager.revalidatePresets();
         player.getInterfaceHandler().sendInterface(this);
         player.getPacketDispatcher().sendClientScript(BUILD_PRESET_INTERFACE_BASE_CLIENTSCRIPT);
@@ -146,7 +147,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private void refreshSize(@NotNull final Player player) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Preset count"), presetManager.getTotalPresets());
         player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Preset cap"), presetManager.getMaximumPresets());
     }
@@ -154,7 +155,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     @Override
     protected void build() {
         bind("Create Preset", player -> {
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             if (presetManager.getTotalPresets() >= presetManager.getMaximumPresets()) {
                 player.sendMessage("You have reached your maximum quota of presets.");
                 return;
@@ -198,7 +199,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
             } else if (option == 4) {
                 rename(player, slotId);
             } else if (option == 5) {
-                final Preset preset = player.getPresetManager().getPreset(slotId);
+                final Preset preset = PresetManagerKeys.presetManager(player).getPreset(slotId);
                 if (preset == null) {
                     return;
                 }
@@ -206,7 +207,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
                     player.sendMessage("You may not set locked presets as default preset.");
                     return;
                 }
-                player.getPresetManager().setDefaultPreset(slotId);
+                PresetManagerKeys.presetManager(player).setDefaultPreset(slotId);
                 refreshPresetsList(player);
             } else if (option == 6) {
                 delete(player, slotId);
@@ -226,7 +227,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
         bind("Always set placeholders", player -> player.getBank().toggleSetting(BankSetting.ALWAYS_PLACEHOLDER, player.getBank().getSetting(BankSetting.ALWAYS_PLACEHOLDER) == 0));
         bind("Bank", GameInterface.BANK::open);
         bind("Inventory", "Inventory", (player, fromSlot, toSlot) -> {
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             final List<Preset> availablePresets = presetManager.getPresets();
             if (availablePresets.isEmpty()) {
                 player.getInventory().switchItem(fromSlot, toSlot);
@@ -241,7 +242,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
             refresh(player, OptionalInt.of(activeIndex), false);
         });
         bind("Move preset up", (player, slotId, itemId, option) -> {
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             if (presetManager.getTotalPresets() == 0) {
                 player.sendMessage("You do not have any presets yet.");
                 return;
@@ -273,7 +274,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
             refreshPresetsList(player);
         });
         bind("Move preset down", (player, slotId, itemId, option) -> {
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             if (presetManager.getTotalPresets() == 0) {
                 player.sendMessage("You do not have any presets yet.");
                 return;
@@ -330,7 +331,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private int indexOfActivePreset(@NotNull final Player player) {
-        if (player.getPresetManager().getTotalPresets() == 0) {
+        if (PresetManagerKeys.presetManager(player).getTotalPresets() == 0) {
             return -1;
         }
         return player.getVarManager().getValue(ACTIVE_SELECTED_PRESET_VARP);
@@ -341,7 +342,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
             player.sendMessage("You need to be a Ruby member or above to use this feature.");
             return;
         }
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         if (presetManager.getTotalPresets() == 0) {
             player.sendFilteredMessage("You must select a preset from the menu on the left first.");
             return;
@@ -364,7 +365,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private void refreshPresetsList(final Player player) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         final StringBuilder builder = new StringBuilder();
         final int size = presetManager.getTotalPresets();
         final List<Preset> presets = presetManager.getPresets();
@@ -379,7 +380,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     public static void load(final Player player, final int index) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         if (presetManager.getTotalPresets() == 0) {
             player.sendMessage("You haven't set any presets yet.");
             return;
@@ -403,7 +404,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private void rename(final Player player, final int index) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         if (presetManager.getTotalPresets() == 0) {
             player.sendMessage("You haven't set any presets yet.");
             return;
@@ -435,7 +436,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private void overwrite(final Player player, final int index) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         if (presetManager.getTotalPresets() == 0) {
             player.sendMessage("You haven't set any presets yet.");
             return;
@@ -462,7 +463,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     }
 
     private void delete(final Player player, final int index) {
-        final PresetManager presetManager = player.getPresetManager();
+        final PresetManager presetManager = PresetManagerKeys.presetManager(player);
         if (presetManager.getTotalPresets() == 0) {
             player.sendMessage("You haven't set any presets yet.");
             return;
@@ -498,7 +499,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
     private void examine(final Player player, final boolean equipment, final int id) {
         if (id == RunePouch.RUNE_POUCH.getId() || id == RunePouch.DIVINE_RUNE_POUCH.getId()) {
             ItemUtil.sendItemExamine(player, id);
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             final int activeIndex = presetManager.getTotalPresets() == 0 ? -1 : indexOfActivePreset(player);
             if (activeIndex > -1) {
                 final Preset preset = presetManager.getPreset(activeIndex);
@@ -527,7 +528,7 @@ public class PresetManagerInterface extends Interface implements SwitchPlugin {
             return;
         }
         if (equipment) {
-            final PresetManager presetManager = player.getPresetManager();
+            final PresetManager presetManager = PresetManagerKeys.presetManager(player);
             final int activeIndex = presetManager.getTotalPresets() == 0 ? -1 : indexOfActivePreset(player);
             final Integer slot = equipmentSlotComponentMap.get(id);
             if (activeIndex > -1) {

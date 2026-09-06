@@ -395,7 +395,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final ControllerManager controllerManager = new ControllerManager(this);
     @Expose
     private final MusicHandler music = new MusicHandler(this);
-    private final PresetManager presetManager = new PresetManager(this);
+    /**
+     * @deprecated Legacy persistence slot for the preset manager, superseded by
+     * attrPersistence["preset_manager"] (see PresetManagerKeys). Was final
+     * pre-migration; the live player no longer populates it, so post-migration
+     * saves omit the "presetManager" key entirely. Kept non-transient so
+     * pre-migration saves still deserialize into the parser player. Delete
+     * field and getter with the save-rotation phase.
+     */
+    @Deprecated
+    private PresetManager presetManager;
     @Expose
     private final EmotesHandler emotesHandler = new EmotesHandler(this);
     @Expose
@@ -4665,6 +4674,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return music;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only PresetManager.onInitialization
+     * may call this, and only on the parser player. Live access goes through
+     * PresetManagerKeys.presetManager. Removed with the save-rotation phase.
+     */
+    @Deprecated
     public PresetManager getPresetManager() {
         return presetManager;
     }

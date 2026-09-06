@@ -217,7 +217,8 @@ import org.rsmod.api.attr.AttributeMap;
 import org.rsmod.game.events.PlayerDamageReceivedEvent;
 import org.rsmod.game.events.PlayerLoginEvent;
 import org.rsmod.game.events.PlayerLogoutEvent;
-import org.rsmod.game.events.PlayerProcessEvent;
+import org.rsmod.game.timer.PlayerTimerMap;
+import org.rsmod.game.timer.PlayerTimerProcessor;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
@@ -367,6 +368,19 @@ public class Player extends AbstractEntity implements UsernameProvider {
      * restored into attr via putAllFromPersistence at load.
      */
     private Map<String, Object> attrPersistence = new HashMap<>();
+
+    /**
+     * OpenRune-pattern per-player soft timers (org.rsmod.game.timer),
+     * processed once per tick from processEntity at the position the
+     * PlayerProcessEvent publish (and before it, the direct
+     * farming/hunter/prayer driver calls) used to occupy. Transient:
+     * timers are re-scheduled at login.
+     */
+    private final transient PlayerTimerMap softTimers = new PlayerTimerMap();
+
+    public PlayerTimerMap getSoftTimers() {
+        return softTimers;
+    }
 
     public AttributeMap getAttr() {
         return attr;
@@ -1827,7 +1841,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 tickDegradable = 0;
             }
             if (CoresManager.worldThread != null) {
-                CoresManager.worldThread.getEventBus().publish(new PlayerProcessEvent(this));
+                PlayerTimerProcessor.processSoftTimers(this, (int) WorldThread.getCurrentCycle(), CoresManager.worldThread.getEventBus());
             }
             var acidPool = World.getObjectWithId(this.location, ACID_POOL_54148);
             if (acidPool != null) {

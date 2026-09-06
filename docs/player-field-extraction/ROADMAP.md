@@ -145,10 +145,14 @@ Current import list with the expected treatment:
    `activePrayers` map so varbit becomes the sole truth (the OpenRune
    model) — needs soft timers (Track 3.2) for the drain accumulator.
    Requires Nightmare play-testing.
-2. **Soft-timer system** → an OpenRune-style per-player timer slot in the
-   tick (register at login, fixed processing order, per-player throw
-   isolation). Migrate farming/hunter/prayer drain onto it and DELETE
-   `PlayerProcessEvent`. One infra session + one migration session.
+2. **Soft-timer system** → DONE (T3.2, one session): OpenRune-shape
+   `PlayerTimerMap`/`PlayerTimers`/`PlayerTimerEvent.Soft`/
+   `PlayerTimerProcessor` in org.rsmod.game.timer + events;
+   farming/hunter/prayer drain migrated onto soft timers (scheduled in
+   one PlayerLoginEvent subscriber, fire order preserved by insertion
+   order); `PlayerProcessEvent` retired — zero code references remain.
+   Timer ids GRAVESTONE=4 and AVAS_DEVICE=5 are reserved for the T2-a
+   tick-driver moves.
 3. *(Optional, out of campaign)* per-action content events (catch-fish,
    burn-log…) if diary progress should ever be event-driven — the G2
    census showed an XP broadcast is the wrong shape.

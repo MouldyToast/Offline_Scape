@@ -35,7 +35,6 @@ import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
 import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
-import com.zenyte.game.content.bountyhunter.BountyHunter;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
@@ -1407,27 +1406,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         setLogoutType(force ? LogoutType.FORCE : LogoutType.REQUESTED);
     }
-
-    /**
-     * @deprecated Legacy load-path accessor: only BountyHunter.onInit may call
-     * this, and only on the parser player. Live access goes through
-     * BountyHunterKeys.bountyHunter. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public BountyHunter getBountyHunter() {
-        return bountyHunter;
-    }
-
-    /**
-     * @deprecated Legacy persistence slot for the bounty hunter, superseded by
-     * attrPersistence["bounty_hunter"] (see BountyHunterKeys). Was final
-     * pre-migration. Kept non-transient so pre-migration saves still
-     * deserialize into the parser player; the live player no longer populates
-     * it, so post-migration saves omit the "bountyHunter" key entirely.
-     * Delete field and getter with the save-rotation phase.
-     */
-    @Deprecated
-    private BountyHunter bountyHunter;
 
     public void sendInputString(final String question, final StringDialogue dialogue) {
         packetDispatcher.sendClientScript(110, question);

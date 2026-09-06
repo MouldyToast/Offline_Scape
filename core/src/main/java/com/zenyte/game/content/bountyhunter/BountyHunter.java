@@ -68,29 +68,14 @@ public class BountyHunter {
     }
 
     /**
-     * Sets the fields of the bounty hunter for this player.
+     * Eager attr rehydration at login: converts the raw attrPersistence shape
+     * into the typed instance before any game code touches the key.
      *
-     * @param event the initialization event carrying both the logging player and the saved player.
+     * @param event the initialization event carrying the logging player.
      */
     @Subscribe
     public static void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = BountyHunterKeys.rawBountyHunterAttr(player) != null;
-        final BountyHunter bounty = BountyHunterKeys.bountyHunter(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the bounty hunter under the
-        // top-level "bountyHunter" JSON key on the parser player. The copy
-        // below migrates it into the attr; the next save persists it under
-        // attrPersistence["bounty_hunter"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final BountyHunter savedBounty = savedPlayer.getBountyHunter();
-        if (savedBounty == null) {
-            return;
-        }
-        bounty.copyFrom(savedBounty);
+        BountyHunterKeys.bountyHunter(event.getPlayer());
     }
 
     /**

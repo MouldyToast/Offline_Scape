@@ -36,12 +36,12 @@ has zero @Deprecated members).
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 33
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1160
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 26
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1151
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
-plugins.dat: 4346 plugins (untracked file; regenerate with
+plugins.dat: 4355 plugins (untracked file; regenerate with
 `./gradlew :app:runPluginScanner` after any @Subscribe/annotation change,
 never commit it).
 
@@ -124,15 +124,32 @@ Track 1 removes ~13 of the 34 imports.
 One inventory/sequencing session first, then ~3–4 execution sessions.
 Current import list with the expected treatment:
 
+T2-a landed (2026-09-06, 5 commits): PlayerDeathStartEvent (published
+from BOTH death paths — Player.sendDeath and PlayerDeathHandler; future
+death-work hook) + PlayerPostDamageEvent; retribution/redemption/
+death-charge/reset/quick-prayers off Player; prayer drains via own
+drainSkill; spellbook-swap + tip-jar onto PlayerLogoutEvent; gravestone
++ Ava's onto the T3.2 soft timers (reserved ids); GE/lootkey/farming
+login refreshes onto PlayerLoginEvent; dead PlayerDeathEvent +
+BountyHunter.onDeath deleted (D-4). EXCEPTION — clan move NOT done: the
+plan's own pre-move audit hit (ClanChannel.onLogout, a
+ListenerType.LOGOUT listener, removes the player from channel.members;
+running ClanManager.leave after the LOGOUT plugins would early-return on
+its members.remove check and silently drop ClanLeaveEvent + empty-channel
+cleanup). ClanManager stays in Player (leave ~2150, join ~4340) pending
+its own session. DEFER-1 residue is exactly 5 sites: Elysian
+getPrayerPoints ~2955, faith-necklace restore ~3159, and the three
+drainSkill overrides ~3504/~3512/~3520.
+
 | Import(s) | Treatment |
 |---|---|
-| Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift, per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
-| Teleport, ForceTeleport, TeleportType, SpellbookSwap, DeathChargeKt | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session |
+| Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
+| Teleport, ForceTeleport, TeleportType | interface-lift teleport/spell surfaces onto core types, or move the calls behind events — needs the inventory session (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
 | Raid, RaidParty, Inferno | Phase-B flag lift on RegionArea (isRaid…/isInferno…) like ToA |
-| ClanChannel, ClanManager | settings-driven; likely a core-side interface + content impl |
-| Construction, RoomReference, ConstructionKeys | `getCurrentHouse()` instanceof-check — flag lift on RegionArea; Keys import then reviewable |
-| CharterLocation, AdventurersLogIcon, AvasDevice | small one-off lifts/moves; batch into one session |
-| GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings, FarmingKeys | accessor residue — these die only if the remaining in-Player calls move behind events (login refresh, death pipeline, per-tick already done); judge per site in the inventory session, forcing nothing |
+| ClanChannel, ClanManager | settings-driven; likely a core-side interface + content impl — see the T2-a exception above (ClanChannel.onLogout ordering) |
+| Construction, RoomReference, ConstructionKeys | `getCurrentHouse()` instanceof-check — flag lift on RegionArea; Keys import then reviewable (tip-jar logout DONE in T2-a; DEFER-2 roomPreview stays) |
+| CharterLocation, AdventurersLogIcon | small one-off lifts/moves; batch into one session (~~AvasDevice~~ DONE in T2-a) |
+| FarmingKeys | ~~GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings~~ DONE in T2-a; FarmingKeys stays for the two movement-path refreshes ~1079/~1221 (DEFER-3) |
 
 ## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
 

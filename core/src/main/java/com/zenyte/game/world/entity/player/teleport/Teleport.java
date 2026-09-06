@@ -1,11 +1,12 @@
-package com.zenyte.game.content.skills.magic.spells.teleports;
+package com.zenyte.game.world.entity.player.teleport;
 
-import com.zenyte.game.content.skills.magic.Magic;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.zenyte.game.world.region.area.wilderness.WildernessArea.isWithinWilderness;
 
@@ -21,6 +22,8 @@ public interface Teleport {
 	int WILDERNESS_LEVEL_DRAGONSTONE = 30;
 
 	int DISTANCE = 2;
+
+	Logger teleportLogger = LoggerFactory.getLogger(Teleport.class);
 
 	boolean UNRESTRICTED = false;
 	boolean RESTRICTED = true;
@@ -78,7 +81,7 @@ public interface Teleport {
 				getType().getStructure().teleport(player, this);
 			}
 		} catch (final Exception e) {
-            Magic.logger.error("", e);
+            teleportLogger.error("", e);
 		}
 	}
 

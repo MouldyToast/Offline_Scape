@@ -4,7 +4,7 @@ import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.minigame.barrows.BarrowsWight;
 import com.zenyte.game.content.rots.npc.*;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTask;

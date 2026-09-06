@@ -3,7 +3,7 @@ package com.near_reality.content.group_ironman.area
 import com.near_reality.content.group_ironman.npc.R0ck5masher
 import com.near_reality.content.group_ironman.npc.Regent
 import com.near_reality.content.group_ironman.player.trySetApplyOrInvitePlayerOption
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
+import com.zenyte.game.world.entity.player.teleport.Teleport
 import com.zenyte.game.item.Item
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.entity.player.Player

@@ -1,8 +1,8 @@
 package com.zenyte.game.world.entity.player.teleports
 
 import com.near_reality.cache.interfaces.teleports.Destination
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
+import com.zenyte.game.world.entity.player.teleport.Teleport
+import com.zenyte.game.world.entity.player.teleport.TeleportType
 import com.zenyte.game.world.entity.Location
 
 /**

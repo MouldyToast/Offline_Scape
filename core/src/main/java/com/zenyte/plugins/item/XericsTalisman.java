@@ -2,8 +2,8 @@ package com.zenyte.plugins.item;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;

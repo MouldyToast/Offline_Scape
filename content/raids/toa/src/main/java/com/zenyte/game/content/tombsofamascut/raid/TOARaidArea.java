@@ -9,7 +9,7 @@ import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.consumables.Drinkable;
 import com.zenyte.game.content.consumables.Edible;
 import com.zenyte.game.content.consumables.drinks.Potion;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.content.tombsofamascut.InvocationType;

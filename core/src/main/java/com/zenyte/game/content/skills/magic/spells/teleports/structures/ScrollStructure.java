@@ -3,7 +3,7 @@ package com.zenyte.game.content.skills.magic.spells.teleports.structures;
 import com.zenyte.game.content.itemtransportation.masterscrolls.ScrollBookTeleport;
 import com.zenyte.game.content.itemtransportation.masterscrolls.TeleportScroll;
 import com.zenyte.game.content.skills.magic.SpellState;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.Animation;

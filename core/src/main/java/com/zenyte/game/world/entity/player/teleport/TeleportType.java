@@ -1,6 +1,6 @@
-package com.zenyte.game.content.skills.magic.spells.teleports;
+package com.zenyte.game.world.entity.player.teleport;
 
-import com.zenyte.game.content.skills.magic.spells.teleports.structures.*;
+import com.zenyte.game.content.skills.magic.spells.teleports.structures.*; // planned content import in core path — see PLAN_T2c (enum→structure decoupling is future work)
 
 /**
  * @author Kris | 9. juuli 2018 : 01:12:21

@@ -11,7 +11,7 @@ import com.zenyte.game.content.minigame.inferno.npc.InfernoNPC;
 import com.zenyte.game.content.minigame.inferno.npc.impl.JalZek;
 import com.zenyte.game.content.minigame.inferno.npc.impl.zuk.TzKalZuk;
 import com.zenyte.game.content.minigame.inferno.plugins.TzKalZukCutscene;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;

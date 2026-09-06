@@ -8,8 +8,8 @@ import com.zenyte.game.content.boss.abyssalsire.respiratorysystems.AbyssalSireRe
 import com.zenyte.game.content.boss.abyssalsire.spawns.AbyssalSireSpawns
 import com.zenyte.game.content.boss.abyssalsire.tentacles.AbyssalSireTentacleWalls
 import com.zenyte.game.content.boss.abyssalsire.tentacles.AbyssalSireTentacles
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
+import com.zenyte.game.world.entity.player.teleport.Teleport
+import com.zenyte.game.world.entity.player.teleport.TeleportType
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
 import com.zenyte.game.task.WorldTasksManager

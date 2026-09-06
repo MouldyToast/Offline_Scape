@@ -4,7 +4,7 @@ import com.near_reality.content.group_ironman.player.ironmanGroupType
 import com.near_reality.content.group_ironman.player.leftTheNode
 import com.near_reality.game.world.entity.player.UsernameProvider
 import com.zenyte.game.content.skills.magic.spells.teleports.RegularTeleport
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
+import com.zenyte.game.world.entity.player.teleport.Teleport
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.GameCommands.Command

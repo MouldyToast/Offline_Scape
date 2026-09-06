@@ -1,8 +1,8 @@
 package com.near_reality.content.group_ironman.item
 
 import com.near_reality.content.group_ironman.player.groupIronHelmTeleportLastTime
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
+import com.zenyte.game.world.entity.player.teleport.Teleport
+import com.zenyte.game.world.entity.player.teleport.TeleportType
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.entity.Location
 import java.util.concurrent.TimeUnit

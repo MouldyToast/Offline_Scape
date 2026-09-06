@@ -6,7 +6,7 @@ import com.near_reality.game.content.tournament.loc.TournamentPortalObject
 import com.near_reality.game.content.tournament.npc.TournamentGuardLobbyPlugin
 import com.near_reality.game.plugin.safeDeaths
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
+import com.zenyte.game.world.entity.player.teleport.Teleport
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.ui.InterfacePosition
 import com.zenyte.game.world.Position

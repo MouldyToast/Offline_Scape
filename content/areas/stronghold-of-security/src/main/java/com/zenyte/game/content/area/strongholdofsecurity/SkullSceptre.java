@@ -2,8 +2,8 @@ package com.zenyte.game.content.area.strongholdofsecurity;
 
 import com.zenyte.game.content.achievementdiary.AchievementDiariesKeys;
 import com.zenyte.game.content.achievementdiary.diaries.VarrockDiary;
-import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
-import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
+import com.zenyte.game.world.entity.player.teleport.Teleport;
+import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Utils;

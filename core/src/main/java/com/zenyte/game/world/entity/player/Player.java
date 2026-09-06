@@ -37,7 +37,6 @@ import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.clans.ClanChannel;
-import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -2144,7 +2143,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();
             }
-            ClanManager.leave(this, false);
             socialManager.updateStatus();
             interfaceHandler.closeInterfaces();
             MethodicPluginHandler.invokePlugins(ListenerType.LOGOUT, this);
@@ -4341,9 +4339,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 //            addAttribute("registered", 1);
             gameMode = GameMode.REGULAR;
             setLocation(GameConstants.REGISTRATION_LOCATION);
-            if (getSettings().getChannelOwner() == null) {
-                ClanManager.join(this, GameConstants.SERVER_CHANNEL_NAME);
-            }
         }
         int unreadMessageCount = getNumericAttribute("unread message count").intValue();
         if (unreadMessageCount > 0) {
@@ -4378,11 +4373,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         combatDefinitions.refresh();
         socialManager.loadFriends();
         socialManager.loadIgnores();
-        /*
-         * final ClanChannel channel = player.getSettings().getChannel(); if (channel != null) { ClanManager.join
-         * (player,
-         * channel.getOwner()); } else { ClanManager.join(player, "kris"); }
-         */
         socialManager.updateStatus();
 
         getRunePouch().getContainer().refresh(this);

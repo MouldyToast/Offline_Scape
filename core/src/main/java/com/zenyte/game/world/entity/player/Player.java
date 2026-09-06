@@ -428,20 +428,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private final HpHud hpHud = new HpHud(this);
 
-    @Expose
-    /**
-     * @deprecated Legacy persistence slot for the loot key settings, superseded
-     * by attrPersistence["lootkey_settings"] (see LootkeySettingsKeys). Was
-     * already nullable (null = loot keys never enabled). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "lootkeySettings" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private LootkeySettings lootkeySettings;
-
-
     /**
      * Always use getter for this field, as presets replace it with a temporary instance.
      */
@@ -2021,17 +2007,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (interfaceHandler.isVisible(GameInterface.WORLD_MAP.getId())) {
             worldMap.updateLocation();
         }
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only LootkeySettings.onInit may
-     * call this, and only on the parser player. Live access goes through
-     * LootkeySettingsKeys.lootkeySettings. Removed with the save-rotation
-     * phase.
-     */
-    @Deprecated
-    public LootkeySettings getLootkeySettings() {
-        return lootkeySettings;
     }
 
 

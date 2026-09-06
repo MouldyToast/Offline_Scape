@@ -48,7 +48,6 @@ import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.grandexchange.GrandExchange;
 import com.zenyte.game.content.grandexchange.GrandExchangeKeys;
-import com.zenyte.game.content.gravestones.Gravestone;
 import com.zenyte.game.content.gravestones.GravestoneKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
@@ -598,31 +597,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     private transient BuildAreaManager buildAreaManager = new BuildAreaManager(this);
 
-    /**
-     * @deprecated Legacy load-path accessor: only Gravestone.onInitialization
-     * and GravestoneKeys.scanGravestone (offline save scans) may call this,
-     * and only on parser players. Live access goes through
-     * GravestoneKeys.gravestone. Removed with the save-rotation phase.
-     */
-    @Deprecated
-    public Gravestone getGravestone() {
-        return gravestone;
-    }
-
     public BankPin getBankPin() {
         return bankPin;
     }
 
-    /**
-     * @deprecated Legacy persistence slot for the gravestone, superseded by
-     * attrPersistence["gravestone"] (see GravestoneKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "gravestone" key entirely. Delete field and getter with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    private Gravestone gravestone;
     @Expose
     private RespawnPoint respawnPoint = RespawnPoint.EDGEVILLE;
     private DailyChallengeManager dailyChallengeManager = new DailyChallengeManager(this);

@@ -79,25 +79,9 @@ public final class AchievementDiaries {
 
 	@Subscribe
 	public static void onInit(final InitializationEvent event) {
-		final Player player = event.getPlayer();
-		final Player savedPlayer = event.getSavedPlayer();
-		final boolean hadPersistedAttr = AchievementDiariesKeys.rawAchievementDiariesAttr(player) != null;
-		final AchievementDiaries diaries = AchievementDiariesKeys.achievementDiaries(player);
-		if (hadPersistedAttr || savedPlayer == null) {
-			return;
-		}
-		// Legacy path: pre-migration saves keep the diary state under the
-		// top-level "achievementDiaries" JSON key on the parser player. The
-		// copy below migrates it into the attr (running the same putAll copy
-		// the legacy setFields initialize always ran); the next save persists
-		// it under attrPersistence["achievement_diaries"] and drops the
-		// legacy key.
-		@SuppressWarnings("deprecation")
-		final AchievementDiaries savedDiaries = savedPlayer.getAchievementDiaries();
-		if (savedDiaries == null) {
-			return;
-		}
-		diaries.copyFrom(savedDiaries);
+		// Eager rehydration: converts the raw attrPersistence shape into the
+		// typed instance at login, before any game code touches the key.
+		AchievementDiariesKeys.achievementDiaries(event.getPlayer());
 	}
 
 	/**

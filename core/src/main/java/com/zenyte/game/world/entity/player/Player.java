@@ -33,7 +33,6 @@ import com.zenyte.game.content.AvasDevice;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RespawnPoint;
-import com.zenyte.game.content.achievementdiary.AchievementDiaries;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.party.RaidParty;
@@ -332,17 +331,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         UserPlayerAttributesKt.onSetUser(this, user);
     }
 
-    /**
-     * @deprecated Legacy persistence slot for the achievement-diary state,
-     * superseded by attrPersistence["achievement_diaries"] (see
-     * AchievementDiariesKeys). Kept non-transient so pre-migration saves
-     * still deserialize into the parser player; the live player no longer
-     * populates it, so post-migration saves omit the "achievementDiaries"
-     * key entirely. Was final before the extraction. Delete field and getter
-     * with the save-rotation phase.
-     */
-    @Deprecated
-    private AchievementDiaries achievementDiaries;
     private final transient CutsceneManager cutsceneManager = new CutsceneManager(this);
     private final transient PuzzleBox puzzleBox = new PuzzleBox(this);
     private final transient LightBox lightBox = new LightBox(this);
@@ -4537,17 +4525,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public boolean hasMemberRank() {
         return memberRank != MemberRank.NONE;
-    }
-
-    /**
-     * @deprecated Legacy load-path accessor: only AchievementDiaries.onInit
-     * may call this, and only on the parser player. Live access goes through
-     * AchievementDiariesKeys.achievementDiaries. Removed with the
-     * save-rotation phase.
-     */
-    @Deprecated
-    public AchievementDiaries getAchievementDiaries() {
-        return achievementDiaries;
     }
 
     public CutsceneManager getCutsceneManager() {

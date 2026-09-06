@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.container.impl.death;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
 import com.near_reality.api.service.user.UserPlayerHandler;
 import com.near_reality.game.content.commands.DeveloperCommands;
@@ -220,10 +221,10 @@ public class DeathMechanics {
             }
         }
 
-        final Follower follower = player.getFollower();
+        final Follower follower = FollowerKeys.follower(player);
 
         if (follower != null && follower.getPet().itemId() < 30000) {
-            player.setFollower(null);
+            FollowerKeys.setFollower(player, null);
         }
 
         checkHardcoreIronManDeath();
@@ -318,10 +319,10 @@ public class DeathMechanics {
     }
 
     private void removePets() {
-        final Follower follower = player.getFollower();
+        final Follower follower = FollowerKeys.follower(player);
         if (follower != null && follower.getPet().itemId() < 30000) {
             //30000+ = custom pet
-            player.setFollower(null);
+            FollowerKeys.setFollower(player, null);
         }
         final Inventory inventory = player.getInventory();
         for (int slot = 0; slot < 28; slot++) {

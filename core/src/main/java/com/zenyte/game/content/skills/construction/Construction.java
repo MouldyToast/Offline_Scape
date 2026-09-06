@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.construction;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.eventbus.Subscribe;
 import com.google.gson.annotations.Expose;
 import com.zenyte.game.GameConstants;
@@ -271,8 +272,8 @@ public final class Construction {
         MapBuilder.destroy(allocatedArea);
         player.setLocation(new Location(house.getLocation()));
         if (catsOnBlanket.remove(player) != null) {
-            if (player.getFollower() != null) {
-                player.getFollower().unlock();
+            if (FollowerKeys.follower(player) != null) {
+                FollowerKeys.follower(player).unlock();
             }
         }
     }

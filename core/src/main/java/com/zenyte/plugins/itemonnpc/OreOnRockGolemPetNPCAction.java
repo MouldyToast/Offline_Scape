@@ -1,5 +1,6 @@
 package com.zenyte.plugins.itemonnpc;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.item.Item;
@@ -23,17 +24,17 @@ public class OreOnRockGolemPetNPCAction implements ItemOnNPCAction {
         if (combination == null) {
             return;
         }
-        if (player.getFollower() == null || player.getFollower().getPet() == null || !SkillingPet.isRockGolem(player.getFollower().getPet())) {
+        if (FollowerKeys.follower(player) == null || FollowerKeys.follower(player).getPet() == null || !SkillingPet.isRockGolem(FollowerKeys.follower(player).getPet())) {
             return;
         }
-        final Pet currentPet = player.getFollower().getPet();
+        final Pet currentPet = FollowerKeys.follower(player).getPet();
         if (currentPet.petId() == combination.getPet().petId()) {
             player.sendMessage("The appearance of your pet is already set on " + combination + ".");
             return;
         }
         player.getInventory().deleteItem(item);
         player.setPetId(combination.getPet().getPetId());
-        player.getFollower().setTransformation(combination.getPet().getPetId());
+        FollowerKeys.follower(player).setTransformation(combination.getPet().getPetId());
     }
 
     @Override

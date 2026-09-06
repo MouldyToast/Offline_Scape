@@ -1,5 +1,6 @@
 package com.zenyte.game.content.event.christmas2019;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.primitives.Ints;
 import com.zenyte.game.content.follower.impl.MiscPet;
 import com.zenyte.game.item.Item;
@@ -39,7 +40,7 @@ public class GhostCostume implements EquipPlugin {
         if (AChristmasWarble.progressedAtLeast(player, AChristmasWarble.ChristmasWarbleProgress.FIND_OUT_ABOUT_SCOURGES_PAST)) {
             return true;
         }
-        if (player.getFollower() == null || player.getFollower().getPet() != MiscPet.AREA_LOCKED_SNOW_IMP) {
+        if (FollowerKeys.follower(player) == null || FollowerKeys.follower(player).getPet() != MiscPet.AREA_LOCKED_SNOW_IMP) {
             return true;
         }
         // only continue the quest if the player has the area-locked snow imp follower
@@ -49,7 +50,7 @@ public class GhostCostume implements EquipPlugin {
                 @Override
                 public void buildDialogue() {
                     final String impName = ChristmasUtils.getImpName(player);
-                    player.faceEntity(player.getFollower());
+                    player.faceEntity(FollowerKeys.follower(player));
                     npc(impName, "Wow, that looks proper scary, mate!", Expression.HIGH_REV_JOLLY);
                     player("I can barely breathe.");
                     npc(impName, "Sure you can. Nows, " + player.getName() + ", what we really need to do is find out" +

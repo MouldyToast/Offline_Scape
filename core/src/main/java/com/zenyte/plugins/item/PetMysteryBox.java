@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.impl.MiscPet;
@@ -83,7 +84,7 @@ public class PetMysteryBox extends ItemPlugin {
     }
 
     private boolean possessesItem(@NotNull final Player player, final int id) {
-        final Follower follower = player.getFollower();
+        final Follower follower = FollowerKeys.follower(player);
         final Pet pet = follower == null ? null : follower.getPet();
         return (pet != null && pet.itemId() == id) || player.containsItem(id);
     }

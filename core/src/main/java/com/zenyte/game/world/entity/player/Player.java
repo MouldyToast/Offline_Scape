@@ -42,6 +42,7 @@ import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.content.clans.ClanManager;
 import com.zenyte.game.content.follower.Follower;
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
@@ -564,7 +565,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
     private PetInsurance petInsurance = new PetInsurance(this);
     @Expose
-    private transient Follower follower;
     private int petId;
     private transient boolean canPvp;
     @Expose
@@ -2317,6 +2317,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();
             }
+            final Follower follower = FollowerKeys.follower(this);
             if (follower != null) {
                 follower.finish();
             }
@@ -2866,20 +2867,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         else return false;
     }
 
-    public void setFollower(final Follower follower) {
-        if (this.follower != null && follower == null) {
-            this.follower.finish();
-            petId = -1;
-            this.follower = null;
-            return;
-        }
-        this.follower = follower;
-        petId = follower == null ? -1 : follower.getId();
-        if (follower != null) {
-            follower.spawn();
-        }
-        varManager.sendVar(447, follower == null ? -1 : follower.getIndex());
-    }
 
     public void stopAll() {
         this.stopAll(true);
@@ -4569,8 +4556,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         varManager.sendBit(598, 2);
         prayerManager.refreshQuickPrayers();
         if (petId != -1 && PetWrapper.getByPet(petId) != null) {
-            if (follower == null) {
-                setFollower(new Follower(petId, this));
+            if (FollowerKeys.follower(this) == null) {
+                FollowerKeys.setFollower(this, new Follower(petId, this));
             }
         }
         /*
@@ -5088,10 +5075,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public void setPetInsurance(PetInsurance petInsurance) {
         this.petInsurance = petInsurance;
-    }
-
-    public Follower getFollower() {
-        return follower;
     }
 
     public int getPetId() {

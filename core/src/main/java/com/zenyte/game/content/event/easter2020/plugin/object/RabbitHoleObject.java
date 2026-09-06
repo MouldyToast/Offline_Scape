@@ -1,5 +1,6 @@
 package com.zenyte.game.content.event.easter2020.plugin.object;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.event.easter2020.EasterConstants;
 import com.zenyte.game.content.event.easter2020.SplittingHeirs;
 import com.zenyte.game.content.event.easter2020.Stage;
@@ -84,7 +85,7 @@ public class RabbitHoleObject implements ObjectAction {
             player.sendMessage("You wouldn't be able to fit down there without some help.");
             return;
         }
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             player.sendMessage("The Easter bunny does not allow familiars down in that hole - they may get lost - or even worse!");
             return;
         }

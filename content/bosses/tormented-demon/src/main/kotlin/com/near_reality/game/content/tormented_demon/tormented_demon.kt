@@ -1,6 +1,8 @@
 package com.near_reality.game.content.tormented_demon
 
 import com.near_reality.scripts.npc.drops.table.noted
+import com.zenyte.game.content.follower.follower
+import com.zenyte.game.content.follower.setFollower
 import com.zenyte.game.content.follower.Follower
 import com.zenyte.game.content.follower.PetWrapper
 import com.zenyte.game.content.follower.impl.BossPet
@@ -32,10 +34,10 @@ class TormentedDemonDroptable : NPCDropTableScript() {
                 val smolderingDemon = BossPet.SMOLDERING_DEMON
                 val item = Item(smolderingDemon.itemId)
                 killer.collectionLog.add(item)
-                if ((PetWrapper.checkFollower(killer) && killer.follower.pet == smolderingDemon) || killer.containsItem(smolderingDemon.itemId))
+                if ((PetWrapper.checkFollower(killer) && killer.follower()!!.pet == smolderingDemon) || killer.containsItem(smolderingDemon.itemId))
                     killer.sendMessage("<col=ff0000>You have a funny feeling like you would have been followed...</col>")
 
-                else if (killer.follower != null) {
+                else if (killer.follower() != null) {
                     if (killer.inventory.addItem(item).isFailure) {
                         if (killer.bank.add(item).isFailure)
                             killer.sendMessage("There was not enough space in your bank, and therefore the pet was lost.")
@@ -48,7 +50,7 @@ class TormentedDemonDroptable : NPCDropTableScript() {
                 }
                 else {
                     killer.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>")
-                    killer.follower = Follower(smolderingDemon.petId, killer)
+                    killer.setFollower(Follower(smolderingDemon.petId, killer))
                     WorldBroadcasts.broadcast(killer, BroadcastType.PET, smolderingDemon)
                 }
             }

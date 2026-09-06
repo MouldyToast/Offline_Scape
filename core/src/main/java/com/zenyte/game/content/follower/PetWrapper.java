@@ -52,7 +52,7 @@ public class PetWrapper {
     private static final Class[] invocationClasses = new Class[] {Player.class, NPC.class};
 
     public static boolean checkFollower(final Player player) {
-        return player.getFollower() != null && player.getFollower().getPet() != null;
+        return FollowerKeys.follower(player) != null && FollowerKeys.follower(player).getPet() != null;
     }
 
     public static int fromInventory(final Player player) {

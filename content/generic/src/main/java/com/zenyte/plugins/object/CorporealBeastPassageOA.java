@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -22,7 +23,7 @@ public final class CorporealBeastPassageOA implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (option.equals("Go-through")) {
-            if (player.getFollower() != null) {
+            if (FollowerKeys.follower(player) != null) {
                 player.sendMessage("Your follower hides in fear and refuses to enter the cave.");
                 return;
             }

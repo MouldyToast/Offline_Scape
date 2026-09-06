@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.near_reality.game.model.item.ItemValueExtKt;
@@ -457,27 +458,27 @@ public final class Duel {
                 opponent.getPacketDispatcher().sendUpdateItemContainer(134, -2, 60937, container);
 
             } else if (stage.equals(DuelStage.CONFIRMATION) && opponentStage.equals(DuelStage.CONFIRMATION)) {
-                if (player.getFollower() != null) {
+                if (FollowerKeys.follower(player) != null) {
                     if (!player.getInventory().hasFreeSlots()) {
                         player.sendMessage("You currently have a follower, either pick it up or get some inventory space first.");
                         close(false);
                         return;
                     }
-                    final Pet pet = PetWrapper.getByPet(player.getFollower().getId());
+                    final Pet pet = PetWrapper.getByPet(FollowerKeys.follower(player).getId());
                     player.getInventory().addItem(pet.itemId(), 1);
-                    player.getFollower().finish();
-                    player.setFollower(null);
+                    FollowerKeys.follower(player).finish();
+                    FollowerKeys.setFollower(player, null);
                 }
-                if (opponent.getFollower() != null) {
+                if (FollowerKeys.follower(opponent) != null) {
                     if (!opponent.getInventory().hasFreeSlots()) {
                         opponent.sendMessage("You currently have a follower, either pick it up or get some inventory space first.");
                         close(false);
                         return;
                     }
-                    final Pet pet = PetWrapper.getByPet(opponent.getFollower().getId());
+                    final Pet pet = PetWrapper.getByPet(FollowerKeys.follower(opponent).getId());
                     opponent.getInventory().addItem(pet.itemId(), 1);
-                    opponent.getFollower().finish();
-                    opponent.setFollower(null);
+                    FollowerKeys.follower(opponent).finish();
+                    FollowerKeys.setFollower(opponent, null);
                 }
                 initiateDuel();
             }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.follower.impl;
 
+import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.event.christmas2019.SnowImpFollowerD;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;
@@ -152,7 +153,7 @@ public enum MiscPet implements Pet {
         if (player.containsItem(petItemId)) {
             return true;
         }
-        return PetWrapper.checkFollower(player) && player.getFollower().getPet().petId() == getPetId();
+        return PetWrapper.checkFollower(player) && FollowerKeys.follower(player).getPet().petId() == getPetId();
     }
 
     @Override
@@ -171,7 +172,7 @@ public enum MiscPet implements Pet {
             WorldBroadcasts.broadcast(player, BroadcastType.PET, this);
             return false;
         }
-        if (player.getFollower() != null) {
+        if (FollowerKeys.follower(player) != null) {
             if (player.getInventory().addItem(item).isFailure()) {
                 if (player.getBank().add(item).isFailure()) {
                     player.sendMessage("There was not enough space in your bank, and therefore the pet was lost.");
@@ -186,7 +187,7 @@ public enum MiscPet implements Pet {
         }
         else {
             player.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>");
-            player.setFollower(new Follower(petId, player));
+            FollowerKeys.setFollower(player, new Follower(petId, player));
             WorldBroadcasts.broadcast(player, BroadcastType.PET, this);
         }
         return true;

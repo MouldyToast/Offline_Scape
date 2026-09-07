@@ -478,8 +478,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private int petId;
     private transient boolean canPvp;
-    @Expose
-    private Stash stash = new Stash(this);
+    /**
+     * @deprecated Legacy persistence slot for the STASH units, superseded by
+     * attrPersistence["stash"] (see StashKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the "stash"
+     * key entirely. Delete field and getter with the Rotation 2 save rotation.
+     */
+    @Deprecated
+    private Stash stash;
     private transient boolean maximumTolerance;
     private transient Duel duel;
     @Expose
@@ -4757,12 +4764,14 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return canPvp;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only Stash.onInitialization may
+     * call this, and only on the parser player. Live access goes through
+     * StashKeys.stash. Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public Stash getStash() {
         return stash;
-    }
-
-    public void setStash(Stash stash) {
-        this.stash = stash;
     }
 
     public boolean isMaximumTolerance() {

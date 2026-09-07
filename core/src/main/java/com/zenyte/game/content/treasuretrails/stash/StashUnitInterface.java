@@ -43,7 +43,7 @@ public class StashUnitInterface extends Interface {
     @Override
     public void open(Player player) {
         player.getInterfaceHandler().sendInterface(this);
-        final Stash stash = player.getStash();
+        final Stash stash = StashKeys.stash(player);
         final IntEnum containerEnum = Enums.STASH_UNIT_BUILD_STAGES_CONTAINER;
         final Container container = new Container(ContainerPolicy.NEVER_STACK, ContainerType.STASH_UNIT_BUILD_STAGES, Optional.empty());
         container.setFullUpdate(true);

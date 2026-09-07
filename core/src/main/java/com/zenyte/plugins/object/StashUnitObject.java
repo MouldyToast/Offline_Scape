@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.treasuretrails.stash.StashKeys;
 import com.zenyte.game.content.treasuretrails.stash.StashUnit;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -14,9 +15,9 @@ public final class StashUnitObject implements ObjectAction {
 	@Override
 	public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
 		if (option.equals("Build")) {
-			player.getStash().build(object);
+			StashKeys.stash(player).build(object);
 		} else if (option.equalsIgnoreCase("Search")) {
-			player.getStash().search(object);
+			StashKeys.stash(player).search(object);
 		}
 	}
 

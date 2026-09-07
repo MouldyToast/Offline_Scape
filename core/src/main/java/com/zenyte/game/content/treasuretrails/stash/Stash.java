@@ -45,14 +45,24 @@ public final class Stash {
 	public static void onInitialization(@NotNull final InitializationEvent event) {
 		final Player player = event.getPlayer();
 		final Player savedPlayer = event.getSavedPlayer();
-		final Stash stash = savedPlayer.getStash();
-		player.getStash().stashes = (stash == null || stash.stashes == null) ? new LinkedHashMap<>() : stash.stashes;
+		final boolean hadPersistedAttr = StashKeys.rawStashAttr(player) != null;
+		final Stash stash = StashKeys.stash(player);
+		if (hadPersistedAttr || savedPlayer == null) {
+			return;
+		}
+		// Legacy path: pre-migration saves keep the map under the top-level
+		// "stash" JSON key on the parser player. The adopt below migrates it
+		// into the attr; the next save persists it under
+		// attrPersistence["stash"] and drops the legacy key.
+		@SuppressWarnings("deprecation")
+		final Stash savedStash = savedPlayer.getStash();
+		stash.adopt(savedStash);
 	}
 
 	@Subscribe
 	public static void onLogin(@NotNull final LoginEvent event) {
 		final Player player = event.getPlayer();
-		final Stash stash = player.getStash();
+		final Stash stash = StashKeys.stash(player);
 		if (stash == null) {
 			return;
 		}
@@ -213,6 +223,14 @@ public final class Stash {
 
 	public Stash(Player player) {
 		this.player = player;
+	}
+
+	/**
+	 * Adopts persisted state, or initializes an empty stashes map when there
+	 * is none. Mirrors the legacy onInitialization assignment exactly.
+	 */
+	public void adopt(final Stash saved) {
+		this.stashes = (saved == null || saved.stashes == null) ? new LinkedHashMap<>() : saved.stashes;
 	}
 
 	@SuppressWarnings("SameParameterValue")

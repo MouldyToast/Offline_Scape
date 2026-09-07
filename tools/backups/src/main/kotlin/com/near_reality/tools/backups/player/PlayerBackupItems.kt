@@ -1,5 +1,6 @@
 package com.near_reality.tools.backups.player
 
+import com.zenyte.game.content.scanRetrievalService
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.entity.player.Player
 import io.netty.buffer.ByteBuf
@@ -21,7 +22,11 @@ data class PlayerItems(
             player.equipment.container.items,
             player.lootingBag.container.items,
             player.bank.container.items,
-            player.retrievalService.container.items,
+            // Post-migration saves keep this under attrPersistence["item_retrieval"];
+            // pre-migration saves still populate the legacy parser field.
+            @Suppress("DEPRECATION")
+            (scanRetrievalService(player) ?: player.retrievalService)?.container?.items
+                ?: Int2ObjectLinkedOpenHashMap(),
         )
 
         fun from(file: File) =

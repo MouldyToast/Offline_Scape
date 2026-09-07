@@ -2,6 +2,7 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.ItemRetrievalService
+import com.zenyte.game.content.retrievalService
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -21,7 +22,7 @@ class TheatreItemRetrievalChestObject : ObjectAction {
 		optionId: Int,
 		option: String
 	) {
-		val service = player.retrievalService
+		val service = retrievalService(player)
 		if (service.type != ItemRetrievalService.RetrievalServiceType.THEATRE_OF_BLOOD || service.container.size == 0) {
 			player.dialogue {
 				plain("The chest seems to be empty. If it did have any of your items, but<br><br>you died before collecting them, they'll now be lost.")

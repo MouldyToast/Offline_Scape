@@ -4718,9 +4718,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     /**
      * @deprecated Legacy load-path accessor: only
-     * ItemRetrievalService.onInit may call this, and only on the parser
-     * player. Live access goes through RetrievalServiceKeys.retrievalService.
-     * Removed with the Rotation 2 save rotation.
+     * ItemRetrievalService.onInit and the offline-scan fallbacks
+     * (EcoSearch/PlayerBackupItems, after scanRetrievalService misses) may
+     * call this, and only on the parser player. Live access goes through
+     * RetrievalServiceKeys.retrievalService. Removed with the Rotation 2
+     * save rotation.
      */
     @Deprecated
     public ItemRetrievalService getRetrievalService() {

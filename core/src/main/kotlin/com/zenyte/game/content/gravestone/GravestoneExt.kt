@@ -7,6 +7,7 @@ import com.near_reality.game.item.CustomItemId.*
 import com.near_reality.game.model.item.protectionValue
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.ItemRetrievalService
+import com.zenyte.game.content.retrievalService
 import com.zenyte.game.content.trouver.TrouverData
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
@@ -26,14 +27,14 @@ import kotlin.math.min
 object GravestoneExt {
 
     private fun Player.reclaim() {
-        for (slotId in 0 until retrievalService.container.size) {
-            val item = retrievalService.container[slotId] ?: continue
-            inventory.container.deposit(this, retrievalService.container, slotId, item.amount)
+        for (slotId in 0 until retrievalService(this).container.size) {
+            val item = retrievalService(this).container[slotId] ?: continue
+            inventory.container.deposit(this, retrievalService(this).container, slotId, item.amount)
         }
-        retrievalService.container.shift()
+        retrievalService(this).container.shift()
         inventory.refresh()
-        retrievalService.container.refresh(this)
-        if (retrievalService.container.isEmpty) removeGravestone()
+        retrievalService(this).container.refresh(this)
+        if (retrievalService(this).container.isEmpty) removeGravestone()
     }
 
     fun Player.removeGravestone() {
@@ -56,16 +57,16 @@ object GravestoneExt {
     }
 
     fun Player.reclaimGravestoneItems() {
-        if (!retrievalService.isLocked) return reclaim()
+        if (!retrievalService(this).isLocked) return reclaim()
         if (unlockGravestone()) reclaim()
     }
 
     fun Player.unlockGravestone(): Boolean {
         val coinsInBank = bank.getAmountOf(ItemId.COINS_995)
         val coinsInInventory = inventory.getAmountOf(ItemId.COINS_995)
-        val coinsInRetrievalService = retrievalService.container.getAmountOf(ItemId.COINS_995)
+        val coinsInRetrievalService = retrievalService(this).container.getAmountOf(ItemId.COINS_995)
         val total = coinsInBank + coinsInInventory + coinsInRetrievalService
-        val cache = getRetrievalServiceCache(retrievalService.container.items.values)
+        val cache = getRetrievalServiceCache(retrievalService(this).container.items.values)
         val cost = cache.unlockCost
         if (cost > total) {
             sendMessage(
@@ -90,21 +91,21 @@ object GravestoneExt {
         }
         if (required > 0 && coinsInRetrievalService > 0) {
             val toRemove = min(required, coinsInRetrievalService)
-            retrievalService.container.remove(Item(ItemId.COINS_995, toRemove))
-            retrievalService.container.refresh(this)
+            retrievalService(this).container.remove(Item(ItemId.COINS_995, toRemove))
+            retrievalService(this).container.refresh(this)
             val amount = toRemove.format()
             sendMessage("Payment has been taken from your gravestone: $amount x Coins")
         }
-        retrievalService.isLocked = false
+        retrievalService(this).isLocked = false
         return true
     }
 
     fun Player.createGravestone(location: Location, killer: Player? = null): Pair<List<Item>, List<Item>> {
         val (itemsLost, gravestoneItems) = calculateGravestoneItems(killer != null)
         gravestone().createGravestone(location, gravestoneItems.subList(0, min(120, gravestoneItems.size)))
-        retrievalService.isLocked = true
-        retrievalService.container.addAll(gravestoneItems)
-        retrievalService.type = ItemRetrievalService.RetrievalServiceType.GRAVESTONE
+        retrievalService(this).isLocked = true
+        retrievalService(this).container.addAll(gravestoneItems)
+        retrievalService(this).type = ItemRetrievalService.RetrievalServiceType.GRAVESTONE
         return itemsLost to gravestoneItems
     }
 
@@ -116,10 +117,10 @@ object GravestoneExt {
         val gravestoneItems = mutableListOf<Item>()
         if(!bypassGravestone) {
             val retrievalServiceItems =
-                if (!retrievalService.`is`(ItemRetrievalService.RetrievalServiceType.GRAVESTONE)) {
+                if (!retrievalService(this).`is`(ItemRetrievalService.RetrievalServiceType.GRAVESTONE)) {
                     emptySequence()
                 } else {
-                    retrievalService.container.items.values.map(Item::copy).asSequence()
+                    retrievalService(this).container.items.values.map(Item::copy).asSequence()
                 }
             gravestoneItems += retrievalServiceItems
         }
@@ -162,7 +163,7 @@ object GravestoneExt {
             items += secondaryRunePouchItems
         }
 
-        retrievalService.container.clear()
+        retrievalService(this).container.clear()
         inventory.container.clear()
         equipment.container.clear()
 
@@ -211,8 +212,8 @@ object GravestoneExt {
         }
         if(bypassGravestone) {
             // send straight to death
-            retrievalService.container.addAll(sortedGravestoneItems)
-            retrievalService.type = ItemRetrievalService.RetrievalServiceType.GRAVESTONE
+            retrievalService(this).container.addAll(sortedGravestoneItems)
+            retrievalService(this).type = ItemRetrievalService.RetrievalServiceType.GRAVESTONE
         }
         return itemsLost to sortedGravestoneItems
     }
@@ -240,11 +241,11 @@ object GravestoneExt {
 
     fun Player.moveItemsToDeathsOffice() {
         for (i in 0 until 120) {
-            val item = retrievalService.container.get(i) ?: continue
-            gravestone().container.deposit(this, retrievalService.container, i, item.amount)
+            val item = retrievalService(this).container.get(i) ?: continue
+            gravestone().container.deposit(this, retrievalService(this).container, i, item.amount)
         }
         gravestone().container.refresh(this)
-        retrievalService.container.refresh(this)
+        retrievalService(this).container.refresh(this)
     }
 
     private inline fun Sequence<Item>.filterByPredicate(crossinline predicate: (Item) -> Boolean): Pair<Sequence<Item>, Sequence<Item>> {
@@ -254,7 +255,7 @@ object GravestoneExt {
     }
 
 
-    fun Player.getRetrievalServiceCache(allItems: Collection<Item> = retrievalService.container.items.values): RetrievalServiceStatus {
+    fun Player.getRetrievalServiceCache(allItems: Collection<Item> = retrievalService(this).container.items.values): RetrievalServiceStatus {
         val freeItems = allItems.filter { getItemReclaimCost(it) == 0 }
         val paidItems = allItems.filter { getItemReclaimCost(it) > 0 }
         val sorted = paidItems.sortedByDescending { getItemReclaimCost(it) }

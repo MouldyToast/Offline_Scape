@@ -6,6 +6,7 @@ import com.near_reality.game.content.boss.nex.NexModule
 import com.near_reality.game.content.boss.nex.nexGodwarsInstance
 import com.near_reality.game.content.boss.nex.showAncientBarrierDialogue
 import com.zenyte.game.content.ItemRetrievalService.RetrievalServiceType.ANCIENT_PRISON
+import com.zenyte.game.content.retrievalService
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
@@ -48,7 +49,7 @@ class AncientBarrierObjectaction : ObjectActionScript() {
                 if (player.x >= obj.x) {
                     player.dialogue { plain("You can only exit by using the altar.") }
                 } else {
-                    val service = player.retrievalService
+                    val service = retrievalService(player)
                     if (service.type == ANCIENT_PRISON && !service.container.isEmpty) {
                         player.options("A nearby chest has some of your items. Do you still wish to proceed?") {
                             dialogueOption("Yes.", noPlayerMessage = true) {

@@ -45,3 +45,20 @@ fun rawRetrievalServiceAttr(player: Player): Any? {
     @Suppress("UNCHECKED_CAST")
     return player.attr[ITEM_RETRIEVAL_KEY as AttributeKey<Any>]
 }
+
+/**
+ * Read-only snapshot for OFFLINE scans over parser players
+ * (LoginManager.deserializePlayerFromFile — WealthScanner and friends).
+ * Parser players are Unsafe-allocated, so their transient attr map is null
+ * and [retrievalService] cannot be used on them. Reads the raw
+ * attrPersistence["item_retrieval"] shape; returns null when the save
+ * carries none (offline callers should then fall back to the legacy
+ * top-level "retrievalService" field for pre-migration saves). The snapshot
+ * is unparented (transient player is null) — container reads only; never
+ * store it in a live player's attr. Mirrors GravestoneKeys.scanGravestone.
+ */
+fun scanRetrievalService(parser: Player): ItemRetrievalService? {
+    val raw = parser.attrPersistenceRaw?.get(ITEM_RETRIEVAL_KEY.persistenceKey) ?: return null
+    val gson = LoginManager.gson.get()
+    return gson.fromJson(gson.toJsonTree(raw), ItemRetrievalService::class.java)
+}

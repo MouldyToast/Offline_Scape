@@ -1,5 +1,6 @@
 package com.near_reality.plugins.interfaces.death
 
+import com.zenyte.game.content.retrievalService
 import com.zenyte.game.content.gravestone.GravestoneExt.getItemValue
 import com.zenyte.game.content.gravestone.GravestoneExt.getRetrievalServiceCache
 import com.zenyte.game.content.gravestone.GravestoneExt.removeGravestone
@@ -18,25 +19,25 @@ import mgi.types.config.enums.Enums.*
 class GravestoneReclaimInterface : InterfaceScript() {
 
     fun Player.reclaimItem(slotId: Int) {
-        val item = retrievalService.container[slotId] ?: return
-        inventory.container.deposit(this, retrievalService.container, slotId, item.amount)
-        retrievalService.container.shift()
+        val item = retrievalService(this).container[slotId] ?: return
+        inventory.container.deposit(this, retrievalService(this).container, slotId, item.amount)
+        retrievalService(this).container.shift()
         inventory.refresh()
-        retrievalService.container.refresh(this)
-        if (retrievalService.container.isEmpty) removeGravestone() else refreshInterface()
+        retrievalService(this).container.refresh(this)
+        if (retrievalService(this).container.isEmpty) removeGravestone() else refreshInterface()
     }
 
     fun Player.incinerate(slotId: Int) {
-        val item = retrievalService.container[slotId] ?: return
+        val item = retrievalService(this).container[slotId] ?: return
         dialogueManager.start(object : Dialogue(this) {
             override fun buildDialogue() {
                 options(
                     item.name,
                     DialogueOption("Destroy it") {
-                        retrievalService.container.set(slotId, null)
-                        retrievalService.container.shift()
-                        retrievalService.container.refresh(this@incinerate)
-                        if (retrievalService.container.isEmpty) removeGravestone() else refreshInterface()
+                        retrievalService(this@incinerate).container.set(slotId, null)
+                        retrievalService(this@incinerate).container.shift()
+                        retrievalService(this@incinerate).container.refresh(this@incinerate)
+                        if (retrievalService(this@incinerate).container.isEmpty) removeGravestone() else refreshInterface()
                     },
                     DialogueOption("Keep it")
                 )
@@ -50,23 +51,23 @@ class GravestoneReclaimInterface : InterfaceScript() {
         if (free) {
             if (cache.freeItems.isEmpty()) return
             for (slotId in paidItemsCount until (paidItemsCount + cache.freeItems.size)) {
-                val item = retrievalService.container[slotId] ?: continue
-                inventory.container.deposit(this, retrievalService.container, slotId, item.amount)
+                val item = retrievalService(this).container[slotId] ?: continue
+                inventory.container.deposit(this, retrievalService(this).container, slotId, item.amount)
             }
         } else {
             for (slotId in 0 until paidItemsCount) {
-                val item = retrievalService.container[slotId] ?: continue
-                inventory.container.deposit(this, retrievalService.container, slotId, item.amount)
+                val item = retrievalService(this).container[slotId] ?: continue
+                inventory.container.deposit(this, retrievalService(this).container, slotId, item.amount)
             }
         }
-        retrievalService.container.shift()
+        retrievalService(this).container.shift()
         inventory.refresh()
-        retrievalService.container.refresh(this)
-        if (retrievalService.container.isEmpty) removeGravestone() else refreshInterface()
+        retrievalService(this).container.refresh(this)
+        if (retrievalService(this).container.isEmpty) removeGravestone() else refreshInterface()
     }
 
     fun Player.resortInterface() {
-        val gravestoneContainer = retrievalService.container
+        val gravestoneContainer = retrievalService(this).container
         val allItems = gravestoneContainer.items.values.sortedByDescending {
             getItemValue(it)
         }
@@ -87,7 +88,7 @@ class GravestoneReclaimInterface : InterfaceScript() {
         varManager.sendBitInstant(10472, if (freeItems.isEmpty()) 0 else (totalCount + 1))
         varManager.sendBitInstant(10473, mediumCost.size + highCost.size + 1)
         varManager.sendBitInstant(10474, highCost.size + 1)
-        packetDispatcher.sendClientScript(3478, if (!retrievalService.isLocked) 0 else sum, 0)
+        packetDispatcher.sendClientScript(3478, if (!retrievalService(this).isLocked) 0 else sum, 0)
     }
 
     init {
@@ -105,7 +106,7 @@ class GravestoneReclaimInterface : InterfaceScript() {
                 player.reclaimItem(slotID)
             }
             val paidItemsLayer = "Interact with paid items".suspend(13) {
-                if (player.retrievalService.isLocked) {
+                if (retrievalService(player).isLocked) {
                     return@suspend player.sendMessage("You must first pay to unlock the items. Click the <col=ff0000>padlock</col> button.")
                 }
                 player.reclaimItem(slotID)
@@ -115,11 +116,11 @@ class GravestoneReclaimInterface : InterfaceScript() {
                 player.reclaimAll(true)
             }
             "Reclaim paid items".suspend(15) {
-                if (!player.retrievalService.isLocked) return@suspend player.reclaimAll(false)
+                if (!retrievalService(player).isLocked) return@suspend player.reclaimAll(false)
                 if (player.unlockGravestone()) player.refreshInterface()
             }
             drag(paidItemsLayer, incinerator) {
-                if (!player.retrievalService.isLocked) {
+                if (!retrievalService(player).isLocked) {
                     return@drag player.sendMessage("You no longer need to discard items now that the fee has been paid.")
                 }
                 player.incinerate(fromSlotID)

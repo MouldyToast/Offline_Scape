@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell;
 import com.zenyte.game.model.ui.testinterfaces.advancedsettings.SettingVariables;
@@ -44,7 +45,7 @@ public final class HealGroup implements DefaultSpell {
 
 
 		final List<Player> affectedPlayers = player.findCharacters(1, Player.class, p2 -> {
-			if (p2 == player || p2.isDead() || !p2.isInitialized() || p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) != 1 || p2.getDuel() != null || p2.getHitpoints() >= p2.getMaxHitpoints()) {
+			if (p2 == player || p2.isDead() || !p2.isInitialized() || p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) != 1 || DuelKeys.getDuel(p2) != null || p2.getHitpoints() >= p2.getMaxHitpoints()) {
 				return false;
 			}
 			final boolean inWilderness = WildernessArea.isWithinWilderness(p2.getX(), p2.getY());

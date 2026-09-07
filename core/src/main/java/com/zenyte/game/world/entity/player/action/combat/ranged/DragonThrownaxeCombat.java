@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.ranged;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTasksManager;
@@ -42,7 +43,7 @@ public final class DragonThrownaxeCombat extends RangedCombat {
 			final Location location = new Location(target.getLocation());
 			final Item item = new Item(ammunitionSource.getAmmo().getId());
 			WorldTasksManager.schedule(() -> {
-				final Duel duel = player.getDuel();
+				final Duel duel = DuelKeys.getDuel(player);
 				if (duel != null) {
 					duel.getAmmunitions().get(player).add(item);
 				} else {

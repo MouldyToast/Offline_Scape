@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.consumables.drinks.Potion;
 import com.zenyte.game.content.skills.magic.Spellbook;
@@ -44,7 +45,7 @@ public final class StatRestorePotShare implements ItemSpell {
 		final Potion potion = (Potion) consumable;
 		int count = 0;
 		final int doses = potion.getDoses(item.getId());
-		final List<Player> characters = player.findCharacters(1, Player.class, p2 -> p2 != player && !p2.isDead() && p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) == 1 && p2.getDuel() == null);
+		final List<Player> characters = player.findCharacters(1, Player.class, p2 -> p2 != player && !p2.isDead() && p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) == 1 && DuelKeys.getDuel(p2) == null);
 		for (int i = characters.size() - 1; i >= 0; i--) {
 			final Player p2 = characters.get(i);
 			if (count >= doses) {

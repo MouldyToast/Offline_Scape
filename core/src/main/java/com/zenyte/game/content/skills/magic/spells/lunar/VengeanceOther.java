@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.lunar;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.minigame.castlewars.CastleWarsArea;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.NPCSpell;
@@ -48,7 +49,7 @@ public final class VengeanceOther implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player is not accepting aid.");
 			return false;
 		}
-		if (target.getDuel() != null) {
+		if (DuelKeys.getDuel(target) != null) {
 			player.sendMessage("You cannot cast lunar spells on players within duels.");
 			return false;
 		}

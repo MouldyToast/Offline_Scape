@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ChargeExtension;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -33,7 +34,7 @@ public class Blowpipe extends ItemPlugin implements ChargeExtension {
     @Override
     public void handle() {
         bind("Unload", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
+            if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
                 player.sendMessage("You can't do this during a duel.");
                 return;
             }

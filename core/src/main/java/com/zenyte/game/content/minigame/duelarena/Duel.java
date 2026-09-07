@@ -124,8 +124,8 @@ public final class Duel {
         stages.put(opponent, DuelStage.NONE);
         ammunitions.put(player, new ArrayList<>());
         ammunitions.put(opponent, new ArrayList<>());
-        player.setDuel(this);
-        opponent.setDuel(this);
+        DuelKeys.setDuel(player, this);
+        DuelKeys.setDuel(opponent, this);
     }
 
     public static void beforeShutdown() {
@@ -136,7 +136,7 @@ public final class Duel {
                     continue;
                 }
                 if (player.getArea() instanceof ArenaArea) {
-                    final Duel duel = player.getDuel();
+                    final Duel duel = DuelKeys.getDuel(player);
                     final Player opponent = duel.getOpponent();
                     duel.containers.get(player).getItems().values().forEach(item -> player.getInventory().addItem(item).onFailure(remaining -> player.getBank().add(remaining)));
                     duel.containers.get(opponent).getItems().values().forEach(item -> opponent.getInventory().addItem(item).onFailure(remaining -> opponent.getBank().add(remaining)));
@@ -150,8 +150,8 @@ public final class Duel {
                     GlobalAreaManager.update(opponent, false, false);
                     duel.reset(player);
                     duel.reset(opponent);
-                    player.setDuel(null);
-                    opponent.setDuel(null);
+                    DuelKeys.setDuel(player, null);
+                    DuelKeys.setDuel(opponent, null);
                 }
             }
         } catch (Exception e) {
@@ -730,8 +730,8 @@ public final class Duel {
             }
             opponentContainer.clear();
         }
-        opponent.setDuel(null);
-        player.setDuel(null);
+        DuelKeys.setDuel(opponent, null);
+        DuelKeys.setDuel(player, null);
         player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL, true, false, false);
         opponent.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL, true, false, false);
         player.getInterfaceHandler().closeInterface(InterfacePosition.SINGLE_TAB);

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.interfaces
 
+import com.zenyte.game.content.minigame.duelarena.duel
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.minigame.duelarena.DuelStage
 import com.zenyte.game.model.ui.Interface

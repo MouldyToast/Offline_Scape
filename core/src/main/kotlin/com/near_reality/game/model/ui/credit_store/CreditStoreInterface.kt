@@ -1,5 +1,6 @@
 package com.near_reality.game.model.ui.credit_store
 
+import com.zenyte.game.content.minigame.duelarena.duel
 import com.google.common.eventbus.Subscribe
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

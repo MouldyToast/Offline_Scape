@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.near_reality.game.world.entity.player.container.impl.BankUtil;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
@@ -99,7 +100,7 @@ public class BankInterface extends Interface implements SwitchPlugin {
             return;
         }
 
-        if (player.getDuel() != null) return;
+        if (DuelKeys.getDuel(player) != null) return;
 
         final var bank = player.getBank();
         final var dispatcher = player.getPacketDispatcher();

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.treasuretrails.plugins;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
@@ -36,7 +37,7 @@ public class RingOf3rdAge extends ItemPlugin {
     @Override
     public void handle() {
         bind("Wear", (player, item, container, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
+            if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
                 player.sendMessage("You can't do this during a duel.");
                 return;
             }

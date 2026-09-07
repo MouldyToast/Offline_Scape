@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.near_reality.game.content.middleman.MiddleManManager;
 import com.near_reality.game.world.entity.player.PlayerActionPlugin;
 import com.zenyte.game.GameConstants;
@@ -160,11 +161,11 @@ public final class PlayerHandler {
             player.sendMessage("The Duel Arena is temporarily unavailable right now.");
             return;
         }
-        if (player.getDuel() != null) {
+        if (DuelKeys.getDuel(player) != null) {
             player.sendMessage("You're already in a duel.");
             return;
         }
-        if (p2.getDuel() != null) {
+        if (DuelKeys.getDuel(p2) != null) {
             player.sendMessage("The other player is already in a duel.");
             return;
         }

@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells.regular;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.actions.Teleother;
 import com.zenyte.game.content.skills.magic.spells.NPCSpell;
@@ -41,7 +42,7 @@ public final class TeleotherLumbridge implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player isn't accepting aid.");
 			return false;
 		}
-        if (target.getDuel() != null) {
+        if (DuelKeys.getDuel(target) != null) {
             player.sendMessage("You cannot cast teleother spells on players within duels.");
             return false;
         }

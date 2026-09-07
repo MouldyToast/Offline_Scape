@@ -33,13 +33,13 @@
 //    @Override
 //    public void close(final Player player, final Optional<GameInterface> replacement) {
 //        if (!replacement.isPresent() || !replacement.get().equals(GameInterface.DUEL_CONFIRMATION)) {
-//            Optional.ofNullable(player.getDuel()).ifPresent(duel -> duel.close(true));
+//            Optional.ofNullable(DuelKeys.getDuel(player)).ifPresent(duel -> duel.close(true));
 //        }
 //    }
 //
 //    @Override
 //    public void open(Player player) {
-//        final Duel duel = player.getDuel();
+//        final Duel duel = DuelKeys.getDuel(player);
 //        Preconditions.checkArgument(duel != null, "Cannot open the interface manually.");
 //        final Player opponent = duel.getOpponent();
 //        Preconditions.checkArgument(opponent != null, "Opponent is null.");
@@ -70,7 +70,7 @@
 //    @Override
 //    protected void build() {
 //        bind("Load Previous Stake", player -> {
-//            final Duel duel = player.getDuel();
+//            final Duel duel = DuelKeys.getDuel(player);
 //            final Object attr = player.getAttributes().get("lastDuelStake");
 //            if (!(attr instanceof Item[])) {
 //                return;
@@ -88,7 +88,7 @@
 //            duel.setItem(13204, tokens.getAmount());
 //        });
 //        bind("Platinum quantity", (player, slotId, itemId, option) -> {
-//            final Duel duel = Objects.requireNonNull(player.getDuel());
+//            final Duel duel = Objects.requireNonNull(DuelKeys.getDuel(player));
 //            if (player.isIronman()) {
 //                player.sendMessage("You\'re an Iron Man. You stand alone.");
 //                return;
@@ -108,13 +108,13 @@
 //                duel.addItem(13204, amount);
 //            } else if (slotId == 5) {
 //                player.sendInputInt("How many coins would you like to stake?", amt -> {
-//                    final Duel d = Objects.requireNonNull(player.getDuel());
+//                    final Duel d = Objects.requireNonNull(DuelKeys.getDuel(player));
 //                    d.setItem(13204, amt);
 //                });
 //            }
 //        });
 //        bind("GP quantity", (player, slotId, itemId, option) -> {
-//            final Duel duel = Objects.requireNonNull(player.getDuel());
+//            final Duel duel = Objects.requireNonNull(DuelKeys.getDuel(player));
 //            if (player.isIronman()) {
 //                player.sendMessage("You\'re an Iron Man. You stand alone.");
 //                return;
@@ -134,13 +134,13 @@
 //                duel.addItem(995, amount);
 //            } else if (slotId == 5) {
 //                player.sendInputInt("How many coins would you like to stake?", amt -> {
-//                    final Duel d = Objects.requireNonNull(player.getDuel());
+//                    final Duel d = Objects.requireNonNull(DuelKeys.getDuel(player));
 //                    d.setItem(995, amt);
 //                });
 //            }
 //        });
-//        bind("Confirm", player -> Objects.requireNonNull(player.getDuel()).confirm(DuelStage.STAKE));
-//        bind("Close", player -> Objects.requireNonNull(player.getDuel()).close(true));
+//        bind("Confirm", player -> Objects.requireNonNull(DuelKeys.getDuel(player)).confirm(DuelStage.STAKE));
+//        bind("Close", player -> Objects.requireNonNull(DuelKeys.getDuel(player)).close(true));
 //    }
 //
 //    @Override

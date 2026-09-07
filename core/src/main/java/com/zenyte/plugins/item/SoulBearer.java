@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.magic.spells.arceuus.Reanimation;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -39,7 +40,7 @@ public class SoulBearer extends ItemPlugin implements PairedItemOnItemPlugin {
         });
         bind("Check", (player, item, container, slotId) -> player.sendMessage(item.getCharges() <= 0 ? "Your soul bearer has no charges. It feels on soul runes and blood runes." : ("Your soul bearer has " + item.getCharges() + " charge" + (item.getCharges() == 1 ? "" : "s") + ".")));
         bind("Uncharge", (player, item, container, slotId) -> {
-            if (player.getDuel() != null) {
+            if (DuelKeys.getDuel(player) != null) {
                 player.sendMessage("You cannot uncharge the soul bearer within duels.");
                 return;
             }

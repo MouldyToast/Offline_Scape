@@ -1,5 +1,6 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.duelarena.DuelSetting;
 import com.zenyte.game.world.entity.player.Player;
@@ -16,7 +17,7 @@ public class DuelArenaForfeitObject implements ObjectAction {
 
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return;
         }
@@ -40,8 +41,8 @@ public class DuelArenaForfeitObject implements ObjectAction {
                     duel.finishDuel(opponent, player);
                     duel.sendSpoils(opponent);
                     duel.registerDuelHistory(opponent, player);
-                    player.setDuel(null);
-                    opponent.setDuel(null);
+                    DuelKeys.setDuel(player, null);
+                    DuelKeys.setDuel(opponent, null);
                     // player.getPacketDispatcher().sendComponentText(Duel.WINNINGS_INTERFACE, 16, "You forfeit!");
                 });
             }

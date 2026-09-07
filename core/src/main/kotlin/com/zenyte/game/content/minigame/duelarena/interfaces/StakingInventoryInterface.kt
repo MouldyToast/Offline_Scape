@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.interfaces
 
+import com.zenyte.game.content.minigame.duelarena.duel
 import com.zenyte.game.GameInterface
 import com.zenyte.game.model.ui.Interface
 import com.zenyte.game.world.entity.player.Player
@@ -25,7 +26,7 @@ class StakingInventoryInterface : Interface() {
                 player.sendMessage("You can't stake this item.")
                 return@bind
             }
-            val duel = player.duel
+            val duel = player.duel ?: return@bind
             val stakeOption = when(option){
                 1 -> ItemStakeOption.Amount(1)
                 2 -> ItemStakeOption.Amount(5)

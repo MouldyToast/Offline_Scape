@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.interfaces
 
+import com.zenyte.game.content.minigame.duelarena.duel
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.minigame.duelarena.DuelSetting
 import com.zenyte.game.content.minigame.duelarena.DuelStage
@@ -48,7 +49,7 @@ class StakingDuelInterface : Interface() {
             sendComponentText(getInterface(), getComponent("Target name"), "${duel.opponent.name}\'s stake:")
 
             sendUpdateItemContainer(134, -1, 64168, duel.getContainer(player))
-            sendUpdateItemContainer(134, -2, 60937, duel.getContainer(player.duel.opponent))
+            sendUpdateItemContainer(134, -2, 60937, duel.getContainer(duel.opponent))
             sendUpdateItemContainer(93, -1, 64209, player.inventory.container)
 
             sendClientScript(158,  GameInterface.DUEL_STAKING.id component 26, 134, 4, 7, 0,  GameInterface.DUEL_STAKING.id component 27, "", "", "", "", "", 1)
@@ -74,7 +75,7 @@ class StakingDuelInterface : Interface() {
         bind("Accept") { player -> player.duel?.confirm(DuelStage.STAKE) }
         bind("Decline") { player -> player.duel?.close(true) }
         bind("My Staked Items") { player: Player, _: Int, itemId: Int, option: Int ->
-            val duel = player.duel
+            val duel = player.duel ?: return@bind
             val myContainer = duel.getContainer(player)
             val stakeOption = when(option){
                 1 -> ItemStakeOption.Amount(1)

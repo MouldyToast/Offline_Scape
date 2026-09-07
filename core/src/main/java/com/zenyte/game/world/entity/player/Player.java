@@ -36,7 +36,7 @@ import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
-import com.zenyte.game.content.minigame.duelarena.Duel;
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
 import com.zenyte.game.content.skills.farming.FarmingKeys;
@@ -524,7 +524,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Deprecated
     private Stash stash;
     private transient boolean maximumTolerance;
-    private transient Duel duel;
     @Expose
     private SinglePlayerBank bank = new SinglePlayerBank(this);
     @Expose
@@ -3171,7 +3170,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 }
             }
             final Item necklace = this.getAmulet();
-            if (necklace != null && necklace.getId() == 11090 && getHitpoints() < (getMaxHitpoints() * 0.2F) && getDuel() == null) {
+            if (necklace != null && necklace.getId() == 11090 && getHitpoints() < (getMaxHitpoints() * 0.2F) && DuelKeys.getDuel(this) == null) {
                 this.heal((int) (this.getMaxHitpoints() * 0.3F));
                 sendMessage("Your phoenix necklace heals you, but is destroyed in the process.");
                 getEquipment().set(EquipmentSlot.AMULET, null);
@@ -4379,14 +4378,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
-    public Duel getDuel() {
-        if (duel != null && duel.getPlayer() != this) {
-            final Player opponent = duel.getPlayer();
-            duel.setPlayer(this);
-            duel.setOpponent(opponent);
-        }
-        return duel;
-    }
 
     public String getTitleName() {
         StringBuilder sb = new StringBuilder();
@@ -4839,9 +4830,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.maximumTolerance = maximumTolerance;
     }
 
-    public void setDuel(Duel duel) {
-        this.duel = duel;
-    }
 
     public Bank getBank() {
         return getPersonalBank();

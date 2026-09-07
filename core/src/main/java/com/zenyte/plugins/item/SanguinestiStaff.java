@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ChargeExtension;
@@ -49,7 +50,7 @@ public class SanguinestiStaff extends ItemPlugin implements ChargeExtension {
             }
         });
         bind("Uncharge", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
+            if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
                 player.sendMessage("You can't do this during a duel.");
                 return;
             }

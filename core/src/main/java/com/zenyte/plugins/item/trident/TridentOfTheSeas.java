@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item.trident;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.player.Player;
@@ -17,7 +18,7 @@ public class TridentOfTheSeas extends ItemPlugin {
                 @Override
                 public void buildDialogue() {
                     options(TITLE, new DialogueOption("Uncharge the trident. The coins won't be refunded.", () -> {
-                        if (player.getDuel() != null && player.getDuel().inDuel()) {
+                        if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
                             player.sendMessage("You can't do this during a duel.");
                             return;
                         }

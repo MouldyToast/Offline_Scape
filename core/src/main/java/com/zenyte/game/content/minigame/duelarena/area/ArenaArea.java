@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.area;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.content.consumables.Drinkable;
 import com.zenyte.game.content.consumables.Edible;
@@ -44,10 +45,10 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public void enter(Player player) {
-        if (player.getDuel() == null) {
+        if (DuelKeys.getDuel(player) == null) {
             return;
         }
-        player.getDuel().resetAttributes(player);
+        DuelKeys.getDuel(player).resetAttributes(player);
         player.setCantInteract(false);
         player.setCanPvp(true, true);
     }
@@ -55,7 +56,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
     @Override
     public void leave(Player player, boolean logout) {
         player.setCanPvp(false);
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return;
         }
@@ -64,15 +65,15 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
             duel.finishDuel(opponent, player);
             duel.sendSpoils(opponent);
             duel.registerDuelHistory(opponent, player);
-            player.setDuel(null);
-            opponent.setDuel(null);
+            DuelKeys.setDuel(player, null);
+            DuelKeys.setDuel(opponent, null);
 //            player.getPacketDispatcher().sendComponentText(Duel.WINNINGS_INTERFACE, 16, "You forfeit!");
         }
     }
 
     @Override
     public boolean sendDeath(final Player player, final Entity source) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return false;
         }
@@ -95,13 +96,13 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
                     player.setAnimation(Player.DEATH_ANIMATION);
                 } else if (ticks == 3) {
                     player.sendMessage("Oh dear, you are dead!");
-                    if (opponent.getDuel() != null && !duel.isCompleted()) {
+                    if (DuelKeys.getDuel(opponent) != null && !duel.isCompleted()) {
                         opponent.sendMessage("You have defeated " + player.getName() + ".");
                         duel.finishDuel(opponent, player);
                         duel.sendSpoils(opponent);
                         duel.registerDuelHistory(opponent, player);
-                        player.setDuel(null);
-                        opponent.setDuel(null);
+                        DuelKeys.setDuel(player, null);
+                        DuelKeys.setDuel(opponent, null);
                     }
                 } else if (ticks == 4) {
                     player.getAppearance().resetRenderAnimation();
@@ -139,7 +140,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
         if (entity instanceof NPC) {
             return true;
         }
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return false;
         }
@@ -161,7 +162,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean processCombat(final Player player, final Entity entity, final String style) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -180,7 +181,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean manualLogout(final Player player) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -193,7 +194,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public void onLogout(final @NotNull Player player) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return;
         }
@@ -205,8 +206,8 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
             duel.finishDuel(opponent, player);
             duel.sendSpoils(opponent);
             duel.registerDuelHistory(opponent, player);
-            player.setDuel(null);
-            opponent.setDuel(null);
+            DuelKeys.setDuel(player, null);
+            DuelKeys.setDuel(opponent, null);
         } else {
             duel.close(true);
         }
@@ -224,7 +225,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean activatePrayer(final Player player, final Prayer prayer) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -237,7 +238,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean eat(final Player player, final Edible food) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -250,7 +251,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean drink(final Player player, final Drinkable potion) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -263,7 +264,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean drop(final Player player, final Item item) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null) {
             return true;
         }
@@ -276,7 +277,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean equip(final Player player, final Item item, final int slot) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel == null || !duel.inDuel()) {
             return true;
         }
@@ -310,7 +311,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean canTeleport(final Player player, final Teleport teleport) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel != null) {
             player.sendMessage("You cannot teleport during a duel.");
             return false;
@@ -320,7 +321,7 @@ public abstract class ArenaArea extends DuelArenaArea implements DeathPlugin, Pl
 
     @Override
     public boolean canTrade(final Player player, final Player partner) {
-        final Duel duel = player.getDuel();
+        final Duel duel = DuelKeys.getDuel(player);
         if (duel != null) {
             player.sendMessage("You cannot trade during a duel.");
             return false;

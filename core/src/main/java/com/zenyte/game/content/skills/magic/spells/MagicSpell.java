@@ -1,5 +1,6 @@
 package com.zenyte.game.content.skills.magic.spells;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.google.common.base.CaseFormat;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.duelarena.DuelSetting;
@@ -66,7 +67,7 @@ public interface MagicSpell extends Plugin {
 	}
 
 	default boolean canUse(final Player player) {
-		final Duel duel = player.getDuel();
+		final Duel duel = DuelKeys.getDuel(player);
 		if (duel == null) {
 			return true;
 		}

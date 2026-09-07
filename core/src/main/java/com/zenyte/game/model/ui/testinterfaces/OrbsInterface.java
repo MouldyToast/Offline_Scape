@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.zenyte.game.GameInterface;
@@ -66,7 +67,7 @@ public class OrbsInterface extends Interface {
             if (player.isLocked()) {
                 return;
             }
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
                 player.sendMessage("Use of special attacks has been turned off for this duel.");
                 return;
@@ -81,7 +82,7 @@ public class OrbsInterface extends Interface {
 //            if (player.isLocked()) {
 //                return;
 //            }
-//            final Duel duel = player.getDuel();
+//            final Duel duel = DuelKeys.getDuel(player);
 //            if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
 //                player.sendMessage("Use of special attacks has been turned off for this duel.");
 //                return;

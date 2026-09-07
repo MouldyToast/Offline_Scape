@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Utils;
@@ -16,7 +17,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 public class TransmogrifyingRings implements EquipPlugin {
     @Override
     public boolean handle(final Player player, final Item item, final int slotId, final int equipmentSlot) {
-        if (player.getDuel() != null && player.getDuel().inDuel()) {
+        if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
             player.sendMessage("You can't do this during a duel.");
             return false;
         }

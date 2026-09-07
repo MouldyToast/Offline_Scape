@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
@@ -20,7 +21,7 @@ public class ScytheOfVitur extends ItemPlugin {
         });
         bind("Charge", (player, item, slotId) -> player.sendMessage("Your scythe must be charged using a special " + "vyre well found at Ver Sinhaza."));
         bind("Uncharge", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
+            if (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()) {
                 player.sendMessage("You can't do this during a duel.");
                 return;
             }

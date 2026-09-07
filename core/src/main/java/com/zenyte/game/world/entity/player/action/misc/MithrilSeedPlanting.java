@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.misc;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
@@ -35,7 +36,7 @@ public class MithrilSeedPlanting extends Action {
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return false;
 
         var location = new Location(player.getLocation());
-        if (isValidMovementTile(location) || (player.getDuel() != null && player.getDuel().inDuel())) {
+        if (isValidMovementTile(location) || (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel())) {
             player.sendMessage("You can't plant mithril seeds here.");
             return false;
         }
@@ -56,7 +57,7 @@ public class MithrilSeedPlanting extends Action {
     public int processWithDelay() {
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return -1;
         var location = new Location(player.getLocation());
-        if (isValidMovementTile(location) || (player.getDuel() != null && player.getDuel().inDuel())) {
+        if (isValidMovementTile(location) || (DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel())) {
             player.sendMessage("You can't plant mithril seeds here.");
             return -1;
         }

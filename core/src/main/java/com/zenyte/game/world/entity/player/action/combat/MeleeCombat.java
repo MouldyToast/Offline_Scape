@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
 import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
@@ -416,7 +417,7 @@ public class MeleeCombat extends PlayerCombat {
         }
         player.resetWalkSteps();
         final Location nextLocation = target.getLocation();
-        if (player.isProjectileClipped(target, extraSpace <= 0 && !(player.getDuel() != null && player.getDuel().inDuel())) || !(withinRange(target, extraSpace, target.getSize())) || target.hasWalkSteps() && (target instanceof Player || !CollisionUtil.collides(player.getX(), player.getY(), player.getSize(), nextLocation.getX(), nextLocation.getY(), target.getSize()))) {
+        if (player.isProjectileClipped(target, extraSpace <= 0 && !(DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel())) || !(withinRange(target, extraSpace, target.getSize())) || target.hasWalkSteps() && (target instanceof Player || !CollisionUtil.collides(player.getX(), player.getY(), player.getSize(), nextLocation.getX(), nextLocation.getY(), target.getSize()))) {
             appendWalksteps();
         }
         if (!player.hasWalkSteps() && !isWithinAttackDistance()) {
@@ -433,7 +434,7 @@ public class MeleeCombat extends PlayerCombat {
     protected boolean isWithinAttackDistance() {
         if(target instanceof NPC npc && hasManualDistanceDefined(npc))
             return checkManualDistance(npc);
-        if (target.checkProjectileClip(player, true) && isProjectileClipped(true, extraSpace <= 0 && !(player.getDuel() != null && player.getDuel().inDuel()))) {
+        if (target.checkProjectileClip(player, true) && isProjectileClipped(true, extraSpace <= 0 && !(DuelKeys.getDuel(player) != null && DuelKeys.getDuel(player).inDuel()))) {
             return false;
         }
         final Location nextTile = target.getNextLocation();

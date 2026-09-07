@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.duelarena.interfaces;
 
+import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.minigame.duelarena.Duel;
 import com.zenyte.game.content.minigame.duelarena.DuelSetting;
@@ -57,28 +58,28 @@ public class DuelSettingsInterface extends Interface {
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
         if (!replacement.isPresent() || !replacement.get().equals(GameInterface.DUEL_STAKING)) {
-            Optional.ofNullable(player.getDuel()).ifPresent(duel -> duel.close(true));
+            Optional.ofNullable(DuelKeys.getDuel(player)).ifPresent(duel -> duel.close(true));
         }
     }
 
     @Override
     protected void build() {
         bind("Confirm", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.confirm(DuelStage.SETTINGS);
         });
         bind("Decline", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.close(true);
         });
         bind("Store preset settings", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
@@ -86,7 +87,7 @@ public class DuelSettingsInterface extends Interface {
             player.sendMessage("Stored preset settings overwritten.");
         });
         bind("Load last duel settings", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
@@ -104,7 +105,7 @@ public class DuelSettingsInterface extends Interface {
             opponent.sendMessage("Duel Option change - Opponent's preset options loaded!");
         });
         bind("Load preset settings", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
@@ -122,7 +123,7 @@ public class DuelSettingsInterface extends Interface {
             opponent.sendMessage("Duel Option change - Opponent's last duel options loaded!");
         });
         bind("Boxing settings", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
@@ -139,7 +140,7 @@ public class DuelSettingsInterface extends Interface {
             opponent.sendMessage("Duel Option change - Boxing settings loaded!");
         });
         bind("Whip settings", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
@@ -156,168 +157,168 @@ public class DuelSettingsInterface extends Interface {
             opponent.sendMessage("Duel Option change - Whip settings loaded!");
         });
         bind("No Ranged", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_RANGED);
         });
         bind("No Melee", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_MELEE);
         });
         bind("No Magic", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_MAGIC);
         });
         bind("No Special Attack", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_SPECIAL_ATTACK);
         });
         bind("No Fun Weapons", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_FUN_WEAPONS);
         });
         bind("No Forfeit", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_FORFEIT);
         });
         bind("No Prayers", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_PRAYER);
         });
         bind("No Drinks", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_DRINKS);
         });
         bind("No Food", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_FOOD);
         });
         bind("No Movement", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_MOVEMENT);
         });
         bind("Obstacles", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.OBSTACLES);
         });
         bind("No Weapon Switching", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NO_WEAPON_SWITCH);
         });
         bind("Show Inventories", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.SHOW_INVENTORIES);
         });
         bind("Head", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.HEAD);
         });
         bind("Back", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.BACK);
         });
         bind("Neck", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.NECK);
         });
         bind("Left hand", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.LEFT_HAND);
         });
         bind("Torso", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.TORSO);
         });
         bind("Right hand", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.RIGHT_HAND);
         });
         bind("Leg", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.LEG);
         });
         bind("Hand", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.HAND);
         });
         bind("Feet", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.FEET);
         });
         bind("Ring", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }
             duel.toggleRule(DuelSetting.RING);
         });
         bind("Ammunition", player -> {
-            final Duel duel = player.getDuel();
+            final Duel duel = DuelKeys.getDuel(player);
             if (duel == null) {
                 return;
             }

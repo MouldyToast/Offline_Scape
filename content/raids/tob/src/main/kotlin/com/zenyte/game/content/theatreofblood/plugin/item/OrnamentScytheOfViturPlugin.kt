@@ -1,5 +1,6 @@
 package com.zenyte.game.content.theatreofblood.plugin.item
 
+import com.zenyte.game.content.minigame.duelarena.duel
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
@@ -42,7 +43,7 @@ class OrnamentScytheOfViturPlugin : ItemPlugin() {
 			}
 		}
 		bind("Uncharge") { player: Player, item: Item, slotId: Int ->
-			if (player.duel != null && player.duel.inDuel()) {
+			if (player.duel?.inDuel() == true) {
 				player.sendMessage("You can't do this during a duel.")
 				return@bind
 			}

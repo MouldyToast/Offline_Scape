@@ -474,7 +474,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient Entity lastTarget;
     private transient DelayedActionManager delayedActionManager = new DelayedActionManager(this);
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
-    private PetInsurance petInsurance = new PetInsurance(this);
+    /**
+     * @deprecated Legacy persistence slot for pet insurance, superseded by
+     * attrPersistence["pet_insurance"] (see PetInsuranceKeys). Kept
+     * non-transient so pre-migration saves still deserialize into the parser
+     * player; the live player no longer populates it, so post-migration saves
+     * omit the "petInsurance" key entirely. Delete field and getter with the
+     * Rotation 2 save rotation.
+     */
+    @Deprecated
+    private PetInsurance petInsurance;
     @Expose
     private int petId;
     private transient boolean canPvp;
@@ -4744,12 +4753,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return packetDispatcher;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only
+     * PetInsurance.onInitialization may call this, and only on the parser
+     * player. Live access goes through PetInsuranceKeys.petInsurance.
+     * Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public PetInsurance getPetInsurance() {
         return petInsurance;
-    }
-
-    public void setPetInsurance(PetInsurance petInsurance) {
-        this.petInsurance = petInsurance;
     }
 
     public int getPetId() {

@@ -62,7 +62,7 @@ public class PetWrapper {
                 continue;
             }
             final int itemId = item.getId();
-            if (Probita.insurablePets.containsKey(itemId) && !player.getPetInsurance().isInsured(Probita.insurablePets.get(itemId))) {
+            if (Probita.insurablePets.containsKey(itemId) && !PetInsuranceKeys.petInsurance(player).isInsured(Probita.insurablePets.get(itemId))) {
                 return itemId;
             }
         }

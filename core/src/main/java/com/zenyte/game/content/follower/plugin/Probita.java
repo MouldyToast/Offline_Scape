@@ -3,6 +3,7 @@ package com.zenyte.game.content.follower.plugin;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.follower.InsurableVariablePet;
 import com.zenyte.game.content.follower.PetInsurance;
+import com.zenyte.game.content.follower.PetInsuranceKeys;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnNPCAction;
@@ -63,13 +64,13 @@ public class Probita extends NPCPlugin implements ItemOnNPCAction {
                                 " that I'd like to insure.", "What pets have I insured?", "Maybe another time.").onOptionTwo(() -> setKey(10)).onOptionThree(() -> setKey(15)).onOptionFour(() -> setKey(50)).onOptionFive(() -> setKey(60));
                         player(10, "I've lost a pet. Have you got it?");
                         npc("Sorry to hear! Let me check for you...");
-                        if (player.getPetInsurance().getInsuredPets().isEmpty()) {
+                        if (PetInsuranceKeys.petInsurance(player).getInsuredPets().isEmpty()) {
                             npc("I'm afraid you don't have any pets insured at the moment.");
                         } else {
                             npc("Here's an overview of your insured pet(s).").executeAction(() -> GameInterface.PET_INSURANCE.open(player));
                         }
                         player(15, "I have a pet that I'd like to insure.");
-                        final boolean canInsureForFree = player.getMemberRank().equalToOrGreaterThan(MemberRank.SAPPHIRE) && player.getPetInsurance().getInsuredPets().size() >= 2;
+                        final boolean canInsureForFree = player.getMemberRank().equalToOrGreaterThan(MemberRank.SAPPHIRE) && PetInsuranceKeys.petInsurance(player).getInsuredPets().size() >= 2;
                         if (canInsureForFree) {
                             npc("Great! There is no fee for you to insure any more pets, as you have insured at least two of them with me and are a Expansion member or above. Just hand me the pet so I can register it.");
                             npc("Once you've insured the pet, you can reclaim it here unlimited times for a reclamation " +
@@ -103,7 +104,7 @@ public class Probita extends NPCPlugin implements ItemOnNPCAction {
                                 if (!canInsureForFree) {
                                     player.getInventory().deleteItem(PetInsurance.INSURANCE_PRICE);
                                 }
-                                player.getPetInsurance().insurePet(basePetItemId);
+                                PetInsuranceKeys.petInsurance(player).insurePet(basePetItemId);
                             }).onOptionTwo(() -> setKey(30));
                             item(25, new Item(basePetItemId), "Your pet is now insured. You can reclaim it from Probita if you ever lose it.");
                         }
@@ -163,11 +164,11 @@ public class Probita extends NPCPlugin implements ItemOnNPCAction {
         player.getDialogueManager().start(new Dialogue(player, npc) {
             @Override
             public void buildDialogue() {
-                if (player.getPetInsurance().isInsured(petItemId)) {
+                if (PetInsuranceKeys.petInsurance(player).isInsured(petItemId)) {
                     npc("You've already insured that pet.");
                     return;
                 }
-                final boolean canInsureForFree = player.getMemberRank().equalToOrGreaterThan(MemberRank.SAPPHIRE) && player.getPetInsurance().getInsuredPets().size() >= 2;
+                final boolean canInsureForFree = player.getMemberRank().equalToOrGreaterThan(MemberRank.SAPPHIRE) && PetInsuranceKeys.petInsurance(player).getInsuredPets().size() >= 2;
                 if (!canInsureForFree && !player.getInventory().containsItem(PetInsurance.INSURANCE_PRICE)) {
                     npc("I'm afraid you don't have enough gold to insure the <col=00080>" + basePetName + "</col> pet.");
                     return;
@@ -177,7 +178,7 @@ public class Probita extends NPCPlugin implements ItemOnNPCAction {
                     if (!canInsureForFree) {
                         player.getInventory().deleteItem(PetInsurance.INSURANCE_PRICE);
                     }
-                    player.getPetInsurance().insurePet(petItemId);
+                    PetInsuranceKeys.petInsurance(player).insurePet(petItemId);
                 }).onOptionTwo(() -> setKey(30));
                 item(25, new Item(petItemId), "Your pet is now insured. You can reclaim it from Probita if you ever lose it.");
                 player(30, "No.");

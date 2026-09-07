@@ -6,6 +6,7 @@ import com.zenyte.game.content.achievementdiary.diaries.ArdougneDiary;
 import com.zenyte.game.content.follower.InsurableVariablePet;
 import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.PetInsurance;
+import com.zenyte.game.content.follower.PetInsuranceKeys;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
@@ -46,7 +47,7 @@ public class PetInsuranceInterface extends Interface {
         long existingPetsValue = 0;
         final IntEnum e = EnumDefinitions.getIntEnum(985);
         loop:
-        for (final Pet pet : player.getPetInsurance().getInsuredPets()) {
+        for (final Pet pet : PetInsuranceKeys.petInsurance(player).getInsuredPets()) {
             if (pet == null) {
                 continue;
             }
@@ -103,7 +104,7 @@ public class PetInsuranceInterface extends Interface {
                 return;
             }
 
-            final PetInsurance insurance = player.getPetInsurance();
+            final PetInsurance insurance = PetInsuranceKeys.petInsurance(player);
             final Pet pet = PetWrapper.getByItem(itemId);
             if (pet == null || !insurance.isInsured(pet)) {
                 return;

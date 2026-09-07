@@ -720,7 +720,6 @@ public final class LoginManager {
         player.getDragonhidePouch().initialize(parser.getDragonhidePouch());
         player.getGemBag().initialize(parser.getGemBag());
         player.getTeleportManager().initialize(parser.getTeleportManager());
-        player.getPetInsurance().initialize(parser.getPetInsurance());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
         if (parser.getPlayerTitleStatus() != null)

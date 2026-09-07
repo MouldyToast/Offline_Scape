@@ -1,6 +1,8 @@
 package com.zenyte.game.content.follower;
 
+import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.item.Item;
+import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.game.world.entity.player.Player;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
@@ -30,6 +32,24 @@ public class PetInsurance {
         }
         insuredPets = insurance.insuredPets;
         claimablePets = insurance.claimablePets;
+    }
+
+    @Subscribe
+    public static void onInitialization(final InitializationEvent event) {
+        final Player player = event.getPlayer();
+        final Player savedPlayer = event.getSavedPlayer();
+        final boolean hadPersistedAttr = PetInsuranceKeys.rawPetInsuranceAttr(player) != null;
+        final PetInsurance insurance = PetInsuranceKeys.petInsurance(player);
+        if (hadPersistedAttr || savedPlayer == null) {
+            return;
+        }
+        // Legacy path: pre-migration saves keep the data under the top-level
+        // "petInsurance" JSON key on the parser player. The copy below
+        // migrates it into the attr; the next save persists it under
+        // attrPersistence["pet_insurance"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final PetInsurance saved = savedPlayer.getPetInsurance();
+        insurance.initialize(saved);
     }
 
     public void insurePet(final int petItemId) {

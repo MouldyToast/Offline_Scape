@@ -15,43 +15,60 @@ below — if work appears that isn't on this list, add it here first.
 
 ---
 
-## 0. Current state (updated 2026-09-06, branch claude/player-field-extraction-rotation-54v409)
+## 0. Current state (updated 2026-09-07, Track 1 wave 1 landed on top of Main `5d25c393`)
 
 **Done and merged to Main:** Phases 0, A, B, B.5, C, D, E (all 20 fields
-extracted to AttributeMap), F1–F5, Rotation (all 15 shims deleted; Player
-has zero @Deprecated members).
+extracted to AttributeMap), F1–F5, Rotation (all 15 shims deleted), G1
+(per-tick drivers), E6 rider (pet login/logout events), Track 2 campaign
+(T2-a–T2-d), T3.1a/b (nightmare curse + engine varbit reads), T3.2 (soft
+timers). The G1/E6 play-test sweep is done.
 
-**Done on this branch (6 commits, awaiting PR/merge + play-test):**
-- G1: farming/hunter/prayer per-tick drivers → `PlayerProcessEvent`
-  (published from Player.processEntity at the exact old position; ONE
-  subscriber in `core/.../game/content/PlayerTickHooks.kt`).
-- G2: CLOSED, nothing to land — diary XP-subscriber premise falsified
-  (all 382 update sites are action objectives; zero threshold re-checks).
-- G3: CLOSED, blocked — prayer varbit reads are NOT safe while the
-  nightmare curse scrambles varbits vs. the activePrayers map (§Track 3).
-- Cheap cleanup (adoptFarming, stale javadocs, api PlayerModel dead keys).
-- E6 rider: pet spawn → `PlayerLoginEvent` (world entry, timing change
-  accepted by Jesse), finish → `PlayerLogoutEvent`.
+**Done this session (Track 1, wave 1 — ROADMAP items 1.1–1.6, 7 commits):**
+- 1.2 toaPlayerData: dead scaffolding DELETED (D-W1-1) — zero writers, the
+  one reader consumed construction defaults; behavior identical. No key
+  added; see the PHASE_TOA_PERSIST open item below.
+- 1.1 gauntletItemStorage: converted to a parser-only `@Deprecated` legacy
+  drain slot (D-W1-2) — zero live writers, the live gauntlet never
+  references the class; only the onInitialization drain (stranded-item
+  return for pre-rework saves) remains. No key, no accessor.
+- 1.4 puzzleBox + lightBox: transient attr keys (PuzzleBoxKeys/
+  LightBoxKeys, no persistenceKey, no shim — never persisted).
+- 1.3 stash → attrPersistence["stash"] (StashKeys), 1.5 petInsurance →
+  attrPersistence["pet_insurance"] (PetInsuranceKeys; the LoginManager
+  setFields copy line replaced by an attr-first onInitialization), 1.6
+  godBooks → attrPersistence["god_books"] (GodBooksKeys) — all three on
+  the SeedVault D1 recipe: rehydrating accessor + adopt/initialize,
+  attr-first onInit with parser-legacy fallback, `@Deprecated`
+  field+getter shims joining Rotation 2.
 
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 15
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1094 (includes the TeleportType structures.* wildcard + the 6 planned T2-d D-3 RaidAccess import lines)
-grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 15 (unique)
-grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 12
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1096 (includes 12 planned content-import lines in core paths: the prior 7 — TeleportType structures.* wildcard + 6 T2-d D-3 RaidAccess lines — plus wave 1's 5: StashKeys in StashUnitObject, PuzzleBoxKeys in PuzzleBoxItem, LightBoxKeys in LightBoxItem, PetInsuranceKeys in PetInsuranceInterface, GodBooksKeys in JossiksGodBooks)
+grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 18 (unique)
+grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 8 (= the four Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks)
 ```
-plugins.dat: 4355 plugins (untracked file; regenerate with
+plugins.dat: 4356 plugins (untracked file; regenerate with
 `./gradlew :app:runPluginScanner` after any @Subscribe/annotation change,
-never commit it).
+never commit it; wave 1 added PetInsurance.onInitialization).
 
-**Play-tests outstanding (Jesse, after merging this branch):**
-- G1: prayer drain rate under combat + flicking, relog mid-drain; farming
-  growth/weeds on schedule; hunter traps collapse on time, birdhouses
-  tick; Whisperer sanity still drains prayer 3/tick in shadow realm.
-- E6: pet out → relog → pet present at world entry; pick up/drop;
-  insurance reclaim; metamorphosis; lobby-hop without logout → no
-  duplicate pet.
+**Play-tests outstanding (Jesse, after merging wave 1):**
+- STASH: build/fill/empty + relog persistence; a pre-migration save
+  migrating (legacy top-level "stash" key adopted, next save moves it
+  under attrPersistence["stash"]).
+- Pet insurance: insure at Probita + reclaim + relog persistence.
+- God books: page add/check/claim at Jossik + relog persistence.
+- Clue boxes: puzzle box open/shift mid-session + light box open/press
+  (transient — state resets on relog, as before).
+- TOA: one raid start (loadData path).
+- Gauntlet: a pre-rework save with stranded items still gets them
+  returned (if any such save exists).
+
+**Open items:**
+- PHASE_TOA_PERSIST must be re-anchored when built: its Player-field
+  anchors are gone (D-W1-1 deleted toaPlayerData); it should introduce a
+  persisted attr key directly and wire TOAManager.loadData/saveData to it.
 
 ---
 
@@ -93,24 +110,28 @@ scripts | wc -l`).
 
 | # | Field | Refs | Persisted? | Notes |
 |---|---|---|---|---|
-| 1.1 | gauntletItemStorage | 2 | yes (self-init) | trivial |
-| 1.2 | toaPlayerData | 2 | yes (@Expose field) | plain data holder; TOAManager.loadData is the main consumer |
-| 1.3 | stash | 7 | yes (self-init) | |
-| 1.4 | puzzleBox + lightBox | 11+10 | NO (transient) | no shim; treat like the C1 garg-instance move |
-| 1.5 | petInsurance | 12 | yes | |
-| 1.6 | godBooks | 13 | yes (self-init) | |
+| ~~1.1~~ | ~~gauntletItemStorage~~ | 2 | legacy drain only | DONE wave 1 — legacy parser drain only, no key (D-W1-2): zero live writers; @Deprecated slot + onInit stranded-item return, dies at Rotation 2 |
+| ~~1.2~~ | ~~toaPlayerData~~ | 2 | NO (dead) | DONE wave 1 — dead scaffolding deleted, no key (D-W1-1); PHASE_TOA_PERSIST must re-anchor and should introduce the attr key itself |
+| ~~1.3~~ | ~~stash~~ | 7 | yes → "stash" | DONE wave 1 (StashKeys, D1 recipe) |
+| ~~1.4~~ | ~~puzzleBox + lightBox~~ | 11+10 | NO (transient) | DONE wave 1 (PuzzleBoxKeys/LightBoxKeys, no shim) |
+| ~~1.5~~ | ~~petInsurance~~ | 12 | yes → "pet_insurance" | DONE wave 1 (PetInsuranceKeys; LoginManager copy line → onInit) |
+| ~~1.6~~ | ~~godBooks~~ | 13 | yes → "god_books" | DONE wave 1 (GodBooksKeys, D1 recipe) |
 | 1.7 | respawnPoint | 16 | yes (enum) | consider just moving/keeping the enum core-side as a plain type instead of AttributeMap — decide in mini-plan |
 | 1.8 | privateStorage | 19 | yes (self-init) | |
 | 1.9 | retrievalService | 37 | yes (self-init) | |
 | 1.10 | duel | 105 | NO (transient) | no persistence work, but the largest retarget |
 
-Sequencing: 1.1–1.6 batch well (≈2 sessions), 1.7–1.9 one session each,
-1.10 its own session. **≈4–6 sessions.**
+Sequencing: ~~1.1–1.6 batch well (≈2 sessions)~~ landed as wave 1;
+1.7–1.9 one session each, 1.10 its own session.
 
 Then:
 - **Rotation 2** (one session, after Jesse cycles/deletes saves or the
   per-key `grep -L '"<key>"' data/characters/*.json` gate passes): delete
-  the new shims + fallback branches, exactly like Rotation 1.
+  the new shims + fallback branches, exactly like Rotation 1. Wave-1 gate
+  additions: `grep -L '"stash"' data/characters/*.json`, same for
+  `"pet_insurance"` and `"god_books"`, plus the gauntlet condition — no
+  save still carries a non-empty `"gauntletItemStorage"` key (its drain,
+  field and getter die together).
 - **Delete InitializationEvent** (one session): after 1.1–1.9 its
   subscribers no longer read the parser; remove the event, the
   `setFields` post, and then simplify LoginManager's double-deserialize

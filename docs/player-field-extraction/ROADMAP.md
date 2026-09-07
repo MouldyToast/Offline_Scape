@@ -65,17 +65,35 @@ the extension import, 4 nullability hardenings (previously-NPE null
 paths now guarded). +18 planned engine imports (16 Java files + 2
 Kotlin + Player's DEFER-5 net-zero swap).
 
+**Rotation 2 also landed (same session — Track 1 shims deleted):**
+the six @Deprecated slots + getters + imports are off Player, the five
+legacy-fallback onInits collapsed to eager one-line rehydration (the
+adopt methods stay — the accessors' raw-map path still uses them), and
+the fully-dead GauntletItemStorage class deleted. Post-rotation saves
+drop the legacy top-level keys (`stash`, `petInsurance`, `godBooks`,
+`privateStorage`, `retrievalService`, `gauntletItemStorage`) by design.
+Rotation gate was vacuously satisfied: data/characters/ carries zero
+saves in this repo. EcoSearch/PlayerBackupItems went scan-only (their
+legacy-field fallback died with the getter). Player's 7 remaining
+content imports are exactly the deferral Keys: PrayerManagerKeys
+(DEFER-1), ConstructionKeys/RoomReference (DEFER-2), FarmingKeys
+(DEFER-3), PrivateStorageKeys/RetrievalServiceKeys (DEFER-4a/4b),
+DuelKeys (DEFER-5).
+
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 13
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1118 (includes 40 planned content-import lines in core paths: the prior 22 — TeleportType structures.* wildcard, 6 T2-d D-3 RaidAccess, wave 1's 5, wave 2a's 10 — plus wave 2b's 18 DuelKeys/duel-extension imports in engine/plugin files; DEFER-5's Player swap is net-zero)
-grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique; 19 + "private_storage" + "item_retrieval")
-grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 12 (= the six Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks, privateStorage, retrievalService)
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 7 (all deferral Keys — see Rotation 2 note above)
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1112 (the 40 planned lines minus Player's six deleted slot imports)
+grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique)
+grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
-plugins.dat: 4356 plugins (untracked file; regenerate with
-`./gradlew :app:runPluginScanner` after any @Subscribe/annotation change,
-never commit it; wave 1 added PetInsurance.onInitialization).
+plugins.dat: 4354 plugins (untracked file; regenerate with
+`./gradlew :app:runPluginScanner` after any @Subscribe/annotation change
+— note INTERFACE subclasses and the other PluginType shapes count too,
+not just Guava @Subscribe: TOA v2's TOARewardInterface deletion was −1
+that its plan missed, Rotation 2's GauntletItemStorage subscriber −1;
+never commit the file).
 
 **Play-tests outstanding (Jesse, after merging wave 1):**
 - STASH: build/fill/empty + relog persistence; a pre-migration save
@@ -111,6 +129,10 @@ never commit it; wave 1 added PetInsurance.onInitialization).
   phoenix necklace NOT consumed at low HP while dueling (the DEFER-5
   site); degradable weapons (tridents/blowpipe/scythe/sanguinesti) charge
   behavior in duel; credit store + middleman blocked while dueling.
+- Rotation 2: one relog per rotated system (stash, insurance, god books,
+  CoX private storage, item retrieval reclaim) confirming persistence
+  still round-trips through the attr path; a save written post-rotation
+  carries none of the legacy top-level keys.
 
 **Open items:**
 - **DEFER-5** (wave 2b): Player's phoenix-necklace check reads the duel
@@ -210,14 +232,12 @@ Sequencing: ~~1.1–1.6 batch well (≈2 sessions)~~ landed as wave 1;
 session~~ landed as wave 2b.
 
 Then:
-- **Rotation 2** (one session, after Jesse cycles/deletes saves or the
-  per-key `grep -L '"<key>"' data/characters/*.json` gate passes): delete
-  the new shims + fallback branches, exactly like Rotation 1. Wave-1 gate
-  additions: `grep -L '"stash"' data/characters/*.json`, same for
-  `"pet_insurance"` and `"god_books"`, plus the gauntlet condition — no
-  save still carries a non-empty `"gauntletItemStorage"` key (its drain,
-  field and getter die together). Wave-2a additions: the same per-key
-  greps for `"private_storage"` and `"item_retrieval"`.
+- ~~**Rotation 2**~~ DONE same session (see §0): shims + fallbacks
+  deleted exactly like Rotation 1; the gate was vacuously satisfied
+  (zero saves in data/characters/). If a production environment carries
+  pre-migration saves, they must migrate (one login each) on a
+  pre-rotation build BEFORE deploying past commit e92a06ab — after it
+  the legacy top-level keys are no longer read.
 - **Delete InitializationEvent** (one session): after 1.1–1.9 its
   subscribers no longer read the parser; remove the event, the
   `setFields` post, and then simplify LoginManager's double-deserialize

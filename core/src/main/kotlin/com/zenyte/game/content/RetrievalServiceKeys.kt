@@ -52,8 +52,8 @@ fun rawRetrievalServiceAttr(player: Player): Any? {
  * Parser players are Unsafe-allocated, so their transient attr map is null
  * and [retrievalService] cannot be used on them. Reads the raw
  * attrPersistence["item_retrieval"] shape; returns null when the save
- * carries none (offline callers should then fall back to the legacy
- * top-level "retrievalService" field for pre-migration saves). The snapshot
+ * carries none (post-Rotation-2 there is no legacy fallback — a save
+ * without the attr key simply has no retrieval-service data). The snapshot
  * is unparented (transient player is null) — container reads only; never
  * store it in a live player's attr. Mirrors GravestoneKeys.scanGravestone.
  */

@@ -3,6 +3,7 @@ package com.zenyte.game.content.treasuretrails;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.content.treasuretrails.challenges.*;
 import com.zenyte.game.content.treasuretrails.clues.*;
+import com.zenyte.game.content.treasuretrails.clues.PuzzleBoxKeys;
 import com.zenyte.game.content.treasuretrails.clues.emote.ItemRequirement;
 import com.zenyte.game.content.treasuretrails.npcs.*;
 import com.zenyte.game.item.Item;
@@ -571,7 +572,7 @@ public class TreasureTrail {
                                 "puzzle.");
                         return;
                     }
-                    player.getPuzzleBox().reset();
+                    PuzzleBoxKeys.puzzleBox(player).reset();
                     final Item puzzle = new Item(Puzzle.random(clue.getClueScroll().level()).getPuzzleBox());
                     puzzle.setAttribute(Constants.CLUE_SCROLL_NAME, Collections.singletonList(clue.getClueScroll().getEnumName()));
                     final int currentSteps = clue.getItem().getNumericAttribute(Constants.CLUE_SCROLL_CURRENT_STEPS).intValue();

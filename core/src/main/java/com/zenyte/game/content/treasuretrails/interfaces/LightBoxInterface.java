@@ -1,6 +1,7 @@
 package com.zenyte.game.content.treasuretrails.interfaces;
 
 import com.zenyte.game.GameInterface;
+import com.zenyte.game.content.treasuretrails.clues.LightBoxKeys;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.net.packet.PacketDispatcher;
 import com.zenyte.game.util.AccessMask;
@@ -32,14 +33,14 @@ public class LightBoxInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("A", player -> player.getLightBox().press(0));
-        bind("B", player -> player.getLightBox().press(1));
-        bind("C", player -> player.getLightBox().press(2));
-        bind("D", player -> player.getLightBox().press(3));
-        bind("E", player -> player.getLightBox().press(4));
-        bind("F", player -> player.getLightBox().press(5));
-        bind("G", player -> player.getLightBox().press(6));
-        bind("H", player -> player.getLightBox().press(7));
+        bind("A", player -> LightBoxKeys.lightBox(player).press(0));
+        bind("B", player -> LightBoxKeys.lightBox(player).press(1));
+        bind("C", player -> LightBoxKeys.lightBox(player).press(2));
+        bind("D", player -> LightBoxKeys.lightBox(player).press(3));
+        bind("E", player -> LightBoxKeys.lightBox(player).press(4));
+        bind("F", player -> LightBoxKeys.lightBox(player).press(5));
+        bind("G", player -> LightBoxKeys.lightBox(player).press(6));
+        bind("H", player -> LightBoxKeys.lightBox(player).press(7));
     }
 
     @Override

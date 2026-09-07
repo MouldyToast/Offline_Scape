@@ -2,6 +2,7 @@ package com.zenyte.game.content.treasuretrails.interfaces;
 
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
+import com.zenyte.game.content.treasuretrails.clues.PuzzleBoxKeys;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.world.entity.player.Player;
@@ -20,7 +21,7 @@ public class PuzzleBoxInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        final PuzzleBox puzzleBox = player.getPuzzleBox();
+        final PuzzleBox puzzleBox = PuzzleBoxKeys.puzzleBox(player);
         assert puzzleBox.containsPuzzle() : "A puzzle has not yet been constructed.";
         player.getPacketDispatcher().sendComponentSettings(getInterface(), getComponent("Puzzle piece"), 0, 25, AccessMask.CLICK_OP1);
         player.getInterfaceHandler().sendInterface(this);
@@ -29,14 +30,14 @@ public class PuzzleBoxInterface extends Interface {
 
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
-        final PuzzleBox puzzleBox = player.getPuzzleBox();
+        final PuzzleBox puzzleBox = PuzzleBoxKeys.puzzleBox(player);
         assert puzzleBox.containsPuzzle() : "A puzzle has not yet been constructed.";
         puzzleBox.checkCompletion();
     }
 
     @Override
     protected void build() {
-        bind("Puzzle piece", (player, slotId, itemId, option) -> player.getPuzzleBox().shiftPuzzle(slotId));
+        bind("Puzzle piece", (player, slotId, itemId, option) -> PuzzleBoxKeys.puzzleBox(player).shiftPuzzle(slotId));
     }
 
     @Override

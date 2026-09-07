@@ -1,5 +1,6 @@
 package com.zenyte.plugins.item;
 
+import com.zenyte.game.content.treasuretrails.clues.LightBoxKeys;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 
 /**
@@ -16,7 +17,7 @@ public class LightBoxItem extends ItemPlugin {
 				player.sendMessage("You've already solved this light box.");
 				return;
 			}
-			player.getLightBox().open(item.getCharges() == 0);
+			LightBoxKeys.lightBox(player).open(item.getCharges() == 0);
 			if (item.getCharges() == 0) {
 				item.setCharges(1);
 			}

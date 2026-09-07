@@ -2,6 +2,7 @@ package com.zenyte.plugins.item;
 
 import com.zenyte.game.content.treasuretrails.Puzzle;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
+import com.zenyte.game.content.treasuretrails.clues.PuzzleBoxKeys;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 
 /**
@@ -16,7 +17,7 @@ public class PuzzleBoxItem extends ItemPlugin {
 				player.sendMessage("You've already completed this puzzle.");
 				return;
 			}
-			player.getPuzzleBox().openPuzzle(item.getId());
+			PuzzleBoxKeys.puzzleBox(player).openPuzzle(item.getId());
 		});
 		bind("Check steps", (player, item, container, slotId) -> {
 			final int steps = item.getNumericAttribute(TreasureTrail.Constants.CLUE_SCROLL_CURRENT_STEPS).intValue();

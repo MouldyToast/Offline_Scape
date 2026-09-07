@@ -43,8 +43,6 @@ import com.zenyte.game.world.entity.player.teleport.ForceTeleport;
 import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.treasuretrails.clues.LightBox;
-import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
@@ -315,8 +313,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     private final transient CutsceneManager cutsceneManager = new CutsceneManager(this);
-    private final transient PuzzleBox puzzleBox = new PuzzleBox(this);
-    private final transient LightBox lightBox = new LightBox(this);
     private final transient ChargesManager chargesManager = new ChargesManager(this);
     private final transient PollManager pollManager = new PollManager(this);
     private final AreaManager areaManager = new AreaManager(this);
@@ -4435,14 +4431,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public CutsceneManager getCutsceneManager() {
         return cutsceneManager;
-    }
-
-    public PuzzleBox getPuzzleBox() {
-        return puzzleBox;
-    }
-
-    public LightBox getLightBox() {
-        return lightBox;
     }
 
     public ChargesManager getChargesManager() {

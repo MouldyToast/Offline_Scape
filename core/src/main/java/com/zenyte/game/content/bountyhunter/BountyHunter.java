@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
 import com.zenyte.plugins.SkipPluginScan;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.LogoutEvent;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import kotlin.Pair;
@@ -72,7 +72,7 @@ public class BountyHunter {
      * @param event the initialization event carrying the logging player.
      */
     @Subscribe
-    public static void onInit(final InitializationEvent event) {
+    public static void onInit(final PostInitializationEvent event) {
         BountyHunterKeys.bountyHunter(event.getPlayer());
     }
 

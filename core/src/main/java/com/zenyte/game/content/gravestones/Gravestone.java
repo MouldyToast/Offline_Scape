@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.LoginEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,7 +59,7 @@ public class Gravestone {
     }
 
     @Subscribe
-    public static void onInitialization(@NotNull final InitializationEvent event) {
+    public static void onInitialization(@NotNull final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         GravestoneKeys.gravestone(event.getPlayer());

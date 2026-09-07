@@ -8,7 +8,6 @@ import com.near_reality.game.world.WorldHooks;
 import com.zenyte.game.model.RuneDate;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.logger.NearRealityLogger;
-import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.ServerLaunchEvent;
 import com.zenyte.utils.StaticInitializer;
 import org.slf4j.Logger;
@@ -50,14 +49,4 @@ public final class DailyChallengeModule {
         });
     }
 
-    @Subscribe
-    public static void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final DailyChallengeManager otherManager = savedPlayer.getDailyChallengeManager();
-        if (otherManager == null || otherManager.challengeProgression == null) {
-            return;
-        }
-        player.getDailyChallengeManager().setChallengeProgression(otherManager.challengeProgression);
-    }
 }

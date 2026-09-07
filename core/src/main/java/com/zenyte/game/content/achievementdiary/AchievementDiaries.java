@@ -12,7 +12,7 @@ import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
 import com.zenyte.plugins.dialogue.PlainChat;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.LoginEvent;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -78,7 +78,7 @@ public final class AchievementDiaries {
 	}
 
 	@Subscribe
-	public static void onInit(final InitializationEvent event) {
+	public static void onInit(final PostInitializationEvent event) {
 		// Eager rehydration: converts the raw attrPersistence shape into the
 		// typed instance at login, before any game code touches the key.
 		AchievementDiariesKeys.achievementDiaries(event.getPlayer());

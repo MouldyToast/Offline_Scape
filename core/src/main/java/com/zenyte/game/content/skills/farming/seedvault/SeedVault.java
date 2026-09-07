@@ -6,7 +6,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.*;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.container.impl.bank.PlaceholderRedirections;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.StaticInitializer;
 import mgi.types.config.items.ItemDefinitions;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +19,7 @@ public class SeedVault {
     private final SeedVaultContainer container;
 
     @Subscribe
-    public static final void onInit(final InitializationEvent event) {
+    public static final void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         SeedVaultKeys.seedVault(event.getPlayer());

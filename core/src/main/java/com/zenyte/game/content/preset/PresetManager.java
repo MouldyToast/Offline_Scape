@@ -3,7 +3,7 @@ package com.zenyte.game.content.preset;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.model.ui.testinterfaces.PresetManagerInterface;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,7 +27,7 @@ public class PresetManager {
     }
 
     @Subscribe
-    public static final void onInitialization(final InitializationEvent event) {
+    public static final void onInitialization(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         PresetManagerKeys.presetManager(event.getPlayer());

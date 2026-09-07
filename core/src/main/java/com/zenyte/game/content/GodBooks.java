@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.plugins.dialogue.ItemChat;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.Ordinal;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import mgi.types.config.items.ItemDefinitions;
@@ -271,7 +271,7 @@ public final class GodBooks {
     }
 
     @Subscribe
-    public static void onInitialization(final InitializationEvent event) {
+    public static void onInitialization(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         GodBooksKeys.godBooks(event.getPlayer());

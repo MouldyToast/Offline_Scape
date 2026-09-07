@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.hunter.node.TrapType;
 import com.zenyte.game.content.skills.hunter.object.Birdhouse;
 import com.zenyte.game.content.skills.hunter.object.HunterTrap;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.LoginEvent;
 import com.zenyte.plugins.events.LogoutEvent;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -35,7 +35,7 @@ public class Hunter {
     }
 
     @Subscribe
-    public static final void onInitialization(@NotNull final InitializationEvent event) {
+    public static final void onInitialization(@NotNull final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         HunterKeys.hunter(event.getPlayer());

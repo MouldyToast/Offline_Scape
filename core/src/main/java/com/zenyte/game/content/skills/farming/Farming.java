@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.object.WorldObject;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.DefaultLogger;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
@@ -50,7 +50,7 @@ public class Farming {
     }
 
     @Subscribe
-    public static void onInit(final InitializationEvent event) {
+    public static void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         FarmingKeys.farming(event.getPlayer());

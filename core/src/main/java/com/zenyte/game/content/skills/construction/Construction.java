@@ -38,7 +38,7 @@ import com.zenyte.logger.NearRealityLogger;
 import com.zenyte.plugins.dialogue.PlainChat;
 import com.zenyte.plugins.dialogue.RoomCreationD;
 import com.zenyte.plugins.dialogue.RoomRemovingD;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import mgi.types.config.ObjectDefinitions;
 import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
@@ -132,7 +132,7 @@ public final class Construction {
     }
 
     @Subscribe
-    public static final void onInit(final InitializationEvent event) {
+    public static final void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         ConstructionKeys.construction(event.getPlayer());

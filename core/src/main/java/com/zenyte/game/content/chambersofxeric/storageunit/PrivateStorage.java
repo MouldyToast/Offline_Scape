@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -49,7 +49,7 @@ public final class PrivateStorage implements Storage {
     }
 
     @Subscribe
-    public static final void onInitialization(final InitializationEvent event) {
+    public static final void onInitialization(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         PrivateStorageKeys.privateStorage(event.getPlayer());

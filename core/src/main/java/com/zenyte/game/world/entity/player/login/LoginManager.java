@@ -34,7 +34,6 @@ import com.zenyte.game.world.entity.player.dailychallenge.challenge.DailyChallen
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.PluginManager;
-import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.PostInitializationEvent;
 import org.rsmod.game.events.PlayerPreSaveEvent;
 import com.zenyte.utils.TimeUnit;
@@ -685,9 +684,6 @@ public final class LoginManager {
      */
 
     public static void setFields(final Player player, final Player parser) {
-        setFields(player, parser, false);
-    }
-    public static void setFields(final Player player, final Player parser, boolean skipInitEvents) {
         Location location = AreaManagerExtKt.fixLocationIfInstanceDC(parser, parser.getLocation());
         player.setLastLocation(location);
         if (!(player instanceof FakePlayer))
@@ -730,10 +726,15 @@ public final class LoginManager {
 
         player.getBankPin().initialize(parser.getBankPin());
         player.getAttr().putAllFromPersistence(parser.getAttrPersistenceRaw());
-        if(!skipInitEvents) {
-            PluginManager.post(new InitializationEvent(player, parser));
-            PluginManager.post(new PostInitializationEvent(player));
-        }
+        // Former InitializationEvent subscribers: the last four parser
+        // consumers outside LoginManager, now direct adopt calls (fixed
+        // order; previously Guava registration order). The parser never
+        // reaches the plugin surface anymore.
+        player.getVarManager().adopt(parser.getVarManager());
+        player.getCollectionLog().adopt(parser.getCollectionLog());
+        player.getDailyChallengeManager().adopt(parser.getDailyChallengeManager());
+        player.getLoyaltyManager().adopt(parser.getLoyaltyManager());
+        PluginManager.post(new PostInitializationEvent(player));
     }
 
     public Thread getThread() {

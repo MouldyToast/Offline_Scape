@@ -24,7 +24,7 @@ import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
 import com.zenyte.plugins.PluginManager;
 import com.zenyte.plugins.events.CannonRemoveEvent;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.ServerShutdownEvent;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
@@ -81,7 +81,7 @@ public final class DwarfMultiCannon {
 
 
 	@Subscribe
-	public static void onInit(final InitializationEvent event) {
+	public static void onInit(final PostInitializationEvent event) {
 		// Eager rehydration: converts the raw attrPersistence shape into the
 		// typed instance at login, before any game code touches the key.
 		DwarfMultiCannonKeys.dwarfMulticannon(event.getPlayer());

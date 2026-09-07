@@ -28,7 +28,7 @@ import com.zenyte.game.world.region.RegionArea;
 import com.zenyte.game.world.region.area.Keldagrim;
 import com.zenyte.plugins.Listener;
 import com.zenyte.plugins.ListenerType;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.StaticInitializer;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
@@ -106,7 +106,7 @@ public class Slayer {
     }
 
     @Subscribe
-    public static void onInit(final InitializationEvent event) {
+    public static void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         SlayerKeys.slayer(event.getPlayer());

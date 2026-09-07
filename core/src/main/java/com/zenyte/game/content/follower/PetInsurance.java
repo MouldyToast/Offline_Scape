@@ -2,7 +2,7 @@ package com.zenyte.game.content.follower;
 
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.item.Item;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.game.world.entity.player.Player;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
@@ -35,7 +35,7 @@ public class PetInsurance {
     }
 
     @Subscribe
-    public static void onInitialization(final InitializationEvent event) {
+    public static void onInitialization(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         PetInsuranceKeys.petInsurance(event.getPlayer());

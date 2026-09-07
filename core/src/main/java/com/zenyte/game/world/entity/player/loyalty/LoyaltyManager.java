@@ -6,7 +6,6 @@ import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.LogoutEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -48,20 +47,16 @@ public final class LoyaltyManager {
         this.player = player;
     }
 
-    @Subscribe
-    public static final void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final LoyaltyManager currentLoyalty = player.getLoyaltyManager();
-        currentLoyalty.login = Date.from(Instant.now());
-        final Player saved = event.getSavedPlayer();
-        final LoyaltyManager loyaltyManager = saved.getLoyaltyManager();
-        if (loyaltyManager == null) {
+    /**
+     * Stamps the session start and adopts persisted sessions from the
+     * parser player. Replaces the former InitializationEvent subscriber.
+     */
+    public void adopt(final LoyaltyManager saved) {
+        login = Date.from(Instant.now());
+        if (saved == null || saved.sessions == null) {
             return;
         }
-        if (loyaltyManager.sessions == null) {
-            return;
-        }
-        Objects.requireNonNull(currentLoyalty.sessions).addAll(loyaltyManager.sessions);
+        Objects.requireNonNull(sessions).addAll(saved.sessions);
     }
 
     @Subscribe

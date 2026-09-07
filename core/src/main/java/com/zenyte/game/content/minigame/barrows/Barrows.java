@@ -29,7 +29,7 @@ import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.container.impl.RunePouch;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import mgi.tools.jagcached.cache.Cache;
 import mgi.types.config.items.ItemDefinitions;
@@ -102,7 +102,7 @@ public final class Barrows {
     }
 
     @Subscribe
-    public static final void onInit(final InitializationEvent event) {
+    public static final void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         BarrowsKeys.barrows(event.getPlayer());

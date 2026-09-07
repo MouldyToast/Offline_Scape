@@ -19,7 +19,7 @@ import com.zenyte.game.world.entity.player.container.ContainerResult;
 import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 import com.zenyte.game.world.region.area.plugins.TempPlayerStatePlugin;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectCollection;
@@ -65,7 +65,7 @@ public class GrandExchange {
      * into the typed instance before any game code touches the key.
      */
     @Subscribe
-    public static void onInit(final InitializationEvent event) {
+    public static void onInit(final PostInitializationEvent event) {
         GrandExchangeKeys.grandExchange(event.getPlayer());
     }
 

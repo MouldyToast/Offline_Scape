@@ -6,7 +6,7 @@ import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.var.VarCollection;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import mgi.types.config.enums.Enums;
 
 import java.util.Optional;
@@ -98,7 +98,7 @@ public class ItemRetrievalService {
     }
 
     @Subscribe
-    public static final void onInit(final InitializationEvent event) {
+    public static final void onInit(final PostInitializationEvent event) {
         // Eager rehydration: converts the raw attrPersistence shape into the
         // typed instance at login, before any game code touches the key.
         RetrievalServiceKeys.retrievalService(event.getPlayer());

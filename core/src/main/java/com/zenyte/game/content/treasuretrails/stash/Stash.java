@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.object.WorldObject;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.plugins.events.LoginEvent;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -42,7 +42,7 @@ public final class Stash {
 	private static final SoundEffect emptyingSound = new SoundEffect(2582);
 
 	@Subscribe
-	public static void onInitialization(@NotNull final InitializationEvent event) {
+	public static void onInitialization(@NotNull final PostInitializationEvent event) {
 		// Eager rehydration: converts the raw attrPersistence shape into the
 		// typed instance at login, before any game code touches the key.
 		StashKeys.stash(event.getPlayer());

@@ -29,7 +29,7 @@ import com.zenyte.game.world.region.RegionArea;
 import com.zenyte.game.world.region.area.plugins.PrayerPlugin;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;
 import com.zenyte.plugins.dialogue.PlainChat;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.TextUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
@@ -61,7 +61,7 @@ public class PrayerManager {
 	}
 
 	@Subscribe
-	public static void onInit(final InitializationEvent event) {
+	public static void onInit(final PostInitializationEvent event) {
 		// Eager rehydration: converts the raw attrPersistence shape into the
 		// typed instance at login, before any game code touches the key.
 		PrayerManagerKeys.prayerManager(event.getPlayer());

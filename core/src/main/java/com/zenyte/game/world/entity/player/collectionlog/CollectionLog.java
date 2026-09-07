@@ -10,7 +10,6 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
-import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.PostInitializationEvent;
 import com.zenyte.utils.StaticInitializer;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
@@ -70,15 +69,15 @@ public class CollectionLog {
         this.container = new Container(ContainerPolicy.ALWAYS_STACK, ContainerType.COLLECTION_LOG, Optional.empty());
     }
 
-    @Subscribe
-    public static void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final CollectionLog otherCollectionLog = savedPlayer.getCollectionLog();
-        if (otherCollectionLog == null || otherCollectionLog.container == null || otherCollectionLog.container.isEmpty()) {
+    /**
+     * Adopts the persisted collection-log container from the parser player.
+     * Replaces the former InitializationEvent subscriber.
+     */
+    public void adopt(final CollectionLog saved) {
+        if (saved == null || saved.container == null || saved.container.isEmpty()) {
             return;
         }
-        player.getCollectionLog().container.setContainer(otherCollectionLog.container);
+        container.setContainer(saved.container);
     }
 
     @Subscribe

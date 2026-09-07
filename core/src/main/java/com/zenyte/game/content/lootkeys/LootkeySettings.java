@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
-import com.zenyte.plugins.events.InitializationEvent;
+import com.zenyte.plugins.events.PostInitializationEvent;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
 
 import java.util.Optional;
@@ -137,7 +137,7 @@ public class LootkeySettings {
      * null: loot keys were never enabled for this player.
      */
     @Subscribe
-    public static void onInit(final InitializationEvent event) {
+    public static void onInit(final PostInitializationEvent event) {
         LootkeySettingsKeys.lootkeySettings(event.getPlayer());
     }
 

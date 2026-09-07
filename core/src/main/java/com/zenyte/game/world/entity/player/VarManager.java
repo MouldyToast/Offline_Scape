@@ -1,8 +1,6 @@
 package com.zenyte.game.world.entity.player;
 
-import com.google.common.eventbus.Subscribe;
 import com.google.gson.JsonDeserializer;
-import com.zenyte.plugins.events.InitializationEvent;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import mgi.types.config.VarbitDefinitions;
@@ -79,14 +77,15 @@ public final class VarManager {
 
     private final Int2IntMap serializedVars = new Int2IntOpenHashMap();
 
-    @Subscribe
-    public static final void onInitialization(final InitializationEvent event) {
-        final com.zenyte.game.world.entity.player.Player player = event.getPlayer();
-        final com.zenyte.game.world.entity.player.Player saved = event.getSavedPlayer();
-        if (saved == null || saved.getVarManager() == null || saved.getVarManager().serializedVars == null) {
+    /**
+     * Adopts persisted vars from the parser player. Replaces the former
+     * InitializationEvent subscriber; called from LoginManager.setFields.
+     */
+    public void adopt(final VarManager saved) {
+        if (saved == null || saved.serializedVars == null) {
             return;
         }
-        player.getVarManager().serializedVars.putAll(saved.getVarManager().serializedVars);
+        serializedVars.putAll(saved.serializedVars);
     }
 
     public final void refreshDefaults() {

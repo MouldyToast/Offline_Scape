@@ -175,4 +175,15 @@ public class DailyChallengeManager {
     public void setChallengeProgression(Map<DailyChallenge, ChallengeProgress> challengeProgression) {
         this.challengeProgression = challengeProgression;
     }
+
+    /**
+     * Adopts persisted challenge progression from the parser player's
+     * manager. Replaces the former InitializationEvent subscriber.
+     */
+    public void adopt(final DailyChallengeManager saved) {
+        if (saved == null || saved.challengeProgression == null) {
+            return;
+        }
+        setChallengeProgression(saved.challengeProgression);
+    }
 }

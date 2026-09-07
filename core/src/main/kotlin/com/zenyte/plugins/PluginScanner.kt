@@ -115,6 +115,11 @@ object PluginScanner {
                     val nioBuffer = headBuf.nioBuffer()
                     RandomAccessFile(filePath, "rw").use { raf ->
                         raf.channel.write(nioBuffer)
+                        // Truncate: a smaller regeneration must not leave the
+                        // previous file's tail bytes behind (the loader reads
+                        // exactly `count` entries, but EOF-parsing tools would
+                        // trip on the garbage).
+                        raf.setLength(raf.channel.position())
                     }
                 } finally {
                     headBuf.release()

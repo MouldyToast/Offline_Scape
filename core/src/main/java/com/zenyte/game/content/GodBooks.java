@@ -33,7 +33,7 @@ public final class GodBooks {
         public void handle() {
             bind("Check", (player, item, slotId) -> {
                 final GodBooks.GodBook book = GodBook.get(item);
-                final ArrayList<Integer> addedPages = new ArrayList<>(player.getGodBooks().getPages(book));
+                final ArrayList<Integer> addedPages = new ArrayList<>(GodBooksKeys.godBooks(player).getPages(book));
                 Collections.sort(addedPages);
                 final StringBuilder builder = new StringBuilder();
                 for (final Integer page : addedPages) {
@@ -92,7 +92,7 @@ public final class GodBooks {
             final GodBooks.GodBook book = attemptA == null ? GodBook.get(to) : attemptA;
             final Item page = book.damagedBookId == from.getId() ? to : from;
             final Item bookItem = page == from ? to : from;
-            final Set<Integer> pages = player.getGodBooks().getPages(book);
+            final Set<Integer> pages = GodBooksKeys.godBooks(player).getPages(book);
             if (pages.contains(page.getId())) {
                 player.sendMessage("Your damaged book already contains that page.");
                 return;
@@ -274,17 +274,36 @@ public final class GodBooks {
     public static void onInitialization(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player saved = event.getSavedPlayer();
-        if (saved.getGodBooks() == null || saved.getGodBooks().pages == null) {
+        final boolean hadPersistedAttr = GodBooksKeys.rawGodBooksAttr(player) != null;
+        final GodBooks books = GodBooksKeys.godBooks(player);
+        if (hadPersistedAttr || saved == null) {
             return;
         }
-        player.getGodBooks().pages.putAll(saved.getGodBooks().pages);
-        if (saved.getGodBooks().claimedBooks != null) {
-            player.getGodBooks().claimedBooks.addAll(saved.getGodBooks().claimedBooks);
-        }
+        // Legacy path: pre-migration saves keep the data under the top-level
+        // "godBooks" JSON key on the parser player. The adopt below migrates
+        // it into the attr; the next save persists it under
+        // attrPersistence["god_books"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final GodBooks savedBooks = saved.getGodBooks();
+        books.adopt(savedBooks);
     }
 
     private final Map<GodBook, Set<Integer>> pages = new HashMap<>();
     private final Set<GodBook> claimedBooks = new HashSet<>();
+
+    /**
+     * Adopts persisted state. Mirrors the legacy onInitialization copy
+     * exactly; a null or empty source is a no-op.
+     */
+    public void adopt(final GodBooks saved) {
+        if (saved == null || saved.pages == null) {
+            return;
+        }
+        pages.putAll(saved.pages);
+        if (saved.claimedBooks != null) {
+            claimedBooks.addAll(saved.claimedBooks);
+        }
+    }
 
     public Set<Integer> getPages(@NotNull final GodBook book) {
         return pages.computeIfAbsent(book, k -> new HashSet<>());

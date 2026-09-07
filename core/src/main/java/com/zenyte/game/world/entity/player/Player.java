@@ -316,7 +316,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final transient ChargesManager chargesManager = new ChargesManager(this);
     private final transient PollManager pollManager = new PollManager(this);
     private final AreaManager areaManager = new AreaManager(this);
-    private final GodBooks godBooks = new GodBooks();
+    /**
+     * @deprecated Legacy persistence slot for god books, superseded by
+     * attrPersistence["god_books"] (see GodBooksKeys). Kept non-transient so
+     * pre-migration saves still deserialize into the parser player; the live
+     * player no longer populates it, so post-migration saves omit the
+     * "godBooks" key entirely. Delete field and getter with the Rotation 2
+     * save rotation.
+     */
+    @Deprecated
+    private GodBooks godBooks;
     @Expose
     private final BossTimer bossTimer = new BossTimer(this);
     private final CollectionLog collectionLog = new CollectionLog(this);
@@ -4461,6 +4470,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return areaManager;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only GodBooks.onInitialization
+     * may call this, and only on the parser player. Live access goes through
+     * GodBooksKeys.godBooks. Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public GodBooks getGodBooks() {
         return godBooks;
     }

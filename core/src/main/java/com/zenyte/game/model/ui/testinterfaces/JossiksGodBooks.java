@@ -2,6 +2,7 @@ package com.zenyte.game.model.ui.testinterfaces;
 
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.GodBooks;
+import com.zenyte.game.content.GodBooksKeys;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.world.entity.player.Player;
@@ -33,7 +34,7 @@ public class JossiksGodBooks extends Interface {
 
     private void refreshBook(@NotNull final Player player, @NotNull final GodBooks.GodBook book) {
         int value = 0;
-        final GodBooks books = player.getGodBooks();
+        final GodBooks books = GodBooksKeys.godBooks(player);
         if (books.getClaimedBooks().contains(book)) {
             value = 2;
             if (!player.containsItem(book.getCompletedBookId()) && !player.containsItem(book.getDamagedBookId())) {
@@ -66,7 +67,7 @@ public class JossiksGodBooks extends Interface {
             player.sendMessage("You already own a book from this god.");
             return;
         }
-        final GodBooks books = player.getGodBooks();
+        final GodBooks books = GodBooksKeys.godBooks(player);
         if (books.getPages(book).size() >= 4) {
             player.getInventory().addOrDrop(new Item(book.getCompletedBookId(), 1));
             refreshBook(player, book);
@@ -92,7 +93,7 @@ public class JossiksGodBooks extends Interface {
                     }
                     player.getInventory().deleteItem(995, 25000);
                     player.getInventory().addOrDrop(new Item(book.getDamagedBookId()));
-                    player.getGodBooks().getClaimedBooks().add(book);
+                    GodBooksKeys.godBooks(player).getClaimedBooks().add(book);
                     player.getInterfaceHandler().closeInterfaces();
                     GameInterface.JOSSIKS_SALVAGED_GODBOOKS.open(player);
                 }), new DialogueOption("Cancel."));

@@ -32,6 +32,7 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
+import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.follower.PetInsurance;
 import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.Duel;
@@ -464,8 +465,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient boolean needRegionUpdate;
     private transient boolean initialized;
     private transient ActionManager actionManager = new ActionManager(this);
-    @Expose
-    private PrivateStorage privateStorage = new PrivateStorage(this);
+    /**
+     * @deprecated Legacy persistence slot for CoX private storage, superseded
+     * by attrPersistence["private_storage"] (see PrivateStorageKeys). Kept
+     * non-transient so pre-migration saves still deserialize into the parser
+     * player; the live player no longer populates it, so post-migration saves
+     * omit the "privateStorage" key entirely. Delete field and getter with
+     * the Rotation 2 save rotation.
+     */
+    @Deprecated
+    private PrivateStorage privateStorage;
     /**
      * @deprecated Legacy persistence slot: the live gauntlet no longer stores
      * items here (zero writers repo-wide); only
@@ -3727,7 +3736,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 return true;
             }
         }
-        for (final Item i : privateStorage.getContainer().getItems().values()) {
+        for (final Item i : PrivateStorageKeys.privateStorage(this).getContainer().getItems().values()) {
             if (i != null && i.getId() == item.getId()) {
                 return true;
             }
@@ -3798,7 +3807,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 count += i.getAmount();
             }
         }
-        for (final Item i : privateStorage.getContainer().getItems().values()) {
+        for (final Item i : PrivateStorageKeys.privateStorage(this).getContainer().getItems().values()) {
             if (i != null && i.getId() == id) {
                 count += i.getAmount();
             }
@@ -3833,7 +3842,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 count += i.getAmount();
             }
         }
-        for (final Item i : privateStorage.getContainer().getItems().values()) {
+        for (final Item i : PrivateStorageKeys.privateStorage(this).getContainer().getItems().values()) {
             if (i != null && i.getId() == id) {
                 count += i.getAmount();
             }
@@ -3863,7 +3872,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (i == null) continue;
             count += (long) i.getAmount() * i.getSellPrice();
         }
-        for (final Item i : privateStorage.getContainer().getItems().values()) {
+        for (final Item i : PrivateStorageKeys.privateStorage(this).getContainer().getItems().values()) {
             if (i == null) continue;
             count += (long) i.getAmount() * i.getSellPrice();
         }
@@ -3912,7 +3921,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             getBank().getContainer(),
             getRetrievalService().getContainer(),
             getRunePouch().getContainer(),
-            getPrivateStorage().getContainer()
+            PrivateStorageKeys.privateStorage(this).getContainer()
         };
 
         for (final var container : containers) {
@@ -4729,12 +4738,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return actionManager;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only
+     * PrivateStorage.onInitialization may call this, and only on the parser
+     * player. Live access goes through PrivateStorageKeys.privateStorage.
+     * Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public PrivateStorage getPrivateStorage() {
         return privateStorage;
-    }
-
-    public void setPrivateStorage(PrivateStorage privateStorage) {
-        this.privateStorage = privateStorage;
     }
 
     /**

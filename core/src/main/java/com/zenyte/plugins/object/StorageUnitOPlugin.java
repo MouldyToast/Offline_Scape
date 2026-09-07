@@ -2,6 +2,7 @@ package com.zenyte.plugins.object;
 
 import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.RaidAccess;
+import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
@@ -19,7 +20,7 @@ public final class StorageUnitOPlugin implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (object.getId() == ObjectId.STORAGE_UNIT) {
-            player.getPrivateStorage().open(-1);
+            PrivateStorageKeys.privateStorage(player).open(-1);
             return;
         }
         final Optional<Raid> optionalRaid = RaidAccess.raid(player);
@@ -33,7 +34,7 @@ public final class StorageUnitOPlugin implements ObjectAction {
             return;
         }
         if (option.equals("Private")) {
-            player.getPrivateStorage().open(id == 29770 ? 30 : id == 29779 ? 60 : 90);
+            PrivateStorageKeys.privateStorage(player).open(id == 29770 ? 30 : id == 29779 ? 60 : 90);
         } else if (option.equals("Shared")) {
             raid.constructOrGetSharedStorage().open(player);
         } else if (option.equalsIgnoreCase("Build") || option.equalsIgnoreCase("Upgrade")) {

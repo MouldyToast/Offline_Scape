@@ -12,6 +12,7 @@ import com.zenyte.game.content.chambersofxeric.room.ScavengerRoom;
 import com.zenyte.game.content.chambersofxeric.score.Scoreboard;
 import com.zenyte.game.content.chambersofxeric.skills.RaidFarming;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
+import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.chambersofxeric.storageunit.SharedStorage;
 import com.zenyte.game.content.chambersofxeric.storageunit.StorageUnit;
 import com.zenyte.game.content.clans.ClanManager;
@@ -799,7 +800,7 @@ public final class Raid {
         if (rewards == null) {
             return;
         }
-        final PrivateStorage privateStorage = player.getPrivateStorage();
+        final PrivateStorage privateStorage = PrivateStorageKeys.privateStorage(player);
         privateStorage.resetInaccessibleItems();
         final Container playerRewards = rewards.getRewardMap().get(player);
         if (playerRewards != null && playerRewards.getSize() > 0) {
@@ -836,7 +837,7 @@ public final class Raid {
             player.setLocation(outsideTile);
             player.sendSound(leaveSound);
             player.getVarManager().sendBit(5432, 0);
-            if (!player.getPrivateStorage().resetInaccessibleItems().getContainer().isEmpty()) {
+            if (!PrivateStorageKeys.privateStorage(player).resetInaccessibleItems().getContainer().isEmpty()) {
                 player.sendMessage(Colour.RED.wrap("You left something in a storage unit. You can retrieve your stuff" +
                         " by attempting to enter the Chambers of Xeric."));
             }

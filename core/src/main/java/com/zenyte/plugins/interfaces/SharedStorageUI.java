@@ -1,5 +1,6 @@
 package com.zenyte.plugins.interfaces;
 
+import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.model.ui.UserInterface;
 import com.zenyte.game.world.entity.player.Player;
 
@@ -28,7 +29,7 @@ public final class SharedStorageUI implements UserInterface {
 		if (componentId == 5) {
 			final int size = storage.getContainer().getContainerSize();
 			player.getInterfaceHandler().closeInterface(InterfacePosition.CENTRAL);
-			player.getPrivateStorage().open(size == 250 ? 30 : size == 500 ? 60 : 90);
+			PrivateStorageKeys.privateStorage(player).open(size == 250 ? 30 : size == 500 ? 60 : 90);
 			return;
 		}
 		final int slot = storage.getContainer().getSlotOf(itemId);

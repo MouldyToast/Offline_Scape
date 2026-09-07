@@ -32,6 +32,17 @@ public final class PrivateStorage implements Storage {
      *
      * @param player the player who owns the private storage.
      */
+    /**
+     * Adopts persisted state. Mirrors the legacy onInitialization copy
+     * exactly; a null source is a no-op.
+     */
+    public void adopt(final PrivateStorage saved) {
+        if (saved == null || saved.container == null) {
+            return;
+        }
+        container.setContainer(saved.container);
+    }
+
     public PrivateStorage(@NotNull final Player player) {
         this.player = player;
         container = new Container(ContainerPolicy.NORMAL, ContainerType.PRIVATE_STORAGE, Optional.of(player));
@@ -41,11 +52,18 @@ public final class PrivateStorage implements Storage {
     public static final void onInitialization(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player saved = event.getSavedPlayer();
-        final PrivateStorage storage = saved.getPrivateStorage();
-        if (storage == null) {
+        final boolean hadPersistedAttr = PrivateStorageKeys.rawPrivateStorageAttr(player) != null;
+        final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
+        if (hadPersistedAttr || saved == null) {
             return;
         }
-        player.getPrivateStorage().container.setContainer(storage.container);
+        // Legacy path: pre-migration saves keep the storage under the
+        // top-level "privateStorage" JSON key on the parser player. The adopt
+        // below migrates it into the attr; the next save persists it under
+        // attrPersistence["private_storage"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
+        final PrivateStorage savedStorage = saved.getPrivateStorage();
+        storage.adopt(savedStorage);
     }
 
     /**

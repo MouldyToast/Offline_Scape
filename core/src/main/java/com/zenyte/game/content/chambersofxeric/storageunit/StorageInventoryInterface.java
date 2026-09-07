@@ -73,7 +73,7 @@ public class StorageInventoryInterface extends Interface implements SwitchPlugin
             }
             final Raid raid = optionalRaid.get();
             final boolean privateStorage = player.getInterfaceHandler().isPresent(GameInterface.RAIDS_PRIVATE_STORAGE);
-            final Storage storage = (privateStorage ? player.getPrivateStorage() : raid.constructOrGetSharedStorage());
+            final Storage storage = (privateStorage ? PrivateStorageKeys.privateStorage(player) : raid.constructOrGetSharedStorage());
             if (privateStorage && player.getGameMode().equals(GameMode.ULTIMATE_IRON_MAN)) {
                 player.sendMessage("You cannot use the storage units as an ultimate ironman.");
                 return;

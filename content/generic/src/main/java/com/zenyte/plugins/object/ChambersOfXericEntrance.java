@@ -1,6 +1,7 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.GameConstants;
+import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.clans.ClanChannel;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Player;
@@ -53,10 +54,10 @@ public final class ChambersOfXericEntrance implements ObjectAction {
             player.sendMessage("The raid has already been started.");
             return;
         }
-        player.getPrivateStorage().resetInaccessibleItems();
-        if (!player.getPrivateStorage().getContainer().getItems().isEmpty()) {
+        PrivateStorageKeys.privateStorage(player).resetInaccessibleItems();
+        if (!PrivateStorageKeys.privateStorage(player).getContainer().getItems().isEmpty()) {
             player.sendMessage("You must retrieve all your items from the private storage before you can re-enter the Chambers of Xeric.");
-            player.getPrivateStorage().open(-1);
+            PrivateStorageKeys.privateStorage(player).open(-1);
             return;
         }
         channel.getRaidParty().getRaid().enterRaid(player);

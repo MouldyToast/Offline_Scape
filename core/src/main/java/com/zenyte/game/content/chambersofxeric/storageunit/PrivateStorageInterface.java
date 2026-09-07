@@ -31,7 +31,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
 
     @Override
     public void open(final Player player) {
-        final PrivateStorage storage = player.getPrivateStorage();
+        final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
         final Container container = storage.getContainer();
         final Object attribute = player.getTemporaryAttributes().remove("private storage size");
         if (!(attribute instanceof Number)) {
@@ -58,7 +58,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
     protected void build() {
         bind("Shared storage button", player -> RaidAccess.raid(player).ifPresent(raid -> GameInterface.RAIDS_SHARED_STORAGE.open(player)));
         bind("Interact with item", (player, slotId, itemId, option) -> {
-            final PrivateStorage storage = player.getPrivateStorage();
+            final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
             final Container container = storage.getContainer();
             final int slot = container.getSlotOf(itemId);
             final Item item = container.get(slot);
@@ -76,7 +76,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
                 player.sendMessage("You cannot use the storage units as an ultimate ironman.");
                 return;
             }
-            final PrivateStorage storage = player.getPrivateStorage();
+            final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
             final Container container = storage.getContainer();
             if (container.getSize() == 0) {
                 player.sendMessage("There's nothing to withdraw.");
@@ -101,7 +101,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
                 return;
             }
             final Optional<Raid> raid = RaidAccess.raid(player);
-            final PrivateStorage storage = player.getPrivateStorage();
+            final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
             if (raid.isPresent()) {
                 final Inventory inventory = player.getInventory();
                 final Container container = inventory.getContainer();
@@ -141,7 +141,7 @@ public class PrivateStorageInterface extends StorageInterface implements SwitchP
                 player.sendMessage("Not enough space in your bank.");
             }
         });
-        bind("Interact with item", "Interact with item", (player, fromSlot, toSlot) -> player.getPrivateStorage().switchItem(fromSlot, toSlot));
+        bind("Interact with item", "Interact with item", (player, fromSlot, toSlot) -> PrivateStorageKeys.privateStorage(player).switchItem(fromSlot, toSlot));
     }
 
     @Override

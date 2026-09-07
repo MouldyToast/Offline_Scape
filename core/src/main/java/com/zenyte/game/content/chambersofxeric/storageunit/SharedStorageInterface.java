@@ -50,7 +50,7 @@ public class SharedStorageInterface extends StorageInterface {
             final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);
             final SharedStorage storage = raid.constructOrGetSharedStorage();
             final int size = storage.getContainer().getContainerSize();
-            player.getPrivateStorage().open(size == 250 ? 30 : size == 500 ? 60 : 90);
+            PrivateStorageKeys.privateStorage(player).open(size == 250 ? 30 : size == 500 ? 60 : 90);
         });
         bind("Interact with item", (player, slotId, itemId, option) -> {
             final Raid raid = RaidAccess.raid(player).orElseThrow(RuntimeException::new);

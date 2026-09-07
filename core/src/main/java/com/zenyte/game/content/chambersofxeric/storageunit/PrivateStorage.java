@@ -50,20 +50,9 @@ public final class PrivateStorage implements Storage {
 
     @Subscribe
     public static final void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player saved = event.getSavedPlayer();
-        final boolean hadPersistedAttr = PrivateStorageKeys.rawPrivateStorageAttr(player) != null;
-        final PrivateStorage storage = PrivateStorageKeys.privateStorage(player);
-        if (hadPersistedAttr || saved == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the storage under the
-        // top-level "privateStorage" JSON key on the parser player. The adopt
-        // below migrates it into the attr; the next save persists it under
-        // attrPersistence["private_storage"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final PrivateStorage savedStorage = saved.getPrivateStorage();
-        storage.adopt(savedStorage);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        PrivateStorageKeys.privateStorage(event.getPlayer());
     }
 
     /**

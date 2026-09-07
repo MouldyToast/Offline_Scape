@@ -99,20 +99,9 @@ public class ItemRetrievalService {
 
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = RetrievalServiceKeys.rawRetrievalServiceAttr(player) != null;
-        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the service under the
-        // top-level "retrievalService" JSON key on the parser player. The
-        // adopt below migrates it into the attr; the next save persists it
-        // under attrPersistence["item_retrieval"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final ItemRetrievalService savedService = savedPlayer.getRetrievalService();
-        service.adopt(savedService);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        RetrievalServiceKeys.retrievalService(event.getPlayer());
     }
 
     public boolean is(final RetrievalServiceType type) {

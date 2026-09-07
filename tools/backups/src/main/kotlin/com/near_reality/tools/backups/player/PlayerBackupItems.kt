@@ -22,10 +22,7 @@ data class PlayerItems(
             player.equipment.container.items,
             player.lootingBag.container.items,
             player.bank.container.items,
-            // Post-migration saves keep this under attrPersistence["item_retrieval"];
-            // pre-migration saves still populate the legacy parser field.
-            @Suppress("DEPRECATION")
-            (scanRetrievalService(player) ?: player.retrievalService)?.container?.items
+            scanRetrievalService(player)?.container?.items
                 ?: Int2ObjectLinkedOpenHashMap(),
         )
 

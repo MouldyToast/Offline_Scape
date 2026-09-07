@@ -42,10 +42,7 @@ object EcoSearch {
                     count += p.equipment.container.countOf(itemID)
                     count += p.lootingBag.container.countOf(itemID)
                     count += (scanGravestone(p)?.container?.countOf(itemID) ?: 0)
-                    // Post-migration saves keep this under attrPersistence["item_retrieval"];
-                    // pre-migration saves still populate the legacy parser field.
-                    @Suppress("DEPRECATION")
-                    count += ((scanRetrievalService(p) ?: p.retrievalService)?.container?.countOf(itemID) ?: 0)
+                    count += (scanRetrievalService(p)?.container?.countOf(itemID) ?: 0)
                 p to count
             }
             .filter { it.second > 0 }

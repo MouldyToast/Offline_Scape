@@ -43,20 +43,9 @@ public final class Stash {
 
 	@Subscribe
 	public static void onInitialization(@NotNull final InitializationEvent event) {
-		final Player player = event.getPlayer();
-		final Player savedPlayer = event.getSavedPlayer();
-		final boolean hadPersistedAttr = StashKeys.rawStashAttr(player) != null;
-		final Stash stash = StashKeys.stash(player);
-		if (hadPersistedAttr || savedPlayer == null) {
-			return;
-		}
-		// Legacy path: pre-migration saves keep the map under the top-level
-		// "stash" JSON key on the parser player. The adopt below migrates it
-		// into the attr; the next save persists it under
-		// attrPersistence["stash"] and drops the legacy key.
-		@SuppressWarnings("deprecation")
-		final Stash savedStash = savedPlayer.getStash();
-		stash.adopt(savedStash);
+		// Eager rehydration: converts the raw attrPersistence shape into the
+		// typed instance at login, before any game code touches the key.
+		StashKeys.stash(event.getPlayer());
 	}
 
 	@Subscribe

@@ -36,20 +36,9 @@ public class PetInsurance {
 
     @Subscribe
     public static void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player savedPlayer = event.getSavedPlayer();
-        final boolean hadPersistedAttr = PetInsuranceKeys.rawPetInsuranceAttr(player) != null;
-        final PetInsurance insurance = PetInsuranceKeys.petInsurance(player);
-        if (hadPersistedAttr || savedPlayer == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the data under the top-level
-        // "petInsurance" JSON key on the parser player. The copy below
-        // migrates it into the attr; the next save persists it under
-        // attrPersistence["pet_insurance"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final PetInsurance saved = savedPlayer.getPetInsurance();
-        insurance.initialize(saved);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        PetInsuranceKeys.petInsurance(event.getPlayer());
     }
 
     public void insurePet(final int petItemId) {

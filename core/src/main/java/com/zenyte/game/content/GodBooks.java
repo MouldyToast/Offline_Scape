@@ -272,20 +272,9 @@ public final class GodBooks {
 
     @Subscribe
     public static void onInitialization(final InitializationEvent event) {
-        final Player player = event.getPlayer();
-        final Player saved = event.getSavedPlayer();
-        final boolean hadPersistedAttr = GodBooksKeys.rawGodBooksAttr(player) != null;
-        final GodBooks books = GodBooksKeys.godBooks(player);
-        if (hadPersistedAttr || saved == null) {
-            return;
-        }
-        // Legacy path: pre-migration saves keep the data under the top-level
-        // "godBooks" JSON key on the parser player. The adopt below migrates
-        // it into the attr; the next save persists it under
-        // attrPersistence["god_books"] and drops the legacy key.
-        @SuppressWarnings("deprecation")
-        final GodBooks savedBooks = saved.getGodBooks();
-        books.adopt(savedBooks);
+        // Eager rehydration: converts the raw attrPersistence shape into the
+        // typed instance at login, before any game code touches the key.
+        GodBooksKeys.godBooks(event.getPlayer());
     }
 
     private final Map<GodBook, Set<Integer>> pages = new HashMap<>();

@@ -29,13 +29,8 @@ import com.zenyte.Main;
 import com.zenyte.cores.CoresManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.content.GodBooks;
-import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.RetrievalServiceKeys;
-import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
-import com.zenyte.game.content.follower.PetInsurance;
-import com.zenyte.game.content.gauntlet.GauntletItemStorage;
 import com.zenyte.game.content.minigame.duelarena.DuelKeys;
 import com.zenyte.game.content.skills.construction.ConstructionKeys;
 import com.zenyte.game.content.skills.construction.RoomReference;
@@ -44,7 +39,6 @@ import com.zenyte.game.world.entity.player.teleport.ForceTeleport;
 import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.treasuretrails.stash.Stash;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
@@ -317,16 +311,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final transient ChargesManager chargesManager = new ChargesManager(this);
     private final transient PollManager pollManager = new PollManager(this);
     private final AreaManager areaManager = new AreaManager(this);
-    /**
-     * @deprecated Legacy persistence slot for god books, superseded by
-     * attrPersistence["god_books"] (see GodBooksKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the
-     * "godBooks" key entirely. Delete field and getter with the Rotation 2
-     * save rotation.
-     */
-    @Deprecated
-    private GodBooks godBooks;
     @Expose
     private final BossTimer bossTimer = new BossTimer(this);
     private final CollectionLog collectionLog = new CollectionLog(this);
@@ -461,68 +445,18 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
     private transient ChatMessage chatMessage = new ChatMessage();
-    /**
-     * @deprecated Legacy persistence slot for the item retrieval service,
-     * superseded by attrPersistence["item_retrieval"] (see
-     * RetrievalServiceKeys). Kept non-transient so pre-migration saves still
-     * deserialize into the parser player; the live player no longer populates
-     * it, so post-migration saves omit the "retrievalService" key entirely.
-     * Delete field and getter with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    private ItemRetrievalService retrievalService;
     public transient Runnable closeInterfacesEvent;
     private transient boolean needRegionUpdate;
     private transient boolean initialized;
     private transient ActionManager actionManager = new ActionManager(this);
-    /**
-     * @deprecated Legacy persistence slot for CoX private storage, superseded
-     * by attrPersistence["private_storage"] (see PrivateStorageKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "privateStorage" key entirely. Delete field and getter with
-     * the Rotation 2 save rotation.
-     */
-    @Deprecated
-    private PrivateStorage privateStorage;
-    /**
-     * @deprecated Legacy persistence slot: the live gauntlet no longer stores
-     * items here (zero writers repo-wide); only
-     * GauntletItemStorage.onInitialization reads it, on the parser player, to
-     * return items stranded by pre-rework saves. Kept non-transient so those
-     * saves still deserialize; the live player never populates it, so
-     * post-migration saves omit the "gauntletItemStorage" key entirely.
-     * Delete field, getter and the onInitialization drain with Rotation 2.
-     */
-    @Deprecated
-    private GauntletItemStorage gauntletItemStorage;
     @Expose
     private PlayerInformation playerInformation;
     private transient Entity lastTarget;
     private transient DelayedActionManager delayedActionManager = new DelayedActionManager(this);
     private transient PacketDispatcher packetDispatcher = new PacketDispatcher(this);
-    /**
-     * @deprecated Legacy persistence slot for pet insurance, superseded by
-     * attrPersistence["pet_insurance"] (see PetInsuranceKeys). Kept
-     * non-transient so pre-migration saves still deserialize into the parser
-     * player; the live player no longer populates it, so post-migration saves
-     * omit the "petInsurance" key entirely. Delete field and getter with the
-     * Rotation 2 save rotation.
-     */
-    @Deprecated
-    private PetInsurance petInsurance;
     @Expose
     private int petId;
     private transient boolean canPvp;
-    /**
-     * @deprecated Legacy persistence slot for the STASH units, superseded by
-     * attrPersistence["stash"] (see StashKeys). Kept non-transient so
-     * pre-migration saves still deserialize into the parser player; the live
-     * player no longer populates it, so post-migration saves omit the "stash"
-     * key entirely. Delete field and getter with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    private Stash stash;
     private transient boolean maximumTolerance;
     @Expose
     private SinglePlayerBank bank = new SinglePlayerBank(this);
@@ -4479,15 +4413,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return areaManager;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only GodBooks.onInitialization
-     * may call this, and only on the parser player. Live access goes through
-     * GodBooksKeys.godBooks. Removed with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    public GodBooks getGodBooks() {
-        return godBooks;
-    }
 
     public BossTimer getBossTimer() {
         return bossTimer;
@@ -4707,18 +4632,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return chatMessage;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only
-     * ItemRetrievalService.onInit and the offline-scan fallbacks
-     * (EcoSearch/PlayerBackupItems, after scanRetrievalService misses) may
-     * call this, and only on the parser player. Live access goes through
-     * RetrievalServiceKeys.retrievalService. Removed with the Rotation 2
-     * save rotation.
-     */
-    @Deprecated
-    public ItemRetrievalService getRetrievalService() {
-        return retrievalService;
-    }
 
     public Runnable getCloseInterfacesEvent() {
         return closeInterfacesEvent;
@@ -4748,26 +4661,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return actionManager;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only
-     * PrivateStorage.onInitialization may call this, and only on the parser
-     * player. Live access goes through PrivateStorageKeys.privateStorage.
-     * Removed with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    public PrivateStorage getPrivateStorage() {
-        return privateStorage;
-    }
 
-    /**
-     * @deprecated Legacy load-path accessor: only
-     * GauntletItemStorage.onInitialization may call this, and only on the
-     * parser player. Removed with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    public GauntletItemStorage getGauntletItemStorage() {
-        return gauntletItemStorage;
-    }
 
     public PlayerInformation getPlayerInformation() {
         return playerInformation;
@@ -4789,16 +4683,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return packetDispatcher;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only
-     * PetInsurance.onInitialization may call this, and only on the parser
-     * player. Live access goes through PetInsuranceKeys.petInsurance.
-     * Removed with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    public PetInsurance getPetInsurance() {
-        return petInsurance;
-    }
 
     public int getPetId() {
         return petId;
@@ -4812,15 +4696,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return canPvp;
     }
 
-    /**
-     * @deprecated Legacy load-path accessor: only Stash.onInitialization may
-     * call this, and only on the parser player. Live access goes through
-     * StashKeys.stash. Removed with the Rotation 2 save rotation.
-     */
-    @Deprecated
-    public Stash getStash() {
-        return stash;
-    }
 
     public boolean isMaximumTolerance() {
         return maximumTolerance;

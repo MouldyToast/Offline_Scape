@@ -462,8 +462,17 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient ActionManager actionManager = new ActionManager(this);
     @Expose
     private PrivateStorage privateStorage = new PrivateStorage(this);
-    @Expose
-    private GauntletItemStorage gauntletItemStorage = new GauntletItemStorage(this);
+    /**
+     * @deprecated Legacy persistence slot: the live gauntlet no longer stores
+     * items here (zero writers repo-wide); only
+     * GauntletItemStorage.onInitialization reads it, on the parser player, to
+     * return items stranded by pre-rework saves. Kept non-transient so those
+     * saves still deserialize; the live player never populates it, so
+     * post-migration saves omit the "gauntletItemStorage" key entirely.
+     * Delete field, getter and the onInitialization drain with Rotation 2.
+     */
+    @Deprecated
+    private GauntletItemStorage gauntletItemStorage;
     @Expose
     private PlayerInformation playerInformation;
     private transient Entity lastTarget;
@@ -4710,12 +4719,14 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.privateStorage = privateStorage;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only
+     * GauntletItemStorage.onInitialization may call this, and only on the
+     * parser player. Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public GauntletItemStorage getGauntletItemStorage() {
         return gauntletItemStorage;
-    }
-
-    public void setGauntletItemStorage(GauntletItemStorage gauntletItemStorage) {
-        this.gauntletItemStorage = gauntletItemStorage;
     }
 
     public PlayerInformation getPlayerInformation() {

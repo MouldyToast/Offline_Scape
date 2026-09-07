@@ -34,6 +34,10 @@ public final class GauntletItemStorage {
         Player player = event.getPlayer();
         Player saved = event.getSavedPlayer();
 
+        // Legacy drain: returns items stranded by pre-rework saves. Dies with
+        // Rotation 2 once no character save carries a non-empty
+        // "gauntletItemStorage" key.
+        @SuppressWarnings("deprecation")
         GauntletItemStorage storage = saved.getGauntletItemStorage();
         if (storage == null) {
             return;

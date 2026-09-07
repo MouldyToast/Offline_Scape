@@ -24,11 +24,39 @@ data class PlayerData(
     val retrievalService: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
     val privateStorage: ItemContainerWrapper = ItemContainerWrapper(Policy.NORMAL),
     val bank: ItemContainerWrapper = ItemContainerWrapper(Policy.ALWAYS_STACK),
+    val attrPersistence: AttrPersistence = AttrPersistence(),
     override val attributes: Attributes = Attributes()
 ) : AttributeHolder {
 
     val username get() = playerInformation.username
-    val containerWrapperList get() = listOf(equipment, inventory, runePouch, seedBox, lootingBag, herbSack, bonePouch, dragonhidePouch, gemBag, retrievalService, privateStorage, bank)
+
+    /**
+     * Post-migration saves keep the retrieval-service and CoX
+     * private-storage containers under attrPersistence["item_retrieval"] /
+     * ["private_storage"] (same object shape as the legacy top-level keys,
+     * which Gson omits once the live player no longer populates the
+     * deprecated fields). Prefer the attr copy; fall back to the legacy
+     * top-level key for pre-migration saves. A save never carries both.
+     */
+    val effectiveRetrievalService get() = attrPersistence.itemRetrieval ?: retrievalService
+    val effectivePrivateStorage get() = attrPersistence.privateStorage ?: privateStorage
+
+    val containerWrapperList get() = listOf(equipment, inventory, runePouch, seedBox, lootingBag, herbSack, bonePouch, dragonhidePouch, gemBag, effectiveRetrievalService, effectivePrivateStorage, bank)
+
+    /**
+     * The subset of attrPersistence this model consumes. Other persisted
+     * attr keys (stash, god_books, ...) are ignored by the decoder's
+     * unknown-key handling, exactly like every other save key this model
+     * does not map. The stored values are the full service objects; only
+     * their container halves are modelled here.
+     */
+    @Serializable
+    data class AttrPersistence(
+        @SerialName("item_retrieval")
+        val itemRetrieval: ItemContainerWrapper? = null,
+        @SerialName("private_storage")
+        val privateStorage: ItemContainerWrapper? = null,
+    )
 
     @Serializable
     data class MetaInformation(

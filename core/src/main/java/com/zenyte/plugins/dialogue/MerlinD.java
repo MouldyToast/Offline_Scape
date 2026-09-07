@@ -1,6 +1,6 @@
 package com.zenyte.plugins.dialogue;
 
-import com.zenyte.game.content.RespawnPoint;
+import com.zenyte.game.world.entity.player.RespawnPoint;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;

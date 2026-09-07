@@ -1,4 +1,4 @@
-package com.zenyte.game.content;
+package com.zenyte.game.world.entity.player;
 
 import com.zenyte.game.world.entity.Location;
 

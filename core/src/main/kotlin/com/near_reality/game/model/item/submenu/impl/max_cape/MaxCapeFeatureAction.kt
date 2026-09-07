@@ -1,7 +1,7 @@
 package com.near_reality.game.model.item.submenu.impl.max_cape
 
 import com.near_reality.game.model.item.submenu.ISubMenuAction
-import com.zenyte.game.content.RespawnPoint
+import com.zenyte.game.world.entity.player.RespawnPoint
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.Colour

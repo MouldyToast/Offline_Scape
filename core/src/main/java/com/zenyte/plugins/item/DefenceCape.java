@@ -1,6 +1,6 @@
 package com.zenyte.plugins.item;
 
-import com.zenyte.game.content.RespawnPoint;
+import com.zenyte.game.world.entity.player.RespawnPoint;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Colour;

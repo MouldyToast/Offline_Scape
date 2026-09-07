@@ -1,6 +1,6 @@
 package com.zenyte.plugins.item.capes;
 
-import com.zenyte.game.content.RespawnPoint;
+import com.zenyte.game.world.entity.player.RespawnPoint;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.teleports.ItemTeleport;
 import com.zenyte.game.world.entity.player.teleport.Teleport;

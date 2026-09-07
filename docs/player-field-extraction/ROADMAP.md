@@ -370,13 +370,33 @@ DEFER-1, ConstructionKeys/RoomReference DEFER-2, FarmingKeys DEFER-3).
    burn-log…) if diary progress should ever be event-driven — the G2
    census showed an XP broadcast is the wrong shape.
 
-## 5. Order of operations from today
+## 5. Order of operations from today (rewritten 2026-09-07 — everything in the old list landed)
 
-1. PR + merge this branch; run the two outstanding play-tests (§0).
-2. Track 1 waves (with Rotation 2 + InitializationEvent deletion at the
-   end).
-3. Track 2 inventory session, then its execution sessions (Track 3.1 can
-   run in parallel any time — it's content-side).
-4. Track 3.2 soft timers last; it retires the G1 bridge.
+**Gate first: Jesse's play-test sweep (§0) + boot-log check, then PR +
+merge this branch.** Two campaign-level finish-line items are done
+(InitializationEvent deleted; Player at 7 imports, all deferrals). What
+remains, in order:
 
-Rough total: **10–14 focused sessions** to the finish line.
+1. **NEXT CODE SESSION — T3.1 end-state: delete the activePrayers map**
+   so varbits become the sole prayer truth (the last named finish-line
+   item). Preconditions are all met (T3.1a/b landed, soft timers landed)
+   EXCEPT the Nightmare play-test (§4.1) — run it in the sweep above
+   before starting. This session also completes DEFER-1's remaining
+   surface (the id lift + 5 DEFER-1 sites; HANDOVER_after_G3.md §3 is
+   the reference).
+2. **Deferral unwinds** (each its own design mini-plan, any order):
+   DEFER-2 roomPreview; DEFER-3 farming movement refreshes; DEFER-4a/4b
+   deterministic-order container registry (or sweep-method move-out);
+   DEFER-5 engine duel checks behind area/event checks. Each deletes its
+   Keys import from Player (7 → 0 across them — the literal finish
+   line).
+3. **LoginManager double-deserialize simplification** — a campaign, not
+   a session: setFields still holds ~40 parser copies of never-extracted
+   core fields. Unblocked by the InitializationEvent deletion; plan it
+   with a fresh census.
+
+**Handoff protocol:** give the next session this file
+(docs/player-field-extraction/ROADMAP.md) and nothing else — it is the
+one living document. The next session starts by re-running the §0
+baseline greps (7 / 1112 / 0 / 21; plugins.dat 4353) and stops on any
+mismatch.

@@ -54,11 +54,22 @@ timers). The G1/E6 play-test sweep is done.
   item-sweep/forcedRemoved reads now go through the Keys accessors:
   **DEFER-4a/4b** (see Open items).
 
+**Wave 2b also landed (item 1.10 duel — Track 1 extractions closed):**
+transient attr key via `var Player.duel` extension property in
+DuelKeys.kt (RaidAccess-style JvmName facade). The legacy getter's
+perspective-swap (the two duelists share ONE Duel instance, re-oriented
+toward the caller on read) lives verbatim in the accessor. 117 Java
+sites across 33 files retargeted per-receiver
+(player/opponent/p2/target), 14 Kotlin property sites kept textually via
+the extension import, 4 nullability hardenings (previously-NPE null
+paths now guarded). +18 planned engine imports (16 Java files + 2
+Kotlin + Player's DEFER-5 net-zero swap).
+
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
 grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 13
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1100 (includes 22 planned content-import lines in core paths: the prior 12 — TeleportType structures.* wildcard, 6 T2-d D-3 RaidAccess lines, wave 1's 5 — plus wave 2a's 10: PrivateStorageKeys in StorageUnitOPlugin/SharedStorageUI/Player(DEFER-4a), RetrievalServiceKeys in ItemRetrievalServiceInterface/CollectionLog/DeathMechanics/VarCollection/StrangeOldMan/Torfinn/Player(DEFER-4b); net +4 after wave 2a's −6 RespawnPoint retargets)
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1118 (includes 40 planned content-import lines in core paths: the prior 22 — TeleportType structures.* wildcard, 6 T2-d D-3 RaidAccess, wave 1's 5, wave 2a's 10 — plus wave 2b's 18 DuelKeys/duel-extension imports in engine/plugin files; DEFER-5's Player swap is net-zero)
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique; 19 + "private_storage" + "item_retrieval")
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 12 (= the six Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks, privateStorage, retrievalService)
 ```
@@ -93,8 +104,21 @@ never commit it; wave 1 added PetInsurance.onInitialization).
   NPC + relog with items held + a pre-migration save; Krystilia/Merlin/
   Tiffy respawn dialogues + max cape respawn switching + ring of
   returning + an actual death respawn at each point.
+- Wave 2b (duel): full duel loop (challenge → settings → stake → accept
+  both sides → fight → win/loss payout → scoreboard); forfeit object;
+  X-log mid-duel; mithril seeds blocked in duel; teleother/lunar-assist
+  spells blocked on a dueling target; orbs/bank/combat-tab duel displays;
+  phoenix necklace NOT consumed at low HP while dueling (the DEFER-5
+  site); degradable weapons (tridents/blowpipe/scythe/sanguinesti) charge
+  behavior in duel; credit store + middleman blocked while dueling.
 
 **Open items:**
+- **DEFER-5** (wave 2b): Player's phoenix-necklace check reads the duel
+  via DuelKeys (one internal site). Unwind ledger: engine duel checks
+  (combat rules, teleother/spell blocks, orbs, the 16 counted engine
+  files) belong behind area/event-based checks, not a Player-adjacent
+  accessor — same recorded design work as the TeleportType/structures
+  decoupling.
 - **DEFER-4a/4b** (wave 2a): Player's item-sweep methods
   (carryingItem-style loops + forcedRemoved's container array) read
   privateStorage/retrievalService internally, so Player carries
@@ -175,10 +199,15 @@ scripts | wc -l`).
 | ~~1.7~~ | ~~respawnPoint~~ | 16 | yes (plain enum) | DONE wave 2a — resolved by core move, no key (the mini-plan's own alternative): pure engine enum relocated to com.zenyte.game.world.entity.player; field stays on Player |
 | ~~1.8~~ | ~~privateStorage~~ | 19 | yes → "private_storage" | DONE wave 2a (PrivateStorageKeys, D1 recipe; DEFER-4a for Player's internal sweep reads) |
 | ~~1.9~~ | ~~retrievalService~~ | 37 | yes → "item_retrieval" | DONE wave 2a (RetrievalServiceKeys, D1 recipe; DEFER-4b for Player's internal sweep reads) |
-| 1.10 | duel | 105 | NO (transient) | no persistence work, but the largest retarget |
+| ~~1.10~~ | ~~duel~~ | 105 | NO (transient) | DONE wave 2b — transient attr key via `var Player.duel` extension (DuelKeys facade for Java); perspective-swap getter preserved in the accessor; no shim, field+accessors deleted outright; DEFER-5 for Player's phoenix-necklace read |
+
+**TRACK 1 EXTRACTION PHASE CLOSED** — all eleven field types resolved:
+7 extracted to keys, RespawnPoint core-moved, toaPlayerData and
+gauntletItemStorage census-corrected in wave 1.
 
 Sequencing: ~~1.1–1.6 batch well (≈2 sessions)~~ landed as wave 1;
-~~1.7–1.9 one session each~~ landed as wave 2a; 1.10 its own session.
+~~1.7–1.9 one session each~~ landed as wave 2a; ~~1.10 its own
+session~~ landed as wave 2b.
 
 Then:
 - **Rotation 2** (one session, after Jesse cycles/deletes saves or the

@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.var;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.content.skills.slayer.SlayerKeys;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
@@ -84,9 +85,9 @@ public enum VarCollection {
     KOUREND_TAB(VARBIT, 618, p -> 1),
     FARMING_EQUIPMENT_STORAGE_DEFAULT(VARBIT, 7792, p -> attribute(p, "farming equipment default"), POST_LOGIN),
     ZULRAH_RECLAIM(VARBIT, 4391,
-			p -> p.getRetrievalService().is(ItemRetrievalService.RetrievalServiceType.ZUL_GWENWYNIG) ? 3 : 0,
+			p -> RetrievalServiceKeys.retrievalService(p).is(ItemRetrievalService.RetrievalServiceType.ZUL_GWENWYNIG) ? 3 : 0,
 			POST_LOGIN),
-    VORKATH_RECLAIM(VARBIT, 6108, p -> p.getRetrievalService().is(ItemRetrievalService.RetrievalServiceType.TORFINN)
+    VORKATH_RECLAIM(VARBIT, 6108, p -> RetrievalServiceKeys.retrievalService(p).is(ItemRetrievalService.RetrievalServiceType.TORFINN)
 			? 25 : 24, POST_LOGIN),
     COMP_PROGRESS(VARBIT, 6347, CompletionistCape::checkRequirements, POST_LOGIN),//quest points
     MAX_COMP_PROGRESS(VARBIT, 11877, p -> 3, POST_LOGIN),//max quest points

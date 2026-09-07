@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.object;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.player.Player;
@@ -13,7 +14,7 @@ import com.zenyte.plugins.dialogue.PlainChat;
 public class TOARetrievalChestAction implements ObjectAction {
 
 	@Override public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-		if (player.getRetrievalService().getType() != ItemRetrievalService.RetrievalServiceType.TOMBS_OF_AMASCUT || player.getRetrievalService().getContainer().isEmpty()) {
+		if (RetrievalServiceKeys.retrievalService(player).getType() != ItemRetrievalService.RetrievalServiceType.TOMBS_OF_AMASCUT || RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) {
 			player.getDialogueManager().start(new PlainChat(player, "There is nothing to collect."));
 			return;
 		}

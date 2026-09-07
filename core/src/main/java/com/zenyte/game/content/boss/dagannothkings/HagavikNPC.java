@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.dagannothkings;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -34,7 +35,7 @@ public class HagavikNPC extends NPCPlugin {
             }
         }));
         bind("Collect", (player, npc) -> {
-            if (player.getRetrievalService().getType() != ItemRetrievalService.RetrievalServiceType.HAGAVIK || player.getRetrievalService().getContainer().isEmpty()) {
+            if (RetrievalServiceKeys.retrievalService(player).getType() != ItemRetrievalService.RetrievalServiceType.HAGAVIK || RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) {
                 player.getDialogueManager().start(new Dialogue(player, npc) {
 
                     @Override

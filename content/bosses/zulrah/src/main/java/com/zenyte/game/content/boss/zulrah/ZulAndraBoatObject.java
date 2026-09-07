@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.zulrah;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.player.Player;
@@ -19,7 +20,7 @@ public final class ZulAndraBoatObject implements ObjectAction {
 
 	@Override
 	public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-		final ItemRetrievalService retrievalService = player.getRetrievalService();
+		final ItemRetrievalService retrievalService = RetrievalServiceKeys.retrievalService(player);
 		if (retrievalService.getType() == ItemRetrievalService.RetrievalServiceType.ZUL_GWENWYNIG && !retrievalService.getContainer().isEmpty()) {
 			player.getDialogueManager().start(new NPCChat(player, NpcId.PRIESTESS_ZULGWENWYNIG, "I've got some stuff you left at the shrine earlier. You should get it back from me before sacrificing yourself again."));
 			return;

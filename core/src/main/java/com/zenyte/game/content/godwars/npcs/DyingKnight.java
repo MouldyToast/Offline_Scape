@@ -1,5 +1,6 @@
 package com.zenyte.game.content.godwars.npcs;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.godwars.GodType;
@@ -102,7 +103,7 @@ public class DyingKnight extends NPCPlugin {
             }
         }));
         bind("Collect", (player, npc) -> {
-            if (player.getRetrievalService().getType() != ItemRetrievalService.RetrievalServiceType.GODWARS || player.getRetrievalService().getContainer().isEmpty()) {
+            if (RetrievalServiceKeys.retrievalService(player).getType() != ItemRetrievalService.RetrievalServiceType.GODWARS || RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) {
                 player.getDialogueManager().start(new Dialogue(player, npc) {
 
                     @Override

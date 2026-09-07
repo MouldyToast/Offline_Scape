@@ -1,5 +1,6 @@
 package com.zenyte.game.content.treasuretrails.plugins;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
@@ -43,7 +44,7 @@ public class StrangeCasket implements ObjectAction {
 
     private static final void search(@NotNull final Player player) {
         player.getDialogueManager().finish();
-        if (player.getRetrievalService().is(ItemRetrievalService.RetrievalServiceType.MIMIC)) {
+        if (RetrievalServiceKeys.retrievalService(player).is(ItemRetrievalService.RetrievalServiceType.MIMIC)) {
             GameInterface.ITEM_RETRIEVAL_SERVICE.open(player);
             return;
         }

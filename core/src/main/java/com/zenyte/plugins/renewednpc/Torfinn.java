@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.Location;
@@ -37,7 +38,7 @@ public class Torfinn extends NPCPlugin {
         }));
         bind("Travel", (player, npc) -> sail(player, player.getLocation().withinDistance(RELLEKKA_LOCATION, 20)));
         bind("Collect", (player, npc) -> {
-            if (player.getRetrievalService().getType() != ItemRetrievalService.RetrievalServiceType.TORFINN) {
+            if (RetrievalServiceKeys.retrievalService(player).getType() != ItemRetrievalService.RetrievalServiceType.TORFINN) {
                 player.getDialogueManager().start(new Dialogue(player, npc) {
 
                     @Override

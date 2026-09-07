@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.alchemicalhydra.plugins;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.kebos.alchemicalhydra.instance.AlchemicalHydraInstance;
@@ -66,7 +67,7 @@ public class RocksObstacle implements ObjectAction {
             player.sendMessage("The Alchemical Hydra has been temporarily disabled. Come back later.");
             return;
         }
-        final ItemRetrievalService retrievalService = player.getRetrievalService();
+        final ItemRetrievalService retrievalService = RetrievalServiceKeys.retrievalService(player);
         if (retrievalService.getType() == ItemRetrievalService.RetrievalServiceType.ORRVOR_QUO_MATEN && !retrievalService.getContainer().isEmpty()) {
             player.getDialogueManager().start(new Dialogue(player, NpcId.ORRVOR_QUO_MATEN) {
 

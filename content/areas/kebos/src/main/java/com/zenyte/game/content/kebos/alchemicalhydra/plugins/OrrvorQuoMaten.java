@@ -1,5 +1,6 @@
 package com.zenyte.game.content.kebos.alchemicalhydra.plugins;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.npc.NPC;
@@ -41,7 +42,7 @@ public class OrrvorQuoMaten extends NPCPlugin {
     }
 
     private static void itemRetrieval(final Player player, final NPC npc) {
-        final ItemRetrievalService service = player.getRetrievalService();
+        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
         if (service.getType() != ItemRetrievalService.RetrievalServiceType.ORRVOR_QUO_MATEN || service.getContainer().getSize() == 0) {
             player.getDialogueManager().start(new Dialogue(player, npc) {
 

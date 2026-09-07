@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.zulrah;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -16,7 +17,7 @@ public class ZulGwenwynig extends NPCPlugin {
         bind("Talk-to", (player, npc) -> player.getDialogueManager().start(new Dialogue(player, npc) {
             @Override
             public void buildDialogue() {
-                ItemRetrievalService service = player.getRetrievalService();
+                ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
                 if (service.getType() == ItemRetrievalService.RetrievalServiceType.ZUL_GWENWYNIG
                         && service.getContainer().getSize() > 0) {
                     npc("You left some stuff at Zulrah's shrine when you left earlier.").executeAction(() -> GameInterface.ITEM_RETRIEVAL_SERVICE.open(player));
@@ -38,7 +39,7 @@ public class ZulGwenwynig extends NPCPlugin {
             }
         }));
         bind("Collect", (player, npc) -> {
-            ItemRetrievalService service = player.getRetrievalService();
+            ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
             if (service.getType() != ItemRetrievalService.RetrievalServiceType.ZUL_GWENWYNIG || service.getContainer().getSize() == 0) {
                 player.getDialogueManager().start(new Dialogue(player, npc) {
                     @Override

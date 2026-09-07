@@ -1,5 +1,6 @@
 package com.zenyte.game.model.ui.testinterfaces;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.item.Item;
@@ -28,7 +29,7 @@ public class ItemRetrievalServiceInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        final ItemRetrievalService service = player.getRetrievalService();
+        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
         final ItemRetrievalService.RetrievalServiceType type = service.getType();
         if (type == null || service.getContainer().getSize() == 0) {
             player.sendMessage("You have no items to retrieve.");
@@ -54,7 +55,7 @@ public class ItemRetrievalServiceInterface extends Interface {
                 @Override
                 public void buildDialogue() {
                     options("Are you sure you wish to discard all the items?", new DialogueOption("Yes, discard them all.", () -> {
-                        final ItemRetrievalService service = player.getRetrievalService();
+                        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
                         service.getContainer().clear();
                         service.setLocked(false);
                         service.setType(null);
@@ -64,7 +65,7 @@ public class ItemRetrievalServiceInterface extends Interface {
             });
         });
         bind("Take-All/Unlock", player -> {
-            final ItemRetrievalService service = player.getRetrievalService();
+            final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
             if (service.isLocked()) {
                 final ItemRetrievalService.RetrievalServiceType type = service.getType();
                 final int cost = type.getCost();
@@ -101,7 +102,7 @@ public class ItemRetrievalServiceInterface extends Interface {
             }
         });
         bind("Items", (player, slotId, itemId, option) -> {
-            final ItemRetrievalService service = player.getRetrievalService();
+            final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
             final Container container = service.getContainer();
             final Item item = container.get(slotId);
             if (item == null) return;

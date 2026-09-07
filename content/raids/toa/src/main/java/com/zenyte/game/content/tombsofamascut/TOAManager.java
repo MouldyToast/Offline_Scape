@@ -1,5 +1,6 @@
 package com.zenyte.game.content.tombsofamascut;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.google.common.collect.ImmutableList;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
@@ -520,7 +521,7 @@ public class TOAManager {
 		player.sendMessage("You failed to survive the Tombs of Amascut.");
 		player.getDeathMechanics().service(ItemRetrievalService.RetrievalServiceType.TOMBS_OF_AMASCUT, null, false);
 		ItemRetrievalService.updateVarps(player);
-		if (!player.getRetrievalService().getContainer().isEmpty()) {
+		if (!RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) {
 			player.sendMessage("A magical chest has retrieved some of your items. You can collect them from it in the Tombs of Amascut lobby.");
 		}
 		if (playJingle) {

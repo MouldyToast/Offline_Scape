@@ -1,5 +1,6 @@
 package com.zenyte.game.content.gravestones;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.content.gravestone.GravestoneExt;
 import com.zenyte.game.item.Item;
@@ -111,7 +112,7 @@ public class Gravestone {
         player.getPacketDispatcher().resetHintArrow();
         player.getVarManager().sendBitInstant(10464, 0);
         player.getVarManager().sendBitInstant(10465, 0);
-        if (player.getRetrievalService().getContainer().isEmpty()) return;
+        if (RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) return;
         player.sendMessage("<col=ef1020>Your gravestone has expired.</col> Items held there can now be reclaimed at <col=ef1020>Death's Office</col>, accessed from near the respawn points.");
         GravestoneExt.INSTANCE.moveItemsToDeathsOffice(player);
     }

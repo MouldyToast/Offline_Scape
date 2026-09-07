@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.container.impl.death;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.world.entity.player.PrayerVarbits;
 import com.zenyte.game.content.follower.FollowerKeys;
 import com.zenyte.game.content.lootkeys.LootkeySettingsKeys;
@@ -299,7 +300,7 @@ public class DeathMechanics {
                 "Player death: \nInitial inventory: " + inventory + "\nInitial equipment: " + equipment + "\nInitial " +
                         "lootingbag: " + lootingBag + "\nKept items: " + kept.getItems() + "\nLost items: " + lost.getItems());
         kept.getItems().values().forEach(item -> player.getInventory().addItem(item));
-        final ItemRetrievalService service = player.getRetrievalService();
+        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
         final Container container = service.getContainer();
         container.clear();
         lost.getItems().values().forEach(item -> {

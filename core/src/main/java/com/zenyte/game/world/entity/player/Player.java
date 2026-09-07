@@ -31,6 +31,7 @@ import com.zenyte.game.GameConstants;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.GodBooks;
 import com.zenyte.game.content.ItemRetrievalService;
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorage;
 import com.zenyte.game.content.chambersofxeric.storageunit.PrivateStorageKeys;
 import com.zenyte.game.content.follower.PetInsurance;
@@ -460,7 +461,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient String[] options = new String[9];
     private transient Object2LongOpenHashMap<String> attackedByPlayers = new Object2LongOpenHashMap<>();
     private transient ChatMessage chatMessage = new ChatMessage();
-    private ItemRetrievalService retrievalService = new ItemRetrievalService(this);
+    /**
+     * @deprecated Legacy persistence slot for the item retrieval service,
+     * superseded by attrPersistence["item_retrieval"] (see
+     * RetrievalServiceKeys). Kept non-transient so pre-migration saves still
+     * deserialize into the parser player; the live player no longer populates
+     * it, so post-migration saves omit the "retrievalService" key entirely.
+     * Delete field and getter with the Rotation 2 save rotation.
+     */
+    @Deprecated
+    private ItemRetrievalService retrievalService;
     public transient Runnable closeInterfacesEvent;
     private transient boolean needRegionUpdate;
     private transient boolean initialized;
@@ -3726,7 +3736,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 return true;
             }
         }
-        for (final Item i : retrievalService.getContainer().getItems().values()) {
+        for (final Item i : RetrievalServiceKeys.retrievalService(this).getContainer().getItems().values()) {
             if (i.getId() == item.getId()) {
                 return true;
             }
@@ -3797,7 +3807,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 count += i.getAmount();
             }
         }
-        for (final Item i : retrievalService.getContainer().getItems().values()) {
+        for (final Item i : RetrievalServiceKeys.retrievalService(this).getContainer().getItems().values()) {
             if (i.getId() == id) {
                 count += i.getAmount();
             }
@@ -3832,7 +3842,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 count += i.getAmount();
             }
         }
-        for (final Item i : retrievalService.getContainer().getItems().values()) {
+        for (final Item i : RetrievalServiceKeys.retrievalService(this).getContainer().getItems().values()) {
             if (i.getId() == id) {
                 count += i.getAmount();
             }
@@ -3864,7 +3874,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (i == null) continue;
             count += (long) i.getAmount() * i.getSellPrice();
         }
-        for (final Item i : retrievalService.getContainer().getItems().values()) {
+        for (final Item i : RetrievalServiceKeys.retrievalService(this).getContainer().getItems().values()) {
             if (i == null) continue;
             count += (long) i.getAmount() * i.getSellPrice();
         }
@@ -3919,7 +3929,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             getInventory().getContainer(),
             getEquipment().getContainer(),
             getBank().getContainer(),
-            getRetrievalService().getContainer(),
+            RetrievalServiceKeys.retrievalService(this).getContainer(),
             getRunePouch().getContainer(),
             PrivateStorageKeys.privateStorage(this).getContainer()
         };
@@ -4706,6 +4716,13 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return chatMessage;
     }
 
+    /**
+     * @deprecated Legacy load-path accessor: only
+     * ItemRetrievalService.onInit may call this, and only on the parser
+     * player. Live access goes through RetrievalServiceKeys.retrievalService.
+     * Removed with the Rotation 2 save rotation.
+     */
+    @Deprecated
     public ItemRetrievalService getRetrievalService() {
         return retrievalService;
     }

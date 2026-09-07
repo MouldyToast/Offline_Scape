@@ -1,5 +1,6 @@
 package com.zenyte.game.content.minigame.barrows;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.rots.RotsInstance;
@@ -35,7 +36,7 @@ public class BarrowsDoor implements ObjectAction {
                 return;
             }
 
-            if (player.getRetrievalService().getType() == ItemRetrievalService.RetrievalServiceType.ROTS && !player.getRetrievalService().getContainer().isEmpty()) {
+            if (RetrievalServiceKeys.retrievalService(player).getType() == ItemRetrievalService.RetrievalServiceType.ROTS && !RetrievalServiceKeys.retrievalService(player).getContainer().isEmpty()) {
                 player.getDialogueManager().start(new Dialogue(player) {
                     @Override
                     public void buildDialogue() {

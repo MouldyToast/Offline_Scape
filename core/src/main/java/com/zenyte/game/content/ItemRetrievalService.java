@@ -82,19 +82,37 @@ public class ItemRetrievalService {
     private boolean locked;
     private final Container container;
 
+    /**
+     * Adopts persisted state. Mirrors the legacy onInit copy exactly; a
+     * null source is a no-op.
+     */
+    public void adopt(final ItemRetrievalService saved) {
+        if (saved == null) {
+            return;
+        }
+        this.type = saved.type;
+        this.locked = saved.locked;
+        if (saved.container != null) {
+            this.container.setContainer(saved.container);
+        }
+    }
+
     @Subscribe
     public static final void onInit(final InitializationEvent event) {
         final Player player = event.getPlayer();
         final Player savedPlayer = event.getSavedPlayer();
-        final ItemRetrievalService service = player.getRetrievalService();
-        if (savedPlayer == null) {
+        final boolean hadPersistedAttr = RetrievalServiceKeys.rawRetrievalServiceAttr(player) != null;
+        final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
+        if (hadPersistedAttr || savedPlayer == null) {
             return;
         }
+        // Legacy path: pre-migration saves keep the service under the
+        // top-level "retrievalService" JSON key on the parser player. The
+        // adopt below migrates it into the attr; the next save persists it
+        // under attrPersistence["item_retrieval"] and drops the legacy key.
+        @SuppressWarnings("deprecation")
         final ItemRetrievalService savedService = savedPlayer.getRetrievalService();
-        if (savedService == null) return;
-        service.type = savedService.type;
-        service.locked = savedService.locked;
-        service.container.setContainer(savedService.container);
+        service.adopt(savedService);
     }
 
     public boolean is(final RetrievalServiceType type) {

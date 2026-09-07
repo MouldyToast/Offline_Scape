@@ -1,5 +1,6 @@
 package com.zenyte.game.content.boss.grotesqueguardians.plugins;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.player.Player;
@@ -17,7 +18,7 @@ public class MagicalChestObject implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (option.equals("Search")) {
-            final ItemRetrievalService service = player.getRetrievalService();
+            final ItemRetrievalService service = RetrievalServiceKeys.retrievalService(player);
             if (service.getType() != ItemRetrievalService.RetrievalServiceType.MAGICAL_CHEST || service.getContainer().getSize() == 0) {
                 player.getDialogueManager().start(new PlainChat(player, "The chest seems to be empty. If I had any of your items, but you died before collecting them from me, they would be lost."));
                 return;

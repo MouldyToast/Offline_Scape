@@ -1,5 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
@@ -13,7 +14,7 @@ public class Arno extends NPCPlugin {
     @Override
     public void handle() {
         bind("Collect", (player, npc) -> {
-            if (player.getRetrievalService().getType() != ItemRetrievalService.RetrievalServiceType.ARNO) {
+            if (RetrievalServiceKeys.retrievalService(player).getType() != ItemRetrievalService.RetrievalServiceType.ARNO) {
                 player.getDialogueManager().start(new Dialogue(player, npc) {
                     @Override
                     public void buildDialogue() {

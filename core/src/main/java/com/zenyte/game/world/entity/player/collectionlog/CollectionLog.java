@@ -1,5 +1,6 @@
 package com.zenyte.game.world.entity.player.collectionlog;
 
+import com.zenyte.game.content.RetrievalServiceKeys;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.ui.testinterfaces.advancedsettings.SettingsInterface;
@@ -84,7 +85,7 @@ public class CollectionLog {
     public static void postInit(final PostInitializationEvent event) {
         final Player player = event.getPlayer();
         final Int2IntOpenHashMap allItems = new Int2IntOpenHashMap(500);
-        for (final ObjectCollection<Item> itemCollection : Utils.concatenate(player.getInventory().getContainer().getItems().values(), player.getBank().getContainer().getItems().values(), player.getEquipment().getContainer().getItems().values(), player.getRetrievalService().getContainer().getItems().values())) {
+        for (final ObjectCollection<Item> itemCollection : Utils.concatenate(player.getInventory().getContainer().getItems().values(), player.getBank().getContainer().getItems().values(), player.getEquipment().getContainer().getItems().values(), RetrievalServiceKeys.retrievalService(player).getContainer().getItems().values())) {
             for (final Item item : itemCollection) {
                 if (item.getDefinitions() != null && !item.isTradable()) {
                     allItems.addTo(item.getId(), item.getAmount());

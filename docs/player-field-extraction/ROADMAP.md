@@ -46,7 +46,7 @@ non-increasing, a surprise increase is stop-and-report):**
 ```bash
 grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 12
 grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1096 (includes 12 planned content-import lines in core paths: the prior 7 — TeleportType structures.* wildcard + 6 T2-d D-3 RaidAccess lines — plus wave 1's 5: StashKeys in StashUnitObject, PuzzleBoxKeys in PuzzleBoxItem, LightBoxKeys in LightBoxItem, PetInsuranceKeys in PetInsuranceInterface, GodBooksKeys in JossiksGodBooks)
-grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 18 (unique)
+grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 19 (unique; +1 "toa_player_data" from PHASE_TOA_PERSIST v2)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 8 (= the four Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks)
 ```
 plugins.dat: 4356 plugins (untracked file; regenerate with
@@ -64,11 +64,21 @@ never commit it; wave 1 added PetInsurance.onInitialization).
 - TOA: one raid start (loadData path).
 - Gauntlet: a pre-rework save with stranded items still gets them
   returned (if any such save exists).
+- PHASE_TOA_PERSIST v2 (landed on top of wave 1 — invocation presets and
+  X-log state now persist under attrPersistence["toa_player_data"]):
+  1. invocation presets survive a server restart (board state + the save
+     JSON carries `attrPersistence["toa_player_data"].partySettingData`);
+  2. X-log mid-raid, same session — rejoin message + placement inside;
+  3. X-log mid-raid + server restart — placed OUTSIDE the entrance via
+     the unable-to-rejoin path, no NPE (now reachable cross-session for
+     the first time);
+  4. fresh account — ToA lobby opens with defaults, no NPE;
+  5. no-ToA session — saved presets round-trip untouched when ToA is
+     never touched (save-half skips on the null manager).
 
-**Open items:**
-- PHASE_TOA_PERSIST must be re-anchored when built: its Player-field
-  anchors are gone (D-W1-1 deleted toaPlayerData); it should introduce a
-  persisted attr key directly and wire TOAManager.loadData/saveData to it.
+**Open items:** none — PHASE_TOA_PERSIST landed as v2 (attr key
+"toa_player_data"; PlayerPreSaveEvent save-half; dead
+TOARewardInterface/AbstractTOAClazz/AbstractTOAManager deleted).
 
 ---
 
@@ -111,7 +121,7 @@ scripts | wc -l`).
 | # | Field | Refs | Persisted? | Notes |
 |---|---|---|---|---|
 | ~~1.1~~ | ~~gauntletItemStorage~~ | 2 | legacy drain only | DONE wave 1 — legacy parser drain only, no key (D-W1-2): zero live writers; @Deprecated slot + onInit stranded-item return, dies at Rotation 2 |
-| ~~1.2~~ | ~~toaPlayerData~~ | 2 | NO (dead) | DONE wave 1 — dead scaffolding deleted, no key (D-W1-1); PHASE_TOA_PERSIST must re-anchor and should introduce the attr key itself |
+| ~~1.2~~ | ~~toaPlayerData~~ | 2 | NO (dead) | DONE wave 1 — dead scaffolding deleted, no key (D-W1-1); PHASE_TOA_PERSIST landed as v2 right after: persisted attr key "toa_player_data" in the toa module (durable fields only; scratch transient) |
 | ~~1.3~~ | ~~stash~~ | 7 | yes → "stash" | DONE wave 1 (StashKeys, D1 recipe) |
 | ~~1.4~~ | ~~puzzleBox + lightBox~~ | 11+10 | NO (transient) | DONE wave 1 (PuzzleBoxKeys/LightBoxKeys, no shim) |
 | ~~1.5~~ | ~~petInsurance~~ | 12 | yes → "pet_insurance" | DONE wave 1 (PetInsuranceKeys; LoginManager copy line → onInit) |

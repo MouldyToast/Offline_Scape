@@ -36,6 +36,7 @@ import com.zenyte.logger.NearRealityPrintStream;
 import com.zenyte.plugins.PluginManager;
 import com.zenyte.plugins.events.InitializationEvent;
 import com.zenyte.plugins.events.PostInitializationEvent;
+import org.rsmod.game.events.PlayerPreSaveEvent;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.Function;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -627,6 +628,7 @@ public final class LoginManager {
             return;
         }
 
+        CoresManager.worldThread.getEventBus().publish(new PlayerPreSaveEvent(player));
         player.refreshAttrPersistence();
         String json = null;
         int attempts = 0;

@@ -2,7 +2,6 @@ package com.zenyte.game.content.tombsofamascut.raid;
 
 import com.zenyte.game.content.tombsofamascut.TOAAccess;
 
-import com.zenyte.game.content.tombsofamascut.AbstractTOAClazz;
 import com.zenyte.game.content.tombsofamascut.InvocationType;
 import com.zenyte.game.content.tombsofamascut.TOAManager;
 import com.zenyte.game.content.tombsofamascut.TOAPartySettings;
@@ -21,7 +20,7 @@ import static com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty.RAID_PA
 /**
  * @author Savions.
  */
-public class TOARaidParty extends AbstractTOAClazz {
+public class TOARaidParty {
 
 	private final List<String> originalPlayers = new ArrayList<String>();
 	private final List<Player> players = new ArrayList<Player>();

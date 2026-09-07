@@ -36,7 +36,7 @@ import static com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty.RAID_PA
 /**
  * @author Savions.
  */
-public class TOAManager extends AbstractTOAManager {
+public class TOAManager {
 
 	static {
 		new TOACommands();
@@ -56,6 +56,14 @@ public class TOAManager extends AbstractTOAManager {
 	private static final int HUD_RAID_LEVEL_VARBIT = 14380;
 	private static final int HUD_PATH_LEVEL_BASE_VARBIT = 14376;
 	private transient final Player player;
+	public int damageDone;
+	public int damageTaken;
+	public int points;
+
+	public int getDamageDone() { return damageDone; }
+	public void setDamageDone(int damageDone) { this.damageDone = damageDone; }
+	public int getDamageTaken() { return damageTaken; }
+	public void setDamageTaken(int damageTaken) { this.damageTaken = damageTaken; }
 	private transient TOARaidParty raidParty;
 	private transient TOALobbyParty viewingParty;
 	private transient TOALobbyParty currentParty;
@@ -78,9 +86,8 @@ public class TOAManager extends AbstractTOAManager {
 	}
 
 	public TOAManager(final Player player) {
-        super(player);
         this.player = player;
-		loadData(new TOAPlayerData());
+		loadData(TOAAccess.toaPlayerData(player));
 	}
 
 	private void loadData(TOAPlayerData data) {
@@ -100,35 +107,35 @@ public class TOAManager extends AbstractTOAManager {
 
 
 
-	@Override public Integer getCurrentInterfaceTab() {
+	public Integer getCurrentInterfaceTab() {
 		return this.player.currentTOAPartyManagementTab;
 	}
 
-	@Override public void setCurrentInterfaceTab(int currentInterfaceTab) {
+	public void setCurrentInterfaceTab(int currentInterfaceTab) {
 		this.player.currentTOAPartyManagementTab = currentInterfaceTab;
 	}
 
-	@Override public int getViewingValue() {
+	public int getViewingValue() {
 		return this.player.currentTOAPartyViewingValue;
 	}
 
-	@Override public void setViewingValue(int viewingValue) {
+	public void setViewingValue(int viewingValue) {
 		this.player.currentTOAPartyViewingValue = viewingValue;
 	}
 
-	@Override public void sendEmptyPartyList() {
+	public void sendEmptyPartyList() {
 		player.getPacketDispatcher().sendComponentText(GameInterface.TOA_PARTY.getId(), 5, "-<br>-<br>-<br>-<br>-<br>-<br>-<br>-");
 		player.getVarManager().sendBit(TOALobbyParty.PARTY_STATUS_VAR, 0);
 	}
 
-	@Override public boolean viewingManagementInterface(String ownerUsername) {
+	public boolean viewingManagementInterface(String ownerUsername) {
 		TOALobbyParty viewingParty = TOALobbyParty.getCurrentParty(player);
 		return player.getInterfaceHandler().getInterface(player.getInterfaceHandler().getPane(),
 				GameInterface.TOA_PARTY_MANAGEMENT.getPosition().getComponent(player.getInterfaceHandler().getPane())) == GameInterface.TOA_PARTY_MANAGEMENT.getId()
 					&& viewingParty != null && ownerUsername.equals(viewingParty.getLeaderDisplayName());
 	}
 
-	@Override public void toggleInvocation(final Object gen, final Player player) {
+	public void toggleInvocation(final Object gen, final Player player) {
 		InvocationType invocation = (InvocationType) gen;
 		if (partySettings.isActive(invocation)) {
 			if (InvocationType.OVERCLOCKED.equals(invocation)) {
@@ -178,32 +185,31 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void saveInvocationPreset(int index) {
+	public void saveInvocationPreset(int index) {
 		updatePreset(partySettings.getInvocationBitmaps(), index);
 	}
 
-	@Override public void clearInvocationPreset(int index) { updatePreset(new int[] {0, 0, 0}, index); }
+	public void clearInvocationPreset(int index) { updatePreset(new int[] {0, 0, 0}, index); }
 
-	@Override public boolean isPresetEmpty(int index) {
+	public boolean isPresetEmpty(int index) {
 		final int[] preset = getInvocationPreset(index);
 		return preset[0] == 0 && preset[1] == 0 && preset[2] == 0;
 	}
 
-	@Override protected void updatePreset(int[] preset, int index) {
+	protected void updatePreset(int[] preset, int index) {
 		for (int i = 0; i < 3; i++) {
 			player.getVarManager().sendVarInstant(getPresetBaseVarId(index) + i, preset[i]);
 		}
 	}
 
-	@Override public int[] getInvocationPreset(int index) {
+	public int[] getInvocationPreset(int index) {
 		final int baseVarId = getPresetBaseVarId(index);
 		return new int[] { player.getVarManager().getValue(baseVarId), player.getVarManager().getValue(baseVarId + 1), player.getVarManager().getValue(baseVarId + 1) };
 	}
 
-	@Override
 	protected int getPresetBaseVarId(int index) { return PRESET_BASE_VAR + index * 3; }
 
-	@Override public void enterRaid() {
+	public void enterRaid() {
 		TOALobbyParty currentLobbyParty = TOALobbyParty.getCurrentParty(player);
 		if (raidParty == null && currentLobbyParty != null) {
 			if (!currentLobbyParty.insideRaid()) {
@@ -221,7 +227,7 @@ public class TOAManager extends AbstractTOAManager {
 		enter(true, EncounterType.MAIN_HALL);
 	}
 
-	@Override public boolean enter(boolean checkLeader, final Object encounterType) {
+	public boolean enter(boolean checkLeader, final Object encounterType) {
 		final EncounterType currentEncounter = raidParty.getCurrentEncounterType();
 		if (!encounterType.equals(currentEncounter) || (raidParty.getCurrentRaidArea() != null && raidParty.getCurrentRaidArea().isDestroyed())) {
 			if (checkLeader && !raidParty.isLeader(player)) {
@@ -286,7 +292,7 @@ public class TOAManager extends AbstractTOAManager {
 		return true;
 	}
 
-	@Override public void sendHud() {
+	public void sendHud() {
 		player.getInterfaceHandler().sendInterface(InterfacePosition.OVERLAY, 481);
 		if (raidParty != null) {
 			sendRaidLevel();
@@ -300,17 +306,17 @@ public class TOAManager extends AbstractTOAManager {
 			player.sendDeveloperMessage("Not sending HUD because raid party is null");
 	}
 
-	@Override public void sendRaidLevel() {
+	public void sendRaidLevel() {
 		player.getVarManager().sendBit(HUD_RAID_LEVEL_VARBIT, raidParty.getPartySettings().getRaidLevel());
 	}
 
-	@Override public void refreshHudPlayers() {
+	public void refreshHudPlayers() {
 		if (raidParty != null) {
 			player.getPacketDispatcher().sendClientScript(6585, raidParty.getHudPlayerList());
 		}
 	}
 
-	@Override public void refreshHudStates() {
+	public void refreshHudStates() {
 		if (raidParty != null) {
 			final EncounterType currentEncounterType = raidParty.getCurrentEncounterType();
 			for (int i = 0; i < TOAManager.MAX_PARTY_MEMBERS; i++) {
@@ -334,13 +340,13 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void refreshPathLevel(int index) {
+	public void refreshPathLevel(int index) {
 		if (raidParty != null) {
 			player.getVarManager().sendBit(HUD_PATH_LEVEL_BASE_VARBIT + index, raidParty.getBossLevels()[index]);
 		}
 	}
 
-	@Override public void refreshTimer() {
+	public void refreshTimer() {
 		if (raidParty != null && raidParty.getStartTime() > 0) {
 			if (raidParty.getTotalTime() != -1) {
 				player.getPacketDispatcher().sendClientScript(6580, (int) raidParty.getTotalTime(), 1);
@@ -350,20 +356,20 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void startLeaveDialogue() {
+	public void startLeaveDialogue() {
 		if (player.getAppearance().isTransformedIntoNpc()) {
 			player.getDialogueManager().start(new PlainChat(player, "A mysterious force prevents you from doing that."));
 			return;
 		}
 		player.getDialogueManager().start(new Dialogue(player) {
-			@Override public void buildDialogue() {
+			public void buildDialogue() {
 				plain("You are about to <col=ad2800>abandon the raid</col>. If you do this, you <col=ad2800>will not</col> be able to return to your current run.");
 				options("Abandon the raid?", "Yes, abandon the raid.", "No, I want to stay.").onOptionOne(() -> leaveTombs("You abandon the raid and leave the Tombs of Amascut."));
 			}
 		});
 	}
 
-	@Override public void leaveTombs(String message) {
+	public void leaveTombs(String message) {
 		player.sendMessage(message);
 		final FadeScreen fadeScreen = new FadeScreen(player, () -> {
 			removeTOAItems();
@@ -377,48 +383,40 @@ public class TOAManager extends AbstractTOAManager {
 		WorldTasksManager.schedule(fadeScreen::unfade, 2);
 	}
 
-	@Override
 	public Object getRaidParty() {
 		return this.raidParty;
 	}
 
-	@Override
 	public void setRaidParty(Object toaRaidParty) {
 		this.raidParty = (TOARaidParty) toaRaidParty;
 	}
 
-	@Override
 	public Object getViewingParty() {
 		return this.viewingParty;
 	}
 
-	@Override
 	public void setViewingParty(Object toaRaidParty) {
 		this.viewingParty = (TOALobbyParty) toaRaidParty;
 	}
 
-	@Override
 	public Object getCurrentParty() {
 		return this.currentParty;
 	}
 
-	@Override
 	public void setCurrentParty(Object toaRaidParty) {
 		this.currentParty = (TOALobbyParty) toaRaidParty;
 	}
 
-	@Override
 	public Object getAppliedParty() {
 		return this.appliedParty;
 	}
 
-	@Override
 	public void setAppliedParty(Object toaRaidParty) {
 		this.appliedParty = (TOALobbyParty) toaRaidParty;
 	}
 
 
-	@Override public boolean needsAbandonRequest() {
+	public boolean needsAbandonRequest() {
 		if (raidParty.getCurrentRaidArea() == null) {
 			return false;
 		}
@@ -426,9 +424,9 @@ public class TOAManager extends AbstractTOAManager {
 		return raidParty.getPlayers().stream().anyMatch(p -> !currentEncounterType.equals(TOAAccess.getToaManager(p).getCurrentEncounter()));
 	}
 
-	@Override public void startAbandonDialogue(final String action, final Runnable runnable) {
+	public void startAbandonDialogue(final String action, final Runnable runnable) {
 		player.getDialogueManager().start(new Dialogue(player) {
-			@Override public void buildDialogue() {
+			public void buildDialogue() {
 				plain("Some of your party don't seem to have arrived yet.<br>If you proceed, they will be abandoned.");
 				options(action + "?", "No, wait for any stragglers.", "Yes, abandon any stragglers.").onOptionTwo(() -> {
 					ImmutableList.copyOf(raidParty.getPlayers()).stream().filter(p -> !raidParty.getCurrentRaidArea().getPlayers().contains(p)).forEach(p -> {
@@ -453,25 +451,15 @@ public class TOAManager extends AbstractTOAManager {
 		});
 	}
 
-	@Override public void initialize(AbstractTOAManager manager) {
-		setToaPlayerLogoutState(this.getToaPlayerLogoutState());
-		setIndividualDeaths(this.getIndividualDeaths());
-		setSuppliesContainer(this.getSuppliesContainer());
-		setPartySettings(this.getPartySettings());
-		setRewardContainer(this.getRewardContainer());
-		setCurrentPoints(this.getCurrentPoints());
-		setDamageDone(this.getDamageDone());
-		setDamageTaken(this.getDamageTaken());
-	}
 
-	@Override public int getCurrentPoints() { return points; }
+	public int getCurrentPoints() { return points; }
 
-	@Override public void setCurrentPoints(int currentPoints) {
+	public void setCurrentPoints(int currentPoints) {
 		this.points = currentPoints;
 		player.getVarManager().sendBit(POINT_VARBIT, currentPoints);
 	}
 
-	@Override public void onLogin() {
+	public void onLogin() {
 		if (toaPlayerLogoutState != null) {
 			final RegionArea regionArea = GlobalAreaManager.getArea(toaPlayerLogoutState.getLogoutLocation());
 			if (regionArea instanceof final TOARaidArea area && area.getParty().getOriginalPlayers().contains(player.getUsername())) {
@@ -508,7 +496,7 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void advanceRaid(boolean quickUse) {
+	public void advanceRaid(boolean quickUse) {
 		if (player.getArea() instanceof TOARaidArea raidArea) {
 			final EncounterType current = raidParty.getCurrentEncounterType();
 			final Runnable runnable = () -> {
@@ -540,7 +528,7 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void resetSessionAttributes() {
+	public void resetSessionAttributes() {
 		currentEncounter = null;
 		individualDeaths = 0;
 		toaPlayerLogoutState = null;
@@ -555,7 +543,7 @@ public class TOAManager extends AbstractTOAManager {
 		return OUTSIDE_LOCATION.transform(Utils.random(2), Utils.random(1));
 	}
 
-	@Override public void removeTOAItems() {
+	public void removeTOAItems() {
 		for (int id : TOA_REGULAR_ITEM_IDS) {
 			player.getInventory().deleteItem(id, Integer.MAX_VALUE);
 		}
@@ -564,7 +552,7 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void withdrawSupplies(int amount) {
+	public void withdrawSupplies(int amount) {
 		if (suppliesContainer == null) {
 			return;
 		}
@@ -589,7 +577,7 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public void reSupply() {
+	public void reSupply() {
 		if (suppliesContainer == null) {
 			return;
 		}
@@ -613,7 +601,7 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public boolean storeSupply(int slot, Item item) {
+	public boolean storeSupply(int slot, Item item) {
 		final int freeSlots = suppliesContainer.getFreeSlotsSize();
 		for (int id : TOA_SUPPLIES_ITEM_IDS) {
 			if (item.getId() == id) {
@@ -629,7 +617,7 @@ public class TOAManager extends AbstractTOAManager {
 		return false;
 	}
 
-	@Override public void withdrawSpecificSupplies(int slotId, int option) {
+	public void withdrawSpecificSupplies(int slotId, int option) {
 		if (suppliesContainer == null || slotId >= suppliesContainer.getSize()) {
 			return;
 		}
@@ -677,43 +665,43 @@ public class TOAManager extends AbstractTOAManager {
 		}
 	}
 
-	@Override public Object getPartySettings() {
+	public Object getPartySettings() {
 		if(partySettings == null) {
 			partySettings = new TOAPartySettings();
 		}
 		return partySettings;
 	}
 
-	@Override public void setPartySettings(Object partySettings) { this.partySettings = (TOAPartySettings) partySettings; }
+	public void setPartySettings(Object partySettings) { this.partySettings = (TOAPartySettings) partySettings; }
 
-	@Override public Object getToaPlayerLogoutState() { return toaPlayerLogoutState; }
+	public Object getToaPlayerLogoutState() { return toaPlayerLogoutState; }
 
-	@Override public void setToaPlayerLogoutState(Object toaPlayerLogoutState) { this.toaPlayerLogoutState = (TOAPlayerLogoutState) toaPlayerLogoutState; }
+	public void setToaPlayerLogoutState(Object toaPlayerLogoutState) { this.toaPlayerLogoutState = (TOAPlayerLogoutState) toaPlayerLogoutState; }
 
 
 
-	@Override public EncounterType getCurrentEncounter() { return currentEncounter; }
+	public EncounterType getCurrentEncounter() { return currentEncounter; }
 
-	@Override public void setCurrentEncounter(Object currentEncounter) {
+	public void setCurrentEncounter(Object currentEncounter) {
 		this.currentEncounter = (EncounterType) currentEncounter;
 	}
 
-	@Override public int getIndividualDeaths() { return individualDeaths; }
+	public int getIndividualDeaths() { return individualDeaths; }
 
-	@Override public void setIndividualDeaths(int individualDeaths) { this.individualDeaths = individualDeaths; }
+	public void setIndividualDeaths(int individualDeaths) { this.individualDeaths = individualDeaths; }
 
-	@Override public void setCanClaimSupplies(boolean canClaimSupplies) {
+	public void setCanClaimSupplies(boolean canClaimSupplies) {
 		this.canClaimSupplies = canClaimSupplies;
 	}
 
-	@Override public boolean isCanClaimSupplies() { return canClaimSupplies; }
+	public boolean isCanClaimSupplies() { return canClaimSupplies; }
 
-	@Override public void setSuppliesContainer(Container suppliesContainer) { this.suppliesContainer = suppliesContainer; }
+	public void setSuppliesContainer(Container suppliesContainer) { this.suppliesContainer = suppliesContainer; }
 
-	@Override public Container getSuppliesContainer() { return suppliesContainer; }
+	public Container getSuppliesContainer() { return suppliesContainer; }
 
-	@Override public Container getRewardContainer() { return rewardContainer; }
+	public Container getRewardContainer() { return rewardContainer; }
 
-	@Override public void setRewardContainer(Container rewardContainer) { this.rewardContainer = rewardContainer; }
+	public void setRewardContainer(Container rewardContainer) { this.rewardContainer = rewardContainer; }
 
 }

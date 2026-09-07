@@ -40,3 +40,15 @@ class PlayerDeathStartEvent(val player: Player, val source: Entity?) : UnboundEv
  * pre-hit hitpoints.
  */
 class PlayerPostDamageEvent(val player: Player, val hit: Hit, val cappedDamage: Int) : UnboundEvent
+
+/**
+ * Published from serializePlayerToFile on the save pool thread, immediately
+ * BEFORE refreshAttrPersistence() — subscribers may put or mutate persisted
+ * attr values and both land in the snapshot that toJson serialises.
+ *
+ * Threading: same benign race as the existing refreshAttrPersistence /
+ * toJson pair — the game thread may mutate the player concurrently. The
+ * snapshot is consistent within the subscriber's execution but not atomic
+ * with respect to game-tick boundaries.
+ */
+class PlayerPreSaveEvent(val player: Player) : UnboundEvent

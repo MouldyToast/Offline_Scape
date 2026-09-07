@@ -43,7 +43,6 @@ import com.zenyte.game.world.entity.player.teleport.ForceTeleport;
 import com.zenyte.game.world.entity.player.teleport.Teleport;
 import com.zenyte.game.world.entity.player.teleport.TeleportType;
 import com.zenyte.game.content.skills.prayer.PrayerManagerKeys;
-import com.zenyte.game.content.tombsofamascut.TOAPlayerData;
 import com.zenyte.game.content.treasuretrails.clues.LightBox;
 import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
@@ -327,16 +326,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final CollectionLog collectionLog = new CollectionLog(this);
 
     private final CALog caLog = new CALog(this);
-    @Expose
-    private final TOAPlayerData toaPlayerData = new TOAPlayerData();
 
     public transient int currentTOAPartyViewingValue = 0;
     public transient int currentTOAPartyManagementTab = 0;
-
-    public TOAPlayerData getToaPlayerData() {
-        return toaPlayerData;
-    }
-
 
     private final transient DialogueManager dialogueManager = new DialogueManager(this);
     @Expose

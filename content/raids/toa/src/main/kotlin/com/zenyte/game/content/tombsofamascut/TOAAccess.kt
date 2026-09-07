@@ -12,8 +12,9 @@ import org.rsmod.game.events.PlayerLoginEvent
 
 /**
  * Transient session key for the player's ToA manager. No persistenceKey:
- * the manager never persisted (it was a transient Player field), and ToA's
- * durable data lives in Player.toaPlayerData.
+ * the manager never persisted (it was a transient Player field). ToA's
+ * durable data does not persist today (the PHASE_TOA_PERSIST hole); when
+ * persistence is built it should introduce its own persisted attr key.
  */
 @JvmField
 val TOA_MANAGER_KEY: AttributeKey<TOAManager> = AttributeKey()

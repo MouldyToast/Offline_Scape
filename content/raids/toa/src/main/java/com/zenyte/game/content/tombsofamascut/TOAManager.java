@@ -80,7 +80,7 @@ public class TOAManager extends AbstractTOAManager {
 	public TOAManager(final Player player) {
         super(player);
         this.player = player;
-		loadData(player.getToaPlayerData());
+		loadData(new TOAPlayerData());
 	}
 
 	private void loadData(TOAPlayerData data) {

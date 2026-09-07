@@ -88,7 +88,7 @@ grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --i
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
-plugins.dat: 4354 plugins (untracked file; regenerate with
+plugins.dat: 4353 plugins (untracked file; regenerate with
 `./gradlew :app:runPluginScanner` after any @Subscribe/annotation change
 — note INTERFACE subclasses and the other PluginType shapes count too,
 not just Guava @Subscribe: TOA v2's TOARewardInterface deletion was −1
@@ -133,6 +133,15 @@ never commit the file).
   CoX private storage, item retrieval reclaim) confirming persistence
   still round-trips through the attr path; a save written post-rotation
   carries none of the legacy top-level keys.
+- InitializationEvent deletion: boot-log diff confirming the 20 switched
+  subscribers re-register on PostInitializationEvent (silent
+  unregistration has no compile error). Then one relog: vars/varbits
+  intact (quest points, diary steps, prayer unlocks — serializedVars is
+  broad); collection log intact; daily challenge progress intact;
+  loyalty session credit accrues; one spot check per eager-rehydration
+  system (farming, hunter, slayer, GE offers, presets, barrows kc,
+  gravestone, bounty hunter, diaries, lootkey settings, blast furnace,
+  cannon, construction, prayer, seed vault + the five rotated systems).
 
 **Open items:**
 - **DEFER-5** (wave 2b): Player's phoenix-necklace check reads the duel
@@ -238,11 +247,26 @@ Then:
   pre-migration saves, they must migrate (one login each) on a
   pre-rotation build BEFORE deploying past commit e92a06ab — after it
   the legacy top-level keys are no longer read.
-- **Delete InitializationEvent** (one session): after 1.1–1.9 its
-  subscribers no longer read the parser; remove the event, the
-  `setFields` post, and then simplify LoginManager's double-deserialize
-  (parser Player) if nothing else consumes it — verify by grep, this is
-  the last consumer today.
+- ~~**Delete InitializationEvent**~~ DONE same session, with a census
+  correction: the claim "after 1.1–1.9 its subscribers no longer read
+  the parser" was FALSE — four CORE-side subscribers (VarManager,
+  CollectionLog, DailyChallengeModule, LoyaltyManager) read
+  `event.getSavedPlayer()` and were outside Track 1's import gates
+  because their types live in core packages. Those four copies became
+  `adopt(...)` methods called directly from `setFields` at the exact
+  spot the event posted (fixed order — previously Guava registration
+  order); the 20 eager-rehydration subscribers moved to
+  PostInitializationEvent; the zero-caller `skipInitEvents` overload
+  died too. **The parser Player is now consumed only inside
+  LoginManager.** The double-deserialize simplification is thereby
+  unblocked but stays future work stated honestly: setFields still
+  performs ~40 parser copies of never-extracted core fields, so it is
+  a campaign of its own, not a session. `getSavedPlayer` tokens
+  repo-wide: 0. plugins.dat: 4353 (per-class subscriber counting —
+  only VarManager lost its last @Subscribe; the other three retain
+  other subscribers). Jesse: the boot-log diff for the 20 switched
+  subscribers + the relog play-test below are the outstanding
+  runtime gates.
 
 Track 1 removes ~13 of the 34 imports.
 

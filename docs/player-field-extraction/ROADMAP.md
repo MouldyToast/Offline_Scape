@@ -106,16 +106,16 @@ never commit it; wave 1 added PetInsurance.onInitialization).
 - PHASE_TOA_PERSIST: landed as v2 (attr key "toa_player_data";
   PlayerPreSaveEvent save-half; dead TOARewardInterface/AbstractTOAClazz/
   AbstractTOAManager deleted).
-- **api PlayerModel legacy-key gap** (found in wave-2a review): the
-  kotlinx-serialization `PlayerData` model
-  (api/src/main/kotlin/com/near_reality/api/model/PlayerModel.kt) reads
-  the legacy top-level `retrievalService`/`privateStorage` JSON keys,
-  which post-migration saves omit — API consumers of
-  `containerWrapperList` will see those two containers as empty for
-  migrated saves (silent wealth under-count, no crash). Fix when touched:
-  read attrPersistence["item_retrieval"]/["private_storage"] with the
-  legacy keys as fallback. Jesse to decide priority (depends on whether
-  that API path is live).
+- ~~api PlayerModel legacy-key gap~~ FIXED same session (found in
+  wave-2a review): `PlayerData` now parses
+  attrPersistence["item_retrieval"]/["private_storage"] and prefers them
+  over the legacy top-level keys (which remain as the pre-migration
+  fallback); `containerWrapperList` uses the effective accessors. The raw
+  `retrievalService`/`privateStorage` fields stay for source
+  compatibility with any external consumer. Note: PlayerData has zero
+  in-repo consumers — external API consumers reading the raw fields
+  directly (rather than containerWrapperList/effective accessors) should
+  switch to the effective ones.
 - **Lesson recorded (wave-2a hotfix):** call-site censuses for field
   extractions MUST include Kotlin synthetic-property access
   (`player.x` / bare `x` in Player-receiver scope), not just Java

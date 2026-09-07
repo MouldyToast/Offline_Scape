@@ -2,188 +2,101 @@
 
 > **This file supersedes the HANDOVER_after_*.md files and the spent
 > prompts/ files for day-to-day use.** Those remain as historical record;
-> nothing in them is needed to execute what's below — where a detail
-> matters it has been folded in here. Update THIS file at the end of every
-> session (state table + baselines + strike out finished rows); do not
-> write new handover documents.
+> the one still load-bearing is HANDOVER_after_G3.md (§3 prayer
+> equivalence table for DEFER-1; §7 nightmare re-audit for T3.1). Update
+> THIS file at the end of every session; do not write new handover
+> documents. Finished work is PRUNED from this file, not struck through —
+> git history (branch claude/five-quality-plans-7firff and earlier) is
+> the record of what landed and how.
 
 **The finish line:** `Player.java` at ZERO `com.zenyte.game.content.*`
-imports, `InitializationEvent` deleted, and the OpenRune end-state patterns
-in place (per-system soft timers instead of a broadcast process event;
-varbits as prayer truth). Everything between here and there is enumerated
-below — if work appears that isn't on this list, add it here first.
+imports and the OpenRune end-state patterns in place. Everything between
+here and there is enumerated below — if work appears that isn't on this
+list, add it here first.
 
 ---
 
-## 0. Current state (updated 2026-09-07, Track 1 wave 1 landed on top of Main `5d25c393`)
+## 0. Current state (updated 2026-09-07, post InitializationEvent deletion)
 
-**Done and merged to Main:** Phases 0, A, B, B.5, C, D, E (all 20 fields
-extracted to AttributeMap), F1–F5, Rotation (all 15 shims deleted), G1
-(per-tick drivers), E6 rider (pet login/logout events), Track 2 campaign
-(T2-a–T2-d), T3.1a/b (nightmare curse + engine varbit reads), T3.2 (soft
-timers). The G1/E6 play-test sweep is done.
+**Done (see git history for the how):** Phases 0–F + Rotation 1; G1; E6
+rider; Track 2 campaign (T2-a–d); T3.1a/b (nightmare curse fix + all
+engine prayer reads on varbits); T3.2 soft timers (PlayerProcessEvent
+retired); Track 1 waves 1/2a/2b (all eleven field types extracted or
+resolved); PHASE_TOA_PERSIST v2 (attrPersistence["toa_player_data"];
+PlayerPreSaveEvent save-half published from serializePlayerToFile before
+refreshAttrPersistence); Rotation 2 (all six shims deleted;
+GauntletItemStorage deleted); InitializationEvent deleted (the four core
+parser subscribers became setFields adopt calls; 20 eager-rehydration
+subscribers moved to PostInitializationEvent; **the parser Player is now
+consumed only inside LoginManager**).
 
-**Done this session (Track 1, wave 1 — ROADMAP items 1.1–1.6, 7 commits):**
-- 1.2 toaPlayerData: dead scaffolding DELETED (D-W1-1) — zero writers, the
-  one reader consumed construction defaults; behavior identical. No key
-  added; see the PHASE_TOA_PERSIST open item below.
-- 1.1 gauntletItemStorage: converted to a parser-only `@Deprecated` legacy
-  drain slot (D-W1-2) — zero live writers, the live gauntlet never
-  references the class; only the onInitialization drain (stranded-item
-  return for pre-rework saves) remains. No key, no accessor.
-- 1.4 puzzleBox + lightBox: transient attr keys (PuzzleBoxKeys/
-  LightBoxKeys, no persistenceKey, no shim — never persisted).
-- 1.3 stash → attrPersistence["stash"] (StashKeys), 1.5 petInsurance →
-  attrPersistence["pet_insurance"] (PetInsuranceKeys; the LoginManager
-  setFields copy line replaced by an attr-first onInitialization), 1.6
-  godBooks → attrPersistence["god_books"] (GodBooksKeys) — all three on
-  the SeedVault D1 recipe: rehydrating accessor + adopt/initialize,
-  attr-first onInit with parser-legacy fallback, `@Deprecated`
-  field+getter shims joining Rotation 2.
+Player's 7 remaining content imports are exactly the deferral Keys:
+PrayerManagerKeys (DEFER-1), ConstructionKeys/RoomReference (DEFER-2),
+FarmingKeys (DEFER-3), PrivateStorageKeys/RetrievalServiceKeys
+(DEFER-4a/4b), DuelKeys (DEFER-5). See §2 for the ledger.
 
-**Wave 2a also landed (items 1.7–1.9, 4 commits, same session):**
-- 1.7 respawnPoint: RespawnPoint enum MOVED to core
-  (com.zenyte.game.world.entity.player; T2-c precedent) — pure engine
-  enum, field stays on Player as core-typed, no key/shim/rotation entry
-  (enum persists by name, package move cannot touch saves). 7 imports
-  retargeted.
-- 1.8 privateStorage → attrPersistence["private_storage"]
-  (PrivateStorageKeys), 1.9 retrievalService →
-  attrPersistence["item_retrieval"] (RetrievalServiceKeys) — D1 recipe,
-  @Deprecated field+getter shims joining Rotation 2. Player's internal
-  item-sweep/forcedRemoved reads now go through the Keys accessors:
-  **DEFER-4a/4b** (see Open items).
-
-**Wave 2b also landed (item 1.10 duel — Track 1 extractions closed):**
-transient attr key via `var Player.duel` extension property in
-DuelKeys.kt (RaidAccess-style JvmName facade). The legacy getter's
-perspective-swap (the two duelists share ONE Duel instance, re-oriented
-toward the caller on read) lives verbatim in the accessor. 117 Java
-sites across 33 files retargeted per-receiver
-(player/opponent/p2/target), 14 Kotlin property sites kept textually via
-the extension import, 4 nullability hardenings (previously-NPE null
-paths now guarded). +18 planned engine imports (16 Java files + 2
-Kotlin + Player's DEFER-5 net-zero swap).
-
-**Rotation 2 also landed (same session — Track 1 shims deleted):**
-the six @Deprecated slots + getters + imports are off Player, the five
-legacy-fallback onInits collapsed to eager one-line rehydration (the
-adopt methods stay — the accessors' raw-map path still uses them), and
-the fully-dead GauntletItemStorage class deleted. Post-rotation saves
-drop the legacy top-level keys (`stash`, `petInsurance`, `godBooks`,
-`privateStorage`, `retrievalService`, `gauntletItemStorage`) by design.
-Rotation gate was vacuously satisfied: data/characters/ carries zero
-saves in this repo. EcoSearch/PlayerBackupItems went scan-only (their
-legacy-field fallback died with the getter). Player's 7 remaining
-content imports are exactly the deferral Keys: PrayerManagerKeys
-(DEFER-1), ConstructionKeys/RoomReference (DEFER-2), FarmingKeys
-(DEFER-3), PrivateStorageKeys/RetrievalServiceKeys (DEFER-4a/4b),
-DuelKeys (DEFER-5).
+**⚠ Deploy caveat (live until merged/deployed):** Rotation 2 deleted the
+legacy-save fallbacks. Any environment carrying pre-migration character
+saves must let each account log in once on the last pre-rotation commit
+(`6298f876`) BEFORE running at or past `e92a06ab` — after it the legacy
+top-level keys (`stash`, `petInsurance`, `godBooks`, `privateStorage`,
+`retrievalService`, `gauntletItemStorage`) are no longer read and their
+data would be silently dropped. Dev-only throwaway saves: ignore.
 
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 7 (all deferral Keys — see Rotation 2 note above)
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1112 (the 40 planned lines minus Player's six deleted slot imports)
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 7 (all deferral Keys)
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1112 (includes the 40 planned content-import lines in core paths: 1 TeleportType structures.* wildcard, 6 RaidAccess, 5 wave-1 Keys, 10 wave-2a Keys, 18 duel; minus Player's 6 rotated slot imports)
 grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique)
 grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 0
 ```
-plugins.dat: 4353 plugins (untracked file; regenerate with
-`./gradlew :app:runPluginScanner` after any @Subscribe/annotation change
-— note INTERFACE subclasses and the other PluginType shapes count too,
-not just Guava @Subscribe: TOA v2's TOARewardInterface deletion was −1
-that its plan missed, Rotation 2's GauntletItemStorage subscriber −1;
-never commit the file).
+plugins.dat: 4353 (untracked; regenerate with
+`./gradlew :app:runPluginScanner` after any change to an annotated/
+scanned shape — ALL PluginType shapes count, e.g. Interface subclasses,
+not just Guava @Subscribe; subscriber counting is per-CLASS, so a class
+keeping any @Subscribe stays registered; the scanner now truncates the
+file after write; never commit it).
 
-**Play-tests outstanding (Jesse, after merging wave 1):**
-- STASH: build/fill/empty + relog persistence; a pre-migration save
-  migrating (legacy top-level "stash" key adopted, next save moves it
-  under attrPersistence["stash"]).
-- Pet insurance: insure at Probita + reclaim + relog persistence.
-- God books: page add/check/claim at Jossik + relog persistence.
-- Clue boxes: puzzle box open/shift mid-session + light box open/press
-  (transient — state resets on relog, as before).
-- TOA: one raid start (loadData path).
-- Gauntlet: a pre-rework save with stranded items still gets them
-  returned (if any such save exists).
-- PHASE_TOA_PERSIST v2 (landed on top of wave 1 — invocation presets and
-  X-log state now persist under attrPersistence["toa_player_data"]):
-  1. invocation presets survive a server restart (board state + the save
-     JSON carries `attrPersistence["toa_player_data"].partySettingData`);
-  2. X-log mid-raid, same session — rejoin message + placement inside;
-  3. X-log mid-raid + server restart — placed OUTSIDE the entrance via
-     the unable-to-rejoin path, no NPE (now reachable cross-session for
-     the first time);
-  4. fresh account — ToA lobby opens with defaults, no NPE;
-  5. no-ToA session — saved presets round-trip untouched when ToA is
-     never touched (save-half skips on the null manager).
-- Wave 2a: CoX private storage deposit/withdraw + relog + a pre-migration
-  save migrating; die to Zulrah/Vorkath/Hydra → reclaim at each retrieval
-  NPC + relog with items held + a pre-migration save; Krystilia/Merlin/
-  Tiffy respawn dialogues + max cape respawn switching + ring of
-  returning + an actual death respawn at each point.
-- Wave 2b (duel): full duel loop (challenge → settings → stake → accept
-  both sides → fight → win/loss payout → scoreboard); forfeit object;
-  X-log mid-duel; mithril seeds blocked in duel; teleother/lunar-assist
-  spells blocked on a dueling target; orbs/bank/combat-tab duel displays;
-  phoenix necklace NOT consumed at low HP while dueling (the DEFER-5
-  site); degradable weapons (tridents/blowpipe/scythe/sanguinesti) charge
-  behavior in duel; credit store + middleman blocked while dueling.
-- Rotation 2: one relog per rotated system (stash, insurance, god books,
-  CoX private storage, item retrieval reclaim) confirming persistence
-  still round-trips through the attr path; a save written post-rotation
-  carries none of the legacy top-level keys.
-- InitializationEvent deletion: boot-log diff confirming the 20 switched
-  subscribers re-register on PostInitializationEvent (silent
-  unregistration has no compile error). Then one relog: vars/varbits
-  intact (quest points, diary steps, prayer unlocks — serializedVars is
-  broad); collection log intact; daily challenge progress intact;
-  loyalty session credit accrues; one spot check per eager-rehydration
-  system (farming, hunter, slayer, GE offers, presets, barrows kc,
-  gravestone, bounty hunter, diaries, lootkey settings, blast furnace,
-  cannon, construction, prayer, seed vault + the five rotated systems).
-
-**Open items:**
-- **DEFER-5** (wave 2b): Player's phoenix-necklace check reads the duel
-  via DuelKeys (one internal site). Unwind ledger: engine duel checks
-  (combat rules, teleother/spell blocks, orbs, the 16 counted engine
-  files) belong behind area/event-based checks, not a Player-adjacent
-  accessor — same recorded design work as the TeleportType/structures
-  decoupling.
-- **DEFER-4a/4b** (wave 2a): Player's item-sweep methods
-  (carryingItem-style loops + forcedRemoved's container array) read
-  privateStorage/retrievalService internally, so Player carries
-  PrivateStorageKeys (DEFER-4a) and RetrievalServiceKeys (DEFER-4b)
-  imports — the DEFER-1/2/3 pattern. Unblock = a deterministic-order
-  core-side container registry, or moving the sweep methods off Player
-  (order matters for forcedRemoved — which containers lose items first —
-  so the registry is recorded design work, not improvised).
-- PHASE_TOA_PERSIST: landed as v2 (attr key "toa_player_data";
-  PlayerPreSaveEvent save-half; dead TOARewardInterface/AbstractTOAClazz/
-  AbstractTOAManager deleted).
-- ~~api PlayerModel legacy-key gap~~ FIXED same session (found in
-  wave-2a review): `PlayerData` now parses
-  attrPersistence["item_retrieval"]/["private_storage"] and prefers them
-  over the legacy top-level keys (which remain as the pre-migration
-  fallback); `containerWrapperList` uses the effective accessors. The raw
-  `retrievalService`/`privateStorage` fields stay for source
-  compatibility with any external consumer. Note: PlayerData has zero
-  in-repo consumers — external API consumers reading the raw fields
-  directly (rather than containerWrapperList/effective accessors) should
-  switch to the effective ones.
-- **Lesson recorded (wave-2a hotfix):** call-site censuses for field
-  extractions MUST include Kotlin synthetic-property access
-  (`player.x` / bare `x` in Player-receiver scope), not just Java
-  `getX()` greps — the wave-2a sweep missed ~35 Kotlin references in 6
-  files (gravestone death/reclaim path, Nex chest/barrier, ToB chest,
-  EcoSearch, backups tool), all silently compiling against the deprecated
-  getter. Fixed by retargeting to the accessor and adding
-  scanRetrievalService (GravestoneKeys.scanGravestone idiom) for offline
-  parser scans.
+**Play-tests outstanding (Jesse — this sweep gates the merge):**
+- Boot log clean: zero "Failed to load plugin" lines; the 20
+  PostInitializationEvent subscribers register.
+- Fresh account: create → play → relog; save JSON has attrPersistence
+  keys and NONE of the six legacy top-level keys.
+- Existing-account relog: vars/varbits intact (quest points, diary
+  steps, prayer unlocks — serializedVars is broad); collection log,
+  daily challenge progress, loyalty session credit all intact.
+- STASH build/fill/empty + relog; pet insurance (Probita insure +
+  reclaim) + relog; god books (Jossik page add/check/claim) + relog;
+  puzzle/light box mid-session (transient — resets on relog, as before).
+- CoX private storage deposit/withdraw + relog. Item retrieval: die to
+  Zulrah/Vorkath/Hydra → reclaim at each NPC + relog with items held.
+- Gravestone path (hotfixed code): die with items → gravestone → reclaim
+  / incinerate / pay unlock; expire → Death's Office; Nex chest +
+  barrier prompts; ToB retrieval chest.
+- Respawn points: Krystilia/Merlin/Tiffy dialogues, max-cape switching,
+  ring of returning, an actual death at each point.
+- ToA v2: presets survive restart (+ JSON carries
+  attrPersistence["toa_player_data"].partySettingData); X-log mid-raid
+  same session; X-log + restart → placed outside, no NPE; fresh-account
+  lobby; no-ToA session round-trips presets untouched.
+- Duel: full loop (challenge→settings→stake→accept→fight→payout→
+  scoreboard); forfeit object; X-log mid-duel; mithril seeds +
+  teleother/lunar spells blocked; orbs/bank/combat-tab displays; phoenix
+  necklace NOT consumed at low HP in duel; degradable weapons; credit
+  store + middleman blocked.
+- Eager-rehydration spot check (one action each): farming, hunter traps,
+  slayer task, GE offers, presets, barrows kc, bounty hunter, diaries,
+  lootkey settings, blast furnace, cannon, construction, prayer, seed
+  vault.
+- Nightmare (gates the next code session, §5): curse behavior correct
+  post-T3.1a/b.
+- (Pre-migration save migration is testable only on `6298f876` — see the
+  deploy caveat; skip if no legacy saves exist.)
 
 ---
 
-## 1. Session protocol (unchanged, compressed)
+## 1. Session protocol
 
 1. One work item per session; investigate → mini-plan → execute → gates.
 2. Re-anchor by grep before every edit; line numbers drift.
@@ -191,14 +104,20 @@ never commit the file).
    above + per-edit occurrence-count assertions.
 4. `@Subscribe` methods must be static (top-level Kotlin `fun` is fine);
    any new/renamed annotated shape ⇒ re-run the plugin scanner.
-5. Commit per item; end by updating THIS file's state table.
+5. Commit per item; end by updating THIS file (prune finished work).
+6. **Census lesson (wave-2a hotfix):** call-site censuses MUST include
+   Kotlin synthetic-property access (`player.x` / bare `x` in
+   Player-receiver scope), not just Java `getX()` greps — a deprecated
+   getter keeps such sites compiling while returning garbage. Offline
+   parser tooling uses the `scanX` raw-attr idiom
+   (GravestoneKeys.scanGravestone / RetrievalServiceKeys.scanRetrievalService).
 
 **House idioms (copy these, don't invent):**
 - *Keys file* (persisted field): `XKeys.kt`, `@file:JvmName`, an
-  `AttributeKey<X>(persistenceKey = "x_snake")`, a `Player.x()` accessor
-  that lazily rehydrates the raw attrPersistence map via
-  `LoginManager.gson` and adopts through the class's own copy
-  constructor/copyFrom (see FarmingKeys/HunterKeys/PrayerManagerKeys).
+  `AttributeKey<X>(persistenceKey = "x_snake")`, an accessor that lazily
+  rehydrates the raw attrPersistence map via `LoginManager.gson` and
+  adopts through the class's own copy method (see
+  FarmingKeys/HunterKeys/PrayerManagerKeys/SeedVaultKeys).
 - *EventBus hooks*: top-level `@Subscribe fun onServerLaunch(event:
   ServerLaunchEvent)` → `event.worldThread.eventBus.subscribeUnbound(...)`
   (see TOAAccess.kt, PlayerTickHooks.kt, FollowerKeys.kt). EventBus
@@ -209,194 +128,64 @@ never commit the file).
 - *Engine flag lift* (de-instanceof a content type in core): add a
   `public boolean isX() { return false; }` to the core base type
   (RegionArea/NPC), override in content (the Phase B ToA pattern).
+- *Save-time sync*: PlayerPreSaveEvent (published in
+  serializePlayerToFile BEFORE refreshAttrPersistence — puts and
+  mutations both land in the snapshot; see TOAAccess.kt's save-half).
 
 ---
 
-## 2. TRACK 1 — finish the field extraction (mechanical; recipe proven)
+## 2. Deferral ledger (the 7 remaining Player content imports; each unwind deletes its import)
 
-The remaining content-typed Player members. Persisted ones get the Keys
-pattern + a `@Deprecated` shim and join Rotation 2; transient ones need no
-shim. Ref counts measured 2026-09-06 (`grep -rho "getX(" core content
-scripts | wc -l`).
+| Deferral | Import(s) | What Player still reads | Unwind |
+|---|---|---|---|
+| DEFER-1 | PrayerManagerKeys | 5 sites: Elysian getPrayerPoints ~2955, faith-necklace restore ~3159, three drainSkill overrides ~3504/3512/3520 | completes with the T3.1 end-state (id lift; HANDOVER_after_G3.md §3 is the reference) |
+| DEFER-2 | ConstructionKeys, RoomReference | roomPreview | own mini-plan |
+| DEFER-3 | FarmingKeys | two movement-path refreshes ~1079/~1221 | own mini-plan |
+| DEFER-4a/4b | PrivateStorageKeys, RetrievalServiceKeys | item-sweep loops + forcedRemoved's container array | deterministic-order core-side container registry, or move the sweeps off Player (order matters for forcedRemoved — design work, don't improvise) |
+| DEFER-5 | DuelKeys | phoenix-necklace check (1 site) | engine duel checks (combat rules, teleother/spell blocks, orbs — 16 engine files also import DuelKeys) behind area/event checks |
 
-| # | Field | Refs | Persisted? | Notes |
-|---|---|---|---|---|
-| ~~1.1~~ | ~~gauntletItemStorage~~ | 2 | legacy drain only | DONE wave 1 — legacy parser drain only, no key (D-W1-2): zero live writers; @Deprecated slot + onInit stranded-item return, dies at Rotation 2 |
-| ~~1.2~~ | ~~toaPlayerData~~ | 2 | NO (dead) | DONE wave 1 — dead scaffolding deleted, no key (D-W1-1); PHASE_TOA_PERSIST landed as v2 right after: persisted attr key "toa_player_data" in the toa module (durable fields only; scratch transient) |
-| ~~1.3~~ | ~~stash~~ | 7 | yes → "stash" | DONE wave 1 (StashKeys, D1 recipe) |
-| ~~1.4~~ | ~~puzzleBox + lightBox~~ | 11+10 | NO (transient) | DONE wave 1 (PuzzleBoxKeys/LightBoxKeys, no shim) |
-| ~~1.5~~ | ~~petInsurance~~ | 12 | yes → "pet_insurance" | DONE wave 1 (PetInsuranceKeys; LoginManager copy line → onInit) |
-| ~~1.6~~ | ~~godBooks~~ | 13 | yes → "god_books" | DONE wave 1 (GodBooksKeys, D1 recipe) |
-| ~~1.7~~ | ~~respawnPoint~~ | 16 | yes (plain enum) | DONE wave 2a — resolved by core move, no key (the mini-plan's own alternative): pure engine enum relocated to com.zenyte.game.world.entity.player; field stays on Player |
-| ~~1.8~~ | ~~privateStorage~~ | 19 | yes → "private_storage" | DONE wave 2a (PrivateStorageKeys, D1 recipe; DEFER-4a for Player's internal sweep reads) |
-| ~~1.9~~ | ~~retrievalService~~ | 37 | yes → "item_retrieval" | DONE wave 2a (RetrievalServiceKeys, D1 recipe; DEFER-4b for Player's internal sweep reads) |
-| ~~1.10~~ | ~~duel~~ | 105 | NO (transient) | DONE wave 2b — transient attr key via `var Player.duel` extension (DuelKeys facade for Java); perspective-swap getter preserved in the accessor; no shim, field+accessors deleted outright; DEFER-5 for Player's phoenix-necklace read |
+**Standing warnings / recorded future design work:**
+- ClanChannel.onLogout was deleted as provably dead (T2-a): if a real
+  `canLeaveClanChannel` override is ever added, the logout path must
+  handle a vetoed leave deliberately.
+- TeleportType keeps the structures.* wildcard import; enum→structure
+  decoupling is future design work. 19 engine files import the
+  non-moved teleport classes (ItemTeleport 6, TeleportCollection 9,
+  SpellbookTeleport 2, MinigameGroupFinder 2).
+- api PlayerData (kotlinx model, zero in-repo consumers) reads
+  attrPersistence["item_retrieval"]/["private_storage"] with the legacy
+  keys as archived-save fallback; external consumers reading the raw
+  `retrievalService`/`privateStorage` fields directly should switch to
+  the effective accessors / containerWrapperList.
 
-**TRACK 1 EXTRACTION PHASE CLOSED** — all eleven field types resolved:
-7 extracted to keys, RespawnPoint core-moved, toaPlayerData and
-gauntletItemStorage census-corrected in wave 1.
+## 3. TRACK 3 — OpenRune end-states (what remains)
 
-Sequencing: ~~1.1–1.6 batch well (≈2 sessions)~~ landed as wave 1;
-~~1.7–1.9 one session each~~ landed as wave 2a; ~~1.10 its own
-session~~ landed as wave 2b.
-
-Then:
-- ~~**Rotation 2**~~ DONE same session (see §0): shims + fallbacks
-  deleted exactly like Rotation 1; the gate was vacuously satisfied
-  (zero saves in data/characters/). If a production environment carries
-  pre-migration saves, they must migrate (one login each) on a
-  pre-rotation build BEFORE deploying past commit e92a06ab — after it
-  the legacy top-level keys are no longer read.
-- ~~**Delete InitializationEvent**~~ DONE same session, with a census
-  correction: the claim "after 1.1–1.9 its subscribers no longer read
-  the parser" was FALSE — four CORE-side subscribers (VarManager,
-  CollectionLog, DailyChallengeModule, LoyaltyManager) read
-  `event.getSavedPlayer()` and were outside Track 1's import gates
-  because their types live in core packages. Those four copies became
-  `adopt(...)` methods called directly from `setFields` at the exact
-  spot the event posted (fixed order — previously Guava registration
-  order); the 20 eager-rehydration subscribers moved to
-  PostInitializationEvent; the zero-caller `skipInitEvents` overload
-  died too. **The parser Player is now consumed only inside
-  LoginManager.** The double-deserialize simplification is thereby
-  unblocked but stays future work stated honestly: setFields still
-  performs ~40 parser copies of never-extracted core fields, so it is
-  a campaign of its own, not a session. `getSavedPlayer` tokens
-  repo-wide: 0. plugins.dat: 4353 (per-class subscriber counting —
-  only VarManager lost its last @Subscribe; the other three retain
-  other subscribers). Jesse: the boot-log diff for the 20 switched
-  subscribers + the relog play-test below are the outstanding
-  runtime gates.
-
-Track 1 removes ~13 of the 34 imports.
-
-## 3. TRACK 2 — non-field content usages in Player (small designs, mostly Phase-B lifts)
-
-One inventory/sequencing session first, then ~3–4 execution sessions.
-Current import list with the expected treatment:
-
-T2-a landed (2026-09-06, 5 commits): PlayerDeathStartEvent (published
-from BOTH death paths — Player.sendDeath and PlayerDeathHandler; future
-death-work hook) + PlayerPostDamageEvent; retribution/redemption/
-death-charge/reset/quick-prayers off Player; prayer drains via own
-drainSkill; spellbook-swap + tip-jar onto PlayerLogoutEvent; gravestone
-+ Ava's onto the T3.2 soft timers (reserved ids); GE/lootkey/farming
-login refreshes onto PlayerLoginEvent; dead PlayerDeathEvent +
-BountyHunter.onDeath deleted (D-4). The clan move initially hit the
-plan's pre-move audit (ClanChannel.onLogout, a ListenerType.LOGOUT
-listener, also removed the player from channel.members — running leave()
-after the LOGOUT plugins would have early-returned and dropped
-ClanLeaveEvent + empty-channel cleanup) and was RESOLVED in two follow-up
-commits: ClanChannel.onLogout deleted as provably dead (the
-canLeaveClanChannel veto it backstopped returns true in the Controller
-base with zero overrides repo-wide, and ListenerType.LOGOUT fires only
-from Player.finish, right after leave() — so its remove was a no-op in
-every reachable state; if a real canLeaveClanChannel override is ever
-added, the logout path must handle a vetoed leave deliberately), then
-leave/first-login join moved onto PlayerLogoutEvent/PlayerLoginEvent
-(ClanLifecycleHooks.kt). ClanManager is out of Player; ClanChannel stays
-(getRaid body: dies in T2-d). DEFER-1 residue is exactly 5 sites: Elysian
-getPrayerPoints ~2955, faith-necklace restore ~3159, and the three
-drainSkill overrides ~3504/~3512/~3520.
-
-| Import(s) | Treatment |
-|---|---|
-| Prayer, PrayerManagerKeys | varbit reads DONE (T3.1a + T3.1b — Player.java no longer imports Prayer); remaining: id lift + DEFER-1 (5 sites above), per the G3 equivalence table (HANDOVER_after_G3.md §3 is the reference — the one historical doc still load-bearing) |
-| ~~Teleport, ForceTeleport, TeleportType~~ | DONE in T2-c (package move to core) (~~SpellbookSwap, DeathChargeKt~~ DONE in T2-a) |
-| ~~Raid, RaidParty, ClanChannel~~ | DONE in T2-d (RaidAccess accessor; getRaid deleted) (~~Inferno~~ DONE in T2-b) |
-| ClanChannel | ~~ClanManager~~ DONE in T2-a follow-up (ClanLifecycleHooks.kt); ClanChannel stays for the getRaid body — dies in T2-d |
-| RoomReference, ConstructionKeys | ~~Construction~~ DONE in T2-b (currentHouse accessor); Keys stays for DEFER-2 roomPreview (tip-jar logout DONE in T2-a) |
-| ~~CharterLocation, AdventurersLogIcon, AvasDevice~~ | ALL DONE (AvasDevice T2-a; CharterLocation resolver + AdventurersLogIcon deletion T2-b) |
-| FarmingKeys | ~~GrandExchangeKeys, GravestoneKeys, LootkeySettingsKeys, LootkeySettings~~ DONE in T2-a; FarmingKeys stays for the two movement-path refreshes ~1079/~1221 (DEFER-3) |
-
-T2-b landed (2026-09-06, 4 commits): Inferno shift-teleport check →
-RegionArea.isShiftTeleportationProhibited() flag lift (the flag exists
-for future area lifts; Inferno is the sole overrider);
-Player.getCurrentHouse → ConstructionKeys.currentHouse(player) (17
-sites, 10 files); Trader Stan charter resolution →
-CharterLocation.traderStanShopName (openShop is generic; both live call
-paths resolve first); dead adventurer's-log surface deleted per D-2 (16
-no-op sites, 6 files; AdventurersLogIcon enum retained for the NR
-track). Divergence in Barrows: the plan's orphan guard hit — the
-equipmentPieces/chestCount/joinedEquipmentLootString computation fed
-ONLY the deleted log entry, so the whole dead block went with it
-(behavior-neutral, pure reads). Player imports 25 → 21 (−AdventurersLogIcon
-−Inferno −CharterLocation −Construction).
-
-T2-c landed (2026-09-06, 1 commit): Teleport/TeleportType/ForceTeleport
-moved to core (com.zenyte.game.world.entity.player.teleport; 83-file
-import retarget; Magic.logger decoupled first). The structures/
-subpackage and the six other teleports classes stay in content.
-TeleportType keeps the structures.* wildcard — the one planned content
-import in a core-path file; enum→structure decoupling is future design
-work. Follow-up inventory: 19 engine files import the non-moved teleport
-classes (ItemTeleport 6, TeleportCollection 9, SpellbookTeleport 2,
-MinigameGroupFinder 2).
-
-T2-d landed (2026-09-06, 1 commit) — **TRACK 2 CAMPAIGN CLOSED**:
-Player.getRaid → RaidAccess.raid(player) (86 Player-receiver sites; 59
-files by count-gated sed + 6 verbatim; census corrected — 4 getRaid
-definers, only Player's moved; SharedStorageUI left the D-3 list, its
-receiver is raidController). Java subpackages needed the RaidAccess
-import (50 files — the plan's same-package claim held only for the exact
-package); +6 D-3 baseline import lines (the planned 5 + StorageUnitOPlugin,
-whose file already had cox imports but the baseline counts lines).
-Player's 15 remaining content imports are exactly Track 1's eleven field
-types (GodBooks, ItemRetrievalService, RespawnPoint, PrivateStorage,
-PetInsurance, GauntletItemStorage, Duel, TOAPlayerData, LightBox,
-PuzzleBox, Stash) + the four deferral imports (PrayerManagerKeys
-DEFER-1, ConstructionKeys/RoomReference DEFER-2, FarmingKeys DEFER-3).
-
-## 4. TRACK 3 — OpenRune end-states (design work, ordered by payoff)
-
-1. **Nightmare curse reimplementation** → curse fix + engine varbit
-   reads DONE (T3.1a routed the scramble at activation input so varbits
-   always reflect true effect, G3 re-audited in HANDOVER_after_G3.md §7;
-   T3.1b converted all 32 engine `isActive` reads — 31 greppable + 1
-   dynamic — to `getBitValue` via the new core-side `PrayerVarbits`
-   holder). Remaining: map deletion end-state — delete the
-   `activePrayers` map so varbit becomes the sole truth (the OpenRune
-   model) — needs soft timers (Track 3.2) for the drain accumulator.
-   Requires Nightmare play-testing.
-2. **Soft-timer system** → DONE (T3.2, one session): OpenRune-shape
-   `PlayerTimerMap`/`PlayerTimers`/`PlayerTimerEvent.Soft`/
-   `PlayerTimerProcessor` in org.rsmod.game.timer + events;
-   farming/hunter/prayer drain migrated onto soft timers (scheduled in
-   one PlayerLoginEvent subscriber, fire order preserved by insertion
-   order); `PlayerProcessEvent` retired — zero code references remain.
-   Timer ids GRAVESTONE=4 and AVAS_DEVICE=5 are reserved for the T2-a
-   tick-driver moves.
-3. *(Optional, out of campaign)* per-action content events (catch-fish,
+1. **T3.1 end-state — delete the `activePrayers` map** so varbit becomes
+   the sole prayer truth (the OpenRune model). Preconditions all landed
+   (T3.1a scramble-at-input, T3.1b all 32 engine reads on getBitValue
+   via core-side PrayerVarbits, T3.2 soft timers for the drain
+   accumulator). Requires Nightmare play-testing first.
+2. *(Optional, out of campaign)* per-action content events (catch-fish,
    burn-log…) if diary progress should ever be event-driven — the G2
    census showed an XP broadcast is the wrong shape.
 
-## 5. Order of operations from today (rewritten 2026-09-07 — everything in the old list landed)
+## 4. Order of operations from today
 
 **Gate first: Jesse's play-test sweep (§0) + boot-log check, then PR +
-merge this branch.** Two campaign-level finish-line items are done
-(InitializationEvent deleted; Player at 7 imports, all deferrals). What
-remains, in order:
+merge branch claude/five-quality-plans-7firff.** Then:
 
-1. **NEXT CODE SESSION — T3.1 end-state: delete the activePrayers map**
-   so varbits become the sole prayer truth (the last named finish-line
-   item). Preconditions are all met (T3.1a/b landed, soft timers landed)
-   EXCEPT the Nightmare play-test (§4.1) — run it in the sweep above
-   before starting. This session also completes DEFER-1's remaining
-   surface (the id lift + 5 DEFER-1 sites; HANDOVER_after_G3.md §3 is
-   the reference).
-2. **Deferral unwinds** (each its own design mini-plan, any order):
-   DEFER-2 roomPreview; DEFER-3 farming movement refreshes; DEFER-4a/4b
-   deterministic-order container registry (or sweep-method move-out);
-   DEFER-5 engine duel checks behind area/event checks. Each deletes its
-   Keys import from Player (7 → 0 across them — the literal finish
-   line).
+1. **NEXT CODE SESSION — T3.1 end-state** (§3.1): delete the
+   activePrayers map; this session also completes DEFER-1 (the id lift +
+   its 5 sites; HANDOVER_after_G3.md §3 is the reference). Nightmare
+   play-test must have passed.
+2. **Deferral unwinds** (§2, each its own design mini-plan, any order):
+   DEFER-2, DEFER-3, DEFER-4a/4b, DEFER-5. Together they take Player's
+   content imports 7 → 0 — the literal finish line.
 3. **LoginManager double-deserialize simplification** — a campaign, not
    a session: setFields still holds ~40 parser copies of never-extracted
-   core fields. Unblocked by the InitializationEvent deletion; plan it
+   core fields. Unblocked (parser is confined to LoginManager); plan
    with a fresh census.
 
-**Handoff protocol:** give the next session this file
-(docs/player-field-extraction/ROADMAP.md) and nothing else — it is the
-one living document. The next session starts by re-running the §0
-baseline greps (7 / 1112 / 0 / 21; plugins.dat 4353) and stops on any
-mismatch.
+**Handoff protocol:** give the next session this file and nothing else.
+It starts by re-running the §0 baseline greps (7 / 1112 / 21 / 0;
+plugins.dat 4353) and stops on any mismatch.

@@ -41,13 +41,26 @@ timers). The G1/E6 play-test sweep is done.
   attr-first onInit with parser-legacy fallback, `@Deprecated`
   field+getter shims joining Rotation 2.
 
+**Wave 2a also landed (items 1.7–1.9, 4 commits, same session):**
+- 1.7 respawnPoint: RespawnPoint enum MOVED to core
+  (com.zenyte.game.world.entity.player; T2-c precedent) — pure engine
+  enum, field stays on Player as core-typed, no key/shim/rotation entry
+  (enum persists by name, package move cannot touch saves). 7 imports
+  retargeted.
+- 1.8 privateStorage → attrPersistence["private_storage"]
+  (PrivateStorageKeys), 1.9 retrievalService →
+  attrPersistence["item_retrieval"] (RetrievalServiceKeys) — D1 recipe,
+  @Deprecated field+getter shims joining Rotation 2. Player's internal
+  item-sweep/forcedRemoved reads now go through the Keys accessors:
+  **DEFER-4a/4b** (see Open items).
+
 **Baselines (gate greps — every session re-runs these; monotone
 non-increasing, a surprise increase is stop-and-report):**
 ```bash
-grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 12
-grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1096 (includes 12 planned content-import lines in core paths: the prior 7 — TeleportType structures.* wildcard + 6 T2-d D-3 RaidAccess lines — plus wave 1's 5: StashKeys in StashUnitObject, PuzzleBoxKeys in PuzzleBoxItem, LightBoxKeys in LightBoxItem, PetInsuranceKeys in PetInsuranceInterface, GodBooksKeys in JossiksGodBooks)
-grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 19 (unique; +1 "toa_player_data" from PHASE_TOA_PERSIST v2)
-grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 8 (= the four Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks)
+grep -c 'import com.zenyte.game.content' core/src/main/java/com/zenyte/game/world/entity/player/Player.java      # 13
+grep -rn "import com.zenyte.game.content\." core/src/main --include="*.java" --include="*.kt" | grep -v "/content/" | wc -l   # 1100 (includes 22 planned content-import lines in core paths: the prior 12 — TeleportType structures.* wildcard, 6 T2-d D-3 RaidAccess lines, wave 1's 5 — plus wave 2a's 10: PrivateStorageKeys in StorageUnitOPlugin/SharedStorageUI/Player(DEFER-4a), RetrievalServiceKeys in ItemRetrievalServiceInterface/CollectionLog/DeathMechanics/VarCollection/StrangeOldMan/Torfinn/Player(DEFER-4b); net +4 after wave 2a's −6 RespawnPoint retargets)
+grep -rh 'persistenceKey = "' --include="*.kt" . --exclude-dir=build | wc -l                                      # 21 (unique; 19 + "private_storage" + "item_retrieval")
+grep -c "@Deprecated" core/src/main/java/com/zenyte/game/world/entity/player/Player.java                          # 12 (= the six Rotation-2 shims × field+getter: gauntlet, stash, petInsurance, godBooks, privateStorage, retrievalService)
 ```
 plugins.dat: 4356 plugins (untracked file; regenerate with
 `./gradlew :app:runPluginScanner` after any @Subscribe/annotation change,
@@ -75,10 +88,24 @@ never commit it; wave 1 added PetInsurance.onInitialization).
   4. fresh account — ToA lobby opens with defaults, no NPE;
   5. no-ToA session — saved presets round-trip untouched when ToA is
      never touched (save-half skips on the null manager).
+- Wave 2a: CoX private storage deposit/withdraw + relog + a pre-migration
+  save migrating; die to Zulrah/Vorkath/Hydra → reclaim at each retrieval
+  NPC + relog with items held + a pre-migration save; Krystilia/Merlin/
+  Tiffy respawn dialogues + max cape respawn switching + ring of
+  returning + an actual death respawn at each point.
 
-**Open items:** none — PHASE_TOA_PERSIST landed as v2 (attr key
-"toa_player_data"; PlayerPreSaveEvent save-half; dead
-TOARewardInterface/AbstractTOAClazz/AbstractTOAManager deleted).
+**Open items:**
+- **DEFER-4a/4b** (wave 2a): Player's item-sweep methods
+  (carryingItem-style loops + forcedRemoved's container array) read
+  privateStorage/retrievalService internally, so Player carries
+  PrivateStorageKeys (DEFER-4a) and RetrievalServiceKeys (DEFER-4b)
+  imports — the DEFER-1/2/3 pattern. Unblock = a deterministic-order
+  core-side container registry, or moving the sweep methods off Player
+  (order matters for forcedRemoved — which containers lose items first —
+  so the registry is recorded design work, not improvised).
+- PHASE_TOA_PERSIST: landed as v2 (attr key "toa_player_data";
+  PlayerPreSaveEvent save-half; dead TOARewardInterface/AbstractTOAClazz/
+  AbstractTOAManager deleted).
 
 ---
 
@@ -126,13 +153,13 @@ scripts | wc -l`).
 | ~~1.4~~ | ~~puzzleBox + lightBox~~ | 11+10 | NO (transient) | DONE wave 1 (PuzzleBoxKeys/LightBoxKeys, no shim) |
 | ~~1.5~~ | ~~petInsurance~~ | 12 | yes → "pet_insurance" | DONE wave 1 (PetInsuranceKeys; LoginManager copy line → onInit) |
 | ~~1.6~~ | ~~godBooks~~ | 13 | yes → "god_books" | DONE wave 1 (GodBooksKeys, D1 recipe) |
-| 1.7 | respawnPoint | 16 | yes (enum) | consider just moving/keeping the enum core-side as a plain type instead of AttributeMap — decide in mini-plan |
-| 1.8 | privateStorage | 19 | yes (self-init) | |
-| 1.9 | retrievalService | 37 | yes (self-init) | |
+| ~~1.7~~ | ~~respawnPoint~~ | 16 | yes (plain enum) | DONE wave 2a — resolved by core move, no key (the mini-plan's own alternative): pure engine enum relocated to com.zenyte.game.world.entity.player; field stays on Player |
+| ~~1.8~~ | ~~privateStorage~~ | 19 | yes → "private_storage" | DONE wave 2a (PrivateStorageKeys, D1 recipe; DEFER-4a for Player's internal sweep reads) |
+| ~~1.9~~ | ~~retrievalService~~ | 37 | yes → "item_retrieval" | DONE wave 2a (RetrievalServiceKeys, D1 recipe; DEFER-4b for Player's internal sweep reads) |
 | 1.10 | duel | 105 | NO (transient) | no persistence work, but the largest retarget |
 
 Sequencing: ~~1.1–1.6 batch well (≈2 sessions)~~ landed as wave 1;
-1.7–1.9 one session each, 1.10 its own session.
+~~1.7–1.9 one session each~~ landed as wave 2a; 1.10 its own session.
 
 Then:
 - **Rotation 2** (one session, after Jesse cycles/deletes saves or the
@@ -141,7 +168,8 @@ Then:
   additions: `grep -L '"stash"' data/characters/*.json`, same for
   `"pet_insurance"` and `"god_books"`, plus the gauntlet condition — no
   save still carries a non-empty `"gauntletItemStorage"` key (its drain,
-  field and getter die together).
+  field and getter die together). Wave-2a additions: the same per-key
+  greps for `"private_storage"` and `"item_retrieval"`.
 - **Delete InitializationEvent** (one session): after 1.1–1.9 its
   subscribers no longer read the parser; remove the event, the
   `setFields` post, and then simplify LoginManager's double-deserialize

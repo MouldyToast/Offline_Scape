@@ -1,6 +1,6 @@
 package com.near_reality.game.content.gauntlet;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 

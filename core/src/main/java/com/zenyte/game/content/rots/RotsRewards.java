@@ -1,6 +1,6 @@
 package com.zenyte.game.content.rots;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.plugins.item.mysteryboxes.MysteryItem;
 
 public class RotsRewards {

@@ -5,7 +5,7 @@ import com.zenyte.CacheManager;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.rewards.Rewards;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.broadcasts.BroadcastType;

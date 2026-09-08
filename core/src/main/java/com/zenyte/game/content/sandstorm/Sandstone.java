@@ -2,7 +2,7 @@ package com.zenyte.game.content.sandstorm;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.IntListUtils;
 import it.unimi.dsi.fastutil.ints.IntLists;
 

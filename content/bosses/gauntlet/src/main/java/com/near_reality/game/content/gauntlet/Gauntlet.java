@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import static com.near_reality.game.content.gauntlet.GauntletConstants.*;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * Handles functionality for a single running instance of The Gauntlet minigame.

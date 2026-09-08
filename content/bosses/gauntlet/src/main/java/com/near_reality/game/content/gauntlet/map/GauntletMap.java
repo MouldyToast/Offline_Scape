@@ -48,7 +48,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 import static com.zenyte.game.world.entity.player.Player.DEATH_ANIMATION;
 
 /**

@@ -2,7 +2,7 @@ package com.near_reality.game.content.tormented_demon.items
 
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -23,5 +23,5 @@ class TormentedSynapse: ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.TORMENTED_SYNAPSE)
+        intArrayOf(TORMENTED_SYNAPSE)
 }

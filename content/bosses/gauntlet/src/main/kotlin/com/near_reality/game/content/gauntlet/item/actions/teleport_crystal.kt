@@ -4,10 +4,8 @@ import com.near_reality.game.content.gauntlet.GauntletStage
 import com.near_reality.game.content.gauntlet.gauntlet
 import com.zenyte.game.world.entity.Location
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.CORRUPTED_TELEPORT_CRYSTAL
-import com.zenyte.game.item.ItemId.TELEPORT_CRYSTAL
 
 class TeleportCrystalItemaction : ItemActionScript() {
 

@@ -3,7 +3,7 @@ package com.zenyte.game.content.compcapes;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 @SuppressWarnings("unused")
 public class CompletionistCapeItemPlugin extends ItemPlugin {

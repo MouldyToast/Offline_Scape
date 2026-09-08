@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.masks.Animation;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.plugins.dialogue.PlayerChat;
 

@@ -4,7 +4,7 @@ import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.content.skills.hunter.node.BirdHouseState;
 import com.zenyte.game.content.skills.hunter.object.Birdhouse;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;

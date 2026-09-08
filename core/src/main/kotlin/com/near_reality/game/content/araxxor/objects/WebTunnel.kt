@@ -5,9 +5,7 @@ import com.near_reality.game.content.slayer.RegularTask
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId.WEB_TUNNEL_54271
-import com.zenyte.game.world.`object`.ObjectId.WEB_TUNNEL_54272
-import com.zenyte.game.world.`object`.ObjectId.WEB_TUNNEL_54273
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**

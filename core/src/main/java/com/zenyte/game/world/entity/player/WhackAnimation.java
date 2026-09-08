@@ -2,7 +2,7 @@ package com.zenyte.game.world.entity.player;
 
 import com.zenyte.game.content.event.easter2020.EasterConstants;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.masks.Animation;
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.jetbrains.annotations.NotNull;

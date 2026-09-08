@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.DigsitePendantRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,19 +36,19 @@ class DigsitePendantSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.DIGSITE_PENDANT_5 to ItemId.DIGSITE_PENDANT_4,
-        ItemId.DIGSITE_PENDANT_4 to ItemId.DIGSITE_PENDANT_3,
-        ItemId.DIGSITE_PENDANT_3 to ItemId.DIGSITE_PENDANT_2,
-        ItemId.DIGSITE_PENDANT_2 to ItemId.DIGSITE_PENDANT_1,
-        ItemId.DIGSITE_PENDANT_1 to -1,
+        DIGSITE_PENDANT_5 to DIGSITE_PENDANT_4,
+        DIGSITE_PENDANT_4 to DIGSITE_PENDANT_3,
+        DIGSITE_PENDANT_3 to DIGSITE_PENDANT_2,
+        DIGSITE_PENDANT_2 to DIGSITE_PENDANT_1,
+        DIGSITE_PENDANT_1 to -1,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.DIGSITE_PENDANT_5,
-            ItemId.DIGSITE_PENDANT_4,
-            ItemId.DIGSITE_PENDANT_3,
-            ItemId.DIGSITE_PENDANT_2,
-            ItemId.DIGSITE_PENDANT_1
+            DIGSITE_PENDANT_5,
+            DIGSITE_PENDANT_4,
+            DIGSITE_PENDANT_3,
+            DIGSITE_PENDANT_2,
+            DIGSITE_PENDANT_1
         )
 }

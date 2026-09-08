@@ -1,6 +1,6 @@
 package com.near_reality.game.content.chaoskey
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.variables.TickVariable
@@ -27,7 +27,7 @@ class ChaosKeyFloorItem : FloorItemPlugin {
     }
 
     override fun getItems(): IntArray {
-        return intArrayOf(ItemId.CHAOS_KEY_ACTIVE)
+        return intArrayOf(CHAOS_KEY_ACTIVE)
     }
 
     override fun overrideTake(): Boolean {

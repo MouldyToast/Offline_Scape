@@ -2,7 +2,7 @@ package com.near_reality.game.content.skills.hunter.herbiboar
 
 import com.near_reality.game.content.skills.hunter.herbiboar.Herbiboar.currentHerbiboarPath
 import com.near_reality.game.content.skills.hunter.herbiboar.Herbiboar.unharvestedHerbiboar
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
@@ -105,7 +105,7 @@ class HerbiboarStartObjectAction : ObjectAction {
         val harvested = player.notificationSettings.getKillcount("Herbiboar")
         player.dialogueManager.start(object: Dialogue(player) {
             override fun buildDialogue() {
-                item(ItemId.HERBIBOAR, "You have harvested $harvested Herbiboar${Utils.plural(harvested)}.")
+                item(HERBIBOAR, "You have harvested $harvested Herbiboar${Utils.plural(harvested)}.")
             }
         })
     }

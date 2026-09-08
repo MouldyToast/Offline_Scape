@@ -6,13 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ASGARNIAN_ALE
-import com.zenyte.game.item.ItemId.DWARVEN_STOUT
-import com.zenyte.game.item.ItemId.WIZARDS_MIND_BOMB
 
 class ToadAndChicken : ShopScript() {
 

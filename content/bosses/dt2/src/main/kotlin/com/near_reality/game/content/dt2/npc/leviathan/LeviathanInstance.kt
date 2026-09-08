@@ -7,10 +7,10 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.magic.CombatSpell
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.region.DynamicArea
 import com.zenyte.game.world.region.area.plugins.CannonRestrictionPlugin
 import com.zenyte.game.world.region.area.plugins.DeathPlugin
@@ -60,12 +60,12 @@ class LeviathanInstance(val allocatedArea: AllocatedArea, val awakened: Boolean)
         }
 
         val handholds = get(2070, 6368, 0).findObject()
-        handholds?.transform(ObjectId.HANDHOLDS_47594)
+        handholds?.transform(HANDHOLDS_47594)
     }
 
     override fun constructed() {
         val leviathan = Leviathan(
-            if (awakened) NpcId.THE_LEVIATHAN_12215 else NpcId.THE_LEVIATHAN, get(2078, 6369, 0), this
+            if (awakened) THE_LEVIATHAN_12215 else THE_LEVIATHAN, get(2078, 6369, 0), this
         )
         leviathan.spawn()
 

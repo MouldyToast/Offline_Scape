@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 20/06/2019 22:47

@@ -1,7 +1,7 @@
 package com.zenyte.game.content.boss.nightmare;
 
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 
 public class NightmareTotemNW extends NightmareTotem {
 

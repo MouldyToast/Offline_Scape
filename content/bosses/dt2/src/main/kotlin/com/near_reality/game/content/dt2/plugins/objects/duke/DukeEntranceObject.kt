@@ -4,7 +4,7 @@ import com.near_reality.game.content.commands.DeveloperCommands
 import com.near_reality.game.content.dt2.area.DukeSucellusInstance
 import com.near_reality.game.content.dt2.npc.DT2BossDifficulty
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
@@ -21,7 +21,7 @@ class DukeEntranceObject : ObjectAction {
         option: String
     ) {
         if (optionId == 1) {
-            val awakenersOrb = Item(ItemId.AWAKENERS_ORB, 1)
+            val awakenersOrb = Item(AWAKENERS_ORB, 1)
             if (player.mapInstance == null) {
                 if (!player.inventory.containsItem(awakenersOrb))
                     DukeSucellusInstance.createInstance(DT2BossDifficulty.NORMAL, player).constructRegion()

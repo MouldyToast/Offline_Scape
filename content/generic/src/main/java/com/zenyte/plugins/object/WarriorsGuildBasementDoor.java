@@ -1,6 +1,6 @@
 package com.zenyte.plugins.object;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlo
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectHandler;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.area.WarriorsGuildBasementCyclopsArea;
 

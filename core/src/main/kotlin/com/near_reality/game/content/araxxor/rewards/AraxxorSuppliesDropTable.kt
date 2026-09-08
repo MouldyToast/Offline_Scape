@@ -1,13 +1,8 @@
 package com.near_reality.game.content.araxxor.rewards
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import java.util.concurrent.ThreadLocalRandom
-import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
-import com.zenyte.game.item.ItemId.PRAYER_POTION3
-import com.zenyte.game.item.ItemId.PRAYER_POTION4
-import com.zenyte.game.item.ItemId.SUPER_COMBAT_POTION1
-import com.zenyte.game.item.ItemId.WILD_PIE
 
 /**
  * @author Glabay | Glabay-Studios
@@ -25,7 +20,7 @@ enum class AraxxorSuppliesDropTable(
     SUPER_COMBAT_1(SUPER_COMBAT_POTION1, 1, 1, 16.0),
     PRAYER_3(PRAYER_POTION3, 1, 2, 16.0),
     PRAYER_4(PRAYER_POTION4, 1, 1, 16.0),
-    SHARK(ItemId.SHARK, 2, 3, 16.0),
+    SHARK(com.zenyte.game.item.ids.SHARK, 2, 3, 16.0),
     PIE(WILD_PIE, 2, 3, 16.0)
     ;
 

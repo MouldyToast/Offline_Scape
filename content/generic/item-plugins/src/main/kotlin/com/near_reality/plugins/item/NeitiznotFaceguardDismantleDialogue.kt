@@ -1,6 +1,6 @@
 package com.near_reality.plugins.item
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -19,13 +19,13 @@ class NeitiznotFaceguardDismantleDialogue(player: Player) : Dialogue(player) {
         options("Remove the jaw from the helmet?") {
             "Yes." {
                 val inventory = player.inventory
-                if (inventory.deleteItem(ItemId.NEITIZNOT_FACEGUARD, 1).result == RequestResult.SUCCESS) {
-                    inventory.addOrDrop(ItemId.HELM_OF_NEITIZNOT)
-                    inventory.addOrDrop(ItemId.BASILISK_JAW)
+                if (inventory.deleteItem(NEITIZNOT_FACEGUARD, 1).result == RequestResult.SUCCESS) {
+                    inventory.addOrDrop(HELM_OF_NEITIZNOT)
+                    inventory.addOrDrop(BASILISK_JAW)
                     player.dialogue {
                         doubleItem(
-                            ItemId.HELM_OF_NEITIZNOT,
-                            ItemId.BASILISK_JAW,
+                            HELM_OF_NEITIZNOT,
+                            BASILISK_JAW,
                             "You remove the Basilisk Jaw from the Neitiznot Faceguard."
                         )
                     }

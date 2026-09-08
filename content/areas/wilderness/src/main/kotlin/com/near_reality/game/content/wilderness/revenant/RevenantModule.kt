@@ -7,7 +7,7 @@ import com.near_reality.game.content.wilderness.revenant.npc.RevenantMaledictus
 import com.near_reality.game.world.PlayerEvent
 import com.near_reality.game.world.entity.player.revCaveEntryFee
 import com.near_reality.game.world.hook
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.UpdateFlag
 import com.zenyte.game.world.entity.player.GameCommands.Command
 import com.zenyte.game.world.entity.player.Player

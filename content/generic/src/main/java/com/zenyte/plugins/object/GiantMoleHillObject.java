@@ -1,12 +1,12 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.GlobalAreaManager;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;

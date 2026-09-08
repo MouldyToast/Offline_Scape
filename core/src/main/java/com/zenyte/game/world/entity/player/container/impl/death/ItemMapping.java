@@ -6,7 +6,7 @@ import com.google.common.collect.Multimap;
 import java.util.Collection;
 import java.util.Collections;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 12/10/2019

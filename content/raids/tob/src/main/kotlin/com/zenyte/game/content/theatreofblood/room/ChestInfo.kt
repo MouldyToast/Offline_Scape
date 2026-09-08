@@ -6,7 +6,7 @@ import com.zenyte.game.model.HintArrow
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.utils.TextUtils
 
@@ -38,8 +38,8 @@ internal data class ChestInfo(
 
     companion object {
 
-        internal const val CLOSED_CHEST_OBJECT_ID = ObjectId.CHEST_32758
-        internal const val OPEN_CHEST_OBJECT_ID = ObjectId.CHEST_32759
+        internal const val CLOSED_CHEST_OBJECT_ID = CHEST_32758
+        internal const val OPEN_CHEST_OBJECT_ID = CHEST_32759
 
     }
 

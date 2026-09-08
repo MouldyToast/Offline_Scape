@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.event.ganodermic_beast
 
 import com.near_reality.game.content.wilderness.event.ganodermic_beast.GanodermicBeastAttack.*
-import com.near_reality.game.item.CustomNpcId
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.world.entity.player.blackSkulled
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Direction
@@ -28,7 +28,7 @@ import kotlin.random.Random
  * @author Stan van der Bend
  */
 class GanodermicBeast(val spawnLocation: SpawnLocation) :
-    NPC(CustomNpcId.GANODERMIC_BEAST, spawnLocation.location, Direction.NORTH, 0), CombatScript {
+    NPC(GANODERMIC_BEAST, spawnLocation.location, Direction.NORTH, 0), CombatScript {
 
     internal val lightningTiles = mutableSetOf<LightningTile>()
 

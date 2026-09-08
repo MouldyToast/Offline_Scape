@@ -1,18 +1,18 @@
 package com.zenyte.plugins.object;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.Door;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

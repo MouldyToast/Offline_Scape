@@ -3,7 +3,7 @@ package com.zenyte.game.content.treasuretrails.stash;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

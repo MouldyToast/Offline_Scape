@@ -5,7 +5,7 @@ import com.zenyte.game.content.achievementdiary.diaries.KourendDiary
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
@@ -29,7 +29,7 @@ class XericTalismanRubAction(
 
     override fun onAction(player: Player, selectedItemIndex: Int) {
         val destination = getSelectedTeleportLocation[selectedItemIndex]!!
-        val talisman: Item = player.inventory.getItemById(ItemId.XERICS_TALISMAN)
+        val talisman: Item = player.inventory.getItemById(XERICS_TALISMAN)
         val tallyTeleport = TalismanTeleport(talisman, player.inventory.container, destination)
         if (selectedItemIndex == honour) {
             if (!player.attributes.containsKey("xeric's honour")) {

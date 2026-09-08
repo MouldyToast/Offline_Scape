@@ -12,8 +12,7 @@ import kotlin.script.experimental.api.defaultImports
 object NPCDropTableCompilation : ScriptCompilationConfiguration(
     NPCScriptCompilation, body = {
         defaultImports(
-            "com.zenyte.game.item.ItemId",
-            "com.zenyte.game.item.ItemId.*",
+            "com.zenyte.game.item.ids.*",
             "com.near_reality.scripts.npc.drops.table.DropTableType.*",
 
             "com.zenyte.game.world.entity.npc.drop.matrix.Drop",

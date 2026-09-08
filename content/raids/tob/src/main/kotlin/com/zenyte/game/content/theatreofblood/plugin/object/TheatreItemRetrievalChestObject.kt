@@ -6,7 +6,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -35,7 +35,7 @@ class TheatreItemRetrievalChestObject : ObjectAction {
 
 	private companion object {
 
-		val objects = arrayOf(ObjectId.CHEST_32656)
+		val objects = arrayOf(CHEST_32656)
 
 	}
 

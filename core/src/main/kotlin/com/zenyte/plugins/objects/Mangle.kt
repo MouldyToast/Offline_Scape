@@ -2,7 +2,7 @@ package com.zenyte.plugins.objects
 
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.interfaces.TanningInterface
 
@@ -25,6 +25,6 @@ class Mangle: ObjectAction {
     }
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.MANGLE)
+        arrayOf(MANGLE)
 
 }

@@ -25,7 +25,7 @@ import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.game.world.entity.player.container.ContainerPolicy;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.Region;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;

@@ -4,7 +4,7 @@ import com.near_reality.game.content.slayer.*
 import com.near_reality.game.content.slayer.SlayerMaster
 import com.near_reality.game.content.slayer.SlayerMaster.SUMONA
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -43,7 +43,7 @@ class SumonaAssignmentD(player: Player, npc: NPC) : Dialogue(player, npc) {
             return
         }
 
-        player.inventory.deleteItem(Item(ItemId.COINS_995, SUMMONA_TASK_COST))
+        player.inventory.deleteItem(Item(COINS_995, SUMMONA_TASK_COST))
         val task = player.generateSumonaTask()
         player setSlayerMaster SUMONA
         player setTask task

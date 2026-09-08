@@ -4,7 +4,7 @@ import com.near_reality.game.content.araxxor.objects.WebTunnel
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**

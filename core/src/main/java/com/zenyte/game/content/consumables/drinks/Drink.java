@@ -5,7 +5,7 @@ import com.zenyte.game.content.consumables.ConsumableAnimation;
 import com.zenyte.game.content.consumables.Drinkable;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.ForceTalk;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.player.GameSetting;

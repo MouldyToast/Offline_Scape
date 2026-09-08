@@ -16,13 +16,13 @@ import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectHandler;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.plugins.dialogue.ItemChat;
 import com.zenyte.plugins.dialogue.PlainChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getScarEssenceMineCoffer;
-import static com.zenyte.game.item.ItemId.COINS_995;
+import static com.zenyte.game.item.ids.ItemId.COINS_995;
 
 /**
  * @author Zei

@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.hunter.aerialfishing.item;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 
 /**

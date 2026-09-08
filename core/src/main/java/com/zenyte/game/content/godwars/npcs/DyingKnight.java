@@ -7,7 +7,7 @@ import com.zenyte.game.content.godwars.GodwarsInstancePortal;
 import com.zenyte.game.content.godwars.instance.InstanceConstants;
 import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;

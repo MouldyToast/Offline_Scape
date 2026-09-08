@@ -2,7 +2,7 @@ package com.zenyte.game.content.tombsofamascut.item;
 
 import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Player;

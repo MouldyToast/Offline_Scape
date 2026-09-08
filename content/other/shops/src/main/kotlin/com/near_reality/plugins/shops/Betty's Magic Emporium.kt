@@ -6,28 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.AIR_RUNE_PACK
-import com.zenyte.game.item.ItemId.BLUE_WIZARD_HAT
-import com.zenyte.game.item.ItemId.BODY_RUNE
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.CHAOS_RUNE_PACK
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.EARTH_RUNE_PACK
-import com.zenyte.game.item.ItemId.EYE_OF_NEWT
-import com.zenyte.game.item.ItemId.EYE_OF_NEWT_PACK
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.FIRE_RUNE_PACK
-import com.zenyte.game.item.ItemId.MIND_RUNE
-import com.zenyte.game.item.ItemId.MIND_RUNE_PACK
-import com.zenyte.game.item.ItemId.WATER_RUNE
-import com.zenyte.game.item.ItemId.WATER_RUNE_PACK
-import com.zenyte.game.item.ItemId.WIZARD_HAT
 
 class BettySMagicEmporium : ShopScript() {
 

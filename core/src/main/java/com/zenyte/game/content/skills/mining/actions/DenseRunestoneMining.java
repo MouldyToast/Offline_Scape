@@ -5,7 +5,7 @@ import com.zenyte.game.content.achievementdiary.diaries.KourendDiary;
 import com.zenyte.game.content.skills.mining.MiningDefinitions;
 import com.zenyte.game.content.skills.mining.MiningDefinitions.PickaxeDefinitions;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.masks.Animation;
@@ -18,7 +18,7 @@ import com.zenyte.plugins.dialogue.PlainChat;
 
 import java.util.Optional;
 
-import static com.zenyte.game.item.ItemId.DENSE_ESSENCE_BLOCK;
+import static com.zenyte.game.item.ids.ItemId.DENSE_ESSENCE_BLOCK;
 
 /**
  * @author Kris | 26/04/2019 17:17

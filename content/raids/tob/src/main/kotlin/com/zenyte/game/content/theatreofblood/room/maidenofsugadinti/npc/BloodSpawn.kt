@@ -7,7 +7,7 @@ import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Hit
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 /**
  * @author Tommeh
@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.npc.NpcId
 internal class BloodSpawn(
     private val maiden: MaidenOfSugadinti,
     private val spawnLocation: Location
-) : TheatreNPC<MaidenOfSugadintiRoom>(maiden.room, NpcId.BLOOD_SPAWN, spawnLocation) {
+) : TheatreNPC<MaidenOfSugadintiRoom>(maiden.room, BLOOD_SPAWN, spawnLocation) {
 
     init {
         radius = 10

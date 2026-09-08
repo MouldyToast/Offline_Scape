@@ -3,7 +3,7 @@ package com.zenyte.game.content.boss.vorkath;
 import com.zenyte.game.content.ItemRetrievalService;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;

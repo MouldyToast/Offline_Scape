@@ -1,6 +1,7 @@
 package com.zenyte.game.item;
 
 import com.near_reality.api.model.ItemConfig;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.content.grandexchange.JSONGEItemDefinitions;
 import com.zenyte.game.content.grandexchange.JSONGEItemDefinitionsLoader;
 import it.unimi.dsi.fastutil.ints.IntArrayList;

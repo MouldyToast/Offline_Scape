@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.UpdateFlag;
 import com.zenyte.game.world.entity.pathfinding.Flags;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 
 /**
  * @author Kris | 18. nov 2017 : 6:00.51

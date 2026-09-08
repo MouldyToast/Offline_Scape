@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 public final class BowItemIds {
 

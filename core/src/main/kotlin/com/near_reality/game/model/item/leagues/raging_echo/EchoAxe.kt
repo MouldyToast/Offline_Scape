@@ -5,7 +5,7 @@ import com.near_reality.game.world.entity.player.echoAxeBurningLogs
 import com.zenyte.game.content.skills.firemaking.Firemaking
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -90,6 +90,6 @@ class EchoAxe: ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.ECHO_AXE)
+    override fun getItems(): IntArray = intArrayOf(ECHO_AXE)
 
 }

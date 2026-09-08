@@ -3,7 +3,7 @@ package com.zenyte.game.content.kebos.konar.plugins.objects;
 import com.zenyte.game.content.kebos.konar.actions.ModifyFerociousGloves;
 import com.zenyte.game.content.skills.smithing.Smithing;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Player;

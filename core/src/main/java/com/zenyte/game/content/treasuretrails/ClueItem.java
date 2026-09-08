@@ -7,7 +7,7 @@ import mgi.utilities.CollectionUtils;
 
 import java.util.OptionalInt;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 07/12/2019

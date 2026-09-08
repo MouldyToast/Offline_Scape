@@ -2,7 +2,7 @@ package com.near_reality.game.content.consumables.drinks
 
 import com.zenyte.game.content.consumables.Consumable.Boost
 import com.zenyte.game.content.consumables.ConsumableEffects
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants.*
@@ -175,59 +175,59 @@ abstract class DivinePotion(ids: IntArray) : PotionAdapter(ids) {
         private const val DURATION_IN_TICKS = 500
 
         private val divineBastionPotionIds = intArrayOf(
-            ItemId.DIVINE_BASTION_POTION1,
-            ItemId.DIVINE_BASTION_POTION2,
-            ItemId.DIVINE_BASTION_POTION3,
-            ItemId.DIVINE_BASTION_POTION4
+            DIVINE_BASTION_POTION1,
+            DIVINE_BASTION_POTION2,
+            DIVINE_BASTION_POTION3,
+            DIVINE_BASTION_POTION4
         )
 
         private val divineBattleMagePotionIds = intArrayOf(
-            ItemId.DIVINE_BATTLEMAGE_POTION1,
-            ItemId.DIVINE_BATTLEMAGE_POTION2,
-            ItemId.DIVINE_BATTLEMAGE_POTION3,
-            ItemId.DIVINE_BATTLEMAGE_POTION4
+            DIVINE_BATTLEMAGE_POTION1,
+            DIVINE_BATTLEMAGE_POTION2,
+            DIVINE_BATTLEMAGE_POTION3,
+            DIVINE_BATTLEMAGE_POTION4
         )
 
         private val divineMagicPotionIds = intArrayOf(
-            ItemId.DIVINE_MAGIC_POTION1,
-            ItemId.DIVINE_MAGIC_POTION2,
-            ItemId.DIVINE_MAGIC_POTION3,
-            ItemId.DIVINE_MAGIC_POTION4
+            DIVINE_MAGIC_POTION1,
+            DIVINE_MAGIC_POTION2,
+            DIVINE_MAGIC_POTION3,
+            DIVINE_MAGIC_POTION4
         )
 
         private val divineRangingPotionIds = intArrayOf(
-            ItemId.DIVINE_RANGING_POTION1,
-            ItemId.DIVINE_RANGING_POTION2,
-            ItemId.DIVINE_RANGING_POTION3,
-            ItemId.DIVINE_RANGING_POTION4
+            DIVINE_RANGING_POTION1,
+            DIVINE_RANGING_POTION2,
+            DIVINE_RANGING_POTION3,
+            DIVINE_RANGING_POTION4
         )
 
         private val divineSuperAttackPotionIds = intArrayOf(
-            ItemId.DIVINE_SUPER_ATTACK_POTION1,
-            ItemId.DIVINE_SUPER_ATTACK_POTION2,
-            ItemId.DIVINE_SUPER_ATTACK_POTION3,
-            ItemId.DIVINE_SUPER_ATTACK_POTION4
+            DIVINE_SUPER_ATTACK_POTION1,
+            DIVINE_SUPER_ATTACK_POTION2,
+            DIVINE_SUPER_ATTACK_POTION3,
+            DIVINE_SUPER_ATTACK_POTION4
         )
 
         private val divineSuperDefencePotionIds = intArrayOf(
-            ItemId.DIVINE_SUPER_DEFENCE_POTION1,
-            ItemId.DIVINE_SUPER_DEFENCE_POTION2,
-            ItemId.DIVINE_SUPER_DEFENCE_POTION3,
-            ItemId.DIVINE_SUPER_DEFENCE_POTION4
+            DIVINE_SUPER_DEFENCE_POTION1,
+            DIVINE_SUPER_DEFENCE_POTION2,
+            DIVINE_SUPER_DEFENCE_POTION3,
+            DIVINE_SUPER_DEFENCE_POTION4
         )
 
         private val divineSuperStrengthPotionIds = intArrayOf(
-            ItemId.DIVINE_SUPER_STRENGTH_POTION1,
-            ItemId.DIVINE_SUPER_STRENGTH_POTION2,
-            ItemId.DIVINE_SUPER_STRENGTH_POTION3,
-            ItemId.DIVINE_SUPER_STRENGTH_POTION4
+            DIVINE_SUPER_STRENGTH_POTION1,
+            DIVINE_SUPER_STRENGTH_POTION2,
+            DIVINE_SUPER_STRENGTH_POTION3,
+            DIVINE_SUPER_STRENGTH_POTION4
         )
 
         private val divineSuperCombatPotionIds = intArrayOf(
-            ItemId.DIVINE_SUPER_COMBAT_POTION1,
-            ItemId.DIVINE_SUPER_COMBAT_POTION2,
-            ItemId.DIVINE_SUPER_COMBAT_POTION3,
-            ItemId.DIVINE_SUPER_COMBAT_POTION4
+            DIVINE_SUPER_COMBAT_POTION1,
+            DIVINE_SUPER_COMBAT_POTION2,
+            DIVINE_SUPER_COMBAT_POTION3,
+            DIVINE_SUPER_COMBAT_POTION4
         )
 
         val all = arrayOf(Bastion, BattleMage, Magic, Ranging, SuperAttack, SuperCombat, SuperDefence, SuperStrength)

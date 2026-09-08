@@ -1,8 +1,8 @@
 package com.zenyte.game.content.multicannon;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.item.ids.ItemId;
+import com.zenyte.game.obj.ids.ObjectId;
 
 public enum DwarfMultiCannonType {
 

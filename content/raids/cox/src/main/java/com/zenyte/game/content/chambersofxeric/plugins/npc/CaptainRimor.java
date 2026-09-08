@@ -2,7 +2,7 @@ package com.zenyte.game.content.chambersofxeric.plugins.npc;
 
 import com.zenyte.game.content.chambersofxeric.map.RaidPattern;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;

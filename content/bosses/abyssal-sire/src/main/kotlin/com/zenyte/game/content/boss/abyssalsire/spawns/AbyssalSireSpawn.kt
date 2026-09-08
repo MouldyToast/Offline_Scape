@@ -8,7 +8,7 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 
 /**
@@ -19,7 +19,7 @@ internal class AbyssalSireSpawn(
     location: Location,
     private val spawns: AbyssalSireSpawns,
     private val sire: AbyssalSire
-) : NPC(NpcId.SPAWN, location, Direction.SOUTH, 5), CombatScript {
+) : NPC(SPAWN, location, Direction.SOUTH, 5), CombatScript {
 
     override fun spawn(): NPC {
         spawned = true
@@ -29,7 +29,7 @@ internal class AbyssalSireSpawn(
             if (isFinished || isDead) return@schedule
 
             sire.scionMatured = true
-            setTransformation(NpcId.SCION)
+            setTransformation(SCION)
         }, 19)
 
         return super.spawn()
@@ -44,9 +44,9 @@ internal class AbyssalSireSpawn(
     override fun attack(target: Entity): Int {
         animate()
         if (!combat.outOfRange(target, 0, target!!.size, true)) {
-            delayHit(0, target, melee(target, if (id == NpcId.SCION) 15 else 6))
+            delayHit(0, target, melee(target, if (id == SCION) 15 else 6))
         } else {
-            delayHit(World.sendProjectile(this, target, rangedProj), target, ranged(target, if (id == NpcId.SCION) 15 else 6))
+            delayHit(World.sendProjectile(this, target, rangedProj), target, ranged(target, if (id == SCION) 15 else 6))
         }
 
         return getCombatDefinitions().attackSpeed

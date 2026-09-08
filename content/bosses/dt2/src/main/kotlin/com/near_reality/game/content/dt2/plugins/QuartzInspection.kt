@@ -1,7 +1,7 @@
 package com.near_reality.game.content.dt2.plugins.sceptres;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.dialogue;
@@ -16,7 +16,7 @@ class BloodQuartzPlugin : ItemPlugin() {
         bind("Inspect") { player: Player, item: Item, slotId: Int ->
             player.dialogue {
                 item(
-                    ItemId.BLOOD_QUARTZ,
+                    BLOOD_QUARTZ,
                     "It's a strange chunk of quartz filled with an ancient magical power. You might be able to combine it with something else."
                 )
             }
@@ -24,7 +24,7 @@ class BloodQuartzPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.BLOOD_QUARTZ)
+        intArrayOf(BLOOD_QUARTZ)
 }
 
 class IceQuartzPlugin : ItemPlugin() {
@@ -32,7 +32,7 @@ class IceQuartzPlugin : ItemPlugin() {
         bind("Inspect") { player: Player, item: Item, slotId: Int ->
             player.dialogue {
                 item(
-                    ItemId.ICE_QUARTZ,
+                    ICE_QUARTZ,
                     "It's a strange chunk of quartz filled with an ancient magical power. You might be able to combine it with something else."
                 )
             }
@@ -40,7 +40,7 @@ class IceQuartzPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.ICE_QUARTZ)
+        intArrayOf(ICE_QUARTZ)
 }
 
 class ShadowQuartzPlugin : ItemPlugin() {
@@ -48,7 +48,7 @@ class ShadowQuartzPlugin : ItemPlugin() {
         bind("Inspect") { player: Player, item: Item, slotId: Int ->
             player.dialogue {
                 item(
-                    ItemId.SHADOW_QUARTZ,
+                    SHADOW_QUARTZ,
                     "It's a strange chunk of quartz filled with an ancient magical power. You might be able to combine it with something else."
                 )
             }
@@ -56,7 +56,7 @@ class ShadowQuartzPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.SHADOW_QUARTZ)
+        intArrayOf(SHADOW_QUARTZ)
 }
 
 class SmokeQuartzPlugin : ItemPlugin() {
@@ -64,7 +64,7 @@ class SmokeQuartzPlugin : ItemPlugin() {
         bind("Inspect") { player: Player, item: Item, slotId: Int ->
             player.dialogue {
                 item(
-                    ItemId.SMOKE_QUARTZ,
+                    SMOKE_QUARTZ,
                     "It's a strange chunk of quartz filled with an ancient magical power. You might be able to combine it with something else."
                 )
             }
@@ -72,5 +72,5 @@ class SmokeQuartzPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.SMOKE_QUARTZ)
+        intArrayOf(SMOKE_QUARTZ)
 }

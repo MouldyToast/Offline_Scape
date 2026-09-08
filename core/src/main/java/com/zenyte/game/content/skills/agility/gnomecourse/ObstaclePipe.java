@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.ForceMovement;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.AttachedObject;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

@@ -16,7 +16,7 @@ import com.zenyte.game.world.region.dynamicregion.OutOfSpaceException;
 import com.zenyte.logger.NearRealityLogger;
 import org.slf4j.Logger;
 
-import static com.zenyte.game.world.object.ObjectId.*;
+import static com.zenyte.game.obj.ids.ObjectId.*;
 
 /**
  * @author Kris | 14/06/2022

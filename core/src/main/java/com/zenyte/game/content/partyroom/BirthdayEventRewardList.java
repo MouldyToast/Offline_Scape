@@ -5,7 +5,7 @@ import com.zenyte.cores.CoresManager;
 import com.zenyte.cores.ScheduledExternalizable;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.DefaultGson;
 import com.zenyte.game.world.World;

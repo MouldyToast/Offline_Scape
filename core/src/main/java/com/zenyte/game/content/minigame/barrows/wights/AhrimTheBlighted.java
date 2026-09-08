@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import com.zenyte.game.world.entity.player.action.combat.magic.CombatSpell;
 
-import static com.near_reality.game.item.CustomNpcId.DI_AHRIM_THE_BLIGHTED;
+import static com.zenyte.game.npc.ids.NpcId.DI_AHRIM_THE_BLIGHTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:45:47

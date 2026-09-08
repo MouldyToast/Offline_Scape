@@ -9,43 +9,15 @@ import com.near_reality.scripts.npc.drops.table.tables.seed.TreeHerbSeedDropTabl
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.player.privilege.MemberRank
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
-import com.zenyte.game.item.ItemId.BLACK_DRAGONHIDE
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.CRYSTAL_KEY
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRACONIC_VISAGE
-import com.zenyte.game.item.ItemId.DRAGON_BONES
-import com.zenyte.game.item.ItemId.DRAGON_SPEAR
-import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
-import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
-import com.zenyte.game.item.ItemId.LOOP_HALF_OF_KEY
-import com.zenyte.game.item.ItemId.MAGIC_SEED
-import com.zenyte.game.item.ItemId.MITHRIL_BAR
-import com.zenyte.game.item.ItemId.OSNR_MYSTERY_BOX
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RED_DRAGONHIDE
-import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
-import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
-import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
-import com.zenyte.game.item.ItemId.RUNITE_BAR
-import com.zenyte.game.item.ItemId.SKILLING_MYSTERY_BOX
-import com.zenyte.game.item.ItemId.TOOTH_HALF_OF_KEY
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_EMERALD
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.YEW_LOGS
-import com.zenyte.game.item.ItemId.YEW_SEED
 
 class NezikchenedsDroptable : NPCDropTableScript() {
 

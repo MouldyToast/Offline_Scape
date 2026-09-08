@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.npc.impl.wilderness;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;
@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;

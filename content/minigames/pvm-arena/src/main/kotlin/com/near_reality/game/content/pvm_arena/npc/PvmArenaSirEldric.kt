@@ -7,7 +7,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.WorldThread
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.Spawnable
 import kotlin.time.Duration.Companion.hours
 
@@ -35,6 +35,6 @@ class PvmArenaSirEldric(id: Int, tile: Location?, facing: Direction?, radius: In
     private fun everyNthWorldCycle(n: Int) = WorldThread.getCurrentCycle() % n == 0L
 
     override fun validate(id: Int, name: String?): Boolean {
-        return id == NpcId.GHOST_3516
+        return id == GHOST_3516
     }
 }

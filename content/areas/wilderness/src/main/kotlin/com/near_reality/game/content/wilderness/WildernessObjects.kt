@@ -3,7 +3,7 @@
 //import com.google.common.eventbus.Subscribe
 //import com.zenyte.game.world.World
 //import com.zenyte.game.world.entity.Location
-//import com.zenyte.game.world.`object`.ObjectId
+//import com.zenyte.game.obj.ids.*
 //import com.zenyte.game.world.`object`.WorldObject
 //import com.zenyte.plugins.events.ServerLaunchEvent
 //

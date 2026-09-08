@@ -5,7 +5,7 @@ import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 
 public final class NexBloodReaver extends BloodReaver {

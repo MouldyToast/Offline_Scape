@@ -2,7 +2,7 @@ package com.zenyte.game.content.drops;
 
 import com.zenyte.game.content.drops.table.DropTable;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import mgi.types.config.items.ItemDefinitions;
 
 /**

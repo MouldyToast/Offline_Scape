@@ -2,7 +2,7 @@ package com.near_reality.plugins.interfaces.death
 
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.start
@@ -91,8 +91,8 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
         }
         val totalCost = fee * totalAmount.toLong()
         val inGravestone = gravestone.coinsInCoffer
-        val inInventory = inventory.getAmountOf(ItemId.COINS_995)
-        val inBank = bank.getAmountOf(ItemId.COINS_995)
+        val inInventory = inventory.getAmountOf(COINS_995)
+        val inBank = bank.getAmountOf(COINS_995)
         val totalCarried = inGravestone + inInventory + inBank
         if (totalCarried < totalCost) {
             sendMessage("You do not have enough funds to pay for the fee.")
@@ -108,14 +108,14 @@ class DeathsOfficeRetrievalInterface : InterfaceScript() {
         if (amountToRemove > 0 && inBank > 0) {
             val toRemove = min(amountToRemove, inBank.toLong()).toInt()
             amountToRemove -= toRemove
-            bank.remove(Item(ItemId.COINS_995, toRemove))
+            bank.remove(Item(COINS_995, toRemove))
             bank.refreshContainer()
             sendMessage("Payment has been taken from your bank: ${toRemove.format()} coins")
         }
         if (amountToRemove > 0 && inInventory > 0) {
             val toRemove = min(amountToRemove, inInventory.toLong()).toInt()
             amountToRemove -= toRemove
-            inventory.deleteItem(Item(ItemId.COINS_995, toRemove))
+            inventory.deleteItem(Item(COINS_995, toRemove))
             inventory.refresh()
             sendMessage("Payment has been taken from your inventory: ${toRemove.format()} coins")
         }

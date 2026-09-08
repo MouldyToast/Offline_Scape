@@ -3,12 +3,12 @@ package com.near_reality.plugins.area.osnr_home.obj
 
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.start
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 class AltarOfTheOccult : ObjectAction {
@@ -38,11 +38,11 @@ class AltarOfTheOccult : ObjectAction {
         player.animation = Animation(PRAY_ANIM)
         player.combatDefinitions.setSpellbook(spellbook, true)
         player.dialogueManager.start {
-            item(Item(ItemId.ANCIENT_STAFF), "Your spellbook has been changed.")
+            item(Item(ANCIENT_STAFF), "Your spellbook has been changed.")
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.ALTAR_OF_THE_OCCULT)
+    override fun getObjects() = arrayOf(ALTAR_OF_THE_OCCULT)
 
     private companion object {
         const val PRAY_ANIM = 645

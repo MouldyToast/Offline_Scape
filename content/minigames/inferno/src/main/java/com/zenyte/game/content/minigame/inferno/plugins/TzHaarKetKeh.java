@@ -5,7 +5,7 @@ import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.content.minigame.inferno.model.InfernoCompletions;
 import com.zenyte.game.content.minigame.inferno.model.InfernoWave;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;

@@ -1,6 +1,6 @@
 //package com.near_reality.game.content.crystal
 //
-//import com.zenyte.game.item.ItemId
+//import com.zenyte.game.item.ids.*
 //
 ///**
 // * Represents an item that can be used to teleport to Lletya and Prifddinas,

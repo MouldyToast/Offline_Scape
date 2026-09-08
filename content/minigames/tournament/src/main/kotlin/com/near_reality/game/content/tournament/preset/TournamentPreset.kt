@@ -5,7 +5,7 @@ import com.near_reality.game.content.tournament.preset.component.InventoryCompon
 import com.near_reality.game.content.tournament.preset.component.RunePouchComponent
 import com.near_reality.game.content.tournament.preset.component.SkillsComponent
 import com.near_reality.game.content.tournament.previousBoxingWinner
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
@@ -34,7 +34,7 @@ enum class TournamentPreset(
     val disabledPrayers: Array<Prayer>,
 ) {
     DHAROKS(
-        checkBaseItem = ItemId.DHAROKS_GREATAXE,
+        checkBaseItem = DHAROKS_GREATAXE,
         announcementIcon = 57,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 4716, true)
@@ -79,7 +79,7 @@ enum class TournamentPreset(
     },
 
     DDS(
-        checkBaseItem = ItemId.DRAGON_DAGGERP_5698,
+        checkBaseItem = DRAGON_DAGGERP_5698,
         announcementIcon = 57,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.WEAPON, 5698, false)
@@ -107,10 +107,10 @@ enum class TournamentPreset(
 
 
     BOXING(
-        checkBaseItem = ItemId.BOXING_GLOVES,
+        checkBaseItem = BOXING_GLOVES,
         announcementIcon = 57,
         presetEquipment = EquipmentComponent.Builder()
-            .put(EquipmentSlot.WEAPON, if(Utils.randomBoolean()) ItemId.BOXING_GLOVES else ItemId.BOXING_GLOVES_7673, false)
+            .put(EquipmentSlot.WEAPON, if(Utils.randomBoolean()) BOXING_GLOVES else BOXING_GLOVES_7673, false)
             .build(),
         presetInventory = InventoryComponent.Builder()
             .build(),
@@ -134,22 +134,22 @@ enum class TournamentPreset(
     },
 
     F2P_PURE(
-        checkBaseItem = ItemId.RUNE_SCIMITAR,
+        checkBaseItem = RUNE_SCIMITAR,
         announcementIcon = 57,
         presetEquipment = EquipmentComponent.Builder()
-            .put(EquipmentSlot.HELMET, ItemId.COIF, true)
-            .put(EquipmentSlot.AMULET, ItemId.AMULET_OF_POWER, true)
-            .put(EquipmentSlot.WEAPON, ItemId.MAPLE_SHORTBOW, true)
-            .put(EquipmentSlot.PLATE, ItemId.LEATHER_BODY, true)
-            .put(EquipmentSlot.LEGS, ItemId.GREEN_DHIDE_CHAPS, true)
-            .put(EquipmentSlot.HANDS, ItemId.GREEN_DHIDE_VAMB, true)
-            .put(EquipmentSlot.BOOTS, ItemId.LEATHER_BOOTS, true)
-            .put(EquipmentSlot.CAPE, ItemId.STRENGTH_CAPE, true)
-            .put(EquipmentSlot.AMMUNITION, ItemId.ADAMANT_ARROW, 1000, false)
+            .put(EquipmentSlot.HELMET, COIF, true)
+            .put(EquipmentSlot.AMULET, AMULET_OF_POWER, true)
+            .put(EquipmentSlot.WEAPON, MAPLE_SHORTBOW, true)
+            .put(EquipmentSlot.PLATE, LEATHER_BODY, true)
+            .put(EquipmentSlot.LEGS, GREEN_DHIDE_CHAPS, true)
+            .put(EquipmentSlot.HANDS, GREEN_DHIDE_VAMB, true)
+            .put(EquipmentSlot.BOOTS, LEATHER_BOOTS, true)
+            .put(EquipmentSlot.CAPE, STRENGTH_CAPE, true)
+            .put(EquipmentSlot.AMMUNITION, ADAMANT_ARROW, 1000, false)
             .build(),
         presetInventory = InventoryComponent.Builder()
             .add(1333, true).add(1319, true)
-            .add(113, true).add(ItemId.ADAMANT_ARROW, 1000, true)
+            .add(113, true).add(ADAMANT_ARROW, 1000, true)
             .add(2297, 4, true).add(373, 17, true)
             .build(),
         presetStats = SkillsComponent.Builder()
@@ -173,12 +173,12 @@ enum class TournamentPreset(
     },
 
     MYSTERY_BOX(
-        checkBaseItem = ItemId.PVP_MYSTERY_BOX,
+        checkBaseItem = PVP_MYSTERY_BOX,
         announcementIcon = 57,
         presetEquipment = EquipmentComponent.Builder()
             .build(),
         presetInventory = InventoryComponent.Builder()
-            .add(ItemId.SHARK, 12, true).add(ItemId.PVP_TOURNEY_MYSTERY_BOX, 10,true)
+            .add(SHARK, 12, true).add(PVP_TOURNEY_MYSTERY_BOX, 10,true)
             .build(),
         presetStats = SkillsComponent.Builder()
             .set(SkillConstants.STRENGTH, 99)
@@ -203,7 +203,7 @@ enum class TournamentPreset(
     },
 
     KARILS_DHAROKS(
-        checkBaseItem = ItemId.KARILS_CROSSBOW,
+        checkBaseItem = KARILS_CROSSBOW,
         announcementIcon = 54,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 4732, true)
@@ -247,7 +247,7 @@ enum class TournamentPreset(
     },
 
     MELEE_PURE(
-        checkBaseItem = ItemId.ZAMORAK_HALO,
+        checkBaseItem = ZAMORAK_HALO,
         announcementIcon = 67,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 12638, true)
@@ -291,7 +291,7 @@ enum class TournamentPreset(
     ),
 
     MAX_MELEE(
-        checkBaseItem = ItemId.TORVA_FULLHELM,
+        checkBaseItem = TORVA_FULLHELM,
         announcementIcon = 62,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 26382, true)
@@ -333,7 +333,7 @@ enum class TournamentPreset(
     ),
 
     ZERKER_MID_LEVEL(
-        checkBaseItem = ItemId.BERSERKER_HELM,
+        checkBaseItem = BERSERKER_HELM,
         announcementIcon = 66,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 3751, true)
@@ -376,7 +376,7 @@ enum class TournamentPreset(
         override fun toString(): String = "Zerker Mid-Lvl"
     },
     ZERKER_HIGH_LVL(
-        checkBaseItem = ItemId.BERSERKER_HELM,
+        checkBaseItem = BERSERKER_HELM,
         announcementIcon = 66,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 3751, true)
@@ -420,7 +420,7 @@ enum class TournamentPreset(
     },
 
     WELFARE_BRID(
-        checkBaseItem = ItemId.MYSTIC_ROBE_TOP,
+        checkBaseItem = MYSTIC_ROBE_TOP,
         announcementIcon = 60,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 10828, true)
@@ -465,7 +465,7 @@ enum class TournamentPreset(
     ),
 
     TRIBRID(
-        checkBaseItem = ItemId.HELM_OF_NEITIZNOT,
+        checkBaseItem = HELM_OF_NEITIZNOT,
         announcementIcon = 56,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 10828, false)
@@ -507,7 +507,7 @@ enum class TournamentPreset(
     ),
 
 //    VOID_RANGED(
-//        checkBaseItem = ItemId.VOID_RANGER_HELM,
+//        checkBaseItem = VOID_RANGER_HELM,
 //        announcementIcon = 65,
 //        presetEquipment = EquipmentComponent.Builder()
 //            .put(EquipmentSlot.HELMET, 11664, true)
@@ -549,7 +549,7 @@ enum class TournamentPreset(
 //    ),
 
     OBSIDIAN(
-        checkBaseItem = ItemId.TOKTZXILAK,
+        checkBaseItem = TOKTZXILAK,
         announcementIcon = 64,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 21298, true)
@@ -589,7 +589,7 @@ enum class TournamentPreset(
     ),
 
     VESTA(
-        checkBaseItem = ItemId.VESTAS_LONGSWORD,
+        checkBaseItem = VESTAS_LONGSWORD,
         announcementIcon = 61,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 24271, true)
@@ -633,7 +633,7 @@ enum class TournamentPreset(
     ),
 
     PureNHBrid(
-        checkBaseItem = ItemId.ELDER_CHAOS_HOOD,
+        checkBaseItem = ELDER_CHAOS_HOOD,
         announcementIcon = 58,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 20595, true)
@@ -720,7 +720,7 @@ enum class TournamentPreset(
     },
 
     BISSTAB(
-        checkBaseItem = ItemId.GHRAZI_RAPIER,
+        checkBaseItem = GHRAZI_RAPIER,
         announcementIcon = 55,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 10548, true)
@@ -764,7 +764,7 @@ enum class TournamentPreset(
     },
 
     BISSLASH(
-        checkBaseItem = ItemId.BLADE_OF_SAELDOR_C,
+        checkBaseItem = BLADE_OF_SAELDOR_C,
         announcementIcon = 59,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 10548, true)
@@ -808,7 +808,7 @@ enum class TournamentPreset(
     },
 
     BISSMASH(
-        checkBaseItem = ItemId.ELDER_MAUL,
+        checkBaseItem = ELDER_MAUL,
         announcementIcon = 63,
         presetEquipment = EquipmentComponent.Builder()
             .put(EquipmentSlot.HELMET, 24419, true)
@@ -862,7 +862,7 @@ enum class TournamentPreset(
         for (item in presetInventory.items)
             tempInventory.container.add(item.t)
         for ((key, value) in presetEquipment.items) {
-            if(key == 3 && this == BOXING && player.previousBoxingWinner) tempEquipment.container[key] = Item(ItemId.GILDED_BOXING_GLOVES)
+            if(key == 3 && this == BOXING && player.previousBoxingWinner) tempEquipment.container[key] = Item(GILDED_BOXING_GLOVES)
             else tempEquipment.container[key] = value?.t
         }
         val tempSkills = player.skillsTemp

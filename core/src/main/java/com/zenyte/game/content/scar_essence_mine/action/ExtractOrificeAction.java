@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.dialogue.ItemChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getDepositedTaintedEssenceChunks;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 public class ExtractOrificeAction extends Action {
     private final Player player;

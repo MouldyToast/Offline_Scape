@@ -6,7 +6,7 @@ import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.PetWrapper;
 import com.zenyte.game.content.follower.impl.MiscPet;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.broadcasts.BroadcastType;

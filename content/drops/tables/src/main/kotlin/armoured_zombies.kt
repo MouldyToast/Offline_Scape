@@ -3,10 +3,10 @@ package com.zenyte.game.content
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.BONES
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
@@ -14,36 +14,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.BROKEN_ZOMBIE_AXE
-import com.zenyte.game.item.ItemId.BROKEN_ZOMBIE_HELMET
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.COSMIC_RUNE
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.EYE_OF_NEWT
-import com.zenyte.game.item.ItemId.FISHING_BAIT
-import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
-import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
-import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
-import com.zenyte.game.item.ItemId.GRIMY_GUAM_LEAF
-import com.zenyte.game.item.ItemId.GRIMY_HARRALANDER
-import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
-import com.zenyte.game.item.ItemId.GRIMY_KWUARM
-import com.zenyte.game.item.ItemId.GRIMY_LANTADYME
-import com.zenyte.game.item.ItemId.GRIMY_MARRENTILL
-import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
-import com.zenyte.game.item.ItemId.GRIMY_TARROMIN
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.OAK_PLANK
-import com.zenyte.game.item.ItemId.PLANK
-import com.zenyte.game.item.ItemId.PURE_ESSENCE_NOTED
-import com.zenyte.game.item.ItemId.RUNE_ARROW
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.RUNE_MACE
-import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
-import com.zenyte.game.item.ItemId.TEAK_PLANK
-import com.zenyte.game.item.ItemId.ZOMBIE_CHAMPION_SCROLL
 
 class ArmouredZombiesDroptable : NPCDropTableScript() {
 
@@ -60,7 +30,7 @@ class ArmouredZombiesDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BONES quantity 1 rarity always
+                BONES quantity 1 rarity always
             }
             Main(248) {
                 // Runes & ammo

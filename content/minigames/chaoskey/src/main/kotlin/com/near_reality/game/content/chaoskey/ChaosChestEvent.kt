@@ -1,7 +1,7 @@
 package com.near_reality.game.content.chaoskey
 
 import com.google.common.eventbus.Subscribe
-import com.near_reality.game.item.CustomObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.util.Utils
@@ -17,8 +17,8 @@ import java.util.function.Consumer
  * Represents an event for spawning a Chaos Chest in the game world.
  */
 class ChaosChestEvent : WorldTask {
-    private val CHEST_SPAWN = CustomObjectId.CHAOS_CHEST_SPAWN
-    private val LOOTABLE_CHEST = CustomObjectId.CHAOS_CHEST_SPAWNED
+    private val CHEST_SPAWN = CHAOS_CHEST_SPAWN
+    private val LOOTABLE_CHEST = CHAOS_CHEST_SPAWNED
 
     private var cycle = 0
 

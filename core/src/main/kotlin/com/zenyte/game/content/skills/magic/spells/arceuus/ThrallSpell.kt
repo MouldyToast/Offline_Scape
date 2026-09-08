@@ -4,7 +4,7 @@ import com.google.common.base.CaseFormat
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.gameClock
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.ProjectileUtils
@@ -14,7 +14,7 @@ import com.zenyte.game.world.entity.*
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.booleanVarbit
@@ -42,22 +42,22 @@ enum class ThrallSpell(
     private val castXp: Double,
     private val thrallName: String
 ) : DefaultSpell {
-    LESSER_GHOST(ThrallType.GHOST, 2, 1, 6, NpcId.LESSER_GHOSTLY_THRALL, 55.0, "lesser ghostly thrall"),
-    LESSER_SKELETON(ThrallType.SKELETON, 2, 1, 6, NpcId.LESSER_SKELETAL_THRALL, 55.0, "lesser skeletal thrall"),
-    LESSER_ZOMBIE(ThrallType.ZOMBIE, 2, 1, 1, NpcId.LESSER_ZOMBIFIED_THRALL, 55.0, "lesser zombified thrall"),
-    SUPERIOR_GHOST(ThrallType.GHOST, 4, 2, 6, NpcId.SUPERIOR_GHOSTLY_THRALL, 70.0, "superior ghostly thrall"),
-    SUPERIOR_SKELETON(ThrallType.SKELETON, 4, 2, 6, NpcId.SUPERIOR_SKELETAL_THRALL, 70.0, "superior skeletal thrall"),
-    SUPERIOR_ZOMBIE(ThrallType.ZOMBIE, 4, 2, 1, NpcId.SUPERIOR_ZOMBIFIED_THRALL, 70.0, "superior zombified thrall"),
-    GREATER_GHOST(ThrallType.GHOST, 6, 3, 6, NpcId.GREATER_GHOSTLY_THRALL, 88.0, "greater ghostly thrall"),
-    GREATER_SKELETON(ThrallType.SKELETON, 6, 3, 6, NpcId.GREATER_SKELETAL_THRALL, 88.0, "greater skeletal thrall"),
-    GREATER_ZOMBIE(ThrallType.ZOMBIE, 6, 3, 1, NpcId.GREATER_ZOMBIFIED_THRALL, 88.0, "greater zombified thrall");
+    LESSER_GHOST(ThrallType.GHOST, 2, 1, 6, LESSER_GHOSTLY_THRALL, 55.0, "lesser ghostly thrall"),
+    LESSER_SKELETON(ThrallType.SKELETON, 2, 1, 6, LESSER_SKELETAL_THRALL, 55.0, "lesser skeletal thrall"),
+    LESSER_ZOMBIE(ThrallType.ZOMBIE, 2, 1, 1, LESSER_ZOMBIFIED_THRALL, 55.0, "lesser zombified thrall"),
+    SUPERIOR_GHOST(ThrallType.GHOST, 4, 2, 6, SUPERIOR_GHOSTLY_THRALL, 70.0, "superior ghostly thrall"),
+    SUPERIOR_SKELETON(ThrallType.SKELETON, 4, 2, 6, SUPERIOR_SKELETAL_THRALL, 70.0, "superior skeletal thrall"),
+    SUPERIOR_ZOMBIE(ThrallType.ZOMBIE, 4, 2, 1, SUPERIOR_ZOMBIFIED_THRALL, 70.0, "superior zombified thrall"),
+    GREATER_GHOST(ThrallType.GHOST, 6, 3, 6, GREATER_GHOSTLY_THRALL, 88.0, "greater ghostly thrall"),
+    GREATER_SKELETON(ThrallType.SKELETON, 6, 3, 6, GREATER_SKELETAL_THRALL, 88.0, "greater skeletal thrall"),
+    GREATER_ZOMBIE(ThrallType.ZOMBIE, 6, 3, 1, GREATER_ZOMBIFIED_THRALL, 88.0, "greater zombified thrall");
 
     override fun spellEffect(player: Player, optionId: Int, option: String): Boolean {
         if (player.thrallCooldown) {
             player.sendMessage("You can only cast resurrection spells every 10 seconds.")
             return false
         }
-        if (player.shield?.id != ItemId.BOOK_OF_THE_DEAD && !player.inventory.containsItem(ItemId.BOOK_OF_THE_DEAD)) {
+        if (player.shield?.id != BOOK_OF_THE_DEAD && !player.inventory.containsItem(BOOK_OF_THE_DEAD)) {
             player.sendMessage("You must have a Book of the Dead in your possession to use this spell.")
             return false
         }

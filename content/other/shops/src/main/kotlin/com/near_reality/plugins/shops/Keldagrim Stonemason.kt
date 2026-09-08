@@ -6,14 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.GOLD_LEAF_8784
-import com.zenyte.game.item.ItemId.LIMESTONE_BRICK
-import com.zenyte.game.item.ItemId.MAGIC_STONE_8788
-import com.zenyte.game.item.ItemId.MARBLE_BLOCK
 
 class KeldagrimStonemason : ShopScript() {
 

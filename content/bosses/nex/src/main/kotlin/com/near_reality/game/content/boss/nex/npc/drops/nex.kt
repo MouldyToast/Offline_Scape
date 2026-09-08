@@ -13,43 +13,19 @@ import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
 import kotlin.math.roundToInt
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.COAL
+import com.zenyte.game.item.ids.NEXLING
+import com.zenyte.game.item.ids.RUNITE_ORE
+import com.zenyte.game.item.ids.SHARK
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.AIR_ORB
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.ANCIENT_HILT
-import com.zenyte.game.item.ItemId.BIG_BONES
-import com.zenyte.game.item.ItemId.BLOOD_ESSENCE
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.CANNONBALL
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGON_BOLTS_UNF
-import com.zenyte.game.item.ItemId.ECUMENICAL_KEY_SHARD
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.NIHIL_HORN
-import com.zenyte.game.item.ItemId.NIHIL_SHARD
-import com.zenyte.game.item.ItemId.ONYX_BOLTS_E
-import com.zenyte.game.item.ItemId.PRAYER_POTION4
-import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.SUPER_RESTORE4
-import com.zenyte.game.item.ItemId.TORVA_FULLHELM_DAMAGED
-import com.zenyte.game.item.ItemId.TORVA_PLATEBODY_DAMAGED
-import com.zenyte.game.item.ItemId.TORVA_PLATELEGS_DAMAGED
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.WATER_RUNE
-import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
-import com.zenyte.game.item.ItemId.ZARYTE_VAMBRACES
 
 class NexDroptable : NPCDropTableScript() {
 
@@ -194,10 +170,10 @@ class NexDroptable : NPCDropTableScript() {
                 UNCUT_RUBY quantity (3..26).noted rarity common
                 UNCUT_DIAMOND quantity (3..17).noted rarity common
                 WINE_OF_ZAMORAK quantity (4..14).noted rarity common
-                ItemId.COAL quantity (23..95).noted rarity uncommon
-                ItemId.RUNITE_ORE quantity (2..28).noted rarity uncommon
+                COAL quantity (23..95).noted rarity uncommon
+                RUNITE_ORE quantity (2..28).noted rarity uncommon
                 // Consumables
-                ItemId.SHARK quantity 3 rarity common
+                SHARK quantity 3 rarity common
                 PRAYER_POTION4 quantity 1 rarity common
                 SUPER_RESTORE4 quantity 1 rarity common
                 // Other
@@ -209,7 +185,7 @@ class NexDroptable : NPCDropTableScript() {
             }
             Tertiary {
                 SCROLL_BOX_ELITE quantity 1 oneIn 48
-                ItemId.NEXLING quantity 1 oneIn 500 announce everywhere
+                NEXLING quantity 1 oneIn 500 announce everywhere
             }
         }
     }

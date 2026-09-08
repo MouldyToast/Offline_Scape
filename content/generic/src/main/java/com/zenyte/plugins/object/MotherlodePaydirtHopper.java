@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.CharacterLoop;
 import com.zenyte.plugins.dialogue.ItemChat;

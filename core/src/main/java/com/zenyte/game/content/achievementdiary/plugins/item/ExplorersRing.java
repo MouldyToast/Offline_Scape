@@ -5,7 +5,7 @@ import com.zenyte.game.content.achievementdiary.plugins.DiaryItem;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportCollection;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.GameTab;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Player;

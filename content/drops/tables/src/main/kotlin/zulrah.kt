@@ -6,57 +6,17 @@ import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.COAL
+import com.zenyte.game.item.ids.RUNITE_ORE
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
-import com.zenyte.game.item.ItemId.ANTIDOTE4_5952
-import com.zenyte.game.item.ItemId.BATTLESTAFF
-import com.zenyte.game.item.ItemId.CALQUAT_TREE_SEED
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.COCONUT
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGONSTONE_BOLT_TIPS
-import com.zenyte.game.item.ItemId.DRAGON_BONES
-import com.zenyte.game.item.ItemId.DRAGON_HALBERD
-import com.zenyte.game.item.ItemId.DRAGON_MED_HELM
-import com.zenyte.game.item.ItemId.DWARF_WEED
-import com.zenyte.game.item.ItemId.DWARF_WEED_SEED
-import com.zenyte.game.item.ItemId.FLAX
-import com.zenyte.game.item.ItemId.GRAPES
-import com.zenyte.game.item.ItemId.JAR_OF_SWAMP
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.MAGIC_FANG
-import com.zenyte.game.item.ItemId.MAGIC_SEED
-import com.zenyte.game.item.ItemId.MAGMA_MUTAGEN
-import com.zenyte.game.item.ItemId.MAHOGANY_LOGS
-import com.zenyte.game.item.ItemId.MANTA_RAY
-import com.zenyte.game.item.ItemId.PALM_TREE_SEED
-import com.zenyte.game.item.ItemId.PAPAYA_TREE_SEED
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.SERPENTINE_VISAGE
-import com.zenyte.game.item.ItemId.SNAKESKIN
-import com.zenyte.game.item.ItemId.SNAPDRAGON
-import com.zenyte.game.item.ItemId.SNAPDRAGON_SEED
-import com.zenyte.game.item.ItemId.SPIRIT_SEED
-import com.zenyte.game.item.ItemId.SWAMP_TAR
-import com.zenyte.game.item.ItemId.TANZANITE_FANG
-import com.zenyte.game.item.ItemId.TANZANITE_MUTAGEN
-import com.zenyte.game.item.ItemId.TOADFLAX
-import com.zenyte.game.item.ItemId.TOADFLAX_SEED
-import com.zenyte.game.item.ItemId.TORSTOL
-import com.zenyte.game.item.ItemId.TORSTOL_SEED
-import com.zenyte.game.item.ItemId.UNCUT_ONYX
-import com.zenyte.game.item.ItemId.YEW_LOGS
-import com.zenyte.game.item.ItemId.ZULANDRA_TELEPORT
-import com.zenyte.game.item.ItemId.ZULRAHS_SCALES
 
 class ZulrahDroptable : NPCDropTableScript() {
 
@@ -138,12 +98,12 @@ class ZulrahDroptable : NPCDropTableScript() {
                 SPIRIT_SEED quantity 1 rarity 1             // 89
                 // Resources
                 SNAKESKIN quantity 35.noted rarity 11       // 100
-                ItemId.RUNITE_ORE quantity 2.noted rarity 11// 111
+                RUNITE_ORE quantity 2.noted rarity 11// 111
                 PURE_ESSENCE quantity 1500.noted rarity 10  // 121
                 chance(10) roll FlaxTable             // 131
                 YEW_LOGS quantity 35.noted rarity 10        // 141
                 ADAMANTITE_BAR quantity 20.noted rarity 8   // 149
-                ItemId.COAL quantity 200.noted rarity 8     // 157
+                COAL quantity 200.noted rarity 8     // 157
                 DRAGON_BONES quantity 12.noted rarity 8     // 165
                 MAHOGANY_LOGS quantity 50.noted rarity 8    // 173
                 // Other

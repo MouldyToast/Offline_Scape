@@ -6,8 +6,7 @@ import com.zenyte.game.util.Colour.RED
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.near_reality.scripts.npc.actions.NPCActionScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.*
 
 class BrynNpcaction : NPCActionScript() {

@@ -4,7 +4,7 @@ import com.zenyte.game.content.drops.table.DropTable;
 import com.zenyte.game.content.skills.hunter.node.tables.*;
 import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;

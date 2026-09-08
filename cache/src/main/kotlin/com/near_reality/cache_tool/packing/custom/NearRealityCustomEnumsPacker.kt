@@ -1,6 +1,6 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.types.config.enums.EnumDefinitions
 import net.runelite.cache.util.ScriptVarType
 
@@ -68,24 +68,24 @@ object NearRealityCustomEnumsPacker {
         // Slayer log - add statue pieces
         EnumDefinitions.get(2162).apply {
             var index = this.size
-            this.values[index++] = ItemId.SLAYER_BASE
-            this.values[index++] = ItemId.SLAYER_SHAFT
-            this.values[index++] = ItemId.SLAYER_LEFT_BONE
-            this.values[index] = ItemId.SLAYER_RIGHT_BONE
+            this.values[index++] = SLAYER_BASE
+            this.values[index++] = SLAYER_SHAFT
+            this.values[index++] = SLAYER_LEFT_BONE
+            this.values[index] = SLAYER_RIGHT_BONE
             this.pack()
         }
 
         // All Pets log
         EnumDefinitions.get(2158).apply {
             var index = this.size
-            this.values[index] = ItemId.GANODERMIC_RUNT
+            this.values[index] = GANODERMIC_RUNT
             this.pack()
         }
 
         // Grotesque Guardians
         EnumDefinitions.get(2122).apply {
             var index = this.size
-            this.values[index] = ItemId.DOUBLE_AMMO_MOULD
+            this.values[index] = DOUBLE_AMMO_MOULD
             this.pack()
         }
 
@@ -121,79 +121,79 @@ object NearRealityCustomEnumsPacker {
 
         // Vanstrom Klause
         EnumDefinitions.create(10030, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = ItemId.BLOOD_SHARD
+            this.values[0] = BLOOD_SHARD
             this.pack()
         }
 
         // Ganodermic Beast
         EnumDefinitions.create(10025, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[1] = ItemId.ANCIENT_EYE
-            this.values[2] = ItemId.DRAGON_KITE
-            this.values[3] = ItemId.PVP_MYSTERY_BOX
-            this.values[4] = ItemId.POLYPORE_SPORES
+            this.values[1] = ANCIENT_EYE
+            this.values[2] = DRAGON_KITE
+            this.values[3] = PVP_MYSTERY_BOX
+            this.values[4] = POLYPORE_SPORES
             this.pack()
         }
 
         // Duke
         EnumDefinitions.get(5148).apply {
-            this.values[5] = ItemId.MAGUS_ICON
+            this.values[5] = MAGUS_ICON
             this.pack();
         }
 
         // Vardorvis
         EnumDefinitions.get(5149).apply {
-            this.values[5] = ItemId.ULTOR_ICON
+            this.values[5] = ULTOR_ICON
             this.pack();
         }
 
         /* Strykewyrms */
         EnumDefinitions.create(10500, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = ItemId.STAFF_OF_LIGHT
-            this.values[1] = ItemId.CHAOTIC_CROSSBOW
-            this.values[2] = ItemId.CHAOTIC_KITESHIELD
-            this.values[3] = ItemId.EAGLE_EYE_KITESHIELD
-            this.values[4] = ItemId.FARSEER_KITESHIELD
+            this.values[0] = STAFF_OF_LIGHT
+            this.values[1] = CHAOTIC_CROSSBOW
+            this.values[2] = CHAOTIC_KITESHIELD
+            this.values[3] = EAGLE_EYE_KITESHIELD
+            this.values[4] = FARSEER_KITESHIELD
             this.pack()
         }
 
         /* Primal Items */
         EnumDefinitions.create(10501, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = ItemId.PRIMAL_2H_SWORD
-            this.values[1] = ItemId.PRIMAL_PICKAXE
-            this.values[2] = ItemId.PRIMAL_KITESHIELD
-            this.values[3] = ItemId.PRIMAL_SPEAR
-            this.values[4] = ItemId.PRIMAL_HATCHET
-            this.values[5] = ItemId.PRIMAL_MAUL
-            this.values[6] = ItemId.PRIMAL_DAGGER
-            this.values[7] = ItemId.PRIMAL_LONGSWORD
-            this.values[8] = ItemId.PRIMAL_RAPIER
-            this.values[9] = ItemId.PRIMAL_WARHAMMER
-            this.values[10] = ItemId.PRIMAL_BOOTS
-            this.values[11] = ItemId.PRIMAL_GAUNTLETS
-            this.values[12] = ItemId.PRIMAL_FULL_HELM
-            this.values[13] = ItemId.PRIMAL_PLATEBODY
-            this.values[14] = ItemId.PRIMAL_CHAINBODY
-            this.values[15] = ItemId.PRIMAL_PLATESKIRT
-            this.values[16] = ItemId.PRIMAL_PLATELEGS
+            this.values[0] = PRIMAL_2H_SWORD
+            this.values[1] = PRIMAL_PICKAXE
+            this.values[2] = PRIMAL_KITESHIELD
+            this.values[3] = PRIMAL_SPEAR
+            this.values[4] = PRIMAL_HATCHET
+            this.values[5] = PRIMAL_MAUL
+            this.values[6] = PRIMAL_DAGGER
+            this.values[7] = PRIMAL_LONGSWORD
+            this.values[8] = PRIMAL_RAPIER
+            this.values[9] = PRIMAL_WARHAMMER
+            this.values[10] = PRIMAL_BOOTS
+            this.values[11] = PRIMAL_GAUNTLETS
+            this.values[12] = PRIMAL_FULL_HELM
+            this.values[13] = PRIMAL_PLATEBODY
+            this.values[14] = PRIMAL_CHAINBODY
+            this.values[15] = PRIMAL_PLATESKIRT
+            this.values[16] = PRIMAL_PLATELEGS
             this.pack()
         }
 
         /* Wild Mole */
         EnumDefinitions.create(10502, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = ItemId.GHOSTLY_PARTYHAT
-            this.values[1] = ItemId.DEMONHORN_NECKLACE
-            this.values[2] = ItemId.DEATH_CAPE
-            this.values[3] = ItemId.DRAGON_KITE
-            this.values[4] = ItemId.SPIRIT_CAPE
-            this.values[5] = ItemId.MERCENARY_GLOVES
-            this.values[6] = ItemId.MYSTERY_BOX
-            this.values[7] = ItemId.SKILLING_MYSTERY_BOX
-            this.values[8] = ItemId.PRIMAL_FULL_HELM
-            this.values[9] = ItemId.PRIMAL_CHAINBODY
-            this.values[10] = ItemId.PRIMAL_PLATESKIRT
-            this.values[11] = ItemId.PRIMAL_PLATELEGS
-            this.values[12] = ItemId.PRIMAL_BOOTS
-            this.values[13] = ItemId.PRIMAL_GAUNTLETS
+            this.values[0] = GHOSTLY_PARTYHAT
+            this.values[1] = DEMONHORN_NECKLACE
+            this.values[2] = DEATH_CAPE
+            this.values[3] = DRAGON_KITE
+            this.values[4] = SPIRIT_CAPE
+            this.values[5] = MERCENARY_GLOVES
+            this.values[6] = MYSTERY_BOX
+            this.values[7] = SKILLING_MYSTERY_BOX
+            this.values[8] = PRIMAL_FULL_HELM
+            this.values[9] = PRIMAL_CHAINBODY
+            this.values[10] = PRIMAL_PLATESKIRT
+            this.values[11] = PRIMAL_PLATELEGS
+            this.values[12] = PRIMAL_BOOTS
+            this.values[13] = PRIMAL_GAUNTLETS
             this.pack()
         }
 
@@ -267,87 +267,87 @@ object NearRealityCustomEnumsPacker {
         EnumDefinitions.get(840).apply {
             values.clear()
             var idx = 0
-            this.values[idx++] = ItemId.SLAYER_RING_8                 // Slayer ring (8)
-            this.values[idx++] = ItemId.BROAD_BOLTS                     // Broad bolts
-            this.values[idx++] = ItemId.BROAD_ARROWS_4160                    // Broad arrows
-            this.values[idx++] = ItemId.HERB_SACK                       // Herb sack
-            this.values[idx++] = ItemId.RUNE_POUCH                      // Rune pouch
-            this.values[idx++] = ItemId.FIGHTER_TORSO                   // Fighter torso
-            this.values[idx++] = ItemId.DWARF_CANNON_SET                // Dwarf cannon set
-            this.values[idx++] = ItemId.BARRELCHEST_ANCHOR                // Barrelchest anchor
-            this.values[idx++] = ItemId.HERB_BOX                        // Herb box
-            this.values[idx++] = ItemId.SALVE_AMULET                   // Salve amulet
-            this.values[idx++] = ItemId.SHAYZIEN_HELM_5                 // Shayzien helm (5)
-            this.values[idx++] = ItemId.SHAYZIEN_PLATEBODY_5                 // Shayzien body (5)
-            this.values[idx++] = ItemId.SHAYZIEN_GREAVES_5              // Shayzien greaves (5)
-            this.values[idx++] = ItemId.SHAYZIEN_GLOVES_5               // Shayzien gloves (5)
-            this.values[idx++] = ItemId.SHAYZIEN_BOOTS_5               // Shayzien boots (5)
-            this.values[idx++] = ItemId.SCROLL_OF_IMBUING               // Scroll of imbuing
-            this.values[idx++] = ItemId.HOLY_WRENCH                   // Holy wrench
-            this.values[idx++] = ItemId.KERIS                          // Keris
-            this.values[idx++] = ItemId.KERIS_PARTISAN                  // Keris partisan
-            this.values[idx++] = ItemId.WOLFBANE                        // Wolfbane
-            this.values[idx++] = ItemId.IVANDIS_FLAIL                  // Ivandis flail
-            this.values[idx++] = ItemId.BLISTERWOOD_FLAIL               // Blisterwood flail
-            this.values[idx++] = ItemId.TARNS_DIARY                     // Tarn's diary
-            this.values[idx++] = ItemId.VS_SHIELD_24266                       // V's shield
-            this.values[idx++] = ItemId.DARKLIGHT                     // Darklight
-            this.values[idx++] = ItemId.BRACELET_OF_ETHEREUM_UNCHARGED  // Bracelet of ethereum (uncharged)
-            this.values[idx++] = ItemId.CRYSTAL_KEY                     // Crystal key
-            this.values[idx++] = ItemId.CANNONBALL                      // Cannonball
-            this.values[idx++] = ItemId.ASH_SANCTIFIER                  // Ash sanctifier
-            this.values[idx++] = ItemId.DRAGON_DART                     // Dragon dart
+            this.values[idx++] = SLAYER_RING_8                 // Slayer ring (8)
+            this.values[idx++] = BROAD_BOLTS                     // Broad bolts
+            this.values[idx++] = BROAD_ARROWS_4160                    // Broad arrows
+            this.values[idx++] = HERB_SACK                       // Herb sack
+            this.values[idx++] = RUNE_POUCH                      // Rune pouch
+            this.values[idx++] = FIGHTER_TORSO                   // Fighter torso
+            this.values[idx++] = DWARF_CANNON_SET                // Dwarf cannon set
+            this.values[idx++] = BARRELCHEST_ANCHOR                // Barrelchest anchor
+            this.values[idx++] = HERB_BOX                        // Herb box
+            this.values[idx++] = SALVE_AMULET                   // Salve amulet
+            this.values[idx++] = SHAYZIEN_HELM_5                 // Shayzien helm (5)
+            this.values[idx++] = SHAYZIEN_PLATEBODY_5                 // Shayzien body (5)
+            this.values[idx++] = SHAYZIEN_GREAVES_5              // Shayzien greaves (5)
+            this.values[idx++] = SHAYZIEN_GLOVES_5               // Shayzien gloves (5)
+            this.values[idx++] = SHAYZIEN_BOOTS_5               // Shayzien boots (5)
+            this.values[idx++] = SCROLL_OF_IMBUING               // Scroll of imbuing
+            this.values[idx++] = HOLY_WRENCH                   // Holy wrench
+            this.values[idx++] = KERIS                          // Keris
+            this.values[idx++] = KERIS_PARTISAN                  // Keris partisan
+            this.values[idx++] = WOLFBANE                        // Wolfbane
+            this.values[idx++] = IVANDIS_FLAIL                  // Ivandis flail
+            this.values[idx++] = BLISTERWOOD_FLAIL               // Blisterwood flail
+            this.values[idx++] = TARNS_DIARY                     // Tarn's diary
+            this.values[idx++] = VS_SHIELD_24266                       // V's shield
+            this.values[idx++] = DARKLIGHT                     // Darklight
+            this.values[idx++] = BRACELET_OF_ETHEREUM_UNCHARGED  // Bracelet of ethereum (uncharged)
+            this.values[idx++] = CRYSTAL_KEY                     // Crystal key
+            this.values[idx++] = CANNONBALL                      // Cannonball
+            this.values[idx++] = ASH_SANCTIFIER                  // Ash sanctifier
+            this.values[idx++] = DRAGON_DART                     // Dragon dart
             this.values[idx++] = 32161              // Enhanced excalibur
             this.values[idx++] = 26255            // Dragon Hunter Gloves
             this.values[idx++] = 26300                // Dragonhide pouch
             this.values[idx++] = 26304                      // Bone pouch
-            this.values[idx++] = ItemId.BONECRUSHER                    // Bonecrusher
-            this.values[idx] = ItemId.BALMUNG                         // Balmung
+            this.values[idx++] = BONECRUSHER                    // Bonecrusher
+            this.values[idx] = BALMUNG                         // Balmung
             this.pack()
         }
 
 
         EnumDefinitions.get(841).apply {
-            this.values[ItemId.CANNONBALL] = 10   // Cannonball
-            this.values[ItemId.BROAD_ARROWS_4160] = 250  // Broad arrows
-            this.values[ItemId.DRAGON_DART] = 2    // Dragon dart
-            this.values[ItemId.BROAD_BOLTS] = 250  // Broad bolts
+            this.values[CANNONBALL] = 10   // Cannonball
+            this.values[BROAD_ARROWS_4160] = 250  // Broad arrows
+            this.values[DRAGON_DART] = 2    // Dragon dart
+            this.values[BROAD_BOLTS] = 250  // Broad bolts
 
             this.pack()
         }
 
         EnumDefinitions.get(842).apply {
             values.clear()
-            this.values[ItemId.CANNONBALL] = 1
-            this.values[ItemId.CRYSTAL_KEY] = 50
-            this.values[ItemId.WOLFBANE] = 100
-            this.values[ItemId.SALVE_AMULET] = 40
-            this.values[ItemId.BROAD_ARROWS_4160] = 35
-            this.values[ItemId.HOLY_WRENCH] = 200
-            this.values[ItemId.DARKLIGHT] = 400
-            this.values[ItemId.FIGHTER_TORSO] = 400
-            this.values[ItemId.KERIS] = 150
-            this.values[ItemId.TARNS_DIARY] = 40
-            this.values[ItemId.BARRELCHEST_ANCHOR] = 200
-            this.values[ItemId.DRAGON_DART] = 1
-            this.values[ItemId.HERB_BOX] = 10
-            this.values[ItemId.SLAYER_RING_8] = 75
-            this.values[ItemId.BROAD_BOLTS] = 35
-            this.values[ItemId.RUNE_POUCH] = 750
-            this.values[ItemId.DWARF_CANNON_SET] = 300
-            this.values[ItemId.BONECRUSHER] = 250
-            this.values[ItemId.HERB_SACK] = 750
-            this.values[ItemId.SHAYZIEN_GLOVES_5] = 40
-            this.values[ItemId.SHAYZIEN_BOOTS_5] = 40
-            this.values[ItemId.SHAYZIEN_HELM_5] = 40
-            this.values[ItemId.SHAYZIEN_GREAVES_5] = 40
-            this.values[ItemId.SHAYZIEN_PLATEBODY_5] = 40
-            this.values[ItemId.BRACELET_OF_ETHEREUM_UNCHARGED] = 100
-            this.values[ItemId.IVANDIS_FLAIL] = 150
-            this.values[ItemId.VS_SHIELD_24266] = 50
-            this.values[ItemId.BLISTERWOOD_FLAIL] = 300
-            this.values[ItemId.ASH_SANCTIFIER] = 300
-            this.values[ItemId.KERIS_PARTISAN] = 400
+            this.values[CANNONBALL] = 1
+            this.values[CRYSTAL_KEY] = 50
+            this.values[WOLFBANE] = 100
+            this.values[SALVE_AMULET] = 40
+            this.values[BROAD_ARROWS_4160] = 35
+            this.values[HOLY_WRENCH] = 200
+            this.values[DARKLIGHT] = 400
+            this.values[FIGHTER_TORSO] = 400
+            this.values[KERIS] = 150
+            this.values[TARNS_DIARY] = 40
+            this.values[BARRELCHEST_ANCHOR] = 200
+            this.values[DRAGON_DART] = 1
+            this.values[HERB_BOX] = 10
+            this.values[SLAYER_RING_8] = 75
+            this.values[BROAD_BOLTS] = 35
+            this.values[RUNE_POUCH] = 750
+            this.values[DWARF_CANNON_SET] = 300
+            this.values[BONECRUSHER] = 250
+            this.values[HERB_SACK] = 750
+            this.values[SHAYZIEN_GLOVES_5] = 40
+            this.values[SHAYZIEN_BOOTS_5] = 40
+            this.values[SHAYZIEN_HELM_5] = 40
+            this.values[SHAYZIEN_GREAVES_5] = 40
+            this.values[SHAYZIEN_PLATEBODY_5] = 40
+            this.values[BRACELET_OF_ETHEREUM_UNCHARGED] = 100
+            this.values[IVANDIS_FLAIL] = 150
+            this.values[VS_SHIELD_24266] = 50
+            this.values[BLISTERWOOD_FLAIL] = 300
+            this.values[ASH_SANCTIFIER] = 300
+            this.values[KERIS_PARTISAN] = 400
             this.values[26255] = 400
             this.values[26300] = 500
             this.values[26304] = 500
@@ -360,36 +360,36 @@ object NearRealityCustomEnumsPacker {
 
         EnumDefinitions.get(843).apply {
             values.clear()
-            this.values[ItemId.CANNONBALL] = "Ammo for the Dwarf Cannon."
-            this.values[ItemId.CRYSTAL_KEY] = "A mysterious key for a mysterious chest."
-            this.values[ItemId.WOLFBANE] = "A silver dagger that can prevent werewolves from changing form."
-            this.values[ItemId.SALVE_AMULET] = "An amulet which increases the wearer's strength and accuracy by 15% when fighting the undead."
-            this.values[ItemId.BROAD_ARROWS_4160] = "Arrows that can pierce the hides of creatures such as Turoth and Kurasks. Levels 55 Slayer and 50 Ranged required, and a magic bow or better."
-            this.values[ItemId.HOLY_WRENCH] = "A shining paragon of wrenchly virtue."
-            this.values[ItemId.DARKLIGHT] = "The magical sword 'Silverlight', enhanced with the blood of Agrith-Naar."
-            this.values[ItemId.FIGHTER_TORSO] = "A torso worn by penance fighters. Requires level 40 Defence."
-            this.values[ItemId.KERIS] = "A sharp mystical dagger that can penetrate through Kalphite chitin."
-            this.values[ItemId.TARNS_DIARY] = "Tarn Razorlor's diary, used for enchanting salve amulets."
-            this.values[ItemId.BARRELCHEST_ANCHOR] = "An anchor used by the Barrelchest. Requires level 60 Attack & 40 Strength."
-            this.values[ItemId.DRAGON_DART] = "A deadly throwing dart with a dragon tip."
-            this.values[ItemId.HERB_BOX] = "A herb box containing an assortment of random herbs, giving ten herbs per box."
-            this.values[ItemId.SLAYER_RING_8] = "A wieldable ring that can check your task progress. It has 8 charges for teleporting to useful Slayer sites."
-            this.values[ItemId.BROAD_BOLTS] = "Crossbow bolts that can pierce the hides of creatures such as Turoth and Kurasks. Levels 55 Slayer and 61 Ranged required, and a runite crossbow or better."
-            this.values[ItemId.RUNE_POUCH] = "The rune pouch has the ability to store up to 16,000 runes of 3 types."
-            this.values[ItemId.DWARF_CANNON_SET] = "A powerful ranging device that fires metal balls."
-            this.values[ItemId.BONECRUSHER] = "A crusher for the toughest of bones."
-            this.values[ItemId.HERB_SACK] = "The herb sack has the ability to store up to 30 of each major grimy herb. Requires 58 Herblore to use."
-            this.values[ItemId.SHAYZIEN_GLOVES_5] = "Some gloves from the Shayzien guards, used for protection against lizardmen."
-            this.values[ItemId.SHAYZIEN_BOOTS_5] = "Some boots from the Shayzien guards, used for protection against lizardmen."
-            this.values[ItemId.SHAYZIEN_HELM_5] = "A helmet from the Shayzien guards, used for protection against lizardmen."
-            this.values[ItemId.SHAYZIEN_GREAVES_5] = "Some greaves from the Shayzien guards, used for protection against lizardmen."
-            this.values[ItemId.SHAYZIEN_PLATEBODY_5] = "A platebody from the Shayzien guards, used for protection against lizardmen."
-            this.values[ItemId.BRACELET_OF_ETHEREUM_UNCHARGED] = "The bracelet is dull and powerless."
-            this.values[ItemId.IVANDIS_FLAIL] = "Used to fight Vampyres."
-            this.values[ItemId.VS_SHIELD_24266] = "A recreation of V's mighty shield."
-            this.values[ItemId.BLISTERWOOD_FLAIL] = "Super effective against Vampyres."
-            this.values[ItemId.ASH_SANCTIFIER] = "Scatters ashes."
-            this.values[ItemId.KERIS_PARTISAN] = "A mystical-feeling polearm that can easily penetrate through Kalphite chitin."
+            this.values[CANNONBALL] = "Ammo for the Dwarf Cannon."
+            this.values[CRYSTAL_KEY] = "A mysterious key for a mysterious chest."
+            this.values[WOLFBANE] = "A silver dagger that can prevent werewolves from changing form."
+            this.values[SALVE_AMULET] = "An amulet which increases the wearer's strength and accuracy by 15% when fighting the undead."
+            this.values[BROAD_ARROWS_4160] = "Arrows that can pierce the hides of creatures such as Turoth and Kurasks. Levels 55 Slayer and 50 Ranged required, and a magic bow or better."
+            this.values[HOLY_WRENCH] = "A shining paragon of wrenchly virtue."
+            this.values[DARKLIGHT] = "The magical sword 'Silverlight', enhanced with the blood of Agrith-Naar."
+            this.values[FIGHTER_TORSO] = "A torso worn by penance fighters. Requires level 40 Defence."
+            this.values[KERIS] = "A sharp mystical dagger that can penetrate through Kalphite chitin."
+            this.values[TARNS_DIARY] = "Tarn Razorlor's diary, used for enchanting salve amulets."
+            this.values[BARRELCHEST_ANCHOR] = "An anchor used by the Barrelchest. Requires level 60 Attack & 40 Strength."
+            this.values[DRAGON_DART] = "A deadly throwing dart with a dragon tip."
+            this.values[HERB_BOX] = "A herb box containing an assortment of random herbs, giving ten herbs per box."
+            this.values[SLAYER_RING_8] = "A wieldable ring that can check your task progress. It has 8 charges for teleporting to useful Slayer sites."
+            this.values[BROAD_BOLTS] = "Crossbow bolts that can pierce the hides of creatures such as Turoth and Kurasks. Levels 55 Slayer and 61 Ranged required, and a runite crossbow or better."
+            this.values[RUNE_POUCH] = "The rune pouch has the ability to store up to 16,000 runes of 3 types."
+            this.values[DWARF_CANNON_SET] = "A powerful ranging device that fires metal balls."
+            this.values[BONECRUSHER] = "A crusher for the toughest of bones."
+            this.values[HERB_SACK] = "The herb sack has the ability to store up to 30 of each major grimy herb. Requires 58 Herblore to use."
+            this.values[SHAYZIEN_GLOVES_5] = "Some gloves from the Shayzien guards, used for protection against lizardmen."
+            this.values[SHAYZIEN_BOOTS_5] = "Some boots from the Shayzien guards, used for protection against lizardmen."
+            this.values[SHAYZIEN_HELM_5] = "A helmet from the Shayzien guards, used for protection against lizardmen."
+            this.values[SHAYZIEN_GREAVES_5] = "Some greaves from the Shayzien guards, used for protection against lizardmen."
+            this.values[SHAYZIEN_PLATEBODY_5] = "A platebody from the Shayzien guards, used for protection against lizardmen."
+            this.values[BRACELET_OF_ETHEREUM_UNCHARGED] = "The bracelet is dull and powerless."
+            this.values[IVANDIS_FLAIL] = "Used to fight Vampyres."
+            this.values[VS_SHIELD_24266] = "A recreation of V's mighty shield."
+            this.values[BLISTERWOOD_FLAIL] = "Super effective against Vampyres."
+            this.values[ASH_SANCTIFIER] = "Scatters ashes."
+            this.values[KERIS_PARTISAN] = "A mystical-feeling polearm that can easily penetrate through Kalphite chitin."
             this.values[26255] = "Has the same stats as Barrows Gloves, in addition gives a 25% slayer xp bonus on dragon slayer tasks, and 15% more accuracy on dragons. Requires 41 defence."
             this.values[26300] = "You can carry dragonhide in here."
             this.values[26304] = "A pouch for storing bones."

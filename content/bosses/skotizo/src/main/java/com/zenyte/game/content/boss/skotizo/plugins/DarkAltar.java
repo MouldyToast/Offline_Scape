@@ -2,7 +2,7 @@ package com.zenyte.game.content.boss.skotizo.plugins;
 
 import com.zenyte.game.content.boss.skotizo.instance.SkotizoInstance;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;
 import com.zenyte.game.world.region.dynamicregion.MapBuilder;

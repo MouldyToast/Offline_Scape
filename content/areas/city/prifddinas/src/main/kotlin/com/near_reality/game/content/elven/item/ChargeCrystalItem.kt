@@ -5,7 +5,7 @@ import com.near_reality.game.content.crystal.CRYSTAL_SHARD_CHARGES_RATIO
 import com.near_reality.game.content.crystal.recipes.CrystalChargeable
 import com.near_reality.game.content.elven.produce
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction.ItemPair
 import com.zenyte.game.model.item.PairedItemOnItemPlugin
 import com.zenyte.game.world.entity.player.Player
@@ -21,7 +21,7 @@ import com.zenyte.game.world.entity.player.dialogue.options
 class ChargeCrystalItem : PairedItemOnItemPlugin {
 
     override fun handleItemOnItemAction(player: Player, from: Item, to: Item, fromSlot: Int, toSlot: Int) {
-        val (crystalItem, slot) = if (from.id == ItemId.CRYSTAL_SHARD) to to toSlot else from to fromSlot
+        val (crystalItem, slot) = if (from.id == CRYSTAL_SHARD) to to toSlot else from to fromSlot
 
         val crystalWearable = CrystalChargeable.all.find {
             it.productItemId == crystalItem.id || it.inactiveId == crystalItem.id

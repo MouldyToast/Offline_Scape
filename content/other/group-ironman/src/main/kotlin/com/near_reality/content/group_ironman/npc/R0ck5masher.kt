@@ -4,7 +4,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 /**
  * A [NPC] present in the "The Node" area that has a procedure where they mine ores,
@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.npc.NpcId
  *
  * @author Leanbow, Stan van der Bend
  */
-class R0ck5masher(private val regent: Regent) : NPC(NpcId.R0CK_5MASHER, giveOresLocation, false) {
+class R0ck5masher(private val regent: Regent) : NPC(R0CK_5MASHER, giveOresLocation, false) {
 
     private var sequenceIndex = MINE
 

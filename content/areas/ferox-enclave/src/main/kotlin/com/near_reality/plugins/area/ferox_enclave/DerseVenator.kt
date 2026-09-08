@@ -1,10 +1,10 @@
 package com.near_reality.plugins.area.ferox_enclave
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Expression
@@ -19,8 +19,8 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
 
     override fun handle() {
         bind("Talk-to") { player, npc ->
-            if (player.inventory.containsItem(ItemId.CRAWS_BOW_U) || player.inventory.containsItem(ItemId.CRAWS_BOW)) {
-                val chainmace = if (player.inventory.containsItem(ItemId.CRAWS_BOW_U)) ItemId.CRAWS_BOW_U else ItemId.CRAWS_BOW
+            if (player.inventory.containsItem(CRAWS_BOW_U) || player.inventory.containsItem(CRAWS_BOW)) {
+                val chainmace = if (player.inventory.containsItem(CRAWS_BOW_U)) CRAWS_BOW_U else CRAWS_BOW
                 if (player.inventory.containsItem(27670)) {
                     player.dialogue(npc) {
                         player("Hey. Do you know anything about this?")
@@ -38,7 +38,7 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
                         npc("500,000 coins would do nicely.")
                         options("Pay 500,000 coins to combine the fangs and bow?") {
                             "Yes" {
-                                if (player.inventory.getAmountOf(ItemId.COINS_995) >= 500_000) {
+                                if (player.inventory.getAmountOf(COINS_995) >= 500_000) {
                                     assembleBow(player, npc)
                                 } else {
                                     player.dialogue(npc) {
@@ -87,7 +87,7 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
     }
 
     private fun assembleBow(player: Player, derse: NPC) {
-        if (!player.inventory.containsItem(ItemId.CRAWS_BOW_U) && !player.inventory.containsItem(ItemId.CRAWS_BOW)) {
+        if (!player.inventory.containsItem(CRAWS_BOW_U) && !player.inventory.containsItem(CRAWS_BOW)) {
             return
         }
 
@@ -95,17 +95,17 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
             return
         }
 
-        if (player.inventory.getAmountOf(ItemId.COINS_995) < 500_000) {
+        if (player.inventory.getAmountOf(COINS_995) < 500_000) {
             return
         }
 
-        player.inventory.deleteItem(Item(ItemId.COINS_995, 500_000))
+        player.inventory.deleteItem(Item(COINS_995, 500_000))
         player.inventory.deleteItem(Item(27670))
 
-        val craws = Item(if (player.inventory.containsItem(ItemId.CRAWS_BOW_U)) ItemId.CRAWS_BOW_U else ItemId.CRAWS_BOW)
+        val craws = Item(if (player.inventory.containsItem(CRAWS_BOW_U)) CRAWS_BOW_U else CRAWS_BOW)
         player.inventory.deleteItem(craws)
 
-        val webweaver = Item(if (craws.id == ItemId.CRAWS_BOW_U) 27657 else 27660)
+        val webweaver = Item(if (craws.id == CRAWS_BOW_U) 27657 else 27660)
         webweaver.charges = craws.charges
         player.inventory.addItem(webweaver)
 
@@ -116,7 +116,7 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
     }
 
 
-    override fun getNPCs() = intArrayOf(NpcId.DERSE_VENATOR)
+    override fun getNPCs() = intArrayOf(DERSE_VENATOR)
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
         player.dialogue(npc) {
@@ -150,6 +150,6 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
 
     override fun getItems() = arrayOf(27667, 27673, 27681, 27684, 27687)
 
-    override fun getObjects() = arrayOf(NpcId.DERSE_VENATOR)
+    override fun getObjects() = arrayOf(DERSE_VENATOR)
 
 }

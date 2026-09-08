@@ -11,9 +11,9 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.utils.TimeUnit
 
@@ -25,7 +25,7 @@ internal class XarpusPoisonPhase(xarpus: Xarpus) : XarpusPhase(xarpus) {
 
     override fun onPhaseStart() {
         xarpus.animation = transformationAnim
-        xarpus.setTransformation(NpcId.XARPUS_8340)
+        xarpus.setTransformation(XARPUS_8340)
         xarpus.setLocation(xarpus.location.transform(-1, -1))
 
         val room = xarpus.room
@@ -87,7 +87,7 @@ internal class XarpusPoisonPhase(xarpus: Xarpus) : XarpusPhase(xarpus) {
     }
 
     private fun sendPoisonOrb(fromLocation: Location, toLocation: Location, newTarget: Entity?, isSplash: Boolean) {
-        val poisonSplat = WorldObject(ObjectId.ACIDIC_MIASMA, 22, getSplatDirection(toLocation), toLocation)
+        val poisonSplat = WorldObject(ACIDIC_MIASMA, 22, getSplatDirection(toLocation), toLocation)
         val delay = World.sendProjectile(
             fromLocation,
             toLocation,

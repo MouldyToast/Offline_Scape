@@ -2,19 +2,19 @@ package com.near_reality.game.content.middleman
 
 import com.google.gson.GsonBuilder
 import com.near_reality.game.content.middleman.trade.MiddleManTrade
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.util.gson.LocalDateTimeTypeAdapter
 import java.time.LocalDateTime
 
 object MiddleManConstants {
 
     val donatorPinItemIds = intArrayOf(
-        ItemId.DONATOR_PIN_5,
-        ItemId.DONATOR_PIN_10,
-        ItemId.DONATOR_PIN_25,
-        ItemId.DONATOR_PIN_35,
-        ItemId.DONATOR_PIN_50,
-        ItemId.DONATOR_PIN_100,
+        DONATOR_PIN_5,
+        DONATOR_PIN_10,
+        DONATOR_PIN_25,
+        DONATOR_PIN_35,
+        DONATOR_PIN_50,
+        DONATOR_PIN_100,
     )
 
     /**

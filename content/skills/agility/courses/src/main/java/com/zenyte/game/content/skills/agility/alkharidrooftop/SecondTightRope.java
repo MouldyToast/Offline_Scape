@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.agility.MarkOfGrace;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.RenderAnimation;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

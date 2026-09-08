@@ -6,14 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.DIAMOND
-import com.zenyte.game.item.ItemId.EMERALD
-import com.zenyte.game.item.ItemId.RUBY
-import com.zenyte.game.item.ItemId.SAPPHIRE
 
 class GreenGemstoneGems : ShopScript() {
 

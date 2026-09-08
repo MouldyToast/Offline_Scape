@@ -6,17 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BRONZE_AXE
-import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
-import com.zenyte.game.item.ItemId.IRON_AXE
-import com.zenyte.game.item.ItemId.IRON_BATTLEAXE
-import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
-import com.zenyte.game.item.ItemId.STEEL_AXE
-import com.zenyte.game.item.ItemId.STEEL_BATTLEAXE
 
 class BobSBrilliantAxes : ShopScript() {
 

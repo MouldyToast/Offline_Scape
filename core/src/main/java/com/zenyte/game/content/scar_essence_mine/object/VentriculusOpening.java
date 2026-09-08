@@ -13,12 +13,12 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectHandler;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.plugins.dialogue.ItemChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getDepositedTaintedEssenceChunks;
-import static com.zenyte.game.item.ItemId.TAINTED_ESSENCE_CHUNK;
+import static com.zenyte.game.item.ids.ItemId.TAINTED_ESSENCE_CHUNK;
 
 
 /**

@@ -1,8 +1,8 @@
 package com.near_reality.plugins.area.ferox_enclave
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -17,9 +17,9 @@ class MadamSikaro : NPCPlugin() {
     private companion object {
 
         private val VOIDWAKER_COMPONENTS = mutableListOf(
-            Item(ItemId.VOIDWAKER_HILT),
-            Item(ItemId.VOIDWAKER_BLADE),
-            Item(ItemId.VOIDWAKER_GEM)
+            Item(VOIDWAKER_HILT),
+            Item(VOIDWAKER_BLADE),
+            Item(VOIDWAKER_GEM)
         )
 
         private const val ASSEMBLED_VOIDWAKER_ATTR = "assembled_voidwaker"
@@ -58,7 +58,7 @@ class MadamSikaro : NPCPlugin() {
                         player.dialogue(npc) {
                             player("I have these parts of a weapon, do you think you could assemble it for me?")
                             npc("Hmm... yes, these are the parts of a particularly powerful weapon indeed. I can reassemble it... for a fee, of course. 500,000 coins, no less.")
-                            if (player.inventory.getAmountOf(ItemId.COINS_995) < 500_000) {
+                            if (player.inventory.getAmountOf(COINS_995) < 500_000) {
                                 player("I don't have that much on me...")
                                 npc("Well, if you come across some more, come find me again.")
                             } else {
@@ -114,12 +114,12 @@ class MadamSikaro : NPCPlugin() {
             return
         }
 
-        if (player.inventory.getAmountOf(ItemId.COINS_995) < 500_000) {
+        if (player.inventory.getAmountOf(COINS_995) < 500_000) {
             return
         }
 
         player.inventory.deleteItems(*VOIDWAKER_COMPONENTS.toTypedArray())
-        player.inventory.deleteItems(Item(ItemId.COINS_995, 500_000))
+        player.inventory.deleteItems(Item(COINS_995, 500_000))
         player.inventory.addItem(Item(27690))
 
         player.dialogue {
@@ -130,6 +130,6 @@ class MadamSikaro : NPCPlugin() {
     }
 
 
-    override fun getNPCs() = intArrayOf(NpcId.MADAM_SIKARO)
+    override fun getNPCs() = intArrayOf(MADAM_SIKARO)
 
 }

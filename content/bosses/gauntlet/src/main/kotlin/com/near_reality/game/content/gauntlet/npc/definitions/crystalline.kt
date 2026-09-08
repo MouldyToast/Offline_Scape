@@ -1,15 +1,12 @@
 package com.near_reality.game.content.gauntlet.npc.definitions
 
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCombatDefinitions
 import java.util.*
 import com.near_reality.scripts.npc.definitions.NPCDefinitionsScript
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.Entity.EntityType
 import com.zenyte.game.world.entity.Entity.EntityType.*
-import com.near_reality.game.item.CustomNpcId
-import com.near_reality.game.item.CustomNpcId.*
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType
@@ -181,68 +178,68 @@ class CrystallineNpcs : NPCDefinitionsScript() {
     }
 
     init {
-        NpcId.CRYSTALLINE_RAT.rat {
+        CRYSTALLINE_RAT.rat {
             stats { combatStats = intArrayOf(28, 32, 6, 6, 0) }
             attack { maxHit = 4 }
         }
-        NpcId.CORRUPTED_RAT.rat {
+        CORRUPTED_RAT.rat {
             stats { combatStats = intArrayOf(42, 48, 6, 6, 0) }
             attack { maxHit = 14 }
         }
 
-        NpcId.CRYSTALLINE_SPIDER.spider {
+        CRYSTALLINE_SPIDER.spider {
             stats { combatStats = intArrayOf(32, 26, 4, 4, 0) }
             attack { maxHit = 4 }
         }
-        NpcId.CORRUPTED_SPIDER.spider {
+        CORRUPTED_SPIDER.spider {
             stats { combatStats = intArrayOf(48, 39, 4, 4, 0) }
             attack { maxHit = 14 }
         }
 
-        NpcId.CRYSTALLINE_BAT.bat {
+        CRYSTALLINE_BAT.bat {
             stats { combatStats = intArrayOf(24, 68, 2, 2, 0) }
             attack { maxHit = 8 }
         }
-        NpcId.CORRUPTED_BAT.bat {
+        CORRUPTED_BAT.bat {
             stats { combatStats = intArrayOf(36, 102, 2, 2, 0) }
             attack { maxHit = 11 }
         }
 
-        NpcId.CRYSTALLINE_UNICORN.unicorn {
+        CRYSTALLINE_UNICORN.unicorn {
             stats { combatStats = intArrayOf(50, 48, 24, 24, 0) }
             attack { maxHit = 6 }
         }
-        NpcId.CORRUPTED_UNICORN.unicorn {
+        CORRUPTED_UNICORN.unicorn {
             stats { combatStats = intArrayOf(75, 72, 24, 24, 0) }
             attack { maxHit = 11 }
         }
 
-        NpcId.CRYSTALLINE_SCORPION.scorpion {
+        CRYSTALLINE_SCORPION.scorpion {
             stats { combatStats = intArrayOf(48, 106, 18, 18, 0) }
             attack { maxHit = 11 }
         }
-        NpcId.CORRUPTED_SCORPION.scorpion {
+        CORRUPTED_SCORPION.scorpion {
             stats { combatStats = intArrayOf(72, 159, 18, 18, 0) }
             attack { maxHit = 17 }
         }
 
-        NpcId.CRYSTALLINE_WOLF.wolf {
+        CRYSTALLINE_WOLF.wolf {
             stats { combatStats = intArrayOf(106, 66, 22, 22, 0) }
             attack { maxHit = 8 }
         }
-        NpcId.CORRUPTED_WOLF.wolf {
+        CORRUPTED_WOLF.wolf {
             stats { combatStats = intArrayOf(159, 99, 22, 22, 0) }
             attack { maxHit = 19 }
         }
 
-        NpcId.CRYSTALLINE_BEAR.bear {
+        CRYSTALLINE_BEAR.bear {
             stats {
                 combatStats = intArrayOf(98, 98, 98, 98, 98)
                 aggressiveStats = intArrayOf(54, 106, 0, 0, 0, 0)
             }
             attack { maxHit = 28 }
         }
-        NpcId.CORRUPTED_BEAR.bear {
+        CORRUPTED_BEAR.bear {
             stats {
                 combatStats = intArrayOf(147, 147, 98, 98, 147)
                 aggressiveStats = intArrayOf(81, 132, 0, 0, 0, 0)
@@ -250,14 +247,14 @@ class CrystallineNpcs : NPCDefinitionsScript() {
             attack { maxHit = 48 }
         }
 
-        NpcId.CRYSTALLINE_DRAGON.dragon(1701, 1703) {
+        CRYSTALLINE_DRAGON.dragon(1701, 1703) {
             stats {
                 combatStats = intArrayOf(98, 98, 98, 98, 98)
                 aggressiveStats = intArrayOf(0, 0, 54, 106, 0, 0)
             }
             attack { maxHit = 28 }
         }
-        NpcId.CORRUPTED_DRAGON.dragon(1702, 1704) {
+        CORRUPTED_DRAGON.dragon(1702, 1704) {
             stats {
                 combatStats = intArrayOf(147, 147, 98, 98, 147)
                 aggressiveStats = intArrayOf(0, 0, 146, 226, 0, 0)
@@ -265,14 +262,14 @@ class CrystallineNpcs : NPCDefinitionsScript() {
             attack { maxHit = 48 }
         }
 
-        NpcId.CRYSTALLINE_DARK_BEAST.darkBeast(1610) {
+        CRYSTALLINE_DARK_BEAST.darkBeast(1610) {
             stats {
                 combatStats = intArrayOf(98, 98, 98, 98, 98)
                 aggressiveStats = intArrayOf(0, 0, 0, 0, 54, 106)
             }
             attack { maxHit = 28 }
         }
-        NpcId.CORRUPTED_DARK_BEAST.darkBeast(1606) {
+        CORRUPTED_DARK_BEAST.darkBeast(1606) {
             stats {
                 combatStats = intArrayOf(147, 147, 98, 98, 147)
                 aggressiveStats = intArrayOf(0, 0, 0, 0, 81, 132)
@@ -280,13 +277,13 @@ class CrystallineNpcs : NPCDefinitionsScript() {
             attack { maxHit = 48 }
         }
 
-        NpcId.CRYSTALLINE_HUNLLEF.crystallineHunllef()
-        NpcId.CRYSTALLINE_HUNLLEF_9022.crystallineHunllef()
-        NpcId.CRYSTALLINE_HUNLLEF_9023.crystallineHunllef()
-        NpcId.CRYSTALLINE_HUNLLEF_9024.crystallineHunllef()
-        NpcId.CORRUPTED_HUNLLEF.corruptedHunllef()
-        NpcId.CORRUPTED_HUNLLEF_9036.corruptedHunllef()
-        NpcId.CORRUPTED_HUNLLEF_9037.corruptedHunllef()
-        NpcId.CORRUPTED_HUNLLEF_9038.corruptedHunllef()
+        CRYSTALLINE_HUNLLEF.crystallineHunllef()
+        CRYSTALLINE_HUNLLEF_9022.crystallineHunllef()
+        CRYSTALLINE_HUNLLEF_9023.crystallineHunllef()
+        CRYSTALLINE_HUNLLEF_9024.crystallineHunllef()
+        CORRUPTED_HUNLLEF.corruptedHunllef()
+        CORRUPTED_HUNLLEF_9036.corruptedHunllef()
+        CORRUPTED_HUNLLEF_9037.corruptedHunllef()
+        CORRUPTED_HUNLLEF_9038.corruptedHunllef()
     }
 }

@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.herblore.mixer;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import mgi.types.config.items.ItemDefinitions;
 
 /**

@@ -2,7 +2,7 @@ package com.zenyte.game.content.pyramidplunder.object;
 
 import com.zenyte.game.content.pyramidplunder.PlunderRoom;
 import com.zenyte.game.content.pyramidplunder.area.PyramidPlunderArea;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.SoundEffect;

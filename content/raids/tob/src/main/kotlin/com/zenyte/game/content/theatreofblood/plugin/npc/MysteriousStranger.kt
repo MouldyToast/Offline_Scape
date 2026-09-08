@@ -2,7 +2,7 @@ package com.zenyte.game.content.theatreofblood.plugin.npc
 
 import com.zenyte.game.content.theatreofblood.plugin.dialogue.MysteriousStrangerDialogue
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.VarManager
@@ -43,7 +43,7 @@ class MysteriousStranger : NPCPlugin() {
         fun completedInitialDialogue(player: Player) =
             player.varManager.getBitValue(DIALOGUE_VARBIT) == 1
 
-        private val npcs = intArrayOf(NpcId.MYSTERIOUS_STRANGER, 10875, 10876) // TODO
+        private val npcs = intArrayOf(MYSTERIOUS_STRANGER, 10875, 10876) // TODO
 
         fun startInitialDialogue(player: Player, npcID: Int = npcs[0]) =
             player.dialogueManager.start(MysteriousStrangerDialogue(player, npcID))

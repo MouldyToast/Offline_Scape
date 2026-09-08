@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.dialogue.PlainChat
 
@@ -43,5 +43,5 @@ class RopeExitSlashBash : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.ROPE_12255)
+    override fun getObjects() = arrayOf(ROPE_12255)
 }

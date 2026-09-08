@@ -3,7 +3,7 @@ package com.near_reality.game.content.elven.npc
 import com.near_reality.game.content.crystal.CRYSTAL_SHARD
 import com.near_reality.game.content.crystal.CrystalSeed
 import com.zenyte.game.item.Item
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
@@ -16,7 +16,7 @@ fun openSeedTradeWindow(player: Player) {
     val seedItems = seedTypes.map { Item(it.itemId) }.toTypedArray()
 
     if (seedItems.isEmpty()) {
-        player.dialogue(NpcId.AMROD) {
+        player.dialogue(AMROD) {
             npc("You do not seem to have any crystal seeds adventurer.")
         }
         return

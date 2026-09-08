@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 
-import static com.zenyte.game.world.entity.npc.NpcId.DURIAL_321;
+import static com.zenyte.game.npc.ids.NpcId.DURIAL_321;
 
 public class Durial321 extends BreachEntity implements Spawnable, CombatScript {
 

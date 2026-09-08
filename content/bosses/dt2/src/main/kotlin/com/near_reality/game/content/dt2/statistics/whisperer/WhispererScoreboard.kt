@@ -7,7 +7,7 @@ import com.zenyte.game.GameInterface.DUKE_SCOREBOARD
 import com.zenyte.game.GameInterface.WHISPERER_SCOREBOARD
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**

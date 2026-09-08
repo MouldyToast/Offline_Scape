@@ -6,11 +6,10 @@ import com.near_reality.content.group_ironman.player.finalisedIronmanGroup
 import com.near_reality.content.group_ironman.player.inIronmanGroupCreationInterface
 import com.near_reality.content.group_ironman.player.ironmanGroupType
 import com.zenyte.game.item.Item
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.near_reality.scripts.`object`.actions.ObjectActionScript
-import com.zenyte.game.world.`object`.ObjectId
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.*
 
 class ArmourCrateObjectaction : ObjectActionScript() {
@@ -18,7 +17,7 @@ class ArmourCrateObjectaction : ObjectActionScript() {
     fun Int.armourCrate(groupType: IronmanGroupType) = invoke {
         when {
             player.finalisedIronmanGroup != null ->
-                player.dialogue(NpcId.GROUP_IRON_TUTOR) {
+                player.dialogue(GROUP_IRON_TUTOR) {
                     npc("You cannot change your Group Iron Mode as you are already part of a ${player.finalisedIronmanGroup!!.allMembers.size}-player Iron group.")
                 }
             player.inIronmanGroupCreationInterface ->

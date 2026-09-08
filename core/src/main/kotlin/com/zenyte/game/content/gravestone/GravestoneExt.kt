@@ -9,7 +9,7 @@ import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.content.trouver.TrouverData
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.containers.LootingBag
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
@@ -17,9 +17,6 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import kotlin.math.min
-import com.zenyte.game.item.ItemId.COMPLETIONIST_CAPE
-import com.zenyte.game.item.ItemId.COMPLETIONIST_CAPE_T
-import com.zenyte.game.item.ItemId.MASTER_COMP_CAPE
 
 /**
  * @author Kris | 13/06/2022
@@ -62,9 +59,9 @@ object GravestoneExt {
     }
 
     fun Player.unlockGravestone(): Boolean {
-        val coinsInBank = bank.getAmountOf(ItemId.COINS_995)
-        val coinsInInventory = inventory.getAmountOf(ItemId.COINS_995)
-        val coinsInRetrievalService = retrievalService.container.getAmountOf(ItemId.COINS_995)
+        val coinsInBank = bank.getAmountOf(COINS_995)
+        val coinsInInventory = inventory.getAmountOf(COINS_995)
+        val coinsInRetrievalService = retrievalService.container.getAmountOf(COINS_995)
         val total = coinsInBank + coinsInInventory + coinsInRetrievalService
         val cache = getRetrievalServiceCache(retrievalService.container.items.values)
         val cost = cache.unlockCost
@@ -79,19 +76,19 @@ object GravestoneExt {
         if (coinsInInventory > 0) {
             val toRemove = min(required, coinsInInventory)
             required -= toRemove
-            inventory.deleteItem(Item(ItemId.COINS_995, toRemove))
+            inventory.deleteItem(Item(COINS_995, toRemove))
             val amount = toRemove.format()
             sendMessage("Payment has been taken from your inventory: $amount x Coins")
         }
         if (required > 0 && coinsInBank > 0) {
             val toRemove = min(required, coinsInBank)
-            bank.remove(Item(ItemId.COINS_995, toRemove))
+            bank.remove(Item(COINS_995, toRemove))
             val amount = toRemove.format()
             sendMessage("Payment has been taken from your bank: $amount x Coins")
         }
         if (required > 0 && coinsInRetrievalService > 0) {
             val toRemove = min(required, coinsInRetrievalService)
-            retrievalService.container.remove(Item(ItemId.COINS_995, toRemove))
+            retrievalService.container.remove(Item(COINS_995, toRemove))
             retrievalService.container.refresh(this)
             val amount = toRemove.format()
             sendMessage("Payment has been taken from your gravestone: $amount x Coins")
@@ -151,13 +148,13 @@ object GravestoneExt {
             items += bonePouchItems
         }
 
-        if (inventory.containsItem(ItemId.RUNE_POUCH) || inventory.containsItem(ItemId.DIVINE_RUNE_POUCH)) {
+        if (inventory.containsItem(RUNE_POUCH) || inventory.containsItem(DIVINE_RUNE_POUCH)) {
             val runePouchItems = runePouch.container.items.values.map(Item::copy).asSequence()
             runePouch.container.clear()
             items += runePouchItems
         }
 
-        if (inventory.containsItem(ItemId.RUNE_POUCH_L)) {
+        if (inventory.containsItem(RUNE_POUCH_L)) {
             val secondaryRunePouchItems = secondaryRunePouch.container.items.values.map(Item::copy).asSequence()
             secondaryRunePouch.container.clear()
             items += secondaryRunePouchItems
@@ -306,32 +303,32 @@ object GravestoneExt {
             COMPLETIONIST_CAPE, COMPLETIONIST_CAPE_T, MASTER_COMP_CAPE
             -> 500_000
 
-            ItemId.MAX_CAPE, 13329, 13331, 13333, 13335, 21285,
+            MAX_CAPE, 13329, 13331, 13333, 13335, 21285,
             21776, 21780, 21784, 21898, 20760, 13337,
-            ItemId.ASSEMBLER_MAX_CAPE_L,
-            ItemId.INFERNAL_MAX_CAPE_L,
-            ItemId.FIRE_MAX_CAPE_L,
-            ItemId.IMBUED_SARADOMIN_MAX_CAPE_L,
-            ItemId.IMBUED_ZAMORAK_MAX_CAPE_L,
-            ItemId.IMBUED_GUTHIX_MAX_CAPE_L,
-            ItemId.INFERNAL_CAPE,
-            ItemId.MASORI_ASSEMBLER,
-            ItemId.AVERNIC_DEFENDER
+            ASSEMBLER_MAX_CAPE_L,
+            INFERNAL_MAX_CAPE_L,
+            FIRE_MAX_CAPE_L,
+            IMBUED_SARADOMIN_MAX_CAPE_L,
+            IMBUED_ZAMORAK_MAX_CAPE_L,
+            IMBUED_GUTHIX_MAX_CAPE_L,
+            INFERNAL_CAPE,
+            MASORI_ASSEMBLER,
+            AVERNIC_DEFENDER
             -> 300_000
 
-            ItemId.FIRE_CAPE,
-            ItemId.DRAGON_DEFENDER,
-            ItemId.AVAS_ASSEMBLER,
-            ItemId.VOID_MELEE_HELM,
+            FIRE_CAPE,
+            DRAGON_DEFENDER,
+            AVAS_ASSEMBLER,
+            VOID_MELEE_HELM,
             26463, 26465, 26467, 26469, 26471, 26473, 26475, 26477,
-            ItemId.VOID_KNIGHT_GLOVES,
-            ItemId.ELITE_VOID_TOP,
-            ItemId.ELITE_VOID_ROBE,
-            ItemId.VOID_KNIGHT_TOP,
-            ItemId.VOID_KNIGHT_ROBE,
-            ItemId.VOID_RANGER_HELM,
-            ItemId.VOID_MAGE_HELM,
-            ItemId.RUNE_POUCH
+            VOID_KNIGHT_GLOVES,
+            ELITE_VOID_TOP,
+            ELITE_VOID_ROBE,
+            VOID_KNIGHT_TOP,
+            VOID_KNIGHT_ROBE,
+            VOID_RANGER_HELM,
+            VOID_MAGE_HELM,
+            RUNE_POUCH
             -> 150_000
 
             else -> 0L

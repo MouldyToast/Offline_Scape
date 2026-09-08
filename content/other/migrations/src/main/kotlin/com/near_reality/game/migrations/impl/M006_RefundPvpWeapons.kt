@@ -3,8 +3,7 @@ package com.near_reality.game.migrations.impl
 import com.near_reality.game.migrations.ActiveMigration
 import com.near_reality.game.migrations.GameMigration
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.BLOOD_MONEY
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import mgi.types.config.items.ItemDefinitions
 
@@ -34,7 +33,7 @@ class M006_RefundPvpWeapons : GameMigration {
     }
 
     private fun Int.getRefund(): Item =
-        if (this == ItemId.VESTAS_LONGSWORD) Item(BLOOD_MONEY, 16_000)
+        if (this == VESTAS_LONGSWORD) Item(BLOOD_MONEY, 16_000)
         else Item(BLOOD_MONEY, 10_000)
 
     override fun id(): Int = 6

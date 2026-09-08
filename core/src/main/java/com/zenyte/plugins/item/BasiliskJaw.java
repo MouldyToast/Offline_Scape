@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.plugins.dialogue.ItemChat;
 
-import static com.zenyte.game.item.ItemId.BASILISK_JAW;
+import static com.zenyte.game.item.ids.ItemId.BASILISK_JAW;
 
 public class BasiliskJaw extends ItemPlugin {
     @Override

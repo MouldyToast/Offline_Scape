@@ -5,7 +5,7 @@ import com.near_reality.game.content.wilderness.revenant.npc.drop.GoodRevenantDr
 import com.near_reality.game.content.wilderness.revenant.npc.drop.MediocreReventantDrop
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.util.Direction
 import com.zenyte.game.util.Utils
@@ -136,7 +136,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
     }
 
     override fun isAcceptableTarget(entity: Entity): Boolean {
-        return entity !is Player || entity.equipment.getItem(EquipmentSlot.HANDS)?.id != ItemId.BRACELET_OF_ETHEREUM
+        return entity !is Player || entity.equipment.getItem(EquipmentSlot.HANDS)?.id != com.zenyte.game.item.ids.BRACELET_OF_ETHEREUM
     }
 
     override fun drop(tile: Location) {
@@ -160,7 +160,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
             var amount: Int = Utils.random(1, max(1.0, sqrt(level * 3.0)).toInt())
             if (killer.getNumericAttribute("ethereum absorption").toInt() == 1) {
                 val bracelet = killer.equipment.getId(EquipmentSlot.HANDS)
-                if (bracelet == ItemId.BRACELET_OF_ETHEREUM || bracelet == ItemId.BRACELET_OF_ETHEREUM_UNCHARGED) {
+                if (bracelet == com.zenyte.game.item.ids.BRACELET_OF_ETHEREUM || bracelet == BRACELET_OF_ETHEREUM_UNCHARGED) {
                     val braceletItem = killer.gloves
                     if (braceletItem.charges + amount > 16000) {
                         val amt = 16000 - braceletItem.charges
@@ -170,21 +170,21 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
                         braceletItem.charges += amount
                         amount = 0
                     }
-                    if (bracelet == ItemId.BRACELET_OF_ETHEREUM_UNCHARGED) {
-                        braceletItem.id = ItemId.BRACELET_OF_ETHEREUM
+                    if (bracelet == BRACELET_OF_ETHEREUM_UNCHARGED) {
+                        braceletItem.id = com.zenyte.game.item.ids.BRACELET_OF_ETHEREUM
                         killer.equipment.refresh(EquipmentSlot.HANDS.slot)
                     }
                 }
             }
             if(amount > 0)
-                dropItem(killer, Item(ItemId.REVENANT_ETHER, amount))
+                dropItem(killer, Item(REVENANT_ETHER, amount))
 
             when {
                 a == 0 -> dropItem(killer, GoodRevenantDrop.get(killer), tile, false)
                 a < (chanceB + 1) -> dropItem(killer, MediocreReventantDrop.get(), tile, false)
                 else -> {
                     val coinRewardDrop = Utils.random(5_000, 17_500)
-                    dropItem(killer, Item(ItemId.COINS_995, coinRewardDrop), tile, true)
+                    dropItem(killer, Item(COINS_995, coinRewardDrop), tile, true)
                 }
             }
         } catch (e: Exception) {
@@ -199,7 +199,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
     companion object {
         private val HEAL_GFX = Graphics(1221)
         private val MAGIC_HIT_GFX = Graphics(1454, 0, 92)
-        private val BRACELET_OF_ETHEREUM = Item(ItemId.BRACELET_OF_ETHEREUM)
+        private val BRACELET_OF_ETHEREUM = Item(com.zenyte.game.item.ids.BRACELET_OF_ETHEREUM)
 
         fun isRevenant(id: Int): Boolean {
             return id == 7881 || id >= 7931 && id <= 7940

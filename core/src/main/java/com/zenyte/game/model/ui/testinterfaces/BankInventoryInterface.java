@@ -3,7 +3,7 @@ package com.zenyte.game.model.ui.testinterfaces;
 import com.near_reality.game.world.entity.player.container.impl.BankUtil;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.model.ui.SwitchPlugin;
 import com.zenyte.game.net.packet.PacketDispatcher;

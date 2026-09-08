@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPCCombat;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.pathfinding.RouteFinder;
 import com.zenyte.game.world.entity.pathfinding.RouteResult;
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;

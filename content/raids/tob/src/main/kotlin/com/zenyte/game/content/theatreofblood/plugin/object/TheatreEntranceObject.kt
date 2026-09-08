@@ -7,7 +7,7 @@ import com.zenyte.game.content.theatreofblood.interfaces.PartyOverlayInterface
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.content.theatreofblood.plugin.item.VerzikCrystalShard
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.Location
@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
 import com.zenyte.game.world.`object`.ObjectHandler
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.dialogue.PlainChat
 
@@ -53,7 +53,7 @@ class TheatreEntranceObject : ObjectAction {
                     )
                         .onOptionOne {
                             val plugin =
-                                ObjectHandler.getPlugin(ObjectId.NOTICE_BOARD_32655) ?: return@onOptionOne
+                                ObjectHandler.getPlugin(NOTICE_BOARD_32655) ?: return@onOptionOne
                             plugin.handle(
                                 player,
                                 noticeBoardObject,
@@ -177,13 +177,13 @@ class TheatreEntranceObject : ObjectAction {
 
     private companion object {
 
-        val objects = arrayOf(ObjectId.THEATRE_OF_BLOOD_32653)
+        val objects = arrayOf(THEATRE_OF_BLOOD_32653)
 
         val noticeBoardObject = WorldObject(32655, 10, 3, Location(3662, 3218, 0))
 
         fun enter(player: Player, party: RaidingParty) {
-            if (player.containsItem(ItemId.DAWNBRINGER)) {
-                player.dialogue { item(Item(ItemId.DAWNBRINGER), "You can't enter the Theatre of Blood when you possess a Dawnbringer.") }
+            if (player.containsItem(DAWNBRINGER)) {
+                player.dialogue { item(Item(DAWNBRINGER), "You can't enter the Theatre of Blood when you possess a Dawnbringer.") }
                 return
             }
 

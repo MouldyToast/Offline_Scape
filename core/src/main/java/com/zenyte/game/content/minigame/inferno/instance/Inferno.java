@@ -14,7 +14,7 @@ import com.zenyte.game.content.skills.prayer.Prayer;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.music.Music;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.TickTask;

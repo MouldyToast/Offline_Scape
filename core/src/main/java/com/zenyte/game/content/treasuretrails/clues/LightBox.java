@@ -2,7 +2,7 @@ package com.zenyte.game.content.treasuretrails.clues;
 
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
 import it.unimi.dsi.fastutil.ints.*;

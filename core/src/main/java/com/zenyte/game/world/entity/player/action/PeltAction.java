@@ -2,7 +2,7 @@ package com.zenyte.game.world.entity.player.action;
 
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.CollisionUtil;
 import com.zenyte.game.util.ProjectileUtils;
 import com.zenyte.game.world.Position;

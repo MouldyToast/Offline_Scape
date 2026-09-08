@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.agility.wildernesscourse;
 
 import com.zenyte.game.content.skills.agility.AbstractAgilityCourse;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
 

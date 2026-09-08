@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.farming.plugins;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;

@@ -1,9 +1,9 @@
 package com.near_reality.plugins.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnObjectAction
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
@@ -17,22 +17,22 @@ import com.zenyte.game.world.`object`.WorldObject
 @Suppress("UNUSED")
 class StaffOfBalanceCreation : ItemOnObjectAction {
 
-    override fun getItems() = arrayOf(ItemId.GUTHIXIAN_ICON, ItemId.STAFF_OF_THE_DEAD)
+    override fun getItems() = arrayOf(GUTHIXIAN_ICON, STAFF_OF_THE_DEAD)
 
     override fun getObjects() = arrayOf("Juna")
 
     override fun handleItemOnObjectAction(player: Player, item: Item, slot: Int, `object`: WorldObject?) {
-        player.dialogue(NpcId.JUNA) {
+        player.dialogue(JUNA) {
             when {
                 // Using a staff of the dead on Juna without having a Guthixian icon
-                !player.hasInInventory(ItemId.GUTHIXIAN_ICON) -> {
+                !player.hasInInventory(GUTHIXIAN_ICON) -> {
                     npc("A Staff of the Dead! I would happily honour the dead, " +
                             "and all the stories they must have known, " +
                             "by combining your staff with an icon of my master, Guthix.")
                     npc("Perhaps you can find such an icon and bring it to me.")
                 }
                 // Using a Guthixian icon on Juna without having a staff of the dead
-                !player.hasInInventory(ItemId.STAFF_OF_THE_DEAD) && !player.hasEquipped(ItemId.STAFF_OF_THE_DEAD) -> {
+                !player.hasInInventory(STAFF_OF_THE_DEAD) && !player.hasEquipped(STAFF_OF_THE_DEAD) -> {
                     player("Can you do something with this icon?")
                     plain("Juna examines your Guthixian icon.")
                     npc("So many aeons have passed since these were made. " +
@@ -42,12 +42,12 @@ class StaffOfBalanceCreation : ItemOnObjectAction {
                             "if you bring one to me.")
                     when {
                         // Using a Guthixian icon on Juna while wielding a staff of light
-                        player.hasEquipped(ItemId.STAFF_OF_LIGHT) -> {
+                        player.hasEquipped(STAFF_OF_LIGHT) -> {
                             player("My weapon is sort of like a Staff of the Dead, don't you think?")
                             npc("I cannot combine it with that.")
                         }
                         // Using a Guthixian icon on Juna while wielding a staff of balance
-                        player.hasEquipped(ItemId.STAFF_OF_BALANCE) -> {
+                        player.hasEquipped(STAFF_OF_BALANCE) -> {
                             player("My weapon is sort of like a Staff of the Dead, don't you think?")
                             npc("It was, but I appear to have combined it with an icon already.")
                         }
@@ -64,16 +64,16 @@ class StaffOfBalanceCreation : ItemOnObjectAction {
                         "Combine them. I understand it can't be undone." {
                             player.dialogue {
                                 player("Combine them. I understand it can't be undone.").executeAction {
-                                    if (player.hasInInventory(ItemId.GUTHIXIAN_ICON)) {
+                                    if (player.hasInInventory(GUTHIXIAN_ICON)) {
                                         val inventory = when {
-                                            player.hasInInventory(ItemId.STAFF_OF_THE_DEAD) -> player.inventory
-                                            player.hasEquipped(ItemId.STAFF_OF_THE_DEAD) -> player.equipment
+                                            player.hasInInventory(STAFF_OF_THE_DEAD) -> player.inventory
+                                            player.hasEquipped(STAFF_OF_THE_DEAD) -> player.equipment
                                             else -> return@executeAction
                                         }
-                                        if (!player.inventory.deleteItem(ItemId.GUTHIXIAN_ICON, 1).isFailure) {
-                                            val slotId = inventory.container.getSlotOf(ItemId.STAFF_OF_THE_DEAD)
+                                        if (!player.inventory.deleteItem(GUTHIXIAN_ICON, 1).isFailure) {
+                                            val slotId = inventory.container.getSlotOf(STAFF_OF_THE_DEAD)
                                             assert(slotId >= 0)
-                                            inventory.replaceItem(ItemId.STAFF_OF_BALANCE, 1, slotId)
+                                            inventory.replaceItem(STAFF_OF_BALANCE, 1, slotId)
                                         }
                                     }
                                 }

@@ -2,7 +2,7 @@ package com.near_reality.game.content.dt2.npc.vardorvis
 
 import com.near_reality.game.content.dt2.area.VardorvisInstance
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
@@ -16,7 +16,7 @@ import com.zenyte.game.world.`object`.WorldObject
  */
 class VardovisRocksEntry : ObjectAction {
 
-    private val awakenedOrb = Item(ItemId.AWAKENERS_ORB)
+    private val awakenedOrb = Item(AWAKENERS_ORB)
 
     override fun handleObjectAction(player: Player?, `object`: WorldObject?, name: String?, optionId: Int, option: String?) {
         player ?: return; `object` ?: return; name ?: return; option ?: return

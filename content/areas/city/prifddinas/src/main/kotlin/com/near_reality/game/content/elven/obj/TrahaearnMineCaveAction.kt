@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -42,5 +42,5 @@ class TrahaearnMineCaveAction : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.CAVE_ENTRANCE_36556, ObjectId.STEPS_36215)
+    override fun getObjects() = arrayOf(CAVE_ENTRANCE_36556, STEPS_36215)
 }

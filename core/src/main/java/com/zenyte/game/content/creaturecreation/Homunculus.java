@@ -1,6 +1,6 @@
 package com.zenyte.game.content.creaturecreation;
 
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 
 /**

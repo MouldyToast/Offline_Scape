@@ -5,7 +5,7 @@ import com.zenyte.game.content.minigame.puropuro.PuroPuroArea;
 import com.zenyte.game.content.skills.hunter.node.Impling;
 import com.zenyte.game.content.skills.hunter.npc.ImplingNPC;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;
 import com.zenyte.game.util.Utils;

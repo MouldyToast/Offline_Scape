@@ -3,7 +3,7 @@ package com.near_reality.game.content.gauntlet.`object`
 import com.zenyte.game.model.ui.InterfacePosition
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 @Suppress("UNUSED")
@@ -29,8 +29,8 @@ class GauntletEgniolPotions : ObjectAction {
     }
 
     override fun getObjects() = arrayOf(
-        ObjectId.EGNIOL_POTIONS, // corrupted
-        ObjectId.EGNIOL_POTIONS_36076
+        EGNIOL_POTIONS, // corrupted
+        EGNIOL_POTIONS_36076
     )
 
     private companion object {

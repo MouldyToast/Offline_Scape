@@ -1,7 +1,7 @@
 package com.zenyte.game.content.chambersofxeric.rewards;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 
 /**
  * @author Kris | 22/09/2019 20:50

@@ -4,7 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import com.near_reality.game.world.PlayerEvent;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

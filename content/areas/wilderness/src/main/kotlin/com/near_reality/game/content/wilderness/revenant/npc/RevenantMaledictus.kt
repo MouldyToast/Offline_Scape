@@ -4,7 +4,7 @@ import com.near_reality.game.content.wilderness.revenant.npc.drop.GoodRevenantDr
 import com.near_reality.game.content.wilderness.revenant.npc.drop.MediocreReventantDrop
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.HintArrow
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Direction
@@ -20,7 +20,7 @@ import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
@@ -47,7 +47,7 @@ private val iceBarrageImpactGraphics = Graphics(369)
  */
 @Suppress("unused")
 class RevenantMaledictus(val spawn: Spawn) :
-    NPC(NpcId.REVENANT_MALEDICTUS, spawn.tile, Direction.SOUTH, 5),
+    NPC(REVENANT_MALEDICTUS, spawn.tile, Direction.SOUTH, 5),
     CombatScript
 {
 
@@ -176,7 +176,7 @@ class RevenantMaledictus(val spawn: Spawn) :
 
         val sortedDamageDealerMap = damageMap.entries.sortedByDescending { it.value }
         val (topDamageDealer, _) = sortedDamageDealerMap[0]
-        dropItem(topDamageDealer, Item(if (Utils.roll(50.0)) ItemId.ANCIENT_EMBLEM else ItemId.ANCIENT_TOTEM))
+        dropItem(topDamageDealer, Item(if (Utils.roll(50.0)) ANCIENT_EMBLEM else ANCIENT_TOTEM))
 
         // Roll two drops using the Revenant dragon table
         for (i in 0..2) {
@@ -194,11 +194,11 @@ class RevenantMaledictus(val spawn: Spawn) :
         sortedDamageDealerMap.forEachIndexed { index, (damager, _) ->
             // Activate Forinthry surge for the top 3 damage dealers, if they have an Amulet of avarice equipped
             if (index < 3) {
-                if (damager.equipment?.getId(EquipmentSlot.AMULET) == ItemId.AMULET_OF_AVARICE) {
+                if (damager.equipment?.getId(EquipmentSlot.AMULET) == AMULET_OF_AVARICE) {
                     com.near_reality.game.content.wilderness.revenant.ForinthrySurge.activate(damager)
                 }
             }
-            dropItem(damager, Item(ItemId.BLIGHTED_SUPER_RESTORE4), damager.location, true)
+            dropItem(damager, Item(BLIGHTED_SUPER_RESTORE4), damager.location, true)
             val blightedFood = randomBlightedFood()
             dropItem(damager, blightedFood, damager.location, true)
             dropItem(damager, blightedFood, damager.location, true)
@@ -210,9 +210,9 @@ class RevenantMaledictus(val spawn: Spawn) :
      */
     private fun randomBlightedFood(): Item {
         val options = arrayOf(
-            Item(ItemId.BLIGHTED_ANGLERFISH),
-            Item(ItemId.BLIGHTED_KARAMBWAN),
-            Item(ItemId.BLIGHTED_MANTA_RAY)
+            Item(BLIGHTED_ANGLERFISH),
+            Item(BLIGHTED_KARAMBWAN),
+            Item(BLIGHTED_MANTA_RAY)
         )
         return options.random()
     }

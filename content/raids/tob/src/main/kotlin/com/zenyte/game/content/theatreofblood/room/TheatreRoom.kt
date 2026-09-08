@@ -13,7 +13,7 @@ import com.zenyte.game.content.theatreofblood.interfaces.TheatreOfBloodSuppliesI
 import com.zenyte.game.content.theatreofblood.party.RaidingParty.Companion.getPlayer
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikViturRoom
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
@@ -26,7 +26,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -141,7 +141,7 @@ internal abstract class TheatreRoom(
         for (i in 0..27) {
             val item = inventory.getItem(i) ?: continue
             val id = item.id
-            if (id == ItemId.DAWNBRINGER) {
+            if (id == DAWNBRINGER) {
                 World.spawnFloorItem(item, location, -1, player, player, -1, -1)
                 inventory[i] = null
             }
@@ -149,7 +149,7 @@ internal abstract class TheatreRoom(
         inventory.refreshAll()
 
         val weapon = player.weapon?: return
-        if (weapon.id == ItemId.DAWNBRINGER) {
+        if (weapon.id == DAWNBRINGER) {
             World.spawnFloorItem(weapon, location, -1, player, player, -1, -1)
             player.equipment.replaceItem(-1, 0, EquipmentSlot.WEAPON.slot)
         }
@@ -485,7 +485,7 @@ internal abstract class TheatreRoom(
 
     override fun dropOnGround(player: Player, item: Item): Boolean {
 
-        if (item.id == ItemId.DAWNBRINGER) {
+        if (item.id == DAWNBRINGER) {
             spawnFloorItem(item, owner = player, visibleToIronmen = true)
             return false
         }
@@ -498,7 +498,7 @@ internal abstract class TheatreRoom(
     }
 
     override fun invisibleTicks(player: Player?, item: Item): Int {
-        return if (item.id == ItemId.DAWNBRINGER) -1 else Int.MAX_VALUE
+        return if (item.id == DAWNBRINGER) -1 else Int.MAX_VALUE
     }
 
     open fun playerDealtDamage(player: Player, damage: Int) {
@@ -540,7 +540,7 @@ internal abstract class TheatreRoom(
             if (!check) {
                 val message = "You must stay and fight!"
                 player.sendMessage(message)
-                player.dialogueManager.start(NPCChat(player, NpcId.VYRE_ORATOR, message))
+                player.dialogueManager.start(NPCChat(player, VYRE_ORATOR, message))
             }
             return check
         }

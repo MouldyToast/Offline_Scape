@@ -3,7 +3,7 @@ package com.near_reality.game.content.middleman.trade.offer
 import com.near_reality.game.content.middleman.middleManController
 import com.near_reality.game.content.middleman.trade.MiddleManPendingTrade
 import com.zenyte.game.GameInterface
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.ui.Interface
 import com.zenyte.game.model.ui.Interface.Handler
 import com.zenyte.game.packet.sendItemOptionScript
@@ -77,7 +77,7 @@ class MiddleManTradeOfferInterface : Interface() {
                         CLICK_OP3, CLICK_OP4, CLICK_OP5, CLICK_OP7, CLICK_OP8, CLICK_OP10
                     )
                 }
-                sendClientScript(10589, ItemId.COINS, accepterOSRSMillions * 1_000_000, 1603 component 50)
+                sendClientScript(10589, COINS, accepterOSRSMillions * 1_000_000, 1603 component 50)
                 sendUpdateItemContainer(accepterContainer)
                 sendComponentItem(`interface`, 21, requesterDonatorPin.id, requesterDonatorPin.amount)
                 sendComponentText(`interface`, 16, ItemDefinitions.nameOf(requesterDonatorPin.id))
@@ -189,13 +189,13 @@ class MiddleManTradeOfferInterface : Interface() {
         accepter.packetDispatcher.sendComponentText(`interface`, 59, "${accepterOSRSMillions}M")
         requester.packetDispatcher.sendClientScript(
             10589,
-            ItemId.COINS,
+            COINS,
             accepterOSRSMillions * 1_000_000,
             1603 component 50
         )
         accepter.packetDispatcher.sendClientScript(
             10589,
-            ItemId.COINS,
+            COINS,
             accepterOSRSMillions * 1_000_000,
             1603 component 50
         )

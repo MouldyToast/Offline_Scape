@@ -18,7 +18,7 @@ import com.zenyte.game.world.entity.npc.impl.slayer.superior.SuperiorNPC;
 import com.zenyte.game.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static com.zenyte.game.world.entity.npc.NpcId.BASILISK_SENTINEL;
+import static com.zenyte.game.npc.ids.NpcId.BASILISK_SENTINEL;
 
 public class BasiliskSentinel extends SuperiorNPC implements CombatScript {
 

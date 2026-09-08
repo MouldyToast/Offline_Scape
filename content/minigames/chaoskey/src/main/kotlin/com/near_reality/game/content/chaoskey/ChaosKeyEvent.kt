@@ -2,7 +2,7 @@ package com.near_reality.game.content.chaoskey
 
 import com.google.common.eventbus.Subscribe
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.HintArrow
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager.schedule
@@ -25,7 +25,7 @@ class ChaosKeyEvent : WorldTask {
     /**
      * The Chaos Key item in the game world.
      */
-    var chaosKey: Item = Item(ItemId.CHAOS_KEY_ACTIVE)
+    var chaosKey: Item = Item(CHAOS_KEY_ACTIVE)
 
     /**
      * The location where the Chaos Key is spawned.
@@ -45,7 +45,7 @@ class ChaosKeyEvent : WorldTask {
 
         // Handle Chaos Key holder logic
         val looter = World.getPlayers().stream()
-            .filter { p: Player -> p.inventory.containsItem(ItemId.CHAOS_KEY_ACTIVE) }
+            .filter { p: Player -> p.inventory.containsItem(CHAOS_KEY_ACTIVE) }
             .findFirst()
 
         looter.ifPresent { player: Player ->
@@ -70,11 +70,11 @@ class ChaosKeyEvent : WorldTask {
                     }
             } else {
                 if (player.inventory.deleteItem(
-                        ItemId.CHAOS_KEY_ACTIVE,
+                        CHAOS_KEY_ACTIVE,
                         1
                     ).result == RequestResult.SUCCESS
                 ) {
-                    player.inventory.addItem(ItemId.CHAOS_KEY, 1)
+                    player.inventory.addItem(CHAOS_KEY, 1)
                     World.getPlayers()
                         .forEach(Consumer { p: Player ->
                             p.sendMessage("<img=54> Event: " + player.username + " made it out of the Wilderness with the <col=800002>Chaos Key</col>.")
@@ -150,9 +150,9 @@ class ChaosKeyEvent : WorldTask {
         @Subscribe
         @JvmStatic fun onLogout(ev: LogoutEvent) {
             val player = ev.player
-            if (player.inventory.containsItem(ItemId.CHAOS_KEY_ACTIVE)) {
-                player.inventory.deleteItem(ItemId.CHAOS_KEY_ACTIVE, 1)
-                World.spawnFloorItem(Item(ItemId.CHAOS_KEY_ACTIVE), player.location, null, 0, 500)
+            if (player.inventory.containsItem(CHAOS_KEY_ACTIVE)) {
+                player.inventory.deleteItem(CHAOS_KEY_ACTIVE, 1)
+                World.spawnFloorItem(Item(CHAOS_KEY_ACTIVE), player.location, null, 0, 500)
                 World.getPlayers().forEach(Consumer<Player> { p: Player ->
                     p.sendMessage("<img=54> Event: " + player.username + " logged out with the <col=800002>Chaos Key</col>.")
                     p.sendMessage(

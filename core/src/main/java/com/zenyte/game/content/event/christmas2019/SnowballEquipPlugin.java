@@ -1,7 +1,7 @@
 package com.zenyte.game.content.event.christmas2019;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.Container;
 import com.zenyte.plugins.equipment.equip.EquipPlugin;

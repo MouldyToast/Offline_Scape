@@ -4,12 +4,12 @@ import com.zenyte.game.world.WorldThread;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.DoorHandler;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import it.unimi.dsi.fastutil.ints.Int2LongMap;
 import it.unimi.dsi.fastutil.ints.Int2LongOpenHashMap;
 
-import static com.zenyte.game.world.object.ObjectId.DOOR_6614;
+import static com.zenyte.game.obj.ids.ObjectId.DOOR_6614;
 
 /**
  * @author Kris | 10. nov 2017 : 22:01.53

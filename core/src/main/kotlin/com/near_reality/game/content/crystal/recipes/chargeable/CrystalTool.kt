@@ -6,7 +6,7 @@ import com.near_reality.game.content.skills.mining.PickAxeDefinition
 import com.near_reality.game.content.skills.woodcutting.AxeDefinition
 import com.zenyte.game.content.skills.fishing.FishingTool
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.degradableitems.DegradeType
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.masks.Animation
@@ -37,10 +37,10 @@ sealed class CrystalTool(
     override val type: DegradeType = DegradeType.CUSTOM
 
     object Axe : CrystalTool(
-        productItemId = ItemId.CRYSTAL_AXE,
-        inactiveId = ItemId.CRYSTAL_AXE_INACTIVE,
+        productItemId = CRYSTAL_AXE,
+        inactiveId = CRYSTAL_AXE_INACTIVE,
         skillRequirement = WOODCUTTING to 71,
-        Item(ItemId.DRAGON_AXE)
+        Item(DRAGON_AXE)
     ), AxeDefinition {
         override val cutTime: Int
             get() = if (Utils.random(0, 100) >= 45) 1 else 2
@@ -55,10 +55,10 @@ sealed class CrystalTool(
      * TODO: The Crystal harpoon also has a 1/3 chance of catching a Crystallised harpoonfish when fishing in Tempoross Cove.
      */
     object Harpoon : CrystalTool(
-        productItemId = ItemId.CRYSTAL_HARPOON,
-        inactiveId = ItemId.CRYSTAL_HARPOON_INACTIVE,
+        productItemId = CRYSTAL_HARPOON,
+        inactiveId = CRYSTAL_HARPOON_INACTIVE,
         skillRequirement = FISHING to 71,
-        Item(ItemId.DRAGON_HARPOON)
+        Item(DRAGON_HARPOON)
     ) {
         fun `is`(tool: FishingTool.Tool) =
             productItemId == tool.id || inactiveId == tool.id
@@ -73,10 +73,10 @@ sealed class CrystalTool(
      *       an uncharged crystal pickaxe has the same mining capabilities as a dragon pickaxe.
      */
     object Pickaxe : CrystalTool(
-        productItemId = ItemId.CRYSTAL_PICKAXE,
-        inactiveId = ItemId.CRYSTAL_PICKAXE_INACTIVE,
+        productItemId = CRYSTAL_PICKAXE,
+        inactiveId = CRYSTAL_PICKAXE_INACTIVE,
         skillRequirement = MINING to 71,
-        Item(ItemId.DRAGON_PICKAXE)
+        Item(DRAGON_PICKAXE)
     ), PickAxeDefinition {
         override val id: Int = productItemId
         override val level: Int = 71
@@ -87,11 +87,11 @@ sealed class CrystalTool(
     }
 
     object CelestialSignet : CrystalTool(
-        productItemId = ItemId.CELESTIAL_SIGNET_UNCHARGED,
-        inactiveId = ItemId.CELESTIAL_RING_UNCHARGED,
+        productItemId = CELESTIAL_SIGNET_UNCHARGED,
+        inactiveId = CELESTIAL_RING_UNCHARGED,
         skillRequirement = MINING to 70,
-        Item(ItemId.CELESTIAL_RING_UNCHARGED),
-        Item(ItemId.STARDUST, 1_000),
+        Item(CELESTIAL_RING_UNCHARGED),
+        Item(STARDUST, 1_000),
     ) {
         override val crystalShardCost: Int = 100
 

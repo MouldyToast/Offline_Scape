@@ -2,7 +2,7 @@ package com.zenyte.game.content.kebos.konar.plugins.item;
 
 import com.zenyte.game.content.skills.prayer.ectofuntus.Bonecrusher;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Utils;

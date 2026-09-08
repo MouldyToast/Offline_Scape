@@ -2,7 +2,7 @@ package com.near_reality.game.content.araxxor.cave_hunt
 
 import com.zenyte.game.content.follower.impl.BossPet
 import com.zenyte.game.world.entity.ForceTalk
-import com.zenyte.game.world.entity.npc.NpcId.ARANCINI
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 
 /**

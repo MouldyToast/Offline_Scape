@@ -1,9 +1,9 @@
 package com.zenyte.game.content.theatreofblood.plugin.`object`
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -36,20 +36,20 @@ class GrandBookshelvesObject : ObjectAction {
     }
 
     override fun getObjects() = arrayOf(
-        ObjectId.GRAND_BOOKSHELF,
-        ObjectId.GRAND_BOOKSHELF_33001,
-        ObjectId.GRAND_BOOKSHELF_33002,
-        ObjectId.GRAND_BOOKSHELF_33003
+        GRAND_BOOKSHELF,
+        GRAND_BOOKSHELF_33001,
+        GRAND_BOOKSHELF_33002,
+        GRAND_BOOKSHELF_33003
     )
 
     private companion object {
         val bookItemIds = arrayOf(
-            ItemId.SERAFINAS_DIARY,
-            ItemId.THE_BUTCHER,
-            ItemId.ARACHNIDS_OF_VAMPYRIUM,
-            ItemId.THE_SHADOW_REALM,
-            ItemId.THE_WILD_HUNT,
-            ItemId.VERZIK_VITUR__PATIENT_RECORD
+            SERAFINAS_DIARY,
+            THE_BUTCHER,
+            ARACHNIDS_OF_VAMPYRIUM,
+            THE_SHADOW_REALM,
+            THE_WILD_HUNT,
+            VERZIK_VITUR__PATIENT_RECORD
         )
     }
 }

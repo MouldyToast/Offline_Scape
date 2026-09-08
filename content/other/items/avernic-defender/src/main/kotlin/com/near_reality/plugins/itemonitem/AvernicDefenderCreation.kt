@@ -1,7 +1,7 @@
 package com.near_reality.plugins.itemonitem
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
@@ -24,7 +24,7 @@ class AvernicDefenderCreation : ItemOnItemAction {
                 "Yes." {
                     val inventory = player.inventory
                     if (inventory.deleteItems(from, to).result == RequestResult.SUCCESS)
-                        inventory.addItem(ItemId.AVERNIC_DEFENDER, 1)
+                        inventory.addItem(AVERNIC_DEFENDER, 1)
                 }
                 "No." {}
             }
@@ -32,5 +32,5 @@ class AvernicDefenderCreation : ItemOnItemAction {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.AVERNIC_DEFENDER_HILT, ItemId.DRAGON_DEFENDER)
+        intArrayOf(AVERNIC_DEFENDER_HILT, DRAGON_DEFENDER)
 }

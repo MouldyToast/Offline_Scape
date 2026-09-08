@@ -5,7 +5,7 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.content.chambersofxeric.map.RaidMap;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.net.packet.PacketDispatcher;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;

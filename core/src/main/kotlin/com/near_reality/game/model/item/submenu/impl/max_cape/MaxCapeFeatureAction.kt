@@ -13,9 +13,7 @@ import com.zenyte.game.world.entity.player.variables.TickVariable
 import com.zenyte.logger.NearRealityLogger
 import com.zenyte.plugins.item.capes.NewMaxCapes
 import com.zenyte.utils.TimeUnit
-import com.zenyte.game.item.ItemId.BRONZE_CROSSBOW
-import com.zenyte.game.item.ItemId.MITH_GRAPPLE_9419
-import com.zenyte.game.item.ItemId.PESTLE_AND_MORTAR
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

@@ -7,7 +7,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.area.plugins.DeathPlugin
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -24,8 +24,8 @@ internal class MaidenOfSugadintiRoom(
 
     private val maiden = MaidenOfSugadinti(this)
     private val maidenObjectPlaceholder =
-        WorldObject(ObjectId.THE_MAIDEN_OF_SUGADINTI, 10, 3, getLocation(MaidenOfSugadinti.spawnLocation))
-    private val poolOfBlood = WorldObject(ObjectId.POOL_OF_BLOOD, 10, 0, getLocation(MaidenOfSugadinti.spawnLocation))
+        WorldObject(THE_MAIDEN_OF_SUGADINTI, 10, 3, getLocation(MaidenOfSugadinti.spawnLocation))
+    private val poolOfBlood = WorldObject(POOL_OF_BLOOD, 10, 0, getLocation(MaidenOfSugadinti.spawnLocation))
 
     override fun onLoad() {
         if (!completed) World.spawnObject(maidenObjectPlaceholder)
@@ -46,7 +46,7 @@ internal class MaidenOfSugadintiRoom(
     override var nextRoomType : TheatreRoomType? = TheatreRoomType.THE_PESTILENT_BLOAT
 
     override val entranceLocation: Location = getLocation(3219, 4459, 0)
-    override val vyreOrator = WorldObject(ObjectId.VYRE_ORATOR, 11, 0, getLocation(3192, 4447, 0))
+    override val vyreOrator = WorldObject(VYRE_ORATOR, 11, 0, getLocation(3192, 4447, 0))
     override val spectatingLocation: Location = getLocation(3190, 4453, 0)
     override var boss: TheatreBossNPC<out TheatreRoom>? = maiden
     override val healthBarType = HealthBarType.REGULAR

@@ -5,9 +5,10 @@ import com.zenyte.game.content.theatreofblood.room.*
 import com.zenyte.game.content.theatreofblood.room.xarpus.npc.Xarpus
 import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
+import com.zenyte.game.obj.ids.VYRE_ORATOR
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
 
@@ -29,13 +30,13 @@ internal class XarpusRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, room: T
     override fun onLoad() {}
 
     override val entranceLocation: Location = getLocation(3170, 4375, PLANE)
-    override val vyreOrator = WorldObject(ObjectId.VYRE_ORATOR, 11, 2, getLocation(3169, 4376, PLANE))
+    override val vyreOrator = WorldObject(VYRE_ORATOR, 11, 2, getLocation(3169, 4376, PLANE))
     override val spectatingLocation: Location? = null
     override var boss: TheatreBossNPC<out TheatreRoom>? = xarpus
 
     override fun isEnteringBossRoom(barrier: WorldObject, player: Player) = if (barrier.rotation == 2) player.y < barrier.y else player.y > barrier.y
 
-    override val healthBarType get() = if (xarpus.id == NpcId.XARPUS) HealthBarType.DISABLED else HealthBarType.REGULAR
+    override val healthBarType get() = if (xarpus.id == XARPUS) HealthBarType.DISABLED else HealthBarType.REGULAR
 
     override var nextRoomType : TheatreRoomType? = TheatreRoomType.VERZIK_VITUR
 

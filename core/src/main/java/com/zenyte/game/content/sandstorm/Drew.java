@@ -4,7 +4,7 @@ import com.zenyte.game.content.sandstorm.dialogue.DrewCheckDialogue;
 import com.zenyte.game.content.sandstorm.dialogue.DrewClaimDialogue;
 import com.zenyte.game.content.sandstorm.dialogue.DrewDepositDialogue;
 import com.zenyte.game.content.sandstorm.dialogue.DrewGreetingDialogue;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 
 /**

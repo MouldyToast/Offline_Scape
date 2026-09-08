@@ -6,19 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ADAMANT_CHAINBODY
-import com.zenyte.game.item.ItemId.ADAMANT_MED_HELM
-import com.zenyte.game.item.ItemId.BLACK_CHAINBODY
-import com.zenyte.game.item.ItemId.BLACK_KITESHIELD
-import com.zenyte.game.item.ItemId.MITHRIL_CHAINBODY
-import com.zenyte.game.item.ItemId.MITHRIL_MED_HELM
-import com.zenyte.game.item.ItemId.STEEL_CHAINBODY
-import com.zenyte.game.item.ItemId.STEEL_MED_HELM
-import com.zenyte.game.item.ItemId.STEEL_SQ_SHIELD
 
 class QualityArmourShop : ShopScript() {
 

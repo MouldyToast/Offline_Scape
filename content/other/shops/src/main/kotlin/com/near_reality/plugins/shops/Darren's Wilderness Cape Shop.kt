@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.TEAM14_CAPE
-import com.zenyte.game.item.ItemId.TEAM24_CAPE
-import com.zenyte.game.item.ItemId.TEAM34_CAPE
-import com.zenyte.game.item.ItemId.TEAM44_CAPE
-import com.zenyte.game.item.ItemId.TEAM4_CAPE
 
 class DarrenSWildernessCapeShop : ShopScript() {
 

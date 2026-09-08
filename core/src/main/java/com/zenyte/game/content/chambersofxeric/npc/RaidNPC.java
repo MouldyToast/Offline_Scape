@@ -4,7 +4,7 @@ import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.CollisionUtil;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;

@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.pathfinding.events.player.ObjectEvent;
 import com.zenyte.game.world.entity.pathfinding.events.player.TileEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.ObjectStrategy;
@@ -13,13 +13,13 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
 import com.zenyte.game.world.object.ObjectHandler;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.plugins.dialogue.DoubleItemChat;
 import com.zenyte.plugins.dialogue.PlainChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getDepositedTaintedEssenceChunks;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Zei | Glabay-Studios

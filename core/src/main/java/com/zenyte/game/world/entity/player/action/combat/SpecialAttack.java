@@ -3,7 +3,7 @@ package com.zenyte.game.world.entity.player.action.combat;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
@@ -51,7 +51,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 import static com.zenyte.game.world.entity.player.action.combat.SpecialAttackScript.*;
 import static com.zenyte.game.world.entity.player.action.combat.SpecialType.*;
 

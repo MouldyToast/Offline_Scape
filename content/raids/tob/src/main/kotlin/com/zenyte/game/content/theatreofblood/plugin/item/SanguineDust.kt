@@ -1,10 +1,10 @@
 package com.zenyte.game.content.theatreofblood.plugin.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.SANGUINE_DUST
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -32,5 +32,5 @@ class SanguineDust : ItemOnNPCAction {
 
     override fun getItems(): Array<Any> = arrayOf(SANGUINE_DUST)
 
-    override fun getObjects(): Array<Any> = arrayOf(NpcId.LIL_ZIK_8337)
+    override fun getObjects(): Array<Any> = arrayOf(LIL_ZIK_8337)
 }

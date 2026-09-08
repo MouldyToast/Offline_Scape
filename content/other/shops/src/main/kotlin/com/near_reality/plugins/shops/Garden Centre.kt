@@ -6,33 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BAGGED_BLUEBELLS
-import com.zenyte.game.item.ItemId.BAGGED_DAFFODILS
-import com.zenyte.game.item.ItemId.BAGGED_DEAD_TREE
-import com.zenyte.game.item.ItemId.BAGGED_FLOWER
-import com.zenyte.game.item.ItemId.BAGGED_MAGIC_TREE
-import com.zenyte.game.item.ItemId.BAGGED_MAPLE_TREE
-import com.zenyte.game.item.ItemId.BAGGED_MARIGOLDS
-import com.zenyte.game.item.ItemId.BAGGED_NICE_TREE
-import com.zenyte.game.item.ItemId.BAGGED_OAK_TREE
-import com.zenyte.game.item.ItemId.BAGGED_PLANT_1
-import com.zenyte.game.item.ItemId.BAGGED_PLANT_2
-import com.zenyte.game.item.ItemId.BAGGED_PLANT_3
-import com.zenyte.game.item.ItemId.BAGGED_ROSES
-import com.zenyte.game.item.ItemId.BAGGED_SUNFLOWER
-import com.zenyte.game.item.ItemId.BAGGED_WILLOW_TREE
-import com.zenyte.game.item.ItemId.BAGGED_YEW_TREE
-import com.zenyte.game.item.ItemId.FANCY_HEDGE
-import com.zenyte.game.item.ItemId.NICE_HEDGE
-import com.zenyte.game.item.ItemId.SMALL_BOX_HEDGE
-import com.zenyte.game.item.ItemId.TALL_BOX_HEDGE
-import com.zenyte.game.item.ItemId.TALL_FANCY_HEDGE
-import com.zenyte.game.item.ItemId.THORNY_HEDGE
-import com.zenyte.game.item.ItemId.TOPIARY_HEDGE
 
 class GardenCentre : ShopScript() {
 

@@ -9,46 +9,16 @@ import com.near_reality.scripts.npc.drops.table.tables.seed.RareSeedDropTable
 import com.zenyte.game.content.achievementdiary.DiaryComplexity
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.SHARK
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.AIR_BATTLESTAFF
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.AIR_TALISMAN
-import com.zenyte.game.item.ItemId.BATTLESTAFF
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DAGANNOTH_BONES
-import com.zenyte.game.item.ItemId.DAGANNOTH_HIDE
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGON_AXE
-import com.zenyte.game.item.ItemId.EARTH_BATTLESTAFF
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.EARTH_TALISMAN
-import com.zenyte.game.item.ItemId.ENSOULED_DAGANNOTH_HEAD
-import com.zenyte.game.item.ItemId.FARSEER_HELM
-import com.zenyte.game.item.ItemId.FREMENNIK_BLADE
-import com.zenyte.game.item.ItemId.FREMENNIK_HELM
-import com.zenyte.game.item.ItemId.FREMENNIK_SHIELD
-import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.MUD_BATTLESTAFF
-import com.zenyte.game.item.ItemId.MUD_RUNE
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.OYSTER_PEARLS
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.SEERS_RING
-import com.zenyte.game.item.ItemId.SKELETAL_BOTTOMS
-import com.zenyte.game.item.ItemId.SKELETAL_TOP
-import com.zenyte.game.item.ItemId.WATER_BATTLESTAFF
-import com.zenyte.game.item.ItemId.WATER_TALISMAN
 
 class DagannothPrimeDroptable : NPCDropTableScript() {
 
@@ -96,7 +66,7 @@ class DagannothPrimeDroptable : NPCDropTableScript() {
                 AIR_TALISMAN quantity (25..75).noted rarity 3
                 WATER_TALISMAN quantity (1..76).noted rarity 3
                 // Other
-                ItemId.SHARK quantity 5 rarity 4
+                SHARK quantity 5 rarity 4
                 COINS_995 quantity (500..1109) rarity 3
                 OYSTER_PEARLS quantity 1 rarity 3
                 PURE_ESSENCE quantity 150.noted rarity 3

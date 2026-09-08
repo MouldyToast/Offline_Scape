@@ -1,7 +1,7 @@
 package com.zenyte.game.content.minigame.barrows;
 
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.MinimapState;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.net.packet.PacketDispatcher;

@@ -10,8 +10,7 @@ import kotlin.script.experimental.api.defaultImports
 object NPCDropsCompilation : ScriptCompilationConfiguration(
     NPCScriptCompilation, body = {
         defaultImports(
-            "com.zenyte.game.item.ItemId",
-            "com.zenyte.game.item.ItemId.*",
+            "com.zenyte.game.item.ids.*",
 
             "com.zenyte.game.world.entity.npc.drop.matrix.Drop",
             "com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE"

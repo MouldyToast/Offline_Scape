@@ -1,7 +1,7 @@
 package com.zenyte.game.model.item.actions;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.world.broadcasts.BroadcastType;
 import com.zenyte.game.world.broadcasts.WorldBroadcasts;
@@ -11,9 +11,9 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 
 import java.util.List;
 
-import static com.zenyte.game.item.ItemId.*;
-import static com.zenyte.game.item.ItemId.PEGASIAN_BOOTS;
-import static com.zenyte.game.item.ItemId.PRIMORDIAL_BOOTS;
+import static com.zenyte.game.item.ids.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.PEGASIAN_BOOTS;
+import static com.zenyte.game.item.ids.ItemId.PRIMORDIAL_BOOTS;
 
 /**
  * @author Glabay | Glabay-Studios

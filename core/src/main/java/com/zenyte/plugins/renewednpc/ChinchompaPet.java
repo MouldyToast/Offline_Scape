@@ -3,7 +3,7 @@ package com.zenyte.plugins.renewednpc;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 

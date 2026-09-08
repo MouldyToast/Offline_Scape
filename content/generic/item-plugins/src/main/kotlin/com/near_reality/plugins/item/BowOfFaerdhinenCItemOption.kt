@@ -2,7 +2,7 @@ package com.near_reality.plugins.item
 
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.Player
@@ -33,13 +33,13 @@ class BowOfFaerdhinenCItemOption : ItemPlugin() {
 
 	override fun getItems(): IntArray {
 		return intArrayOf(
-			ItemId.BOW_OF_FAERDHINEN_C_25884,
-			ItemId.BOW_OF_FAERDHINEN_C_25886,
-			ItemId.BOW_OF_FAERDHINEN_C_25888,
-			ItemId.BOW_OF_FAERDHINEN_C_25890,
-			ItemId.BOW_OF_FAERDHINEN_C_25892,
-			ItemId.BOW_OF_FAERDHINEN_C_25894,
-			ItemId.BOW_OF_FAERDHINEN_C_25896,
+			BOW_OF_FAERDHINEN_C_25884,
+			BOW_OF_FAERDHINEN_C_25886,
+			BOW_OF_FAERDHINEN_C_25888,
+			BOW_OF_FAERDHINEN_C_25890,
+			BOW_OF_FAERDHINEN_C_25892,
+			BOW_OF_FAERDHINEN_C_25894,
+			BOW_OF_FAERDHINEN_C_25896,
 		)
 	}
 

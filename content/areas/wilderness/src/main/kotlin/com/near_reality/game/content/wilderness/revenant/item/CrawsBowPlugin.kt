@@ -2,7 +2,7 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.HashBiMap
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 
 /**
  * Handles the item container actions of the craw's bow.
@@ -12,9 +12,9 @@ import com.zenyte.game.item.ItemId
 @Suppress("unused")
 class CrawsBowPlugin : AbstractRevenantWeaponPlugin(
     chargedToUnchargedIdMap = HashBiMap.create<Int, Int>().apply {
-        put(ItemId.CRAWS_BOW, ItemId.CRAWS_BOW_U)
+        put(CRAWS_BOW, CRAWS_BOW_U)
     },
     dismantleIngredientsByUnchargedIdMap = mapOf(
-        ItemId.CRAWS_BOW_U to arrayOf(Item(ItemId.REVENANT_ETHER, 7_500))
+        CRAWS_BOW_U to arrayOf(Item(REVENANT_ETHER, 7_500))
     )
 )

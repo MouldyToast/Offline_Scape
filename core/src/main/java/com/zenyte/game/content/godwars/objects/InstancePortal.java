@@ -9,7 +9,7 @@ import com.zenyte.game.content.godwars.instance.GodwarsInstance;
 import com.zenyte.game.content.godwars.instance.InstanceConstants;
 import com.zenyte.game.content.godwars.npcs.DyingKnight;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.World;

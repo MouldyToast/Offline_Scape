@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.BurningAmuletRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,19 +36,19 @@ class BurningAmuletSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.BURNING_AMULET5 to ItemId.BURNING_AMULET4,
-        ItemId.BURNING_AMULET4 to ItemId.BURNING_AMULET3,
-        ItemId.BURNING_AMULET3 to ItemId.BURNING_AMULET2,
-        ItemId.BURNING_AMULET2 to ItemId.BURNING_AMULET1,
-        ItemId.BURNING_AMULET1 to -1,
+        BURNING_AMULET5 to BURNING_AMULET4,
+        BURNING_AMULET4 to BURNING_AMULET3,
+        BURNING_AMULET3 to BURNING_AMULET2,
+        BURNING_AMULET2 to BURNING_AMULET1,
+        BURNING_AMULET1 to -1,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.BURNING_AMULET5,
-            ItemId.BURNING_AMULET4,
-            ItemId.BURNING_AMULET3,
-            ItemId.BURNING_AMULET2,
-            ItemId.BURNING_AMULET1
+            BURNING_AMULET5,
+            BURNING_AMULET4,
+            BURNING_AMULET3,
+            BURNING_AMULET2,
+            BURNING_AMULET1
         )
 }

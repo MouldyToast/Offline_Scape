@@ -2,7 +2,7 @@ package com.zenyte.game.content.treasuretrails.plugins;
 
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
 import com.zenyte.game.content.treasuretrails.npcs.UriNPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 

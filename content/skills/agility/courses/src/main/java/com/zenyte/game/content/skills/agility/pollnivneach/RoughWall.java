@@ -7,7 +7,7 @@ import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

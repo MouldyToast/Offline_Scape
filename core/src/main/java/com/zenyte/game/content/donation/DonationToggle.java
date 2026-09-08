@@ -2,7 +2,7 @@ package com.zenyte.game.content.donation;
 
 import com.zenyte.game.content.skills.runecrafting.Runecrafting;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.ChargesManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Analytics;

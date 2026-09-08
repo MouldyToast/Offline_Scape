@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 
 /**
@@ -20,7 +20,7 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript
  * @author Jire
  */
 internal class NylocasVasilias(room: NylocasRoom) :
-    TheatreBossNPC<NylocasRoom>(room, NpcId.NYLOCAS_VASILIAS, room.getLocation(3294, 4247)),
+    TheatreBossNPC<NylocasRoom>(room, NYLOCAS_VASILIAS, room.getLocation(3294, 4247)),
     CombatScript {
 
     var type: NylocasType?

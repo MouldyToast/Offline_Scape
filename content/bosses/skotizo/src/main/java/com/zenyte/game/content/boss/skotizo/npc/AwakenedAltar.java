@@ -2,7 +2,7 @@ package com.zenyte.game.content.boss.skotizo.npc;
 
 import com.zenyte.game.content.boss.skotizo.instance.SkotizoInstance;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.utils.TimeUnit;

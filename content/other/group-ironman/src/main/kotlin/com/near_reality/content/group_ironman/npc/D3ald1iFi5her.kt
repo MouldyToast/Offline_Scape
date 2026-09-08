@@ -5,7 +5,7 @@ import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.ForceTalk
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.Spawnable
 
 @Suppress("unused")
@@ -23,7 +23,7 @@ class D3ald1iFi5her(id: Int, tile: Location?, facing: Direction?, radius: Int)
     }
 
     override fun validate(id: Int, name: String?): Boolean =
-        id == NpcId.D3AD1I_F15HER
+        id == D3AD1I_F15HER
 
     private companion object {
         val MESSAGES = arrayOf(

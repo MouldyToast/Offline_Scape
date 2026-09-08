@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.ImmutableLocation
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.RSPolygon
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -151,49 +151,49 @@ class NexGodwarsInstance(clan: String, allocatedArea: AllocatedArea)
             )
         )
 
-        killcountNPCS.add(NPC(NpcId.ASHUELOT_REIS_11289, getLocation(Location(2904, 5203, 0)), Direction.SOUTH, 4).spawn())
+        killcountNPCS.add(NPC(ASHUELOT_REIS_11289, getLocation(Location(2904, 5203, 0)), Direction.SOUTH, 4).spawn())
         WorldTasksManager.schedule(varTask, 0, 1)
     }
 
     override fun possibleKillcountMonsters(): IntArrayList = IntArrayList.of(
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
-        NpcId.SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
+        SPIRITUAL_RANGER_11291,
 
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
-        NpcId.SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
+        SPIRITUAL_WARRIOR_11290,
 
-        NpcId.SPIRITUAL_MAGE_11292,
-        NpcId.SPIRITUAL_MAGE_11292,
-        NpcId.SPIRITUAL_MAGE_11292,
-        NpcId.SPIRITUAL_MAGE_11292,
-        NpcId.SPIRITUAL_MAGE_11292,
+        SPIRITUAL_MAGE_11292,
+        SPIRITUAL_MAGE_11292,
+        SPIRITUAL_MAGE_11292,
+        SPIRITUAL_MAGE_11292,
+        SPIRITUAL_MAGE_11292,
 
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
-        NpcId.BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
+        BLOOD_REAVER,
     )
 
     override fun possibleSpawnTiles(): List<Location> = listOf(

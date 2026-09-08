@@ -3,7 +3,7 @@ package com.near_reality.game.content.toa
 import com.zenyte.game.content.tombsofamascut.InvocationCategoryType
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidParty
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
@@ -112,22 +112,22 @@ object TOARewardHelper {
     private infix fun Player.and(party: TOARaidParty) = this to party
     private fun Int.isShit() = this < 1500
 
-    private val shit = Item(ItemId.FOSSILISED_DUNG)
-    private val akkhaRemnant = Item(ItemId.REMNANT_OF_AKKHA)
-    private val zebakRemnant = Item(ItemId.REMNANT_OF_ZEBAK)
-    private val babaRemnant = Item(ItemId.REMNANT_OF_BABA)
-    private val kephriRemnant = Item(ItemId.REMNANT_OF_KEPHRI)
-    private val ancientRemnant = Item(ItemId.ANCIENT_REMNANT)
-    private val masoriKit = Item(ItemId.MASORI_CRAFTING_KIT)
-    private val menaphiteKit = Item(ItemId.MENAPHITE_ORNAMENT_KIT)
-    private val cursedPhalanx = Item(ItemId.CURSED_PHALANX)
-    private val threadOfElidinis = Item(ItemId.THREAD_OF_ELIDINIS)
-    private val eliteClueScroll = Item(ItemId.SCROLL_BOX_ELITE)
+    private val shit = Item(FOSSILISED_DUNG)
+    private val akkhaRemnant = Item(REMNANT_OF_AKKHA)
+    private val zebakRemnant = Item(REMNANT_OF_ZEBAK)
+    private val babaRemnant = Item(REMNANT_OF_BABA)
+    private val kephriRemnant = Item(REMNANT_OF_KEPHRI)
+    private val ancientRemnant = Item(ANCIENT_REMNANT)
+    private val masoriKit = Item(MASORI_CRAFTING_KIT)
+    private val menaphiteKit = Item(MENAPHITE_ORNAMENT_KIT)
+    private val cursedPhalanx = Item(CURSED_PHALANX)
+    private val threadOfElidinis = Item(THREAD_OF_ELIDINIS)
+    private val eliteClueScroll = Item(SCROLL_BOX_ELITE)
 
     private val jewels = listOf(
-        Item(ItemId.BREACH_OF_THE_SCARAB),
-        Item(ItemId.JEWEL_OF_THE_SUN),
-        Item(ItemId.EYE_OF_THE_CORRUPTOR)
+        Item(BREACH_OF_THE_SCARAB),
+        Item(JEWEL_OF_THE_SUN),
+        Item(EYE_OF_THE_CORRUPTOR)
     )
 
     private fun MutableList<Item>.rewardShit() = this.add(shit)
@@ -146,13 +146,13 @@ object TOARewardHelper {
     private fun MutableList<Item>.hasMoreRoom() = this.size < 6
     private fun rolls() = 3
     private fun TOARaidParty.eligibleForTertiaryRewards() = this.totalDeaths == 0
-    private fun Pair<Player, TOARaidParty>.eligibleForMasoriCK() = second.completedRaidLevel >= 350 && !first.containsAny(ItemId.MASORI_CRAFTING_KIT)
-    private fun Pair<Player, TOARaidParty>.eligibleForMenaphiteOK() = second.completedRaidLevel >= 400 && !first.containsAny(ItemId.MENAPHITE_ORNAMENT_KIT)
-    private fun Pair<Player, TOARaidParty>.eligibleForAkkhaRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.AKKHA) && !first.containsAny(ItemId.REMNANT_OF_AKKHA)
-    private fun Pair<Player, TOARaidParty>.eligibleForZebakRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.ZEBAK) && !first.containsAny(ItemId.REMNANT_OF_ZEBAK)
-    private fun Pair<Player, TOARaidParty>.eligibleForBaBaRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.BA_BA) && !first.containsAny(ItemId.REMNANT_OF_BABA)
-    private fun Pair<Player, TOARaidParty>.eligibleForKephriRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.KEPHRI) && !first.containsAny(ItemId.REMNANT_OF_KEPHRI)
-    private fun Pair<Player, TOARaidParty>.eligibleForAncientRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.THE_WARDENS) && !first.containsAny(ItemId.ANCIENT_REMNANT)
+    private fun Pair<Player, TOARaidParty>.eligibleForMasoriCK() = second.completedRaidLevel >= 350 && !first.containsAny(MASORI_CRAFTING_KIT)
+    private fun Pair<Player, TOARaidParty>.eligibleForMenaphiteOK() = second.completedRaidLevel >= 400 && !first.containsAny(MENAPHITE_ORNAMENT_KIT)
+    private fun Pair<Player, TOARaidParty>.eligibleForAkkhaRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.AKKHA) && !first.containsAny(REMNANT_OF_AKKHA)
+    private fun Pair<Player, TOARaidParty>.eligibleForZebakRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.ZEBAK) && !first.containsAny(REMNANT_OF_ZEBAK)
+    private fun Pair<Player, TOARaidParty>.eligibleForBaBaRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.BA_BA) && !first.containsAny(REMNANT_OF_BABA)
+    private fun Pair<Player, TOARaidParty>.eligibleForKephriRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.KEPHRI) && !first.containsAny(REMNANT_OF_KEPHRI)
+    private fun Pair<Player, TOARaidParty>.eligibleForAncientRemnant() = second.completedRaidLevel >= 450 && second.partySettings.allActive(InvocationCategoryType.THE_WARDENS) && !first.containsAny(ANCIENT_REMNANT)
     private fun Pair<Player, TOARaidParty>.eligibleForCursedPhalanx() = second.completedRaidLevel >= 500
 
     private fun getPointsPerUniqueChance(raidLevel: Int): Int {
@@ -170,34 +170,34 @@ object TOARewardHelper {
     private fun Int.random(): Int = (Math.random() * (this + 1)).toInt()
 
     private val commonLoots = buildList {
-        add(TOARewardPair(ItemId.COINS_995, 1))
-        add(TOARewardPair(ItemId.DEATH_RUNE, 15))
-        add(TOARewardPair(ItemId.SOUL_RUNE, 30))
-        add(TOARewardPair(ItemId.BLOOD_RUNE, 40))
-        add(TOARewardPair(ItemId.WRATH_RUNE, 50))
-        add(TOARewardPair(ItemId.GOLD_ORE, 90))
-        add(TOARewardPair(ItemId.DRAGON_DART_TIP, 100))
-        add(TOARewardPair(ItemId.UNCUT_SAPPHIRE, 200))
-        add(TOARewardPair(ItemId.UNCUT_EMERALD, 215))
-        add(TOARewardPair(ItemId.GOLD_BAR, 200))
-        add(TOARewardPair(ItemId.POTATO_CACTUS, 250))
-        add(TOARewardPair(ItemId.RAW_SHARK, 250))
-        add(TOARewardPair(ItemId.UNCUT_RUBY, 300))
-        add(TOARewardPair(ItemId.UNCUT_DIAMOND, 400))
-        add(TOARewardPair(ItemId.RAW_MANTA_RAY, 450))
-        add(TOARewardPair(ItemId.CACTUS_SPINE, 600))
-        add(TOARewardPair(ItemId.UNCUT_DRAGONSTONE, 600))
-        add(TOARewardPair(ItemId.BATTLESTAFF, 1100))
-        add(TOARewardPair(ItemId.COCONUT_MILK, 1100))
-        add(TOARewardPair(ItemId.LILY_OF_THE_SANDS, 1100))
-        add(TOARewardPair(ItemId.TOADFLAX_SEED, 1400))
-        add(TOARewardPair(ItemId.RANARR_SEED, 1500))
-        add(TOARewardPair(ItemId.TORSTOL_SEED, 1500))
-        add(TOARewardPair(ItemId.SNAPDRAGON_SEED, 1500))
-        add(TOARewardPair(ItemId.DRAGON_MED_HELM, 4000))
-        add(TOARewardPair(ItemId.MAGIC_SEED, 3500))
-        add(TOARewardPair(ItemId.BLOOD_ESSENCE, 7500))
-        add(TOARewardPair(ItemId.CRYSTAL_KEY, 8000))
+        add(TOARewardPair(COINS_995, 1))
+        add(TOARewardPair(DEATH_RUNE, 15))
+        add(TOARewardPair(SOUL_RUNE, 30))
+        add(TOARewardPair(BLOOD_RUNE, 40))
+        add(TOARewardPair(WRATH_RUNE, 50))
+        add(TOARewardPair(GOLD_ORE, 90))
+        add(TOARewardPair(DRAGON_DART_TIP, 100))
+        add(TOARewardPair(UNCUT_SAPPHIRE, 200))
+        add(TOARewardPair(UNCUT_EMERALD, 215))
+        add(TOARewardPair(GOLD_BAR, 200))
+        add(TOARewardPair(POTATO_CACTUS, 250))
+        add(TOARewardPair(RAW_SHARK, 250))
+        add(TOARewardPair(UNCUT_RUBY, 300))
+        add(TOARewardPair(UNCUT_DIAMOND, 400))
+        add(TOARewardPair(RAW_MANTA_RAY, 450))
+        add(TOARewardPair(CACTUS_SPINE, 600))
+        add(TOARewardPair(UNCUT_DRAGONSTONE, 600))
+        add(TOARewardPair(BATTLESTAFF, 1100))
+        add(TOARewardPair(COCONUT_MILK, 1100))
+        add(TOARewardPair(LILY_OF_THE_SANDS, 1100))
+        add(TOARewardPair(TOADFLAX_SEED, 1400))
+        add(TOARewardPair(RANARR_SEED, 1500))
+        add(TOARewardPair(TORSTOL_SEED, 1500))
+        add(TOARewardPair(SNAPDRAGON_SEED, 1500))
+        add(TOARewardPair(DRAGON_MED_HELM, 4000))
+        add(TOARewardPair(MAGIC_SEED, 3500))
+        add(TOARewardPair(BLOOD_ESSENCE, 7500))
+        add(TOARewardPair(CRYSTAL_KEY, 8000))
     }
 
     fun Int.rollOneIn() = Utils.random(this) == 0

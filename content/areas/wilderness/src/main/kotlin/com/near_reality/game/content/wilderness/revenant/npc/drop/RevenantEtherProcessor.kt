@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant.npc.drop
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
@@ -28,7 +28,7 @@ class RevenantEtherProcessor : DropProcessor() {
                 .toInt()
             appendDrop(
                 DisplayedDrop(
-                    ItemId.REVENANT_ETHER,
+                    REVENANT_ETHER,
                     1,
                     etherAmount,
                     1.0,

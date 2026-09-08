@@ -6,14 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.CURED_YAKHIDE
-import com.zenyte.game.item.ItemId.HAIR
-import com.zenyte.game.item.ItemId.RAW_YAK_MEAT
-import com.zenyte.game.item.ItemId.YAKHIDE
 
 class ContrabandYakProduce : ShopScript() {
 

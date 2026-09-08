@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.npc.impl.slayer.superior.SuperiorNPC;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 
-import static com.zenyte.game.world.entity.npc.NpcId.DREADBORN_ARAXYTE;
+import static com.zenyte.game.npc.ids.NpcId.DREADBORN_ARAXYTE;
 
 public class DreadbornAraxyte extends SuperiorNPC implements CombatScript {
 

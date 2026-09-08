@@ -6,54 +6,24 @@ import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.gem.GemDropTable
 import com.near_reality.scripts.npc.drops.table.tables.herb.HerbDropTable
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.ADAMANTITE_ORE
+import com.zenyte.game.item.ids.COAL
+import com.zenyte.game.item.ids.GOLD_ORE
+import com.zenyte.game.item.ids.MUPHIN
+import com.zenyte.game.item.ids.RUNITE_ORE
+import com.zenyte.game.item.ids.SHARK
+import com.zenyte.game.item.ids.SILVER_ORE
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
-import com.zenyte.game.item.ItemId.ANCIENT_BREW_3
-import com.zenyte.game.item.ItemId.ANCIENT_ESSENCE
-import com.zenyte.game.item.ItemId.ANCIENT_ICON
-import com.zenyte.game.item.ItemId.BLACK_DHIDE_BODY
-import com.zenyte.game.item.ItemId.CANNONBALL
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGON_BOLTS_UNF
-import com.zenyte.game.item.ItemId.DRAGON_PLATELEGS
-import com.zenyte.game.item.ItemId.DRAGON_PLATESKIRT
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.FROZEN_CACHE
-import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
-import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
-import com.zenyte.game.item.ItemId.GRIMY_KWUARM
-import com.zenyte.game.item.ItemId.GRIMY_LANTADYME
-import com.zenyte.game.item.ItemId.GRIMY_TOADFLAX
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.LIMPWURT_ROOT
-import com.zenyte.game.item.ItemId.MANTA_RAY
-import com.zenyte.game.item.ItemId.MOLTEN_GLASS
-import com.zenyte.game.item.ItemId.PRAYER_POTION3
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RANGING_POTION3
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
-import com.zenyte.game.item.ItemId.RUNE_SWORD
-import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
-import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
-import com.zenyte.game.item.ItemId.SMOKE_RUNE
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.SUMMER_PIE
-import com.zenyte.game.item.ItemId.SUPER_RESTORE3
-import com.zenyte.game.item.ItemId.TEAK_PLANK
-import com.zenyte.game.item.ItemId.VENATOR_SHARD
-import com.zenyte.game.item.ItemId.WATER_ORB
 
 class MuspahDroptable : NPCDropTableScript() {
 
@@ -66,7 +36,7 @@ class MuspahDroptable : NPCDropTableScript() {
             if(random < 2) {
                 when(random) {
                     0 -> {
-                        npc.dropItem(killer, Item(ItemId.SHARK, (4..6).random()).toNote())
+                        npc.dropItem(killer, Item(SHARK, (4..6).random()).toNote())
                         npc.dropItem(killer, Item(ANCIENT_BREW_3, (1..2).random()).toNote())
                         npc.dropItem(killer, Item(SUPER_RESTORE3, (2..3).random()).toNote())
                     }
@@ -115,14 +85,14 @@ class MuspahDroptable : NPCDropTableScript() {
                 chance(5) roll HerbDropTable
                 chance(5) roll GemDropTable
 
-                ItemId.ADAMANTITE_ORE quantity 22.noted rarity 10
-                ItemId.GOLD_ORE quantity 180.noted rarity 10
+                ADAMANTITE_ORE quantity 22.noted rarity 10
+                GOLD_ORE quantity 180.noted rarity 10
                 TEAK_PLANK quantity 22.noted rarity 10
                 MOLTEN_GLASS quantity 89.noted rarity 10
                 PURE_ESSENCE quantity 2314.noted rarity 5
-                ItemId.COAL quantity 163.noted rarity 5
-                ItemId.RUNITE_ORE quantity 18.noted rarity 3
-                ItemId.SILVER_ORE quantity 101.noted rarity 2
+                COAL quantity 163.noted rarity 5
+                RUNITE_ORE quantity 18.noted rarity 3
+                SILVER_ORE quantity 101.noted rarity 2
 
                 MANTA_RAY quantity 28.noted rarity 10
                 WATER_ORB quantity 21.noted rarity 10
@@ -135,7 +105,7 @@ class MuspahDroptable : NPCDropTableScript() {
                 VENATOR_SHARD quantity 1 oneIn 80
                 SCROLL_BOX_HARD quantity 1 oneIn 40
                 SCROLL_BOX_ELITE quantity 1 oneIn 50
-                ItemId.MUPHIN quantity 1 oneIn 2500 announce everywhere
+                MUPHIN quantity 1 oneIn 2500 announce everywhere
             }
         }
     }

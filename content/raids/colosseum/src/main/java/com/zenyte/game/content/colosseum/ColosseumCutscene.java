@@ -8,7 +8,7 @@ import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.cutscene.Cutscene;
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen;
 import com.zenyte.game.world.entity.player.cutscene.actions.CameraLookAction;

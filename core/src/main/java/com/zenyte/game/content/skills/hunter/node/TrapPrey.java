@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.hunter.node;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import mgi.utilities.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +15,7 @@ import static com.zenyte.game.content.skills.hunter.node.PreyObject.*;
 import static com.zenyte.game.content.skills.hunter.node.TrapType.*;
 import static com.zenyte.game.content.skills.hunter.node.TrapType.BIRD_SNARE;
 import static com.zenyte.game.content.skills.hunter.node.TrapType.BOX_TRAP;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 27/03/2020

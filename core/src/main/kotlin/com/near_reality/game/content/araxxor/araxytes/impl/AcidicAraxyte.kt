@@ -12,8 +12,7 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Graphics
-import com.zenyte.game.world.entity.npc.NpcId.ACIDIC_ARAXYTE
-import com.zenyte.game.world.entity.npc.NpcId.ACIDIC_ARAXYTE_EGG
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities
 

@@ -1,100 +1,85 @@
 package com.near_reality.game.content.collectionlog
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.item._Item
-import com.zenyte.game.item.ItemId.ANCIENT_SHARD_PACK
-import com.zenyte.game.item.ItemId.DONATOR_PIN_10
-import com.zenyte.game.item.ItemId.DONATOR_PIN_100
-import com.zenyte.game.item.ItemId.DONATOR_PIN_25
-import com.zenyte.game.item.ItemId.NEAR_REALITY_PARTY_HAT
-import com.zenyte.game.item.ItemId.OMEGA_HORN
-import com.zenyte.game.item.ItemId.OMEGA_SPIKE
-import com.zenyte.game.item.ItemId.OMEGA_SYMBOL
-import com.zenyte.game.item.ItemId.ORB_OF_AMASCUT
-import com.zenyte.game.item.ItemId.ORB_OF_BLOOD
-import com.zenyte.game.item.ItemId.ORB_OF_XERIC
-import com.zenyte.game.item.ItemId.PVM_MYSTERY_BOX
-import com.zenyte.game.item.ItemId.SKILLING_MYSTERY_BOX
-import com.zenyte.game.item.ItemId.SUPERIOR_BELL
-import com.zenyte.game.item.ItemId.WORLD_BOOST_TOKEN
 
 
 
 object CollectionLogRewards {
 
     /* Reward List */
-    private const val regalMB = ItemId.REGAL_MYSTERY_BOX
-    private const val ultraMB = ItemId.ULTIMATE_MYSTERY_BOX
-    private const val superMB = ItemId.SUPER_MYSTERY_BOX
-    private const val standardMB = ItemId.MYSTERY_BOX
+    private const val regalMB = REGAL_MYSTERY_BOX
+    private const val ultraMB = ULTIMATE_MYSTERY_BOX
+    private const val superMB = SUPER_MYSTERY_BOX
+    private const val standardMB = MYSTERY_BOX
     private const val skillingMB = SKILLING_MYSTERY_BOX
     private const val pvmMB = PVM_MYSTERY_BOX
-    private const val petBooster = ItemId.PET_BOOSTER
-    private const val larransBooster = ItemId.LARRANS_KEY_BOOSTER
-    private const val slayerBooster = ItemId.SLAYER_BOOSTER
-    private const val bloodMoneyBooster = ItemId.BLOOD_MONEY_BOOSTER
-    private const val revenantBooster = ItemId.REVENANT_BOOSTER
-    private const val ganoBooster = ItemId.GANODERMIC_BOOSTER
-    private const val clueBooster = ItemId.CLUE_SCROLL_BOOSTER
-    private const val nexBooster = ItemId.NEX_BOOSTER
-    private const val slayerTaskPicker = ItemId.SLAYER_TASK_PICKER_SCROLL
-    private const val slayerTaskReset = ItemId.SLAYER_TASK_RESET_SCROLL
-    private const val barrowsTotem = ItemId.BARROWS_TOTEM
-    private const val malevolentEnergy = ItemId.MALEVOLENT_ENERGY
-    private const val ahrimKit = ItemId.ECHO_AHRIMS_ORNAMENT_KIT
-    private const val venatorKit = ItemId.ECHO_VENATOR_BOW_ORNAMENT_KIT
-    private const val herbBox = ItemId.HERB_BOX
-    private const val venatorShard = ItemId.VENATOR_SHARD
-    private const val asgarniaOrb = ItemId.ASGARNIA_ECHO_ORB
-    private const val tirannwnOrb = ItemId.TIRANNWN_ECHO_ORB
-    private const val morytaniaOrb = ItemId.MORYTANIA_ECHO_ORB
-    private const val kourendOrb = ItemId.KOUREND_ECHO_ORB
-    private const val desertOrb = ItemId.DESERT_ECHO_ORB
-    private const val wildyOrb = ItemId.WILDERNESS_ECHO_ORB
+    private const val petBooster = PET_BOOSTER
+    private const val larransBooster = LARRANS_KEY_BOOSTER
+    private const val slayerBooster = SLAYER_BOOSTER
+    private const val bloodMoneyBooster = BLOOD_MONEY_BOOSTER
+    private const val revenantBooster = REVENANT_BOOSTER
+    private const val ganoBooster = GANODERMIC_BOOSTER
+    private const val clueBooster = CLUE_SCROLL_BOOSTER
+    private const val nexBooster = NEX_BOOSTER
+    private const val slayerTaskPicker = SLAYER_TASK_PICKER_SCROLL
+    private const val slayerTaskReset = SLAYER_TASK_RESET_SCROLL
+    private const val barrowsTotem = BARROWS_TOTEM
+    private const val malevolentEnergy = MALEVOLENT_ENERGY
+    private const val ahrimKit = ECHO_AHRIMS_ORNAMENT_KIT
+    private const val venatorKit = ECHO_VENATOR_BOW_ORNAMENT_KIT
+    private const val herbBox = HERB_BOX
+    private const val venatorShard = VENATOR_SHARD
+    private const val asgarniaOrb = ASGARNIA_ECHO_ORB
+    private const val tirannwnOrb = TIRANNWN_ECHO_ORB
+    private const val morytaniaOrb = MORYTANIA_ECHO_ORB
+    private const val kourendOrb = KOUREND_ECHO_ORB
+    private const val desertOrb = DESERT_ECHO_ORB
+    private const val wildyOrb = WILDERNESS_ECHO_ORB
     private const val dpin10 = DONATOR_PIN_10
     private const val dpin25 = DONATOR_PIN_25
     private const val dpin100 = DONATOR_PIN_100
-    private const val imbueScroll = ItemId.SCROLL_OF_IMBUING
-    private const val echoVirtusKit = ItemId.ECHO_VIRTUS_ORNAMENT_KIT
-    private const val chromiumIngot = ItemId.CHROMIUM_INGOT
-    private const val fireCape = ItemId.FIRE_CAPE
-    private const val tokkul = ItemId.TOKKUL
-    private const val armourSeed = ItemId.CRYSTAL_ARMOUR_SEED
-    private const val toolSeed = ItemId.CRYSTAL_TOOL_SEED
-    private const val enhancedCKey = ItemId.ENHANCED_CRYSTAL_KEY
-    private const val bloodMoney = ItemId.BLOOD_MONEY
-    private const val doubleAmmoMold = ItemId.DOUBLE_AMMO_MOULD
-    private const val torstol = ItemId.TORSTOL + 1
-    private const val snapdragon = ItemId.SNAPDRAGON + 1
-    private const val queenSecateurs = ItemId.QUEENS_SECATEURS
-    private const val infernalCape = ItemId.INFERNAL_CAPE
-    private const val bandosComp = ItemId.BANDOSIAN_COMPONENTS
-    private const val armadylComp = ItemId.ARMADYLEAN_PLATE
-    private const val frozenCache = ItemId.FROZEN_CACHE
+    private const val imbueScroll = SCROLL_OF_IMBUING
+    private const val echoVirtusKit = ECHO_VIRTUS_ORNAMENT_KIT
+    private const val chromiumIngot = CHROMIUM_INGOT
+    private const val fireCape = FIRE_CAPE
+    private const val tokkul = TOKKUL
+    private const val armourSeed = CRYSTAL_ARMOUR_SEED
+    private const val toolSeed = CRYSTAL_TOOL_SEED
+    private const val enhancedCKey = ENHANCED_CRYSTAL_KEY
+    private const val bloodMoney = BLOOD_MONEY
+    private const val doubleAmmoMold = DOUBLE_AMMO_MOULD
+    private const val torstol = TORSTOL + 1
+    private const val snapdragon = SNAPDRAGON + 1
+    private const val queenSecateurs = QUEENS_SECATEURS
+    private const val infernalCape = INFERNAL_CAPE
+    private const val bandosComp = BANDOSIAN_COMPONENTS
+    private const val armadylComp = ARMADYLEAN_PLATE
+    private const val frozenCache = FROZEN_CACHE
     private const val ancientShardPack = ANCIENT_SHARD_PACK
-    private const val darkTotem = ItemId.DARK_TOTEM
-    private const val bloodShard = ItemId.BLOOD_SHARD
-    private const val wintertodtCrate = ItemId.SUPPLY_CRATE
-    private const val blowpipeKit = ItemId.TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT
+    private const val darkTotem = DARK_TOTEM
+    private const val bloodShard = BLOOD_SHARD
+    private const val wintertodtCrate = SUPPLY_CRATE
+    private const val blowpipeKit = TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT
     private const val coxSoloOrb = ORB_OF_XERIC
     private const val tobSoloOrb = ORB_OF_BLOOD
     private const val toaSoloOrb = ORB_OF_AMASCUT
-    private const val sherlockNote = ItemId.SHERLOCKS_NOTES
+    private const val sherlockNote = SHERLOCKS_NOTES
     private const val omegaSpike = OMEGA_SPIKE
     private const val omegaHorn = OMEGA_HORN
     private const val omegaSymbol = OMEGA_SYMBOL
     private const val superiorBell = SUPERIOR_BELL
     private const val boostToken = WORLD_BOOST_TOKEN
-    private const val crystalKey = ItemId.CRYSTAL_KEY
+    private const val crystalKey = CRYSTAL_KEY
     private const val nrPartyhat = NEAR_REALITY_PARTY_HAT
-    private const val chaosRobesOrnKit = ItemId.ELDER_CHAOS_ROBES_ORNAMENT_KIT
-    private const val dragonDefOrnKit = ItemId.DRAGON_DEFENDER_ORNAMENT_KIT
-    private const val dragonPickOrnKit = ItemId.DRAGON_PICKAXE_UPGRADE_KIT
-    private const val ballistaOrnKit = ItemId.HEAVY_BALLISTA_ORNAMENT_KIT
-    private const val zenyte = ItemId.ZENYTE
-    private const val onyx = ItemId.ONYX
-    private const val gracefulDye = ItemId.GRACEFUL_DYE
-    private const val stardust = ItemId.STARDUST
+    private const val chaosRobesOrnKit = ELDER_CHAOS_ROBES_ORNAMENT_KIT
+    private const val dragonDefOrnKit = DRAGON_DEFENDER_ORNAMENT_KIT
+    private const val dragonPickOrnKit = DRAGON_PICKAXE_UPGRADE_KIT
+    private const val ballistaOrnKit = HEAVY_BALLISTA_ORNAMENT_KIT
+    private const val zenyte = ZENYTE
+    private const val onyx = ONYX
+    private const val gracefulDye = GRACEFUL_DYE
+    private const val stardust = STARDUST
 
     /* Struct List */
     private const val abyssalSire = 476
@@ -185,13 +170,13 @@ object CollectionLogRewards {
     val rewards = mutableListOf<CollectionLogReward>()
 
     infix fun Int.x(quantity: Int) = _Item(this, quantity)
-    infix fun Int.m(item: String) = if(item == "gp") _Item(995, this.toM()) else _Item(ItemId.DWARF_REMAINS, 1)
+    infix fun Int.m(item: String) = if(item == "gp") _Item(995, this.toM()) else _Item(DWARF_REMAINS, 1)
 
     init {
         rewards.addAll(
             arrayOf(
                 /* Bosses */
-                CollectionLogReward(abyssalSire, arrayOf(ultraMB x 1, ItemId.UNSIRED x 5, petBooster x 3)),
+                CollectionLogReward(abyssalSire, arrayOf(ultraMB x 1, UNSIRED x 5, petBooster x 3)),
                 CollectionLogReward(
                     alchemicalHydra,
                     arrayOf(ultraMB x 1, petBooster x 3, slayerTaskPicker x 10, superMB x 1)

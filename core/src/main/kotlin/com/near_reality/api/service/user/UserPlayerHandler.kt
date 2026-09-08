@@ -10,7 +10,7 @@ import com.near_reality.api.service.sanction.isHardwareBlocked
 import com.near_reality.api.util.completeWithTimeout
 import com.near_reality.game.world.entity.player.flaggedAsBot
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.Player
@@ -170,12 +170,12 @@ object UserPlayerHandler {
                         player.user = it.user
                         player.dialogue {
                             item(
-                                Item(ItemId.COINS_6964),
+                                Item(COINS_6964),
                                 "${Colour.DARK_BLUE.wrap("$${bond.amount}")} has been added to your total spent amount, " +
                                         "making for a total of ${Colour.DARK_BLUE.wrap("$${player.storeTotalSpent}")}."
                             )
                             item(
-                                Item(ItemId.DRAGON_TOKEN),
+                                Item(DRAGON_TOKEN),
                                 "${Colour.RS_GREEN.wrap("${bond.credits} store credits")} have been added to your account, " +
                                         "you now have ${Colour.RS_GREEN.wrap("${player.storeCredits} store credits")}."
                             )

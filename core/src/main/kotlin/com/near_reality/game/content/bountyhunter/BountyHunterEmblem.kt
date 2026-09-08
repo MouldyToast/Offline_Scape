@@ -2,7 +2,7 @@ package com.near_reality.game.content.bountyhunter
 
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import java.util.*
 
@@ -11,16 +11,16 @@ import java.util.*
  * @author John J. Woloszyk / Kryeus
  */
 enum class BountyHunterEmblem(val itemId: Int, val points: Int, val upgradeChance: Int, val spriteId: Int, val index: Int){
-    TIER_1(ItemId.ESOTERIC_EMBLEM_TIER_1, BountyHunterVars.T1_EMBLEM_AMOUNT, BountyHunterVars.T1_UPGRADE_CHANCE, BountyHunterVars.SKULL_T1, 1),
-    TIER_2(ItemId.ESOTERIC_EMBLEM_TIER_2, BountyHunterVars.T2_EMBLEM_AMOUNT, BountyHunterVars.T2_UPGRADE_CHANCE, BountyHunterVars.SKULL_T2, 2),
-    TIER_3(ItemId.ESOTERIC_EMBLEM_TIER_3, BountyHunterVars.T3_EMBLEM_AMOUNT, BountyHunterVars.T3_UPGRADE_CHANCE, BountyHunterVars.SKULL_T3, 3),
-    TIER_4(ItemId.ESOTERIC_EMBLEM_TIER_4, BountyHunterVars.T4_EMBLEM_AMOUNT, BountyHunterVars.T4_UPGRADE_CHANCE, BountyHunterVars.SKULL_T4, 4),
-    TIER_5(ItemId.ESOTERIC_EMBLEM_TIER_5, BountyHunterVars.T5_EMBLEM_AMOUNT, BountyHunterVars.T5_UPGRADE_CHANCE, BountyHunterVars.SKULL_T5, 5),
-    TIER_6(ItemId.ESOTERIC_EMBLEM_TIER_6, BountyHunterVars.T6_EMBLEM_AMOUNT, BountyHunterVars.T6_UPGRADE_CHANCE, BountyHunterVars.SKULL_T6, 6),
-    TIER_7(ItemId.ESOTERIC_EMBLEM_TIER_7, BountyHunterVars.T7_EMBLEM_AMOUNT, BountyHunterVars.T7_UPGRADE_CHANCE, BountyHunterVars.SKULL_T7, 7),
-    TIER_8(ItemId.ESOTERIC_EMBLEM_TIER_8, BountyHunterVars.T8_EMBLEM_AMOUNT, BountyHunterVars.T8_UPGRADE_CHANCE, BountyHunterVars.SKULL_T8, 8),
-    TIER_9(ItemId.ESOTERIC_EMBLEM_TIER_9, BountyHunterVars.T9_EMBLEM_AMOUNT, BountyHunterVars.T9_UPGRADE_CHANCE, BountyHunterVars.SKULL_T9, 9),
-    TIER_10(ItemId.ESOTERIC_EMBLEM_TIER_10, BountyHunterVars.T10_EMBLEM_AMOUNT, BountyHunterVars.T10_UPGRADE_CHANCE, BountyHunterVars.SKULL_T10, 10);
+    TIER_1(ESOTERIC_EMBLEM_TIER_1, BountyHunterVars.T1_EMBLEM_AMOUNT, BountyHunterVars.T1_UPGRADE_CHANCE, BountyHunterVars.SKULL_T1, 1),
+    TIER_2(ESOTERIC_EMBLEM_TIER_2, BountyHunterVars.T2_EMBLEM_AMOUNT, BountyHunterVars.T2_UPGRADE_CHANCE, BountyHunterVars.SKULL_T2, 2),
+    TIER_3(ESOTERIC_EMBLEM_TIER_3, BountyHunterVars.T3_EMBLEM_AMOUNT, BountyHunterVars.T3_UPGRADE_CHANCE, BountyHunterVars.SKULL_T3, 3),
+    TIER_4(ESOTERIC_EMBLEM_TIER_4, BountyHunterVars.T4_EMBLEM_AMOUNT, BountyHunterVars.T4_UPGRADE_CHANCE, BountyHunterVars.SKULL_T4, 4),
+    TIER_5(ESOTERIC_EMBLEM_TIER_5, BountyHunterVars.T5_EMBLEM_AMOUNT, BountyHunterVars.T5_UPGRADE_CHANCE, BountyHunterVars.SKULL_T5, 5),
+    TIER_6(ESOTERIC_EMBLEM_TIER_6, BountyHunterVars.T6_EMBLEM_AMOUNT, BountyHunterVars.T6_UPGRADE_CHANCE, BountyHunterVars.SKULL_T6, 6),
+    TIER_7(ESOTERIC_EMBLEM_TIER_7, BountyHunterVars.T7_EMBLEM_AMOUNT, BountyHunterVars.T7_UPGRADE_CHANCE, BountyHunterVars.SKULL_T7, 7),
+    TIER_8(ESOTERIC_EMBLEM_TIER_8, BountyHunterVars.T8_EMBLEM_AMOUNT, BountyHunterVars.T8_UPGRADE_CHANCE, BountyHunterVars.SKULL_T8, 8),
+    TIER_9(ESOTERIC_EMBLEM_TIER_9, BountyHunterVars.T9_EMBLEM_AMOUNT, BountyHunterVars.T9_UPGRADE_CHANCE, BountyHunterVars.SKULL_T9, 9),
+    TIER_10(ESOTERIC_EMBLEM_TIER_10, BountyHunterVars.T10_EMBLEM_AMOUNT, BountyHunterVars.T10_UPGRADE_CHANCE, BountyHunterVars.SKULL_T10, 10);
 
 
     companion object {

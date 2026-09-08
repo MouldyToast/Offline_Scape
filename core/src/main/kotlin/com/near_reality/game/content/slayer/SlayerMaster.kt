@@ -1,6 +1,6 @@
 package com.near_reality.game.content.slayer
 
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import org.apache.commons.lang3.StringUtils
@@ -17,15 +17,15 @@ enum class SlayerMaster(
     val pointsPerTask: Int,
     val location: String
 ) {
-    TURAEL(NpcId.TURAEL, 1, 1, 0, "in Burthorpe"),
+    TURAEL(com.zenyte.game.npc.ids.TURAEL, 1, 1, 0, "in Burthorpe"),
     KRYSTILIA(7663, 1, 1, 25, "in Edgeville"),
-    MAZCHNA(NpcId.MAZCHNA, 1, 20, 2, "in Canifis"),
-    VANNAKA(NpcId.VANNAKA, 1, 40, 4, "within the Edgeville dungeon"),
-    CHAELDAR(NpcId.CHAELDAR, 1, 70, 10, "in Zanaris"),
-    NIEVE(NpcId.NIEVE, 1, 85, 12, "in Tree Gnome Stronghold"),
-    DURADEL(NpcId.DURADEL, 50, 100, 15, "in Shilo Village"),
-    KONAR_QUO_MATEN(NpcId.KONAR_QUO_MATEN, 1, 75, 18, "On Mount Karuulm"),
-    SUMONA(NpcId.SUMONA, 99, 100, 15, "at Home"),
+    MAZCHNA(com.zenyte.game.npc.ids.MAZCHNA, 1, 20, 2, "in Canifis"),
+    VANNAKA(com.zenyte.game.npc.ids.VANNAKA, 1, 40, 4, "within the Edgeville dungeon"),
+    CHAELDAR(com.zenyte.game.npc.ids.CHAELDAR, 1, 70, 10, "in Zanaris"),
+    NIEVE(com.zenyte.game.npc.ids.NIEVE, 1, 85, 12, "in Tree Gnome Stronghold"),
+    DURADEL(com.zenyte.game.npc.ids.DURADEL, 50, 100, 15, "in Shilo Village"),
+    KONAR_QUO_MATEN(com.zenyte.game.npc.ids.KONAR_QUO_MATEN, 1, 75, 18, "On Mount Karuulm"),
+    SUMONA(com.zenyte.game.npc.ids.SUMONA, 99, 100, 15, "at Home"),
     ;
 
     fun getMultiplier(taskNum: Int): Int {

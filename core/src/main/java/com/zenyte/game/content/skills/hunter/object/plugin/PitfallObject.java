@@ -7,7 +7,7 @@ import com.zenyte.game.content.skills.hunter.node.TrapType;
 import com.zenyte.game.content.skills.hunter.object.HunterTrap;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;

@@ -3,7 +3,7 @@ package com.zenyte.plugins.itemonobject;
 import com.zenyte.game.content.multicannon.DwarfMultiCannon;
 import com.zenyte.game.content.multicannon.DwarfMultiCannonType;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.WorldObject;

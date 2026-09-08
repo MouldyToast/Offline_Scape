@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.slayer;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Hit;

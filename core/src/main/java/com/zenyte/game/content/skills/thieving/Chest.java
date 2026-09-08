@@ -8,7 +8,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.content.skills.thieving.tables.RoguesChestTable;
 import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;

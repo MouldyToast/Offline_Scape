@@ -1,5 +1,7 @@
 package com.zenyte.game.world.object;
 
+import com.zenyte.game.obj.ids.ObjectId;
+
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;
 

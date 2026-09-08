@@ -1,7 +1,7 @@
 package com.zenyte.game.content.event.christmas2019;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.WorldThread;
 import com.zenyte.game.world.entity.masks.Animation;

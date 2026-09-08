@@ -1,7 +1,7 @@
 package com.zenyte.game.content.treasuretrails.stash;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 
 /**
  * @author Kris | 26/01/2019 19:34

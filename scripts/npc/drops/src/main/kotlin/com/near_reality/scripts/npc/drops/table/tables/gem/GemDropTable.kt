@@ -3,16 +3,7 @@ package com.near_reality.scripts.npc.drops.table.tables.gem
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.tables.rare.MegaRareDropTable
 import com.near_reality.scripts.npc.drops.table.nothing
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.CHAOS_TALISMAN
-import com.zenyte.game.item.ItemId.LOOP_HALF_OF_KEY
-import com.zenyte.game.item.ItemId.NATURE_TALISMAN
-import com.zenyte.game.item.ItemId.RUNE_JAVELIN
-import com.zenyte.game.item.ItemId.TOOTH_HALF_OF_KEY
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_EMERALD
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
+import com.zenyte.game.item.ids.*
 
 object GemDropTable : StandaloneDropTableBuilder({
     limit = 128

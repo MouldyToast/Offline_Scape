@@ -5,7 +5,7 @@ import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.chompy.plugins.BloatedToadNPC;
 import com.zenyte.game.content.chompy.plugins.DeadChompy;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;

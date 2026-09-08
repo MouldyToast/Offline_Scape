@@ -6,7 +6,7 @@ import com.near_reality.game.content.gauntlet.rewards.GauntletRewards
 import com.zenyte.game.content.advent.AdventCalendarManager
 import com.zenyte.game.content.follower.impl.BossPet
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.enums.RareDrop
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
@@ -64,7 +64,7 @@ class GauntletRewardsChest : ObjectAction {
                 }
             }
             for (item in itemRewards) {
-                if (item.id == ItemId.YOUNGLLEF && BossPet.YOUNGLLEF.hasPet(player)) {
+                if (item.id == YOUNGLLEF && BossPet.YOUNGLLEF.hasPet(player)) {
                     player.sendMessage("<col=ff0000>You have a funny feeling like you would have been followed...</col>")
                     continue
                 }

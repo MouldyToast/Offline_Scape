@@ -6,11 +6,11 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId.THE_WHISPERER
-import com.zenyte.game.world.entity.npc.NpcId.THE_WHISPERER_12206
+import com.zenyte.game.npc.ids.*
+import com.zenyte.game.obj.ids.TENTACLE
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.DynamicArea
 
@@ -703,39 +703,39 @@ fun DynamicArea.addTentacles(fixed: Boolean, offset: Boolean) {
     val instance = this
     val delta = if (offset) -256 else 0
     MapObject(
-        ObjectId.TENTACLE, instance[2652 + delta, 6384, 0], 10, 0
+        TENTACLE, instance[2652 + delta, 6384, 0], 10, 0
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2653 + delta, 6384, 0], 10, if (fixed) 0 else 1
+        TENTACLE, instance[2653 + delta, 6384, 0], 10, if (fixed) 0 else 1
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2654 + delta, 6384, 0], 10, 0
+        TENTACLE, instance[2654 + delta, 6384, 0], 10, 0
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2655 + delta, 6384, 0], 10, if (fixed) 0 else 2
+        TENTACLE, instance[2655 + delta, 6384, 0], 10, if (fixed) 0 else 2
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2656 + delta, 6384, 0], 10, if (fixed) 0 else 3
+        TENTACLE, instance[2656 + delta, 6384, 0], 10, if (fixed) 0 else 3
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2657 + delta, 6384, 0], 10, if (fixed) 0 else 1
+        TENTACLE, instance[2657 + delta, 6384, 0], 10, if (fixed) 0 else 1
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2658 + delta, 6384, 0], 10, if (fixed) 0 else 2
+        TENTACLE, instance[2658 + delta, 6384, 0], 10, if (fixed) 0 else 2
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2659 + delta, 6384, 0], 10, 0
+        TENTACLE, instance[2659 + delta, 6384, 0], 10, 0
     ).spawn()
 
     MapObject(
-        ObjectId.TENTACLE, instance[2660 + delta, 6384, 0], 10, if (fixed) 0 else 3
+        TENTACLE, instance[2660 + delta, 6384, 0], 10, if (fixed) 0 else 3
     ).spawn()
 }
 

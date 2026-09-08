@@ -4,7 +4,7 @@ import com.zenyte.game.content.theatreofblood.room.sotetseg.ShadowRealmRoom
 import com.zenyte.game.content.theatreofblood.room.sotetseg.npc.Sotetseg
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.RegionArea
 
@@ -34,7 +34,7 @@ internal class Portal : ObjectAction {
 
     companion object {
 
-        private val objects = arrayOf(ObjectId.PORTAL_33037)
+        private val objects = arrayOf(PORTAL_33037)
 
     }
 

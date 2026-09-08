@@ -11,7 +11,7 @@ import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC;
 import com.zenyte.game.content.tombsofamascut.npc.AbstractTOANPC;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
 import com.zenyte.game.task.WorldTasksManager;
@@ -29,7 +29,7 @@ import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.npc.combatdefs.StatType;
 import com.zenyte.game.world.entity.pathfinding.events.player.CombatEntityEvent;
@@ -54,7 +54,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 14. okt 2017 : 19:51.03

@@ -2,7 +2,7 @@ package com.zenyte.game.content.ZemouregalsFort;
 
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 
-import static com.zenyte.game.item.ItemId.BROKEN_ZOMBIE_HELMET;
+import static com.zenyte.game.item.ids.ItemId.BROKEN_ZOMBIE_HELMET;
 
 /**
  * @author Zei | Glabay-Studios

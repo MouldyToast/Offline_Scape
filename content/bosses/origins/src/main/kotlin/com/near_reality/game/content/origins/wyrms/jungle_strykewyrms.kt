@@ -3,36 +3,18 @@ package com.near_reality.game.content.origins.wyrms
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.ADAMANTITE_ORE
+import com.zenyte.game.item.ids.BONES
+import com.zenyte.game.item.ids.MITHRIL_ORE
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.BATTLESTAFF
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DRAGON_DAGGER
-import com.zenyte.game.item.ItemId.EAGLE_EYE_KITESHIELD
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
-import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
-import com.zenyte.game.item.ItemId.GRIMY_HARRALANDER
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.MYSTIC_HAT
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.PET_JUNGLE_STRYKEWYRM
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RUNE_MED_HELM
-import com.zenyte.game.item.ItemId.RUNE_SPEAR
-import com.zenyte.game.item.ItemId.RUNITE_BOLTS
-import com.zenyte.game.item.ItemId.STEEL_BAR
-import com.zenyte.game.item.ItemId.SWORDFISH
-import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
 
 class JungleStrykewyrmsDroptable : NPCDropTableScript() {
 
@@ -46,7 +28,7 @@ class JungleStrykewyrmsDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BONES quantity 1 rarity always
+                BONES quantity 1 rarity always
             }
             Main(1250) {
                 COINS_995 quantity (1000..2500) rarity 285
@@ -55,7 +37,7 @@ class JungleStrykewyrmsDroptable : NPCDropTableScript() {
                 PURE_ESSENCE quantity 100.noted rarity 94
                 EARTH_RUNE quantity 200 rarity 94
                 NATURE_RUNE quantity 50 rarity 75
-                ItemId.MITHRIL_ORE quantity 10.noted rarity 56
+                MITHRIL_ORE quantity 10.noted rarity 56
                 GRIMY_HARRALANDER quantity 4.noted rarity 56
                 UNCUT_SAPPHIRE quantity 3.noted rarity 56
                 STEEL_BAR quantity 6.noted rarity 56
@@ -65,7 +47,7 @@ class JungleStrykewyrmsDroptable : NPCDropTableScript() {
                 BATTLESTAFF quantity 1 rarity 20
                 LAW_RUNE quantity 25 rarity 20
                 GRIMY_DWARF_WEED quantity 2.noted rarity 20
-                ItemId.ADAMANTITE_ORE quantity 5.noted rarity 20
+                ADAMANTITE_ORE quantity 5.noted rarity 20
 
                 RUNE_SPEAR quantity 1 rarity 15
                 MYSTIC_HAT quantity 1 rarity 10

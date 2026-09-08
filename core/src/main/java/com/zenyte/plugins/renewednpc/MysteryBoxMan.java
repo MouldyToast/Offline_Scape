@@ -1,6 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Colour;

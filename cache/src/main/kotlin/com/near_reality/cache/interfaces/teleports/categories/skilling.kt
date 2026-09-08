@@ -1,7 +1,7 @@
 package com.near_reality.cache.interfaces.teleports.categories
 
 import com.near_reality.cache.interfaces.teleports.builder.TeleportsBuilder
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 
 internal fun TeleportsBuilder.skilling() = "Skilling Teleports"(10003) {
     "Area: Isle of Souls North"(-25196, 2183, 2961, 0, "https://oldschool.runescape.wiki/w/Isle_of_Souls")
@@ -53,5 +53,5 @@ internal fun TeleportsBuilder.skilling() = "Skilling Teleports"(10003) {
     "Thieving: Rogues' Den"(-5553, 3057,4980,1,"")
     "Woodcutting: Guild"(-1359, 1659, 3505, 0, "")
     "Woodcutting: Seers Village"(-1517, 2723,3473,0,"")
-    "Woodcutting: Blisterwood Tree"(-ItemId.BLISTERWOOD_LOGS, 3630, 3361,0,"")
+    "Woodcutting: Blisterwood Tree"(-BLISTERWOOD_LOGS, 3630, 3361,0,"")
 }

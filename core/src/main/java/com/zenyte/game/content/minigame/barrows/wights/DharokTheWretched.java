@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
-import static com.near_reality.game.item.CustomNpcId.DI_DHAROK_THE_WRETCHED;
+import static com.zenyte.game.npc.ids.NpcId.DI_DHAROK_THE_WRETCHED;
 
 /**
  * @author Kris | 29. sept 2018 : 04:50:37

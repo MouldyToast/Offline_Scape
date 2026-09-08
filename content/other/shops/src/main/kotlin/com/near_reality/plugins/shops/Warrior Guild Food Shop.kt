@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BASS
-import com.zenyte.game.item.ItemId.PLAIN_PIZZA
-import com.zenyte.game.item.ItemId.POTATO_WITH_CHEESE
-import com.zenyte.game.item.ItemId.STEW
-import com.zenyte.game.item.ItemId.TROUT
 
 class WarriorGuildFoodShop : ShopScript() {
 

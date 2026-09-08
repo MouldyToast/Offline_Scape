@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.XericTalismanRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -32,6 +32,6 @@ class XericTalismanSub(
         log.info("${this.javaClass.simpleName} submenu option {} subOption {} handled", optionId, subOptionId)
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.XERICS_TALISMAN)
+    override fun getItems(): IntArray = intArrayOf(XERICS_TALISMAN)
 
 }

@@ -20,7 +20,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.RSPolygon
 import com.zenyte.game.world.region.area.plugins.HitProcessPlugin
@@ -104,7 +104,7 @@ internal class NylocasRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, room: 
         }
 
     override val entranceLocation: Location = getLocation(3295, 4283, 0)
-    override val vyreOrator = WorldObject(ObjectId.VYRE_ORATOR, 11, 0, getLocation(3296, 4262, 0))
+    override val vyreOrator = WorldObject(VYRE_ORATOR, 11, 0, getLocation(3296, 4262, 0))
     override val spectatingLocation: Location = getLocation(3290, 4257, 0)
 
     override fun isEnteringBossRoom(barrier: WorldObject, player: Player) = player.y > barrier.y

@@ -2,7 +2,7 @@ package com.near_reality.cache_tool.packing.custom
 
 import com.near_reality.api.model.Bond
 import com.near_reality.api.model.CreditStoreCategory
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import mgi.tools.parser.TypeParser
 import mgi.types.config.ParamDefinitions
@@ -90,15 +90,15 @@ object NearRealityStoreInterfacePacker {
 		EnumDefinitions(LOYALTY_REWARDS_ENUM, 'i', 'i').apply {
 			var idx = 0
 			this.values[idx++] = -1
-			this.values[idx++] = ItemId.MYSTERY_BOX
-			this.values[idx++] = ItemId.SUPER_MYSTERY_BOX
-			this.values[idx++] = ItemId.ULTIMATE_MYSTERY_BOX
-			this.values[idx++] = ItemId.REGAL_MYSTERY_BOX
-			this.values[idx++] = ItemId.CUSTOM_ITEM_TOKEN
-			this.values[idx++] = ItemId.REGAL_MYSTERY_BOX
-			this.values[idx++] = ItemId.CUSTOM_ITEM_SET_TOKEN
-			this.values[idx++] = ItemId.CUSTOM_ITEM_SET_TOKEN
-			this.values[idx] = ItemId.NEAR_REALITY_PARTY_HAT
+			this.values[idx++] = MYSTERY_BOX
+			this.values[idx++] = SUPER_MYSTERY_BOX
+			this.values[idx++] = ULTIMATE_MYSTERY_BOX
+			this.values[idx++] = REGAL_MYSTERY_BOX
+			this.values[idx++] = CUSTOM_ITEM_TOKEN
+			this.values[idx++] = REGAL_MYSTERY_BOX
+			this.values[idx++] = CUSTOM_ITEM_SET_TOKEN
+			this.values[idx++] = CUSTOM_ITEM_SET_TOKEN
+			this.values[idx] = NEAR_REALITY_PARTY_HAT
 			this.pack()
 		}
 		EnumDefinitions(LOYALTY_REWARDS_COUNT_ENUM, 'i', 'i').apply {

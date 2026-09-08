@@ -2,13 +2,13 @@ package com.near_reality.game.content.boss.nex.item
 
 import com.zenyte.game.content.skills.smithing.Smelting
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnObjectAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -29,7 +29,7 @@ class BandosOnAncientForge : ItemOnObjectAction {
         player.options("Melt down your ${item.name} into $componentsString?") {
             "Yes." {
                 if (inventory.deleteItem(item).result == RequestResult.SUCCESS) {
-                    val components = Item(ItemId.BANDOSIAN_COMPONENTS, componentsAmount)
+                    val components = Item(BANDOSIAN_COMPONENTS, componentsAmount)
                     inventory.addItem(components)
                     player.animation = Smelting.ANIMATION
                     player.dialogue {
@@ -42,16 +42,16 @@ class BandosOnAncientForge : ItemOnObjectAction {
     }
 
     override fun getItems() = arrayOf(
-        ItemId.BANDOS_CHESTPLATE,
-        ItemId.BANDOS_TASSETS,
+        BANDOS_CHESTPLATE,
+        BANDOS_TASSETS,
     )
 
-    override fun getObjects() = arrayOf(ObjectId.ANCIENT_FORGE_42966)
+    override fun getObjects() = arrayOf(ANCIENT_FORGE_42966)
 
     private companion object {
         private fun componentsCount(unNotedItem: Int): Int = when (unNotedItem) {
-            ItemId.BANDOS_CHESTPLATE -> 3
-            ItemId.BANDOS_TASSETS -> 2
+            BANDOS_CHESTPLATE -> 3
+            BANDOS_TASSETS -> 2
             else -> error("Unknown component")
         }
         private fun componentsString(amount: Int) = "$amount Bandosian component${if(amount > 1) "s" else ""}"

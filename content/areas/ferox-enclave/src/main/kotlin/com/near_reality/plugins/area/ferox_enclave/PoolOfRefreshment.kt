@@ -3,7 +3,7 @@ package com.near_reality.plugins.area.ferox_enclave
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -37,5 +37,5 @@ class PoolOfRefreshment : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.POOL_OF_REFRESHMENT)
+    override fun getObjects() = arrayOf(POOL_OF_REFRESHMENT)
 }

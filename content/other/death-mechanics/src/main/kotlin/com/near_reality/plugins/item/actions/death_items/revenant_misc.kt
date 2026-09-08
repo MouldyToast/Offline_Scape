@@ -3,14 +3,8 @@ package com.near_reality.plugins.item.actions.death_items
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.ANCIENT_EFFIGY
-import com.zenyte.game.item.ItemId.ANCIENT_EMBLEM
-import com.zenyte.game.item.ItemId.ANCIENT_MEDALLION
-import com.zenyte.game.item.ItemId.ANCIENT_RELIC
-import com.zenyte.game.item.ItemId.ANCIENT_STATUETTE
-import com.zenyte.game.item.ItemId.ANCIENT_TOTEM
 
 class RevenantMiscItemaction : ItemActionScript() {
 

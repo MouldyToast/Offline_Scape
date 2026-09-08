@@ -6,7 +6,7 @@ import com.near_reality.game.content.dt2.statistics.DT2Scoreboard
 import com.zenyte.game.GameInterface.DUKE_SCOREBOARD
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -24,5 +24,5 @@ class DukeScoreboard : DT2Scoreboard(
         DT2Module.getDukeStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.DUKE_SCOREBOARD)
+        arrayOf(com.zenyte.game.obj.ids.DUKE_SCOREBOARD)
 }

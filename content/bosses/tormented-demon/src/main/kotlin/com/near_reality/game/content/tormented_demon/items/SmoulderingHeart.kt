@@ -1,7 +1,7 @@
 package com.near_reality.game.content.tormented_demon.items
 
 import com.zenyte.game.content.consumables.ConsumableEffects
-import com.zenyte.game.item.ItemId.SMOULDERING_HEART
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player

@@ -3,7 +3,7 @@ package com.zenyte.game.content.boss.wildernessbosses.spiders.venenatis;
 import com.zenyte.game.world.Position;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.RSPolygon;
 import com.zenyte.game.world.region.area.plugins.LootBroadcastPlugin;

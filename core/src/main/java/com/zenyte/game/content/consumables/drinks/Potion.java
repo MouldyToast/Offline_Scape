@@ -5,7 +5,7 @@ import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.consumables.Drinkable;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.ProjectileUtils;
 import com.zenyte.game.world.entity.Toxins;
 import com.zenyte.game.world.entity.masks.Hit;
@@ -22,7 +22,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 02/12/2018 13:05

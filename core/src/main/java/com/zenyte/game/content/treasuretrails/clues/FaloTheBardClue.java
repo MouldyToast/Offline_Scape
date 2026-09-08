@@ -11,11 +11,11 @@ import com.zenyte.game.content.treasuretrails.clues.emote.ItemRequirement;
 import com.zenyte.game.content.treasuretrails.clues.emote.RangeItemRequirement;
 import com.zenyte.game.content.treasuretrails.clues.emote.SingleItemRequirement;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 04/01/2020

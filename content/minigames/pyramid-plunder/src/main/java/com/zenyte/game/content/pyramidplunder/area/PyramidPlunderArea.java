@@ -5,7 +5,7 @@ import com.zenyte.game.content.pyramidplunder.PlunderRoom;
 import com.zenyte.game.content.pyramidplunder.PyramidPlunderConstants;
 import com.zenyte.game.content.pyramidplunder.object.PlunderRoomExit;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.impl.NPCChat;
 import com.zenyte.game.world.region.PolygonRegionArea;

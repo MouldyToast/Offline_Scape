@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.RandomLocation;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.region.RSPolygon;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;
 import it.unimi.dsi.fastutil.ints.IntArrayList;

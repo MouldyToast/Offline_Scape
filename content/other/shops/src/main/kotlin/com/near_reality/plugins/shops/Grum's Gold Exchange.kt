@@ -6,25 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.DIAMOND_AMULET
-import com.zenyte.game.item.ItemId.DIAMOND_NECKLACE
-import com.zenyte.game.item.ItemId.DIAMOND_RING
-import com.zenyte.game.item.ItemId.EMERALD_AMULET
-import com.zenyte.game.item.ItemId.EMERALD_NECKLACE
-import com.zenyte.game.item.ItemId.EMERALD_RING
-import com.zenyte.game.item.ItemId.GOLD_AMULET
-import com.zenyte.game.item.ItemId.GOLD_NECKLACE
-import com.zenyte.game.item.ItemId.GOLD_RING
-import com.zenyte.game.item.ItemId.RUBY_AMULET
-import com.zenyte.game.item.ItemId.RUBY_NECKLACE
-import com.zenyte.game.item.ItemId.RUBY_RING
-import com.zenyte.game.item.ItemId.SAPPHIRE_AMULET
-import com.zenyte.game.item.ItemId.SAPPHIRE_NECKLACE
-import com.zenyte.game.item.ItemId.SAPPHIRE_RING
 
 class GrumSGoldExchange : ShopScript() {
 

@@ -10,7 +10,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities.delayHit
@@ -115,8 +115,8 @@ internal class AbyssalSireTentacle(
         const val ATTACK_SPEED = 4
         const val MAX_HIT = 30
 
-        const val ACTIVE_TENTACLE = NpcId.TENTACLE_5912
-        const val INACTIVE_TENTACLE = NpcId.TENTACLE_5913
+        const val ACTIVE_TENTACLE = TENTACLE_5912
+        const val INACTIVE_TENTACLE = TENTACLE_5913
 
         val wakeAnimation = Animation(7108)
         val fallAnimation = Animation(7112)

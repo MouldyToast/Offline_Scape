@@ -7,7 +7,7 @@ import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.broadcasts.BroadcastType;
@@ -33,7 +33,7 @@ import org.slf4j.event.Level;
 
 import java.util.*;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 12. mai 2018 : 22:56:48

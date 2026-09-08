@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.google.common.collect.ImmutableMap;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import mgi.types.config.items.ItemDefinitions;

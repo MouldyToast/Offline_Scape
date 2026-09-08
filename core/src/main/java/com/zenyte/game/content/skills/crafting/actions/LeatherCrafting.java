@@ -6,7 +6,7 @@ import com.zenyte.game.content.skills.crafting.CraftingDefinitions;
 import com.zenyte.game.content.treasuretrails.clues.CharlieTask;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Action;

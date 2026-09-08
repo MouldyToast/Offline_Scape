@@ -1,17 +1,17 @@
 package com.zenyte.game.content.theatreofblood.plugin.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 
 class HolyOrnamentKit : ItemOnItemAction {
 
 	enum class OrnamentData(val ornament: Int, val base: Int, val product: Int) {
-		HOLY_SCYTHE(ItemId.HOLY_ORNAMENT_KIT, ItemId.SCYTHE_OF_VITUR_UNCHARGED, ItemId.HOLY_SCYTHE_OF_VITUR_UNCHARGED),
-		HOLY_RAPIER(ItemId.HOLY_ORNAMENT_KIT, ItemId.GHRAZI_RAPIER, ItemId.HOLY_GHRAZI_RAPIER),
-		HOLY_STAFF(ItemId.HOLY_ORNAMENT_KIT, ItemId.SANGUINESTI_STAFF_UNCHARGED, ItemId.HOLY_SANGUINESTI_STAFF_UNCHARGED),
-		SANGUINE_SCYTHE(ItemId.SANGUINE_ORNAMENT_KIT, ItemId.SCYTHE_OF_VITUR_UNCHARGED, ItemId.SANGUINE_SCYTHE_OF_VITUR_UNCHARGED),
+		HOLY_SCYTHE(HOLY_ORNAMENT_KIT, SCYTHE_OF_VITUR_UNCHARGED, HOLY_SCYTHE_OF_VITUR_UNCHARGED),
+		HOLY_RAPIER(HOLY_ORNAMENT_KIT, GHRAZI_RAPIER, HOLY_GHRAZI_RAPIER),
+		HOLY_STAFF(HOLY_ORNAMENT_KIT, SANGUINESTI_STAFF_UNCHARGED, HOLY_SANGUINESTI_STAFF_UNCHARGED),
+		SANGUINE_SCYTHE(SANGUINE_ORNAMENT_KIT, SCYTHE_OF_VITUR_UNCHARGED, SANGUINE_SCYTHE_OF_VITUR_UNCHARGED),
 		;
 
 		companion object {
@@ -45,10 +45,10 @@ class HolyOrnamentKit : ItemOnItemAction {
 
 	override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
 		return arrayOf(
-			ItemOnItemAction.ItemPair(ItemId.HOLY_ORNAMENT_KIT, ItemId.SCYTHE_OF_VITUR_UNCHARGED),
-			ItemOnItemAction.ItemPair(ItemId.HOLY_ORNAMENT_KIT, ItemId.GHRAZI_RAPIER),
-			ItemOnItemAction.ItemPair(ItemId.HOLY_ORNAMENT_KIT, ItemId.SANGUINESTI_STAFF_UNCHARGED),
-			ItemOnItemAction.ItemPair(ItemId.SANGUINE_ORNAMENT_KIT, ItemId.SCYTHE_OF_VITUR_UNCHARGED),
+			ItemOnItemAction.ItemPair(HOLY_ORNAMENT_KIT, SCYTHE_OF_VITUR_UNCHARGED),
+			ItemOnItemAction.ItemPair(HOLY_ORNAMENT_KIT, GHRAZI_RAPIER),
+			ItemOnItemAction.ItemPair(HOLY_ORNAMENT_KIT, SANGUINESTI_STAFF_UNCHARGED),
+			ItemOnItemAction.ItemPair(SANGUINE_ORNAMENT_KIT, SCYTHE_OF_VITUR_UNCHARGED),
 		)
 	}
 

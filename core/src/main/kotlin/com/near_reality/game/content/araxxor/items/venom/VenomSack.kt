@@ -3,7 +3,7 @@ package com.near_reality.game.content.araxxor.items.venom
 import com.near_reality.game.content.seq
 import com.zenyte.game.content.consumables.ConsumableAnimation
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.model.item.pluginextensions.bindKt
 import com.zenyte.game.world.entity.masks.Hit

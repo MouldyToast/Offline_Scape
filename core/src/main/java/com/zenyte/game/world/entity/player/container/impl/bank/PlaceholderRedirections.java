@@ -2,7 +2,7 @@ package com.zenyte.game.world.entity.player.container.impl.bank;
 
 import com.google.common.collect.ImmutableMap;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 12/10/2019

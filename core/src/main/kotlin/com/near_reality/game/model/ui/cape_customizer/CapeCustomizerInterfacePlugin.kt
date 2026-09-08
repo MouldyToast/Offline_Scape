@@ -7,8 +7,7 @@ import com.zenyte.game.world.entity.masks.UpdateFlag
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.VarManager
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
-import com.zenyte.game.item.ItemId.MASTER_COMP_CAPE
-import com.zenyte.game.item.ItemId.MASTER_COMP_HOOD
+import com.zenyte.game.item.ids.*
 
 /**
  * @author <a href="https://github.com/heavens">mack</a>

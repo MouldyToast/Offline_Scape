@@ -17,7 +17,7 @@ import com.near_reality.game.world.entity.player.pvmArenaPoints
 import com.near_reality.game.world.entity.player.pvmArenaPointsGainedDuringGame
 import com.zenyte.game.GameInterface
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
@@ -26,7 +26,7 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.broadcasts.BroadcastType
 import com.zenyte.game.world.broadcasts.WorldBroadcasts
 import com.zenyte.game.world.entity.masks.UpdateFlag
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -149,7 +149,7 @@ internal object PvmArenaManager {
                                 /* Every 1 minutes drop 3 bandages for each player */
                                 forEachPlayerInTeam { player ->
                                     logger.info("Spawning bandages for $player")
-                                    World.spawnFloorItem(Item(ItemId.BANDAGES_25730, 3), player, 300, 0)
+                                    World.spawnFloorItem(Item(BANDAGES_25730, 3), player, 300, 0)
                                     player.sendMessage("You have received 3 bandages for staying alive for ${TimeUnit.TICKS.toMinutes(cycle.toLong()).coerceAtLeast(1)} minutes.")
                                 }
                             }
@@ -347,7 +347,7 @@ private fun messagesGameStatisticsToPlayer(player: Player) {
 /* Sir Eldrick Dialogues */
 
 private fun dialogueWhenPortalIsNotOpen(player: Player) {
-    player.dialogue(NpcId.GHOST_3516) {
+    player.dialogue(GHOST_3516) {
         if (state is PvmArenaState.Idle) {
             sirEldricDialogue(
                 "Stay thy steps, noble warrior! ",
@@ -370,7 +370,7 @@ private fun dialogueWhenPortalIsNotOpen(player: Player) {
 }
 
 private fun dialogueWhenTeamsImbalanced(player: Player) {
-    player.dialogue(NpcId.GHOST_3516) {
+    player.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Halt, brave adventurer! The path you seek to tread cannot be taken at this moment.",
             "The team you wish to join already boasts a greater number of warriors than its rival."
@@ -384,7 +384,7 @@ private fun dialogueWhenTeamsImbalanced(player: Player) {
 
 
 private fun dialogueWhenTeamLost(it: Player) {
-    it.dialogue(NpcId.GHOST_3516) {
+    it.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Alas, noble warrior,",
             "our team has been defeated in the PvM Arena."
@@ -393,7 +393,7 @@ private fun dialogueWhenTeamLost(it: Player) {
 }
 
 private fun dialogueWhenTeamWon(it: Player) {
-    it.dialogue(NpcId.GHOST_3516) {
+    it.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Congratulations, brave warrior!",
             "Your team has emerged victorious in the PvM Arena.",

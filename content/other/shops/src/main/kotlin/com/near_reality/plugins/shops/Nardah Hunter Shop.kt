@@ -6,22 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BIRD_SNARE
-import com.zenyte.game.item.ItemId.BIRD_SNARE_PACK
-import com.zenyte.game.item.ItemId.BOX_TRAP
-import com.zenyte.game.item.ItemId.BOX_TRAP_PACK
-import com.zenyte.game.item.ItemId.BUTTERFLY_JAR
-import com.zenyte.game.item.ItemId.BUTTERFLY_NET
-import com.zenyte.game.item.ItemId.MAGIC_BOX
-import com.zenyte.game.item.ItemId.MAGIC_IMP_BOX_PACK
-import com.zenyte.game.item.ItemId.NOOSE_WAND
-import com.zenyte.game.item.ItemId.RABBIT_SNARE
-import com.zenyte.game.item.ItemId.TEASING_STICK
-import com.zenyte.game.item.ItemId.UNLIT_TORCH
 
 class NardahHunterShop : ShopScript() {
 

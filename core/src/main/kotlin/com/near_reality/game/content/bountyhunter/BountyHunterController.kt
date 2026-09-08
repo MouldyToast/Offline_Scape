@@ -8,7 +8,7 @@ import com.near_reality.game.world.Boundary
 import com.near_reality.game.world.entity.player.*
 import com.zenyte.GameToggles
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.HintArrow
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
@@ -507,15 +507,15 @@ object BountyHunterController {
     private fun getCrateForEarningPotential(earningPotential: Int): Item? {
         return when {
             earningPotential < 20 -> null // No reward for values below 20
-            earningPotential >= 100 -> Item(ItemId.BOUNTY_CRATE_TIER_9) // Max tier for 100%
-            earningPotential >= 90 -> Item(ItemId.BOUNTY_CRATE_TIER_8)
-            earningPotential >= 80 -> Item(ItemId.BOUNTY_CRATE_TIER_7)
-            earningPotential >= 70 -> Item(ItemId.BOUNTY_CRATE_TIER_6)
-            earningPotential >= 60 -> Item(ItemId.BOUNTY_CRATE_TIER_5)
-            earningPotential >= 50 -> Item(ItemId.BOUNTY_CRATE_TIER_4)
-            earningPotential >= 40 -> Item(ItemId.BOUNTY_CRATE_TIER_3)
-            earningPotential >= 30 -> Item(ItemId.BOUNTY_CRATE_TIER_2)
-            earningPotential >= 20 -> Item(ItemId.BOUNTY_CRATE_TIER_1)
+            earningPotential >= 100 -> Item(BOUNTY_CRATE_TIER_9) // Max tier for 100%
+            earningPotential >= 90 -> Item(BOUNTY_CRATE_TIER_8)
+            earningPotential >= 80 -> Item(BOUNTY_CRATE_TIER_7)
+            earningPotential >= 70 -> Item(BOUNTY_CRATE_TIER_6)
+            earningPotential >= 60 -> Item(BOUNTY_CRATE_TIER_5)
+            earningPotential >= 50 -> Item(BOUNTY_CRATE_TIER_4)
+            earningPotential >= 40 -> Item(BOUNTY_CRATE_TIER_3)
+            earningPotential >= 30 -> Item(BOUNTY_CRATE_TIER_2)
+            earningPotential >= 20 -> Item(BOUNTY_CRATE_TIER_1)
             else -> null
         }
     }

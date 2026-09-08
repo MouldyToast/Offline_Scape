@@ -5,31 +5,7 @@ import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.player.container.RequestResult
 import kotlin.random.Random
-import com.zenyte.game.item.ItemId.ANCIENT_EFFIGY
-import com.zenyte.game.item.ItemId.ANCIENT_EMBLEM
-import com.zenyte.game.item.ItemId.ANCIENT_MEDALLION
-import com.zenyte.game.item.ItemId.ANCIENT_RELIC
-import com.zenyte.game.item.ItemId.ANCIENT_STATUETTE
-import com.zenyte.game.item.ItemId.ANCIENT_TOTEM
-import com.zenyte.game.item.ItemId.ANGLERFISH
-import com.zenyte.game.item.ItemId.ANTIVENOM4
-import com.zenyte.game.item.ItemId.BASTION_POTION4
-import com.zenyte.game.item.ItemId.BLOOD_MONEY
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_1
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_2
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_3
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_4
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_5
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_6
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_7
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_8
-import com.zenyte.game.item.ItemId.BOUNTY_CRATE_TIER_9
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DRAGON_DART
-import com.zenyte.game.item.ItemId.DRAGON_KNIFE
-import com.zenyte.game.item.ItemId.SANFEW_SERUM4
-import com.zenyte.game.item.ItemId.SARADOMIN_BREW4
-import com.zenyte.game.item.ItemId.SUPER_COMBAT_POTION4
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

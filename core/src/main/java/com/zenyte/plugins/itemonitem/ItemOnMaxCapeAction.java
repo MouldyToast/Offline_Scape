@@ -6,7 +6,7 @@ import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 /**
  * @author Tommeh | 19 aug. 2018 | 20:25:01

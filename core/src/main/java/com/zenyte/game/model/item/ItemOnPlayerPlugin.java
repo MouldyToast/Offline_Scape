@@ -1,7 +1,7 @@
 package com.zenyte.game.model.item;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.pathfinding.events.player.EntityEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.EntityStrategy;
 import com.zenyte.game.world.entity.player.Player;

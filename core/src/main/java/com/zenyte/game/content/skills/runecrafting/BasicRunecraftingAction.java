@@ -9,7 +9,7 @@ import com.zenyte.game.content.follower.Pet;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.masks.Animation;

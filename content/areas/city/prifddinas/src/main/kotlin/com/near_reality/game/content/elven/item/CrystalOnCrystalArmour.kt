@@ -1,7 +1,7 @@
 package com.near_reality.game.content.elven.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
@@ -80,14 +80,14 @@ class CrystalOnCrystalArmour : ItemOnItemAction {
         val chestId: Int,
         val legId: Int,
     ) {
-        ITHELL(     ItemId.CRYSTAL_OF_ITHELL,       ItemId.CRYSTAL_HELM_27717,  ItemId.CRYSTAL_BODY_27709,  ItemId.CRYSTAL_LEGS_27713),
-        IORWERTH(   ItemId.CRYSTAL_OF_IORWERTH,     ItemId.CRYSTAL_HELM_27729,  ItemId.CRYSTAL_BODY_27721,  ItemId.CRYSTAL_LEGS_27725),
-        TRAHAEARN(  ItemId.CRYSTAL_OF_TRAHAEARN,    ItemId.CRYSTAL_HELM_27741,  ItemId.CRYSTAL_BODY_27733,  ItemId.CRYSTAL_LEGS_27737),
-        CADARN(     ItemId.CRYSTAL_OF_CADARN,       ItemId.CRYSTAL_HELM_27753,  ItemId.CRYSTAL_BODY_27745,  ItemId.CRYSTAL_LEGS_27749),
-        CRWYS(      ItemId.CRYSTAL_OF_CRWYS,        ItemId.CRYSTAL_HELM_27765,  ItemId.CRYSTAL_BODY_27757,  ItemId.CRYSTAL_LEGS_27761),
-        MEILYR(     ItemId.CRYSTAL_OF_MEILYR,       ItemId.CRYSTAL_HELM,        ItemId.CRYSTAL_BODY,        ItemId.CRYSTAL_LEGS),
-        HEFIN(      ItemId.CRYSTAL_OF_HEFIN,        ItemId.CRYSTAL_HELM_27705,  ItemId.CRYSTAL_BODY_27697,  ItemId.CRYSTAL_LEGS_27701),
-        AMLODD(     ItemId.CRYSTAL_OF_AMLODD,       ItemId.CRYSTAL_HELM_27777,  ItemId.CRYSTAL_BODY_27769,  ItemId.CRYSTAL_LEGS_27773),
+        ITHELL(     CRYSTAL_OF_ITHELL,       CRYSTAL_HELM_27717,  CRYSTAL_BODY_27709,  CRYSTAL_LEGS_27713),
+        IORWERTH(   CRYSTAL_OF_IORWERTH,     CRYSTAL_HELM_27729,  CRYSTAL_BODY_27721,  CRYSTAL_LEGS_27725),
+        TRAHAEARN(  CRYSTAL_OF_TRAHAEARN,    CRYSTAL_HELM_27741,  CRYSTAL_BODY_27733,  CRYSTAL_LEGS_27737),
+        CADARN(     CRYSTAL_OF_CADARN,       CRYSTAL_HELM_27753,  CRYSTAL_BODY_27745,  CRYSTAL_LEGS_27749),
+        CRWYS(      CRYSTAL_OF_CRWYS,        CRYSTAL_HELM_27765,  CRYSTAL_BODY_27757,  CRYSTAL_LEGS_27761),
+        MEILYR(     CRYSTAL_OF_MEILYR,       CRYSTAL_HELM,        CRYSTAL_BODY,        CRYSTAL_LEGS),
+        HEFIN(      CRYSTAL_OF_HEFIN,        CRYSTAL_HELM_27705,  CRYSTAL_BODY_27697,  CRYSTAL_LEGS_27701),
+        AMLODD(     CRYSTAL_OF_AMLODD,       CRYSTAL_HELM_27777,  CRYSTAL_BODY_27769,  CRYSTAL_LEGS_27773),
     }
 
 }

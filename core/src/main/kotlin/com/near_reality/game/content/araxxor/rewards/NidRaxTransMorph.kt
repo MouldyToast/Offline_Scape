@@ -2,7 +2,7 @@ package com.near_reality.game.content.araxxor.rewards
 
 import com.near_reality.game.world.entity.player.nidRaxMetamorphUnlocked
 import com.zenyte.game.content.follower.Follower
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 
 /**
@@ -23,13 +23,13 @@ class NidRaxTransMorph : NPCPlugin() {
                 player.sendMessage("You have not learned how to do this yet.")
                 return@bind
             }
-            val isNid = npc.id == NpcId.NID_13683
-            val id = if (isNid) NpcId.RAX_13684 else NpcId.NID_13683
+            val isNid = npc.id == NID_13683
+            val id = if (isNid) RAX_13684 else NID_13683
             npc.setTransformation(id)
             player.petId = id
         }
     }
 
     override fun getNPCs(): IntArray =
-        intArrayOf(NpcId.NID_13683, NpcId.RAX_13684)
+        intArrayOf(NID_13683, RAX_13684)
 }

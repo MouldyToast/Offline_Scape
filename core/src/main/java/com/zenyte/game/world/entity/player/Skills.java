@@ -9,7 +9,7 @@ import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.content.minigame.wintertodt.RewardCrate;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.net.packet.PacketDispatcher;
 import com.zenyte.game.util.AccessMask;

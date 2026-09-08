@@ -6,7 +6,7 @@ import com.near_reality.game.content.seq
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId.DREADBORN_ARAXYTE
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.npc.impl.slayer.superior.SuperiorNPC

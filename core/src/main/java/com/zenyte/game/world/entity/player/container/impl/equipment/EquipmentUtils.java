@@ -4,7 +4,7 @@ import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.skills.cooking.CookingDefinitions;
 import com.zenyte.game.content.skills.runecrafting.BarkArmor;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.world.entity.player.Player;
 

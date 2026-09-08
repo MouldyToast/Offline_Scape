@@ -9,7 +9,7 @@ import com.zenyte.game.content.gravestone.GravestoneExt.getItemReclaimCost
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.format
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.util.AccessMask
@@ -26,14 +26,14 @@ import java.util.*
  */
 class ItemsKeptOnDeathInterface : InterfaceScript() {
 
-    private val keepDowngradedWithoutOrnamentKit = ItemId.MUDSKIPPER_HAT
-    private val keepDowngraded = ItemId.BURNT_FISH_343
-    private val deleted = ItemId.BURNT_FISH_357
-    private val kept = ItemId.BURNT_FISH
-    private val gravestoneDowngraded = ItemId.BURNT_FISH_369
-    private val goToGravestone = ItemId.BURNT_FISH_367
-    private val turnToCoins = ItemId.BURNT_FISHCAKE
-    private val lostToKiller = ItemId.JUG_OF_BAD_WINE
+    private val keepDowngradedWithoutOrnamentKit = MUDSKIPPER_HAT
+    private val keepDowngraded = BURNT_FISH_343
+    private val deleted = BURNT_FISH_357
+    private val kept = BURNT_FISH
+    private val gravestoneDowngraded = BURNT_FISH_369
+    private val goToGravestone = BURNT_FISH_367
+    private val turnToCoins = BURNT_FISHCAKE
+    private val lostToKiller = JUG_OF_BAD_WINE
 
     private var Player.protectItemSetting by attribute("ikod_protect_item") {
         prayerManager.isActive(Prayer.PROTECT_ITEM)
@@ -141,7 +141,7 @@ class ItemsKeptOnDeathInterface : InterfaceScript() {
         var slot = 0
         for (item in alwaysKept) {
             /* CS2 exception */
-            if (item.id == ItemId.OLD_SCHOOL_BOND_UNTRADEABLE || item.id == ItemId._50_DONATOR_SCROLL) {
+            if (item.id == OLD_SCHOOL_BOND_UNTRADEABLE || item.id == _50_DONATOR_SCROLL) {
                 continue
             }
             inv[slot] = item

@@ -3,7 +3,7 @@ package com.zenyte.game.content.event.easter2020.plugin.npc;
 import com.zenyte.game.content.event.easter2020.EasterConstants;
 import com.zenyte.game.content.event.easter2020.SplittingHeirs;
 import com.zenyte.game.content.event.easter2020.Stage;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NPC;

@@ -4,7 +4,7 @@ import com.zenyte.game.GameInterface
 import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -31,9 +31,9 @@ class StrategyAndWarTableObject : ObjectAction {
     ) {
         if (option == "Read") {
             val party = VerSinhazaArea.getParty(player,
-                checkMembers = obj.id == ObjectId.STRATEGY_TABLE,
+                checkMembers = obj.id == STRATEGY_TABLE,
                 checkViewers = false,
-                checkSpectators = obj.id == ObjectId.WAR_TABLE
+                checkSpectators = obj.id == WAR_TABLE
             )
             if (party != null) {
                 GameInterface.TOB_PERFORMANCE_DETAILS.open(player)
@@ -44,7 +44,7 @@ class StrategyAndWarTableObject : ObjectAction {
     }
 
     override fun getObjects() = arrayOf(
-        ObjectId.STRATEGY_TABLE,
-        ObjectId.WAR_TABLE
+        STRATEGY_TABLE,
+        WAR_TABLE
     )
 }

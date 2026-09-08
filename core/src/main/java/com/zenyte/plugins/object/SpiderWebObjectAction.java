@@ -1,7 +1,7 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;
@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.action.combat.AttackStyleDefinition;
 import com.zenyte.game.world.entity.player.container.impl.equipment.Equipment;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import org.jetbrains.annotations.NotNull;

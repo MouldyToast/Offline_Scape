@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.agility.shortcut;
 
 import com.zenyte.game.content.skills.agility.Shortcut;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;

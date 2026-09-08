@@ -6,7 +6,8 @@ import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.content.theatreofblood.room.*
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur.Companion.TRANSFORM_INTO_SECOND_PHASE_ID
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.first.SupportingPillar
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
+import com.zenyte.game.obj.ids.TREASURE_ROOM
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Direction
@@ -16,7 +17,7 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.calog.CAType
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.area.plugins.FullMovementPlugin
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -144,7 +145,7 @@ internal class VerzikViturRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, ro
         CoresManager.slowExecutor.execute(TheatreOfBloodScoresSerializer::write)
 
         val pos = getBaseLocation(31, 36)
-        val throne = WorldObject(ObjectId.TREASURE_ROOM, tile = pos).apply {
+        val throne = WorldObject(TREASURE_ROOM, tile = pos).apply {
             sizeX += 2
             sizeY += 2
         }
@@ -169,7 +170,7 @@ internal class VerzikViturRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, ro
                 player.sendMessage("Welcome to the final fight.")
                 if(raid.bypassMode) {
                     player.sendMessage(Colour.RS_RED.wrap("You have been granted the Dawnbringer."))
-                    player.inventory.addOrDrop(ItemId.DAWNBRINGER)
+                    player.inventory.addOrDrop(DAWNBRINGER)
                 }
             }
         }

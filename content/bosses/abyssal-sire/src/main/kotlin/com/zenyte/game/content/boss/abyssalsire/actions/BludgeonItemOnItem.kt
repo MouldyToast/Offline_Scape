@@ -1,7 +1,7 @@
 package com.zenyte.game.content.boss.abyssalsire.actions
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -25,21 +25,21 @@ class BludgeonItemOnItem : ItemOnItemAction {
 
 	override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
 		return arrayOf(
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_AXON, ItemId.BLUDGEON_CLAW),
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_AXON, ItemId.BLUDGEON_SPINE),
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_CLAW, ItemId.BLUDGEON_SPINE),
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_CLAW, ItemId.BLUDGEON_AXON),
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_SPINE, ItemId.BLUDGEON_CLAW),
-			ItemOnItemAction.ItemPair(ItemId.BLUDGEON_SPINE, ItemId.BLUDGEON_AXON),
+			ItemOnItemAction.ItemPair(BLUDGEON_AXON, BLUDGEON_CLAW),
+			ItemOnItemAction.ItemPair(BLUDGEON_AXON, BLUDGEON_SPINE),
+			ItemOnItemAction.ItemPair(BLUDGEON_CLAW, BLUDGEON_SPINE),
+			ItemOnItemAction.ItemPair(BLUDGEON_CLAW, BLUDGEON_AXON),
+			ItemOnItemAction.ItemPair(BLUDGEON_SPINE, BLUDGEON_CLAW),
+			ItemOnItemAction.ItemPair(BLUDGEON_SPINE, BLUDGEON_AXON),
 		)
 	}
 
 	companion object {
-		private val bludgeonAxon = Item(ItemId.BLUDGEON_AXON)
-		private val bludgeonClaw = Item(ItemId.BLUDGEON_CLAW)
-		private val bludgeonSpine = Item(ItemId.BLUDGEON_SPINE)
-		private val abyssalBludgeon = Item(ItemId.ABYSSAL_BLUDGEON)
-		private val bludgeonItems = mutableListOf(ItemId.BLUDGEON_AXON, ItemId.BLUDGEON_CLAW, ItemId.BLUDGEON_SPINE)
+		private val bludgeonAxon = Item(BLUDGEON_AXON)
+		private val bludgeonClaw = Item(BLUDGEON_CLAW)
+		private val bludgeonSpine = Item(BLUDGEON_SPINE)
+		private val abyssalBludgeon = Item(ABYSSAL_BLUDGEON)
+		private val bludgeonItems = mutableListOf(BLUDGEON_AXON, BLUDGEON_CLAW, BLUDGEON_SPINE)
 	}
 
 }

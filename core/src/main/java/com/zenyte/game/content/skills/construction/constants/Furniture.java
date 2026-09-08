@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static com.zenyte.game.content.skills.construction.ConstructionConstants.WATERING_CAN;
 import static com.zenyte.game.content.skills.construction.constants.Furniture.ConstructionAction.REFRESH_ROOM;
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 //import static com.zenyte.game.content.skills.construction.constants.Furniture.ConstructionAction.REFRESH_HOUSE;
 

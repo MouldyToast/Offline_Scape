@@ -1,14 +1,14 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.types.config.items.ItemDefinitions
 
 object NearRealityBoneCrusherItemDefinitions {
 
     private val bonecrusherItemIds = listOf(
-        ItemId.BONECRUSHER,
-        ItemId.BONECRUSHER_NECKLACE,
-        ItemId.DRAGONBONE_NECKLACE
+        BONECRUSHER,
+        BONECRUSHER_NECKLACE,
+        DRAGONBONE_NECKLACE
     )
 
     private val options = listOf("Check", "Uncharge", "Charge", "Check/Uncharge")

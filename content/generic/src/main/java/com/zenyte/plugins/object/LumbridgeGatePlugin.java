@@ -1,5 +1,7 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.obj.ids.ObjectId;
+
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.pathfinding.events.player.ObjectEvent;

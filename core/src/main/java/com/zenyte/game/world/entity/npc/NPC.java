@@ -22,7 +22,7 @@ import com.zenyte.game.content.skills.slayer.Slayer;
 import com.zenyte.game.content.supplycaches.SupplyCache;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;

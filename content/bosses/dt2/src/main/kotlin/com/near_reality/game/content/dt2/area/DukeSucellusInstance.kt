@@ -7,7 +7,7 @@ import com.near_reality.game.content.dt2.npc.deathsToDuke
 import com.near_reality.game.content.dt2.npc.findObject
 import com.near_reality.game.content.dt2.npc.theduke.*
 import com.zenyte.game.content.skills.slayer.SlayerEquipment
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.music.Music
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager
@@ -151,11 +151,11 @@ data class DukeSucellusInstance(
 
     private fun removeFarmedMaterials() {
         with(player.inventory.container) {
-            findAllById(ItemId.ARDERMUSCA_POISON).values.forEach { remove(it) }
-            findAllById(ItemId.SALAX_SALT).values.forEach { remove(it) }
-            findAllById(ItemId.ARDER_MUSHROOM).values.forEach { remove(it) }
-            findAllById(ItemId.ARDER_POWDER).values.forEach { remove(it) }
-            findAllById(ItemId.MUSCA_POWDER).values.forEach { remove(it) }
+            findAllById(ARDERMUSCA_POISON).values.forEach { remove(it) }
+            findAllById(SALAX_SALT).values.forEach { remove(it) }
+            findAllById(ARDER_MUSHROOM).values.forEach { remove(it) }
+            findAllById(ARDER_POWDER).values.forEach { remove(it) }
+            findAllById(MUSCA_POWDER).values.forEach { remove(it) }
         }
         player.inventory.refresh()
     }

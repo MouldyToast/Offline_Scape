@@ -1,7 +1,7 @@
 package com.near_reality.cache.draw
 
 import com.zenyte.CacheManager
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.tools.jagcached.cache.Cache
 import mgi.types.config.draw.font.Fonts
 import mgi.types.config.draw.hitsplat.HitSplatDefinition
@@ -39,7 +39,7 @@ fun main() {
         sprites.toBufferedImage().toFile(Paths.get("F:\\Dumper\\item_sprites\\", "${item.id}.png"))
     }
 
-    //cache.item(ItemId.FIRE_CAPE).loadSpritePixels(amount = 100_000).toBufferedImage().toFile(Paths.get("/Users/stanvanderbend/IdeaProjects/near-reality/cache_dumps/item/sprites", "item.png"))
+    //cache.item(FIRE_CAPE).loadSpritePixels(amount = 100_000).toBufferedImage().toFile(Paths.get("/Users/stanvanderbend/IdeaProjects/near-reality/cache_dumps/item/sprites", "item.png"))
 
 //    ItemDefinitions.getDefinitions().filter {
 //        it != null && !it.isPlaceholder

@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.PairedItemOnItemPlugin
 import com.zenyte.game.world.entity.player.Player
@@ -20,11 +20,11 @@ class WebWeaverBowCreationPlugin : PairedItemOnItemPlugin {
             return
         }
 
-        val craws = if (from.id == ItemId.FANGS_OF_VENENATIS) to else from
-        player.inventory.deleteItem(Item(ItemId.FANGS_OF_VENENATIS))
+        val craws = if (from.id == FANGS_OF_VENENATIS) to else from
+        player.inventory.deleteItem(Item(FANGS_OF_VENENATIS))
         player.inventory.deleteItem(craws)
 
-        val webweaver = Item(if (craws.id == ItemId.CRAWS_BOW_U) ItemId.WEBWEAVER_BOW_U_27652 else ItemId.WEBWEAVER_BOW_27655)
+        val webweaver = Item(if (craws.id == CRAWS_BOW_U) WEBWEAVER_BOW_U_27652 else WEBWEAVER_BOW_27655)
         webweaver.charges = craws.charges
         player.inventory.addItem(webweaver)
 
@@ -35,8 +35,8 @@ class WebWeaverBowCreationPlugin : PairedItemOnItemPlugin {
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
         return arrayOf(
-            ItemOnItemAction.ItemPair.of(ItemId.CRAWS_BOW_U, ItemId.FANGS_OF_VENENATIS),
-            ItemOnItemAction.ItemPair.of(ItemId.CRAWS_BOW, ItemId.FANGS_OF_VENENATIS)
+            ItemOnItemAction.ItemPair.of(CRAWS_BOW_U, FANGS_OF_VENENATIS),
+            ItemOnItemAction.ItemPair.of(CRAWS_BOW, FANGS_OF_VENENATIS)
         )
     }
 }

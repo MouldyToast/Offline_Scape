@@ -6,19 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BAIT_PACK
-import com.zenyte.game.item.ItemId.FEATHER
-import com.zenyte.game.item.ItemId.FEATHER_PACK
-import com.zenyte.game.item.ItemId.FISHING_BAIT
-import com.zenyte.game.item.ItemId.FISHING_ROD
-import com.zenyte.game.item.ItemId.FLY_FISHING_ROD
-import com.zenyte.game.item.ItemId.RAW_PIKE
-import com.zenyte.game.item.ItemId.RAW_SALMON
-import com.zenyte.game.item.ItemId.RAW_TROUT
 
 class FernaheiSFishingHut : ShopScript() {
 

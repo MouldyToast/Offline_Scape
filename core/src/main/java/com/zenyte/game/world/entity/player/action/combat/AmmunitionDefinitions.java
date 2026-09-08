@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.entity.SoundEffect;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 5. jaan 2018 : 1:54.53

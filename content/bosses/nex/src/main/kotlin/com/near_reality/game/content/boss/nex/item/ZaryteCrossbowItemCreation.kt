@@ -1,7 +1,7 @@
 package com.near_reality.game.content.boss.nex.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
@@ -18,21 +18,21 @@ class ZaryteCrossbowItemCreation : ItemOnItemAction {
 
         val inventory = player.inventory
 
-        val shards = inventory.getAny(ItemId.NIHIL_SHARD)
+        val shards = inventory.getAny(NIHIL_SHARD)
         if ((shards?.amount ?: 0) < 250) {
-            player.dialogue { item(Item(ItemId.NIHIL_SHARD), FAILED_MESSAGE) }
+            player.dialogue { item(Item(NIHIL_SHARD), FAILED_MESSAGE) }
             return
         }
 
         player.options("Create a Zaryte crossbow?") {
             "Yes" {
                 val ingredients = arrayOf(
-                    Item(ItemId.NIHIL_SHARD, 250),
-                    Item(ItemId.NIHIL_HORN),
-                    Item(ItemId.ARMADYL_CROSSBOW)
+                    Item(NIHIL_SHARD, 250),
+                    Item(NIHIL_HORN),
+                    Item(ARMADYL_CROSSBOW)
                 )
                 if (inventory.deleteItems(*ingredients).result == RequestResult.SUCCESS) {
-                    val zaryteCrossbow = Item(ItemId.ZARYTE_CROSSBOW, 1)
+                    val zaryteCrossbow = Item(ZARYTE_CROSSBOW, 1)
                     inventory.addItem(zaryteCrossbow)
                     player.dialogue { item(zaryteCrossbow, SUCCESS_MESSAGE) }
                 }
@@ -41,7 +41,7 @@ class ZaryteCrossbowItemCreation : ItemOnItemAction {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.ARMADYL_CROSSBOW, ItemId.NIHIL_HORN)
+    override fun getItems(): IntArray = intArrayOf(ARMADYL_CROSSBOW, NIHIL_HORN)
 
     private companion object {
         const val FAILED_MESSAGE = "To create a Zaryte crossbow, " +

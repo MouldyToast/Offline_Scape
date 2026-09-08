@@ -6,7 +6,7 @@ import com.zenyte.game.world.broadcasts.BroadcastType
 import com.zenyte.game.world.broadcasts.WorldBroadcasts
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import java.util.*
 

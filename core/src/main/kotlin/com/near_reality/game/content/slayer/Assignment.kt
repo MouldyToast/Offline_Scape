@@ -9,10 +9,10 @@ import com.zenyte.game.content.boss.kraken.Kraken
 import com.zenyte.game.content.godwars.instance.GodwarsInstance
 import com.zenyte.game.content.kebos.alchemicalhydra.npc.AlchemicalHydra
 import com.zenyte.game.content.skills.slayer.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.impl.kalphite.KalphiteQueen
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -143,14 +143,14 @@ class Assignment {
         player.skills.addXp(SkillConstants.SLAYER, experience.toDouble())
         val braceletId = player.equipment.getId(EquipmentSlot.HANDS)
 
-        val hasSlaughter = braceletId == ItemId.BRACELET_OF_SLAUGHTER
-        val hasExpeditious = braceletId == ItemId.EXPEDITIOUS_BRACELET
+        val hasSlaughter = braceletId == BRACELET_OF_SLAUGHTER
+        val hasExpeditious = braceletId == EXPEDITIOUS_BRACELET
         if (hasSlaughter || hasExpeditious) {
             val rate = 25
             val hasRolledEffect = Utils.random(99) <= rate
             if (hasRolledEffect) {
                 if (task !== RegularTask.TZTOK_JAD && task !== RegularTask.TZKAL_ZUK) {
-                    if (braceletId == ItemId.BRACELET_OF_SLAUGHTER) {
+                    if (braceletId == BRACELET_OF_SLAUGHTER) {
                         var slaughterUses = player.getNumericAttribute("bracelet of slaughter uses").toInt() + 1
                         val chargesLeft = (30 - slaughterUses)
                         if (chargesLeft == 0) {
@@ -171,7 +171,7 @@ class Assignment {
                                 null
                         }
                         finish(npc)
-                    } else if (braceletId == ItemId.EXPEDITIOUS_BRACELET) {
+                    } else if (braceletId == EXPEDITIOUS_BRACELET) {
                         var expeditiousBraceletUses = player.getNumericAttribute("expeditious bracelet uses").toInt() + 1
                         val chargesLeft = (30 - expeditiousBraceletUses)
                         if (chargesLeft == 0) {
@@ -242,11 +242,11 @@ class Assignment {
         if (npc is Kraken && task == RegularTask.CAVE_KRAKEN) {
             return true
         }
-        if (npc.id == NpcId.THERMONUCLEAR_SMOKE_DEVIL && task == RegularTask.SMOKE_DEVILS) {
+        if (npc.id == THERMONUCLEAR_SMOKE_DEVIL && task == RegularTask.SMOKE_DEVILS) {
             return true
         }
         //Only the Catacombs of Kourend work.
-        if (npc.id == NpcId.SKOTIZO && (task == RegularTask.BLACK_DEMONS || task == RegularTask.GREATER_DEMONS)) {
+        if (npc.id == SKOTIZO && (task == RegularTask.BLACK_DEMONS || task == RegularTask.GREATER_DEMONS)) {
             return area == CatacombsOfKourend::class.java
         }
         if (area == GodwarsDungeonArea::class.java) {

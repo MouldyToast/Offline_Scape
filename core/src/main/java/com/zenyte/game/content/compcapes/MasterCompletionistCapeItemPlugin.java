@@ -1,6 +1,6 @@
 package com.zenyte.game.content.compcapes;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.near_reality.game.model.ui.cape_customizer.CapeCustomizerInterfacePlugin;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;

@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.construction.costume;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.container.ItemContainer;
 
 import java.util.HashMap;

@@ -6,21 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BANANA
-import com.zenyte.game.item.ItemId.BREAD
-import com.zenyte.game.item.ItemId.CABBAGE
-import com.zenyte.game.item.ItemId.CHEESE
-import com.zenyte.game.item.ItemId.CHOCOLATE_BAR
-import com.zenyte.game.item.ItemId.POTATO
-import com.zenyte.game.item.ItemId.POT_OF_FLOUR
-import com.zenyte.game.item.ItemId.RAW_BEEF
-import com.zenyte.game.item.ItemId.RAW_CHICKEN
-import com.zenyte.game.item.ItemId.REDBERRIES
-import com.zenyte.game.item.ItemId.TOMATO
 
 class WydinSFoodStore : ShopScript() {
 

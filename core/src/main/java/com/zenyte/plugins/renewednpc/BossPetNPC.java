@@ -4,7 +4,7 @@ import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.content.follower.impl.MiscPet;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.utils.IntArray;
 import it.unimi.dsi.fastutil.ints.IntArrayList;

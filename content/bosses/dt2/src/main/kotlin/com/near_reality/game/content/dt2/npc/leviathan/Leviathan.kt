@@ -23,7 +23,7 @@ import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.CombatScriptsHandler
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NPCCombat
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.NotificationSettings
@@ -58,14 +58,14 @@ val LEVIATHAN_SPECIAL_TICKS = "leviathan_special_ticks"
 var NPC.phase by attrEnumNullable<SpecialPhase>(NPC_SPECIAL_PHASE)
 var NPC.nextPhase by attrEnumNullable<SpecialPhase>(NPC_SPECIAL_PHASE_NEXT)
 
-val NPC.awakened get() = id == NpcId.THE_LEVIATHAN_12215
+val NPC.awakened get() = id == THE_LEVIATHAN_12215
 var NPC.waiting by attrOrElse(NPC_IS_WAITING, true)
 
 var NPC.stunnedCounter by attrOrElse(LEVIATHAN_STUNNED_COUNTER, 0)
 
 val Entity.leviathan: NPC?
     get() = World.findNPC(location, 20) {
-        it.id == NpcId.THE_LEVIATHAN || it.id == NpcId.THE_LEVIATHAN_12215
+        it.id == THE_LEVIATHAN || it.id == THE_LEVIATHAN_12215
     }.getOrNull()
 val Player.awakenedEncounter: Boolean
     get() = leviathan?.awakened == true
@@ -568,7 +568,7 @@ class Leviathan(id: Int, position: Location, val instance: LeviathanInstance) : 
     }
 
     private fun Player.insidePathfinder(pathfinder: Npc?): Boolean {
-        val pathfinder = pathfinder ?: findNpc(NpcId.ABYSSAL_PATHFINDER) ?: return false
+        val pathfinder = pathfinder ?: findNpc(ABYSSAL_PATHFINDER) ?: return false
 
         val radius = if (awakenedEncounter) 5 else 3
         return pathfinder.location.withinDistance(location, radius)
@@ -1094,7 +1094,7 @@ class Leviathan(id: Int, position: Location, val instance: LeviathanInstance) : 
         combatTask?.stop()
 
         val npcs = position.findNpcs(radius = 30) {
-            id == NpcId.ABYSSAL_PATHFINDER || id == 12222
+            id == ABYSSAL_PATHFINDER || id == 12222
         }
         npcs.forEach {
             it.remove()

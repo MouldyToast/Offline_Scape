@@ -20,7 +20,7 @@ import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.calog.CAType
@@ -31,7 +31,7 @@ import com.zenyte.utils.TimeUnit
  * @author Jire
  */
 internal class PestilentBloat(room: PestilentBloatRoom) :
-    TheatreBossNPC<PestilentBloatRoom>(room, NpcId.PESTILENT_BLOAT, room.getLocation(3299, 4445, 0)),
+    TheatreBossNPC<PestilentBloatRoom>(room, PESTILENT_BLOAT, room.getLocation(3299, 4445, 0)),
     CombatScript {
 
     private val northWest: Location = room.getLocation(3288, 4451, 0)

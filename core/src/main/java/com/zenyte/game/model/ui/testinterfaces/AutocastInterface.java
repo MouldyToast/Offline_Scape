@@ -7,7 +7,7 @@ import com.zenyte.game.content.skills.magic.Magic;
 import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.world.entity.player.Player;

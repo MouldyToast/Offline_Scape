@@ -5,9 +5,9 @@ import com.zenyte.game.content.theatreofblood.room.verzikvitur.spiders.NylocasAt
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.spiders.NylocasMatomenos
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.PurpleTornado
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.Web
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.Animation
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.*
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType
@@ -22,7 +22,7 @@ import java.util.*
 internal object VerzikConfigs {
 
     fun configs() {
-        npc(NpcId.NYLOCAS_VASILIAS) {
+        npc(NYLOCAS_VASILIAS) {
             hitpoints = 100
         }
         npc(SupportingPillar.NPC_ID) {
@@ -95,7 +95,7 @@ internal object VerzikConfigs {
         npc(Web.ID) {
             hitpoints = 10
         }
-        item(ItemId.DAWNBRINGER) {
+        item(DAWNBRINGER) {
             examine = "A weapon of light to hold back the darkness."
             equipmentType = EquipmentType.DEFAULT
             slot = EquipmentSlot.WEAPON.slot

@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.zenyte.game.content.event.christmas2019.cutscenes.FrozenGuest;
 import com.zenyte.game.content.event.christmas2019.cutscenes.PastScourgeCutsceneP2Repeat;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;

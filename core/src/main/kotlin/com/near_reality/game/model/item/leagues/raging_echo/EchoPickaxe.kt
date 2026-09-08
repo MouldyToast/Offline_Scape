@@ -9,8 +9,7 @@ import com.zenyte.game.content.skills.firemaking.Firemaking
 import com.zenyte.game.content.skills.fletching.FletchingDefinitions
 import com.zenyte.game.content.skills.smithing.SmeltableBar
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -55,13 +54,13 @@ class EchoPickaxe: ItemPlugin() {
 
         private fun Item.oreToBar(): Item {
             return when (id) {
-                ItemId.BLURITE_ORE -> Item(ItemId.BLURITE_BAR)
-                ItemId.SILVER_ORE -> Item(ItemId.SILVER_BAR)
-                ItemId.IRON_ORE -> Item(ItemId.STEEL_BAR)
-                ItemId.GOLD_ORE -> Item(ItemId.GOLD_BAR)
-                ItemId.MITHRIL_ORE -> Item(ItemId.MITHRIL_ORE)
-                ItemId.ADAMANTITE_ORE -> Item(ItemId.ADAMANTITE_BAR)
-                ItemId.RUNITE_ORE -> Item(ItemId.RUNITE_BAR)
+                BLURITE_ORE -> Item(BLURITE_BAR)
+                SILVER_ORE -> Item(SILVER_BAR)
+                IRON_ORE -> Item(STEEL_BAR)
+                GOLD_ORE -> Item(GOLD_BAR)
+                MITHRIL_ORE -> Item(MITHRIL_ORE)
+                ADAMANTITE_ORE -> Item(ADAMANTITE_BAR)
+                RUNITE_ORE -> Item(RUNITE_BAR)
                 else -> this
             }
         }
@@ -98,6 +97,6 @@ class EchoPickaxe: ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.ECHO_PICKAXE)
+    override fun getItems(): IntArray = intArrayOf(ECHO_PICKAXE)
 
 }

@@ -1,20 +1,14 @@
 package com.near_reality.plugins.area.osrs_home.npc
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
-import com.zenyte.game.item.ItemId.ARCANE_SIGIL
-import com.zenyte.game.item.ItemId.ARCANE_SPIRIT_SHIELD
-import com.zenyte.game.item.ItemId.ELYSIAN_SIGIL
-import com.zenyte.game.item.ItemId.ELYSIAN_SPIRIT_SHIELD
-import com.zenyte.game.item.ItemId.SPECTRAL_SIGIL
-import com.zenyte.game.item.ItemId.SPECTRAL_SPIRIT_SHIELD
 
 /**
  * Represents the dialogue for Abbot Langley at home area.
@@ -23,7 +17,7 @@ import com.zenyte.game.item.ItemId.SPECTRAL_SPIRIT_SHIELD
  */
 class AbbotLangleyDialogue(player: Player?, npc: NPC?) : Dialogue(player, npc) {
     override fun buildDialogue() {
-        this.npcId = NpcId.ABBOT_LANGLEY
+        this.npcId = ABBOT_LANGLEY
         player("Very nice rosebushes you have here.")
         npc("Yes, it has taken me many long hours in this garden to bring them to this state of near-perfection.")
         options {

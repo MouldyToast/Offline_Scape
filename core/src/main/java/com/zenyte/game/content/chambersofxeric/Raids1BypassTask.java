@@ -2,13 +2,13 @@ package com.zenyte.game.content.chambersofxeric;
 
 import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.logger.NearRealityLogger;
 import org.slf4j.Logger;
 
-import static com.zenyte.game.item.ItemId.ORB_OF_XERIC;
+import static com.zenyte.game.item.ids.ItemId.ORB_OF_XERIC;
 
 public class Raids1BypassTask extends TickTask {
 

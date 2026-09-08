@@ -3,7 +3,7 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 import com.zenyte.game.GameInterface
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 class TheatreScoreboardObject : ObjectAction {
@@ -22,7 +22,7 @@ class TheatreScoreboardObject : ObjectAction {
 
 	private companion object {
 
-		val objects = arrayOf(ObjectId.SCOREBOARD_32987)
+		val objects = arrayOf(SCOREBOARD_32987)
 
 	}
 

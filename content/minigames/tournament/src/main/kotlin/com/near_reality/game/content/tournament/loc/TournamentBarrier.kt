@@ -2,12 +2,12 @@ package com.near_reality.game.content.tournament.loc
 
 import com.near_reality.game.content.tournament.TournamentState
 import com.near_reality.game.content.tournament.tournamentOrNull
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -26,7 +26,7 @@ class TournamentBarrier : ObjectAction {
         optionId: Int,
         option: String
     ) {
-        player.dialogue(NpcId.TOURNAMENT_GUARD) {
+        player.dialogue(TOURNAMENT_GUARD) {
             if (player.y < `object`.y) {
                 if(player.tournamentOrNull?.participants?.hasMatchingIpWith(player)!!) {
                     npc("You cannot enter this tournament with another character.")
@@ -103,5 +103,5 @@ class TournamentBarrier : ObjectAction {
 
     override fun getDelay(): Int = 1
 
-    override fun getObjects(): Array<Any> = arrayOf(ObjectId.SHIMMERING_BARRIER_30397)
+    override fun getObjects(): Array<Any> = arrayOf(SHIMMERING_BARRIER_30397)
 }

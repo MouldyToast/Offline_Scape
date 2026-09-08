@@ -6,7 +6,7 @@ import com.near_reality.game.content.wilderness.event.hot_zone.WildernessHotZone
 import com.near_reality.game.world.PlayerEvent
 import com.near_reality.game.world.hook
 import com.near_reality.game.content.slayer.SlayerMaster
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.plugins.events.ServerLaunchEvent
@@ -56,11 +56,11 @@ object WildernessSlayerModule {
             player.sendMessage("You received double blood money for completing the task in a hot zone.")
         }
         if (player.getWildernessLevel() < 1) return
-        player.inventory.addOrDrop(ItemId.BLOOD_MONEY, bloodMoneyRewardAmount)
+        player.inventory.addOrDrop(BLOOD_MONEY, bloodMoneyRewardAmount)
     }
 
     private fun rewardLarransKey(player: Player) {
         if (player.getWildernessLevel() < 1) return
-        player.inventory.addOrDrop(ItemId.LARRANS_KEY, 1)
+        player.inventory.addOrDrop(LARRANS_KEY, 1)
     }
 }

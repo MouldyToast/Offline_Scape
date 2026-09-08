@@ -5,15 +5,15 @@ import com.zenyte.game.content.treasuretrails.TreasureTrail;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getTotalWrathToHagus;
-import static com.zenyte.game.item.ItemId.BLOOD_RUNE;
-import static com.zenyte.game.item.ItemId.WRATH_RUNE;
+import static com.zenyte.game.item.ids.ItemId.BLOOD_RUNE;
+import static com.zenyte.game.item.ids.ItemId.WRATH_RUNE;
 
 /**
  * @author Zei | Glabay-Studios

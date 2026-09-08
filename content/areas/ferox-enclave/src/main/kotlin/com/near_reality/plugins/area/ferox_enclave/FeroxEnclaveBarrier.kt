@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.entity.player.variables.TickVariable
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -82,5 +82,5 @@ class FeroxEnclaveBarrier : ObjectAction {
         }, if (player.hasWalkSteps()) 1 else -1)
     }
 
-    override fun getObjects() = arrayOf(ObjectId.BARRIER_39653, ObjectId.BARRIER_39652)
+    override fun getObjects() = arrayOf(BARRIER_39653, BARRIER_39652)
 }

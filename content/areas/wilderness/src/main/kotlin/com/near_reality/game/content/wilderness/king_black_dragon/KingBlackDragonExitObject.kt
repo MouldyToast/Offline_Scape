@@ -3,7 +3,7 @@ package com.near_reality.game.content.wilderness.king_black_dragon
 import com.zenyte.game.content.skills.magic.spells.teleports.structures.LeverTeleport
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -29,5 +29,5 @@ class KingBlackDragonExitObject : ObjectAction {
     }
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.LEVER_1817)
+        arrayOf(LEVER_1817)
 }

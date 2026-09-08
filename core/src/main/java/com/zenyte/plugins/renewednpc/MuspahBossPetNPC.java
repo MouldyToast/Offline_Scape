@@ -2,7 +2,7 @@ package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.impl.BossPet;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 
 import java.util.Objects;
 

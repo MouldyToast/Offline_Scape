@@ -1,7 +1,7 @@
 package com.zenyte.game.content.breaches;
 
-import com.zenyte.game.item.ItemId;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.item.ids.ItemId;
+import com.zenyte.game.npc.ids.NpcId;
 
 public class BreachSettings {
 

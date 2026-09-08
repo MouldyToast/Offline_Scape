@@ -7,6 +7,8 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.BONES
+import com.zenyte.game.item.ids.SHARK
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE

@@ -4,6 +4,8 @@ import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.ADAMANTITE_ORE
+import com.zenyte.game.item.ids.COAL
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*

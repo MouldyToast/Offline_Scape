@@ -8,6 +8,7 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.COAL
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor

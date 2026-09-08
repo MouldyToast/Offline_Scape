@@ -7,6 +7,13 @@ import com.near_reality.scripts.npc.drops.table.tables.gem.GemDropTable
 import com.near_reality.scripts.npc.drops.table.tables.herb.HerbDropTable
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.ADAMANTITE_ORE
+import com.zenyte.game.item.ids.COAL
+import com.zenyte.game.item.ids.GOLD_ORE
+import com.zenyte.game.item.ids.MUPHIN
+import com.zenyte.game.item.ids.RUNITE_ORE
+import com.zenyte.game.item.ids.SHARK
+import com.zenyte.game.item.ids.SILVER_ORE
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 import com.near_reality.scripts.npc.drops.NPCDropTableScript

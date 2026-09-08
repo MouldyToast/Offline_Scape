@@ -199,7 +199,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
     companion object {
         private val HEAL_GFX = Graphics(1221)
         private val MAGIC_HIT_GFX = Graphics(1454, 0, 92)
-        private val BRACELET_OF_ETHEREUM = Item(BRACELET_OF_ETHEREUM)
+        private val BRACELET_OF_ETHEREUM = Item(com.zenyte.game.item.ids.BRACELET_OF_ETHEREUM)
 
         fun isRevenant(id: Int): Boolean {
             return id == 7881 || id >= 7931 && id <= 7940

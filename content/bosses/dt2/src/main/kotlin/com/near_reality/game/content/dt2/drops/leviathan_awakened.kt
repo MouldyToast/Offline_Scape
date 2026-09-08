@@ -7,6 +7,13 @@ import com.zenyte.game.content.util.hasReceivedSmokeQuartz
 import com.zenyte.game.content.util.playerHasKilledAllAwakenedBossesOnce
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.ADAMANTITE_ORE
+import com.zenyte.game.item.ids.COAL
+import com.zenyte.game.item.ids.GOLD_ORE
+import com.zenyte.game.item.ids.IRON_ORE
+import com.zenyte.game.item.ids.LILVIATHAN
+import com.zenyte.game.item.ids.RUNITE_ORE
+import com.zenyte.game.item.ids.SILVER_ORE
 import com.zenyte.game.util.Utils
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId

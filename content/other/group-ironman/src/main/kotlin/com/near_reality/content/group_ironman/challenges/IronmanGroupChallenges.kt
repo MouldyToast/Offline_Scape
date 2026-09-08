@@ -7,7 +7,7 @@ import com.zenyte.game.content.follower.impl.BossPet
 import com.zenyte.game.content.follower.impl.SkillingPet
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface
+import com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants
 import mgi.types.config.StructDefinitions
 import mgi.types.config.enums.EnumDefinitions
 import java.util.*
@@ -136,7 +136,7 @@ object IronmanGroupChallenges : ChallengeRegistry<IronmanGroup>() {
 
     private fun collectCollectionLogItems(structId: Int): List<Int> =
         StructDefinitions.get(structId)
-            ?.getValue(CollectionLogInterface.STRUCT_POINTER_SUB_ENUM_CAT)
+            ?.getValue(CollectionLogConstants.STRUCT_POINTER_SUB_ENUM_CAT)
             ?.orElseThrow { RuntimeException() }.toString().toInt()
             .let(EnumDefinitions::getIntEnum)
             .values

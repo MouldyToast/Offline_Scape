@@ -5,7 +5,7 @@ import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.collectionlog.CLCategoryType;
-import com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface;
+import com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import mgi.types.config.StructDefinitions;
@@ -55,8 +55,8 @@ public class CALogBossInterface extends Interface {
 					filter(e -> player.getVarManager().getBitValue(CALogBossOverviewInterface.BOSS_SELECT_VARBIT) == e.ordinal() + 1).findFirst();
 			if (optionalType.isPresent()) {
 				final CABossType type = optionalType.get();
-				player.getTemporaryAttributes().put(CollectionLogInterface.CATEGORY_ATTR_KEY, type.isRaid() ? CLCategoryType.RAIDS : CLCategoryType.BOSS);
-				player.getTemporaryAttributes().put(CollectionLogInterface.SUB_CATEGORY_ATTR_KEY, type.getCollLogVal());
+				player.getTemporaryAttributes().put(CollectionLogConstants.CATEGORY_ATTR_KEY, type.isRaid() ? CLCategoryType.RAIDS : CLCategoryType.BOSS);
+				player.getTemporaryAttributes().put(CollectionLogConstants.SUB_CATEGORY_ATTR_KEY, type.getCollLogVal());
 				GameInterface.COLLECTION_LOG.open(player);
 			}
 		});

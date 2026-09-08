@@ -25,8 +25,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface.STRUCT_POINTER_ENUM_CAT;
-import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface.STRUCT_POINTER_SUB_ENUM_CAT;
+import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants.STRUCT_POINTER_ENUM_CAT;
+import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants.STRUCT_POINTER_SUB_ENUM_CAT;
 
 /**
  * @author Kris | 13/03/2019 21:10

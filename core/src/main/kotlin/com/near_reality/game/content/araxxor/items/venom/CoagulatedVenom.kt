@@ -5,6 +5,7 @@ import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.npc.ids.*
+import com.zenyte.game.npc.ids.NID
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue

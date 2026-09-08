@@ -9,6 +9,7 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.world.broadcasts.BroadcastType
 import com.zenyte.game.world.broadcasts.WorldBroadcasts
 import com.zenyte.game.npc.ids.*
+import com.zenyte.game.item.ids.NID
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.player.Player
 import com.near_reality.game.world.entity.player.slayerBaseDryStreak

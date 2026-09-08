@@ -7,6 +7,14 @@ import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.npc.ids.*
+import com.zenyte.game.npc.ids.TUMEKENS_GUARDIAN
+import com.zenyte.game.npc.ids.TUMEKENS_DAMAGED_GUARDIAN
+import com.zenyte.game.npc.ids.ELIDINIS_DAMAGED_GUARDIAN
+import com.zenyte.game.npc.ids.ELIDINIS_GUARDIAN
+import com.zenyte.game.npc.ids.AKKHITO
+import com.zenyte.game.npc.ids.BABI
+import com.zenyte.game.npc.ids.KEPHRITI
+import com.zenyte.game.npc.ids.ZEBO
 import com.zenyte.game.world.entity.player.Player
 
 /**

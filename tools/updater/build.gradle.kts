@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
     implementation(libs.netty.handler)
 }

@@ -14,5 +14,5 @@ kotlin {
 dependencies {
     api(projects.scripts.shops)
     implementation(kotlin("script-runtime"))
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

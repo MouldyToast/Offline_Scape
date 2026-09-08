@@ -241,11 +241,11 @@ public final class PacketDispatcher {
     }
 
     public void updateFriendStatus(UpdateFriendList.Friend friend) {
-        sender.updateFriendList$core(List.of(friend));
+        sender.updateFriendList$engine(List.of(friend));
     }
 
     public void updateIgnoreStatus(UpdateIgnoreList.IgnoredPlayer ignore) {
-        sender.updateIgnoreList$core(List.of(ignore));
+        sender.updateIgnoreList$engine(List.of(ignore));
     }
 
     public void initFriendsList() {
@@ -268,7 +268,7 @@ public final class PacketDispatcher {
                 list.add(new UpdateFriendList.OnlineFriend(false, displayName, null, world, 0, 0, "", "", 0, 0));
             }
         }
-        sender.updateFriendList$core(list);
+        sender.updateFriendList$engine(list);
     }
 
     public void initIgnoreList() {
@@ -277,7 +277,7 @@ public final class PacketDispatcher {
         for (final String ignore : ignores) {
             list.add(new UpdateIgnoreList.AddedIgnoredEntry(ignore, null, "", false));
         }
-        sender.updateIgnoreList$core(list);
+        sender.updateIgnoreList$engine(list);
     }
 
     public void sendStaticMapRegion() {
@@ -285,7 +285,7 @@ public final class PacketDispatcher {
     }
 
     public void sendDynamicMapRegion() {
-        sender.rebuildRegion$core(player.getLocation().getChunkX(), player.getLocation().getChunkY(), true);
+        sender.rebuildRegion$engine(player.getLocation().getChunkX(), player.getLocation().getChunkY(), true);
     }
 
     public void sendComponentVisibility(final int interfaceId, final int componentId, final boolean hidden) {
@@ -435,20 +435,20 @@ public final class PacketDispatcher {
             int kickRank,
             List<UpdateFriendChatChannelFull.FriendChatEntry> entries
     ) {
-        sender.updateFriendChatChannelFull$core(channelOwner, channelName.replace(' ', '_'), kickRank, entries);
+        sender.updateFriendChatChannelFull$engine(channelOwner, channelName.replace(' ', '_'), kickRank, entries);
     }
 
     public void updateFriendChatChannelSingleUser(UpdateFriendChatChannelSingleUser.FriendChatUser user) {
-        sender.updateFriendChatChannelSingleUser$core(user);
+        sender.updateFriendChatChannelSingleUser$engine(user);
     }
 
 
     public void sendFriendServer() {
-        sender.friendListLoaded$core();
+        sender.friendListLoaded$engine();
     }
 
     public void sendGrandExchangeOffer(final ExchangeOffer offer) {
-        sender.updateStockMarketSlot$core(
+        sender.updateStockMarketSlot$engine(
                 offer.getSlot(),
                 new UpdateStockMarketSlot.SetStockMarketSlot(
                         offer.getStage(),
@@ -540,44 +540,44 @@ public final class PacketDispatcher {
     }
 
     public void syncClientVarCache() {
-        sender.varpSync$core();
+        sender.varpSync$engine();
     }
 
 
     public void updateZonePartialEnclosed(int zoneX, int zoneY, int level, ByteBuf payload) {
-        sender.updateZonePartialEnclosed$core(zoneX, zoneY, level, payload);
+        sender.updateZonePartialEnclosed$engine(zoneX, zoneY, level, payload);
     }
 
     public void updateZoneFullFollows(int zoneX, int zoneY, int level) {
-        sender.updateZoneFullFollows$core(zoneX, zoneY, level);
+        sender.updateZoneFullFollows$engine(zoneX, zoneY, level);
     }
 
     public void updateZonePartialFollows(int zoneX, int zoneY, int level) {
-        sender.updateZonePartialFollows$core(zoneX, zoneY, level);
+        sender.updateZonePartialFollows$engine(zoneX, zoneY, level);
     }
 
     public void locDel(int xInZone, int zInZone, int shape, int rotation) {
-        sender.locDel$core(xInZone, zInZone, shape, rotation);
+        sender.locDel$engine(xInZone, zInZone, shape, rotation);
     }
 
     public void locAddChange(int id, int xInZone, int zInZone, int shape, int rotation, int opFlags) {
-        sender.locAddChange$core(id, xInZone, zInZone, shape, rotation, (byte) opFlags);
+        sender.locAddChange$engine(id, xInZone, zInZone, shape, rotation, (byte) opFlags);
     }
 
     public void objAdd(int id, int quantity, int xInZone, int zInZone, int opFlags, int timeUntilPublic, int timeUntilDespawn, int ownershipType, boolean neverBecomesPublic) {
-        sender.objAdd$core(id, quantity, xInZone, zInZone, (byte) opFlags, timeUntilPublic, timeUntilDespawn, ownershipType, neverBecomesPublic);
+        sender.objAdd$engine(id, quantity, xInZone, zInZone, (byte) opFlags, timeUntilPublic, timeUntilDespawn, ownershipType, neverBecomesPublic);
     }
 
     public void objDel(int id, int quantity, int xInZone, int zInZone) {
-        sender.objDel$core(id, quantity, xInZone, zInZone);
+        sender.objDel$engine(id, quantity, xInZone, zInZone);
     }
 
     public void objCount(int id, int oldQuantity, int newQuantity, int xInZone, int zInZone) {
-        sender.objCount$core(id, oldQuantity, newQuantity, xInZone, zInZone);
+        sender.objCount$engine(id, oldQuantity, newQuantity, xInZone, zInZone);
     }
 
     public void mapAnimSpecific(int id, int delay, int height, int xInBuildArea, int yInBuildArea) {
-        sender.spotAnimSpecific$core(id, delay, height, xInBuildArea, yInBuildArea);
+        sender.spotAnimSpecific$engine(id, delay, height, xInBuildArea, yInBuildArea);
     }
 
     public void setActiveWorld(int worldId, int level) {
@@ -585,12 +585,12 @@ public final class PacketDispatcher {
     }
 
     public void setNpcUpdateOrigin(int originX, int originY) {
-        sender.setNpcUpdateOrigin$core(originX, originY);
+        sender.setNpcUpdateOrigin$engine(originX, originY);
     }
 
     public void sendGraphics(final Graphics graphics, final Location location) {
         final Location lastLoaded = player.getLastLoadedMapRegionTile();
-        sender.spotAnimSpecific$core(
+        sender.spotAnimSpecific$engine(
                 graphics.getId(),
                 graphics.getDelay(),
                 graphics.getHeight(),
@@ -601,7 +601,7 @@ public final class PacketDispatcher {
 
     public void sendAnimSpecific(int animation, final WorldObject obj) {
         final Location lastLoaded = player.getLastLoadedMapRegionTile();
-        sender.locAnimSpecific$core(
+        sender.locAnimSpecific$engine(
                 animation,
                 obj.getLocalX(lastLoaded),
                 obj.getLocalY(lastLoaded),
@@ -616,7 +616,7 @@ public final class PacketDispatcher {
 
     public void playerinfo() {
         try {
-            sender.playerInfo$core(player.getPlayerInfo());
+            sender.playerInfo$engine(player.getPlayerInfo());
         } catch (Throwable t) {
             log.error("Player info error, destroying " + player.getIndex(), t);
             System.out.println("Player info error, destroying " + player.getIndex());
@@ -626,7 +626,7 @@ public final class PacketDispatcher {
 
     public void npcinfo() {
         try {
-            sender.npcInfo$core(player.getWorldEntityId(), player.getNpcInfo());
+            sender.npcInfo$engine(player.getWorldEntityId(), player.getNpcInfo());
         } catch (Throwable t) {
             log.error("NPC info error, destroying " + player.getIndex(), t);
             System.out.println("NPC info error, destroying " + player.getIndex());
@@ -636,7 +636,7 @@ public final class PacketDispatcher {
 
     public void worldentityinfo() {
         try {
-            sender.worldEntityInfo$core(player.getWorldEntityInfo());
+            sender.worldEntityInfo$engine(player.getWorldEntityInfo());
         } catch (Throwable t) {
             log.error("Worldentity info error, destroying " + player.getIndex(), t);
             System.out.println("Worldentity info error, destroying " + player.getIndex());
@@ -656,15 +656,15 @@ public final class PacketDispatcher {
     }
 
     public void sendClanChannelUpdateFull(@NotNull ChatChannelType type, @NotNull ClanChannelFull.Update toUpdatePacket) {
-        sender.clanChannelFull$core(type.getPacketIdentifier(), toUpdatePacket);
+        sender.clanChannelFull$engine(type.getPacketIdentifier(), toUpdatePacket);
     }
 
     public void sendClanChannelSettingsFull(@NotNull ChatChannelType gim, @NotNull ClanSettingsFull.Update toSettingsPacket) {
-        sender.clanSettingsFull$core(gim.getPacketIdentifier(), toSettingsPacket);
+        sender.clanSettingsFull$engine(gim.getPacketIdentifier(), toSettingsPacket);
     }
 
     public void rebuildLogin() {
-        sender.rebuildLogin$core(player.getLocation().getChunkX(), player.getLocation().getChunkY(), -1, player.getPlayerInfo());
+        sender.rebuildLogin$engine(player.getLocation().getChunkX(), player.getLocation().getChunkY(), -1, player.getPlayerInfo());
     }
 
     public void playerCamTarget() {
@@ -672,7 +672,7 @@ public final class PacketDispatcher {
     }
 
     public void syncBuildArea() {
-        sender.syncBuildArea$core();
+        sender.syncBuildArea$engine();
     }
 
     public PacketSender getSender() {

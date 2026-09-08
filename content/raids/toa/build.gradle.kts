@@ -12,6 +12,6 @@ kotlin {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
     implementation(projects.scripts.interfaces)
 }

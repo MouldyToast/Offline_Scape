@@ -37,7 +37,7 @@ include(
     ":util",
     ":core-model",
     ":cache",
-    ":core",
+    ":engine",
 )
 
 include(

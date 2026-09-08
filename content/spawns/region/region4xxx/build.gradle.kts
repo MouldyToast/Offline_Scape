@@ -13,5 +13,5 @@ kotlin {
 
 dependencies {
     implementation(projects.scripts.npc.spawns)
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

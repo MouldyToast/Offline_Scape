@@ -4,7 +4,6 @@ import com.near_reality.scripts.interfaces.InterfaceHandlerContext
 import com.zenyte.game.content.achievementdiary.DiaryReward
 import com.zenyte.game.content.achievementdiary.DiaryUtil
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.ItemUtil
 import com.zenyte.game.world.entity.player.Setting
 import com.zenyte.game.world.entity.player.SkillConstants.*

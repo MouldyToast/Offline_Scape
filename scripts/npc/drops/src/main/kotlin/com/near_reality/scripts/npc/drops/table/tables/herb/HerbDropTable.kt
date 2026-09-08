@@ -1,7 +1,6 @@
 package com.near_reality.scripts.npc.drops.table.tables.herb
 
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
-import com.zenyte.game.item.ItemId.*
 
 object HerbDropTable : StandaloneDropTableBuilder({
     static {

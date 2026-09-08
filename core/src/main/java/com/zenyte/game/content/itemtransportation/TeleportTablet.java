@@ -1,6 +1,6 @@
 package com.zenyte.game.content.itemtransportation;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.item.Item;
@@ -33,7 +33,7 @@ public enum TeleportTablet implements Teleport {
     BRIMHAVEN(new Item(11745), new Location(2760, 3178, 0)),
     YANILLE(new Item(11746), new Location(2544, 3092, 0)),
     TROLLHEIM(new Item(11747), new Location(2890, 3676, 0)),
-    EDGEVILLE(new Item(CustomItemId.NR_TABLET), new Location(3087, 3489, 0)),
+    EDGEVILLE(new Item(ItemId.NR_TABLET), new Location(3087, 3489, 0)),
     PADDEWWA(new Item(12781), new Location(3098, 9884, 0)),
     SENNTISTEN(new Item(12782), new Location(3322, 3336, 0)),
     KHARYRLL(new Item(12779), new Location(3492, 3471, 0)),

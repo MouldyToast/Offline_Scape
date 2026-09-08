@@ -2,8 +2,12 @@ package com.near_reality.game.content.araxxor.rewards
 
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import java.util.concurrent.ThreadLocalRandom
+import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
+import com.zenyte.game.item.ItemId.PRAYER_POTION3
+import com.zenyte.game.item.ItemId.PRAYER_POTION4
+import com.zenyte.game.item.ItemId.SUPER_COMBAT_POTION1
+import com.zenyte.game.item.ItemId.WILD_PIE
 
 /**
  * @author Glabay | Glabay-Studios

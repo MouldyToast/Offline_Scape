@@ -1,6 +1,6 @@
 package com.zenyte.game.content.stars;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.zenyte.game.content.skills.mining.actions.Mining;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Direction;
@@ -101,7 +101,7 @@ public final class ShootingStar extends WorldObject  {
                         player.sendMessage("The star disintegrates into dust.");
                     }
                     if(Utils.random(750) == 0) {
-                        Item ppx = new Item(CustomItemId.PRIMAL_PICKAXE);
+                        Item ppx = new Item(ItemId.PRIMAL_PICKAXE);
                         player.getCollectionLog().add(ppx);
                         player.getInventory().addOrDrop(ppx);
                         WorldBroadcasts.sendMessage("<img=51><col=2980B9><shad=000000>" + player.getUsername() + " received a Primal Pickaxe from the shooting star!", LOTTERY, false);

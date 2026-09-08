@@ -7,7 +7,6 @@ import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentTyp
 import mgi.types.config.items.WearableDefinition
 import com.near_reality.scripts.item.definitions.ItemDefinitionsScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
 import com.zenyte.game.world.entity.player.SkillConstants.*
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType.*

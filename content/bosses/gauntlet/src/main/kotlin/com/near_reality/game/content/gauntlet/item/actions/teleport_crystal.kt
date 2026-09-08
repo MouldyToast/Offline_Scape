@@ -5,7 +5,6 @@ import com.near_reality.game.content.gauntlet.gauntlet
 import com.zenyte.game.world.entity.Location
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
 
 class TeleportCrystalItemaction : ItemActionScript() {

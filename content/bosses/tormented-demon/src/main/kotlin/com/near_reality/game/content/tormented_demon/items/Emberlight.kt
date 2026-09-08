@@ -2,7 +2,6 @@ package com.near_reality.game.content.tormented_demon.items
 
 import com.near_reality.game.content.seq
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.ItemOnObjectAction
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player

@@ -1,6 +1,6 @@
 package com.near_reality.game.content.universalshop
 
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.shop.ShopCurrency
 
 class UniversalShopTable(

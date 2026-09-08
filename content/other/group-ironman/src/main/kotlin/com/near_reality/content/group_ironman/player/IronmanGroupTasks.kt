@@ -1,6 +1,5 @@
 package com.near_reality.content.group_ironman.player
 
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants.*
 import com.zenyte.game.content.achievementdiary.DiaryComplexity;

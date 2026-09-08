@@ -1,7 +1,6 @@
 package com.near_reality.game.content.dt2.items
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.World

@@ -5,11 +5,10 @@ import com.near_reality.game.content.tournament.preset.component.InventoryCompon
 import com.near_reality.game.content.tournament.preset.component.RunePouchComponent
 import com.near_reality.game.content.tournament.preset.component.SkillsComponent
 import com.near_reality.game.content.tournament.previousBoxingWinner
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -179,7 +178,7 @@ enum class TournamentPreset(
         presetEquipment = EquipmentComponent.Builder()
             .build(),
         presetInventory = InventoryComponent.Builder()
-            .add(ItemId.SHARK, 12, true).add(CustomItemId.PVP_TOURNEY_MYSTERY_BOX, 10,true)
+            .add(ItemId.SHARK, 12, true).add(ItemId.PVP_TOURNEY_MYSTERY_BOX, 10,true)
             .build(),
         presetStats = SkillsComponent.Builder()
             .set(SkillConstants.STRENGTH, 99)

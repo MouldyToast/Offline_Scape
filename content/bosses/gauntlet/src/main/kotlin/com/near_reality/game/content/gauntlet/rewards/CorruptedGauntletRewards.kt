@@ -6,7 +6,6 @@ import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.never
 import com.near_reality.scripts.npc.drops.table.noted
-import com.zenyte.game.item.ItemId.*
 
 private const val common = 24
 

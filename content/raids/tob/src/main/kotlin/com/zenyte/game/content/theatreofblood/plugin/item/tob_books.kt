@@ -5,7 +5,6 @@ import com.zenyte.game.content.ChapteredBook
 import com.zenyte.game.world.entity.player.Player
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
 
 class TobBooksItemaction : ItemActionScript() {

@@ -3,8 +3,13 @@ package com.near_reality.api.service.store
 import com.near_reality.api.model.CreditPackage
 import com.near_reality.api.model.CreditPackageOrder
 import com.near_reality.api.responses.StoreOrderCreateResponse
-import com.near_reality.game.item.CustomItemId.*
 import com.zenyte.game.item.Item
+import com.zenyte.game.item.ItemId.DONATOR_PIN_10
+import com.zenyte.game.item.ItemId.DONATOR_PIN_100
+import com.zenyte.game.item.ItemId.DONATOR_PIN_25
+import com.zenyte.game.item.ItemId.DONATOR_PIN_35
+import com.zenyte.game.item.ItemId.DONATOR_PIN_5
+import com.zenyte.game.item.ItemId.DONATOR_PIN_50
 
 internal fun StoreOrderCreateResponse.asUpdate() = when(this) {
     is StoreOrderCreateResponse.Created -> StoreOrderUpdate.Submitted

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import static com.near_reality.game.item.CustomItemId.*;
+import static com.zenyte.game.item.ItemId.*;
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCategoryType.get;
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogCategoryType.getMultiple;
 

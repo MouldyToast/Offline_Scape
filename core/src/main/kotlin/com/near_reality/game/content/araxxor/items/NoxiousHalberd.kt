@@ -1,12 +1,15 @@
 package com.near_reality.game.content.araxxor.items
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.NOXIOUS_BLADE
+import com.zenyte.game.item.ItemId.NOXIOUS_HALBERD
+import com.zenyte.game.item.ItemId.NOXIOUS_POINT
+import com.zenyte.game.item.ItemId.NOXIOUS_POMMEL
 
 /**
  * @author Glabay | Glabay-Studios

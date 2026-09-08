@@ -2,7 +2,6 @@ package com.near_reality.plugins.area.osrs_home.npc
 
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.player.Player

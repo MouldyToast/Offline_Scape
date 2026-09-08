@@ -1,9 +1,8 @@
 package com.near_reality.game.content.chaoskey
 
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.zenyte.game.content.drops.table.DropTable
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.masks.Animation
@@ -92,7 +91,7 @@ internal object ChaosChestTable {
             .append(ItemId.YEW_LOGS + 1, 10, 150)
             .append(ItemId.MAGIC_LOGS + 1, 10, 90)
             .append(ItemId.RAW_MANTA_RAY + 1, 10, 150)
-            .append(CustomItemId.OSNR_MYSTERY_BOX, 2, 1)
+            .append(ItemId.OSNR_MYSTERY_BOX, 2, 1)
             .append(ItemId.PRIMAL_WARHAMMER, 1, 1)
     }
 

@@ -9,7 +9,6 @@ import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.zenyte.CacheManager
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player

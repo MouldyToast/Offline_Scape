@@ -1,6 +1,5 @@
 package com.near_reality.game.content.dt2.plugins.rings
 
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 

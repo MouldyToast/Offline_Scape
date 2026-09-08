@@ -1,6 +1,5 @@
 package com.zenyte.plugins.item.mysteryboxes;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.plugins.interfaces.MysteryBoxInterface;
@@ -116,7 +115,7 @@ public class PvpMysteryBox extends ItemPlugin {
 
     @Override
     public int[] getItems() {
-        return new int[]{CustomItemId.PVP_MYSTERY_BOX};
+        return new int[]{ItemId.PVP_MYSTERY_BOX};
     }
 }
 

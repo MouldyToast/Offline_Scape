@@ -2,8 +2,34 @@ package com.near_reality.game.content.araxxor.rewards
 
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import java.util.concurrent.ThreadLocalRandom
+import com.zenyte.game.item.ItemId.ANTIDOTE3
+import com.zenyte.game.item.ItemId.ARAXYTE_HEAD
+import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_PLATELEGS
+import com.zenyte.game.item.ItemId.JAR_OF_VENOM
+import com.zenyte.game.item.ItemId.MAGIC_SEED
+import com.zenyte.game.item.ItemId.MORT_MYRE_FUNGUS
+import com.zenyte.game.item.ItemId.MUD_RUNE
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RANARR_SEED
+import com.zenyte.game.item.ItemId.RAW_MONKFISH
+import com.zenyte.game.item.ItemId.RAW_SHARK
+import com.zenyte.game.item.ItemId.RED_SPIDERS_EGGS
+import com.zenyte.game.item.ItemId.RUNE_2H_SWORD
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNITE_ORE
+import com.zenyte.game.item.ItemId.SLAYER_BASE
+import com.zenyte.game.item.ItemId.SNAPDRAGON_SEED
+import com.zenyte.game.item.ItemId.SPIDER_CAVE_TELEPORT
+import com.zenyte.game.item.ItemId.TOADFLAX_SEED
+import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
+import com.zenyte.game.item.ItemId.YEW_LOGS
+import com.zenyte.game.item.ItemId.YEW_SEED
 
 /**
  * @author Glabay | Glabay-Studios

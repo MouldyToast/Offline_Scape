@@ -7,7 +7,6 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 
 class BloodMoney : ShopScript() {
 

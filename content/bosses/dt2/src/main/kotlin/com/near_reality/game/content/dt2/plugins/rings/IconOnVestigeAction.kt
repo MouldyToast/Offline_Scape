@@ -4,7 +4,6 @@ import com.near_reality.game.content.dt2.npc.playAnimation
 import com.near_reality.game.content.dt2.npc.playGraphics
 import com.near_reality.game.content.dt2.npc.playSound
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult

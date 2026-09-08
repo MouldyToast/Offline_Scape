@@ -6,7 +6,6 @@ import com.near_reality.scripts.npc.drops.table.chance.RollItemChance
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 

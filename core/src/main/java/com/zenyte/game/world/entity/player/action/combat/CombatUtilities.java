@@ -1,14 +1,13 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.zenyte.game.content.minigame.fightcaves.npcs.FightCavesNPC;
 import com.zenyte.game.content.minigame.inferno.npc.InfernoNPC;
 import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC;
 import com.zenyte.game.content.tombsofamascut.npc.IMovingWarden;
 import com.zenyte.game.content.tombsofamascut.npc.IWardenCore;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
@@ -37,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static com.near_reality.game.item.CustomItemId.BALMUNG;
+import static com.zenyte.game.item.ItemId.BALMUNG;
 
 public class CombatUtilities {
     public static final Animation CAST = new Animation(711);
@@ -110,7 +109,7 @@ public class CombatUtilities {
 
     public static boolean lanceEquipped(final int weaponId) {
         return switch (weaponId) {
-            case ItemId.DRAGON_HUNTER_LANCE, CustomItemId.HOLY_GREAT_LANCE -> true;
+            case ItemId.DRAGON_HUNTER_LANCE, ItemId.HOLY_GREAT_LANCE -> true;
             default -> false;
         };
     }

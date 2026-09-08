@@ -1,13 +1,13 @@
 package com.zenyte.game.content;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 
 public enum DonatorPin {
 
-    DONATOR_PIN_10(CustomItemId.DONATOR_PIN_10, 75_000_000),
-    DONATOR_PIN_25(CustomItemId.DONATOR_PIN_25, 187_500_000),
-    DONATOR_PIN_50(CustomItemId.DONATOR_PIN_50, 375_000_000),
-    DONATOR_PIN_100(CustomItemId.DONATOR_PIN_100, 750_000_000),
+    DONATOR_PIN_10(ItemId.DONATOR_PIN_10, 75_000_000),
+    DONATOR_PIN_25(ItemId.DONATOR_PIN_25, 187_500_000),
+    DONATOR_PIN_50(ItemId.DONATOR_PIN_50, 375_000_000),
+    DONATOR_PIN_100(ItemId.DONATOR_PIN_100, 750_000_000),
     ;
 
     private int itemId;

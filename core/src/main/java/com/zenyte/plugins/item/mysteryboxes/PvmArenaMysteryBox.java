@@ -1,6 +1,5 @@
 package com.zenyte.plugins.item.mysteryboxes;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
@@ -107,6 +106,6 @@ public class PvmArenaMysteryBox extends ItemPlugin {
 
     @Override
     public int[] getItems() {
-        return new int[] {CustomItemId.PVM_MYSTERY_BOX};
+        return new int[] {ItemId.PVM_MYSTERY_BOX};
     }
 }

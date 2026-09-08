@@ -1,33 +1,46 @@
 package com.near_reality.game.content.collectionlog
 
-import com.near_reality.game.item.CustomItemId
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.item._Item
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.ANCIENT_SHARD_PACK
+import com.zenyte.game.item.ItemId.DONATOR_PIN_10
+import com.zenyte.game.item.ItemId.DONATOR_PIN_100
+import com.zenyte.game.item.ItemId.DONATOR_PIN_25
+import com.zenyte.game.item.ItemId.NEAR_REALITY_PARTY_HAT
+import com.zenyte.game.item.ItemId.OMEGA_HORN
+import com.zenyte.game.item.ItemId.OMEGA_SPIKE
+import com.zenyte.game.item.ItemId.OMEGA_SYMBOL
+import com.zenyte.game.item.ItemId.ORB_OF_AMASCUT
+import com.zenyte.game.item.ItemId.ORB_OF_BLOOD
+import com.zenyte.game.item.ItemId.ORB_OF_XERIC
+import com.zenyte.game.item.ItemId.PVM_MYSTERY_BOX
+import com.zenyte.game.item.ItemId.SKILLING_MYSTERY_BOX
+import com.zenyte.game.item.ItemId.SUPERIOR_BELL
+import com.zenyte.game.item.ItemId.WORLD_BOOST_TOKEN
 
 
 
 object CollectionLogRewards {
 
     /* Reward List */
-    private const val regalMB = CustomItemId.REGAL_MYSTERY_BOX
-    private const val ultraMB = CustomItemId.ULTIMATE_MYSTERY_BOX
-    private const val superMB = CustomItemId.SUPER_MYSTERY_BOX
+    private const val regalMB = ItemId.REGAL_MYSTERY_BOX
+    private const val ultraMB = ItemId.ULTIMATE_MYSTERY_BOX
+    private const val superMB = ItemId.SUPER_MYSTERY_BOX
     private const val standardMB = ItemId.MYSTERY_BOX
     private const val skillingMB = SKILLING_MYSTERY_BOX
     private const val pvmMB = PVM_MYSTERY_BOX
-    private const val petBooster = CustomItemId.PET_BOOSTER
-    private const val larransBooster = CustomItemId.LARRANS_KEY_BOOSTER
-    private const val slayerBooster = CustomItemId.SLAYER_BOOSTER
-    private const val bloodMoneyBooster = CustomItemId.BLOOD_MONEY_BOOSTER
-    private const val revenantBooster = CustomItemId.REVENANT_BOOSTER
-    private const val ganoBooster = CustomItemId.GANODERMIC_BOOSTER
-    private const val clueBooster = CustomItemId.CLUE_SCROLL_BOOSTER
-    private const val nexBooster = CustomItemId.NEX_BOOSTER
-    private const val slayerTaskPicker = CustomItemId.SLAYER_TASK_PICKER_SCROLL
-    private const val slayerTaskReset = CustomItemId.SLAYER_TASK_RESET_SCROLL
-    private const val barrowsTotem = CustomItemId.BARROWS_TOTEM
-    private const val malevolentEnergy = CustomItemId.MALEVOLENT_ENERGY
+    private const val petBooster = ItemId.PET_BOOSTER
+    private const val larransBooster = ItemId.LARRANS_KEY_BOOSTER
+    private const val slayerBooster = ItemId.SLAYER_BOOSTER
+    private const val bloodMoneyBooster = ItemId.BLOOD_MONEY_BOOSTER
+    private const val revenantBooster = ItemId.REVENANT_BOOSTER
+    private const val ganoBooster = ItemId.GANODERMIC_BOOSTER
+    private const val clueBooster = ItemId.CLUE_SCROLL_BOOSTER
+    private const val nexBooster = ItemId.NEX_BOOSTER
+    private const val slayerTaskPicker = ItemId.SLAYER_TASK_PICKER_SCROLL
+    private const val slayerTaskReset = ItemId.SLAYER_TASK_RESET_SCROLL
+    private const val barrowsTotem = ItemId.BARROWS_TOTEM
+    private const val malevolentEnergy = ItemId.MALEVOLENT_ENERGY
     private const val ahrimKit = ItemId.ECHO_AHRIMS_ORNAMENT_KIT
     private const val venatorKit = ItemId.ECHO_VENATOR_BOW_ORNAMENT_KIT
     private const val herbBox = ItemId.HERB_BOX

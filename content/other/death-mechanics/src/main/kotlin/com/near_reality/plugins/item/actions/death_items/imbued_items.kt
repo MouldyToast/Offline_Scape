@@ -6,7 +6,6 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import mgi.types.config.items.ItemDefinitions
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
 
 class ImbuedItemsItemaction : ItemActionScript() {

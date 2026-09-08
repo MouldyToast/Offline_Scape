@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.logger.NearRealityLogger;
 import org.slf4j.Logger;
 
-import static com.near_reality.game.item.CustomItemId.ORB_OF_XERIC;
+import static com.zenyte.game.item.ItemId.ORB_OF_XERIC;
 
 public class Raids1BypassTask extends TickTask {
 

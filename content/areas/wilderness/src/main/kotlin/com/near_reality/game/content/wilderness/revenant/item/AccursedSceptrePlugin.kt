@@ -2,7 +2,6 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.HashBiMap
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 
 
 /**

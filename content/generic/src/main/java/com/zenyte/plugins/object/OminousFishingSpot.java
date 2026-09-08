@@ -14,7 +14,7 @@ import com.zenyte.game.world.entity.npc.impl.slayer.Mogre;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 /**

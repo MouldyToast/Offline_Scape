@@ -1,5 +1,7 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.obj.ids.ObjectId;
+
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;

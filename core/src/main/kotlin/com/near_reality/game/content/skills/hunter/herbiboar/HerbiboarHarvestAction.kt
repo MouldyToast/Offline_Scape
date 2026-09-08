@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.SoundEffect
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.Skills
@@ -145,6 +145,6 @@ class HerbiboarHarvestAction : NPCPlugin() {
         }, 0, 1)
     }
 
-    override fun getNPCs() = intArrayOf(NpcId.HERBIBOAR)
+    override fun getNPCs() = intArrayOf(HERBIBOAR)
 
 }

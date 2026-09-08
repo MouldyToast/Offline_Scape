@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.area.plugins.FullMovementPlugin
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -57,7 +57,7 @@ internal class SotetsegRoom(
         super.enterBossRoom(barrier, player)
     }
 
-    override val vyreOrator = WorldObject(ObjectId.VYRE_ORATOR, 11, 1, getLocation(3281, 4301, 0))
+    override val vyreOrator = WorldObject(VYRE_ORATOR, 11, 1, getLocation(3281, 4301, 0))
     override val spectatingLocation: Location = getLocation(3272, 4301, 0)
 
     override var boss: TheatreBossNPC<out TheatreRoom>? = sotetseg

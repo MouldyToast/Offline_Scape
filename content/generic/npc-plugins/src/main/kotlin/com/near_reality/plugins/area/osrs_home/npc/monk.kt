@@ -1,8 +1,7 @@
 package com.near_reality.plugins.area.osrs_home.npc
 
 import com.near_reality.scripts.npc.actions.NPCActionScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.npc.actions.*
 

@@ -15,7 +15,7 @@ import com.zenyte.game.world.entity.player.VarManager;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;
 
-import static com.zenyte.game.world.entity.npc.NpcId.OSMUMTEN_11693;
+import static com.zenyte.game.npc.ids.NpcId.OSMUMTEN_11693;
 
 /**
  * @author Savions

@@ -6,7 +6,7 @@ import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 
 /**
  * @author Kris | 18/06/2019 15:02

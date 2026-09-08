@@ -7,7 +7,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.pathfinding.events.player.TileEvent
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy
@@ -61,13 +61,13 @@ class TournamentGuardLobbyPlugin : NPCPlugin() {
     }
 
     override fun getNPCs(): IntArray =
-        intArrayOf(NpcId.TOURNAMENT_GUARD)
+        intArrayOf(TOURNAMENT_GUARD)
 
     companion object {
         private val BASE_SPAWN_LOCATION = Location(3357, 7446, 0)
 
         fun spawn(area: DynamicArea) {
-            World.spawnNPC(NpcId.TOURNAMENT_GUARD, area.getLocation(BASE_SPAWN_LOCATION), Direction.EAST, 0)
+            World.spawnNPC(TOURNAMENT_GUARD, area.getLocation(BASE_SPAWN_LOCATION), Direction.EAST, 0)
         }
     }
 }

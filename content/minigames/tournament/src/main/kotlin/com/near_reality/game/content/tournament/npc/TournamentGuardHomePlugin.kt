@@ -4,7 +4,7 @@ import com.near_reality.game.content.tournament.TournamentManager
 import com.near_reality.game.plugin.optionsMenu
 import com.zenyte.game.GameInterface
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin.OptionHandler
 import com.zenyte.game.world.entity.player.Player
@@ -66,5 +66,5 @@ class TournamentGuardHomePlugin : NPCPlugin() {
 
 
     override fun getNPCs(): IntArray =
-        intArrayOf(NpcId.TOURNAMENT_GUARD_16012)
+        intArrayOf(TOURNAMENT_GUARD_16012)
 }

@@ -3,7 +3,7 @@ package com.near_reality.game.content.pvm_arena.npc
 import com.near_reality.game.world.entity.player.pvmArenaPoints
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -131,5 +131,5 @@ class PvmArenaSirEldricPlugin : NPCPlugin() {
     }
 
     override fun getNPCs(): IntArray =
-        intArrayOf(NpcId.GHOST_3516)
+        intArrayOf(GHOST_3516)
 }

@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
-import static com.near_reality.game.item.CustomNpcId.DI_GUTHAN_THE_INFESTED;
+import static com.zenyte.game.npc.ids.NpcId.DI_GUTHAN_THE_INFESTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:29:37

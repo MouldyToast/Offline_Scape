@@ -5,7 +5,7 @@ import com.near_reality.game.content.tournament.tournamentOrNull
 import com.zenyte.game.GameInterface
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -39,5 +39,5 @@ class TournamentSupplies : ObjectAction {
     }
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.TOURNAMENT_SUPPLIES, ObjectId.TOURNAMENT_SUPPLIES_35007)
+        arrayOf(TOURNAMENT_SUPPLIES, TOURNAMENT_SUPPLIES_35007)
 }

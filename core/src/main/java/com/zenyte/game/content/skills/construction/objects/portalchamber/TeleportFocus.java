@@ -8,7 +8,7 @@ import com.zenyte.game.content.skills.construction.constants.Furniture;
 import com.zenyte.game.content.skills.construction.dialogue.PortalRedirectD;
 import com.zenyte.game.content.skills.construction.dialogue.PortalScryingD;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import mgi.types.config.ObjectDefinitions;
 

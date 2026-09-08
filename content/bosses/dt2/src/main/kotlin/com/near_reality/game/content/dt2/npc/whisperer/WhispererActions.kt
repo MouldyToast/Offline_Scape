@@ -13,14 +13,13 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.ODD_FIGURE
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -58,7 +57,7 @@ class LeviathanHandholdsObjectAction : ObjectAction {
 
     override fun getObjects(): Array<Any> {
         return arrayOf(
-            ObjectId.TENTACLE
+            TENTACLE
         )
     }
 }
@@ -119,7 +118,7 @@ class OddFigureAction : NPCPlugin() {
             schedule(delay = 4) {
                 whisperer.animation = null
                 whisperer.waiting = false
-                whisperer.setTransformation(if (awakened) NpcId.THE_WHISPERER_12206 else NpcId.THE_WHISPERER)
+                whisperer.setTransformation(if (awakened) THE_WHISPERER_12206 else THE_WHISPERER)
                 whisperer.hitpoints = whisperer.maxHitpoints
                 whisperer.lowestHitpoints = whisperer.maxHitpoints
                 whisperer.rotation = SpecialAttackRotations.entries.random()

@@ -18,8 +18,7 @@ import com.zenyte.plugins.renewednpc.ZenyteGuide
 import com.zenyte.utils.TextUtils
 import org.apache.commons.lang3.ArrayUtils
 import com.near_reality.scripts.npc.actions.NPCActionScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.npc.actions.*
 

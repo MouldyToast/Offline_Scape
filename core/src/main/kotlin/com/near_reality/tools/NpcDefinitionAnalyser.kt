@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder
 import com.near_reality.osrsbox_db.ItemDefinitionDatabase
 import com.near_reality.osrsbox_db.MonsterDefinitionDatabase
 import com.zenyte.CacheManager
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCDLoader
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCombatDefinitions
 import com.zenyte.game.world.entity.npc.drop.matrix.NPCDrops
@@ -32,9 +32,9 @@ object NpcDefinitionAnalyser {
         MonsterDefinitionDatabase.loadFromFile()
         MonsterDefinitionDatabase.buildConfigs()
 
-        printCombatDef(NPCCDLoader.get(NpcId.MUTTADILE))
-        printCombatDef(NPCCDLoader.get(NpcId.MUTTADILE_7562))
-        printCombatDef(NPCCDLoader.get(NpcId.MUTTADILE_7563))
+        printCombatDef(NPCCDLoader.get(MUTTADILE))
+        printCombatDef(NPCCDLoader.get(MUTTADILE_7562))
+        printCombatDef(NPCCDLoader.get(MUTTADILE_7563))
 //        for (npcDef in NPCDefinitions.getDefinitions()) {
 //            if (npcDef != null){
 //                if (npcDef.filteredOptions?.contains("Attack") == true)

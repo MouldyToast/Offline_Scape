@@ -12,7 +12,7 @@ import com.zenyte.game.content.skills.slayer.*
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.impl.kalphite.KalphiteQueen
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -242,11 +242,11 @@ class Assignment {
         if (npc is Kraken && task == RegularTask.CAVE_KRAKEN) {
             return true
         }
-        if (npc.id == NpcId.THERMONUCLEAR_SMOKE_DEVIL && task == RegularTask.SMOKE_DEVILS) {
+        if (npc.id == THERMONUCLEAR_SMOKE_DEVIL && task == RegularTask.SMOKE_DEVILS) {
             return true
         }
         //Only the Catacombs of Kourend work.
-        if (npc.id == NpcId.SKOTIZO && (task == RegularTask.BLACK_DEMONS || task == RegularTask.GREATER_DEMONS)) {
+        if (npc.id == SKOTIZO && (task == RegularTask.BLACK_DEMONS || task == RegularTask.GREATER_DEMONS)) {
             return area == CatacombsOfKourend::class.java
         }
         if (area == GodwarsDungeonArea::class.java) {

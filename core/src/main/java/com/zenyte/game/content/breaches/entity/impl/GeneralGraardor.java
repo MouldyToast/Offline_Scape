@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
-import static com.zenyte.game.world.entity.npc.NpcId.GENERAL_GRAARDOR_12444;
+import static com.zenyte.game.npc.ids.NpcId.GENERAL_GRAARDOR_12444;
 
 public class GeneralGraardor extends BreachEntity implements Spawnable, CombatScript {
 

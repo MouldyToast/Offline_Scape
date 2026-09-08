@@ -7,8 +7,7 @@ import com.near_reality.game.content.boss.nex.nexKillCount
 import com.zenyte.game.GameInterface.NEX_STATS
 import com.zenyte.game.world.entity.player.BossTimer
 import com.near_reality.scripts.`object`.actions.ObjectActionScript
-import com.zenyte.game.world.`object`.ObjectId
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.*
 
 class AncientScoreboardObjectaction : ObjectActionScript() {

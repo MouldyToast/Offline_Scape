@@ -20,7 +20,7 @@ import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
@@ -47,7 +47,7 @@ private val iceBarrageImpactGraphics = Graphics(369)
  */
 @Suppress("unused")
 class RevenantMaledictus(val spawn: Spawn) :
-    NPC(NpcId.REVENANT_MALEDICTUS, spawn.tile, Direction.SOUTH, 5),
+    NPC(REVENANT_MALEDICTUS, spawn.tile, Direction.SOUTH, 5),
     CombatScript
 {
 

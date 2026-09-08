@@ -20,14 +20,14 @@ import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.CombatScriptsHandler
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NPCCombat
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.NotificationSettings
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.dialogue.dialogue
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.DynamicArea
 import mgi.types.config.HitbarDefinitions
@@ -79,13 +79,13 @@ class WhispererNPC(
     override fun setRespawnTask() {
         super.setRespawnTask()
 
-        setTransformation(NpcId.ODD_FIGURE)
+        setTransformation(ODD_FIGURE)
     }
 
     override fun sendNotifications(player: Player?) {}
 
     override fun attack(target: Entity?): Int {
-        if (id == NpcId.ODD_FIGURE) {
+        if (id == ODD_FIGURE) {
             return -1
         } else if (combatTask?.exists() == true) {
             return 1
@@ -140,16 +140,16 @@ class WhispererNPC(
 
         // Find all npcs and remove them
         val npcs = position.findNpcs(radius = 30) {
-            id == NpcId.TENTACLE_12208 || id == NpcId.LOST_SOUL || id == NpcId.FLOATING_COLUMN
+            id == TENTACLE_12208 || id == LOST_SOUL || id == FLOATING_COLUMN
         }
         npcs.forEach {
             it.remove()
         }
 
         val objects = allObjects?.filter {
-            it.id == ObjectId.CORRUPTED_SEED_DARK_GREEN ||
-                    it.id == ObjectId.CORRUPTED_SEED_LIGHT_GREEN ||
-                    it.id == ObjectId.CORRUPTED_SEED_REAL_WORLD
+            it.id == CORRUPTED_SEED_DARK_GREEN ||
+                    it.id == CORRUPTED_SEED_LIGHT_GREEN ||
+                    it.id == CORRUPTED_SEED_REAL_WORLD
         }
         objects?.forEach {
             it.remove()
@@ -316,7 +316,7 @@ class WhispererNPC(
                         }.toMutableList()
                         positions.forEach { pos ->
                             val soulMain = WhispererSoulNPC(
-                                NpcId.LOST_SOUL,
+                                LOST_SOUL,
                                 instanceArea[pos],
                                 Direction.NORTH
                             )
@@ -326,7 +326,7 @@ class WhispererNPC(
                             soulMain.playAnimation(WhispererConstants.WHISPERER_SOUL_SPAWN)
                             val soulShadow =
                                 WhispererSoulNPC(
-                                    NpcId.LOST_SOUL_12212,
+                                    LOST_SOUL_12212,
                                     instanceArea[pos.transform(-256, 0, 0)],
                                     Direction.fromJagAngle(soulMain.direction),
                                 )
@@ -351,7 +351,7 @@ class WhispererNPC(
                     }
 
                     10 -> {
-                        soulSiphonFailed = soulNPCs.any { !it.isFinished && it.id == NpcId.LOST_SOUL }
+                        soulSiphonFailed = soulNPCs.any { !it.isFinished && it.id == LOST_SOUL }
                         soulNPCs.forEach { soul ->
                             soul.setForceTalk("")
                             soul.playAnimation(WhispererConstants.WHISPERER_SOUL_DEATH)
@@ -616,7 +616,7 @@ class WhispererNPC(
             val underworldPos = instanceArea[staticPos.transform(-256, 0, 0)]
             val hp = shuffledHitpoints.getOrNull(index) ?: maxHp
             val overworldPillar =
-                FloatingColumnNPC(NpcId.FLOATING_COLUMN, overworldPos, Direction.NORTH, this@WhispererNPC)
+                FloatingColumnNPC(FLOATING_COLUMN, overworldPos, Direction.NORTH, this@WhispererNPC)
             overworldPillar.spawn()
             overworldPillar.setModelCustomization(model)
             overworldPillar.combatDefinitions.hitpoints = maxHp
@@ -629,7 +629,7 @@ class WhispererNPC(
 
             pillars.add(overworldPillar)
             val underworldPillar =
-                FloatingColumnNPC(NpcId.FLOATING_COLUMN, underworldPos, Direction.NORTH, this@WhispererNPC)
+                FloatingColumnNPC(FLOATING_COLUMN, underworldPos, Direction.NORTH, this@WhispererNPC)
             underworldPillar.spawn()
 
             underworldPillar.combatDefinitions.hitpoints = maxHp
@@ -853,7 +853,7 @@ class WhispererNPC(
 
                         val timerCondition = containsTimer(WhispererConstants.WHISPERER_HEADBAR_TIMER)
                         val objectCondition =
-                            objects.any { it.exists() && it.id == ObjectId.CORRUPTED_SEED_LIGHT_GREEN }
+                            objects.any { it.exists() && it.id == CORRUPTED_SEED_LIGHT_GREEN }
 
                         if (timerCondition && objectCondition) {
                             instance.players?.forEach {
@@ -865,7 +865,7 @@ class WhispererNPC(
                     }
 
                     10 -> {
-                        val failed = objects.any { it.exists() && it.id == ObjectId.CORRUPTED_SEED_LIGHT_GREEN }
+                        val failed = objects.any { it.exists() && it.id == CORRUPTED_SEED_LIGHT_GREEN }
                         if (failed) {
                             val projectile = ProjConstants.WHISPERER_LEECH
                             instance.players?.forEach { player ->
@@ -894,9 +894,9 @@ class WhispererNPC(
 
                             it.position.spotanim(
                                 when (it.id) {
-                                    ObjectId.CORRUPTED_SEED_DARK_GREEN -> WhispererConstants.WHISPERER_LEECH_BLUE_BALL_REMOVE
-                                    ObjectId.CORRUPTED_SEED_REAL_WORLD -> WhispererConstants.WHISPERER_LEECH_BLUE_REALM_BALL_REMOVE
-                                    ObjectId.CORRUPTED_SEED_LIGHT_GREEN -> WhispererConstants.WHISPERER_LEECH_GREEN_BALL_EXPLODE
+                                    CORRUPTED_SEED_DARK_GREEN -> WhispererConstants.WHISPERER_LEECH_BLUE_BALL_REMOVE
+                                    CORRUPTED_SEED_REAL_WORLD -> WhispererConstants.WHISPERER_LEECH_BLUE_REALM_BALL_REMOVE
+                                    CORRUPTED_SEED_LIGHT_GREEN -> WhispererConstants.WHISPERER_LEECH_GREEN_BALL_EXPLODE
                                     else -> return@forEach
                                 }
                             )
@@ -934,9 +934,9 @@ class WhispererNPC(
             val targetLocation = regionSouthWest.transform(offset.first, offset.second, 0)
             targetLocation.spotanim(WhispererConstants.WHISPERER_LEECH_POOL)
             val objectId = when {
-                overworld -> ObjectId.CORRUPTED_SEED_DARK_GREEN
-                alive -> ObjectId.CORRUPTED_SEED_LIGHT_GREEN
-                else -> ObjectId.CORRUPTED_SEED_REAL_WORLD
+                overworld -> CORRUPTED_SEED_DARK_GREEN
+                alive -> CORRUPTED_SEED_LIGHT_GREEN
+                else -> CORRUPTED_SEED_REAL_WORLD
             }
             MapObject(objectId, targetLocation, 10, 0).spawn()
         }
@@ -1142,7 +1142,7 @@ class WhispererNPC(
     }
 
     fun removeTentacles() {
-        val tentacles = location.findNpcs { id == NpcId.TENTACLE }
+        val tentacles = location.findNpcs { id == TENTACLE }
         tentacles.forEach { it.remove() }
     }
 
@@ -1270,7 +1270,7 @@ class WhispererNPC(
                                 !pos.inArea(WhispererConstants.THE_WHISPERER_FIGHT_AREA, instance)
                             ) continue
                             val tentacle = NPC(
-                                NpcId.TENTACLE_12208,
+                                TENTACLE_12208,
                                 pos,
                                 direction?.opposing ?: Direction.fromJagAngle(this@WhispererNPC.direction),
                                 0
@@ -1693,7 +1693,7 @@ fun Player.checkForLeech(instance: WhispererInstance) {
 
     playSound(WhispererConstants.WHISPERER_STEP_OVER_LEECH_SYNTH)
 
-    val isGreen = underworldObj.id == ObjectId.CORRUPTED_SEED_LIGHT_GREEN
+    val isGreen = underworldObj.id == CORRUPTED_SEED_LIGHT_GREEN
     if (isGreen) {
         overworldPos.spotanim(WhispererConstants.WHISPERER_LEECH_BLUE_BALL_DISARM)
         underworldPos.spotanim(WhispererConstants.WHISPERER_LEECH_GREEN_BALL_DISARM)

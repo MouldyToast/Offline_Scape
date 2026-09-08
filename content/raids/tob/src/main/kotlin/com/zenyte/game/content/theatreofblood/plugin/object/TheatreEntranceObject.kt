@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
 import com.zenyte.game.world.`object`.ObjectHandler
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.dialogue.PlainChat
 
@@ -53,7 +53,7 @@ class TheatreEntranceObject : ObjectAction {
                     )
                         .onOptionOne {
                             val plugin =
-                                ObjectHandler.getPlugin(ObjectId.NOTICE_BOARD_32655) ?: return@onOptionOne
+                                ObjectHandler.getPlugin(NOTICE_BOARD_32655) ?: return@onOptionOne
                             plugin.handle(
                                 player,
                                 noticeBoardObject,
@@ -177,7 +177,7 @@ class TheatreEntranceObject : ObjectAction {
 
     private companion object {
 
-        val objects = arrayOf(ObjectId.THEATRE_OF_BLOOD_32653)
+        val objects = arrayOf(THEATRE_OF_BLOOD_32653)
 
         val noticeBoardObject = WorldObject(32655, 10, 3, Location(3662, 3218, 0))
 

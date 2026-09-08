@@ -4,7 +4,7 @@ import com.zenyte.game.content.tombsofamascut.encounter.RewardEncounter;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.plugins.dialogue.OptionDialogue;
 
-import static com.zenyte.game.world.entity.npc.NpcId.OSMUMTEN_11693;
+import static com.zenyte.game.npc.ids.NpcId.OSMUMTEN_11693;
 
 /**
  * @author Savions

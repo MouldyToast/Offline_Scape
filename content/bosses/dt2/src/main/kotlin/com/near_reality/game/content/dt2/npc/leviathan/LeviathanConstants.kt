@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.Tinting
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.masks.HitType
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 /**
  * @author Khaled Abdeljaber
@@ -195,11 +195,11 @@ object LeviathanConstants {
     )
 
     val TAIL_DATA: List<Tuple4<Int, Location, Location, Animation>> = listOf(
-        Tuple4(NpcId.TAIL, Location(2053, 6355, 0), Location(2067, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
-        Tuple4(NpcId.TAIL_12217, Location(2079, 6346, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_B),
-        Tuple4(NpcId.TAIL, Location(2075, 6393, 0), Location(2073, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
-        Tuple4(NpcId.TAIL, Location(2095, 6357, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
-        Tuple4(NpcId.TAIL, Location(2096, 6389, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_C)
+        Tuple4(TAIL, Location(2053, 6355, 0), Location(2067, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
+        Tuple4(TAIL_12217, Location(2079, 6346, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_B),
+        Tuple4(TAIL, Location(2075, 6393, 0), Location(2073, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
+        Tuple4(TAIL, Location(2095, 6357, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_A),
+        Tuple4(TAIL, Location(2096, 6389, 0), Location(2081, 6372, 0), LEVIATHAN_TAIL_MOVEMENT_C)
     )
 
     val STRIKE_BORDER_AREAS = listOf(

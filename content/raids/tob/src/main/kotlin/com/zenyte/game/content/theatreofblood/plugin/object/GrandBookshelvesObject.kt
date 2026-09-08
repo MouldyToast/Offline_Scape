@@ -3,7 +3,7 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -36,10 +36,10 @@ class GrandBookshelvesObject : ObjectAction {
     }
 
     override fun getObjects() = arrayOf(
-        ObjectId.GRAND_BOOKSHELF,
-        ObjectId.GRAND_BOOKSHELF_33001,
-        ObjectId.GRAND_BOOKSHELF_33002,
-        ObjectId.GRAND_BOOKSHELF_33003
+        GRAND_BOOKSHELF,
+        GRAND_BOOKSHELF_33001,
+        GRAND_BOOKSHELF_33002,
+        GRAND_BOOKSHELF_33003
     )
 
     private companion object {

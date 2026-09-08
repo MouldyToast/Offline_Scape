@@ -4,7 +4,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combat.CombatScript
 /**
  * @author John J. Woloszyk / Kryeus
@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript
 class VardorvisHead(
     tile: Location
 ) : NPC(
-    NpcId.VARDORVIS_HEAD,
+    VARDORVIS_HEAD,
     tile,
     Direction.SOUTH,
     0,

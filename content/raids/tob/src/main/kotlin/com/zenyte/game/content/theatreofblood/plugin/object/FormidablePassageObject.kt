@@ -4,7 +4,7 @@ import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -20,7 +20,7 @@ class FormidablePassageObject : ObjectAction {
         optionId: Int,
         option: String
     ) {
-        if (obj.id != ObjectId.TREASURE_ROOM && option == "Enter")
+        if (obj.id != TREASURE_ROOM && option == "Enter")
             player.options("Are you ready to proceed?") {
                 "Yes." { enter(player) }
                 "No - Stay here."()
@@ -29,14 +29,14 @@ class FormidablePassageObject : ObjectAction {
     }
 
     override fun getStrategyDistance(obj: WorldObject) =
-        if (obj.id == ObjectId.TREASURE_ROOM) 1
+        if (obj.id == TREASURE_ROOM) 1
         else super.getStrategyDistance(obj)
 
     override fun getObjects() = FormidablePassageObject.objects
 
     private companion object {
 
-        val objects = arrayOf(ObjectId.FORMIDABLE_PASSAGE, ObjectId.DOOR_32751, ObjectId.TREASURE_ROOM)
+        val objects = arrayOf(FORMIDABLE_PASSAGE, DOOR_32751, TREASURE_ROOM)
 
         fun enter(player: Player) = VerSinhazaArea.getArea(player)?.handlePassage(player)
 

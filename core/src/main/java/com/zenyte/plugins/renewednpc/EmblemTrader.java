@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import mgi.types.config.items.ItemDefinitions;
 

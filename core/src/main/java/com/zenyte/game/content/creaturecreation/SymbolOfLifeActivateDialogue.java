@@ -4,7 +4,7 @@ import com.zenyte.game.util.WorldUtil;
 import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.RandomLocation;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import it.unimi.dsi.fastutil.ints.IntLists;

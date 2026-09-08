@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Expression
@@ -116,7 +116,7 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
     }
 
 
-    override fun getNPCs() = intArrayOf(NpcId.DERSE_VENATOR)
+    override fun getNPCs() = intArrayOf(DERSE_VENATOR)
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
         player.dialogue(npc) {
@@ -150,6 +150,6 @@ class DerseVenator : NPCPlugin(), ItemOnNPCAction {
 
     override fun getItems() = arrayOf(27667, 27673, 27681, 27684, 27687)
 
-    override fun getObjects() = arrayOf(NpcId.DERSE_VENATOR)
+    override fun getObjects() = arrayOf(DERSE_VENATOR)
 
 }

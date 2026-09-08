@@ -5,7 +5,7 @@ import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 
-import static com.zenyte.game.world.entity.npc.NpcId.*;
+import static com.zenyte.game.npc.ids.NpcId.*;
 
 /**
  * @author Kris | 26/11/2018 18:29

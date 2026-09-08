@@ -4,9 +4,9 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
-class Regent : NPC(NpcId.REGENT, waitForOresLocation, Direction.WEST, 0) {
+class Regent : NPC(REGENT, waitForOresLocation, Direction.WEST, 0) {
 
     private var sequenceIndex = 0
 

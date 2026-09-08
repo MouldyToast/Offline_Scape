@@ -1,13 +1,10 @@
 package com.near_reality.game.content.origins.bork
 
 import com.near_reality.scripts.npc.definitions.NPCDefinitionsScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.Entity.EntityType
 import com.zenyte.game.world.entity.Entity.EntityType.*
-import com.near_reality.game.item.CustomNpcId
-import com.near_reality.game.item.CustomNpcId.*
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType

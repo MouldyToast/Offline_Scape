@@ -10,7 +10,7 @@ import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 /**
  * @author Noele | May 1, 2018 : 2:40:50 AM

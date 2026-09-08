@@ -5,7 +5,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -38,5 +38,5 @@ class PvmArenaExitPortalPlugin : ObjectAction {
 
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.EXIT_PORTAL_27096)
+        arrayOf(EXIT_PORTAL_27096)
 }

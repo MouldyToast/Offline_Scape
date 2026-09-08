@@ -5,14 +5,14 @@ import com.near_reality.game.content.dt2.npc.leviathan.LeviathanConstants.ABYSSA
 import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 class LeviathanAbyssalPathfinder(
     position: Location,
     private val leviathan: Leviathan,
     private val instance: LeviathanInstance
 ) : NPC(
-    NpcId.ABYSSAL_PATHFINDER, position, Direction.NORTH, 0
+    ABYSSAL_PATHFINDER, position, Direction.NORTH, 0
 ) {
 
     private lateinit var patrolPath: List<Location>

@@ -1,7 +1,7 @@
 package com.near_reality.game.content.gauntlet;
 
 import com.google.common.collect.ImmutableSet;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import static com.zenyte.game.item.ids.ItemId.*;
 
 import java.util.Set;

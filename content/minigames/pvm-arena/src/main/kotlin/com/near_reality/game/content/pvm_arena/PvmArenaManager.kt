@@ -26,7 +26,7 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.broadcasts.BroadcastType
 import com.zenyte.game.world.broadcasts.WorldBroadcasts
 import com.zenyte.game.world.entity.masks.UpdateFlag
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -347,7 +347,7 @@ private fun messagesGameStatisticsToPlayer(player: Player) {
 /* Sir Eldrick Dialogues */
 
 private fun dialogueWhenPortalIsNotOpen(player: Player) {
-    player.dialogue(NpcId.GHOST_3516) {
+    player.dialogue(GHOST_3516) {
         if (state is PvmArenaState.Idle) {
             sirEldricDialogue(
                 "Stay thy steps, noble warrior! ",
@@ -370,7 +370,7 @@ private fun dialogueWhenPortalIsNotOpen(player: Player) {
 }
 
 private fun dialogueWhenTeamsImbalanced(player: Player) {
-    player.dialogue(NpcId.GHOST_3516) {
+    player.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Halt, brave adventurer! The path you seek to tread cannot be taken at this moment.",
             "The team you wish to join already boasts a greater number of warriors than its rival."
@@ -384,7 +384,7 @@ private fun dialogueWhenTeamsImbalanced(player: Player) {
 
 
 private fun dialogueWhenTeamLost(it: Player) {
-    it.dialogue(NpcId.GHOST_3516) {
+    it.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Alas, noble warrior,",
             "our team has been defeated in the PvM Arena."
@@ -393,7 +393,7 @@ private fun dialogueWhenTeamLost(it: Player) {
 }
 
 private fun dialogueWhenTeamWon(it: Player) {
-    it.dialogue(NpcId.GHOST_3516) {
+    it.dialogue(GHOST_3516) {
         sirEldricDialogue(
             "Congratulations, brave warrior!",
             "Your team has emerged victorious in the PvM Arena.",

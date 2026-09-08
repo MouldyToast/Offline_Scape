@@ -9,8 +9,7 @@ import com.near_reality.scripts.npc.drops.table.tables.seed.TreeHerbSeedDropTabl
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.player.privilege.MemberRank
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*

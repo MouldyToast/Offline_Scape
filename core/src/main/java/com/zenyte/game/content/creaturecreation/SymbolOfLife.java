@@ -6,7 +6,7 @@ import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.IntListUtils;
 import com.zenyte.game.world.entity.ImmutableLocation;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntLists;
 import mgi.utilities.CollectionUtils;

@@ -3,7 +3,7 @@ package com.zenyte.plugins.renewednpc;
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen;
 import com.zenyte.plugins.events.LoginEvent;

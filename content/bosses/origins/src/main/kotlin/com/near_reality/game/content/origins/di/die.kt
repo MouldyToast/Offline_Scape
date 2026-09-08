@@ -1,9 +1,7 @@
 package com.near_reality.game.content.origins.di
 
-import com.near_reality.game.item.CustomNpcId
+import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.spawns.NPCSpawnsScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.util.Direction.*
 
@@ -86,10 +84,10 @@ class Die : NPCSpawnsScript() {
         TORRMENTED_DEMON(2316, 9878, 0, walkRadius = 3)
         TORRMENTED_DEMON(2314, 9882, 0, walkRadius = 3)
 
-        CustomNpcId.BORK(2321, 9888, 0, walkRadius = 3)
-        CustomNpcId.BORK(2323, 9894, 0, walkRadius = 3)
+        BORK(2321, 9888, 0, walkRadius = 3)
+        BORK(2323, 9894, 0, walkRadius = 3)
 
-        CustomNpcId.NOMAD(2323, 9913, 0, walkRadius = 3)
+        NOMAD_16086(2323, 9913, 0, walkRadius = 3)
 
         KING_BLACK_DRAGON(2335, 9899, 0, walkRadius = 3)
         KING_BLACK_DRAGON(2334, 9891, 0, walkRadius = 3)

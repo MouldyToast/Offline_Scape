@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.Skills
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.item.Arclight.MAX_CHARGES
 import com.zenyte.game.item.ids.*

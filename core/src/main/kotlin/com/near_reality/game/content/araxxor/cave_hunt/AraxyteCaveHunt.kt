@@ -7,12 +7,11 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.World.spawnObject
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.dialogue
-import com.zenyte.game.world.`object`.ObjectId.WEB_TUNNEL_54155
-import com.zenyte.game.world.`object`.ObjectId.WEB_TUNNEL_54159
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.PrebuiltDynamicArea
 import com.zenyte.game.world.region.dynamicregion.MapBuilder

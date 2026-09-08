@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.agility.canifisrooftop;
 
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 

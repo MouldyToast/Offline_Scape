@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;

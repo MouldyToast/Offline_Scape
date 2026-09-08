@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.hunter.node;
 
 import com.google.common.base.Preconditions;
 import com.zenyte.game.world.entity.masks.Animation;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import mgi.utilities.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 

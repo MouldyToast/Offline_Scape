@@ -1,9 +1,7 @@
 package com.near_reality.game.content.origins.nomad
 
-import com.near_reality.game.item.CustomNpcId
+import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.spawns.NPCSpawnsScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.util.Direction.*
 
@@ -15,6 +13,6 @@ class Nomad : NPCSpawnsScript() {
          * @date 7.11.2025
          */
 
-        CustomNpcId.NOMAD(3205, 3877, 0, walkRadius = 30)
+        NOMAD_16086(3205, 3877, 0, walkRadius = 30)
     }
 }

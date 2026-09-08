@@ -9,7 +9,7 @@ import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.pathfinding.events.player.ObjectEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.ObjectStrategy;

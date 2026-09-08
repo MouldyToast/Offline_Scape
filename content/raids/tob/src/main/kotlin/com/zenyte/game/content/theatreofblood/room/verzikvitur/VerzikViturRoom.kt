@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.calog.CAType
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.area.plugins.FullMovementPlugin
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -144,7 +144,7 @@ internal class VerzikViturRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, ro
         CoresManager.slowExecutor.execute(TheatreOfBloodScoresSerializer::write)
 
         val pos = getBaseLocation(31, 36)
-        val throne = WorldObject(ObjectId.TREASURE_ROOM, tile = pos).apply {
+        val throne = WorldObject(TREASURE_ROOM, tile = pos).apply {
             sizeX += 2
             sizeY += 2
         }

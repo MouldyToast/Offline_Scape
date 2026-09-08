@@ -15,7 +15,7 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.zenyte.game.world.entity.npc.NpcId.KRIL_TSUTSAROTH_12446;
+import static com.zenyte.game.npc.ids.NpcId.KRIL_TSUTSAROTH_12446;
 
 public class KrilTsutsaroth extends BreachEntity implements Spawnable, CombatScript {
     private static final Animation meleeAnimation = new Animation(6948);

@@ -2,7 +2,7 @@ package com.zenyte.game.content.theatreofblood.room.nylocas.model
 
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.HitType
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 /**
  * @author Tommeh
@@ -17,17 +17,17 @@ internal enum class NylocasType(
     MELEE(
         HitType.MELEE,
         Animation(8006),
-        NpcId.NYLOCAS_VASILIAS_8355
+        NYLOCAS_VASILIAS_8355
     ),
     RANGED(
         HitType.RANGED,
         Animation(8000),
-        NpcId.NYLOCAS_VASILIAS_8357
+        NYLOCAS_VASILIAS_8357
     ),
     MAGIC(
         HitType.MAGIC,
         Animation(7992),
-        NpcId.NYLOCAS_VASILIAS_8356
+        NYLOCAS_VASILIAS_8356
     );
 
 

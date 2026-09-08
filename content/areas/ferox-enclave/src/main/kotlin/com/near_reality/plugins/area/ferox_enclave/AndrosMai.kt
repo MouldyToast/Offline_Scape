@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Expression
@@ -118,7 +118,7 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
     }
 
 
-    override fun getNPCs() = intArrayOf(NpcId.ANDROS_MAI)
+    override fun getNPCs() = intArrayOf(ANDROS_MAI)
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
         player.dialogue(npc) {
@@ -149,6 +149,6 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
 
     override fun getItems() = arrayOf(27670, 27673, 27681, 27684, 27687)
 
-    override fun getObjects() = arrayOf(NpcId.ANDROS_MAI)
+    override fun getObjects() = arrayOf(ANDROS_MAI)
 
 }

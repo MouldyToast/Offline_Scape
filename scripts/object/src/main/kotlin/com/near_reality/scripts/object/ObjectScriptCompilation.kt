@@ -10,8 +10,7 @@ import kotlin.script.experimental.api.defaultImports
 object ObjectScriptCompilation : ScriptCompilationConfiguration(
     DefaultCompilation, body = {
         defaultImports(
-            "com.zenyte.game.world.object.ObjectId",
-            "com.zenyte.game.world.object.ObjectId.*",
+            "com.zenyte.game.obj.ids.*",
 
             "com.zenyte.game.world.object.*"
         )

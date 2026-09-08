@@ -5,8 +5,7 @@ import com.zenyte.game.content.boss.abyssalsire.AbyssalNexusCorner
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.region.GlobalAreaManager
 import com.near_reality.scripts.npc.actions.NPCActionScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.npc.actions.*
 

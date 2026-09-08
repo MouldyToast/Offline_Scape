@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.SkillConstants;
 
-import static com.near_reality.game.item.CustomNpcId.DI_KARIL_THE_TAINTED;
+import static com.zenyte.game.npc.ids.NpcId.DI_KARIL_THE_TAINTED;
 
 /**
  * @author Kris | 29. sept 2018 : 06:11:54

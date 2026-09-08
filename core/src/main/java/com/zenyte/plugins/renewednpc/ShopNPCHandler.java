@@ -1,10 +1,10 @@
 package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.ContentConstants;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-import static com.zenyte.game.world.entity.npc.NpcId.*;
+import static com.zenyte.game.npc.ids.NpcId.*;
 
 /**
  * @author Kris | 25/11/2018 09:49

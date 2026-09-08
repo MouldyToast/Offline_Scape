@@ -12,7 +12,7 @@ import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.*;
 import com.zenyte.game.world.entity.masks.*;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.magic.CombatSpell;

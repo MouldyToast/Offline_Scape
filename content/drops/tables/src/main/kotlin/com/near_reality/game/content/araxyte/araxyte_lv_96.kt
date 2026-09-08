@@ -5,8 +5,7 @@ import com.near_reality.scripts.npc.drops.table.chance.dynamic.DynamicRollItemOn
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Utils
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*

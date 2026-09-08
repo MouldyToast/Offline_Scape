@@ -12,8 +12,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
-import com.zenyte.game.world.entity.npc.NpcId.MIRRORBACK_ARAXYTE
-import com.zenyte.game.world.entity.npc.NpcId.MIRRORBACK_ARAXYTE_EGG
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities

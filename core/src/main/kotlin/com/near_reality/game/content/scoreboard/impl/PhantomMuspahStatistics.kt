@@ -7,7 +7,7 @@ import com.near_reality.game.content.scoreboard.ScoreboardModule
 import com.zenyte.cores.ScheduledExternalizable
 import com.zenyte.game.GameInterface
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId.PHANTOM_MUSPAH_SCOREBOARD
+import com.zenyte.game.obj.ids.*
 import org.slf4j.Logger
 import java.io.BufferedReader
 

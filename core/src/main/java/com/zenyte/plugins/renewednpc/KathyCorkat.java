@@ -2,7 +2,7 @@ package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen;

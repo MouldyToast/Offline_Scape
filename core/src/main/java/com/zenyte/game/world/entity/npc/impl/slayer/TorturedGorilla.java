@@ -2,7 +2,7 @@ package com.zenyte.game.world.entity.npc.impl.slayer;
 
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 

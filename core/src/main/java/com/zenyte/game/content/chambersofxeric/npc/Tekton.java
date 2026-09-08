@@ -18,7 +18,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCDLoader;
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCombatDefinitions;
 import com.zenyte.game.world.entity.npc.combatdefs.StatDefinitions;

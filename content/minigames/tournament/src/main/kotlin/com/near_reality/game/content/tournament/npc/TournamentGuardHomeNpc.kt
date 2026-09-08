@@ -7,9 +7,9 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.WorldThread
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
-class TournamentGuardHomeNpc : NPC(NpcId.TOURNAMENT_GUARD_16012, Location(3097, 3505, 0), Direction.SOUTH, 0) {
+class TournamentGuardHomeNpc : NPC(TOURNAMENT_GUARD_16012, Location(3097, 3505, 0), Direction.SOUTH, 0) {
 
     private var lastForceChat: String? = null
 

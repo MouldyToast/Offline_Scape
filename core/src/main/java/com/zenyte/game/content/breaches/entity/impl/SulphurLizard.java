@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 
-import static com.zenyte.game.world.entity.npc.NpcId.SULPHUR_LIZARD_12458;
+import static com.zenyte.game.npc.ids.NpcId.SULPHUR_LIZARD_12458;
 
 public class SulphurLizard extends BreachEntity implements Spawnable, CombatScript {
 

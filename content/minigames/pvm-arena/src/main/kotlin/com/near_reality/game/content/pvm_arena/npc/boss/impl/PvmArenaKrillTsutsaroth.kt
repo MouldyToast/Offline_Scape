@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.plugins.SkipPluginScan
 
@@ -24,7 +24,7 @@ import com.zenyte.plugins.SkipPluginScan
  */
 @SkipPluginScan
 internal class PvmArenaKrillTsutsaroth(override val config: PvmArenaNpc.SpawnConfig) :
-    KrilTsutsaroth(emptyArray<GodwarsBossMinion>(), NpcId.KRIL_TSUTSAROTH, config.team.area.randomSpawnLocation(), Direction.SOUTH, 2),
+    KrilTsutsaroth(emptyArray<GodwarsBossMinion>(), KRIL_TSUTSAROTH, config.team.area.randomSpawnLocation(), Direction.SOUTH, 2),
     PvmArenaBoss
 {
     init {

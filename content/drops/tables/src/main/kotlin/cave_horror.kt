@@ -7,8 +7,7 @@ import com.near_reality.scripts.npc.drops.table.tables.herb.HerbDropTable
 import com.near_reality.scripts.npc.drops.table.tables.seed.AllotmentSeedDropTable
 import com.near_reality.scripts.npc.drops.table.tables.seed.RareSeedDropTable
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
@@ -21,7 +20,7 @@ import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 class CaveHorrorDroptable : NPCDropTableScript() {
 
     init {
-        npcs(NpcId.CAVE_HORROR, CAVE_HORROR_1048, CAVE_HORROR_1049, CAVE_HORROR_1050, CAVE_HORROR_1051)
+        npcs(CAVE_HORROR, CAVE_HORROR_1048, CAVE_HORROR_1049, CAVE_HORROR_1050, CAVE_HORROR_1051)
 
         buildTable {
             Always {

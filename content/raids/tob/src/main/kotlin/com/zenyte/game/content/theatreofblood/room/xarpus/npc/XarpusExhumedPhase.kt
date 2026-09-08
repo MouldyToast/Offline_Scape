@@ -5,7 +5,7 @@ import com.zenyte.game.world.Projectile
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Graphics
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.utils.TimeUnit
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
@@ -62,7 +62,7 @@ internal class XarpusExhumedPhase(
 
     private fun spawnExhumed() {
         val exhumed = WorldObject(
-            ObjectId.EXHUMED, 22, 0,
+            EXHUMED, 22, 0,
             xarpus.location.random(6, 8, 6, 8, 0, 2, 0, 2)
         )
         val pair = Pair<Int, WorldObject>(xarpus.ticks, exhumed)

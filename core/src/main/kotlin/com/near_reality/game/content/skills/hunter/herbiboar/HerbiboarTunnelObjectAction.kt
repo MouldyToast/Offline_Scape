@@ -6,10 +6,10 @@ import com.near_reality.game.content.skills.hunter.herbiboar.Herbiboar.unharvest
 import com.zenyte.game.world.entity.SoundEffect
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -50,7 +50,7 @@ class HerbiboarTunnelObjectAction : ObjectAction {
                 }
 
                 val tunnel = player.currentHerbiboarPath!!.tunnel
-                val herbiboar = NPC(NpcId.HERBIBOAR, tunnel.herbiboarSpawnLocation, true)
+                val herbiboar = NPC(HERBIBOAR, tunnel.herbiboarSpawnLocation, true)
                 herbiboar.radius = 0
                 herbiboar.spawn()
                 player.sendMessage("Your herbiboar index is ${herbiboar.index}")
@@ -69,6 +69,6 @@ class HerbiboarTunnelObjectAction : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.TUNNEL_30532)
+    override fun getObjects() = arrayOf(TUNNEL_30532)
 
 }

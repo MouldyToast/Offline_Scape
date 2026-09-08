@@ -1,5 +1,7 @@
 package com.zenyte.plugins.object;
 
+import com.zenyte.game.obj.ids.ObjectId;
+
 import com.zenyte.game.content.achievementdiary.diaries.FaladorDiary;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;

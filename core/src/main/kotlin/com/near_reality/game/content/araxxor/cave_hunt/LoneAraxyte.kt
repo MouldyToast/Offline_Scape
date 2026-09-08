@@ -6,7 +6,7 @@ import com.near_reality.game.content.hit
 import com.near_reality.game.content.seq
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
-import com.zenyte.game.world.entity.npc.NpcId.ARAXYTE_LV_96
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities
 

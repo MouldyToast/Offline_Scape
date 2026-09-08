@@ -26,7 +26,7 @@ import com.zenyte.game.world.entity.player.cutscene.actions.CameraPositionAction
 import com.zenyte.game.world.entity.player.cutscene.actions.CameraResetAction;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.PolygonRegionArea;
 import com.zenyte.game.world.region.RSPolygon;

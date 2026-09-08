@@ -7,7 +7,7 @@ import com.zenyte.game.content.theatreofblood.room.pestilentbloat.npc.PestilentB
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.RSPolygon
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea
@@ -83,7 +83,7 @@ internal class PestilentBloatRoom(
     override var nextRoomType : TheatreRoomType? = TheatreRoomType.THE_NYLOCAS
 
     override val entranceLocation: Location = getLocation(3322, 4448, 0)
-    override val vyreOrator = WorldObject(ObjectId.VYRE_ORATOR_32757, 11, 2, getLocation(3309, 4445, 0))
+    override val vyreOrator = WorldObject(VYRE_ORATOR_32757, 11, 2, getLocation(3309, 4445, 0))
     override val spectatingLocation: Location = getLocation(3304, 4434, 0)
     override var boss: TheatreBossNPC<out TheatreRoom>? = bloat
     override var chestInfo: ChestInfo? = PestilentBloatRoom.chestInfo

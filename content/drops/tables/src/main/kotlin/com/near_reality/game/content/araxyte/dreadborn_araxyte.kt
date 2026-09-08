@@ -1,14 +1,11 @@
 package com.near_reality.game.content.araxyte
 
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import java.util.*
 import com.near_reality.scripts.npc.definitions.NPCDefinitionsScript
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.Entity.EntityType
 import com.zenyte.game.world.entity.Entity.EntityType.*
-import com.near_reality.game.item.CustomNpcId
-import com.near_reality.game.item.CustomNpcId.*
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType
@@ -34,7 +31,7 @@ class DreadbornAraxyteNpcs : NPCDefinitionsScript() {
          * @date 8.7.2025
          */
 
-        NpcId.DREADBORN_ARAXYTE {
+        DREADBORN_ARAXYTE {
             hitpoints = 350
             stats {
                 combat(260, 260, 100, 100, 1)

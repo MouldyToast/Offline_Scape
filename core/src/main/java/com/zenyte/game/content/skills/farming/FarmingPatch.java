@@ -3,7 +3,7 @@ package com.zenyte.game.content.skills.farming;
 
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import mgi.types.config.ObjectDefinitions;
 

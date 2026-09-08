@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.structures.LeverTel
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.GlobalAreaManager
 import com.zenyte.game.world.region.dynamicregion.MapBuilder
@@ -79,7 +79,7 @@ class KingBlackDragonLever : ObjectAction {
     }
 
     override fun getObjects(): Array<Any> {
-        return arrayOf(ObjectId.LEVER_1816)
+        return arrayOf(LEVER_1816)
     }
 
     companion object {

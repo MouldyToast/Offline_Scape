@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.ForceMovement
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -36,7 +36,7 @@ class HoleShortcut : Shortcut {
                 ?: error("Missing HoleShortcut instance for object $this")
     }
 
-    override fun getObjectIds() = intArrayOf(ObjectId.HOLE_12656)
+    override fun getObjectIds() = intArrayOf(HOLE_12656)
     override fun getLevel(`object`: WorldObject) = 0
     override fun getDuration(success: Boolean, `object`: WorldObject) = 5
     override fun getSuccessXp(`object`: WorldObject) = 0.0

@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.start
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 class AltarOfTheOccult : ObjectAction {
@@ -42,7 +42,7 @@ class AltarOfTheOccult : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(ObjectId.ALTAR_OF_THE_OCCULT)
+    override fun getObjects() = arrayOf(ALTAR_OF_THE_OCCULT)
 
     private companion object {
         const val PRAY_ANIM = 645

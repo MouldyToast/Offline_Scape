@@ -3,7 +3,7 @@ package com.zenyte.plugins.renewednpc;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.achievementdiary.diaries.LumbridgeDiary;
 import com.zenyte.game.content.treasuretrails.TreasureTrail;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.impl.NPCChat;
 import mgi.utilities.StringFormatUtil;

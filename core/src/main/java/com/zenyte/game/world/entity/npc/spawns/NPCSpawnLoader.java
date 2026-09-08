@@ -1,12 +1,12 @@
 package com.zenyte.game.world.entity.npc.spawns;
 
 import com.google.common.base.Stopwatch;
-import com.near_reality.game.item.CustomNpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.impl.Crab;
 import com.zenyte.game.world.entity.npc.impl.slayer.superior.SuperiorMonster;
 import com.zenyte.game.world.region.GlobalAreaManager;
@@ -239,7 +239,7 @@ public final class NPCSpawnLoader {
         dropViewerNPCs.addAll(npcTransformers.values());
         artificialSpawns.forEach(spawn -> dropViewerNPCs.add(spawn.getId()));
 
-        dropViewerNPCs.add(CustomNpcId.GANODERMIC_BEAST);
+        dropViewerNPCs.add(NpcId.GANODERMIC_BEAST);
         dropViewerNPCs.add(NpcId.THE_NIGHTMARE_9430);
         dropViewerNPCs.add(NpcId.PHOSANIS_NIGHTMARE_11155);
         ignoredMonsters.add(8615);

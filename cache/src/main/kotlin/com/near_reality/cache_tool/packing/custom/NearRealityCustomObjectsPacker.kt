@@ -1,7 +1,6 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.near_reality.game.item.CustomObjectId
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import mgi.tools.parser.TypeParser
 import mgi.types.config.ObjectDefinitions
 
@@ -9,7 +8,7 @@ object NearRealityCustomObjectsPacker {
 
     @JvmStatic
     fun pack(){
-        TypeParser.cloneObject(ObjectId.ZAMORAK_PORTAL, 35015).apply {
+        TypeParser.cloneObject(ZAMORAK_PORTAL, 35015).apply {
             name = "Private portal"
             sizeX /= 2
             sizeY /= 2
@@ -31,17 +30,17 @@ object NearRealityCustomObjectsPacker {
             pack()
         }
 
-        TypeParser.cloneObject(31583, CustomObjectId.CHAOS_CHEST_OPENED).apply {
+        TypeParser.cloneObject(31583, CHAOS_CHEST_OPENED).apply {
             name = "Chaos Chest"
             pack()
         }
 
-        TypeParser.cloneObject(33114, CustomObjectId.CHAOS_CHEST_SPAWN).apply {
+        TypeParser.cloneObject(33114, CHAOS_CHEST_SPAWN).apply {
             name = "Chaos Chest"
             pack()
         }
 
-        TypeParser.cloneObject(33115, CustomObjectId.CHAOS_CHEST_SPAWNED).apply {
+        TypeParser.cloneObject(33115, CHAOS_CHEST_SPAWNED).apply {
             name = "Chaos Chest"
             pack()
         }

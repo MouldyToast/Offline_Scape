@@ -18,7 +18,7 @@ import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.*;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NPCCombat;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.npc.combatdefs.SpawnDefinitions;
 import com.zenyte.game.world.entity.player.Player;

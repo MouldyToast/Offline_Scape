@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.event.ganodermic_beast
 
 import com.zenyte.game.item.ids.*
-import com.near_reality.game.item.CustomNpcId
+import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.near_reality.scripts.npc.drops.table.DropTableContext
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
@@ -16,7 +16,7 @@ import mgi.utilities.StringFormatUtil
 class GanodermicBeastDropTable : NPCDropTableScript() {
 
     init {
-        npcs(CustomNpcId.GANODERMIC_BEAST)
+        npcs(GANODERMIC_BEAST)
         onDeath {
             if (npc is GanodermicBeast) {
                 if (playerDamageContributions.isEmpty()) {

@@ -7,7 +7,7 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.start
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -32,7 +32,7 @@ class TheatreSkeletonObject : ObjectAction {
         if (player.inventory.addItem(dawnbringer).isFailure)
             player.sendMessage("You don't have enough inventory space to take the Dawnbringer.")
         else {
-            World.replaceObject(obj, obj.transform(ObjectId.SKELETON_32742))
+            World.replaceObject(obj, obj.transform(SKELETON_32742))
             player.dialogueManager.start {
                 item(dawnbringer, "You find the Dawnbringer; you feel a pulse of energy<br>burst through it.")
             }
@@ -43,7 +43,7 @@ class TheatreSkeletonObject : ObjectAction {
 
     private companion object {
 
-        val objects = arrayOf(ObjectId.SKELETON_32741)
+        val objects = arrayOf(SKELETON_32741)
 
     }
 

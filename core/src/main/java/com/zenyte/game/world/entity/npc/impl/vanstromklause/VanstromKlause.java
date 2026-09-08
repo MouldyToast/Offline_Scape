@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.EntityHitBar;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.masks.*;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.pathfinding.events.npc.NPCTileEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;

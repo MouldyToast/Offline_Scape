@@ -8,8 +8,7 @@ import com.zenyte.game.world.WorldThread
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Bonuses
 import com.near_reality.scripts.`object`.actions.ObjectActionScript
-import com.zenyte.game.world.`object`.ObjectId
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.*
 
 class StalagmiteObjectaction : ObjectActionScript() {

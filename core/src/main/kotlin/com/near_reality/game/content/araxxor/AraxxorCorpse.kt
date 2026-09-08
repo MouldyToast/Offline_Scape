@@ -4,7 +4,7 @@ import com.near_reality.game.content.araxxor.rewards.Reward
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId.ARAXXOR_CORPSE
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue

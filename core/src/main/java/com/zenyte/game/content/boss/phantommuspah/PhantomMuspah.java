@@ -15,7 +15,7 @@ import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.*;
 import com.zenyte.game.world.entity.masks.*;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop;

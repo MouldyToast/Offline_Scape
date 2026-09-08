@@ -9,7 +9,7 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.NPCCDLoader
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.spawns.NPCSpawnLoader
@@ -123,9 +123,9 @@ class WildernessSlayerDropProcessor : DropProcessor() {
                 npcIdsSpawnedInWilderness.add(spawn.id)
             }
         }
-        npcIdsSpawnedInWilderness.add(NpcId.VETION_REBORN)
-        npcIdsSpawnedInWilderness.add(NpcId.SCORPIAS_OFFSPRING_6616)
-        npcIdsSpawnedInWilderness.add(NpcId.SCORPIAS_GUARDIAN)
+        npcIdsSpawnedInWilderness.add(VETION_REBORN)
+        npcIdsSpawnedInWilderness.add(SCORPIAS_OFFSPRING_6616)
+        npcIdsSpawnedInWilderness.add(SCORPIAS_GUARDIAN)
         return npcIdsAssignedByKrystilia.intersect(npcIdsSpawnedInWilderness).toIntArray()
     }
 }

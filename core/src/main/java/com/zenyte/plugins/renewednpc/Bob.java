@@ -4,7 +4,7 @@ import com.near_reality.game.model.item.degrading.Degradeable;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.model.item.degradableitems.RepairableItem;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;

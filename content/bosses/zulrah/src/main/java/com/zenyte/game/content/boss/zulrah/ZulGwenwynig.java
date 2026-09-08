@@ -2,7 +2,7 @@ package com.zenyte.game.content.boss.zulrah;
 
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.ItemRetrievalService;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 

@@ -13,8 +13,7 @@ import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.entity.player.privilege.GameMode
 import com.zenyte.plugins.renewednpc.ZenyteGuide
 import com.near_reality.scripts.`object`.actions.ObjectActionScript
-import com.zenyte.game.world.`object`.ObjectId
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.*
 
 class PortalObjectaction : ObjectActionScript() {

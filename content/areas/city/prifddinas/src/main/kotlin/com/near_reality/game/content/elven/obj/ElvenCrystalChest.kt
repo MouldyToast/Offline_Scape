@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Analytics
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import mgi.utilities.StringFormatUtil
 
@@ -66,7 +66,7 @@ class ElvenCrystalChest : ObjectAction {
     }
 
     override fun getObjects(): Array<Any> =
-        arrayOf(ObjectId.ELVEN_CRYSTAL_CHEST_36582)
+        arrayOf(ELVEN_CRYSTAL_CHEST_36582)
 
     private companion object {
         val animation = Animation(832)

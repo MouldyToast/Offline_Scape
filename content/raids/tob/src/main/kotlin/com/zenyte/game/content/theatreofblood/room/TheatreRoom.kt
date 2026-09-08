@@ -26,7 +26,7 @@ import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -540,7 +540,7 @@ internal abstract class TheatreRoom(
             if (!check) {
                 val message = "You must stay and fight!"
                 player.sendMessage(message)
-                player.dialogueManager.start(NPCChat(player, NpcId.VYRE_ORATOR, message))
+                player.dialogueManager.start(NPCChat(player, VYRE_ORATOR, message))
             }
             return check
         }

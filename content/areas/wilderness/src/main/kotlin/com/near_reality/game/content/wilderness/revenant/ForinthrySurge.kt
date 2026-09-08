@@ -4,7 +4,7 @@ import com.near_reality.game.content.wilderness.revenant.npc.Revenant
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.masks.UpdateFlag
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.zenyte.game.world.entity.player.variables.TickVariable
@@ -24,7 +24,7 @@ object ForinthrySurge {
      * Determines whether the given npc ID is eligible for the Forinthry surge bonus effects.
      */
     private fun isEligibleTarget(npcId: Int): Boolean {
-        return Revenant.isRevenant(npcId) || npcId == NpcId.REVENANT_MALEDICTUS
+        return Revenant.isRevenant(npcId) || npcId == REVENANT_MALEDICTUS
     }
 
     /**

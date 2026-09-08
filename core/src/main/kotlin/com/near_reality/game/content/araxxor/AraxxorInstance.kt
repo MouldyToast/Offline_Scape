@@ -15,7 +15,7 @@ import com.zenyte.game.world.Position
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
-import com.zenyte.game.world.entity.npc.NpcId.ARAXXOR
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.dialogue

@@ -3,7 +3,7 @@ package com.near_reality.game.content.elven.obj
 import com.near_reality.game.content.crystal.CrystalRecipe
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -28,6 +28,6 @@ class SingingBowl : ObjectAction {
             player.dialogueManager.start(SingCrystalDialogue(player))
     }
 
-    override fun getObjects() = arrayOf(ObjectId.SINGING_BOWL_36552)
+    override fun getObjects() = arrayOf(SINGING_BOWL_36552)
 }
 

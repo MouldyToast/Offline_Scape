@@ -15,8 +15,7 @@ object NPCDefinitionsCompilation : ScriptCompilationConfiguration(
             "com.zenyte.game.world.entity.Entity.EntityType",
             "com.zenyte.game.world.entity.Entity.EntityType.*",
 
-            "com.near_reality.game.item.CustomNpcId",
-            "com.near_reality.game.item.CustomNpcId.*",
+            "com.zenyte.game.npc.ids.*",
 
             "com.zenyte.game.world.entity.npc.combatdefs.ImmunityType",
             "com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*",

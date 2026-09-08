@@ -8,7 +8,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -46,7 +46,7 @@ class BandosOnAncientForge : ItemOnObjectAction {
         BANDOS_TASSETS,
     )
 
-    override fun getObjects() = arrayOf(ObjectId.ANCIENT_FORGE_42966)
+    override fun getObjects() = arrayOf(ANCIENT_FORGE_42966)
 
     private companion object {
         private fun componentsCount(unNotedItem: Int): Int = when (unNotedItem) {

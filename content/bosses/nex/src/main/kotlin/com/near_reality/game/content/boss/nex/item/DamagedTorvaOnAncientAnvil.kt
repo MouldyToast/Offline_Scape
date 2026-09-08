@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -70,7 +70,7 @@ class DamagedTorvaOnAncientAnvil : ItemOnObjectAction {
     )
 
     override fun getObjects() =
-        arrayOf(ObjectId.ANVIL_28563)
+        arrayOf(ANVIL_28563)
 
     private fun Item.fix() = when (id) {
         TORVA_PLATELEGS_DAMAGED -> Item(TORVA_PLATELEGS) to 2

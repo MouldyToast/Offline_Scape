@@ -6,7 +6,7 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -38,5 +38,5 @@ class CrystalChest : ObjectAction{
             player.sendMessage("This chest is securely locked shut.")
     }
 
-    override fun getObjects() = arrayOf(ObjectId.CLOSED_CHEST_172)
+    override fun getObjects() = arrayOf(CLOSED_CHEST_172)
 }

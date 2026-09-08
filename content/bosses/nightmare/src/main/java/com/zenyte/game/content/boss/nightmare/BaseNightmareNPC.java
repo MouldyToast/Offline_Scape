@@ -27,7 +27,7 @@ import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat;
 import com.zenyte.game.world.entity.player.calog.CAType;
 import com.zenyte.game.world.entity.player.privilege.GameMode;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;

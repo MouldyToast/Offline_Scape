@@ -6,7 +6,7 @@ import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 
 /**
@@ -44,13 +44,13 @@ class ItemOnTOAPetAction : ItemOnNPCAction {
     override fun getItems() = arrayOf(REMNANT_OF_BABA, REMNANT_OF_AKKHA, REMNANT_OF_KEPHRI, REMNANT_OF_ZEBAK, ANCIENT_REMNANT)
 
     override fun getObjects() = arrayOf(
-        NpcId.TUMEKENS_GUARDIAN,
-        NpcId.TUMEKENS_DAMAGED_GUARDIAN,
-        NpcId.ELIDINIS_DAMAGED_GUARDIAN,
-        NpcId.ELIDINIS_GUARDIAN,
-        NpcId.AKKHITO,
-        NpcId.BABI,
-        NpcId.KEPHRITI,
-        NpcId.ZEBO
+        TUMEKENS_GUARDIAN,
+        TUMEKENS_DAMAGED_GUARDIAN,
+        ELIDINIS_DAMAGED_GUARDIAN,
+        ELIDINIS_GUARDIAN,
+        AKKHITO,
+        BABI,
+        KEPHRITI,
+        ZEBO
     )
 }

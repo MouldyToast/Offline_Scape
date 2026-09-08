@@ -3,7 +3,7 @@ package com.near_reality.plugins.item
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnObjectAction
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
@@ -22,7 +22,7 @@ class StaffOfBalanceCreation : ItemOnObjectAction {
     override fun getObjects() = arrayOf("Juna")
 
     override fun handleItemOnObjectAction(player: Player, item: Item, slot: Int, `object`: WorldObject?) {
-        player.dialogue(NpcId.JUNA) {
+        player.dialogue(JUNA) {
             when {
                 // Using a staff of the dead on Juna without having a Guthixian icon
                 !player.hasInInventory(GUTHIXIAN_ICON) -> {

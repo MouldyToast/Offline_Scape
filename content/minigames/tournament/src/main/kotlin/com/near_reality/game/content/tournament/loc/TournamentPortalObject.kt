@@ -2,7 +2,7 @@ package com.near_reality.game.content.tournament.loc
 
 import com.near_reality.game.content.tournament.Tournament
 import com.near_reality.game.content.tournament.TournamentManager
-import com.near_reality.game.item.CustomObjectId
+import com.zenyte.game.obj.ids.*
 import com.near_reality.game.plugin.optionsMenu
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
@@ -10,7 +10,6 @@ import com.zenyte.game.world.entity.player.container.impl.equipment.Equipment
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
 import com.zenyte.game.world.`object`.WorldObject
 
 @Suppress("unused")
@@ -45,7 +44,7 @@ class TournamentPortalObject : ObjectAction {
         singleTournament: Tournament,
     ) = FadeScreen(player) { singleTournament.lobby.teleportPlayer(player) }.fade(3, true)
 
-    override fun getObjects(): Array<Any> = arrayOf(CustomObjectId.TOURNAMENT_PORTAL)
+    override fun getObjects(): Array<Any> = arrayOf(TOURNAMENT_PORTAL_60446)
 
     companion object {
         val LOCATION_IN_FRONT_OF_PORTAL = Location(3105, 3487, 0)

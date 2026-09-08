@@ -131,7 +131,7 @@ import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.masks.UpdateFlag;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.pathfinding.Flags;
 import com.zenyte.game.world.entity.pathfinding.events.RouteEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.EntityStrategy;
@@ -265,7 +265,7 @@ import static com.near_reality.game.content.bountyhunter.WildyExtKt.getBestEmble
 import static com.zenyte.game.GameConstants.WORLD_PROFILE;
 import static com.zenyte.game.model.ui.testinterfaces.advancedsettings.SettingVariables.*;
 import static com.zenyte.game.world.entity.player.action.combat.special.ScorchingShacklesSpecial.*;
-import static com.zenyte.game.world.object.ObjectId.ACID_POOL_54148;
+import static com.zenyte.game.obj.ids.ObjectId.ACID_POOL_54148;
 
 /**
  * @author Kris | 29. dets 2017 : 3:52.50

@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.npc.combat.CombatScript;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.variables.PlayerVariables;
 
-import static com.near_reality.game.item.CustomNpcId.DI_TORAG_THE_CORRUPTED;
+import static com.zenyte.game.npc.ids.NpcId.DI_TORAG_THE_CORRUPTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:39:42

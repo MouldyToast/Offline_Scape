@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.privilege.MemberRank;
 import com.zenyte.game.world.object.Door;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.GlobalAreaManager;
 import com.zenyte.game.world.region.area.wilderness.WildernessResourceArea;

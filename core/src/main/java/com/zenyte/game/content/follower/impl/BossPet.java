@@ -12,7 +12,7 @@ import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.broadcasts.BroadcastType;
 import com.zenyte.game.world.broadcasts.WorldBroadcasts;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.plugins.dialogue.followers.AbyssalOrphanD;

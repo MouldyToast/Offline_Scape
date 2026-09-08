@@ -3,7 +3,7 @@ package com.zenyte.game.content.tog;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.zenyte.game.util.IntListUtils;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import it.unimi.dsi.fastutil.ints.IntLists;
 
 import java.util.EnumSet;

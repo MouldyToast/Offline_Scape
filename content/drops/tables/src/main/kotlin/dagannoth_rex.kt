@@ -8,8 +8,7 @@ import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
 import com.zenyte.game.content.achievementdiary.DiaryComplexity
 import com.zenyte.game.content.achievementdiary.diaries.FremennikDiary
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.item.ids.COAL

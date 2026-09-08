@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.action.combat.AttackStyleDefinition;
 import com.zenyte.game.world.entity.player.container.impl.equipment.Equipment;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import org.jetbrains.annotations.NotNull;

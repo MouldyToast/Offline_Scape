@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.hunter.node;
 
 import com.zenyte.game.content.skills.hunter.plugins.ImplingJarPlugin;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.utils.Ordinal;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

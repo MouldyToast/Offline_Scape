@@ -10,8 +10,7 @@ import kotlin.script.experimental.api.defaultImports
 object NPCScriptCompilation : ScriptCompilationConfiguration(
     DefaultCompilation, body = {
         defaultImports(
-            "com.zenyte.game.world.entity.npc.NpcId",
-            "com.zenyte.game.world.entity.npc.NpcId.*",
+            "com.zenyte.game.npc.ids.*",
 
             "com.near_reality.game.util.invoke",
         )

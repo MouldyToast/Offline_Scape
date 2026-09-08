@@ -4,7 +4,7 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Expression
@@ -113,7 +113,7 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
         }
     }
 
-    override fun getNPCs() = intArrayOf(NpcId.PHABELLE_BILE)
+    override fun getNPCs() = intArrayOf(PHABELLE_BILE)
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
         player.dialogue(npc) {
@@ -143,6 +143,6 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
 
     override fun getItems() = arrayOf(27667, 27670, 27681, 27684, 27687)
 
-    override fun getObjects() = arrayOf(NpcId.PHABELLE_BILE)
+    override fun getObjects() = arrayOf(PHABELLE_BILE)
 
 }

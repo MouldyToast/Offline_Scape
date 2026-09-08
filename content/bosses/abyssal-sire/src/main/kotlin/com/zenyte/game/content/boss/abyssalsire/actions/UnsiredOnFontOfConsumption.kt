@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.masks.Graphics
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.game.world.region.GlobalAreaManager
 
@@ -88,7 +88,7 @@ class UnsiredOnFontOfConsumption : ItemOnObjectAction {
 	}
 
 	override fun getObjects(): Array<Any> {
-		return arrayOf(ObjectId.THE_FONT_OF_CONSUMPTION)
+		return arrayOf(THE_FONT_OF_CONSUMPTION)
 	}
 
 	companion object {

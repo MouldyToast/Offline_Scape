@@ -2,7 +2,7 @@ package com.near_reality.plugins.area.ferox_enclave
 
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -130,6 +130,6 @@ class MadamSikaro : NPCPlugin() {
     }
 
 
-    override fun getNPCs() = intArrayOf(NpcId.MADAM_SIKARO)
+    override fun getNPCs() = intArrayOf(MADAM_SIKARO)
 
 }

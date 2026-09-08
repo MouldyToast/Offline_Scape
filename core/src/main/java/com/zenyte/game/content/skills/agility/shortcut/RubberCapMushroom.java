@@ -15,7 +15,7 @@ import com.zenyte.game.world.entity.pathfinding.events.player.TileEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.plugins.object.MudPit;
 import org.jetbrains.annotations.NotNull;

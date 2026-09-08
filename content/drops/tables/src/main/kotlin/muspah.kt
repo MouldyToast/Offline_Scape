@@ -17,8 +17,7 @@ import com.zenyte.game.item.ids.SILVER_ORE
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop

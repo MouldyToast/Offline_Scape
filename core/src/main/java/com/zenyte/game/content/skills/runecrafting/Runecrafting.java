@@ -3,7 +3,7 @@ package com.zenyte.game.content.skills.runecrafting;
 import com.zenyte.game.content.follower.impl.SkillingPet;
 import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import java.util.HashMap;

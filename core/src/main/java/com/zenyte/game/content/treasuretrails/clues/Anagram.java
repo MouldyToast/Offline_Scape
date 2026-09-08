@@ -5,7 +5,7 @@ import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.content.treasuretrails.PuzzleType;
 import com.zenyte.game.content.treasuretrails.challenges.*;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

@@ -2,15 +2,12 @@ package com.near_reality.game.content.boss.nex.definitions
 
 import com.near_reality.game.content.boss.nex.NexConstants.*
 import com.near_reality.game.content.boss.nex.NexNPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import java.util.*
 import com.near_reality.scripts.npc.definitions.NPCDefinitionsScript
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.Entity.EntityType
 import com.zenyte.game.world.entity.Entity.EntityType.*
-import com.near_reality.game.item.CustomNpcId
-import com.near_reality.game.item.CustomNpcId.*
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType
@@ -104,11 +101,11 @@ class AncientNpcs : NPCDefinitionsScript() {
         NPC_GLACIES_ID.bodyGuard(intArrayOf(100, 100, 25, 150, 50))
 
 
-        NpcId.BLOOD_REAVER.reaver()
-        NpcId.BLOOD_REAVER_11294.reaver()
+        BLOOD_REAVER.reaver()
+        BLOOD_REAVER_11294.reaver()
 
 
-        NpcId.SPIRITUAL_WARRIOR_11290 {
+        SPIRITUAL_WARRIOR_11290 {
             attackSpeed = 5
             attackDistance = 4
             aggressionDistance = 4
@@ -136,7 +133,7 @@ class AncientNpcs : NPCDefinitionsScript() {
             }
         }
 
-        NpcId.SPIRITUAL_MAGE_11292 {
+        SPIRITUAL_MAGE_11292 {
             attackSpeed = 4
             attackDistance = 10
             aggressionDistance = 10
@@ -163,7 +160,7 @@ class AncientNpcs : NPCDefinitionsScript() {
             }
         }
 
-        NpcId.SPIRITUAL_RANGER_11291 {
+        SPIRITUAL_RANGER_11291 {
             attackSpeed = 6
             attackDistance = 8
             aggressionDistance = 8

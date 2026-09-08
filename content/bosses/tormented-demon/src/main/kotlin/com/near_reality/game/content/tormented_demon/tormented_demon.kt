@@ -10,8 +10,7 @@ import com.zenyte.game.world.broadcasts.BroadcastType
 import com.zenyte.game.world.broadcasts.WorldBroadcasts
 import java.util.Random
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*

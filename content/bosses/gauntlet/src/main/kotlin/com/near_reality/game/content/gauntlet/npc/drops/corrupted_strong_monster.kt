@@ -4,8 +4,7 @@ import com.near_reality.game.content.gauntlet.gauntletReceivedWeaponFrame
 import com.near_reality.game.content.gauntlet.gauntletStrongMonsterKills
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
+import com.zenyte.game.npc.ids.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*

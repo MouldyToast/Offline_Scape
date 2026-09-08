@@ -7,8 +7,7 @@ import com.zenyte.game.world.entity.pathfinding.events.player.TileEvent
 import com.zenyte.game.world.entity.pathfinding.strategy.TileStrategy
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.near_reality.scripts.`object`.actions.ObjectActionScript
-import com.zenyte.game.world.`object`.ObjectId
-import com.zenyte.game.world.`object`.ObjectId.*
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.*
 
 class AncientDoor1Objectaction : ObjectActionScript() {

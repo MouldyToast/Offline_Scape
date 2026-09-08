@@ -13,7 +13,7 @@ import com.zenyte.logger.NearRealityLogger;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import org.slf4j.Logger;
 
-import static com.zenyte.game.world.entity.npc.NpcId.*;
+import static com.zenyte.game.npc.ids.NpcId.*;
 
 /**
  * @author Tommeh | 23-11-2018 | 18:32

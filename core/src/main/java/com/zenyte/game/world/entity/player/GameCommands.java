@@ -83,7 +83,7 @@ import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.masks.UpdateFlag;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.drop.matrix.NPCDrops;
 import com.zenyte.game.world.entity.player.calog.CAType;
 import com.zenyte.game.world.entity.player.container.impl.ContainerType;

@@ -19,7 +19,7 @@ import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Hit;
 import com.zenyte.game.world.entity.masks.HitType;
 import com.zenyte.game.world.entity.npc.NPC;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.pathfinding.events.player.CombatEntityEvent;
 import com.zenyte.game.world.entity.pathfinding.strategy.PredictedEntityStrategy;
@@ -33,7 +33,7 @@ import com.zenyte.game.world.region.area.plugins.PlayerCombatPlugin;
 import mgi.types.config.items.ItemDefinitions;
 
 import static com.zenyte.game.item.ids.ItemId.EMBERLIGHT;
-import static com.zenyte.game.world.entity.npc.NpcId.*;
+import static com.zenyte.game.npc.ids.NpcId.*;
 import static com.zenyte.game.world.entity.player.action.combat.AttackStyle.AttackExperienceType.*;
 
 /**

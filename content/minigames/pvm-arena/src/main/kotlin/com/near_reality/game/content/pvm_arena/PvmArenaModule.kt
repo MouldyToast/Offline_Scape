@@ -18,7 +18,7 @@ import com.zenyte.game.world.entity.player.dialogue.OptionsBuilder
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.events.LoginEvent
 import com.zenyte.plugins.events.ServerLaunchEvent
@@ -59,8 +59,8 @@ object PvmArenaModule {
     }
 
     private fun spawnObjects() {
-        World.spawnObject(WorldObject(id = ObjectId.BANK_CHEST, tile = Location(1761, 4705, 0)))
-        World.spawnObject(WorldObject(id = ObjectId.ALTAR_OF_THE_OCCULT, 10, 2, Location(1762, 4698, 0)))
+        World.spawnObject(WorldObject(id = BANK_CHEST, tile = Location(1761, 4705, 0)))
+        World.spawnObject(WorldObject(id = ALTAR_OF_THE_OCCULT, 10, 2, Location(1762, 4698, 0)))
 
         World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_BLUE_PORTAL_ID, tile = Location(1763, 4705, 0)))
         World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_RED_PORTAL_ID, tile = Location(1759, 4705, 0)))

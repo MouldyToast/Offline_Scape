@@ -6,7 +6,7 @@ import com.zenyte.game.util.CollisionUtil;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.player.Player;
 

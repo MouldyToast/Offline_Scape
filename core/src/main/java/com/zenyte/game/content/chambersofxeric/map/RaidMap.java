@@ -7,7 +7,7 @@ import com.zenyte.game.content.chambersofxeric.room.EntranceRoom;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.GlobalAreaManager;
 import com.zenyte.game.world.region.dynamicregion.AllocatedArea;

@@ -14,7 +14,7 @@ import com.zenyte.game.util.Direction
 import com.zenyte.game.world.Position
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.region.PrebuiltDynamicArea
@@ -55,7 +55,7 @@ data class WhispererInstance(
             player.sanity = 100
 
             val oddFigure = WhispererNPC(
-                NpcId.ODD_FIGURE,
+                ODD_FIGURE,
                 getLocation(2655, 6368, 0),
                 Direction.NORTH,
                 this

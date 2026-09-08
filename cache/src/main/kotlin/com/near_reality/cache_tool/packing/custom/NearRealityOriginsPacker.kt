@@ -1,7 +1,7 @@
 package com.near_reality.cache_tool.packing.custom
 
 import com.near_reality.cache_tool.packing.assetsBase
-import com.near_reality.game.item.CustomNpcId.*
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.item.ids.*
 import mgi.types.config.npcs.NPCDefinitions
 import net.runelite.api.NpcID

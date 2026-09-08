@@ -13,7 +13,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.cutscene.FadeScreen
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 class LeviathanHandholdsObjectAction : ObjectAction {
@@ -64,13 +64,13 @@ class LeviathanHandholdsObjectAction : ObjectAction {
         val instance = player.instanceArea
         val position = player.position
 
-        if (obj.id == ObjectId.HANDHOLDS_47594) {
+        if (obj.id == HANDHOLDS_47594) {
             if (instance == null && position == exitRight) {
                 player.enter()
             } else {
                 player.exit()
             }
-        } else if (obj.id == ObjectId.HANDHOLDS_47593) {
+        } else if (obj.id == HANDHOLDS_47593) {
             if (instance == null) {
                 player.enter()
             } else {
@@ -87,8 +87,8 @@ class LeviathanHandholdsObjectAction : ObjectAction {
 
     override fun getObjects(): Array<Any> {
         return arrayOf(
-            ObjectId.HANDHOLDS_47594,
-            ObjectId.HANDHOLDS_47593
+            HANDHOLDS_47594,
+            HANDHOLDS_47593
         )
     }
 
@@ -111,11 +111,11 @@ class LeviathanBoatsObjectAction : ObjectAction {
         optionId: Int,
         option: String
     ) {
-        if (obj.id == ObjectId.ROWBOAT_49212) {
+        if (obj.id == ROWBOAT_49212) {
             fadeTeleport(player, Location(2066, 6370, 0))
-        } else if (obj.id == ObjectId.ROWBOAT_49213) {
+        } else if (obj.id == ROWBOAT_49213) {
             fadeTeleport(player, Location(2064, 6436, 0))
-        } else if (obj.id == ObjectId.ABYSSAL_RIFT_49204) {
+        } else if (obj.id == ABYSSAL_RIFT_49204) {
             fadeTeleport(player, Location(3613, 9472, 0))
         }
     }
@@ -128,8 +128,8 @@ class LeviathanBoatsObjectAction : ObjectAction {
 
     override fun getObjects(): Array<Any> {
         return arrayOf(
-            ObjectId.ROWBOAT_49212,
-            ObjectId.ROWBOAT_49213,
+            ROWBOAT_49212,
+            ROWBOAT_49213,
         )
     }
 }
@@ -227,7 +227,7 @@ class TheScarSteppingStones : Shortcut {
     }
 
     override fun getObjectIds(): IntArray {
-        return intArrayOf(ObjectId.STEPPING_STONE_49209)
+        return intArrayOf(STEPPING_STONE_49209)
     }
 
     override fun getDuration(success: Boolean, obj: WorldObject): Int {

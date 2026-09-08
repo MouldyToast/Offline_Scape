@@ -7,7 +7,7 @@ import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 
 /**
  * @author Tommeh
@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.npc.NpcId
 internal class NylocasMatomenos(private val maiden: MaidenOfSugadinti, tile: Location) :
     TheatreNPC<MaidenOfSugadintiRoom>(
         maiden.room,
-        NpcId.NYLOCAS_MATOMENOS,
+        NYLOCAS_MATOMENOS,
         maiden.room.getLocation(tile)
     ) {
 

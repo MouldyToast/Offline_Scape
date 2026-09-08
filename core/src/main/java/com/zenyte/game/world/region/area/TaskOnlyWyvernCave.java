@@ -3,7 +3,7 @@ package com.zenyte.game.world.region.area;
 import com.near_reality.game.content.slayer.Assignment;
 import com.near_reality.game.content.slayer.RegularTask;
 import com.zenyte.game.world.entity.Entity;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.impl.slayer.wyverns.SkeletalWyvern;
 import com.zenyte.game.world.entity.npc.impl.slayer.wyverns.Wyvern;
 import com.zenyte.game.world.entity.player.Player;

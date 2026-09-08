@@ -15,7 +15,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.zenyte.game.world.object.ObjectId.*;
+import static com.zenyte.game.obj.ids.ObjectId.*;
 
 /**
  * @author Kris | 16. nov 2017 : 2:39.05

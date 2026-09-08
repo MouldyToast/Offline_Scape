@@ -1,16 +1,11 @@
 package com.near_reality.game.content.dt2.npc
 
-import com.zenyte.game.world.entity.npc.NpcId.FLOATING_COLUMN
-import com.zenyte.game.world.entity.npc.NpcId.FLOATING_COLUMN_12210
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType
 import com.near_reality.scripts.npc.definitions.NPCDefinitionsScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.world.entity.Entity.EntityType
 import com.zenyte.game.world.entity.Entity.EntityType.*
-import com.near_reality.game.item.CustomNpcId
-import com.near_reality.game.item.CustomNpcId.*
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType
 import com.zenyte.game.world.entity.npc.combatdefs.ImmunityType.*
 import com.zenyte.game.world.entity.npc.combatdefs.AggressionType.*

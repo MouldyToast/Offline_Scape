@@ -4,7 +4,7 @@ import com.near_reality.game.world.info.WorldConfig;
 import com.near_reality.game.world.info.WorldProfile;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.utils.TimeUnit;
 import it.unimi.dsi.fastutil.ints.IntArrayList;

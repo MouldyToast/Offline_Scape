@@ -1,9 +1,7 @@
 package com.near_reality.game.content.origins.di
 
-import com.near_reality.game.item.CustomNpcId
+import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.spawns.NPCSpawnsScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.util.Direction.*
 
@@ -21,9 +19,9 @@ class Rdi : NPCSpawnsScript() {
         TORRMENTED_DEMON(2911, 5492, 0, walkRadius = 0)
         TORRMENTED_DEMON(2911, 5489, 0, walkRadius = 0)
         TORRMENTED_DEMON(2911, 5486, 0, walkRadius = 0)
-        CustomNpcId.BORK(2916, 5492, 0, walkRadius = 0)
-        CustomNpcId.BORK(2916, 5489, 0, walkRadius = 0)
-        CustomNpcId.BORK(2916, 5486, 0, walkRadius = 0)
+        BORK(2916, 5492, 0, walkRadius = 0)
+        BORK(2916, 5489, 0, walkRadius = 0)
+        BORK(2916, 5486, 0, walkRadius = 0)
         KING_BLACK_DRAGON(2921, 5490, 0, walkRadius = 0)
         KING_BLACK_DRAGON(2921, 5485, 0, walkRadius = 0)
 

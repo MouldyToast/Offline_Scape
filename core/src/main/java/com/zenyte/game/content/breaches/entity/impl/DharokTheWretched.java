@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.Spawnable;
 import com.zenyte.game.world.entity.npc.combat.CombatScript;
 
-import static com.zenyte.game.world.entity.npc.NpcId.DHAROK_THE_WRETCHED_12447;
+import static com.zenyte.game.npc.ids.NpcId.DHAROK_THE_WRETCHED_12447;
 
 public class DharokTheWretched extends BreachEntity implements Spawnable, CombatScript {
 

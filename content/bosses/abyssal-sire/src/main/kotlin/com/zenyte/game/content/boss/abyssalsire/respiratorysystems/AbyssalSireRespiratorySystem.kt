@@ -10,9 +10,9 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 import org.slf4j.LoggerFactory
 import java.lang.ref.WeakReference
@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference
 internal class AbyssalSireRespiratorySystem(
     location: Location,
     val sireRef: WeakReference<AbyssalSire>
-) : NPC(NpcId.RESPIRATORY_SYSTEM, location, Direction.SOUTH, 0) {
+) : NPC(RESPIRATORY_SYSTEM, location, Direction.SOUTH, 0) {
 
     constructor(location: Location, sire: AbyssalSire) : this(location, WeakReference(sire))
 
@@ -35,8 +35,8 @@ internal class AbyssalSireRespiratorySystem(
         val onSet: (AbyssalSireRespiratorySystem.(oldVent: WorldObject, newVent: WorldObject) -> Unit)? = null
     ) {
         NONE,
-        GASSY(ObjectId.VENT_26953, { _, n -> World.spawnObject(n) }),
-        SILENT(ObjectId.VENT_26954, { o, n ->
+        GASSY(VENT_26953, { _, n -> World.spawnObject(n) }),
+        SILENT(VENT_26954, { o, n ->
             World.sendObjectAnimation(o, ventFailureAnimation)
             WorldTasksManager.schedule({ World.spawnObject(n) }, 4)
         });

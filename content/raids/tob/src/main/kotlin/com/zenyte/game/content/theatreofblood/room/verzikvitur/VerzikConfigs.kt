@@ -7,7 +7,7 @@ import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.PurpleTorna
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.Web
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.Animation
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.*
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType
@@ -22,7 +22,7 @@ import java.util.*
 internal object VerzikConfigs {
 
     fun configs() {
-        npc(NpcId.NYLOCAS_VASILIAS) {
+        npc(NYLOCAS_VASILIAS) {
             hitpoints = 100
         }
         npc(SupportingPillar.NPC_ID) {

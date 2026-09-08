@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.dialogue.Expression;
 import com.zenyte.game.world.entity.player.dialogue.NPCMessage;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import mgi.utilities.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;

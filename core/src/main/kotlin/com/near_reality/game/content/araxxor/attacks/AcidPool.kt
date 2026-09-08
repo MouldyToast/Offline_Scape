@@ -1,7 +1,7 @@
 package com.near_reality.game.content.araxxor.attacks
 
 import com.zenyte.game.world.entity.Location
-import com.zenyte.game.world.`object`.ObjectId.ACID_POOL_54148
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**

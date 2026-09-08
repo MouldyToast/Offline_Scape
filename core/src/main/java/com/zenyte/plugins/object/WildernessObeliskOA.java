@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.variables.TickVariable;
 import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.CharacterLoop;
 import com.zenyte.game.world.region.area.wilderness.WildernessArea;

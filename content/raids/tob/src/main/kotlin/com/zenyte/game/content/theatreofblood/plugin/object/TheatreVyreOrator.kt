@@ -2,11 +2,11 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 
 import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -26,7 +26,7 @@ class TheatreVyreOrator : ObjectAction {
         if (option == "Talk-to") {
             player.dialogueManager.start(object : Dialogue(player) {
                 override fun buildDialogue() {
-                    npc(NpcId.VYRE_ORATOR, "Lady Verzik Vitur lets people in here to perform, not to<br>chat.", 1)
+                    npc(VYRE_ORATOR, "Lady Verzik Vitur lets people in here to perform, not to<br>chat.", 1)
                     options(
                         TITLE,
                         "What am I supposed to do in here?",
@@ -38,7 +38,7 @@ class TheatreVyreOrator : ObjectAction {
                         .onOptionThree(key(15))
                     player(5, "What am I supposed to do in here?")
                     npc(
-                        NpcId.VYRE_ORATOR,
+                        VYRE_ORATOR,
                         "Pass through the barrier and face your challenge. If<br>you survive, and your struggle entertains Verzik, she<br>will grant you freedom from the blood tithes.",
                         6
                     )
@@ -61,7 +61,7 @@ class TheatreVyreOrator : ObjectAction {
 
     private companion object {
 
-        val objects = arrayOf(ObjectId.VYRE_ORATOR, ObjectId.VYRE_ORATOR_32757)
+        val objects = arrayOf(VYRE_ORATOR, VYRE_ORATOR_32757)
 
         fun resign(player: Player, party: RaidingParty) {
             player.dialogueManager.start(object : Dialogue(player) {
@@ -72,7 +72,7 @@ class TheatreVyreOrator : ObjectAction {
                         }
                         .onOptionTwo(key(5))
                     player(5, "Actually, I'll stay in for now.")
-                    npc(NpcId.VYRE_ORATOR, "As you wish.", 6)
+                    npc(VYRE_ORATOR, "As you wish.", 6)
                 }
             })
         }

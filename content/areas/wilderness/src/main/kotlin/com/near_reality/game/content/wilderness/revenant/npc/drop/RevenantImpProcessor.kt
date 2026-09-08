@@ -3,7 +3,7 @@ package com.near_reality.game.content.wilderness.revenant.npc.drop
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.player.Player
@@ -42,7 +42,7 @@ class RevenantImpProcessor : DropProcessor() {
     }
 
     override fun ids(): IntArray {
-        return intArrayOf(NpcId.REVENANT_IMP)
+        return intArrayOf(REVENANT_IMP)
     }
 
     override fun drop(npc: NPC, killer: Player, drop: Drop, item: Item): Item {

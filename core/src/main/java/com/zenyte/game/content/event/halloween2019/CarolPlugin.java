@@ -1,7 +1,7 @@
 package com.zenyte.game.content.event.halloween2019;
 
 import com.zenyte.game.GameConstants;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.entity.player.dialogue.Expression;

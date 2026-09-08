@@ -6,7 +6,7 @@ import com.zenyte.game.content.theatreofblood.room.reward.RewardRoom
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.ObjectAction
-import com.zenyte.game.world.`object`.ObjectId
+import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject
 
 /**
@@ -47,7 +47,7 @@ class TeleportCrystalObject : ObjectAction {
 
 	private companion object {
 
-		val objects = arrayOf(ObjectId.TELEPORT_CRYSTAL)
+		val objects = arrayOf(TELEPORT_CRYSTAL)
 
 	}
 

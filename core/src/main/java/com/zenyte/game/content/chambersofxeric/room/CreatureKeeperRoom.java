@@ -22,7 +22,7 @@ import com.zenyte.game.world.entity.pathfinding.Flags;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.SkillConstants;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.game.world.region.Region;
 import com.zenyte.game.world.region.area.plugins.CycleProcessPlugin;

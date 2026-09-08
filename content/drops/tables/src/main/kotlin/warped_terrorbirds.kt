@@ -6,11 +6,8 @@ import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
 import com.zenyte.game.item.ids.*
 import com.zenyte.game.item.ids.ADAMANTITE_ORE
 import com.zenyte.game.item.ids.BONES
-import com.zenyte.game.world.entity.npc.NpcId.WARPED_TERRORBIRD
-import com.zenyte.game.world.entity.npc.NpcId.WARPED_TERRORBIRD_12492
+import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.world.entity.npc.NpcId
-import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop

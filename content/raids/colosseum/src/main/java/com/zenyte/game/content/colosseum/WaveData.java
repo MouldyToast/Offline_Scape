@@ -1,7 +1,7 @@
 package com.zenyte.game.content.colosseum;
 
 import com.zenyte.game.util.Utils;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 
 import java.util.ArrayList;
 import java.util.HashSet;

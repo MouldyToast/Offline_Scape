@@ -1,7 +1,7 @@
 package com.zenyte.game.content.advent;
 
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.ObjectId;
+import com.zenyte.game.obj.ids.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
 public class ReindeerObject extends WorldObject {

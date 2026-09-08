@@ -12,7 +12,7 @@ import com.zenyte.game.world.World;
 import com.zenyte.game.world.broadcasts.BroadcastType;
 import com.zenyte.game.world.broadcasts.WorldBroadcasts;
 import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.npc.NpcId;
+import com.zenyte.game.npc.ids.NpcId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.utils.TimeUnit;

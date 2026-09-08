@@ -23,7 +23,7 @@ import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.masks.Hit
 import com.zenyte.game.world.entity.masks.HitType
 import com.zenyte.game.world.entity.npc.NPC
-import com.zenyte.game.world.entity.npc.NpcId
+import com.zenyte.game.npc.ids.*
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities
@@ -400,13 +400,13 @@ internal class AbyssalSire(
 
         const val MAXIMUM_ATTACK_DISTANCE = 15
 
-        private const val SIRE_ASLEEP_ID = NpcId.ABYSSAL_SIRE
-        private const val SIRE_CONTROLLED_WALKING_ID = NpcId.ABYSSAL_SIRE_5889
-        private const val SIRE_MELEE_FIGHT_ID = NpcId.ABYSSAL_SIRE_5890
-        private const val SIRE_PREPARING_BOMB_ID = NpcId.ABYSSAL_SIRE_5891
-        private const val SIRE_POST_EXPLOSION_ID = NpcId.ABYSSAL_SIRE_5908
-        const val SIRE_THRONE_CONTROLLING_ID = NpcId.ABYSSAL_SIRE_5887
-        const val SIRE_THRONE_STUNNED_ID = NpcId.ABYSSAL_SIRE_5888
+        private const val SIRE_ASLEEP_ID = ABYSSAL_SIRE
+        private const val SIRE_CONTROLLED_WALKING_ID = ABYSSAL_SIRE_5889
+        private const val SIRE_MELEE_FIGHT_ID = ABYSSAL_SIRE_5890
+        private const val SIRE_PREPARING_BOMB_ID = ABYSSAL_SIRE_5891
+        private const val SIRE_POST_EXPLOSION_ID = ABYSSAL_SIRE_5908
+        const val SIRE_THRONE_CONTROLLING_ID = ABYSSAL_SIRE_5887
+        const val SIRE_THRONE_STUNNED_ID = ABYSSAL_SIRE_5888
 
         private val sireThroneLocation = ImmutableLocation(2977, 4855, 0)
         private val sireRegainingControlAnimation = Animation(4528)

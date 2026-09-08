@@ -1,4 +1,4 @@
-package com.near_reality.game.content
+package com.near_reality.game.content.unused
 
 import com.zenyte.game.item._Item
 

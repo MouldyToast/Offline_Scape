@@ -1,4 +1,7 @@
-package com.near_reality.game.content.universalshop
+package com.near_reality.game.content.unused.universalshop
+
+import com.near_reality.game.content.universalshop.UnivShopCategory
+import com.near_reality.game.content.universalshop.UnivShopItem
 
 class UnivShopTable(
     val category: UnivShopCategory,

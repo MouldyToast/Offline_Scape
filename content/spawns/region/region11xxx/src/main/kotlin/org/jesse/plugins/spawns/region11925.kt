@@ -1,0 +1,25 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region11925 : NPCSpawnsScript() {
+
+    init {
+        PIRATE_523(2984, 9575, 0, SOUTH, 4)
+        PIRATE_523(2986, 9582, 0, SOUTH, 4)
+        PIRATE_523(2990, 9571, 0, SOUTH, 4)
+        PIRATE_523(2991, 9583, 0, SOUTH, 4)
+        MUGGER(2993, 9545, 0, SOUTH, 2)
+        MUGGER(2995, 9548, 0, SOUTH, 2)
+        PIRATE_523(2995, 9576, 0, SOUTH, 4)
+        MUGGER(2997, 9544, 0, SOUTH, 2)
+        PIRATE_523(2997, 9569, 0, SOUTH, 4)
+        PIRATE_523(2998, 9572, 0, SOUTH, 4)
+        MUGGER(2999, 9550, 0, SOUTH, 2)
+        PIRATE_523(2999, 9584, 0, SOUTH, 4)
+        PIRATE_523(3000, 9579, 0, SOUTH, 4)
+    }
+}

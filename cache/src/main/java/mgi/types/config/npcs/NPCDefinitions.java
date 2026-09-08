@@ -1,8 +1,8 @@
 package mgi.types.config.npcs;
 
 import com.esotericsoftware.kryo.Kryo;
-import com.zenyte.CacheManager;
-import com.zenyte.game.world.entity.masks.RenderType;
+import org.jesse.CacheManager;
+import org.jesse.game.world.entity.masks.RenderType;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;

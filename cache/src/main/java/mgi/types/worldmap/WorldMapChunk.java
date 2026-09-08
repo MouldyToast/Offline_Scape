@@ -1,6 +1,6 @@
 package mgi.types.worldmap;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.File;
 import mgi.tools.jagcached.cache.Group;

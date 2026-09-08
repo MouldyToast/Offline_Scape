@@ -1,9 +1,9 @@
-package com.zenyte.game.content.larranskey;
+package org.jesse.game.content.larranskey;
 
 import com.google.common.eventbus.Subscribe;
-import com.zenyte.game.world.World;
-import com.zenyte.game.world.object.WorldObject;
-import com.zenyte.plugins.events.ServerLaunchEvent;
+import org.jesse.game.world.World;
+import org.jesse.game.world.object.WorldObject;
+import org.jesse.plugins.events.ServerLaunchEvent;
 
 public class LarransKeyModule {
 

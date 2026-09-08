@@ -1,6 +1,6 @@
 package org.jire.wmpacker
 
-import com.zenyte.game.world.entity.Location
+import org.jesse.game.world.entity.Location
 import org.jire.wmpacker.WorldMapAreas.changeArea
 import java.util.concurrent.ExecutorService
 

@@ -1,0 +1,120 @@
+package org.jesse.game.content.wilderness.event.ganodermic_beast
+
+import org.jesse.game.item.ids.*
+import org.jesse.game.item.ids.GANODERMIC_RUNT
+import org.jesse.game.npc.ids.*
+import org.jesse.scripts.npc.drops.NPCDropTableScript
+import org.jesse.scripts.npc.drops.table.DropTableContext
+import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.scripts.npc.drops.table.always
+import org.jesse.scripts.npc.drops.table.chance.immutable.StaticRollChance
+import org.jesse.scripts.npc.drops.table.chance.immutable.StaticRollItemOneIn
+import org.jesse.scripts.npc.drops.table.noted
+import org.jesse.game.util.Colour
+import mgi.utilities.StringFormatUtil
+
+@Suppress("unused")
+class GanodermicBeastDropTable : NPCDropTableScript() {
+
+    init {
+        npcs(GANODERMIC_BEAST)
+        onDeath {
+            if (npc is GanodermicBeast) {
+                if (playerDamageContributions.isEmpty()) {
+                    killer.sendDeveloperMessage("Did not find any damage dealers, ignoring drops.")
+                    return@onDeath
+                }
+
+                val mvp = playerDamageContributions.maxBy { it.value }.key
+                mvp.sendDeveloperMessage("You are the MVP with a damage percentage of ${playerDamageContributions[mvp]}")
+
+                modifyDropRarity { dropChance ->
+                    // unique drops are scaled in rarity for all players based on their total damage done
+                    var rarity = dropChance.rarity.toDouble()
+
+                    if (this is DropTableContext.ForPlayer) {
+                        val unique = type == Unique
+                        // player drop chance is determined by percentage of damage dealt to nex
+                        var rarityScale = if (unique)
+                            playerDamageContributions[player] ?: 0.0
+                        else
+                            1.0
+
+                        // mvp has 10% increase of common and unique drops
+                        if ((type == Main || unique) && mvp == player)
+                            rarityScale += 1.0
+
+                        if ((type == Unique || type == Tertiary) && player.variables.ganoBoosterKillsLeft > 0)
+                            rarityScale += 0.15
+
+                        rarity = scaleRarity(dropChance, rarity, rarityScale)
+                    }
+
+                    rarity.toInt()
+                }
+                val topDamageDealers = playerDamageContributions.entries.sortedByDescending { it.value }.map { it.key }
+                val top10 = topDamageDealers.take(10)
+                top10.forEachIndexed { index, player ->
+                    rollStaticTableAndDrop(player, type = Always)
+                    if (index in 0 until 3) {
+                        rollStaticTableAndDrop(player, type = Main)
+                        if (player == mvp)
+                            rollStaticTableAndDrop(player, type = Main)
+                        rollStaticTableAndDrop(player, type = Unique)
+                        rollStaticTableAndDrop(player, type = Tertiary)
+                        if (player.variables.ganoBoosterKillsLeft > 0)
+                            player.variables.ganoBoosterKillsLeft--
+                    }
+                }
+
+                playerDamageContributions.keys.forEach { player ->
+                    player.sendMessage(
+                        "${mvp.name} is the MVP and dealt ${
+                            Colour.ORANGE_RED.wrap(
+                            StringFormatUtil.formatNumberUS(((playerDamageContributions[mvp]?:0.0) * 100.0).toInt())
+                        )}% of the damage to the Ganodermic beast!"
+                    )
+                }
+            }
+        }
+        buildTable {
+            Always {
+                BLOOD_MONEY quantity 25..75 rarity always
+                POLYPORE_SPORES quantity 100..300 rarity always
+            }
+            Main(1300) {
+                BLOOD_MONEY quantity 25..100 rarity 100
+                SARADOMIN_BREW4 quantity (25..50).noted rarity 100
+                SUPER_RESTORE4 quantity (25..50).noted rarity 100
+                SANFEW_SERUM4 quantity (25..50).noted rarity 100
+                SUPER_COMBAT_POTION4 quantity 25.noted rarity 100
+                ANTIVENOM4 quantity 25.noted rarity 100
+                COOKED_KARAMBWAN quantity (50..100).noted rarity 100
+                ANGLERFISH quantity (50..100).noted rarity 100
+                DRAGON_DART quantity 100 rarity 100
+                DRAGON_ARROW quantity 100 rarity 100
+                DRAGON_BOLTS quantity 100 rarity 100
+                SUPERIOR_DRAGON_BONES quantity 50.noted rarity 100
+                OVERLOAD_4 quantity 3..7 rarity 100
+            }
+            Unique(32_000) {
+                PVP_MYSTERY_BOX quantity 1 oneIn 75 announce everywhere
+                DRAGON_KITE quantity 1 oneIn 100 announce everywhere
+                POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
+                ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
+                GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
+            }
+            Tertiary {
+                SCROLL_BOX_HARD quantity 1 oneIn 10
+                SCROLL_BOX_ELITE quantity 1 oneIn 15
+            }
+        }
+    }
+
+    private fun scaleRarity(dropChance: StaticRollChance, rarity: Double, damageContribution: Double): Double =
+        if (dropChance is StaticRollItemOneIn)
+            rarity / damageContribution
+        else
+            rarity * damageContribution
+
+}

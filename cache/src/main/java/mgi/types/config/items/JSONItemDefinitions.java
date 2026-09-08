@@ -1,6 +1,6 @@
 package mgi.types.config.items;
 
-import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType;
+import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentType;
 import mgi.utilities.StringFormatUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

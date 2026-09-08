@@ -1,7 +1,7 @@
 package mgi.types.component.custom;
 
-import com.zenyte.ContentConstants;
-import com.zenyte.game.util.AccessMask;
+import org.jesse.ContentConstants;
+import org.jesse.game.util.AccessMask;
 import mgi.types.component.ComponentDefinitions;
 import mgi.types.component.type.GraphicComponent;
 import mgi.types.component.type.LayerComponent;

@@ -1,0 +1,20 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region11593 : NPCSpawnsScript() {
+
+    init {
+        SOLDIER_5421(2924, 4702, 0, SOUTH, 5)
+        5382(2934, 4700, 0, SOUTH, 2)
+        GUARD_CAPTAIN(2935, 4678, 0, SOUTH, 2)
+        BARTENDER_1320(2940, 4678, 0, SOUTH, 2)
+        WIZARD_4399(2928, 4712, 2, SOUTH, 5)
+        WIZARD_4398(2928, 4717, 2, SOUTH, 5)
+        WIZARD_4400(2933, 4712, 2, SOUTH, 5)
+        WATCHTOWER_WIZARD(2933, 4716, 2, SOUTH, 5)
+    }
+}

@@ -1,0 +1,52 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region10033 : NPCSpawnsScript() {
+
+    init {
+        TERRORBIRD(2498, 3141, 0, SOUTH, 9)
+        BLACK_BEAR(2501, 3159, 0, SOUTH, 8)
+        TERRORBIRD(2504, 3140, 0, SOUTH, 9)
+        6265(2504, 3191, 0, SOUTH, 3)
+        GOBLIN_3045(2505, 3176, 0, SOUTH, 22)
+        HILL_GIANT_2100(2507, 3149, 0, SOUTH, 3)
+        6266(2514, 3159, 0, SOUTH, 2)
+        WOLF(2516, 3197, 0, SOUTH, 6)
+        GIANT_RAT_2856(2517, 3184, 0, SOUTH, 6)
+        GOBLIN_3045(2519, 3145, 0, SOUTH, 22)
+        GIANT_RAT_2863(2520, 3187, 0, SOUTH, 6)
+        GNOME_6095(2521, 3169, 0, SOUTH, 4)
+        GNOME_6095(2521, 3171, 0, SOUTH, 4)
+        KALRON(2521, 3177, 0, SOUTH, 5)
+        GNOME_6096(2522, 3172, 0, SOUTH, 2)
+        GOBLIN_3045(2523, 3155, 0, SOUTH, 22)
+        REMSAI(2524, 3169, 0, SOUTH, 5)
+        GNOME_6094(2526, 3168, 0, SOUTH, 2)
+        GNOME_6094(2529, 3163, 0, SOUTH, 2)
+        GNOME_6094(2530, 3172, 0, SOUTH, 2)
+        GNOME_6094(2536, 3169, 0, SOUTH, 2)
+        BUTTERFLY_238(2540, 3167, 0, SOUTH, 0)
+        LOCAL_GNOME_4979(2541, 3168, 0, NORTH_EAST, 0)
+        LOCAL_GNOME_4979(2541, 3171, 0, NORTH_EAST, 0)
+        GOBLIN_3045(2542, 3155, 0, SOUTH, 22)
+        LOCAL_GNOME_4979(2542, 3167, 0, NORTH_EAST, 0)
+        KING_BOLREN(2542, 3169, 0, SOUTH, 2)
+        LOCAL_GNOME_4979(2542, 3172, 0, NORTH_EAST, 0)
+        HILL_GIANT(2545, 3144, 0, SOUTH, 3)
+        HILL_GIANT_2099(2548, 3147, 0, SOUTH, 3)
+        WOLF(2548, 3179, 0, SOUTH, 6)
+        BUTTERFLY(2549, 3139, 0, SOUTH, 7)
+        GOBLIN_3045(2550, 3166, 0, SOUTH, 22)
+        GOBLIN_3028(2550, 3197, 0, SOUTH, 34)
+        GOBLIN_3028(2552, 3195, 0, SOUTH, 34)
+        GOBLIN_3028(2553, 3198, 0, SOUTH, 34)
+        OGRE_2095(2554, 3192, 0, SOUTH, 2)
+        GOBLIN_3028(2555, 3194, 0, SOUTH, 34)
+        GOBLIN_3045(2557, 3198, 0, SOUTH, 22)
+        BOLKOY(2527, 3161, 1, SOUTH, 4)
+    }
+}

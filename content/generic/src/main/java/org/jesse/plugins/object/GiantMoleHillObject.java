@@ -1,0 +1,90 @@
+package org.jesse.plugins.object;
+
+import org.jesse.game.item.Item;
+import org.jesse.game.item.ids.ItemId;
+import org.jesse.game.world.entity.Location;
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.player.dialogue.Dialogue;
+import org.jesse.game.world.object.ObjectAction;
+import org.jesse.game.obj.ids.ObjectId;
+import org.jesse.game.world.object.WorldObject;
+import org.jesse.game.world.region.GlobalAreaManager;
+import org.jesse.game.world.region.dynamicregion.AllocatedArea;
+import org.jesse.game.world.region.dynamicregion.MapBuilder;
+import org.jesse.game.world.region.dynamicregion.OutOfSpaceException;
+import org.jesse.logger.NearRealityPrintStream;
+import org.jesse.game.content.boss.giantmole.GiantMoleInstance;
+
+import java.util.Set;
+
+import static org.jesse.game.content.boss.giantmole.GiantMoleInstance.INSIDE_TILE;
+
+/**
+ * @author Tommeh | 02/05/2019 | 18:11
+ * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
+ */
+public class GiantMoleHillObject implements ObjectAction {
+
+    private static final int COST = 500_000;
+
+    @Override
+    public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
+        if (option.equals("Look-inside")) {
+            final Set<Player> players = GlobalAreaManager.get("Falador Mole Lair").getPlayers();
+            final int playerCount = players.size();
+            player.sendMessage("You look inside the mole hill and see " + (playerCount == 0 ? "no adventurers" : playerCount == 1 ? "1 adventurer" : playerCount + " adventurers") + " inside the mole tunnels.");
+        }
+        if(option.equalsIgnoreCase("Enter")) {
+            player.getDialogueManager().start(new Dialogue(player) {
+                @Override
+                public void buildDialogue() {
+                    options("Would you like to enter the public or private instance?",
+                            new DialogueOption("Public", () -> player.teleport(new Location(1752, 5235, 0))),
+                            new DialogueOption("Private (500k)", () -> startPrivateDialogue(player))
+                    );
+                }
+            });
+        }
+        if(option.equalsIgnoreCase("Public")) {
+            player.teleport(new Location(1752, 5235, 0));
+        }
+        if(option.equalsIgnoreCase("Private")) {
+            startPrivateDialogue(player);
+        }
+    }
+
+    private void startPrivateDialogue(Player player) {
+        player.getDialogueManager().start(new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                options("Would you like to create a personal instance for 500,000 GP?",
+                        new DialogueOption("Yes", () -> {
+                            final int amountInInventory = player.getInventory().getAmountOf(ItemId.COINS_995);
+                            final int amountInBank = player.getBank().getAmountOf(ItemId.COINS_995);
+                            if ((long) amountInBank + amountInInventory >= COST) {
+                                player.lock(1);
+                                player.getInventory().deleteItem(new Item(ItemId.COINS_995, COST)).onFailure(remainder -> player.getBank().remove(remainder));
+                                player.sendMessage("Please wait a few moments as your instance is being constructed.");
+                                try {
+                                    final AllocatedArea allocatedArea = MapBuilder.findEmptyChunk(8, 16);
+                                    final GiantMoleInstance instance = new GiantMoleInstance(player, allocatedArea, (6992 >> 8) << 3, (6992 & 0xFF) << 3);
+                                    instance.constructRegion();
+                                    player.setLocation(instance.getLocation(INSIDE_TILE));
+                                } catch (OutOfSpaceException e) {
+                                    e.printStackTrace(NearRealityPrintStream.getErrorStream());
+                                }
+                                return;
+                            }
+                            setKey(50);
+                        }), new DialogueOption("No."));
+                plain(50, "You don't have enough coins with you or in your bank.");
+            }
+        });
+    }
+
+
+    @Override
+    public Object[] getObjects() {
+        return new Object[] { ObjectId.MOLE_HILL };
+    }
+}

@@ -1,6 +1,6 @@
 package mgi.types.config.items
 
-import com.zenyte.CacheManager
+import org.jesse.CacheManager
 import mgi.tools.jagcached.cache.Cache
 import mgi.types.config.draw.font.Fonts
 import mgi.types.draw.Rasterizer2D

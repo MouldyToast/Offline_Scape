@@ -22,7 +22,7 @@ dependencies {
     findToolModules().forEach { runtimeOnly(it) }
 }
 
-val defaultMainClass = "com.zenyte.Main"
+val defaultMainClass = "org.jesse.Main"
 
 application {
     applicationName = "near-reality-server"
@@ -70,7 +70,7 @@ val defaultJvmArgs = arrayOf(
 
 tasks.register<JavaExec>("runPluginScanner") {
     group = "_nr_data"
-    mainClass.set("com.zenyte.plugins.PluginScanner")
+    mainClass.set("org.jesse.plugins.PluginScanner")
     classpath = sourceSets["main"].runtimeClasspath
     workingDir = layout.projectDirectory.dir("../").asFile
     jvmArgs(*defaultJvmArgs)

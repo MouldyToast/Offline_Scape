@@ -1,0 +1,23 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region12115 : NPCSpawnsScript() {
+
+    init {
+        GORAK(3023, 5339, 0, SOUTH, 5)
+        GORAK(3023, 5350, 0, SOUTH, 5)
+        GORAK(3033, 5343, 0, SOUTH, 5)
+        GORAK(3035, 5350, 0, SOUTH, 5)
+        GORAK(3037, 5330, 0, SOUTH, 5)
+        GORAK(3038, 5344, 0, SOUTH, 5)
+        GORAK(3038, 5361, 0, SOUTH, 5)
+        GORAK(3040, 5351, 0, SOUTH, 5)
+        GORAK(3042, 5347, 0, SOUTH, 5)
+        GORAK(3052, 5344, 0, SOUTH, 5)
+        GORAK(3052, 5353, 0, SOUTH, 5)
+    }
+}

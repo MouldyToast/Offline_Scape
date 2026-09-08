@@ -1,0 +1,14 @@
+package org.jesse.game.world.region.area.plugins;
+
+import org.jesse.game.world.entity.player.Player;
+
+/**
+ * @author Kris | 29. juuni 2018 : 00:05:41
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>}
+ * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>}
+ */
+public interface PartialMovementPlugin {
+
+	boolean processMovement(final Player player, final int x, final int y);
+	
+}

@@ -1,6 +1,6 @@
 package cloud.rsps.rsprot
 
-import com.zenyte.game.world.entity.player.Player
+import org.jesse.game.world.entity.player.Player
 import net.rsprot.protocol.ServerProtCategory
 import net.rsprot.protocol.message.OutgoingGameMessage
 import net.rsprot.protocol.api.Session as RsprotApiSession

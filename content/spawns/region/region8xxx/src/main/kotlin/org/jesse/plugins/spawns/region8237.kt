@@ -1,0 +1,18 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region8237 : NPCSpawnsScript() {
+
+    init {
+        BIRD_10541(2092, 2893, 0, SOUTH, 5)
+        SQUIRREL(2101, 2921, 0, SOUTH, 8)
+        BUTTERFLY_238(2102, 2942, 0, SOUTH, 0)
+        10542(2105, 2895, 0, SOUTH, 5)
+        BIRD_10541(2106, 2932, 0, SOUTH, 5)
+        BUTTERFLY_238(2108, 2919, 0, SOUTH, 0)
+    }
+}

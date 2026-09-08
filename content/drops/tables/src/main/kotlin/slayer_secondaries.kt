@@ -1,20 +1,20 @@
-package com.zenyte.game.content
+package org.jesse.game.content
 
-import com.near_reality.scripts.npc.drops.table.noted
-import com.near_reality.game.content.slayer.RegularTask
-import com.near_reality.game.content.slayer.BossTask
-import com.zenyte.game.util.Colour
+import org.jesse.scripts.npc.drops.table.noted
+import org.jesse.game.content.slayer.RegularTask
+import org.jesse.game.content.slayer.BossTask
+import org.jesse.game.util.Colour
 import mgi.types.config.npcs.NPCDefinitions
-import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.npc.ids.*
-import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ids.*
-import com.near_reality.scripts.npc.drops.table.DropTableType.*
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import org.jesse.scripts.npc.drops.NPCDropTableScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.item.ids.*
+import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.game.world.entity.npc.drop.matrix.Drop
+import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class SlayerSecondariesDroptable : NPCDropTableScript() {
 

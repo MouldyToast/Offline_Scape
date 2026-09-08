@@ -1,6 +1,6 @@
 package mgi.tools.dumpers;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.Cache;

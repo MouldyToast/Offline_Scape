@@ -1,8 +1,8 @@
 package cloud.rsps.game.hiscores
 
 import com.google.common.eventbus.Subscribe
-import com.zenyte.game.GameConstants
-import com.zenyte.plugins.events.LogoutEvent
+import org.jesse.game.GameConstants
+import org.jesse.plugins.events.LogoutEvent
 
 /**
  * @author Jire

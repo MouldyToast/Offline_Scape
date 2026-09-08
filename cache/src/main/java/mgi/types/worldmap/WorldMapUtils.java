@@ -1,7 +1,7 @@
 package mgi.types.worldmap;
 
-import com.zenyte.CacheManager;
-import com.zenyte.game.world.region.XTEALoader;
+import org.jesse.CacheManager;
+import org.jesse.game.world.region.XTEALoader;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.Cache;

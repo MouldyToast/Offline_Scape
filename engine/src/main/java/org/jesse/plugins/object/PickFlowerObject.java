@@ -1,0 +1,22 @@
+package org.jesse.plugins.object;
+
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.object.ObjectAction;
+import org.jesse.game.obj.ids.ObjectId;
+import org.jesse.game.world.object.WorldObject;
+
+public final class PickFlowerObject implements ObjectAction {
+
+    @Override
+    public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
+        if (option.equalsIgnoreCase("take-seed")) {
+            player.sendMessage("There doesn't seem to be any seeds on this rosebush.");
+            return;
+        }
+    }
+
+    @Override
+    public Object[] getObjects() {
+        return new Object[] { ObjectId.ROSES_9260, ObjectId.ROSES_9261, ObjectId.ROSES_9262 };
+    }
+}

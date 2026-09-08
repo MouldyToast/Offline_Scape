@@ -1,0 +1,63 @@
+package org.jesse.game.content.rots.npc;
+
+import org.jesse.game.content.rots.RotsInstance;
+import org.jesse.game.content.skills.prayer.Prayer;
+import org.jesse.game.util.Utils;
+import org.jesse.game.world.World;
+import org.jesse.game.world.entity.Entity;
+import org.jesse.game.world.entity.Location;
+import org.jesse.game.world.entity.masks.Graphics;
+import org.jesse.game.world.entity.masks.Hit;
+import org.jesse.game.world.entity.masks.HitType;
+import org.jesse.game.world.entity.npc.combat.CombatScript;
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.player.SkillConstants;
+import org.jesse.game.world.entity.player.action.combat.magic.CombatSpell;
+
+public class AhrimTheBlightedRots extends RotsBrother implements CombatScript {
+
+	private static final Graphics AHRIMS_GFX = new Graphics(400, 0, 96);
+	private static final Graphics SPLASH_GRAPHICS = new Graphics(85, 0, 124);
+	private static final CombatSpell[] spells = {CombatSpell.CONFUSE, CombatSpell.WEAKEN, CombatSpell.CURSE};
+
+	public AhrimTheBlightedRots(final Location tile, RotsInstance instance) {
+		super(16035, tile, instance);
+	}
+
+	@Override
+	public int attack(final Entity target) {
+		final CombatSpell spell;
+		if (Utils.randomBoolean(10)) {
+			spell = CombatSpell.ICE_RUSH;
+			setForceTalk("Got you!");
+		} else if (Utils.randomBoolean(7)) {
+			spell = Utils.getRandomElement(spells);
+		} else {
+			spell = CombatSpell.FIRE_WAVE;
+		}
+
+		setAnimation(spell.getAnimation());
+		setGraphics(spell.getCastGfx());
+		this.delayHit(World.sendProjectile(this, target, spell.getProjectile()), target, new Hit(this, this.getRandomMaxHit(this, combatDefinitions.getMaxHit(), MAGIC, target), HitType.MAGIC).onLand(hit -> {
+			if (hit.getDamage() <= 0) {
+				target.setGraphics(SPLASH_GRAPHICS);
+				return;
+			}
+			target.setGraphics(spell.getHitGfx());
+			if (spell != CombatSpell.FIRE_WAVE) {
+				spell.getEffect().spellEffect(this, target, hit.getDamage());
+				return;
+			}
+			if (target instanceof final Player player) {
+				if (!player.getPrayerManager().isActive(Prayer.PROTECT_FROM_MAGIC)) {
+					if (Utils.random(3) == 0) {
+						target.setGraphics(AHRIMS_GFX);
+						target.drainSkill(SkillConstants.STRENGTH, 5);
+					}
+				}
+			}
+		}));
+		return combatDefinitions.getAttackSpeed();
+	}
+
+}

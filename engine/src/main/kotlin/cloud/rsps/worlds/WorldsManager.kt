@@ -1,9 +1,9 @@
 package cloud.rsps.worlds
 
 import cloud.rsps.worlds.database.WorldsTable
-import com.near_reality.api.dao.Db.dbQuery
-import com.near_reality.api.model.WorldType
-import com.near_reality.game.world.info.WorldProfile
+import org.jesse.api.dao.Db.dbQuery
+import org.jesse.api.model.WorldType
+import org.jesse.game.world.info.WorldProfile
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.kotlin.datetime.CurrentTimestampWithTimeZone
 import org.jetbrains.exposed.sql.upsert

@@ -1,8 +1,8 @@
 package mgi.tools.parser;
 
-import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.object.WorldObject;
-import com.zenyte.game.world.region.Regions;
+import org.jesse.game.world.entity.Location;
+import org.jesse.game.world.object.WorldObject;
+import org.jesse.game.world.region.Regions;
 
 import java.util.function.Predicate;
 

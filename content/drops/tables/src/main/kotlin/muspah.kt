@@ -1,29 +1,29 @@
-package com.zenyte.game.content
+package org.jesse.game.content
 
-import com.near_reality.scripts.npc.drops.table.always
-import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollItemChance
-import com.near_reality.scripts.npc.drops.table.noted
-import com.near_reality.scripts.npc.drops.table.tables.gem.GemDropTable
-import com.near_reality.scripts.npc.drops.table.tables.herb.HerbDropTable
-import com.zenyte.game.item.Item
-import com.zenyte.game.item.ids.*
-import com.zenyte.game.item.ids.ADAMANTITE_ORE
-import com.zenyte.game.item.ids.COAL
-import com.zenyte.game.item.ids.GOLD_ORE
-import com.zenyte.game.item.ids.MUPHIN
-import com.zenyte.game.item.ids.RUNITE_ORE
-import com.zenyte.game.item.ids.SHARK
-import com.zenyte.game.item.ids.SILVER_ORE
-import com.zenyte.game.util.Utils
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.npc.ids.*
-import com.near_reality.game.util.invoke
-import com.near_reality.scripts.npc.drops.table.DropTableType.*
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
+import org.jesse.scripts.npc.drops.table.always
+import org.jesse.scripts.npc.drops.table.chance.immutable.StaticRollItemChance
+import org.jesse.scripts.npc.drops.table.noted
+import org.jesse.scripts.npc.drops.table.tables.gem.GemDropTable
+import org.jesse.scripts.npc.drops.table.tables.herb.HerbDropTable
+import org.jesse.game.item.Item
+import org.jesse.game.item.ids.*
+import org.jesse.game.item.ids.ADAMANTITE_ORE
+import org.jesse.game.item.ids.COAL
+import org.jesse.game.item.ids.GOLD_ORE
+import org.jesse.game.item.ids.MUPHIN
+import org.jesse.game.item.ids.RUNITE_ORE
+import org.jesse.game.item.ids.SHARK
+import org.jesse.game.item.ids.SILVER_ORE
+import org.jesse.game.util.Utils
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import org.jesse.scripts.npc.drops.NPCDropTableScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.game.world.entity.npc.drop.matrix.Drop
+import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 
 class MuspahDroptable : NPCDropTableScript() {
 

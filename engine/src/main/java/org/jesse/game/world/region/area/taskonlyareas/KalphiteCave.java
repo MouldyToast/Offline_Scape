@@ -1,0 +1,55 @@
+package org.jesse.game.world.region.area.taskonlyareas;
+
+import org.jesse.game.content.slayer.RegularTask;
+import org.jesse.game.world.entity.Entity;
+import org.jesse.game.world.entity.npc.NPC;
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
+import org.jesse.game.world.entity.player.dialogue.Dialogue;
+import org.jesse.game.world.region.PolygonRegionArea;
+import org.jesse.game.world.region.RSPolygon;
+import org.jesse.game.world.region.area.plugins.EntityAttackPlugin;
+
+/**
+ * @author Kris | 01/05/2019 16:51
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
+ */
+public class KalphiteCave extends PolygonRegionArea implements EntityAttackPlugin {
+    @Override
+    public RSPolygon[] polygons() {
+        return new RSPolygon[] {new RSPolygon(new int[][] {{3284, 9551}, {3268, 9535}, {3268, 9495}, {3264, 9491}, {3264, 9479}, {3271, 9472}, {3328, 9472}, {3350, 9494}, {3350, 9511}, {3310, 9551}})};
+    }
+
+    @Override
+    public void enter(Player player) {
+    }
+
+    @Override
+    public void leave(Player player, boolean logout) {
+    }
+
+    @Override
+    public String name() {
+        return "Kalphite Cavern: Task only";
+    }
+
+    @Override
+    public boolean attack(Player player, Entity entity, PlayerCombat combat) {
+        if (entity instanceof NPC npc) {
+            final String name = npc.getDefinitions().getName();
+            if (name.contains("Kalphite") || name.contains("kalphite")) {
+                if (!player.getSlayer().isCurrentAssignment(entity)) {
+                    player.getDialogueManager().start(new Dialogue(player, 491) {
+                        @Override
+                        public void buildDialogue() {
+                            npc("You can only kill these Kalphite while on a slayer task!");
+                        }
+                    });
+                    return false;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+}

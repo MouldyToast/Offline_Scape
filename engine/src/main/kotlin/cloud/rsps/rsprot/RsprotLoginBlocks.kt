@@ -1,10 +1,10 @@
 package cloud.rsps.rsprot
 
-import com.zenyte.CacheManager
-import com.zenyte.game.GameConstants
-import com.zenyte.game.net.NetworkConstants
-import com.zenyte.game.world.World
-import com.zenyte.utils.TimeUnit
+import org.jesse.CacheManager
+import org.jesse.game.GameConstants
+import org.jesse.game.net.NetworkConstants
+import org.jesse.game.world.World
+import org.jesse.utils.TimeUnit
 import net.rsprot.protocol.loginprot.incoming.util.LoginBlock
 import net.rsprot.protocol.loginprot.outgoing.LoginResponse
 

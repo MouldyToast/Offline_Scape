@@ -1,0 +1,62 @@
+package org.jesse.game.content.tournament.spectating
+
+import org.jesse.game.content.tournament.tournamentPairSpectating
+import org.jesse.game.GameInterface
+import org.jesse.game.model.ui.Interface
+import org.jesse.game.model.ui.InterfacePosition
+import org.jesse.game.model.ui.PaneType
+import org.jesse.game.task.WorldTasksManager.schedule
+import org.jesse.game.util.AccessMask
+import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.entity.player.Player.StopType.*
+import org.jesse.game.world.entity.player.dialogue.dialogue
+
+internal const val deadman_spectator_enable_script_id = 2070
+internal const val set_renderself_script_id = 2221
+
+/**
+ * @author Kris | 04/06/2019 23:06
+ * @see [Rune-Server profile](https://www.rune-server.ee/members/kris/)
+ */
+@Suppress("unused")
+class TournamentSpectatingInterface : Interface() {
+
+    override fun attach() {
+    }
+
+    override fun open(player: Player) {
+        val tournamentPair = player.tournamentPairSpectating?:return
+        if (!tournamentPair.canSpectate()){
+            player.dialogue { plain("You cannot spectate this fight.") }
+            return
+        }
+        player.setLocation(tournamentPair.spectatorLocation.copy())
+        player.isHidden = true
+        player.stop(INTERFACES, ROUTE_EVENT, WALK, ACTIONS, ANIMATIONS, WORLD_MAP)
+        player.lock()
+        player.freeze(Int.MAX_VALUE)
+        player.packetDispatcher.ifOpenTop(PaneType.GAME_SCREEN.id)
+        with(player.interfaceHandler) {
+            sendInterface(id, 3, PaneType.GAME_SCREEN, false)
+            sendInterface(GameInterface.TOURNAMENT_SPECTATING_INVENTORY)
+            visible.forcePut(pane.id shl 16 or InterfacePosition.CENTRAL.getComponent(pane), id)
+            schedule({
+                if (isPresent(GameInterface.TOURNAMENT_SPECTATING)) {
+                    player.packetDispatcher.freecam(true)
+                }
+            })
+        }
+        with(player.packetDispatcher) {
+            sendClientScript(deadman_spectator_enable_script_id, 2)
+            sendComponentSettings(id, 56, -1, 28, AccessMask.CLICK_OP10)
+            sendComponentSettings(id, 57, -1, 28, AccessMask.CLICK_OP10)
+            sendComponentVisibility(id, 60, true) //hide sigils
+        }
+    }
+
+    override fun build() {
+    }
+
+    override fun getInterface(): GameInterface =
+        GameInterface.TOURNAMENT_SPECTATING
+}

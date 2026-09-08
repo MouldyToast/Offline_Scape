@@ -1,0 +1,26 @@
+package org.jesse.plugins.object;
+
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.object.ObjectAction;
+import org.jesse.game.obj.ids.ObjectId;
+import org.jesse.game.world.object.WorldObject;
+import org.jesse.plugins.dialogue.PlainChat;
+
+/**
+ * @author Kris | 27/06/2020
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
+ */
+public class KharaziTotemPole implements ObjectAction {
+    @Override
+    public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
+        player.getDialogueManager().start(new PlainChat(player, "This totem pole is truly awe inspiring. It depicts powerful Karamja " +
+                "jungle animals. It is very well carved and brings a sense of power and spiritual fulfillment to anyone who looks at it."));
+    }
+
+    @Override
+    public Object[] getObjects() {
+        return new Object[] {
+                ObjectId.TOTEM_POLE_2936
+        };
+    }
+}

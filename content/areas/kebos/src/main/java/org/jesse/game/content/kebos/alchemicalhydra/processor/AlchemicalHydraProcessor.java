@@ -1,0 +1,102 @@
+package org.jesse.game.content.kebos.alchemicalhydra.processor;
+
+import org.jesse.game.content.kebos.alchemicalhydra.HydraPhase;
+import org.jesse.game.item.Item;
+import org.jesse.game.item.ids.ItemId;
+import org.jesse.game.util.Utils;
+import org.jesse.game.world.entity.npc.NPC;
+import org.jesse.game.world.entity.npc.drop.matrix.Drop;
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor;
+import org.jesse.game.world.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
+
+import static org.jesse.game.item.ids.ItemId.*;
+import static org.jesse.tools.DropUtils.randomRoll;
+
+/**
+ * @author Tommeh | 11/11/2019 | 23:59
+ * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
+ */
+public class AlchemicalHydraProcessor extends DropProcessor {
+    private static final int[] ringParts = {ItemId.HYDRAS_EYE, ItemId.HYDRAS_FANG, ItemId.HYDRAS_HEART};
+
+    @Override
+    public void attach() {
+        appendDrop(new DisplayedDrop(DRAGON_THROWNAXE, 500, 1000, 750));
+        appendDrop(new DisplayedDrop(DRAGON_KNIFE, 500, 1000, 750));
+        appendDrop(new DisplayedDrop(HYDRAS_EYE, 1, 1, 50));
+        appendDrop(new DisplayedDrop(HYDRAS_FANG, 1, 1, 50));
+        appendDrop(new DisplayedDrop(HYDRAS_HEART, 1, 1, 50));
+        appendDrop(new DisplayedDrop(HYDRA_TAIL, 1, 1, 90));
+        appendDrop(new DisplayedDrop(HYDRA_LEATHER, 1, 1, 200));
+        appendDrop(new DisplayedDrop(HYDRAS_CLAW, 1, 1, 300));
+        appendDrop(new DisplayedDrop(ALCHEMICAL_HYDRA_HEADS, 1, 1, 200));
+        appendDrop(new DisplayedDrop(JAR_OF_CHEMICALS, 1, 1, 600));
+        put(HYDRAS_EYE, new PredicatedDrop("The Hydra's eye has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
+        put(HYDRAS_FANG, new PredicatedDrop("The Hydra's fang has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
+        put(HYDRAS_HEART, new PredicatedDrop("The Hydra's heart has a 1/150 drop rate, or a 1/50 drop rate to receive any of the Brimstone ring pieces."));
+        put(MYSTIC_FIRE_STAFF, new PredicatedDrop("Mystic fire staff is always dropped alongside mystic water staff."));
+        put(RUNE_PLATEBODY, new PredicatedDrop("Rune platebody is always dropped alongside either rune platelegs or plateskirt."));
+        put(MYSTIC_ROBE_TOP_LIGHT, new PredicatedDrop("Mystic robe top (light) is always dropped alongside mystic robe bottoms (light)."));
+        put(RANGING_POTION3, new PredicatedDrop("Ranging potion(3) is always dropped alongside 2 x super restore(3)."));
+    }
+
+    @Override
+    public void onDeath(final NPC npc, final Player killer) {
+
+        if(randomRoll(killer, 599) == 0) {
+            npc.dropItem(killer, new Item(JAR_OF_CHEMICALS));
+            return;
+        }
+        if(randomRoll(killer,299) == 0) {
+            npc.dropItem(killer, new Item(HYDRAS_CLAW));
+            return;
+        }
+        if(randomRoll(killer,199) == 0) {
+            npc.dropItem(killer, new Item(ALCHEMICAL_HYDRA_HEADS));
+            return;
+        }
+        if(randomRoll(killer, 199) == 0) {
+            npc.dropItem(killer, new Item(ItemId.HYDRA_LEATHER));
+            return;
+        }
+        if(randomRoll(killer,89) == 0) {
+            npc.dropItem(killer, new Item(ItemId.HYDRA_TAIL));
+            return;
+        }
+        if(randomRoll(killer,49) == 0) {
+            npc.dropItem(killer, new Item(findLowestQuantityRingPart(killer)));
+            return;
+        }
+    }
+
+    @Override
+    public Item drop(final NPC npc, final Player killer, final Drop drop, final Item item) {
+        if (!drop.isAlways()) {
+            int random;
+            if (random(750) == 0) {
+                return new Item(Utils.random(1) == 0 ? ItemId.DRAGON_THROWNAXE : ItemId.DRAGON_KNIFE, Utils.random(500, 1000));
+            }
+
+        }
+        return item;
+    }
+
+    public static final int findLowestQuantityRingPart(@NotNull final Player killer) {
+        int previousAmount = Integer.MAX_VALUE;
+        int previousItem = ringParts[0];
+        for (final int part : ringParts) {
+            final int amount = killer.getAmountOf(part);
+            if (amount < previousAmount) {
+                previousAmount = amount;
+                previousItem = part;
+            }
+        }
+        return previousItem;
+    }
+
+    @Override
+    public int[] ids() {
+        return new int[] {HydraPhase.ENRAGED.getPostTransformation()};
+    }
+}

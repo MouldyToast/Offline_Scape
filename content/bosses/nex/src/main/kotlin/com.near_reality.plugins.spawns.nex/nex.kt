@@ -1,9 +1,9 @@
-package com.near_reality.plugins.spawns.nex
+package org.jesse.plugins.spawns.nex
 
-import com.near_reality.scripts.npc.spawns.NPCSpawnsScript
-import com.zenyte.game.npc.ids.*
-import com.near_reality.game.util.invoke
-import com.zenyte.game.util.Direction.*
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
 
 class Nex : NPCSpawnsScript() {
 

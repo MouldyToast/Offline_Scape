@@ -1,0 +1,48 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region10831 : NPCSpawnsScript() {
+
+    init {
+        GIANT_SKELETON_681(2693, 5065, 0, SOUTH, 5)
+        GIANT_SKELETON(2693, 5075, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2693, 5089, 0, SOUTH, 5)
+        BAT(2693, 5102, 0, SOUTH, 23)
+        SHADOW_HOUND(2694, 5067, 0, SOUTH, 5)
+        GIANT_SKELETON(2695, 5089, 0, SOUTH, 5)
+        GIANT_SKELETON(2697, 5096, 0, SOUTH, 5)
+        BAT(2699, 5083, 0, SOUTH, 23)
+        GIANT_SKELETON(2703, 5064, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2704, 5091, 0, SOUTH, 5)
+        BAT(2707, 5106, 0, SOUTH, 23)
+        GIANT_BAT(2709, 5086, 0, SOUTH, 11)
+        GIANT_SKELETON_681(2710, 5095, 0, SOUTH, 5)
+        GIANT_SKELETON(2710, 5105, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2712, 5076, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2714, 5108, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2716, 5092, 0, SOUTH, 5)
+        SHADOW_HOUND(2717, 5081, 0, SOUTH, 5)
+        SHADOW_HOUND(2718, 5108, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2719, 5071, 0, SOUTH, 5)
+        GIANT_SKELETON(2719, 5078, 0, SOUTH, 5)
+        GIANT_SKELETON(2719, 5112, 0, SOUTH, 5)
+        GIANT_SKELETON(2720, 5096, 0, SOUTH, 5)
+        GIANT_RAT_2856(2721, 5102, 0, SOUTH, 6)
+        SHADOW_HOUND(2721, 5104, 0, SOUTH, 5)
+        GIANT_SKELETON_681(2722, 5061, 0, SOUTH, 5)
+        GIANT_SKELETON(2726, 5086, 0, SOUTH, 5)
+        SHADOW_HOUND(2726, 5091, 0, SOUTH, 5)
+        SHADOW_HOUND(2731, 5060, 0, SOUTH, 5)
+        SHADOW_HOUND(2732, 5073, 0, SOUTH, 5)
+        GIANT_SKELETON(2735, 5061, 0, SOUTH, 5)
+        GIANT_RAT_2864(2737, 5062, 0, SOUTH, 6)
+        SHADOW_HOUND(2740, 5083, 0, SOUTH, 5)
+        SHADOW_HOUND(2742, 5103, 0, SOUTH, 5)
+        GIANT_SKELETON(2746, 5114, 0, SOUTH, 5)
+        SHADOW_HOUND(2747, 5094, 0, SOUTH, 5)
+    }
+}

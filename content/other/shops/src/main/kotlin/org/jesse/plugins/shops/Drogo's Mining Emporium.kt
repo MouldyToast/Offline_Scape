@@ -1,0 +1,29 @@
+package org.jesse.plugins.shops
+
+import org.jesse.scripts.shops.ShopScript
+import org.jesse.game.model.shop.*
+import org.jesse.game.model.shop.ShopPolicy
+import org.jesse.game.model.shop.ShopPolicy.*
+import org.jesse.game.model.shop.ShopCurrency
+import org.jesse.game.model.shop.ShopCurrency.*
+import org.jesse.game.item.ids.*
+import org.jesse.game.content.universalshop.*
+import org.jesse.game.content.universalshop.UnivShopItem
+import org.jesse.game.content.universalshop.UnivShopItem.*
+
+class DrogoSMiningEmporium : ShopScript() {
+
+    init {
+        "Drogo's Mining Emporium"(5, ShopCurrency.COINS, STOCK_ONLY) {
+            HAMMER(4, 0, 1)
+            BRONZE_PICKAXE(4, 0, 1)
+            COPPER_ORE(0, 1, 3)
+            TIN_ORE(0, 1, 3)
+            IRON_ORE(0, 5, 17)
+            COAL(0, 13, 45)
+            BRONZE_BAR(0, 2, 8)
+            IRON_BAR(0, 8, 28)
+            GOLD_BAR(0, 90, 300)
+        }
+    }
+}

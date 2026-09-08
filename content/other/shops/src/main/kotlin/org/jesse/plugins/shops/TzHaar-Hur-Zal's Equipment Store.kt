@@ -1,0 +1,31 @@
+package org.jesse.plugins.shops
+
+import org.jesse.scripts.shops.ShopScript
+import org.jesse.game.model.shop.*
+import org.jesse.game.model.shop.ShopPolicy
+import org.jesse.game.model.shop.ShopPolicy.*
+import org.jesse.game.model.shop.ShopCurrency
+import org.jesse.game.model.shop.ShopCurrency.*
+import org.jesse.game.item.ids.*
+import org.jesse.game.content.universalshop.*
+import org.jesse.game.content.universalshop.UnivShopItem
+import org.jesse.game.content.universalshop.UnivShopItem.*
+
+class TzhaarHurZalSEquipmentStore : ShopScript() {
+
+    init {
+        "TzHaar-Hur-Zal's Equipment Store"(113, ShopCurrency.TOKKUL, STOCK_ONLY) {
+            TOKTZXILUL(500, 34, 375)
+            TOKTZXILAK(1, 6000, 60000)
+            TOKTZXILEK(1, 3550, 37500)
+            TZHAARKETOM(1, 7500, 75000)
+            TOKTZMEJTAL(1, 5000, 52500)
+            TZHAARKETEM(1, 4000, 45000)
+            TOKTZKETXIL(1, 6750, 67500)
+            OBSIDIAN_CAPE(1, 9000, 90000)
+            OBSIDIAN_HELMET(1, 8448, 84480)
+            OBSIDIAN_PLATEBODY(1, 12600, 126000)
+            OBSIDIAN_PLATELEGS(1, 10050, 100500)
+        }
+    }
+}

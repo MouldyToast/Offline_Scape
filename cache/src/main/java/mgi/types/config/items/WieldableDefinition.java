@@ -1,6 +1,6 @@
 package mgi.types.config.items;
 
-import com.zenyte.game.world.entity.masks.RenderAnimation;
+import org.jesse.game.world.entity.masks.RenderAnimation;
 
 public final class WieldableDefinition {
 

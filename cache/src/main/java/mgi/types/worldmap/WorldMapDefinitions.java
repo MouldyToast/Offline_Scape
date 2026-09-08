@@ -1,8 +1,8 @@
 package mgi.types.worldmap;
 
 import com.google.common.base.Preconditions;
-import com.zenyte.CacheManager;
-import com.zenyte.game.world.entity.Location;
+import org.jesse.CacheManager;
+import org.jesse.game.world.entity.Location;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import mgi.tools.jagcached.ArchiveType;

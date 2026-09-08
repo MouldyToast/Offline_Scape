@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-group = "com.near_reality"
+group = "org.jesse"
 version = "3.6.0"
 
 dependencies {

@@ -1,6 +1,6 @@
 package mgi.types.config;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import mgi.tools.jagcached.ArchiveType;

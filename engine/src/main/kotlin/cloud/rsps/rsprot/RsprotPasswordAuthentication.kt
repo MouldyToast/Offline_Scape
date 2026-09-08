@@ -1,6 +1,6 @@
 package cloud.rsps.rsprot
 
-import com.zenyte.game.world.World
+import org.jesse.game.world.World
 import net.rsprot.protocol.api.login.GameLoginResponseHandler
 import net.rsprot.protocol.loginprot.incoming.util.AuthenticationType
 import net.rsprot.protocol.loginprot.incoming.util.AuthenticationType.PasswordAuthentication

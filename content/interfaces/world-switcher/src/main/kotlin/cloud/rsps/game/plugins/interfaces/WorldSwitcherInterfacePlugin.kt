@@ -1,11 +1,11 @@
 package cloud.rsps.game.plugins.interfaces
 
 import cloud.rsps.worlds.WorldSwitchTarget
-import com.near_reality.api.model.WorldType
-import com.near_reality.scripts.interfaces.InterfaceScript
-import com.zenyte.game.GameConstants
-import com.zenyte.game.GameInterface
-import com.zenyte.game.util.AccessMask
+import org.jesse.api.model.WorldType
+import org.jesse.scripts.interfaces.InterfaceScript
+import org.jesse.game.GameConstants
+import org.jesse.game.GameInterface
+import org.jesse.game.util.AccessMask
 
 /**
  * @author Jire

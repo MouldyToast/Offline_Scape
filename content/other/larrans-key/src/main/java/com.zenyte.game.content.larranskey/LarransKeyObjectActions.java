@@ -1,10 +1,10 @@
-package com.zenyte.game.content.larranskey;
+package org.jesse.game.content.larranskey;
 
-import com.zenyte.game.world.entity.Location;
-import com.zenyte.game.world.entity.player.Player;
-import com.zenyte.game.world.object.Ladder;
-import com.zenyte.game.world.object.ObjectAction;
-import com.zenyte.game.world.object.WorldObject;
+import org.jesse.game.world.entity.Location;
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.object.Ladder;
+import org.jesse.game.world.object.ObjectAction;
+import org.jesse.game.world.object.WorldObject;
 
 public class LarransKeyObjectActions implements ObjectAction {
 

@@ -1,0 +1,69 @@
+package org.jesse.game.world.entity.player.calog;
+
+import org.jesse.game.GameInterface;
+import org.jesse.game.model.ui.Interface;
+import org.jesse.game.util.AccessMask;
+import org.jesse.game.world.entity.player.Player;
+
+/**
+ * @author Savions.
+ */
+public class CALogTaskInterface extends Interface {
+
+	public static final int CA_TASK_TIER_SELECT_VARBIT = 12858;
+	public static final int CA_TASK_TYPE_SELECT_VARBIT = 12859;
+	public static final int CA_TASK_MONSTER_SELECT_VARBIT = 12860;
+	public static final int CA_TASK_COMPLETED_SELECT_VARBIT = 12861;
+
+	@Override protected void attach() {
+		put(25, "Navigation");
+		put(30, "Tier");
+		put(31, "Type");
+		put(32, "Monster");
+		put(33, "Completed");
+	}
+
+	@Override protected void build() {
+		bind("Navigation", (player, slotId, itemId, option) -> {
+			if (slotId == 10) {
+				GameInterface.CA_OVERVIEW.open(player);
+			} else if (slotId == 14) {
+				GameInterface.CA_BOSS_OVERVIEW.open(player);
+			} else if (slotId == 16) {
+				GameInterface.CA_REWARDS.open(player);
+			}
+		});
+		bind("Tier", (player, slotId, itemId, option) -> {
+			if (slotId >= 1 && slotId <= 7) {
+				player.getVarManager().sendBit(CA_TASK_TIER_SELECT_VARBIT, slotId - 1);
+			}
+		});
+		bind("Type", (player, slotId, itemId, option) -> {
+			if (slotId >= 1 && slotId <= 7) {
+				player.getVarManager().sendBit(CA_TASK_TYPE_SELECT_VARBIT, slotId - 1);
+			}
+		});
+		bind("Monster", (player, slotId, itemId, option) -> {
+			if (slotId >= 1 && slotId <= 70) {
+				player.getVarManager().sendBit(CA_TASK_MONSTER_SELECT_VARBIT, slotId - 1);
+			}
+		});
+		bind("Completed", (player, slotId, itemId, option) -> {
+			if (slotId >= 1 && slotId <= 3) {
+				player.getVarManager().sendBit(CA_TASK_COMPLETED_SELECT_VARBIT, slotId - 1);
+			}
+		});
+	}
+
+	@Override public void open(Player player) {
+		super.open(player);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 9, 0, 599, AccessMask.CLICK_OP1);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 25, 10, 16, AccessMask.CLICK_OP1);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 30, 1, 8, AccessMask.CLICK_OP1);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 33, 1, 4, AccessMask.CLICK_OP1);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 31, 1, 8, AccessMask.CLICK_OP1);
+		player.getPacketDispatcher().sendComponentSettings(GameInterface.CA_TASKS, 32, 1, 87, AccessMask.CLICK_OP1);
+	}
+
+	@Override public GameInterface getInterface() { return GameInterface.CA_TASKS; }
+}

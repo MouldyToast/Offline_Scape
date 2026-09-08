@@ -1,0 +1,49 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region5177 : NPCSpawnsScript() {
+
+    init {
+        LIZARDMAN_BRUTE_8564(1282, 3664, 0, SOUTH, 13)
+        LIZARDMAN_BRUTE_8564(1285, 3661, 0, SOUTH, 13)
+        LIZARDMAN_8563(1285, 3664, 0, SOUTH, 13)
+        SWAMP_FROG(1286, 3650, 0, SOUTH, 7)
+        SWAMP_FROG(1286, 3651, 0, SOUTH, 7)
+        SWAMP_FROG(1287, 3650, 0, SOUTH, 7)
+        SWAMP_FROG(1287, 3651, 0, SOUTH, 7)
+        RANGER_8601(1289, 3695, 0, SOUTH, 4)
+        SERGEANT_8600(1291, 3696, 0, SOUTH, 4)
+        CROW_2072(1292, 3709, 0, SOUTH, 5)
+        LIZARDMAN_8563(1293, 3665, 0, SOUTH, 13)
+        SOLDIER_8599(1293, 3698, 0, SOUTH, 4)
+        SOLDIER_8599(1294, 3696, 0, SOUTH, 4)
+        CROW(1307, 3705, 0, SOUTH, 5)
+        SWAMP_FROG(1308, 3672, 0, SOUTH, 7)
+        SWAMP_FROG(1308, 3673, 0, SOUTH, 7)
+        SWAMP_FROG(1308, 3674, 0, SOUTH, 7)
+        SWAMP_FROG(1309, 3672, 0, SOUTH, 7)
+        SWAMP_FROG(1309, 3673, 0, SOUTH, 7)
+        SWAMP_FROG(1309, 3674, 0, SOUTH, 7)
+        LIZARDMAN_8563(1311, 3669, 0, SOUTH, 13)
+        LIZARDMAN_8563(1317, 3682, 0, SOUTH, 13)
+        LIZARDMAN_8563(1318, 3674, 0, SOUTH, 13)
+        LIZARDMAN_BRUTE_8564(1318, 3677, 0, SOUTH, 13)
+        EKANS_CHAN(1319, 3673, 0, NORTH, 0)
+        BLACK_BEAR(1319, 3710, 0, SOUTH, 8)
+        LIZARDMAN_BRUTE_8564(1321, 3674, 0, SOUTH, 13)
+        LIZARDMAN_8563(1325, 3669, 0, SOUTH, 13)
+        LIZARDMAN_BRUTE_8564(1329, 3688, 0, SOUTH, 13)
+        LIZARDMAN_8563(1331, 3691, 0, SOUTH, 13)
+        LIZARDMAN_8563(1331, 3694, 0, SOUTH, 13)
+        LIZARDMAN_BRUTE_8564(1333, 3684, 0, SOUTH, 13)
+        LIZARDMAN_BRUTE_8564(1333, 3688, 0, SOUTH, 13)
+        LIZARDMAN_8563(1334, 3691, 0, SOUTH, 13)
+        LIZARDMAN_8563(1337, 3687, 0, SOUTH, 13)
+        LIZARDMAN_8563(1339, 3683, 0, SOUTH, 13)
+        LIZARDMAN_8563(1339, 3691, 0, SOUTH, 13)
+    }
+}

@@ -46,7 +46,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.DropPrediction
 import com.zenyte.game.world.entity.player.GameCommands.Command
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.action.combat.PlayerCombat
-import com.zenyte.game.world.entity.player.collectionlog.CollectionLogRewardHandler
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
@@ -313,11 +312,6 @@ object DeveloperCommands {
         Command(PlayerPrivilege.DEVELOPER, "reloadshop") { p, args ->
             CreditStoreModel.requestProductsUpdate()
         }
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "clforce") {  p, args ->
-            val struct = args[0].toInt()
-            CollectionLogRewardHandler.forceComplete(struct, p)
-        }
-
         Command(PlayerPrivilege.DEVELOPER, "testbroadcast1") { p, args ->
             WorldBroadcasts.broadcast(
                 p,

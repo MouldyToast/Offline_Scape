@@ -32,6 +32,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import static com.zenyte.game.GameConstants.WORLD_PROFILE;
+import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants.*;
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogRewardHandler.getCollectionLogItems;
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogRewardManager.claimInProgress;
 
@@ -41,13 +42,8 @@ import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogRew
  */
 public class CollectionLogInterface extends Interface {
 
-    public static final String CATEGORY_ATTR_KEY = "COLLECTION_LOG_CATEGORY";
-    public static final String SUB_CATEGORY_ATTR_KEY = "COLLECTION_LOG_SUB_CATEGORY";
     private static final int CATEGORY_SCRIPT = 2388;
     private static final int BUILD_INTERFACE_SCRIPT = 7797;
-    public static final int STRUCT_POINTER_ENUM_CAT = 683;
-    public static final int STRUCT_POINTER_SUB_ENUM_CAT_NAME = 689;
-    public static final int STRUCT_POINTER_SUB_ENUM_CAT = 690;
 
     private static final int SCROLL_LAYER_COMPONENT_PARAM = 685;
     private static final int ELEMENTS_LAYER_COMPONENT_PARAM = 686;

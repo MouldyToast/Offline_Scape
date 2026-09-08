@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
+import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants.*;
 import static com.zenyte.game.world.entity.player.collectionlog.CollectionLogInterface.*;
 
 public class CollectionLogRewardHandler {

@@ -24,5 +24,5 @@ class DukeScoreboard : DT2Scoreboard(
         DT2Module.getDukeStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(DUKE_SCOREBOARD)
+        arrayOf(com.zenyte.game.obj.ids.DUKE_SCOREBOARD)
 }

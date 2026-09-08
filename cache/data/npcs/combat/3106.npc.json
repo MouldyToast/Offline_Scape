@@ -1,49 +1,49 @@
 {
   "id": 3106,
-  "hitpoints": 82,
-  "attackSpeed": 5,
+  "hitpoints": 7,
+  "attackSpeed": 4,
   "slayerLevel": 0,
-  "attackDistance": 4,
-  "aggressionDistance": 4,
+  "attackDistance": 1,
+  "aggressionDistance": 0,
   "maximumDistance": 16,
   "targetType": "PLAYER",
   "statDefinitions": {
     "combatStats": [
-      54,
-      55,
-      54,
+      1,
+      1,
+      1,
       1,
       1
     ],
     "aggressiveStats": [
-      20,
-      20,
-      20,
+      0,
+      0,
+      0,
       0,
       0
     ],
     "defensiveStats": [
-      87,
-      84,
-      76,
-      -10,
-      79
+      -21,
+      -21,
+      -21,
+      -21,
+      -21
     ],
     "otherBonuses": [
-      22,
+      0,
       0,
       0
     ]
   },
   "attackDefinitions": {
-    "type": "SLASH",
-    "maxHit": 9,
+    "type": "CRUSH",
+    "maxHit": 1,
     "animation": {
-      "id": 390,
+      "id": 422,
       "delay": 0
     },
     "startSound": {
-      "id": 2500,
+      "id": 511,
       "delay": 0,
       "radius": 10,
       "repetitions": 1
@@ -55,7 +55,7 @@
       "delay": 0
     },
     "sound": {
-      "id": 1973,
+      "id": 513,
       "delay": 0,
       "radius": 10,
       "repetitions": 1

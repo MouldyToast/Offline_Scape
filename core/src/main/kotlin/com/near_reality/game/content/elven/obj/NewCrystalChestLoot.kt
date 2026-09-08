@@ -33,16 +33,16 @@ enum class NewCrystalChestLoot(
     RED_DHIDE_SET(LootRarity.COMMON, Item(RED_DRAGONHIDE_SET)),
     BLACK_DHIDE_SET(LootRarity.COMMON, Item(BLACK_DRAGONHIDE_SET)),
 
-    COOKED_KARAMBWAN(LootRarity.COMMON, min = 75, max = 100, loot = arrayOf(Item(COOKED_KARAMBWAN).toNote())),
-    SWORDFISH(LootRarity.COMMON, min = 50, max = 75, loot = arrayOf(Item(SWORDFISH).toNote())),
-    MONKFISH(LootRarity.COMMON, min= 30, max = 50, loot = arrayOf(Item(MONKFISH).toNote())),
-    SHARK(LootRarity.COMMON, min = 20, max = 40, loot = arrayOf(Item(SHARK).toNote())),
+    COOKED_KARAMBWAN(LootRarity.COMMON, min = 75, max = 100, loot = arrayOf(Item(com.zenyte.game.item.ids.COOKED_KARAMBWAN).toNote())),
+    SWORDFISH(LootRarity.COMMON, min = 50, max = 75, loot = arrayOf(Item(com.zenyte.game.item.ids.SWORDFISH).toNote())),
+    MONKFISH(LootRarity.COMMON, min= 30, max = 50, loot = arrayOf(Item(com.zenyte.game.item.ids.MONKFISH).toNote())),
+    SHARK(LootRarity.COMMON, min = 20, max = 40, loot = arrayOf(Item(com.zenyte.game.item.ids.SHARK).toNote())),
 
-    IRON_ORE(LootRarity.COMMON, min = 50, max = 100, loot = arrayOf(Item(IRON_ORE).toNote())),
-    COAL(LootRarity.COMMON, min = 100, max = 200, loot = arrayOf(Item(COAL).toNote())),
+    IRON_ORE(LootRarity.COMMON, min = 50, max = 100, loot = arrayOf(Item(com.zenyte.game.item.ids.IRON_ORE).toNote())),
+    COAL(LootRarity.COMMON, min = 100, max = 200, loot = arrayOf(Item(com.zenyte.game.item.ids.COAL).toNote())),
 
     BABY_DRAGON_BONES(LootRarity.COMMON, min = 50, max = 75, loot = arrayOf(Item(BABYDRAGON_BONES).toNote())),
-    BIG_BONES(LootRarity.COMMON, min = 100, max = 150, loot = arrayOf(Item(BIG_BONES).toNote())),
+    BIG_BONES(LootRarity.COMMON, min = 100, max = 150, loot = arrayOf(Item(com.zenyte.game.item.ids.BIG_BONES).toNote())),
 
     BRONZE_BARS(LootRarity.COMMON, min = 50, max = 100, loot = arrayOf(Item(BRONZE_BAR).toNote())),
     IRON_BARS(LootRarity.COMMON, min = 50, max = 90, loot = arrayOf(Item(IRON_BAR).toNote())),
@@ -55,12 +55,12 @@ enum class NewCrystalChestLoot(
     SUPER_RESTORES(LootRarity.RARE, min = 10, max = 20, loot = arrayOf(Item(SUPER_RESTORE4).toNote())),
     SANFEW(LootRarity.RARE, min = 10, max = 20, loot = arrayOf(Item(SANFEW_SERUM4).toNote())),
 
-    DRAGON_BONES(LootRarity.RARE, min = 50, max = 75, loot = arrayOf(Item(DRAGON_BONES).toNote())),
+    DRAGON_BONES(LootRarity.RARE, min = 50, max = 75, loot = arrayOf(Item(com.zenyte.game.item.ids.DRAGON_BONES).toNote())),
 
-    DRAGON_SCIMITAR(LootRarity.RARE, Item(DRAGON_SCIMITAR)),
-    DRAGON_DAGGER(LootRarity.RARE, Item(DRAGON_DAGGER)),
-    DRAGON_BOOTS(LootRarity.RARE, Item(DRAGON_BOOTS)),
-    DRAGON_HALBERD(LootRarity.RARE, Item(DRAGON_HALBERD)),
+    DRAGON_SCIMITAR(LootRarity.RARE, Item(com.zenyte.game.item.ids.DRAGON_SCIMITAR)),
+    DRAGON_DAGGER(LootRarity.RARE, Item(com.zenyte.game.item.ids.DRAGON_DAGGER)),
+    DRAGON_BOOTS(LootRarity.RARE, Item(com.zenyte.game.item.ids.DRAGON_BOOTS)),
+    DRAGON_HALBERD(LootRarity.RARE, Item(com.zenyte.game.item.ids.DRAGON_HALBERD)),
 
     PET_BOOSTER(LootRarity.JACKPOT, Item(32152)),
     SLAYER_BOOSTER(LootRarity.JACKPOT, Item(32151)),
@@ -71,21 +71,21 @@ enum class NewCrystalChestLoot(
     TOME_OF_XP(LootRarity.SUPER_RARE, Item(30215)),
     MYSTERY_BOX(LootRarity.SUPER_RARE, Item(6199)),
     AMMY_OF_FURY(LootRarity.SUPER_RARE, Item(AMULET_OF_FURY)),
-    DIAMOND_BOLTS_E(LootRarity.SUPER_RARE, Item(DIAMOND_BOLTS_E), min = 20, max = 50),
-    RUBY_BOLTS_E(LootRarity.SUPER_RARE, Item(RUBY_BOLTS_E), min = 20, max = 50),
+    DIAMOND_BOLTS_E(LootRarity.SUPER_RARE, Item(com.zenyte.game.item.ids.DIAMOND_BOLTS_E), min = 20, max = 50),
+    RUBY_BOLTS_E(LootRarity.SUPER_RARE, Item(com.zenyte.game.item.ids.RUBY_BOLTS_E), min = 20, max = 50),
 
     CRYSTAL_SHARDS(LootRarity.ALWAYS, Item(CRYSTAL_SHARD), min = 3, max = 5, enhancedOnly = true),
     CRYSTAL_SHARDS_MORE(LootRarity.COMMON, Item(CRYSTAL_SHARD), min = 10, max = 30, enhancedOnly = true),
 
-    DRAGONSTONE_BOLTS_E(LootRarity.SUPER_RARE, Item(DRAGONSTONE_BOLTS_E), min = 20, max = 50, enhancedOnly = true),
+    DRAGONSTONE_BOLTS_E(LootRarity.SUPER_RARE, Item(com.zenyte.game.item.ids.DRAGONSTONE_BOLTS_E), min = 20, max = 50, enhancedOnly = true),
 
     DRAGONSTONE_HELM(LootRarity.SUPER_RARE, Item(DRAGONSTONE_FULL_HELM), enhancedOnly = true),
     DRAGONSTONE_PLATE(LootRarity.SUPER_RARE, Item(DRAGONSTONE_PLATEBODY), enhancedOnly = true),
     DRAGONSTONE_LEGS(LootRarity.SUPER_RARE, Item(DRAGONSTONE_PLATELEGS), enhancedOnly = true),
-    DRAGONSTONE_BOOTS(LootRarity.SUPER_RARE, Item(DRAGONSTONE_BOOTS), enhancedOnly = true),
+    DRAGONSTONE_BOOTS(LootRarity.SUPER_RARE, Item(com.zenyte.game.item.ids.DRAGONSTONE_BOOTS), enhancedOnly = true),
     DRAGONSTONE_GLOVES(LootRarity.SUPER_RARE, Item(DRAGONSTONE_GAUNTLETS), enhancedOnly = true),
 
-    ONYX(LootRarity.JACKPOT, Item(ONYX), enhancedOnly = true)
+    ONYX(LootRarity.JACKPOT, Item(com.zenyte.game.item.ids.ONYX), enhancedOnly = true)
     ;
 
     fun primary() : Item? {

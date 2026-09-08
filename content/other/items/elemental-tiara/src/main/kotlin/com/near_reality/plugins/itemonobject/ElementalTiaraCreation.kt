@@ -78,19 +78,19 @@ class ElementalTiaraCreation : ItemOnObjectAction {
         val talisManItemId: Int,
         val elementalTiaraItemId: Int,
     ) {
-        AIR_TIARA(Runecrafting.AIR_RUNE, AIR_TALISMAN, AIR_TIARA),
-        BLOOD_TIARA(Runecrafting.BLOOD_RUNE, BLOOD_TALISMAN, BLOOD_TIARA),
-        BODY_TIARA(Runecrafting.BODY_RUNE, BODY_TALISMAN, BODY_TIARA),
-        CHAOS_TIARA(Runecrafting.CHAOS_RUNE, CHAOS_TALISMAN, CHAOS_TIARA),
-        COSMIC_TIARA(Runecrafting.COSMIC_RUNE, COSMIC_TALISMAN, COSMIC_TIARA),
-        DEATH_TIARA(Runecrafting.DEATH_RUNE, DEATH_TALISMAN, DEATH_TIARA),
-        EARTH_TIARA(Runecrafting.EARTH_RUNE, EARTH_TALISMAN, EARTH_TIARA),
-        FIRE_TIARA(Runecrafting.FIRE_RUNE, FIRE_TALISMAN, FIRE_TIARA),
-        LAW_TIARA(Runecrafting.LAW_RUNE, LAW_TALISMAN, LAW_TIARA),
-        MIND_TIARA(Runecrafting.MIND_RUNE, MIND_TALISMAN, MIND_TIARA),
-        NATURE_TIARA(Runecrafting.NATURE_RUNE, NATURE_TALISMAN, NATURE_TIARA),
-        WATER_TIARA(Runecrafting.WATER_RUNE, WATER_TALISMAN, WATER_TIARA),
-        WRATH_TIARA(Runecrafting.WRATH_RUNE, WRATH_TALISMAN, WRATH_TIARA);
+        AIR_TIARA(Runecrafting.AIR_RUNE, AIR_TALISMAN, com.zenyte.game.item.ids.AIR_TIARA),
+        BLOOD_TIARA(Runecrafting.BLOOD_RUNE, BLOOD_TALISMAN, com.zenyte.game.item.ids.BLOOD_TIARA),
+        BODY_TIARA(Runecrafting.BODY_RUNE, BODY_TALISMAN, com.zenyte.game.item.ids.BODY_TIARA),
+        CHAOS_TIARA(Runecrafting.CHAOS_RUNE, CHAOS_TALISMAN, com.zenyte.game.item.ids.CHAOS_TIARA),
+        COSMIC_TIARA(Runecrafting.COSMIC_RUNE, COSMIC_TALISMAN, com.zenyte.game.item.ids.COSMIC_TIARA),
+        DEATH_TIARA(Runecrafting.DEATH_RUNE, DEATH_TALISMAN, com.zenyte.game.item.ids.DEATH_TIARA),
+        EARTH_TIARA(Runecrafting.EARTH_RUNE, EARTH_TALISMAN, com.zenyte.game.item.ids.EARTH_TIARA),
+        FIRE_TIARA(Runecrafting.FIRE_RUNE, FIRE_TALISMAN, com.zenyte.game.item.ids.FIRE_TIARA),
+        LAW_TIARA(Runecrafting.LAW_RUNE, LAW_TALISMAN, com.zenyte.game.item.ids.LAW_TIARA),
+        MIND_TIARA(Runecrafting.MIND_RUNE, MIND_TALISMAN, com.zenyte.game.item.ids.MIND_TIARA),
+        NATURE_TIARA(Runecrafting.NATURE_RUNE, NATURE_TALISMAN, com.zenyte.game.item.ids.NATURE_TIARA),
+        WATER_TIARA(Runecrafting.WATER_RUNE, WATER_TALISMAN, com.zenyte.game.item.ids.WATER_TIARA),
+        WRATH_TIARA(Runecrafting.WRATH_RUNE, WRATH_TALISMAN, com.zenyte.game.item.ids.WRATH_TIARA);
 
         companion object {
             fun findByElementalTalisMan(player: Player) = values()

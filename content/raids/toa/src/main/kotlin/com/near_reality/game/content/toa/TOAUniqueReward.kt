@@ -10,12 +10,12 @@ enum class TOAUniqueReward(
     val animation: Int,
     val level: Int,
 ) {
-    LIGHTBEARER(LIGHTBEARER, 1.0 / 3.429, 9508, 50),
-    MASORI_MASK(MASORI_MASK, 1.0 / 12.0, 9509, 150),
-    MASORI_BODY(MASORI_BODY, 1.0 / 12.0, 9510, 150),
-    MASORI_CHAPS(MASORI_CHAPS, 1.0 / 12.0, 9511, 150),
-    OSMUMTENS_FANG(OSMUMTENS_FANG, 1.0 / 3.429, 9512, 50),
-    ELIDINIS_WARD(ELIDINIS_WARD, 1.0 / 8.0, 9513, 150),
+    LIGHTBEARER(com.zenyte.game.item.ids.LIGHTBEARER, 1.0 / 3.429, 9508, 50),
+    MASORI_MASK(com.zenyte.game.item.ids.MASORI_MASK, 1.0 / 12.0, 9509, 150),
+    MASORI_BODY(com.zenyte.game.item.ids.MASORI_BODY, 1.0 / 12.0, 9510, 150),
+    MASORI_CHAPS(com.zenyte.game.item.ids.MASORI_CHAPS, 1.0 / 12.0, 9511, 150),
+    OSMUMTENS_FANG(com.zenyte.game.item.ids.OSMUMTENS_FANG, 1.0 / 3.429, 9512, 50),
+    ELIDINIS_WARD(com.zenyte.game.item.ids.ELIDINIS_WARD, 1.0 / 8.0, 9513, 150),
     TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, 1.0 / 24.0, 9514, 150);
 
     fun hasLevel(raidLevel: Int): Boolean = raidLevel >= level

@@ -19,7 +19,7 @@ enum class AraxxorNormalDropTable(
     // Weapons and Armor
     RUNE_KITE(RUNE_KITESHIELD+1, 2, 2, 14.38),
     RUNE_LEGS(RUNE_PLATELEGS+1, 2, 2, 14.38),
-    DRAGON_MACE(DRAGON_MACE, 2, 2, 19.17),
+    DRAGON_MACE(com.zenyte.game.item.ids.DRAGON_MACE, 2, 2, 19.17),
     RUNE_2H(RUNE_2H_SWORD+1, 5, 5, 115.0),
     DRAGON_LEGS(DRAGON_PLATELEGS, 2, 2, 115.0),
 
@@ -37,7 +37,7 @@ enum class AraxxorNormalDropTable(
     MAGIC(MAGIC_SEED, 2, 2, 115.0),
 
     // Resources
-    COAL(COAL+1, 120, 120, 28.75),
+    COAL(com.zenyte.game.item.ids.COAL+1, 120, 120, 28.75),
     ADAMANITE(ADAMANTITE_ORE+1, 85, 85, 28.75),
     RAW_SHARK_1(RAW_SHARK+1, 21, 21, 28.75),
     YEW_LOG(YEW_LOGS+1, 70, 70, 38.33),
@@ -48,14 +48,14 @@ enum class AraxxorNormalDropTable(
 
     // Other
     SPIDER_TELEPORT(SPIDER_CAVE_TELEPORT, 3, 3, 14.38),
-    EARTH_ORB(EARTH_ORB+1, 45, 45, 19.17),
+    EARTH_ORB(com.zenyte.game.item.ids.EARTH_ORB+1, 45, 45, 19.17),
     VENOM_SACK_1(ARAXYTE_VENOM_SACK, 6, 6, 23.0),
     MYRE_FUNGUS(MORT_MYRE_FUNGUS+1, 24, 24, 28.75),
     ANTIDOTE_PP(ANTIDOTE3+1, 6, 6, 28.75),
     ZAMMY_WINE(WINE_OF_ZAMORAK+1, 8, 8, 38.33),
     SPIDER_EGG(RED_SPIDERS_EGGS+1, 40, 40, 57.5),
     VENOM_SACK_2(ARAXYTE_VENOM_SACK, 12, 12, 57.5),
-    BARK(BARK+1, 15, 15, 115.0),
+    BARK(com.zenyte.game.item.ids.BARK+1, 15, 15, 115.0),
     HEAD(ARAXYTE_HEAD, 1, 1, 100.0),
     VENOM_JAR(JAR_OF_VENOM, 1, 1, 600.0),
     SLAYER_PLATFORM(SLAYER_BASE, 1, 1, 500.0)

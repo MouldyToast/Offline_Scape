@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.player.Player
 /**
  * The item id of the crystal shard used to craft and charge crystal items.
  */
-const val CRYSTAL_SHARD = CRYSTAL_SHARD
+const val CRYSTAL_SHARD = com.zenyte.game.item.ids.CRYSTAL_SHARD
 
 /**
  * The ratio of [CRYSTAL_SHARD] items converted to crystal item charges.

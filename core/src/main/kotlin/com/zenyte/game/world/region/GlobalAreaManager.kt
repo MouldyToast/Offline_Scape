@@ -4,9 +4,9 @@ import com.near_reality.tools.collections.Tree
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.Position
 import com.zenyte.game.world.World
-import com.zenyte.game.world.entity.Location.getRegionIDByRegion
-import com.zenyte.game.world.entity.Location.getRegionX
-import com.zenyte.game.world.entity.Location.getRegionY
+import com.zenyte.game.world.entity._Location.Companion.getRegionIDByRegion
+import com.zenyte.game.world.entity._Location.Companion.getRegionX
+import com.zenyte.game.world.entity._Location.Companion.getRegionY
 import com.zenyte.game.world.entity.npc.spawns.NPCSpawnLoader
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.area.plugins.CycleProcessPlugin

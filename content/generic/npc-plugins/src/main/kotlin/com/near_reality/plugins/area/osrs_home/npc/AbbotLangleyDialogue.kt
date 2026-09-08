@@ -9,6 +9,12 @@ import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
+import com.zenyte.game.item.ItemId.ARCANE_SIGIL
+import com.zenyte.game.item.ItemId.ARCANE_SPIRIT_SHIELD
+import com.zenyte.game.item.ItemId.ELYSIAN_SIGIL
+import com.zenyte.game.item.ItemId.ELYSIAN_SPIRIT_SHIELD
+import com.zenyte.game.item.ItemId.SPECTRAL_SIGIL
+import com.zenyte.game.item.ItemId.SPECTRAL_SPIRIT_SHIELD
 
 /**
  * Represents the dialogue for Abbot Langley at home area.

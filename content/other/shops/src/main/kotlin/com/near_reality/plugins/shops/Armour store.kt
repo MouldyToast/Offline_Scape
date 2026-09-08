@@ -10,6 +10,30 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_CHAINBODY
+import com.zenyte.game.item.ItemId.ADAMANT_FULL_HELM
+import com.zenyte.game.item.ItemId.ADAMANT_KITESHIELD
+import com.zenyte.game.item.ItemId.ADAMANT_MED_HELM
+import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
+import com.zenyte.game.item.ItemId.ADAMANT_PLATELEGS
+import com.zenyte.game.item.ItemId.ADAMANT_PLATESKIRT
+import com.zenyte.game.item.ItemId.ADAMANT_SQ_SHIELD
+import com.zenyte.game.item.ItemId.MITHRIL_CHAINBODY
+import com.zenyte.game.item.ItemId.MITHRIL_FULL_HELM
+import com.zenyte.game.item.ItemId.MITHRIL_KITESHIELD
+import com.zenyte.game.item.ItemId.MITHRIL_MED_HELM
+import com.zenyte.game.item.ItemId.MITHRIL_PLATEBODY
+import com.zenyte.game.item.ItemId.MITHRIL_PLATELEGS
+import com.zenyte.game.item.ItemId.MITHRIL_PLATESKIRT
+import com.zenyte.game.item.ItemId.MITHRIL_SQ_SHIELD
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_MED_HELM
+import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNE_PLATESKIRT
+import com.zenyte.game.item.ItemId.RUNE_SQ_SHIELD
 
 class ArmourStore : ShopScript() {
 

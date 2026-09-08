@@ -4,6 +4,8 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.LOOTING_BAG
+import com.zenyte.game.item.ItemId.LOOTING_BAG_22586
 
 class LootingBagItemaction : ItemActionScript() {
 

@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_PICKAXE
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.IRON_PICKAXE
+import com.zenyte.game.item.ItemId.MITHRIL_PICKAXE
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.RUNE_PICKAXE
+import com.zenyte.game.item.ItemId.STEEL_PICKAXE
 
 class ToothySPickaxes : ShopScript() {
 

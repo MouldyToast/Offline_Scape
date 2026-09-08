@@ -10,6 +10,9 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.GARLIC
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.SPICE
 
 class ArdougneSpiceStall : ShopScript() {
 

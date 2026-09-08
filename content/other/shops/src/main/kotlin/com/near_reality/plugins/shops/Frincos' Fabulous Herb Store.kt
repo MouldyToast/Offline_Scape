@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.EMPTY_VIAL_PACK
+import com.zenyte.game.item.ItemId.EYE_OF_NEWT
+import com.zenyte.game.item.ItemId.EYE_OF_NEWT_PACK
+import com.zenyte.game.item.ItemId.PESTLE_AND_MORTAR
+import com.zenyte.game.item.ItemId.VIAL
 
 class FrincosFabulousHerbStore : ShopScript() {
 

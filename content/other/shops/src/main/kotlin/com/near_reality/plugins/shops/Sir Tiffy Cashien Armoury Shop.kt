@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.INITIATE_CUISSE
+import com.zenyte.game.item.ItemId.INITIATE_HAUBERK
+import com.zenyte.game.item.ItemId.INITIATE_SALLET
+import com.zenyte.game.item.ItemId.PROSELYTE_CUISSE
+import com.zenyte.game.item.ItemId.PROSELYTE_HAUBERK
+import com.zenyte.game.item.ItemId.PROSELYTE_SALLET
+import com.zenyte.game.item.ItemId.PROSELYTE_TASSET
 
 class SirTiffyCashienArmouryShop : ShopScript() {
 

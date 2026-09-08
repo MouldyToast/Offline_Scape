@@ -5,6 +5,31 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.CRYSTAL_ARMOUR_SEED
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27697
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27709
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27721
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27733
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27745
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27757
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY_27769
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27705
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27717
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27729
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27741
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27753
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27765
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM_27777
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27701
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27713
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27725
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27737
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27749
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27761
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS_27773
 
 class CrystalArmourItemaction : ItemActionScript() {
 

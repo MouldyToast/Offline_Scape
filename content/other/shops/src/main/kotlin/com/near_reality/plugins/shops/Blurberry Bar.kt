@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.PREMADE_BLURB_SP
+import com.zenyte.game.item.ItemId.PREMADE_CHOC_SDY
+import com.zenyte.game.item.ItemId.PREMADE_DR_DRAGON
+import com.zenyte.game.item.ItemId.PREMADE_FR_BLAST
+import com.zenyte.game.item.ItemId.PREMADE_P_PUNCH
+import com.zenyte.game.item.ItemId.PREMADE_SGG
+import com.zenyte.game.item.ItemId.PREMADE_WIZ_BLZD
 
 class BlurberryBar : ShopScript() {
 

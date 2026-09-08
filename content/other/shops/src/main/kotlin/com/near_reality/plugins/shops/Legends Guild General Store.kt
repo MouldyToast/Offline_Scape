@@ -10,6 +10,10 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.APPLE_PIE
+import com.zenyte.game.item.ItemId.ATTACK_POTION3
+import com.zenyte.game.item.ItemId.STEEL_ARROW
+import com.zenyte.game.item.ItemId.SWORDFISH
 
 class LegendsGuildGeneralStore : ShopScript() {
 

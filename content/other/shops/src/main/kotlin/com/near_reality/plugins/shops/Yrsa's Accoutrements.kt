@@ -10,6 +10,27 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.FREMENNIK_BEIGE_SHIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_BLACK_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_BLUE_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_BLUE_SHIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_BOOTS
+import com.zenyte.game.item.ItemId.FREMENNIK_BROWN_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_BROWN_SHIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_CYAN_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_GLOVES
+import com.zenyte.game.item.ItemId.FREMENNIK_GREEN_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_GREY_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_GREY_SHIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_HAT
+import com.zenyte.game.item.ItemId.FREMENNIK_PINK_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_PURPLE_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_RED_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_RED_SHIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_ROBE
+import com.zenyte.game.item.ItemId.FREMENNIK_SKIRT
+import com.zenyte.game.item.ItemId.FREMENNIK_TEAL_CLOAK
+import com.zenyte.game.item.ItemId.FREMENNIK_YELLOW_CLOAK
 
 class YrsaSAccoutrements : ShopScript() {
 

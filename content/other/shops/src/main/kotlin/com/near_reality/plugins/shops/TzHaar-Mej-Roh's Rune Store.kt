@@ -10,6 +10,18 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.BODY_RUNE
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.MIND_RUNE
+import com.zenyte.game.item.ItemId.TZHAAR_AIR_RUNE_PACK
+import com.zenyte.game.item.ItemId.TZHAAR_EARTH_RUNE_PACK
+import com.zenyte.game.item.ItemId.TZHAAR_FIRE_RUNE_PACK
+import com.zenyte.game.item.ItemId.TZHAAR_WATER_RUNE_PACK
+import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class TzhaarMejRohSRuneStore : ShopScript() {
 

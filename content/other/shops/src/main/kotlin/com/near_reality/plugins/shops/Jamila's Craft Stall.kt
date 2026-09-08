@@ -10,6 +10,16 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.AMULET_MOULD
+import com.zenyte.game.item.ItemId.BRACELET_MOULD
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.HOLY_MOULD
+import com.zenyte.game.item.ItemId.NECKLACE_MOULD
+import com.zenyte.game.item.ItemId.NEEDLE
+import com.zenyte.game.item.ItemId.RING_MOULD
+import com.zenyte.game.item.ItemId.SICKLE_MOULD
+import com.zenyte.game.item.ItemId.THREAD
+import com.zenyte.game.item.ItemId.TIARA_MOULD
 
 class JamilaSCraftStall : ShopScript() {
 

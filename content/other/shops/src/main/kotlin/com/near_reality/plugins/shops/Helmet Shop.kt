@@ -10,6 +10,16 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_FULL_HELM
+import com.zenyte.game.item.ItemId.ADAMANT_MED_HELM
+import com.zenyte.game.item.ItemId.BRONZE_FULL_HELM
+import com.zenyte.game.item.ItemId.BRONZE_MED_HELM
+import com.zenyte.game.item.ItemId.IRON_FULL_HELM
+import com.zenyte.game.item.ItemId.IRON_MED_HELM
+import com.zenyte.game.item.ItemId.MITHRIL_FULL_HELM
+import com.zenyte.game.item.ItemId.MITHRIL_MED_HELM
+import com.zenyte.game.item.ItemId.STEEL_FULL_HELM
+import com.zenyte.game.item.ItemId.STEEL_MED_HELM
 
 class HelmetShop : ShopScript() {
 

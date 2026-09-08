@@ -10,6 +10,12 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_PLATESKIRT
+import com.zenyte.game.item.ItemId.BLACK_PLATESKIRT
+import com.zenyte.game.item.ItemId.BRONZE_PLATESKIRT
+import com.zenyte.game.item.ItemId.IRON_PLATESKIRT
+import com.zenyte.game.item.ItemId.MITHRIL_PLATESKIRT
+import com.zenyte.game.item.ItemId.STEEL_PLATESKIRT
 
 class RanaelSSuperSkirtStore : ShopScript() {
 

@@ -10,6 +10,17 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_ARROW
+import com.zenyte.game.item.ItemId.ADAMANT_SWORD
+import com.zenyte.game.item.ItemId.BLACK_LONGSWORD
+import com.zenyte.game.item.ItemId.MAPLE_LONGBOW
+import com.zenyte.game.item.ItemId.MAPLE_SHORTBOW
+import com.zenyte.game.item.ItemId.MITHRIL_ARROW
+import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
+import com.zenyte.game.item.ItemId.MITHRIL_SWORD
+import com.zenyte.game.item.ItemId.RUNE_LONGSWORD
+import com.zenyte.game.item.ItemId.STEEL_BATTLEAXE
+import com.zenyte.game.item.ItemId.STEEL_SCIMITAR
 
 class QualityWeaponsShop : ShopScript() {
 

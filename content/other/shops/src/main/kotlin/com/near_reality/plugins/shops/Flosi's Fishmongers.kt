@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.RAW_COD
+import com.zenyte.game.item.ItemId.RAW_LOBSTER
+import com.zenyte.game.item.ItemId.RAW_SALMON
+import com.zenyte.game.item.ItemId.RAW_SHARK
+import com.zenyte.game.item.ItemId.RAW_TUNA
 
 class FlosiSFishmongers : ShopScript() {
 

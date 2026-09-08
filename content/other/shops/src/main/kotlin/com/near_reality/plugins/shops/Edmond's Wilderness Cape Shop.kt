@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.TEAM18_CAPE
+import com.zenyte.game.item.ItemId.TEAM28_CAPE
+import com.zenyte.game.item.ItemId.TEAM38_CAPE
+import com.zenyte.game.item.ItemId.TEAM48_CAPE
+import com.zenyte.game.item.ItemId.TEAM8_CAPE
 
 class EdmondSWildernessCapeShop : ShopScript() {
 

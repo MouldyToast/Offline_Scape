@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_MACE
+import com.zenyte.game.item.ItemId.BRONZE_MACE
+import com.zenyte.game.item.ItemId.IRON_MACE
+import com.zenyte.game.item.ItemId.MITHRIL_MACE
+import com.zenyte.game.item.ItemId.STEEL_MACE
 
 class FlynnSMaceMarket : ShopScript() {
 

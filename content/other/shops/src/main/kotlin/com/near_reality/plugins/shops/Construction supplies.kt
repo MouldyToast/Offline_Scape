@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOLT_OF_CLOTH
+import com.zenyte.game.item.ItemId.BRONZE_NAILS
+import com.zenyte.game.item.ItemId.IRON_NAILS
+import com.zenyte.game.item.ItemId.SAW
+import com.zenyte.game.item.ItemId.STEEL_NAILS
 
 class ConstructionSupplies : ShopScript() {
 

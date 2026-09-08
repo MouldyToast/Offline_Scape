@@ -10,6 +10,18 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLACK_PLATEBODY
+import com.zenyte.game.item.ItemId.BRONZE_CHAINBODY
+import com.zenyte.game.item.ItemId.BRONZE_PLATEBODY
+import com.zenyte.game.item.ItemId.IRON_CHAINBODY
+import com.zenyte.game.item.ItemId.IRON_PLATEBODY
+import com.zenyte.game.item.ItemId.IRON_PLATELEGS
+import com.zenyte.game.item.ItemId.MITHRIL_CHAINBODY
+import com.zenyte.game.item.ItemId.MITHRIL_PLATEBODY
+import com.zenyte.game.item.ItemId.STEEL_CHAINBODY
+import com.zenyte.game.item.ItemId.STEEL_PLATEBODY
+import com.zenyte.game.item.ItemId.STUDDED_BODY
+import com.zenyte.game.item.ItemId.STUDDED_CHAPS
 
 class HorvikSArmourShop : ShopScript() {
 

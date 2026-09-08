@@ -5,6 +5,9 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.BRACELET_OF_ETHEREUM
+import com.zenyte.game.item.ItemId.BRACELET_OF_ETHEREUM_UNCHARGED
+import com.zenyte.game.item.ItemId.REVENANT_ETHER
 
 class BraceletOfEthereumItemaction : ItemActionScript() {
 

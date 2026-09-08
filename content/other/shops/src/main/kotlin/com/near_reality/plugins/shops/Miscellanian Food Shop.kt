@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BREAD
+import com.zenyte.game.item.ItemId.BUCKET_OF_MILK
+import com.zenyte.game.item.ItemId.CABBAGE
+import com.zenyte.game.item.ItemId.CHEESE
+import com.zenyte.game.item.ItemId.CHOCOLATE_BAR
+import com.zenyte.game.item.ItemId.ONION
+import com.zenyte.game.item.ItemId.POTATO
+import com.zenyte.game.item.ItemId.POT_OF_FLOUR
 
 class MiscellanianFoodShop : ShopScript() {
 

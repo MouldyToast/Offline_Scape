@@ -20,6 +20,16 @@ import com.zenyte.game.util.AccessMask
 import com.zenyte.game.util.AccessMask.*
 import mgi.types.config.enums.Enums
 import mgi.types.config.enums.Enums.*
+import com.zenyte.game.item.ItemId.BARRELCHEST_ANCHOR
+import com.zenyte.game.item.ItemId.BROAD_ARROWS
+import com.zenyte.game.item.ItemId.BROAD_BOLTS
+import com.zenyte.game.item.ItemId.CANNONBALL
+import com.zenyte.game.item.ItemId.DRAGON_DART
+import com.zenyte.game.item.ItemId.FIGHTER_TORSO
+import com.zenyte.game.item.ItemId.HERB_BOX
+import com.zenyte.game.item.ItemId.HERB_SACK
+import com.zenyte.game.item.ItemId.OPENED_HERB_BOX
+import com.zenyte.game.item.ItemId.SCROLL_OF_IMBUING
 
 class SlayerInterface : InterfaceScript() {
 

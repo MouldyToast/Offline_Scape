@@ -10,6 +10,25 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAIT_PACK
+import com.zenyte.game.item.ItemId.FEATHER
+import com.zenyte.game.item.ItemId.FEATHER_PACK
+import com.zenyte.game.item.ItemId.FISHING_BAIT
+import com.zenyte.game.item.ItemId.FISHING_ROD
+import com.zenyte.game.item.ItemId.FLY_FISHING_ROD
+import com.zenyte.game.item.ItemId.HARPOON
+import com.zenyte.game.item.ItemId.LOBSTER_POT
+import com.zenyte.game.item.ItemId.RAW_ANCHOVIES
+import com.zenyte.game.item.ItemId.RAW_HERRING
+import com.zenyte.game.item.ItemId.RAW_LOBSTER
+import com.zenyte.game.item.ItemId.RAW_PIKE
+import com.zenyte.game.item.ItemId.RAW_SALMON
+import com.zenyte.game.item.ItemId.RAW_SARDINE
+import com.zenyte.game.item.ItemId.RAW_SHRIMPS
+import com.zenyte.game.item.ItemId.RAW_SWORDFISH
+import com.zenyte.game.item.ItemId.RAW_TROUT
+import com.zenyte.game.item.ItemId.RAW_TUNA
+import com.zenyte.game.item.ItemId.SMALL_FISHING_NET
 
 class GerrantSFishyBusiness : ShopScript() {
 

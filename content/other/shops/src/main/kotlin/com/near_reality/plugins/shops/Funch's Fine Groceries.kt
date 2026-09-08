@@ -10,6 +10,23 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BRANDY
+import com.zenyte.game.item.ItemId.BUCKET_OF_MILK
+import com.zenyte.game.item.ItemId.CHOCOLATE_BAR
+import com.zenyte.game.item.ItemId.CHOCOLATE_DUST
+import com.zenyte.game.item.ItemId.COCKTAIL_GLASS
+import com.zenyte.game.item.ItemId.COCKTAIL_SHAKER
+import com.zenyte.game.item.ItemId.DWELLBERRIES
+import com.zenyte.game.item.ItemId.EQUA_LEAVES
+import com.zenyte.game.item.ItemId.GIN
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.LEMON
+import com.zenyte.game.item.ItemId.LIME
+import com.zenyte.game.item.ItemId.ORANGE
+import com.zenyte.game.item.ItemId.PINEAPPLE
+import com.zenyte.game.item.ItemId.POT_OF_CREAM
+import com.zenyte.game.item.ItemId.VODKA
+import com.zenyte.game.item.ItemId.WHISKY
 
 class FunchSFineGroceries : ShopScript() {
 

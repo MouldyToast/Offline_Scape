@@ -10,6 +10,9 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.FROGLEATHER_BODY
+import com.zenyte.game.item.ItemId.FROGLEATHER_BOOTS
+import com.zenyte.game.item.ItemId.FROGLEATHER_CHAPS
 
 class ReldakSLeatherArmour : ShopScript() {
 

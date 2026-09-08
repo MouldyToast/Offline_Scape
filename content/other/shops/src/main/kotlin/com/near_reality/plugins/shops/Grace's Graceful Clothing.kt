@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.AMYLASE_PACK
+import com.zenyte.game.item.ItemId.GRACEFUL_BOOTS
+import com.zenyte.game.item.ItemId.GRACEFUL_CAPE
+import com.zenyte.game.item.ItemId.GRACEFUL_GLOVES
+import com.zenyte.game.item.ItemId.GRACEFUL_HOOD
+import com.zenyte.game.item.ItemId.GRACEFUL_LEGS
+import com.zenyte.game.item.ItemId.GRACEFUL_TOP
 
 class GraceSGracefulClothing : ShopScript() {
 

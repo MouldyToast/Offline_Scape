@@ -10,6 +10,12 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.COD
+import com.zenyte.game.item.ItemId.LOBSTER
+import com.zenyte.game.item.ItemId.SALMON
+import com.zenyte.game.item.ItemId.SHARK
+import com.zenyte.game.item.ItemId.SWORDFISH
+import com.zenyte.game.item.ItemId.TUNA
 
 class KeepaKettilonSStore : ShopScript() {
 

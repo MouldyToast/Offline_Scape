@@ -10,6 +10,10 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BANANA
+import com.zenyte.game.item.ItemId.BANANA_STEW
+import com.zenyte.game.item.ItemId.MONKEY_BAR
+import com.zenyte.game.item.ItemId.MONKEY_NUTS
 
 class SolihibSFoodStall : ShopScript() {
 

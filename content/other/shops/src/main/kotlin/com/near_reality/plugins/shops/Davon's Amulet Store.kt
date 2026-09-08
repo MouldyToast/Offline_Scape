@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.AMULET_OF_DEFENCE
+import com.zenyte.game.item.ItemId.AMULET_OF_MAGIC
+import com.zenyte.game.item.ItemId.AMULET_OF_POWER
+import com.zenyte.game.item.ItemId.AMULET_OF_STRENGTH
+import com.zenyte.game.item.ItemId.HOLY_SYMBOL
 
 class DavonSAmuletStore : ShopScript() {
 

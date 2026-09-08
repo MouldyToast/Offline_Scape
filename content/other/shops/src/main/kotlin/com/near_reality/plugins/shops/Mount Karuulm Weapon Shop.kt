@@ -10,6 +10,16 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_BATTLEAXE
+import com.zenyte.game.item.ItemId.ADAMANT_SPEAR
+import com.zenyte.game.item.ItemId.ADAMANT_WARHAMMER
+import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
+import com.zenyte.game.item.ItemId.MITHRIL_SPEAR
+import com.zenyte.game.item.ItemId.MITHRIL_WARHAMMER
+import com.zenyte.game.item.ItemId.RUNE_SPEAR
+import com.zenyte.game.item.ItemId.STEEL_BATTLEAXE
+import com.zenyte.game.item.ItemId.STEEL_SPEAR
+import com.zenyte.game.item.ItemId.STEEL_WARHAMMER
 
 class MountKaruulmWeaponShop : ShopScript() {
 

@@ -10,6 +10,31 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BREAD
+import com.zenyte.game.item.ItemId.BRONZE_AXE
+import com.zenyte.game.item.ItemId.BRONZE_BAR
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.CANDLE
+import com.zenyte.game.item.ItemId.CHARCOAL
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.COOKED_MEAT
+import com.zenyte.game.item.ItemId.EMPTY_VIAL_PACK
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.IRON_AXE
+import com.zenyte.game.item.ItemId.LEATHER_BODY
+import com.zenyte.game.item.ItemId.LEATHER_BOOTS
+import com.zenyte.game.item.ItemId.LEATHER_GLOVES
+import com.zenyte.game.item.ItemId.MACHETE
+import com.zenyte.game.item.ItemId.PAPYRUS
+import com.zenyte.game.item.ItemId.PESTLE_AND_MORTAR
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.SPADE
+import com.zenyte.game.item.ItemId.TINDERBOX
+import com.zenyte.game.item.ItemId.UNLIT_TORCH
+import com.zenyte.game.item.ItemId.VIAL
+import com.zenyte.game.item.ItemId.VIAL_OF_WATER
+import com.zenyte.game.item.ItemId.WATERFILLED_VIAL_PACK
 
 class ObliSGeneralStore : ShopScript() {
 

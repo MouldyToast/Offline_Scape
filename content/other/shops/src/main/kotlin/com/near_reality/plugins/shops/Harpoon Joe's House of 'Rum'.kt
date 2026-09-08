@@ -10,6 +10,10 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BEER
+import com.zenyte.game.item.ItemId.BRAINDEATH_RUM
+import com.zenyte.game.item.ItemId.JUG_OF_WINE
+import com.zenyte.game.item.ItemId.STEW
 
 class HarpoonJoeSHouseOfRum : ShopScript() {
 

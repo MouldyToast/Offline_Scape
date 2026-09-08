@@ -10,6 +10,31 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAILING_BUCKET
+import com.zenyte.game.item.ItemId.BLACK_TOY_HORSEY
+import com.zenyte.game.item.ItemId.BLUE_HAT
+import com.zenyte.game.item.ItemId.COCKTAIL_GUIDE
+import com.zenyte.game.item.ItemId.DESERT_BOOTS
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER
+import com.zenyte.game.item.ItemId.FLAMTAER_HAMMER
+import com.zenyte.game.item.ItemId.FREMENNIK_PINK_CLOAK
+import com.zenyte.game.item.ItemId.GREENMANS_ALE
+import com.zenyte.game.item.ItemId.GREY_BOOTS
+import com.zenyte.game.item.ItemId.HOLY_MOULD
+import com.zenyte.game.item.ItemId.INSTRUCTION_MANUAL
+import com.zenyte.game.item.ItemId.KEG_OF_BEER
+import com.zenyte.game.item.ItemId.LIMESTONE_BRICK
+import com.zenyte.game.item.ItemId.MACHETE
+import com.zenyte.game.item.ItemId.NEWCOMER_MAP
+import com.zenyte.game.item.ItemId.OLIVE_OIL3
+import com.zenyte.game.item.ItemId.PAPYRUS
+import com.zenyte.game.item.ItemId.POISON
+import com.zenyte.game.item.ItemId.SAMPLE_BOTTLE
+import com.zenyte.game.item.ItemId.SHANTAY_PASS
+import com.zenyte.game.item.ItemId.SICKLE_MOULD
+import com.zenyte.game.item.ItemId.SPINACH_ROLL
+import com.zenyte.game.item.ItemId.SWAMP_PASTE
+import com.zenyte.game.item.ItemId.WATERSKIN4
 
 class RasoloTheWanderingMerchant : ShopScript() {
 

@@ -6,6 +6,7 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.COINS_995
 
 class RepairableItemsItemaction : ItemActionScript() {
 

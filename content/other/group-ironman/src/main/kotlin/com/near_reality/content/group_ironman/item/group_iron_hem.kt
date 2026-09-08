@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.GROUP_IRON_HELM
+import com.zenyte.game.item.ItemId.HARDCORE_GROUP_IRON_HELM
 
 class GroupIronHemItemaction : ItemActionScript() {
 

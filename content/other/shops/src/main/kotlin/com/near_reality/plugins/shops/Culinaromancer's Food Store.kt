@@ -10,6 +10,27 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOWL
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.BUCKET_OF_MILK
+import com.zenyte.game.item.ItemId.CAKE_TIN
+import com.zenyte.game.item.ItemId.CHEESE
+import com.zenyte.game.item.ItemId.CHOCOLATE_BAR
+import com.zenyte.game.item.ItemId.COOKING_APPLE
+import com.zenyte.game.item.ItemId.EGG
+import com.zenyte.game.item.ItemId.EMPTY_BUCKET_PACK
+import com.zenyte.game.item.ItemId.EMPTY_CUP
+import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
+import com.zenyte.game.item.ItemId.GRAPES
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.PAT_OF_BUTTER
+import com.zenyte.game.item.ItemId.PIE_DISH
+import com.zenyte.game.item.ItemId.PIZZA_BASE
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.POT_OF_CREAM
+import com.zenyte.game.item.ItemId.POT_OF_FLOUR
+import com.zenyte.game.item.ItemId.SPICE
+import com.zenyte.game.item.ItemId.TOMATO
 
 class CulinaromancerSFoodStore : ShopScript() {
 

@@ -4,6 +4,9 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.BLACK_CHINCHOMPA
+import com.zenyte.game.item.ItemId.CHINCHOMPA_10033
+import com.zenyte.game.item.ItemId.RED_CHINCHOMPA_10034
 
 class ChinchompasItemaction : ItemActionScript() {
 

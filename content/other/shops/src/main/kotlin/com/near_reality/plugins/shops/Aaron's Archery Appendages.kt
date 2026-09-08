@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.COIF
+import com.zenyte.game.item.ItemId.HARDLEATHER_BODY
+import com.zenyte.game.item.ItemId.LEATHER_BODY
+import com.zenyte.game.item.ItemId.LEATHER_CHAPS
+import com.zenyte.game.item.ItemId.LEATHER_COWL
+import com.zenyte.game.item.ItemId.LEATHER_VAMBRACES
+import com.zenyte.game.item.ItemId.STUDDED_BODY
+import com.zenyte.game.item.ItemId.STUDDED_CHAPS
 
 class AaronSArcheryAppendages : ShopScript() {
 

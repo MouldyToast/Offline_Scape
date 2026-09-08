@@ -10,6 +10,28 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BEAR_FUR
+import com.zenyte.game.item.ItemId.BLACK_SKIRT
+import com.zenyte.game.item.ItemId.BLUE_FEATHER
+import com.zenyte.game.item.ItemId.BLUE_SKIRT
+import com.zenyte.game.item.ItemId.BLUE_WIZARD_HAT
+import com.zenyte.game.item.ItemId.BROWN_APRON
+import com.zenyte.game.item.ItemId.CHEFS_HAT
+import com.zenyte.game.item.ItemId.GREY_WOLF_FUR
+import com.zenyte.game.item.ItemId.LEATHER_BOOTS
+import com.zenyte.game.item.ItemId.LEATHER_GLOVES
+import com.zenyte.game.item.ItemId.NEEDLE
+import com.zenyte.game.item.ItemId.ORANGE_FEATHER
+import com.zenyte.game.item.ItemId.PINK_SKIRT
+import com.zenyte.game.item.ItemId.PRIEST_GOWN
+import com.zenyte.game.item.ItemId.PRIEST_GOWN_428
+import com.zenyte.game.item.ItemId.RED_CAPE
+import com.zenyte.game.item.ItemId.RED_FEATHER
+import com.zenyte.game.item.ItemId.RIGHT_EYE_PATCH
+import com.zenyte.game.item.ItemId.STRIPY_FEATHER
+import com.zenyte.game.item.ItemId.THREAD
+import com.zenyte.game.item.ItemId.YELLOW_CAPE
+import com.zenyte.game.item.ItemId.YELLOW_FEATHER
 
 class FancyClothesStore : ShopScript() {
 

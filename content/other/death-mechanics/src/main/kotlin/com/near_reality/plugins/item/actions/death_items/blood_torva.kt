@@ -5,6 +5,12 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_FULL_HELM
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATEBODY
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATELEGS
+import com.zenyte.game.item.ItemId.TORVA_FULLHELM
+import com.zenyte.game.item.ItemId.TORVA_PLATEBODY
+import com.zenyte.game.item.ItemId.TORVA_PLATELEGS
 
 class BloodTorvaItemaction : ItemActionScript() {
 

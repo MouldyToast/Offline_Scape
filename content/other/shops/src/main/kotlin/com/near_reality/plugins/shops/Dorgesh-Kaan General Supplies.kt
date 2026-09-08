@@ -10,6 +10,15 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOWL
+import com.zenyte.game.item.ItemId.CAKE_TIN
+import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
+import com.zenyte.game.item.ItemId.GLASSBLOWING_PIPE
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.TINDERBOX
+import com.zenyte.game.item.ItemId.UNLIT_TORCH
 
 class DorgeshKaanGeneralSupplies : ShopScript() {
 

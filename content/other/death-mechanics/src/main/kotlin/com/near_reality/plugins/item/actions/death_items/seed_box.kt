@@ -4,6 +4,8 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.OPEN_SEED_BOX
+import com.zenyte.game.item.ItemId.SEED_BOX
 
 class SeedBoxItemaction : ItemActionScript() {
 

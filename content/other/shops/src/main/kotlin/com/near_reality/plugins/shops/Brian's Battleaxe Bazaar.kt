@@ -10,6 +10,12 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_BATTLEAXE
+import com.zenyte.game.item.ItemId.BLACK_BATTLEAXE
+import com.zenyte.game.item.ItemId.BRONZE_BATTLEAXE
+import com.zenyte.game.item.ItemId.IRON_BATTLEAXE
+import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
+import com.zenyte.game.item.ItemId.STEEL_BATTLEAXE
 
 class BrianSBattleaxeBazaar : ShopScript() {
 

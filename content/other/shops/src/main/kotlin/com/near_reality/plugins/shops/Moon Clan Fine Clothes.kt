@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.MOONCLAN_ARMOUR
+import com.zenyte.game.item.ItemId.MOONCLAN_BOOTS
+import com.zenyte.game.item.ItemId.MOONCLAN_CAPE
+import com.zenyte.game.item.ItemId.MOONCLAN_GLOVES
+import com.zenyte.game.item.ItemId.MOONCLAN_HAT
+import com.zenyte.game.item.ItemId.MOONCLAN_HELM
+import com.zenyte.game.item.ItemId.MOONCLAN_SKIRT
 
 class MoonClanFineClothes : ShopScript() {
 

@@ -10,6 +10,15 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOWL
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.CAKE_TIN
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.TINDERBOX
 
 class FossilIslandGeneralStore : ShopScript() {
 

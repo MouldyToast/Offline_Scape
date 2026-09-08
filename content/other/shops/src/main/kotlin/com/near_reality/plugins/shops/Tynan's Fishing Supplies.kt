@@ -10,6 +10,16 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAIT_PACK
+import com.zenyte.game.item.ItemId.BIG_FISHING_NET
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.FISHING_BAIT
+import com.zenyte.game.item.ItemId.FISHING_ROD
+import com.zenyte.game.item.ItemId.HARPOON
+import com.zenyte.game.item.ItemId.LOBSTER_POT
+import com.zenyte.game.item.ItemId.SANDWORMS
+import com.zenyte.game.item.ItemId.SANDWORMS_PACK
+import com.zenyte.game.item.ItemId.SMALL_FISHING_NET
 
 class TynanSFishingSupplies : ShopScript() {
 

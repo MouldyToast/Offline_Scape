@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.MYSTIC_BOOTS
+import com.zenyte.game.item.ItemId.MYSTIC_GLOVES
+import com.zenyte.game.item.ItemId.MYSTIC_HAT
+import com.zenyte.game.item.ItemId.MYSTIC_ROBE_BOTTOM
+import com.zenyte.game.item.ItemId.MYSTIC_ROBE_TOP
 
 class MagicGuildStoreMysticRobes : ShopScript() {
 

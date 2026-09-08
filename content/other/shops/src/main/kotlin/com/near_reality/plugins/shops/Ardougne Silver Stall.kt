@@ -10,6 +10,9 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.SILVER_BAR
+import com.zenyte.game.item.ItemId.SILVER_ORE
+import com.zenyte.game.item.ItemId.UNSTRUNG_SYMBOL
 
 class ArdougneSilverStall : ShopScript() {
 

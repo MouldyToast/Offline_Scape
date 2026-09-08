@@ -10,6 +10,13 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLACK_MED_HELM
+import com.zenyte.game.item.ItemId.GREEN_DHIDE_CHAPS
+import com.zenyte.game.item.ItemId.GREEN_DHIDE_VAMB
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNE_PLATESKIRT
+import com.zenyte.game.item.ItemId.STEEL_KITESHIELD
 
 class SedduSAdventurersStore : ShopScript() {
 

@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.DIAMOND
+import com.zenyte.game.item.ItemId.EMERALD
+import com.zenyte.game.item.ItemId.RUBY
+import com.zenyte.game.item.ItemId.SAPPHIRE
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_EMERALD
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
 
 class GemTrader : ShopScript() {
 

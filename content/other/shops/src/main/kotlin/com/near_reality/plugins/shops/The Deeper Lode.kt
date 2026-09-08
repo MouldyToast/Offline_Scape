@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BEER
+import com.zenyte.game.item.ItemId.BEER_GLASS
+import com.zenyte.game.item.ItemId.DRAGON_BITTER
+import com.zenyte.game.item.ItemId.DWARVEN_STOUT
+import com.zenyte.game.item.ItemId.KEBAB
 
 class TheDeeperLode : ShopScript() {
 

@@ -5,6 +5,9 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.BASILISK_JAW
+import com.zenyte.game.item.ItemId.HELM_OF_NEITIZNOT
+import com.zenyte.game.item.ItemId.NEITIZNOT_FACEGUARD
 
 class NeitiznotFaceguardItemaction : ItemActionScript() {
 

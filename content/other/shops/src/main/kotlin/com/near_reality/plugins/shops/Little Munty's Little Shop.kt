@@ -10,6 +10,16 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BALL_OF_WOOL
+import com.zenyte.game.item.ItemId.BOWL
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.TINDERBOX
 
 class LittleMuntySLittleShop : ShopScript() {
 

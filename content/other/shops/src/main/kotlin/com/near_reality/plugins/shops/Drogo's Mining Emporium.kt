@@ -10,6 +10,15 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BRONZE_BAR
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.COAL
+import com.zenyte.game.item.ItemId.COPPER_ORE
+import com.zenyte.game.item.ItemId.GOLD_BAR
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.IRON_BAR
+import com.zenyte.game.item.ItemId.IRON_ORE
+import com.zenyte.game.item.ItemId.TIN_ORE
 
 class DrogoSMiningEmporium : ShopScript() {
 

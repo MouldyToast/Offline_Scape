@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BRONZE_SCIMITAR
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.IRON_SCIMITAR
+import com.zenyte.game.item.ItemId.MITHRIL_SCIMITAR
+import com.zenyte.game.item.ItemId.STEEL_SCIMITAR
 
 class SmithingSmithSShop : ShopScript() {
 

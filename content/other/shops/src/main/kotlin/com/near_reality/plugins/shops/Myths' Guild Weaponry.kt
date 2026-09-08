@@ -10,6 +10,10 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.DRAGON_BATTLEAXE
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER
+import com.zenyte.game.item.ItemId.DRAGON_LONGSWORD
+import com.zenyte.game.item.ItemId.DRAGON_MACE
 
 class MythsGuildWeaponry : ShopScript() {
 

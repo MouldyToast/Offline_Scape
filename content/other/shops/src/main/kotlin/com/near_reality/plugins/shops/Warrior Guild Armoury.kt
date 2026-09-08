@@ -10,6 +10,44 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_2H_SWORD
+import com.zenyte.game.item.ItemId.ADAMANT_DAGGER
+import com.zenyte.game.item.ItemId.ADAMANT_LONGSWORD
+import com.zenyte.game.item.ItemId.ADAMANT_MACE
+import com.zenyte.game.item.ItemId.ADAMANT_SWORD
+import com.zenyte.game.item.ItemId.BLACK_2H_SWORD
+import com.zenyte.game.item.ItemId.BLACK_DAGGER
+import com.zenyte.game.item.ItemId.BLACK_LONGSWORD
+import com.zenyte.game.item.ItemId.BLACK_SWORD
+import com.zenyte.game.item.ItemId.BRONZE_2H_SWORD
+import com.zenyte.game.item.ItemId.BRONZE_CHAINBODY
+import com.zenyte.game.item.ItemId.BRONZE_DAGGER
+import com.zenyte.game.item.ItemId.BRONZE_LONGSWORD
+import com.zenyte.game.item.ItemId.BRONZE_MACE
+import com.zenyte.game.item.ItemId.BRONZE_MED_HELM
+import com.zenyte.game.item.ItemId.BRONZE_SWORD
+import com.zenyte.game.item.ItemId.IRON_2H_SWORD
+import com.zenyte.game.item.ItemId.IRON_BATTLEAXE
+import com.zenyte.game.item.ItemId.IRON_CHAINBODY
+import com.zenyte.game.item.ItemId.IRON_DAGGER
+import com.zenyte.game.item.ItemId.IRON_LONGSWORD
+import com.zenyte.game.item.ItemId.IRON_MACE
+import com.zenyte.game.item.ItemId.IRON_MED_HELM
+import com.zenyte.game.item.ItemId.IRON_SWORD
+import com.zenyte.game.item.ItemId.MITHRIL_2H_SWORD
+import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
+import com.zenyte.game.item.ItemId.MITHRIL_DAGGER
+import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
+import com.zenyte.game.item.ItemId.MITHRIL_MACE
+import com.zenyte.game.item.ItemId.MITHRIL_SWORD
+import com.zenyte.game.item.ItemId.STEEL_2H_SWORD
+import com.zenyte.game.item.ItemId.STEEL_BATTLEAXE
+import com.zenyte.game.item.ItemId.STEEL_CHAINBODY
+import com.zenyte.game.item.ItemId.STEEL_DAGGER
+import com.zenyte.game.item.ItemId.STEEL_LONGSWORD
+import com.zenyte.game.item.ItemId.STEEL_MACE
+import com.zenyte.game.item.ItemId.STEEL_MED_HELM
+import com.zenyte.game.item.ItemId.STEEL_SWORD
 
 class WarriorGuildArmoury : ShopScript() {
 

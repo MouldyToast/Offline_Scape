@@ -10,6 +10,9 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BREAD
+import com.zenyte.game.item.ItemId.CAKE
+import com.zenyte.game.item.ItemId.CHOCOLATE_SLICE
 
 class KeldagrimSBestBread : ShopScript() {
 

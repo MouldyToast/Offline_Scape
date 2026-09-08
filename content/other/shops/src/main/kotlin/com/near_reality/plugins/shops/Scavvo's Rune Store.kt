@@ -10,6 +10,15 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.COIF
+import com.zenyte.game.item.ItemId.GREEN_DHIDE_CHAPS
+import com.zenyte.game.item.ItemId.GREEN_DHIDE_VAMB
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_LONGSWORD
+import com.zenyte.game.item.ItemId.RUNE_MACE
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNE_PLATESKIRT
+import com.zenyte.game.item.ItemId.RUNE_SWORD
 
 class ScavvoSRuneStore : ShopScript() {
 

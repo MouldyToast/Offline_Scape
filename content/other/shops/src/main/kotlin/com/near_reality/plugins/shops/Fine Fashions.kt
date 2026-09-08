@@ -10,6 +10,26 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLUE_BOOTS
+import com.zenyte.game.item.ItemId.BLUE_HAT
+import com.zenyte.game.item.ItemId.BLUE_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.BLUE_ROBE_TOP
+import com.zenyte.game.item.ItemId.CREAM_BOOTS
+import com.zenyte.game.item.ItemId.CREAM_HAT
+import com.zenyte.game.item.ItemId.CREAM_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.CREAM_ROBE_TOP
+import com.zenyte.game.item.ItemId.GREEN_BOOTS
+import com.zenyte.game.item.ItemId.GREEN_HAT
+import com.zenyte.game.item.ItemId.GREEN_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.GREEN_ROBE_TOP
+import com.zenyte.game.item.ItemId.PINK_BOOTS
+import com.zenyte.game.item.ItemId.PINK_HAT
+import com.zenyte.game.item.ItemId.PINK_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.PINK_ROBE_TOP
+import com.zenyte.game.item.ItemId.TURQUOISE_BOOTS
+import com.zenyte.game.item.ItemId.TURQUOISE_HAT
+import com.zenyte.game.item.ItemId.TURQUOISE_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.TURQUOISE_ROBE_TOP
 
 class FineFashions : ShopScript() {
 

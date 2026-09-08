@@ -5,6 +5,8 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.AMULET_OF_BLOOD_FURY
+import com.zenyte.game.item.ItemId.AMULET_OF_FURY
 
 class AmuletOfBloodFuryItemaction : ItemActionScript() {
 

@@ -10,6 +10,19 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.PIRATE_BANDANA
+import com.zenyte.game.item.ItemId.PIRATE_BANDANA_7124
+import com.zenyte.game.item.ItemId.PIRATE_BANDANA_7130
+import com.zenyte.game.item.ItemId.PIRATE_BANDANA_7136
+import com.zenyte.game.item.ItemId.PIRATE_BOOTS
+import com.zenyte.game.item.ItemId.PIRATE_LEGGINGS
+import com.zenyte.game.item.ItemId.PIRATE_LEGGINGS_7126
+import com.zenyte.game.item.ItemId.PIRATE_LEGGINGS_7132
+import com.zenyte.game.item.ItemId.PIRATE_LEGGINGS_7138
+import com.zenyte.game.item.ItemId.STRIPY_PIRATE_SHIRT
+import com.zenyte.game.item.ItemId.STRIPY_PIRATE_SHIRT_7122
+import com.zenyte.game.item.ItemId.STRIPY_PIRATE_SHIRT_7128
+import com.zenyte.game.item.ItemId.STRIPY_PIRATE_SHIRT_7134
 
 class DodgyMikeSSecondHandClothing : ShopScript() {
 

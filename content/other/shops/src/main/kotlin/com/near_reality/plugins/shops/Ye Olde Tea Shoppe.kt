@@ -10,6 +10,7 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.CUP_OF_TEA
 
 class YeOldeTeaShoppe : ShopScript() {
 

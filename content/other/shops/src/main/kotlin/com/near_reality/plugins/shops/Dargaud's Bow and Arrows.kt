@@ -10,6 +10,33 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_ARROW
+import com.zenyte.game.item.ItemId.ADAMANT_ARROWTIPS
+import com.zenyte.game.item.ItemId.ADAMANT_BRUTAL
+import com.zenyte.game.item.ItemId.ARROW_SHAFT
+import com.zenyte.game.item.ItemId.BLACK_BRUTAL
+import com.zenyte.game.item.ItemId.BRONZE_ARROW
+import com.zenyte.game.item.ItemId.BRONZE_ARROWTIPS
+import com.zenyte.game.item.ItemId.BRONZE_BRUTAL
+import com.zenyte.game.item.ItemId.COMP_OGRE_BOW
+import com.zenyte.game.item.ItemId.IRON_ARROW
+import com.zenyte.game.item.ItemId.IRON_ARROWTIPS
+import com.zenyte.game.item.ItemId.IRON_BRUTAL
+import com.zenyte.game.item.ItemId.LONGBOW
+import com.zenyte.game.item.ItemId.MITHRIL_ARROW
+import com.zenyte.game.item.ItemId.MITHRIL_ARROWTIPS
+import com.zenyte.game.item.ItemId.MITHRIL_BRUTAL
+import com.zenyte.game.item.ItemId.OAK_LONGBOW
+import com.zenyte.game.item.ItemId.OAK_SHORTBOW
+import com.zenyte.game.item.ItemId.RUNE_ARROW
+import com.zenyte.game.item.ItemId.RUNE_ARROWTIPS
+import com.zenyte.game.item.ItemId.RUNE_BRUTAL
+import com.zenyte.game.item.ItemId.SHORTBOW
+import com.zenyte.game.item.ItemId.STEEL_ARROW
+import com.zenyte.game.item.ItemId.STEEL_ARROWTIPS
+import com.zenyte.game.item.ItemId.STEEL_BRUTAL
+import com.zenyte.game.item.ItemId.WILLOW_LONGBOW
+import com.zenyte.game.item.ItemId.WILLOW_SHORTBOW
 
 class DargaudSBowAndArrows : ShopScript() {
 

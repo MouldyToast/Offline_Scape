@@ -2,6 +2,7 @@ package com.near_reality.plugins.ground_items
 
 import com.near_reality.scripts.ground_items.GroundItemSpawnScript
 import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ItemId.BLACKSTONE_FRAGMENT_28357
 
 class WhispererGrounditems : GroundItemSpawnScript() {
 

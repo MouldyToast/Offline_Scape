@@ -10,6 +10,12 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ANTIPOISON3
+import com.zenyte.game.item.ItemId.BUCKET_OF_SAP
+import com.zenyte.game.item.ItemId.CURRY_LEAF
+import com.zenyte.game.item.ItemId.GNOME_SPICE
+import com.zenyte.game.item.ItemId.PILE_OF_SALT
+import com.zenyte.game.item.ItemId.POT
 
 class TheSpiceIsRight : ShopScript() {
 

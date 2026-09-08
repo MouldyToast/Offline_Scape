@@ -10,6 +10,24 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.CRYSTAL_CROWN
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_AMLODD
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_CADARN
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_CRWYS
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_HEFIN
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_IORWERTH
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_ITHELL
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_MEILYR
+import com.zenyte.game.item.ItemId.CRYSTAL_OF_TRAHAEARN
+import com.zenyte.game.item.ItemId.ELVEN_BOOTS
+import com.zenyte.game.item.ItemId.ELVEN_GLOVES
+import com.zenyte.game.item.ItemId.ELVEN_LEGWEAR
+import com.zenyte.game.item.ItemId.ELVEN_SKIRT
+import com.zenyte.game.item.ItemId.ELVEN_SKIRT_24018
+import com.zenyte.game.item.ItemId.ELVEN_TOP
+import com.zenyte.game.item.ItemId.ELVEN_TOP_24015
+import com.zenyte.game.item.ItemId.ELVEN_TOP_24021
+import com.zenyte.game.item.ItemId.ELVEN_TOP_24027
 
 class LliannSWares : ShopScript() {
 

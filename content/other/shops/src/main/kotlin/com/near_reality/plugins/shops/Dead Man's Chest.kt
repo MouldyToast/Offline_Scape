@@ -10,6 +10,8 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.GROG
+import com.zenyte.game.item.ItemId.KARAMJAN_RUM
 
 class DeadManSChest : ShopScript() {
 

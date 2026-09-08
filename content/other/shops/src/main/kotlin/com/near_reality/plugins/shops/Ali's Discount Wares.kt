@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.MENAPHITE_PURPLE_HAT
+import com.zenyte.game.item.ItemId.MENAPHITE_PURPLE_KILT
+import com.zenyte.game.item.ItemId.MENAPHITE_PURPLE_ROBE
+import com.zenyte.game.item.ItemId.MENAPHITE_PURPLE_TOP
+import com.zenyte.game.item.ItemId.MENAPHITE_RED_HAT
+import com.zenyte.game.item.ItemId.MENAPHITE_RED_KILT
+import com.zenyte.game.item.ItemId.MENAPHITE_RED_ROBE
+import com.zenyte.game.item.ItemId.MENAPHITE_RED_TOP
 
 class AliSDiscountWares : ShopScript() {
 

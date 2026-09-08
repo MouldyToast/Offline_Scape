@@ -10,6 +10,17 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BALL_OF_WOOL
+import com.zenyte.game.item.ItemId.BRONZE_ARROW
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.COOKED_MEAT
+import com.zenyte.game.item.ItemId.IRON_AXE
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.PAPYRUS
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.TINDERBOX
+import com.zenyte.game.item.ItemId.VIAL_OF_WATER
+import com.zenyte.game.item.ItemId.WATERFILLED_VIAL_PACK
 
 class AemadSAdventuringSupplies : ShopScript() {
 

@@ -5,6 +5,9 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.NIGHTMARE_STAFF
+import com.zenyte.game.item.ItemId.VOLATILE_NIGHTMARE_STAFF
+import com.zenyte.game.item.ItemId.VOLATILE_ORB
 
 class VolatileNightmareStaffItemaction : ItemActionScript() {
 

@@ -10,6 +10,36 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.GOUT_TUBER
+import com.zenyte.game.item.ItemId.JADE
+import com.zenyte.game.item.ItemId.JADE_MACHETE
+import com.zenyte.game.item.ItemId.OPAL
+import com.zenyte.game.item.ItemId.OPAL_MACHETE
+import com.zenyte.game.item.ItemId.RED_TOPAZ
+import com.zenyte.game.item.ItemId.RED_TOPAZ_MACHETE
+import com.zenyte.game.item.ItemId.TRIBAL_TOP
+import com.zenyte.game.item.ItemId.TRIBAL_TOP_6351
+import com.zenyte.game.item.ItemId.TRIBAL_TOP_6361
+import com.zenyte.game.item.ItemId.TRIBAL_TOP_6371
+import com.zenyte.game.item.ItemId.UNCUT_JADE
+import com.zenyte.game.item.ItemId.UNCUT_OPAL
+import com.zenyte.game.item.ItemId.UNCUT_RED_TOPAZ
+import com.zenyte.game.item.ItemId.VILLAGER_ARMBAND
+import com.zenyte.game.item.ItemId.VILLAGER_ARMBAND_6359
+import com.zenyte.game.item.ItemId.VILLAGER_ARMBAND_6369
+import com.zenyte.game.item.ItemId.VILLAGER_ARMBAND_6379
+import com.zenyte.game.item.ItemId.VILLAGER_HAT
+import com.zenyte.game.item.ItemId.VILLAGER_HAT_6355
+import com.zenyte.game.item.ItemId.VILLAGER_HAT_6365
+import com.zenyte.game.item.ItemId.VILLAGER_HAT_6375
+import com.zenyte.game.item.ItemId.VILLAGER_ROBE
+import com.zenyte.game.item.ItemId.VILLAGER_ROBE_6353
+import com.zenyte.game.item.ItemId.VILLAGER_ROBE_6363
+import com.zenyte.game.item.ItemId.VILLAGER_ROBE_6373
+import com.zenyte.game.item.ItemId.VILLAGER_SANDALS
+import com.zenyte.game.item.ItemId.VILLAGER_SANDALS_6357
+import com.zenyte.game.item.ItemId.VILLAGER_SANDALS_6367
+import com.zenyte.game.item.ItemId.VILLAGER_SANDALS_6377
 
 class GabootySTaiBwoWannaiCooperative : ShopScript() {
 

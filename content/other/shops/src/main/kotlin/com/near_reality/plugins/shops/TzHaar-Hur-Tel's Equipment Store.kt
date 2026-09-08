@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.OBSIDIAN_CAPE
+import com.zenyte.game.item.ItemId.TOKTZKETXIL
+import com.zenyte.game.item.ItemId.TOKTZMEJTAL
+import com.zenyte.game.item.ItemId.TOKTZXILAK
+import com.zenyte.game.item.ItemId.TOKTZXILEK
+import com.zenyte.game.item.ItemId.TOKTZXILUL
+import com.zenyte.game.item.ItemId.TZHAARKETEM
+import com.zenyte.game.item.ItemId.TZHAARKETOM
 
 class TzhaarHurTelSEquipmentStore : ShopScript() {
 

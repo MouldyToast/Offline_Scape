@@ -10,6 +10,36 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLACK_CAPE
+import com.zenyte.game.item.ItemId.BLUE_CAPE
+import com.zenyte.game.item.ItemId.GREEN_CAPE
+import com.zenyte.game.item.ItemId.GREY_BOOTS
+import com.zenyte.game.item.ItemId.GREY_GLOVES
+import com.zenyte.game.item.ItemId.GREY_HAT
+import com.zenyte.game.item.ItemId.GREY_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.GREY_ROBE_TOP
+import com.zenyte.game.item.ItemId.PURPLE_BOOTS
+import com.zenyte.game.item.ItemId.PURPLE_GLOVES
+import com.zenyte.game.item.ItemId.PURPLE_HAT
+import com.zenyte.game.item.ItemId.PURPLE_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.PURPLE_ROBE_TOP
+import com.zenyte.game.item.ItemId.RED_BOOTS
+import com.zenyte.game.item.ItemId.RED_CAPE
+import com.zenyte.game.item.ItemId.RED_GLOVES
+import com.zenyte.game.item.ItemId.RED_HAT
+import com.zenyte.game.item.ItemId.RED_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.RED_ROBE_TOP
+import com.zenyte.game.item.ItemId.TEAL_BOOTS
+import com.zenyte.game.item.ItemId.TEAL_GLOVES
+import com.zenyte.game.item.ItemId.TEAL_HAT
+import com.zenyte.game.item.ItemId.TEAL_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.TEAL_ROBE_TOP
+import com.zenyte.game.item.ItemId.YELLOW_BOOTS
+import com.zenyte.game.item.ItemId.YELLOW_CAPE
+import com.zenyte.game.item.ItemId.YELLOW_GLOVES
+import com.zenyte.game.item.ItemId.YELLOW_HAT
+import com.zenyte.game.item.ItemId.YELLOW_ROBE_BOTTOMS
+import com.zenyte.game.item.ItemId.YELLOW_ROBE_TOP
 
 class BarkerSHaberdashery : ShopScript() {
 

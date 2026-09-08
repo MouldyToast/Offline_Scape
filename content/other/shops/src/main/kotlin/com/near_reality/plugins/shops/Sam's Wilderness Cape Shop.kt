@@ -10,6 +10,11 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.TEAM10_CAPE
+import com.zenyte.game.item.ItemId.TEAM20_CAPE
+import com.zenyte.game.item.ItemId.TEAM30_CAPE
+import com.zenyte.game.item.ItemId.TEAM40_CAPE
+import com.zenyte.game.item.ItemId.TEAM50_CAPE
 
 class SamSWildernessCapeShop : ShopScript() {
 

@@ -10,6 +10,38 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.CASTLEWARS_CLOAK
+import com.zenyte.game.item.ItemId.CASTLEWARS_CLOAK_4516
+import com.zenyte.game.item.ItemId.CASTLEWARS_HOOD
+import com.zenyte.game.item.ItemId.CASTLEWARS_HOOD_4515
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11893
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11894
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11895
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11896
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11897
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11898
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11899
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11900
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_11901
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_4070
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_4504
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_4505
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_4509
+import com.zenyte.game.item.ItemId.DECORATIVE_ARMOUR_4510
+import com.zenyte.game.item.ItemId.DECORATIVE_HELM
+import com.zenyte.game.item.ItemId.DECORATIVE_HELM_4506
+import com.zenyte.game.item.ItemId.DECORATIVE_HELM_4511
+import com.zenyte.game.item.ItemId.DECORATIVE_SHIELD
+import com.zenyte.game.item.ItemId.DECORATIVE_SHIELD_4507
+import com.zenyte.game.item.ItemId.DECORATIVE_SHIELD_4512
+import com.zenyte.game.item.ItemId.DECORATIVE_SWORD
+import com.zenyte.game.item.ItemId.DECORATIVE_SWORD_4503
+import com.zenyte.game.item.ItemId.DECORATIVE_SWORD_4508
+import com.zenyte.game.item.ItemId.DRAGON_LONGSWORD
+import com.zenyte.game.item.ItemId.GUTHIX_HALO
+import com.zenyte.game.item.ItemId.SARADOMIN_HALO
+import com.zenyte.game.item.ItemId.ZAMORAK_HALO
 
 class CastleWarsStore : ShopScript() {
 

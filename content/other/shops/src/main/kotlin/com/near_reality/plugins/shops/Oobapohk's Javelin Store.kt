@@ -10,6 +10,12 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_JAVELIN
+import com.zenyte.game.item.ItemId.BRONZE_JAVELIN
+import com.zenyte.game.item.ItemId.IRON_JAVELIN
+import com.zenyte.game.item.ItemId.MITHRIL_JAVELIN
+import com.zenyte.game.item.ItemId.RUNE_JAVELIN
+import com.zenyte.game.item.ItemId.STEEL_JAVELIN
 
 class OobapohkSJavelinStore : ShopScript() {
 

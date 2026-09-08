@@ -10,6 +10,14 @@ import com.zenyte.game.item.ItemId
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAG_FULL_OF_GEMS
+import com.zenyte.game.item.ItemId.COAL_BAG_12019
+import com.zenyte.game.item.ItemId.GEM_BAG_12020
+import com.zenyte.game.item.ItemId.PROSPECTOR_BOOTS
+import com.zenyte.game.item.ItemId.PROSPECTOR_HELMET
+import com.zenyte.game.item.ItemId.PROSPECTOR_JACKET
+import com.zenyte.game.item.ItemId.PROSPECTOR_LEGS
+import com.zenyte.game.item.ItemId.SOFT_CLAY_PACK
 
 class ProspectorPercySNuggetShop : ShopScript() {
 

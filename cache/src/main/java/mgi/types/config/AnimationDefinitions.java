@@ -1,6 +1,6 @@
 package mgi.types.config;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import mgi.Indice;

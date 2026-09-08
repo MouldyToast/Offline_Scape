@@ -1,0 +1,43 @@
+package org.jesse.game.world.region.area;
+
+import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.region.PolygonRegionArea;
+import org.jesse.game.world.region.RSPolygon;
+
+/**
+ * @author Kris | 21/04/2019 14:03
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
+ */
+public class Keldagrim extends PolygonRegionArea {
+    @Override
+    public RSPolygon[] polygons() {
+        return new RSPolygon[] {
+                new RSPolygon(new int[][]{
+                        { 2816, 10240 },
+                        { 2816, 10112 },
+                        { 2944, 10112 },
+                        { 2944, 10240 }
+                }), new RSPolygon(new int[][]{
+                { 2752, 10176 },
+                { 2752, 10112 },
+                { 2816, 10112 },
+                { 2816, 10176 }
+        })
+        };
+    }
+
+    @Override
+    public void enter(final Player player) {
+
+    }
+
+    @Override
+    public void leave(final Player player, final boolean logout) {
+
+    }
+
+    @Override
+    public String name() {
+        return "Keldagrim";
+    }
+}

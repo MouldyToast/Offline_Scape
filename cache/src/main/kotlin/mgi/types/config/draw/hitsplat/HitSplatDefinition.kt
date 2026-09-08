@@ -1,10 +1,10 @@
 package mgi.types.config.draw.hitsplat
 
-import com.near_reality.cache.configs
-import com.near_reality.cache.file
-import com.near_reality.cache.hitmarks
-import com.near_reality.cache.sprites
-import com.zenyte.CacheManager
+import org.jesse.cache.configs
+import org.jesse.cache.file
+import org.jesse.cache.hitmarks
+import org.jesse.cache.sprites
+import org.jesse.CacheManager
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import mgi.tools.jagcached.cache.Cache

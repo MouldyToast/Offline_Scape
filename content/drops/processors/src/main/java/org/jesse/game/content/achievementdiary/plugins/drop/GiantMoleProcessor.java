@@ -1,0 +1,49 @@
+package org.jesse.game.content.achievementdiary.plugins.drop;
+
+import org.jesse.game.content.achievementdiary.DiaryReward;
+import org.jesse.game.content.achievementdiary.DiaryUtil;
+import org.jesse.game.item.Item;
+import org.jesse.game.world.entity.npc.NPC;
+import org.jesse.game.world.entity.npc.drop.matrix.Drop;
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor;
+import org.jesse.game.world.entity.player.Player;
+
+/**
+ * @author Tommeh | 02/05/2019 | 20:22
+ * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
+ */
+public class GiantMoleProcessor extends DropProcessor {
+
+    private static final int MOLE_CLAW = 7416;
+    private static final int MOLE_SKIN = 7418;
+
+    @Override
+    public void attach() {
+        appendDrop(new DisplayedDrop(32058, 1, 1, 2000)); //intentional
+
+        put(MOLE_CLAW, new PredicatedDrop("This drop will be noted if you have the hard Falador diary completed."));
+        put(MOLE_SKIN, new PredicatedDrop("This drop will be noted if you have the hard Falador diary completed."));
+    }
+
+    @Override
+    public Item drop(NPC npc, Player killer, Drop drop, Item item) {
+        if(item.getId() == MOLE_CLAW || item.getId() == MOLE_SKIN) {
+            int originalCount = item.getAmount();
+            item.setAmount(originalCount * 2);
+        }
+        if ((item.getId() == MOLE_CLAW || item.getId() == MOLE_SKIN) && DiaryUtil.eligibleFor(DiaryReward.FALADOR_SHIELD3, killer)) {
+            item.setId(item.getDefinitions().getNotedId());
+        }
+        if(npc.getId() == 5779) {
+            if(randomDrop(killer, 3000) == 0) { //intentional
+                npc.dropItem(killer, new Item(32058));
+            }
+        }
+        return item;
+    }
+
+    @Override
+    public int[] ids() {
+        return new int[] { 5779, 6499 };
+    }
+}

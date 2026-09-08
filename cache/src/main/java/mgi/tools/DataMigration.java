@@ -1,7 +1,7 @@
 package mgi.tools;
 
-import com.zenyte.game.item.ids.ItemId;
-import com.zenyte.game.world.region.XTEALoaderPorted;
+import org.jesse.game.item.ids.ItemId;
+import org.jesse.game.world.region.XTEALoaderPorted;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
@@ -20,7 +20,7 @@ import mgi.utilities.ByteBuffer;
 
 import java.util.List;
 
-import static com.zenyte.game.world.entity._Location.getRegionIDByRegion;
+import static org.jesse.game.world.entity._Location.getRegionIDByRegion;
 
 public class DataMigration {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(DataMigration.class);

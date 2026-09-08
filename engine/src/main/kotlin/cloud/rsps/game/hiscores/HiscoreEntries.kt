@@ -1,8 +1,8 @@
 package cloud.rsps.game.hiscores
 
-import com.zenyte.game.content.treasuretrails.ClueLevel
-import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.entity.player.SkillConstants
+import org.jesse.game.content.treasuretrails.ClueLevel
+import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.entity.player.SkillConstants
 import it.unimi.dsi.fastutil.bytes.Byte2ObjectMap
 import it.unimi.dsi.fastutil.bytes.Byte2ObjectOpenHashMap
 import net.runelite.api.gameval.SpriteID.IconActivities25x25

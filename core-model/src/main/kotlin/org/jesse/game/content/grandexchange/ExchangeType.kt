@@ -1,0 +1,14 @@
+package org.jesse.game.content.grandexchange
+
+import org.jesse.utils.Ordinal
+
+/**
+ * @author Kris | 1. apr 2018 : 19:14.15
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>}
+ * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>}
+ */
+@Ordinal
+enum class ExchangeType {
+    BUYING,
+    SELLING
+}

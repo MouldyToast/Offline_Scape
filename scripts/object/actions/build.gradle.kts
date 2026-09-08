@@ -2,7 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
-group = "com.near_reality.scripts.object"
+group = "org.jesse.scripts.object"
 version = "0.1.0"
 
 dependencies {

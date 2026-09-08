@@ -5,8 +5,8 @@ import cloud.rsps.game.hiscores.HiscoreRankTablePointer.Companion.withToTable
 import cloud.rsps.game.hiscores.HiscoresDatabase.hiscoresDatabase
 import cloud.rsps.util.Base37
 import com.github.michaelbull.logging.InlineLogger
-import com.near_reality.api.dao.Db.dbQuery
-import com.zenyte.game.world.entity.player.Player
+import org.jesse.api.dao.Db.dbQuery
+import org.jesse.game.world.entity.player.Player
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

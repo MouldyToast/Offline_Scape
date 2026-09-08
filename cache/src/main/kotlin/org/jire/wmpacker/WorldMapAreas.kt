@@ -1,6 +1,6 @@
 package org.jire.wmpacker
 
-import com.zenyte.game.world.entity.Location
+import org.jesse.game.world.entity.Location
 import mgi.types.worldmap.MapElement
 import mgi.types.worldmap.MapElementDefinitions
 import mgi.types.worldmap.WorldMapDefinitions

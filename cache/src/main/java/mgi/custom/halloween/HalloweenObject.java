@@ -1,6 +1,6 @@
 package mgi.custom.halloween;
 
-import com.zenyte.ContentConstants;
+import org.jesse.ContentConstants;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import mgi.types.config.ObjectDefinitions;

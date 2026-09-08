@@ -1,0 +1,30 @@
+package org.jesse.game.content.dt2.plugins.rings
+
+import org.jesse.game.model.item.pluginextensions.ItemPlugin
+import org.jesse.game.world.entity.player.dialogue.dialogue
+import org.jesse.game.item.ids.*
+
+/**
+ * @author Glabay | Glabay-Studios
+ * @project near-reality-server
+ * @social Discord: Glabay
+ * @since 2024-10-09
+ */
+class IconInspection : ItemPlugin() {
+    override fun handle() {
+        bind("Inspect") { player, item, _, _ ->
+            player.dialogue {
+                item(
+                    item.id,
+                    "It's an icon from an old ring. With the help of a Fremennik, " +
+                            "you might be able to combine it with something else."
+                )
+            }
+        }
+
+    }
+
+    override fun getItems(): IntArray {
+        return intArrayOf(ARCHER_ICON, BERSERKER_ICON, SEERS_ICON, WARRIOR_ICON)
+    }
+}

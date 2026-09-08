@@ -1,10 +1,10 @@
 package cloud.rsps.rsprot
 
 import cloud.rsps.net.haproxy.HAProxy.hostAddress
-import com.zenyte.game.world.WorldThread
-import com.zenyte.game.world.entity.player.Player
-import com.zenyte.game.world.region.area.wilderness.WildernessArea
-import com.zenyte.utils.TimeUnit
+import org.jesse.game.world.WorldThread
+import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.region.area.wilderness.WildernessArea
+import org.jesse.utils.TimeUnit
 import net.rsprot.protocol.ServerProtCategory
 import net.rsprot.protocol.message.OutgoingGameMessage
 import java.util.concurrent.atomic.AtomicLong

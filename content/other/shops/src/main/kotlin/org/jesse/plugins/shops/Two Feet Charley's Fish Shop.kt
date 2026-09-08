@@ -1,0 +1,30 @@
+package org.jesse.plugins.shops
+
+import org.jesse.scripts.shops.ShopScript
+import org.jesse.game.model.shop.*
+import org.jesse.game.model.shop.ShopPolicy
+import org.jesse.game.model.shop.ShopPolicy.*
+import org.jesse.game.model.shop.ShopCurrency
+import org.jesse.game.model.shop.ShopCurrency.*
+import org.jesse.game.item.ids.*
+import org.jesse.game.content.universalshop.*
+import org.jesse.game.content.universalshop.UnivShopItem
+import org.jesse.game.content.universalshop.UnivShopItem.*
+
+class TwoFeetCharleySFishShop : ShopScript() {
+
+    init {
+        "Two Feet Charley's Fish Shop"(231, ShopCurrency.COINS, STOCK_ONLY) {
+            RAW_SHRIMPS(10, 3, 5)
+            RAW_SARDINE(10, 6, 10)
+            RAW_HERRING(7, 9, 15)
+            RAW_MACKEREL(7, 10, 17)
+            RAW_COD(6, 15, 25)
+            RAW_ANCHOVIES(5, 9, 15)
+            RAW_TUNA(4, 60, 100)
+            RAW_LOBSTER(2, 90, 150)
+            RAW_BASS(2, 72, 120)
+            RAW_SWORDFISH(1, 120, 200)
+        }
+    }
+}

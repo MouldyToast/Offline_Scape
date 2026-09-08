@@ -1,0 +1,52 @@
+package org.jesse.game.content.gauntlet.`object`
+
+import org.jesse.game.model.ui.InterfacePosition
+import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.`object`.ObjectAction
+import org.jesse.game.obj.ids.*
+import org.jesse.game.world.`object`.WorldObject
+
+@Suppress("UNUSED")
+class GauntletEgniolPotions : ObjectAction {
+
+    override fun handleObjectAction(
+        player: Player,
+        `object`: WorldObject,
+        name: String,
+        optionId: Int,
+        option: String,
+    ) {
+        if (option == "Read") {
+            player.interfaceHandler.run {
+                sendInterface(InterfacePosition.CENTRAL, 95)
+            }
+            player.packetDispatcher.run {
+                for ((componentId, line) in strings.withIndex()) {
+                    sendComponentText(95, componentId + 1, line)
+                }
+            }
+        }
+    }
+
+    override fun getObjects() = arrayOf(
+        EGNIOL_POTIONS, // corrupted
+        EGNIOL_POTIONS_36076
+    )
+
+    private companion object {
+        val strings = listOf(
+            "Those hoping to survive the Gauntlet will need to",
+            "take advantage of the Grym roots found within",
+            "the dungeon. The leaves that grow on these roots",
+            "can be used to create Egniol potions, which are",
+            "able to restore both energy an divinity.",
+            "",
+            "To create an Egniol potion, follow these steps:",
+            "",
+            "Fill a vial with water.",
+            "Add a Grym leaf to the vial.",
+            "Crush ten crystal shards.",
+            "Add the crystal dust to the vial."
+        )
+    }
+}

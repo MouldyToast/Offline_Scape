@@ -1,0 +1,46 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region12602 : NPCSpawnsScript() {
+
+    init {
+        BLACK_CHINCHOMPA(3138, 3772, 0, SOUTH, 8)
+        BLACK_CHINCHOMPA(3141, 3769, 0, SOUTH, 8)
+        BLACK_CHINCHOMPA(3142, 3775, 0, SOUTH, 8)
+        DEADLY_RED_SPIDER(3145, 3730, 0, SOUTH, 8)
+        ZOMBIE_6598(3145, 3742, 0, SOUTH, 7)
+        ZOMBIE_6597(3146, 3734, 0, SOUTH, 6)
+        BLACK_CHINCHOMPA(3146, 3774, 0, SOUTH, 8)
+        ZOMBIE_6596(3149, 3725, 0, SOUTH, 7)
+        DEADLY_RED_SPIDER(3149, 3734, 0, SOUTH, 8)
+        DEADLY_RED_SPIDER(3150, 3744, 0, SOUTH, 8)
+        BLACK_CHINCHOMPA(3152, 3769, 0, SOUTH, 8)
+        ZOMBIE_6597(3153, 3729, 0, SOUTH, 6)
+        ZOMBIE_6596(3153, 3740, 0, SOUTH, 7)
+        BLACK_CHINCHOMPA(3154, 3773, 0, SOUTH, 8)
+        ZOMBIE_6598(3156, 3731, 0, SOUTH, 7)
+        DEADLY_RED_SPIDER(3157, 3740, 0, SOUTH, 8)
+        ZOMBIE_6596(3158, 3746, 0, SOUTH, 7)
+        BLACK_CHINCHOMPA(3158, 3770, 0, SOUTH, 8)
+        ZOMBIE_6598(3159, 3723, 0, SOUTH, 7)
+        BLACK_CHINCHOMPA(3159, 3774, 0, SOUTH, 8)
+        ZOMBIE_6597(3163, 3726, 0, SOUTH, 6)
+        DEADLY_RED_SPIDER(3164, 3734, 0, SOUTH, 8)
+        ZOMBIE_6597(3167, 3743, 0, SOUTH, 6)
+        DEADLY_RED_SPIDER(3168, 3736, 0, SOUTH, 8)
+        DEADLY_RED_SPIDER(3170, 3739, 0, SOUTH, 8)
+        ZOMBIE_6597(3173, 3728, 0, SOUTH, 6)
+        DEADLY_RED_SPIDER(3174, 3733, 0, SOUTH, 8)
+        ZOMBIE_6598(3174, 3737, 0, SOUTH, 7)
+        ZOMBIE_6596(3177, 3729, 0, SOUTH, 7)
+        ZOMBIE_6596(3177, 3744, 0, SOUTH, 7)
+        DEADLY_RED_SPIDER(3178, 3737, 0, SOUTH, 8)
+        DEADLY_RED_SPIDER(3182, 3744, 0, SOUTH, 8)
+        DEADLY_RED_SPIDER(3183, 3742, 0, SOUTH, 8)
+        ZOMBIE_6598(3185, 3739, 0, SOUTH, 7)
+    }
+}

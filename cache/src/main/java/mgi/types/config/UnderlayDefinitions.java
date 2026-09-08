@@ -1,6 +1,6 @@
 package mgi.types.config;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;

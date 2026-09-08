@@ -1,0 +1,134 @@
+package org.jesse.game.content.skills.mining.actions;
+
+import org.jesse.game.content.skills.mining.PickAxeDefinition;
+import org.jesse.game.content.achievementdiary.diaries.KourendDiary;
+import org.jesse.game.content.skills.mining.MiningDefinitions;
+import org.jesse.game.content.skills.mining.MiningDefinitions.PickaxeDefinitions;
+import org.jesse.game.item.Item;
+import org.jesse.game.item.ids.ItemId;
+import org.jesse.game.task.WorldTasksManager;
+import org.jesse.game.util.Utils;
+import org.jesse.game.world.entity.masks.Animation;
+import org.jesse.game.world.entity.player.Action;
+import org.jesse.game.world.entity.player.SkillConstants;
+import org.jesse.game.world.entity.player.Skills;
+import org.jesse.game.world.object.WorldObject;
+import org.jesse.plugins.dialogue.ItemChat;
+import org.jesse.plugins.dialogue.PlainChat;
+
+import java.util.Optional;
+
+import static org.jesse.game.item.ids.ItemId.DENSE_ESSENCE_BLOCK;
+
+/**
+ * @author Kris | 26/04/2019 17:17
+ * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
+ */
+public class DenseRunestoneMining extends Action {
+    private final WorldObject rock;
+    private PickAxeDefinition tool;
+    private int ticks;
+    private int cycle;
+
+    public DenseRunestoneMining(final WorldObject rock) {
+        this.rock = rock;
+    }
+
+    @Override
+    public boolean start() {
+        var rockDef = rock.getDefinitions();
+        assert rockDef != null : "Rock definition is null.";
+        if (player.getVarManager().getBitValue(rockDef.getVarbitId()) == 1) {
+            player.sendMessage("The runestone has depleted.");
+            return false;
+        }
+        if (!checkTool()) return false;
+        if (!check()) {
+            return false;
+        }
+        player.sendMessage("You swing your pick at the runestone.");
+        delay(7);
+        return true;
+    }
+
+    @Override
+    public boolean process() {
+        if (!check()) {
+            return false;
+        }
+        if (ticks++ % 4 == 0) {
+            if ((cycle++ & 1) == 0) {
+                player.setAnimation(tool.getAnim());
+            } else {
+                player.setAnimation(new Animation(7201));
+            }
+        }
+        return checkObject();
+    }
+
+    @Override
+    public int processWithDelay() {
+        player.getSkills().addXp(SkillConstants.MINING, 12);
+        player.getSkills().addXp(SkillConstants.CRAFTING, 8);
+
+        var denseEssBlock = new Item(DENSE_ESSENCE_BLOCK);
+
+        player.getInventory().addOrDrop(denseEssBlock);
+
+        if (player.getAchievementDiaries().isAllCompleted(KourendDiary.MEDIUM)) {
+            // 5% chance to mine two blocks
+            if (Utils.random(99) < 5) {
+                player.getInventory().addOrDrop(denseEssBlock);
+                player.sendMessage("You manage to mine an additional dense essence block!");
+            }
+        }
+        if (Utils.random(10 + (player.getSkills().getLevel(SkillConstants.MINING) / 30)) == 0) {
+            var rockDef = rock.getDefinitions();
+            assert rockDef != null : "Rock definition is null.";
+            var rockVarbitId = rockDef.getVarbitId();
+            player.getVarManager().sendBit(rockVarbitId, 1);
+            WorldTasksManager.schedule(() -> player.getVarManager().sendBit(rockVarbitId, 0), 30);
+            return -1;
+        }
+
+        return 7;
+    }
+
+
+    @Override
+    public void stop() {
+        player.setAnimation(Animation.STOP);
+    }
+
+    private boolean check() {
+        return (checkLevel() && player.getInventory().checkSpace());
+    }
+
+    private boolean checkTool() {
+        final Optional<MiningDefinitions.PickaxeDefinitions.PickaxeResult> axe = PickaxeDefinitions.get(player, true);
+        if (!axe.isPresent()) {
+            player.getDialogueManager().start(new PlainChat(player, "You need a pickaxe to mine this rock. You do not have a pickaxe which you have the Mining level to use."));
+            return false;
+        }
+        if (!player.getInventory().containsItem(1755, 1)) {
+            player.getDialogueManager().start(new ItemChat(player, new Item(1755), "You need a chisel to craft the runestone into blocks."));
+            return false;
+        }
+        final MiningDefinitions.PickaxeDefinitions.PickaxeResult definitions = axe.get();
+        this.tool = definitions.getDefinition();
+        return true;
+    }
+
+    private boolean checkLevel() {
+        final Skills skills = player.getSkills();
+        if (skills.getLevel(SkillConstants.MINING) < 38 || skills.getLevel(SkillConstants.CRAFTING) < 38) {
+            player.getDialogueManager().start(new PlainChat(player, "You need a Mining and a Crafting level of 38 to mine this rock."));
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkObject() {
+        return player.getVarManager().getBitValue(rock.getDefinitions().getVarbitId()) == 0;
+    }
+}

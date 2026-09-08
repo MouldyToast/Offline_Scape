@@ -1,6 +1,6 @@
 package mgi.types.worldmap;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import mgi.tools.jagcached.ArchiveType;

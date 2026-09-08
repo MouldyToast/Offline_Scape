@@ -1,6 +1,6 @@
 package mgi.types.config;
 
-import com.zenyte.CacheManager;
+import org.jesse.CacheManager;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.near_reality.cache.DBTableIndexDefinitionKt.readProtobufVarInt;
+import static org.jesse.cache.DBTableIndexDefinitionKt.readProtobufVarInt;
 
 @SuppressWarnings("unused")
 public class DBRowDefinition implements Definitions, Cloneable {

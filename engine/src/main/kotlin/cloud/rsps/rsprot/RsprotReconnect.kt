@@ -2,9 +2,9 @@ package cloud.rsps.rsprot
 
 import cloud.rsps.net.haproxy.HAProxy.hostAddress
 import com.github.michaelbull.logging.InlineLogger
-import com.zenyte.game.task.WorldTasksManager
-import com.zenyte.game.world.World
-import com.zenyte.game.world.entity.masks.UpdateFlag
+import org.jesse.game.task.WorldTasksManager
+import org.jesse.game.world.World
+import org.jesse.game.world.entity.masks.UpdateFlag
 import net.rsprot.crypto.xtea.XteaKey
 import net.rsprot.protocol.api.login.GameLoginResponseHandler
 import net.rsprot.protocol.loginprot.incoming.util.LoginBlock

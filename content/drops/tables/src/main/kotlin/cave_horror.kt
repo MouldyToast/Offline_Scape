@@ -1,22 +1,22 @@
-package com.zenyte.game.content
+package org.jesse.game.content
 
-import com.near_reality.scripts.npc.drops.table.always
-import com.near_reality.scripts.npc.drops.table.noted
-import com.near_reality.scripts.npc.drops.table.tables.gem.GemDropTable
-import com.near_reality.scripts.npc.drops.table.tables.herb.HerbDropTable
-import com.near_reality.scripts.npc.drops.table.tables.seed.AllotmentSeedDropTable
-import com.near_reality.scripts.npc.drops.table.tables.seed.RareSeedDropTable
-import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.npc.ids.*
-import com.zenyte.game.npc.ids.CAVE_HORROR
-import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ids.*
-import com.near_reality.scripts.npc.drops.table.DropTableType.*
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import org.jesse.scripts.npc.drops.table.always
+import org.jesse.scripts.npc.drops.table.noted
+import org.jesse.scripts.npc.drops.table.tables.gem.GemDropTable
+import org.jesse.scripts.npc.drops.table.tables.herb.HerbDropTable
+import org.jesse.scripts.npc.drops.table.tables.seed.AllotmentSeedDropTable
+import org.jesse.scripts.npc.drops.table.tables.seed.RareSeedDropTable
+import org.jesse.scripts.npc.drops.NPCDropTableScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.npc.ids.CAVE_HORROR
+import org.jesse.game.util.invoke
+import org.jesse.game.item.ids.*
+import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.game.world.entity.npc.drop.matrix.Drop
+import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class CaveHorrorDroptable : NPCDropTableScript() {
 

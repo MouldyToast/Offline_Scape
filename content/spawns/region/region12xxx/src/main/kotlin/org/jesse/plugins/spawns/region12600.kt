@@ -1,0 +1,43 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region12600 : NPCSpawnsScript() {
+
+    init {
+        SKULLY(3139, 3626, 0, NORTH, 0)
+        7320(3141, 3636, 0, SOUTH, 5)
+        WIZARD_10373(3142, 3644, 0, SOUTH, 5)
+        JUSTINE(3143, 3634, 0, SOUTH, 5)
+        CAMARST(3148, 3643, 0, SOUTH, 5)
+        DERSE_VENATOR(3150, 3644, 0, SOUTH, 5)
+        PHABELLE_BILE(3151, 3642, 0, SOUTH, 5)
+        ANDROS_MAI(3152, 3643, 0, SOUTH, 5)
+        MARTEN(3153, 3629, 0, SOUTH, 5)
+        MAMMOTH(3159, 3593, 0, SOUTH, 11)
+        MAMMOTH(3161, 3598, 0, SOUTH, 11)
+        MAMMOTH(3163, 3587, 0, SOUTH, 11)
+        MAMMOTH(3168, 3598, 0, SOUTH, 11)
+        MAMMOTH(3169, 3588, 0, SOUTH, 11)
+        MAMMOTH(3171, 3594, 0, SOUTH, 11)
+        MAMMOTH(3173, 3590, 0, SOUTH, 11)
+        MAMMOTH(3173, 3599, 0, SOUTH, 11)
+        WIZARD_10371(3142, 3641, 1, SOUTH, 5)
+        WIZARD_10372(3141, 3641, 2, SOUTH, 5)
+        CHINCHOMPA(3198, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3199, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3200, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3201, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3202, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3203, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3204, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3205, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3206, 3631, 0, SOUTH, 4)
+        CHINCHOMPA(3207, 3631, 0, SOUTH, 4)
+        FISHING_SPOT_1533(3154, 3602, 0, SOUTH, 0)
+        FISHING_SPOT_1532(3153, 3601, 0, SOUTH, 0)
+    }
+}

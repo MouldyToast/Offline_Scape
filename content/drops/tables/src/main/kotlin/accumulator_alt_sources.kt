@@ -1,16 +1,16 @@
-package com.zenyte.game.content
+package org.jesse.game.content
 
 import mgi.types.config.npcs.NPCDefinitions
-import com.near_reality.scripts.npc.drops.NPCDropTableScript
-import com.zenyte.game.npc.ids.*
-import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ids.*
-import com.near_reality.scripts.npc.drops.table.DropTableType.*
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop
-import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
-import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import org.jesse.scripts.npc.drops.NPCDropTableScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.item.ids.*
+import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.game.world.entity.npc.drop.matrix.Drop
+import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
+import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class AccumulatorAltSourcesDroptable : NPCDropTableScript() {
 

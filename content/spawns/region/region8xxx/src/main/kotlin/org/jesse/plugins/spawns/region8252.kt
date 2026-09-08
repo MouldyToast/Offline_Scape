@@ -1,0 +1,21 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region8252 : NPCSpawnsScript() {
+
+    init {
+        SUQAH_790(2064, 3880, 0, SOUTH, 3)
+        SUQAH_788(2070, 3878, 0, SOUTH, 6)
+        SUQAH_791(2075, 3886, 0, SOUTH, 5)
+        SUQAH(2079, 3882, 0, SOUTH, 4)
+        METEORA(2082, 3894, 0, SOUTH, 2)
+        ENCHANTED_BUCKET(2085, 3890, 0, SOUTH, 12)
+        ENCHANTED_BUCKET_3849(2090, 3889, 0, SOUTH, 8)
+        SUQAH_792(2101, 3871, 0, SOUTH, 2)
+        SUQAH_789(2106, 3866, 0, SOUTH, 5)
+    }
+}

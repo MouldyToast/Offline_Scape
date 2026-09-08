@@ -2,7 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
-group = "com.near_reality.scripts.npc"
+group = "org.jesse.scripts.npc"
 version = "0.1.0"
 
 dependencies {

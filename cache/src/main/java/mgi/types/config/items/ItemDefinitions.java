@@ -1,14 +1,14 @@
 package mgi.types.config.items;
 
-import com.zenyte.CacheManager;
-import com.zenyte.game.content.grandexchange.JSONGEItemDefinitions;
-import com.zenyte.game.content.grandexchange.JSONGEItemDefinitionsLoader;
-import com.zenyte.game.parser.impl.ItemRequirements;
-import com.zenyte.game.parser.impl.JSONItemDefinitionsLoader;
-import com.zenyte.game.world.entity.masks.RenderAnimation;
-import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType;
-import com.zenyte.plugins.PluginManager;
-import com.zenyte.plugins.events.ItemDefinitionsLoadedEvent;
+import org.jesse.CacheManager;
+import org.jesse.game.content.grandexchange.JSONGEItemDefinitions;
+import org.jesse.game.content.grandexchange.JSONGEItemDefinitionsLoader;
+import org.jesse.game.parser.impl.ItemRequirements;
+import org.jesse.game.parser.impl.JSONItemDefinitionsLoader;
+import org.jesse.game.world.entity.masks.RenderAnimation;
+import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentType;
+import org.jesse.plugins.PluginManager;
+import org.jesse.plugins.events.ItemDefinitionsLoadedEvent;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-import static com.zenyte.game.item.ids.ItemId.ORB_OF_BLOOD;
-import static com.zenyte.game.item.ids.ItemId.ORB_OF_XERIC;
+import static org.jesse.game.item.ids.ItemId.ORB_OF_BLOOD;
+import static org.jesse.game.item.ids.ItemId.ORB_OF_XERIC;
 
 /**
  * @author Kris | 22. jaan 2018 : 21:35.27

@@ -1,6 +1,6 @@
 package mgi.types.worldmap;
 
-import com.zenyte.game.world.entity.Location;
+import org.jesse.game.world.entity.Location;
 
 /**
  * @author Tommeh | 4-12-2018 | 19:37

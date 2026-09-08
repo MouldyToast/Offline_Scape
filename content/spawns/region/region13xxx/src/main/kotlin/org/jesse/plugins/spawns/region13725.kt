@@ -1,0 +1,38 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region13725 : NPCSpawnsScript() {
+
+    init {
+        GREEN_DRAGON_7868(3410, 10065, 0, SOUTH, 4)
+        GREEN_DRAGON_7870(3415, 10068, 0, SOUTH, 5)
+        GREEN_DRAGON_7869(3418, 10063, 0, SOUTH, 4)
+        HELLHOUND_7877(3439, 10082, 0, SOUTH, 3)
+        HELLHOUND_7877(3439, 10088, 0, SOUTH, 3)
+        HELLHOUND_7877(3444, 10077, 0, SOUTH, 3)
+        HELLHOUND_7877(3444, 10096, 0, SOUTH, 3)
+        HELLHOUND_7877(3445, 10085, 0, SOUTH, 3)
+        BANDIT_6605(3430, 10070, 0, SOUTH, 6)
+        JELLY(3429, 10100, 0, SOUTH, 4)
+        JELLY(3435, 10106, 0, SOUTH, 4)
+        JELLY(3434, 10102, 0, SOUTH, 4)
+        JELLY(3426, 10102, 0, SOUTH, 4)
+        JELLY(3430, 10104, 0, SOUTH, 4)
+        JELLY(3427, 10106, 0, SOUTH, 4)
+        JELLY(3433, 10097, 0, SOUTH, 4)
+        JELLY(3424, 10108, 0, SOUTH, 4)
+        JELLY(3439, 10107, 0, SOUTH, 4)
+        DUST_DEVIL(3431, 10117,0, SOUTH, 6)
+        DUST_DEVIL(3433, 10124,0, SOUTH, 6)
+        DUST_DEVIL(3434, 10120,0, SOUTH, 6)
+        DUST_DEVIL(3437, 10127,0, SOUTH, 6)
+        DUST_DEVIL(3439, 10123,0, SOUTH, 6)
+        DUST_DEVIL(3444, 10121,0, SOUTH, 6)
+        DUST_DEVIL(3444, 10126,0, SOUTH, 6)
+        DUST_DEVIL(3448, 10123,0, SOUTH, 6)
+    }
+}

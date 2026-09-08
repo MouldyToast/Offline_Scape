@@ -1,0 +1,23 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region5175 : NPCSpawnsScript() {
+
+    init {
+        LIZARDMAN_BRUTE_6919(1306, 3555, 0, SOUTH, 15)
+        BIG_FROG(1307, 3529, 0, SOUTH, 3)
+        LIZARDMAN_6915(1307, 3538, 0, SOUTH, 12)
+        LIZARDMAN_6915(1312, 3553, 0, SOUTH, 12)
+        LIZARDMAN_6917(1315, 3543, 0, SOUTH, 10)
+        LIZARDMAN_BRUTE_6919(1317, 3562, 0, SOUTH, 15)
+        LIZARDMAN_6917(1321, 3555, 0, SOUTH, 10)
+        LIZARDMAN_BRUTE_6919(1325, 3583, 0, SOUTH, 15)
+        LIZARDMAN_BRUTE_6919(1326, 3554, 0, SOUTH, 15)
+        LIZARDMAN_BRUTE_6919(1340, 3541, 0, SOUTH, 15)
+        LIZARDMAN_BRUTE_6919(1342, 3553, 0, SOUTH, 15)
+    }
+}

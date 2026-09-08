@@ -1,7 +1,7 @@
 package mgi.types.component;
 
-import com.zenyte.CacheManager;
-import com.zenyte.game.util.AccessMask;
+import org.jesse.CacheManager;
+import org.jesse.game.util.AccessMask;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.Cache;

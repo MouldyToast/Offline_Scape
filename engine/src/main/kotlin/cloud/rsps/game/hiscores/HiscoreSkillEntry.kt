@@ -1,6 +1,6 @@
 package cloud.rsps.game.hiscores
 
-import com.zenyte.game.world.entity.player.Player
+import org.jesse.game.world.entity.player.Player
 
 /**
  * @author Jire

@@ -1,7 +1,7 @@
 package cloud.rsps.worlds.database
 
 import cloud.rsps.worlds.WorldsManager
-import com.near_reality.game.world.info.WorldProfile
+import org.jesse.game.world.info.WorldProfile
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils

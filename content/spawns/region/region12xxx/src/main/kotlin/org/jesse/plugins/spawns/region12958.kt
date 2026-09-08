@@ -1,0 +1,23 @@
+package org.jesse.plugins.spawns
+
+import org.jesse.scripts.npc.spawns.NPCSpawnsScript
+import org.jesse.game.npc.ids.*
+import org.jesse.game.util.invoke
+import org.jesse.game.util.Direction.*
+
+class Region12958 : NPCSpawnsScript() {
+
+    init {
+        /*REVENANT_DARK_BEAST*/REVENANT_HELLHOUND(3207, 10164, 0, SOUTH, 3)
+        /*REVENANT_DARK_BEAST*/REVENANT_HELLHOUND(3200, 10166, 0, SOUTH, 3)
+        REVENANT_ORK(3218, 10133, 0, SOUTH, 2)
+        REVENANT_ORK(3227, 10126, 0, SOUTH, 2)
+        //REVENANT_HELLHOUND(3246, 10175, 0, SOUTH, 2)
+        //REVENANT_HELLHOUND(3239, 10162, 0, SOUTH, 2)
+        REVENANT_PYREFIEND(3254, 10140, 0, SOUTH, 2)
+        REVENANT_PYREFIEND(3248, 10151, 0, SOUTH, 2)
+        REVENANT_HOBGOBLIN(3241, 10121, 0, SOUTH, 2)
+        REVENANT_ORK(3232, 10139, 0, SOUTH, 2)
+        REVENANT_HELLHOUND(3216, 10164, 0, SOUTH, 2)
+    }
+}

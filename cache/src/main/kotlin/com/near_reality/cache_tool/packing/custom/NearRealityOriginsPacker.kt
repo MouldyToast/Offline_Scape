@@ -6,6 +6,7 @@ import com.zenyte.game.item.ids.*
 import mgi.types.config.npcs.NPCDefinitions
 import net.runelite.api.NpcID
 import net.runelite.api.NpcID.*
+import net.runelite.api.NpcID.BABY_MOLE
 
 object NearRealityOriginsPacker {
 

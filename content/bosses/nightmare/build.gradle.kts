@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

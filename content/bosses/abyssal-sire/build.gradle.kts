@@ -12,7 +12,7 @@ kotlin {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
     implementation(projects.scripts.npc.actions)
     implementation(kotlin("script-runtime"))
 }

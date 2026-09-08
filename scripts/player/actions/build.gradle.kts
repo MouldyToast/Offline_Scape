@@ -7,5 +7,5 @@ version = "0.1.0"
 
 dependencies {
     api(projects.scripts.player)
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

@@ -10,6 +10,6 @@ kotlin {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
     implementation(projects.content.other.rewards)
 }

@@ -10,5 +10,5 @@ kotlin {
 }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

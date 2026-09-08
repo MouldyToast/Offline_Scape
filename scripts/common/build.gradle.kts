@@ -9,5 +9,5 @@ dependencies {
     api(kotlin("scripting-common"))
     api(kotlin("scripting-jvm"))
 
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
 }

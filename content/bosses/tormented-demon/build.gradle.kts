@@ -1,7 +1,7 @@
 plugins { id("org.jetbrains.kotlin.jvm") }
 
 dependencies {
-    compileOnly(projects.core)
+    compileOnly(projects.engine)
     implementation(projects.scripts.npc.drops)
     implementation(projects.scripts.item.actions)
 }

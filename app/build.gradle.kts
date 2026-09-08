@@ -15,7 +15,7 @@ dependencies {
     runtimeOnly(libs.slf4j.api)
     runtimeOnly(libs.logback.classic)
 
-    runtimeOnly(projects.core)
+    runtimeOnly(projects.engine)
 
     // Auto-discovered content and tools modules
     findContentModules().forEach { runtimeOnly(it) }

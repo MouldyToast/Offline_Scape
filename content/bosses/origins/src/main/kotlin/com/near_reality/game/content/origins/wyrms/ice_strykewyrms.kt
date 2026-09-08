@@ -13,6 +13,24 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DRAGON_DAGGERP
+import com.zenyte.game.item.ItemId.FARSEER_HELM
+import com.zenyte.game.item.ItemId.FARSEER_KITESHIELD
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
+import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
+import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
+import com.zenyte.game.item.ItemId.MITHRIL_BAR
+import com.zenyte.game.item.ItemId.MYSTIC_GLOVES
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.PET_ICE_STRYKEWYRM
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.STAFF_OF_FIRE
+import com.zenyte.game.item.ItemId.STAFF_OF_LIGHT
+import com.zenyte.game.item.ItemId.STEEL_BAR
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class IceStrykewyrmsDroptable : NPCDropTableScript() {
 

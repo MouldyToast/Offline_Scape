@@ -6,6 +6,12 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_FULL_HELM
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATEBODY
+import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATELEGS
+import com.zenyte.game.item.ItemId.TORVA_FULLHELM
+import com.zenyte.game.item.ItemId.TORVA_PLATEBODY
+import com.zenyte.game.item.ItemId.TORVA_PLATELEGS
 
 /**
  * @author Glabay | Glabay-Studios

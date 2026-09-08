@@ -5,6 +5,8 @@ import com.near_reality.game.content.gauntlet.rewards.GauntletRewardType
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.CORRUPTED_ESCAPE_CRYSTAL
+import com.zenyte.game.item.ItemId.ESCAPE_CRYSTAL
 
 class EscapeCrystalItemaction : ItemActionScript() {
 

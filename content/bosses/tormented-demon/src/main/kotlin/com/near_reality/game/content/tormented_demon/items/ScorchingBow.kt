@@ -8,6 +8,9 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.Skills
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.MAGIC_LONGBOW_U
+import com.zenyte.game.item.ItemId.SCORCHING_BOW
+import com.zenyte.game.item.ItemId.TORMENTED_SYNAPSE
 
 /**
  * @author Glabay | Glabay-Studios

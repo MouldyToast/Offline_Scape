@@ -11,6 +11,18 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.BOOK_OF_THE_DEAD
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.GUTHANS_CHAINSKIRT
+import com.zenyte.game.item.ItemId.GUTHANS_HELM
+import com.zenyte.game.item.ItemId.GUTHANS_PLATEBODY
+import com.zenyte.game.item.ItemId.GUTHANS_WARSPEAR
+import com.zenyte.game.item.ItemId.LOOP_HALF_OF_KEY
+import com.zenyte.game.item.ItemId.MIND_RUNE
+import com.zenyte.game.item.ItemId.TOOTH_HALF_OF_KEY
 
 class DiGuthanDroptable : NPCDropTableScript() {
 

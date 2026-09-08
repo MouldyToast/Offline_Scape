@@ -23,6 +23,33 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.AIR_ORB
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.ANCIENT_HILT
+import com.zenyte.game.item.ItemId.BIG_BONES
+import com.zenyte.game.item.ItemId.BLOOD_ESSENCE
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.CANNONBALL
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_BOLTS_UNF
+import com.zenyte.game.item.ItemId.ECUMENICAL_KEY_SHARD
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.NIHIL_HORN
+import com.zenyte.game.item.ItemId.NIHIL_SHARD
+import com.zenyte.game.item.ItemId.ONYX_BOLTS_E
+import com.zenyte.game.item.ItemId.PRAYER_POTION4
+import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.SUPER_RESTORE4
+import com.zenyte.game.item.ItemId.TORVA_FULLHELM_DAMAGED
+import com.zenyte.game.item.ItemId.TORVA_PLATEBODY_DAMAGED
+import com.zenyte.game.item.ItemId.TORVA_PLATELEGS_DAMAGED
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.WATER_RUNE
+import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
+import com.zenyte.game.item.ItemId.ZARYTE_VAMBRACES
 
 class NexDroptable : NPCDropTableScript() {
 

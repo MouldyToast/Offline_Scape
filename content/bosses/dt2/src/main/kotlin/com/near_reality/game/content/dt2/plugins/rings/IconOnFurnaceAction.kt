@@ -7,6 +7,16 @@ import com.zenyte.game.world.entity.player.Skills
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import com.zenyte.game.world.`object`.WorldObject
+import com.zenyte.game.item.ItemId.BELLATOR_ICON
+import com.zenyte.game.item.ItemId.BELLATOR_RING_28316
+import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
+import com.zenyte.game.item.ItemId.MAGUS_ICON
+import com.zenyte.game.item.ItemId.MAGUS_RING_28313
+import com.zenyte.game.item.ItemId.RING_MOULD
+import com.zenyte.game.item.ItemId.ULTOR_ICON
+import com.zenyte.game.item.ItemId.ULTOR_RING_28307
+import com.zenyte.game.item.ItemId.VENATOR_ICON
+import com.zenyte.game.item.ItemId.VENATOR_RING_28310
 
 class IconOnFurnaceAction : ItemOnObjectAction {
 

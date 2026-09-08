@@ -17,6 +17,40 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_JAVELIN
+import com.zenyte.game.item.ItemId.ARDERMUSCA_POISON
+import com.zenyte.game.item.ItemId.AWAKENERS_ORB
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.BRONZE_JAVELIN
+import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
+import com.zenyte.game.item.ItemId.DRAGON_DART_TIP
+import com.zenyte.game.item.ItemId.DRAGON_JAVELIN_HEADS
+import com.zenyte.game.item.ItemId.EYE_OF_THE_DUKE
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.ICE_QUARTZ
+import com.zenyte.game.item.ItemId.LAVA_BATTLESTAFF
+import com.zenyte.game.item.ItemId.LAVA_RUNE
+import com.zenyte.game.item.ItemId.MAGUS_ICON
+import com.zenyte.game.item.ItemId.MIND_RUNE
+import com.zenyte.game.item.ItemId.MITHRIL_JAVELIN
+import com.zenyte.game.item.ItemId.ONYX_BOLTS_E
+import com.zenyte.game.item.ItemId.PRAYER_POTION3
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
+import com.zenyte.game.item.ItemId.RUNE_HALBERD
+import com.zenyte.game.item.ItemId.RUNE_JAVELIN_HEADS
+import com.zenyte.game.item.ItemId.SCROLL_BOX_EASY
+import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
+import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
+import com.zenyte.game.item.ItemId.SCROLL_BOX_MEDIUM
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.SUPER_COMBAT_POTION2
+import com.zenyte.game.item.ItemId.TUNA_POTATO
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.VIRTUS_MASK
+import com.zenyte.game.item.ItemId.VIRTUS_ROBE_LEGS
+import com.zenyte.game.item.ItemId.VIRTUS_ROBE_TOP
 
 class DukeNormalDroptable : NPCDropTableScript() {
 

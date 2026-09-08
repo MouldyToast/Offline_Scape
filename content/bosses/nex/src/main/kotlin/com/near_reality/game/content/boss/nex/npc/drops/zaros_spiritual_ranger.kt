@@ -13,6 +13,31 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.ADAMANT_BOLTS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_BOOTS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_GLOVES
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_LEGS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_MASK
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_TOP
+import com.zenyte.game.item.ItemId.BLUE_DRAGON_SCALE
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.CLUE_SCROLL_HARD
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.GREEN_DHIDE_BODY
+import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.GRIMY_SNAPDRAGON
+import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
+import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.NIHIL_SHARD
+import com.zenyte.game.item.ItemId.PRAYER_POTION2
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RANGING_POTION2
+import com.zenyte.game.item.ItemId.RUNE_ARROW
+import com.zenyte.game.item.ItemId.SUPER_DEFENCE1
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
 
 class ZarosSpiritualRangerDroptable : NPCDropTableScript() {
 

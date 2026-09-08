@@ -18,6 +18,13 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.CRYSTALLINE_BOWSTRING
+import com.zenyte.game.item.ItemId.CRYSTAL_ORB
+import com.zenyte.game.item.ItemId.CRYSTAL_SHARDS
+import com.zenyte.game.item.ItemId.CRYSTAL_SPIKE
+import com.zenyte.game.item.ItemId.RAW_PADDLEFISH
+import com.zenyte.game.item.ItemId.TELEPORT_CRYSTAL
+import com.zenyte.game.item.ItemId.WEAPON_FRAME_23871
 
 class CrystallineDemiBossDroptable : NPCDropTableScript() {
 

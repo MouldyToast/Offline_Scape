@@ -10,6 +10,11 @@ import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectId
 import com.zenyte.game.world.`object`.WorldObject
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.IRON_BAR
+import com.zenyte.game.item.ItemId.PURGING_STAFF
+import com.zenyte.game.item.ItemId.TORMENTED_SYNAPSE
 
 /**
  * @author Glabay | Glabay-Studios

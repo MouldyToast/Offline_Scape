@@ -16,6 +16,43 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ASHES
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BLACK_DHIDE_BODY
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.CANNONBALL
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_BONES
+import com.zenyte.game.item.ItemId.ENSOULED_HELLHOUND_HEAD
+import com.zenyte.game.item.ItemId.ETERNAL_CRYSTAL
+import com.zenyte.game.item.ItemId.FIRE_ORB
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
+import com.zenyte.game.item.ItemId.INFERNAL_ASHES
+import com.zenyte.game.item.ItemId.JAR_OF_SOULS
+import com.zenyte.game.item.ItemId.KEY_MASTER_TELEPORT
+import com.zenyte.game.item.ItemId.LAVA_BATTLESTAFF
+import com.zenyte.game.item.ItemId.PEGASIAN_CRYSTAL
+import com.zenyte.game.item.ItemId.PRIMORDIAL_CRYSTAL
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RUNE_2H_SWORD
+import com.zenyte.game.item.ItemId.RUNE_AXE
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
+import com.zenyte.game.item.ItemId.RUNE_HALBERD
+import com.zenyte.game.item.ItemId.RUNE_PICKAXE
+import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ItemId.RUNITE_BOLTS_UNF
+import com.zenyte.game.item.ItemId.SLAYER_LEFT_BONE
+import com.zenyte.game.item.ItemId.SMOULDERING_STONE
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.SUMMER_PIE
+import com.zenyte.game.item.ItemId.SUPER_RESTORE4
+import com.zenyte.game.item.ItemId.TORSTOL_SEED
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNHOLY_SYMBOL
+import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
 
 class CerberusDroptable : NPCDropTableScript() {
 

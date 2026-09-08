@@ -18,6 +18,13 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.CORRUPTED_BOWSTRING
+import com.zenyte.game.item.ItemId.CORRUPTED_ORB
+import com.zenyte.game.item.ItemId.CORRUPTED_SHARDS
+import com.zenyte.game.item.ItemId.CORRUPTED_SPIKE
+import com.zenyte.game.item.ItemId.CORRUPTED_TELEPORT_CRYSTAL
+import com.zenyte.game.item.ItemId.RAW_PADDLEFISH
+import com.zenyte.game.item.ItemId.WEAPON_FRAME
 
 class CorruptedDemiBossDroptable : NPCDropTableScript() {
 

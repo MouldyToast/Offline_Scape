@@ -13,6 +13,26 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER
+import com.zenyte.game.item.ItemId.EAGLE_EYE_KITESHIELD
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
+import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
+import com.zenyte.game.item.ItemId.GRIMY_HARRALANDER
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.MYSTIC_HAT
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.PET_JUNGLE_STRYKEWYRM
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RUNE_MED_HELM
+import com.zenyte.game.item.ItemId.RUNE_SPEAR
+import com.zenyte.game.item.ItemId.RUNITE_BOLTS
+import com.zenyte.game.item.ItemId.STEEL_BAR
+import com.zenyte.game.item.ItemId.SWORDFISH
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
 
 class JungleStrykewyrmsDroptable : NPCDropTableScript() {
 

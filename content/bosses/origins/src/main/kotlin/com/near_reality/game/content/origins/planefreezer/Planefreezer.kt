@@ -13,6 +13,25 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.COOKED_KARAMBWAN
+import com.zenyte.game.item.ItemId.CRYSTAL_KEY
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.EARTH_ORB
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
+import com.zenyte.game.item.ItemId.GRIMY_SNAPDRAGON
+import com.zenyte.game.item.ItemId.MYSTIC_GLOVES
+import com.zenyte.game.item.ItemId.PRIMAL_BOOTS
+import com.zenyte.game.item.ItemId.PRIMAL_GAUNTLETS
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RUNE_BOOTS
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
+import com.zenyte.game.item.ItemId.STEEL_BAR
+import com.zenyte.game.item.ItemId.TUNA_POTATO
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
+import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class PlanefreezerDroptable : NPCDropTableScript() {
 

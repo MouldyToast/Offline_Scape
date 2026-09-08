@@ -7,6 +7,8 @@ import com.zenyte.game.world.entity.player.dialogue.options
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.ECUMENICAL_KEY
+import com.zenyte.game.item.ItemId.ECUMENICAL_KEY_SHARD
 
 class EcunemincalKeyShardItemaction : ItemActionScript() {
 

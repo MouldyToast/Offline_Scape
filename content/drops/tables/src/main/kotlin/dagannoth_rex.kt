@@ -18,6 +18,39 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.ADAMANT_AXE
+import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
+import com.zenyte.game.item.ItemId.ANTIFIRE_POTION2
+import com.zenyte.game.item.ItemId.BASS
+import com.zenyte.game.item.ItemId.BERSERKER_RING
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DAGANNOTH_BONES
+import com.zenyte.game.item.ItemId.DAGANNOTH_HIDE
+import com.zenyte.game.item.ItemId.DRAGON_AXE
+import com.zenyte.game.item.ItemId.ENSOULED_DAGANNOTH_HEAD
+import com.zenyte.game.item.ItemId.FREMENNIK_BLADE
+import com.zenyte.game.item.ItemId.FREMENNIK_HELM
+import com.zenyte.game.item.ItemId.FREMENNIK_SHIELD
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.MITHRIL_2H_SWORD
+import com.zenyte.game.item.ItemId.MITHRIL_PICKAXE
+import com.zenyte.game.item.ItemId.MITHRIL_WARHAMMER
+import com.zenyte.game.item.ItemId.PRAYER_POTION2
+import com.zenyte.game.item.ItemId.RESTORE_POTION2
+import com.zenyte.game.item.ItemId.RING_OF_LIFE
+import com.zenyte.game.item.ItemId.ROCKSHELL_LEGS
+import com.zenyte.game.item.ItemId.ROCKSHELL_PLATE
+import com.zenyte.game.item.ItemId.RUNE_AXE
+import com.zenyte.game.item.ItemId.STEEL_BAR
+import com.zenyte.game.item.ItemId.STEEL_KITESHIELD
+import com.zenyte.game.item.ItemId.STEEL_PLATEBODY
+import com.zenyte.game.item.ItemId.SUPER_ATTACK2
+import com.zenyte.game.item.ItemId.SUPER_DEFENCE2
+import com.zenyte.game.item.ItemId.SUPER_STRENGTH2
+import com.zenyte.game.item.ItemId.SWORDFISH
+import com.zenyte.game.item.ItemId.WARRIOR_RING
+import com.zenyte.game.item.ItemId.ZAMORAK_BREW2
 
 class DagannothRexDroptable : NPCDropTableScript() {
 

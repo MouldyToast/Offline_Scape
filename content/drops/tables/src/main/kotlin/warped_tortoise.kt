@@ -14,6 +14,25 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_AXE
+import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
+import com.zenyte.game.item.ItemId.BRIMSTONE_KEY
+import com.zenyte.game.item.ItemId.CABBAGE
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.MUD_RUNE
+import com.zenyte.game.item.ItemId.PERFECT_SHELL
+import com.zenyte.game.item.ItemId.PINEAPPLE
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_PICKAXE
+import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
+import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
+import com.zenyte.game.item.ItemId.SWAMP_TAR
+import com.zenyte.game.item.ItemId.TANGLED_TOADS_LEGS
+import com.zenyte.game.item.ItemId.TORTOISE_SHELL
+import com.zenyte.game.item.ItemId.WARPED_SCEPTRE_UNCHARGED
+import com.zenyte.game.item.ItemId.WEAPON_POISON
 
 class WarpedTortoiseDroptable : NPCDropTableScript() {
 

@@ -12,6 +12,11 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_BOOTS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_GLOVES
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_LEGS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_MASK
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_TOP
 
 class NexMinionDroptable : NPCDropTableScript() {
 

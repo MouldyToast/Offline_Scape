@@ -16,6 +16,47 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.ANTIDOTE4_5952
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.CALQUAT_TREE_SEED
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.COCONUT
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGONSTONE_BOLT_TIPS
+import com.zenyte.game.item.ItemId.DRAGON_BONES
+import com.zenyte.game.item.ItemId.DRAGON_HALBERD
+import com.zenyte.game.item.ItemId.DRAGON_MED_HELM
+import com.zenyte.game.item.ItemId.DWARF_WEED
+import com.zenyte.game.item.ItemId.DWARF_WEED_SEED
+import com.zenyte.game.item.ItemId.FLAX
+import com.zenyte.game.item.ItemId.GRAPES
+import com.zenyte.game.item.ItemId.JAR_OF_SWAMP
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.MAGIC_FANG
+import com.zenyte.game.item.ItemId.MAGIC_SEED
+import com.zenyte.game.item.ItemId.MAGMA_MUTAGEN
+import com.zenyte.game.item.ItemId.MAHOGANY_LOGS
+import com.zenyte.game.item.ItemId.MANTA_RAY
+import com.zenyte.game.item.ItemId.PALM_TREE_SEED
+import com.zenyte.game.item.ItemId.PAPAYA_TREE_SEED
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.SERPENTINE_VISAGE
+import com.zenyte.game.item.ItemId.SNAKESKIN
+import com.zenyte.game.item.ItemId.SNAPDRAGON
+import com.zenyte.game.item.ItemId.SNAPDRAGON_SEED
+import com.zenyte.game.item.ItemId.SPIRIT_SEED
+import com.zenyte.game.item.ItemId.SWAMP_TAR
+import com.zenyte.game.item.ItemId.TANZANITE_FANG
+import com.zenyte.game.item.ItemId.TANZANITE_MUTAGEN
+import com.zenyte.game.item.ItemId.TOADFLAX
+import com.zenyte.game.item.ItemId.TOADFLAX_SEED
+import com.zenyte.game.item.ItemId.TORSTOL
+import com.zenyte.game.item.ItemId.TORSTOL_SEED
+import com.zenyte.game.item.ItemId.UNCUT_ONYX
+import com.zenyte.game.item.ItemId.YEW_LOGS
+import com.zenyte.game.item.ItemId.ZULANDRA_TELEPORT
+import com.zenyte.game.item.ItemId.ZULRAHS_SCALES
 
 class ZulrahDroptable : NPCDropTableScript() {
 

@@ -17,6 +17,20 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_FULL_HELM
+import com.zenyte.game.item.ItemId.BIG_BONES
+import com.zenyte.game.item.ItemId.BLACK_MASK_10
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.CURVED_BONE
+import com.zenyte.game.item.ItemId.ENSOULED_HORROR_HEAD
+import com.zenyte.game.item.ItemId.LIMPWURT_ROOT
+import com.zenyte.game.item.ItemId.LONG_BONE
+import com.zenyte.game.item.ItemId.MAHOGANY_LOGS
+import com.zenyte.game.item.ItemId.MITHRIL_AXE
+import com.zenyte.game.item.ItemId.MITHRIL_KITESHIELD
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.RUNE_DAGGER
+import com.zenyte.game.item.ItemId.TEAK_LOGS
 
 class CaveHorrorDroptable : NPCDropTableScript() {
 

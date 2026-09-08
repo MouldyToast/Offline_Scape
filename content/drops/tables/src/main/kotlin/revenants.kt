@@ -12,6 +12,36 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BLACK_DRAGONHIDE
+import com.zenyte.game.item.ItemId.BLIGHTED_ANCIENT_ICE_SACK
+import com.zenyte.game.item.ItemId.BLIGHTED_ENTANGLE_SACK
+import com.zenyte.game.item.ItemId.BLIGHTED_SURGE_SACK
+import com.zenyte.game.item.ItemId.BLIGHTED_TELEPORT_SPELL_SACK
+import com.zenyte.game.item.ItemId.BLIGHTED_VENGEANCE_SACK
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGONSTONE
+import com.zenyte.game.item.ItemId.DRAGONSTONE_BOLT_TIPS
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER
+import com.zenyte.game.item.ItemId.DRAGON_LONGSWORD
+import com.zenyte.game.item.ItemId.DRAGON_PLATELEGS
+import com.zenyte.game.item.ItemId.DRAGON_PLATESKIRT
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.MAGIC_LOGS
+import com.zenyte.game.item.ItemId.MAHOGANY_PLANK
+import com.zenyte.game.item.ItemId.MANTA_RAY
+import com.zenyte.game.item.ItemId.ONYX_BOLT_TIPS
+import com.zenyte.game.item.ItemId.REVENANT_CAVE_TELEPORT
+import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
+import com.zenyte.game.item.ItemId.RUNITE_BAR
+import com.zenyte.game.item.ItemId.SUPER_RESTORE4
+import com.zenyte.game.item.ItemId.YEW_LOGS
 
 class RevenantsDroptable : NPCDropTableScript() {
 

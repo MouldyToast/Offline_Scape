@@ -19,6 +19,36 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.AIR_BATTLESTAFF
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.AIR_TALISMAN
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DAGANNOTH_BONES
+import com.zenyte.game.item.ItemId.DAGANNOTH_HIDE
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_AXE
+import com.zenyte.game.item.ItemId.EARTH_BATTLESTAFF
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.EARTH_TALISMAN
+import com.zenyte.game.item.ItemId.ENSOULED_DAGANNOTH_HEAD
+import com.zenyte.game.item.ItemId.FARSEER_HELM
+import com.zenyte.game.item.ItemId.FREMENNIK_BLADE
+import com.zenyte.game.item.ItemId.FREMENNIK_HELM
+import com.zenyte.game.item.ItemId.FREMENNIK_SHIELD
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.MUD_BATTLESTAFF
+import com.zenyte.game.item.ItemId.MUD_RUNE
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.OYSTER_PEARLS
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.SEERS_RING
+import com.zenyte.game.item.ItemId.SKELETAL_BOTTOMS
+import com.zenyte.game.item.ItemId.SKELETAL_TOP
+import com.zenyte.game.item.ItemId.WATER_BATTLESTAFF
+import com.zenyte.game.item.ItemId.WATER_TALISMAN
 
 class DagannothPrimeDroptable : NPCDropTableScript() {
 

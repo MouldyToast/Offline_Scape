@@ -2,6 +2,10 @@ package com.near_reality.game.content.dt2.plugins.rings
 
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.BELLATOR_ICON
+import com.zenyte.game.item.ItemId.MAGUS_ICON
+import com.zenyte.game.item.ItemId.ULTOR_ICON
+import com.zenyte.game.item.ItemId.VENATOR_ICON
 
 /**
  * @author Glabay | Glabay-Studios

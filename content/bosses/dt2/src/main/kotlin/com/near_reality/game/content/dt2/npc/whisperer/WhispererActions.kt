@@ -6,6 +6,7 @@ import com.near_reality.game.content.dt2.npc.opposing
 import com.near_reality.game.content.dt2.npc.schedule
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.obj.ids.TENTACLE
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.model.music.Music
 import com.zenyte.game.task.WorldTasksManager

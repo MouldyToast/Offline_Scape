@@ -6,6 +6,7 @@ import com.near_reality.game.content.dt2.npc.*
 import com.near_reality.game.content.dt2.npc.leviathan.awakened
 import com.zenyte.game.content.skills.prayer.Prayer
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.npc.ids.TENTACLE
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.util.Direction
 import com.zenyte.game.util.Utils.random

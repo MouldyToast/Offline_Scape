@@ -3,6 +3,7 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.npc.ids.*
+import com.zenyte.game.npc.ids.VYRE_ORATOR
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.`object`.ObjectAction
@@ -61,7 +62,7 @@ class TheatreVyreOrator : ObjectAction {
 
     private companion object {
 
-        val objects = arrayOf(VYRE_ORATOR, VYRE_ORATOR_32757)
+        val objects = arrayOf(com.zenyte.game.obj.ids.VYRE_ORATOR, VYRE_ORATOR_32757)
 
         fun resign(player: Player, party: RaidingParty) {
             player.dialogueManager.start(object : Dialogue(player) {

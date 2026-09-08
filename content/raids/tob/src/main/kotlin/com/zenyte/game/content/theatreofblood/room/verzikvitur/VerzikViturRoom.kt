@@ -7,6 +7,7 @@ import com.zenyte.game.content.theatreofblood.room.*
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur.Companion.TRANSFORM_INTO_SECOND_PHASE_ID
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.first.SupportingPillar
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.obj.ids.TREASURE_ROOM
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Direction

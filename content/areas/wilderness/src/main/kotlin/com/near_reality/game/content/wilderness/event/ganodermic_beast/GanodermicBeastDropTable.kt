@@ -1,6 +1,7 @@
 package com.near_reality.game.content.wilderness.event.ganodermic_beast
 
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.GANODERMIC_RUNT
 import com.zenyte.game.npc.ids.*
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.near_reality.scripts.npc.drops.table.DropTableContext

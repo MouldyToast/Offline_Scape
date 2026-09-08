@@ -3,6 +3,7 @@ package com.near_reality.game.content.boss.nex.item
 import com.zenyte.game.content.skills.smithing.Smithing
 import com.zenyte.game.item.Item
 import com.zenyte.game.item.ids.*
+import com.zenyte.game.item.ids.HAMMER
 import com.zenyte.game.model.item.ItemOnObjectAction
 import com.zenyte.game.world.entity.player.Action
 import com.zenyte.game.world.entity.player.Player

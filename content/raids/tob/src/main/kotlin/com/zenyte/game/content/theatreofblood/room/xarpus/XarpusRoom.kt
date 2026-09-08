@@ -6,6 +6,7 @@ import com.zenyte.game.content.theatreofblood.room.xarpus.npc.Xarpus
 import com.zenyte.game.util.Direction
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.npc.ids.*
+import com.zenyte.game.obj.ids.VYRE_ORATOR
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.obj.ids.*
 import com.zenyte.game.world.`object`.WorldObject

@@ -11,7 +11,7 @@ import com.zenyte.game.content.tombsofamascut.lobby.TOALobbyParty;
 import com.zenyte.game.content.tombsofamascut.object.MirrorObjectAction;
 import com.zenyte.game.content.tombsofamascut.raid.*;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;

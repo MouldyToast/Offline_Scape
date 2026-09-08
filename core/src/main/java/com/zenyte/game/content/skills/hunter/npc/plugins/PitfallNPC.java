@@ -3,7 +3,7 @@ package com.zenyte.game.content.skills.hunter.npc.plugins;
 import com.zenyte.game.content.skills.hunter.HunterUtils;
 import com.zenyte.game.content.skills.hunter.npc.PitfallHunterNPC;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.masks.Animation;

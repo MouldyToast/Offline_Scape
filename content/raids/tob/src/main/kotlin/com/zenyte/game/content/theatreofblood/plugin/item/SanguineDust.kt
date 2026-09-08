@@ -1,7 +1,7 @@
 package com.zenyte.game.content.theatreofblood.plugin.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.SANGUINE_DUST
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId

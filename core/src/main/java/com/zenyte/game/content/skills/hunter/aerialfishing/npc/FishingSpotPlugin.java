@@ -7,7 +7,7 @@ import com.zenyte.game.content.skills.hunter.aerialfishing.LakeMolchArea;
 import com.zenyte.game.content.skills.hunter.aerialfishing.item.AerialFish;
 import com.zenyte.game.content.skills.hunter.aerialfishing.item.AerialFishingTools;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;

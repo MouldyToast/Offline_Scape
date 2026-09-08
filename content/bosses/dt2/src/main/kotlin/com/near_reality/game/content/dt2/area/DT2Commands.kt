@@ -4,7 +4,7 @@ import com.near_reality.game.content.dt2.npc.DT2BossDifficulty
 import com.near_reality.game.content.dt2.npc.get
 import com.near_reality.game.content.dt2.npc.instanceArea
 import com.near_reality.game.content.dt2.npc.leviathan.LeviathanInstance
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.GameCommands.Command
 import com.zenyte.game.world.entity.player.privilege.PlayerPrivilege
@@ -39,9 +39,9 @@ class DT2Commands {
                 DukeSucellusInstance.createInstance(DT2BossDifficulty.AWAKENED, p).constructRegion()
             }
             Command(PlayerPrivilege.FORUM_MODERATOR, "dukeprep") { p, _ ->
-                p.inventory.addItem(ItemId.SALAX_SALT, 6)
-                p.inventory.addItem(ItemId.MUSCA_POWDER, 6)
-                p.inventory.addItem(ItemId.ARDER_POWDER, 6)
+                p.inventory.addItem(SALAX_SALT, 6)
+                p.inventory.addItem(MUSCA_POWDER, 6)
+                p.inventory.addItem(ARDER_POWDER, 6)
             }
         }
     }

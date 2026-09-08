@@ -3,7 +3,7 @@ package com.zenyte.game.content.skills.prayer.ectofuntus;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;

@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant
 
 import com.near_reality.game.content.wilderness.revenant.npc.Revenant
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.masks.UpdateFlag
 import com.zenyte.game.world.entity.npc.NpcId
@@ -48,7 +48,7 @@ object ForinthrySurge {
      */
     @JvmOverloads
     fun activate(player: Player, duration: Int = com.near_reality.game.content.wilderness.revenant.ForinthrySurge.DURATION) {
-        if (player.equipment.getId(EquipmentSlot.AMULET) != ItemId.AMULET_OF_AVARICE) {
+        if (player.equipment.getId(EquipmentSlot.AMULET) != AMULET_OF_AVARICE) {
             player.sendMessage("<col=4f006f>You can't have Forinthry surge without wearing an Amulet of avarice")
             return
         }

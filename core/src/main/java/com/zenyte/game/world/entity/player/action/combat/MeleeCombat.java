@@ -4,7 +4,7 @@ import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.grotesqueguardians.boss.Dawn;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;
@@ -32,7 +32,7 @@ import com.zenyte.game.world.region.area.plugins.EntityAttackPlugin;
 import com.zenyte.game.world.region.area.plugins.PlayerCombatPlugin;
 import mgi.types.config.items.ItemDefinitions;
 
-import static com.zenyte.game.item.ItemId.EMBERLIGHT;
+import static com.zenyte.game.item.ids.ItemId.EMBERLIGHT;
 import static com.zenyte.game.world.entity.npc.NpcId.*;
 import static com.zenyte.game.world.entity.player.action.combat.AttackStyle.AttackExperienceType.*;
 

@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.SkillsNecklaceRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,21 +36,21 @@ class SkillsNecklaceSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.SKILLS_NECKLACE6 to ItemId.SKILLS_NECKLACE5,
-        ItemId.SKILLS_NECKLACE5 to ItemId.SKILLS_NECKLACE4,
-        ItemId.SKILLS_NECKLACE4 to ItemId.SKILLS_NECKLACE3,
-        ItemId.SKILLS_NECKLACE3 to ItemId.SKILLS_NECKLACE2,
-        ItemId.SKILLS_NECKLACE2 to ItemId.SKILLS_NECKLACE1,
-        ItemId.SKILLS_NECKLACE1 to ItemId.SKILLS_NECKLACE,
+        SKILLS_NECKLACE6 to SKILLS_NECKLACE5,
+        SKILLS_NECKLACE5 to SKILLS_NECKLACE4,
+        SKILLS_NECKLACE4 to SKILLS_NECKLACE3,
+        SKILLS_NECKLACE3 to SKILLS_NECKLACE2,
+        SKILLS_NECKLACE2 to SKILLS_NECKLACE1,
+        SKILLS_NECKLACE1 to SKILLS_NECKLACE,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.SKILLS_NECKLACE6,
-            ItemId.SKILLS_NECKLACE5,
-            ItemId.SKILLS_NECKLACE4,
-            ItemId.SKILLS_NECKLACE3,
-            ItemId.SKILLS_NECKLACE2,
-            ItemId.SKILLS_NECKLACE1
+            SKILLS_NECKLACE6,
+            SKILLS_NECKLACE5,
+            SKILLS_NECKLACE4,
+            SKILLS_NECKLACE3,
+            SKILLS_NECKLACE2,
+            SKILLS_NECKLACE1
         )
 }

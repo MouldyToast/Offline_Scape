@@ -1,7 +1,7 @@
 package com.near_reality.game.content.elven.obj
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Analytics
@@ -29,7 +29,7 @@ class ElvenCrystalChest : ObjectAction {
     ) {
         when(option) {
             "Open" -> {
-                if (!tryHandle(player, ItemId.CRYSTAL_KEY) && !tryHandle(player, ItemId.ENHANCED_CRYSTAL_KEY))
+                if (!tryHandle(player, CRYSTAL_KEY) && !tryHandle(player, ENHANCED_CRYSTAL_KEY))
                     player.sendMessage("This chest is securely locked shut.")
             }
             "Check" -> player.showTimesOpenedDialogue()
@@ -46,7 +46,7 @@ class ElvenCrystalChest : ObjectAction {
     private fun tryHandle(player: Player, itemId: Int): Boolean {
         if (!player.inventory.containsItem(itemId, 1))
             return false
-        if (itemId == ItemId.ENHANCED_CRYSTAL_KEY)
+        if (itemId == ENHANCED_CRYSTAL_KEY)
             player.variables.timesOpenedEnhancedCrystalChest++
         player.animation = animation
         player.lock(2)
@@ -58,7 +58,7 @@ class ElvenCrystalChest : ObjectAction {
     }
 
     private fun rollLoot(itemId: Int, player: Player) {
-        if (itemId == ItemId.CRYSTAL_KEY) {
+        if (itemId == CRYSTAL_KEY) {
             NewCrystalChestLoot.rollTable(player, false).forEach { player.inventory.addOrDrop(it) }
         } else {
             NewCrystalChestLoot.rollTable(player, true).forEach { player.inventory.addOrDrop(it) }

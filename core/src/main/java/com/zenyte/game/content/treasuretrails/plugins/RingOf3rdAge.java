@@ -1,7 +1,7 @@
 package com.zenyte.game.content.treasuretrails.plugins;
 
 import com.zenyte.game.GameInterface;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.RenderAnimation;

@@ -5,7 +5,7 @@ import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur.Companion.TRANSFORM_INTO_SECOND_PHASE_ID
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikViturPhase
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikViturRoom
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Direction
 import com.zenyte.game.util.Utils
@@ -78,11 +78,11 @@ internal fun VerzikVitur.switchToSecondPhase() {
     for (p in room.entered) {
         p.varManager.sendBit(VerzikViturRoom.THRONE_VARBIT, 1)
 
-        val amount = p.inventory.getAmountOf(ItemId.DAWNBRINGER)
+        val amount = p.inventory.getAmountOf(DAWNBRINGER)
         if (amount > 0) {
-            p.inventory.deleteItem(ItemId.DAWNBRINGER, amount)
+            p.inventory.deleteItem(DAWNBRINGER, amount)
         }
-        if (p.equipment.getId(EquipmentSlot.WEAPON) == ItemId.DAWNBRINGER) {
+        if (p.equipment.getId(EquipmentSlot.WEAPON) == DAWNBRINGER) {
             p.equipment.set(EquipmentSlot.WEAPON, null)
             p.equipment.container.refresh()
             p.combatDefinitions.autocastSpell = null

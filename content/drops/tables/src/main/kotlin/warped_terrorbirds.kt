@@ -3,7 +3,7 @@ package com.zenyte.game.content
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.NpcId.WARPED_TERRORBIRD
 import com.zenyte.game.world.entity.npc.NpcId.WARPED_TERRORBIRD_12492
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
@@ -16,25 +16,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
-import com.zenyte.game.item.ItemId.ADAMANT_WARHAMMER
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.BRIMSTONE_KEY
-import com.zenyte.game.item.ItemId.CHOCOLATE_BOMB
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DIAMOND_BOLT_TIPS
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.RAW_SHARK
-import com.zenyte.game.item.ItemId.RUNE_BATTLEAXE
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
-import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.SWAMP_TAR
-import com.zenyte.game.item.ItemId.WARPED_SCEPTRE_UNCHARGED
-import com.zenyte.game.item.ItemId.WEAPON_POISON
 
 class WarpedTerrorbirdsDroptable : NPCDropTableScript() {
 
@@ -46,7 +27,7 @@ class WarpedTerrorbirdsDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BONES quantity 1 rarity always
+                BONES quantity 1 rarity always
             }
             Main(248) {
                 // Weapons and Armour
@@ -65,11 +46,11 @@ class WarpedTerrorbirdsDroptable : NPCDropTableScript() {
                 COINS_995 quantity (600..800) oneIn 8  // 600-800
                 RAW_SHARK quantity (3..7).noted oneIn 13  // 3-7
                 SWAMP_TAR quantity (40..60) oneIn 13  // 40-60
-                ItemId.FEATHER quantity (100..200) oneIn 13  // 100-200
+                FEATHER quantity (100..200) oneIn 13  // 100-200
                 WEAPON_POISON quantity 1 oneIn 21     // 1
                 DIAMOND_BOLT_TIPS quantity (24..32) oneIn 21  // 24-32
                 CHOCOLATE_BOMB quantity (2..3) oneIn 21  // 2-3
-                ItemId.ADAMANTITE_ORE quantity (3..5).noted oneIn 32  // 3-5
+                ADAMANTITE_ORE quantity (3..5).noted oneIn 32  // 3-5
                 // Rare
                 chance(9) roll RareDropTable          // 248
             }

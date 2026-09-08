@@ -4,7 +4,7 @@ import com.zenyte.game.content.chambersofxeric.npc.IceDemon;
 import com.zenyte.game.content.chambersofxeric.npc.IcefiendNPC;
 import com.zenyte.game.content.chambersofxeric.room.IceDemonRoom;
 import com.zenyte.game.content.chambersofxeric.skills.RaidWoodcutting;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;

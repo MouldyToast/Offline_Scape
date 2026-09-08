@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.cooking;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 
 /**
  * @author Kris | 24. march 2018 : 21:39.45

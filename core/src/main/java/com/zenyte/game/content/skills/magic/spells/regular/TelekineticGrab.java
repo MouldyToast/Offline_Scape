@@ -33,7 +33,7 @@ import org.slf4j.event.Level;
 import java.util.List;
 
 import static com.zenyte.game.GameConstants.WORLD_PROFILE;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 8. juuli 2018 : 13:29:29

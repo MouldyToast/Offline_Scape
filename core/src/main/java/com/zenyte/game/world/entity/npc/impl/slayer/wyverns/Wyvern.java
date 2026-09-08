@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.npc.impl.slayer.wyverns;
 
 import com.google.common.collect.ImmutableList;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

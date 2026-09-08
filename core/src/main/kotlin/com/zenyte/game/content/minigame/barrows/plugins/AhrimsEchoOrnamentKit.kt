@@ -1,17 +1,17 @@
 package com.zenyte.game.content.minigame.barrows.plugins
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 
 class AhrimsEchoOrnamentKit : ItemOnItemAction {
 
     enum class OrnamentData(val ornament: Int, val base: Int, val product: Int) {
-        ECHO_AHRIM_STAFF(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_STAFF, ItemId.ECHO_AHRIMS_STAFF),
-        ECHO_AHRIM_HOOD(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_HOOD, ItemId.ECHO_AHRIMS_HOOD),
-        ECHO_AHRIM_ROBETOP(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_ROBETOP, ItemId.ECHO_AHRIMS_ROBETOP),
-        ECHO_AHRIM_ROBESKIRT(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_ROBESKIRT, ItemId.ECHO_AHRIMS_ROBESKIRT),
+        ECHO_AHRIM_STAFF(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_STAFF, ECHO_AHRIMS_STAFF),
+        ECHO_AHRIM_HOOD(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_HOOD, ECHO_AHRIMS_HOOD),
+        ECHO_AHRIM_ROBETOP(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_ROBETOP, ECHO_AHRIMS_ROBETOP),
+        ECHO_AHRIM_ROBESKIRT(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_ROBESKIRT, ECHO_AHRIMS_ROBESKIRT),
         ;
 
         companion object {
@@ -45,10 +45,10 @@ class AhrimsEchoOrnamentKit : ItemOnItemAction {
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
         return arrayOf(
-            ItemOnItemAction.ItemPair(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_STAFF),
-            ItemOnItemAction.ItemPair(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_HOOD),
-            ItemOnItemAction.ItemPair(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_ROBETOP),
-            ItemOnItemAction.ItemPair(ItemId.ECHO_AHRIMS_ORNAMENT_KIT, ItemId.AHRIMS_ROBESKIRT),
+            ItemOnItemAction.ItemPair(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_STAFF),
+            ItemOnItemAction.ItemPair(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_HOOD),
+            ItemOnItemAction.ItemPair(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_ROBETOP),
+            ItemOnItemAction.ItemPair(ECHO_AHRIMS_ORNAMENT_KIT, AHRIMS_ROBESKIRT),
         )
     }
 

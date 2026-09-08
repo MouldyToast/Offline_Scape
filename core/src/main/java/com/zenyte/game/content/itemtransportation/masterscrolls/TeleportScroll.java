@@ -9,8 +9,8 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 import java.util.Arrays;
 
-import static com.zenyte.game.item.ItemId.GUTHIXIAN_TEMPLE_TELEPORT;
-import static com.zenyte.game.item.ItemId.SPIDER_CAVE_TELEPORT;
+import static com.zenyte.game.item.ids.ItemId.GUTHIXIAN_TEMPLE_TELEPORT;
+import static com.zenyte.game.item.ids.ItemId.SPIDER_CAVE_TELEPORT;
 
 /**
  * @author Tommeh | 2-4-2018 | 19:43

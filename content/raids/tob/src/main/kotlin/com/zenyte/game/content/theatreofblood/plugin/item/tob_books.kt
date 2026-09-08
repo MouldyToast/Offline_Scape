@@ -4,14 +4,8 @@ import com.zenyte.game.content.Book
 import com.zenyte.game.content.ChapteredBook
 import com.zenyte.game.world.entity.player.Player
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.ARACHNIDS_OF_VAMPYRIUM
-import com.zenyte.game.item.ItemId.SERAFINAS_DIARY
-import com.zenyte.game.item.ItemId.THE_BUTCHER
-import com.zenyte.game.item.ItemId.THE_SHADOW_REALM
-import com.zenyte.game.item.ItemId.THE_WILD_HUNT
-import com.zenyte.game.item.ItemId.VERZIK_VITUR__PATIENT_RECORD
 
 class TobBooksItemaction : ItemActionScript() {
 

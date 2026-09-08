@@ -2,7 +2,7 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.near_reality.game.content.wilderness.revenant.ForinthrySurge
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.Container
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -43,5 +43,5 @@ class AmuletOfAvariceEquipPlugin : EquipPlugin {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.AMULET_OF_AVARICE)
+        intArrayOf(AMULET_OF_AVARICE)
 }

@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.prayer.ectofuntus;
 
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.WorldThread;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.equipment.equip.EquipPlugin;

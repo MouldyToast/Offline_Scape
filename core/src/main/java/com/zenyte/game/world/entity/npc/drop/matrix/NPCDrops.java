@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.follower.impl.BossPet;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.DefaultGson;
 import com.zenyte.game.world.World;

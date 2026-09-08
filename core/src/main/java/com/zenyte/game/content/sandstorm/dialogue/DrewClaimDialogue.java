@@ -1,7 +1,7 @@
 package com.zenyte.game.content.sandstorm.dialogue;
 
 import com.zenyte.game.content.sandstorm.Grinder;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.UnmodifiableItem;
 import com.zenyte.game.util.ItemUtil;
 import com.zenyte.game.world.entity.npc.NPC;

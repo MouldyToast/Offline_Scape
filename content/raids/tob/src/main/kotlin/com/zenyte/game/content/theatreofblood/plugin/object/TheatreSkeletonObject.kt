@@ -2,7 +2,7 @@ package com.zenyte.game.content.theatreofblood.plugin.`object`
 
 import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.start
@@ -28,7 +28,7 @@ class TheatreSkeletonObject : ObjectAction {
             return
         }
 
-        val dawnbringer = Item(ItemId.DAWNBRINGER, 1)
+        val dawnbringer = Item(DAWNBRINGER, 1)
         if (player.inventory.addItem(dawnbringer).isFailure)
             player.sendMessage("You don't have enough inventory space to take the Dawnbringer.")
         else {

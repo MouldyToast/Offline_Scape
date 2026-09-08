@@ -18,7 +18,7 @@ import com.zenyte.game.world.object.WorldObject;
 import com.zenyte.plugins.dialogue.ItemChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getDepositedTaintedEssenceChunks;
-import static com.zenyte.game.item.ItemId.TAINTED_ESSENCE_CHUNK;
+import static com.zenyte.game.item.ids.ItemId.TAINTED_ESSENCE_CHUNK;
 
 
 /**

@@ -1,7 +1,7 @@
 package com.near_reality.game.content.dt2.plugins.objects.duke
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -35,6 +35,6 @@ class FermentationVatCollectObject : ObjectAction {
         val replacement = WorldObject(47536, loc.type, loc.rotation, loc.position)
         World.spawnObject(replacement)
         sendMessage("You collect some poison from the vat.")
-        inventory.addItem(Item(ItemId.ARDERMUSCA_POISON))
+        inventory.addItem(Item(ARDERMUSCA_POISON))
     }
 }

@@ -6,26 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ASGARNIAN_SEED
-import com.zenyte.game.item.ItemId.BARLEY_SEED
-import com.zenyte.game.item.ItemId.CABBAGE_SEED
-import com.zenyte.game.item.ItemId.HAMMERSTONE_SEED
-import com.zenyte.game.item.ItemId.JUTE_SEED
-import com.zenyte.game.item.ItemId.KRANDORIAN_SEED
-import com.zenyte.game.item.ItemId.MARIGOLD_SEED
-import com.zenyte.game.item.ItemId.ONION_SEED
-import com.zenyte.game.item.ItemId.POTATO_SEED
-import com.zenyte.game.item.ItemId.ROSEMARY_SEED
-import com.zenyte.game.item.ItemId.STRAWBERRY_SEED
-import com.zenyte.game.item.ItemId.SWEETCORN_SEED
-import com.zenyte.game.item.ItemId.TOMATO_SEED
-import com.zenyte.game.item.ItemId.WATERMELON_SEED
-import com.zenyte.game.item.ItemId.WILDBLOOD_SEED
-import com.zenyte.game.item.ItemId.YANILLIAN_SEED
 
 class AmeliaSSeedShop : ShopScript() {
 

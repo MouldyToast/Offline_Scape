@@ -2,7 +2,7 @@ package com.zenyte.plugins.itemonitem;
 
 import com.google.common.base.Preconditions;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.PairedItemOnItemPlugin;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Graphics;
@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import static com.zenyte.game.item.ItemId.SMOULDERING_STONE;
+import static com.zenyte.game.item.ids.ItemId.SMOULDERING_STONE;
 
 /**
  * @author Kris | 30/08/2020

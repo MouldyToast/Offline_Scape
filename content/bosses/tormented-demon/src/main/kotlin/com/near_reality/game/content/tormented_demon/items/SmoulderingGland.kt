@@ -2,7 +2,7 @@ package com.near_reality.game.content.tormented_demon.items
 
 import com.near_reality.game.content.seq
 import com.zenyte.game.content.consumables.Consumable
-import com.zenyte.game.item.ItemId.SMOULDERING_GLAND
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.world.World

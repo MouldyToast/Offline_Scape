@@ -2,7 +2,7 @@ package com.near_reality.game.content.wilderness.event.hot_zone
 
 import com.near_reality.game.content.wilderness.event.hot_zone.WildernessHotZoneEvent.message
 import com.near_reality.game.content.wilderness.event.hot_zone.WildernessHotZoneEvent.messagePlayersInHotZone
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.item.Item
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
@@ -46,9 +46,9 @@ internal class WildernessHotZoneRewardHandler {
         val multi = area.wildernessLevelRange.first >= 30
         killsByUsername.rewardPlayers("player kills") { rank ->
             when (rank) {
-                1 -> if (multi) Item(ItemId.PVP_MYSTERY_BOX, 1) else Item(ItemId.BLOOD_MONEY, 5_000)
-                2 -> Item(ItemId.BLOOD_MONEY, if (multi) 2_500 else 500)
-                3 -> Item(ItemId.BLOOD_MONEY, if (multi) 1_000 else 250)
+                1 -> if (multi) Item(PVP_MYSTERY_BOX, 1) else Item(BLOOD_MONEY, 5_000)
+                2 -> Item(BLOOD_MONEY, if (multi) 2_500 else 500)
+                3 -> Item(BLOOD_MONEY, if (multi) 1_000 else 250)
                 else -> null
             }
         }
@@ -57,9 +57,9 @@ internal class WildernessHotZoneRewardHandler {
     private fun rewardPlayersWithMostExperienceGained() {
         experienceGainedByUsername.rewardPlayers("skilling experience gained") { rank ->
             when (rank) {
-                1 -> Item(ItemId.BLOOD_MONEY, 5_000)
-                2 -> Item(ItemId.BLOOD_MONEY, 2_500)
-                3 -> Item(ItemId.BLOOD_MONEY, 1_000)
+                1 -> Item(BLOOD_MONEY, 5_000)
+                2 -> Item(BLOOD_MONEY, 2_500)
+                3 -> Item(BLOOD_MONEY, 1_000)
                 else -> null
             }
         }
@@ -68,9 +68,9 @@ internal class WildernessHotZoneRewardHandler {
     private fun rewardPlayersWithMostMonsterDamageDealt() {
         monsterDamageDealtByUsername.rewardPlayers("monster damage dealt") { rank ->
             when (rank) {
-                1 -> Item(ItemId.BLOOD_MONEY, 5_000)
-                2 -> Item(ItemId.BLOOD_MONEY, 2_500)
-                3 -> Item(ItemId.BLOOD_MONEY, 1_000)
+                1 -> Item(BLOOD_MONEY, 5_000)
+                2 -> Item(BLOOD_MONEY, 2_500)
+                3 -> Item(BLOOD_MONEY, 1_000)
                 else -> null
             }
         }

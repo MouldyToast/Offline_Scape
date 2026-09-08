@@ -4,25 +4,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.AHRIMS_HOOD
-import com.zenyte.game.item.ItemId.AHRIMS_ROBESKIRT
-import com.zenyte.game.item.ItemId.AHRIMS_ROBETOP
-import com.zenyte.game.item.ItemId.AHRIMS_STAFF
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.BOOK_OF_THE_DEAD
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.LOOP_HALF_OF_KEY
-import com.zenyte.game.item.ItemId.MIND_RUNE
-import com.zenyte.game.item.ItemId.TOOTH_HALF_OF_KEY
 
 class DiAhrimDroptable : NPCDropTableScript() {
 

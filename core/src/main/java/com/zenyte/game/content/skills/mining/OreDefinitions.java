@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.mining;
 
 import com.zenyte.game.content.stars.ShootingStarLevel;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.object.ObjectId;
 import com.zenyte.utils.Ordinal;
 import mgi.types.config.items.ItemDefinitions;

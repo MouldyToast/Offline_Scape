@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 30. march 2018 : 2:44.55

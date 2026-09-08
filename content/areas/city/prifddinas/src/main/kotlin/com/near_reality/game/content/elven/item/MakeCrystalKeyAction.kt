@@ -4,7 +4,7 @@ import com.near_reality.game.content.crystal.CRYSTAL_SHARD
 import com.near_reality.game.content.crystal.CrystalRecipe
 import com.near_reality.game.content.elven.canMake
 import com.near_reality.game.content.elven.produce
-import com.zenyte.game.item.ItemId.CRYSTAL_KEY
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.SoundEffect
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Action

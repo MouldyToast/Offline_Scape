@@ -1,6 +1,6 @@
 package com.zenyte.game.content.preset;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import it.unimi.dsi.fastutil.ints.*;
 
 /**

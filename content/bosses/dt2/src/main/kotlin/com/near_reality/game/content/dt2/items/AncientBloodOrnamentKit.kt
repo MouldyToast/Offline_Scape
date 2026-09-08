@@ -12,13 +12,7 @@ import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
 import net.runelite.api.ItemID.TORVA_FULL_HELM
-import com.zenyte.game.item.ItemId.ANCIENT_BLOOD_ORNAMENT_KIT
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.SANGUINE_TORVA_FULL_HELM
-import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATEBODY
-import com.zenyte.game.item.ItemId.SANGUINE_TORVA_PLATELEGS
-import com.zenyte.game.item.ItemId.TORVA_PLATEBODY
-import com.zenyte.game.item.ItemId.TORVA_PLATELEGS
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

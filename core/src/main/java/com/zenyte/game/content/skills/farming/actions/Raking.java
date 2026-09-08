@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.farming.actions;
 
 import com.zenyte.game.content.skills.farming.FarmingSpot;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.Animation;

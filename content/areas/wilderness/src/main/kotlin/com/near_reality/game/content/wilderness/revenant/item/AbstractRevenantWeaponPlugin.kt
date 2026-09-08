@@ -2,7 +2,7 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.BiMap
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.PairedItemOnItemPlugin
 import com.zenyte.game.model.item.degradableitems.DegradableItem
@@ -31,8 +31,8 @@ abstract class AbstractRevenantWeaponPlugin(
 
     final override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> = chargedToUnchargedIdMap.entries.flatMap { (charged, uncharged) ->
         listOf(
-            ItemOnItemAction.ItemPair(charged, ItemId.REVENANT_ETHER),
-            ItemOnItemAction.ItemPair(uncharged, ItemId.REVENANT_ETHER)
+            ItemOnItemAction.ItemPair(charged, REVENANT_ETHER),
+            ItemOnItemAction.ItemPair(uncharged, REVENANT_ETHER)
         )
     }.toTypedArray()
 
@@ -85,7 +85,7 @@ abstract class AbstractRevenantWeaponPlugin(
         slotId: Int,
     ) : Boolean {
         player.inventory
-            .addItem(Item(ItemId.REVENANT_ETHER, item.charges))
+            .addItem(Item(REVENANT_ETHER, item.charges))
             .onFailure { it: Item? -> World.spawnFloorItem(it, player) }
         val unchargedId = chargedToUnchargedIdMap[item.id]
         if (unchargedId != null) {
@@ -147,7 +147,7 @@ abstract class AbstractRevenantWeaponPlugin(
      */
     final override fun handleItemOnItemAction(player: Player?, from: Item?, to: Item?, fromSlot: Int, toSlot: Int) {
         player!!
-        val ether = if (from!!.id == ItemId.REVENANT_ETHER) from else to!!
+        val ether = if (from!!.id == REVENANT_ETHER) from else to!!
         val weapon = if (ether === from) to!! else from
         val existing = weapon.charges
         val toAdd = min((17000 - existing).toDouble(), ether.amount.toDouble()).toInt()

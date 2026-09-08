@@ -58,7 +58,7 @@ import com.zenyte.game.content.stars.ShootingStars;
 import com.zenyte.game.content.universalshop.UniversalShopCommands;
 import com.zenyte.game.content.universalshop.UniversalShopInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.BonusXpManager;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.model.item.enums.RareDrop;

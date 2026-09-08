@@ -5,7 +5,7 @@ import com.near_reality.game.model.item.submenu.impl.ring_of_wealth.RingOfWealth
 import com.near_reality.game.model.item.submenu.impl.slayer_ring.SlayerRingRubAction
 import com.near_reality.game.model.item.submenu.impl.slayer_ring.SlayerRingTeleportAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,29 +36,29 @@ class SlayerRingSubmenu(
     }
 
     private val nexRingMap = mapOf(
-        ItemId.SLAYER_RING_ETERNAL to ItemId.SLAYER_RING_ETERNAL,
-        ItemId.SLAYER_RING_8 to ItemId.SLAYER_RING_7,
-        ItemId.SLAYER_RING_7 to ItemId.SLAYER_RING_6,
-        ItemId.SLAYER_RING_6 to ItemId.SLAYER_RING_5,
-        ItemId.SLAYER_RING_5 to ItemId.SLAYER_RING_4,
-        ItemId.SLAYER_RING_4 to ItemId.SLAYER_RING_3,
-        ItemId.SLAYER_RING_3 to ItemId.SLAYER_RING_2,
-        ItemId.SLAYER_RING_2 to ItemId.SLAYER_RING_1,
-        ItemId.SLAYER_RING_1 to -1,
+        SLAYER_RING_ETERNAL to SLAYER_RING_ETERNAL,
+        SLAYER_RING_8 to SLAYER_RING_7,
+        SLAYER_RING_7 to SLAYER_RING_6,
+        SLAYER_RING_6 to SLAYER_RING_5,
+        SLAYER_RING_5 to SLAYER_RING_4,
+        SLAYER_RING_4 to SLAYER_RING_3,
+        SLAYER_RING_3 to SLAYER_RING_2,
+        SLAYER_RING_2 to SLAYER_RING_1,
+        SLAYER_RING_1 to -1,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.SLAYER_RING_ETERNAL,
+            SLAYER_RING_ETERNAL,
 
-            ItemId.SLAYER_RING_8,
-            ItemId.SLAYER_RING_7,
-            ItemId.SLAYER_RING_6,
-            ItemId.SLAYER_RING_5,
-            ItemId.SLAYER_RING_4,
-            ItemId.SLAYER_RING_3,
-            ItemId.SLAYER_RING_2,
-            ItemId.SLAYER_RING_1
+            SLAYER_RING_8,
+            SLAYER_RING_7,
+            SLAYER_RING_6,
+            SLAYER_RING_5,
+            SLAYER_RING_4,
+            SLAYER_RING_3,
+            SLAYER_RING_2,
+            SLAYER_RING_1
         )
 
 }

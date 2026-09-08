@@ -3,7 +3,7 @@ package com.zenyte.game.content.creaturecreation;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.IntListUtils;
 import com.zenyte.game.world.entity.ImmutableLocation;
 import com.zenyte.game.world.entity.npc.NpcId;

@@ -6,26 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ACHEY_TREE_LOGS
-import com.zenyte.game.item.ItemId.ADAMANT_BRUTAL
-import com.zenyte.game.item.ItemId.BLACK_BRUTAL
-import com.zenyte.game.item.ItemId.BOW_STRING
-import com.zenyte.game.item.ItemId.BRONZE_BRUTAL
-import com.zenyte.game.item.ItemId.COMP_OGRE_BOW
-import com.zenyte.game.item.ItemId.COOKED_CHOMPY
-import com.zenyte.game.item.ItemId.IRON_BRUTAL
-import com.zenyte.game.item.ItemId.KNIFE
-import com.zenyte.game.item.ItemId.MITHRIL_BRUTAL
-import com.zenyte.game.item.ItemId.OGRE_COFFIN_KEY
-import com.zenyte.game.item.ItemId.RAW_CHOMPY
-import com.zenyte.game.item.ItemId.RELICYMS_BALM3
-import com.zenyte.game.item.ItemId.RUNE_BRUTAL
-import com.zenyte.game.item.ItemId.SANFEW_SERUM3
-import com.zenyte.game.item.ItemId.STEEL_BRUTAL
 
 class UglugSStuffsies : ShopScript() {
 

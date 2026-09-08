@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Tommeh | 04/08/2019 | 19:50

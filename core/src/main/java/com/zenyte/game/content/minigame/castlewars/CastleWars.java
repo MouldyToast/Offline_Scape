@@ -2,7 +2,7 @@ package com.zenyte.game.content.minigame.castlewars;
 
 import com.zenyte.game.content.minigame.castlewars.CastleWarsOverlay.CWarsOverlayVarbit;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.player.Player;

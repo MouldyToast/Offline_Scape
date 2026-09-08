@@ -17,7 +17,7 @@ import com.zenyte.game.content.lootkeys.LootkeySettings;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.thieving.CoinPouch;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.containers.LootingBag;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.World;

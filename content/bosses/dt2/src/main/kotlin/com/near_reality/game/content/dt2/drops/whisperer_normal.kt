@@ -10,45 +10,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANT_LONGSWORD
-import com.zenyte.game.item.ItemId.ANCIENT_BREW_4
-import com.zenyte.game.item.ItemId.AWAKENERS_ORB
-import com.zenyte.game.item.ItemId.BATTLESTAFF
-import com.zenyte.game.item.ItemId.BELLATOR_VESTIGE
-import com.zenyte.game.item.ItemId.BRONZE_LONGSWORD
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
-import com.zenyte.game.item.ItemId.CLUE_SCROLL
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGON_JAVELIN_HEADS
-import com.zenyte.game.item.ItemId.DRAGON_PLATESKIRT
-import com.zenyte.game.item.ItemId.EMERALD
-import com.zenyte.game.item.ItemId.MANTA_RAY
-import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
-import com.zenyte.game.item.ItemId.PRAYER_POTION3
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RAW_MONKFISH
-import com.zenyte.game.item.ItemId.RUBY
-import com.zenyte.game.item.ItemId.RUNITE_BOLTS_UNF
-import com.zenyte.game.item.ItemId.SAPPHIRE
-import com.zenyte.game.item.ItemId.SHADOW_QUARTZ
-import com.zenyte.game.item.ItemId.SIRENIC_TABLET
-import com.zenyte.game.item.ItemId.SIRENS_STAFF
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.STEAM_RUNE
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.VIRTUS_MASK
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_LEGS
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_TOP
-import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class WhispererNormalDroptable : NPCDropTableScript() {
 
@@ -94,7 +62,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
 
 
             if (Utils.random(1999) == 0) {
-                npc.dropItemAtKiller(killer, Item(ItemId.WISP))
+                npc.dropItemAtKiller(killer, Item(WISP))
             }
             if (Utils.random(39) == 0) {
                 npc.dropItemAtKiller(killer, Item(CLUE_SCROLL))
@@ -108,10 +76,10 @@ class WhispererNormalDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(AWAKENERS_ORB, 1, 1, 34.00))
         appendDrop(DisplayedDrop(SIRENIC_TABLET, 1, 1, 25.00))
         appendDrop(DisplayedDrop(SHADOW_QUARTZ, 1, 1, 200.00))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_BREW_4, 2, 2, 5.00))
+        appendDrop(DisplayedDrop(ANCIENT_BREW_4, 2, 2, 5.00))
         appendDrop(DisplayedDrop(PRAYER_POTION3, 1, 1, 5.00))
         appendDrop(DisplayedDrop(MANTA_RAY, 3, 4, 5.00))
-        appendDrop(DisplayedDrop(ItemId.WISP, 1, 1, 2000.00))
+        appendDrop(DisplayedDrop(WISP, 1, 1, 2000.00))
 
         appendDrop(DisplayedDrop(BRONZE_LONGSWORD, 16, 24, 100.00))
         appendDrop(DisplayedDrop(MITHRIL_LONGSWORD, 7, 10, 100.00))
@@ -120,12 +88,12 @@ class WhispererNormalDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(DRAGON_PLATESKIRT, 7, 10, 100.00))
 
         appendDrop(DisplayedDrop(PURE_ESSENCE, 280, 420, 100.00))
-        appendDrop(DisplayedDrop(ItemId.IRON_ORE, 88, 133, 100.00))
-        appendDrop(DisplayedDrop(ItemId.COAL, 303, 455, 800.00))
-        appendDrop(DisplayedDrop(ItemId.GOLD_ORE, 88, 133, 100.00))
-        appendDrop(DisplayedDrop(ItemId.MITHRIL_ORE, 88, 133, 100.00))
-        appendDrop(DisplayedDrop(ItemId.ADAMANTITE_ORE, 105, 157, 800.00))
-        appendDrop(DisplayedDrop(ItemId.RUNITE_ORE, 42, 63, 200.00))
+        appendDrop(DisplayedDrop(IRON_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(COAL, 303, 455, 800.00))
+        appendDrop(DisplayedDrop(GOLD_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(MITHRIL_ORE, 88, 133, 100.00))
+        appendDrop(DisplayedDrop(ADAMANTITE_ORE, 105, 157, 800.00))
+        appendDrop(DisplayedDrop(RUNITE_ORE, 42, 63, 200.00))
         appendDrop(DisplayedDrop(SAPPHIRE, 39, 59, 100.00))
         appendDrop(DisplayedDrop(EMERALD, 39, 59, 100.00))
         appendDrop(DisplayedDrop(RUBY, 39, 59, 100.00))
@@ -157,12 +125,12 @@ class WhispererNormalDroptable : NPCDropTableScript() {
 
 
                 PURE_ESSENCE quantity 280.noted rarity 1
-                ItemId.IRON_ORE quantity 88.noted rarity 1
-                ItemId.COAL quantity 303.noted rarity 8
-                ItemId.GOLD_ORE quantity 88.noted rarity 1
-                ItemId.MITHRIL_ORE quantity 88.noted rarity 1
-                ItemId.ADAMANTITE_ORE quantity 105.noted rarity 8
-                ItemId.RUNITE_ORE quantity 42.noted rarity 2
+                IRON_ORE quantity 88.noted rarity 1
+                COAL quantity 303.noted rarity 8
+                GOLD_ORE quantity 88.noted rarity 1
+                MITHRIL_ORE quantity 88.noted rarity 1
+                ADAMANTITE_ORE quantity 105.noted rarity 8
+                RUNITE_ORE quantity 42.noted rarity 2
                 SAPPHIRE quantity 39.noted rarity 1
                 EMERALD quantity 39.noted rarity 1
                 RUBY quantity 39.noted rarity 1
@@ -180,7 +148,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
                 SOUL_RUNE quantity 933 rarity 2
             }
             Tertiary {
-                ItemId.WISP quantity 1 oneIn 2000
+                WISP quantity 1 oneIn 2000
                 CLUE_SCROLL quantity 1 oneIn 40
             }
         }

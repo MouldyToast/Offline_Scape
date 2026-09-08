@@ -3,7 +3,7 @@ package com.zenyte.game.content.chompy.plugins;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.chompy.Chompy;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.HintArrow;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.task.WorldTasksManager;

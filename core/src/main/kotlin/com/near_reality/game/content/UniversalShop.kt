@@ -8,7 +8,7 @@ import com.near_reality.tools.logging.GameLogger
 import com.zenyte.game.GameConstants
 import com.zenyte.game.content.util.playerHasKilledAllNormalBossesOnce
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.item._Item
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.world.entity.player.Player
@@ -199,7 +199,7 @@ object UniversalShop {
             player.sendMessage("This item is currently disabled. Please check discord for updates.")
             return false
         }
-        if (itemId == ItemId.RING_OF_SHADOWS_UNCHARGED && !player.playerHasKilledAllNormalBossesOnce()) {
+        if (itemId == RING_OF_SHADOWS_UNCHARGED && !player.playerHasKilledAllNormalBossesOnce()) {
             player.sendMessage("You need to kill all normal DT2 bosses once, before you can purchase this item.")
             return false
         }

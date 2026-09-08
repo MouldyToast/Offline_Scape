@@ -6,23 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BREAD
-import com.zenyte.game.item.ItemId.BRONZE_ARROW
-import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
-import com.zenyte.game.item.ItemId.BUCKET
-import com.zenyte.game.item.ItemId.COOKED_MEAT
-import com.zenyte.game.item.ItemId.HAMMER
-import com.zenyte.game.item.ItemId.LEATHER_BOOTS
-import com.zenyte.game.item.ItemId.LONGBOW
-import com.zenyte.game.item.ItemId.MEAT_PIE
-import com.zenyte.game.item.ItemId.POT
-import com.zenyte.game.item.ItemId.ROPE
-import com.zenyte.game.item.ItemId.SALMON
-import com.zenyte.game.item.ItemId.TINDERBOX
 
 class WestArdougneGeneralStore : ShopScript() {
 

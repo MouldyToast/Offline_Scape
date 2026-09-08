@@ -3,7 +3,7 @@ package com.zenyte.game.world.entity.player.container.impl.bank;
 import com.zenyte.game.content.lootkeys.LootkeyConstants;
 import com.zenyte.game.content.skills.thieving.CoinPouch;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.testinterfaces.BankInventoryInterface;
 import com.zenyte.game.world.entity.player.Lamp;
 import com.zenyte.game.world.entity.player.Player;

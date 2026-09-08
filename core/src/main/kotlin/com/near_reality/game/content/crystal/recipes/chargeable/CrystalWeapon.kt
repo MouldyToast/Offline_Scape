@@ -3,7 +3,7 @@ package com.near_reality.game.content.crystal.recipes.chargeable
 import com.near_reality.game.content.crystal.CrystalSeed
 import com.near_reality.game.content.crystal.recipes.CrystalChargeable
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.degradableitems.DegradeType
 
 /**
@@ -31,8 +31,8 @@ sealed class CrystalWeapon(
     override val type: DegradeType = DegradeType.CUSTOM
 
     object BladeOfSaeldor : CrystalWeapon(
-        productItemId = ItemId.BLADE_OF_SAELDOR,
-        inactiveId = ItemId.BLADE_OF_SAELDOR_INACTIVE,
+        productItemId = BLADE_OF_SAELDOR,
+        inactiveId = BLADE_OF_SAELDOR_INACTIVE,
         startCharges = 20_000,
         maximumCharges = 20_000,
         crystalShardCost = 100,
@@ -44,8 +44,8 @@ sealed class CrystalWeapon(
     )
 
     object BowOfFaerdhinen : CrystalWeapon(
-        productItemId = ItemId.BOW_OF_FAERDHINEN,
-        inactiveId = ItemId.BOW_OF_FAERDHINEN_INACTIVE,
+        productItemId = BOW_OF_FAERDHINEN,
+        inactiveId = BOW_OF_FAERDHINEN_INACTIVE,
         startCharges = 20_000,
         maximumCharges = 20_000,
         crystalShardCost = 100,
@@ -57,8 +57,8 @@ sealed class CrystalWeapon(
     )
 
     object Bow : CrystalWeapon(
-        productItemId = ItemId.CRYSTAL_BOW,
-        inactiveId = ItemId.CRYSTAL_BOW_INACTIVE,
+        productItemId = CRYSTAL_BOW,
+        inactiveId = CRYSTAL_BOW_INACTIVE,
         startCharges = 20_000,
         maximumCharges = 20_000,
         crystalShardCost = 40,
@@ -70,8 +70,8 @@ sealed class CrystalWeapon(
     )
 
     object Halberd : CrystalWeapon(
-        productItemId = ItemId.CRYSTAL_HALBERD,
-        inactiveId = ItemId.CRYSTAL_HALBERD_INACTIVE,
+        productItemId = CRYSTAL_HALBERD,
+        inactiveId = CRYSTAL_HALBERD_INACTIVE,
         startCharges = 20_000,
         maximumCharges = 20_000,
         crystalShardCost = 40,
@@ -83,8 +83,8 @@ sealed class CrystalWeapon(
     )
 
     object Shield : CrystalWeapon(
-        productItemId = ItemId.CRYSTAL_SHIELD,
-        inactiveId = ItemId.CRYSTAL_SHIELD_INACTIVE,
+        productItemId = CRYSTAL_SHIELD,
+        inactiveId = CRYSTAL_SHIELD_INACTIVE,
         startCharges = 20_000,
         maximumCharges = 20_000,
         crystalShardCost = 40,

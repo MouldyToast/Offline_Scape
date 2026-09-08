@@ -1,7 +1,7 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
 import com.near_reality.game.content.commands.DeveloperCommands;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.content.minigame.fightcaves.npcs.FightCavesNPC;
 import com.zenyte.game.content.minigame.inferno.npc.InfernoNPC;
 import com.zenyte.game.content.tombsofamascut.AbstractTheatreNPC;
@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static com.zenyte.game.item.ItemId.BALMUNG;
+import static com.zenyte.game.item.ids.ItemId.BALMUNG;
 
 public class CombatUtilities {
     public static final Animation CAST = new Animation(711);

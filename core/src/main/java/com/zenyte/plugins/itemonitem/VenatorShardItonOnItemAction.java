@@ -2,7 +2,7 @@ package com.zenyte.plugins.itemonitem;
 
 import com.zenyte.game.content.skills.herblore.actions.Combine;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;

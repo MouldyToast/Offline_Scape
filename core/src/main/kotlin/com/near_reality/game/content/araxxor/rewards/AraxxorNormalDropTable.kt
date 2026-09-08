@@ -1,35 +1,8 @@
 package com.near_reality.game.content.araxxor.rewards
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import java.util.concurrent.ThreadLocalRandom
-import com.zenyte.game.item.ItemId.ANTIDOTE3
-import com.zenyte.game.item.ItemId.ARAXYTE_HEAD
-import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DRAGON_PLATELEGS
-import com.zenyte.game.item.ItemId.JAR_OF_VENOM
-import com.zenyte.game.item.ItemId.MAGIC_SEED
-import com.zenyte.game.item.ItemId.MORT_MYRE_FUNGUS
-import com.zenyte.game.item.ItemId.MUD_RUNE
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RANARR_SEED
-import com.zenyte.game.item.ItemId.RAW_MONKFISH
-import com.zenyte.game.item.ItemId.RAW_SHARK
-import com.zenyte.game.item.ItemId.RED_SPIDERS_EGGS
-import com.zenyte.game.item.ItemId.RUNE_2H_SWORD
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
-import com.zenyte.game.item.ItemId.RUNITE_ORE
-import com.zenyte.game.item.ItemId.SLAYER_BASE
-import com.zenyte.game.item.ItemId.SNAPDRAGON_SEED
-import com.zenyte.game.item.ItemId.SPIDER_CAVE_TELEPORT
-import com.zenyte.game.item.ItemId.TOADFLAX_SEED
-import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
-import com.zenyte.game.item.ItemId.YEW_LOGS
-import com.zenyte.game.item.ItemId.YEW_SEED
 
 /**
  * @author Glabay | Glabay-Studios
@@ -46,7 +19,7 @@ enum class AraxxorNormalDropTable(
     // Weapons and Armor
     RUNE_KITE(RUNE_KITESHIELD+1, 2, 2, 14.38),
     RUNE_LEGS(RUNE_PLATELEGS+1, 2, 2, 14.38),
-    DRAGON_MACE(ItemId.DRAGON_MACE, 2, 2, 19.17),
+    DRAGON_MACE(DRAGON_MACE, 2, 2, 19.17),
     RUNE_2H(RUNE_2H_SWORD+1, 5, 5, 115.0),
     DRAGON_LEGS(DRAGON_PLATELEGS, 2, 2, 115.0),
 
@@ -64,9 +37,9 @@ enum class AraxxorNormalDropTable(
     MAGIC(MAGIC_SEED, 2, 2, 115.0),
 
     // Resources
-    COAL(ItemId.COAL+1, 120, 120, 28.75),
-    ADAMANITE(ItemId.ADAMANTITE_ORE+1, 85, 85, 28.75),
-    RAW_SHARK_1(ItemId.RAW_SHARK+1, 21, 21, 28.75),
+    COAL(COAL+1, 120, 120, 28.75),
+    ADAMANITE(ADAMANTITE_ORE+1, 85, 85, 28.75),
+    RAW_SHARK_1(RAW_SHARK+1, 21, 21, 28.75),
     YEW_LOG(YEW_LOGS+1, 70, 70, 38.33),
     RUNE_ORE(RUNITE_ORE+1, 12, 12, 57.5),
     RAW_SHARK_2(RAW_SHARK+1, 100, 100, 115.0),
@@ -75,14 +48,14 @@ enum class AraxxorNormalDropTable(
 
     // Other
     SPIDER_TELEPORT(SPIDER_CAVE_TELEPORT, 3, 3, 14.38),
-    EARTH_ORB(ItemId.EARTH_ORB+1, 45, 45, 19.17),
+    EARTH_ORB(EARTH_ORB+1, 45, 45, 19.17),
     VENOM_SACK_1(ARAXYTE_VENOM_SACK, 6, 6, 23.0),
     MYRE_FUNGUS(MORT_MYRE_FUNGUS+1, 24, 24, 28.75),
     ANTIDOTE_PP(ANTIDOTE3+1, 6, 6, 28.75),
     ZAMMY_WINE(WINE_OF_ZAMORAK+1, 8, 8, 38.33),
     SPIDER_EGG(RED_SPIDERS_EGGS+1, 40, 40, 57.5),
     VENOM_SACK_2(ARAXYTE_VENOM_SACK, 12, 12, 57.5),
-    BARK(ItemId.BARK+1, 15, 15, 115.0),
+    BARK(BARK+1, 15, 15, 115.0),
     HEAD(ARAXYTE_HEAD, 1, 1, 100.0),
     VENOM_JAR(JAR_OF_VENOM, 1, 1, 600.0),
     SLAYER_PLATFORM(SLAYER_BASE, 1, 1, 500.0)

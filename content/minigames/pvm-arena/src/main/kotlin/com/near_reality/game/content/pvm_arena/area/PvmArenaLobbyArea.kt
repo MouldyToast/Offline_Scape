@@ -3,7 +3,7 @@ package com.near_reality.game.content.pvm_arena.area
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.GlobalAreaManager
@@ -64,9 +64,9 @@ class PvmArenaLobbyArea :
                 PvmArenaRedFightArea -> Location(1759, 4706, 0)
                 null -> TELEPORT_LOCATION.copy()
             }
-            val bandagesInInventory = player.inventory.getAmountOf(ItemId.BANDAGES_25730)
+            val bandagesInInventory = player.inventory.getAmountOf(BANDAGES_25730)
             if (bandagesInInventory > 0){
-                player.inventory.deleteItem(Item(ItemId.BANDAGES_25730, bandagesInInventory))
+                player.inventory.deleteItem(Item(BANDAGES_25730, bandagesInInventory))
                 player.sendMessage("You have lost your bandages.")
             }
             player.blockIncomingHits(5)

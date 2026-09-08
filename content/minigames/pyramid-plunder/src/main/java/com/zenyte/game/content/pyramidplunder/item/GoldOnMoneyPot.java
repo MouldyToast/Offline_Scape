@@ -1,7 +1,7 @@
 package com.zenyte.game.content.pyramidplunder.item;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.player.Player;

@@ -1,7 +1,7 @@
 package com.zenyte.game.content.follower.impl;
 
 import com.near_reality.game.content.slayer.RegularTask;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.GameConstants;
 import com.zenyte.game.content.follower.Follower;
 import com.zenyte.game.content.follower.Pet;

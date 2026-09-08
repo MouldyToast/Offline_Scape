@@ -1,7 +1,7 @@
 package com.near_reality.cache_tool.packing.custom
 
 import com.near_reality.cache_tool.packing.JagexColor
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.items.ItemDefinitions
 import mgi.types.config.npcs.NPCDefinitions
@@ -154,7 +154,7 @@ fun ItemDefinitions.ItemDefinitionsBuilder.models(
     .primaryFemaleModel(primaryFemale)
     .secondaryFemaleModel(secondaryFemale)
 
-fun Any.whipDefinition() = ItemDefinitions.get(ItemId.ABYSSAL_WHIP)
+fun Any.whipDefinition() = ItemDefinitions.get(ABYSSAL_WHIP)
 fun Int.newItem() = ItemDefinitions(this).toBuilder()
 fun Int.cloneThisTo(newId: Int) = ItemDefinitions.get(this).toBuilder().id(newId)
 

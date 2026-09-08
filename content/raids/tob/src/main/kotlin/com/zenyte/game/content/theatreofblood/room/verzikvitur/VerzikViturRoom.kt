@@ -6,7 +6,7 @@ import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.content.theatreofblood.room.*
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur.Companion.TRANSFORM_INTO_SECOND_PHASE_ID
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.first.SupportingPillar
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Direction
@@ -169,7 +169,7 @@ internal class VerzikViturRoom(raid: TheatreOfBloodRaid, area: AllocatedArea, ro
                 player.sendMessage("Welcome to the final fight.")
                 if(raid.bypassMode) {
                     player.sendMessage(Colour.RS_RED.wrap("You have been granted the Dawnbringer."))
-                    player.inventory.addOrDrop(ItemId.DAWNBRINGER)
+                    player.inventory.addOrDrop(DAWNBRINGER)
                 }
             }
         }

@@ -4,7 +4,7 @@ import com.zenyte.game.model.item.ImmutableItem;
 
 import java.util.List;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 24/10/2019

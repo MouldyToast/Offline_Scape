@@ -1,7 +1,7 @@
 package com.near_reality.game.content.araxxor.items
 
 import com.near_reality.game.util.Ticker
-import com.zenyte.game.item.ItemId.ARANEA_BOOTS
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 
 /**

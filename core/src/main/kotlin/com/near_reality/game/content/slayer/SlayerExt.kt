@@ -3,7 +3,7 @@ package com.near_reality.game.content.slayer
 import com.near_reality.game.content.slayer.dialogue.SumonaAssignmentD.Companion.SUMMONA_TASK_COST
 import com.near_reality.tools.logging.GameLogMessage
 import com.near_reality.tools.logging.GameLogger
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.attribute
 import com.zenyte.game.world.entity.player.Player
@@ -32,7 +32,7 @@ infix fun Player.hasSlayerLevel(level: Int) : Boolean = skills.getLevel(SkillCon
 fun SlayerMaster.isKonar() = this == SlayerMaster.KONAR_QUO_MATEN
 
 fun Player.underSumonaReqs() = skills.getLevel(SkillConstants.SLAYER) < SlayerMaster.SUMONA.slayerRequirement || skills.combatLevel < SlayerMaster.SUMONA.combatRequirement
-fun Player.underSumonaGP() = inventory.getAmountOf(ItemId.COINS_995) < SUMMONA_TASK_COST
+fun Player.underSumonaGP() = inventory.getAmountOf(COINS_995) < SUMMONA_TASK_COST
 var Player.hasActiveSuperior: Boolean by attribute("superior monster", false)
 var Player.overrideSuperiorRate: Int by attribute("superior rate", 0)
 fun Player.generateSumonaTask(): Assignment {

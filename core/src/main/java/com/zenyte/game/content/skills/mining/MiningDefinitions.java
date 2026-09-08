@@ -4,7 +4,7 @@ import com.near_reality.game.content.crystal.TrahaearnMineRocks;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.skills.mining.PickAxeDefinition;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;

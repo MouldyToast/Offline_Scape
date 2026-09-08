@@ -19,7 +19,7 @@ import com.zenyte.plugins.dialogue.DoubleItemChat;
 import com.zenyte.plugins.dialogue.PlainChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getDepositedTaintedEssenceChunks;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Zei | Glabay-Studios

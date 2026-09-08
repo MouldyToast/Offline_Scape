@@ -1,7 +1,7 @@
 package com.zenyte.plugins.itemonnpc;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.npc.NPC;

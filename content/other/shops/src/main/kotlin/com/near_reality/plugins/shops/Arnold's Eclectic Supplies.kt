@@ -6,22 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BEER
-import com.zenyte.game.item.ItemId.BREAD
-import com.zenyte.game.item.ItemId.BUCKET_OF_MILK
-import com.zenyte.game.item.ItemId.GLASSBLOWING_PIPE
-import com.zenyte.game.item.ItemId.HARPOON
-import com.zenyte.game.item.ItemId.KNIFE
-import com.zenyte.game.item.ItemId.MONKFISH
-import com.zenyte.game.item.ItemId.NEEDLE
-import com.zenyte.game.item.ItemId.POT
-import com.zenyte.game.item.ItemId.RAW_MONKFISH
-import com.zenyte.game.item.ItemId.SMALL_FISHING_NET
-import com.zenyte.game.item.ItemId.THREAD
 
 class ArnoldSEclecticSupplies : ShopScript() {
 

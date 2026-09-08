@@ -8,7 +8,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.tog.juna.Juna;
 import com.zenyte.game.content.tog.juna.JunaEnterDialogue;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.GameTab;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTasksManager;

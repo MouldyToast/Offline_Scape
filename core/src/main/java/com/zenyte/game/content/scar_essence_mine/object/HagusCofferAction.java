@@ -22,7 +22,7 @@ import com.zenyte.plugins.dialogue.ItemChat;
 import com.zenyte.plugins.dialogue.PlainChat;
 
 import static com.near_reality.game.world.entity.player.PlayerAttributesKt.getScarEssenceMineCoffer;
-import static com.zenyte.game.item.ItemId.COINS_995;
+import static com.zenyte.game.item.ids.ItemId.COINS_995;
 
 /**
  * @author Zei

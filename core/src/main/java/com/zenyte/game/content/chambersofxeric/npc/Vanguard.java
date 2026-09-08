@@ -5,7 +5,7 @@ import com.zenyte.game.content.chambersofxeric.Raid;
 import com.zenyte.game.content.chambersofxeric.ScalingMechanics;
 import com.zenyte.game.content.chambersofxeric.room.VanguardRoom;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;

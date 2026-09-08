@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.content.treasuretrails.rewards.ClueReward;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Colour;

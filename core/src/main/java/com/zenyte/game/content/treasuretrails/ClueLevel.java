@@ -3,7 +3,7 @@ package com.zenyte.game.content.treasuretrails;
 import com.zenyte.game.content.treasuretrails.rewards.ClueReward;
 import com.zenyte.game.content.treasuretrails.rewards.ClueRewardTable;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.player.Emote;
 import com.zenyte.game.world.entity.player.Player;

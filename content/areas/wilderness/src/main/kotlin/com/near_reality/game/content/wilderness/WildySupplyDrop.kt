@@ -1,6 +1,6 @@
 //package com.near_reality.game.content.wilderness
 //
-//import com.zenyte.game.item.ItemId
+//import com.zenyte.game.item.ids.*
 //import com.zenyte.game.item.Item
 //import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 //import com.zenyte.game.util.Utils

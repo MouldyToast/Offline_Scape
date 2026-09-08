@@ -6,19 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ADAMANT_ARROW
-import com.zenyte.game.item.ItemId.MAPLE_LONGBOW
-import com.zenyte.game.item.ItemId.MAPLE_SHORTBOW
-import com.zenyte.game.item.ItemId.MITHRIL_ARROW
-import com.zenyte.game.item.ItemId.OAK_LONGBOW
-import com.zenyte.game.item.ItemId.OAK_SHORTBOW
-import com.zenyte.game.item.ItemId.STEEL_ARROW
-import com.zenyte.game.item.ItemId.WILLOW_LONGBOW
-import com.zenyte.game.item.ItemId.WILLOW_SHORTBOW
 
 class BrianSArcherySupplies : ShopScript() {
 

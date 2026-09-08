@@ -1,7 +1,7 @@
 package com.zenyte.game.content.boss.cerberus;
 
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.Projectile;
 import com.zenyte.game.world.World;

@@ -6,7 +6,7 @@ import com.zenyte.game.content.skills.magic.spells.teleports.ItemTeleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.model.ui.GameTab;
 import com.zenyte.game.util.Colour;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static com.zenyte.game.content.skills.magic.spells.teleports.ItemTeleport.*;
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 public class NewMaxCapes extends ItemPlugin {
 

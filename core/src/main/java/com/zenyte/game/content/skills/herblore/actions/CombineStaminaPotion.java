@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.herblore.actions;
 
 import com.zenyte.game.content.consumables.drinks.Potion;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Action;
 import com.zenyte.game.world.entity.player.SkillConstants;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;

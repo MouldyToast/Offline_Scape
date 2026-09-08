@@ -4,75 +4,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.AIR_BATTLESTAFF
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.AMULET_OF_DEFENCE
-import com.zenyte.game.item.ItemId.AMULET_OF_MAGIC
-import com.zenyte.game.item.ItemId.AMULET_OF_STRENGTH
-import com.zenyte.game.item.ItemId.AVANTOE_SEED
-import com.zenyte.game.item.ItemId.BELLADONNA_SEED
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.CACTUS_SEED
-import com.zenyte.game.item.ItemId.CADANTINE_SEED
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.COSMIC_RUNE
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.DWARF_WEED_SEED
-import com.zenyte.game.item.ItemId.EARTH_BATTLESTAFF
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.EYE_OF_NEWT
-import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
-import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
-import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
-import com.zenyte.game.item.ItemId.GRIMY_GUAM_LEAF
-import com.zenyte.game.item.ItemId.GRIMY_HARRALANDER
-import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
-import com.zenyte.game.item.ItemId.GRIMY_KWUARM
-import com.zenyte.game.item.ItemId.GRIMY_LANTADYME
-import com.zenyte.game.item.ItemId.GRIMY_MARRENTILL
-import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
-import com.zenyte.game.item.ItemId.GRIMY_TARROMIN
-import com.zenyte.game.item.ItemId.GRUBBY_KEY
-import com.zenyte.game.item.ItemId.HARRALANDER_SEED
-import com.zenyte.game.item.ItemId.IRIT_SEED
-import com.zenyte.game.item.ItemId.JANGERBERRY_SEED
-import com.zenyte.game.item.ItemId.KWUARM_SEED
-import com.zenyte.game.item.ItemId.LANTADYME_SEED
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.LIMPWURT_SEED
-import com.zenyte.game.item.ItemId.MARRENTILL_SEED
-import com.zenyte.game.item.ItemId.MASK_OF_RANUL
-import com.zenyte.game.item.ItemId.MUD_RUNE
-import com.zenyte.game.item.ItemId.MUSHROOM_SPORE
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.POISON_IVY_SEED
-import com.zenyte.game.item.ItemId.POTATO_CACTUS
-import com.zenyte.game.item.ItemId.POTATO_CACTUS_SEED
-import com.zenyte.game.item.ItemId.RANARR_SEED
-import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
-import com.zenyte.game.item.ItemId.SNAPDRAGON_SEED
-import com.zenyte.game.item.ItemId.SNAPE_GRASS_SEED
-import com.zenyte.game.item.ItemId.STRAWBERRY_SEED
-import com.zenyte.game.item.ItemId.TARROMIN_SEED
-import com.zenyte.game.item.ItemId.TATTERED_MOON_PAGE
-import com.zenyte.game.item.ItemId.TATTERED_SUN_PAGE
-import com.zenyte.game.item.ItemId.TATTERED_TEMPLE_PAGE
-import com.zenyte.game.item.ItemId.TOADFLAX_SEED
-import com.zenyte.game.item.ItemId.TORSTOL_SEED
-import com.zenyte.game.item.ItemId.WATERMELON_SEED
-import com.zenyte.game.item.ItemId.WHITEBERRY_SEED
-import com.zenyte.game.item.ItemId.WHITE_BERRIES
-import com.zenyte.game.item.ItemId.WILDBLOOD_SEED
-import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
-import com.zenyte.game.item.ItemId.ZOMBIE_CHAMPION_SCROLL
 
 class UndeadDruidDroptable : NPCDropTableScript() {
 
@@ -87,7 +25,7 @@ class UndeadDruidDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BONES quantity 1 rarity always
+                BONES quantity 1 rarity always
             }
 
             Main {

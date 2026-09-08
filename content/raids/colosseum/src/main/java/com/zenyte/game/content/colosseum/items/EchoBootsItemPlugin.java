@@ -2,7 +2,7 @@ package com.zenyte.game.content.colosseum.items;
 
 import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.model.item.pluginextensions.ChargeExtension;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;

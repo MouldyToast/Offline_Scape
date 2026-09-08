@@ -6,7 +6,7 @@ import com.near_reality.game.content.slayer.RegularTask
 import com.near_reality.game.content.wilderness.slayer.WildernessSlayerEmblem.Companion.roll
 import com.near_reality.game.content.slayer.SlayerMaster
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
@@ -49,14 +49,14 @@ class WildernessSlayerDropProcessor : DropProcessor() {
         val enchantmentChance = (1.0f / (320 - (hitpoints * 0.8f)))
         val enchantmentPercentage = enchantmentChance * 100.0f
         val enchantmentFraction = (100.0f / enchantmentPercentage).toInt()
-        append(ItemId.SLAYERS_ENCHANTMENT, (if (isBossTask) 30 else enchantmentFraction), npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia.")
+        append(SLAYERS_ENCHANTMENT, (if (isBossTask) 30 else enchantmentFraction), npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia.")
     }
 
     private fun attachSlayerEmblemDrop(hitpoints: Int, npcId: Int) {
         val emblemChance = 1.0f / (155 - (hitpoints / 2.0f))
         val percentage = emblemChance * 100.0f
         val fraction = (100.0f / percentage).toInt()
-        append(ItemId.MYSTERIOUS_EMBLEM, fraction, npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia. May occasionally drop as a higher tier.")
+        append(MYSTERIOUS_EMBLEM, fraction, npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia. May occasionally drop as a higher tier.")
     }
 
     private fun append(itemId: Int, chance: Number, npcId: Int, description: String) {
@@ -86,7 +86,7 @@ class WildernessSlayerDropProcessor : DropProcessor() {
         else
             1.0f / (320 - (npc.maxHitpoints * 0.8f))
         if (Utils.randomDouble() <= enchantmentChance)
-            npc.dropItem(killer, Item(ItemId.SLAYERS_ENCHANTMENT))
+            npc.dropItem(killer, Item(SLAYERS_ENCHANTMENT))
     }
 
     private fun rollSlayerEmblemDrop(npc: NPC, killer: Player) {

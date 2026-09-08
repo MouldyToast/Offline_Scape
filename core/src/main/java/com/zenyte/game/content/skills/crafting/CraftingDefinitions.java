@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.crafting;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.player.Player;

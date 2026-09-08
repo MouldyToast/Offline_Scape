@@ -4,7 +4,7 @@ import com.google.common.base.CaseFormat
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.content.skills.magic.spells.DefaultSpell
 import com.zenyte.game.gameClock
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.ProjectileUtils
@@ -57,7 +57,7 @@ enum class ThrallSpell(
             player.sendMessage("You can only cast resurrection spells every 10 seconds.")
             return false
         }
-        if (player.shield?.id != ItemId.BOOK_OF_THE_DEAD && !player.inventory.containsItem(ItemId.BOOK_OF_THE_DEAD)) {
+        if (player.shield?.id != BOOK_OF_THE_DEAD && !player.inventory.containsItem(BOOK_OF_THE_DEAD)) {
             player.sendMessage("You must have a Book of the Dead in your possession to use this spell.")
             return false
         }

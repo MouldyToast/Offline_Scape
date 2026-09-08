@@ -1,7 +1,7 @@
 package com.zenyte.game.content.skills.magic;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.logger.NearRealityLogger;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import mgi.types.config.enums.EnumDefinitions;

@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.hunter.plugins;
 
 import com.zenyte.game.content.skills.hunter.object.Birdhouse;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.object.WorldObject;

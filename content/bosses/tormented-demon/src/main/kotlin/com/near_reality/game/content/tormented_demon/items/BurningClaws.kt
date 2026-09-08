@@ -1,8 +1,7 @@
 package com.near_reality.game.content.tormented_demon.items
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.BURNING_CLAW
-import com.zenyte.game.item.ItemId.BURNING_CLAWS
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.PairedItemOnItemPlugin
 import com.zenyte.game.world.entity.player.Player

@@ -1,6 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NpcId;

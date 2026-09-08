@@ -1,7 +1,7 @@
 package com.zenyte.plugins.flooritem;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.player.Player;

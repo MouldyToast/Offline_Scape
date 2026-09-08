@@ -6,15 +6,7 @@ import com.zenyte.game.world.entity.player.Action
 import com.zenyte.game.world.entity.player.SkillConstants
 import com.zenyte.game.world.entity.player.container.RequestResult
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap
-import com.zenyte.game.item.ItemId.ANTIVENOM1_12919
-import com.zenyte.game.item.ItemId.ANTIVENOM2_12917
-import com.zenyte.game.item.ItemId.ANTIVENOM3_12915
-import com.zenyte.game.item.ItemId.ANTIVENOM4_12913
-import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
-import com.zenyte.game.item.ItemId.EXTENDED_ANTIVENOM1
-import com.zenyte.game.item.ItemId.EXTENDED_ANTIVENOM2
-import com.zenyte.game.item.ItemId.EXTENDED_ANTIVENOM3
-import com.zenyte.game.item.ItemId.EXTENDED_ANTIVENOM4
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

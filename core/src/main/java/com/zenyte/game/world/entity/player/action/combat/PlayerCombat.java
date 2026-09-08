@@ -13,7 +13,7 @@ import com.zenyte.game.content.skills.magic.spells.MagicSpell;
 import com.zenyte.game.content.skills.magic.spells.arceuus.GreaterCorruptionKt;
 import com.zenyte.game.content.tombsofamascut.AbstractTOARaidArea;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;

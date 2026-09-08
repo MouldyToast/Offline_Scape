@@ -6,7 +6,7 @@ import com.zenyte.game.content.consumables.Edible;
 import com.zenyte.game.content.event.christmas2019.ChristmasConstants;
 import com.zenyte.game.content.minigame.inferno.instance.Inferno;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.ForceTalk;
 import com.zenyte.game.world.entity.Toxins;

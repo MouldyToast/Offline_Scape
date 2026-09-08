@@ -6,16 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BALL_OF_WOOL
-import com.zenyte.game.item.ItemId.BRONZE_AXE
-import com.zenyte.game.item.ItemId.HAMMER
-import com.zenyte.game.item.ItemId.KNIFE
-import com.zenyte.game.item.ItemId.NEEDLE
-import com.zenyte.game.item.ItemId.THREAD
 
 class NeitiznotSupplies : ShopScript() {
 

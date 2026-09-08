@@ -8,7 +8,7 @@ import com.zenyte.game.content.skills.farming.PatchType;
 import com.zenyte.game.content.skills.farming.hespori.HesporiInstance;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.containers.HerbSack;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;

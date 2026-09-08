@@ -7,7 +7,7 @@ import com.zenyte.game.world.entity.masks.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 /**
  * @author Tommeh | 2 okt. 2018 | 21:07:27

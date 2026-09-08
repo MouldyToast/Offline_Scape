@@ -5,7 +5,7 @@ import com.zenyte.game.item.Item;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.dialogue.SkillDialogue;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Zei | Glabay-Studios

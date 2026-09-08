@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.woodcutting.AxeDefinitions;
 import com.zenyte.game.content.skills.woodcutting.MacheteDefinitions;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

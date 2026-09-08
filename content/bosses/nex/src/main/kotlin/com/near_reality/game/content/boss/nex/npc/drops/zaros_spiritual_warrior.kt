@@ -6,40 +6,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
-import com.zenyte.game.item.ItemId.ADAMANT_CHAINBODY
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_BOOTS
-import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_GLOVES
-import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_LEGS
-import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_MASK
-import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_TOP
-import com.zenyte.game.item.ItemId.BLOOD_ESSENCE
-import com.zenyte.game.item.ItemId.CHAOS_RUNE
-import com.zenyte.game.item.ItemId.CLUE_SCROLL_HARD
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
-import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
-import com.zenyte.game.item.ItemId.GRIMY_SNAPDRAGON
-import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
-import com.zenyte.game.item.ItemId.LOBSTER
-import com.zenyte.game.item.ItemId.MIND_RUNE
-import com.zenyte.game.item.ItemId.MUD_RUNE
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.NIHIL_SHARD
-import com.zenyte.game.item.ItemId.POTATO_CACTUS
-import com.zenyte.game.item.ItemId.PRAYER_POTION2
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.SUPER_ATTACK1
-import com.zenyte.game.item.ItemId.SUPER_DEFENCE1
-import com.zenyte.game.item.ItemId.SUPER_STRENGTH1
 
 class ZarosSpiritualWarriorDroptable : NPCDropTableScript() {
 
@@ -77,7 +50,7 @@ class ZarosSpiritualWarriorDroptable : NPCDropTableScript() {
                 ADAMANT_CHAINBODY quantity 1 rarity 35
                 ADAMANTITE_BAR quantity (1..4).noted rarity 40
                 BLOOD_ESSENCE quantity 1 rarity 5
-                ItemId.COAL quantity (1..10).noted rarity 40
+                COAL quantity (1..10).noted rarity 40
                 LOBSTER quantity 1 rarity 5
                 NIHIL_SHARD quantity 2..5 rarity 5
                 POTATO_CACTUS quantity 1 rarity 35

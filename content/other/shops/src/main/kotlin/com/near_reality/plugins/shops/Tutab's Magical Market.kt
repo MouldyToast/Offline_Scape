@@ -6,18 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.AIR_RUNE
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.EYE_OF_GNOME
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.LAW_RUNE
-import com.zenyte.game.item.ItemId.MONKEY_DENTURES
-import com.zenyte.game.item.ItemId.MONKEY_TALISMAN
-import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class TutabSMagicalMarket : ShopScript() {
 

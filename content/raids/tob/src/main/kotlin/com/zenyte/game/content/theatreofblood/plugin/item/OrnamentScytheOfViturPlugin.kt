@@ -1,7 +1,7 @@
 package com.zenyte.game.content.theatreofblood.plugin.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
@@ -58,11 +58,11 @@ class OrnamentScytheOfViturPlugin : ItemPlugin() {
 							if (player.inventory.getItem(slotId) === item) {
 								item.charges = 0
 								when (item.id) {
-									ItemId.HOLY_SCYTHE_OF_VITUR -> item.id =
-										ItemId.HOLY_SCYTHE_OF_VITUR_UNCHARGED
+									HOLY_SCYTHE_OF_VITUR -> item.id =
+										HOLY_SCYTHE_OF_VITUR_UNCHARGED
 
-									ItemId.SANGUINE_SCYTHE_OF_VITUR -> item.id =
-										ItemId.SANGUINE_SCYTHE_OF_VITUR_UNCHARGED
+									SANGUINE_SCYTHE_OF_VITUR -> item.id =
+										SANGUINE_SCYTHE_OF_VITUR_UNCHARGED
 								}
 								player.inventory.refresh(slotId)
 								player.sendMessage("You uncharge your scythe.")
@@ -77,10 +77,10 @@ class OrnamentScytheOfViturPlugin : ItemPlugin() {
 
 	override fun getItems(): IntArray {
 		return intArrayOf(
-			ItemId.HOLY_SCYTHE_OF_VITUR,
-			ItemId.HOLY_SCYTHE_OF_VITUR_UNCHARGED,
-			ItemId.SANGUINE_SCYTHE_OF_VITUR,
-			ItemId.SANGUINE_SCYTHE_OF_VITUR_UNCHARGED
+			HOLY_SCYTHE_OF_VITUR,
+			HOLY_SCYTHE_OF_VITUR_UNCHARGED,
+			SANGUINE_SCYTHE_OF_VITUR,
+			SANGUINE_SCYTHE_OF_VITUR_UNCHARGED
 		)
 	}
 

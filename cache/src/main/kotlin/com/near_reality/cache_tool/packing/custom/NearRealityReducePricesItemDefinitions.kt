@@ -1,15 +1,15 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.types.config.items.ItemDefinitions
 
 object NearRealityReducePricesItemDefinitions {
 
     private val itemIds = listOf(
-        ItemId.WATCH,
-        ItemId.SEXTANT,
-        ItemId.CHART,
-        ItemId.SECURITY_BOOK
+        WATCH,
+        SEXTANT,
+        CHART,
+        SECURITY_BOOK
     )
 
     @JvmStatic
@@ -20,15 +20,15 @@ object NearRealityReducePricesItemDefinitions {
             itemDef.pack()
         }
 
-        var itemDef = ItemDefinitions.get(ItemId.STEEL_PICKAXE) //originally 500
+        var itemDef = ItemDefinitions.get(STEEL_PICKAXE) //originally 500
         itemDef.price = 353
         itemDef.pack()
 
-        itemDef = ItemDefinitions.get(ItemId.STEEL_AXE) //originally 200
+        itemDef = ItemDefinitions.get(STEEL_AXE) //originally 200
         itemDef.price = 186
         itemDef.pack()
 
-        itemDef = ItemDefinitions.get(ItemId.IRON_PICKAXE) //originally 140
+        itemDef = ItemDefinitions.get(IRON_PICKAXE) //originally 140
         itemDef.price = 55
         itemDef.pack()
     }

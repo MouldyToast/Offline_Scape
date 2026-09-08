@@ -6,7 +6,7 @@ import com.zenyte.game.content.skills.hunter.npc.HunterDummyNPC;
 import com.zenyte.game.content.skills.hunter.npc.PitfallHunterNPC;
 import com.zenyte.game.content.skills.hunter.object.HunterTrap;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;

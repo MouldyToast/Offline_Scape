@@ -5,8 +5,7 @@ import com.near_reality.game.content.dt2.npc.instanceArea
 import com.near_reality.game.content.dt2.npc.opposing
 import com.near_reality.game.content.dt2.npc.schedule
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.BLACKSTONE_FRAGMENT_28357
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.model.music.Music
 import com.zenyte.game.task.WorldTasksManager
@@ -79,10 +78,10 @@ class OddFigureAction : NPCPlugin() {
     }
 
     fun Player.disturbOrbAwakenedCheck(whisperer: NPC) {
-        if (inventory.containsItem(ItemId.AWAKENERS_ORB)) {
+        if (inventory.containsItem(AWAKENERS_ORB)) {
             options("Consume the awakener's orb to awaken The Whisperer?") {
                 "Yes" {
-                    inventory.deleteItem(ItemId.AWAKENERS_ORB, 1)
+                    inventory.deleteItem(AWAKENERS_ORB, 1)
                     disturbOrb(whisperer, true)
                 }
                 "No" {
@@ -95,7 +94,7 @@ class OddFigureAction : NPCPlugin() {
     }
 
     fun Player.disturbOrb(whisperer: NPC, awakened: Boolean) {
-        if (!inventory.containsItem(ItemId.BLACKSTONE_FRAGMENT_28357)) {
+        if (!inventory.containsItem(BLACKSTONE_FRAGMENT_28357)) {
             sendMessage("It would not be wise to proceed without a way to traverse the Shadow Realm.")
             return
         }
@@ -157,6 +156,6 @@ class BlackstoneFragmentAction : ItemPlugin() {
     }
 
     override fun getItems(): IntArray {
-        return intArrayOf(ItemId.BLACKSTONE_FRAGMENT, ItemId.BLACKSTONE_FRAGMENT_28357)
+        return intArrayOf(BLACKSTONE_FRAGMENT, BLACKSTONE_FRAGMENT_28357)
     }
 }

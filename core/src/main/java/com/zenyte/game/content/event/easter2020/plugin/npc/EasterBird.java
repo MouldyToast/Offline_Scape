@@ -6,7 +6,7 @@ import com.zenyte.game.content.event.easter2020.Stage;
 import com.zenyte.game.content.event.easter2020.plugin.object.SeedBowl;
 import com.zenyte.game.content.event.easter2020.plugin.object.WaterBowl;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnNPCAction;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;

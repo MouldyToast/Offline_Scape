@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.leagues.raging_echo
 
 import com.near_reality.game.world.entity.player.echoHarpoonBanking
 import com.near_reality.game.world.entity.player.echoHarpoonCookingFish
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -46,6 +46,6 @@ class EchoHarpoon: ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.ECHO_HARPOON)
+    override fun getItems(): IntArray = intArrayOf(ECHO_HARPOON)
 
 }

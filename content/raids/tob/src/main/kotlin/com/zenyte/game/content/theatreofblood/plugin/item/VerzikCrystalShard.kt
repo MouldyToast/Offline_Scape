@@ -5,7 +5,7 @@ import com.zenyte.game.content.theatreofblood.VerSinhazaArea
 import com.zenyte.game.content.theatreofblood.interfaces.PartyOverlayInterface
 import com.zenyte.game.content.theatreofblood.room.TheatreRoom
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager
@@ -45,9 +45,9 @@ class VerzikCrystalShard : ItemPlugin() {
 
     internal companion object {
 
-        val verzikCrystalShard = Item(ItemId.VERZIKS_CRYSTAL_SHARD)
+        val verzikCrystalShard = Item(VERZIKS_CRYSTAL_SHARD)
 
-        private val items = intArrayOf(ItemId.VERZIKS_CRYSTAL_SHARD)
+        private val items = intArrayOf(VERZIKS_CRYSTAL_SHARD)
 
     }
 

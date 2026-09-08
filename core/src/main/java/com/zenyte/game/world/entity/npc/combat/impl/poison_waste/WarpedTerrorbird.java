@@ -12,7 +12,7 @@ import com.zenyte.game.world.entity.npc.combatdefs.AggressionType;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;
 
-import static com.zenyte.game.item.ItemId.EARMUFFS;
+import static com.zenyte.game.item.ids.ItemId.EARMUFFS;
 
 /**
  * @author Zei | Glabay-Studios

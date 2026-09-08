@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.herblore;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import org.checkerframework.checker.index.qual.NonNegative;
 
 import java.util.EnumSet;

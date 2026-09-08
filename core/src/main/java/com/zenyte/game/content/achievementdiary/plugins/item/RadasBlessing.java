@@ -2,7 +2,7 @@ package com.zenyte.game.content.achievementdiary.plugins.item;
 
 import com.zenyte.game.content.achievementdiary.plugins.DiaryItem;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportCollection;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 
 /**
  * @author Tommeh | 17/11/2019 | 14:35

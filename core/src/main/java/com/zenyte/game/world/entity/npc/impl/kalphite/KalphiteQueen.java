@@ -3,7 +3,7 @@ package com.zenyte.game.world.entity.npc.impl.kalphite;
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.content.advent.AdventCalendarManager;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;

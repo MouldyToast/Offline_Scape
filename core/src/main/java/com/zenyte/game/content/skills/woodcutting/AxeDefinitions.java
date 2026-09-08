@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.woodcutting;
 
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.skills.woodcutting.AxeDefinition;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.masks.Animation;
 import org.jetbrains.annotations.Nullable;

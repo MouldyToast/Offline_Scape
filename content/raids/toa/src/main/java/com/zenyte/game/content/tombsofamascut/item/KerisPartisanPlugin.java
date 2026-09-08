@@ -1,6 +1,6 @@
 package com.zenyte.game.content.tombsofamascut.item;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import mgi.types.config.items.ItemDefinitions;
 

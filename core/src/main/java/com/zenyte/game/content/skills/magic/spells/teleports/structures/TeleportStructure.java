@@ -5,7 +5,7 @@ import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.magic.spells.teleports.Teleport;
 import com.zenyte.game.content.skills.magic.spells.teleports.TeleportType;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.AnimationUtil;
 import com.zenyte.game.util.ProjectileUtils;

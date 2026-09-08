@@ -3,7 +3,7 @@ package com.near_reality.plugins.area.osnr_home.obj
 
 import com.zenyte.game.content.skills.magic.Spellbook
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.start
@@ -38,7 +38,7 @@ class AltarOfTheOccult : ObjectAction {
         player.animation = Animation(PRAY_ANIM)
         player.combatDefinitions.setSpellbook(spellbook, true)
         player.dialogueManager.start {
-            item(Item(ItemId.ANCIENT_STAFF), "Your spellbook has been changed.")
+            item(Item(ANCIENT_STAFF), "Your spellbook has been changed.")
         }
     }
 

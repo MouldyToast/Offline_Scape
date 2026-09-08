@@ -5,7 +5,7 @@ import com.zenyte.game.content.theatreofblood.room.verzikvitur.spiders.NylocasAt
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.spiders.NylocasMatomenos
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.PurpleTornado
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.third.Web
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.combatdefs.*
@@ -95,7 +95,7 @@ internal object VerzikConfigs {
         npc(Web.ID) {
             hitpoints = 10
         }
-        item(ItemId.DAWNBRINGER) {
+        item(DAWNBRINGER) {
             examine = "A weapon of light to hold back the darkness."
             equipmentType = EquipmentType.DEFAULT
             slot = EquipmentSlot.WEAPON.slot

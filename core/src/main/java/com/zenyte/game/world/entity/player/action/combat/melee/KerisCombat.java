@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat.melee;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.masks.HitType;

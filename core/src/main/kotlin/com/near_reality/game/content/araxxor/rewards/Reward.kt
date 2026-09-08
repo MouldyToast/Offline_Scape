@@ -1,6 +1,6 @@
 package com.near_reality.game.content.araxxor.rewards
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.content.follower.Follower
 import com.zenyte.game.content.follower.PetWrapper
 import com.zenyte.game.content.follower.impl.BossPet
@@ -16,15 +16,6 @@ import com.zenyte.game.util.Utils
 import com.zenyte.logger.NearRealityLogger
 import org.slf4j.Logger
 import java.util.concurrent.ThreadLocalRandom
-import com.zenyte.game.item.ItemId.ARAXYTE_FANG
-import com.zenyte.game.item.ItemId.BRIMSTONE_KEY
-import com.zenyte.game.item.ItemId.COAGULATED_VENOM
-import com.zenyte.game.item.ItemId.NID
-import com.zenyte.game.item.ItemId.NOXIOUS_BLADE
-import com.zenyte.game.item.ItemId.NOXIOUS_POINT
-import com.zenyte.game.item.ItemId.NOXIOUS_POMMEL
-import com.zenyte.game.item.ItemId.PRIMAL_MAUL
-import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
 
 /**
  * @author Glabay | Glabay-Studios
@@ -95,11 +86,11 @@ class Reward: DropProcessor() {
         // do a normal drop
         val item = AraxxorNormalDropTable.rollForItem()
         if (item != null) {
-            if(item.id != ItemId.SLAYER_BASE) {
+            if(item.id != SLAYER_BASE) {
                 player.slayerBaseDryStreak++
                 if(player.slayerBaseDryStreak == 500) {
                     player.sendMessage("You have received a slayer base for hitting a 500 kill drystreak.")
-                    items.add(Item(ItemId.SLAYER_BASE))
+                    items.add(Item(SLAYER_BASE))
                 }
             }
             if(Utils.random(1000) == 0) {

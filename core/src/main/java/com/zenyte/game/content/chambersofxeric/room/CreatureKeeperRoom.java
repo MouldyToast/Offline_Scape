@@ -6,7 +6,7 @@ import com.zenyte.game.content.chambersofxeric.map.RaidArea;
 import com.zenyte.game.content.chambersofxeric.map.RaidRoom;
 import com.zenyte.game.content.chambersofxeric.npc.CorruptedScavenger;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;

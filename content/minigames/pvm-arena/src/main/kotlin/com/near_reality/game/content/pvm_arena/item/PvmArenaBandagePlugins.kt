@@ -3,7 +3,7 @@ package com.near_reality.game.content.pvm_arena.item
 import com.near_reality.game.content.pvm_arena.area.PvmArenaFightArea
 import com.zenyte.game.content.consumables.drinks.Potion
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnPlayerPlugin
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.Toxins
@@ -32,7 +32,7 @@ class PvmArenaBandageHealPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.BANDAGES_25730)
+        intArrayOf(BANDAGES_25730)
 }
 
 /**
@@ -55,7 +55,7 @@ class PvmArenaBandageOnPlayerPlugin : ItemOnPlayerPlugin {
 
 
     override fun getItems(): IntArray =
-        intArrayOf(ItemId.BANDAGES_25730)
+        intArrayOf(BANDAGES_25730)
 }
 
 private fun deleteBandagesIfUsedOutsideOfPvmArena(player: Player, item: Item): Boolean {

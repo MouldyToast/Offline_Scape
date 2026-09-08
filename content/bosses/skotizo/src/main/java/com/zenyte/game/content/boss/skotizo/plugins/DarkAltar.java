@@ -2,7 +2,7 @@ package com.zenyte.game.content.boss.skotizo.plugins;
 
 import com.zenyte.game.content.boss.skotizo.instance.SkotizoInstance;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;

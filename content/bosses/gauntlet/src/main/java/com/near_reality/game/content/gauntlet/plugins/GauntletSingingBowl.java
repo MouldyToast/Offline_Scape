@@ -3,7 +3,7 @@ package com.near_reality.game.content.gauntlet.plugins;
 import com.near_reality.game.content.gauntlet.Gauntlet;
 import com.near_reality.game.content.gauntlet.GauntletPlayerAttributesKt;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.world.entity.player.Player;
@@ -17,7 +17,7 @@ import mgi.types.config.items.ItemDefinitions;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 @SuppressWarnings("unused")
 public final class GauntletSingingBowl implements ObjectAction {

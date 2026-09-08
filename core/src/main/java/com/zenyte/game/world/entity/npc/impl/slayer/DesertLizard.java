@@ -2,7 +2,7 @@ package com.zenyte.game.world.entity.npc.impl.slayer;
 
 import com.zenyte.game.content.achievementdiary.diaries.DesertDiary;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NPC;

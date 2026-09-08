@@ -1,7 +1,7 @@
 package com.near_reality.plugins.area.ferox_enclave
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
@@ -19,8 +19,8 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
 
     override fun handle() {
         bind("Talk-to") { player, npc ->
-            if (player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE_U) || player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE)) {
-                val chainmace = if (player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE_U)) ItemId.THAMMARONS_SCEPTRE_U else ItemId.THAMMARONS_SCEPTRE
+            if (player.inventory.containsItem(THAMMARONS_SCEPTRE_U) || player.inventory.containsItem(THAMMARONS_SCEPTRE)) {
+                val chainmace = if (player.inventory.containsItem(THAMMARONS_SCEPTRE_U)) THAMMARONS_SCEPTRE_U else THAMMARONS_SCEPTRE
                 if (player.inventory.containsItem(27673)) {
                     player.dialogue(npc) {
                         player("Hey. Do you know anything about this?")
@@ -35,7 +35,7 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
                         npc("A skilled crafter can combine the two. If you wish, I could do it for you... For a price, that is.")
                         options("Pay 500,000 coins to combine the skull and sceptre?") {
                             "Yes" {
-                                if (player.inventory.getAmountOf(ItemId.COINS_995) >= 500_000) {
+                                if (player.inventory.getAmountOf(COINS_995) >= 500_000) {
                                     assembleSceptre(player, npc)
                                 } else {
                                     player.dialogue(npc) {
@@ -85,7 +85,7 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
     }
 
     private fun assembleSceptre(player: Player, phabelle: NPC) {
-        if (!player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE_U) && !player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE)) {
+        if (!player.inventory.containsItem(THAMMARONS_SCEPTRE_U) && !player.inventory.containsItem(THAMMARONS_SCEPTRE)) {
             return
         }
 
@@ -93,17 +93,17 @@ class PhabelleBile : NPCPlugin(), ItemOnNPCAction {
             return
         }
 
-        if (player.inventory.getAmountOf(ItemId.COINS_995) < 500_000) {
+        if (player.inventory.getAmountOf(COINS_995) < 500_000) {
             return
         }
 
-        player.inventory.deleteItem(Item(ItemId.COINS_995, 500_000))
+        player.inventory.deleteItem(Item(COINS_995, 500_000))
         player.inventory.deleteItem(Item(27673))
 
-        val thammarons = Item(if (player.inventory.containsItem(ItemId.THAMMARONS_SCEPTRE_U)) ItemId.THAMMARONS_SCEPTRE_U else ItemId.THAMMARONS_SCEPTRE)
+        val thammarons = Item(if (player.inventory.containsItem(THAMMARONS_SCEPTRE_U)) THAMMARONS_SCEPTRE_U else THAMMARONS_SCEPTRE)
         player.inventory.deleteItem(thammarons)
 
-        val accursed = Item(if (thammarons.id == ItemId.THAMMARONS_SCEPTRE_U) 27662 else 27665)
+        val accursed = Item(if (thammarons.id == THAMMARONS_SCEPTRE_U) 27662 else 27665)
         accursed.charges = thammarons.charges
         player.inventory.addItem(accursed)
 

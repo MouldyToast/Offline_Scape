@@ -6,14 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.CAPE_OF_LEGENDS
-import com.zenyte.game.item.ItemId.DUSTY_KEY
-import com.zenyte.game.item.ItemId.MAZE_KEY
-import com.zenyte.game.item.ItemId.SHIELD_RIGHT_HALF
 
 class LegendsGuildShopOfUsefulItems : ShopScript() {
 

@@ -5,7 +5,7 @@ import com.near_reality.game.world.entity.player.PlayerAttributesKt;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.AdventurersLogIcon;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.world.broadcasts.BroadcastType;
 import com.zenyte.game.world.broadcasts.WorldBroadcasts;

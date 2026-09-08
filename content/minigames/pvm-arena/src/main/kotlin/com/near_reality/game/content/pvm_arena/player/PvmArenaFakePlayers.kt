@@ -12,7 +12,7 @@ import com.near_reality.game.world.entity.player.FakePlayer
 import com.zenyte.Main
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.consumables.drinks.Potion
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.World
@@ -128,7 +128,7 @@ fun scheduleAutoPvmArenaTask(fake: Player) {
 //                        }
 //                    }
                     val bandageInInventory = fake.inventory.container.items.entries.find {
-                        it.value.id == ItemId.BANDAGES_25730
+                        it.value.id == BANDAGES_25730
                     }?.let { it.key to it.value }
                     if (bandageInInventory != null) {
                         fake.setForceTalk("Using bandage")
@@ -150,7 +150,7 @@ fun scheduleAutoPvmArenaTask(fake: Player) {
                         }
                     }
                     val visibleBandages =
-                        World.getAllFloorItems().filter { it.id == ItemId.BANDAGES_25730 && it.isVisibleTo(fake) }
+                        World.getAllFloorItems().filter { it.id == BANDAGES_25730 && it.isVisibleTo(fake) }
                     val inventoryFull = fake.inventory.freeSlots == 0
                     if (visibleBandages.isNotEmpty()) {
                         if (inventoryFull) {

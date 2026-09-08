@@ -2,7 +2,7 @@ package com.near_reality.cache_tool.packing.custom
 
 import com.near_reality.cache_tool.packing.assetsBase
 import com.near_reality.game.item.CustomNpcId.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import mgi.types.config.npcs.NPCDefinitions
 import net.runelite.api.NpcID
 import net.runelite.api.NpcID.*
@@ -42,7 +42,7 @@ object NearRealityOriginsPacker {
             .rescale(30)
             .packNew()
 
-        ItemId.PET_BABY_WILD_MOLE.newItem()
+        PET_BABY_WILD_MOLE.newItem()
             .models("origins_wildy_mole_pet_inv".model())
             .name("Baby wild mole")
             .petOps()
@@ -1104,7 +1104,7 @@ object NearRealityOriginsPacker {
             .createPlaceholder(32949)
             .packNew()
 
-        ItemId.ELYSIAN_SIGIL.cloneThisTo(32955)
+        ELYSIAN_SIGIL.cloneThisTo(32955)
             .named("Divine sigil")
             .models(
                 inventory = "origins_divine_sigil_inv".model()
@@ -1117,7 +1117,7 @@ object NearRealityOriginsPacker {
             .zoom(848)
             .packNew()
 
-        ItemId.ELYSIAN_SPIRIT_SHIELD.cloneThisTo(32956)
+        ELYSIAN_SPIRIT_SHIELD.cloneThisTo(32956)
             .named("Divine spirit shield")
             .models(
                 inventory = "origins_divine_ss_inv".model(),
@@ -1130,26 +1130,26 @@ object NearRealityOriginsPacker {
             .clearNote()
             .packNew()
 
-        ItemId.MINECART_TICKET.cloneThisTo(32958)
+        MINECART_TICKET.cloneThisTo(32958)
             .named("Custom Item Token")
             .createPlaceholder(32959)
             .packNew()
 
-        ItemId.MINECART_TICKET.cloneThisTo(32960)
+        MINECART_TICKET.cloneThisTo(32960)
             .named("Custom Item Set Token")
             .createPlaceholder(32961)
             .packNew()
 
-        ItemId.DONATOR_PROMO_BUNDLE_1.promoBundle(1)
-        ItemId.DONATOR_PROMO_BUNDLE_2.promoBundle(2)
-        ItemId.DONATOR_PROMO_BUNDLE_3.promoBundle(3)
-        ItemId.DONATOR_PROMO_BUNDLE_4.promoBundle(4)
-        ItemId.DONATOR_PROMO_BUNDLE_5.promoBundle(5)
-        ItemId.DONATOR_PROMO_BUNDLE_6.promoBundle(6)
-        ItemId.DONATOR_PROMO_BUNDLE_7.promoBundle(7)
-        ItemId.DONATOR_PROMO_BUNDLE_8.promoBundle(8)
-        ItemId.DONATOR_PROMO_BUNDLE_9.promoBundle(9)
-        ItemId.DONATOR_PROMO_BUNDLE_10.promoBundle(10)
+        DONATOR_PROMO_BUNDLE_1.promoBundle(1)
+        DONATOR_PROMO_BUNDLE_2.promoBundle(2)
+        DONATOR_PROMO_BUNDLE_3.promoBundle(3)
+        DONATOR_PROMO_BUNDLE_4.promoBundle(4)
+        DONATOR_PROMO_BUNDLE_5.promoBundle(5)
+        DONATOR_PROMO_BUNDLE_6.promoBundle(6)
+        DONATOR_PROMO_BUNDLE_7.promoBundle(7)
+        DONATOR_PROMO_BUNDLE_8.promoBundle(8)
+        DONATOR_PROMO_BUNDLE_9.promoBundle(9)
+        DONATOR_PROMO_BUNDLE_10.promoBundle(10)
     }
 
     private fun Int.promoBundle(number: Int) =

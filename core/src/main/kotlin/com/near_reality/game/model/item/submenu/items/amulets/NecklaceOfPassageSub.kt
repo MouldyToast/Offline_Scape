@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.NecklaceOfPassageRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,19 +36,19 @@ class NecklaceOfPassageSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.NECKLACE_OF_PASSAGE5 to ItemId.NECKLACE_OF_PASSAGE4,
-        ItemId.NECKLACE_OF_PASSAGE4 to ItemId.NECKLACE_OF_PASSAGE3,
-        ItemId.NECKLACE_OF_PASSAGE3 to ItemId.NECKLACE_OF_PASSAGE2,
-        ItemId.NECKLACE_OF_PASSAGE2 to ItemId.NECKLACE_OF_PASSAGE1,
-        ItemId.NECKLACE_OF_PASSAGE1 to -1,
+        NECKLACE_OF_PASSAGE5 to NECKLACE_OF_PASSAGE4,
+        NECKLACE_OF_PASSAGE4 to NECKLACE_OF_PASSAGE3,
+        NECKLACE_OF_PASSAGE3 to NECKLACE_OF_PASSAGE2,
+        NECKLACE_OF_PASSAGE2 to NECKLACE_OF_PASSAGE1,
+        NECKLACE_OF_PASSAGE1 to -1,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.NECKLACE_OF_PASSAGE5,
-            ItemId.NECKLACE_OF_PASSAGE4,
-            ItemId.NECKLACE_OF_PASSAGE3,
-            ItemId.NECKLACE_OF_PASSAGE2,
-            ItemId.NECKLACE_OF_PASSAGE1
+            NECKLACE_OF_PASSAGE5,
+            NECKLACE_OF_PASSAGE4,
+            NECKLACE_OF_PASSAGE3,
+            NECKLACE_OF_PASSAGE2,
+            NECKLACE_OF_PASSAGE1
         )
 }

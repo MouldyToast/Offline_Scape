@@ -2,7 +2,7 @@ package com.zenyte.game.content.theatreofblood.room.verzikvitur.second
 
 import com.zenyte.game.content.consumables.ConsumableEffects
 import com.zenyte.game.content.theatreofblood.room.verzikvitur.VerzikVitur
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.Projectile
@@ -38,7 +38,7 @@ private fun VerzikVitur.sendElectricBall(from: Entity, to: Entity, playerIndex: 
             if (playerIndex == order.size) {
                 val damage : Pair<Int, Int> = Pair(45, 48)
                 var finalDamage = Utils.random(damage.first, damage.second)
-                if (to is Player && to.equipment.containsAnyOf(ItemId.BOOTS_OF_BRIMSTONE, ItemId.INSULATED_BOOTS))
+                if (to is Player && to.equipment.containsAnyOf(BOOTS_OF_BRIMSTONE, INSULATED_BOOTS))
                     finalDamage /= 2
                 to.applyHit(Hit(this, CombatUtilities.clampMaxHit(this, to, finalDamage), HitType.MAGIC))
                 to.animation = ConsumableEffects.SHOCK_ANIM

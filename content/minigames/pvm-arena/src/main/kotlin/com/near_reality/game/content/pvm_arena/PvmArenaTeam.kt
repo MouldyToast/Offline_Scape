@@ -5,7 +5,7 @@ import com.near_reality.game.content.pvm_arena.area.PvmArenaFightArea
 import com.near_reality.game.content.pvm_arena.area.PvmArenaRedFightArea
 import com.near_reality.util.capitalize
 import com.runespawn.util.weakMutableSetOf
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.Player
 
@@ -59,8 +59,8 @@ sealed class PvmArenaTeam(
 
     fun isEmpty(): Boolean = players.isEmpty()
 
-    data object Blue : PvmArenaTeam(PvmArenaBlueFightArea, ItemId.BLUE_ICON, Colour.BLUE)
-    data object Red : PvmArenaTeam(PvmArenaRedFightArea, ItemId.RED_ICON, Colour.RED)
+    data object Blue : PvmArenaTeam(PvmArenaBlueFightArea, BLUE_ICON, Colour.BLUE)
+    data object Red : PvmArenaTeam(PvmArenaRedFightArea, RED_ICON, Colour.RED)
 
     companion object {
         fun findTeamContaining(player: Player) = when {

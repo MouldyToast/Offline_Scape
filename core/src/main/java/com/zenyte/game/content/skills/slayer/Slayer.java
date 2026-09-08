@@ -11,7 +11,7 @@ import com.zenyte.game.GameInterface;
 import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.net.packet.PacketDispatcher;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;

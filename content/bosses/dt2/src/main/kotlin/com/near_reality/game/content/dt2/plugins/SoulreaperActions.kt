@@ -4,7 +4,7 @@ import com.near_reality.game.content.dt2.npc.playAnimation
 import com.near_reality.game.content.dt2.npc.playGraphics
 import com.near_reality.game.content.dt2.npc.playSound
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
@@ -28,26 +28,26 @@ class SoulreaperAxePlugin : ItemPlugin(), ItemOnItemAction {
 
     override fun getItems(): IntArray {
         return intArrayOf(
-            ItemId.BLOOD_RUNE,
-            ItemId.EXECUTIONERS_AXE_HEAD,
-            ItemId.LEVIATHANS_LURE,
-            ItemId.SIRENS_STAFF,
-            ItemId.EYE_OF_THE_DUKE
+            BLOOD_RUNE,
+            EXECUTIONERS_AXE_HEAD,
+            LEVIATHANS_LURE,
+            SIRENS_STAFF,
+            EYE_OF_THE_DUKE
         )
     }
 
     private fun getDescriptionFor(id: Int): String {
         return when (id) {
-            ItemId.EXECUTIONERS_AXE_HEAD ->
+            EXECUTIONERS_AXE_HEAD ->
                 "It's the head of Vardorvis' axe. You might be able to combine it with something else."
 
-            ItemId.LEVIATHANS_LURE ->
+            LEVIATHANS_LURE ->
                 "It's the lure of the Leviathan. You might be able to combine it with something else."
 
-            ItemId.SIRENS_STAFF ->
+            SIRENS_STAFF ->
                 "It's a staff taken from the Whisperer. You might be able to combine it with something else."
 
-            ItemId.EYE_OF_THE_DUKE ->
+            EYE_OF_THE_DUKE ->
                 "It's one of Duke Sucellus' many eyes. You might be able to combine it with something else."
 
             else -> ""
@@ -62,15 +62,15 @@ class SoulreaperAxePlugin : ItemPlugin(), ItemOnItemAction {
             mesbox("You need a Magic level of 75 to assemble the components.")
             return
         }
-        val lure: Item? = inventory.getItemById(ItemId.LEVIATHANS_LURE)
-        val staff: Item? = inventory.getItemById(ItemId.SIRENS_STAFF)
-        val eye: Item? = inventory.getItemById(ItemId.EYE_OF_THE_DUKE)
-        val head: Item? = inventory.getItemById(ItemId.EXECUTIONERS_AXE_HEAD)
+        val lure: Item? = inventory.getItemById(LEVIATHANS_LURE)
+        val staff: Item? = inventory.getItemById(SIRENS_STAFF)
+        val eye: Item? = inventory.getItemById(EYE_OF_THE_DUKE)
+        val head: Item? = inventory.getItemById(EXECUTIONERS_AXE_HEAD)
         if (lure == null || staff == null || eye == null || head == null) {
             mesbox("You don't have enough components to make anything useful. It looks like you'll need four separate components.")
             return
         }
-        val runes: Item? = inventory.getItemById(ItemId.BLOOD_RUNE)
+        val runes: Item? = inventory.getItemById(BLOOD_RUNE)
         if (runes == null || runes.amount < 2000) {
             mesbox("Assembling those items will require the power of 2,000 blood runes.")
             return
@@ -80,14 +80,14 @@ class SoulreaperAxePlugin : ItemPlugin(), ItemOnItemAction {
             "Yes" {
                 // Only if we're able to delete the required items, will qwe proceed with the process
                 if (inventory.deleteItems(lure,  staff, eye, head, runes).result == RequestResult.SUCCESS) {
-                    inventory.addOrDrop(ItemId.SOULREAPER_AXE_28338, 1)
+                    inventory.addOrDrop(SOULREAPER_AXE_28338, 1)
                     playAnimation(4462)
                     playGraphics(759)
                     playSound(144)
                     skills.addXp(SkillConstants.MAGIC, 400.0, true)
                     dialogue {
                         item(
-                            ItemId.SOULREAPER_AXE_28338,
+                            SOULREAPER_AXE_28338,
                             "You successfully assemble the four components into a Soulreaper axe."
                         )
                     }

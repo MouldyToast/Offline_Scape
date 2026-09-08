@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.hunter.aerialfishing;
 
 import com.zenyte.game.content.skills.hunter.aerialfishing.npc.FishingSpotNpc;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;
 import com.zenyte.game.world.entity.Location;

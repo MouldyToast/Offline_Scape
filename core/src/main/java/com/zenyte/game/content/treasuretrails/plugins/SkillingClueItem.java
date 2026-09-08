@@ -2,7 +2,7 @@ package com.zenyte.game.content.treasuretrails.plugins;
 
 import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 

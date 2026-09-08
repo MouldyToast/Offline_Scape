@@ -3,7 +3,7 @@ package com.zenyte.game.world.entity.player;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.combatdefs.AttackType;
 import com.zenyte.game.world.entity.player.action.combat.AmmunitionDefinitions;
 import com.zenyte.game.world.entity.player.action.combat.CombatUtilities;

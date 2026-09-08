@@ -3,7 +3,7 @@ package com.near_reality.game.content.dt2.npc.leviathan
 import com.near_reality.game.content.dt2.npc.get
 import com.near_reality.game.content.dt2.npc.instanceArea
 import com.zenyte.game.content.skills.agility.Shortcut
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.world.entity.Location
@@ -20,11 +20,11 @@ class LeviathanHandholdsObjectAction : ObjectAction {
 
     fun Player.enter() {
         val right = position == instanceArea[exitRight]
-        if (inventory.containsItem(ItemId.AWAKENERS_ORB)) {
+        if (inventory.containsItem(AWAKENERS_ORB)) {
             dialogue {
                 options("Consume the awakener's orb to awaken Leviathan?", "Yes.", "No.")
                     .onOptionOne {
-                        inventory.deleteItem(ItemId.AWAKENERS_ORB, 1)
+                        inventory.deleteItem(AWAKENERS_ORB, 1)
                         enterRitualSite(true, right)
                     }.onOptionTwo {
                         enterRitualSite(false, right)

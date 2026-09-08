@@ -5,18 +5,8 @@ import com.zenyte.game.model.item.enums.ImbueableItem
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import mgi.types.config.items.ItemDefinitions
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.RING_OF_SUFFERING_I
-import com.zenyte.game.item.ItemId.RING_OF_SUFFERING_RI
-import com.zenyte.game.item.ItemId.SALVE_AMULET
-import com.zenyte.game.item.ItemId.SALVE_AMULETEI
-import com.zenyte.game.item.ItemId.SALVE_AMULETEI_25278
-import com.zenyte.game.item.ItemId.SALVE_AMULETEI_26782
-import com.zenyte.game.item.ItemId.SALVE_AMULETI
-import com.zenyte.game.item.ItemId.SALVE_AMULETI_25250
-import com.zenyte.game.item.ItemId.SALVE_AMULETI_26763
-import com.zenyte.game.item.ItemId.SALVE_AMULET_E
 
 class ImbuedItemsItemaction : ItemActionScript() {
 

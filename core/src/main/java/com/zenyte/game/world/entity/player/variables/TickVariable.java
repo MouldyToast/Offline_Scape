@@ -5,7 +5,7 @@ import com.zenyte.game.content.consumables.ConsumableEffects;
 import com.zenyte.game.content.kebos.alchemicalhydra.instance.AlchemicalHydraInstance;
 import com.zenyte.game.content.skills.farming.Seedling;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

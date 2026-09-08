@@ -2,7 +2,7 @@ package com.near_reality.game.content.tormented_demon.items
 
 import com.near_reality.game.content.seq
 import com.zenyte.game.content.consumables.ConsumableAnimation
-import com.zenyte.game.item.ItemId.SMOULDERING_PILE_OF_FLESH
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants

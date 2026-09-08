@@ -3,7 +3,7 @@ package com.near_reality.game.model.item.submenu.items.rings
 import com.near_reality.game.model.item.submenu.impl.ring_of_wealth.RingOfWealthFeatureAction
 import com.near_reality.game.model.item.submenu.impl.ring_of_wealth.RingOfWealthRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -46,33 +46,33 @@ class RingOfWealthSubmenu : ItemSubMenuPlugin() {
     }
 
     private val nextImbuedRing = mapOf(
-        ItemId.RING_OF_WEALTH_I5 to ItemId.RING_OF_WEALTH_I4,
-        ItemId.RING_OF_WEALTH_I4 to ItemId.RING_OF_WEALTH_I3,
-        ItemId.RING_OF_WEALTH_I3 to ItemId.RING_OF_WEALTH_I2,
-        ItemId.RING_OF_WEALTH_I2 to ItemId.RING_OF_WEALTH_I1,
-        ItemId.RING_OF_WEALTH_I1 to ItemId.RING_OF_WEALTH_I,
+        RING_OF_WEALTH_I5 to RING_OF_WEALTH_I4,
+        RING_OF_WEALTH_I4 to RING_OF_WEALTH_I3,
+        RING_OF_WEALTH_I3 to RING_OF_WEALTH_I2,
+        RING_OF_WEALTH_I2 to RING_OF_WEALTH_I1,
+        RING_OF_WEALTH_I1 to RING_OF_WEALTH_I,
     )
     private val nextRing = mapOf(
-        ItemId.RING_OF_WEALTH_5 to ItemId.RING_OF_WEALTH_4,
-        ItemId.RING_OF_WEALTH_4 to ItemId.RING_OF_WEALTH_3,
-        ItemId.RING_OF_WEALTH_3 to ItemId.RING_OF_WEALTH_2,
-        ItemId.RING_OF_WEALTH_2 to ItemId.RING_OF_WEALTH_1,
-        ItemId.RING_OF_WEALTH_1 to ItemId.RING_OF_WEALTH,
+        RING_OF_WEALTH_5 to RING_OF_WEALTH_4,
+        RING_OF_WEALTH_4 to RING_OF_WEALTH_3,
+        RING_OF_WEALTH_3 to RING_OF_WEALTH_2,
+        RING_OF_WEALTH_2 to RING_OF_WEALTH_1,
+        RING_OF_WEALTH_1 to RING_OF_WEALTH,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.RING_OF_WEALTH_I5,
-            ItemId.RING_OF_WEALTH_I4,
-            ItemId.RING_OF_WEALTH_I3,
-            ItemId.RING_OF_WEALTH_I2,
-            ItemId.RING_OF_WEALTH_I1,
+            RING_OF_WEALTH_I5,
+            RING_OF_WEALTH_I4,
+            RING_OF_WEALTH_I3,
+            RING_OF_WEALTH_I2,
+            RING_OF_WEALTH_I1,
 
-            ItemId.RING_OF_WEALTH_5,
-            ItemId.RING_OF_WEALTH_4,
-            ItemId.RING_OF_WEALTH_3,
-            ItemId.RING_OF_WEALTH_2,
-            ItemId.RING_OF_WEALTH_1
+            RING_OF_WEALTH_5,
+            RING_OF_WEALTH_4,
+            RING_OF_WEALTH_3,
+            RING_OF_WEALTH_2,
+            RING_OF_WEALTH_1
         )
 
 }

@@ -23,7 +23,7 @@ import com.zenyte.game.content.treasuretrails.ClueItemUtil;
 import com.zenyte.game.content.treasuretrails.clues.CharlieTask;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.containers.GemBag;
 import com.zenyte.game.task.WorldTasksManager;

@@ -2,7 +2,7 @@ package com.zenyte.game.content.pyramidplunder;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 

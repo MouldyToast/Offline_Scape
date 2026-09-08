@@ -6,7 +6,7 @@ import com.zenyte.game.content.util.hasKilledLeviathanAwakened
 import com.zenyte.game.content.util.hasReceivedSmokeQuartz
 import com.zenyte.game.content.util.playerHasKilledAllAwakenedBossesOnce
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
@@ -18,37 +18,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANT_ARROW
-import com.zenyte.game.item.ItemId.ANGLERFISH
-import com.zenyte.game.item.ItemId.AWAKENERS_ORB
-import com.zenyte.game.item.ItemId.BODY_RUNE
-import com.zenyte.game.item.ItemId.BRONZE_ARROW
-import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
-import com.zenyte.game.item.ItemId.CLUE_SCROLL
-import com.zenyte.game.item.ItemId.DRAGON_BOLTS_UNF
-import com.zenyte.game.item.ItemId.DRAGON_JAVELIN_HEADS
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.EMERALD
-import com.zenyte.game.item.ItemId.LEVIATHANS_LURE
-import com.zenyte.game.item.ItemId.MITHRIL_ARROW
-import com.zenyte.game.item.ItemId.ONYX_BOLT_TIPS
-import com.zenyte.game.item.ItemId.PRAYER_POTION3
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RANGING_POTION2
-import com.zenyte.game.item.ItemId.RAW_MANTA_RAY
-import com.zenyte.game.item.ItemId.RUBY
-import com.zenyte.game.item.ItemId.RUNE_ARROW
-import com.zenyte.game.item.ItemId.SAPPHIRE
-import com.zenyte.game.item.ItemId.SEA_TURTLE
-import com.zenyte.game.item.ItemId.SMOKE_QUARTZ
-import com.zenyte.game.item.ItemId.SMOKE_RUNE
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.VENATOR_VESTIGE
-import com.zenyte.game.item.ItemId.VIRTUS_MASK
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_LEGS
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_TOP
 
 class LeviathanAwakenedDroptable : NPCDropTableScript() {
 
@@ -99,14 +68,14 @@ class LeviathanAwakenedDroptable : NPCDropTableScript() {
 
             // Tertiary drops:
             if (Utils.random(500) == 0) {
-                npc.dropItemAtKiller(killer, Item(ItemId.LILVIATHAN))
+                npc.dropItemAtKiller(killer, Item(LILVIATHAN))
             }
             if (Utils.random(39) == 0) {
                 npc.dropItemAtKiller(killer, Item(CLUE_SCROLL))
             }
             if (killer.playerHasKilledAllAwakenedBossesOnce()) {
-                if (!killer.containsItem(ItemId.ANCIENT_BLOOD_ORNAMENT_KIT))
-                    npc.dropItemAtKiller(killer, Item(ItemId.ANCIENT_BLOOD_ORNAMENT_KIT, 1))
+                if (!killer.containsItem(ANCIENT_BLOOD_ORNAMENT_KIT))
+                    npc.dropItemAtKiller(killer, Item(ANCIENT_BLOOD_ORNAMENT_KIT, 1))
             }
         }
 
@@ -115,16 +84,16 @@ class LeviathanAwakenedDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(PRAYER_POTION3, 1, 1, 4.00))
         appendDrop(DisplayedDrop(RANGING_POTION2, 1, 1, 4.00))
         appendDrop(DisplayedDrop(SEA_TURTLE, 3, 4, 4.00))
-        appendDrop(DisplayedDrop(ItemId.LILVIATHAN, 1, 1, 500.00))
+        appendDrop(DisplayedDrop(LILVIATHAN, 1, 1, 500.00))
         appendDrop(DisplayedDrop(CLUE_SCROLL, 1, 1, 39.00))
 
         appendDrop(DisplayedDrop(PURE_ESSENCE, 180, 270, 100.00))
-        appendDrop(DisplayedDrop(ItemId.IRON_ORE, 57, 85, 100.00))
-        appendDrop(DisplayedDrop(ItemId.SILVER_ORE, 57, 85, 100.00))
-        appendDrop(DisplayedDrop(ItemId.COAL, 195, 292, 800.00))
-        appendDrop(DisplayedDrop(ItemId.GOLD_ORE, 67, 101, 800.00))
-        appendDrop(DisplayedDrop(ItemId.ADAMANTITE_ORE, 57, 85, 100.00))
-        appendDrop(DisplayedDrop(ItemId.RUNITE_ORE, 27, 40, 200.00))
+        appendDrop(DisplayedDrop(IRON_ORE, 57, 85, 100.00))
+        appendDrop(DisplayedDrop(SILVER_ORE, 57, 85, 100.00))
+        appendDrop(DisplayedDrop(COAL, 195, 292, 800.00))
+        appendDrop(DisplayedDrop(GOLD_ORE, 67, 101, 800.00))
+        appendDrop(DisplayedDrop(ADAMANTITE_ORE, 57, 85, 100.00))
+        appendDrop(DisplayedDrop(RUNITE_ORE, 27, 40, 200.00))
         appendDrop(DisplayedDrop(SAPPHIRE, 25, 38, 100.00))
         appendDrop(DisplayedDrop(EMERALD, 25, 38, 100.00))
         appendDrop(DisplayedDrop(RUBY, 25, 38, 100.00))
@@ -152,12 +121,12 @@ class LeviathanAwakenedDroptable : NPCDropTableScript() {
         buildTable(100) {
             Main {
                 PURE_ESSENCE quantity 180.noted rarity 1
-                ItemId.IRON_ORE quantity 57.noted rarity 1
-                ItemId.SILVER_ORE quantity 57.noted rarity 1
-                ItemId.COAL quantity 195.noted rarity 8
-                ItemId.GOLD_ORE quantity 67.noted rarity 8
-                ItemId.ADAMANTITE_ORE quantity 57.noted rarity 1
-                ItemId.RUNITE_ORE quantity 27.noted rarity 2
+                IRON_ORE quantity 57.noted rarity 1
+                SILVER_ORE quantity 57.noted rarity 1
+                COAL quantity 195.noted rarity 8
+                GOLD_ORE quantity 67.noted rarity 8
+                ADAMANTITE_ORE quantity 57.noted rarity 1
+                RUNITE_ORE quantity 27.noted rarity 2
                 SAPPHIRE quantity 25.noted rarity 1
                 EMERALD quantity 25.noted rarity 1
                 RUBY quantity 25.noted rarity 1
@@ -179,7 +148,7 @@ class LeviathanAwakenedDroptable : NPCDropTableScript() {
                 SOUL_RUNE quantity 600 rarity 2
             }
             Tertiary {
-                ItemId.LILVIATHAN quantity 1 oneIn 2500
+                LILVIATHAN quantity 1 oneIn 2500
                 CLUE_SCROLL quantity 1 oneIn 40
             }
         }

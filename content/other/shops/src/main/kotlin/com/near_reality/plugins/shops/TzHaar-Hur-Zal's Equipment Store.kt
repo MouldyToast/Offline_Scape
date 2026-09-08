@@ -6,21 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.OBSIDIAN_CAPE
-import com.zenyte.game.item.ItemId.OBSIDIAN_HELMET
-import com.zenyte.game.item.ItemId.OBSIDIAN_PLATEBODY
-import com.zenyte.game.item.ItemId.OBSIDIAN_PLATELEGS
-import com.zenyte.game.item.ItemId.TOKTZKETXIL
-import com.zenyte.game.item.ItemId.TOKTZMEJTAL
-import com.zenyte.game.item.ItemId.TOKTZXILAK
-import com.zenyte.game.item.ItemId.TOKTZXILEK
-import com.zenyte.game.item.ItemId.TOKTZXILUL
-import com.zenyte.game.item.ItemId.TZHAARKETEM
-import com.zenyte.game.item.ItemId.TZHAARKETOM
 
 class TzhaarHurZalSEquipmentStore : ShopScript() {
 

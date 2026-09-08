@@ -12,28 +12,7 @@ import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.entity.player.dialogue.options
-import com.zenyte.game.item.ItemId.BLOOD_MONEY
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_1
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_10
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_2
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_3
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_4
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_5
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_6
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_7
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_8
-import com.zenyte.game.item.ItemId.ESOTERIC_EMBLEM_TIER_9
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_10
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_2
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_3
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_4
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_5
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_6
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_7
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_8
-import com.zenyte.game.item.ItemId.MYSTERIOUS_EMBLEM_TIER_9
-import com.zenyte.game.item.ItemId.SKULL
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

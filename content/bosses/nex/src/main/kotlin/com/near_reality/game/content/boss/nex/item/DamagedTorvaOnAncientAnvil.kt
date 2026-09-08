@@ -2,7 +2,7 @@ package com.near_reality.game.content.boss.nex.item
 
 import com.zenyte.game.content.skills.smithing.Smithing
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnObjectAction
 import com.zenyte.game.world.entity.player.Action
 import com.zenyte.game.world.entity.player.Player
@@ -20,7 +20,7 @@ class DamagedTorvaOnAncientAnvil : ItemOnObjectAction {
 
     override fun handleItemOnObjectAction(player: Player, item: Item, slot: Int, anvil: WorldObject) {
         val (fixed, cost) = item.fix()
-        if (!player.inventory.containsItem(ItemId.HAMMER)) {
+        if (!player.inventory.containsItem(HAMMER)) {
             player.dialogue { plain("You'll need a hammer to repair your ${fixed.name}.") }
             return
         }
@@ -33,7 +33,7 @@ class DamagedTorvaOnAncientAnvil : ItemOnObjectAction {
                     override fun start() = true
                     override fun process() = true
                     override fun processWithDelay(): Int {
-                        if (cost > inventory.getAmountOf(ItemId.BANDOSIAN_COMPONENTS)) {
+                        if (cost > inventory.getAmountOf(BANDOSIAN_COMPONENTS)) {
                             player.sendMessage("You need $costString to fix this item")
                             return -1
                         }
@@ -44,7 +44,7 @@ class DamagedTorvaOnAncientAnvil : ItemOnObjectAction {
                             }
 
                             4 -> {
-                                if (inventory.deleteItems(Item(ItemId.BANDOSIAN_COMPONENTS, cost), item).result == RequestResult.SUCCESS){
+                                if (inventory.deleteItems(Item(BANDOSIAN_COMPONENTS, cost), item).result == RequestResult.SUCCESS){
                                     inventory.addItem(fixed)
                                     player.dialogue {
                                         item(fixed,
@@ -64,18 +64,18 @@ class DamagedTorvaOnAncientAnvil : ItemOnObjectAction {
     }
 
     override fun getItems() = arrayOf(
-        ItemId.TORVA_PLATELEGS_DAMAGED,
-        ItemId.TORVA_PLATEBODY_DAMAGED,
-        ItemId.TORVA_FULLHELM_DAMAGED
+        TORVA_PLATELEGS_DAMAGED,
+        TORVA_PLATEBODY_DAMAGED,
+        TORVA_FULLHELM_DAMAGED
     )
 
     override fun getObjects() =
         arrayOf(ObjectId.ANVIL_28563)
 
     private fun Item.fix() = when (id) {
-        ItemId.TORVA_PLATELEGS_DAMAGED -> Item(ItemId.TORVA_PLATELEGS) to 2
-        ItemId.TORVA_PLATEBODY_DAMAGED -> Item(ItemId.TORVA_PLATEBODY) to 2
-        ItemId.TORVA_FULLHELM_DAMAGED -> Item(ItemId.TORVA_FULLHELM) to 1
+        TORVA_PLATELEGS_DAMAGED -> Item(TORVA_PLATELEGS) to 2
+        TORVA_PLATEBODY_DAMAGED -> Item(TORVA_PLATEBODY) to 2
+        TORVA_FULLHELM_DAMAGED -> Item(TORVA_FULLHELM) to 1
         else -> error("Unknown torva item $this")
     }
 

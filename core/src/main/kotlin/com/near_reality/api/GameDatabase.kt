@@ -61,7 +61,7 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import com.zenyte.game.GameConstants
 import com.zenyte.game.content.grandexchange.ExchangeType
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.item._Item
 import com.zenyte.game.world.entity._Location
 import com.zenyte.game.world.entity.player.login.AuthType
@@ -147,12 +147,12 @@ object GameDatabase {
             when(log) {
                 is ChallengeLog.DroppedItem -> {
                     when(log.itemId){
-                        ItemId.TWISTED_BOW ->  if(results.firstTwistedBow == null) results.firstTwistedBow = log.username
-                        ItemId.SANGUINE_DUST -> if(results.firstSanguineDust == null) results.firstSanguineDust = log.username
-                        ItemId.OLMLET -> if(results.firstOlmlet == null) results.firstOlmlet = log.username
-                        ItemId.METAMORPHIC_DUST -> if(results.firstMetamorphicDust == null) results.firstMetamorphicDust = log.username
-                        ItemId.SCYTHE_OF_VITUR_UNCHARGED -> if(results.firstScytheOfVitur == null) results.firstScytheOfVitur = log.username
-                        ItemId.LIL_ZIK -> if(results.firstLilZik == null) results.firstLilZik = log.username
+                        TWISTED_BOW ->  if(results.firstTwistedBow == null) results.firstTwistedBow = log.username
+                        SANGUINE_DUST -> if(results.firstSanguineDust == null) results.firstSanguineDust = log.username
+                        OLMLET -> if(results.firstOlmlet == null) results.firstOlmlet = log.username
+                        METAMORPHIC_DUST -> if(results.firstMetamorphicDust == null) results.firstMetamorphicDust = log.username
+                        SCYTHE_OF_VITUR_UNCHARGED -> if(results.firstScytheOfVitur == null) results.firstScytheOfVitur = log.username
+                        LIL_ZIK -> if(results.firstLilZik == null) results.firstLilZik = log.username
                     }
                 }
                 is ChallengeLog.AchievementCape -> {

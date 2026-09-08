@@ -3,7 +3,7 @@ package com.zenyte.game.content.pyramidplunder;
 import com.zenyte.game.content.pyramidplunder.object.PlunderDoor;
 import com.zenyte.game.content.pyramidplunder.object.PlunderRoomExit;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

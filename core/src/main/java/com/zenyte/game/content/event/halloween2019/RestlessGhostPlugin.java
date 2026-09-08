@@ -1,6 +1,6 @@
 package com.zenyte.game.content.event.halloween2019;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.player.Emote;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;

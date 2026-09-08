@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.thieving;
 
 import com.zenyte.game.content.treasuretrails.ClueItem;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.npc.NPC;

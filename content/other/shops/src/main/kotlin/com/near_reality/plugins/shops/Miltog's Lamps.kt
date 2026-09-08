@@ -6,20 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BULLSEYE_LANTERN
-import com.zenyte.game.item.ItemId.BULLSEYE_LANTERN_EMPTY
-import com.zenyte.game.item.ItemId.EMPTY_OIL_LAMP
-import com.zenyte.game.item.ItemId.EMPTY_OIL_LANTERN
-import com.zenyte.game.item.ItemId.LIGHT_ORB
-import com.zenyte.game.item.ItemId.MINING_HELMET
-import com.zenyte.game.item.ItemId.OIL_LAMP
-import com.zenyte.game.item.ItemId.OIL_LANTERN
-import com.zenyte.game.item.ItemId.TINDERBOX
-import com.zenyte.game.item.ItemId.UNLIT_TORCH
 
 class MiltogSLamps : ShopScript() {
 

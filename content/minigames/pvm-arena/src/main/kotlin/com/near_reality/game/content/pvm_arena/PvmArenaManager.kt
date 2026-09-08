@@ -17,7 +17,7 @@ import com.near_reality.game.world.entity.player.pvmArenaPoints
 import com.near_reality.game.world.entity.player.pvmArenaPointsGainedDuringGame
 import com.zenyte.game.GameInterface
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
@@ -149,7 +149,7 @@ internal object PvmArenaManager {
                                 /* Every 1 minutes drop 3 bandages for each player */
                                 forEachPlayerInTeam { player ->
                                     logger.info("Spawning bandages for $player")
-                                    World.spawnFloorItem(Item(ItemId.BANDAGES_25730, 3), player, 300, 0)
+                                    World.spawnFloorItem(Item(BANDAGES_25730, 3), player, 300, 0)
                                     player.sendMessage("You have received 3 bandages for staying alive for ${TimeUnit.TICKS.toMinutes(cycle.toLong()).coerceAtLeast(1)} minutes.")
                                 }
                             }

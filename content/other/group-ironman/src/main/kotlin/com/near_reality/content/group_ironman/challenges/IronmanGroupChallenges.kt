@@ -5,7 +5,7 @@ import com.near_reality.content.group_ironman.IronmanGroupMember
 import com.near_reality.game.content.challenges.ChallengeRegistry
 import com.zenyte.game.content.follower.impl.BossPet
 import com.zenyte.game.content.follower.impl.SkillingPet
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.collectionlog.CollectionLogConstants
 import mgi.types.config.StructDefinitions
@@ -62,34 +62,34 @@ object IronmanGroupChallenges : ChallengeRegistry<IronmanGroup>() {
             anyMember(BossPet.LIL_ZIK::hasPet)
         }
         register(10312, "Twisted bow") {
-            anyMemberHasItem(ItemId.TWISTED_BOW)
+            anyMemberHasItem(TWISTED_BOW)
         }
         register(10313, "Scythe") {
-            anyMemberHasItem(ItemId.SCYTHE_OF_VITUR, ItemId.SCYTHE_OF_VITUR_UNCHARGED)
+            anyMemberHasItem(SCYTHE_OF_VITUR, SCYTHE_OF_VITUR_UNCHARGED)
         }
         register(10314, "Godswords") {
             countUniqueInstancesAmongMembers(listOf(
-                ItemId.ARMADYL_GODSWORD,
-                ItemId.SARADOMIN_GODSWORD,
-                ItemId.ZAMORAK_GODSWORD,
-                ItemId.ANCIENT_GODSWORD,
-                ItemId.BANDOS_GODSWORD,
+                ARMADYL_GODSWORD,
+                SARADOMIN_GODSWORD,
+                ZAMORAK_GODSWORD,
+                ANCIENT_GODSWORD,
+                BANDOS_GODSWORD,
             )) { player -> player.containsItem(this) }
         }
         register(10315, "VLS") {
-            anyMemberHasItem(ItemId.VESTAS_LONGSWORD_BH)
+            anyMemberHasItem(VESTAS_LONGSWORD_BH)
         }
 //        register(10316, "Larrans chest") {
 //            sumOf { getNumericAttribute(LarransKey.LARGE_CHEST_ATTRIBUTE).toInt() }
 //        }
 //        register(10317, "Ward set") {
 //            countUniqueInstancesAmongMembers(listOf(
-//                ItemId.ODIUM_WARD,
-//                ItemId.MALEDICTION_WARD,
+//                ODIUM_WARD,
+//                MALEDICTION_WARD,
 //            )) { player -> player.containsItem(this) }
 //        }
 //        register(10318, "Angelic artefact") {
-//            anyMemberHasItem(ItemId.ANGELIC_ARTIFACT)
+//            anyMemberHasItem(ANGELIC_ARTIFACT)
 //        }
         register(10319, "Corrupted gauntlets") {
             sumOf { getNumericAttribute("corrupted_gauntlet_completions").toInt() }

@@ -14,7 +14,7 @@ import mgi.types.config.items.ItemDefinitions;
 import mgi.utilities.StringFormatUtil;
 import org.jetbrains.annotations.NotNull;
 
-import static com.zenyte.game.item.ItemId.BLOOD_MONEY;
+import static com.zenyte.game.item.ids.ItemId.BLOOD_MONEY;
 
 /**
  * @author Kris | 07/05/2019 19:42

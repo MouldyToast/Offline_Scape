@@ -11,10 +11,7 @@ import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.zenyte.game.world.`object`.ObjectId
 import com.zenyte.game.world.`object`.WorldObject
 import com.zenyte.plugins.item.Arclight.MAX_CHARGES
-import com.zenyte.game.item.ItemId.ARCLIGHT
-import com.zenyte.game.item.ItemId.EMBERLIGHT
-import com.zenyte.game.item.ItemId.HAMMER
-import com.zenyte.game.item.ItemId.TORMENTED_SYNAPSE
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

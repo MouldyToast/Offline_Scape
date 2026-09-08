@@ -6,37 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BANANA
-import com.zenyte.game.item.ItemId.BOWL
-import com.zenyte.game.item.ItemId.BUCKET
-import com.zenyte.game.item.ItemId.BUCKET_OF_SAND
-import com.zenyte.game.item.ItemId.BUCKET_OF_SLIME
-import com.zenyte.game.item.ItemId.CAKE_TIN
-import com.zenyte.game.item.ItemId.CHISEL
-import com.zenyte.game.item.ItemId.FISHING_ROD
-import com.zenyte.game.item.ItemId.GLASSBLOWING_PIPE
-import com.zenyte.game.item.ItemId.HAMMER
-import com.zenyte.game.item.ItemId.JUG
-import com.zenyte.game.item.ItemId.KNIFE
-import com.zenyte.game.item.ItemId.LOBSTER_POT
-import com.zenyte.game.item.ItemId.NEWCOMER_MAP
-import com.zenyte.game.item.ItemId.ORANGE
-import com.zenyte.game.item.ItemId.PINEAPPLE
-import com.zenyte.game.item.ItemId.POT
-import com.zenyte.game.item.ItemId.RAW_RABBIT
-import com.zenyte.game.item.ItemId.RIGHT_EYE_PATCH
-import com.zenyte.game.item.ItemId.ROPE
-import com.zenyte.game.item.ItemId.SEAWEED
-import com.zenyte.game.item.ItemId.SECURITY_BOOK
-import com.zenyte.game.item.ItemId.SHEARS
-import com.zenyte.game.item.ItemId.SODA_ASH
-import com.zenyte.game.item.ItemId.SWAMP_PASTE
-import com.zenyte.game.item.ItemId.TINDERBOX
-import com.zenyte.game.item.ItemId.TYRAS_HELM
 
 class TraderStanSTradingPostMosLeharmless : ShopScript() {
 

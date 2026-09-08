@@ -1,6 +1,6 @@
 package com.zenyte.game.content;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 
 import java.util.HashMap;
 import java.util.Map;

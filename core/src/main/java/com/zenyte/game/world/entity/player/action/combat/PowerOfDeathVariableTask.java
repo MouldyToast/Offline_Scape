@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.player.action.combat;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.player.Player;

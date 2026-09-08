@@ -1,6 +1,6 @@
 package com.zenyte.game.content.sandstorm.dialogue;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NpcId;
 import com.zenyte.game.world.entity.player.Player;

@@ -8,7 +8,7 @@ import com.zenyte.game.content.skills.hunter.object.HunterTrap;
 import com.zenyte.game.content.skills.hunter.plugins.ItemTrapSetupAction;
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;

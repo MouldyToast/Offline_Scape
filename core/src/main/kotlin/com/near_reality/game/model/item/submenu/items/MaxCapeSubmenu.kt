@@ -4,7 +4,7 @@ import com.near_reality.game.model.item.submenu.impl.max_cape.MaxCapeFeatureActi
 import com.near_reality.game.model.item.submenu.impl.max_cape.MaxCapeSpellbookAction
 import com.near_reality.game.model.item.submenu.impl.max_cape.MaxCapeTeleportAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -38,6 +38,6 @@ class MaxCapeSubmenu : ItemSubMenuPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.MAX_CAPE)
+    override fun getItems(): IntArray = intArrayOf(MAX_CAPE)
 
 }

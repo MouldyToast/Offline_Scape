@@ -3,7 +3,7 @@ package com.zenyte.game.world.region.area.forthos;
 import com.zenyte.game.content.drops.table.RollResult;
 import com.zenyte.game.content.drops.table.impl.ImmutableDropTable;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;

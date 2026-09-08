@@ -12,7 +12,7 @@ import com.zenyte.game.world.region.area.wilderness.WildernessArea;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.runelite.api.ItemID;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Tommeh | 24 apr. 2018 | 17:23:42

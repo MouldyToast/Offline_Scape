@@ -2,7 +2,7 @@ package com.zenyte.plugins.renewednpc;
 
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin;
 import com.zenyte.game.world.entity.pathfinding.events.player.EntityEvent;

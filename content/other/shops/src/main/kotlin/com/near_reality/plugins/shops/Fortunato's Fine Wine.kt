@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BOTTLE_OF_WINE
-import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
-import com.zenyte.game.item.ItemId.JUG
-import com.zenyte.game.item.ItemId.JUG_OF_VINEGAR
-import com.zenyte.game.item.ItemId.JUG_OF_WINE
 
 class FortunatoSFineWine : ShopScript() {
 

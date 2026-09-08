@@ -7,7 +7,7 @@ import com.zenyte.game.content.treasuretrails.npcs.mimic.MimicInstance;
 import com.zenyte.game.content.treasuretrails.rewards.ClueReward;
 import com.zenyte.game.content.treasuretrails.rewards.ClueRewardTable;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Colour;

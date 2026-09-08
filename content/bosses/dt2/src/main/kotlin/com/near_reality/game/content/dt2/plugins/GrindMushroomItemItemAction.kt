@@ -1,7 +1,7 @@
 package com.near_reality.game.content.dt2.plugins
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.ItemOnItemAction.ItemPair
 import com.zenyte.game.world.entity.masks.Animation
@@ -21,7 +21,7 @@ class GrindMushroomItemItemAction : ItemOnItemAction {
     }
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
-        return arrayOf(ItemPair(ItemId.PESTLE_AND_MORTAR, 28341), ItemPair(ItemId.PESTLE_AND_MORTAR, 28345))
+        return arrayOf(ItemPair(PESTLE_AND_MORTAR, 28341), ItemPair(PESTLE_AND_MORTAR, 28345))
     }
 
     private fun Item.isMushroom() : Boolean {

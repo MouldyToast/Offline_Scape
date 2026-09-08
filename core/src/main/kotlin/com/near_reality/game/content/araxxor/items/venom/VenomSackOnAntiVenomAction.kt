@@ -1,8 +1,7 @@
 package com.near_reality.game.content.araxxor.items.venom
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.ARAXYTE_VENOM_SACK
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.SkillConstants
@@ -39,10 +38,10 @@ class VenomSackOnAntiVenomAction : ItemOnItemAction {
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
         return arrayOf(
-            ItemOnItemAction.ItemPair.of(ItemId.ANTIVENOM4_12913, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ItemId.ANTIVENOM3_12915, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ItemId.ANTIVENOM2_12917, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ItemId.ANTIVENOM1_12919, ARAXYTE_VENOM_SACK)
+            ItemOnItemAction.ItemPair.of(ANTIVENOM4_12913, ARAXYTE_VENOM_SACK),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM3_12915, ARAXYTE_VENOM_SACK),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM2_12917, ARAXYTE_VENOM_SACK),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM1_12919, ARAXYTE_VENOM_SACK)
         )
     }
 

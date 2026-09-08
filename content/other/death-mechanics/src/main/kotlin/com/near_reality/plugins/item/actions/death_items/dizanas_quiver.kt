@@ -5,16 +5,8 @@ import com.near_reality.game.world.entity.player.dizanasQuiverAmmoAmount
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.BLESSED_DIZANAS_QUIVER
-import com.zenyte.game.item.ItemId.BLESSED_DIZANAS_QUIVER_BROKEN
-import com.zenyte.game.item.ItemId.DIZANAS_MAX_CAPE
-import com.zenyte.game.item.ItemId.DIZANAS_MAX_CAPE_BROKEN
-import com.zenyte.game.item.ItemId.DIZANAS_QUIVER
-import com.zenyte.game.item.ItemId.DIZANAS_QUIVER_BROKEN
-import com.zenyte.game.item.ItemId.DIZANAS_QUIVER_UNCHARGED
-import com.zenyte.game.item.ItemId.SUNFIRE_SPLINTERS
 
 class DizanasQuiverItemaction : ItemActionScript() {
 

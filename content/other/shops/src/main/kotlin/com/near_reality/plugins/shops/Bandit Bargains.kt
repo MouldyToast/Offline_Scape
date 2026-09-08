@@ -6,23 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BOWL
-import com.zenyte.game.item.ItemId.BOWL_OF_WATER
-import com.zenyte.game.item.ItemId.BUCKET
-import com.zenyte.game.item.ItemId.BUCKET_OF_WATER
-import com.zenyte.game.item.ItemId.DESERT_BOOTS
-import com.zenyte.game.item.ItemId.DESERT_ROBE
-import com.zenyte.game.item.ItemId.DESERT_SHIRT
-import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
-import com.zenyte.game.item.ItemId.JUG
-import com.zenyte.game.item.ItemId.JUG_OF_WATER
-import com.zenyte.game.item.ItemId.KNIFE
-import com.zenyte.game.item.ItemId.WATERSKIN0
-import com.zenyte.game.item.ItemId.WATERSKIN4
 
 class BanditBargains : ShopScript() {
 

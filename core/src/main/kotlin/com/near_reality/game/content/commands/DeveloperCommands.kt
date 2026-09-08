@@ -33,7 +33,7 @@ import com.zenyte.game.content.treasuretrails.clues.MusicClue
 import com.zenyte.game.content.treasuretrails.clues.SherlockTask
 import com.zenyte.game.content.treasuretrails.clues.*
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.util.Utils
@@ -195,11 +195,11 @@ object DeveloperCommands {
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "cannon") { player, _ ->
-            player.inventory.addItem(Item(ItemId.CANNON_BASE))
-            player.inventory.addItem(Item(ItemId.CANNON_STAND))
-            player.inventory.addItem(Item(ItemId.CANNON_FURNACE))
-            player.inventory.addItem(Item(ItemId.CANNON_BARRELS))
-            player.inventory.addItem(Item(ItemId.CANNONBALL, 2_000_000_000))
+            player.inventory.addItem(Item(CANNON_BASE))
+            player.inventory.addItem(Item(CANNON_STAND))
+            player.inventory.addItem(Item(CANNON_FURNACE))
+            player.inventory.addItem(Item(CANNON_BARRELS))
+            player.inventory.addItem(Item(CANNONBALL, 2_000_000_000))
         }
 
         Command(PlayerPrivilege.TRUE_DEVELOPER, "barrelchest") { player, args  ->

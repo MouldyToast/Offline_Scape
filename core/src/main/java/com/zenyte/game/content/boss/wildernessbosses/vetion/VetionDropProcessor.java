@@ -1,7 +1,7 @@
 package com.zenyte.game.content.boss.wildernessbosses.vetion;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.npc.NPC;
 import com.zenyte.game.world.entity.npc.NpcId;
@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop;
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor;
 import com.zenyte.game.world.entity.player.Player;
 
-import static com.zenyte.game.item.ItemId.SKULL_OF_VETION;
+import static com.zenyte.game.item.ids.ItemId.SKULL_OF_VETION;
 
 /**
  * @author Andys1814

@@ -4,7 +4,7 @@ import com.near_reality.game.content.consumables.drinks.DivinePotion;
 import com.zenyte.game.content.consumables.drinks.*;
 import com.zenyte.game.content.consumables.edibles.Food;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.world.entity.masks.Animation;
 import com.zenyte.game.world.entity.player.Player;

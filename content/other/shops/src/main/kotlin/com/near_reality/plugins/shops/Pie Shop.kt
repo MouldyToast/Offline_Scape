@@ -6,20 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ADMIRAL_PIE
-import com.zenyte.game.item.ItemId.APPLE_PIE
-import com.zenyte.game.item.ItemId.FISH_PIE
-import com.zenyte.game.item.ItemId.GARDEN_PIE
-import com.zenyte.game.item.ItemId.MEAT_PIE
-import com.zenyte.game.item.ItemId.MUD_PIE
-import com.zenyte.game.item.ItemId.PIE_RECIPE_BOOK
-import com.zenyte.game.item.ItemId.REDBERRY_PIE
-import com.zenyte.game.item.ItemId.SUMMER_PIE
-import com.zenyte.game.item.ItemId.WILD_PIE
 
 class PieShop : ShopScript() {
 

@@ -6,7 +6,7 @@ import com.zenyte.game.content.tombsofamascut.raid.EncounterStage;
 import com.zenyte.game.content.tombsofamascut.raid.EncounterType;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidArea;
 import com.zenyte.game.content.tombsofamascut.raid.TOARaidParty;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.World;

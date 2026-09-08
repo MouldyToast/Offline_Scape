@@ -13,7 +13,7 @@ import com.zenyte.cores.CoresManager
 
 import com.zenyte.game.content.vote.VoteHandler
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.World
@@ -84,8 +84,8 @@ object VotePlayerHandler {
 
                     WiseOldManD.rollClues(player, votePointsWithBonus)
                     val coinRewardAmount = votePointsWithBonus * (if (player.authenticator.isEnabled) 150_000 else 75_000)
-                    val coinRewardItem = Item(ItemId.COINS_995, coinRewardAmount)
-                    player.inventory.addOrDrop(ItemId.TOME_OF_EXPERIENCE_30215, 2)
+                    val coinRewardItem = Item(COINS_995, coinRewardAmount)
+                    player.inventory.addOrDrop(TOME_OF_EXPERIENCE_30215, 2)
                     player.inventory.addOrDrop(coinRewardItem)
                     player.totalVoteCredits += votePointsWithBonus
                     player.lastVoteClaimTime = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(12)

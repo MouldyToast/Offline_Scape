@@ -1,7 +1,7 @@
 package com.near_reality.plugins.area.ferox_enclave
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
@@ -19,8 +19,8 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
 
     override fun handle() {
         bind("Talk-to") { player, npc ->
-            if (player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE) || player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE_U)) {
-                val chainmace = if (player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE_U)) ItemId.VIGGORAS_CHAINMACE_U else ItemId.VIGGORAS_CHAINMACE
+            if (player.inventory.containsItem(VIGGORAS_CHAINMACE) || player.inventory.containsItem(VIGGORAS_CHAINMACE_U)) {
+                val chainmace = if (player.inventory.containsItem(VIGGORAS_CHAINMACE_U)) VIGGORAS_CHAINMACE_U else VIGGORAS_CHAINMACE
                 if (player.inventory.containsItem(27667)) {
                     player.dialogue(npc) {
                         player("Hey. Do you know anything about this?")
@@ -41,7 +41,7 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
                         npc("Fine. But I want 500,000 coins for that. No less.")
                         options("Pay 500,000 coins to combine the claws and chainmace?") {
                             "Yes" {
-                                if (player.inventory.getAmountOf(ItemId.COINS_995) >= 500_000) {
+                                if (player.inventory.getAmountOf(COINS_995) >= 500_000) {
                                     assembleChainmace(player, npc)
                                 } else {
                                     player.dialogue(npc) {
@@ -89,7 +89,7 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
     }
 
     private fun assembleChainmace(player: Player, andros: NPC) {
-        if (!player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE) && !player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE_U)) {
+        if (!player.inventory.containsItem(VIGGORAS_CHAINMACE) && !player.inventory.containsItem(VIGGORAS_CHAINMACE_U)) {
             return
         }
 
@@ -97,17 +97,17 @@ class AndrosMai : NPCPlugin(), ItemOnNPCAction {
             return
         }
 
-        if (player.inventory.getAmountOf(ItemId.COINS_995) < 500_000) {
+        if (player.inventory.getAmountOf(COINS_995) < 500_000) {
             return
         }
 
-        player.inventory.deleteItem(Item(ItemId.COINS_995, 500_000))
+        player.inventory.deleteItem(Item(COINS_995, 500_000))
         player.inventory.deleteItem(Item(27667))
 
-        val viggoras = Item(if (player.inventory.containsItem(ItemId.VIGGORAS_CHAINMACE_U)) ItemId.VIGGORAS_CHAINMACE_U else ItemId.VIGGORAS_CHAINMACE)
+        val viggoras = Item(if (player.inventory.containsItem(VIGGORAS_CHAINMACE_U)) VIGGORAS_CHAINMACE_U else VIGGORAS_CHAINMACE)
         player.inventory.deleteItem(viggoras)
 
-        val ursine = Item(if (viggoras.id == ItemId.VIGGORAS_CHAINMACE_U) 27657 else 27660)
+        val ursine = Item(if (viggoras.id == VIGGORAS_CHAINMACE_U) 27657 else 27660)
         ursine.charges = viggoras.charges
         player.inventory.addItem(ursine)
 

@@ -10,7 +10,7 @@ import com.zenyte.game.content.achievementdiary.DiaryReward;
 import com.zenyte.game.content.achievementdiary.DiaryUtil;
 import com.zenyte.game.content.achievementdiary.diaries.*;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.containers.GemBag;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.world.DefaultGson;

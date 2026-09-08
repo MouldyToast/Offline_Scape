@@ -9,7 +9,7 @@ import com.zenyte.game.content.theatreofblood.party.RaidingParty.Companion.getPl
 import com.zenyte.game.content.theatreofblood.room.JailLocation
 import com.zenyte.game.content.theatreofblood.room.TheatreRoom
 import com.zenyte.game.content.theatreofblood.room.TheatreRoomType
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.WorldThread
@@ -102,12 +102,12 @@ internal class TheatreOfBloodRaid(
 
     private fun checkForScythe(player: Player) {
         when (player.equipment.getId(EquipmentSlot.WEAPON)) {
-            ItemId.SCYTHE_OF_VITUR,
-            ItemId.SCYTHE_OF_VITUR_UNCHARGED,
-            ItemId.HOLY_SCYTHE_OF_VITUR,
-            ItemId.HOLY_SCYTHE_OF_VITUR_UNCHARGED,
-            ItemId.SANGUINE_SCYTHE_OF_VITUR,
-            ItemId.SANGUINE_SCYTHE_OF_VITUR_UNCHARGED -> player.scytheEquipped = true
+            SCYTHE_OF_VITUR,
+            SCYTHE_OF_VITUR_UNCHARGED,
+            HOLY_SCYTHE_OF_VITUR,
+            HOLY_SCYTHE_OF_VITUR_UNCHARGED,
+            SANGUINE_SCYTHE_OF_VITUR,
+            SANGUINE_SCYTHE_OF_VITUR_UNCHARGED -> player.scytheEquipped = true
         }
     }
 

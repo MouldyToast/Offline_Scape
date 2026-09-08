@@ -6,31 +6,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DRAGON_DAGGERP
-import com.zenyte.game.item.ItemId.FARSEER_HELM
-import com.zenyte.game.item.ItemId.FARSEER_KITESHIELD
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
-import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
-import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
-import com.zenyte.game.item.ItemId.MITHRIL_BAR
-import com.zenyte.game.item.ItemId.MYSTIC_GLOVES
-import com.zenyte.game.item.ItemId.NATURE_RUNE
-import com.zenyte.game.item.ItemId.PET_ICE_STRYKEWYRM
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.STAFF_OF_FIRE
-import com.zenyte.game.item.ItemId.STAFF_OF_LIGHT
-import com.zenyte.game.item.ItemId.STEEL_BAR
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class IceStrykewyrmsDroptable : NPCDropTableScript() {
 
@@ -44,12 +26,12 @@ class IceStrykewyrmsDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BONES quantity 1 rarity always
+                BONES quantity 1 rarity always
             }
             Main(2500) {
                 COINS_995 quantity (1000..2500) rarity 600
                 WATER_RUNE quantity 300 rarity 400
-                ItemId.SHARK quantity 4.noted rarity 250
+                SHARK quantity 4.noted rarity 250
                 FIRE_RUNE quantity 400 rarity 175
                 GRIMY_CADANTINE quantity 3.noted rarity 175
                 NATURE_RUNE quantity 60 rarity 150

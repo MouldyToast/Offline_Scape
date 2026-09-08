@@ -7,7 +7,7 @@ import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.ItemSpell;
 import com.zenyte.game.content.skills.magic.spells.regular.HighLevelAlchemy;
 import com.zenyte.game.content.skills.magic.spells.regular.LowLevelAlchemy;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.util.AccessMask;
 import com.zenyte.game.world.entity.SoundEffect;

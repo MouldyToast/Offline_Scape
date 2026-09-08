@@ -3,7 +3,7 @@ package com.near_reality.game.model.ui.loyaltytitles
 import com.google.common.eventbus.Subscribe
 import com.zenyte.game.GameInterface
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.ui.Interface
 import com.zenyte.game.util.AccessMask
 import com.zenyte.game.world.entity.masks.UpdateFlag
@@ -24,7 +24,7 @@ class LoyaltyTitleShop : Interface() {
     private val Player.selectedTitleLocked: Boolean get() {
         val selected = getSelectedTitle() ?: return true
         val index = selected.id - NONE_ID
-        return loyaltyTitleUnlocks.get(index)?.id == ItemId.BURNT_BONES
+        return loyaltyTitleUnlocks.get(index)?.id == BURNT_BONES
     }
 
     override fun attach() {
@@ -121,11 +121,11 @@ class LoyaltyTitleShop : Interface() {
     }
 
     private fun Player.setTitleLocked(index: Int) {
-        loyaltyTitleUnlocks.set(index, Item(ItemId.BURNT_BONES))
+        loyaltyTitleUnlocks.set(index, Item(BURNT_BONES))
     }
 
     private fun Player.setTitleUnlocked(index: Int) {
-        loyaltyTitleUnlocks.set(index, Item(ItemId.BONES))
+        loyaltyTitleUnlocks.set(index, Item(BONES))
     }
 
     private fun Player.clearSelection() {

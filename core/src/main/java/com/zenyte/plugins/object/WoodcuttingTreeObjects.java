@@ -3,7 +3,7 @@ package com.zenyte.plugins.object;
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.content.skills.woodcutting.actions.Woodcutting;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.enums.FungicideSpray;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.SoundEffect;

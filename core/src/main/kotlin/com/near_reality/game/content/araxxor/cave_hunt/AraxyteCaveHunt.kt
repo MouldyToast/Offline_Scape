@@ -1,7 +1,7 @@
 package com.near_reality.game.content.araxxor.cave_hunt
 
 import com.near_reality.game.content.*
-import com.zenyte.game.item.ItemId.ARANEA_BOOTS
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.util.Direction
 import com.zenyte.game.world.World.spawnObject

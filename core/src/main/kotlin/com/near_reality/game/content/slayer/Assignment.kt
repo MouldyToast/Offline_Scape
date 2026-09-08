@@ -9,7 +9,7 @@ import com.zenyte.game.content.boss.kraken.Kraken
 import com.zenyte.game.content.godwars.instance.GodwarsInstance
 import com.zenyte.game.content.kebos.alchemicalhydra.npc.AlchemicalHydra
 import com.zenyte.game.content.skills.slayer.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
@@ -143,14 +143,14 @@ class Assignment {
         player.skills.addXp(SkillConstants.SLAYER, experience.toDouble())
         val braceletId = player.equipment.getId(EquipmentSlot.HANDS)
 
-        val hasSlaughter = braceletId == ItemId.BRACELET_OF_SLAUGHTER
-        val hasExpeditious = braceletId == ItemId.EXPEDITIOUS_BRACELET
+        val hasSlaughter = braceletId == BRACELET_OF_SLAUGHTER
+        val hasExpeditious = braceletId == EXPEDITIOUS_BRACELET
         if (hasSlaughter || hasExpeditious) {
             val rate = 25
             val hasRolledEffect = Utils.random(99) <= rate
             if (hasRolledEffect) {
                 if (task !== RegularTask.TZTOK_JAD && task !== RegularTask.TZKAL_ZUK) {
-                    if (braceletId == ItemId.BRACELET_OF_SLAUGHTER) {
+                    if (braceletId == BRACELET_OF_SLAUGHTER) {
                         var slaughterUses = player.getNumericAttribute("bracelet of slaughter uses").toInt() + 1
                         val chargesLeft = (30 - slaughterUses)
                         if (chargesLeft == 0) {
@@ -171,7 +171,7 @@ class Assignment {
                                 null
                         }
                         finish(npc)
-                    } else if (braceletId == ItemId.EXPEDITIOUS_BRACELET) {
+                    } else if (braceletId == EXPEDITIOUS_BRACELET) {
                         var expeditiousBraceletUses = player.getNumericAttribute("expeditious bracelet uses").toInt() + 1
                         val chargesLeft = (30 - expeditiousBraceletUses)
                         if (chargesLeft == 0) {

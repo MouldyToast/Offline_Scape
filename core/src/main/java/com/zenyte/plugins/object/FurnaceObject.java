@@ -1,7 +1,7 @@
 package com.zenyte.plugins.object;
 
 import com.zenyte.game.content.skills.smithing.CannonballSmithing;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.Inventory;
 import com.zenyte.game.world.entity.player.dialogue.DialogueManager;

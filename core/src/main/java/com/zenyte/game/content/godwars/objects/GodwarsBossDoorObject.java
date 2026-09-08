@@ -1,7 +1,7 @@
 package com.zenyte.game.content.godwars.objects;
 
 import com.zenyte.game.content.godwars.instance.GodwarsInstance;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.world.World;

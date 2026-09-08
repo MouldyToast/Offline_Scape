@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static com.zenyte.game.item.ItemId.OMEGA_BOOTS;
+import static com.zenyte.game.item.ids.ItemId.OMEGA_BOOTS;
 import static com.zenyte.game.GameConstants.WORLD_PROFILE;
 
 /**

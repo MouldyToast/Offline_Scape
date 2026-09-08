@@ -7,7 +7,7 @@ import com.zenyte.game.content.treasuretrails.clues.EmoteClue;
 import com.zenyte.game.content.treasuretrails.clues.emote.ItemRequirement;
 import com.zenyte.game.content.treasuretrails.clues.emote.SlotLimitationRequirement;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.world.entity.SoundEffect;
 import com.zenyte.game.world.entity.masks.Animation;

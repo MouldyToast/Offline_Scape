@@ -1,6 +1,6 @@
 package com.near_reality.game.content.wilderness.event.ganodermic_beast
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.item.CustomNpcId
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.near_reality.scripts.npc.drops.table.DropTableContext
@@ -78,34 +78,34 @@ class GanodermicBeastDropTable : NPCDropTableScript() {
         }
         buildTable {
             Always {
-                ItemId.BLOOD_MONEY quantity 25..75 rarity always
-                ItemId.POLYPORE_SPORES quantity 100..300 rarity always
+                BLOOD_MONEY quantity 25..75 rarity always
+                POLYPORE_SPORES quantity 100..300 rarity always
             }
             Main(1300) {
-                ItemId.BLOOD_MONEY quantity 25..100 rarity 100
-                ItemId.SARADOMIN_BREW4 quantity (25..50).noted rarity 100
-                ItemId.SUPER_RESTORE4 quantity (25..50).noted rarity 100
-                ItemId.SANFEW_SERUM4 quantity (25..50).noted rarity 100
-                ItemId.SUPER_COMBAT_POTION4 quantity 25.noted rarity 100
-                ItemId.ANTIVENOM4 quantity 25.noted rarity 100
-                ItemId.COOKED_KARAMBWAN quantity (50..100).noted rarity 100
-                ItemId.ANGLERFISH quantity (50..100).noted rarity 100
-                ItemId.DRAGON_DART quantity 100 rarity 100
-                ItemId.DRAGON_ARROW quantity 100 rarity 100
-                ItemId.DRAGON_BOLTS quantity 100 rarity 100
-                ItemId.SUPERIOR_DRAGON_BONES quantity 50.noted rarity 100
-                ItemId.OVERLOAD_4 quantity 3..7 rarity 100
+                BLOOD_MONEY quantity 25..100 rarity 100
+                SARADOMIN_BREW4 quantity (25..50).noted rarity 100
+                SUPER_RESTORE4 quantity (25..50).noted rarity 100
+                SANFEW_SERUM4 quantity (25..50).noted rarity 100
+                SUPER_COMBAT_POTION4 quantity 25.noted rarity 100
+                ANTIVENOM4 quantity 25.noted rarity 100
+                COOKED_KARAMBWAN quantity (50..100).noted rarity 100
+                ANGLERFISH quantity (50..100).noted rarity 100
+                DRAGON_DART quantity 100 rarity 100
+                DRAGON_ARROW quantity 100 rarity 100
+                DRAGON_BOLTS quantity 100 rarity 100
+                SUPERIOR_DRAGON_BONES quantity 50.noted rarity 100
+                OVERLOAD_4 quantity 3..7 rarity 100
             }
             Unique(32_000) {
-                ItemId.PVP_MYSTERY_BOX quantity 1 oneIn 75 announce everywhere
-                ItemId.DRAGON_KITE quantity 1 oneIn 100 announce everywhere
-                ItemId.POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
-                ItemId.ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
-                ItemId.GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
+                PVP_MYSTERY_BOX quantity 1 oneIn 75 announce everywhere
+                DRAGON_KITE quantity 1 oneIn 100 announce everywhere
+                POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
+                ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
+                GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
             }
             Tertiary {
-                ItemId.SCROLL_BOX_HARD quantity 1 oneIn 10
-                ItemId.SCROLL_BOX_ELITE quantity 1 oneIn 15
+                SCROLL_BOX_HARD quantity 1 oneIn 10
+                SCROLL_BOX_ELITE quantity 1 oneIn 15
             }
         }
     }

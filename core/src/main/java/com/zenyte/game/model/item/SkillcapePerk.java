@@ -1,6 +1,6 @@
 package com.zenyte.game.model.item;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
@@ -8,7 +8,7 @@ import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 /**
  * @author Kris | 15/03/2019 18:42

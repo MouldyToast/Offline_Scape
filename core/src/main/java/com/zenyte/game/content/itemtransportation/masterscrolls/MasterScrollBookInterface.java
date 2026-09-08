@@ -3,7 +3,7 @@ package com.zenyte.game.content.itemtransportation.masterscrolls;
 import com.google.common.base.Preconditions;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.Interface;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.entity.player.VarManager;

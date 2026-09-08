@@ -2,7 +2,7 @@ package com.near_reality.game.content.bountyhunter.teleport
 
 import com.near_reality.game.content.bountyhunter.isBountyPaired
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.container.RequestResult
 
@@ -28,5 +28,5 @@ class BountyHunterTargetTab : ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.TARGET_TELEPORT)
+    override fun getItems(): IntArray = intArrayOf(TARGET_TELEPORT)
 }

@@ -5,7 +5,7 @@ import com.zenyte.game.content.treasuretrails.ClueLevel;
 import com.zenyte.game.content.treasuretrails.TreasureTrailType;
 import com.zenyte.game.content.treasuretrails.challenges.*;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.Location;
 import com.zenyte.game.world.entity.npc.NpcId;

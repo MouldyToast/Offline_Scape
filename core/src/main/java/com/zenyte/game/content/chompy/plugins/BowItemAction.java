@@ -2,7 +2,7 @@ package com.zenyte.game.content.chompy.plugins;
 
 import com.zenyte.game.content.chompy.Chompy;
 import com.zenyte.game.content.chompy.ChompyBirdHat;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;

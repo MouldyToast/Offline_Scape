@@ -1,7 +1,6 @@
 package com.near_reality.game.content.araxxor.cave_hunt
 
-import com.zenyte.game.item.ItemId.ARAXYTE_SLAYER_HELMET
-import com.zenyte.game.item.ItemId.ARAXYTE_SLAYER_HELMET_I
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.ForceTalk
 import com.zenyte.game.world.entity.npc.NpcId.VEFARI
 import com.zenyte.game.world.entity.npc.actions.NPCPlugin

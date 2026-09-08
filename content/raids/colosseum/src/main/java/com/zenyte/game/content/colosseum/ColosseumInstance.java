@@ -2,7 +2,7 @@ package com.zenyte.game.content.colosseum;
 
 import com.zenyte.game.content.follower.impl.BossPet;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.AccessMask;

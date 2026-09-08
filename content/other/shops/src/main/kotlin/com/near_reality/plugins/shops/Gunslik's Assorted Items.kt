@@ -6,24 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BUCKET
-import com.zenyte.game.item.ItemId.CANDLE
-import com.zenyte.game.item.ItemId.CHARCOAL
-import com.zenyte.game.item.ItemId.CHISEL
-import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
-import com.zenyte.game.item.ItemId.EMPTY_VIAL_PACK
-import com.zenyte.game.item.ItemId.HAMMER
-import com.zenyte.game.item.ItemId.JUG
-import com.zenyte.game.item.ItemId.LEATHER_GLOVES
-import com.zenyte.game.item.ItemId.PESTLE_AND_MORTAR
-import com.zenyte.game.item.ItemId.ROPE
-import com.zenyte.game.item.ItemId.TINDERBOX
-import com.zenyte.game.item.ItemId.UNLIT_TORCH
-import com.zenyte.game.item.ItemId.VIAL
 
 class GunslikSAssortedItems : ShopScript() {
 

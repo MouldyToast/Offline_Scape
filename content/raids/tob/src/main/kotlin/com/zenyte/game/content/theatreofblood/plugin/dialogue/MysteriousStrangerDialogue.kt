@@ -4,7 +4,7 @@ import com.zenyte.game.content.theatreofblood.plugin.npc.MysteriousStranger
 import com.zenyte.game.content.theatreofblood.tobStats
 import com.zenyte.game.content.theatreofblood.tobStatsHard
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
@@ -64,15 +64,15 @@ class MysteriousStrangerDialogue(player: Player, npcID: Int) : Dialogue(player, 
         if (killCount <= 0) return false
         val capes: MutableList<Item?> = ObjectArrayList<Item?>()
         if (killCount >= 10)
-            capes.add(Item(ItemId.SINHAZA_SHROUD_TIER_1))
+            capes.add(Item(SINHAZA_SHROUD_TIER_1))
         if (killCount >= 50)
-            capes.add(Item(ItemId.SINHAZA_SHROUD_TIER_2))
+            capes.add(Item(SINHAZA_SHROUD_TIER_2))
         if (killCount >= 100)
-            capes.add(Item(ItemId.SINHAZA_SHROUD_TIER_3))
+            capes.add(Item(SINHAZA_SHROUD_TIER_3))
         if (killCount >= 150)
-            capes.add(Item(ItemId.SINHAZA_SHROUD_TIER_4))
+            capes.add(Item(SINHAZA_SHROUD_TIER_4))
         if (killCount >= 200)
-            capes.add(Item(ItemId.SINHAZA_SHROUD_TIER_5))
+            capes.add(Item(SINHAZA_SHROUD_TIER_5))
         player("I've managed to defeat her! I survived every single one of Verzik's challenges!")
         player("At the end, she even chose to face me herself. I couldn't fully defeat her though, she just transformed into a bat and flew away.")
         npc("Impressive. Don't stop there though, return to the Theatre and embarrass her again.${if (killCount >= 200) "" else "Keep it up and you will be rewarded."}")

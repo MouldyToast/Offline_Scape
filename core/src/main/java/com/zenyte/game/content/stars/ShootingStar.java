@@ -1,6 +1,6 @@
 package com.zenyte.game.content.stars;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.content.skills.mining.actions.Mining;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Direction;

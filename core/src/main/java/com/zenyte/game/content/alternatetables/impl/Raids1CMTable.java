@@ -3,7 +3,7 @@ package com.zenyte.game.content.alternatetables.impl;
 import com.zenyte.game.content.alternatetables.AlternateTableDropProvider;
 import com.zenyte.game.content.chambersofxeric.rewards.ChallengeRaidNormalReward;
 import com.zenyte.game.content.chambersofxeric.rewards.RaidRareReward;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
 import com.zenyte.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;

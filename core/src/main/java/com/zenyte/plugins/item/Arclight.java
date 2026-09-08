@@ -2,7 +2,7 @@ package com.zenyte.plugins.item;
 
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 
-import static com.zenyte.game.item.ItemId.ARCLIGHT;
+import static com.zenyte.game.item.ids.ItemId.ARCLIGHT;
 
 /**
  * @author Tommeh | 31-1-2019 | 19:58

@@ -4,7 +4,7 @@ import com.near_reality.game.content.crystal.CRYSTAL_SHARD
 import com.near_reality.game.content.crystal.CRYSTAL_SHARD_CHARGES_RATIO
 import com.near_reality.game.content.crystal.CrystalRecipe
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 
@@ -63,14 +63,14 @@ sealed class CrystalCorrupted : CrystalRecipe {
 
     data object BowOfFaerdhinen : CrystalCorrupted() {
 
-        override val productItemId: Int = ItemId.BOW_OF_FAERDHINEN_C
+        override val productItemId: Int = BOW_OF_FAERDHINEN_C
         override val crystalShardCost: Int = 2000
         override val weaponToCorrupt = CrystalWeapon.BowOfFaerdhinen
     }
 
     data object BladeOfSaeldor : CrystalCorrupted() {
 
-        override val productItemId: Int = ItemId.BLADE_OF_SAELDOR_C
+        override val productItemId: Int = BLADE_OF_SAELDOR_C
         override val crystalShardCost: Int = 1000
         override val weaponToCorrupt = CrystalWeapon.BladeOfSaeldor
     }

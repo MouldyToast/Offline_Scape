@@ -1,6 +1,6 @@
 package com.zenyte.game.model.item.enums;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import mgi.types.config.items.ItemDefinitions;
 

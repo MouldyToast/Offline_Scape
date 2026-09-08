@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.GloryAmuletRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -37,42 +37,42 @@ class GloryAmuletSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.AMULET_OF_GLORY6 to ItemId.AMULET_OF_GLORY5,
-        ItemId.AMULET_OF_GLORY5 to ItemId.AMULET_OF_GLORY4,
-        ItemId.AMULET_OF_GLORY4 to ItemId.AMULET_OF_GLORY3,
-        ItemId.AMULET_OF_GLORY3 to ItemId.AMULET_OF_GLORY2,
-        ItemId.AMULET_OF_GLORY2 to ItemId.AMULET_OF_GLORY1,
-        ItemId.AMULET_OF_GLORY1 to ItemId.AMULET_OF_GLORY,
+        AMULET_OF_GLORY6 to AMULET_OF_GLORY5,
+        AMULET_OF_GLORY5 to AMULET_OF_GLORY4,
+        AMULET_OF_GLORY4 to AMULET_OF_GLORY3,
+        AMULET_OF_GLORY3 to AMULET_OF_GLORY2,
+        AMULET_OF_GLORY2 to AMULET_OF_GLORY1,
+        AMULET_OF_GLORY1 to AMULET_OF_GLORY,
     )
 
     private val toNextAmuletT = mapOf(
-        ItemId.AMULET_OF_GLORY_T6 to ItemId.AMULET_OF_GLORY_T5,
-        ItemId.AMULET_OF_GLORY_T5 to ItemId.AMULET_OF_GLORY_T4,
-        ItemId.AMULET_OF_GLORY_T4 to ItemId.AMULET_OF_GLORY_T3,
-        ItemId.AMULET_OF_GLORY_T3 to ItemId.AMULET_OF_GLORY_T2,
-        ItemId.AMULET_OF_GLORY_T2 to ItemId.AMULET_OF_GLORY_T1,
-        ItemId.AMULET_OF_GLORY_T1 to ItemId.AMULET_OF_GLORY_T,
+        AMULET_OF_GLORY_T6 to AMULET_OF_GLORY_T5,
+        AMULET_OF_GLORY_T5 to AMULET_OF_GLORY_T4,
+        AMULET_OF_GLORY_T4 to AMULET_OF_GLORY_T3,
+        AMULET_OF_GLORY_T3 to AMULET_OF_GLORY_T2,
+        AMULET_OF_GLORY_T2 to AMULET_OF_GLORY_T1,
+        AMULET_OF_GLORY_T1 to AMULET_OF_GLORY_T,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.AMULET_OF_ETERNAL_GLORY,
+            AMULET_OF_ETERNAL_GLORY,
 
-            ItemId.AMULET_OF_GLORY,
-            ItemId.AMULET_OF_GLORY1,
-            ItemId.AMULET_OF_GLORY2,
-            ItemId.AMULET_OF_GLORY3,
-            ItemId.AMULET_OF_GLORY4,
-            ItemId.AMULET_OF_GLORY5,
-            ItemId.AMULET_OF_GLORY6,
+            AMULET_OF_GLORY,
+            AMULET_OF_GLORY1,
+            AMULET_OF_GLORY2,
+            AMULET_OF_GLORY3,
+            AMULET_OF_GLORY4,
+            AMULET_OF_GLORY5,
+            AMULET_OF_GLORY6,
 
-            ItemId.AMULET_OF_GLORY_T,
-            ItemId.AMULET_OF_GLORY_T1,
-            ItemId.AMULET_OF_GLORY_T2,
-            ItemId.AMULET_OF_GLORY_T3,
-            ItemId.AMULET_OF_GLORY_T4,
-            ItemId.AMULET_OF_GLORY_T5,
-            ItemId.AMULET_OF_GLORY_T6,
+            AMULET_OF_GLORY_T,
+            AMULET_OF_GLORY_T1,
+            AMULET_OF_GLORY_T2,
+            AMULET_OF_GLORY_T3,
+            AMULET_OF_GLORY_T4,
+            AMULET_OF_GLORY_T5,
+            AMULET_OF_GLORY_T6,
         )
 
 }

@@ -1,7 +1,7 @@
 package com.zenyte.game.content.colosseum.items;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnObjectAction;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
@@ -9,7 +9,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.game.world.object.ObjectId;
 import com.zenyte.game.world.object.WorldObject;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 @SuppressWarnings("unused")
 public class DizanaQuiverOnShrineOnRalos implements ItemOnObjectAction {

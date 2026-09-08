@@ -14,49 +14,13 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANT_JAVELIN
-import com.zenyte.game.item.ItemId.AWAKENERS_ORB
-import com.zenyte.game.item.ItemId.BLOOD_QUARTZ
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.BRONZE_JAVELIN
-import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
-import com.zenyte.game.item.ItemId.DRAGON_DART_TIP
-import com.zenyte.game.item.ItemId.DRAGON_JAVELIN_HEADS
-import com.zenyte.game.item.ItemId.EMERALD
-import com.zenyte.game.item.ItemId.EXECUTIONERS_AXE_HEAD
-import com.zenyte.game.item.ItemId.FIRE_RUNE
-import com.zenyte.game.item.ItemId.LAVA_RUNE
-import com.zenyte.game.item.ItemId.MIND_RUNE
-import com.zenyte.game.item.ItemId.MITHRIL_JAVELIN
-import com.zenyte.game.item.ItemId.ONYX_BOLTS_E
-import com.zenyte.game.item.ItemId.PRAYER_POTION3
-import com.zenyte.game.item.ItemId.PURE_ESSENCE
-import com.zenyte.game.item.ItemId.RAW_SHARK
-import com.zenyte.game.item.ItemId.RING_OF_SHADOWS
-import com.zenyte.game.item.ItemId.RUBY
-import com.zenyte.game.item.ItemId.RUNE_JAVELIN_HEADS
-import com.zenyte.game.item.ItemId.SAPPHIRE
-import com.zenyte.game.item.ItemId.SCROLL_BOX_EASY
-import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
-import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
-import com.zenyte.game.item.ItemId.SCROLL_BOX_MEDIUM
-import com.zenyte.game.item.ItemId.SOUL_RUNE
-import com.zenyte.game.item.ItemId.STRANGLED_TABLET
-import com.zenyte.game.item.ItemId.SUPER_COMBAT_POTION2
-import com.zenyte.game.item.ItemId.TUNA_POTATO
-import com.zenyte.game.item.ItemId.ULTOR_VESTIGE
-import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
-import com.zenyte.game.item.ItemId.UNCUT_RUBY
-import com.zenyte.game.item.ItemId.VIRTUS_MASK
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_LEGS
-import com.zenyte.game.item.ItemId.VIRTUS_ROBE_TOP
 
 class VardorvisDroptable : NPCDropTableScript() {
 
@@ -86,7 +50,7 @@ class VardorvisDroptable : NPCDropTableScript() {
     object VardorvisPet : StandaloneDropTableBuilder({
         limit = 1
         static {
-            ItemId.BUTCH quantity 1 rarity 1
+            BUTCH quantity 1 rarity 1
         }
     })
 
@@ -99,8 +63,8 @@ class VardorvisDroptable : NPCDropTableScript() {
                 DT2BossDifficulty.AWAKENED -> {
                     killer.hasKilledVardorvisAwakened = true
                     if (killer.playerHasKilledAllAwakenedBossesOnce()) {
-                        if (!killer.containsItem(ItemId.ANCIENT_BLOOD_ORNAMENT_KIT))
-                            npc.dropItem(killer, Item(ItemId.ANCIENT_BLOOD_ORNAMENT_KIT, 1))
+                        if (!killer.containsItem(ANCIENT_BLOOD_ORNAMENT_KIT))
+                            npc.dropItem(killer, Item(ANCIENT_BLOOD_ORNAMENT_KIT, 1))
                     }
                     3
                 }
@@ -167,7 +131,7 @@ class VardorvisDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(SCROLL_BOX_MEDIUM, 1, 1, 160.00))
         appendDrop(DisplayedDrop(SCROLL_BOX_HARD, 1, 1, 160.00))
         appendDrop(DisplayedDrop(SCROLL_BOX_ELITE, 1, 1, 160.00))
-        appendDrop(DisplayedDrop(ItemId.BUTCH, 1, 1, 2000.00))
+        appendDrop(DisplayedDrop(BUTCH, 1, 1, 2000.00))
 
 
         /* 1/100 base || 3/100 awakened */
@@ -185,18 +149,18 @@ class VardorvisDroptable : NPCDropTableScript() {
 
         buildTable(78) {
             Main {
-                ItemId.COAL quantity 130.noted rarity 8
-                ItemId.ADAMANTITE_ORE quantity 45.noted rarity 8
+                COAL quantity 130.noted rarity 8
+                ADAMANTITE_ORE quantity 45.noted rarity 8
                 RUNE_JAVELIN_HEADS quantity 36 rarity 8
                 DRAGON_JAVELIN_HEADS quantity 36 rarity 8
                 UNCUT_RUBY quantity 25.noted rarity 5
                 UNCUT_DIAMOND quantity 25.noted rarity 5
-                ItemId.RUNITE_ORE quantity 18.noted rarity 2
+                RUNITE_ORE quantity 18.noted rarity 2
                 DRAGON_DART_TIP quantity 100 rarity 2
                 PURE_ESSENCE quantity 120.noted rarity 1
-                ItemId.IRON_ORE quantity 38.noted rarity 1
-                ItemId.SILVER_ORE quantity 38.noted rarity 1
-                ItemId.MITHRIL_ORE quantity 38.noted rarity 1
+                IRON_ORE quantity 38.noted rarity 1
+                SILVER_ORE quantity 38.noted rarity 1
+                MITHRIL_ORE quantity 38.noted rarity 1
                 SAPPHIRE quantity 17.noted rarity 1
                 EMERALD quantity 17.noted rarity 1
                 RUBY quantity 17.noted rarity 1

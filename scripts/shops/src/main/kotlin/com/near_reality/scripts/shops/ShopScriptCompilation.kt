@@ -18,8 +18,7 @@ object ShopScriptCompilation : ScriptCompilationConfiguration(
             "com.zenyte.game.model.shop.ShopCurrency",
             "com.zenyte.game.model.shop.ShopCurrency.*",
 
-            "com.zenyte.game.item.ItemId",
-            "com.zenyte.game.item.ItemId.*",
+            "com.zenyte.game.item.ids.*",
 
             "com.near_reality.game.content.universalshop.*",
             "com.near_reality.game.content.universalshop.UnivShopItem",

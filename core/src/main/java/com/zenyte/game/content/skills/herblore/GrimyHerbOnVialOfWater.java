@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.herblore;
 
 import com.zenyte.game.content.skills.herblore.actions.Combine;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.UnmodifiableItem;

@@ -6,16 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ADAMANT_2H_SWORD
-import com.zenyte.game.item.ItemId.BLACK_2H_SWORD
-import com.zenyte.game.item.ItemId.BRONZE_2H_SWORD
-import com.zenyte.game.item.ItemId.IRON_2H_SWORD
-import com.zenyte.game.item.ItemId.MITHRIL_2H_SWORD
-import com.zenyte.game.item.ItemId.STEEL_2H_SWORD
 
 class GaiusTwoHandedShop : ShopScript() {
 

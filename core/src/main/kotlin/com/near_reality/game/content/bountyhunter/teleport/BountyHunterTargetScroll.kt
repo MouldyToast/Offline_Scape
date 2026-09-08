@@ -1,7 +1,7 @@
 package com.near_reality.game.content.bountyhunter.teleport
 
 import com.zenyte.game.content.bountyhunter.BountyHunter.TELEPORT_TO_TARGET_UNLOCKED_VAR
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
@@ -38,5 +38,5 @@ class BountyHunterTargetScroll : ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ItemId.BOUNTY_TELEPORT_SCROLL)
+    override fun getItems(): IntArray = intArrayOf(BOUNTY_TELEPORT_SCROLL)
 }

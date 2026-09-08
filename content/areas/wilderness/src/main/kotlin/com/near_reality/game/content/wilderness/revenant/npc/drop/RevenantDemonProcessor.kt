@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant.npc.drop
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
@@ -26,19 +26,19 @@ private const val PRIMAL_RATE: Int = 1200
 class RevenantDemonProcessor : DropProcessor() {
 
     override fun attach() {
-        appendDrop(DisplayedDrop(ItemId.BRACELET_OF_ETHEREUM, 1, 1, BRACELET_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_EMBLEM, 1, 1, EMBLEM_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_TOTEM, 1, 1, TOTEM_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_STATUETTE, 1, 1, STATUE_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_MEDALLION, 1, 1, MEDALLION_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_EFFIGY, 1, 1, EFFIGY_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_RELIC, 1, 1, RELIC_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.ANCIENT_CRYSTAL, 1, 1, CRYSTAL_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.AMULET_OF_AVARICE, 1, 1, AMULET_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.VIGGORAS_CHAINMACE_U, 1, 1, VIGGORAS_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.CRAWS_BOW_U, 1, 1, CRAWS_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.THAMMARONS_SCEPTRE_U, 1, 1, THAMMARONS_RATE.toDouble()))
-        appendDrop(DisplayedDrop(ItemId.PRIMAL_DAGGER, 1, 1, PRIMAL_RATE.toDouble()))
+        appendDrop(DisplayedDrop(BRACELET_OF_ETHEREUM, 1, 1, BRACELET_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_EMBLEM, 1, 1, EMBLEM_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_TOTEM, 1, 1, TOTEM_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_STATUETTE, 1, 1, STATUE_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_MEDALLION, 1, 1, MEDALLION_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_EFFIGY, 1, 1, EFFIGY_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_RELIC, 1, 1, RELIC_RATE.toDouble()))
+        appendDrop(DisplayedDrop(ANCIENT_CRYSTAL, 1, 1, CRYSTAL_RATE.toDouble()))
+        appendDrop(DisplayedDrop(AMULET_OF_AVARICE, 1, 1, AMULET_RATE.toDouble()))
+        appendDrop(DisplayedDrop(VIGGORAS_CHAINMACE_U, 1, 1, VIGGORAS_RATE.toDouble()))
+        appendDrop(DisplayedDrop(CRAWS_BOW_U, 1, 1, CRAWS_RATE.toDouble()))
+        appendDrop(DisplayedDrop(THAMMARONS_SCEPTRE_U, 1, 1, THAMMARONS_RATE.toDouble()))
+        appendDrop(DisplayedDrop(PRIMAL_DAGGER, 1, 1, PRIMAL_RATE.toDouble()))
 
     }
 
@@ -48,43 +48,43 @@ class RevenantDemonProcessor : DropProcessor() {
 
     override fun drop(npc: NPC, killer: Player, drop: Drop, item: Item): Item {
         if (randomDrop(killer, getRate(THAMMARONS_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.THAMMARONS_SCEPTRE_U)
+            return Item(THAMMARONS_SCEPTRE_U)
         }
         if (randomDrop(killer, getRate(CRAWS_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.CRAWS_BOW_U)
+            return Item(CRAWS_BOW_U)
         }
         if (randomDrop(killer, getRate(VIGGORAS_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.VIGGORAS_CHAINMACE_U)
+            return Item(VIGGORAS_CHAINMACE_U)
         }
         if (randomDrop(killer, getRate(AMULET_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.AMULET_OF_AVARICE)
+            return Item(AMULET_OF_AVARICE)
         }
         if (randomDrop(killer, getRate(CRYSTAL_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_CRYSTAL)
+            return Item(ANCIENT_CRYSTAL)
         }
         if (randomDrop(killer, getRate(RELIC_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_RELIC)
+            return Item(ANCIENT_RELIC)
         }
         if (randomDrop(killer, getRate(EFFIGY_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_EFFIGY)
+            return Item(ANCIENT_EFFIGY)
         }
         if (randomDrop(killer, getRate(MEDALLION_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_MEDALLION)
+            return Item(ANCIENT_MEDALLION)
         }
         if (randomDrop(killer, getRate(STATUE_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_STATUETTE)
+            return Item(ANCIENT_STATUETTE)
         }
         if (randomDrop(killer, getRate(TOTEM_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_TOTEM)
+            return Item(ANCIENT_TOTEM)
         }
         if (randomDrop(killer, getRate(EMBLEM_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.ANCIENT_EMBLEM)
+            return Item(ANCIENT_EMBLEM)
         }
         if (randomDrop(killer, getRate(BRACELET_RATE, killer.variables.isSkulled)) == 0) {
-            return Item(ItemId.BRACELET_OF_ETHEREUM)
+            return Item(BRACELET_OF_ETHEREUM)
         }
         if (randomDrop(killer, PRIMAL_RATE) == 0) {
-            return Item(ItemId.PRIMAL_DAGGER)
+            return Item(PRIMAL_DAGGER)
         }
         return item
     }

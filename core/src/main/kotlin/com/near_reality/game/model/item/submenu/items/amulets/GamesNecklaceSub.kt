@@ -2,7 +2,7 @@ package com.near_reality.game.model.item.submenu.items.amulets
 
 import com.near_reality.game.model.item.submenu.impl.GamesNecklaceRubAction
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemSubMenuPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.logger.NearRealityLogger
@@ -36,25 +36,25 @@ class GamesNecklaceSub(
     }
 
     private val toNextAmulet = mapOf(
-        ItemId.GAMES_NECKLACE8 to ItemId.GAMES_NECKLACE7,
-        ItemId.GAMES_NECKLACE7 to ItemId.GAMES_NECKLACE5,
-        ItemId.GAMES_NECKLACE6 to ItemId.GAMES_NECKLACE5,
-        ItemId.GAMES_NECKLACE5 to ItemId.GAMES_NECKLACE4,
-        ItemId.GAMES_NECKLACE4 to ItemId.GAMES_NECKLACE3,
-        ItemId.GAMES_NECKLACE3 to ItemId.GAMES_NECKLACE2,
-        ItemId.GAMES_NECKLACE2 to ItemId.GAMES_NECKLACE1,
-        ItemId.GAMES_NECKLACE1 to -1,
+        GAMES_NECKLACE8 to GAMES_NECKLACE7,
+        GAMES_NECKLACE7 to GAMES_NECKLACE5,
+        GAMES_NECKLACE6 to GAMES_NECKLACE5,
+        GAMES_NECKLACE5 to GAMES_NECKLACE4,
+        GAMES_NECKLACE4 to GAMES_NECKLACE3,
+        GAMES_NECKLACE3 to GAMES_NECKLACE2,
+        GAMES_NECKLACE2 to GAMES_NECKLACE1,
+        GAMES_NECKLACE1 to -1,
     )
 
     override fun getItems(): IntArray =
         intArrayOf(
-            ItemId.GAMES_NECKLACE8,
-            ItemId.GAMES_NECKLACE7,
-            ItemId.GAMES_NECKLACE6,
-            ItemId.GAMES_NECKLACE5,
-            ItemId.GAMES_NECKLACE4,
-            ItemId.GAMES_NECKLACE3,
-            ItemId.GAMES_NECKLACE2,
-            ItemId.GAMES_NECKLACE1
+            GAMES_NECKLACE8,
+            GAMES_NECKLACE7,
+            GAMES_NECKLACE6,
+            GAMES_NECKLACE5,
+            GAMES_NECKLACE4,
+            GAMES_NECKLACE3,
+            GAMES_NECKLACE2,
+            GAMES_NECKLACE1
         )
 }

@@ -26,7 +26,7 @@ import com.zenyte.game.content.skills.magic.SpellState;
 import com.zenyte.game.content.skills.magic.Spellbook;
 import com.zenyte.game.content.skills.magic.spells.NPCSpell;
 import com.zenyte.game.content.skills.magic.spells.lunar.Humidify;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.Direction;

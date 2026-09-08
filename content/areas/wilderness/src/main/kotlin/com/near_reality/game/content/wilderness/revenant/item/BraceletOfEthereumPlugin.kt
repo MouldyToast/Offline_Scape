@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
@@ -23,10 +23,10 @@ class BraceletOfEthereumPlugin : ItemPlugin() {
         bind("Uncharge") { player: Player, item: Item, slotId: Int ->
             val ether = item.charges
             if (player.inventory.checkSpace()) {
-                if (player.inventory.addItem(Item(ItemId.REVENANT_ETHER, ether)).result != RequestResult.OVERFLOW) {
+                if (player.inventory.addItem(Item(REVENANT_ETHER, ether)).result != RequestResult.OVERFLOW) {
                     item.charges -= ether
-                    if (item.id == ItemId.BRACELET_OF_ETHEREUM) {
-                        item.id = ItemId.BRACELET_OF_ETHEREUM_UNCHARGED
+                    if (item.id == BRACELET_OF_ETHEREUM) {
+                        item.id = BRACELET_OF_ETHEREUM_UNCHARGED
                         player.inventory.refresh(slotId)
                     }
                     player.sendMessage("You successfully uncharge your bracelet of ethereum.")
@@ -36,7 +36,7 @@ class BraceletOfEthereumPlugin : ItemPlugin() {
         }
         bind("Dismantle") { player: Player, item: Item?, slotId: Int ->
             player.inventory.deleteItem(item)
-            player.inventory.addOrDrop(Item(ItemId.REVENANT_ETHER, 250))
+            player.inventory.addOrDrop(Item(REVENANT_ETHER, 250))
             player.sendMessage("You successfully dismantle your bracelet of ethereum.")
         }
     }
@@ -48,5 +48,5 @@ class BraceletOfEthereumPlugin : ItemPlugin() {
     }
 
     override fun getItems(): IntArray=
-        intArrayOf(ItemId.BRACELET_OF_ETHEREUM, ItemId.BRACELET_OF_ETHEREUM_UNCHARGED)
+        intArrayOf(BRACELET_OF_ETHEREUM, BRACELET_OF_ETHEREUM_UNCHARGED)
 }

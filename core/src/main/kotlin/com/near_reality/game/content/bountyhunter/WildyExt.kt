@@ -12,7 +12,7 @@ import com.near_reality.game.world.Boundary
 import com.near_reality.game.world.entity.player.*
 import com.zenyte.game.GameInterface
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.MessageType
 import com.zenyte.game.world.entity.player.Player

@@ -1,13 +1,13 @@
 package com.zenyte.plugins.itemonitem;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ItemOnItemAction;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.plugins.item.SlayerHelm;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Tommeh | 19 mei 2018 | 16:51:44

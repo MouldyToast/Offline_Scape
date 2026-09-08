@@ -6,22 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ADAMANT_JAVELIN
-import com.zenyte.game.item.ItemId.ADAMANT_THROWNAXE
-import com.zenyte.game.item.ItemId.BRONZE_JAVELIN
-import com.zenyte.game.item.ItemId.BRONZE_THROWNAXE
-import com.zenyte.game.item.ItemId.IRON_JAVELIN
-import com.zenyte.game.item.ItemId.IRON_THROWNAXE
-import com.zenyte.game.item.ItemId.MITHRIL_JAVELIN
-import com.zenyte.game.item.ItemId.MITHRIL_THROWNAXE
-import com.zenyte.game.item.ItemId.RUNE_JAVELIN
-import com.zenyte.game.item.ItemId.RUNE_THROWNAXE
-import com.zenyte.game.item.ItemId.STEEL_JAVELIN
-import com.zenyte.game.item.ItemId.STEEL_THROWNAXE
 
 class AuthenticThrowingWeapons : ShopScript() {
 

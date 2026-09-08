@@ -7,7 +7,7 @@ import com.zenyte.game.content.theatreofblood.interfaces.PartyOverlayInterface
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.content.theatreofblood.plugin.item.VerzikCrystalShard
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.Location
@@ -182,8 +182,8 @@ class TheatreEntranceObject : ObjectAction {
         val noticeBoardObject = WorldObject(32655, 10, 3, Location(3662, 3218, 0))
 
         fun enter(player: Player, party: RaidingParty) {
-            if (player.containsItem(ItemId.DAWNBRINGER)) {
-                player.dialogue { item(Item(ItemId.DAWNBRINGER), "You can't enter the Theatre of Blood when you possess a Dawnbringer.") }
+            if (player.containsItem(DAWNBRINGER)) {
+                player.dialogue { item(Item(DAWNBRINGER), "You can't enter the Theatre of Blood when you possess a Dawnbringer.") }
                 return
             }
 

@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.MITHRIL_2H_SWORD
-import com.zenyte.game.item.ItemId.MITHRIL_BATTLEAXE
-import com.zenyte.game.item.ItemId.MITHRIL_CLAWS
-import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
-import com.zenyte.game.item.ItemId.MITHRIL_WARHAMMER
 
 class WeaponsGalore : ShopScript() {
 

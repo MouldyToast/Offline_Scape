@@ -11,7 +11,7 @@ import com.zenyte.game.content.skills.magic.spells.arceuus.MarkOfDarknessEffectK
 import com.zenyte.game.content.skills.magic.spells.lunar.SpellbookSwap;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;
@@ -54,7 +54,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
 
-import static com.zenyte.game.item.ItemId.CHAOS_GAUNTLETS;
+import static com.zenyte.game.item.ids.ItemId.CHAOS_GAUNTLETS;
 import static com.zenyte.game.world.entity.player.action.combat.CombatUtilities.AHRIMS_SET_GFX;
 import static com.zenyte.game.world.entity.player.action.combat.CombatUtilities.isWieldingZurielsStaff;
 

@@ -1,6 +1,6 @@
 package com.near_reality.game.content.boss.nex
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.attribute
 import com.zenyte.game.world.entity.masks.Graphics
@@ -103,7 +103,7 @@ private fun Player.getBestMeleeBonus() = bonuses
         .coerceAtLeast(bonuses
             .getBonus(Bonuses.Bonus.ATT_CRUSH)))
 
-private fun Player.wearSpectralSpiritShield() = shield?.id == ItemId.SPECTRAL_SPIRIT_SHIELD
+private fun Player.wearSpectralSpiritShield() = shield?.id == SPECTRAL_SPIRIT_SHIELD
 
 private fun Player.wearsSlayerHelmet() = helmet?.name?.contains("slayer helmet", true) == true
 

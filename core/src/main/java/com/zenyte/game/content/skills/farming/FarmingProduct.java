@@ -2,7 +2,7 @@ package com.zenyte.game.content.skills.farming;
 
 import com.zenyte.game.content.skills.woodcutting.TreeDefinitions;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.player.Player;
 import com.zenyte.game.world.region.area.wilderness.WildernessResourceArea;
 import com.zenyte.utils.Articles;

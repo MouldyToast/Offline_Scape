@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BOLT_OF_CLOTH
-import com.zenyte.game.item.ItemId.BRONZE_NAILS
-import com.zenyte.game.item.ItemId.IRON_NAILS
-import com.zenyte.game.item.ItemId.SAW
-import com.zenyte.game.item.ItemId.STEEL_NAILS
 
 class ConstructionSupplies : ShopScript() {
 

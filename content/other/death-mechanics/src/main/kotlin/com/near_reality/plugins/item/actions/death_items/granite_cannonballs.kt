@@ -3,10 +3,8 @@ package com.near_reality.plugins.item.actions.death_items
 import com.zenyte.game.item.Item
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.*
-import com.zenyte.game.item.ItemId.CANNONBALL
-import com.zenyte.game.item.ItemId.GRANITE_CANNONBALL
 
 class GraniteCannonballsItemaction : ItemActionScript() {
 

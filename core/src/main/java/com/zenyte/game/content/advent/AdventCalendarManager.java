@@ -2,7 +2,7 @@ package com.zenyte.game.content.advent;
 
 import com.google.common.eventbus.Subscribe;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.world.World;

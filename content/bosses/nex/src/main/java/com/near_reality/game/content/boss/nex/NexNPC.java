@@ -4,7 +4,7 @@ import com.zenyte.game.content.chambersofxeric.greatolm.OlmRoom;
 import com.zenyte.game.content.chambersofxeric.greatolm.scripts.Lightning;
 import com.zenyte.game.content.skills.magic.spells.arceuus.DeathChargeKt;
 import com.zenyte.game.content.skills.prayer.Prayer;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;

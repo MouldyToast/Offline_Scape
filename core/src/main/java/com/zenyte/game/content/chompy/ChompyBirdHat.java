@@ -1,6 +1,6 @@
 package com.zenyte.game.content.chompy;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**

@@ -6,7 +6,7 @@ import com.near_reality.game.content.damage
 import com.near_reality.game.content.hit
 import com.near_reality.game.content.seq
 import com.near_reality.game.content.spotanim
-import com.zenyte.game.item.ItemId.NOXIOUS_HALBERD
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.world.entity.Entity
 import com.zenyte.game.world.entity.Location

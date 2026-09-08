@@ -16,7 +16,7 @@ import com.zenyte.game.world.entity.player.container.ContainerWrapper;
 import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 import com.zenyte.plugins.dialogue.DestroyItemDialogue;
 import com.zenyte.plugins.dialogue.ItemChat;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 @SuppressWarnings("unused")
 public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemAction, ChargeExtension {

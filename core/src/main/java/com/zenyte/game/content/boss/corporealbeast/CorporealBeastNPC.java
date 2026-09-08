@@ -2,7 +2,7 @@ package com.zenyte.game.content.boss.corporealbeast;
 
 import com.near_reality.game.world.entity.AbstractEntityDropExtKt;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;
 import com.zenyte.game.util.CollisionUtil;

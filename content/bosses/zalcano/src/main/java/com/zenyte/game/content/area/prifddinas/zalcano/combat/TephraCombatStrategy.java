@@ -1,6 +1,6 @@
 package com.zenyte.game.content.area.prifddinas.zalcano.combat;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.world.entity.Entity;
 import com.zenyte.game.world.entity.masks.Graphics;
 import com.zenyte.game.world.entity.masks.Hit;

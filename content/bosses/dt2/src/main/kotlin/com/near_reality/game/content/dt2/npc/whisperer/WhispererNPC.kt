@@ -5,7 +5,7 @@ import com.near_reality.game.content.dt2.area.WhispererInstance
 import com.near_reality.game.content.dt2.npc.*
 import com.near_reality.game.content.dt2.npc.leviathan.awakened
 import com.zenyte.game.content.skills.prayer.Prayer
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.WorldTask
 import com.zenyte.game.util.Direction
 import com.zenyte.game.util.Utils.random
@@ -1837,9 +1837,9 @@ fun DynamicArea.clearDarkFragment() {
         player.sendMessage("<col=ff3045>Your blackstone fragment loses all its energy.")
 
         for (i in 0 until 28) {
-            val slot = player.inventory.container.getSlotOf(ItemId.BLACKSTONE_FRAGMENT)
+            val slot = player.inventory.container.getSlotOf(BLACKSTONE_FRAGMENT)
             if (slot == -1) break
-            player.inventory.replaceItem(ItemId.BLACKSTONE_FRAGMENT_28357, 1, slot)
+            player.inventory.replaceItem(BLACKSTONE_FRAGMENT_28357, 1, slot)
         }
         player.whispererBlackstoneReady = false
         player.playSound(WhispererConstants.WHISPERER_SOUL_SIPHON_END_SYNTH)
@@ -1857,9 +1857,9 @@ fun DynamicArea.prepareDarkFragment() {
         player.playSound(1664)
 
         for (i in 0 until 28) {
-            val slot = player.inventory.container.getSlotOf(ItemId.BLACKSTONE_FRAGMENT_28357)
+            val slot = player.inventory.container.getSlotOf(BLACKSTONE_FRAGMENT_28357)
             if (slot == -1) break
-            player.inventory.replaceItem(ItemId.BLACKSTONE_FRAGMENT, 1, slot)
+            player.inventory.replaceItem(BLACKSTONE_FRAGMENT, 1, slot)
         }
     }
 }

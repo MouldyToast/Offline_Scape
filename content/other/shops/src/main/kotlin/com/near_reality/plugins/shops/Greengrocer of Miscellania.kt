@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.CABBAGE
-import com.zenyte.game.item.ItemId.GARLIC
-import com.zenyte.game.item.ItemId.ONION
-import com.zenyte.game.item.ItemId.POTATO
-import com.zenyte.game.item.ItemId.TOMATO
 
 class GreengrocerOfMiscellania : ShopScript() {
 

@@ -2,7 +2,7 @@ package com.zenyte.game.content.tombsofamascut.item;
 
 import com.zenyte.game.content.tombsofamascut.TOAConstants;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.model.item.pluginextensions.ChargeExtension;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;

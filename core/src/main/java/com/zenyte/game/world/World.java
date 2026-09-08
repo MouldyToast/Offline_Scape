@@ -23,7 +23,7 @@ import com.zenyte.game.content.skills.farming.FarmingProduct;
 import com.zenyte.game.content.skills.magic.Rune;
 import com.zenyte.game.content.skills.prayer.actions.Bones;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.containers.DragonhidePouch;
 import com.zenyte.game.model.item.containers.GemBag;
 import com.zenyte.game.model.item.containers.HerbSack;

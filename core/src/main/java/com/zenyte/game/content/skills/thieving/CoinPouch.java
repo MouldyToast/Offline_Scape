@@ -1,6 +1,6 @@
 package com.zenyte.game.content.skills.thieving;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.ImmutableItem;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 

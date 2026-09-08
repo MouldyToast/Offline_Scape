@@ -1,6 +1,6 @@
 package com.zenyte.game.content.event.easter2020.plugin;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Direction;
 import com.zenyte.game.util.Utils;

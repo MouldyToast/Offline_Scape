@@ -1,7 +1,7 @@
 package com.near_reality.game.content.crystal
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 
 /**
  * Represents a type of crystal seed that is in most cases a required material for crafting a crystal item.
@@ -11,11 +11,11 @@ import com.zenyte.game.item.ItemId
  * @author Stan van der Bend
  */
 enum class CrystalSeed(val itemId: Int, val shardReturnRate: Int) {
-    WEAPON(ItemId.CRYSTAL_SEED, 10),
-    TOOL(ItemId.CRYSTAL_TOOL_SEED, 100),
-    ENHANCED_TELEPORT(ItemId.ENHANCED_CRYSTAL_TELEPORT_SEED, 150),
-    ARMOUR(ItemId.CRYSTAL_ARMOUR_SEED, 250),
-    ENHANCED_WEAPON(ItemId.ENHANCED_CRYSTAL_WEAPON_SEED, 1500);
+    WEAPON(CRYSTAL_SEED, 10),
+    TOOL(CRYSTAL_TOOL_SEED, 100),
+    ENHANCED_TELEPORT(ENHANCED_CRYSTAL_TELEPORT_SEED, 150),
+    ARMOUR(CRYSTAL_ARMOUR_SEED, 250),
+    ENHANCED_WEAPON(ENHANCED_CRYSTAL_WEAPON_SEED, 1500);
 
     operator fun times(amount: Int) = listOf(Item(itemId, amount))
 }

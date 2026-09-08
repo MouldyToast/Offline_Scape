@@ -8,19 +8,7 @@ import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.dialogue
-import com.zenyte.game.item.ItemId.ARCHER_ICON
-import com.zenyte.game.item.ItemId.BELLATOR_ICON
-import com.zenyte.game.item.ItemId.BELLATOR_VESTIGE
-import com.zenyte.game.item.ItemId.BERSERKER_ICON
-import com.zenyte.game.item.ItemId.BLOOD_RUNE
-import com.zenyte.game.item.ItemId.MAGUS_ICON
-import com.zenyte.game.item.ItemId.MAGUS_VESTIGE
-import com.zenyte.game.item.ItemId.SEERS_ICON
-import com.zenyte.game.item.ItemId.ULTOR_ICON
-import com.zenyte.game.item.ItemId.ULTOR_VESTIGE
-import com.zenyte.game.item.ItemId.VENATOR_ICON
-import com.zenyte.game.item.ItemId.VENATOR_VESTIGE
-import com.zenyte.game.item.ItemId.WARRIOR_ICON
+import com.zenyte.game.item.ids.*
 
 /**
  * @author Glabay | Glabay-Studios

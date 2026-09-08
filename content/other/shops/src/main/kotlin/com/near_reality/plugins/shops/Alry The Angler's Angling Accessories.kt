@@ -6,18 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.ANGLER_BOOTS
-import com.zenyte.game.item.ItemId.ANGLER_HAT
-import com.zenyte.game.item.ItemId.ANGLER_TOP
-import com.zenyte.game.item.ItemId.ANGLER_WADERS
-import com.zenyte.game.item.ItemId.FISH_SACK
-import com.zenyte.game.item.ItemId.PEARL_BARBARIAN_ROD
-import com.zenyte.game.item.ItemId.PEARL_FISHING_ROD
-import com.zenyte.game.item.ItemId.PEARL_FLY_FISHING_ROD
 
 class AlryTheAnglerSAnglingAccessories : ShopScript() {
 

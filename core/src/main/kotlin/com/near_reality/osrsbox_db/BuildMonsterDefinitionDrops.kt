@@ -1,6 +1,6 @@
 package com.near_reality.osrsbox_db
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.NPCDrops
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
@@ -26,16 +26,16 @@ fun MonsterDefinition.buildFromTable(table: List<MonsterDrop>) {
         fun defineQuantity(quantityMin: Int, quantityMax: Int): Boolean {
             var actualItemID = itemID
             when (actualItemID) {
-                ItemId.LARRANS_KEY,
-                ItemId.BASILISK_BONE,
-                ItemId.BASILISK_BONE_7901,
-                ItemId.LOOTING_BAG,
-                ItemId.LOOTING_BAG_22586,
-                ItemId.BRIMSTONE_KEY,
-                ItemId.DARK_TOTEM_BASE,
-                ItemId.DARK_TOTEM_MIDDLE,
-                ItemId.DARK_TOTEM_TOP,
-                ItemId.ANCIENT_SHARD,
+                LARRANS_KEY,
+                BASILISK_BONE,
+                BASILISK_BONE_7901,
+                LOOTING_BAG,
+                LOOTING_BAG_22586,
+                BRIMSTONE_KEY,
+                DARK_TOTEM_BASE,
+                DARK_TOTEM_MIDDLE,
+                DARK_TOTEM_TOP,
+                ANCIENT_SHARD,
                     -> return false
             }
             val itemDef = ItemDefinitions.get(actualItemID) ?: return false

@@ -15,7 +15,7 @@ import com.near_reality.game.content.bountyhunter.WildyExtKt;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.middleman.MiddleManManager;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.Boundary;

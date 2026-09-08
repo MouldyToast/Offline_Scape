@@ -1,7 +1,7 @@
 package com.near_reality.game.content.araxxor.items.venom
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.COAGULATED_VENOM
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
 import com.zenyte.game.world.entity.npc.NpcId

@@ -6,15 +6,10 @@ import com.zenyte.game.model.shop.ShopPolicy
 import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
-import com.zenyte.game.item.ItemId.BAG_FULL_OF_GEMS
-import com.zenyte.game.item.ItemId.CELESTIAL_RING_UNCHARGED
-import com.zenyte.game.item.ItemId.SOFT_CLAY_PACK
-import com.zenyte.game.item.ItemId.STAR_FRAGMENT
-import com.zenyte.game.item.ItemId.TOME_OF_EXPERIENCE_30215
 
 class DusuriSStarShop : ShopScript() {
 

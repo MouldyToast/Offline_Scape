@@ -6,9 +6,7 @@ import com.zenyte.game.content.achievementdiary.DiaryComplexity;
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot.*
 import mgi.types.config.StructDefinitions
 import mgi.types.config.enums.Enums
-import com.zenyte.game.item.ItemId.FANCY_BOOTS
-import com.zenyte.game.item.ItemId.FIGHTING_BOOTS
-import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ids.*
 
 enum class IronmanGroupTasks(val enumIndex: Int, val taskCompleted: (Player) -> Boolean) {
 

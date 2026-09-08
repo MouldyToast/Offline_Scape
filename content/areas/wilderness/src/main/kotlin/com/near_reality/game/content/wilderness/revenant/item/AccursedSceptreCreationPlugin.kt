@@ -1,7 +1,7 @@
 package com.near_reality.game.content.wilderness.revenant.item
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.PairedItemOnItemPlugin
 import com.zenyte.game.world.entity.player.Player
@@ -20,16 +20,16 @@ class AccursedSceptreCreationPlugin : PairedItemOnItemPlugin {
             return
         }
 
-        val thammarons = if (from.id == ItemId.SKULL_OF_VETION) to else from
-        player.inventory.deleteItem(Item(ItemId.SKULL_OF_VETION))
+        val thammarons = if (from.id == SKULL_OF_VETION) to else from
+        player.inventory.deleteItem(Item(SKULL_OF_VETION))
         player.inventory.deleteItem(thammarons)
 
         val accursed = Item(
             when (thammarons.id) {
-                ItemId.THAMMARONS_SCEPTRE_U -> ItemId.ACCURSED_SCEPTRE_U_27662
-                ItemId.THAMMARONS_SCEPTRE_AU -> ItemId.ACCURSED_SCEPTRE_AU_27676
-                ItemId.THAMMARONS_SCEPTRE -> ItemId.ACCURSED_SCEPTRE_27665
-                ItemId.THAMMARONS_SCEPTRE_A -> ItemId.ACCURSED_SCEPTRE_A_27679
+                THAMMARONS_SCEPTRE_U -> ACCURSED_SCEPTRE_U_27662
+                THAMMARONS_SCEPTRE_AU -> ACCURSED_SCEPTRE_AU_27676
+                THAMMARONS_SCEPTRE -> ACCURSED_SCEPTRE_27665
+                THAMMARONS_SCEPTRE_A -> ACCURSED_SCEPTRE_A_27679
                 else -> {
                     player.sendDeveloperMessage("Invalid item id: ${thammarons.id}")
                     return
@@ -49,10 +49,10 @@ class AccursedSceptreCreationPlugin : PairedItemOnItemPlugin {
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
         return arrayOf(
-            ItemOnItemAction.ItemPair.of(ItemId.THAMMARONS_SCEPTRE_U, ItemId.SKULL_OF_VETION),
-            ItemOnItemAction.ItemPair.of(ItemId.THAMMARONS_SCEPTRE_AU, ItemId.SKULL_OF_VETION),
-            ItemOnItemAction.ItemPair.of(ItemId.THAMMARONS_SCEPTRE, ItemId.SKULL_OF_VETION),
-            ItemOnItemAction.ItemPair.of(ItemId.THAMMARONS_SCEPTRE_A, ItemId.SKULL_OF_VETION)
+            ItemOnItemAction.ItemPair.of(THAMMARONS_SCEPTRE_U, SKULL_OF_VETION),
+            ItemOnItemAction.ItemPair.of(THAMMARONS_SCEPTRE_AU, SKULL_OF_VETION),
+            ItemOnItemAction.ItemPair.of(THAMMARONS_SCEPTRE, SKULL_OF_VETION),
+            ItemOnItemAction.ItemPair.of(THAMMARONS_SCEPTRE_A, SKULL_OF_VETION)
         )
     }
 }

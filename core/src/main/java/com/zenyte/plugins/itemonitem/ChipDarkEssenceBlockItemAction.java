@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.OptionalInt;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Tommeh | 26-1-2019 | 16:50

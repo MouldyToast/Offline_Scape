@@ -1,7 +1,7 @@
 package com.zenyte.game.content.breaches.item;
 
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradableItem;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.task.TickTask;
@@ -18,7 +18,7 @@ import com.zenyte.game.world.entity.player.container.RequestResult;
 import com.zenyte.game.world.object.WorldObject;
 import kotlin.Pair;
 
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 public class TrinketOfAdvancedWeaponry extends ItemPlugin {
     private final Item trinket = new Item(ItemId.TRINKET_OF_ADVANCED_WEAPONRY, 1);

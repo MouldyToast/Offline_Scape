@@ -3,7 +3,7 @@ package com.zenyte.game.content
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.noted
 import com.near_reality.scripts.npc.drops.table.tables.rare.RareDropTable
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
@@ -14,25 +14,6 @@ import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
-import com.zenyte.game.item.ItemId.ADAMANT_AXE
-import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
-import com.zenyte.game.item.ItemId.BRIMSTONE_KEY
-import com.zenyte.game.item.ItemId.CABBAGE
-import com.zenyte.game.item.ItemId.COINS_995
-import com.zenyte.game.item.ItemId.DEATH_RUNE
-import com.zenyte.game.item.ItemId.EARTH_RUNE
-import com.zenyte.game.item.ItemId.MUD_RUNE
-import com.zenyte.game.item.ItemId.PERFECT_SHELL
-import com.zenyte.game.item.ItemId.PINEAPPLE
-import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
-import com.zenyte.game.item.ItemId.RUNE_PICKAXE
-import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
-import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
-import com.zenyte.game.item.ItemId.SWAMP_TAR
-import com.zenyte.game.item.ItemId.TANGLED_TOADS_LEGS
-import com.zenyte.game.item.ItemId.TORTOISE_SHELL
-import com.zenyte.game.item.ItemId.WARPED_SCEPTRE_UNCHARGED
-import com.zenyte.game.item.ItemId.WEAPON_POISON
 
 class WarpedTortoiseDroptable : NPCDropTableScript() {
 
@@ -41,7 +22,7 @@ class WarpedTortoiseDroptable : NPCDropTableScript() {
 
         buildTable {
             Always {
-                ItemId.BIG_BONES quantity 1 rarity always
+                BIG_BONES quantity 1 rarity always
             }
             Main(248) {
                 // Weapons and Armour
@@ -58,11 +39,11 @@ class WarpedTortoiseDroptable : NPCDropTableScript() {
                 COINS_995 quantity (600..800) oneIn 6  // 600-800
                 SWAMP_TAR quantity (40..60) oneIn 10  // 40-60
                 CABBAGE quantity (20..40).noted oneIn 10  // 20-40
-                ItemId.COAL quantity (6..12).noted oneIn 21  // 6-12
+                COAL quantity (6..12).noted oneIn 21  // 6-12
                 WEAPON_POISON quantity 1 oneIn 21     // 1
                 PINEAPPLE quantity 1 oneIn 21     // 1
                 TANGLED_TOADS_LEGS quantity (2..3) oneIn 21  // 2-3
-                ItemId.ADAMANTITE_ORE quantity (3..5).noted oneIn 32  // 3-5
+                ADAMANTITE_ORE quantity (3..5).noted oneIn 32  // 3-5
                 TORTOISE_SHELL quantity (1..3) oneIn 32  // 1-3
                 PERFECT_SHELL quantity (1..3) oneIn 32  // 1-3
                 // Rare

@@ -5,7 +5,7 @@ import com.near_reality.game.content.dt2.area.DukeSucellusInstance
 import com.near_reality.game.content.dt2.npc.*
 import com.near_reality.game.content.offset
 import com.zenyte.game.content.skills.prayer.Prayer
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.util.Direction
@@ -56,7 +56,7 @@ class DukeSucellusEntity(val arena: DukeSucellusInstance) :
                     0 -> {
                         player.sendMessage("<col=ff289d>Duke Sucellus awakens...")
                         setTransformation(difficulty.getTransformation())
-                        player.inventory.container.findAllById(ItemId.ARDERMUSCA_POISON).values.forEach {
+                        player.inventory.container.findAllById(ARDERMUSCA_POISON).values.forEach {
                             player.inventory.container.remove(
                                 it
                             )

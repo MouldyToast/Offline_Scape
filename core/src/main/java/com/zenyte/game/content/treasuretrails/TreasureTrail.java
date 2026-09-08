@@ -6,7 +6,7 @@ import com.zenyte.game.content.treasuretrails.clues.*;
 import com.zenyte.game.content.treasuretrails.clues.emote.ItemRequirement;
 import com.zenyte.game.content.treasuretrails.npcs.*;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.util.Colour;
 import com.zenyte.game.util.ProjectileUtils;
 import com.zenyte.game.util.Utils;

@@ -1,6 +1,6 @@
 package com.near_reality.game.content.chaoskey
 
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.content.drops.table.DropTable
 import com.zenyte.game.item.Item
 import com.zenyte.game.util.Utils
@@ -30,7 +30,7 @@ class ChaosChest : ObjectAction {
         player.actionManager.setAction(object : Action() {
             var cycle: Int = 0
             override fun start(): Boolean {
-                if (!player.inventory.containsItem(ItemId.CHAOS_KEY)) {
+                if (!player.inventory.containsItem(CHAOS_KEY)) {
                     player.sendMessage("You need a Chaos Key to open the Chaos Chest.")
                     return false
                 }
@@ -44,7 +44,7 @@ class ChaosChest : ObjectAction {
 
             override fun processWithDelay(): Int {
                 if (cycle == 3) {
-                    if (player.inventory.deleteItem(ItemId.CHAOS_KEY, 1).result == RequestResult.SUCCESS) {
+                    if (player.inventory.deleteItem(CHAOS_KEY, 1).result == RequestResult.SUCCESS) {
                         val reward = ChaosChestTable.roll()
                         player.inventory.addItem(995, Utils.random(150_000, 250_000))
                         World.getPlayers().forEach(Consumer { p: Player ->
@@ -82,17 +82,17 @@ internal object ChaosChestTable {
 
     init {
         table
-            .append(ItemId.DRAGON_SCIMITAR + 1, 10, 3)
-            .append(ItemId.DRAGON_DAGGER + 1, 10, 3)
-            .append(ItemId.DRAGON_BONES_PACK, 10, 1)
-            .append(ItemId.DRAGON_ARROW, 10, 100)
-            .append(ItemId.LARRANS_KEY, 10, 1)
-            .append(ItemId.CRYSTAL_KEY, 10, 3)
-            .append(ItemId.YEW_LOGS + 1, 10, 150)
-            .append(ItemId.MAGIC_LOGS + 1, 10, 90)
-            .append(ItemId.RAW_MANTA_RAY + 1, 10, 150)
-            .append(ItemId.OSNR_MYSTERY_BOX, 2, 1)
-            .append(ItemId.PRIMAL_WARHAMMER, 1, 1)
+            .append(DRAGON_SCIMITAR + 1, 10, 3)
+            .append(DRAGON_DAGGER + 1, 10, 3)
+            .append(DRAGON_BONES_PACK, 10, 1)
+            .append(DRAGON_ARROW, 10, 100)
+            .append(LARRANS_KEY, 10, 1)
+            .append(CRYSTAL_KEY, 10, 3)
+            .append(YEW_LOGS + 1, 10, 150)
+            .append(MAGIC_LOGS + 1, 10, 90)
+            .append(RAW_MANTA_RAY + 1, 10, 150)
+            .append(OSNR_MYSTERY_BOX, 2, 1)
+            .append(PRIMAL_WARHAMMER, 1, 1)
     }
 
     fun roll(): Item {

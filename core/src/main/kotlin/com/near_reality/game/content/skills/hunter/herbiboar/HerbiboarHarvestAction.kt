@@ -4,7 +4,7 @@ import com.near_reality.game.content.skills.hunter.herbiboar.Herbiboar.unharvest
 import com.zenyte.game.content.drops.table.DropTable
 import com.zenyte.game.content.follower.impl.MiscPet
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.ids.*
 import com.zenyte.game.task.TickTask
 import com.zenyte.game.task.WorldTasksManager.schedule
 import com.zenyte.game.util.Colour
@@ -44,34 +44,34 @@ class HerbiboarHarvestAction : NPCPlugin() {
     private fun Player.getHerbiboarHarvestTable(): DropTable {
         val table = DropTable()
 
-        table.append(ItemId.GRIMY_GUAM_LEAF, 1, 1)
+        table.append(GRIMY_GUAM_LEAF, 1, 1)
         if (skills.getLevel(Skills.HERBLORE) <= 80) {
-            table.append(ItemId.GRIMY_MARRENTILL, 10, 1)
+            table.append(GRIMY_MARRENTILL, 10, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) <= 78) {
-            table.append(ItemId.GRIMY_TARROMIN, 6, 1)
+            table.append(GRIMY_TARROMIN, 6, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) <= 76) {
-            table.append(ItemId.GRIMY_HARRALANDER, 8, 1)
+            table.append(GRIMY_HARRALANDER, 8, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) >= 41) {
-            table.append(ItemId.GRIMY_TARROMIN, 7, 1)
+            table.append(GRIMY_TARROMIN, 7, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) >= 62) {
-            table.append(ItemId.GRIMY_DWARF_WEED, 6, 1)
+            table.append(GRIMY_DWARF_WEED, 6, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) >= 74) {
-            table.append(ItemId.GRIMY_SNAPDRAGON, 5, 1)
+            table.append(GRIMY_SNAPDRAGON, 5, 1)
         }
         if (skills.getLevel(Skills.HERBLORE) >= 77) {
-            table.append(ItemId.GRIMY_TORSTOL, 5, 1)
+            table.append(GRIMY_TORSTOL, 5, 1)
         }
 
-        table.append(ItemId.GRIMY_GUAM_LEAF, 25, 1)
-        table.append(ItemId.GRIMY_IRIT_LEAF, 12, 1)
-        table.append(ItemId.GRIMY_AVANTOE, 10, 1)
-        table.append(ItemId.GRIMY_CADANTINE, 9, 1)
-        table.append(ItemId.GRIMY_KWUARM, 9, 1)
+        table.append(GRIMY_GUAM_LEAF, 25, 1)
+        table.append(GRIMY_IRIT_LEAF, 12, 1)
+        table.append(GRIMY_AVANTOE, 10, 1)
+        table.append(GRIMY_CADANTINE, 9, 1)
+        table.append(GRIMY_KWUARM, 9, 1)
 
         return table
     }

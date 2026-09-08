@@ -1,6 +1,6 @@
 package com.zenyte.game.world.entity.npc.impl.vanstromklause;
 
-import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.ids.ItemId;
 import com.zenyte.game.model.ui.InterfacePosition;
 import com.zenyte.game.task.WorldTask;
 import com.zenyte.game.task.WorldTasksManager;

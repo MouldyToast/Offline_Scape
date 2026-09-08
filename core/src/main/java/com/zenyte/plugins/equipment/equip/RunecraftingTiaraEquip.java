@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-import static com.zenyte.game.item.ItemId.MAX_CAPE;
+import static com.zenyte.game.item.ids.ItemId.MAX_CAPE;
 
 /**
  * @author Kris | 27. march 2018 : 4:26.05

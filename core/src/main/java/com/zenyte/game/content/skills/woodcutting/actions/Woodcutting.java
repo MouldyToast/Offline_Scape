@@ -41,7 +41,7 @@ import java.util.Random;
 
 import static com.near_reality.game.world.entity.player.PlayerSkillingModifiersKt.determineGatheringMultiplier;
 import static com.near_reality.game.world.entity.player.PlayerSkillingModifiersKt.onGather;
-import static com.zenyte.game.item.ItemId.*;
+import static com.zenyte.game.item.ids.ItemId.*;
 
 /**
  * @author Kris | 13. dets 2017 : 6:07.25

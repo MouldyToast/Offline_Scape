@@ -2,8 +2,8 @@ import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.GUTHIXIAN_ICON
 
 class GuthixianIconItemaction : ItemActionScript() {
 

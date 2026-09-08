@@ -1,8 +1,7 @@
 package com.zenyte.plugins.item.mysteryboxes;
 
-import com.near_reality.game.item.CustomItemId;
-import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.Item;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.game.util.Utils;
 import com.zenyte.game.world.entity.player.Player;
@@ -125,11 +124,11 @@ public class PvpTourneyMysteryBox extends ItemPlugin {
     static Random rand = new Random();
     @Override
     public int[] getItems() {
-        return new int[]{CustomItemId.PVP_TOURNEY_MYSTERY_BOX};
+        return new int[]{ItemId.PVP_TOURNEY_MYSTERY_BOX};
     }
 
     public static void openBoxQuick(Player player) {
-        Item box = new Item(CustomItemId.PVP_TOURNEY_MYSTERY_BOX, 1);
+        Item box = new Item(ItemId.PVP_TOURNEY_MYSTERY_BOX, 1);
         if(player.hasSpawnRights()) {
             if (!player.getInventory().deleteItem(box).isFailure()) {
                 MysteryItem jackpot = rewards.get(rand.nextInt(rewards.size()));

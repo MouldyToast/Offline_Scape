@@ -5,8 +5,9 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.MASTER_SCROLL_BOOK
+import com.zenyte.game.item.ItemId.MASTER_SCROLL_BOOK_EMPTY
 
 class MasterScrollBookItemaction : ItemActionScript() {
 

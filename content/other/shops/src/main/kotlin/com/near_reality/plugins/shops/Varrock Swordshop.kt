@@ -7,10 +7,27 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_DAGGER
+import com.zenyte.game.item.ItemId.ADAMANT_LONGSWORD
+import com.zenyte.game.item.ItemId.ADAMANT_SWORD
+import com.zenyte.game.item.ItemId.BLACK_DAGGER
+import com.zenyte.game.item.ItemId.BLACK_LONGSWORD
+import com.zenyte.game.item.ItemId.BLACK_SWORD
+import com.zenyte.game.item.ItemId.BRONZE_DAGGER
+import com.zenyte.game.item.ItemId.BRONZE_LONGSWORD
+import com.zenyte.game.item.ItemId.BRONZE_SWORD
+import com.zenyte.game.item.ItemId.IRON_DAGGER
+import com.zenyte.game.item.ItemId.IRON_LONGSWORD
+import com.zenyte.game.item.ItemId.IRON_SWORD
+import com.zenyte.game.item.ItemId.MITHRIL_DAGGER
+import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
+import com.zenyte.game.item.ItemId.MITHRIL_SWORD
+import com.zenyte.game.item.ItemId.STEEL_DAGGER
+import com.zenyte.game.item.ItemId.STEEL_LONGSWORD
+import com.zenyte.game.item.ItemId.STEEL_SWORD
 
 class VarrockSwordshop : ShopScript() {
 

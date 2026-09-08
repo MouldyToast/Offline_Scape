@@ -7,10 +7,15 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.MAGIC_STAFF
+import com.zenyte.game.item.ItemId.STAFF
+import com.zenyte.game.item.ItemId.STAFF_OF_AIR
+import com.zenyte.game.item.ItemId.STAFF_OF_EARTH
+import com.zenyte.game.item.ItemId.STAFF_OF_FIRE
+import com.zenyte.game.item.ItemId.STAFF_OF_WATER
 
 class FilaminaSWares : ShopScript() {
 

@@ -7,10 +7,15 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BONE_BOLTS
+import com.zenyte.game.item.ItemId.BONE_BOLT_PACK
+import com.zenyte.game.item.ItemId.BONE_CLUB
+import com.zenyte.game.item.ItemId.BONE_DAGGER
+import com.zenyte.game.item.ItemId.BONE_SPEAR
+import com.zenyte.game.item.ItemId.DORGESHUUN_CROSSBOW
 
 class NardokSBoneWeapons : ShopScript() {
 

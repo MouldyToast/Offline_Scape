@@ -7,10 +7,20 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_WARHAMMER
+import com.zenyte.game.item.ItemId.ARCHER_HELM
+import com.zenyte.game.item.ItemId.BERSERKER_HELM
+import com.zenyte.game.item.ItemId.BLACK_WARHAMMER
+import com.zenyte.game.item.ItemId.BRONZE_WARHAMMER
+import com.zenyte.game.item.ItemId.FARSEER_HELM
+import com.zenyte.game.item.ItemId.IRON_WARHAMMER
+import com.zenyte.game.item.ItemId.MITHRIL_WARHAMMER
+import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
+import com.zenyte.game.item.ItemId.STEEL_WARHAMMER
+import com.zenyte.game.item.ItemId.WARRIOR_HELM
 
 class SkulgrimenSBattleGear : ShopScript() {
 

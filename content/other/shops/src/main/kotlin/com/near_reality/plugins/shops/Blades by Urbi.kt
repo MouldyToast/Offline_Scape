@@ -7,10 +7,20 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_DAGGER
+import com.zenyte.game.item.ItemId.BLACK_DAGGER
+import com.zenyte.game.item.ItemId.BRONZE_DAGGER
+import com.zenyte.game.item.ItemId.BRONZE_SCIMITAR
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER
+import com.zenyte.game.item.ItemId.IRON_DAGGER
+import com.zenyte.game.item.ItemId.IRON_SCIMITAR
+import com.zenyte.game.item.ItemId.MITHRIL_DAGGER
+import com.zenyte.game.item.ItemId.RUNE_DAGGER
+import com.zenyte.game.item.ItemId.STEEL_DAGGER
+import com.zenyte.game.item.ItemId.STEEL_SCIMITAR
 
 class BladesByUrbi : ShopScript() {
 

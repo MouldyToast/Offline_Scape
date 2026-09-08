@@ -7,10 +7,25 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANTITE_ORE
+import com.zenyte.game.item.ItemId.COAL
+import com.zenyte.game.item.ItemId.COPPER_ORE
+import com.zenyte.game.item.ItemId.GOLD_ORE
+import com.zenyte.game.item.ItemId.IRON_ORE
+import com.zenyte.game.item.ItemId.MITHRIL_ORE
+import com.zenyte.game.item.ItemId.ONYX_BOLT_TIPS
+import com.zenyte.game.item.ItemId.RUNITE_ORE
+import com.zenyte.game.item.ItemId.SILVER_ORE
+import com.zenyte.game.item.ItemId.TIN_ORE
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_DRAGONSTONE
+import com.zenyte.game.item.ItemId.UNCUT_EMERALD
+import com.zenyte.game.item.ItemId.UNCUT_ONYX
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
 
 class TzhaarHurLekSOreAndGemStore : ShopScript() {
 

@@ -3,8 +3,9 @@ package com.near_reality.plugins.item.actions.death_items
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.GEM_BAG_12020
+import com.zenyte.game.item.ItemId.OPEN_GEM_BAG
 
 class GemBagItemaction : ItemActionScript() {
 

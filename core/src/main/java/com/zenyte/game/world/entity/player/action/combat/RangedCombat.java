@@ -54,7 +54,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static com.near_reality.game.item.CustomItemId.*;
+import static com.zenyte.game.item.ItemId.*;
 
 /**
  * @author Kris | 14. okt 2017 : 19:51.03

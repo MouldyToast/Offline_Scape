@@ -7,10 +7,16 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_SPEARKP
+import com.zenyte.game.item.ItemId.BRONZE_SPEARKP
+import com.zenyte.game.item.ItemId.CLEANING_CLOTH
+import com.zenyte.game.item.ItemId.IRON_SPEARKP
+import com.zenyte.game.item.ItemId.MITHRIL_SPEARKP
+import com.zenyte.game.item.ItemId.RUNE_SPEARKP
+import com.zenyte.game.item.ItemId.STEEL_SPEARKP
 
 class TamayuSSpearStall : ShopScript() {
 

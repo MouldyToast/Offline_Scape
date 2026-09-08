@@ -4,7 +4,6 @@ import com.near_reality.scripts.interfaces.InterfaceHandlerContext
 import com.zenyte.game.content.achievementdiary.DiaryReward
 import com.zenyte.game.content.achievementdiary.DiaryUtil
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.ItemUtil
 import com.zenyte.game.world.entity.player.Setting
 import com.zenyte.game.world.entity.player.SkillConstants.*
@@ -21,6 +20,16 @@ import com.zenyte.game.util.AccessMask
 import com.zenyte.game.util.AccessMask.*
 import mgi.types.config.enums.Enums
 import mgi.types.config.enums.Enums.*
+import com.zenyte.game.item.ItemId.BARRELCHEST_ANCHOR
+import com.zenyte.game.item.ItemId.BROAD_ARROWS
+import com.zenyte.game.item.ItemId.BROAD_BOLTS
+import com.zenyte.game.item.ItemId.CANNONBALL
+import com.zenyte.game.item.ItemId.DRAGON_DART
+import com.zenyte.game.item.ItemId.FIGHTER_TORSO
+import com.zenyte.game.item.ItemId.HERB_BOX
+import com.zenyte.game.item.ItemId.HERB_SACK
+import com.zenyte.game.item.ItemId.OPENED_HERB_BOX
+import com.zenyte.game.item.ItemId.SCROLL_OF_IMBUING
 
 class SlayerInterface : InterfaceScript() {
 

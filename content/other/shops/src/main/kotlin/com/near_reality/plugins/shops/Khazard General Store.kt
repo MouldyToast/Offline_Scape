@@ -7,10 +7,23 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAILING_BUCKET
+import com.zenyte.game.item.ItemId.BRONZE_PICKAXE
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.POT_OF_FLOUR
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.SHEARS
+import com.zenyte.game.item.ItemId.SWAMP_PASTE
+import com.zenyte.game.item.ItemId.TINDERBOX
 
 class KhazardGeneralStore : ShopScript() {
 

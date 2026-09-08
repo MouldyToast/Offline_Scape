@@ -7,10 +7,19 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.SHIRT_5032
+import com.zenyte.game.item.ItemId.SHIRT_5034
+import com.zenyte.game.item.ItemId.SHORTS_5044
+import com.zenyte.game.item.ItemId.SHORTS_5046
+import com.zenyte.game.item.ItemId.SKIRT_5050
+import com.zenyte.game.item.ItemId.SKIRT_5052
+import com.zenyte.game.item.ItemId.TROUSERS_5038
+import com.zenyte.game.item.ItemId.TROUSERS_5040
+import com.zenyte.game.item.ItemId.WOVEN_TOP_5026
+import com.zenyte.game.item.ItemId.WOVEN_TOP_5028
 
 class AgmundiQualityClothes : ShopScript() {
 

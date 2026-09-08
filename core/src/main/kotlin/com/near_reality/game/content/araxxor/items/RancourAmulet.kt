@@ -1,13 +1,16 @@
 package com.near_reality.game.content.araxxor.items
 
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.ItemOnItemAction
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.RequestResult
 import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.AMULET_OF_RANCOUR
+import com.zenyte.game.item.ItemId.AMULET_OF_RANCOUR_S
+import com.zenyte.game.item.ItemId.AMULET_OF_TORTURE
+import com.zenyte.game.item.ItemId.ARAXYTE_FANG
 
 /**
  * @author Glabay | Glabay-Studios

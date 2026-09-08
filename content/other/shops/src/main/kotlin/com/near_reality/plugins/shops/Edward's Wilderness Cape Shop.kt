@@ -7,10 +7,14 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.TEAM15_CAPE
+import com.zenyte.game.item.ItemId.TEAM25_CAPE
+import com.zenyte.game.item.ItemId.TEAM35_CAPE
+import com.zenyte.game.item.ItemId.TEAM45_CAPE
+import com.zenyte.game.item.ItemId.TEAM5_CAPE
 
 class EdwardSWildernessCapeShop : ShopScript() {
 

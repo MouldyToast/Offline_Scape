@@ -8,12 +8,38 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.ANCIENT_BREW_3
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_BOOTS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_GLOVES
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_LEGS
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_MASK
+import com.zenyte.game.item.ItemId.ANCIENT_CEREMONIAL_TOP
+import com.zenyte.game.item.ItemId.ASTRAL_RUNE
+import com.zenyte.game.item.ItemId.BLOOD_ESSENCE
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.CLUE_SCROLL_HARD
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_BOOTS
+import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.GRIMY_SNAPDRAGON
+import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
+import com.zenyte.game.item.ItemId.LAVA_RUNE
+import com.zenyte.game.item.ItemId.MUD_RUNE
+import com.zenyte.game.item.ItemId.NIHIL_SHARD
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.SMOKE_RUNE
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.SUPER_DEFENCE3
+import com.zenyte.game.item.ItemId.SUPER_RESTORE3
 
 class ZarosSpiritualMageDroptable : NPCDropTableScript() {
 

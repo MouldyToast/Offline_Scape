@@ -1,8 +1,7 @@
 package com.zenyte.game.model.item;
 
-import com.near_reality.game.item.CustomItemId;
-import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.Item;
 
 /**
  * @author Tommeh | 21-4-2018 | 23:30
@@ -28,10 +27,10 @@ public enum BossDropItem {
     SPECTRAL_SPIRIT_SHIELD(new Item(12821), new Item(12823), new Item(12831)),
     ARCANE_SPIRIT_SHIELD(new Item(12825), new Item(12827), new Item(12831)),
     ELYSIAN_SPIRIT_SHIELD(new Item(12817), new Item(12819), new Item(12831)),
-    DIVINE_SPIRIT_SHIELD(new Item(CustomItemId.DIVINE_SPIRIT_SHIELD), new Item(CustomItemId.DIVINE_SIGIL), new Item(12831)),
+    DIVINE_SPIRIT_SHIELD(new Item(ItemId.DIVINE_SPIRIT_SHIELD), new Item(ItemId.DIVINE_SIGIL), new Item(12831)),
     GUARDIAN_BOOTS(new Item(21733), new Item(11836), new Item(21730)),
-    HOLY_GREAT_HAMMER(new Item(CustomItemId.HOLY_GREAT_WARHAMMER), new Item(CustomItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_WARHAMMER), new Item(CustomItemId.DEGRADED_ESSENCE, 2_500)),
-    HOLY_GREAT_LANCE(new Item(CustomItemId.HOLY_GREAT_LANCE), new Item(CustomItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_HUNTER_LANCE), new Item(CustomItemId.DEGRADED_ESSENCE, 2_500)),
+    HOLY_GREAT_HAMMER(new Item(ItemId.HOLY_GREAT_WARHAMMER), new Item(ItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_WARHAMMER), new Item(ItemId.DEGRADED_ESSENCE, 2_500)),
+    HOLY_GREAT_LANCE(new Item(ItemId.HOLY_GREAT_LANCE), new Item(ItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_HUNTER_LANCE), new Item(ItemId.DEGRADED_ESSENCE, 2_500)),
     AHRIM_THE_BOBBLED(32186, new Item(ItemId.AHRIMS_ARMOUR_SET), new Item(32185, 250)),
     DHAROK_THE_BOBBLED(32187, new Item(ItemId.DHAROKS_ARMOUR_SET), new Item(32185, 250)),
     GUTHAN_THE_BOBBLED(32188, new Item(ItemId.GUTHANS_ARMOUR_SET), new Item(32185, 250)),

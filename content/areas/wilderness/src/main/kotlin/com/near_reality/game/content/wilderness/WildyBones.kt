@@ -1,6 +1,5 @@
 import com.near_reality.scripts.ground_items.GroundItemSpawnScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 
 class WildybonesGrounditems : GroundItemSpawnScript() {
 

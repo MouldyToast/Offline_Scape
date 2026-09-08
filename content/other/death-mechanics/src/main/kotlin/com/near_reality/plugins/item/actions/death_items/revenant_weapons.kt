@@ -5,8 +5,14 @@ import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.CRAWS_BOW
+import com.zenyte.game.item.ItemId.CRAWS_BOW_U
+import com.zenyte.game.item.ItemId.REVENANT_ETHER
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_U
+import com.zenyte.game.item.ItemId.VIGGORAS_CHAINMACE
+import com.zenyte.game.item.ItemId.VIGGORAS_CHAINMACE_U
 
 class RevenantWeaponsItemaction : ItemActionScript() {
 

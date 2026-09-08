@@ -538,10 +538,10 @@ fun Npc.tornadoStep(
     cardinalOnly: Boolean,
     ignorePathfinding: Boolean = false
 ): Direction? {
-    val targetX: Int = target.getX()
-    val targetY: Int = target.getY()
-    val tornadoX: Int = position.getX()
-    val tornadoY: Int = position.getY()
+    val targetX: Int = target.x
+    val targetY: Int = target.y
+    val tornadoX: Int = position.x
+    val tornadoY: Int = position.y
     val xSign = Integer.signum(targetX - tornadoX)
     val ySign = Integer.signum(targetY - tornadoY)
     val diffX = abs((tornadoX - targetX).toDouble()).toInt()

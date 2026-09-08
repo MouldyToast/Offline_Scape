@@ -2,7 +2,13 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.HashBiMap
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.ACCURSED_SCEPTRE_27665
+import com.zenyte.game.item.ItemId.ACCURSED_SCEPTRE_AU_27676
+import com.zenyte.game.item.ItemId.ACCURSED_SCEPTRE_A_27679
+import com.zenyte.game.item.ItemId.ACCURSED_SCEPTRE_U_27662
+import com.zenyte.game.item.ItemId.SKULL_OF_VETION
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_AU
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_U
 
 
 /**

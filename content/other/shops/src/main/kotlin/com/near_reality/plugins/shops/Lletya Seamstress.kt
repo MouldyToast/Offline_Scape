@@ -7,10 +7,18 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BALL_OF_WOOL
+import com.zenyte.game.item.ItemId.BLUE_DYE
+import com.zenyte.game.item.ItemId.GREEN_DYE
+import com.zenyte.game.item.ItemId.NEEDLE
+import com.zenyte.game.item.ItemId.ORANGE_DYE
+import com.zenyte.game.item.ItemId.PURPLE_DYE
+import com.zenyte.game.item.ItemId.RED_DYE
+import com.zenyte.game.item.ItemId.THREAD
+import com.zenyte.game.item.ItemId.YELLOW_DYE
 
 class LletyaSeamstress : ShopScript() {
 

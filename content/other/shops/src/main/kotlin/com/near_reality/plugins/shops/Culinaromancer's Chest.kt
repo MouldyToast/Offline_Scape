@@ -7,10 +7,29 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_GLOVES
+import com.zenyte.game.item.ItemId.BARROWS_GLOVES
+import com.zenyte.game.item.ItemId.BLACK_GLOVES
+import com.zenyte.game.item.ItemId.BRONZE_GLOVES
+import com.zenyte.game.item.ItemId.CLEAVER
+import com.zenyte.game.item.ItemId.DRAGON_GLOVES
+import com.zenyte.game.item.ItemId.EGG_WHISK
+import com.zenyte.game.item.ItemId.FRYING_PAN
+import com.zenyte.game.item.ItemId.HARDLEATHER_GLOVES
+import com.zenyte.game.item.ItemId.IRON_GLOVES
+import com.zenyte.game.item.ItemId.KITCHEN_KNIFE
+import com.zenyte.game.item.ItemId.MEAT_TENDERISER
+import com.zenyte.game.item.ItemId.MITHRIL_GLOVES
+import com.zenyte.game.item.ItemId.ROLLING_PIN
+import com.zenyte.game.item.ItemId.RUNE_GLOVES
+import com.zenyte.game.item.ItemId.SKEWER
+import com.zenyte.game.item.ItemId.SPATULA
+import com.zenyte.game.item.ItemId.SPORK
+import com.zenyte.game.item.ItemId.STEEL_GLOVES
+import com.zenyte.game.item.ItemId.WOODEN_SPOON
 
 class CulinaromancerSChest : ShopScript() {
 

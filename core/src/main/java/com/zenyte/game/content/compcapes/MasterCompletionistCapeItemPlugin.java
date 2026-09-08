@@ -1,6 +1,6 @@
 package com.zenyte.game.content.compcapes;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.near_reality.game.model.ui.cape_customizer.CapeCustomizerInterfacePlugin;
 import com.zenyte.game.GameInterface;
 import com.zenyte.game.item.Item;
@@ -40,7 +40,7 @@ public class MasterCompletionistCapeItemPlugin extends ItemPlugin implements Equ
 
     @Listener(type = ListenerType.LOBBY_CLOSE)
     private static void onLogin(final Player player) {
-        if (player.getEquipment().getId(EquipmentSlot.CAPE) == CustomItemId.MASTER_COMP_CAPE) {
+        if (player.getEquipment().getId(EquipmentSlot.CAPE) == ItemId.MASTER_COMP_CAPE) {
             CapeCustomizerInterfacePlugin.transmitCapeRecolors(player);
         }
     }
@@ -57,6 +57,6 @@ public class MasterCompletionistCapeItemPlugin extends ItemPlugin implements Equ
 
     @Override
     public int[] getItems() {
-        return new int[]{CustomItemId.MASTER_COMP_CAPE};
+        return new int[]{ItemId.MASTER_COMP_CAPE};
     }
 }

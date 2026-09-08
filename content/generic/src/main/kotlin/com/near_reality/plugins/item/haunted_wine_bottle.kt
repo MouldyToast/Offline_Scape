@@ -10,8 +10,10 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue
 import com.zenyte.game.world.entity.player.dialogue.dialogue
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.GHOSTSPEAK_AMULET
+import com.zenyte.game.item.ItemId.GHOSTSPEAK_AMULET_4250
+import com.zenyte.game.item.ItemId.HAUNTED_WINE_BOTTLE
 
 class HauntedWineBottleItemaction : ItemActionScript() {
 

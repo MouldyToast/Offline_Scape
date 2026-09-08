@@ -1,7 +1,17 @@
 package com.near_reality.scripts.npc.drops.table.tables.herb
 
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
+import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
+import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
+import com.zenyte.game.item.ItemId.GRIMY_GUAM_LEAF
+import com.zenyte.game.item.ItemId.GRIMY_HARRALANDER
+import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
+import com.zenyte.game.item.ItemId.GRIMY_KWUARM
+import com.zenyte.game.item.ItemId.GRIMY_LANTADYME
+import com.zenyte.game.item.ItemId.GRIMY_MARRENTILL
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.GRIMY_TARROMIN
 
 object HerbDropTable : StandaloneDropTableBuilder({
     static {

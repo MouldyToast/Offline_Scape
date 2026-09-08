@@ -3,8 +3,17 @@ package com.near_reality.plugins.item.actions.death_items
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.OLD_SCHOOL_BOND_UNTRADEABLE
+import com.zenyte.game.item.ItemId.SALVE_AMULET
+import com.zenyte.game.item.ItemId.SALVE_AMULETEI
+import com.zenyte.game.item.ItemId.SALVE_AMULETEI_25278
+import com.zenyte.game.item.ItemId.SALVE_AMULETEI_26782
+import com.zenyte.game.item.ItemId.SALVE_AMULETI
+import com.zenyte.game.item.ItemId.SALVE_AMULETI_25250
+import com.zenyte.game.item.ItemId.SALVE_AMULETI_26763
+import com.zenyte.game.item.ItemId.SALVE_AMULET_E
+import com.zenyte.game.item.ItemId._50_DONATOR_SCROLL
 
 class KeptItemsItemaction : ItemActionScript() {
 

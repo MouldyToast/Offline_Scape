@@ -11,7 +11,7 @@ import com.zenyte.game.world.entity.player.dialogue.Dialogue;
 
 import java.util.List;
 
-import static com.near_reality.game.item.CustomItemId.*;
+import static com.zenyte.game.item.ItemId.*;
 import static com.zenyte.game.item.ItemId.PEGASIAN_BOOTS;
 import static com.zenyte.game.item.ItemId.PRIMORDIAL_BOOTS;
 

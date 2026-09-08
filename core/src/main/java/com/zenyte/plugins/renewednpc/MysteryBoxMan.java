@@ -1,6 +1,6 @@
 package com.zenyte.plugins.renewednpc;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.zenyte.ContentConstants;
 import com.zenyte.game.item.Item;
 import com.zenyte.game.util.Colour;
@@ -34,8 +34,8 @@ public final class MysteryBoxMan extends NPCPlugin {
 
                     if (enabled && (days >= 1 || hours >= 2) && !claimed && player.getSkills().getTotalLevel() > 750) {
                         npc("While I have you... Please accept this gift from our management and development teams as a token of our appreciation for your patience.");
-                        item(new Item(CustomItemId.OSNR_MYSTERY_BOX, 1), "The Mysterious Old Man gives you an OSNR Mystery Box.").executeAction(() -> {
-                            player.getInventory().addOrDrop(new Item(CustomItemId.OSNR_MYSTERY_BOX, 1));
+                        item(new Item(ItemId.OSNR_MYSTERY_BOX, 1), "The Mysterious Old Man gives you an OSNR Mystery Box.").executeAction(() -> {
+                            player.getInventory().addOrDrop(new Item(ItemId.OSNR_MYSTERY_BOX, 1));
                             player.getAttributes().put("claimed osnr box", true);
                             player.sendMessage(Colour.RS_GREEN + "Thank you for a great launch and goodluck with your mystery box!");
                             player.log(LogLevel.INFO, "Claimed mystery box for \"" + player.getUsername() +"\"");

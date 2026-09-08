@@ -6,9 +6,37 @@ import com.near_reality.scripts.npc.drops.table.chance.RollItemChance
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
+import com.zenyte.game.item.ItemId.ADAMANT_DAGGER
+import com.zenyte.game.item.ItemId.ADAMANT_FULL_HELM
+import com.zenyte.game.item.ItemId.ADAMANT_MACE
+import com.zenyte.game.item.ItemId.ADAMANT_PICKAXE
+import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
+import com.zenyte.game.item.ItemId.ADAMANT_PLATESKIRT
+import com.zenyte.game.item.ItemId.ADAMANT_SCIMITAR
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.BODY_RUNE
+import com.zenyte.game.item.ItemId.CAKE
+import com.zenyte.game.item.ItemId.COD
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.EYE_OF_NEWT
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.FLYER
+import com.zenyte.game.item.ItemId.MAPLE_LONGBOW
+import com.zenyte.game.item.ItemId.MAPLE_SHORTBOW
+import com.zenyte.game.item.ItemId.MIND_RUNE
+import com.zenyte.game.item.ItemId.MITHRIL_FULL_HELM
+import com.zenyte.game.item.ItemId.MITHRIL_MACE
+import com.zenyte.game.item.ItemId.MITHRIL_PLATEBODY
+import com.zenyte.game.item.ItemId.MITHRIL_PLATELEGS
+import com.zenyte.game.item.ItemId.MITHRIL_PLATESKIRT
+import com.zenyte.game.item.ItemId.POTION
+import com.zenyte.game.item.ItemId.ROTTEN_TOMATO
+import com.zenyte.game.item.ItemId.SILVER_BAR
+import com.zenyte.game.item.ItemId.TROUT
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
+import com.zenyte.game.item.ItemId.WATER_RUNE
 
 sealed class GauntletRewards(
     private val mainTableRolls: Int,

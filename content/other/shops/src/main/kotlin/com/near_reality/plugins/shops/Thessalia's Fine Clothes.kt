@@ -7,10 +7,21 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLACK_SKIRT
+import com.zenyte.game.item.ItemId.BLUE_SKIRT
+import com.zenyte.game.item.ItemId.BROWN_APRON
+import com.zenyte.game.item.ItemId.LEATHER_BODY
+import com.zenyte.game.item.ItemId.LEATHER_BOOTS
+import com.zenyte.game.item.ItemId.LEATHER_GLOVES
+import com.zenyte.game.item.ItemId.PINK_SKIRT
+import com.zenyte.game.item.ItemId.PRIEST_GOWN
+import com.zenyte.game.item.ItemId.PRIEST_GOWN_428
+import com.zenyte.game.item.ItemId.RED_CAPE
+import com.zenyte.game.item.ItemId.SILK
+import com.zenyte.game.item.ItemId.WHITE_APRON
 
 class ThessaliaSFineClothes : ShopScript() {
 

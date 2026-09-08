@@ -7,10 +7,22 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.PREMADE_CHOC_BOMB
+import com.zenyte.game.item.ItemId.PREMADE_CH_CRUNCH
+import com.zenyte.game.item.ItemId.PREMADE_CT_BATTA
+import com.zenyte.game.item.ItemId.PREMADE_FRT_BATTA
+import com.zenyte.game.item.ItemId.PREMADE_SY_CRUNCH
+import com.zenyte.game.item.ItemId.PREMADE_TD_BATTA
+import com.zenyte.game.item.ItemId.PREMADE_TD_CRUNCH
+import com.zenyte.game.item.ItemId.PREMADE_TTL
+import com.zenyte.game.item.ItemId.PREMADE_VEG_BALL
+import com.zenyte.game.item.ItemId.PREMADE_VEG_BATTA
+import com.zenyte.game.item.ItemId.PREMADE_WM_BATTA
+import com.zenyte.game.item.ItemId.PREMADE_WM_CRUN
+import com.zenyte.game.item.ItemId.PREMADE_WORM_HOLE
 
 class GianneSRestaurant : ShopScript() {
 

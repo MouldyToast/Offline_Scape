@@ -7,10 +7,17 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.RAW_BEAR_MEAT
+import com.zenyte.game.item.ItemId.RAW_BEEF
+import com.zenyte.game.item.ItemId.RAW_CHICKEN
+import com.zenyte.game.item.ItemId.RAW_PIKE
+import com.zenyte.game.item.ItemId.RAW_RAT_MEAT
+import com.zenyte.game.item.ItemId.RAW_SALMON
+import com.zenyte.game.item.ItemId.RAW_SHARK
+import com.zenyte.game.item.ItemId.RAW_TROUT
 
 class RufusSMeatEmporium : ShopScript() {
 

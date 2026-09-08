@@ -1,6 +1,5 @@
 package com.zenyte.plugins.item.mysteryboxes;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.plugins.interfaces.MysteryBoxInterface;
@@ -70,7 +69,7 @@ public class EasterMysteryBox extends ItemPlugin {
                 new MysteryItem(4565, 1, 1, 20).announce(), // Easter Egg Basket
                 new MysteryItem(1037, 1, 1, 40).announce(), // Easter Bunny Ears
                 new MysteryItem(23448, 1, 1, 40).announce(), // Bunny Ear Mask
-		        new MysteryItem(CustomItemId.CARROT_CROWN, 1, 1, 40).announce(), // Easter Crown
+		        new MysteryItem(ItemId.CARROT_CROWN, 1, 1, 40).announce(), // Easter Crown
                 new MysteryItem(24537, 1, 1, 40).announce() // Carrot Sword
         };
 
@@ -111,6 +110,6 @@ public class EasterMysteryBox extends ItemPlugin {
 
     @Override
     public int[] getItems() {
-        return new int[] {CustomItemId.EASTER_MYSTERY_BOX};
+        return new int[] {ItemId.EASTER_MYSTERY_BOX};
     }
 }

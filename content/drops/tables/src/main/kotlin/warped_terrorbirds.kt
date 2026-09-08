@@ -10,13 +10,31 @@ import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_PLATEBODY
+import com.zenyte.game.item.ItemId.ADAMANT_WARHAMMER
+import com.zenyte.game.item.ItemId.AIR_RUNE
+import com.zenyte.game.item.ItemId.BRIMSTONE_KEY
+import com.zenyte.game.item.ItemId.CHOCOLATE_BOMB
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DIAMOND_BOLT_TIPS
+import com.zenyte.game.item.ItemId.EARTH_RUNE
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.RAW_SHARK
+import com.zenyte.game.item.ItemId.RUNE_BATTLEAXE
+import com.zenyte.game.item.ItemId.RUNE_KITESHIELD
+import com.zenyte.game.item.ItemId.RUNE_WARHAMMER
+import com.zenyte.game.item.ItemId.SCROLL_BOX_HARD
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.SWAMP_TAR
+import com.zenyte.game.item.ItemId.WARPED_SCEPTRE_UNCHARGED
+import com.zenyte.game.item.ItemId.WEAPON_POISON
 
 class WarpedTerrorbirdsDroptable : NPCDropTableScript() {
 

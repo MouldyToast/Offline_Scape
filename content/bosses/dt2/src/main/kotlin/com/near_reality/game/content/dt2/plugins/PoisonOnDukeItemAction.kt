@@ -2,9 +2,8 @@ package com.near_reality.game.content.dt2.plugins
 
 import com.near_reality.game.content.dt2.npc.DT2BossDifficulty
 import com.near_reality.game.content.dt2.npc.theduke.DukeSucellusEntity
-import com.near_reality.game.item.CustomItemId
-import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId.ARDERMUSCA_POISON
 import com.zenyte.game.model.item.ItemOnNPCAction
 import com.zenyte.game.world.entity.npc.NPC
@@ -16,7 +15,7 @@ import com.zenyte.game.world.entity.player.dialogue.dialogue
 class PoisonOnDukeItemAction : ItemOnNPCAction {
     private val orb = Item(ItemId.AWAKENERS_ORB, 1)
     private val poisonNormal = Item(ARDERMUSCA_POISON, 2)
-    private val p2wPoisonNormal = Item(CustomItemId.POTENT_ARDER_MUSCA_POISON, 2)
+    private val p2wPoisonNormal = Item(ItemId.POTENT_ARDER_MUSCA_POISON, 2)
 
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
@@ -37,7 +36,7 @@ class PoisonOnDukeItemAction : ItemOnNPCAction {
     }
 
     override fun getItems(): Array<Any> {
-        return arrayOf(ARDERMUSCA_POISON, CustomItemId.POTENT_ARDER_MUSCA_POISON, ItemId.AWAKENERS_ORB)
+        return arrayOf(ARDERMUSCA_POISON, ItemId.POTENT_ARDER_MUSCA_POISON, ItemId.AWAKENERS_ORB)
     }
 
     override fun getObjects(): Array<Any> {

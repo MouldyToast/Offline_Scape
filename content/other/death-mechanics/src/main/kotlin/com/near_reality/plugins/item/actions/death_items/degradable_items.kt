@@ -5,8 +5,25 @@ import com.zenyte.game.model.item.degradableitems.DegradableItem
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.ACCURSED_SCEPTRE_27665
+import com.zenyte.game.item.ItemId.AMULET_OF_BLOOD_FURY
+import com.zenyte.game.item.ItemId.BONECRUSHER
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C
+import com.zenyte.game.item.ItemId.BRACELET_OF_ETHEREUM
+import com.zenyte.game.item.ItemId.CRAWS_BOW
+import com.zenyte.game.item.ItemId.CRYSTAL_BODY
+import com.zenyte.game.item.ItemId.CRYSTAL_HELM
+import com.zenyte.game.item.ItemId.CRYSTAL_LEGS
+import com.zenyte.game.item.ItemId.DIZANAS_QUIVER
+import com.zenyte.game.item.ItemId.DIZANAS_QUIVER_L
+import com.zenyte.game.item.ItemId.RING_OF_SUFFERING_I
+import com.zenyte.game.item.ItemId.RING_OF_SUFFERING_RI
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE
+import com.zenyte.game.item.ItemId.URSINE_CHAINMACE_27660
+import com.zenyte.game.item.ItemId.VIGGORAS_CHAINMACE
+import com.zenyte.game.item.ItemId.WEBWEAVER_BOW_27655
 
 class DegradableItemsItemaction : ItemActionScript() {
 

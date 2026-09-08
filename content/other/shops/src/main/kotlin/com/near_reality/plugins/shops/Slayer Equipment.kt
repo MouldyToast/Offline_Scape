@@ -7,10 +7,37 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BAG_OF_SALT
+import com.zenyte.game.item.ItemId.BOOTS_OF_STONE
+import com.zenyte.game.item.ItemId.BRACELET_OF_SLAUGHTER
+import com.zenyte.game.item.ItemId.BROAD_ARROWHEADS
+import com.zenyte.game.item.ItemId.BROAD_ARROWHEAD_PACK
+import com.zenyte.game.item.ItemId.BROAD_ARROWS_4160
+import com.zenyte.game.item.ItemId.EARMUFFS
+import com.zenyte.game.item.ItemId.ENCHANTED_GEM
+import com.zenyte.game.item.ItemId.EXPEDITIOUS_BRACELET
+import com.zenyte.game.item.ItemId.FACEMASK
+import com.zenyte.game.item.ItemId.FISHING_EXPLOSIVE_6664
+import com.zenyte.game.item.ItemId.FUNGICIDE
+import com.zenyte.game.item.ItemId.FUNGICIDE_SPRAY_10
+import com.zenyte.game.item.ItemId.ICE_COOLER
+import com.zenyte.game.item.ItemId.INSULATED_BOOTS
+import com.zenyte.game.item.ItemId.LEAFBLADED_SPEAR
+import com.zenyte.game.item.ItemId.MIRROR_SHIELD
+import com.zenyte.game.item.ItemId.NOSE_PEG
+import com.zenyte.game.item.ItemId.ROCK_HAMMER
+import com.zenyte.game.item.ItemId.ROCK_THROWNHAMMER
+import com.zenyte.game.item.ItemId.SLAYERS_STAFF
+import com.zenyte.game.item.ItemId.SLAYER_BELL
+import com.zenyte.game.item.ItemId.SLAYER_GLOVES_6720
+import com.zenyte.game.item.ItemId.SPINY_HELMET
+import com.zenyte.game.item.ItemId.UNFINISHED_BROAD_BOLTS
+import com.zenyte.game.item.ItemId.UNFINISHED_BROAD_BOLT_PACK
+import com.zenyte.game.item.ItemId.UNLIT_BUG_LANTERN
+import com.zenyte.game.item.ItemId.WITCHWOOD_ICON
 
 class SlayerEquipment : ShopScript() {
 

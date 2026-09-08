@@ -1,8 +1,11 @@
 package com.near_reality.game.content.dt2.plugins.rings
 
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.BELLATOR_VESTIGE
+import com.zenyte.game.item.ItemId.MAGUS_VESTIGE
+import com.zenyte.game.item.ItemId.ULTOR_VESTIGE
+import com.zenyte.game.item.ItemId.VENATOR_VESTIGE
 
 /**
  * @author Glabay | Glabay-Studios

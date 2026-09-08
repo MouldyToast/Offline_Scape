@@ -3,7 +3,6 @@ package com.near_reality.game.model.item.submenu.impl.max_cape
 import com.near_reality.game.model.item.submenu.ISubMenuAction
 import com.zenyte.game.content.RespawnPoint
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.Colour
 import com.zenyte.game.world.entity.masks.Animation
 import com.zenyte.game.world.entity.player.Player
@@ -14,6 +13,9 @@ import com.zenyte.game.world.entity.player.variables.TickVariable
 import com.zenyte.logger.NearRealityLogger
 import com.zenyte.plugins.item.capes.NewMaxCapes
 import com.zenyte.utils.TimeUnit
+import com.zenyte.game.item.ItemId.BRONZE_CROSSBOW
+import com.zenyte.game.item.ItemId.MITH_GRAPPLE_9419
+import com.zenyte.game.item.ItemId.PESTLE_AND_MORTAR
 
 /**
  * @author Glabay | Glabay-Studios

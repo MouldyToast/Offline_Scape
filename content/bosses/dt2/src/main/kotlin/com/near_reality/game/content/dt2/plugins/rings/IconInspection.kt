@@ -1,8 +1,11 @@
 package com.near_reality.game.content.dt2.plugins.rings
 
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 import com.zenyte.game.world.entity.player.dialogue.dialogue
+import com.zenyte.game.item.ItemId.ARCHER_ICON
+import com.zenyte.game.item.ItemId.BERSERKER_ICON
+import com.zenyte.game.item.ItemId.SEERS_ICON
+import com.zenyte.game.item.ItemId.WARRIOR_ICON
 
 /**
  * @author Glabay | Glabay-Studios

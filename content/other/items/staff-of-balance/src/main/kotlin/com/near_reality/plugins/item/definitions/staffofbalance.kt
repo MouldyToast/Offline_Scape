@@ -4,11 +4,11 @@ import com.zenyte.game.world.entity.player.Bonuses
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import com.near_reality.scripts.item.definitions.ItemDefinitionsScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
 import com.zenyte.game.world.entity.player.SkillConstants.*
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentType.*
 import com.zenyte.game.world.entity.player.Bonuses.Bonus.*
+import com.zenyte.game.item.ItemId.STAFF_OF_BALANCE
 
 class StaffofbalanceItems : ItemDefinitionsScript() {
 

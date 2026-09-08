@@ -1,8 +1,7 @@
 package com.zenyte.game.model.item.enums;
 
-import com.near_reality.game.item.CustomItemId;
-import com.zenyte.game.item.Item;
 import com.zenyte.game.item.ItemId;
+import com.zenyte.game.item.Item;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 
@@ -60,7 +59,7 @@ public enum RareDrop {
     SPECTRAL_SIGIL(12823),
     ARCANE_SIGIL(12827),
     ELYSIAN_SIGIL(12819),
-    DIVINE_SIGIL(CustomItemId.DIVINE_SIGIL),
+    DIVINE_SIGIL(ItemId.DIVINE_SIGIL),
     WYVERN_VISAGE(ItemId.WYVERN_VISAGE),
     DRACONIC_VISAGE(11286),
     SKELETAL_VISAGE(22006),
@@ -144,7 +143,7 @@ public enum RareDrop {
     DAGONHAI_ROBE_BOTTOM(ItemId.DAGONHAI_ROBE_BOTTOM),
 
     //Ganodermic beast
-    GANODERMIC_RUNT(CustomItemId.GANODERMIC_RUNT),
+    GANODERMIC_RUNT(ItemId.GANODERMIC_RUNT),
 
     //Rots
     SHIELD1(32192),

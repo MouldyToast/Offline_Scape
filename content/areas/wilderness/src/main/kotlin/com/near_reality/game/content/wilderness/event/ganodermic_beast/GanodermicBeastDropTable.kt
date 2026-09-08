@@ -1,6 +1,6 @@
 package com.near_reality.game.content.wilderness.event.ganodermic_beast
 
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.near_reality.game.item.CustomNpcId
 import com.near_reality.scripts.npc.drops.NPCDropTableScript
 import com.near_reality.scripts.npc.drops.table.DropTableContext
@@ -9,7 +9,6 @@ import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollChance
 import com.near_reality.scripts.npc.drops.table.chance.immutable.StaticRollItemOneIn
 import com.near_reality.scripts.npc.drops.table.noted
-import com.zenyte.game.item.ItemId
 import com.zenyte.game.util.Colour
 import mgi.utilities.StringFormatUtil
 
@@ -80,7 +79,7 @@ class GanodermicBeastDropTable : NPCDropTableScript() {
         buildTable {
             Always {
                 ItemId.BLOOD_MONEY quantity 25..75 rarity always
-                CustomItemId.POLYPORE_SPORES quantity 100..300 rarity always
+                ItemId.POLYPORE_SPORES quantity 100..300 rarity always
             }
             Main(1300) {
                 ItemId.BLOOD_MONEY quantity 25..100 rarity 100
@@ -98,11 +97,11 @@ class GanodermicBeastDropTable : NPCDropTableScript() {
                 ItemId.OVERLOAD_4 quantity 3..7 rarity 100
             }
             Unique(32_000) {
-                CustomItemId.PVP_MYSTERY_BOX quantity 1 oneIn 75 announce everywhere
-                CustomItemId.DRAGON_KITE quantity 1 oneIn 100 announce everywhere
-                CustomItemId.POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
-                CustomItemId.ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
-                CustomItemId.GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
+                ItemId.PVP_MYSTERY_BOX quantity 1 oneIn 75 announce everywhere
+                ItemId.DRAGON_KITE quantity 1 oneIn 100 announce everywhere
+                ItemId.POLYPORE_STAFF_DEG quantity 1 oneIn 150 announce everywhere
+                ItemId.ANCIENT_EYE quantity 1 oneIn 150 announce everywhere
+                ItemId.GANODERMIC_RUNT quantity 1 oneIn 300 announce everywhere
             }
             Tertiary {
                 ItemId.SCROLL_BOX_HARD quantity 1 oneIn 10

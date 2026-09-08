@@ -1,6 +1,5 @@
 package com.zenyte.plugins.item.mysteryboxes;
 
-import com.near_reality.game.item.CustomItemId;
 import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 import com.zenyte.plugins.interfaces.MysteryBoxInterface;
@@ -49,7 +48,7 @@ public class EnchancedUltimateMysteryBox extends ItemPlugin {
                 new MysteryItem(12922, 1, 1, 1500).announce(), // Tanz fang
                 new MysteryItem(11832, 1, 1, 1500).announce(), // bcp
                 new MysteryItem(11834, 1, 1, 1500).announce(), // tassets
-                new MysteryItem(CustomItemId.REGAL_MYSTERY_BOX, 1, 1, 1500).announce(), // Royal Mystery Box
+                new MysteryItem(ItemId.REGAL_MYSTERY_BOX, 1, 1, 1500).announce(), // Royal Mystery Box
 
                 // Super Rare = 1000
                 new MysteryItem(13576, 1, 1, 1000).announce(), // DWH

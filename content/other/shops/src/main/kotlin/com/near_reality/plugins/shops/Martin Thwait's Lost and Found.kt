@@ -7,10 +7,20 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BRONZE_CLAWS
+import com.zenyte.game.item.ItemId.BRONZE_KNIFE
+import com.zenyte.game.item.ItemId.CHISEL
+import com.zenyte.game.item.ItemId.IRON_CLAWS
+import com.zenyte.game.item.ItemId.IRON_KNIFE
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.LOCKPICK
+import com.zenyte.game.item.ItemId.ROPE
+import com.zenyte.game.item.ItemId.STEEL_CLAWS
+import com.zenyte.game.item.ItemId.STEEL_KNIFE
+import com.zenyte.game.item.ItemId.STETHOSCOPE
 
 class MartinThwaitSLostAndFound : ShopScript() {
 

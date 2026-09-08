@@ -2,8 +2,8 @@ package com.zenyte.game.model.item.actions;
 
 import com.zenyte.game.model.item.pluginextensions.ItemPlugin;
 
-import static com.near_reality.game.item.CustomItemId.OMEGA_BOOTS;
-import static com.near_reality.game.item.CustomItemId.OMEGA_BOOTS_32607;
+import static com.zenyte.game.item.ItemId.OMEGA_BOOTS;
+import static com.zenyte.game.item.ItemId.OMEGA_BOOTS_32607;
 
 /**
  * @author Glabay | Glabay-Studios

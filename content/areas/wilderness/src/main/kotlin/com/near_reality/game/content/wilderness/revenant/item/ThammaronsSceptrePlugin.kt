@@ -2,7 +2,11 @@ package com.near_reality.game.content.wilderness.revenant.item
 
 import com.google.common.collect.HashBiMap
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.REVENANT_ETHER
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_A
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_AU
+import com.zenyte.game.item.ItemId.THAMMARONS_SCEPTRE_U
 
 
 /**

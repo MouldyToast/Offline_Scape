@@ -101,6 +101,9 @@ object ItemContainerSerializer : KSerializer<_Container<_Item>> {
                     else -> error("Unexpected index: $index")
                 }
             }
+            requireNotNull(type)
+            requireNotNull(policy)
+            requireNotNull(items)
             _Container(type, policy, items)
         }
 

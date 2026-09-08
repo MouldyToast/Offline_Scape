@@ -7,10 +7,19 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.RAW_ANCHOVIES
+import com.zenyte.game.item.ItemId.RAW_BASS
+import com.zenyte.game.item.ItemId.RAW_COD
+import com.zenyte.game.item.ItemId.RAW_HERRING
+import com.zenyte.game.item.ItemId.RAW_LOBSTER
+import com.zenyte.game.item.ItemId.RAW_MACKEREL
+import com.zenyte.game.item.ItemId.RAW_SARDINE
+import com.zenyte.game.item.ItemId.RAW_SHRIMPS
+import com.zenyte.game.item.ItemId.RAW_SWORDFISH
+import com.zenyte.game.item.ItemId.RAW_TUNA
 
 class TwoFeetCharleySFishShop : ShopScript() {
 

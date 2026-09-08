@@ -5,7 +5,7 @@ import com.near_reality.game.content.tournament.area.TournamentFightArea
 import com.near_reality.game.content.tournament.area.TournamentLobbyArea
 import com.near_reality.game.content.tournament.area.randomFightingWaitAreaLocation
 import com.near_reality.game.content.tournament.preset.TournamentPreset
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.near_reality.game.util.WorldTimer
 import com.near_reality.game.util.formattedString
 import com.zenyte.game.content.advent.AdventCalendarManager
@@ -165,7 +165,7 @@ class Tournament(val preset: TournamentPreset, timer: WorldTimer) {
             player.sendMessage("Please contact a manager to issue your gloves.")
             player.log(LogLevel.INFO, "Award UIM gloves")
         }
-        player.bank.add(Item(CustomItemId.GILDED_BOXING_GLOVES))
+        player.bank.add(Item(ItemId.GILDED_BOXING_GLOVES))
         player.previousBoxingWinner = true
     }
 

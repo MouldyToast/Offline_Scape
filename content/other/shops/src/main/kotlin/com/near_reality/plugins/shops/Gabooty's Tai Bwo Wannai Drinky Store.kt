@@ -7,10 +7,15 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BLURBERRY_SPECIAL
+import com.zenyte.game.item.ItemId.CHOC_SATURDAY
+import com.zenyte.game.item.ItemId.DRUNK_DRAGON
+import com.zenyte.game.item.ItemId.FRUIT_BLAST
+import com.zenyte.game.item.ItemId.PINEAPPLE_PUNCH
+import com.zenyte.game.item.ItemId.WIZARD_BLIZZARD
 
 class GabootySTaiBwoWannaiDrinkyStore : ShopScript() {
 

@@ -7,10 +7,21 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BEAR_FUR
+import com.zenyte.game.item.ItemId.COMMON_KEBBIT_FUR
+import com.zenyte.game.item.ItemId.DESERT_DEVIL_FUR
+import com.zenyte.game.item.ItemId.FELDIP_WEASEL_FUR
+import com.zenyte.game.item.ItemId.GRAAHK_FUR
+import com.zenyte.game.item.ItemId.GREY_WOLF_FUR
+import com.zenyte.game.item.ItemId.KYATT_FUR
+import com.zenyte.game.item.ItemId.LARUPIA_FUR
+import com.zenyte.game.item.ItemId.POLAR_KEBBIT_FUR
+import com.zenyte.game.item.ItemId.TATTY_GRAAHK_FUR
+import com.zenyte.game.item.ItemId.TATTY_KYATT_FUR
+import com.zenyte.game.item.ItemId.TATTY_LARUPIA_FUR
 
 class FremennikFurTrader : ShopScript() {
 

@@ -2,7 +2,6 @@
 
 package com.zenyte.game.content.gravestone
 
-import com.near_reality.game.item.CustomItemId.*
 import com.near_reality.game.model.item.protectionValue
 import com.zenyte.game.GameInterface
 import com.zenyte.game.content.ItemRetrievalService
@@ -18,6 +17,9 @@ import com.zenyte.game.world.entity.Location
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import kotlin.math.min
+import com.zenyte.game.item.ItemId.COMPLETIONIST_CAPE
+import com.zenyte.game.item.ItemId.COMPLETIONIST_CAPE_T
+import com.zenyte.game.item.ItemId.MASTER_COMP_CAPE
 
 /**
  * @author Kris | 13/06/2022

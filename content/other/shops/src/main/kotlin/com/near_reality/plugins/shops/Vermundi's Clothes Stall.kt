@@ -7,10 +7,15 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.SHIRT
+import com.zenyte.game.item.ItemId.SHORTS
+import com.zenyte.game.item.ItemId.SILK
+import com.zenyte.game.item.ItemId.SKIRT
+import com.zenyte.game.item.ItemId.TROUSERS
+import com.zenyte.game.item.ItemId.WOVEN_TOP
 
 class VermundiSClothesStall : ShopScript() {
 

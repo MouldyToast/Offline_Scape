@@ -3,8 +3,10 @@ package com.near_reality.game.content.boss.nex.item.equip
 import com.near_reality.scripts.item.equip.EquipHandlerResponse
 import com.near_reality.scripts.item.equip.ItemEquipScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.TORVA_FULLHELM_DAMAGED
+import com.zenyte.game.item.ItemId.TORVA_PLATEBODY_DAMAGED
+import com.zenyte.game.item.ItemId.TORVA_PLATELEGS_DAMAGED
 
 class TorvaItemequip : ItemEquipScript() {
 

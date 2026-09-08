@@ -1,6 +1,6 @@
 //package com.near_reality.game.content.wilderness
 //
-//import com.near_reality.game.item.CustomItemId
+//import com.zenyte.game.item.ItemId
 //import com.zenyte.game.item.Item
 //import com.zenyte.game.model.item.pluginextensions.ItemPlugin
 //import com.zenyte.game.util.Utils
@@ -35,6 +35,6 @@
 //            }
 //        }
 //
-//        override fun getItems(): IntArray = intArrayOf(CustomItemId.WILDY_SUPPLY_SACK, CustomItemId.WILDY_SUPPLY_CRATE, CustomItemId.WILDY_SUPPLY_HOARD)
+//        override fun getItems(): IntArray = intArrayOf(ItemId.WILDY_SUPPLY_SACK, ItemId.WILDY_SUPPLY_CRATE, ItemId.WILDY_SUPPLY_HOARD)
 //    }
 //}

@@ -3,7 +3,9 @@ package com.near_reality.scripts.npc.drops.table.tables.rare
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.nothing
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.DRAGON_SPEAR
+import com.zenyte.game.item.ItemId.RUNE_SPEAR
+import com.zenyte.game.item.ItemId.SHIELD_LEFT_HALF
 
 object MegaRareDropTable : StandaloneDropTableBuilder({
     limit = 128

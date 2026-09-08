@@ -3,9 +3,8 @@ package com.near_reality.game.content.crystal.recipes.chargeable
 import com.near_reality.game.content.crystal.CrystalRecipe
 import com.near_reality.game.content.crystal.CrystalSeed
 import com.near_reality.game.content.crystal.recipes.CrystalChargeable
-import com.near_reality.game.item.CustomItemId
-import com.zenyte.game.item.Item
 import com.zenyte.game.item.ItemId
+import com.zenyte.game.item.Item
 import com.zenyte.game.model.item.degradableitems.DegradeType
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot

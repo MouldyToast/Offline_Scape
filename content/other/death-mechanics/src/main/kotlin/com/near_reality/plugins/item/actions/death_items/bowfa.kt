@@ -4,8 +4,17 @@ import com.zenyte.game.item.Item
 import com.zenyte.game.model.item.pluginextensions.ItemDeathStatus
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25884
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25886
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25888
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25890
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25892
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25894
+import com.zenyte.game.item.ItemId.BOW_OF_FAERDHINEN_C_25896
+import com.zenyte.game.item.ItemId.ENHANCED_CRYSTAL_WEAPON_SEED
 
 class BowfaItemaction : ItemActionScript() {
 

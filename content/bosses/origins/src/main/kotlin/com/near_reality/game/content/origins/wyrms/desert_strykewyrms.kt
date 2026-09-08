@@ -7,13 +7,28 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANTITE_BAR
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.CHAOTIC_KITESHIELD
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DRAGON_SCIMITAR
+import com.zenyte.game.item.ItemId.FIRE_RUNE
+import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
+import com.zenyte.game.item.ItemId.GRIMY_KWUARM
+import com.zenyte.game.item.ItemId.LANTADYME
+import com.zenyte.game.item.ItemId.LOBSTER
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.PET_DESERT_STRYKEWYRM
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RUNE_BOOTS
+import com.zenyte.game.item.ItemId.RUNE_LONGSWORD
+import com.zenyte.game.item.ItemId.UNCUT_EMERALD
 
 class DesertStrykewyrmsDroptable : NPCDropTableScript() {
 

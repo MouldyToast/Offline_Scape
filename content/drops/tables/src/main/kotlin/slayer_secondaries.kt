@@ -10,13 +10,30 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.CASKET_7956
+import com.zenyte.game.item.ItemId.COCONUT_MILK
+import com.zenyte.game.item.ItemId.CRUSHED_NEST
+import com.zenyte.game.item.ItemId.CRUSHED_SUPERIOR_DRAGON_BONES
+import com.zenyte.game.item.ItemId.DRAGON_SCALE_DUST
+import com.zenyte.game.item.ItemId.GOAT_HORN_DUST
+import com.zenyte.game.item.ItemId.JANGERBERRIES
+import com.zenyte.game.item.ItemId.LIMPWURT_ROOT
+import com.zenyte.game.item.ItemId.MAGIC_ROOTS
+import com.zenyte.game.item.ItemId.MORT_MYRE_FUNGUS
+import com.zenyte.game.item.ItemId.NAIL_BEAST_NAILS
+import com.zenyte.game.item.ItemId.POTATO_CACTUS
+import com.zenyte.game.item.ItemId.RED_SPIDERS_EGGS
+import com.zenyte.game.item.ItemId.SNAKE_WEED
+import com.zenyte.game.item.ItemId.SNAPE_GRASS
+import com.zenyte.game.item.ItemId.UNICORN_HORN_DUST
+import com.zenyte.game.item.ItemId.WHITE_BERRIES
+import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
 
 class SlayerSecondariesDroptable : NPCDropTableScript() {
 

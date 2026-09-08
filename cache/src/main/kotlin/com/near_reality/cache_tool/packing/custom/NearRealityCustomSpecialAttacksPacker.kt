@@ -1,8 +1,58 @@
 package com.near_reality.cache_tool.packing.custom
 
-import com.near_reality.game.item.CustomItemId
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId
 import mgi.types.config.enums.EnumDefinitions
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_BH
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_BHP
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_BHP_27865
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_BHP_27867
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_P
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_P_13269
+import com.zenyte.game.item.ItemId.ABYSSAL_DAGGER_P_13271
+import com.zenyte.game.item.ItemId.ARMADYL_GODSWORD
+import com.zenyte.game.item.ItemId.BARRELCHEST_ANCHOR_BH
+import com.zenyte.game.item.ItemId.BURNING_CLAWS
+import com.zenyte.game.item.ItemId.CORRUPTED_ARMADYL_GODSWORD
+import com.zenyte.game.item.ItemId.CORRUPTED_DARK_BOW
+import com.zenyte.game.item.ItemId.CORRUPTED_DRAGON_CLAWS
+import com.zenyte.game.item.ItemId.CORRUPTED_VOIDWAKER
+import com.zenyte.game.item.ItemId.CORRUPTED_VOLATILE_NIGHTMARE_STAFF
+import com.zenyte.game.item.ItemId.DARK_BOW
+import com.zenyte.game.item.ItemId.DARK_BOW_BH
+import com.zenyte.game.item.ItemId.DRAGON_2H_SWORD_CR
+import com.zenyte.game.item.ItemId.DRAGON_BATTLEAXE_CR
+import com.zenyte.game.item.ItemId.DRAGON_CLAWS
+import com.zenyte.game.item.ItemId.DRAGON_CLAWS_CR
+import com.zenyte.game.item.ItemId.DRAGON_CROSSBOW_CR
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER_CR
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER_PCR
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER_PCR_28023
+import com.zenyte.game.item.ItemId.DRAGON_DAGGER_PCR_28025
+import com.zenyte.game.item.ItemId.DRAGON_HALBERD_CR
+import com.zenyte.game.item.ItemId.DRAGON_LONGSWORD_BH
+import com.zenyte.game.item.ItemId.DRAGON_LONGSWORD_CR
+import com.zenyte.game.item.ItemId.DRAGON_MACE_BH
+import com.zenyte.game.item.ItemId.DRAGON_MACE_CR
+import com.zenyte.game.item.ItemId.DRAGON_SCIMITAR_CR
+import com.zenyte.game.item.ItemId.DRAGON_SPEAR_CR
+import com.zenyte.game.item.ItemId.DRAGON_SPEAR_PCR
+import com.zenyte.game.item.ItemId.DRAGON_SPEAR_PCR_28045
+import com.zenyte.game.item.ItemId.DRAGON_SPEAR_PCR_28047
+import com.zenyte.game.item.ItemId.DRAGON_SWORD_CR
+import com.zenyte.game.item.ItemId.DRAGON_WARHAMMER_CR
+import com.zenyte.game.item.ItemId.ELDER_MAUL
+import com.zenyte.game.item.ItemId.ELDER_MAUL_OR
+import com.zenyte.game.item.ItemId.EMBERLIGHT
+import com.zenyte.game.item.ItemId.MORRIGANS_JAVELIN_BH
+import com.zenyte.game.item.ItemId.MORRIGANS_THROWING_AXE_BH
+import com.zenyte.game.item.ItemId.PURGING_STAFF
+import com.zenyte.game.item.ItemId.SCORCHING_BOW
+import com.zenyte.game.item.ItemId.STATIUSS_WARHAMMER_BH
+import com.zenyte.game.item.ItemId.VESTAS_LONGSWORD_BH
+import com.zenyte.game.item.ItemId.VESTAS_SPEAR_BH
+import com.zenyte.game.item.ItemId.VOIDWAKER_27690
+import com.zenyte.game.item.ItemId.VOLATILE_NIGHTMARE_STAFF
 
 object NearRealityCustomSpecialAttacksPacker {
 
@@ -10,7 +60,7 @@ object NearRealityCustomSpecialAttacksPacker {
     fun pack(){
         // special attack descriptions
         EnumDefinitions.get(1739).apply {
-            values[CustomItemId.HOLY_GREAT_WARHAMMER] = "Smash: Deal an attack that inflicts 50% more damage and lowers your target's Defence level by 30%."
+            values[ItemId.HOLY_GREAT_WARHAMMER] = "Smash: Deal an attack that inflicts 50% more damage and lowers your target's Defence level by 30%."
             values[32161] = "Enhanced Sanctuary: In addition to a better boost in defence (15% + 2 boost), heals the player 10 hp every 2 seconds for 10 seconds for a total of 50 hp."
             values[BARRELCHEST_ANCHOR_BH] = "Drains the target's combat levels equivalent to 10% of the damage dealt. Drains in the following order: Defence, Attack, Ranged, then Magic.";
             values[DRAGON_MACE_BH] = "Increases damage and accuracy for one hit."
@@ -45,7 +95,7 @@ object NearRealityCustomSpecialAttacksPacker {
             values[CORRUPTED_ARMADYL_GODSWORD] = values[ARMADYL_GODSWORD]
             values[CORRUPTED_DARK_BOW] = values[DARK_BOW]
             values[CORRUPTED_VOLATILE_NIGHTMARE_STAFF] = values[VOLATILE_NIGHTMARE_STAFF]
-            values[CustomItemId.HOLY_GREAT_WARHAMMER] = 500
+            values[ItemId.HOLY_GREAT_WARHAMMER] = 500
             values[32161] = 500
             values[11235] = 500
             values[12765] = 500

@@ -11,13 +11,41 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_DART
+import com.zenyte.game.item.ItemId.ARCHERS_RING
+import com.zenyte.game.item.ItemId.ARCHER_HELM
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.DAGANNOTH_BONES
+import com.zenyte.game.item.ItemId.DAGANNOTH_HIDE
+import com.zenyte.game.item.ItemId.DRAGON_AXE
+import com.zenyte.game.item.ItemId.ENSOULED_DAGANNOTH_HEAD
+import com.zenyte.game.item.ItemId.FEATHER
+import com.zenyte.game.item.ItemId.FREMENNIK_BLADE
+import com.zenyte.game.item.ItemId.FREMENNIK_HELM
+import com.zenyte.game.item.ItemId.FREMENNIK_SHIELD
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.IRON_ARROW
+import com.zenyte.game.item.ItemId.IRON_KNIFE
+import com.zenyte.game.item.ItemId.MAPLE_LOGS
+import com.zenyte.game.item.ItemId.MITHRIL_KNIFE
+import com.zenyte.game.item.ItemId.OPAL_BOLT_TIPS
+import com.zenyte.game.item.ItemId.OYSTER_PEARLS
+import com.zenyte.game.item.ItemId.RED_DHIDE_VAMB
+import com.zenyte.game.item.ItemId.RUNE_THROWNAXE
+import com.zenyte.game.item.ItemId.RUNITE_BOLTS
+import com.zenyte.game.item.ItemId.RUNITE_LIMBS
+import com.zenyte.game.item.ItemId.SEERCULL
+import com.zenyte.game.item.ItemId.SPINED_BODY
+import com.zenyte.game.item.ItemId.SPINED_CHAPS
+import com.zenyte.game.item.ItemId.STEEL_ARROW
+import com.zenyte.game.item.ItemId.STEEL_KNIFE
+import com.zenyte.game.item.ItemId.YEW_LOGS
 
 class DagannothSupremeDroptable : NPCDropTableScript() {
 

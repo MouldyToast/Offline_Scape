@@ -12,13 +12,44 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.ADAMANT_LONGSWORD
+import com.zenyte.game.item.ItemId.ANCIENT_BREW_4
+import com.zenyte.game.item.ItemId.AWAKENERS_ORB
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BELLATOR_VESTIGE
+import com.zenyte.game.item.ItemId.BRONZE_LONGSWORD
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.CHROMIUM_INGOT
+import com.zenyte.game.item.ItemId.CLUE_SCROLL
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_JAVELIN_HEADS
+import com.zenyte.game.item.ItemId.DRAGON_PLATESKIRT
+import com.zenyte.game.item.ItemId.EMERALD
+import com.zenyte.game.item.ItemId.MANTA_RAY
+import com.zenyte.game.item.ItemId.MITHRIL_LONGSWORD
+import com.zenyte.game.item.ItemId.PRAYER_POTION3
+import com.zenyte.game.item.ItemId.PURE_ESSENCE
+import com.zenyte.game.item.ItemId.RAW_MONKFISH
+import com.zenyte.game.item.ItemId.RUBY
+import com.zenyte.game.item.ItemId.RUNITE_BOLTS_UNF
+import com.zenyte.game.item.ItemId.SAPPHIRE
+import com.zenyte.game.item.ItemId.SHADOW_QUARTZ
+import com.zenyte.game.item.ItemId.SIRENIC_TABLET
+import com.zenyte.game.item.ItemId.SIRENS_STAFF
+import com.zenyte.game.item.ItemId.SOUL_RUNE
+import com.zenyte.game.item.ItemId.STEAM_RUNE
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.VIRTUS_MASK
+import com.zenyte.game.item.ItemId.VIRTUS_ROBE_LEGS
+import com.zenyte.game.item.ItemId.VIRTUS_ROBE_TOP
+import com.zenyte.game.item.ItemId.WATER_RUNE
 
 class WhispererAwakenedDroptable : NPCDropTableScript() {
 

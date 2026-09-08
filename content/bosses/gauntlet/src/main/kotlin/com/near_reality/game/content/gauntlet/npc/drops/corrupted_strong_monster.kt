@@ -8,13 +8,16 @@ import com.zenyte.game.world.entity.npc.NpcId
 import com.zenyte.game.world.entity.npc.NpcId.*
 import com.near_reality.game.util.invoke
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.scripts.npc.drops.table.DropTableType.*
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop
 import com.zenyte.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import com.zenyte.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
+import com.zenyte.game.item.ItemId.CORRUPTED_SHARDS
+import com.zenyte.game.item.ItemId.CORRUPTED_TELEPORT_CRYSTAL
+import com.zenyte.game.item.ItemId.RAW_PADDLEFISH
+import com.zenyte.game.item.ItemId.WEAPON_FRAME
 
 class CorruptedStrongMonsterDroptable : NPCDropTableScript() {
 

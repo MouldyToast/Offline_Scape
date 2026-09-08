@@ -3,7 +3,7 @@ package com.zenyte.game.world.entity.player.action.combat;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalTool;
 import com.near_reality.game.content.crystal.recipes.chargeable.CrystalWeapon;
 
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.near_reality.game.world.entity.player.action.combat.AmmunitionDefinition;
 import com.near_reality.game.world.entity.player.action.combat.ISpecialAttack;
 import com.zenyte.game.content.boss.phantommuspah.PhantomMuspah;
@@ -12,7 +12,6 @@ import com.zenyte.game.content.chambersofxeric.npc.Tekton;
 import com.zenyte.game.content.consumables.Consumable;
 import com.zenyte.game.content.skills.prayer.Prayer;
 import com.zenyte.game.content.skills.prayer.PrayerManager;
-import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.item.degradableitems.DegradeType;
 import com.zenyte.game.task.TickTask;
 import com.zenyte.game.task.WorldTask;
@@ -249,7 +248,7 @@ public enum SpecialAttack implements ISpecialAttack {
         DRAGON_WARHAMMER,
         DRAGON_WARHAMMER_CR,
         DRAGON_WARHAMMER_20785,
-        CustomItemId.HOLY_GREAT_WARHAMMER,
+        ItemId.HOLY_GREAT_WARHAMMER,
         ItemId.DRAGON_WARHAMMER_OR
     }, WEAPON_SPEED, MELEE, new Animation(1378), new Graphics(1292), (player, combat, target) -> {
         final Hit hit = combat.getHit(player, target, 1.75, 1.5, 1, false);

@@ -6,8 +6,8 @@ import com.zenyte.game.world.World
 import com.zenyte.game.world.region.area.wilderness.WildernessArea
 import com.near_reality.scripts.item.actions.ItemActionScript
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.model.item.*
+import com.zenyte.game.item.ItemId.CHAOS_KEY_ACTIVE
 
 class ChaosKeyItemaction : ItemActionScript() {
 

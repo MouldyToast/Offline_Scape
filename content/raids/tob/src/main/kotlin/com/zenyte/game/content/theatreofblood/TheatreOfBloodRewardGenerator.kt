@@ -9,7 +9,6 @@ import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.zenyte.CacheManager
 import com.zenyte.game.content.theatreofblood.party.RaidingParty
 import com.zenyte.game.item.Item
-import com.zenyte.game.item.ItemId.*
 import com.zenyte.game.util.Utils
 import com.zenyte.game.world.World
 import com.zenyte.game.world.entity.player.Player
@@ -25,6 +24,49 @@ import java.util.*
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import kotlin.random.nextInt
+import com.zenyte.game.item.ItemId.ADAMANTITE_ORE
+import com.zenyte.game.item.ItemId.AVERNIC_DEFENDER_HILT
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.CABBAGE
+import com.zenyte.game.item.ItemId.COAL
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.GHRAZI_RAPIER
+import com.zenyte.game.item.ItemId.GOLD_ORE
+import com.zenyte.game.item.ItemId.GRIMY_AVANTOE
+import com.zenyte.game.item.ItemId.GRIMY_CADANTINE
+import com.zenyte.game.item.ItemId.GRIMY_DWARF_WEED
+import com.zenyte.game.item.ItemId.GRIMY_IRIT_LEAF
+import com.zenyte.game.item.ItemId.GRIMY_KWUARM
+import com.zenyte.game.item.ItemId.GRIMY_LANTADYME
+import com.zenyte.game.item.ItemId.GRIMY_RANARR_WEED
+import com.zenyte.game.item.ItemId.GRIMY_SNAPDRAGON
+import com.zenyte.game.item.ItemId.GRIMY_TOADFLAX
+import com.zenyte.game.item.ItemId.GRIMY_TORSTOL
+import com.zenyte.game.item.ItemId.HOLY_ORNAMENT_KIT
+import com.zenyte.game.item.ItemId.JUSTICIAR_CHESTGUARD
+import com.zenyte.game.item.ItemId.JUSTICIAR_FACEGUARD
+import com.zenyte.game.item.ItemId.JUSTICIAR_LEGGUARDS
+import com.zenyte.game.item.ItemId.LIL_ZIK
+import com.zenyte.game.item.ItemId.MAGIC_SEED
+import com.zenyte.game.item.ItemId.MAHOGANY_SEED
+import com.zenyte.game.item.ItemId.MESSAGE_22475
+import com.zenyte.game.item.ItemId.MOLTEN_GLASS
+import com.zenyte.game.item.ItemId.PALM_TREE_SEED
+import com.zenyte.game.item.ItemId.POTATO_CACTUS
+import com.zenyte.game.item.ItemId.RUNE_BATTLEAXE
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ItemId.RUNITE_ORE
+import com.zenyte.game.item.ItemId.SANGUINESTI_STAFF_UNCHARGED
+import com.zenyte.game.item.ItemId.SANGUINE_DUST
+import com.zenyte.game.item.ItemId.SANGUINE_ORNAMENT_KIT
+import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
+import com.zenyte.game.item.ItemId.SCYTHE_OF_VITUR_UNCHARGED
+import com.zenyte.game.item.ItemId.SWAMP_TAR
+import com.zenyte.game.item.ItemId.VIAL_OF_BLOOD_22446
+import com.zenyte.game.item.ItemId.WINE_OF_ZAMORAK
+import com.zenyte.game.item.ItemId.YEW_SEED
 
 fun main() {
 

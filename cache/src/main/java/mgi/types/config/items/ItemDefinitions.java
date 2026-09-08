@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-import static com.near_reality.game.item.CustomItemId.ORB_OF_BLOOD;
-import static com.near_reality.game.item.CustomItemId.ORB_OF_XERIC;
+import static com.zenyte.game.item.ItemId.ORB_OF_BLOOD;
+import static com.zenyte.game.item.ItemId.ORB_OF_XERIC;
 
 /**
  * @author Kris | 22. jaan 2018 : 21:35.27

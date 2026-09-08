@@ -7,10 +7,24 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOWL_OF_WATER
+import com.zenyte.game.item.ItemId.BUCKET
+import com.zenyte.game.item.ItemId.BUCKET_OF_WATER
+import com.zenyte.game.item.ItemId.CHEESE
+import com.zenyte.game.item.ItemId.DESERT_BOOTS
+import com.zenyte.game.item.ItemId.DESERT_SHIRT
+import com.zenyte.game.item.ItemId.EMPTY_JUG_PACK
+import com.zenyte.game.item.ItemId.FAKE_BEARD
+import com.zenyte.game.item.ItemId.JUG
+import com.zenyte.game.item.ItemId.JUG_OF_WATER
+import com.zenyte.game.item.ItemId.KHARIDIAN_HEADPIECE
+import com.zenyte.game.item.ItemId.LIME
+import com.zenyte.game.item.ItemId.POT
+import com.zenyte.game.item.ItemId.TOMATO
+import com.zenyte.game.item.ItemId.WATERSKIN3
 
 class PollnivneachGeneralStore : ShopScript() {
 

@@ -7,10 +7,15 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.ADAMANT_PLATELEGS
+import com.zenyte.game.item.ItemId.BLACK_PLATELEGS
+import com.zenyte.game.item.ItemId.BRONZE_PLATELEGS
+import com.zenyte.game.item.ItemId.IRON_PLATELEGS
+import com.zenyte.game.item.ItemId.MITHRIL_PLATELEGS
+import com.zenyte.game.item.ItemId.STEEL_PLATELEGS
 
 class LouieSArmouredLegsBazaar : ShopScript() {
 

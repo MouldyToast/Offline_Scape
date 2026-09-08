@@ -1,6 +1,6 @@
 package com.near_reality.game.content.commands
 
-import com.near_reality.game.item.CustomItemId
+import com.zenyte.game.item.ItemId
 import com.near_reality.game.world.entity.player.claimedFreeMB
 import com.near_reality.game.world.entity.player.manuallyLeftHelpChat
 import com.near_reality.game.world.entity.player.pvpDeaths
@@ -79,7 +79,7 @@ object PlayerCommands {
                     return@sendInputString
                 }
                 player.claimedFreeMB = true
-                player.inventory.addItem(Item(CustomItemId.OSNR_MYSTERY_BOX, 1))
+                player.inventory.addItem(Item(ItemId.OSNR_MYSTERY_BOX, 1))
                 ReferralUsageDatabase.increment(name)
                 ReferralUsageDatabase.write()
                 ReferralIPDatabase.addIp(ip)
@@ -109,7 +109,7 @@ object PlayerCommands {
             if (!p.getBooleanAttribute("claimedFounders") && Calendar.getInstance()[Calendar.YEAR] == 2024 && Calendar.getInstance()[Calendar.MONTH] == Calendar.MARCH && Calendar.getInstance()[Calendar.DAY_OF_MONTH] < 19) {
                 p.sendMessage(Colour.RS_GREEN.wrap("Thank you for joining " + ContentConstants.SERVER_NAME + " on our launch weekend!"))
                 p.sendMessage(Colour.RS_GREEN.wrap("The powerful Founder's Cape has been added to your inventory."))
-                p.getInventory().addItem(Item(CustomItemId.FOUNDERS_CAPE))
+                p.getInventory().addItem(Item(ItemId.FOUNDERS_CAPE))
                 p.putBooleanAttribute("claimedFounders", true)
             }
         }

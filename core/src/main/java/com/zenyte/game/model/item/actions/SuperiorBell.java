@@ -12,7 +12,7 @@ import com.zenyte.plugins.dialogue.ItemChat;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.near_reality.game.item.CustomItemId.SUPERIOR_BELL;
+import static com.zenyte.game.item.ItemId.SUPERIOR_BELL;
 
 /**
  * Author: Leviticus

@@ -4,7 +4,36 @@ import com.near_reality.game.content.crystal.CRYSTAL_SHARD
 import com.near_reality.scripts.npc.drops.table.always
 import com.near_reality.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import com.near_reality.scripts.npc.drops.table.noted
-import com.zenyte.game.item.ItemId.*
+import com.zenyte.game.item.ItemId.ADAMANT_ARROW
+import com.zenyte.game.item.ItemId.BATTLESTAFF
+import com.zenyte.game.item.ItemId.BLOOD_RUNE
+import com.zenyte.game.item.ItemId.CHAOS_RUNE
+import com.zenyte.game.item.ItemId.COINS_995
+import com.zenyte.game.item.ItemId.COSMIC_RUNE
+import com.zenyte.game.item.ItemId.CRYSTAL_ARMOUR_SEED
+import com.zenyte.game.item.ItemId.CRYSTAL_SEED
+import com.zenyte.game.item.ItemId.DEATH_RUNE
+import com.zenyte.game.item.ItemId.DRAGON_ARROW
+import com.zenyte.game.item.ItemId.DRAGON_HALBERD
+import com.zenyte.game.item.ItemId.ENHANCED_CRYSTAL_WEAPON_SEED
+import com.zenyte.game.item.ItemId.LAW_RUNE
+import com.zenyte.game.item.ItemId.MITHRIL_ARROW
+import com.zenyte.game.item.ItemId.NATURE_RUNE
+import com.zenyte.game.item.ItemId.PRIMAL_HATCHET
+import com.zenyte.game.item.ItemId.RUNE_ARROW
+import com.zenyte.game.item.ItemId.RUNE_CHAINBODY
+import com.zenyte.game.item.ItemId.RUNE_FULL_HELM
+import com.zenyte.game.item.ItemId.RUNE_HALBERD
+import com.zenyte.game.item.ItemId.RUNE_PICKAXE
+import com.zenyte.game.item.ItemId.RUNE_PLATEBODY
+import com.zenyte.game.item.ItemId.RUNE_PLATELEGS
+import com.zenyte.game.item.ItemId.RUNE_PLATESKIRT
+import com.zenyte.game.item.ItemId.SCROLL_BOX_ELITE
+import com.zenyte.game.item.ItemId.UNCUT_DIAMOND
+import com.zenyte.game.item.ItemId.UNCUT_EMERALD
+import com.zenyte.game.item.ItemId.UNCUT_RUBY
+import com.zenyte.game.item.ItemId.UNCUT_SAPPHIRE
+import com.zenyte.game.item.ItemId.YOUNGLLEF
 
 private const val common = 24
 

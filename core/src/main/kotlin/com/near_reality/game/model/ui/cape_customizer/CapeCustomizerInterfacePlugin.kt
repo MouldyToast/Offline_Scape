@@ -1,6 +1,5 @@
 package com.near_reality.game.model.ui.cape_customizer
 
-import com.near_reality.game.item.CustomItemId.*
 import com.zenyte.game.GameInterface
 import com.zenyte.game.model.ui.Interface
 import com.zenyte.game.util.JagexColor
@@ -8,6 +7,8 @@ import com.zenyte.game.world.entity.masks.UpdateFlag
 import com.zenyte.game.world.entity.player.Player
 import com.zenyte.game.world.entity.player.VarManager
 import com.zenyte.game.world.entity.player.container.impl.equipment.EquipmentSlot
+import com.zenyte.game.item.ItemId.MASTER_COMP_CAPE
+import com.zenyte.game.item.ItemId.MASTER_COMP_HOOD
 
 /**
  * @author <a href="https://github.com/heavens">mack</a>

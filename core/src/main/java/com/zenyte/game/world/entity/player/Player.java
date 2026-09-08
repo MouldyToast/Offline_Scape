@@ -15,7 +15,7 @@ import com.near_reality.game.content.bountyhunter.WildyExtKt;
 import com.near_reality.game.content.buffs.PlayerBuffManager;
 import com.near_reality.game.content.commands.DeveloperCommands;
 import com.near_reality.game.content.middleman.MiddleManManager;
-import com.near_reality.game.item.CustomItemId;
+import com.zenyte.game.item.ItemId;
 import com.near_reality.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import com.near_reality.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import com.near_reality.game.world.Boundary;
@@ -83,7 +83,6 @@ import com.zenyte.game.content.treasuretrails.clues.PuzzleBox;
 import com.zenyte.game.content.treasuretrails.stash.Stash;
 import com.zenyte.game.content.wheeloffortune.WheelOfFortune;
 import com.zenyte.game.item.Item;
-import com.zenyte.game.item.ItemId;
 import com.zenyte.game.model.BonusXpManager;
 import com.zenyte.game.model.item.SkillcapePerk;
 import com.zenyte.game.model.item.containers.BonePouch;
@@ -4367,7 +4366,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         ) {
             sendMessage(Colour.RS_GREEN.wrap("Thank you for joining " + GameConstants.SERVER_NAME + "!"));
             sendMessage(Colour.RS_GREEN.wrap("The Founder's Cape has been added to your inventory/bank."));
-            tryAddInventoryThenBank(new Item(CustomItemId.FOUNDERS_CAPE));
+            tryAddInventoryThenBank(new Item(ItemId.FOUNDERS_CAPE));
             putBooleanAttribute("claimedFounders2", true);
         }
         updateScopeInScene();

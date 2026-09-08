@@ -7,10 +7,16 @@ import com.zenyte.game.model.shop.ShopPolicy.*
 import com.zenyte.game.model.shop.ShopCurrency
 import com.zenyte.game.model.shop.ShopCurrency.*
 import com.zenyte.game.item.ItemId
-import com.zenyte.game.item.ItemId.*
 import com.near_reality.game.content.universalshop.*
 import com.near_reality.game.content.universalshop.UnivShopItem
 import com.near_reality.game.content.universalshop.UnivShopItem.*
+import com.zenyte.game.item.ItemId.BOWL_OF_WATER
+import com.zenyte.game.item.ItemId.BUCKET_OF_WATER
+import com.zenyte.game.item.ItemId.HAMMER
+import com.zenyte.game.item.ItemId.JUG_OF_WATER
+import com.zenyte.game.item.ItemId.KNIFE
+import com.zenyte.game.item.ItemId.WATERSKIN0
+import com.zenyte.game.item.ItemId.WATERSKIN4
 
 class BedabinVillageBartering : ShopScript() {
 

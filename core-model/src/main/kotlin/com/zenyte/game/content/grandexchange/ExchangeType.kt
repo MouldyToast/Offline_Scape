@@ -1,6 +1,6 @@
-package com.zenyte.game.content.grandexchange;
+package com.zenyte.game.content.grandexchange
 
-import com.zenyte.utils.Ordinal;
+import com.zenyte.utils.Ordinal
 
 /**
  * @author Kris | 1. apr 2018 : 19:14.15
@@ -8,7 +8,7 @@ import com.zenyte.utils.Ordinal;
  * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>}
  */
 @Ordinal
-public enum ExchangeType {
-	BUYING, 
-	SELLING
+enum class ExchangeType {
+    BUYING,
+    SELLING
 }

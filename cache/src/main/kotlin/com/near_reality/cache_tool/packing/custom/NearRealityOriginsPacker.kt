@@ -7,6 +7,13 @@ import mgi.types.config.npcs.NPCDefinitions
 import net.runelite.api.NpcID
 import net.runelite.api.NpcID.*
 import net.runelite.api.NpcID.BABY_MOLE
+import net.runelite.api.NpcID.GIANT_MOLE_6499
+import net.runelite.api.NpcID.AHRIM_THE_BLIGHTED
+import net.runelite.api.NpcID.DHAROK_THE_WRETCHED
+import net.runelite.api.NpcID.GUTHAN_THE_INFESTED
+import net.runelite.api.NpcID.KARIL_THE_TAINTED
+import net.runelite.api.NpcID.TORAG_THE_CORRUPTED
+import net.runelite.api.NpcID.VERAC_THE_DEFILED
 
 object NearRealityOriginsPacker {
 

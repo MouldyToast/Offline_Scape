@@ -131,7 +131,7 @@ sealed class TournamentController {
                 buildString {
                     append(preset.announcementIcon)
                     append(preset)
-                    append(" tournament starts in ${it.formattedString}, enter via red portal east of home!")
+                    append(" tournament starts in ${it.formattedString}, speak to the Tournament Guard at Edgeville to enter!")
                 }
             )
         }

@@ -1,7 +1,6 @@
 package org.jesse.plugins.renewednpc;
 
 import org.jesse.game.GameInterface;
-import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.npc.actions.NPCPlugin;
 import org.jesse.game.world.entity.player.Player;
@@ -12,8 +11,6 @@ import org.jesse.plugins.dialogue.MakeOverMageD;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class MakeoverMage extends NPCPlugin {
-
-    private static final Location HOME_MAKE_OVER_MAGE = new Location(3095, 3505, 0);
 
     @Override
     public void handle() {
@@ -51,24 +48,6 @@ public class MakeoverMage extends NPCPlugin {
                     npc.setInteractingWith(player);
             }
         });
-        /*bind("Skin Colour", new OptionHandler() {
-            @Override
-            public void handle(Player player, NPC npc) {
-                player.stopAll();
-                player.faceEntity(npc);
-                GameInterface.MAKEOVER.open(player);
-            }
-
-            @Override
-            public void execute(final Player player, final NPC npc) {
-                player.stopAll();
-                player.setFaceEntity(npc);
-                handle(player, npc);
-                if (npc.getLocation().getPositionHash() != HOME_MAKE_OVER_MAGE.getPositionHash()) {
-                    npc.setInteractingWith(player);
-                }
-            }
-        });*/
     }
 
     @Override

@@ -5,13 +5,7 @@ import org.jesse.cache_tool.packing.custom.NearRealityCustomItemPacker.CustomDef
 val map: Map<String, CustomDefinition> = mapOf(
     "reward_casket_inv" to CustomDefinition.Model(2450),
 
-    "rebirth_ge_orb_pillarb" to CustomDefinition.Model(10517),
-
     "rebirth_item_rax" to CustomDefinition.Model(29615),
-
-    "rebirth_dzone_stallb" to CustomDefinition.Model(modelId = 37907),
-
-    "rebirth_zenyte_portal" to CustomDefinition.Model(38000),
 
     "ancient_book_equip" to CustomDefinition.Model(60001),
     "ancient_book_drop" to CustomDefinition.Model(60002),
@@ -411,7 +405,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "dark_shadow_wizard" to CustomDefinition.Model(modelId = 60398),
     "dark_toucan_body" to CustomDefinition.Model(modelId = 60399),
     "dark_toucan_underlay" to CustomDefinition.Model(modelId = 60400),
-    "rebirth_universal_chest" to CustomDefinition.Model(modelId = 60404),
     "gnomescarf_inv" to CustomDefinition.Model(modelId = 60413),
     "gnomescarf_eq_m" to CustomDefinition.Model(modelId = 60414),
     "gnomescarf_eq_f" to CustomDefinition.Model(modelId = 60415),
@@ -427,7 +420,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "balmung_inv" to CustomDefinition.Model(modelId = 60425),
     "balmung_eq_m" to CustomDefinition.Model(modelId = 60426),
     "balmung_eq_f" to CustomDefinition.Model(modelId = 60427),
-    "rebirth_hiscore_board" to CustomDefinition.Model(modelId = 60428),
     "mod_cape_inv" to CustomDefinition.Model(modelId = 60429),
     "mod_cape_eq" to CustomDefinition.Model(modelId = 60430),
     "admin_cape_inv" to CustomDefinition.Model(modelId = 60431),
@@ -461,7 +453,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "cyan_bond_inv" to CustomDefinition.Model(modelId = 60460),
     "red_bond_inv" to CustomDefinition.Model(modelId = 60461),
     "rebirth_nr_teletab" to CustomDefinition.Model(modelId = 60462),
-    "rebirth_healing_fountain" to CustomDefinition.Model(modelId = 60463), // was 50001 (no usages found)
     "zenyte_helmet_inv" to CustomDefinition.Model(modelId = 60464),
     "zenyte_helmet_eq" to CustomDefinition.Model(modelId = 60465),
     "zenyte_platebody_inv" to CustomDefinition.Model(modelId = 60466),
@@ -481,7 +472,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "rebirth_scrollbox_d" to CustomDefinition.Model(modelId = 60480),
     "rebirth_scrollbox_e" to CustomDefinition.Model(modelId = 60481),
     "rebirth_scrollbox_f" to CustomDefinition.Model(modelId = 60482),
-    "rebirth_magicstallb" to CustomDefinition.Model(modelId = 60483),
     "arma_arrow_gfx" to CustomDefinition.Model(modelId = 60484),
     "bandos_arrow_gfx" to CustomDefinition.Model(modelId = 60485),
     "sara_arrow_gfx" to CustomDefinition.Model(modelId = 60486),
@@ -494,16 +484,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "master_cape_inv" to CustomDefinition.Model(modelId = 60511),
     "master_cape_eq_f" to CustomDefinition.Model(modelId = 60512),
     "master_cape_eq_m" to CustomDefinition.Model(modelId = 60513),
-    "rebirth_well_cyan" to CustomDefinition.Model(modelId = 60514),
-    "rebirth_well_off_blue" to CustomDefinition.Model(modelId = 60515),
-    "rebirth_well_canopy" to CustomDefinition.Model(modelId = 60516),
-    "rebirth_tournament_portal" to CustomDefinition.Model(modelId = 60517),
-    "rebirth_afk_fence" to CustomDefinition.Model(modelId = 60518),
-    "rebirth_afk_leftgate" to CustomDefinition.Model(modelId = 60519),
-    "rebirth_afk_rightGate" to CustomDefinition.Model(modelId = 60520),
-    "rebirth_afk_rightgate" to CustomDefinition.Model(modelId = 60520),
-    "rebirth_afk_diagonal_fence" to CustomDefinition.Model(modelId = 60521),
-    "rebirth_skull_fence" to CustomDefinition.Model(modelId = 60522),
     "master_hood_eq_f" to CustomDefinition.Model(modelId = 60523),
     "t_comp_hood_eq_f" to CustomDefinition.Model(modelId = 60524),
     "ut_comp_hood_eq_f" to CustomDefinition.Model(modelId = 60525),
@@ -513,7 +493,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "master_hood_inv" to CustomDefinition.Model(modelId = 60529),
     "t_comp_hood_inv" to CustomDefinition.Model(modelId = 60530),
     "ut_comp_hood_inv" to CustomDefinition.Model(modelId = 60531),
-    "rebirth_money_bag_statue" to CustomDefinition.Model(modelId = 60532),
     "t_comp_cape_inv" to CustomDefinition.Model(modelId = 60533),
     "t_comp_cape_eq_f" to CustomDefinition.Model(modelId = 60534),
     "t_comp_cape_eq_m" to CustomDefinition.Model(modelId = 60535),

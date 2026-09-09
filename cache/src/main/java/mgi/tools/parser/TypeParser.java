@@ -192,9 +192,6 @@ public class TypeParser {
         packStructs();
         packParams();
         packMaps(service);
-
-        editObjects();
-        addCustomStalls();
         TeleportsPacker.pack();
         increaseVarclientAmount();
         NearRealityCustomObjectsPacker.pack();
@@ -625,12 +622,6 @@ public class TypeParser {
         }
     }
 
-    public static void addCustomStalls() {
-    }
-
-    public static void editObjects() {
-    }
-
     public static ObjectDefinitions cloneObject(int from, int to) {
         ObjectDefinitions def = new ObjectDefinitions(to, new ByteBuffer(new byte[1]));
         def.copy(from);
@@ -1010,58 +1001,7 @@ public class TypeParser {
         }
     }
 
-    public static void packMapsRSPSiModern(int baseRegionID, String packFilePath) throws IOException {
-        packMapsRSPSiModern(CacheManager.getCache(), baseRegionID, packFilePath);
-    }
-
-    public static void packMapsRSPSiModern(Cache cache, int baseRegionID, String packFilePath)
-            throws IOException {
-        byte[] packBytes = java.nio.file.Files.readAllBytes(Path.of(packFilePath));
-        java.nio.ByteBuffer buffer = java.nio.ByteBuffer.wrap(packBytes);
-
-        int baseRegionX = (baseRegionID >> 8) & 0xFF;
-        int baseRegionY = baseRegionID & 0xFF;
-
-        int mapSquareCount = buffer.getInt();
-
-        for (int i = 0; i < mapSquareCount; i++) {
-            buffer.getInt(); // locGroupID
-            buffer.getInt(); // mapGroupID
-
-            int localMapSqGridX = buffer.getInt();
-            int localMapSqGridZ = buffer.getInt();
-
-            int locsBlockLength = buffer.getInt();
-            byte[] locsBlock = new byte[locsBlockLength];
-            buffer.get(locsBlock);
-
-            int mapBlockLength = buffer.getInt();
-            byte[] mapBlock = new byte[mapBlockLength];
-            buffer.get(mapBlock);
-
-            int regionX = baseRegionX + localMapSqGridX;
-            int regionY = baseRegionY + localMapSqGridZ;
-
-            int regionID = (regionX << 8) | regionY;
-            locsBlock = modifyRegions(regionID, locsBlock);
-            packMap(cache, regionID, mapBlock, locsBlock);
-        }
-    }
-
     private static byte[] modifyRegions(int regionID, byte[] locsBlock) {
-        if (regionID == 12342) {
-            return Regions.inject(locsBlock,
-                    o -> o.getId() == 76 || o.getId() == 29165 || o.getId() == 40448 || o.getId() == 2133 || o.getId() == 7439 || o.getId() == 6267 || o.getId() == 41705,
-                    //FIX GE booths to have bank near banks
-                    new WorldObject(10060, 0, 1, new Location(3094, 3490, 1)),
-                    new WorldObject(10060, 0, 1, new Location(3095, 3490, 1)),
-                    new WorldObject(10060, 0, 3, new Location(3094, 3495, 1)),
-                    new WorldObject(10060, 0, 3, new Location(3095, 3495, 1)),
-                    //Fix pottery wheel
-                    new WorldObject(4310, 10, 1, new Location(3104, 3497, 0)),
-                    new WorldObject(2031, 10, 3, new Location(3108, 3494, 0))
-            );
-        }
         if (regionID == 8036) {
             return Regions.inject(locsBlock,
                     null,
@@ -1247,8 +1187,6 @@ public class TypeParser {
                 Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_objects.dat")), null,
                         new WorldObject(35006, 10, 1, new Location(3363, 7465, 0)),
                         new WorldObject(35007, 10, 0, new Location(3352, 7465, 0))));
-        //packMapPre209(12342, "assets/map/osnr_home/624.dat", "assets/map/osnr_home/625.dat");
-        //packMapsRSPSi(13382, "assets/osnr/custom_maps/NR_home.pack");
         packMapsRSPSi(14388, "assets/map/Meiyerditch.pack");
 
         packMapsRSPSi(6457, "assets/map/kourend_castle.pack");

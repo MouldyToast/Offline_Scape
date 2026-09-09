@@ -23,6 +23,8 @@ private val removedCustomRegions = intArrayOf(
     6582, 8314, 9517,
     // custom donator barrows crypts (never packed) + orphan barrows 13909
     11374, 11375, 11376, 11377, 11378, 11379, 13909,
+    // NR_home island (upstream pack, never live on this branch; old saves may sit there)
+    13382, 13383, 13638, 13639,
     // donator zones incl. neighbour columns spawns/implings occupied
     13430, 13431, 13433, 13434, 13436, 13437, 13439, 13440, 13441, 13443,
     13550, 13552, 13686, 13689, 13692, 13693, 13695, 13697,

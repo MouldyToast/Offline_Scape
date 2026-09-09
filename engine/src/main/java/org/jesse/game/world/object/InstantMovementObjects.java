@@ -11,8 +11,6 @@ public enum InstantMovementObjects {
 	DAEYALT_STAIRS_UP(39093, new Location(3696, 9765, 2), new Location(3633, 3339, 0), LadderOA.CLIMB_UP),
 	DAEYALT_STAIRS_DOWN(39092, new Location(3631, 3339, 0), new Location(3696, 9764, 2), LadderOA.CLIMB_DOWN),
 
-	HOME_MANHOLE_ENTRY_TOP(100, new Location(3095, 3480), new Location(3096, 9867), LadderOA.CLIMB_DOWN),
-
 	TAVERLY_DUNG_STAIRS_WEST_TOP(30190, new Location(2881, 9825, 1), new Location(2883, 9825, 0)),
 	TAVERLY_DUNG_STAIRS_WEST_BOTTOM(30189, new Location(2881, 9825, 0), new Location(2880, 9825, 1)),
 

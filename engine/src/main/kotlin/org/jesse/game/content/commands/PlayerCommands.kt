@@ -47,8 +47,8 @@ object PlayerCommands {
         Command(PlayerPrivilege.PLAYER, arrayOf("tourny", "tourney"), "Teleport to tournament area.") { p, _ ->
             if (p.isLocked)
                 return@Command
-            val teleport = RegularTeleport(Location(3104, 3486, 0))
-            p.sendMessage("You teleport to the Tournament Area.")
+            val teleport = RegularTeleport(Location(3097, 3504, 0))
+            p.sendMessage("You teleport to the Tournament Guard.")
             teleport.teleport(p)
         }
 
@@ -108,22 +108,6 @@ object PlayerCommands {
         }
 
         /* Teleports */
-        Command(PlayerPrivilege.PLAYER, "slayer", "Teleport to slayer masters.") { p, _ ->
-            if (p.isLocked)
-                return@Command
-            val teleport = RegularTeleport(Location(3077, 3490, 0))
-            p.sendMessage("Your words manage to teleport you to the Slayer Masters.")
-            teleport.teleport(p)
-        }
-
-        Command(PlayerPrivilege.PLAYER, "afk", "Teleport to the AFK Area.") { p, _ ->
-            if (p.isLocked)
-                return@Command
-            val teleport = RegularTeleport(Location(3124, 3482,0))
-            p.sendMessage("Your words manage to teleport you to the AFK Area.")
-            teleport.teleport(p)
-        }
-
         Command(PlayerPrivilege.PLAYER, "barrows", "Teleport to the Barrows minigame.") { p, _ ->
             if (p.isLocked)
                 return@Command

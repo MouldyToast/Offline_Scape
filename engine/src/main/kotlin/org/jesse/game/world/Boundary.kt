@@ -139,9 +139,6 @@ data class Boundary(
         val FEROX_ENCLAVE9 = Boundary(3125, 3639, 3137, 3639)
         val FEROX_ENCLAVE10 = Boundary(3154, 3633, 3154, 3636)
 
-        @JvmField
-        val AFK_ZONE = Boundary(3096, 3469, 3113, 3483)
-
         val SLAYER_BASEMENT = Boundary(3400, 9926, 3449, 9977)
 
 

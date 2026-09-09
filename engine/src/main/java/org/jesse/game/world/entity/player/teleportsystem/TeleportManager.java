@@ -26,7 +26,6 @@ public class TeleportManager {
     private static final int INTERFACE = 700;
     private static final Graphics TELEPORT_GFX = new Graphics(343);
     private static final Animation TELEPORT_ANIM = new Animation(1818);
-    private static final Location WIZARD_LOCATION = new Location(3088, 3505, 0);
     private transient Player player;
     private List<PortalTeleport> favoriteTeleports;
     private Set<PortalTeleport> unlockedTeleports;

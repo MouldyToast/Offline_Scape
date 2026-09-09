@@ -1,6 +1,5 @@
 package org.jesse.game.content.event.christmas2019;
 
-import org.jesse.game.world.entity.Location;
 
 /**
  * @author Corey
@@ -9,7 +8,6 @@ import org.jesse.game.world.entity.Location;
 public class ChristmasConstants {
     public static final String[] SNOW_IMP_NAMES = {"Harry", "Stuart", "Risto", "Luke", "Cody", "Chris", "Nelly", "Daniel", "Kevin", "Tommy"};
     public static final String[] FROZEN_GUEST_ORDERS = {"twbacp", "twbpac", "tabcwp", "tpcbaw", "tawpbc", "tpacwb", "tpawcb", "twabpc", "tbpcwa", "tcbpwa"};
-    public static final Location homeChristmasCupboardLocation = new Location(3094, 3485);
     public static final int CANDY_CANE = 30105;
     public static final int ICE_AMULET = 30113;
     public static final int CHRISTMAS_SCYTHE = 30115;

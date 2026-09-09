@@ -7,14 +7,10 @@ import org.jesse.game.item.Item;
 import org.jesse.game.model.item.ItemOnObjectAction;
 import org.jesse.game.task.WorldTasksManager;
 import org.jesse.game.util.Colour;
-import org.jesse.game.world.World;
 import org.jesse.game.world.entity.masks.Animation;
-import org.jesse.game.world.entity.masks.Graphics;
-import org.jesse.game.world.entity.player.Action;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.SkillConstants;
 import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentUtils;
-import org.jesse.game.world.entity.player.dailychallenge.challenge.SkillingChallenge;
 import org.jesse.game.world.object.ObjectAction;
 import org.jesse.game.obj.ids.ObjectId;
 import org.jesse.game.world.object.WorldObject;
@@ -31,10 +27,6 @@ import java.util.ArrayList;
 public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
 
     public static final Animation PRAY_ANIM = new Animation(645);
-
-    private static final int HOME_ALTAR_OBJ = 27501;
-
-    private static final float HOME_ALTAR_PRAYER_XP_MOD = 3.5f;
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
@@ -73,17 +65,7 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
 
     @Override
     public void handleItemOnObjectAction(Player player, Item item, int slot, WorldObject object) {
-        /* only home altar can be used as gilded altar */
-        if (object.getId() != HOME_ALTAR_OBJ) {
-            player.sendMessage("Nothing interesting happens.");
-            return;
-        }
-        Bones bone = Bones.getBone(item.getId());
-        if (bone == null) {
-            player.sendMessage("You can only offer bones to the gods.");
-            return;
-        }
-        player.getActionManager().setAction(new OfferingAction(bone, item, object, HOME_ALTAR_PRAYER_XP_MOD));
+        player.sendMessage("Nothing interesting happens.");
     }
 
     @Override
@@ -100,77 +82,5 @@ public final class AltarOPlugin implements ObjectAction, ItemOnObjectAction {
     @Override
     public Object[] getObjects() {
         return new Object[] { "Altar of Guthix", "Chaos altar", "Altar", ObjectId.ALTAR_20377, 18258, ObjectId.ALTAR};
-    }
-
-    private static final class OfferingAction extends Action {
-
-        private static final String OFFERING_MESSAGE = "The gods are very pleased with your offering.";
-
-        private static final Animation OFFERING_ANIM = new Animation(3705);
-
-        private static final Graphics OFFERING_GFX = new Graphics(624);
-
-        public OfferingAction(final Bones bone, final Item item, final WorldObject altar, final float modifier) {
-            this.bone = bone;
-            this.item = item;
-            this.altar = altar;
-            this.modifier = modifier;
-        }
-
-        private final Item item;
-
-        private final Bones bone;
-
-        private final WorldObject altar;
-
-        private final float modifier;
-
-        @Override
-        public boolean initiateOnPacketReceive() {
-            return true;
-        }
-
-        @Override
-        public boolean start() {
-            if (!player.getInventory().containsItem(item)) {
-                player.sendMessage("You don't have any " + item.getName().toLowerCase() + " to sacrifice.");
-                return false;
-            }
-            if (bone == Bones.SUPERIOR_DRAGON_BONES) {
-                if (player.getSkills().getLevelForXp(SkillConstants.PRAYER) < 70) {
-                    player.sendMessage("You need a Prayer level of at least 70 to sacrifice superior dragon bones.");
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        @Override
-        public void stop() {
-            player.getActionManager().setActionDelay(1);
-        }
-
-        @Override
-        public boolean process() {
-            return true;
-        }
-
-        @Override
-        public int processWithDelay() {
-            if (!player.getInventory().containsItem(item)) {
-                return -1;
-            }
-
-            player.setAnimation(OFFERING_ANIM);
-            player.faceObject(altar);
-            if (bone.equals(Bones.DRAGON_BONES)) {
-                player.getDailyChallengeManager().update(SkillingChallenge.OFFER_DRAGON_BONES);
-            }
-            player.getInventory().deleteItem(item);
-            player.sendFilteredMessage("You sacrifice the " + bone.getName() + ".");
-            player.getSkills().addXp(SkillConstants.PRAYER, bone.getXp() * modifier);
-            World.sendGraphics(OFFERING_GFX, altar);
-            return 3;
-        }
     }
 }

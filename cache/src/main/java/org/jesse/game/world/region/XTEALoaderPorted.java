@@ -35,18 +35,13 @@ public class XTEALoaderPorted {
     }
 
     /**
-     * Gets the default xtea keys of {0, 0, 0, 0} or
-     * the correct keys for the home area (egdeville)
+     * Gets the default xtea keys of {0, 0, 0, 0}
      * as we repack the maps upon cache update.
      * @param region
      * @return
      */
     public static int[] getXTEAs(final int region) {
-//		if (region == 12342) {
-//			return getXTEAKeys(region);
-//		}
         return defaultKeys;
-//		return getXTEAKeys(region);
     }
 
     /**

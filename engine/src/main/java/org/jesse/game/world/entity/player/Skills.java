@@ -1,7 +1,6 @@
 package org.jesse.game.world.entity.player;
 
 import com.google.gson.annotations.Expose;
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import org.jesse.game.world.PlayerEvent;
 import org.jesse.game.GameConstants;
 import org.jesse.game.content.achievementdiary.AdventurersLogIcon;
@@ -352,23 +351,12 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
                 final int levels = lv - oldLevel;
                 if (lv == 99) {
                     player.sendMessage("Congratulations, you've reached the highest possible " + getSkillName(skill) + " level of 99.");
-                    String skillName = getSkillName(skill);
-                    SkillTitleHandler.unlockLevel99Title(player, skillName);
                     WorldBroadcasts.broadcast(player, BroadcastType.LVL_99, skill);
                     if (player.getNumericAttribute("first_99_skill").intValue() == -1) {
                         player.addAttribute("first_99_skill", skill);
                     }
                     if (isMaxed()) {
                         WorldBroadcasts.broadcast(player, BroadcastType.MAXED);
-                        LoyaltyTitleShop.Companion.unlockTitle(player, "maxed");
-                    }
-                    if (player.getGameMode().isHardcore()) {
-                        LoyaltyTitleShop.Companion.unlockTitle(player, "the hardcore ironman btw");
-                        LoyaltyTitleShop.Companion.unlockTitle(player, "hardcore ironman");
-                    }
-                    if (player.getGameMode().isIronman()) {
-                        LoyaltyTitleShop.Companion.unlockTitle(player, "the ironman btw");
-                        LoyaltyTitleShop.Companion.unlockTitle(player, "ironman");
                     }
                 }
                 else {
@@ -405,8 +393,6 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
             else {
                 if (oldExperience < 200000000 && getExperience()[skill] >= 200000000) {
                     WorldBroadcasts.broadcast(player, BroadcastType.XP_200M, skill);
-                    String skillName = getSkillName(skill);
-                    SkillTitleHandler.unlock200MTitle(player, skillName);
                 }
             }
         }

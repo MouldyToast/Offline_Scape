@@ -1,7 +1,0 @@
-// 20339
-[clientscript,script20339](string $text, component $event_com, fontmetrics $font)
-~script20340(0, $text, $event_com, $font);
-if_setonmouserepeat("script20341(1, $text, event_com, $font)", $event_com);
-if_setonmouseleave("script20341(0, $text, event_com, $font)", $event_com);
-if_setop(1, removetags($text), $event_com);
-if_setontimer(null, $event_com);

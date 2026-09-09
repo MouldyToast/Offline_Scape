@@ -32,7 +32,6 @@ object NearRealityCustomMapsPacker {
                     )
                 }
             }
-            packMap(12145, "mm")        // middle man area
             packMap(6729, "pvm_arena", old = false) // Not really custom but converted for post rev 209
         }
     }

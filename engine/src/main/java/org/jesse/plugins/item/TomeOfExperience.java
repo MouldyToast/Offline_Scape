@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class TomeOfExperience extends ItemPlugin {
-    private static final int TOME_OF_EXPERIENCE = 30215;
+    private static final int TOME_OF_EXPERIENCE = 22415;
     private static final Graphics graphics = new Graphics(1176);
 
     @Override
@@ -27,15 +27,6 @@ public class TomeOfExperience extends ItemPlugin {
                 item(item, "Once you've read the tome, the timer will count down while you are online - the timer " +
                         "cannot be stopped until it reaches zero.");
                 options("Are you sure you wish to read it?", new DialogueOption("Yes, read the tome.", () -> read(player, item, slotId, 1)), new DialogueOption("No, don't read the tome."));
-            }
-        }));
-        bind("Read-All", (player, item, container, slotId) -> player.getDialogueManager().start(new Dialogue(player) {
-            @Override
-            public void buildDialogue() {
-                item(item, "Reading the tomes will grant you five minutes of 50% bonus experience in anything you do, per tome.<br>This bonus experience will stack with the global bonus experience.");
-                item(item, "Once you've read the tomes, the timer will count down while you are online - the timer " +
-                        "cannot be stopped until it reaches zero.");
-                options("Are you sure you wish to read all your tomes?", new DialogueOption("Yes, read the tomes.", () -> read(player, item, slotId, item.getAmount())), new DialogueOption("No, don't read the tomes."));
             }
         }));
     }
@@ -55,6 +46,6 @@ public class TomeOfExperience extends ItemPlugin {
 
     @Override
     public int[] getItems() {
-        return new int[] {TOME_OF_EXPERIENCE, 22415};
+        return new int[] {TOME_OF_EXPERIENCE};
     }
 }

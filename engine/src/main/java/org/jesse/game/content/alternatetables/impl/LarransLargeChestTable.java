@@ -6,8 +6,6 @@ import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
 import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
-import static org.jesse.game.item.ids.ItemId.PRIMAL_BATTLEAXE;
-
 public class LarransLargeChestTable implements AlternateTableDropProvider {
     static ObjectArrayList<DropViewerEntry> entries = new ObjectArrayList<>();
 
@@ -53,7 +51,6 @@ public class LarransLargeChestTable implements AlternateTableDropProvider {
         gen(1618, 70, 180, 1, 16);
         gen(11232, 65, 170, 1, 16);
         gen(1620, 70, 180, 1, 16);
-        gen(PRIMAL_BATTLEAXE, 1, 1, 1, 500);
 
         entries.add(new OtherDropViewerEntry(ItemId.DAGONHAI_HAT, 1, 1, 1, 315, "This item is on a shared drop table that is rolled at a rate of 1/105"));
         entries.add(new OtherDropViewerEntry(ItemId.DAGONHAI_ROBE_TOP, 1, 1, 1, 315, "This item is on a shared drop table that is rolled at a rate of 1/105"));

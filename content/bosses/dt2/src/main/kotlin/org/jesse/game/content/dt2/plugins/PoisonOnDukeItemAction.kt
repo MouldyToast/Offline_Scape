@@ -14,16 +14,11 @@ import org.jesse.game.world.entity.player.dialogue.dialogue
 class PoisonOnDukeItemAction : ItemOnNPCAction {
     private val orb = Item(AWAKENERS_ORB, 1)
     private val poisonNormal = Item(ARDERMUSCA_POISON, 2)
-    private val p2wPoisonNormal = Item(POTENT_ARDER_MUSCA_POISON, 2)
 
 
     override fun handleItemOnNPCAction(player: Player, item: Item, slot: Int, npc: NPC) {
         if (npc is DukeSucellusEntity) {
             if (player.inventory.deleteItems(*npc.difficulty.getRequiredItems()).result == RequestResult.SUCCESS) {
-                npc.disturb(player)
-                return
-            }
-            else if (player.inventory.deleteItems(*npc.difficulty.getAlternateItems()).result == RequestResult.SUCCESS) {
                 npc.disturb(player)
                 return
             }
@@ -35,7 +30,7 @@ class PoisonOnDukeItemAction : ItemOnNPCAction {
     }
 
     override fun getItems(): Array<Any> {
-        return arrayOf(ARDERMUSCA_POISON, POTENT_ARDER_MUSCA_POISON, AWAKENERS_ORB)
+        return arrayOf(ARDERMUSCA_POISON, AWAKENERS_ORB)
     }
 
     override fun getObjects(): Array<Any> {
@@ -50,11 +45,4 @@ class PoisonOnDukeItemAction : ItemOnNPCAction {
         }
     }
 
-    private fun DT2BossDifficulty.getAlternateItems() : Array<Item> {
-        return when (this) {
-            DT2BossDifficulty.QUEST -> emptyArray<Item>()
-            DT2BossDifficulty.NORMAL -> arrayOf(p2wPoisonNormal)
-            DT2BossDifficulty.AWAKENED -> arrayOf(p2wPoisonNormal)
-        }
-    }
 }

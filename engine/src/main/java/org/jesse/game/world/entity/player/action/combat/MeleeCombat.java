@@ -77,8 +77,6 @@ public class MeleeCombat extends PlayerCombat {
         final int weaponId = player.getEquipment().getId(EquipmentSlot.WEAPON);
         if (CombatUtilities.lanceEquipped(weaponId) && CombatUtilities.isDraconic(target))
             boost += 0.3F;
-        if (CombatUtilities.balmungEquipped(player) && CombatUtilities.isDagannoth(target))
-            boost += 0.60F;
         if (CombatUtilities.applyForinthrySurge(player, target))
             boost += 0.15F;
         if (CombatUtilities.applyPvmArenaBoost(player, target))
@@ -197,8 +195,6 @@ public class MeleeCombat extends PlayerCombat {
             boost += 0.3F;
         if (CombatUtilities.dragonSlayerGlovesEquipped(player) && CombatUtilities.isDraconic(target))
             boost += 0.15F;
-        if (CombatUtilities.balmungEquipped(player) && CombatUtilities.isDagannoth(target))
-            boost += 0.25F;
         if (attackType == AttackType.CRUSH)
             boost += CombatUtilities.getInquisitorSetBoost(player);
         if (CombatUtilities.applyForinthrySurge(player, target))

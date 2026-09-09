@@ -20,7 +20,6 @@ private const val AMULET_RATE: Int = 875
 private const val VIGGORAS_RATE: Int = 1100
 private const val CRAWS_RATE: Int = 1100
 private const val THAMMARONS_RATE: Int = 1100
-private const val PRIMAL_RATE: Int = 1100
 
 @Suppress("unused")
 class RevenantOrkProcessor : DropProcessor() {
@@ -37,7 +36,6 @@ class RevenantOrkProcessor : DropProcessor() {
         appendDrop(DisplayedDrop(AMULET_OF_AVARICE, 1, 1, AMULET_RATE.toDouble()))
         appendDrop(DisplayedDrop(VIGGORAS_CHAINMACE_U, 1, 1, VIGGORAS_RATE.toDouble()))
         appendDrop(DisplayedDrop(CRAWS_BOW_U, 1, 1, CRAWS_RATE.toDouble()))
-        appendDrop(DisplayedDrop(PRIMAL_DAGGER, 1, 1, PRIMAL_RATE.toDouble()))
     }
 
     override fun ids(): IntArray {
@@ -80,9 +78,6 @@ class RevenantOrkProcessor : DropProcessor() {
         }
         if (randomDrop(killer, getRate(BRACELET_RATE, killer.variables.isSkulled)) == 0) {
             return Item(BRACELET_OF_ETHEREUM)
-        }
-        if (randomDrop(killer, PRIMAL_RATE) == 0) {
-            return Item(PRIMAL_DAGGER)
         }
         return item
     }

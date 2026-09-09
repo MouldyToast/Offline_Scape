@@ -51,7 +51,6 @@ public enum TeleportType {
     ECTOPHIAL(new EctophialStructure()),
     WILDERNESS(new WildernessStructure()),
     PHARAOH_SCEPTRE(new PharaohSceptreTeleportStructure()),
-    CRYSTAL_OF_MEMORIES(new CrystalOfMemoriesStructure()),
     INSTANT_UNSAFE(new InstantStructure());
 
     private final TeleportStructure structure;

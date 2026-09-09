@@ -67,7 +67,6 @@ public class EliteRewardsTable extends ClueRewardTable {
             item(DRAGON_LEGSSKIRT_ORNAMENT_KIT),
             item(DRAGON_SQ_SHIELD_ORNAMENT_KIT),
             item(DRAGON_SCIMITAR_ORNAMENT_KIT),
-            item(BANDOS_ORNAMENT_KIT),
             item(FURY_ORNAMENT_KIT),
             item(LIGHT_INFINITY_COLOUR_KIT),
             item(DARK_INFINITY_COLOUR_KIT),

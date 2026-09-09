@@ -6,7 +6,6 @@ import org.jesse.game.model.item.ItemValueExtKt;
 import org.jesse.tools.logging.GameLogMessage;
 import org.jesse.tools.logging.GameLogger;
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.event.christmas2019.ChristmasConstants;
 import org.jesse.game.content.follower.Pet;
 import org.jesse.game.content.follower.PetWrapper;
 import org.jesse.game.content.minigame.duelarena.area.ArenaArea;
@@ -95,7 +94,7 @@ public final class Duel {
     public static final int SETTINGS_INTERFACE_LAST_DUEL = 101;
     public static final int BOXING_SETTINGS = 229630938;
     public static final int WHIP_SETTINGS = 229499866;
-    public static final ImmutableList<Integer> FUN_WEAPONS = ImmutableList.of(8650, 8652, 8654, 8656, 8658, 8660, 8662, 8664, 8666, 8668, 8670, 8672, 8274, 8676, 8678, 8680, 6082, 2460, 2462, 2464, 2466, 2468, 2470, 2472, 2474, 2476, 751, 6541, 10150, 3695, 6773, 6774, 6775, 6776, 6777, 6778, 6779, 4566, 1419, 10501, 4086, 10487, ChristmasConstants.CHRISTMAS_SCYTHE);
+    public static final ImmutableList<Integer> FUN_WEAPONS = ImmutableList.of(8650, 8652, 8654, 8656, 8658, 8660, 8662, 8664, 8666, 8668, 8670, 8672, 8274, 8676, 8678, 8680, 6082, 2460, 2462, 2464, 2466, 2468, 2470, 2472, 2474, 2476, 751, 6541, 10150, 3695, 6773, 6774, 6775, 6776, 6777, 6778, 6779, 4566, 1419, 10501, 4086, 10487);
     private static final ImmutableMap<Integer, InterfacePosition> CLOSED_TABS = ImmutableMap.<Integer, InterfacePosition>builder().put(593, InterfacePosition.COMBAT_TAB).put(320, InterfacePosition.SKILLS_TAB).put(399, InterfacePosition.JOURNAL_TAB_HEADER).put(149, InterfacePosition.INVENTORY_TAB).put(387, InterfacePosition.EQUIPMENT_TAB).put(541, InterfacePosition.PRAYER_TAB).put(218, InterfacePosition.SPELLBOOK_TAB).put(261, InterfacePosition.SETTINGS_TAB).put(216, InterfacePosition.EMOTE_TAB).build();
     private static final ForceTalk FIGHT = new ForceTalk("FIGHT!");
     private Player player;

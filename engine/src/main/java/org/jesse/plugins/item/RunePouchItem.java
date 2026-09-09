@@ -53,45 +53,6 @@ public class RunePouchItem extends ItemPlugin  {
 
 			revertDivine(player, item);
 		});
-		bind("Extra Slot", (player, item, slotId) -> {
-			player.getDialogueManager().start(new Dialogue(player) {
-				@Override
-				public void buildDialogue() {
-					options("Extra Slot"  + (hasRunes(player) ? getRuneString(player) : " (current: Empty)"),
-							new DialogueOption("Remove all", () -> emptyBonusRunes(player, item)),
-							new DialogueOption("Add rune", key(100)),
-							new DialogueOption("Cancel")
-					);
-					plain(100, "To add a bonus rune, use it on the pouch in your inventory.");
-				}
-			});
-		});
-	}
-
-	private boolean hasRunes(Player player) {
-		return player.getRunePouch().bonusRuneTypeStored != null && player.getRunePouch().bonusRuneQuantityStored > 0;
-	}
-
-	private String getRuneString(Player player) {
-		return " (current: " + Utils.formatNumberWithCommas(player.getRunePouch().bonusRuneQuantityStored) + " " + player.getRunePouch().bonusRuneTypeStored.name().toLowerCase() + " runes)";
-	}
-
-	private void emptyBonusRunes(Player player, Item item) {
-		if(!player.getInventory().hasFreeSlots()) {
-			player.sendMessage("Please clear one inventory slot to do this.");
-			player.getDialogueManager().finish();
-			return;
-		}
-
-		if(player.getRunePouch().bonusRuneQuantityStored > 0 && player.getRunePouch().bonusRuneTypeStored != null) {
-			player.getInventory().addItem(new Item(player.getRunePouch().bonusRuneTypeStored.getId(), player.getRunePouch().bonusRuneQuantityStored));
-			player.getRunePouch().bonusRuneTypeStored = null;
-			player.getRunePouch().bonusRuneQuantityStored = 0;
-			player.getInventory().refreshAll();
-			player.getRunePouch().getContainer().refresh(player);
-		} else {
-			player.sendMessage("You do not have anything to remove from the bonus slot.");
-		}
 	}
 
 	public static final Item THREAD_OF_ELIDINIS = new Item(ItemId.THREAD_OF_ELIDINIS);
@@ -119,7 +80,7 @@ public class RunePouchItem extends ItemPlugin  {
 
 	@Override
 	public int[] getItems() {
-		return new int[] { ItemId.RUNE_POUCH, ItemId.DIVINE_RUNE_POUCH, ItemId.TOURNAMENT_RUNE_POUCH };
+		return new int[] { ItemId.RUNE_POUCH, ItemId.DIVINE_RUNE_POUCH };
 	}
 
 }

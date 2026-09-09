@@ -1,5 +1,0 @@
-// 20085
-[clientscript,cape_customizer_part_onop](string $title, int $swatch_index)
-if_sethide(false, comp_cape_customizer:com10);
-if_sethide(false, comp_cape_customizer:com15);
-~cape_customizer_open_colorpicker($title, $swatch_index);

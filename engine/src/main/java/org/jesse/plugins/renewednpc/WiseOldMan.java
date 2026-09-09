@@ -40,7 +40,6 @@ public class WiseOldMan extends NPCPlugin {
             }
         });
 
-        bind("Titles", (player, npc) -> GameInterface.LOYALTY_TITLES.open(player));
     }
 
     @Override

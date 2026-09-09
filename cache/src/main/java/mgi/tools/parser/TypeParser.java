@@ -10,17 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jesse.cache.interfaces.teleports.packing.TeleportsPacker;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomEnumsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomGraphicsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomHeadIconsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomItemPacker;
+import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomMapsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomObjectsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomSpecialAttacksPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomStructsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityEffigyMapEdits;
-import org.jesse.cache_tool.packing.custom.NearRealityOriginsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityRebirthPacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -169,12 +160,7 @@ public class TypeParser {
         pack(NPCDefinitions.class);
         packDynamicConfigs();
         packHighRevision();
-        NearRealityOriginsPacker.pack();
-        NearRealityRebirthPacker.pack();
-        NearRealityCustomGraphicsPacker.pack();
-        NearRealityCustomStructsPacker.pack();
-
-        NearRealityCustomItemPacker.pack();
+        KeepSetDefinitionOverrides.pack();
         removeCATasks();
         pack(
                 ArrayUtils.addAll(
@@ -191,7 +177,7 @@ public class TypeParser {
         packMaps(service);
         TeleportsPacker.pack();
         increaseVarclientAmount();
-        NearRealityCustomObjectsPacker.pack();
+        KeepSetDefinitionOverrides.packObjects();
         if (ENABLED_MAP_PACKING) {
             NearRealityCustomMapsPacker.pack();
         } else {
@@ -207,9 +193,8 @@ public class TypeParser {
 
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
-        NearRealityCustomEnumsPacker.pack();
-        NearRealityCustomSpecialAttacksPacker.pack();
-        NearRealityCustomHeadIconsPacker.pack();
+        KeepSetDefinitionOverrides.packEnums();
+        KeepSetDefinitionOverrides.packSpecialAttacks();
         cache.close();
 
         cache = Cache.openCache("data/cache");
@@ -1190,7 +1175,7 @@ public class TypeParser {
         packMapsRSPSi(12854, "assets/map/varrock_topr.pack");
 
 
-        NearRealityEffigyMapEdits.apply();
+        KeepSetDefinitionOverrides.applyMapEdits();
     }
 
     public static void removeCATasks() {

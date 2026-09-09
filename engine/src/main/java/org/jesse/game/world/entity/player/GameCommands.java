@@ -6,7 +6,6 @@ import org.jesse.api.service.sanction.SanctionCommands;
 import org.jesse.api.service.sanction.SanctionPlayerExtKt;
 import org.jesse.api.service.user.UserPlayerHandler;
 import org.jesse.game.content.commands.AdministratorCommands;
-import org.jesse.game.content.commands.CustomCommands;
 import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.content.commands.PlayerCommands;
 import org.jesse.game.content.crystal.CrystalCommands;
@@ -32,11 +31,6 @@ import org.jesse.game.content.chambersofxeric.Raid;
 import org.jesse.game.content.chambersofxeric.map.RaidArea;
 import org.jesse.game.content.clans.ClanManager;
 import org.jesse.game.content.donation.DonationToggle;
-import org.jesse.game.content.event.christmas2019.AChristmasWarble;
-import org.jesse.game.content.event.christmas2019.ChristmasUtils;
-import org.jesse.game.content.event.christmas2019.cutscenes.PresentScourgeCutscene;
-import org.jesse.game.content.event.christmas2019.cutscenes.ScourgeHouseInstance;
-import org.jesse.game.content.event.halloween2019.HalloweenUtils;
 import org.jesse.game.content.lootkeys.LootkeySettings;
 import org.jesse.game.content.minigame.barrows.Barrows;
 import org.jesse.game.content.minigame.fightcaves.FightCaves;
@@ -165,7 +159,6 @@ public final class GameCommands {
     private static final Map<String, Command> COMMANDS = new HashMap<>();
 
     static {
-        CustomCommands.INSTANCE.register();
         PlayerCommands.INSTANCE.register();
         CrystalCommands.INSTANCE.register();
         MiddleManCommands.INSTANCE.register();
@@ -484,42 +477,6 @@ public final class GameCommands {
         new Command(PlayerPrivilege.DEVELOPER, "inferno", (p, args) -> {
             p.setLocation(new Location(2496, 5115, 0));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "cutscene", (p, args) -> {
-            try {
-                final ScourgeHouseInstance instance = new ScourgeHouseInstance(MapBuilder.findEmptyChunk(4, 4));
-                instance.constructRegion();
-                final FadeScreen fadeScreen = new FadeScreen(p);
-                fadeScreen.fade();
-                p.getCutsceneManager().play(new PresentScourgeCutscene(p, instance, () -> fadeScreen.unfade(false)));
-            } catch (OutOfSpaceException e) {
-                e.printStackTrace(NearRealityPrintStream.getErrorStream());
-            }
-        });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "eventstage", (p, args) -> p.sendInputName("Whose event stage to " +
-                "update?", name -> World.getPlayer(name).ifPresent(target -> {
-            final AChristmasWarble.ChristmasWarbleProgress[] stages = AChristmasWarble.ChristmasWarbleProgress.values();
-            final ObjectArrayList<String> stageNames = new ObjectArrayList<>();
-            for (final AChristmasWarble.ChristmasWarbleProgress stage : stages) {
-                stageNames.add(stage.toString());
-            }
-            p.getDialogueManager().start(new OptionsMenuD(p, "Select stage", stageNames.toArray(new String[0])) {
-                @Override
-                public void handleClick(int slotId) {
-                    target.getAttributes().put(AChristmasWarble.ChristmasWarbleProgress.EVENT_ATTRIBUTE_KEY,
-                            stages[slotId].getStage());
-                    if (stages[slotId].ordinal() <= AChristmasWarble.ChristmasWarbleProgress.FROZEN_GUESTS.ordinal()) {
-                        target.getAttributes().remove("A Christmas Warble unfrozen guests hash");
-                    }
-                    ChristmasUtils.refreshAllVarbits(target);
-                }
-
-                @Override
-                public boolean cancelOption() {
-                    return false;
-                }
-            });
-        })));
-
         new Command(PlayerPrivilege.ADMINISTRATOR, "bonusxp", (p, args) -> p.sendInputString("Enter bonus xp expiration " +
                 "date: " +
                 "(format: YYYY/MM/DD/HH)", value -> {
@@ -1091,12 +1048,6 @@ public final class GameCommands {
 
 
 
-        new Command(PlayerPrivilege.PLAYER, "titles", "Opens the loyalty titles interface.", (p, args) -> {
-            if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
-                return;
-            }
-            GameInterface.LOYALTY_TITLES.open(p);
-        });
         new Command(PlayerPrivilege.PLAYER, "home", "Teleport home.", (p, args) -> {
             if (p.isLocked()) {
                 return;
@@ -2383,7 +2334,6 @@ public final class GameCommands {
             p.addAttribute("Halloween event 2019", 1);
             p.getVarManager().sendVar(GIVE_THANKS_VARP, 1);
             p.getVarManager().sendBit(1000, 1);
-            p.getVarManager().sendVar(HalloweenUtils.COMPLETED_VARP, 1);
             for (final Emote e : Emote.VALUES) {
                 p.getEmotesHandler().unlock(e);
             }

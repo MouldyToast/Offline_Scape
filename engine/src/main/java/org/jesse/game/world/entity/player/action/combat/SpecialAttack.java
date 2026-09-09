@@ -248,7 +248,6 @@ public enum SpecialAttack implements ISpecialAttack {
         DRAGON_WARHAMMER,
         DRAGON_WARHAMMER_CR,
         DRAGON_WARHAMMER_20785,
-        ItemId.HOLY_GREAT_WARHAMMER,
         ItemId.DRAGON_WARHAMMER_OR
     }, WEAPON_SPEED, MELEE, new Animation(1378), new Graphics(1292), (player, combat, target) -> {
         final Hit hit = combat.getHit(player, target, 1.75, 1.5, 1, false);

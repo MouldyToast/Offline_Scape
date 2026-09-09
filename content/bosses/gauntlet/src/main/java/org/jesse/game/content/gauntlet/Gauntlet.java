@@ -1,7 +1,6 @@
 package org.jesse.game.content.gauntlet;
 
 import org.jesse.game.content.gauntlet.rewards.GauntletRewardType;
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import org.jesse.game.world.entity.player.TempIntefaceHandlerKt;
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.gauntlet.map.GauntletMap;
@@ -401,9 +400,6 @@ public final class Gauntlet {
                             player.getCombatAchievements().complete(CAType.CORRUPTED_GAUNTLET_GRANDMASTER);
                         }
 
-                        if (kc >= 100 && !LoyaltyTitleShop.Companion.hasUnlockedTitle(player, "the elfborne")) {
-                            LoyaltyTitleShop.Companion.unlockTitle(player, "the elfborne");
-                        }
 
                     } else {
                         int kc = player.getNumericAttribute("corrupted_gauntlet_completions_noprep").intValue() + 1;

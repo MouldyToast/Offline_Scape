@@ -1,6 +1,5 @@
 package org.jesse.game.model.item.enums;
 
-import org.jesse.game.content.event.christmas2019.ChristmasConstants;
 import org.jesse.game.item.Item;
 
 import java.util.ArrayList;
@@ -30,9 +29,7 @@ public enum ContainerItem {
 	CORNFLOUR_POT(new Item(7468), Type.POT, "empty"),
 	VINEGAR_POT(new Item(7811), Type.POT, "empty"),
 	
-	COKE_SPADE(new Item(6448), Type.SPADE, "empty"),
-	
-	ICY_WATER_BUCKET(new Item(ChristmasConstants.ICY_WATER_BUCKET), Type.BUCKET, "empty");
+	COKE_SPADE(new Item(6448), Type.SPADE, "empty");
 	
     public final static ContainerItem[] VALUES = values();
     public final static Map<Integer, ContainerItem> all = new HashMap<Integer, ContainerItem>();

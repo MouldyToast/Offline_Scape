@@ -33,7 +33,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static org.jesse.game.item.ids.ItemId.OMEGA_BOOTS;
 import static org.jesse.game.GameConstants.WORLD_PROFILE;
 
 /**
@@ -208,8 +207,8 @@ public class WorldBroadcasts {
                         .formatted(
                                 player.getGameModeCrown().getCrownTag(),
                                 player.getName(),
-                                item.getId() == OMEGA_BOOTS ? "crafted" : "received",
-                                item.getId() == OMEGA_BOOTS ? "the Omega boots" : Utils.getAOrAn(item.getName()).concat(" ").concat(item.getName()).concat(" drop ")
+                                "received",
+                                Utils.getAOrAn(item.getName()).concat(" ").concat(item.getName()).concat(" drop ")
                         );
                 builder.append("News: ");
                 secondaryBuilder.append(message);
@@ -234,7 +233,7 @@ public class WorldBroadcasts {
                 else if (rewardFrom.startsWith(".")) {
                     secondaryBuilder.append("from ").append(rewardFrom.substring(1));
                 }
-                else if (item.getId() != OMEGA_BOOTS) {
+                else {
                     secondaryBuilder.append("from ").append(Utils.getAOrAn(rewardFrom)).append(" ").append(rewardFrom);
                     if (NotificationSettings.isKillcountTracked(rewardFrom)) {
                         secondaryBuilder.append(" on killcount ").append(player.getNotificationSettings().getKillcount(rewardFrom) + 1);

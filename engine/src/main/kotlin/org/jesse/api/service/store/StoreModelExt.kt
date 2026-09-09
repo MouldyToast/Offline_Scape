@@ -4,7 +4,6 @@ import org.jesse.api.model.CreditPackage
 import org.jesse.api.model.CreditPackageOrder
 import org.jesse.api.responses.StoreOrderCreateResponse
 import org.jesse.game.item.Item
-import org.jesse.game.item.ids.*
 
 internal fun StoreOrderCreateResponse.asUpdate() = when(this) {
     is StoreOrderCreateResponse.Created -> StoreOrderUpdate.Submitted
@@ -34,15 +33,7 @@ internal val CreditPackageOrder.products: Pair<Item, Int>
     get() = (creditPackage.itemFromCreditPackage() to creditPackage.bonusCreditFromCreditPackage())
 
 internal fun CreditPackage.itemFromCreditPackage(): Item =
-    when (title) {
-        "$5 DPin" -> Item(DONATOR_PIN_5, 1)
-        "$10 DPin" -> Item(DONATOR_PIN_10, 1)
-        "$25 DPin" -> Item(DONATOR_PIN_25, 1)
-        "$35 DPin" -> Item(DONATOR_PIN_35, 1)
-        "$50 DPin" -> Item(DONATOR_PIN_50, 1)
-        "$100 DPin" -> Item(DONATOR_PIN_100, 1)
-        else -> throw Exception("Invalid credit package title")
-    }
+    throw Exception("Invalid credit package title")
 
 internal fun CreditPackage.bonusCreditFromCreditPackage(): Int =
     when (title) {

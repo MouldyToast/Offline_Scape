@@ -183,15 +183,6 @@ public interface TeleportStructure {
 		if (experience != 0) {
 			player.getSkills().addXp(SkillConstants.MAGIC, experience);
 		}
-		if(teleport.getType() != TeleportType.CRYSTAL_OF_MEMORIES) {
-			if(player.getInventory().containsItem(ItemId.CRYSTAL_OF_MEMORIES)) {
-				if(player.getArea() != null)
-					player.sendMessage("Your crystal of memories stores a memory of your last teleport from <col=fc2e00>"+player.getArea().name()+".");
-				else
-					player.sendMessage("Your crystal of memories stores a memory of your last teleport from your current location");
-				player.getAttributes().put("CRYSTAL_OF_MEMORIES", player.getLocation().getPositionHash());
-			}
-		}
 		teleport.onUsage(player);
 		player.setInvalidAnimation(startAnimation);
 		player.setGraphics(startGraphics);

@@ -1,5 +1,0 @@
-[proc,packed_rgb_to_hsl](int $rgb)(int, int, int)
-def_int $r = and(~shr($rgb, 16), 0xff);
-def_int $g = and(~shr($rgb, 8), 0xff);
-def_int $b = and($rgb, 0xff);
-return(~rgb_to_hsl($r, $g, $b));

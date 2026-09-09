@@ -94,12 +94,6 @@ class Reward: DropProcessor() {
                     items.add(Item(SLAYER_BASE))
                 }
             }
-            if(Utils.random(1000) == 0) {
-                val pm = Item(PRIMAL_MAUL, 1)
-                items.add(pm)
-                player.collectionLog.add(pm)
-                WorldBroadcasts.broadcast(player, BroadcastType.RARE_DROP, pm, "Araxxor")
-            }
             items.add(item)
             player.collectionLog.add(item)
             WorldBroadcasts.broadcast(player, BroadcastType.RARE_DROP, item, "Araxxor")
@@ -143,7 +137,6 @@ class Reward: DropProcessor() {
         appendDrop(DisplayedDrop(NOXIOUS_POMMEL,    1,  1,  120.0))
         appendDrop(DisplayedDrop(ARAXYTE_FANG,      1,  1,  350.0))
         appendDrop(DisplayedDrop(NID,               1,  1,  3000.0))
-        appendDrop(DisplayedDrop(PRIMAL_MAUL,               1,  1,  750.0))
         appendDrop(DisplayedDrop(BRIMSTONE_KEY,     1,  1,  50.0))
         put(ARAXXOR, BRIMSTONE_KEY, PredicatedDrop("This drop can only be obtained when killing the monster during a slayer assignment, assigned by Konar quo Maten."))
 

@@ -11,7 +11,6 @@ import mgi.types.config.enums.Enums;
 
 import java.util.Optional;
 
-import static org.jesse.game.content.event.halloween2019.HalloweenUtils.COMPLETED_VARP;
 import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
 
 /**
@@ -22,7 +21,6 @@ import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
 public class EmoteTabInterface extends Interface {
 
     static {
-        VarManager.appendPersistentVarp(COMPLETED_VARP);
         VarManager.appendPersistentVarp(GIVE_THANKS_VARP);
     }
 

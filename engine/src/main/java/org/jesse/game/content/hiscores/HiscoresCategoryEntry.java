@@ -47,7 +47,6 @@ public enum HiscoresCategoryEntry {
 	DAGANNOTH_PRIME(player -> (long) player.getNotificationSettings().getKillcount("Dagannoth Prime")),
 	DAGANNOTH_REX(player -> (long) player.getNotificationSettings().getKillcount("Dagannoth Rex")),
 	DAGANNOTH_SUPREME(player -> (long) player.getNotificationSettings().getKillcount("Dagannoth Supreme")),
-	GANODERMIC_BEAST(player -> (long) player.getNotificationSettings().getKillcount("Ganodermic Beast")),
 	GENERAL_GRAARDOR(player -> (long) player.getNotificationSettings().getKillcount("General Graardor")),
 	GIANT_MOLE(player -> (long) player.getNotificationSettings().getKillcount("Giant Mole")),
 	GROTESQUE_GUARDIANS(player -> (long) player.getNotificationSettings().getKillcount("Grotesque Guardians")),

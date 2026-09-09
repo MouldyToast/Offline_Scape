@@ -1,6 +1,5 @@
 package org.jesse.plugins.dialogue;
 
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import org.jesse.game.content.area.tzhaar.TzHaar;
 import org.jesse.game.content.follower.impl.BossPet;
 import org.jesse.game.util.Colour;
@@ -82,9 +81,6 @@ public class TzHaarMejJalD extends Dialogue {
         }
         final int roll = Utils.random(1, 200);
         player.getInventory().deleteItem(TzHaar.FIRE_CAPE_ITEM);
-        if (!LoyaltyTitleShop.Companion.hasUnlockedTitle(player, "Tzhaar-")) {
-            LoyaltyTitleShop.Companion.unlockTitle(player, "Tzhaar-");
-        }
         if (roll == 1) {
             player.getInventory().addItem(TzHaar.TZREK_JAD_ITEM);
             player.getDialogueManager().start(new NPCChat(player, 2180, "You lucky. Better train him good else TzTok-Jad find you, JalYt."));

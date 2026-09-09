@@ -36,8 +36,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static org.jesse.game.item.ids.ItemId.BALMUNG;
-
 public class CombatUtilities {
     public static final Animation CAST = new Animation(711);
     public static final Animation SURGE_CAST = new Animation(7855);
@@ -103,13 +101,9 @@ public class CombatUtilities {
         return player.getEquipment().getId(EquipmentSlot.HANDS) == 26255;
     }
 
-    public static boolean balmungEquipped(Player player) {
-        return player.getEquipment().getId(EquipmentSlot.WEAPON) == BALMUNG;
-    }
-
     public static boolean lanceEquipped(final int weaponId) {
         return switch (weaponId) {
-            case ItemId.DRAGON_HUNTER_LANCE, ItemId.HOLY_GREAT_LANCE -> true;
+            case ItemId.DRAGON_HUNTER_LANCE -> true;
             default -> false;
         };
     }
@@ -500,16 +494,11 @@ public class CombatUtilities {
 
     public static boolean isTwistedBow(int itemId) {
         return     itemId == ItemId.TWISTED_BOW
-                || itemId == ItemId.PURPLE_TWISTED_BOW
-                || itemId == ItemId.BLUE_TWISTED_BOW
-                || itemId == ItemId.WHITE_TWISTED_BOW
-                || itemId == ItemId.RED_TWISTED_BOW
                 || itemId == ItemId.CORRUPTED_TWISTED_BOW;
     }
 
     public static boolean isElysianSpiritShield(int itemId) {
-        return itemId == ItemId.ELYSIAN_SPIRIT_SHIELD || itemId == ItemId.ELYSIAN_SPIRIT_SHIELD_19559
-                || itemId == ItemId.ELYSIAN_SPIRIT_SHIELD_OR;
+        return itemId == ItemId.ELYSIAN_SPIRIT_SHIELD || itemId == ItemId.ELYSIAN_SPIRIT_SHIELD_19559;
     }
 
     public static boolean isVampyric(Entity entity) {

@@ -726,8 +726,6 @@ public final class LoginManager {
         player.getTOAManager().initialize(parser.getTOAManager());
         player.getTeleportsManager().initialize(parser.getTeleportsManager());
         player.getAttributes().putAll(parser.getAttributes());
-        if (parser.getPlayerTitleStatus() != null)
-            player.getPlayerTitleStatus().putAll(parser.getPlayerTitleStatus());
         if (player.getGrotesqueGuardiansInstance() == null) {
             player.setGrotesqueGuardiansInstance(null);
         }

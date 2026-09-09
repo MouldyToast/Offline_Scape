@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class ChaosAltar implements ItemOnObjectAction {
 
     private static final Location tile = new Location(2947, 3820, 0);
-    private static final Location LEGENDARY_TILE = new Location(1709, 2604, 0);
 
     @Override
     public Object[] getObjects() {
@@ -32,7 +31,7 @@ public class ChaosAltar implements ItemOnObjectAction {
 
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-        if (!object.matches(tile) && !object.matches(LEGENDARY_TILE)) {
+        if (!object.matches(tile)) {
             player.sendMessage("Nothing interesting happens.");
             return;
         }

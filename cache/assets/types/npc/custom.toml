@@ -1,24 +1,3 @@
-# Gethin
-[[npc]]
-id=16031
-inherit=1482
-op1=""
-op3="Trade"
-
-# Sigmund
-[[npc]]
-id=16032
-inherit=3894
-op1=""
-op3="Trade"
-
-# Tarik
-[[npc]]
-id=16033
-inherit=1781
-op1=""
-op3="Trade"
-
 # Primula
 [[npc]]
 id=16034
@@ -91,11 +70,6 @@ size=1
 minimapvisible=false
 familiar=true
 
-# RDI mage of Zamorak
-[[npc]]
-id=16051
-inherit=2581
-
 #RDI Bonfire
 [[object]]
 id=29300
@@ -137,24 +111,6 @@ inherit=1676
 [[npc]]
 id=16057
 inherit=1677
-
-#Strange old man
-[[npc]]
-id=16058
-inherit=1671
-
-# Tarik
-[[npc]]
-id=16059
-inherit=1781
-op1=""
-op3="Trade"
-
-# Squire
-[[npc]]
-id=16060
-inherit=4737
-name="Teleport Manager"
 
 # Sumona
 [[npc]]

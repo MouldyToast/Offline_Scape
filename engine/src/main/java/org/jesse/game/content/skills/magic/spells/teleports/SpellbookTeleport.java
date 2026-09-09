@@ -203,7 +203,6 @@ public enum SpellbookTeleport implements TeleportSpell, Teleport {
 				TeleportToTarget.Companion.canTeleportToTarget(player);
 		}
 	},
-	DONATOR_ISLANDS(NORMAL, ARCEUUS_TELEPORT, 0, new Location(1663, 2622, 0)),
 	;
 
 	private final double experience;

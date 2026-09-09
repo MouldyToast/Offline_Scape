@@ -683,7 +683,7 @@ public final class LoginManager {
         setFields(player, parser, false);
     }
     public static void setFields(final Player player, final Player parser, boolean skipInitEvents) {
-        Location location = AreaManagerExtKt.fixLocationIfInstanceDC(parser, parser.getLocation());
+        Location location = AreaManagerExtKt.fixLocationIfRemovedRegion(AreaManagerExtKt.fixLocationIfInstanceDC(parser, parser.getLocation()));
         player.setLastLocation(location);
         if (!(player instanceof FakePlayer))
             player.getPlayerInformation().setPlayerInformation(parser.getPlayerInformation());

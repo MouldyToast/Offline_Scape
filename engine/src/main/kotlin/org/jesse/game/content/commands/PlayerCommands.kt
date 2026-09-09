@@ -52,13 +52,6 @@ object PlayerCommands {
             teleport.teleport(p)
         }
 
-        Command(PlayerPrivilege.SUPPORT, arrayOf("staffzone", "sz"), "Teleport to staff zone.") { p, _ ->
-            if (p.isLocked)
-                return@Command
-            val teleport = RegularTeleport(Location(2080, 7844, 0))
-            p.sendMessage("You teleport to the Staff Zone")
-            teleport.teleport(p)
-        }
 
         Command(PlayerPrivilege.PLAYER, "referral", "Enter your referral code.") { player, _ ->
             if (player.isLocked)

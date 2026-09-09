@@ -38,20 +38,6 @@ public class MinnowFishingSpot extends FishingSpot implements Spawnable {
         new Location(2620, 3444, 0)
     };
 
-    private static final Location[] UZONE2 = new Location[] {
-        new Location(1699, 2571, 0),
-        new Location(1702, 2571, 0),
-        new Location(1699, 2569, 0),
-        new Location(1702, 2569)
-    };
-
-    private static final Location[] UZONE = new Location[] {
-        new Location(1693, 2571, 0),
-        new Location(1690, 2571, 0),
-        new Location(1693, 2569, 0),
-        new Location(1690, 2569)
-    };
-
     private int ticks;
     private final Location[] path;
     private int pathIndex;
@@ -65,11 +51,10 @@ public class MinnowFishingSpot extends FishingSpot implements Spawnable {
         }
         setRadius(0);
         ticks = 25;
-        boolean dZone = tile.getY() < 3000;
-        Location[] path = dZone ? UZONE : westernPath;
+        Location[] path = westernPath;
         Location matching = CollectionUtils.findMatching(path, tile::matches);
         if (matching == null) {
-            matching = CollectionUtils.findMatching(path = dZone ? UZONE2 : easternPath, tile::matches);
+            matching = CollectionUtils.findMatching(path = easternPath, tile::matches);
         }
         Preconditions.checkArgument(matching != null);
         this.path = path;

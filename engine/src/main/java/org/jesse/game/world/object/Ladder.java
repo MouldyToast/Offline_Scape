@@ -343,13 +343,6 @@ public enum Ladder {
 	TOWER_OF_LIFE_BASEMENT_LADDER_UP(new LadderObject(17974, new Location(3038, 4375, 0)), new Location(2648, 3213, 0)),
 	EXPERIMENTS_LADDER_UP(new LadderObject(17387, new Location(3504, 9970, 0)), new Location(3504, 3571, 0)),
 
-	UDI_LADDER_WEST_FLOOR_0(new LadderObject(33550, new Location(1659, 2566, 0)), new Location(1660, 2568, 1)),
-	UDI_LADDER_EAST_FLOOR_0(new LadderObject(33550, new Location(1666, 2566, 0)), new Location(1666, 2568, 1)),
-
-	UDI_LADDER_WEST_FLOOR_1(new LadderObject(33552, new Location(1659, 2566, 0)), new Location(1660, 2568, 0)),
-	UDI_LADDER_EAST_FLOOR_1(new LadderObject(33552, new Location(1666, 2566, 0)), new Location(1666, 2568, 0)),
-
-	PRIMAL_AREA(new LadderObject(17385, new Location(1651, 11679, 0)), new Location(3099, 3500, 0)),
 	;
 	
 	private final LadderObject ladder;

@@ -1041,53 +1041,6 @@ public final class GameCommands {
             };
             teleport.teleport(p);
         });
-        new Command(PlayerPrivilege.SUPPORT, "si", "Teleport to the staff area.", (p, args) -> {
-            if (p.isLocked()) {
-                return;
-            }
-            final Teleport teleport = new Teleport() {
-                @Override
-                public TeleportType getType() {
-                    return TeleportType.REGULAR_TELEPORT;
-                }
-
-                @Override
-                public Location destination() {
-                    return new Location(2078, 7840, 0);
-                }
-
-                @Override
-                public int getLevel() {
-                    return 0;
-                }
-
-                @Override
-                public double getExperience() {
-                    return 0;
-                }
-
-                @Override
-                public int getRandomizationDistance() {
-                    return 3;
-                }
-
-                @Override
-                public Item[] getRunes() {
-                    return null;
-                }
-
-                @Override
-                public int getWildernessLevel() {
-                    return WILDERNESS_LEVEL;
-                }
-
-                @Override
-                public boolean isCombatRestricted() {
-                    return UNRESTRICTED;
-                }
-            };
-            teleport.teleport(p);
-        });
         new Command(PlayerPrivilege.PLAYER, "train", "Teleport to training island.", (p, args) -> {
             if (p.isLocked()) {
                 return;
@@ -1144,10 +1097,6 @@ public final class GameCommands {
         });
 
 
-        new Command(PlayerPrivilege.PLAYER, "ndi", "Teleport to Donator Islands.", (p, args) -> {
-            if (p.isLocked()) return;
-            SpellbookTeleport.DONATOR_ISLANDS.teleport(p);
-        });
 
         new Command(PlayerPrivilege.PLAYER, "shops", "Opens the universal shop interface.", (p, args) -> {
             if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {

@@ -28,8 +28,6 @@ public enum BossDropItem {
     ARCANE_SPIRIT_SHIELD(new Item(12825), new Item(12827), new Item(12831)),
     ELYSIAN_SPIRIT_SHIELD(new Item(12817), new Item(12819), new Item(12831)),
     GUARDIAN_BOOTS(new Item(21733), new Item(11836), new Item(21730)),
-    HOLY_GREAT_HAMMER(new Item(ItemId.HOLY_GREAT_WARHAMMER), new Item(ItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_WARHAMMER), new Item(ItemId.DEGRADED_ESSENCE, 2_500)),
-    HOLY_GREAT_LANCE(new Item(ItemId.HOLY_GREAT_LANCE), new Item(ItemId.ANGELIC_ARTIFACT), new Item(ItemId.DRAGON_HUNTER_LANCE), new Item(ItemId.DEGRADED_ESSENCE, 2_500)),
     ;
 
     private final Item[] materials;

@@ -43,8 +43,6 @@ import org.jesse.game.content.chambersofxeric.party.RaidParty;
 import org.jesse.game.content.chambersofxeric.storageunit.PrivateStorage;
 import org.jesse.game.content.clans.ClanChannel;
 import org.jesse.game.content.clans.ClanManager;
-import org.jesse.game.content.event.christmas2019.ChristmasConstants;
-import org.jesse.game.content.event.easter2020.EasterConstants;
 import org.jesse.game.content.follower.Follower;
 import org.jesse.game.content.follower.PetInsurance;
 import org.jesse.game.content.follower.PetWrapper;
@@ -3494,19 +3492,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return middleTile;
     }
 
-    private static final Animation candyCaneBlockAnimation = new Animation(15086);
-    private static final Animation easterCarrotBlockAnimation = new Animation(15162);
 
     private Animation getDefenceAnimation() {
         final int weaponId = getEquipment().getId(EquipmentSlot.WEAPON);
         if (weaponId == 21015) {
             return BULWARK_ANIM;
-        }
-        if (weaponId == ChristmasConstants.CANDY_CANE) {
-            return candyCaneBlockAnimation;
-        }
-        if (weaponId == EasterConstants.EasterItem.EASTER_CARROT.getItemId()) {
-            return easterCarrotBlockAnimation;
         }
         if (weaponId == 4084) {
             return new Animation(1466);

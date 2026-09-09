@@ -20,7 +20,6 @@ private const val AMULET_RATE: Int = 1200
 private const val VIGGORAS_RATE: Int = 3000
 private const val CRAWS_RATE: Int = 3000
 private const val THAMMARONS_RATE: Int = 3000
-private const val PRIMAL_RATE: Int = 3000
 
 @Suppress("unused")
 class RevenantImpProcessor : DropProcessor() {
@@ -38,7 +37,6 @@ class RevenantImpProcessor : DropProcessor() {
         appendDrop(DisplayedDrop(VIGGORAS_CHAINMACE_U, 1, 1, VIGGORAS_RATE.toDouble()))
         appendDrop(DisplayedDrop(CRAWS_BOW_U, 1, 1, CRAWS_RATE.toDouble()))
         appendDrop(DisplayedDrop(THAMMARONS_SCEPTRE_U, 1, 1, THAMMARONS_RATE.toDouble()))
-        appendDrop(DisplayedDrop(PRIMAL_DAGGER, 1, 1, PRIMAL_RATE.toDouble()))
     }
 
     override fun ids(): IntArray {
@@ -81,9 +79,6 @@ class RevenantImpProcessor : DropProcessor() {
         }
         if (randomDrop(killer, getRate(BRACELET_RATE, killer.variables.isSkulled)) == 0) {
             return Item(BRACELET_OF_ETHEREUM)
-        }
-        if (randomDrop(killer, PRIMAL_RATE) == 0) {
-            return Item(PRIMAL_DAGGER)
         }
         return item
     }

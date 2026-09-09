@@ -60,6 +60,5 @@ val corruptedRewardsTertiary = StandaloneDropTableBuilder {
         CRYSTAL_ARMOUR_SEED quantity 1 oneIn 25
         ENHANCED_CRYSTAL_WEAPON_SEED quantity 1 oneIn 100 announce everywhere
         YOUNGLLEF quantity 1 oneIn 500 announce everywhere
-        PRIMAL_HATCHET quantity 1 oneIn 500 announce everywhere
     }
 }

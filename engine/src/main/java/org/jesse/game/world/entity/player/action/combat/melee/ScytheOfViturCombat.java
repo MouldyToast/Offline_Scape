@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player.action.combat.melee;
 
-import org.jesse.game.content.event.christmas2019.ChristmasConstants;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.item.degradableitems.DegradeType;
@@ -51,8 +50,7 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 		addAttackedByDelay(player, target);
 		sendSoundEffect();
 		final Item weapon = player.getWeapon();
-		final boolean christmasScythe = player.getEquipment().getId(EquipmentSlot.WEAPON) == ChristmasConstants.CHRISTMAS_SCYTHE;
-		if (weapon != null && weapon.getCharges() > 0 || christmasScythe) {
+		if (weapon != null && weapon.getCharges() > 0) {
 			specialAttack();
 		} else {
 			final Hit hit = getHit(player, target, 1, 1, 1, false);
@@ -61,9 +59,7 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 			delayHit(0, hit);
 		}
 		animate();
-		if (!christmasScythe) {
-			player.getChargesManager().removeCharges(DegradeType.OUTGOING_HIT);
-		}
+		player.getChargesManager().removeCharges(DegradeType.OUTGOING_HIT);
 		resetFlag();
 		checkIfShouldTerminate(HitType.MELEE);
 		return getSpeed();
@@ -93,7 +89,6 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 			}
 			final Set<Entity> targets = getMultiAttackTargets(player);
 			int hitcount = 0;
-			final boolean christmasScythe = player.getEquipment().getId(EquipmentSlot.WEAPON) == ChristmasConstants.CHRISTMAS_SCYTHE;
 			for (final Entity t : targets) {
 				hitcount++;
 				final Hit hit = getHit(player, t, 1, hitcount == 1 ? 1.0F : hitcount == 2 ? 0.5F : 0.25F, 1, false);
@@ -102,9 +97,6 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 					addPoisonTask(hit.getDamage(), -1);
 				}
 				delayHit(t, -1, hit);
-				if (christmasScythe) {
-					break;
-				}
 			}
 			if (christmasScythe) {
 				return;

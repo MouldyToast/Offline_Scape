@@ -100,12 +100,6 @@ public final class ShootingStar extends WorldObject  {
                     if (player.getActionManager().getAction() instanceof Mining) {
                         player.sendMessage("The star disintegrates into dust.");
                     }
-                    if(Utils.random(750) == 0) {
-                        Item ppx = new Item(ItemId.PRIMAL_PICKAXE);
-                        player.getCollectionLog().add(ppx);
-                        player.getInventory().addOrDrop(ppx);
-                        WorldBroadcasts.sendMessage("<img=51><col=2980B9><shad=000000>" + player.getUsername() + " received a Primal Pickaxe from the shooting star!", LOTTERY, false);
-                    }
                 });
                 WorldBroadcasts.sendMessage("<img=51><col=2980B9><shad=000000>The shooting star has been fully mined - keep an eye out for the next one!", LOTTERY, false);
                 ShootingStars.setCurrent(null);

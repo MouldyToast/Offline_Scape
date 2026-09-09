@@ -4,7 +4,6 @@ public final class ContentConstants {
 
     public static final String SERVER_NAME = "Offline_scape";
 
-    public static final boolean CHRISTMAS = false;
     public static final boolean CASTLE_WARS = false;
     public static final boolean CONSTRUCTION = false;
     public static final boolean HALLOWEEN = false;

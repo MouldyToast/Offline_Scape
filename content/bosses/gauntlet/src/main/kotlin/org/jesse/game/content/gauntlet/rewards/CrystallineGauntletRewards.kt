@@ -51,6 +51,5 @@ val crystallineRewardsTertiary = StandaloneDropTableBuilder {
         CRYSTAL_ARMOUR_SEED quantity 1 oneIn (120 * near_reality_mod).toInt()
         ENHANCED_CRYSTAL_WEAPON_SEED quantity 1 oneIn (2_000 * near_reality_mod).toInt() announce everywhere
         YOUNGLLEF quantity 1 oneIn (2_000 * near_reality_mod).toInt() announce everywhere
-        PRIMAL_HATCHET quantity 1 oneIn 1400 announce everywhere
     }
 }

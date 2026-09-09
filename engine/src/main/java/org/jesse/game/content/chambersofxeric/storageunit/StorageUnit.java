@@ -201,7 +201,6 @@ public enum StorageUnit {
         DRAGON_WARHAMMER_OR(9351, 9352, ItemId.DRAGON_WARHAMMER_OR),
         HAMMER(3676, 7214, StorageUnit.HAMMER),
         IMCANDO_HAMMER(8912, 8949, ItemId.IMCANDO_HAMMER),
-        HOLY_GREAT_WARHAMMER(12004, 12005, ItemId.HOLY_GREAT_WARHAMMER),
         ;
 
         private static final HammerType[] values = values();

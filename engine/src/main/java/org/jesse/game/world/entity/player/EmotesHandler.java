@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player;
 
-import org.jesse.game.content.event.halloween2019.HalloweenUtils;
 import org.jetbrains.annotations.NotNull;
 
 import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
@@ -26,10 +25,6 @@ public final class EmotesHandler {
         if (emote.getConfig() == -1) {
             return;
         }
-        if (emote.equals(Emote.TRICK)) {
-            player.getVarManager().sendVar(HalloweenUtils.COMPLETED_VARP, 1);
-            return;
-        }
         player.getVarManager().sendBit(emote.getConfig(), emote == Emote.GOBLIN_BOW || emote == Emote.GOBLIN_SALUTE ? 7 : 1);
     }
 
@@ -41,7 +36,7 @@ public final class EmotesHandler {
      */
     public boolean isUnlocked(@NotNull final Emote emote) {
         if (emote == Emote.TRICK) {
-            return HalloweenUtils.isCompleted(player);
+            return false;
         } else if (emote == Emote.GIVE_THANKS) {
             return player.getVarManager().getValue(GIVE_THANKS_VARP) == 1;
         }

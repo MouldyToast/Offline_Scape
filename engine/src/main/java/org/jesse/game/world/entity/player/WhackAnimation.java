@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player;
 
-import org.jesse.game.content.event.easter2020.EasterConstants;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.world.entity.masks.Animation;
@@ -14,7 +13,6 @@ import java.util.EnumSet;
  * @since August 18 2020
  */
 public enum WhackAnimation {
-    EASTER_CARROT(EasterConstants.EasterItem.EASTER_CARROT.getItemId(), 15236),
     RUBBER_CHICKEN(ItemId.RUBBER_CHICKEN, 1833);
     private final int itemId;
     private final Animation animation;

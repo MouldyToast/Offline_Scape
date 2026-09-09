@@ -2,20 +2,12 @@ package org.jesse.game.content.middleman
 
 import com.google.gson.GsonBuilder
 import org.jesse.game.content.middleman.trade.MiddleManTrade
-import org.jesse.game.item.ids.*
 import org.jesse.util.gson.LocalDateTimeTypeAdapter
 import java.time.LocalDateTime
 
 object MiddleManConstants {
 
-    val donatorPinItemIds = intArrayOf(
-        DONATOR_PIN_5,
-        DONATOR_PIN_10,
-        DONATOR_PIN_25,
-        DONATOR_PIN_35,
-        DONATOR_PIN_50,
-        DONATOR_PIN_100,
-    )
+    val donatorPinItemIds = intArrayOf()
 
     /**
      * A gson instance for handling serialisation of [middle man trades][MiddleManTrade].

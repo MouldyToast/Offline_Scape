@@ -8,14 +8,7 @@ import org.jesse.game.item._Item
 object CollectionLogRewards {
 
     /* Reward List */
-    private const val regalMB = REGAL_MYSTERY_BOX
-    private const val ultraMB = ULTIMATE_MYSTERY_BOX
-    private const val superMB = SUPER_MYSTERY_BOX
     private const val standardMB = MYSTERY_BOX
-    private const val skillingMB = SKILLING_MYSTERY_BOX
-    private const val pvmMB = PVM_MYSTERY_BOX
-    private const val barrowsTotem = BARROWS_TOTEM
-    private const val malevolentEnergy = MALEVOLENT_ENERGY
     private const val ahrimKit = ECHO_AHRIMS_ORNAMENT_KIT
     private const val venatorKit = ECHO_VENATOR_BOW_ORNAMENT_KIT
     private const val herbBox = HERB_BOX
@@ -26,9 +19,6 @@ object CollectionLogRewards {
     private const val kourendOrb = KOUREND_ECHO_ORB
     private const val desertOrb = DESERT_ECHO_ORB
     private const val wildyOrb = WILDERNESS_ECHO_ORB
-    private const val dpin10 = DONATOR_PIN_10
-    private const val dpin25 = DONATOR_PIN_25
-    private const val dpin100 = DONATOR_PIN_100
     private const val imbueScroll = SCROLL_OF_IMBUING
     private const val echoVirtusKit = ECHO_VIRTUS_ORNAMENT_KIT
     private const val chromiumIngot = CHROMIUM_INGOT
@@ -46,26 +36,17 @@ object CollectionLogRewards {
     private const val bandosComp = BANDOSIAN_COMPONENTS
     private const val armadylComp = ARMADYLEAN_PLATE
     private const val frozenCache = FROZEN_CACHE
-    private const val ancientShardPack = ANCIENT_SHARD_PACK
     private const val darkTotem = DARK_TOTEM
     private const val bloodShard = BLOOD_SHARD
     private const val wintertodtCrate = SUPPLY_CRATE
     private const val blowpipeKit = TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT
-    private const val sherlockNote = SHERLOCKS_NOTES
-    private const val omegaSpike = OMEGA_SPIKE
-    private const val omegaHorn = OMEGA_HORN
-    private const val omegaSymbol = OMEGA_SYMBOL
-    private const val superiorBell = SUPERIOR_BELL
-    private const val boostToken = WORLD_BOOST_TOKEN
     private const val crystalKey = CRYSTAL_KEY
-    private const val nrPartyhat = NEAR_REALITY_PARTY_HAT
     private const val chaosRobesOrnKit = ELDER_CHAOS_ROBES_ORNAMENT_KIT
     private const val dragonDefOrnKit = DRAGON_DEFENDER_ORNAMENT_KIT
     private const val dragonPickOrnKit = DRAGON_PICKAXE_UPGRADE_KIT
     private const val ballistaOrnKit = HEAVY_BALLISTA_ORNAMENT_KIT
     private const val zenyte = ZENYTE
     private const val onyx = ONYX
-    private const val gracefulDye = GRACEFUL_DYE
     private const val stardust = STARDUST
 
     /* Struct List */
@@ -100,7 +81,6 @@ object CollectionLogRewards {
     private const val nightmare = 1263
     private const val obor = 495
     private const val phantomMuspah = 4455
-    private const val primal = 10501
     private const val riseOfTheSix = 10321
     private const val sarachnis = 601
     private const val scorpia = 496
@@ -147,9 +127,6 @@ object CollectionLogRewards {
     private const val tzhaar = 536
     private const val miscellaneous = 534
 
-    // Giant Mole: 1000x toadflax (unf) (3003), 1000x crushed birdnest (6694), 2x pet boosters (32152)
-//            CollectionLogReward(488, arrayOf(gen(3003, 500), gen(6694, 500), gen(32152, 2))),
-
     val gp = "gp"
     val rewards = mutableListOf<CollectionLogReward>()
 
@@ -160,38 +137,27 @@ object CollectionLogRewards {
         rewards.addAll(
             arrayOf(
                 /* Bosses */
-                CollectionLogReward(abyssalSire, arrayOf(ultraMB x 1, UNSIRED x 5)),
-                CollectionLogReward(
-                    alchemicalHydra,
-                    arrayOf(ultraMB x 1, superMB x 1)
-                ),
-                CollectionLogReward(araxxor, arrayOf(ultraMB x 2)),
+                CollectionLogReward(abyssalSire, arrayOf(UNSIRED x 5)),
                 CollectionLogReward(
                     barrows,
-                    arrayOf(superMB x 1, barrowsTotem x 10, malevolentEnergy x 250, ahrimKit x 4)
+                    arrayOf(ahrimKit x 4)
                 ),
                 CollectionLogReward(bryophyta, arrayOf(standardMB x 2, herbBox x 25)),
                 CollectionLogReward(
                     callistoAndArtio,
-                    arrayOf(superMB x 1, standardMB x 2)
+                    arrayOf(standardMB x 2)
                 ),
                 CollectionLogReward(
                     cerberus,
-                    arrayOf(ultraMB x 1, superMB x 2, asgarniaOrb x 1)
+                    arrayOf(asgarniaOrb x 1)
                 ),
-                CollectionLogReward(chaosElemental, arrayOf(superMB x 2)),
-                CollectionLogReward(chaosFanatic, arrayOf(superMB x 2)),
-                CollectionLogReward(commanderZilyana, arrayOf(ultraMB x 1, superMB x 2)),
-                CollectionLogReward(corporealBeast, arrayOf(dpin25 x 1, ultraMB x 3, superMB x 2)),
-                CollectionLogReward(crazyArcheologist, arrayOf(superMB x 2)),
-                CollectionLogReward(dagannothKings, arrayOf(imbueScroll x 1, superMB x 1, standardMB x 2)),
+                CollectionLogReward(dagannothKings, arrayOf(imbueScroll x 1, standardMB x 2)),
                 CollectionLogReward(
                     dukeSucellus,
-                    arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)
+                    arrayOf(chromiumIngot x 1, echoVirtusKit x 3)
                 ),
-                CollectionLogReward(fightCaves, arrayOf(superMB x 1, tokkul x 50_000, fireCape x 1)),
-                CollectionLogReward(gauntlet, arrayOf(ultraMB x 1, armourSeed x 3, enhancedCKey x 25, tirannwnOrb x 1)),
-                CollectionLogReward(generalGraardor, arrayOf(ultraMB x 1, superMB x 2)),
+                CollectionLogReward(fightCaves, arrayOf(tokkul x 50_000, fireCape x 1)),
+                CollectionLogReward(gauntlet, arrayOf(armourSeed x 3, enhancedCKey x 25, tirannwnOrb x 1)),
                 CollectionLogReward(
                     grotesqueGuardians,
                     arrayOf(doubleAmmoMold x 1, morytaniaOrb x 1)
@@ -201,121 +167,78 @@ object CollectionLogRewards {
                     arrayOf(torstol x 100, snapdragon x 100, kourendOrb x 1, queenSecateurs x 1)
                 ),
                 CollectionLogReward(inferno, arrayOf(tokkul x 100_000, infernalCape x 1)),
-                CollectionLogReward(kalphiteQueen, arrayOf(superMB x 1, standardMB x 2, desertOrb x 1)),
+                CollectionLogReward(kalphiteQueen, arrayOf(standardMB x 2, desertOrb x 1)),
                 CollectionLogReward(
                     kingBlackDragon,
-                    arrayOf(superMB x 1, wildyOrb x 1)
+                    arrayOf(wildyOrb x 1)
                 ),
                 CollectionLogReward(
                     kraken,
-                    arrayOf(superMB x 1, standardMB x 1)
+                    arrayOf(standardMB x 1)
                 ),
-                CollectionLogReward(kreearra, arrayOf(superMB x 1, standardMB x 2)),
-                CollectionLogReward(krilTsutsaroth, arrayOf(superMB x 1, standardMB x 2)),
-                CollectionLogReward(leviathan, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
-                CollectionLogReward(nex, arrayOf(dpin25 x 1, bandosComp x 3, armadylComp x 3)),
-                CollectionLogReward(nightmare, arrayOf(ultraMB x 1, superMB x 2, dpin10 x 1)),
+                CollectionLogReward(kreearra, arrayOf(standardMB x 2)),
+                CollectionLogReward(krilTsutsaroth, arrayOf(standardMB x 2)),
+                CollectionLogReward(leviathan, arrayOf(chromiumIngot x 1, echoVirtusKit x 3)),
+                CollectionLogReward(nex, arrayOf(bandosComp x 3, armadylComp x 3)),
                 CollectionLogReward(obor, arrayOf(standardMB x 2)),
                 CollectionLogReward(
                     phantomMuspah,
-                    arrayOf(superMB x 1, venatorShard x 1, frozenCache x 10, venatorKit x 1)
+                    arrayOf(venatorShard x 1, frozenCache x 10, venatorKit x 1)
                 ),
-                CollectionLogReward(sarachnis, arrayOf(superMB x 1, standardMB x 2)),
+                CollectionLogReward(sarachnis, arrayOf(standardMB x 2)),
                 CollectionLogReward(
                     scorpia,
-                    arrayOf(superMB x 1, standardMB x 2)
+                    arrayOf(standardMB x 2)
                 ),
-                CollectionLogReward(skotizo, arrayOf(superMB x 1, darkTotem x 10, ancientShardPack x 1)),
+                CollectionLogReward(skotizo, arrayOf(darkTotem x 10)),
                 CollectionLogReward(
                     thermonuclearSmokeDevil,
                     arrayOf(standardMB x 1)
                 ),
-                CollectionLogReward(tormentedDemons, arrayOf(superMB x 1, standardMB x 2)),
-                CollectionLogReward(vardorvis, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
+                CollectionLogReward(tormentedDemons, arrayOf(standardMB x 2)),
+                CollectionLogReward(vardorvis, arrayOf(chromiumIngot x 1, echoVirtusKit x 3)),
                 CollectionLogReward(
                     venenatisAndSpindel,
-                    arrayOf(superMB x 1, standardMB x 2)
+                    arrayOf(standardMB x 2)
                 ),
                 CollectionLogReward(
                     vetionAndCalvarion,
-                    arrayOf(superMB x 1, standardMB x 2)
+                    arrayOf(standardMB x 2)
                 ),
-                CollectionLogReward(vorkath, arrayOf(superMB x 2, standardMB x 3)),
-                CollectionLogReward(whisperer, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
-                CollectionLogReward(wintertodt, arrayOf(superMB x 1, standardMB x 2, wintertodtCrate x 25)),
-                CollectionLogReward(zalcano, arrayOf(skillingMB x 5, toolSeed x 1)),
-                CollectionLogReward(zulrah, arrayOf(ultraMB x 1, superMB x 2, blowpipeKit x 1)),
-
-                /* Raids */
-                CollectionLogReward(
-                    chambersOfXeric,
-                    arrayOf(regalMB x 3, ultraMB x 5, omegaSpike x 1)
-                ),
-                CollectionLogReward(theatreOfBlood, arrayOf(regalMB x 3, ultraMB x 5, omegaHorn x 1)),
-                CollectionLogReward(
-                    tombsOfAmascut,
-                    arrayOf(regalMB x 3, ultraMB x 5, omegaSymbol x 1)
-                ),
+                CollectionLogReward(vorkath, arrayOf(standardMB x 3)),
+                CollectionLogReward(whisperer, arrayOf(chromiumIngot x 1, echoVirtusKit x 3)),
+                CollectionLogReward(wintertodt, arrayOf(standardMB x 2, wintertodtCrate x 25)),
+                CollectionLogReward(zalcano, arrayOf(toolSeed x 1)),
+                CollectionLogReward(zulrah, arrayOf(blowpipeKit x 1)),
 
                 /* Treasure Trails */
-                CollectionLogReward(beginnerClues, arrayOf(standardMB x 1, sherlockNote x 25)),
+                CollectionLogReward(beginnerClues, arrayOf(standardMB x 1)),
                 CollectionLogReward(
                     easyClues,
-                    arrayOf(superMB x 1, standardMB x 2, sherlockNote x 50)
+                    arrayOf(standardMB x 2)
                 ),
                 CollectionLogReward(
                     mediumClues,
-                    arrayOf(superMB x 2, standardMB x 3, sherlockNote x 50)
-                ),
-                CollectionLogReward(hardClues, arrayOf(ultraMB x 1, superMB x 2, sherlockNote x 75)),
-                CollectionLogReward(
-                    eliteClues,
-                    arrayOf(ultraMB x 2, superMB x 3, sherlockNote x 100)
-                ),
-                CollectionLogReward(
-                    masterClues,
-                    arrayOf(regalMB x 1, ultraMB x 3, sherlockNote x 150)
-                ),
-                CollectionLogReward(
-                    hardCluesRares,
-                    arrayOf(ultraMB x 2, superMB x 3, sherlockNote x 100)
-                ),
-                CollectionLogReward(
-                    eliteCluesRares,
-                    arrayOf(regalMB x 1, ultraMB x 3, sherlockNote x 150)
-                ),
-                CollectionLogReward(
-                    masterCluesRares,
-                    arrayOf(regalMB x 3, ultraMB x 5, sherlockNote x 300)
+                    arrayOf(standardMB x 3)
                 ),
 
                 /* Minigames */
-                CollectionLogReward(pestControl, arrayOf(skillingMB x 5, crystalKey x 7)),
-                CollectionLogReward(roguesDen, arrayOf(skillingMB x 3, crystalKey x 5)),
+                CollectionLogReward(pestControl, arrayOf(crystalKey x 7)),
+                CollectionLogReward(roguesDen, arrayOf(crystalKey x 5)),
 
                 /* Other */
-                CollectionLogReward(aerialFishing, arrayOf(standardMB x 1, skillingMB x 5)),
-                CollectionLogReward(allPets, arrayOf(dpin100 x 3, regalMB x 10, ultraMB x 15, nrPartyhat x 1)),
+                CollectionLogReward(aerialFishing, arrayOf(standardMB x 1)),
                 CollectionLogReward(chaosDruids, arrayOf(chaosRobesOrnKit x 3)),
                 CollectionLogReward(cyclops, arrayOf(standardMB x 1, dragonDefOrnKit x 1)),
                 CollectionLogReward(
                     gloughsExperiments,
                     arrayOf(standardMB x 2, zenyte x 1, onyx x 1, ballistaOrnKit x 1)
                 ),
-                CollectionLogReward(motherlodeMine, arrayOf(dragonPickOrnKit x 1, skillingMB x 10)),
-                CollectionLogReward(
-                    revenants,
-                    arrayOf(pvmMB x 5)
-                ),
-                CollectionLogReward(rooftopAgility, arrayOf(standardMB x 1, gracefulDye x 15)),
+                CollectionLogReward(motherlodeMine, arrayOf(dragonPickOrnKit x 1)),
+                CollectionLogReward(rooftopAgility, arrayOf(standardMB x 1)),
                 CollectionLogReward(shootingStars, arrayOf(standardMB x 1, stardust x 5_000)),
-                CollectionLogReward(skillingPets, arrayOf(dpin100 x 1, ultraMB x 3, skillingMB x 25)),
-                CollectionLogReward(
-                    slayer,
-                    arrayOf(regalMB x 3, superiorBell x 50)
-                ),
                 CollectionLogReward(tzhaar, arrayOf(standardMB x 1, onyx x 1, crystalKey x 5)),
-                CollectionLogReward(miscellaneous, arrayOf(regalMB x 3, ultraMB x 3, superMB x 3, standardMB x 3))
+                CollectionLogReward(miscellaneous, arrayOf(standardMB x 3))
         ))
     }
 

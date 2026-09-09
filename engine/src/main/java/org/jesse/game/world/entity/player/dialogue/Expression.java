@@ -1,7 +1,5 @@
 package org.jesse.game.world.entity.player.dialogue;
 
-import org.jesse.game.content.event.easter2020.EasterConstants;
-
 public enum Expression {
 
 	CALM(588),
@@ -44,19 +42,6 @@ public enum Expression {
     HIGH_REV_WONDERING(15079),
     HIGH_REV_JOLLY(15080),
     HIGH_REV_HAPPY(15081),
-
-    EASTER_BUNNY_SAD(EasterConstants.EXPRESSION_SAD),
-    EASTER_BUNNY_HAPPY(EasterConstants.EXPRESSION_HAPPY),
-    EASTER_BUNNY_VERY_HAPPY(EasterConstants.EXPRESSION_VERY_HAPPY),
-    EASTER_BUNNY_NORMAL(EasterConstants.EXPRESSION_NORMAL),
-    EASTER_BUNNY_SAY_NO(EasterConstants.EXPRESSION_SAY_NO),
-
-    EASTER_BIRD_HAPPY(EasterConstants.BIRD_EXPRESSION_HAPPY),
-    EASTER_BIRD_CHATTY(EasterConstants.BIRD_EXPRESSION_CHATTY),
-    EASTER_BIRD_DRUNK(EasterConstants.BIRD_EXPRESSION_DRUNK),
-    EASTER_BIRD_SAD(EasterConstants.BIRD_EXPRESSION_SAD),
-    EASTER_BIRD_SAY_NO(EasterConstants.BIRD_EXPRESSION_SAY_NO),
-    EASTER_BIRD_SNORING(EasterConstants.BIRD_EXPRESSION_SNORING),
     ;
 
 

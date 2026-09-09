@@ -5,8 +5,6 @@ import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
 import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
-import static org.jesse.game.item.ids.ItemId.PRIMAL_BATTLEAXE;
-
 public class LarransSmallChestTable implements AlternateTableDropProvider {
     static ObjectArrayList<DropViewerEntry> entries = new ObjectArrayList<>();
 
@@ -46,7 +44,6 @@ public class LarransSmallChestTable implements AlternateTableDropProvider {
         gen(454, 282, 480, 5, 60);
         gen(1618, 15, 25, 5, 60);
         gen(1620, 20, 30, 5, 60);
-        gen(PRIMAL_BATTLEAXE, 1, 1, 1, 500);
     }
 
     private void gen(int id, int min, int max, int top, int bottom) {

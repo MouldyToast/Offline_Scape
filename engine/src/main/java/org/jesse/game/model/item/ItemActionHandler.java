@@ -8,8 +8,6 @@ import org.jesse.game.GameConstants;
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.boss.corporealbeast.CorporealBeastDynamicArea;
 import org.jesse.game.content.consumables.Consumable;
-import org.jesse.game.content.event.easter2020.area.EggPlantArea;
-import org.jesse.game.content.event.easter2020.area.RabbitWarrenArea;
 import org.jesse.game.content.follower.Follower;
 import org.jesse.game.content.follower.Pet;
 import org.jesse.game.content.follower.PetWrapper;
@@ -27,7 +25,6 @@ import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege;
 import org.jesse.game.world.region.RegionArea;
-import org.jesse.game.world.region.area.LandOfSnowArea;
 import org.jesse.game.world.region.area.plugins.DropPlugin;
 import org.jesse.game.world.region.area.plugins.IDropPlugin;
 import org.jesse.game.world.region.area.wilderness.WildernessArea;
@@ -174,15 +171,6 @@ public enum ItemActionHandler {
             return;
         }
         if (PetWrapper.getByItem(item.getId()) != null) {
-            if (player.inArea(LandOfSnowArea.class)) {
-                player.sendMessage("Your follower does not seem to be too fond of the festivities and won't come out.");
-                return;
-            }
-            if (player.inArea(RabbitWarrenArea.class) || player.inArea(EggPlantArea.class)) {
-                player.sendMessage("Your follower isn't interested in coming out with all those machines making noise" +
-                        ".");
-                return;
-            }
             if (player.getFollower() != null) {
                 player.sendMessage("You already have a follower!");
                 return;

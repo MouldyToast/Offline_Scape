@@ -1,7 +1,6 @@
 package org.jesse.game.content.follower;
 
 import org.jesse.game.content.follower.impl.BossPet;
-import org.jesse.game.content.follower.impl.MiscPet;
 import org.jesse.game.util.CollisionUtil;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.Position;
@@ -24,7 +23,7 @@ public class Follower extends NPC {
 		super(petId, new Location(owner.getLocation()), false);
 		this.owner = owner;
 		checkNearDirs = Utils.getCoordOffsetsNear(getSize());
-		if (petId == MiscPet.AREA_LOCKED_SNOW_IMP.petId() || petId == BossPet.NEXLING.getPetId()) {
+		if (petId == BossPet.NEXLING.getPetId()) {
 			setRun(true);
 		}
 	}
@@ -33,7 +32,7 @@ public class Follower extends NPC {
 		super(petId, tile, false);
 		this.owner = owner;
 		checkNearDirs = Utils.getCoordOffsetsNear(getSize());
-		if (petId == MiscPet.AREA_LOCKED_SNOW_IMP.petId() || petId == BossPet.NEXLING.getPetId()) {
+		if (petId == BossPet.NEXLING.getPetId()) {
 			setRun(true);
 		}
 	}
@@ -79,7 +78,7 @@ public class Follower extends NPC {
 
 	@Override
 	public boolean isIntelligent() {
-		return getId() == MiscPet.AREA_LOCKED_SNOW_IMP.petId();
+		return false;
 	}
 
 	boolean outOfRange(final Position targetPosition, final int maximumDistance, final int targetSize, final boolean checkDiagonal) {

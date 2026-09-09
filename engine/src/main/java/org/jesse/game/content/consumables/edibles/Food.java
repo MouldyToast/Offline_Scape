@@ -3,7 +3,6 @@ package org.jesse.game.content.consumables.edibles;
 import org.jesse.game.content.chambersofxeric.Raid;
 import org.jesse.game.content.consumables.ConsumableAnimation;
 import org.jesse.game.content.consumables.Edible;
-import org.jesse.game.content.event.christmas2019.ChristmasConstants;
 import org.jesse.game.content.minigame.inferno.instance.Inferno;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
@@ -225,10 +224,6 @@ public enum Food implements Edible {
     ORANGE(2108, 2),
     ORANGE_CHUNKS(2110, 2),
     ORANGE_SLICES(2112, 2),
-
-    TURKEY_DRUMSTICK(ChristmasConstants.TURKEY_DRUMSTICK, 1),
-    ROAST_POTATOES(ChristmasConstants.ROAST_POTATOES, 1),
-    YULE_LOG(ChristmasConstants.YULE_LOG, 1),
 
     PINEAPPLE(2114, 0) {
         @Override

@@ -8,7 +8,6 @@ import org.jesse.game.GameConstants
 import org.jesse.game.GameInterface
 import org.jesse.game.content.boss.phantommuspah.PhantomInstance
 import org.jesse.game.content.clans.ClanManager
-import org.jesse.game.content.event.christmas2019.AChristmasWarble
 import org.jesse.game.content.grandexchange.GrandExchange
 import org.jesse.game.content.grandexchange.GrandExchangeHandler
 import org.jesse.game.content.grandexchange.GrandExchangePriceManager
@@ -265,17 +264,6 @@ object AdministratorCommands {
         Command(PlayerPrivilege.ADMINISTRATOR, "disableworldboosts") { p: Player, _: Array<String?>? ->
             World.getWorldBoosts().clear()
             p.sendMessage("World boosts cleared")
-        }
-
-        Command(PlayerPrivilege.ADMINISTRATOR, "resetevent") { p: Player, args: Array<String?>? ->
-            p.attributes.remove(AChristmasWarble.ChristmasWarbleProgress.EVENT_ATTRIBUTE_KEY)
-            p.attributes.remove("A Christmas Warble unfrozen guests hash")
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "completeevent") { p: Player?, args: Array<String?>? ->
-            AChristmasWarble.progress(p, AChristmasWarble.ChristmasWarbleProgress.EVENT_COMPLETE)
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "progress") { p: Player, args: Array<String?>? ->
-            p.sendMessage(AChristmasWarble.getProgress(p).name)
         }
 
         Command(PlayerPrivilege.ADMINISTRATOR, "memory") { p: Player, args: Array<String?>? ->

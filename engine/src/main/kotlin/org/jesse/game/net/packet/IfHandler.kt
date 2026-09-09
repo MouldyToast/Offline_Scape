@@ -1,6 +1,5 @@
 package org.jesse.game.net.packet
 
-import org.jesse.game.model.ui.cape_customizer.CapeCustomizerInterfacePlugin.Companion.onResumeString
 import org.jesse.game.GameInterface
 import org.jesse.game.content.skills.magic.Magic
 import org.jesse.game.content.skills.magic.SpellDefinitions
@@ -254,10 +253,6 @@ internal fun PacketConsumer.resumePString() {
         }
         val input = player.temporaryAttributes["interfaceInput"]
         (input as? StringDialogue)?.execute(player, string)
-        if (player.interfaceHandler.isPresent(GameInterface.CAPE_CUSTOMIZER)) {
-            onResumeString(player, string)
-            return@addListener
-        }
     }
 }
 

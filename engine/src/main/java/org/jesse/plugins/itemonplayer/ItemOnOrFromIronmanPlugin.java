@@ -6,7 +6,6 @@ import org.jesse.game.util.Colour;
 import org.jesse.game.world.World;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
-import org.jesse.game.world.entity.player.teleportsystem.TeleportScroll;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
 /**
@@ -44,7 +43,6 @@ public class ItemOnOrFromIronmanPlugin implements ItemOnPlayerPlugin {
     @Override
     public int[] getItems() {
         final IntOpenHashSet set = new IntOpenHashSet();
-        set.addAll(TeleportScroll.map.keySet());
         set.add(30031);
         return set.toIntArray();
     }

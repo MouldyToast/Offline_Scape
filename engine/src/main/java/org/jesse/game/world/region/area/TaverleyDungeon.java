@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 
@@ -44,7 +43,6 @@ public class TaverleyDungeon extends PolygonRegionArea {
 
     @Override
     public void enter(final Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.TAVERLEY_DUNGEON);
     }
 
     @Override

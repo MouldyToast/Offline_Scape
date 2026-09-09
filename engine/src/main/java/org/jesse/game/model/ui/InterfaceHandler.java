@@ -57,7 +57,6 @@ public class InterfaceHandler {
 	private static final GameInterface[] WALKABLE_INTERFACES = new GameInterface[] {
 			GameInterface.TELEPORTS,
 			GameInterface.ADVANCED_SETTINGS,
-			GameInterface.TELEPORT_MENU,
 			GameInterface.DROP_VIEWER
 	};
 	private static final Logger log = NearRealityLogger.getLogger(InterfaceHandler.class);

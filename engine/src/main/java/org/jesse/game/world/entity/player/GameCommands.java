@@ -95,7 +95,6 @@ import org.jesse.game.world.entity.player.privilege.ExpConfigurations;
 import org.jesse.game.world.entity.player.privilege.GameMode;
 import org.jesse.game.world.entity.player.privilege.MemberRank;
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.entity.player.variables.PlayerVariables;
 import org.jesse.game.world.entity.player.variables.TickVariable;
 import org.jesse.game.world.object.WorldObject;
@@ -2056,18 +2055,6 @@ public final class GameCommands {
             p.getSkills().resetAll();
             p.getSkills().refresh();
             p.getAppearance().resetRenderAnimation();
-        });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "teleloc",
-                "Teleports you to one of the available teleportations.", (p, args) -> {
-            final String query = StringUtilities.compile(args, 0, args.length, ' ').toLowerCase();
-            final PortalTeleport[] teleports = PortalTeleport.values();
-            for (final PortalTeleport teleport : teleports) {
-                final String name = teleport.getSmallDescription().toLowerCase();
-                if (name.startsWith(query)) {
-                    teleport.teleport(p);
-                    return;
-                }
-            }
         });
         new Command(PlayerPrivilege.FORUM_MODERATOR, "tele",
                 "Teleports you to the requested coordinates. Arguments: x y " + "<Optional>z", (p, args) -> {

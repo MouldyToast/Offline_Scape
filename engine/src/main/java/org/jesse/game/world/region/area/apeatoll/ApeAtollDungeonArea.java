@@ -17,7 +17,6 @@ import org.jesse.game.world.entity.masks.HitType;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.container.impl.Inventory;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.flooritem.FloorItem;
 import org.jesse.game.obj.ids.ObjectId;
 import org.jesse.game.world.object.WorldObject;
@@ -127,7 +126,6 @@ public class ApeAtollDungeonArea extends ApeAtollArea implements CycleProcessPlu
     @Override
     public void enter(final Player player) {
         super.enter(player);
-        player.getTeleportManager().unlock(PortalTeleport.APE_ATOLL_DUNGEON);
     }
 
     @Override

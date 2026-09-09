@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.RSPolygon;
 
 /**
@@ -31,7 +30,6 @@ public class Pollnivneach extends SouthernDesertArea {
     @Override
     public void enter(final Player player) {
         super.enter(player);
-        player.getTeleportManager().unlock(PortalTeleport.POLLNIVNEACH);
     }
 
     @Override

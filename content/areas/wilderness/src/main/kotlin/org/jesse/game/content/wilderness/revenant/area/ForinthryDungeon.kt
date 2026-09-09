@@ -2,7 +2,6 @@ package org.jesse.game.content.wilderness.revenant.area
 
 import org.jesse.game.content.wilderness.revenant.npc.RevenantMaledictus
 import org.jesse.game.world.entity.player.Player
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport
 import org.jesse.game.world.region.RSPolygon
 import org.jesse.game.world.region.area.wilderness.WildernessArea
 
@@ -27,7 +26,6 @@ open class ForinthryDungeon : WildernessArea() {
 
     override fun enter(player: Player) {
         super.enter(player)
-        player.teleportManager.unlock(PortalTeleport.FORINTHRY_DUNGEON)
         RevenantMaledictus.instance
             ?.takeUnless { it.isDead || it.isFinished }
             ?.let { player.sendMessage(it.spawn.localHintMessage(true)) }

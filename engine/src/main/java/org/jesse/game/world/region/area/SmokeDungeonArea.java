@@ -2,7 +2,6 @@ package org.jesse.game.world.region.area;
 
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 
@@ -19,7 +18,6 @@ public class SmokeDungeonArea extends PolygonRegionArea {
 
 	@Override
 	public void enter(final Player player) {
-	    player.getTeleportManager().unlock(PortalTeleport.SMOKE_DUNGEON);
 		player.getInterfaceHandler().sendInterface(InterfacePosition.OVERLAY, 313);
 	}
 

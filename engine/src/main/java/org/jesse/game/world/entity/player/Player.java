@@ -173,7 +173,6 @@ import org.jesse.game.world.entity.player.privilege.GameMode;
 import org.jesse.game.world.entity.player.privilege.MemberRank;
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege;
 import org.jesse.game.world.entity.player.teleports.TeleportsManager;
-import org.jesse.game.world.entity.player.teleportsystem.TeleportManager;
 import org.jesse.game.world.entity.player.var.EventType;
 import org.jesse.game.world.entity.player.var.VarCollection;
 import org.jesse.game.world.entity.player.variables.PlayerVariables;
@@ -460,8 +459,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private Construction construction = new Construction(this);
     @Expose
     private PrayerManager prayerManager = new PrayerManager(this);
-    @Expose
-    private TeleportManager teleportManager = new TeleportManager(this);
     private VarManager varManager = new VarManager(this);
     @Expose
     private PlayerVariables variables = new PlayerVariables(this);
@@ -4829,10 +4826,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public PrayerManager getPrayerManager() {
         return prayerManager;
-    }
-
-    public TeleportManager getTeleportManager() {
-        return teleportManager;
     }
 
     public VarManager getVarManager() {

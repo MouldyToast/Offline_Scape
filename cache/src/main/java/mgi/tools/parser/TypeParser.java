@@ -64,7 +64,6 @@ import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.custom.AnimationBase;
-import mgi.custom.CustomTeleport;
 import mgi.custom.FramePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
@@ -545,7 +544,6 @@ public class TypeParser {
     }
 
     private static void packHighRevision() throws IOException {
-        new CustomTeleport().packAll();
         FramePacker.write();
         AnimationBase.pack();
     }
@@ -818,7 +816,6 @@ public class TypeParser {
 
 //        packRustyScripts("assets/scripts/out/");
 
-        // NearRealityCustomCS2Packer.pack();
     }
 
     private static void packCs2FromDirectory(String first) throws IOException {

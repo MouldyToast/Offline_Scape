@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.CannonRestrictionPlugin;
@@ -25,7 +24,6 @@ public class WyvernCave extends PolygonRegionArea implements CannonRestrictionPl
 
     @Override
     public void enter(Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.WYVERN_CAVE);
     }
 
     @Override

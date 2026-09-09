@@ -7,7 +7,6 @@ import org.jesse.game.world.entity.player.container.Container;
 import org.jesse.game.world.entity.player.container.impl.ContainerType;
 import org.jesse.game.world.entity.player.container.impl.equipment.Equipment;
 import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentSlot;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.GlobalAreaManager;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
@@ -27,7 +26,6 @@ public class ApeAtollArea extends PolygonRegionArea implements ContainerPlugin {
 
 	@Override
 	public void enter(final Player player) {
-		player.getTeleportManager().unlock(PortalTeleport.MONKEY_GUARDS);
 		final Greegree greegree = Greegree.MAPPED_VALUES.get(player.getEquipment().getId(EquipmentSlot.WEAPON));
 		if (greegree == null) {
 			return;

@@ -55,8 +55,6 @@ import org.jesse.game.content.skills.magic.spells.teleports.TeleportType;
 import org.jesse.game.content.stars.ScheduledShootingStarSpawn;
 import org.jesse.game.content.stars.ShootingStarLocation;
 import org.jesse.game.content.stars.ShootingStars;
-import org.jesse.game.content.universalshop.UniversalShopCommands;
-import org.jesse.game.content.universalshop.UniversalShopInterface;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.BonusXpManager;
@@ -177,7 +175,6 @@ public final class GameCommands {
         SanctionCommands.INSTANCE.register();
         BotPrevention.INSTANCE.registerCommands();
         ChambersCommands.INSTANCE.register();
-        UniversalShopCommands.INSTANCE.register();
 
         new Command(PlayerPrivilege.ADMINISTRATOR, "bcp", "Opens the breach control panel", (p, args) -> {
             p.getDialogueManager().start(new BreachControlPanel(p));
@@ -1098,12 +1095,6 @@ public final class GameCommands {
 
 
 
-        new Command(PlayerPrivilege.PLAYER, "shops", "Opens the universal shop interface.", (p, args) -> {
-            if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
-                return;
-            }
-            UniversalShopInterface.openInterfaceToTab(p, 0);
-        });
         new Command(PlayerPrivilege.PLAYER, "titles", "Opens the loyalty titles interface.", (p, args) -> {
             if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
                 return;

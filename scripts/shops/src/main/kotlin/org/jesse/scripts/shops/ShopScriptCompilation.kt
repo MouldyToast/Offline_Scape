@@ -19,10 +19,6 @@ object ShopScriptCompilation : ScriptCompilationConfiguration(
             "org.jesse.game.model.shop.ShopCurrency.*",
 
             "org.jesse.game.item.ids.*",
-
-            "org.jesse.game.content.universalshop.*",
-            "org.jesse.game.content.universalshop.UnivShopItem",
-            "org.jesse.game.content.universalshop.UnivShopItem.*"
         )
     }
 ) {

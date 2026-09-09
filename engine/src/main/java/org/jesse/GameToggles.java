@@ -7,7 +7,5 @@ public class GameToggles {
 
     public static final boolean TOURNAMENT_SPECTATING_DISABLED = false;
     public static boolean COX_MASSES_ENABLED = true;
-
-    public static boolean UNIVERSAL_SHOP_FLOODGATE = true;
     public static boolean BH2020_ENABLED = true;
 }

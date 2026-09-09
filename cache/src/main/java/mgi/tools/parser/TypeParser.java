@@ -21,7 +21,6 @@ import org.jesse.cache_tool.packing.custom.NearRealityCustomStructsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import org.jesse.cache_tool.packing.custom.NearRealityOriginsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityRebirthPacker;
-import org.jesse.cache_tool.packing.custom.UniversalShopPacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -108,7 +107,6 @@ public class TypeParser {
     public static final String CACHE_VERSION = "cache-228";
     public static final File CACHE_ORIGINAL_DIRECTORY = new File("data/" + CACHE_VERSION);
     public static final boolean ENABLED_MAP_PACKING = true;
-    public static final boolean POST_PACK_UNIV_SHOP = true;
 
     private static final ThreadLocal<Gson> gson = ThreadLocal.withInitial(() ->
             new GsonBuilder()
@@ -219,8 +217,6 @@ public class TypeParser {
         CacheManager.loadCache(cache);
         CacheManager.loadDefinitions(service, true);
         postPackEdits();
-        if (POST_PACK_UNIV_SHOP)
-            UniversalShopPacker.INSTANCE.postPack();
         cache.close();
 
         /*

@@ -2,7 +2,6 @@ package org.jesse.game.content.bountyhunter
 
 import org.jesse.game.world.entity.player.bountyHunterPoints
 import org.jesse.game.world.entity.player.bountyTargetLevelRange
-import org.jesse.game.content.universalshop.UniversalShopInterface.Companion.openInterfaceToTab
 import org.jesse.game.item.Item
 import org.jesse.game.model.item.ItemOnNPCAction
 import org.jesse.game.world.entity.npc.NPC
@@ -23,7 +22,7 @@ import org.jesse.game.item.ids.*
 class EmblemTrader: ItemOnNPCAction, NPCPlugin() {
     override fun handle() {
         bind("Talk-to") { player: Player, _: NPC -> sendTalkTo(player) }
-        bind("Rewards") { player: Player, _: NPC -> openInterfaceToTab(player, 9) }
+        bind("Rewards") { player: Player, _: NPC -> player.openShop("Bounty Hunter Rewards") }
         bind("Skull") { player: Player, _: NPC -> sendRequestForSkull(player) }
     }
 

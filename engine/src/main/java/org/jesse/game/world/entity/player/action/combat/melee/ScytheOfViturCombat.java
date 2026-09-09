@@ -98,9 +98,6 @@ public final class ScytheOfViturCombat extends MeleeCombat {
 				}
 				delayHit(t, -1, hit);
 			}
-			if (christmasScythe) {
-				return;
-			}
 			int maxHits = 3;
 
 			if (hitcount < maxHits) {

@@ -1,0 +1,1398 @@
+# CUSTOM_ITEM_IDS — authoritative record of the custom item layer, PRE-Stage-5c state
+#
+# Harvested programmatically at Stage 5c from every source that creates or edits
+# item definitions at cache build time: the item_config tomls (definitions/ankou_sets/
+# comp capes/toa), every assets/types toml with [[item]] or [item] blocks, the
+# NearRealityOriginsPacker packCustoms()/promoBundle() code-built items, and
+# NearRealityCustomItemPacker's in-code edits. 1057 unique ids: 781 new custom
+# defs, 60 vanilla-id overwrites, 216 vanilla edits.
+#
+# Stage 5c deletes most of this layer — this file is the tombstone index, not a
+# live manifest. Kinds: NEW = custom def on a free id; OVERWRITE = full custom def
+# written onto a real OSRS id; EDIT = inherit-only tweak of a vanilla id.
+# Format: id<TAB>kind<TAB>group<TAB>name<TAB>source
+#
+# Offline_Scape custom item id manifest (stage 5c)
+# id	kind	group	name	source
+1037	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+1419	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+1525	VANILLA EDIT (inherit-only)	types/item: snake_weed	Grimy snake weed	cache/assets/types/item/snake_weed.toml:28
+1526	VANILLA EDIT (inherit-only)	types/item: snake_weed	Snake weed	cache/assets/types/item/snake_weed.toml:33
+1580	VANILLA EDIT (inherit-only)	types/item: ice_gloves	Ice gloves	cache/assets/types/item/ice_gloves.toml:2
+2402	VANILLA EDIT (inherit-only)	types/item: silverlight	Silverlight	cache/assets/types/item/silverlight.toml:2
+2552	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2554	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2556	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2558	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2560	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2562	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2564	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2566	VANILLA EDIT (inherit-only)	types/item: dueling_rings	(inherits name from [2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566])	cache/assets/types/item/dueling_rings.toml:1
+2678	VANILLA-ID OVERWRITE	types/item: emote_scroll	Emote scroll	cache/assets/types/item/emote_scroll.toml:2
+2679	VANILLA-ID OVERWRITE [noted]	types/item: snake_weed	(noted of 1525)	cache/assets/types/item/snake_weed.toml:2
+2680	VANILLA-ID OVERWRITE [noted]	types/item: snake_weed	(noted of 1526)	cache/assets/types/item/snake_weed.toml:15
+2683	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% helm	cache/assets/types/item/zenyte_armour.toml:2
+2684	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% platebody	cache/assets/types/item/zenyte_armour.toml:26
+2685	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% platelegs	cache/assets/types/item/zenyte_armour.toml:50
+2686	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% cape	cache/assets/types/item/zenyte_armour.toml:74
+2687	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% boots	cache/assets/types/item/zenyte_armour.toml:99
+2688	VANILLA-ID OVERWRITE	types/item: zenyte_armour	%SERVER_NAME% gloves	cache/assets/types/item/zenyte_armour.toml:123
+2689	VANILLA-ID OVERWRITE	drop tables	Rare drop table	cache/assets/types/drop_tables.toml:2
+2690	VANILLA-ID OVERWRITE	drop tables	Gem drop table	cache/assets/types/drop_tables.toml:14
+2710	VANILLA-ID OVERWRITE	types/item: graceful_dye	Graceful dye	cache/assets/types/item/graceful_dye.toml:2
+2715	VANILLA-ID OVERWRITE	store items	Robes of ruin set	cache/assets/types/store_items.toml:193
+2717	VANILLA-ID OVERWRITE	store items	Black ankou set	cache/assets/types/store_items.toml:178
+2718	VANILLA-ID OVERWRITE	store items	Purple ankou set	cache/assets/types/store_items.toml:185
+2720	VANILLA-ID OVERWRITE	store items	Gold ankou set	cache/assets/types/store_items.toml:171
+2721	VANILLA-ID OVERWRITE	store items	Blue ankou set	cache/assets/types/store_items.toml:163
+2724	VANILLA-ID OVERWRITE	store items	Infinity set	cache/assets/types/store_items.toml:2
+2726	VANILLA-ID OVERWRITE	store items	Void knight set	cache/assets/types/store_items.toml:9
+2728	VANILLA-ID OVERWRITE	store items	Elite void knight set	cache/assets/types/store_items.toml:16
+2730	VANILLA-ID OVERWRITE	store items	3rd age range set	cache/assets/types/store_items.toml:23
+2732	VANILLA-ID OVERWRITE	store items	3rd age melee set	cache/assets/types/store_items.toml:30
+2734	VANILLA-ID OVERWRITE	store items	3rd age mage set	cache/assets/types/store_items.toml:37
+2736	VANILLA-ID OVERWRITE	store items	3rd age druidic set	cache/assets/types/store_items.toml:44
+2738	VANILLA-ID OVERWRITE	store items	Corrupted set	cache/assets/types/store_items.toml:51
+2740	VANILLA-ID OVERWRITE	store items	Rangers' set	cache/assets/types/store_items.toml:58
+2742	VANILLA-ID OVERWRITE	store items	Santa set	cache/assets/types/store_items.toml:65
+2744	VANILLA-ID OVERWRITE	store items	Bunny set	cache/assets/types/store_items.toml:72
+2746	VANILLA-ID OVERWRITE	store items	White ankou set	cache/assets/types/store_items.toml:79
+2748	VANILLA-ID OVERWRITE	store items	Green ankou set	cache/assets/types/store_items.toml:86
+2749	NEW custom def (low-range slot reuse)	store items	Black-green ankou set	cache/assets/types/store_items.toml:93
+2750	NEW custom def (low-range slot reuse)	store items	Black-purple ankou set	cache/assets/types/store_items.toml:100
+2751	NEW custom def (low-range slot reuse)	store items	Black-white ankou set	cache/assets/types/store_items.toml:107
+2752	NEW custom def (low-range slot reuse)	store items	Black-yellow ankou set	cache/assets/types/store_items.toml:114
+2753	NEW custom def (low-range slot reuse)	store items	Gilded ankou set	cache/assets/types/store_items.toml:121
+2754	NEW custom def (low-range slot reuse)	store items	Green-black ankou set	cache/assets/types/store_items.toml:128
+2755	NEW custom def (low-range slot reuse)	store items	Purple-black ankou set	cache/assets/types/store_items.toml:135
+2756	NEW custom def (low-range slot reuse)	store items	Red-black ankou set	cache/assets/types/store_items.toml:142
+2757	NEW custom def (low-range slot reuse)	store items	White-blue ankou set	cache/assets/types/store_items.toml:149
+2758	NEW custom def (low-range slot reuse)	store items	White-purple ankou set	cache/assets/types/store_items.toml:156
+2759	NEW custom def (low-range slot reuse)	donator pins	Donator pin ($5)	cache/assets/osnr/custom_items/item_config/definitions.toml:4315
+2760	NEW custom def (low-range slot reuse) [placeholder]	donator pins	Donator pin 5	cache/assets/osnr/custom_items/item_config/definitions.toml:4327
+2761	NEW custom def (low-range slot reuse)	donator pins	Donator pin ($35)	cache/assets/osnr/custom_items/item_config/definitions.toml:4336
+2762	NEW custom def (low-range slot reuse) [placeholder]	donator pins	Donator pin 35	cache/assets/osnr/custom_items/item_config/definitions.toml:4351
+2763	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #1	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_1]
+2764	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #2	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_2]
+2765	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #3	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_3]
+2766	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #4	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_4]
+2767	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #5	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_5]
+2768	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #6	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_6]
+2769	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #7	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_7]
+2770	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #8	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_8]
+2771	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #9	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_9]
+2772	NEW custom def (packer, low-range slot reuse)	promo bundles	NR Promo Bundle #10	NearRealityOriginsPacker.promoBundle() [DONATOR_PROMO_BUNDLE_10]
+2803	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (beginner)	cache/assets/types/item/scroll_boxes.toml:2
+2805	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (easy)	cache/assets/types/item/scroll_boxes.toml:32
+2807	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (medium)	cache/assets/types/item/scroll_boxes.toml:62
+2809	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (hard)	cache/assets/types/item/scroll_boxes.toml:92
+2811	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (elite)	cache/assets/types/item/scroll_boxes.toml:122
+2813	VANILLA-ID OVERWRITE	types/item: scroll_boxes	Scroll box (master)	cache/assets/types/item/scroll_boxes.toml:152
+3286	VANILLA EDIT (inherit-only)	spell items	Custom spellbook teleport names	cache/assets/types/spell_items.toml:3
+3289	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3289, 4634, 20759, 20410])	cache/assets/types/spell_items.toml:11
+3292	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3292, 4637, 9114, 20411])	cache/assets/types/spell_items.toml:19
+3296	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3296, 4640, 9117, 20412])	cache/assets/types/spell_items.toml:27
+3301	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3301, 4643, 9120, 20413])	cache/assets/types/spell_items.toml:35
+3306	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3306, 4646, 9127, 20414])	cache/assets/types/spell_items.toml:43
+3312	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3312, 4649, 9129, 20419])	cache/assets/types/spell_items.toml:51
+4083	VANILLA EDIT (inherit-only)	types/item: sled	Sled	cache/assets/types/item/sled.toml:2
+4084	VANILLA EDIT (code)	code edits: makeTradeable	Sled 4084	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4631	VANILLA EDIT (inherit-only)	spell items	Custom spellbook teleport names	cache/assets/types/spell_items.toml:3
+4634	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3289, 4634, 20759, 20410])	cache/assets/types/spell_items.toml:11
+4637	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3292, 4637, 9114, 20411])	cache/assets/types/spell_items.toml:19
+4640	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3296, 4640, 9117, 20412])	cache/assets/types/spell_items.toml:27
+4643	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3301, 4643, 9120, 20413])	cache/assets/types/spell_items.toml:35
+4646	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3306, 4646, 9127, 20414])	cache/assets/types/spell_items.toml:43
+4649	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3312, 4649, 9129, 20419])	cache/assets/types/spell_items.toml:51
+4652	VANILLA EDIT (inherit-only)	spell items	(inherits name from [21836, 4652, 9131, 20420])	cache/assets/types/spell_items.toml:59
+4694	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4695	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4696	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4697	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4698	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4699	VANILLA EDIT (inherit-only)	types/item: prices	Runes that u can make profit with buying and selling	cache/assets/types/item/prices.toml:2
+4708	VANILLA EDIT (code)	code edits: makeTradeable	Ahrims Hood	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4710	VANILLA EDIT (code)	code edits: makeTradeable	Ahrims Staff	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4712	VANILLA EDIT (code)	code edits: makeTradeable	Ahrims Robetop	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4714	VANILLA EDIT (code)	code edits: makeTradeable	Ahrims Robeskirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4716	VANILLA EDIT (code)	code edits: makeTradeable	Dharoks Helm	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4718	VANILLA EDIT (code)	code edits: makeTradeable	Dharoks Greataxe	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4720	VANILLA EDIT (code)	code edits: makeTradeable	Dharoks Platebody	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4722	VANILLA EDIT (code)	code edits: makeTradeable	Dharoks Platelegs	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4724	VANILLA EDIT (code)	code edits: makeTradeable	Guthans Helm	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4726	VANILLA EDIT (code)	code edits: makeTradeable	Guthans Warspear	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4728	VANILLA EDIT (code)	code edits: makeTradeable	Guthans Platebody	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4730	VANILLA EDIT (code)	code edits: makeTradeable	Guthans Chainskirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4732	VANILLA EDIT (code)	code edits: makeTradeable	Karils Coif	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4734	VANILLA EDIT (code)	code edits: makeTradeable	Karils Crossbow	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4736	VANILLA EDIT (code)	code edits: makeTradeable	Karils Leathertop	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4738	VANILLA EDIT (code)	code edits: makeTradeable	Karils Leatherskirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4745	VANILLA EDIT (code)	code edits: makeTradeable	Torags Helm	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4747	VANILLA EDIT (code)	code edits: makeTradeable	Torags Hammers	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4749	VANILLA EDIT (code)	code edits: makeTradeable	Torags Platebody	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4751	VANILLA EDIT (code)	code edits: makeTradeable	Torags Platelegs	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4753	VANILLA EDIT (code)	code edits: makeTradeable	Veracs Helm	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4755	VANILLA EDIT (code)	code edits: makeTradeable	Veracs Flail	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4757	VANILLA EDIT (code)	code edits: makeTradeable	Veracs Brassard	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+4759	VANILLA EDIT (code)	code edits: makeTradeable	Veracs Plateskirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+5733	VANILLA EDIT (inherit-only)	types/item: rotten_potato	Rotten Potato	cache/assets/types/item/rotten_potato.toml:2
+6199	VANILLA EDIT (inherit-only)	types/item: mystery_box	Mystery box	cache/assets/types/item/mystery_box.toml:2
+6666	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+7410	VANILLA EDIT (inherit-only)	types/item: queen_secateurs	(inherits name from 7410)	cache/assets/types/item/queen_secateurs.toml:1
+7927	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+7956	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Slayer casket	cache/assets/types/item/reward_caskets.toml:38
+9044	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 3	cache/assets/types/item/pharaoh_sceptre.toml:21
+9046	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 2	cache/assets/types/item/pharaoh_sceptre.toml:14
+9048	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 1	cache/assets/types/item/pharaoh_sceptre.toml:7
+9050	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre	cache/assets/types/item/pharaoh_sceptre.toml:2
+9111	VANILLA EDIT (inherit-only)	spell items	Custom spellbook teleport names	cache/assets/types/spell_items.toml:3
+9114	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3292, 4637, 9114, 20411])	cache/assets/types/spell_items.toml:19
+9117	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3296, 4640, 9117, 20412])	cache/assets/types/spell_items.toml:27
+9120	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3301, 4643, 9120, 20413])	cache/assets/types/spell_items.toml:35
+9127	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3306, 4646, 9127, 20414])	cache/assets/types/spell_items.toml:43
+9129	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3312, 4649, 9129, 20419])	cache/assets/types/spell_items.toml:51
+9131	VANILLA EDIT (inherit-only)	spell items	(inherits name from [21836, 4652, 9131, 20420])	cache/assets/types/spell_items.toml:59
+9731	VANILLA EDIT (inherit-only)	types/item: prices	Mind shield	cache/assets/types/item/prices.toml:7
+9921	VANILLA EDIT (code)	code edits: makeTradeable	Skeleton Boots	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+9922	VANILLA EDIT (code)	code edits: makeTradeable	Skeleton Gloves	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+9923	VANILLA EDIT (code)	code edits: makeTradeable	Skeleton Leggings	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+9924	VANILLA EDIT (code)	code edits: makeTradeable	Skeleton Shirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+9925	VANILLA EDIT (code)	code edits: makeTradeable	Skeleton Mask	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+10556	VANILLA EDIT (code)	code edits: makeTradeable	Attacker Icon	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+10557	VANILLA EDIT (code)	code edits: makeTradeable	Collector Icon	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+10558	VANILLA EDIT (code)	code edits: makeTradeable	Defender Icon	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+10559	VANILLA EDIT (code)	code edits: makeTradeable	Healer Icon	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+10937	VANILLA EDIT (inherit-only)	types/item: nail_beast_nails	Nail beast nails	cache/assets/types/item/nail_beast_nails.toml:2
+10938	VANILLA EDIT (inherit-only)	types/item: nail_beast_nails	Nail beast nails	cache/assets/types/item/nail_beast_nails.toml:2
+11014	VANILLA EDIT (code)	code edits: misc	Ring of levitation	NearRealityCustomItemPacker.pack() (rename + GE tradeable)
+11283	VANILLA-ID OVERWRITE	charged-item placeholders	Charged Dragonfire Shield	cache/assets/osnr/custom_items/item_config/definitions.toml:4081
+11681	VANILLA EDIT (inherit-only)	types/item: imbue_scroll	Imbue scroll	cache/assets/types/item/imbue_scroll.toml:2
+11738	VANILLA EDIT (inherit-only)	types/item: stackables	(inherits name from 11738)	cache/assets/types/item/stackables.toml:1
+11847	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+11862	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+11863	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+11919	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+12637	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+12638	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+12639	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+12747	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+12873	VANILLA EDIT (code)	code edits: barrows sets	Guthans Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12875	VANILLA EDIT (code)	code edits: barrows sets	Veracs Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12877	VANILLA EDIT (code)	code edits: barrows sets	Dharoks Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12879	VANILLA EDIT (code)	code edits: barrows sets	Torags Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12881	VANILLA EDIT (code)	code edits: barrows sets	Ahrims Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12883	VANILLA EDIT (code)	code edits: barrows sets	Karils Armour Set	NearRealityCustomItemPacker.pack() (inv op2 = "Unpack")
+12887	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+12888	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+12889	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+12890	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+12938	VANILLA EDIT (inherit-only)	types/item: tp_scrolls	Zul andra teleport	cache/assets/types/item/tp_scrolls.toml:2
+12956	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+12957	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+12958	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+12959	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+13074	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 8	cache/assets/types/item/pharaoh_sceptre.toml:56
+13075	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 7	cache/assets/types/item/pharaoh_sceptre.toml:49
+13076	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 6	cache/assets/types/item/pharaoh_sceptre.toml:42
+13077	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 5	cache/assets/types/item/pharaoh_sceptre.toml:35
+13078	VANILLA EDIT (inherit-only)	types/item: pharaoh_sceptre	Pharaoh's Sceptre 4	cache/assets/types/item/pharaoh_sceptre.toml:28
+13190	VANILLA EDIT (inherit-only)	types/item: bonds	$50 Donator Scroll	cache/assets/types/item/bonds.toml:44
+13220	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+13249	VANILLA EDIT (inherit-only)	types/item: tp_scrolls	Key master teleport	cache/assets/types/item/tp_scrolls.toml:7
+13288	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+13307	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+13329	VANILLA EDIT (inherit-only)	types/item: max_capes	Fire Max Cape	cache/assets/types/item/max_capes.toml:2
+13331	VANILLA EDIT (inherit-only)	types/item: max_capes	Saradomin Max Cape	cache/assets/types/item/max_capes.toml:9
+13333	VANILLA EDIT (inherit-only)	types/item: max_capes	Zamorak Max Cape	cache/assets/types/item/max_capes.toml:16
+13335	VANILLA EDIT (inherit-only)	types/item: max_capes	Guthix Max Cape	cache/assets/types/item/max_capes.toml:23
+13337	VANILLA EDIT (inherit-only)	types/item: max_capes	Accumulator max cape	cache/assets/types/item/max_capes.toml:30
+13343	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+13344	VANILLA EDIT (inherit-only)	store items	Inverted Santa Hat	cache/assets/types/store_items.toml:201
+19564	VANILLA EDIT (inherit-only)	types/item: royal_seed_pod	Royal Seed Pod	cache/assets/types/item/royal_seed_pod.toml:2
+19782	VANILLA-ID OVERWRITE	store items	Xeric's Wisdom	cache/assets/types/store_items.toml:209
+19836	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Master reward casket	cache/assets/types/item/reward_caskets.toml:32
+20409	VANILLA EDIT (inherit-only)	spell items	Custom spellbook teleport names	cache/assets/types/spell_items.toml:3
+20410	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3289, 4634, 20759, 20410])	cache/assets/types/spell_items.toml:11
+20411	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3292, 4637, 9114, 20411])	cache/assets/types/spell_items.toml:19
+20412	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3296, 4640, 9117, 20412])	cache/assets/types/spell_items.toml:27
+20413	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3301, 4643, 9120, 20413])	cache/assets/types/spell_items.toml:35
+20414	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3306, 4646, 9127, 20414])	cache/assets/types/spell_items.toml:43
+20419	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3312, 4649, 9129, 20419])	cache/assets/types/spell_items.toml:51
+20420	VANILLA EDIT (inherit-only)	spell items	(inherits name from [21836, 4652, 9131, 20420])	cache/assets/types/spell_items.toml:59
+20537	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+20538	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+20539	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+20540	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+20541	VANILLA EDIT (inherit-only)	types/item: halos	Halos	cache/assets/types/item/halos.toml:2
+20543	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Elite reward casket	cache/assets/types/item/reward_caskets.toml:26
+20544	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Hard reward casket	cache/assets/types/item/reward_caskets.toml:20
+20545	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Medium reward casket	cache/assets/types/item/reward_caskets.toml:14
+20546	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Easy reward casket	cache/assets/types/item/reward_caskets.toml:8
+20608	VANILLA EDIT (code)	code edits: chaos key	Chaos Key (active)	NearRealityCustomItemPacker.pack() (rename, clear note/placeholder)
+20609	VANILLA EDIT (code)	code edits: chaos key	Chaos Key	NearRealityCustomItemPacker.pack() (cloned from 20608)
+20759	VANILLA EDIT (inherit-only)	spell items	(inherits name from [3289, 4634, 20759, 20410])	cache/assets/types/spell_items.toml:11
+20760	VANILLA EDIT (inherit-only)	types/item: max_capes	Ardougne max cape	cache/assets/types/item/max_capes.toml:38
+20838	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+20840	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+20842	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+20844	VANILLA EDIT (inherit-only)	types/item: pet_mystery_box	Pet mystery box rewards with destroy option	cache/assets/types/item/pet_mystery_box.toml:20
+21285	VANILLA EDIT (inherit-only)	types/item: max_capes	Infernal max cape	cache/assets/types/item/max_capes.toml:48
+21316	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst broad bolts	cache/assets/types/item/amethyst_items.toml:2
+21318	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst javelins	cache/assets/types/item/amethyst_items.toml:32
+21320	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst javelins	cache/assets/types/item/amethyst_items.toml:32
+21322	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst javelins	cache/assets/types/item/amethyst_items.toml:32
+21324	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst javelins	cache/assets/types/item/amethyst_items.toml:32
+21326	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst arrows	cache/assets/types/item/amethyst_items.toml:7
+21326	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21332	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst arrows	cache/assets/types/item/amethyst_items.toml:7
+21332	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21334	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst arrows	cache/assets/types/item/amethyst_items.toml:7
+21334	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21336	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst arrows	cache/assets/types/item/amethyst_items.toml:7
+21336	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21338	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst bolt tips	cache/assets/types/item/amethyst_items.toml:12
+21347	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst	cache/assets/types/item/amethyst_items.toml:22
+21347	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21348	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst	cache/assets/types/item/amethyst_items.toml:22
+21350	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst arrowtips	cache/assets/types/item/amethyst_items.toml:17
+21350	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21352	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst javelin heads	cache/assets/types/item/amethyst_items.toml:27
+21352	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+21776	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued Sara max cape	cache/assets/types/item/max_capes.toml:55
+21780	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued Zam max cape	cache/assets/types/item/max_capes.toml:62
+21784	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued Guth max cape	cache/assets/types/item/max_capes.toml:69
+21802	VANILLA EDIT (inherit-only)	types/item: tp_scrolls	Revenant cave teleport	cache/assets/types/item/tp_scrolls.toml:12
+21816	VANILLA-ID OVERWRITE	charged-item placeholders	Charged Bracelet of Etherum	cache/assets/osnr/custom_items/item_config/definitions.toml:4126
+21836	VANILLA EDIT (inherit-only)	spell items	(inherits name from [21836, 4652, 9131, 20420])	cache/assets/types/spell_items.toml:59
+21859	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items with destroy option	cache/assets/types/item/tradeable_items.toml:2
+21898	VANILLA EDIT (inherit-only)	types/item: max_capes	Assembler max cape	cache/assets/types/item/max_capes.toml:76
+22331	VANILLA EDIT (inherit-only)	types/item: starter_weaponry	Starter sword	cache/assets/types/item/starter_weaponry.toml:2
+22333	VANILLA EDIT (inherit-only)	types/item: starter_weaponry	Starter bow	cache/assets/types/item/starter_weaponry.toml:15
+22335	VANILLA EDIT (inherit-only)	types/item: starter_weaponry	Starter staff	cache/assets/types/item/starter_weaponry.toml:28
+22610	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22613	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22616	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22619	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22622	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22625	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22628	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+22631	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Pvp weapons	cache/assets/types/item/tradeable_items.toml:19
+23245	VANILLA EDIT (inherit-only)	types/item: reward_caskets	Beginner reward casket	cache/assets/types/item/reward_caskets.toml:2
+23490	VANILLA EDIT (code)	code edits: makeTradeable	Larrans Key	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+24133	VANILLA EDIT (inherit-only)	types/item: max_capes	Infernal Max Cape (l)	cache/assets/types/item/max_capes.toml:84
+24134	VANILLA EDIT (inherit-only)	types/item: max_capes	fire Max Cape (l)	cache/assets/types/item/max_capes.toml:91
+24135	VANILLA EDIT (inherit-only)	types/item: max_capes	Assembler Max Cape (l)	cache/assets/types/item/max_capes.toml:98
+24232	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued sara Max Cape (l)	cache/assets/types/item/max_capes.toml:106
+24233	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued zammy Max Cape (l)	cache/assets/types/item/max_capes.toml:113
+24234	VANILLA EDIT (inherit-only)	types/item: max_capes	Imbued guthix Max Cape (l)	cache/assets/types/item/max_capes.toml:120
+24390	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+25104	VANILLA-ID OVERWRITE	npc-file item edits	(inherits name from 25104)	cache/assets/types/npc/custom.toml:79
+25282	VANILLA EDIT (code)	code edits: makeTradeable	Sled 25282	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+25486	VANILLA-ID OVERWRITE	charged-item placeholders	Charged Ursine Chainmace (u)	cache/assets/osnr/custom_items/item_config/definitions.toml:4139
+25487	VANILLA-ID OVERWRITE	charged-item placeholders	Charged Ursine Chainmace	cache/assets/osnr/custom_items/item_config/definitions.toml:4152
+25849	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst Darts	cache/assets/types/item/amethyst_items.toml:42
+25849	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+25851	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst Darts	cache/assets/types/item/amethyst_items.toml:42
+25851	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+25853	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst dart tip	cache/assets/types/item/amethyst_items.toml:37
+25853	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+25855	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst Darts	cache/assets/types/item/amethyst_items.toml:42
+25855	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+25857	VANILLA EDIT (inherit-only)	types/item: amethyst_items	Amethyst Darts	cache/assets/types/item/amethyst_items.toml:42
+25857	VANILLA EDIT (inherit-only)	types/item: prices	Amethyst stuff	cache/assets/types/item/prices.toml:12
+26255	NEW custom def (low-range slot reuse)	dragon hunter / pouches	Dragon Hunter Gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:3129
+26256	VANILLA-ID OVERWRITE [placeholder]	dragon hunter / pouches	Dragon Hunter Gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:3148
+26300	VANILLA-ID OVERWRITE	storage pouches	Dragonhide pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3159
+26301	NEW custom def (low-range slot reuse) [placeholder]	storage pouches	Dragonhide pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3177
+26302	VANILLA-ID OVERWRITE	storage pouches	Open dragonhide pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3186
+26303	NEW custom def (low-range slot reuse) [placeholder]	storage pouches	Open dragonhide pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3204
+26304	VANILLA-ID OVERWRITE	storage pouches	Bone pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3214
+26305	NEW custom def (low-range slot reuse) [placeholder]	storage pouches	Bone pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3232
+26306	VANILLA-ID OVERWRITE	storage pouches	Open Bone pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3241
+26307	NEW custom def (low-range slot reuse) [placeholder]	storage pouches	Open Bone pouch	cache/assets/osnr/custom_items/item_config/definitions.toml:3259
+26649	VANILLA EDIT (code)	code edits: makeTradeable	SKIS	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+26705	VANILLA EDIT (inherit-only)	types/item: tradeable_items	Items without destroy option	cache/assets/types/item/tradeable_items.toml:14
+26706	VANILLA EDIT (inherit-only)	types/item: imbue_scroll	Actual scroll of imbuing	cache/assets/types/item/imbue_scroll.toml:8
+27281	VANILLA EDIT (code)	code edits: misc	Divine rune pouch	NearRealityCustomItemPacker.pack() (inv op5 = "Extra Slot")
+27358	VANILLA-ID OVERWRITE	charged-item placeholders	Charged Tome of fire	cache/assets/osnr/custom_items/item_config/definitions.toml:4165
+30000	VANILLA-ID OVERWRITE	store items	Cute creature	cache/assets/types/store_items.toml:219
+30001	NEW custom def (low-range slot reuse)	store items	Stray dog	cache/assets/types/store_items.toml:243
+30002	VANILLA-ID OVERWRITE	store items	Evil creature	cache/assets/types/store_items.toml:267
+30003	NEW custom def (low-range slot reuse)	pets	Jal-ImRek	cache/assets/types/pets.toml:2
+30005	VANILLA-ID OVERWRITE	pets	Wyrmy	cache/assets/types/pets.toml:33
+30006	NEW custom def (low-range slot reuse)	tournament	Tournament Rune Pouch	cache/assets/types/tournament.toml:2
+30027	VANILLA-ID OVERWRITE [placeholder]	types/item: emote_scroll	null	cache/assets/types/item/emote_scroll.toml:10
+30030	VANILLA-ID OVERWRITE	types/item: ice_gloves	Enhanced ice gloves	cache/assets/types/item/ice_gloves.toml:8
+30031	VANILLA-ID OVERWRITE	types/item: pet_mystery_box	Pet mystery box	cache/assets/types/item/pet_mystery_box.toml:2
+30032	VANILLA-ID OVERWRITE [placeholder]	types/item: pet_mystery_box	null	cache/assets/types/item/pet_mystery_box.toml:12
+30051	VANILLA-ID OVERWRITE	types/item: bonds	$10 Donator Scroll	cache/assets/types/item/bonds.toml:23
+30052	NEW custom def (low-range slot reuse) [placeholder]	types/item: bonds	null	cache/assets/types/item/bonds.toml:35
+30060	VANILLA-ID OVERWRITE	types/item: bonds	$1 Bond	cache/assets/types/item/bonds.toml:2
+30061	NEW custom def (low-range slot reuse) [placeholder]	types/item: bonds	null	cache/assets/types/item/bonds.toml:14
+30210	NEW custom def (low-range slot reuse)	types/item: clue_progresser_item	Sherlock's notes	cache/assets/types/item/clue_progresser_item.toml:2
+30211	NEW custom def (low-range slot reuse)	types/item: clue_progresser_item	null	cache/assets/types/item/clue_progresser_item.toml:29
+30212	NEW custom def (low-range slot reuse)	types/item: clue_progresser_item	null	cache/assets/types/item/clue_progresser_item.toml:49
+30213	NEW custom def (low-range slot reuse)	types/item: clue_progresser_item	null	cache/assets/types/item/clue_progresser_item.toml:69
+30214	NEW custom def (low-range slot reuse)	types/item: clue_progresser_item	null	cache/assets/types/item/clue_progresser_item.toml:89
+30215	NEW custom def (low-range slot reuse)	types/item: tome_of_experience	Tome of Experience	cache/assets/types/item/tome_of_experience.toml:2
+30216	NEW custom def (low-range slot reuse) [placeholder]	types/item: tome_of_experience	(placeholder of 30215)	cache/assets/types/item/tome_of_experience.toml:12
+30217	NEW custom def (low-range slot reuse) [placeholder]	types/item: clue_progresser_item	(placeholder of 30210)	cache/assets/types/item/clue_progresser_item.toml:109
+30218	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2803)	cache/assets/types/item/scroll_boxes.toml:25
+30219	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2805)	cache/assets/types/item/scroll_boxes.toml:55
+30220	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2807)	cache/assets/types/item/scroll_boxes.toml:85
+30221	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2809)	cache/assets/types/item/scroll_boxes.toml:115
+30222	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2811)	cache/assets/types/item/scroll_boxes.toml:145
+30223	NEW custom def (low-range slot reuse) [placeholder]	types/item: scroll_boxes	(placeholder of 2813)	cache/assets/types/item/scroll_boxes.toml:175
+30321	VANILLA-ID OVERWRITE	zombie helmet	Zombie helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:2
+30323	NEW custom def (low-range slot reuse) [placeholder]	zombie helmet	Zombie helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:16
+30324	VANILLA-ID OVERWRITE	zombie helmet	Broken zombie helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:25
+30326	NEW custom def (low-range slot reuse) [placeholder]	zombie helmet	Broken zombie helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:38
+30445	VANILLA EDIT (code)	code edits: makeTradeable	Echo Ahrims Hood	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+30447	VANILLA EDIT (code)	code edits: makeTradeable	Echo Ahrims Robetop	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+30449	VANILLA EDIT (code)	code edits: makeTradeable	Echo Ahrims Robeskirt	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+30500	VANILLA-ID OVERWRITE	frank (misc npc/item)	Frank	cache/assets/types/frank.toml:16
+30568	VANILLA EDIT (code)	code edits: makeTradeable	Echo Ahrims Staff	NearRealityCustomItemPacker.pack() (makeTradeable (GE=true))
+31300	NEW custom def	item packs	Ancient Shard Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3267
+31301	NEW custom def	item packs	Cannonball Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3273
+31302	NEW custom def	item packs	Saradomin Brew Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3279
+31303	NEW custom def	item packs	Super Restore Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3285
+31304	NEW custom def	item packs	Super Combat Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3291
+31305	NEW custom def	item packs	Karambwan Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3297
+31306	NEW custom def	item packs	Stamina Potion Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3303
+31307	NEW custom def	item packs	Anglerfish Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3309
+31308	NEW custom def	item packs	Sea Turtle Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3315
+31309	NEW custom def	item packs	Battlemage Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3321
+31310	NEW custom def	item packs	Bastion Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3327
+31311	NEW custom def	item packs	Burnt Pages Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3333
+31312	NEW custom def	item packs	Black Chinchompa Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3339
+31313	NEW custom def	item packs	Dragon Bones Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3345
+31314	NEW custom def	item packs	Granite Cannonball Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3351
+31315	NEW custom def	item packs	Sherlock's Notes (x10) Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3357
+31316	NEW custom def	item packs	Sherlock's Notes (x100) Pack	cache/assets/osnr/custom_items/item_config/definitions.toml:3363
+31317	NEW custom def	scrolls	Slayer Task Reset Scroll	cache/assets/osnr/custom_items/item_config/definitions.toml:3369
+31350	NEW custom def	ornament kits	Masori Pegasian Ornament Kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3375
+31351	NEW custom def	ornament kits	Ancestral Eternal Ornament Kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3381
+31352	NEW custom def	ornament kits	Torva Primordial Ornament Kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3387
+32004	NEW custom def	misc custom	Ancient book	cache/assets/osnr/custom_items/item_config/definitions.toml:48
+32005	NEW custom def [noted]	misc custom	Ancient book	cache/assets/osnr/custom_items/item_config/definitions.toml:67
+32006	NEW custom def	god soul crystals	Armadyl soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:90
+32007	NEW custom def [noted]	god soul crystals	Armadyl soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:101
+32010	NEW custom def	god soul crystals	Bandos soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:116
+32011	NEW custom def [noted]	god soul crystals	Bandos soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:127
+32014	NEW custom def	god soul crystals	Saradomin soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:142
+32015	NEW custom def [noted]	god soul crystals	Saradomin soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:153
+32018	NEW custom def	god soul crystals	Zamorak soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:168
+32019	NEW custom def [noted]	god soul crystals	Zamorak soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:179
+32022	NEW custom def	misc custom	Dragon kite	cache/assets/osnr/custom_items/item_config/definitions.toml:194
+32023	NEW custom def [noted]	misc custom	Dragon kite	cache/assets/osnr/custom_items/item_config/definitions.toml:214
+32024	NEW custom def	misc custom	Ancient medallion	cache/assets/osnr/custom_items/item_config/definitions.toml:238
+32025	NEW custom def [noted]	misc custom	Ancient medallion	cache/assets/osnr/custom_items/item_config/definitions.toml:257
+32026	NEW custom def	imbued god capes	Imbued ancient cape	cache/assets/osnr/custom_items/item_config/definitions.toml:280
+32027	NEW custom def [noted]	imbued god capes	Imbued ancient cape	cache/assets/osnr/custom_items/item_config/definitions.toml:293
+32028	NEW custom def	imbued god capes	Imbued armadyl cape	cache/assets/osnr/custom_items/item_config/definitions.toml:311
+32029	NEW custom def [noted]	imbued god capes	Imbued armadyl cape	cache/assets/osnr/custom_items/item_config/definitions.toml:324
+32030	NEW custom def	imbued god capes	Imbued bandos cape	cache/assets/osnr/custom_items/item_config/definitions.toml:342
+32031	NEW custom def [noted]	imbued god capes	Imbued bandos cape	cache/assets/osnr/custom_items/item_config/definitions.toml:355
+32032	NEW custom def	imbued god capes	Imbued seren cape	cache/assets/osnr/custom_items/item_config/definitions.toml:373
+32033	NEW custom def [noted]	imbued god capes	Imbued seren cape	cache/assets/osnr/custom_items/item_config/definitions.toml:386
+32042	NEW custom def	misc custom	Polypore staff	cache/assets/osnr/custom_items/item_config/definitions.toml:404
+32043	NEW custom def [noted]	misc custom	Polypore staff	cache/assets/osnr/custom_items/item_config/definitions.toml:423
+32044	NEW custom def	crystal keys	Bronze key	cache/assets/osnr/custom_items/item_config/definitions.toml:446
+32045	NEW custom def [noted]	crystal keys	Bronze key	cache/assets/osnr/custom_items/item_config/definitions.toml:463
+32046	NEW custom def	crystal keys	Silver key	cache/assets/osnr/custom_items/item_config/definitions.toml:484
+32047	NEW custom def [noted]	crystal keys	Silver key	cache/assets/osnr/custom_items/item_config/definitions.toml:501
+32048	NEW custom def	crystal keys	Gold key	cache/assets/osnr/custom_items/item_config/definitions.toml:522
+32049	NEW custom def [noted]	crystal keys	Gold key	cache/assets/osnr/custom_items/item_config/definitions.toml:539
+32050	NEW custom def	crystal keys	Platinum key	cache/assets/osnr/custom_items/item_config/definitions.toml:560
+32051	NEW custom def [noted]	crystal keys	Platinum key	cache/assets/osnr/custom_items/item_config/definitions.toml:577
+32052	NEW custom def	crystal keys	Diamond key	cache/assets/osnr/custom_items/item_config/definitions.toml:598
+32053	NEW custom def [noted]	crystal keys	Diamond key	cache/assets/osnr/custom_items/item_config/definitions.toml:615
+32054	NEW custom def	home teleport tablets	N tablet	cache/assets/osnr/custom_items/item_config/definitions.toml:636
+32055	NEW custom def [noted]	home teleport tablets	N tablet	cache/assets/osnr/custom_items/item_config/definitions.toml:647
+32056	NEW custom def	home teleport tablets	Home teleport	cache/assets/osnr/custom_items/item_config/definitions.toml:663
+32058	NEW custom def	capes	Death cape	cache/assets/osnr/custom_items/item_config/definitions.toml:684
+32059	NEW custom def [noted]	capes	Death cape	cache/assets/osnr/custom_items/item_config/definitions.toml:703
+32066	NEW custom def	holiday cosmetics	Pink partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:726
+32068	NEW custom def	holiday cosmetics	Orange partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:739
+32070	NEW custom def	donator pins	Donator pin ($10)	cache/assets/osnr/custom_items/item_config/definitions.toml:754
+32071	NEW custom def	donator pins	Donator pin ($25)	cache/assets/osnr/custom_items/item_config/definitions.toml:765
+32072	NEW custom def	donator pins	Donator pin ($50)	cache/assets/osnr/custom_items/item_config/definitions.toml:776
+32073	NEW custom def	donator pins	Donator pin ($100)	cache/assets/osnr/custom_items/item_config/definitions.toml:787
+32074	NEW custom def	slayer helms	Gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:800
+32075	NEW custom def [noted]	slayer helms	Gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:812
+32076	NEW custom def	slayer helms	Corrupted gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:829
+32077	NEW custom def [noted]	slayer helms	Corrupted gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:841
+32078	NEW custom def	holiday cosmetics	Near Reality party hat	cache/assets/osnr/custom_items/item_config/definitions.toml:858
+32080	NEW custom def	mystery boxes	OSNR Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:876
+32081	NEW custom def [noted]	mystery boxes	OSNR Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:893
+32082	NEW custom def	misc custom	Star locator	cache/assets/osnr/custom_items/item_config/definitions.toml:908
+32083	NEW custom def	npc-file item edits	Pet xamphur	cache/assets/types/npc/xamphur.toml:63
+32085	NEW custom def [placeholder]	npc-file item edits	Pet xamphur	cache/assets/types/npc/xamphur.toml:84
+32102	NEW custom def	ankou sets	Blue ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:930
+32104	NEW custom def	ankou sets	Blue ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:943
+32106	NEW custom def	ankou sets	Blue ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:956
+32108	NEW custom def	ankou sets	Blue ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:969
+32110	NEW custom def	ankou sets	Blue ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:982
+32112	NEW custom def	ankou sets	Green ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:995
+32114	NEW custom def	ankou sets	Green ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:1008
+32116	NEW custom def	ankou sets	Green ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:1021
+32118	NEW custom def	ankou sets	Green ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:1034
+32120	NEW custom def	ankou sets	Green ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:1047
+32122	NEW custom def	ankou sets	Gold ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:1060
+32124	NEW custom def	ankou sets	Gold ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:1073
+32126	NEW custom def	ankou sets	Gold ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:1086
+32128	NEW custom def	ankou sets	Gold ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:1099
+32130	NEW custom def	ankou sets	Gold ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:1112
+32132	NEW custom def	ankou sets	White ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:1125
+32134	NEW custom def	ankou sets	White ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:1138
+32136	NEW custom def	ankou sets	White ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:1151
+32138	NEW custom def	ankou sets	White ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:1164
+32140	NEW custom def	ankou sets	White ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:1177
+32142	NEW custom def	bandos (or) set	Bandos chestplate (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:1190
+32143	NEW custom def [noted]	bandos (or) set	Bandos chestplate (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:1216
+32144	NEW custom def	bandos (or) set	Bandos tassets (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:1230
+32145	NEW custom def [noted]	bandos (or) set	Bandos tassets (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:1254
+32146	NEW custom def	ornament kits	Bandos ornament kit	cache/assets/osnr/custom_items/item_config/definitions.toml:1268
+32147	NEW custom def [noted]	ornament kits	Bandos tassets (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:1279
+32148	NEW custom def	boosters & tokens	Vote Shard	cache/assets/osnr/custom_items/item_config/definitions.toml:1287
+32149	NEW custom def	boosters	Larran's key booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1309
+32151	NEW custom def	boosters	Slayer booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1333
+32152	NEW custom def	boosters	Pet booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1357
+32153	NEW custom def	boosters	Gauntlet booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1381
+32154	NEW custom def	boosters	Blood money booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1405
+32155	NEW custom def	boosters	Clue booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1429
+32156	NEW custom def	boosters	ToB booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1453
+32157	NEW custom def	scrolls	Slayer task picker scroll	cache/assets/osnr/custom_items/item_config/definitions.toml:1477
+32158	NEW custom def	scrolls	Slayer task reset scroll	cache/assets/osnr/custom_items/item_config/definitions.toml:1500
+32159	NEW custom def	boosters & tokens	Spicy stew (+5)	cache/assets/osnr/custom_items/item_config/definitions.toml:1523
+32160	NEW custom def	scrolls	Inferno skip scroll	cache/assets/osnr/custom_items/item_config/definitions.toml:1545
+32161	NEW custom def	boosters & tokens	Enhanced excalibur	cache/assets/osnr/custom_items/item_config/definitions.toml:1567
+32162	NEW custom def	mystery boxes	Vote mystery box	cache/assets/osnr/custom_items/item_config/definitions.toml:1595
+32163	NEW custom def	mystery boxes	Cosmetic mystery box	cache/assets/osnr/custom_items/item_config/definitions.toml:1611
+32164	NEW custom def	mystery boxes	Super mystery box	cache/assets/osnr/custom_items/item_config/definitions.toml:1627
+32165	NEW custom def	mystery boxes	Ultimate mystery box	cache/assets/osnr/custom_items/item_config/definitions.toml:1643
+32166	NEW custom def	boosters	Revenant booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1659
+32167	NEW custom def	boosters	Nex booster	cache/assets/osnr/custom_items/item_config/definitions.toml:1683
+32168	NEW custom def	boosters & tokens	Barrows totem	cache/assets/osnr/custom_items/item_config/definitions.toml:1707
+32169	NEW custom def	ancient warriors BH	Vesta's helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:1730
+32170	NEW custom def [noted]	ancient warriors BH	Vesta's helmet	cache/assets/osnr/custom_items/item_config/definitions.toml:1749
+32171	NEW custom def [placeholder]	ancient warriors BH	(placeholder of 32169)	cache/assets/osnr/custom_items/item_config/definitions.toml:1757
+32172	NEW custom def	holy/ancient weapons	Holy great warhammer	cache/assets/osnr/custom_items/item_config/definitions.toml:1764
+32173	NEW custom def [noted]	holy/ancient weapons	Holy great warhammer	cache/assets/osnr/custom_items/item_config/definitions.toml:1783
+32174	NEW custom def [placeholder]	holy/ancient weapons	Holy great warhammer	cache/assets/osnr/custom_items/item_config/definitions.toml:1791
+32175	NEW custom def	holy/ancient weapons	Holy great lance	cache/assets/osnr/custom_items/item_config/definitions.toml:1800
+32176	NEW custom def [noted]	holy/ancient weapons	Holy great lance	cache/assets/osnr/custom_items/item_config/definitions.toml:1819
+32177	NEW custom def [placeholder]	holy/ancient weapons	Holy great lance	cache/assets/osnr/custom_items/item_config/definitions.toml:1827
+32178	NEW custom def	misc custom	Degraded essence	cache/assets/osnr/custom_items/item_config/definitions.toml:1836
+32179	NEW custom def [placeholder]	misc custom	Degraded essence	cache/assets/osnr/custom_items/item_config/definitions.toml:1853
+32180	NEW custom def	misc custom	Blood tentacles	cache/assets/osnr/custom_items/item_config/definitions.toml:1862
+32181	NEW custom def [placeholder]	misc custom	Blood tentacles	cache/assets/osnr/custom_items/item_config/definitions.toml:1879
+32182	NEW custom def	misc custom	Angelic artifact	cache/assets/osnr/custom_items/item_config/definitions.toml:1888
+32183	NEW custom def [noted]	misc custom	Angelic artifact	cache/assets/osnr/custom_items/item_config/definitions.toml:1905
+32184	NEW custom def [placeholder]	misc custom	Angelic artifact	cache/assets/osnr/custom_items/item_config/definitions.toml:1914
+32185	NEW custom def	misc custom	Malevolent energy	cache/assets/osnr/custom_items/item_config/definitions.toml:1923
+32186	NEW custom def	barrows bobbleheads	Ahrim the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:1937
+32187	NEW custom def	barrows bobbleheads	Dharok the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:1953
+32188	NEW custom def	barrows bobbleheads	Guthan the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:1969
+32189	NEW custom def	barrows bobbleheads	Karil the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:1985
+32190	NEW custom def	barrows bobbleheads	Torag the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:2001
+32191	NEW custom def	barrows bobbleheads	Verac the Bobbled	cache/assets/osnr/custom_items/item_config/definitions.toml:2017
+32192	NEW custom def	nex kiteshields	Malovelent kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:2033
+32193	NEW custom def	misc custom	note	cache/assets/osnr/custom_items/item_config/definitions.toml:2052
+32194	NEW custom def [placeholder]	misc custom	(placeholder of 32192)	cache/assets/osnr/custom_items/item_config/definitions.toml:2058
+32195	NEW custom def	nex kiteshields	Merciless kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:2065
+32196	NEW custom def	misc custom	note	cache/assets/osnr/custom_items/item_config/definitions.toml:2084
+32197	NEW custom def [placeholder]	misc custom	(placeholder of 32195)	cache/assets/osnr/custom_items/item_config/definitions.toml:2090
+32198	NEW custom def	nex kiteshields	Vengeful kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:2096
+32199	NEW custom def	misc custom	note	cache/assets/osnr/custom_items/item_config/definitions.toml:2115
+32200	NEW custom def [placeholder]	misc custom	(placeholder of 32198)	cache/assets/osnr/custom_items/item_config/definitions.toml:2121
+32201	NEW custom def	misc custom	Drop Rate Pin	cache/assets/osnr/custom_items/item_config/definitions.toml:2127
+32202	NEW custom def [placeholder]	misc custom	(placeholder of 32201)	cache/assets/osnr/custom_items/item_config/definitions.toml:2146
+32203	NEW custom def	mystery boxes	PvP Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2153
+32204	NEW custom def [noted]	mystery boxes	PvP Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2168
+32205	NEW custom def [placeholder]	mystery boxes	PvP Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2183
+32206	NEW custom def	mystery boxes	Ultimate Mystery Box (e)	cache/assets/osnr/custom_items/item_config/definitions.toml:2193
+32207	NEW custom def [noted]	mystery boxes	Ultimate Mystery Box (e)	cache/assets/osnr/custom_items/item_config/definitions.toml:2204
+32208	NEW custom def [placeholder]	mystery boxes	Ultimate Mystery Box (e)	cache/assets/osnr/custom_items/item_config/definitions.toml:2219
+32209	NEW custom def	mystery boxes	3rd Age Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2229
+32210	NEW custom def [noted]	mystery boxes	3rd Age Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2240
+32211	NEW custom def [placeholder]	mystery boxes	3rd Age Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2255
+32212	NEW custom def	mystery boxes	Skilling Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2265
+32213	NEW custom def [noted]	mystery boxes	Skilling Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2281
+32214	NEW custom def [placeholder]	mystery boxes	Skilling Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2296
+32215	NEW custom def	mystery boxes	Mystery Box Bundle	cache/assets/osnr/custom_items/item_config/definitions.toml:2304
+32216	NEW custom def	toa echo / anubis	Anubis sandals	cache/assets/osnr/custom_items/item_config/toa.toml:1
+32217	NEW custom def	toa echo / anubis	Anubis top	cache/assets/osnr/custom_items/item_config/toa.toml:24
+32218	NEW custom def	toa echo / anubis	Anubis gloves	cache/assets/osnr/custom_items/item_config/toa.toml:47
+32219	NEW custom def	toa echo / anubis	Anubis khopesh	cache/assets/osnr/custom_items/item_config/toa.toml:70
+32220	NEW custom def	toa echo / anubis	Anubis legs	cache/assets/osnr/custom_items/item_config/toa.toml:93
+32221	NEW custom def	toa echo / anubis	Anubis mask	cache/assets/osnr/custom_items/item_config/toa.toml:116
+32222	NEW custom def	toa echo / anubis	Anubis round shield	cache/assets/osnr/custom_items/item_config/toa.toml:139
+32223	NEW custom def	toa echo / anubis	Anubis sq shield	cache/assets/osnr/custom_items/item_config/toa.toml:162
+32224	NEW custom def	toa echo / anubis	Ice partyhat	cache/assets/osnr/custom_items/item_config/toa.toml:185
+32225	NEW custom def	toa echo / anubis	Ice santa hat	cache/assets/osnr/custom_items/item_config/toa.toml:202
+32226	NEW custom def	toa echo / anubis	Ice halloween mask	cache/assets/osnr/custom_items/item_config/toa.toml:219
+32227	NEW custom def	slayer helm parts	Slayer base	cache/assets/osnr/custom_items/item_config/definitions.toml:2310
+32228	NEW custom def	slayer helm parts	Slayer shaft	cache/assets/osnr/custom_items/item_config/definitions.toml:2324
+32229	NEW custom def	slayer helm parts	Slayer left bone	cache/assets/osnr/custom_items/item_config/definitions.toml:2338
+32230	NEW custom def	slayer helm parts	Slayer right bone	cache/assets/osnr/custom_items/item_config/definitions.toml:2352
+32231	NEW custom def	mystery boxes	Regal Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2366
+32232	NEW custom def [noted]	misc custom	(noted of 32231)	cache/assets/osnr/custom_items/item_config/definitions.toml:2376
+32233	NEW custom def [placeholder]	misc custom	(placeholder of 32231)	cache/assets/osnr/custom_items/item_config/definitions.toml:2382
+32234	NEW custom def	holiday cosmetics	Pink santa hat	cache/assets/osnr/custom_items/item_config/definitions.toml:2388
+32235	NEW custom def [noted]	misc custom	(noted of 32234)	cache/assets/osnr/custom_items/item_config/definitions.toml:2399
+32236	NEW custom def [placeholder]	misc custom	(placeholder of 32234)	cache/assets/osnr/custom_items/item_config/definitions.toml:2405
+32237	NEW custom def	holiday cosmetics	Pink H'ween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:2411
+32239	NEW custom def [placeholder]	misc custom	(placeholder of 32237)	cache/assets/osnr/custom_items/item_config/definitions.toml:2420
+32240	NEW custom def	misc custom	Sleeping cap (afk)	cache/assets/osnr/custom_items/item_config/definitions.toml:2427
+32241	NEW custom def [noted]	misc custom	(noted of 32240)	cache/assets/osnr/custom_items/item_config/definitions.toml:2444
+32242	NEW custom def [placeholder]	misc custom	(placeholder of 32240)	cache/assets/osnr/custom_items/item_config/definitions.toml:2450
+32243	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:1
+32244	NEW custom def [placeholder]	comp capes	(placeholder of 32243)	cache/assets/osnr/custom_items/item_config/comp capes.toml:20
+32245	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:27
+32246	NEW custom def [placeholder]	comp capes	(placeholder of 32245)	cache/assets/osnr/custom_items/item_config/comp capes.toml:46
+32247	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:53
+32248	NEW custom def [placeholder]	comp capes	(placeholder of 32247)	cache/assets/osnr/custom_items/item_config/comp capes.toml:72
+32249	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:79
+32250	NEW custom def [placeholder]	comp capes	(placeholder of 32249)	cache/assets/osnr/custom_items/item_config/comp capes.toml:98
+32251	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:105
+32252	NEW custom def [placeholder]	comp capes	(placeholder of 32251)	cache/assets/osnr/custom_items/item_config/comp capes.toml:124
+32253	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:131
+32254	NEW custom def [placeholder]	comp capes	(placeholder of 32253)	cache/assets/osnr/custom_items/item_config/comp capes.toml:150
+32255	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:157
+32256	NEW custom def [placeholder]	comp capes	(placeholder of 32255)	cache/assets/osnr/custom_items/item_config/comp capes.toml:176
+32257	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:183
+32258	NEW custom def [placeholder]	comp capes	(placeholder of 32257)	cache/assets/osnr/custom_items/item_config/comp capes.toml:202
+32259	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:209
+32260	NEW custom def [placeholder]	comp capes	(placeholder of 32259)	cache/assets/osnr/custom_items/item_config/comp capes.toml:228
+32261	NEW custom def	comp capes	Completionist cape	cache/assets/osnr/custom_items/item_config/comp capes.toml:235
+32262	NEW custom def [placeholder]	comp capes	(placeholder of 32261)	cache/assets/osnr/custom_items/item_config/comp capes.toml:252
+32263	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:259
+32264	NEW custom def [placeholder]	comp capes	(placeholder of 32263)	cache/assets/osnr/custom_items/item_config/comp capes.toml:276
+32265	NEW custom def	comp capes	null	cache/assets/osnr/custom_items/item_config/comp capes.toml:283
+32266	NEW custom def [placeholder]	comp capes	(placeholder of 32265)	cache/assets/osnr/custom_items/item_config/comp capes.toml:300
+32354	NEW custom def	easter event	Carrot spear	cache/assets/osnr/custom_items/item_config/definitions.toml:3393
+32355	NEW custom def	easter event	Carrot crown	cache/assets/osnr/custom_items/item_config/definitions.toml:3411
+32356	NEW custom def	easter event	Broken egg shells	cache/assets/osnr/custom_items/item_config/definitions.toml:3429
+32357	NEW custom def	mystery boxes	Easter Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:3438
+32358	NEW custom def	easter event	Easter cards	cache/assets/osnr/custom_items/item_config/definitions.toml:3447
+32359	NEW custom def	max capes	Ancient Max Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3455
+32360	NEW custom def	max capes	Armadyl Max Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3466
+32361	NEW custom def	max capes	Bandos Max Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3477
+32362	NEW custom def	max capes	Seren Max Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3488
+32366	NEW custom def	types/item: wildy_loots	Wildy Sack	cache/assets/types/item/wildy_loots.toml:1
+32367	NEW custom def	types/item: wildy_loots	Wildy Crate	cache/assets/types/item/wildy_loots.toml:11
+32368	NEW custom def	mystery boxes	PVP Tourney Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:3499
+32369	NEW custom def	raid orbs	Orb of Xeric	cache/assets/osnr/custom_items/item_config/definitions.toml:3506
+32370	NEW custom def	raid orbs	Orb of Blood	cache/assets/osnr/custom_items/item_config/definitions.toml:3517
+32371	NEW custom def	raid orbs	Orb of Amascut	cache/assets/osnr/custom_items/item_config/definitions.toml:3528
+32378	NEW custom def	twisted bow recolours	Near-Reality BlueTBow Twisted bow	cache/assets/osnr/custom_items/item_config/definitions.toml:3539
+32379	NEW custom def [noted]	twisted bow recolours	(noted of 32378)	cache/assets/osnr/custom_items/item_config/definitions.toml:3551
+32380	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32378)	cache/assets/osnr/custom_items/item_config/definitions.toml:3557
+32381	NEW custom def	twisted bow recolours	Blue Paint (Twisted Bow)	cache/assets/osnr/custom_items/item_config/definitions.toml:3564
+32382	NEW custom def	ornament kits	Divine ornament kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3580
+32383	NEW custom def	twisted bow recolours	Near-Reality PurpleTBow Twisted bow	cache/assets/osnr/custom_items/item_config/definitions.toml:3603
+32384	NEW custom def [noted]	twisted bow recolours	(noted of 32383)	cache/assets/osnr/custom_items/item_config/definitions.toml:3614
+32385	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32383)	cache/assets/osnr/custom_items/item_config/definitions.toml:3620
+32386	NEW custom def	twisted bow recolours	Purple Paint (Twisted Bow)	cache/assets/osnr/custom_items/item_config/definitions.toml:3627
+32387	NEW custom def	twisted bow recolours	Near-Reality RedTBow Twisted bow	cache/assets/osnr/custom_items/item_config/definitions.toml:3643
+32388	NEW custom def [noted]	twisted bow recolours	(noted of 32387)	cache/assets/osnr/custom_items/item_config/definitions.toml:3654
+32389	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32387)	cache/assets/osnr/custom_items/item_config/definitions.toml:3660
+32390	NEW custom def	twisted bow recolours	Red Paint (Twisted Bow)	cache/assets/osnr/custom_items/item_config/definitions.toml:3667
+32391	NEW custom def	twisted bow recolours	Near-Reality WhiteTBow Twisted bow	cache/assets/osnr/custom_items/item_config/definitions.toml:3683
+32392	NEW custom def [noted]	twisted bow recolours	(noted of 32391)	cache/assets/osnr/custom_items/item_config/definitions.toml:3695
+32393	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32391)	cache/assets/osnr/custom_items/item_config/definitions.toml:3701
+32394	NEW custom def	twisted bow recolours	White Paint (Twisted Bow)	cache/assets/osnr/custom_items/item_config/definitions.toml:3708
+32395	NEW custom def	ankou sets	Black ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:3723
+32397	NEW custom def	ankou sets	Black ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:3741
+32399	NEW custom def	ankou sets	Black ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:3759
+32401	NEW custom def	ankou sets	Black ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3777
+32403	NEW custom def	ankou sets	Black ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:3795
+32405	NEW custom def	ankou sets	Purple ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:3813
+32407	NEW custom def	ankou sets	Purple ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:3832
+32409	NEW custom def	ankou sets	Purple ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:3850
+32411	NEW custom def	ankou sets	Purple ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3868
+32413	NEW custom def	ankou sets	Purple ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:3886
+32415	NEW custom def	holiday cosmetics	Sky blue halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3904
+32416	NEW custom def [noted]	holiday cosmetics	Sky blue halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3914
+32417	NEW custom def	holiday cosmetics	Orange halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3929
+32418	NEW custom def [noted]	holiday cosmetics	Orange halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3939
+32419	NEW custom def	holiday cosmetics	Purple halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3955
+32420	NEW custom def [noted]	holiday cosmetics	Purple halloween mask	cache/assets/osnr/custom_items/item_config/definitions.toml:3965
+32421	NEW custom def	misc custom	Elysian spirit shield (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:3980
+32422	NEW custom def [noted]	misc custom	Elysian spirit shield (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:3991
+32423	NEW custom def	mystery boxes	PVM Arena mystery box	cache/assets/osnr/custom_items/item_config/definitions.toml:4006
+32424	NEW custom def	misc custom	World boost token	cache/assets/osnr/custom_items/item_config/definitions.toml:4024
+32425	NEW custom def	scrolls	Sir Eldric's boost scroll	cache/assets/osnr/custom_items/item_config/definitions.toml:4045
+32426	NEW custom def	easter event	Carrot spear	cache/assets/osnr/custom_items/item_config/definitions.toml:3404
+32427	NEW custom def	easter event	Carrot crown	cache/assets/osnr/custom_items/item_config/definitions.toml:3422
+32428	NEW custom def [noted]	ornament kits	Divine ornament kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3590
+32429	NEW custom def [placeholder]	ankou sets	(placeholder of 32395)	cache/assets/osnr/custom_items/item_config/definitions.toml:3735
+32430	NEW custom def [placeholder]	ankou sets	(placeholder of 32397)	cache/assets/osnr/custom_items/item_config/definitions.toml:3753
+32431	NEW custom def [placeholder]	ankou sets	(placeholder of 32399)	cache/assets/osnr/custom_items/item_config/definitions.toml:3771
+32432	NEW custom def [placeholder]	ankou sets	(placeholder of 32401)	cache/assets/osnr/custom_items/item_config/definitions.toml:3789
+32433	NEW custom def [placeholder]	ankou sets	(placeholder of 32403)	cache/assets/osnr/custom_items/item_config/definitions.toml:3807
+32434	NEW custom def [placeholder]	ankou sets	(placeholder of 32405)	cache/assets/osnr/custom_items/item_config/definitions.toml:3825
+32435	NEW custom def [placeholder]	ankou sets	(placeholder of 32407)	cache/assets/osnr/custom_items/item_config/definitions.toml:3844
+32436	NEW custom def [placeholder]	ankou sets	(placeholder of 32409)	cache/assets/osnr/custom_items/item_config/definitions.toml:3862
+32437	NEW custom def [placeholder]	ankou sets	(placeholder of 32411)	cache/assets/osnr/custom_items/item_config/definitions.toml:3880
+32438	NEW custom def [placeholder]	ankou sets	(placeholder of 32413)	cache/assets/osnr/custom_items/item_config/definitions.toml:3898
+32439	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32415)	cache/assets/osnr/custom_items/item_config/definitions.toml:3923
+32440	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32417)	cache/assets/osnr/custom_items/item_config/definitions.toml:3949
+32441	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32419)	cache/assets/osnr/custom_items/item_config/definitions.toml:3974
+32442	NEW custom def [placeholder]	misc custom	(placeholder of 32421)	cache/assets/osnr/custom_items/item_config/definitions.toml:4000
+32443	NEW custom def [placeholder]	mystery boxes	(placeholder of 32423)	cache/assets/osnr/custom_items/item_config/definitions.toml:4018
+32444	NEW custom def [placeholder]	misc custom	(placeholder of 32424)	cache/assets/osnr/custom_items/item_config/definitions.toml:4039
+32445	NEW custom def [placeholder]	scrolls	(placeholder of 32425)	cache/assets/osnr/custom_items/item_config/definitions.toml:4060
+32446	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32394)	cache/assets/osnr/custom_items/item_config/definitions.toml:3717
+32447	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32390)	cache/assets/osnr/custom_items/item_config/definitions.toml:3677
+32448	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32386)	cache/assets/osnr/custom_items/item_config/definitions.toml:3637
+32449	NEW custom def [placeholder]	ornament kits	(placeholder of 32382)	cache/assets/osnr/custom_items/item_config/definitions.toml:3597
+32450	NEW custom def [placeholder]	twisted bow recolours	(placeholder of 32382)	cache/assets/osnr/custom_items/item_config/definitions.toml:3574
+32451	NEW custom def	misc custom	Gilded boxing gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:4065
+32452	NEW custom def	misc custom	Potent arder-musca poison	cache/assets/osnr/custom_items/item_config/definitions.toml:4073
+32455	NEW custom def	ankou sets (2-colour)	Black-green ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:1
+32457	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:11
+32458	NEW custom def	ankou sets (2-colour)	Black-green ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:16
+32460	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:26
+32461	NEW custom def	ankou sets (2-colour)	Black-green ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:31
+32463	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:41
+32464	NEW custom def	ankou sets (2-colour)	Black-green ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:46
+32466	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:56
+32467	NEW custom def	ankou sets (2-colour)	Black-green ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:61
+32469	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:71
+32470	NEW custom def	ankou sets (2-colour)	Black-purple ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:76
+32472	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:86
+32473	NEW custom def	ankou sets (2-colour)	Black-purple ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:91
+32475	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:101
+32476	NEW custom def	ankou sets (2-colour)	Black-purple ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:106
+32478	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:116
+32479	NEW custom def	ankou sets (2-colour)	Black-purple ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:121
+32481	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:131
+32482	NEW custom def	ankou sets (2-colour)	Black-purple ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:136
+32484	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:146
+32485	NEW custom def	ankou sets (2-colour)	Black-white ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:151
+32487	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:161
+32488	NEW custom def	ankou sets (2-colour)	Black-white ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:166
+32490	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:176
+32491	NEW custom def	ankou sets (2-colour)	Black-white ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:181
+32493	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:191
+32494	NEW custom def	ankou sets (2-colour)	Black-white ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:196
+32496	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:206
+32497	NEW custom def	ankou sets (2-colour)	Black-white ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:211
+32499	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:221
+32500	NEW custom def	ankou sets (2-colour)	Black-yellow ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:226
+32502	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:236
+32503	NEW custom def	ankou sets (2-colour)	Black-yellow ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:241
+32505	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:251
+32506	NEW custom def	ankou sets (2-colour)	Black-yellow ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:256
+32508	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:266
+32509	NEW custom def	ankou sets (2-colour)	Black-yellow ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:271
+32511	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:281
+32512	NEW custom def	ankou sets (2-colour)	Black-yellow ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:286
+32514	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:296
+32515	NEW custom def	ankou sets (2-colour)	Gilded ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:301
+32517	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:311
+32518	NEW custom def	ankou sets (2-colour)	Gilded ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:316
+32520	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:326
+32521	NEW custom def	ankou sets (2-colour)	Gilded ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:331
+32523	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:341
+32524	NEW custom def	ankou sets (2-colour)	Gilded ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:346
+32526	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:356
+32527	NEW custom def	ankou sets (2-colour)	Gilded ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:361
+32529	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:371
+32530	NEW custom def	ankou sets (2-colour)	Green-black ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:376
+32532	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:386
+32533	NEW custom def	ankou sets (2-colour)	Green-black ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:391
+32535	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:401
+32536	NEW custom def	ankou sets (2-colour)	Green-black ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:406
+32538	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:416
+32539	NEW custom def	ankou sets (2-colour)	Green-black ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:421
+32541	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:431
+32542	NEW custom def	ankou sets (2-colour)	Green-black ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:436
+32544	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:446
+32545	NEW custom def	ankou sets (2-colour)	Purple-black ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:451
+32547	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:461
+32548	NEW custom def	ankou sets (2-colour)	Purple-black ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:466
+32550	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:476
+32551	NEW custom def	ankou sets (2-colour)	Purple-black ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:481
+32553	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:491
+32554	NEW custom def	ankou sets (2-colour)	Purple-black ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:496
+32556	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:506
+32557	NEW custom def	ankou sets (2-colour)	Purple-black ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:511
+32559	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:521
+32560	NEW custom def	ankou sets (2-colour)	Red-black ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:526
+32562	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:536
+32563	NEW custom def	ankou sets (2-colour)	Red-black ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:541
+32565	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:551
+32566	NEW custom def	ankou sets (2-colour)	Red-black ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:556
+32568	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:566
+32569	NEW custom def	ankou sets (2-colour)	Red-black ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:571
+32571	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:581
+32572	NEW custom def	ankou sets (2-colour)	Red-black ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:586
+32574	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:596
+32575	NEW custom def	ankou sets (2-colour)	White-blue ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:601
+32577	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:611
+32578	NEW custom def	ankou sets (2-colour)	White-blue ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:616
+32580	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:626
+32581	NEW custom def	ankou sets (2-colour)	White-blue ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:631
+32583	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:641
+32584	NEW custom def	ankou sets (2-colour)	White-blue ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:646
+32586	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:656
+32587	NEW custom def	ankou sets (2-colour)	White-blue ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:661
+32589	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:671
+32590	NEW custom def	ankou sets (2-colour)	White-purple ankou socks	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:676
+32592	NEW custom def	ankou sets (2-colour)	(inherits name from 20109)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:686
+32593	NEW custom def	ankou sets (2-colour)	White-purple ankou gloves	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:691
+32595	NEW custom def	ankou sets (2-colour)	(inherits name from 20103)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:701
+32596	NEW custom def	ankou sets (2-colour)	White-purple ankou leggings	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:706
+32598	NEW custom def	ankou sets (2-colour)	(inherits name from 20106)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:716
+32599	NEW custom def	ankou sets (2-colour)	White-purple ankou mask	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:721
+32601	NEW custom def	ankou sets (2-colour)	(inherits name from 20097)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:731
+32602	NEW custom def	ankou sets (2-colour)	White-purple ankou top	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:736
+32604	NEW custom def	ankou sets (2-colour)	(inherits name from 20100)	cache/assets/osnr/custom_items/item_config/ankou_sets.toml:746
+32606	NEW custom def	omega set	Omega boots	cache/assets/osnr/custom_items/item_config/definitions.toml:4178
+32607	NEW custom def	omega set	Omega boots	cache/assets/osnr/custom_items/item_config/definitions.toml:4195
+32608	NEW custom def	omega set	Omega horn	cache/assets/osnr/custom_items/item_config/definitions.toml:4212
+32609	NEW custom def	omega set	Omega spikes	cache/assets/osnr/custom_items/item_config/definitions.toml:4225
+32610	NEW custom def	omega set	Omega symbol	cache/assets/osnr/custom_items/item_config/definitions.toml:4238
+32611	NEW custom def	omega / balmung / charged	Superior bell	cache/assets/osnr/custom_items/item_config/definitions.toml:4258
+32612	NEW custom def	omega / balmung / charged	Balmung	cache/assets/osnr/custom_items/item_config/definitions.toml:4279
+32613	NEW custom def [noted]	omega / balmung / charged	Balmung	cache/assets/osnr/custom_items/item_config/definitions.toml:4298
+32614	NEW custom def	types/item: master_cape	Master completionist cape	cache/assets/types/item/master_cape.toml:1
+32615	NEW custom def	comp capes	Master completionist cape hood	cache/assets/osnr/custom_items/item_config/definitions.toml:4086
+32616	NEW custom def	comp capes	Completionist cape hood	cache/assets/osnr/custom_items/item_config/definitions.toml:4098
+32617	NEW custom def	comp capes	Completionist cape hood (t)	cache/assets/osnr/custom_items/item_config/definitions.toml:4108
+32618	NEW custom def	comp capes	Completionist cape (t)	cache/assets/osnr/custom_items/item_config/comp capes.toml:306
+32700	NEW custom def [placeholder]	charged-item placeholders	(placeholder of 11283)	cache/assets/osnr/custom_items/item_config/definitions.toml:4119
+32701	NEW custom def [placeholder]	charged-item placeholders	(placeholder of 21816)	cache/assets/osnr/custom_items/item_config/definitions.toml:4132
+32702	NEW custom def [placeholder]	charged-item placeholders	(placeholder of 25486)	cache/assets/osnr/custom_items/item_config/definitions.toml:4145
+32703	NEW custom def [placeholder]	charged-item placeholders	(placeholder of 25487)	cache/assets/osnr/custom_items/item_config/definitions.toml:4158
+32704	NEW custom def [placeholder]	charged-item placeholders	(placeholder of 27358)	cache/assets/osnr/custom_items/item_config/definitions.toml:4171
+32709	NEW custom def [placeholder]	omega set	(placeholder of 32610)	cache/assets/osnr/custom_items/item_config/definitions.toml:4251
+32710	NEW custom def [placeholder]	omega / balmung / charged	(placeholder of 32611)	cache/assets/osnr/custom_items/item_config/definitions.toml:4270
+32711	NEW custom def [placeholder]	omega / balmung / charged	(placeholder of 32612)	cache/assets/osnr/custom_items/item_config/definitions.toml:4307
+32712	NEW custom def	holiday cosmetics	White Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4358
+32713	NEW custom def	holiday cosmetics	White H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4368
+32714	NEW custom def	holiday cosmetics	Black Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4378
+32715	NEW custom def	holiday cosmetics	Black H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4388
+32716	NEW custom def	holiday cosmetics	Black Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4398
+32717	NEW custom def	holiday cosmetics	Lime Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4408
+32718	NEW custom def	holiday cosmetics	Lime Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4418
+32719	NEW custom def	holiday cosmetics	Lime H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4428
+32722	NEW custom def	holiday cosmetics	Pink Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4440
+32723	NEW custom def	holiday cosmetics	Cyan Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4450
+32724	NEW custom def	holiday cosmetics	Cyan H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4460
+32725	NEW custom def	holiday cosmetics	Cyan Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4470
+32726	NEW custom def	holiday cosmetics	Blue Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4480
+32727	NEW custom def	holiday cosmetics	Purple Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4490
+32728	NEW custom def	holiday cosmetics	Purple H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4500
+32729	NEW custom def	holiday cosmetics	Orange Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4510
+32730	NEW custom def	holiday cosmetics	Orange H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4520
+32731	NEW custom def	holiday cosmetics	Orange Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4530
+32732	NEW custom def	holiday cosmetics	Light Purple Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4540
+32733	NEW custom def	holiday cosmetics	Light Purple H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4550
+32734	NEW custom def	holiday cosmetics	Light Purple Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4560
+32735	NEW custom def	holiday cosmetics	Light Blue H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4570
+32736	NEW custom def	holiday cosmetics	Light Blue Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4580
+32737	NEW custom def	holiday cosmetics	Light Blue Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4590
+32738	NEW custom def	holiday cosmetics	Peach Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4600
+32739	NEW custom def	holiday cosmetics	Peach H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4610
+32740	NEW custom def	holiday cosmetics	Peach Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4620
+32741	NEW custom def	holiday cosmetics	Light Green Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4630
+32742	NEW custom def	holiday cosmetics	Light Green H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4640
+32743	NEW custom def	holiday cosmetics	Light Green Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4650
+32744	NEW custom def	holiday cosmetics	Light Yellow Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4660
+32745	NEW custom def	holiday cosmetics	Light Yellow H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4670
+32746	NEW custom def	holiday cosmetics	Light Yellow Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4680
+32747	NEW custom def	holiday cosmetics	Cream Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4690
+32748	NEW custom def	holiday cosmetics	Cream H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4700
+32749	NEW custom def	holiday cosmetics	Cream Partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:4710
+32750	NEW custom def	holiday cosmetics	Magma H'ween Mask	cache/assets/osnr/custom_items/item_config/definitions.toml:4720
+32751	NEW custom def	holiday cosmetics	Magma Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4730
+32752	NEW custom def	holiday cosmetics	Inverted Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4740
+32753	NEW custom def	holiday cosmetics	Grey Santa Hat (t)	cache/assets/osnr/custom_items/item_config/definitions.toml:4750
+32754	NEW custom def	holiday cosmetics	Shadow Santa Hat	cache/assets/osnr/custom_items/item_config/definitions.toml:4760
+32755	NEW custom def	partyhat & h'ween recolours	Shadow Bunny Ears	cache/assets/osnr/custom_items/item_config/definitions.toml:4770
+32756	NEW custom def	partyhat & h'ween recolours	Grey Bunny Ears	cache/assets/osnr/custom_items/item_config/definitions.toml:4780
+32757	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32712)	cache/assets/osnr/custom_items/item_config/definitions.toml:4790
+32758	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32713)	cache/assets/osnr/custom_items/item_config/definitions.toml:4799
+32759	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32714)	cache/assets/osnr/custom_items/item_config/definitions.toml:4808
+32760	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32715)	cache/assets/osnr/custom_items/item_config/definitions.toml:4817
+32761	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32716)	cache/assets/osnr/custom_items/item_config/definitions.toml:4826
+32762	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32717)	cache/assets/osnr/custom_items/item_config/definitions.toml:4835
+32763	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32718)	cache/assets/osnr/custom_items/item_config/definitions.toml:4844
+32764	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32719)	cache/assets/osnr/custom_items/item_config/definitions.toml:4853
+32767	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32722)	cache/assets/osnr/custom_items/item_config/definitions.toml:4864
+32768	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32723)	cache/assets/osnr/custom_items/item_config/definitions.toml:4873
+32769	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32724)	cache/assets/osnr/custom_items/item_config/definitions.toml:4882
+32770	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32725)	cache/assets/osnr/custom_items/item_config/definitions.toml:4891
+32771	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32726)	cache/assets/osnr/custom_items/item_config/definitions.toml:4900
+32772	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32727)	cache/assets/osnr/custom_items/item_config/definitions.toml:4909
+32773	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32728)	cache/assets/osnr/custom_items/item_config/definitions.toml:4918
+32774	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32729)	cache/assets/osnr/custom_items/item_config/definitions.toml:4927
+32775	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32730)	cache/assets/osnr/custom_items/item_config/definitions.toml:4936
+32776	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32731)	cache/assets/osnr/custom_items/item_config/definitions.toml:4945
+32777	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32732)	cache/assets/osnr/custom_items/item_config/definitions.toml:4954
+32778	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32733)	cache/assets/osnr/custom_items/item_config/definitions.toml:4963
+32779	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32734)	cache/assets/osnr/custom_items/item_config/definitions.toml:4972
+32780	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32735)	cache/assets/osnr/custom_items/item_config/definitions.toml:4981
+32781	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32736)	cache/assets/osnr/custom_items/item_config/definitions.toml:4990
+32782	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32737)	cache/assets/osnr/custom_items/item_config/definitions.toml:4999
+32783	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32738)	cache/assets/osnr/custom_items/item_config/definitions.toml:5008
+32784	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32739)	cache/assets/osnr/custom_items/item_config/definitions.toml:5017
+32785	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32740)	cache/assets/osnr/custom_items/item_config/definitions.toml:5026
+32786	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32741)	cache/assets/osnr/custom_items/item_config/definitions.toml:5035
+32787	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32742)	cache/assets/osnr/custom_items/item_config/definitions.toml:5044
+32788	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32743)	cache/assets/osnr/custom_items/item_config/definitions.toml:5053
+32789	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32744)	cache/assets/osnr/custom_items/item_config/definitions.toml:5062
+32790	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32745)	cache/assets/osnr/custom_items/item_config/definitions.toml:5071
+32791	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32746)	cache/assets/osnr/custom_items/item_config/definitions.toml:5080
+32792	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32747)	cache/assets/osnr/custom_items/item_config/definitions.toml:5089
+32793	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32748)	cache/assets/osnr/custom_items/item_config/definitions.toml:5098
+32794	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32749)	cache/assets/osnr/custom_items/item_config/definitions.toml:5107
+32795	NEW custom def [placeholder]	partyhat & h'ween recolours	(placeholder of 32750)	cache/assets/osnr/custom_items/item_config/definitions.toml:5116
+32796	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32751)	cache/assets/osnr/custom_items/item_config/definitions.toml:5125
+32797	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32752)	cache/assets/osnr/custom_items/item_config/definitions.toml:5134
+32798	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32753)	cache/assets/osnr/custom_items/item_config/definitions.toml:5143
+32799	NEW custom def [placeholder]	holiday cosmetics	(placeholder of 32754)	cache/assets/osnr/custom_items/item_config/definitions.toml:5152
+32800	NEW custom def [placeholder]	misc custom	(placeholder of 32755)	cache/assets/osnr/custom_items/item_config/definitions.toml:5161
+32801	NEW custom def [placeholder]	misc custom	(placeholder of 32756)	cache/assets/osnr/custom_items/item_config/definitions.toml:5170
+32801	NEW custom def [placeholder]	types/item: master_cape	Master completionist cape	cache/assets/types/item/master_cape.toml:22
+32802	NEW custom def	misc custom	Chaotic Rapier	cache/assets/osnr/custom_items/item_config/definitions.toml:5180
+32803	NEW custom def [placeholder]	misc custom	(placeholder of 32802)	cache/assets/osnr/custom_items/item_config/definitions.toml:5197
+32804	NEW custom def	misc custom	Chaotic Longsword	cache/assets/osnr/custom_items/item_config/definitions.toml:5212
+32805	NEW custom def [placeholder]	comp capes	Completionist cape (t)	cache/assets/osnr/custom_items/item_config/comp capes.toml:323
+32805	NEW custom def [placeholder]	misc custom	(placeholder of 32804)	cache/assets/osnr/custom_items/item_config/definitions.toml:5229
+32806	NEW custom def	misc custom	Chaotic Maul	cache/assets/osnr/custom_items/item_config/definitions.toml:5244
+32807	NEW custom def [placeholder]	misc custom	(placeholder of 32806)	cache/assets/osnr/custom_items/item_config/definitions.toml:5261
+32808	NEW custom def	misc custom	Chaotic Staff	cache/assets/osnr/custom_items/item_config/definitions.toml:5276
+32809	NEW custom def [placeholder]	misc custom	(placeholder of 32808)	cache/assets/osnr/custom_items/item_config/definitions.toml:5293
+32810	NEW custom def	misc custom	Chaotic Crossbow	cache/assets/osnr/custom_items/item_config/definitions.toml:5308
+32811	NEW custom def [placeholder]	misc custom	(placeholder of 32810)	cache/assets/osnr/custom_items/item_config/definitions.toml:5325
+32812	NEW custom def	nex kiteshields	Chaotic kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:5339
+32813	NEW custom def [placeholder]	nex kiteshields	(placeholder of 32812)	cache/assets/osnr/custom_items/item_config/definitions.toml:5356
+32814	NEW custom def	nex kiteshields	Eagle-eye kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:5370
+32815	NEW custom def [placeholder]	nex kiteshields	(placeholder of 32814)	cache/assets/osnr/custom_items/item_config/definitions.toml:5387
+32816	NEW custom def	nex kiteshields	Farseer kiteshield	cache/assets/osnr/custom_items/item_config/definitions.toml:5401
+32817	NEW custom def [placeholder]	nex kiteshields	(placeholder of 32816)	cache/assets/osnr/custom_items/item_config/definitions.toml:5418
+32818	NEW custom def [placeholder]	comp capes	Master completionist cape hood	cache/assets/osnr/custom_items/item_config/definitions.toml:5433
+32819	NEW custom def [placeholder]	comp capes	Completionist cape hood	cache/assets/osnr/custom_items/item_config/definitions.toml:5443
+32820	NEW custom def [placeholder]	comp capes	Completionist cape hood (t)	cache/assets/osnr/custom_items/item_config/definitions.toml:5454
+32826	NEW custom def	origins pet items	Postie Pete	cache/assets/osnr/custom_items/item_config/definitions.toml:5463
+32827	NEW custom def	origins pet items	Imp	cache/assets/osnr/custom_items/item_config/definitions.toml:5478
+32828	NEW custom def	origins pet items	Toucan	cache/assets/osnr/custom_items/item_config/definitions.toml:5493
+32829	NEW custom def	origins pet items	King Penguin	cache/assets/osnr/custom_items/item_config/definitions.toml:5508
+32830	NEW custom def	origins pet items	K'klik	cache/assets/osnr/custom_items/item_config/definitions.toml:5523
+32831	NEW custom def	origins pet items	Shadow Warrior	cache/assets/osnr/custom_items/item_config/definitions.toml:5538
+32832	NEW custom def	origins pet items	Shadow Archer	cache/assets/osnr/custom_items/item_config/definitions.toml:5553
+32833	NEW custom def	origins pet items	Shadow Wizard	cache/assets/osnr/custom_items/item_config/definitions.toml:5568
+32834	NEW custom def	origins pet items	Healer Death Spawn	cache/assets/osnr/custom_items/item_config/definitions.toml:5583
+32835	NEW custom def	origins pet items	Holy Death Spawn	cache/assets/osnr/custom_items/item_config/definitions.toml:5598
+32836	NEW custom def	origins pet items	Seren	cache/assets/osnr/custom_items/item_config/definitions.toml:5613
+32837	NEW custom def	origins pet items	Corrupt Beast	cache/assets/osnr/custom_items/item_config/definitions.toml:5628
+32838	NEW custom def	origins pet items	Roc	cache/assets/osnr/custom_items/item_config/definitions.toml:5643
+32839	NEW custom def	origins pet items	Kratos	cache/assets/osnr/custom_items/item_config/definitions.toml:5658
+32840	NEW custom def	origins pet items	Dark Postie Pete	cache/assets/osnr/custom_items/item_config/definitions.toml:5673
+32841	NEW custom def	origins pet items	Dark Imp	cache/assets/osnr/custom_items/item_config/definitions.toml:5688
+32842	NEW custom def	origins pet items	Dark Toucan	cache/assets/osnr/custom_items/item_config/definitions.toml:5703
+32843	NEW custom def	origins pet items	Dark King Penguin	cache/assets/osnr/custom_items/item_config/definitions.toml:5718
+32844	NEW custom def	origins pet items	Dark K'klik	cache/assets/osnr/custom_items/item_config/definitions.toml:5733
+32845	NEW custom def	origins pet items	Dark Shadow Warrior	cache/assets/osnr/custom_items/item_config/definitions.toml:5748
+32846	NEW custom def	origins pet items	Dark Shadow Archer	cache/assets/osnr/custom_items/item_config/definitions.toml:5763
+32847	NEW custom def	origins pet items	Dark Shadow Wizard	cache/assets/osnr/custom_items/item_config/definitions.toml:5778
+32848	NEW custom def	origins pet items	Dark Healer Death Spawn	cache/assets/osnr/custom_items/item_config/definitions.toml:5793
+32849	NEW custom def	origins pet items	Dark Holy Death Spawn	cache/assets/osnr/custom_items/item_config/definitions.toml:5808
+32850	NEW custom def	origins pet items	Dark Seren	cache/assets/osnr/custom_items/item_config/definitions.toml:5823
+32851	NEW custom def	origins pet items	Dark Corrupt Beast	cache/assets/osnr/custom_items/item_config/definitions.toml:5838
+32852	NEW custom def	origins pet items	Dark Roc	cache/assets/osnr/custom_items/item_config/definitions.toml:5854
+32853	NEW custom def	origins pet items	Dark Kratos	cache/assets/osnr/custom_items/item_config/definitions.toml:5869
+32854	NEW custom def	origins pet items	Fissile Kratos	cache/assets/osnr/custom_items/item_config/definitions.toml:5884
+32884	NEW custom def (packer)	origins: lord marshall	Lord marshall cap	NearRealityOriginsPacker.packCustoms() (new)
+32885	NEW custom def (packer) [placeholder]	origins: lord marshall	Lord marshall cap	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32886	NEW custom def (packer)	origins: lord marshall	Lord marshall top	NearRealityOriginsPacker.packCustoms() (new)
+32887	NEW custom def (packer) [placeholder]	origins: lord marshall	Lord marshall top	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32888	NEW custom def (packer)	origins: lord marshall	Lord marshall trousers	NearRealityOriginsPacker.packCustoms() (new)
+32889	NEW custom def (packer) [placeholder]	origins: lord marshall	Lord marshall trousers	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32890	NEW custom def (packer)	origins: lord marshall	Lord marshall boots	NearRealityOriginsPacker.packCustoms() (new)
+32891	NEW custom def (packer) [placeholder]	origins: lord marshall	Lord marshall boots	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32892	NEW custom def (packer)	origins: lord marshall	Lord marshall gloves	NearRealityOriginsPacker.packCustoms() (new)
+32893	NEW custom def (packer) [placeholder]	origins: lord marshall	Lord marshall gloves	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32894	NEW custom def (packer)	origins: cosmetics	Ghostly partyhat	NearRealityOriginsPacker.packCustoms() (new)
+32895	NEW custom def (packer) [placeholder]	origins: cosmetics	Ghostly partyhat	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32896	NEW custom def (packer)	origins: pernix	Pernix cowl	NearRealityOriginsPacker.packCustoms() (new)
+32897	NEW custom def (packer) [placeholder]	origins: pernix	Pernix cowl	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32898	NEW custom def (packer)	origins: pernix	Pernix body	NearRealityOriginsPacker.packCustoms() (new)
+32899	NEW custom def (packer) [placeholder]	origins: pernix	Pernix body	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32900	NEW custom def (packer)	origins: pernix	Pernix chaps	NearRealityOriginsPacker.packCustoms() (new)
+32901	NEW custom def (packer) [placeholder]	origins: pernix	Pernix chaps	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32902	NEW custom def (packer)	origins: cosmetics	Spirit cape	NearRealityOriginsPacker.packCustoms() (new)
+32903	NEW custom def (packer) [placeholder]	origins: cosmetics	Spirit cape	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32904	NEW custom def (packer)	origins: cosmetics	Demon horn necklace	NearRealityOriginsPacker.packCustoms() (new)
+32905	NEW custom def (packer) [placeholder]	origins: cosmetics	Demon horn necklace	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32906	NEW custom def (packer)	origins: cosmetics	Mercenary gloves	NearRealityOriginsPacker.packCustoms() (new)
+32907	NEW custom def (packer) [placeholder]	origins: cosmetics	Mercenary gloves	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32908	NEW custom def (packer)	origins: elite black	Elite black full helm	NearRealityOriginsPacker.packCustoms() (new)
+32909	NEW custom def (packer) [placeholder]	origins: elite black	Elite black full helm	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32910	NEW custom def (packer)	origins: elite black	Elite black platelegs	NearRealityOriginsPacker.packCustoms() (new)
+32911	NEW custom def (packer) [placeholder]	origins: elite black	Elite black platelegs	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32912	NEW custom def (packer)	origins: elite black	Elite black platebody	NearRealityOriginsPacker.packCustoms() (new)
+32913	NEW custom def (packer) [placeholder]	origins: elite black	Elite black platebody	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32914	NEW custom def (packer)	origins: primal	Primal 2h sword	NearRealityOriginsPacker.packCustoms() (new)
+32915	NEW custom def (packer) [placeholder]	origins: primal	Primal 2h sword	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32916	NEW custom def (packer)	origins: primal	Primal boots	NearRealityOriginsPacker.packCustoms() (new)
+32917	NEW custom def (packer) [placeholder]	origins: primal	Primal boots	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32918	NEW custom def (packer)	origins: primal	Primal gauntlets	NearRealityOriginsPacker.packCustoms() (new)
+32919	NEW custom def (packer) [placeholder]	origins: primal	Primal gauntlets	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32920	NEW custom def (packer)	origins: primal	Primal full helm	NearRealityOriginsPacker.packCustoms() (new)
+32921	NEW custom def (packer) [placeholder]	origins: primal	Primal full helm	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32922	NEW custom def (packer)	origins: primal	Primal platebody	NearRealityOriginsPacker.packCustoms() (new)
+32923	NEW custom def (packer) [placeholder]	origins: primal	Primal platebody	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32924	NEW custom def (packer)	origins: primal	Primal chainbody	NearRealityOriginsPacker.packCustoms() (new)
+32925	NEW custom def (packer) [placeholder]	origins: primal	Primal chainbody	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32926	NEW custom def (packer)	origins: primal	Primal plateskirt	NearRealityOriginsPacker.packCustoms() (new)
+32927	NEW custom def (packer) [placeholder]	origins: primal	Primal plateskirt	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32928	NEW custom def (packer)	origins: primal	Primal platelegs	NearRealityOriginsPacker.packCustoms() (new)
+32929	NEW custom def (packer) [placeholder]	origins: primal	Primal platelegs	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32930	NEW custom def (packer)	origins: primal	Primal longsword	NearRealityOriginsPacker.packCustoms() (new)
+32931	NEW custom def (packer) [placeholder]	origins: primal	Primal longsword	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32932	NEW custom def (packer)	origins: primal	Primal maul	NearRealityOriginsPacker.packCustoms() (new)
+32933	NEW custom def (packer) [placeholder]	origins: primal	Primal maul	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32934	NEW custom def (packer)	origins: primal	Primal hatchet	NearRealityOriginsPacker.packCustoms() (new)
+32935	NEW custom def (packer) [placeholder]	origins: primal	Primal hatchet	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32936	NEW custom def (packer)	origins: primal	Primal dagger	NearRealityOriginsPacker.packCustoms() (new)
+32937	NEW custom def (packer) [placeholder]	origins: primal	Primal dagger	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32938	NEW custom def (packer)	origins: primal	Primal rapier	NearRealityOriginsPacker.packCustoms() (new)
+32939	NEW custom def (packer) [placeholder]	origins: primal	Primal rapier	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32940	NEW custom def (packer)	origins: primal	Primal warhammer	NearRealityOriginsPacker.packCustoms() (new)
+32941	NEW custom def (packer) [placeholder]	origins: primal	Primal warhammer	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32942	NEW custom def (packer)	origins: primal	Primal spear	NearRealityOriginsPacker.packCustoms() (new)
+32943	NEW custom def (packer) [placeholder]	origins: primal	Primal spear	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32944	NEW custom def (packer)	origins: primal	Primal pickaxe	NearRealityOriginsPacker.packCustoms() (new)
+32945	NEW custom def (packer) [placeholder]	origins: primal	Primal pickaxe	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32946	NEW custom def (packer)	origins: primal	Primal battleaxe	NearRealityOriginsPacker.packCustoms() (new)
+32947	NEW custom def (packer) [placeholder]	origins: primal	Primal battleaxe	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32948	NEW custom def (packer)	origins: primal	Primal kiteshield	NearRealityOriginsPacker.packCustoms() (new)
+32949	NEW custom def (packer) [placeholder]	origins: primal	Primal kiteshield	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32954	NEW custom def	misc custom	Primal components	cache/assets/osnr/custom_items/item_config/definitions.toml:5899
+32955	NEW custom def (packer)	origins: divine sigil/shield	Divine sigil	NearRealityOriginsPacker.packCustoms() (cloned from ELYSIAN_SIGIL)
+32956	NEW custom def (packer)	origins: divine sigil/shield	Divine spirit shield	NearRealityOriginsPacker.packCustoms() (cloned from ELYSIAN_SPIRIT_SHIELD)
+32957	NEW custom def (packer) [placeholder]	origins: divine sigil/shield	Divine spirit shield	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32958	NEW custom def (packer)	origins: custom item tokens	Custom Item Token	NearRealityOriginsPacker.packCustoms() (cloned from MINECART_TICKET)
+32959	NEW custom def (packer) [placeholder]	origins: custom item tokens	Custom Item Token	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+32960	NEW custom def (packer)	origins: custom item tokens	Custom Item Set Token	NearRealityOriginsPacker.packCustoms() (cloned from MINECART_TICKET)
+32961	NEW custom def (packer) [placeholder]	origins: custom item tokens	Custom Item Set Token	NearRealityOriginsPacker.packCustoms() (createPlaceholder)
+33004	NEW custom def [placeholder]	misc custom	Ancient book	cache/assets/osnr/custom_items/item_config/definitions.toml:2457
+33006	NEW custom def [placeholder]	god soul crystals	Armadyl soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:2474
+33010	NEW custom def [placeholder]	god soul crystals	Bandos soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:2483
+33014	NEW custom def [placeholder]	god soul crystals	Saradomin soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:2492
+33018	NEW custom def [placeholder]	god soul crystals	Zamorak soul crystal	cache/assets/osnr/custom_items/item_config/definitions.toml:2501
+33022	NEW custom def [placeholder]	misc custom	Dragon kite	cache/assets/osnr/custom_items/item_config/definitions.toml:2510
+33024	NEW custom def [placeholder]	misc custom	Ancient medallion	cache/assets/osnr/custom_items/item_config/definitions.toml:2528
+33026	NEW custom def [placeholder]	imbued god capes	Imbued ancient cape	cache/assets/osnr/custom_items/item_config/definitions.toml:2545
+33028	NEW custom def [placeholder]	imbued god capes	Imbued armadyl cape	cache/assets/osnr/custom_items/item_config/definitions.toml:2556
+33030	NEW custom def [placeholder]	imbued god capes	Imbued bandos cape	cache/assets/osnr/custom_items/item_config/definitions.toml:2567
+33032	NEW custom def [placeholder]	imbued god capes	Imbued seren cape	cache/assets/osnr/custom_items/item_config/definitions.toml:2578
+33042	NEW custom def [placeholder]	misc custom	Polypore staff	cache/assets/osnr/custom_items/item_config/definitions.toml:2589
+33044	NEW custom def [placeholder]	crystal keys	Bronze key	cache/assets/osnr/custom_items/item_config/definitions.toml:2606
+33046	NEW custom def [placeholder]	crystal keys	Silver key	cache/assets/osnr/custom_items/item_config/definitions.toml:2621
+33048	NEW custom def [placeholder]	crystal keys	Gold key	cache/assets/osnr/custom_items/item_config/definitions.toml:2636
+33050	NEW custom def [placeholder]	crystal keys	Platinum key	cache/assets/osnr/custom_items/item_config/definitions.toml:2651
+33052	NEW custom def [placeholder]	crystal keys	Diamond key	cache/assets/osnr/custom_items/item_config/definitions.toml:2666
+33054	NEW custom def [placeholder]	home teleport tablets	N tablet	cache/assets/osnr/custom_items/item_config/definitions.toml:2681
+33056	NEW custom def [placeholder]	home teleport tablets	Nr tablet	cache/assets/osnr/custom_items/item_config/definitions.toml:2691
+33058	NEW custom def [placeholder]	capes	Death cape	cache/assets/osnr/custom_items/item_config/definitions.toml:2706
+33066	NEW custom def [placeholder]	holiday cosmetics	Pink partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:2723
+33068	NEW custom def [placeholder]	holiday cosmetics	Orange partyhat	cache/assets/osnr/custom_items/item_config/definitions.toml:2734
+33070	NEW custom def [placeholder]	donator pins	Donator pin 10	cache/assets/osnr/custom_items/item_config/definitions.toml:2746
+33071	NEW custom def [placeholder]	donator pins	Donator pin 25	cache/assets/osnr/custom_items/item_config/definitions.toml:2755
+33072	NEW custom def [placeholder]	donator pins	Donator pin 50	cache/assets/osnr/custom_items/item_config/definitions.toml:2764
+33073	NEW custom def [placeholder]	donator pins	Donator pin 100	cache/assets/osnr/custom_items/item_config/definitions.toml:2773
+33074	NEW custom def [placeholder]	slayer helms	Gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:2782
+33076	NEW custom def [placeholder]	slayer helms	Corrupted gauntlet slayer helm	cache/assets/osnr/custom_items/item_config/definitions.toml:2793
+33078	NEW custom def [placeholder]	holiday cosmetics	Near Reality party hat	cache/assets/osnr/custom_items/item_config/definitions.toml:2804
+33080	NEW custom def [placeholder]	mystery boxes	OSNR Mystery Box	cache/assets/osnr/custom_items/item_config/definitions.toml:2813
+33102	NEW custom def [placeholder]	ankou sets	Blue ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:2823
+33104	NEW custom def [placeholder]	ankou sets	Blue ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:2832
+33106	NEW custom def [placeholder]	ankou sets	Blue ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:2841
+33108	NEW custom def [placeholder]	ankou sets	Blue ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:2850
+33110	NEW custom def [placeholder]	ankou sets	Blue ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:2859
+33112	NEW custom def [placeholder]	ankou sets	Green ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:2868
+33114	NEW custom def [placeholder]	ankou sets	Green ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:2877
+33116	NEW custom def [placeholder]	ankou sets	Green ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:2886
+33118	NEW custom def [placeholder]	ankou sets	Green ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:2895
+33120	NEW custom def [placeholder]	ankou sets	Green ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:2904
+33122	NEW custom def [placeholder]	ankou sets	Gold ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:2913
+33124	NEW custom def [placeholder]	ankou sets	Gold ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:2922
+33126	NEW custom def [placeholder]	ankou sets	Gold ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:2931
+33128	NEW custom def [placeholder]	ankou sets	Gold ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:2940
+33130	NEW custom def [placeholder]	ankou sets	Gold ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:2949
+33132	NEW custom def [placeholder]	ankou sets	White ankou socks	cache/assets/osnr/custom_items/item_config/definitions.toml:2958
+33134	NEW custom def [placeholder]	ankou sets	White ankou gloves	cache/assets/osnr/custom_items/item_config/definitions.toml:2967
+33136	NEW custom def [placeholder]	ankou sets	White ankou's leggings	cache/assets/osnr/custom_items/item_config/definitions.toml:2976
+33138	NEW custom def [placeholder]	ankou sets	White ankou mask	cache/assets/osnr/custom_items/item_config/definitions.toml:2985
+33140	NEW custom def [placeholder]	ankou sets	White ankou top	cache/assets/osnr/custom_items/item_config/definitions.toml:2994
+33142	NEW custom def [placeholder]	bandos (or) set	Bandos chestplate (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:3003
+33144	NEW custom def [placeholder]	bandos (or) set	Bandos tassets (or)	cache/assets/osnr/custom_items/item_config/definitions.toml:3018
+33146	NEW custom def [placeholder]	ornament kits	Bandos ornament kit	cache/assets/osnr/custom_items/item_config/definitions.toml:3033
+33148	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32148)	cache/assets/osnr/custom_items/item_config/definitions.toml:1302
+33149	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32149)	cache/assets/osnr/custom_items/item_config/definitions.toml:1326
+33151	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32151)	cache/assets/osnr/custom_items/item_config/definitions.toml:1350
+33152	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32152)	cache/assets/osnr/custom_items/item_config/definitions.toml:1374
+33153	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32153)	cache/assets/osnr/custom_items/item_config/definitions.toml:1398
+33154	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32154)	cache/assets/osnr/custom_items/item_config/definitions.toml:1422
+33155	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32155)	cache/assets/osnr/custom_items/item_config/definitions.toml:1446
+33156	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32156)	cache/assets/osnr/custom_items/item_config/definitions.toml:1470
+33157	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32157)	cache/assets/osnr/custom_items/item_config/definitions.toml:1493
+33158	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32158)	cache/assets/osnr/custom_items/item_config/definitions.toml:1516
+33159	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32159)	cache/assets/osnr/custom_items/item_config/definitions.toml:1538
+33160	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32160)	cache/assets/osnr/custom_items/item_config/definitions.toml:1560
+33161	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32161)	cache/assets/osnr/custom_items/item_config/definitions.toml:1588
+33162	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32162)	cache/assets/osnr/custom_items/item_config/definitions.toml:1604
+33163	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32163)	cache/assets/osnr/custom_items/item_config/definitions.toml:1620
+33164	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32164)	cache/assets/osnr/custom_items/item_config/definitions.toml:1636
+33165	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32165)	cache/assets/osnr/custom_items/item_config/definitions.toml:1652
+33166	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32166)	cache/assets/osnr/custom_items/item_config/definitions.toml:1676
+33167	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32167)	cache/assets/osnr/custom_items/item_config/definitions.toml:1700
+33168	NEW custom def [placeholder]	boosters & tokens	(placeholder of 32168)	cache/assets/osnr/custom_items/item_config/definitions.toml:1723
+33216	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32216)	cache/assets/osnr/custom_items/item_config/toa.toml:18
+33217	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32217)	cache/assets/osnr/custom_items/item_config/toa.toml:41
+33218	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32218)	cache/assets/osnr/custom_items/item_config/toa.toml:64
+33219	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32219)	cache/assets/osnr/custom_items/item_config/toa.toml:87
+33220	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32220)	cache/assets/osnr/custom_items/item_config/toa.toml:110
+33221	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32221)	cache/assets/osnr/custom_items/item_config/toa.toml:133
+33222	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32222)	cache/assets/osnr/custom_items/item_config/toa.toml:156
+33223	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32223)	cache/assets/osnr/custom_items/item_config/toa.toml:179
+33224	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32224)	cache/assets/osnr/custom_items/item_config/toa.toml:196
+33225	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32225)	cache/assets/osnr/custom_items/item_config/toa.toml:213
+33226	NEW custom def [placeholder]	toa echo / anubis	(placeholder of 32226)	cache/assets/osnr/custom_items/item_config/toa.toml:230
+33240	NEW custom def	misc custom	Sword of 1000 Truths	cache/assets/osnr/custom_items/item_config/definitions.toml:3041
+33241	NEW custom def	capes	The Mod Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3049
+33242	NEW custom def	capes	The Admin Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3061
+33243	NEW custom def	capes	The Owner Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3073
+33244	NEW custom def	misc custom	Pool Cue	cache/assets/osnr/custom_items/item_config/definitions.toml:3086
+33245	NEW custom def	misc custom	Gnome Scarf	cache/assets/osnr/custom_items/item_config/definitions.toml:3100
+33246	NEW custom def	capes	Founder's Cape	cache/assets/osnr/custom_items/item_config/definitions.toml:3112
+33250	NEW custom def	types/item: smouldering_demon	Smouldering Demon	cache/assets/types/item/smouldering_demon.toml:1
+60017	NEW custom def	types/item: bonds	$100 Donator Scroll	cache/assets/types/item/bonds.toml:53
+60018	NEW custom def	types/item: bonds	$200 Donator Scroll	cache/assets/types/item/bonds.toml:74
+60019	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:17
+60020	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:41
+60021	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:65
+60022	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:90
+60023	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:114
+60024	NEW custom def [placeholder]	types/item: zenyte_armour	null	cache/assets/types/item/zenyte_armour.toml:138
+60025	NEW custom def [placeholder]	types/item: bonds	null	cache/assets/types/item/bonds.toml:65
+60026	NEW custom def [placeholder]	types/item: bonds	null	cache/assets/types/item/bonds.toml:86
+60501	NEW custom def [placeholder]	frank (misc npc/item)	Frank	cache/assets/types/frank.toml:35
+
+# --- ItemId.kt custom-tail constants (line >= 14594) ---
+# id	kind	group	name	source
+2749	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14833
+2750	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14834
+2751	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14835
+2752	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14836
+2753	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14837
+2754	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14838
+2755	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14839
+2756	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14840
+2757	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14841
+2758	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_SET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14842
+2759	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_5	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14843
+2761	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_35	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14844
+2763	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_1	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14845
+2764	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_2	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14846
+2765	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_3	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14847
+2766	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_4	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14848
+2767	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_5	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14849
+2768	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_6	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14850
+2769	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_7	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14851
+2770	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_8	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14852
+2771	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_9	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14853
+2772	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PROMO_BUNDLE_10	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14854
+31300	CONSTANT (has def)	ItemId.kt custom tail	ANCIENT_SHARD_PACK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14595
+31301	CONSTANT (has def)	ItemId.kt custom tail	CANNONBALL_PACK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14596
+31313	CONSTANT (has def)	ItemId.kt custom tail	DRAGON_BONES_PACK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14597
+31314	CONSTANT (has def)	ItemId.kt custom tail	GRANITE_CANNONBALL_PACK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14598
+32022	CONSTANT (has def)	ItemId.kt custom tail	DRAGON_KITE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14599
+32042	CONSTANT (has def)	ItemId.kt custom tail	POLYPORE_STAFF	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14600
+32044	CONSTANT (has def)	ItemId.kt custom tail	BRONZE_KEY_32044	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14601
+32046	CONSTANT (has def)	ItemId.kt custom tail	SILVER_KEY_32046	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14602
+32048	CONSTANT (has def)	ItemId.kt custom tail	GOLD_KEY	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14603
+32050	CONSTANT (has def)	ItemId.kt custom tail	PLATINUM_KEY	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14604
+32052	CONSTANT (has def)	ItemId.kt custom tail	DIAMOND_KEY_32052	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14605
+32056	CONSTANT (has def)	ItemId.kt custom tail	NR_TABLET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14606
+32058	CONSTANT (has def)	ItemId.kt custom tail	DEATH_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14607
+32066	CONSTANT (has def)	ItemId.kt custom tail	PINK_PARTYHAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14608
+32068	CONSTANT (has def)	ItemId.kt custom tail	ORANGE_PARTYHAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14609
+32070	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_10	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14610
+32071	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_25	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14611
+32072	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_50	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14612
+32073	CONSTANT (has def)	ItemId.kt custom tail	DONATOR_PIN_100	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14613
+32078	CONSTANT (has def)	ItemId.kt custom tail	NEAR_REALITY_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14614
+32080	CONSTANT (has def)	ItemId.kt custom tail	OSNR_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14615
+32102	CONSTANT (has def)	ItemId.kt custom tail	BLUE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14616
+32104	CONSTANT (has def)	ItemId.kt custom tail	BLUE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14617
+32106	CONSTANT (has def)	ItemId.kt custom tail	BLUE_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14618
+32108	CONSTANT (has def)	ItemId.kt custom tail	BLUE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14619
+32110	CONSTANT (has def)	ItemId.kt custom tail	BLUE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14620
+32112	CONSTANT (has def)	ItemId.kt custom tail	GREEN_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14621
+32114	CONSTANT (has def)	ItemId.kt custom tail	GREEN_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14622
+32116	CONSTANT (has def)	ItemId.kt custom tail	GREEN_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14623
+32118	CONSTANT (has def)	ItemId.kt custom tail	GREEN_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14624
+32120	CONSTANT (has def)	ItemId.kt custom tail	GREEN_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14625
+32122	CONSTANT (has def)	ItemId.kt custom tail	GOLD_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14626
+32124	CONSTANT (has def)	ItemId.kt custom tail	GOLD_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14627
+32126	CONSTANT (has def)	ItemId.kt custom tail	GOLD_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14628
+32128	CONSTANT (has def)	ItemId.kt custom tail	GOLD_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14629
+32130	CONSTANT (has def)	ItemId.kt custom tail	GOLD_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14630
+32132	CONSTANT (has def)	ItemId.kt custom tail	WHITE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14631
+32134	CONSTANT (has def)	ItemId.kt custom tail	WHITE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14632
+32136	CONSTANT (has def)	ItemId.kt custom tail	WHITE_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14633
+32138	CONSTANT (has def)	ItemId.kt custom tail	WHITE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14634
+32140	CONSTANT (has def)	ItemId.kt custom tail	WHITE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14635
+32142	CONSTANT (has def)	ItemId.kt custom tail	BANDOS_CHESTPLATE_OR_32142	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14636
+32144	CONSTANT (has def)	ItemId.kt custom tail	BANDOS_TASSETS_OR_32144	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14637
+32146	CONSTANT (has def)	ItemId.kt custom tail	BANDOS_ORNAMENT_KIT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14638
+32148	CONSTANT (has def)	ItemId.kt custom tail	NR_VOTE_SHARD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14639
+32149	CONSTANT (has def)	ItemId.kt custom tail	LARRANS_KEY_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14640
+32151	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14641
+32152	CONSTANT (has def)	ItemId.kt custom tail	PET_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14642
+32153	CONSTANT (has def)	ItemId.kt custom tail	GAUNTLET_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14643
+32154	CONSTANT (has def)	ItemId.kt custom tail	BLOOD_MONEY_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14644
+32155	CONSTANT (has def)	ItemId.kt custom tail	CLUE_SCROLL_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14645
+32156	CONSTANT (has def)	ItemId.kt custom tail	TOB_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14646
+32157	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_TASK_PICKER_SCROLL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14648
+32158	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_TASK_RESET_SCROLL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14647
+32163	CONSTANT (has def)	ItemId.kt custom tail	COSMETIC_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14649
+32164	CONSTANT (has def)	ItemId.kt custom tail	SUPER_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14650
+32165	CONSTANT (has def)	ItemId.kt custom tail	ULTIMATE_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14651
+32166	CONSTANT (has def)	ItemId.kt custom tail	REVENANT_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14652
+32167	CONSTANT (has def)	ItemId.kt custom tail	NEX_BOOSTER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14653
+32168	CONSTANT (has def)	ItemId.kt custom tail	BARROWS_TOTEM	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14654
+32169	CONSTANT (has def)	ItemId.kt custom tail	VESTAS_HELM	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14655
+32172	CONSTANT (has def)	ItemId.kt custom tail	HOLY_GREAT_WARHAMMER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14656
+32175	CONSTANT (has def)	ItemId.kt custom tail	HOLY_GREAT_LANCE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14657
+32178	CONSTANT (has def)	ItemId.kt custom tail	DEGRADED_ESSENCE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14658
+32180	CONSTANT (has def)	ItemId.kt custom tail	BLOOD_TENTACLES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14659
+32182	CONSTANT (has def)	ItemId.kt custom tail	ANGELIC_ARTIFACT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14660
+32185	CONSTANT (has def)	ItemId.kt custom tail	MALEVOLENT_ENERGY	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14661
+32195	CONSTANT (has def)	ItemId.kt custom tail	MERCILESS_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14662
+32198	CONSTANT (has def)	ItemId.kt custom tail	VENGEFUL_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14663
+32203	CONSTANT (has def)	ItemId.kt custom tail	PVP_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14664
+32212	CONSTANT (has def)	ItemId.kt custom tail	SKILLING_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14665
+32224	CONSTANT (has def)	ItemId.kt custom tail	ICE_PARTYHAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14666
+32225	CONSTANT (has def)	ItemId.kt custom tail	ICE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14667
+32226	CONSTANT (has def)	ItemId.kt custom tail	ICE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14668
+32227	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_BASE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14669
+32228	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_SHAFT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14670
+32229	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_LEFT_BONE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14671
+32230	CONSTANT (has def)	ItemId.kt custom tail	SLAYER_RIGHT_BONE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14672
+32231	CONSTANT (has def)	ItemId.kt custom tail	REGAL_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14673
+32234	CONSTANT (has def)	ItemId.kt custom tail	PINK_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14675
+32237	CONSTANT (has def)	ItemId.kt custom tail	PINK_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14674
+32261	CONSTANT (has def)	ItemId.kt custom tail	COMPLETIONIST_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14676
+32355	CONSTANT (has def)	ItemId.kt custom tail	CARROT_CROWN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14677
+32357	CONSTANT (has def)	ItemId.kt custom tail	EASTER_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14678
+32359	CONSTANT (has def)	ItemId.kt custom tail	ANCIENT_MAX_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14679
+32360	CONSTANT (has def)	ItemId.kt custom tail	ARMADYL_MAX_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14680
+32361	CONSTANT (has def)	ItemId.kt custom tail	BANDOS_MAX_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14681
+32362	CONSTANT (has def)	ItemId.kt custom tail	SEREN_MAX_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14682
+32368	CONSTANT (has def)	ItemId.kt custom tail	PVP_TOURNEY_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14683
+32369	CONSTANT (has def)	ItemId.kt custom tail	ORB_OF_XERIC	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14684
+32370	CONSTANT (has def)	ItemId.kt custom tail	ORB_OF_BLOOD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14685
+32371	CONSTANT (has def)	ItemId.kt custom tail	ORB_OF_AMASCUT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14686
+32378	CONSTANT (has def)	ItemId.kt custom tail	BLUE_TWISTED_BOW	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14687
+32381	CONSTANT (has def)	ItemId.kt custom tail	BLUE_TWISTED_BOW_PAINT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14688
+32382	CONSTANT (has def)	ItemId.kt custom tail	DIVINE_KIT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14689
+32383	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_TWISTED_BOW	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14690
+32386	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_TWISTED_BOW_PAINT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14691
+32387	CONSTANT (has def)	ItemId.kt custom tail	RED_TWISTED_BOW	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14692
+32390	CONSTANT (has def)	ItemId.kt custom tail	RED_TWISTED_BOW_PAINT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14693
+32391	CONSTANT (has def)	ItemId.kt custom tail	WHITE_TWISTED_BOW	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14694
+32394	CONSTANT (has def)	ItemId.kt custom tail	WHITE_TWISTED_BOW_PAINT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14695
+32395	CONSTANT (has def)	ItemId.kt custom tail	BLACK_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14696
+32397	CONSTANT (has def)	ItemId.kt custom tail	BLACK_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14697
+32399	CONSTANT (has def)	ItemId.kt custom tail	BLACK_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14698
+32401	CONSTANT (has def)	ItemId.kt custom tail	BLACK_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14699
+32403	CONSTANT (has def)	ItemId.kt custom tail	BLACK_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14700
+32405	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14701
+32407	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14702
+32409	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_ANKOUS_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14703
+32411	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14704
+32413	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14705
+32421	CONSTANT (has def)	ItemId.kt custom tail	ELYSIAN_SPIRIT_SHIELD_OR	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14706
+32423	CONSTANT (has def)	ItemId.kt custom tail	PVM_MYSTERY_BOX	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14707
+32424	CONSTANT (has def)	ItemId.kt custom tail	WORLD_BOOST_TOKEN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14708
+32425	CONSTANT (has def)	ItemId.kt custom tail	SIR_ELDRICS_BOOST_SCROLL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14709
+32451	CONSTANT (has def)	ItemId.kt custom tail	GILDED_BOXING_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14710
+32452	CONSTANT (has def)	ItemId.kt custom tail	POTENT_ARDER_MUSCA_POISON	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14711
+32455	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14712
+32458	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14855
+32461	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14856
+32464	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14857
+32467	CONSTANT (has def)	ItemId.kt custom tail	BLACK_GREEN_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14858
+32470	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14713
+32473	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14859
+32476	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14860
+32479	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14861
+32482	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PURPLE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14862
+32485	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14863
+32488	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14864
+32491	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14865
+32494	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14866
+32497	CONSTANT (has def)	ItemId.kt custom tail	BLACK_WHITE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14867
+32500	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14868
+32503	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14869
+32506	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14870
+32509	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14871
+32512	CONSTANT (has def)	ItemId.kt custom tail	BLACK_YELLOW_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14872
+32515	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14873
+32518	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14874
+32521	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14875
+32524	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14876
+32527	CONSTANT (has def)	ItemId.kt custom tail	GILDED_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14877
+32530	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14878
+32533	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14879
+32536	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14880
+32539	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14881
+32542	CONSTANT (has def)	ItemId.kt custom tail	GREEN_BLACK_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14882
+32545	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14883
+32548	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14884
+32551	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14885
+32554	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14886
+32557	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_BLACK_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14887
+32560	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14888
+32563	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14889
+32566	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14890
+32569	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14891
+32572	CONSTANT (has def)	ItemId.kt custom tail	RED_BLACK_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14892
+32575	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14893
+32578	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14894
+32581	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14895
+32584	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14896
+32587	CONSTANT (has def)	ItemId.kt custom tail	WHITE_BLUE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14897
+32590	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_SOCKS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14898
+32593	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14899
+32596	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_LEGGINGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14900
+32599	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14901
+32602	CONSTANT (has def)	ItemId.kt custom tail	WHITE_PURPLE_ANKOU_TOP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14902
+32606	CONSTANT (has def)	ItemId.kt custom tail	OMEGA_BOOTS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14821
+32607	CONSTANT (has def)	ItemId.kt custom tail	OMEGA_BOOTS_32607	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14822
+32608	CONSTANT (has def)	ItemId.kt custom tail	OMEGA_HORN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14823
+32609	CONSTANT (has def)	ItemId.kt custom tail	OMEGA_SPIKE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14824
+32610	CONSTANT (has def)	ItemId.kt custom tail	OMEGA_SYMBOL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14825
+32611	CONSTANT (has def)	ItemId.kt custom tail	SUPERIOR_BELL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14826
+32612	CONSTANT (has def)	ItemId.kt custom tail	BALMUNG	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14827
+32614	CONSTANT (has def)	ItemId.kt custom tail	MASTER_COMP_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14828
+32617	CONSTANT (has def)	ItemId.kt custom tail	MASTER_COMP_HOOD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14829
+32618	CONSTANT (has def)	ItemId.kt custom tail	COMPLETIONIST_CAPE_T	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14830
+32712	CONSTANT (has def)	ItemId.kt custom tail	WHITE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14714
+32713	CONSTANT (has def)	ItemId.kt custom tail	WHITE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14715
+32714	CONSTANT (has def)	ItemId.kt custom tail	BLACK_SANTA_HAT_32714	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14716
+32715	CONSTANT (has def)	ItemId.kt custom tail	BLACK_HWEEN_MASK_32715	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14717
+32716	CONSTANT (has def)	ItemId.kt custom tail	BLACK_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14718
+32717	CONSTANT (has def)	ItemId.kt custom tail	LIME_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14719
+32718	CONSTANT (has def)	ItemId.kt custom tail	LIME_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14720
+32719	CONSTANT (has def)	ItemId.kt custom tail	LIME_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14721
+32722	CONSTANT (has def)	ItemId.kt custom tail	PINK_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14722
+32723	CONSTANT (has def)	ItemId.kt custom tail	CYAN_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14723
+32724	CONSTANT (has def)	ItemId.kt custom tail	CYAN_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14724
+32725	CONSTANT (has def)	ItemId.kt custom tail	CYAN_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14725
+32726	CONSTANT (has def)	ItemId.kt custom tail	BLUE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14726
+32727	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14727
+32728	CONSTANT (has def)	ItemId.kt custom tail	PURPLE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14728
+32729	CONSTANT (has def)	ItemId.kt custom tail	ORANGE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14729
+32730	CONSTANT (has def)	ItemId.kt custom tail	ORANGE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14730
+32731	CONSTANT (has def)	ItemId.kt custom tail	ORANGE_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14731
+32732	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_PURPLE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14732
+32733	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_PURPLE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14733
+32734	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_PURPLE_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14734
+32735	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_BLUE_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14735
+32736	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_BLUE_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14736
+32737	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_BLUE_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14737
+32738	CONSTANT (has def)	ItemId.kt custom tail	PEACH_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14738
+32739	CONSTANT (has def)	ItemId.kt custom tail	PEACH_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14739
+32740	CONSTANT (has def)	ItemId.kt custom tail	PEACH_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14740
+32741	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_GREEN_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14741
+32742	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_GREEN_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14742
+32743	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_GREEN_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14743
+32744	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_YELLOW_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14744
+32745	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_YELLOW_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14745
+32746	CONSTANT (has def)	ItemId.kt custom tail	LIGHT_YELLOW_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14746
+32747	CONSTANT (has def)	ItemId.kt custom tail	CREAM_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14747
+32748	CONSTANT (has def)	ItemId.kt custom tail	CREAM_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14748
+32749	CONSTANT (has def)	ItemId.kt custom tail	CREAM_PARTY_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14749
+32750	CONSTANT (has def)	ItemId.kt custom tail	MAGMA_HWEEN_MASK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14750
+32751	CONSTANT (has def)	ItemId.kt custom tail	MAGMA_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14751
+32752	CONSTANT (has def)	ItemId.kt custom tail	INVERTED_SANTA_HAT_32752	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14752
+32753	CONSTANT (has def)	ItemId.kt custom tail	GREY_SANTA_HAT_T	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14753
+32754	CONSTANT (has def)	ItemId.kt custom tail	SHADOW_SANTA_HAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14754
+32755	CONSTANT (has def)	ItemId.kt custom tail	SHADOW_BUNNY_EARS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14755
+32756	CONSTANT (has def)	ItemId.kt custom tail	GREY_BUNNY_EARS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14756
+32802	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_RAPIER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14757
+32804	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_LONGSWORD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14758
+32806	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_MAUL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14759
+32808	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_STAFF	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14760
+32810	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_CROSSBOW	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14761
+32812	CONSTANT (has def)	ItemId.kt custom tail	CHAOTIC_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14762
+32814	CONSTANT (has def)	ItemId.kt custom tail	EAGLE_EYE_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14763
+32816	CONSTANT (has def)	ItemId.kt custom tail	FARSEER_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14764
+32826	CONSTANT (has def)	ItemId.kt custom tail	PET_POSTIE_PETE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14765
+32827	CONSTANT (has def)	ItemId.kt custom tail	PET_IMP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14766
+32828	CONSTANT (has def)	ItemId.kt custom tail	PET_TOUCAN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14767
+32829	CONSTANT (has def)	ItemId.kt custom tail	PET_KING_PENGUIN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14768
+32830	CONSTANT (has def)	ItemId.kt custom tail	PET_KKLIK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14769
+32831	CONSTANT (has def)	ItemId.kt custom tail	PET_SHADOW_WARRIOR	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14770
+32832	CONSTANT (has def)	ItemId.kt custom tail	PET_SHADOW_ARCHER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14771
+32833	CONSTANT (has def)	ItemId.kt custom tail	PET_SHADOW_WIZARD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14772
+32834	CONSTANT (has def)	ItemId.kt custom tail	PET_HEALER_DEATH_SPAWN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14773
+32835	CONSTANT (has def)	ItemId.kt custom tail	PET_HOLY_DEATH_SPAWN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14774
+32836	CONSTANT (has def)	ItemId.kt custom tail	PET_SEREN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14775
+32837	CONSTANT (has def)	ItemId.kt custom tail	PET_CORRUPT_BEAST	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14776
+32838	CONSTANT (has def)	ItemId.kt custom tail	PET_ROC	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14777
+32839	CONSTANT (has def)	ItemId.kt custom tail	PET_KRATOS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14778
+32840	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_POSTIE_PETE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14779
+32841	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_IMP	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14780
+32842	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_TOUCAN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14781
+32843	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_KING_PENGUIN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14782
+32844	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_KKLIK	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14783
+32845	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_SHADOW_WARRIOR	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14784
+32846	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_SHADOW_ARCHER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14785
+32847	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_SHADOW_WIZARD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14786
+32848	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_HEALER_DEATH_SPAWN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14787
+32849	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_HOLY_DEATH_SPAWN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14788
+32850	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_SEREN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14789
+32851	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_CORRUPT_BEAST	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14790
+32852	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_ROC	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14791
+32853	CONSTANT (has def)	ItemId.kt custom tail	PET_DARK_KRATOS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14792
+32854	CONSTANT (has def)	ItemId.kt custom tail	PET_FISSILE_KRATOS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14793
+32894	CONSTANT (has def)	ItemId.kt custom tail	GHOSTLY_PARTYHAT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14794
+32902	CONSTANT (has def)	ItemId.kt custom tail	SPIRIT_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14795
+32904	CONSTANT (has def)	ItemId.kt custom tail	DEMONHORN_NECKLACE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14796
+32906	CONSTANT (has def)	ItemId.kt custom tail	MERCENARY_GLOVES	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14797
+32914	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_2H_SWORD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14798
+32916	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_BOOTS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14799
+32918	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_GAUNTLETS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14800
+32920	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_FULL_HELM	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14801
+32922	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_PLATEBODY	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14802
+32924	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_CHAINBODY	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14803
+32926	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_PLATESKIRT	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14804
+32928	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_PLATELEGS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14805
+32930	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_LONGSWORD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14806
+32932	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_MAUL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14807
+32934	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_HATCHET	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14808
+32936	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_DAGGER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14809
+32938	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_RAPIER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14810
+32940	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_WARHAMMER	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14811
+32942	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_SPEAR	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14812
+32944	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_PICKAXE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14813
+32946	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_BATTLEAXE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14814
+32948	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_KITESHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14815
+32954	CONSTANT (has def)	ItemId.kt custom tail	PRIMAL_COMPONENTS	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14816
+32955	CONSTANT (has def)	ItemId.kt custom tail	DIVINE_SIGIL	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14817
+32956	CONSTANT (has def)	ItemId.kt custom tail	DIVINE_SPIRIT_SHIELD	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14818
+32958	CONSTANT (has def)	ItemId.kt custom tail	CUSTOM_ITEM_TOKEN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14819
+32960	CONSTANT (has def)	ItemId.kt custom tail	CUSTOM_ITEM_SET_TOKEN	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14820
+33246	CONSTANT (has def)	ItemId.kt custom tail	FOUNDERS_CAPE	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14831
+33250	CONSTANT (has def)	ItemId.kt custom tail	SMOLDERING_DEMON	core-model/src/main/kotlin/org/jesse/game/item/ids/ItemId.kt:14832

@@ -220,8 +220,6 @@ object CollectionLogRewards {
                     phantomMuspah,
                     arrayOf(superMB x 1, venatorShard x 1, frozenCache x 10, venatorKit x 1)
                 ),
-                CollectionLogReward(primal, arrayOf(regalMB x 2, ultraMB x 3, dpin25 x 2)),
-                CollectionLogReward(riseOfTheSix, arrayOf(dpin10 x 1, ultraMB x 1, superMB x 2, standardMB x 3)),
                 CollectionLogReward(sarachnis, arrayOf(superMB x 1, standardMB x 2)),
                 CollectionLogReward(
                     scorpia,
@@ -233,7 +231,6 @@ object CollectionLogRewards {
                     arrayOf(standardMB x 1)
                 ),
                 CollectionLogReward(tormentedDemons, arrayOf(superMB x 1, standardMB x 2)),
-                CollectionLogReward(vanstromKlause, arrayOf(standardMB x 2, bloodShard x 1)),
                 CollectionLogReward(vardorvis, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
                 CollectionLogReward(
                     venenatisAndSpindel,

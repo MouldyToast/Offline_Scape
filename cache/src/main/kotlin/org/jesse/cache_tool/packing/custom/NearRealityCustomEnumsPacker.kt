@@ -244,7 +244,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = ASH_SANCTIFIER                  // Ash sanctifier
             this.values[idx++] = DRAGON_DART                     // Dragon dart
             this.values[idx++] = 32161              // Enhanced excalibur
-            this.values[idx++] = 26255            // Dragon Hunter Gloves
             this.values[idx++] = 26300                // Dragonhide pouch
             this.values[idx++] = 26304                      // Bone pouch
             this.values[idx++] = BONECRUSHER                    // Bonecrusher
@@ -294,7 +293,6 @@ object NearRealityCustomEnumsPacker {
             this.values[BLISTERWOOD_FLAIL] = 300
             this.values[ASH_SANCTIFIER] = 300
             this.values[KERIS_PARTISAN] = 400
-            this.values[26255] = 400
             this.values[26300] = 500
             this.values[26304] = 500
             this.values[26706] = 150
@@ -336,7 +334,6 @@ object NearRealityCustomEnumsPacker {
             this.values[BLISTERWOOD_FLAIL] = "Super effective against Vampyres."
             this.values[ASH_SANCTIFIER] = "Scatters ashes."
             this.values[KERIS_PARTISAN] = "A mystical-feeling polearm that can easily penetrate through Kalphite chitin."
-            this.values[26255] = "Has the same stats as Barrows Gloves, in addition gives a 25% slayer xp bonus on dragon slayer tasks, and 15% more accuracy on dragons. Requires 41 defence."
             this.values[26300] = "You can carry dragonhide in here."
             this.values[26304] = "A pouch for storing bones."
             this.values[26706] = "A scroll that can be used to imbue items."

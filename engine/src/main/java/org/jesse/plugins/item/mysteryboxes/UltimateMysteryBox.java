@@ -42,17 +42,6 @@ public class UltimateMysteryBox extends ItemPlugin {
 
 		rewards = new MysteryItem[] {
 				// Common = 1000
-//                new MysteryItem(32149, 5, 10, 1000), // Larran's Booster
-//                new MysteryItem(32151, 5, 10, 1000), // Slayer Booster
-//                new MysteryItem(32152, 5, 10, 1000), // Pet Booster
-//                new MysteryItem(32153, 5, 10, 1000), // Gauntlet Booster
-//                new MysteryItem(32154, 5, 10, 1000), // Blood Money Booster
-//                new MysteryItem(32155, 5, 10, 1000), // Clue Scroll Booster
-//                new MysteryItem(32156, 5, 10, 1000), // ToB Booster
-//                new MysteryItem(32157, 3, 7, 1000), // Slayer Task Picker
-//                new MysteryItem(32158, 5, 10, 1000), // Slayer Task Reset
-//				new MysteryItem(32166, 5, 10, 1000), // Rev Booster
-//				new MysteryItem(32167, 5, 10, 1000), // Nex Booster
 //                new MysteryItem(19782, 4, 8, 1000), // Xeric's Wisdom
                 new MysteryItem(20724, 1, 1, 1000), // Imbued Heart
                 new MysteryItem(ItemId.DRAGON_CROSSBOW, 1, 1, 1000), // Dragon Crossbow

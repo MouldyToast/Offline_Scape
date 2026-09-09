@@ -40,8 +40,7 @@ public class GuthanTheInfested extends BarrowsWightNPC implements Spawnable, Com
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1674:
-			case 16054: {
+			case 1674: {
 				return true;
 			}
 			default:

@@ -147,10 +147,6 @@ public enum SkillingPet implements Pet {
             roll = (int) (rarity - (rarity * GameConstants.BOOSTED_SKILLING_PET_RATE));
         }
 
-        if (player != null && player.getVariables().getPetBoosterTick() > 0) {
-            roll *= 0.9;
-        }
-
         if (Utils.random(roll) != 0) {
             return false;
         }

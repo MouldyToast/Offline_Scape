@@ -31,7 +31,7 @@ public class DharokTheWretched extends BarrowsWightNPC implements Spawnable, Com
 	@Override
 	public boolean validate(final int id, final String name) {
         return switch (id) {
-            case 1673, 16053 -> true;
+            case 1673 -> true;
             default -> false;
         };
 	}

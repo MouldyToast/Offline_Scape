@@ -56,8 +56,6 @@ public class PvmArenaMysteryBox extends ItemPlugin {
             new MysteryItem(ItemId.DRAGON_CROSSBOW, 1, 1, UNCOMMON),
             new MysteryItem(ItemId.DRAGON_BOOTS, 1, 1, UNCOMMON),
             new MysteryItem(ItemId.AMULET_OF_FURY, 1, 1, UNCOMMON),
-            new MysteryItem(ItemId.SLAYER_TASK_RESET_SCROLL, 1, 5, UNCOMMON),
-            new MysteryItem(ItemId.SLAYER_TASK_PICKER_SCROLL, 1, 5, UNCOMMON),
             // Rare
             new MysteryItem(ItemId.TRIDENT_OF_THE_SEAS, 1, 1, RARE).announce(),
             new MysteryItem(ItemId.HOLY_ELIXIR, 1, 1, RARE).announce(),

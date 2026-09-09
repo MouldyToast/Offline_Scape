@@ -209,8 +209,7 @@ public final class GameNoticeboardInterface extends Interface {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = player.getMemberRank().getDR();
         double pin = player.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double compCape = player.getCompletionistCapeDRBoost();
-        int percent = (int) ((gameMode + donor + pin + compCape) * 100.0D);
+        int percent = (int) ((gameMode + donor + pin) * 100.0D);
         player.getPacketDispatcher().sendComponentText(GameInterface.GAME_NOTICEBOARD, 46, "Drop Rate Boost: " + Colour.WHITE.wrap(percent + "%"));
     }
 
@@ -244,7 +243,6 @@ public final class GameNoticeboardInterface extends Interface {
                 player.sendMessage("You need to be a donator to open this.");
             }
         });
-        bind("Boosters", GameCommands::openBoosters);
     }
 
     @Override

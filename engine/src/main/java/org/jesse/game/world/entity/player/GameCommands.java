@@ -179,9 +179,6 @@ public final class GameCommands {
             p.getDialogueManager().start(new BreachControlPanel(p));
         });
 
-        new Command(PlayerPrivilege.PLAYER, "boosters", "Opens your active boosters.", (p, args) -> {
-            openBoosters(p);
-        });
 
 
         new Command(PlayerPrivilege.DEVELOPER, "cerbinst", (player, args) -> {
@@ -2343,8 +2340,7 @@ public final class GameCommands {
             double gameMode = configuration.dropRateIncrease() / 100.0D;
             double donor = p.getMemberRank().getDR();
             double pin = p.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-            double compCape = p.getCompletionistCapeDRBoost();
-            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin + compCape) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
+            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
         });
 
         new Command(PlayerPrivilege.DEVELOPER, new String[]{"b", "bank"}, "Opens the bank.",
@@ -2692,27 +2688,6 @@ public final class GameCommands {
         public boolean eligible(Player player) {
             return (orCondition != null && orCondition.test(player)) || player.getPrivilege().eligibleTo(privilege);
         }
-    }
-
-    public static void openBoosters(Player p) {
-        Analytics.flagInteraction(p, Analytics.InteractionType.CHECK_BOOSTERS);
-        final PlayerVariables vars = p.getVariables();
-        final Colour red = Colour.RS_RED;
-        final Colour green = Colour.RS_GREEN;
-
-        List<String> info = new ArrayList<>();
-        info.add("Larran's key booster: " + (vars.getLarransKeyBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getLarransKeyBoosterTick()) : red + "Inactive"));
-        info.add("Slayer booster: " + (vars.getSlayerBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getSlayerBoosterTick()) : red + "Inactive"));
-        info.add("Pet booster: " + (vars.getPetBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getPetBoosterTick()) : red + "Inactive"));
-        info.add("Gauntlet booster: " + (vars.getGauntletBoosterCompletionsLeft() > 0 ? green + "Active for " + vars.getGauntletBoosterCompletionsLeft() + " completions" : red + "Inactive"));
-        info.add("Blood money booster: " + (vars.getBloodMoneyBoosterLeft() > 0 ? green + "Active for " + vars.getBloodMoneyBoosterLeft() + " PKs" : red + "Inactive"));
-        info.add("Clue booster: " + (vars.getClueBoosterLeft() > 0 ? green + "Active for " + vars.getClueBoosterLeft() + " clues" : red + "Inactive"));
-        info.add("ToB booster: " + (vars.getTobBoosterleft() > 0 ? green + "Active for " + vars.getTobBoosterleft() + " completions" : red + "Inactive"));
-        info.add("Inferno wave skip scroll: " + (p.getBooleanAttribute("used_inferno_skip_scroll") ? green + "Active" : red + "Inactive"));
-        info.add("Revenant booster: " + (vars.getRevenantBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getRevenantBoosterTick()) : red + "Inactive"));
-        info.add("Nex booster: " + (vars.getNexBoosterleft() > 0 ? green + "Active for " + vars.getNexBoosterleft() + " kills" : red + "Inactive"));
-
-        Diary.sendJournal(p, "Boosters information", info);
     }
 
     public static boolean isLiveEligible(Player player, PlayerPrivilege liveRankRequired, PlayerPrivilege... exceptions) {

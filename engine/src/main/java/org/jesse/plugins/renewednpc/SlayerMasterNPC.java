@@ -1,6 +1,5 @@
 package org.jesse.plugins.renewednpc;
 
-import org.jesse.game.content.slayer.dialogue.SumonaAssignmentD;
 import org.jesse.game.content.slayer.SlayerMaster;
 import org.jesse.game.content.skills.slayer.dialogue.*;
 import org.jesse.game.content.treasuretrails.TreasureTrail;
@@ -46,9 +45,7 @@ public class SlayerMasterNPC extends NPCPlugin {
             @Override
             public void handle(Player player, NPC npc) {
                 Analytics.flagInteraction(player, Analytics.InteractionType.SLAYER_MASTER);
-                if (npc.getId() == SlayerMaster.SUMONA.getNpcId()) {
-                    player.getDialogueManager().start(new SumonaAssignmentD(player, npc));
-                } else if (npc.getId() == SlayerMaster.TURAEL.getNpcId()) {
+                if (npc.getId() == SlayerMaster.TURAEL.getNpcId()) {
                     player.getDialogueManager().start(new TuraelAssignmentD(player, npc));
                 } else {
                     player.getDialogueManager().start(new SlayerMasterAssignmentD(player, npc));
@@ -71,9 +68,7 @@ public class SlayerMasterNPC extends NPCPlugin {
                     return;
                 }
                 Analytics.flagInteraction(player, Analytics.InteractionType.SLAYER_MASTER);
-                if (npc.getId() == SlayerMaster.SUMONA.getNpcId()) {
-                    player.getDialogueManager().start(new SumonaD(player, npc));
-                } else if (npc.getId() == SlayerMaster.TURAEL.getNpcId()) {
+                if (npc.getId() == SlayerMaster.TURAEL.getNpcId()) {
                     player.getDialogueManager().start(new TuraelD(player, npc));
                 } else {
                     player.getDialogueManager().start(new SlayerMasterD(player, npc));
@@ -112,7 +107,6 @@ public class SlayerMasterNPC extends NPCPlugin {
                 NpcId.VANNAKA,
                 NpcId.CHAELDAR,
                 NpcId.DURADEL,
-                NpcId.SUMONA,
                 NpcId.NIEVE,
                 NpcId.KONAR_QUO_MATEN
         };

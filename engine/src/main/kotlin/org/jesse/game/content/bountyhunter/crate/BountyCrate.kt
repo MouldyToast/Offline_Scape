@@ -58,9 +58,6 @@ class BountyCrate: ItemPlugin() {
           else if (Random.nextInt(9) == 0) Item(SUPER_COMBAT_POTION4, ((Utils.random(10, 25) * getCrateModifier(crate)).toInt())).toNote()
           else if (Random.nextInt(9) == 0) Item(ANTIVENOM4, ((Utils.random(10, 25) * getCrateModifier(crate)).toInt())).toNote()
           else if (Random.nextInt(9) == 0) Item(ANGLERFISH, ((Utils.random(15, 45) * getCrateModifier(crate)).toInt())).toNote()
-          else if (Random.nextInt(16) == 0) Item(32149) // Larran's Key Booster
-          else if (Random.nextInt(16) == 0) Item(32154) // Blood Money Booster
-          else if (Random.nextInt(16) == 0) Item(32166) // Revenant Booster
         else null
     }
 

@@ -5,7 +5,6 @@ import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.content.ItemRetrievalService;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
-import org.jesse.game.content.compcapes.CompletionistCape;
 import org.jesse.game.content.skills.magic.spells.arceuus.ThrallSpellKt;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.PlayerExtKt;
@@ -87,7 +86,6 @@ public enum VarCollection {
 			POST_LOGIN),
     VORKATH_RECLAIM(VARBIT, 6108, p -> p.getRetrievalService().is(ItemRetrievalService.RetrievalServiceType.TORFINN)
 			? 25 : 24, POST_LOGIN),
-    COMP_PROGRESS(VARBIT, 6347, CompletionistCape::checkRequirements, POST_LOGIN),//quest points
     MAX_COMP_PROGRESS(VARBIT, 11877, p -> 3, POST_LOGIN),//max quest points
     OVERLOAD_REFRESHES_REMAINING(VARBIT, 5418, p -> p.getVarManager().getBitValue(5418), PRE_LOGIN),
     THRALL_ACTIVE(VARBIT, 12413, p -> ThrallSpellKt.getCurrentThrall(p) != null ? 1 : 0, PRE_LOGIN),

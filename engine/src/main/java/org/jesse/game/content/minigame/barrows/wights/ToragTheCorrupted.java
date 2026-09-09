@@ -44,8 +44,7 @@ public class ToragTheCorrupted extends BarrowsWightNPC implements Spawnable, Com
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1676:
-			case 16056: {
+			case 1676: {
 				return true;
 			}
 			default:

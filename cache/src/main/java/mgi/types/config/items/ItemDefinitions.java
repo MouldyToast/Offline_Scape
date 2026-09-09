@@ -28,8 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-import static org.jesse.game.item.ids.ItemId.ORB_OF_BLOOD;
-import static org.jesse.game.item.ids.ItemId.ORB_OF_XERIC;
 
 /**
  * @author Kris | 22. jaan 2018 : 21:35.27
@@ -1217,8 +1215,6 @@ public final class ItemDefinitions implements Definitions, Cloneable {
     }
 
     public String getExamine() {
-        if (id == ORB_OF_XERIC || id == ORB_OF_BLOOD)
-            return "This will let a solo raid, skip to the end fight.";
         return examine;
     }
 

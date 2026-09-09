@@ -52,8 +52,7 @@ public class VeracTheDefiled extends BarrowsWightNPC implements Spawnable, Comba
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1677:
-			case 16057: {
+			case 1677: {
 				return true;
 			}
 			default:

@@ -78,6 +78,13 @@ class Assignment {
             amount = 0
             initialAmount = 0
         }
+        if (master == null) {
+            // Stage 5c: Sumona slayer master removed; retire stale saved assignments.
+            taskName = "RATS"
+            amount = 0
+            initialAmount = 0
+            master = SlayerMaster.TURAEL
+        }
         task = getTask(taskName)
         areaName = old.areaName
         if (areaName.isNotBlank()) {

@@ -9,7 +9,6 @@ import org.jesse.GameToggles
 import org.jesse.game.GameConstants.WORLD_PROFILE
 import org.jesse.game.GameConstants.isOwner
 import org.jesse.game.content.achievementdiary.Diary
-import org.jesse.game.content.compcapes.CompletionistCape
 import org.jesse.game.content.stars.ShootingStars
 import org.jesse.game.content.treasuretrails.ClueItem
 import org.jesse.game.content.treasuretrails.ClueLevel
@@ -92,32 +91,6 @@ object DeveloperCommands {
 
     @OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
     fun register() {
-        Command(PlayerPrivilege.DEVELOPER, "sumonatask") { p: Player, args: Array<String?>? ->
-            val tasks: List<SlayerTask> = p.getAllBossTasks()
-            val names = ArrayList<String>()
-            for (task in tasks) names.add(task.taskName)
-
-            p.dialogueManager.start(object : OptionsMenuD(p, "Select the task to receive", *names.toTypedArray<String>()) {
-                override fun handleClick(slotId: Int) {
-                    if (slotId >= tasks.size) {
-                        return
-                    }
-                    val task: SlayerTask = tasks[slotId]
-                    player.sendInputInt("Enter kill count requirement:") { amount ->
-                        val assignment = Assignment(player, player.slayer, task, task.enumName, amount, amount, SlayerMaster.SUMONA)
-                        p.slayer.assignment = assignment
-                        p.slayer.master = SlayerMaster.SUMONA
-                        p.dialogueManager.start(object : Dialogue(p, p.slayer.master.npcId) {
-                            override fun buildDialogue() {
-                                npc("Your new task is to kill " + assignment.amount + " " + assignment.task.toString() + ".")
-                            }
-                        })
-                    }
-                }
-
-                override fun cancelOption(): Boolean = true
-            })
-        }
         Command(PlayerPrivilege.TRUE_DEVELOPER, "setloyaltyrewards", "Sets NX Store loyalty spent") { p: Player, args: Array<String?>? ->
             p.totalDonatedAfterLaunch = args?.get(0)?.toInt() ?: return@Command
         }
@@ -226,16 +199,6 @@ object DeveloperCommands {
             player.sendInputItem("What item would you like to add?") { item: Item ->
                 player.collectionLog.add(item)
             }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "allowt3compcape") { player, args  ->
-            if(isOwner(player)) {
-                val username = args[0] as String
-                CompletionistCape.ALLOWED_PLAYERS.add(username.lowercase())
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-
         }
 
         Command(PlayerPrivilege.DEVELOPER, "attackabledebug") { p, _ ->

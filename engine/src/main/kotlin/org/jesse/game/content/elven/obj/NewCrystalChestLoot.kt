@@ -62,8 +62,6 @@ enum class NewCrystalChestLoot(
     DRAGON_BOOTS(LootRarity.RARE, Item(org.jesse.game.item.ids.DRAGON_BOOTS)),
     DRAGON_HALBERD(LootRarity.RARE, Item(org.jesse.game.item.ids.DRAGON_HALBERD)),
 
-    PET_BOOSTER(LootRarity.JACKPOT, Item(32152)),
-    SLAYER_BOOSTER(LootRarity.JACKPOT, Item(32151)),
     RANGER_BOOTIES(LootRarity.JACKPOT, Item(2577)),
     BOND(LootRarity.JACKPOT, Item(32070)),
 

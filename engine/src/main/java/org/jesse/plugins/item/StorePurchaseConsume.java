@@ -38,13 +38,12 @@ public class StorePurchaseConsume extends ItemPlugin {
             case 31314: return new Item(21728, 1000);
             case 31315: return new Item(30210, 10);
             case 31316: return new Item(30210, 100);
-            case 31317: return new Item(32158, 25);
         }
         return null;
     }
 
     @Override
     public int[] getItems() {
-        return new int[]{31300, 31301, 31302, 31303, 31304, 31305, 31306, 31307, 31308, 31309, 31310, 31311, 31312, 31313, 31314, 31315, 31316, 31317};
+        return new int[]{31300, 31301, 31302, 31303, 31304, 31305, 31306, 31307, 31308, 31309, 31310, 31311, 31312, 31313, 31314, 31315, 31316};
     }
 }

@@ -9,6 +9,11 @@ import org.jesse.game.world.entity.player.VarManager
 import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentSlot
 import org.jesse.game.item.ids.*
 
+// Stage 5c: master comp cape item defs removed; the customizer itself is 5d scope.
+// Local ids replace the deleted ItemId tail constants so this file keeps compiling.
+private const val MASTER_COMP_CAPE = 32614
+private const val MASTER_COMP_HOOD = 32617
+
 /**
  * @author <a href="https://github.com/heavens">mack</a>
  */

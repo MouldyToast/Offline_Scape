@@ -44,8 +44,7 @@ public class KarilTheTainted extends BarrowsWightNPC implements Spawnable, Comba
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1675:
-			case 16055: {
+			case 1675: {
 				return true;
 			}
 			default:

@@ -19,8 +19,6 @@ public enum AlternateTable {
     CLUES_MASTER(ClueScrollMasterTable.class),
     MYSTERY_BOX_STANDARD(MysteryBoxStandardTable.class),
     MYSTERY_BOX_ULTIMATE(MysteryBoxUltimateTable.class),
-    MYSTERY_BOX_3RD_AGE(MysteryBox3ATable.class),
-    MYSTERY_BOX_COSMETIC(MysteryBoxCosmeticTable.class),
     MYSTERY_BOX_PVM(MysteryBoxPvmTable.class),
     MYSTERY_BOX_REGAL(MysteryBoxRegalTable.class),
     CRYSTAL_CHEST_NORMAL(CrystalChestTable.class),

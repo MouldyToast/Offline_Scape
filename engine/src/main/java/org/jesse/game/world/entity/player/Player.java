@@ -43,7 +43,6 @@ import org.jesse.game.content.chambersofxeric.party.RaidParty;
 import org.jesse.game.content.chambersofxeric.storageunit.PrivateStorage;
 import org.jesse.game.content.clans.ClanChannel;
 import org.jesse.game.content.clans.ClanManager;
-import org.jesse.game.content.compcapes.CompletionistCape;
 import org.jesse.game.content.event.christmas2019.ChristmasConstants;
 import org.jesse.game.content.event.easter2020.EasterConstants;
 import org.jesse.game.content.follower.Follower;
@@ -2003,8 +2002,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         double gameMode = configuration.dropRateIncrease() / 100.0D;
         double donor = getMemberRank().getDR();
         double pin = getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-        double compCape = getCompletionistCapeDRBoost();
-        return ((gameMode + donor + pin + compCape) * 100.0D);
+        return ((gameMode + donor + pin) * 100.0D);
     }
 
     public double getExchangeBonus() {
@@ -2041,18 +2039,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         return this.gameMode.isGroupIronman();
     }
 
-    public double getCompletionistCapeDRBoost() {
-        Item cape = getCape();
-        if (cape == null)
-            return 0.0D;
-        int tier = CompletionistCape.getCompletionistCapeTier(getCape().getId());
-        return switch (tier) {
-            case 1 -> 0.01D;
-            case 2 -> 0.02D;
-            case 3 -> 0.03D;
-            default -> 0.0D;
-        };
-    }
 
 
     private boolean torvaHPBoosted = false;
@@ -3024,15 +3010,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (type != HitType.DEFAULT && CombatUtilities.isElysianSpiritShield(shieldId)) {
             if (Utils.randomDouble() < 0.7F) {
                 final int reduced = (int) (damage * 0.25F);
-                setGraphics(ELYSIAN_EFFECT_GFX);
-                damage -= reduced;
-            }
-        }
-        if (type != HitType.DEFAULT && CombatUtilities.isDivineSpiritShield(shieldId)) {
-            double drainFactor = 0.2F;
-            int prayerPointCheck = (int) Math.floor(damage * 0.3F * drainFactor);
-            if (prayerManager.getPrayerPoints() >= prayerPointCheck) {
-                final int reduced = (int) (damage * 0.3F);
                 setGraphics(ELYSIAN_EFFECT_GFX);
                 damage -= reduced;
             }

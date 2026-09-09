@@ -61,8 +61,7 @@ public class AhrimTheBlighted extends BarrowsWightNPC implements Spawnable, Comb
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1672:
-			case 16052: {
+			case 1672: {
 				return true;
 			}
 			default:

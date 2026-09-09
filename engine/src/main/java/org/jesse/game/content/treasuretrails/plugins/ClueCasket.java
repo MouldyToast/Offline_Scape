@@ -95,15 +95,10 @@ public class ClueCasket extends ItemPlugin {
     }
 
     static final void open(@NotNull final Player player, @NotNull final Item item, @NotNull final ClueLevel tier) {
-        boolean booster = false;
-        if (player.getVariables().getClueBoosterLeft() > 0) {
-            player.getVariables().setClueBoosterLeft(player.getVariables().getClueBoosterLeft() - 1);
-            booster = true;
-        }
 
         AdventCalendarManager.increaseChallengeProgress(player, 2022, 14, 1);
         final ClueRewardTable rewards = Objects.requireNonNull(ClueReward.getTable(item.getId()));
-        final List<Item> loot = rewards.roll(player.inArea(Entrana.class), false, booster);
+        final List<Item> loot = rewards.roll(player.inArea(Entrana.class), false);
         player.sendMessage("Well done, you've completed the Treasure Trail!");
         final String tierString = tier.toString().toLowerCase();
         final int count = player.getNumericAttribute("completed " + tierString + " treasure trails").intValue() + 1;

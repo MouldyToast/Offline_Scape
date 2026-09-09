@@ -29,15 +29,6 @@ public class TomeOfExperience extends ItemPlugin {
                 options("Are you sure you wish to read it?", new DialogueOption("Yes, read the tome.", () -> read(player, item, slotId, 1)), new DialogueOption("No, don't read the tome."));
             }
         }));
-        bind("Read-All", (player, item, container, slotId) -> player.getDialogueManager().start(new Dialogue(player) {
-            @Override
-            public void buildDialogue() {
-                item(item, "Reading the tomes will grant you five minutes of 50% bonus experience in anything you do, per tome.<br>This bonus experience will stack with the global bonus experience.");
-                item(item, "Once you've read the tomes, the timer will count down while you are online - the timer " +
-                        "cannot be stopped until it reaches zero.");
-                options("Are you sure you wish to read all your tomes?", new DialogueOption("Yes, read the tomes.", () -> read(player, item, slotId, item.getAmount())), new DialogueOption("No, don't read the tomes."));
-            }
-        }));
     }
 
     private final void read(@NotNull final Player player, @NotNull final Item item, final int slot, final int amount) {

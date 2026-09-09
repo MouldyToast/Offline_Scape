@@ -1,7 +1,0 @@
-[clientscript,cape_customizer_confirm_hsb]
-def_component $popup = comp_cape_customizer:com10;
-if_sethide(true, $popup);
-if_setnoclickthrough(false, $popup);
-def_int $rgb = if_getcolour(comp_cape_customizer:com38);
-def_int $hsl = ~hsl_to_hsl16(~packed_rgb_to_hsl($rgb));
-resume_stringdialog("<tostring(%cape_customizer_current_block_color_index)>,<tostring($rgb)>,<tostring($hsl)>");

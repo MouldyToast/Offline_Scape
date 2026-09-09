@@ -1,3 +1,0 @@
-// 32038
-[clientscript,script32038](component $component0, component $component1)
-if_sethide(false, $component1);

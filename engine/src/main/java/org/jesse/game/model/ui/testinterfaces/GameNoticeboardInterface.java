@@ -1,9 +1,6 @@
 package org.jesse.game.model.ui.testinterfaces;
 
 import com.google.common.eventbus.Subscribe;
-import org.jesse.api.service.user.UserPlayerAttributesKt;
-import org.jesse.api.service.vote.VotePlayerAttributesKt;
-import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.GameClock;
 import org.jesse.game.GameConstants;
 import org.jesse.game.GameInterface;
@@ -18,7 +15,6 @@ import org.jesse.game.util.Colour;
 import org.jesse.game.world.World;
 import org.jesse.game.world.entity.player.Analytics;
 import org.jesse.game.world.entity.player.GameCommands;
-import org.jesse.game.world.entity.player.LogLevel;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.SocialManager;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
@@ -158,8 +154,6 @@ public final class GameNoticeboardInterface extends Interface {
         put(19, "Game Mode");
         put(20, "Member Rank");
         put(21, "Loyalty points");
-        put(22, "Total donated");
-        put(23, "Vote credits");
         put(25, "Game Settings");
         put(27, "Drop Viewer");
         put(29, "Daily Challenges");
@@ -168,7 +162,6 @@ public final class GameNoticeboardInterface extends Interface {
         put(36, "Website");
         put(38, "Forums");
         put(40, "Discord");
-        put(42, "Store");
         put(43, "Toggles");
         put(45, "Boosters");
         put(46, "Drop rate");
@@ -193,12 +186,6 @@ public final class GameNoticeboardInterface extends Interface {
                 "<col=ffffff>" + player.getMemberCrown().getCrownTag() + player.getMemberName().replace(" Member", "") + "</col>");
         player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Loyalty points"), "Loyalty " +
                 "points: <col=ffffff>" + player.getLoyaltyManager().getLoyaltyPoints() + "</col>");
-        final String totalDonated = "Total donated: <col=ffffff>$" + UserPlayerAttributesKt.getStoreTotalSpent(player) + "</col>";
-        player.log(LogLevel.INFO, totalDonated);
-        player.getPacketDispatcher().sendComponentText(getInterface(), getComponent("Total donated"), totalDonated);
-        player.getPacketDispatcher()
-                .sendComponentText(getInterface(), getComponent("Vote credits"), "Vote credits: " +
-                        "<col=ffffff>" + VotePlayerAttributesKt.getTotalVoteCredits(player) + "</col>");
         player.getPacketDispatcher().sendComponentSettings(getInterface(), getComponent("2FA"), -1, 0,
                 AccessMask.CLICK_OP1);
         updateDropRate(player);
@@ -250,7 +237,6 @@ public final class GameNoticeboardInterface extends Interface {
         bind("Website", player -> player.getPacketDispatcher().sendURL(GameConstants.SERVER_WEBSITE_URL));
         bind("Forums", player -> player.getPacketDispatcher().sendURL(GameConstants.SERVER_FORUMS_URL));
         bind("Discord", player -> player.getPacketDispatcher().sendURL(GameConstants.DISCORD_INVITE));
-        bind("Store", DeveloperCommands::openStore);
         bind("Toggles", player -> {
             if(player.isMember()) {
                 DonationToggle.openInterface(player);

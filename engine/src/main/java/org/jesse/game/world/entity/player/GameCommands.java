@@ -2530,12 +2530,6 @@ public final class GameCommands {
                 "onlinestaff"}, "List staff members currently online.", (p, args) -> {
             GameNoticeboardInterface.showStaffOnline(p);
         });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"vote", "voting"}, (p, args) -> {
-            GameInterface.VOTE.open(p);
-        });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"store", "donate"}, (p, args) -> {
-            DeveloperCommands.openStore(p);
-        });
         new Command(PlayerPrivilege.PLAYER, new String[]{"rules"}, (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.SERVER_RULES_URL);
         });

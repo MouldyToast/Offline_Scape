@@ -10,8 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jesse.cache.interfaces.teleports.packing.TeleportsPacker;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityBarrowsItemDefinitions;
-import org.jesse.cache_tool.packing.custom.NearRealityBoneCrusherItemDefinitions;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomAnimationsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomEnumsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomGraphicsPacker;
@@ -26,15 +24,8 @@ import org.jesse.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import org.jesse.cache_tool.packing.custom.NearRealityOriginsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityRaidsItemDefinitions;
 import org.jesse.cache_tool.packing.custom.NearRealityRebirthPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityReducePricesItemDefinitions;
-import org.jesse.cache_tool.packing.custom.NearRealityRemovePetsFromBossCLs;
-import org.jesse.cache_tool.packing.custom.NearRealityStoreInterfacePacker;
-import org.jesse.cache_tool.packing.custom.PackRevivalHeadIconSprites;
 import org.jesse.cache_tool.packing.custom.UniversalShopPacker;
 import org.jesse.cache_tool.packing.custom.ganodermic_beasts.GanodermicBeastsPacker;
-import org.jesse.cache_tool.packing.custom.inquisitors_great_flail.InquisitorsGreatFlailPacker;
-import org.jesse.cache_tool.packing.custom.mack.ClownStoreInterfacePacker;
-import org.jesse.cache_tool.packing.custom.mack.ClownVoteInterfacePacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -242,21 +233,13 @@ public class TypeParser {
         }
         //packVCSAssets(cache);
 
-        new ClownStoreInterfacePacker(cache).pack();
-        new ClownVoteInterfacePacker(cache).pack();
-        new PackRevivalHeadIconSprites(cache).patch();
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         NearRealityCustomEnumsPacker.pack();
         NearRealityCustomSpecialAttacksPacker.pack();
-        NearRealityBarrowsItemDefinitions.removeCheckOption();
-        NearRealityBoneCrusherItemDefinitions.removeChargingOptions();
         NearRealityRaidsItemDefinitions.makeKindlingStackable();
         NearRealityRaidsItemDefinitions.makeCavernGrubsStackable();
-        NearRealityReducePricesItemDefinitions.reducePrices();
         NearRealityCustomHeadIconsPacker.pack();
-        NearRealityRemovePetsFromBossCLs.pack();
-        NearRealityStoreInterfacePacker.pack();
         cache.close();
 
         cache = Cache.openCache("data/cache");
@@ -594,7 +577,6 @@ public class TypeParser {
 
     private static void packHighRevision() throws IOException {
         new CustomTeleport().packAll();
-        InquisitorsGreatFlailPacker.pack();
         FramePacker.write();
         AnimationBase.pack();
         GanodermicBeastsPacker.pack();

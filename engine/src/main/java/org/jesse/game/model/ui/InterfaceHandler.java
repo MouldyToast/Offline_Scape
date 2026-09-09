@@ -57,8 +57,6 @@ public class InterfaceHandler {
 	private static final GameInterface[] WALKABLE_INTERFACES = new GameInterface[] {
 			GameInterface.TELEPORTS,
 			GameInterface.ADVANCED_SETTINGS,
-			GameInterface.CREDIT_STORE,
-			GameInterface.VOTE,
 			GameInterface.TELEPORT_MENU,
 			GameInterface.DROP_VIEWER
 	};

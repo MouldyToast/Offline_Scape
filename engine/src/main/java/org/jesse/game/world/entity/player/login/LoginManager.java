@@ -11,7 +11,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.ToNumberPolicy;
 import com.google.gson.*;
-import org.jesse.game.model.ui.credit_store.CreditStoreCart;
 import org.jesse.game.world.entity.player.AreaManagerExtKt;
 import org.jesse.game.world.entity.player.FakePlayer;
 import org.jesse.game.world.entity.player.container.impl.SinglePlayerBank;
@@ -119,7 +118,6 @@ public final class LoginManager {
             .registerTypeAdapter(Object2IntMap.class, Object2IntMapDeserializer.INSTANCE)
             .registerTypeAdapter(Int2ObjectMap.class, Int2ObjectMapDeserializer.INSTANCE)
             .registerTypeAdapter(ObjectCollection.class, ObjectCollectionDeserializer.INSTANCE)
-            .registerTypeAdapter(CreditStoreCart.class, CreditStoreCart.Companion)
             .create());
 
     /**

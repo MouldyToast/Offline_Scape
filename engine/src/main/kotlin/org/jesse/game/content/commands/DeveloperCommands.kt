@@ -1,8 +1,6 @@
 package org.jesse.game.content.commands
 
 import org.jesse.game.content.slayer.*
-import org.jesse.game.model.ui.credit_store.CreditStoreModel
-import org.jesse.game.model.ui.credit_store.coinbaseEnabled
 import org.jesse.game.util.PlayerAttributesEditor
 import org.jesse.game.world.entity.player.FakePlayer
 import org.jesse.game.world.entity.player.totalDonatedAfterLaunch
@@ -10,7 +8,6 @@ import com.sun.management.HotSpotDiagnosticMXBean
 import org.jesse.GameToggles
 import org.jesse.game.GameConstants.WORLD_PROFILE
 import org.jesse.game.GameConstants.isOwner
-import org.jesse.game.GameInterface
 import org.jesse.game.content.achievementdiary.Diary
 import org.jesse.game.content.compcapes.CompletionistCape
 import org.jesse.game.content.stars.ShootingStars
@@ -297,21 +294,6 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "coinbase") { p, _ ->
-            p.dialogue {
-                options {
-                    (if (coinbaseEnabled) "disable" else "enable")  {
-                        coinbaseEnabled = !coinbaseEnabled
-                        p.dialogue {
-                            plain("Coinbase payments are now ${if (coinbaseEnabled) "enabled" else "disabled"}.")
-                        }
-                    }
-                }
-            }
-        }
-        Command(PlayerPrivilege.DEVELOPER, "reloadshop") { p, args ->
-            CreditStoreModel.requestProductsUpdate()
-        }
         Command(PlayerPrivilege.DEVELOPER, "testbroadcast1") { p, args ->
             WorldBroadcasts.broadcast(
                 p,
@@ -663,11 +645,6 @@ object DeveloperCommands {
                 throw RuntimeException("Failed to write thread dump", e)
             }
         }
-    }
-
-    @JvmStatic
-    fun openStore(player: Player) {
-        GameInterface.CREDIT_STORE.open(player)
     }
 
     private fun makeClueTypeMenu(

@@ -3,7 +3,6 @@ package org.jesse.game.content.storebundle
 import com.google.common.eventbus.Subscribe
 import org.jesse.api.GameDatabase
 import org.jesse.api.model.CreditStoreBundleItem
-import org.jesse.game.model.ui.credit_store.CreditStoreModel
 import org.jesse.game.task.WorldTasksManager
 import org.jesse.logger.NearRealityLogger
 import org.jesse.plugins.events.ServerLaunchEvent
@@ -24,7 +23,7 @@ object BundleUpdater {
     @JvmStatic
     var bundleItemsByBundleChest = mapOf<BundleChest, List<CreditStoreBundleItem>>()
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
-    private val logger = NearRealityLogger.getLogger(CreditStoreModel::class.java)
+    private val logger = NearRealityLogger.getLogger(BundleUpdater::class.java)
     @JvmField var lastUpdate = Instant.DISTANT_PAST
 
     @Subscribe

@@ -193,6 +193,7 @@ public class TypeParser {
 
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
+        KeepSetDefinitionOverrides.packEnums();
         KeepSetDefinitionOverrides.packSpecialAttacks();
         cache.close();
 

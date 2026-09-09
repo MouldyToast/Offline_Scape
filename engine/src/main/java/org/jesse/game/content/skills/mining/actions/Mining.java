@@ -108,7 +108,7 @@ public class Mining extends Action {
             if (rock instanceof ShootingStar star) {
                 if (star.isUndiscovered()) {
                     player.sendMessage("You receive a reward as the first player to discover this crashed star!");
-                    player.getInventory().addOrDrop(new Item(ItemId.COINS_995, 150_000), new Item(ItemId.STARDUST, 50), new Item(ItemId.TOME_OF_EXPERIENCE_30215));
+                    player.getInventory().addOrDrop(new Item(ItemId.COINS_995, 150_000), new Item(ItemId.STARDUST, 50));
                     star.setUndiscovered(false);
                 }
             } else {

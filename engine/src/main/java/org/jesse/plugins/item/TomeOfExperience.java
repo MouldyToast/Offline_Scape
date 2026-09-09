@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class TomeOfExperience extends ItemPlugin {
-    private static final int TOME_OF_EXPERIENCE = 30215;
+    private static final int TOME_OF_EXPERIENCE = 22415;
     private static final Graphics graphics = new Graphics(1176);
 
     @Override
@@ -55,6 +55,6 @@ public class TomeOfExperience extends ItemPlugin {
 
     @Override
     public int[] getItems() {
-        return new int[] {TOME_OF_EXPERIENCE, 22415};
+        return new int[] {TOME_OF_EXPERIENCE};
     }
 }

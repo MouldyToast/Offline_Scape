@@ -21,6 +21,8 @@ import mgi.types.config.StructDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
 import mgi.types.config.enums.IntEnum;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +36,7 @@ import static org.jesse.game.world.entity.player.collectionlog.CollectionLogCons
  */
 @StaticInitializer
 public class CollectionLog {
+    private static final Logger logger = LoggerFactory.getLogger(CollectionLog.class);
     public static final IntOpenHashSet COLLECTION_LOG_ITEMS = new IntOpenHashSet(Container.getSize(ContainerType.COLLECTION_LOG));
     private static final IntOpenHashSet UNTRADABLE_COLLECTION_LOG_ITEMS = new IntOpenHashSet(350);
 
@@ -47,7 +50,13 @@ public class CollectionLog {
             final ObjectSet<Int2IntMap.Entry> categoryEntries = categoryEnum.getValues().int2IntEntrySet();
             for (final Int2IntMap.Entry listing : categoryEntries) {
                 final int bossStructId = listing.getIntValue();
-                final StructDefinitions bossStruct = Objects.requireNonNull(StructDefinitions.get(bossStructId));
+                final StructDefinitions bossStruct = getStructOrNull(bossStructId);
+                if (bossStruct == null) {
+                    // The cache's category enums may still list entries whose structs
+                    // are no longer packed; skip them instead of failing the whole log.
+                    logger.warn("Skipping collection log entry with missing struct {}", bossStructId);
+                    continue;
+                }
                 final int itemEnumId = Integer.parseInt(bossStruct.getValue(STRUCT_POINTER_SUB_ENUM_CAT).orElseThrow(RuntimeException::new).toString());
                 final IntEnum itemsEnum = EnumDefinitions.getIntEnum(itemEnumId);
                 final ObjectSet<Int2IntMap.Entry> subEnumEntrySet = itemsEnum.getValues().int2IntEntrySet();
@@ -59,6 +68,14 @@ public class CollectionLog {
                 }
             }
         }
+    }
+
+    private static StructDefinitions getStructOrNull(final int id) {
+        final StructDefinitions[] definitions = StructDefinitions.definitions;
+        if (definitions == null || id < 0 || id >= definitions.length) {
+            return null;
+        }
+        return definitions[id];
     }
 
     private final transient Player player;

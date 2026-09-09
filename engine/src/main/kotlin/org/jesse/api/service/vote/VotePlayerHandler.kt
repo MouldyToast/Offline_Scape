@@ -85,7 +85,6 @@ object VotePlayerHandler {
                     WiseOldManD.rollClues(player, votePointsWithBonus)
                     val coinRewardAmount = votePointsWithBonus * (if (player.authenticator.isEnabled) 150_000 else 75_000)
                     val coinRewardItem = Item(COINS_995, coinRewardAmount)
-                    player.inventory.addOrDrop(TOME_OF_EXPERIENCE_30215, 2)
                     player.inventory.addOrDrop(coinRewardItem)
                     player.totalVoteCredits += votePointsWithBonus
                     player.lastVoteClaimTime = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(12)

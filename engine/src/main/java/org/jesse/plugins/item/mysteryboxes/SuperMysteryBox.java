@@ -37,7 +37,6 @@ public class SuperMysteryBox extends ItemPlugin {
                 new MysteryItem(6570, 1, 1, 1000).setCheckHasItem(), // fire cape
                 new MysteryItem(6889, 1, 1, 1000), // mages book
                 new MysteryItem(32149, 3, 6, 1000), // Larrans booster
-                new MysteryItem(32150, 3, 6, 1000), // Gano booster
                 new MysteryItem(32151, 3, 6, 1000), // Slayer booster
                 new MysteryItem(32152, 3, 6, 1000), // Pet booster
                 new MysteryItem(32153, 3, 6, 1000), // Gauntlet booster

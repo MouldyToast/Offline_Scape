@@ -29,7 +29,7 @@ public class NotificationSettings {
         "dagannoth supreme", "dagannoth prime", "skotizo", "barrows", "kraken", "grotesque guardians", "hespori",
         "obor", "bryophyta", "corporeal beast", "tztok-jad", "alchemical hydra", "tzkal-zuk", "mimic", "nex", "artio",
         "calvar'ion", "spindel", "leviathan", "awakened leviathan", "the whisperer", "the awakened whisperer", "duke sucellus",
-        "awakened duke sucellus", "vardorvis", "awakened vardorvis", "sol heredit", "strykewyrm");
+        "awakened duke sucellus", "vardorvis", "awakened vardorvis", "sol heredit");
     public static final ImmutableList<String> SLAYER_NPC_NAMES = ImmutableList.of(
         "crawling hand", "cave bug", "cave crawler", "banshee", "cave slime", "rockslug", "desert lizard", "cockatrice",
         "pyrefiend", "mogre", "harpie bug swarm", "wall beast", "killerwatt", "molanisk", "basilisk", "sea snake", "terror dog",
@@ -37,9 +37,9 @@ public class NotificationSettings {
         "aberrant spectre", "spiritual ranger", "dust devil", "spiritual warrior", "kurask", "skeletal wyvern", "gargoyle",
         "nechryael", "spiritual mage", "abyssal demon", "cave kraken", "dark beast", "smoke devil", "tortured gorilla",
         "demonic gorilla", "adamant dragon", "rune dragon", "superior creature", "brutal black dragon", "fossil island wyvern",
-        "revenant", "hydra", "wyrm", "drake", "strykewyrm");
+        "revenant", "hydra", "wyrm", "drake");
     public static final ImmutableList<String> EXTRA_TRACKED_NPC_NAMES = ImmutableList.of(
-        "ganodermic beast", "lizardman", "lizardman shaman", "lizardman brute");
+        "lizardman", "lizardman shaman", "lizardman brute");
     private final transient Player player;
     private static final ImmutableMap<String, String> slayerRedirections = ImmutableMap.<String, String>builder()
         .put("crushing hand", "crawling hand")

@@ -33,7 +33,6 @@ object CustomCommands {
                         add(Item(DONATOR_PIN_50 , 10))
                         add(Item(DONATOR_PIN_100, 10))
 
-                        add(Item(GANODERMIC_RUNT, 10))
 
                         add(Item(BLUE_ANKOU_SOCKS, 10))
                         add(Item(BLUE_ANKOU_GLOVES, 10))

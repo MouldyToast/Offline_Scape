@@ -239,7 +239,6 @@ public final class NPCSpawnLoader {
         dropViewerNPCs.addAll(npcTransformers.values());
         artificialSpawns.forEach(spawn -> dropViewerNPCs.add(spawn.getId()));
 
-        dropViewerNPCs.add(NpcId.GANODERMIC_BEAST);
         dropViewerNPCs.add(NpcId.THE_NIGHTMARE_9430);
         dropViewerNPCs.add(NpcId.PHOSANIS_NIGHTMARE_11155);
         ignoredMonsters.add(8615);

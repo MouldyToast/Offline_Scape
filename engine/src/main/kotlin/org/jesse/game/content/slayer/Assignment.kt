@@ -72,6 +72,12 @@ class Assignment {
         amount = old.amount
         master = old.master
         taskName = old.taskName.stripSumona()
+        if (taskName == "STRYKEWYRMS") {
+            // Stage 2: strykewyrm slayer task removed; retire stale saved assignments.
+            taskName = "RATS"
+            amount = 0
+            initialAmount = 0
+        }
         task = getTask(taskName)
         areaName = old.areaName
         if (areaName.isNotBlank()) {

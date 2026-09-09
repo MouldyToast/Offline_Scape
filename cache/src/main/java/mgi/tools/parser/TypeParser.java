@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jesse.cache.interfaces.teleports.packing.TeleportsPacker;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomAnimationsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomEnumsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomGraphicsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomHeadIconsPacker;
@@ -22,10 +21,8 @@ import org.jesse.cache_tool.packing.custom.NearRealityCustomStructsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomWorldMapPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import org.jesse.cache_tool.packing.custom.NearRealityOriginsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityRaidsItemDefinitions;
 import org.jesse.cache_tool.packing.custom.NearRealityRebirthPacker;
 import org.jesse.cache_tool.packing.custom.UniversalShopPacker;
-import org.jesse.cache_tool.packing.custom.ganodermic_beasts.GanodermicBeastsPacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -192,7 +189,6 @@ public class TypeParser {
         pack(NPCDefinitions.class);
         packDynamicConfigs();
         packHighRevision();
-        NearRealityCustomAnimationsPacker.pack();
         NearRealityOriginsPacker.pack();
         NearRealityRebirthPacker.pack();
         NearRealityCustomGraphicsPacker.pack();
@@ -237,8 +233,6 @@ public class TypeParser {
         copyMaps();
         NearRealityCustomEnumsPacker.pack();
         NearRealityCustomSpecialAttacksPacker.pack();
-        NearRealityRaidsItemDefinitions.makeKindlingStackable();
-        NearRealityRaidsItemDefinitions.makeCavernGrubsStackable();
         NearRealityCustomHeadIconsPacker.pack();
         cache.close();
 
@@ -579,7 +573,6 @@ public class TypeParser {
         new CustomTeleport().packAll();
         FramePacker.write();
         AnimationBase.pack();
-        GanodermicBeastsPacker.pack();
     }
 
     private static void packDynamicConfigs() {
@@ -1478,25 +1471,6 @@ public class TypeParser {
 //                "assets/map/quad_dono_island/bottom_right_landscape.dat",
 //                "assets/map/quad_dono_island/bottom_right_objects.dat");
 
-//        packMapPre209(6954,
-//                "assets/map/origin_update/desert_island/ls.dat",
-//                "assets/map/origin_update/desert_island/obj.dat");
-//        packMap(13625,
-//                "assets/map/origin_update/edge_island/island2_ls2.dat",
-//                "assets/map/origin_update/edge_island/island2_obj2.dat");
-//        packMap(13369, // edited with land bridge
-//                "assets/map/origin_update/edge_island/wildy2_ls2.dat",
-//                "assets/map/origin_update/edge_island/wildy2_obj2.dat");
-//        packMapPre209(7210,
-//                "assets/map/origin_update/ice_island/ls.dat",
-//                "assets/map/origin_update/ice_island/obj.dat");
-//        packMapPre209(7209,
-//                "assets/map/origin_update/jungle_island/ls.dat",
-//                "assets/map/origin_update/jungle_island/obj.dat");
-//
-//        packMapPre209(7466,
-//                "assets/map/origin_update/barrelchest/ls.dat",
-//                "assets/map/origin_update/barrelchest/obj.dat");
 //        packMapsRSPSi(6440, "assets/map/quad_dono_island/dZone.pack");
 
 //        packMapPre209(6469,

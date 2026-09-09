@@ -93,7 +93,6 @@ public final class PlayerVariables {
         mountKaruulmTeleports = copy.mountKaruulmTeleports;
         enhancedCrystalChestOpenCount = copy.enhancedCrystalChestOpenCount;
         dontPromptFeroxEnclaveBarrier = copy.dontPromptFeroxEnclaveBarrier;
-        ganoBoosterKillsLeft = copy.ganoBoosterKillsLeft;
         gauntletBoosterCompletionsLeft = copy.gauntletBoosterCompletionsLeft;
         bloodMoneyBoosterLeft = copy.bloodMoneyBoosterLeft;
         clueBoosterLeft = copy.clueBoosterLeft;
@@ -154,7 +153,6 @@ public final class PlayerVariables {
     private final Map<String, Variable> scheduled = new LinkedHashMap<>();
     private final transient Set<HealthRegenBoost> healthRegenBoosts = EnumSet.noneOf(HealthRegenBoost.class);
     private transient int cycle = calculateCycle();
-    private int ganoBoosterKillsLeft;
     private int gauntletBoosterCompletionsLeft;
     private int bloodMoneyBoosterLeft;
     private int clueBoosterLeft;
@@ -805,14 +803,6 @@ public final class PlayerVariables {
 
     public boolean isDontPromptFeroxEnclaveBarrier() {
         return dontPromptFeroxEnclaveBarrier;
-    }
-
-    public int getGanoBoosterKillsLeft() {
-        return ganoBoosterKillsLeft;
-    }
-
-    public void setGanoBoosterKillsLeft(int ganoBoosterKillsLeft) {
-        this.ganoBoosterKillsLeft = ganoBoosterKillsLeft;
     }
 
     public int getGauntletBoosterCompletionsLeft() {

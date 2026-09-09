@@ -142,9 +142,6 @@ public enum RareDrop {
     DAGONHAI_ROBE_TOP(ItemId.DAGONHAI_ROBE_TOP),
     DAGONHAI_ROBE_BOTTOM(ItemId.DAGONHAI_ROBE_BOTTOM),
 
-    //Ganodermic beast
-    GANODERMIC_RUNT(ItemId.GANODERMIC_RUNT),
-
     //Rots
     SHIELD1(32192),
     SHIELD2(32195),

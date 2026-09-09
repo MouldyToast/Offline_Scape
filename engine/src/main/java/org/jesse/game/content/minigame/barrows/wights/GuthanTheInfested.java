@@ -9,7 +9,6 @@ import org.jesse.game.world.entity.masks.Graphics;
 import org.jesse.game.world.entity.npc.Spawnable;
 import org.jesse.game.world.entity.npc.combat.CombatScript;
 
-import static org.jesse.game.npc.ids.NpcId.DI_GUTHAN_THE_INFESTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:29:37
@@ -42,7 +41,7 @@ public class GuthanTheInfested extends BarrowsWightNPC implements Spawnable, Com
 	public boolean validate(final int id, final String name) {
 		switch (id) {
 			case 1674:
-			case 16054, DI_GUTHAN_THE_INFESTED: {
+			case 16054: {
 				return true;
 			}
 			default:

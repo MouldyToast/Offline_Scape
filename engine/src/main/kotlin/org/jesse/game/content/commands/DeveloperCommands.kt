@@ -199,14 +199,6 @@ object DeveloperCommands {
             player.inventory.addItem(Item(CANNONBALL, 2_000_000_000))
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "barrelchest") { player, args  ->
-            if(isOwner(player)) {
-                player.teleport(Location(1887, 2717, 3))
-            } else {
-                player.sendMessage("Try again next time.")
-            }
-        }
-
         Command(PlayerPrivilege.TRUE_DEVELOPER, "jacsisland") { player, args  ->
             if(isOwner(player) && args.size == 1) {
                 try {

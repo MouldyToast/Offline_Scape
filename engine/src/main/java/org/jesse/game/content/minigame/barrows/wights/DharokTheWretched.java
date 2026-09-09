@@ -7,7 +7,6 @@ import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.npc.Spawnable;
 import org.jesse.game.world.entity.npc.combat.CombatScript;
 
-import static org.jesse.game.npc.ids.NpcId.DI_DHAROK_THE_WRETCHED;
 
 /**
  * @author Kris | 29. sept 2018 : 04:50:37
@@ -32,7 +31,7 @@ public class DharokTheWretched extends BarrowsWightNPC implements Spawnable, Com
 	@Override
 	public boolean validate(final int id, final String name) {
         return switch (id) {
-            case 1673, 16053, DI_DHAROK_THE_WRETCHED -> true;
+            case 1673, 16053 -> true;
             default -> false;
         };
 	}

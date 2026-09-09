@@ -29,7 +29,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 500    // fight caves
             this.values[idx++] = 909    // Fortis Colosseum
             this.values[idx++] = 605    // gauntlet
-            this.values[idx++] = 10300  // gano
             this.values[idx++] = 487    // graardor
             this.values[idx++] = 488    // giant mole
             this.values[idx++] = 489    // grot guardians
@@ -50,7 +49,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 601    // sarachnis
             this.values[idx++] = 496    // scorpia
             this.values[idx++] = 497    // skotizo
-            this.values[idx++] = 10500  // strykewyrms
             this.values[idx++] = 498    // thermy
             this.values[idx++] = 10322  // Vanstrom Klause
             this.values[idx++] = 4653   // Vardorvis
@@ -58,7 +56,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 502    // Vetion
             this.values[idx++] = 503    // Vorkath
             this.values[idx++] = 4654   // Whisperer
-            this.values[idx++] = 10502  // Wild Mole
             this.values[idx++] = 504    // Wintertodt
             this.values[idx++] = 604    // Zalcano
             this.values[idx] = 505      // Zulrah
@@ -72,13 +69,6 @@ object NearRealityCustomEnumsPacker {
             this.values[index++] = SLAYER_SHAFT
             this.values[index++] = SLAYER_LEFT_BONE
             this.values[index] = SLAYER_RIGHT_BONE
-            this.pack()
-        }
-
-        // All Pets log
-        EnumDefinitions.get(2158).apply {
-            var index = this.size
-            this.values[index] = GANODERMIC_RUNT
             this.pack()
         }
 
@@ -125,15 +115,6 @@ object NearRealityCustomEnumsPacker {
             this.pack()
         }
 
-        // Ganodermic Beast
-        EnumDefinitions.create(10025, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[1] = ANCIENT_EYE
-            this.values[2] = DRAGON_KITE
-            this.values[3] = PVP_MYSTERY_BOX
-            this.values[4] = POLYPORE_SPORES
-            this.pack()
-        }
-
         // Duke
         EnumDefinitions.get(5148).apply {
             this.values[5] = MAGUS_ICON
@@ -144,16 +125,6 @@ object NearRealityCustomEnumsPacker {
         EnumDefinitions.get(5149).apply {
             this.values[5] = ULTOR_ICON
             this.pack();
-        }
-
-        /* Strykewyrms */
-        EnumDefinitions.create(10500, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = STAFF_OF_LIGHT
-            this.values[1] = CHAOTIC_CROSSBOW
-            this.values[2] = CHAOTIC_KITESHIELD
-            this.values[3] = EAGLE_EYE_KITESHIELD
-            this.values[4] = FARSEER_KITESHIELD
-            this.pack()
         }
 
         /* Primal Items */
@@ -175,25 +146,6 @@ object NearRealityCustomEnumsPacker {
             this.values[14] = PRIMAL_CHAINBODY
             this.values[15] = PRIMAL_PLATESKIRT
             this.values[16] = PRIMAL_PLATELEGS
-            this.pack()
-        }
-
-        /* Wild Mole */
-        EnumDefinitions.create(10502, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = GHOSTLY_PARTYHAT
-            this.values[1] = DEMONHORN_NECKLACE
-            this.values[2] = DEATH_CAPE
-            this.values[3] = DRAGON_KITE
-            this.values[4] = SPIRIT_CAPE
-            this.values[5] = MERCENARY_GLOVES
-            this.values[6] = MYSTERY_BOX
-            this.values[7] = SKILLING_MYSTERY_BOX
-            this.values[8] = PRIMAL_FULL_HELM
-            this.values[9] = PRIMAL_CHAINBODY
-            this.values[10] = PRIMAL_PLATESKIRT
-            this.values[11] = PRIMAL_PLATELEGS
-            this.values[12] = PRIMAL_BOOTS
-            this.values[13] = PRIMAL_GAUNTLETS
             this.pack()
         }
 
@@ -255,12 +207,6 @@ object NearRealityCustomEnumsPacker {
             this.values[11] = "Blood Money"
             this.values[12] = "Loyalty"
             this.values[13] = "Vote"
-            this.pack()
-        }
-
-        /* Slayer Task Defs - 82 replaces unused Gorak */
-        EnumDefinitions.get(693).apply {
-            this.values[82] = "Strykewyrms"
             this.pack()
         }
 

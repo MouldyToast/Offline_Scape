@@ -19,7 +19,6 @@ object CollectionLogRewards {
     private const val slayerBooster = SLAYER_BOOSTER
     private const val bloodMoneyBooster = BLOOD_MONEY_BOOSTER
     private const val revenantBooster = REVENANT_BOOSTER
-    private const val ganoBooster = GANODERMIC_BOOSTER
     private const val clueBooster = CLUE_SCROLL_BOOSTER
     private const val nexBooster = NEX_BOOSTER
     private const val slayerTaskPicker = SLAYER_TASK_PICKER_SCROLL
@@ -98,7 +97,6 @@ object CollectionLogRewards {
     private const val dukeSucellus = 4652
     private const val fightCaves = 500
     private const val gauntlet = 605
-    private const val ganodermicBeast = 10300
     private const val generalGraardor = 487
     private const val giantMole = 488
     private const val grotesqueGuardians = 489
@@ -119,7 +117,6 @@ object CollectionLogRewards {
     private const val sarachnis = 601
     private const val scorpia = 496
     private const val skotizo = 497
-    private const val strykeWyrms = 10500
     private const val thermonuclearSmokeDevil = 498
     private const val tormentedDemons = 4654
     private const val vanstromKlause = 10322
@@ -128,7 +125,6 @@ object CollectionLogRewards {
     private const val vetionAndCalvarion = 502
     private const val vorkath = 503
     private const val whisperer = 4654
-    private const val wildMole = 10502
     private const val wintertodt = 504
     private const val zalcano = 604
     private const val zulrah = 505
@@ -207,10 +203,6 @@ object CollectionLogRewards {
                 ),
                 CollectionLogReward(fightCaves, arrayOf(superMB x 1, tokkul x 50_000, fireCape x 1)),
                 CollectionLogReward(gauntlet, arrayOf(ultraMB x 1, armourSeed x 3, enhancedCKey x 25, tirannwnOrb x 1)),
-                CollectionLogReward(
-                    ganodermicBeast,
-                    arrayOf(dpin25 x 1, ultraMB x 1, bloodMoney x 5_000, ganoBooster x 5)
-                ),
                 CollectionLogReward(generalGraardor, arrayOf(ultraMB x 1, superMB x 2)),
                 CollectionLogReward(
                     grotesqueGuardians,
@@ -248,7 +240,6 @@ object CollectionLogRewards {
                     arrayOf(superMB x 1, standardMB x 2, bloodMoneyBooster x 2, larransBooster x 2)
                 ),
                 CollectionLogReward(skotizo, arrayOf(superMB x 1, darkTotem x 10, ancientShardPack x 1)),
-                CollectionLogReward(strykeWyrms, arrayOf(superMB x 1, standardMB x 1)),
                 CollectionLogReward(
                     thermonuclearSmokeDevil,
                     arrayOf(standardMB x 1, slayerBooster x 5, slayerTaskPicker x 5)
@@ -266,7 +257,6 @@ object CollectionLogRewards {
                 ),
                 CollectionLogReward(vorkath, arrayOf(superMB x 2, standardMB x 3)),
                 CollectionLogReward(whisperer, arrayOf(ultraMB x 1, superMB x 2, chromiumIngot x 1, echoVirtusKit x 3)),
-                CollectionLogReward(wildMole, arrayOf(ultraMB x 1, superMB x 2, standardMB x 3)),
                 CollectionLogReward(wintertodt, arrayOf(superMB x 1, standardMB x 2, wintertodtCrate x 25)),
                 CollectionLogReward(zalcano, arrayOf(skillingMB x 5, toolSeed x 1)),
                 CollectionLogReward(zulrah, arrayOf(ultraMB x 1, superMB x 2, blowpipeKit x 1)),

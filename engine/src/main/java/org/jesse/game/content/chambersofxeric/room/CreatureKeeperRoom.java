@@ -451,10 +451,10 @@ public final class CreatureKeeperRoom extends RaidArea implements CycleProcessPl
                             amount.setValue(random < 17 ? 2 : 1);
                         }
                         final int intAmount = amount.intValue();
-                        final int amountToAdd = Math.max(0, Math.min(intAmount, CAP_MAXIMUM_CAVERN_GRUBS_STACK - amountInInventory));
+                        final int amountToAdd = Math.max(0, Math.min(Math.min(intAmount, player.getInventory().getFreeSlots()), CAP_MAXIMUM_CAVERN_GRUBS_STACK - amountInInventory));
                         if (amountToAdd > 0) {
                             player.getSkills().addXp(SkillConstants.THIEVING, amountToAdd == 1 ? 40 : amountToAdd == 2 ? 60 : 73);
-                            player.getInventory().addItem(new Item(ItemId.CAVERN_GRUBS, intAmount));
+                            player.getInventory().addItem(new Item(ItemId.CAVERN_GRUBS, amountToAdd));
                         }
                     }
                 } else if (type < 19) {

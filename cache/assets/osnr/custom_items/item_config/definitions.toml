@@ -44,44 +44,6 @@ placeholderid=30324
 invmodel=60445
 
 
-# Near-Reality Ancient eye
-[[item]]
-id=32002
-inherit=22667
-name="Ancient eye"
-invmodel=60000
-zoom=680
-modelroll=366
-modelpitch=310
-modelyaw=0
-offsetx=-1
-offsety=6
-placeholderid=33002
-stackable=0
-notedid=32003
-grandexchange=true
-
-# Near-Reality Ancient eye (noted)
-[[item]]
-id=32003
-inherit=22667
-name="Ancient eye"
-notedid=32002
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60000
-zoom=680
-modelroll=366
-modelpitch=310
-modelyaw=0
-offsetx=-1
-offsety=6
-
 # Near-Reality Ancient book
 [[item]]
 id=32004
@@ -437,65 +399,6 @@ invmodel=60033
 primarymalemodel=60032
 primaryfemalemodel=60032
 grandexchange=false
-
-# Near-Reality Polypore spores
-[[item]]
-id=32038
-inherit=22667
-name="Polypore spores"
-placeholderid=33038
-invmodel=60039
-zoom=680
-modelroll=200
-modelpitch=339
-modelyaw=0
-offsetx=2
-offsety=0
-stackable=1
-grandexchange=true
-
-
-# Near-Reality Polypore staff (deg)
-[[item]]
-id=32040
-inherit=6605
-name="Polypore staff (deg)"
-invmodel=60041
-primarymalemodel=60040
-primaryfemalemodel=60040
-zoom=2580
-modelroll=1574
-modelpitch=357
-modelyaw=0
-offsetx=-2
-offsety=-2
-placeholderid=33040
-stackable=0
-notedid=32041
-grandExchange = true
-
-# Near-Reality Polypore staff (deg) (noted)
-[[item]]
-id=32041
-inherit=6605
-name="Polypore staff (deg)"
-notedid=32040
-op1=""
-op2=""
-op3=""
-op4=""
-op5="Drop"
-groundops=["", "", "Take", "", ""]
-notedtemplate=799
-invmodel=60041
-primarymalemodel=60040
-primaryfemalemodel=60040
-zoom=2580
-modelroll=1574
-modelpitch=357
-modelyaw=0
-offsetx=-2
-offsety=-2
 
 # Near-Reality Polypore staff
 [[item]]
@@ -1424,30 +1327,6 @@ placeholderid=33149
 inherit=16551
 id=33149
 placeholderid=32149
-placeholdertemplate=14401
-
-#Near-Reality Ganodermic booster
-[[item]]
-inherit=275
-id=32150
-name="Ganodermic booster"
-invmodel=60137
-stackable=1
-grandexchange=true
-zoom=5480
-modelroll=1817
-modelpitch=113
-modelyaw=0
-offsetx=-27
-offsety=-79
-op1="Activate"
-op5="Destroy"
-placeholderid=33150
-
-[[item]]
-inherit=16551
-id=33150
-placeholderid=32150
 placeholdertemplate=14401
 
 #Near-Reality slayer booster
@@ -2574,21 +2453,6 @@ id=32242
 placeholderid=32240
 placeholdertemplate=14401
 
-# Near-Reality Ancient eye (placeholder)
-[[item]]
-id=33002
-inherit=22667
-name="Ancient eye"
-placeholderid=32002
-placeholdertemplate=14401
-invmodel=60000
-zoom=680
-modelroll=366
-modelpitch=310
-modelyaw=0
-offsetx=-1
-offsety=6
-
 # Near-Reality Ancient book (placeholder)
 [[item]]
 id=33004
@@ -2720,38 +2584,6 @@ placeholdertemplate=14401
 invmodel=60033
 primarymalemodel=60032
 primaryfemalemodel=60032
-
-# Near-Reality Polypore spores (placeholder)
-[[item]]
-id=33038
-inherit=22667
-name="Polypore spores"
-placeholderid=32038
-placeholdertemplate=14401
-invmodel=60039
-zoom=2576
-modelroll=235
-modelpitch=235
-modelyaw=0
-offsetx=50
-offsety=-10
-
-# Near-Reality Polypore staff (deg) (placeholder)
-[[item]]
-id=33040
-inherit=6605
-name="Polypore staff (deg)"
-placeholderid=32040
-placeholdertemplate=14401
-invmodel=60041
-primarymalemodel=60040
-primaryfemalemodel=60040
-zoom=2580
-modelroll=1574
-modelpitch=357
-modelyaw=0
-offsetx=-2
-offsety=-2
 
 # Near-Reality Polypore staff (placeholder)
 [[item]]
@@ -5628,86 +5460,6 @@ placeholderid=32617
 notedid=-1
 invmodel=60530
 
-# Pet
-[[item]]
-id=32821
-inherit=1561
-name="Baby jungle strykewyrm"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=60364
-modelpitch = 0
-modelroll = 1885
-modelyaw = 0
-offsetx = 0
-offsety = -53
-zoom = 6224
-
-# Pet
-[[item]]
-id=32822
-inherit=1561
-name="Baby ice strykewyrm"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=60363
-modelpitch = 0
-modelroll = 0
-modelyaw = 0
-offsetx = 0
-offsety = -12
-zoom = 6736
-
-# Pet
-[[item]]
-id=32823
-inherit=1561
-name="Baby desert strykewyrm"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=60362
-modelpitch = 0
-modelroll = 1885
-modelyaw = 0
-offsetx = 0
-offsety = -12
-zoom = 6096
-
-# Pet
-[[item]]
-id=32824
-inherit=1561
-name="Baby aged b'chest"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=60361
-modelpitch = 0
-modelroll = 0
-modelyaw = 0
-offsetx = -4
-offsety = -115
-zoom = 6500
-
-# Pet
-[[item]]
-id=32825
-inherit=1561
-name="Lil' Slash Bash"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=60365
-modelpitch = 0
-modelroll = 0
-modelyaw = 0
-offsetx = 1
-offsety = -10
-zoom = 6350
-
 [[item]]
 id=32826
 inherit=1561
@@ -6133,36 +5885,6 @@ zoom = 0
 id=32854
 inherit=1561
 name="Fissile Kratos"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=-1
-modelpitch = 0
-modelroll = 0
-modelyaw = 0
-offsetx = 0
-offsety = 0
-zoom = 0
-
-[[item]]
-id=32855
-inherit=1561
-name="Lil' Wildy Imp"
-placeholdertemplate=-1
-placeholderid=-1
-notedid=-1
-invmodel=-1
-modelpitch = 0
-modelroll = 0
-modelyaw = 0
-offsetx = 0
-offsety = 0
-zoom = 0
-
-[[item]]
-id=32856
-inherit=1561
-name="Off-balance elemental"
 placeholdertemplate=-1
 placeholderid=-1
 notedid=-1

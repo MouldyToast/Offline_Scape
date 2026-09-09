@@ -58,17 +58,3 @@ resizey=30
 rotate90animation=8267
 rotate180animation=8267
 rotate270animation=8267
-
-# Ganodermic runt
-[[item]]
-id=32100
-inherit=1561
-name="Ganodermic Runt"
-invmodel=62001
-placeholderid=-1
-zoom=1980
-modelroll=275
-modelpitch=50
-modelyaw=0
-offsetx=11
-offsety=1

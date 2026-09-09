@@ -2,7 +2,6 @@ package org.jesse.game.content.wilderness.slayer
 
 import com.google.common.eventbus.Subscribe
 import org.jesse.game.content.bountyhunter.getWildernessLevel
-import org.jesse.game.content.wilderness.event.hot_zone.WildernessHotZoneEvent
 import org.jesse.game.world.PlayerEvent
 import org.jesse.game.world.hook
 import org.jesse.game.content.slayer.SlayerMaster
@@ -51,10 +50,6 @@ object WildernessSlayerModule {
 
     private fun rewardBloodMoney(player: Player) {
         var bloodMoneyRewardAmount = Utils.random(10, 50)
-        if (WildernessHotZoneEvent.inHotZone(player)) {
-            bloodMoneyRewardAmount *= 2
-            player.sendMessage("You received double blood money for completing the task in a hot zone.")
-        }
         if (player.getWildernessLevel() < 1) return
         player.inventory.addOrDrop(BLOOD_MONEY, bloodMoneyRewardAmount)
     }

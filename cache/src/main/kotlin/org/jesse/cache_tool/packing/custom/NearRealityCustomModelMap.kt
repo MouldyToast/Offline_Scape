@@ -13,7 +13,6 @@ val map: Map<String, CustomDefinition> = mapOf(
 
     "rebirth_zenyte_portal" to CustomDefinition.Model(38000),
 
-    "ancient_eye" to CustomDefinition.Model(60000),
     "ancient_book_equip" to CustomDefinition.Model(60001),
     "ancient_book_drop" to CustomDefinition.Model(60002),
     "armadyl_soul_crystal" to CustomDefinition.Model(60003),
@@ -50,10 +49,7 @@ val map: Map<String, CustomDefinition> = mapOf(
     "skip2" to CustomDefinition.Model(-1),
     "skip3" to CustomDefinition.Model(-1),
     "skip4" to CustomDefinition.Model(-1),
-    "polypore_spores" to CustomDefinition.Model(60039),
     "skip5" to CustomDefinition.Model(-1),
-    "polypore_staff_degraded_equip" to CustomDefinition.Model(60040),
-    "polypore_staff_degraded_drop" to CustomDefinition.Model(60041),
     "polypore_staff_equip" to CustomDefinition.Model(60042),
     "polypore_staff_drop" to CustomDefinition.Model(modelId = 60043),
     "bronze_key" to CustomDefinition.Model(modelId = 60044),
@@ -155,7 +151,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "bandos_ornament_kit" to CustomDefinition.Model(modelId = 60134),
     "vote_token" to CustomDefinition.Model(modelId = 60135),
     "booster_larrans_key" to CustomDefinition.Model(modelId = 60136),
-    "booster_ganodermic" to CustomDefinition.Model(modelId = 60137),
     "booster_slayer" to CustomDefinition.Model(modelId = 60138),
     "booster_pet" to CustomDefinition.Model(modelId = 60139),
     "booster_gauntlet" to CustomDefinition.Model(modelId = 60140),
@@ -381,34 +376,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "saradomin_godbow_inv" to CustomDefinition.Model(modelId = 60335),
     "zamorak_godbow_eq" to CustomDefinition.Model(modelId = 60336),
     "zamorak_godbow_inv" to CustomDefinition.Model(modelId = 60337),
-    "desert_strykewyrm_a" to CustomDefinition.Model(modelId = 60338),
-    "desert_strykewyrm_b" to CustomDefinition.Model(modelId = 60339),
-    "ice_strykewyrm_a" to CustomDefinition.Model(modelId = 60340),
-    "ice_strykewyrm_b" to CustomDefinition.Model(modelId = 60341),
-    "jungle_strykewyrm_a" to CustomDefinition.Model(modelId = 60342),
-    "jungle_strykewyrm_b" to CustomDefinition.Model(modelId = 60343),
-    "wildy_wyrm_a" to CustomDefinition.Model(modelId = 60344),
-    "wildy_wyrm_b" to CustomDefinition.Model(modelId = 60345),
-    "balance_elemental_body" to CustomDefinition.Model(modelId = 60346),
-    "balance_elemental_head" to CustomDefinition.Model(modelId = 60347),
-    "bork_a" to CustomDefinition.Model(modelId = 60348),
-    "bork_b" to CustomDefinition.Model(modelId = 60349),
-    "plane_freezer" to CustomDefinition.Model(modelId = 60350),
-    "plane_freezer_ranged_proj" to CustomDefinition.Model(modelId = 60351), /* These models are encoded in binary, do NOT move id */
-    "plane_freezer_magic_proj" to CustomDefinition.Model(modelId = 60352), /* These models are encoded in binary, do NOT move id */
-    "nomad_npc_body" to CustomDefinition.Model(modelId = 60353),
-    "nomad_magic_projectile" to CustomDefinition.Model(modelId = 60354), /* These models are encoded in binary, do NOT move id */
-    "nomad_ranged_projectile" to CustomDefinition.Model(modelId = 60355), /* These models are encoded in binary, do NOT move id */
-    "nomad_magic_send_gfx" to CustomDefinition.Model(modelId = 60356), /* These models are encoded in binary, do NOT move id */
-    "nomad_target_hit_gfx" to CustomDefinition.Model(modelId = 60357), /* These models are encoded in binary, do NOT move id */
-    "phoenix_body" to CustomDefinition.Model(modelId = 60358),
-    "slash_bash" to CustomDefinition.Model(modelId = 60359),
-    "barrelchest_old" to CustomDefinition.Model(modelId = 60360),
-    "pet_barrelchest" to CustomDefinition.Model(modelId = 60361),
-    "pet_desert_strykewyrm_inv" to CustomDefinition.Model(modelId = 60362),
-    "pet_ice_strykewyrm_inv" to CustomDefinition.Model(modelId = 60363),
-    "pet_jungle_strykewyrm_inv" to CustomDefinition.Model(modelId = 60364),
-    "pet_slash_bash_inv" to CustomDefinition.Model(modelId = 60365),
     "corrupt_kratos_body" to CustomDefinition.Model(modelId = 60366),
     "corrupt_kratos_underlay" to CustomDefinition.Model(modelId = 60367),
     "corrupt_kratos_wield" to CustomDefinition.Model(modelId = 60368),
@@ -444,7 +411,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "dark_shadow_wizard" to CustomDefinition.Model(modelId = 60398),
     "dark_toucan_body" to CustomDefinition.Model(modelId = 60399),
     "dark_toucan_underlay" to CustomDefinition.Model(modelId = 60400),
-    "wildy_imp" to CustomDefinition.Model(modelId = 60401),
     "rebirth_universal_chest" to CustomDefinition.Model(modelId = 60404),
     "gnomescarf_inv" to CustomDefinition.Model(modelId = 60413),
     "gnomescarf_eq_m" to CustomDefinition.Model(modelId = 60414),
@@ -554,8 +520,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "ArraxyteStandb" to CustomDefinition.Model(modelId = 60536),
 
 
-    "gano_beast_1" to CustomDefinition.Model(modelId = 62000),
-    "gano_beast_2" to CustomDefinition.Model(modelId = 62001),
     "teleport_model_legacy" to CustomDefinition.Model(modelId = 62003),
 
     "rebirth_npc_mac" to CustomDefinition.Model(modelId = 64000),
@@ -663,8 +627,6 @@ val map: Map<String, CustomDefinition> = mapOf(
     "fissile_kratos_underlay" to CustomDefinition.Model(modelId = 64102),
     "fissile_kratos_wield" to CustomDefinition.Model(modelId = 64103),
     "origins_nx_store_bundle_inv" to CustomDefinition.Model(modelId = 64104),
-    "origins_wildy_mole" to CustomDefinition.Model(modelId = 64105),
-    "origins_wildy_mole_pet_inv" to CustomDefinition.Model(modelId = 64106),
 
     /* Everything from 65000 to 65530 is reserved for legacy code, see ChristmasMapPacker */
 

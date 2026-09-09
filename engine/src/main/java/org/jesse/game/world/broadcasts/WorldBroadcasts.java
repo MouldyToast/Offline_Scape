@@ -122,7 +122,6 @@ public class WorldBroadcasts {
 //            case MYSTERY_BOX_RARE_ITEM -> sendBoxLoot(player, args);
 //            case INFERNO_COMPLETION -> sendInfernoCompletion(player); // TODO: Test!!
 //            case TREASURE_TRAILS -> sendTreasureTrailsReward(player, args);
-//            case WILDERNESS_EVENT -> sendGanodermicBeast(args);
     ////            case BOUNTY_HUNTER -> sendBountyHotSpot(args); // TODO: Test!!
 //            case BREACHES -> sendBreach(args);
 //            default -> logger.debug("Ignored broadcast type {}", type);
@@ -389,12 +388,6 @@ public class WorldBroadcasts {
                 else {
                     secondaryBuilder.append(" has completed the Inferno").append(", with a combat level of ").append(player.getCombatLevel()).append("!");
                 }
-                builder.append(secondaryBuilder);
-                break;
-            }
-            case WILDERNESS_EVENT: {
-                builder.append("Event: ");
-                secondaryBuilder.append(args[0]);
                 builder.append(secondaryBuilder);
                 break;
             }

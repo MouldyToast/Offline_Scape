@@ -2775,7 +2775,6 @@ public final class GameCommands {
 
         List<String> info = new ArrayList<>();
         info.add("Larran's key booster: " + (vars.getLarransKeyBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getLarransKeyBoosterTick()) : red + "Inactive"));
-        info.add("Ganodermic booster: " + (vars.getGanoBoosterKillsLeft() > 0 ? green + "Active for " + vars.getGanoBoosterKillsLeft() + " kills" : red + "Inactive"));
         info.add("Slayer booster: " + (vars.getSlayerBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getSlayerBoosterTick()) : red + "Inactive"));
         info.add("Pet booster: " + (vars.getPetBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getPetBoosterTick()) : red + "Inactive"));
         info.add("Gauntlet booster: " + (vars.getGauntletBoosterCompletionsLeft() > 0 ? green + "Active for " + vars.getGauntletBoosterCompletionsLeft() + " completions" : red + "Inactive"));

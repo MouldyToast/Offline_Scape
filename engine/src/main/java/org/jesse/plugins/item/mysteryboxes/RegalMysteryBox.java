@@ -140,7 +140,6 @@ public class RegalMysteryBox extends ItemPlugin {
                 new MysterySupplyItem(23962, 100, 200),
                 new MysterySupplyItem(ItemId.ANCIENT_SHARD, 5, 15),
                 new MysterySupplyItem(32149, 2, 5), // Larran's Booster
-                new MysterySupplyItem(32150, 2, 5), // Ganodermic Booster
                 new MysterySupplyItem(32151, 2, 5), // Slayer Booster
                 new MysterySupplyItem(32152, 2, 5), // Pet Booster
                 new MysterySupplyItem(32153, 2, 5), // Gauntlet Booster

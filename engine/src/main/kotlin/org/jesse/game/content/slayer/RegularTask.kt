@@ -1702,21 +1702,6 @@ enum class RegularTask(
     },
 
 
-    STRYKEWYRMS(
-        buildTasks {
-            SlayerMaster.VANNAKA weight 5 min 20 max 50
-            SlayerMaster.CHAELDAR weight 10 min 30 max 70
-            SlayerMaster.NIEVE weight 7 min 70 max 85
-            SlayerMaster.DURADEL weight 15 min 75 max 125
-        },
-        buildInfo {
-            id(82)
-            slayer(90)
-            combat(65)
-            tip("Strykewyrms are powerful creatures from an alternate dimension")
-            registerNames("Ice Strykewyrm", "Desert Strykewyrm", "Jungle Strykewyrm")
-        }
-    ),
     ;
 
     override val monsters: Set<String> = monsterData.names

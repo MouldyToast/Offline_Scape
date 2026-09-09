@@ -60,7 +60,6 @@ fun main() {
 //    Fonts.plain11.draw("10", 0, 0, 0,0)
 
 //    canvas.export(Paths.get("bla.png"))
-//    val npc = NPCDefinitions.get(CustomNpcId.GANODERMIC_BEAST)
 
 //    renderItems(cache)
 

@@ -31,7 +31,6 @@ internal fun TeleportsBuilder.bosses() = "Bosses Teleports"(10005) {
     "Raids III: Tombs of Amascut"(4660, 3358, 9113, 0, "")
     "Sarachnis"(4269, 1847, 9920, 0, "")
     "Skotizo"(4272, 1665, 10047, 0, "https://oldschool.runescape.wiki/w/Skotizo")
-    //"Slash Bash"(-32825, 2436, 4382, 0, "")
     "Sol Heredit"(-28960, 1801, 9507, 0, "")
     "The Nightmare"(4286, 3808, 9752, 1, "")
     "Thermonuclear Smoke Devil"(4277, 2411, 3055, 0, "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil")

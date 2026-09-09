@@ -43,7 +43,6 @@ public class UltimateMysteryBox extends ItemPlugin {
 		rewards = new MysteryItem[] {
 				// Common = 1000
 //                new MysteryItem(32149, 5, 10, 1000), // Larran's Booster
-//                new MysteryItem(32150, 5, 10, 1000), // Ganodermic Booster
 //                new MysteryItem(32151, 5, 10, 1000), // Slayer Booster
 //                new MysteryItem(32152, 5, 10, 1000), // Pet Booster
 //                new MysteryItem(32153, 5, 10, 1000), // Gauntlet Booster

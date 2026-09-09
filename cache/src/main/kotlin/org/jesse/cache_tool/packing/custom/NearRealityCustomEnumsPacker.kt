@@ -43,14 +43,11 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 3769   // nex
             this.values[idx++] = 1263   // the nightmare
             this.values[idx++] = 495    // obor
-            this.values[idx++] = 10501   // primals
             this.values[idx++] = 4455   // muspah
-            this.values[idx++] = 10321  // rots
             this.values[idx++] = 601    // sarachnis
             this.values[idx++] = 496    // scorpia
             this.values[idx++] = 497    // skotizo
             this.values[idx++] = 498    // thermy
-            this.values[idx++] = 10322  // Vanstrom Klause
             this.values[idx++] = 4653   // Vardorvis
             this.values[idx++] = 501    // Venenatis
             this.values[idx++] = 502    // Vetion
@@ -59,23 +56,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 504    // Wintertodt
             this.values[idx++] = 604    // Zalcano
             this.values[idx] = 505      // Zulrah
-            this.pack()
-        }
-
-        // Slayer log - add statue pieces
-        EnumDefinitions.get(2162).apply {
-            var index = this.size
-            this.values[index++] = SLAYER_BASE
-            this.values[index++] = SLAYER_SHAFT
-            this.values[index++] = SLAYER_LEFT_BONE
-            this.values[index] = SLAYER_RIGHT_BONE
-            this.pack()
-        }
-
-        // Grotesque Guardians
-        EnumDefinitions.get(2122).apply {
-            var index = this.size
-            this.values[index] = DOUBLE_AMMO_MOULD
             this.pack()
         }
 
@@ -109,12 +89,6 @@ object NearRealityCustomEnumsPacker {
             this.pack()
         }
 
-        // Vanstrom Klause
-        EnumDefinitions.create(10030, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = BLOOD_SHARD
-            this.pack()
-        }
-
         // Duke
         EnumDefinitions.get(5148).apply {
             this.values[5] = MAGUS_ICON
@@ -125,28 +99,6 @@ object NearRealityCustomEnumsPacker {
         EnumDefinitions.get(5149).apply {
             this.values[5] = ULTOR_ICON
             this.pack();
-        }
-
-        /* Primal Items */
-        EnumDefinitions.create(10501, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = PRIMAL_2H_SWORD
-            this.values[1] = PRIMAL_PICKAXE
-            this.values[2] = PRIMAL_KITESHIELD
-            this.values[3] = PRIMAL_SPEAR
-            this.values[4] = PRIMAL_HATCHET
-            this.values[5] = PRIMAL_MAUL
-            this.values[6] = PRIMAL_DAGGER
-            this.values[7] = PRIMAL_LONGSWORD
-            this.values[8] = PRIMAL_RAPIER
-            this.values[9] = PRIMAL_WARHAMMER
-            this.values[10] = PRIMAL_BOOTS
-            this.values[11] = PRIMAL_GAUNTLETS
-            this.values[12] = PRIMAL_FULL_HELM
-            this.values[13] = PRIMAL_PLATEBODY
-            this.values[14] = PRIMAL_CHAINBODY
-            this.values[15] = PRIMAL_PLATESKIRT
-            this.values[16] = PRIMAL_PLATELEGS
-            this.pack()
         }
 
         EnumDefinitions.create(10024, ScriptVarType.INTEGER, ScriptVarType.OBJ).apply {
@@ -247,7 +199,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 26300                // Dragonhide pouch
             this.values[idx++] = 26304                      // Bone pouch
             this.values[idx++] = BONECRUSHER                    // Bonecrusher
-            this.values[idx] = BALMUNG                         // Balmung
             this.pack()
         }
 
@@ -297,7 +248,6 @@ object NearRealityCustomEnumsPacker {
             this.values[26304] = 500
             this.values[26706] = 150
             this.values[32161] = 400
-            this.values[32612] = 750
 
             this.pack()
         }
@@ -338,7 +288,6 @@ object NearRealityCustomEnumsPacker {
             this.values[26304] = "A pouch for storing bones."
             this.values[26706] = "A scroll that can be used to imbue items."
             this.values[32161] = "A powerful defensive weapon."
-            this.values[32612] = "Two-handed weapon made of some banite ore and sharpened on the hides of dagannoths, deals 25% extra damage against dagannoths with 15% increased accuracy."
             this.pack()
         }
     }

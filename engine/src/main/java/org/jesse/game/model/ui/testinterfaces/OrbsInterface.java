@@ -1,6 +1,5 @@
 package org.jesse.game.model.ui.testinterfaces;
 
-import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.consumables.Consumable;
 import org.jesse.game.content.consumables.drinks.BarbarianMix;
@@ -226,7 +225,6 @@ public class OrbsInterface extends Interface {
                 GameInterface.WORLD_MAP.open(player);
             }
         });
-        bind("Open Store", DeveloperCommands::openStore);
     }
 
     @Override

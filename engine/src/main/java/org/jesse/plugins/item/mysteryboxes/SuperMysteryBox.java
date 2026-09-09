@@ -36,18 +36,6 @@ public class SuperMysteryBox extends ItemPlugin {
                 new MysteryItem(12954, 1, 1, 1000).setCheckHasItem(), // Dragon defender
                 new MysteryItem(6570, 1, 1, 1000).setCheckHasItem(), // fire cape
                 new MysteryItem(6889, 1, 1, 1000), // mages book
-                new MysteryItem(32149, 3, 6, 1000), // Larrans booster
-                new MysteryItem(32150, 3, 6, 1000), // Gano booster
-                new MysteryItem(32151, 3, 6, 1000), // Slayer booster
-                new MysteryItem(32152, 3, 6, 1000), // Pet booster
-                new MysteryItem(32153, 3, 6, 1000), // Gauntlet booster
-                new MysteryItem(32154, 3, 6, 1000), // Blood money booster
-                new MysteryItem(32155, 3, 6, 1000), // Clue booster
-                new MysteryItem(32156, 3, 6, 1000), // ToB booster
-                new MysteryItem(32157, 3, 6, 1000), // Task Picker
-                new MysteryItem(32158, 3, 6, 1000), // Task Reset
-                new MysteryItem(32166, 3, 6, 1000), // Rev Booster
-                new MysteryItem(32167, 3, 6, 1000), // Nex Booster
                 new MysteryItem(19782, 2, 5, 1000), // Xerics Wisdom
 
                 //Rare = 200

@@ -21,10 +21,6 @@ public enum AnimationBase {
     THANKSGIVING_TURKEY(5003, "assets/animations/bases/thanksgiving 2019 turkey base.dat"),
     THANKSGIVING_POOF(5004, "assets/animations/bases/thanksgiving 2019 poof base.dat"),
     PLAYER_ALT(5005, "assets/animations/bases/player base.dat"),
-    TELEPORT_BASE_5187(5187, "assets/teleportation/animations/bases/Base 5187.dat"),
-    TELEPORT_BASE_5188(5188, "assets/teleportation/animations/bases/Base 5188.dat"),
-    TELEPORT_BASE_5189(5189, "assets/teleportation/animations/bases/Base 5189.dat"),
-    TELEPORT_BASE_5190(5190, "assets/teleportation/animations/bases/Base 5190.dat"),
     ;
     private final int baseId;
     private final String path;

@@ -14,8 +14,6 @@ import mgi.types.config.ObjectDefinitions;
  */
 public final class SpiralStaircaseObject implements ObjectAction {
 
-    private static final Location homeException = new Location(3118, 3484, 0);
-
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         if (option.equals("Climb")) {
@@ -31,10 +29,6 @@ public final class SpiralStaircaseObject implements ObjectAction {
                 }
             }, null }));
         } else if (option.equals("Climb-up")) {
-            if (object.matches(homeException)) {
-                player.setLocation(new Location(3119, 3482, 1));
-                return;
-            }
             final int[] offsets = getUpOffsets(object.getRotation());
             player.setLocation(new Location(object.getX() + offsets[0], object.getY() + offsets[1], object.getPlane() + 1));
         } else if (option.equals("Climb-down")) {

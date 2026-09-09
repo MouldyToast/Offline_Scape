@@ -5,7 +5,6 @@ import org.jesse.game.content.gravestone.GravestoneExt;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.Setting;
-import org.jesse.game.world.entity.player.var.VarCollection;
 import org.jesse.logger.NearRealityLogger;
 import org.slf4j.Logger;
 
@@ -34,7 +33,6 @@ public class SidePanelsResizablePaneInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Character Summary", (player, slotId, itemId, option) -> VarCollection.COMP_PROGRESS.updateSingle(player));
         bind("Toggle spell filtering", (player, slotId, itemId, option) -> {
             if (option == 2)
                 player.getSettings().toggleSetting(Setting.SPELL_FILTERING_DISABLED);

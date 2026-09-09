@@ -300,9 +300,6 @@ object GravestoneExt {
 
     private fun Item.manualReclaimCost() : Long {
         return when(this.id) {
-            COMPLETIONIST_CAPE, COMPLETIONIST_CAPE_T, MASTER_COMP_CAPE
-            -> 500_000
-
             MAX_CAPE, 13329, 13331, 13333, 13335, 21285,
             21776, 21780, 21784, 21898, 20760, 13337,
             ASSEMBLER_MAX_CAPE_L,

@@ -112,16 +112,11 @@ public abstract class ClueRewardTable {
 
     protected abstract int maxRolls();
 
-    public final List<Item> roll(final boolean entrana, boolean xamphurBoost, boolean clueBooster) {
+    public final List<Item> roll(final boolean entrana, boolean xamphurBoost) {
         int min = minRolls();
         int max = maxRolls();
         if (xamphurBoost) {
             max *= 2;
-        }
-
-        if (clueBooster) {
-            min += 2;
-            max += 2;
         }
 
         return roll(min, max, entrana, true);

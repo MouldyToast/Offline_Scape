@@ -27,15 +27,11 @@ public class MageOfZamorak extends NPCPlugin {
     private static final ForceTalk TELEPORT_CHAT = new ForceTalk("Veniens! Sallakar! Rinnesset!");
 
     private static final Location ABYSS_LOCATION = new Location(3017, 4839, 0);
-    private static final Location ABYSS_LOCATION_CENTER = new Location(3039, 4836, 0);
 
     @Override
     public void handle() {
         bind("Talk-to", (player, npc) -> player.getDialogueManager().start(new NPCChat(player, npc.getId(), "This is no place to talk!<br><br>Meet me at the Varrock Chaos Temple!")));
         bind("Teleport", (player, npc) -> {
-            boolean rdi = npc.getId() == 16051;
-
-
             npc.setAnimation(TELEPORT_ANIM);
             npc.setForceTalk(TELEPORT_CHAT);
             player.setGraphics(TELEPORT_GFX);
@@ -62,13 +58,13 @@ public class MageOfZamorak extends NPCPlugin {
                     }
                 }
                 // player.getVarManager().sendBit(625, Utils.random(10)); used to randomize the obstacles, if you enable this make sure to fix up the object interactions
-                player.setLocation(rdi ? ABYSS_LOCATION_CENTER : ABYSS_LOCATION);
+                player.setLocation(ABYSS_LOCATION);
             }, 2);
         });
     }
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.MAGE_OF_ZAMORAK_2581, 16051};
+        return new int[] { NpcId.MAGE_OF_ZAMORAK_2581 };
     }
 }

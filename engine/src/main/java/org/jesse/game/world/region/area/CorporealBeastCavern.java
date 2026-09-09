@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.LootBroadcastPlugin;
@@ -26,7 +25,6 @@ public class CorporealBeastCavern extends PolygonRegionArea implements RandomEve
 
     @Override
     public void enter(final Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.CORPOREAL_BEAST);
     }
 
     @Override

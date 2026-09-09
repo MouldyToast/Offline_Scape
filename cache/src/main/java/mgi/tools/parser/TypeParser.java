@@ -10,9 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jesse.cache.interfaces.teleports.packing.TeleportsPacker;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityBarrowsItemDefinitions;
-import org.jesse.cache_tool.packing.custom.NearRealityBoneCrusherItemDefinitions;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomAnimationsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomEnumsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomGraphicsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomHeadIconsPacker;
@@ -21,20 +18,9 @@ import org.jesse.cache_tool.packing.custom.NearRealityCustomMapsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomObjectsPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomSpecialAttacksPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomStructsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomWorldMapPacker;
 import org.jesse.cache_tool.packing.custom.NearRealityEffigyMapEdits;
 import org.jesse.cache_tool.packing.custom.NearRealityOriginsPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityRaidsItemDefinitions;
 import org.jesse.cache_tool.packing.custom.NearRealityRebirthPacker;
-import org.jesse.cache_tool.packing.custom.NearRealityReducePricesItemDefinitions;
-import org.jesse.cache_tool.packing.custom.NearRealityRemovePetsFromBossCLs;
-import org.jesse.cache_tool.packing.custom.NearRealityStoreInterfacePacker;
-import org.jesse.cache_tool.packing.custom.PackRevivalHeadIconSprites;
-import org.jesse.cache_tool.packing.custom.UniversalShopPacker;
-import org.jesse.cache_tool.packing.custom.ganodermic_beasts.GanodermicBeastsPacker;
-import org.jesse.cache_tool.packing.custom.inquisitors_great_flail.InquisitorsGreatFlailPacker;
-import org.jesse.cache_tool.packing.custom.mack.ClownStoreInterfacePacker;
-import org.jesse.cache_tool.packing.custom.mack.ClownVoteInterfacePacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -78,7 +64,6 @@ import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.custom.AnimationBase;
-import mgi.custom.CustomTeleport;
 import mgi.custom.FramePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
@@ -104,7 +89,6 @@ import net.runelite.cache.definitions.savers.MapSaver;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import org.jire.wmpacker.CustomWorldMapAreas;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,7 +106,6 @@ public class TypeParser {
     public static final String CACHE_VERSION = "cache-228";
     public static final File CACHE_ORIGINAL_DIRECTORY = new File("data/" + CACHE_VERSION);
     public static final boolean ENABLED_MAP_PACKING = true;
-    public static final boolean POST_PACK_UNIV_SHOP = true;
 
     private static final ThreadLocal<Gson> gson = ThreadLocal.withInitial(() ->
             new GsonBuilder()
@@ -138,8 +121,6 @@ public class TypeParser {
         return gson.get();
     }
 
-    public static boolean RUNESPAWN = false;
-
     public static void main(final String[] args) throws Exception {
         final ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -149,9 +130,6 @@ public class TypeParser {
         boolean isProductionCacheGen = false;
         if (args.length > 0) {
             type = args[0];
-        }
-        if (args.length > 1) {
-            RUNESPAWN = Boolean.parseBoolean(args[1]);
         }
         if (args.length > 2 && Objects.equals(args[2], "production")) {
             isProductionCacheGen = true;
@@ -181,13 +159,6 @@ public class TypeParser {
         CacheManager.loadCache(cache);
         XTEALoader.load("data/objects/xteas.json");
 
-//        try {
-//            Cache runespawn_cache = Cache.openCache("data/cache-runespawn");
-//            RuneSpawnMigration runespawn = new RuneSpawnMigration(cache, runespawn_cache);
-//            runespawn.run();
-//        } catch (Exception e) {
-//            e.printStackTrace(System.err);
-//        }
 
 
         CacheManager.loadDefinitions(service, true);
@@ -195,13 +166,9 @@ public class TypeParser {
 
         initializeKryo();
         parse(new File("assets/types"));
-        if (RUNESPAWN) {
-            parse(new File("assets/runespawn/types"));
-        }
         pack(NPCDefinitions.class);
         packDynamicConfigs();
         packHighRevision();
-        NearRealityCustomAnimationsPacker.pack();
         NearRealityOriginsPacker.pack();
         NearRealityRebirthPacker.pack();
         NearRealityCustomGraphicsPacker.pack();
@@ -221,11 +188,7 @@ public class TypeParser {
         packInterfaces();
         packStructs();
         packParams();
-        NearRealityCustomWorldMapPacker.pack();
         packMaps(service);
-
-        editObjects();
-        addCustomStalls();
         TeleportsPacker.pack();
         increaseVarclientAmount();
         NearRealityCustomObjectsPacker.pack();
@@ -242,29 +205,17 @@ public class TypeParser {
         }
         //packVCSAssets(cache);
 
-        new ClownStoreInterfacePacker(cache).pack();
-        new ClownVoteInterfacePacker(cache).pack();
-        new PackRevivalHeadIconSprites(cache).patch();
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         NearRealityCustomEnumsPacker.pack();
         NearRealityCustomSpecialAttacksPacker.pack();
-        NearRealityBarrowsItemDefinitions.removeCheckOption();
-        NearRealityBoneCrusherItemDefinitions.removeChargingOptions();
-        NearRealityRaidsItemDefinitions.makeKindlingStackable();
-        NearRealityRaidsItemDefinitions.makeCavernGrubsStackable();
-        NearRealityReducePricesItemDefinitions.reducePrices();
         NearRealityCustomHeadIconsPacker.pack();
-        NearRealityRemovePetsFromBossCLs.pack();
-        NearRealityStoreInterfacePacker.pack();
         cache.close();
 
         cache = Cache.openCache("data/cache");
         CacheManager.loadCache(cache);
         CacheManager.loadDefinitions(service, true);
         postPackEdits();
-        if (POST_PACK_UNIV_SHOP)
-            UniversalShopPacker.INSTANCE.postPack();
         cache.close();
 
         /*
@@ -593,11 +544,8 @@ public class TypeParser {
     }
 
     private static void packHighRevision() throws IOException {
-        new CustomTeleport().packAll();
-        InquisitorsGreatFlailPacker.pack();
         FramePacker.write();
         AnimationBase.pack();
-        GanodermicBeastsPacker.pack();
     }
 
     private static void packDynamicConfigs() {
@@ -666,12 +614,6 @@ public class TypeParser {
             }
             group.addFile(new mgi.tools.jagcached.cache.File(i, buffer));
         }
-    }
-
-    public static void addCustomStalls() {
-    }
-
-    public static void editObjects() {
     }
 
     public static ObjectDefinitions cloneObject(int from, int to) {
@@ -874,7 +816,6 @@ public class TypeParser {
 
 //        packRustyScripts("assets/scripts/out/");
 
-        // NearRealityCustomCS2Packer.pack();
     }
 
     private static void packCs2FromDirectory(String first) throws IOException {
@@ -961,9 +902,6 @@ public class TypeParser {
     private static void packInterfaces() {
         final Cache cache = CacheManager.getCache();
         packInterfacesInner(cache, Paths.get("assets/interfaces").toFile().listFiles());
-        if (RUNESPAWN) {
-            packInterfacesInner(cache, Paths.get("assets/runespawn/interfaces").toFile().listFiles());
-        }
         //packMackInterfaces(cache, 5006);
 
         cache.getArchive(ArchiveType.INTERFACES).finish();
@@ -1056,58 +994,7 @@ public class TypeParser {
         }
     }
 
-    public static void packMapsRSPSiModern(int baseRegionID, String packFilePath) throws IOException {
-        packMapsRSPSiModern(CacheManager.getCache(), baseRegionID, packFilePath);
-    }
-
-    public static void packMapsRSPSiModern(Cache cache, int baseRegionID, String packFilePath)
-            throws IOException {
-        byte[] packBytes = java.nio.file.Files.readAllBytes(Path.of(packFilePath));
-        java.nio.ByteBuffer buffer = java.nio.ByteBuffer.wrap(packBytes);
-
-        int baseRegionX = (baseRegionID >> 8) & 0xFF;
-        int baseRegionY = baseRegionID & 0xFF;
-
-        int mapSquareCount = buffer.getInt();
-
-        for (int i = 0; i < mapSquareCount; i++) {
-            buffer.getInt(); // locGroupID
-            buffer.getInt(); // mapGroupID
-
-            int localMapSqGridX = buffer.getInt();
-            int localMapSqGridZ = buffer.getInt();
-
-            int locsBlockLength = buffer.getInt();
-            byte[] locsBlock = new byte[locsBlockLength];
-            buffer.get(locsBlock);
-
-            int mapBlockLength = buffer.getInt();
-            byte[] mapBlock = new byte[mapBlockLength];
-            buffer.get(mapBlock);
-
-            int regionX = baseRegionX + localMapSqGridX;
-            int regionY = baseRegionY + localMapSqGridZ;
-
-            int regionID = (regionX << 8) | regionY;
-            locsBlock = modifyRegions(regionID, locsBlock);
-            packMap(cache, regionID, mapBlock, locsBlock);
-        }
-    }
-
     private static byte[] modifyRegions(int regionID, byte[] locsBlock) {
-        if (regionID == 12342) {
-            return Regions.inject(locsBlock,
-                    o -> o.getId() == 76 || o.getId() == 29165 || o.getId() == 40448 || o.getId() == 2133 || o.getId() == 7439 || o.getId() == 6267 || o.getId() == 41705,
-                    //FIX GE booths to have bank near banks
-                    new WorldObject(10060, 0, 1, new Location(3094, 3490, 1)),
-                    new WorldObject(10060, 0, 1, new Location(3095, 3490, 1)),
-                    new WorldObject(10060, 0, 3, new Location(3094, 3495, 1)),
-                    new WorldObject(10060, 0, 3, new Location(3095, 3495, 1)),
-                    //Fix pottery wheel
-                    new WorldObject(4310, 10, 1, new Location(3104, 3497, 0)),
-                    new WorldObject(2031, 10, 3, new Location(3108, 3494, 0))
-            );
-        }
         if (regionID == 8036) {
             return Regions.inject(locsBlock,
                     null,
@@ -1275,14 +1162,6 @@ public class TypeParser {
     }
 
     private static void packMaps(final ExecutorService service) throws IOException {
-        packMapPre209(9517, java.nio.file.Files.readAllBytes(Paths.get("assets/map/island_l_regular.dat")),
-                Regions.inject(
-                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/island_m_regular.dat")), o -> {
-                            if (o.getId() == 46087) {
-                                o.setId(46089);
-                            }
-                            return false;
-                        }));
         packMapPre209(10388, java.nio.file.Files.readAllBytes(Paths.get("assets/map/yanille/328.dat")),
                 java.nio.file.Files.readAllBytes(Paths.get("assets/map/yanille/329.dat")));
         packMapPre209(11567, null,
@@ -1295,243 +1174,21 @@ public class TypeParser {
                         new WorldObject(26254, 10, 3, new Location(2920, 4848, 0))));
         packMapPre209(13109, null,
                 Regions.inject(13109, null, new WorldObject(187, 10, 1, new Location(3322, 3428, 0))));
-        packMapPre209(14477, java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/m56_141.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/l56_141.dat")));
-        packMapPre209(14478, java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/m56_142.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/l56_142.dat")));
-        packMapPre209(14733, java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/m57_141.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/l57_141.dat")));
-        packMapPre209(14734, java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/m57_142.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/dmm_tourny/l57_142.dat")));
-        packMapPre209(15245, java.nio.file.Files.readAllBytes(Paths.get("assets/map/tournament/2.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/tournament/3.dat")));
-        packMapPre209(15248, java.nio.file.Files.readAllBytes(Paths.get("assets/map/tournament/0.dat")),
-                Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/tournament/1.dat")),
-                        null,
-                        new WorldObject(35005, 10, 3, new Location(3806, 9245, 0)),
-                        new WorldObject(35006, 10, 1, new Location(3813, 9256, 0)),
-                        new WorldObject(35007, 10, 0, new Location(3799, 9256, 0))));
-        packMapPre209(6582, java.nio.file.Files.readAllBytes(Paths.get("assets/map/primal_zone/primal_dungeon_l.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/primal_zone/primal_dungeon_m.dat")));
-//        packMapPre209(4674,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Armadyl/0.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Armadyl/1" +
-//                                ".dat")),
-//                        o -> {
-//                            if (o.getId() == 20843) {
-//                                o.setId(35016);
-//                            } else if (o.getId() == 26769) {
-//                                o.setId(35013);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            return false;
-//                        }));
-//        packMapPre209(4675,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Bandos/0.dat")),
-//                Regions.inject(java.nio.file.Files
-//                        .readAllBytes(Paths.get("assets/map/godwars-instances/Bandos/1.dat")), o -> {
-//                    if (o.getId() == 9368) {
-//                        o.setId(35014);
-//                    } else if (o.getId() == 26769) {
-//                        o.setId(35013);
-//                    } else if (o.getId() == 23708) {
-//                        o.setId(35019);
-//                    }
-//                    return o.hashInRegion() == new Location(1191, 4306, 0).hashInRegion();
-//                }, new WorldObject(35019, 10, 0, new Location(1189, 4313, 0))));
-//        packMapPre209(4676,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Zamorak/0.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Zamorak/1" +
-//                                ".dat")),
-//                        o -> {
-//                            if (o.getId() == 14845) {
-//                                o.setId(35015);
-//                            } else if (o.getId() == 26769) {
-//                                o.setId(35013);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            // Removes object which produces ambient waterfall sound and the stash unit.
-//                            return o.getId() == 16399 || o.getId() == 29054;
-//                        }));
-//        packMapPre209(4677,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Saradomin/0.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Saradomin/1" +
-//                                ".dat")),
-//                        o -> {
-//                            if (o.getId() == 26740) {
-//                                o.setId(35017);
-//                            } else if (o.getId() == 21120) {
-//                                o.setId(35018);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            return o.getId() == 26375
-//                                    || (o.getXInRegion() == (1203 & 63) && o.getYInRegion() == (4422 & 63));
-//                        }, new WorldObject(17030, 22, 0, 1195, 4440, 0)));
-//        packMapPre209(11346,
-//                java.nio.file.Files
-//                        .readAllBytes(Paths.get("assets/map/godwars-instances/Armadyl/1858.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Armadyl/1859" +
-//                                ".dat")),
-//                        o -> {
-//                            if (o.getId() == 20843) {
-//                                o.setId(35016);
-//                            } else if (o.getId() == 26769) {
-//                                o.setId(35013);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            return false;
-//                        }, new WorldObject(26502, 10, 3, 2839, 5295, 2),
-//                        new WorldObject(0, 10, 0, 2840, 5294, 2),
-//                        new WorldObject(0,
-//                                10, 0, 2838, 5294, 2)));
-//        packMapPre209(11347,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Bandos/1860.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Bandos/1861" +
-//                                ".dat")),
-//                        o -> {
-//                            if (o.getId() == 9368) {
-//                                o.setId(35014);
-//                            } else if (o.getId() == 26769) {
-//                                o.setId(35013);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            return o.hashInRegion() == new Location(2856, 5357, 2).hashInRegion();
-//                        }, new WorldObject(35019, 10, 0, new Location(2854, 5364, 2))));
-//        packMapPre209(11602,
-//                java.nio.file.Files
-//                        .readAllBytes(Paths.get("assets/map/godwars-instances/Saradomin/1862.dat")),
-//                Regions.inject(
-//                        java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances/Saradomin" +
-//                                "/1863.dat")),
-//                        o -> {
-//                            if (o.getId() == 26740) {
-//                                o.setId(35017);
-//                            } else if (o.getId() == 21120) {
-//                                o.setId(35018);
-//                            } else if (o.getId() == 23708) {
-//                                o.setId(35019);
-//                            }
-//                            return false;
-//                        }, new WorldObject(17030, 22, 0, 2923, 5272, 0)));
-//        packMapPre209(11603,
-//                MapUtils
-//                        .processTiles(new ByteBuffer(java.nio.file.Files.readAllBytes(Paths.get("assets/map" +
-//                                "/godwars-instances/Zamorak/1856.dat"))), tile -> {
-//                            if (tile.getUnderlayId() == 23) {
-//                                tile.setUnderlayId((byte) 0);
-//                            }
-//                            if (tile.getOverlayId() == 33) {
-//                                tile.setOverlayId((byte) 0);
-//                            }
-//                        })
-//                        .getBuffer(),
-//                Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/godwars-instances" +
-//                        "/Zamorak/1857.dat")), o -> {
-//                    if (o.getId() == 14845) {
-//                        o.setId(35015);
-//                    } else if (o.getId() == 26769) {
-//                        o.setId(35013);
-//                    } else if (o.getId() == 23708) {
-//                        o.setId(35019);
-//                    }
-//                    return false;
-//                }));
-//    packMapPre209(13420, "assets/map/gamble/gamble_0.dat", "assets/map/gamble/gameble_1.dat.dat");
-//        packMapPre209(13422, "assets/map/world_boss/worldboss_landscape.dat",
-//                "assets/map/world_boss/worldboss_objects.dat");
-//        packMapPre209(13424, "assets/map/tutorial_island/tutorial_landscape.dat",
-//                "assets/map/tutorial_island/tutorial_objects.dat");
         packMapPre209(13426, "assets/map/osnr_tournament/final_landscape.dat",
                 "assets/map/osnr_tournament/final_objects.dat");
-        packMapPre209(8314, "assets/map/staff_landscape.dat",
-                "assets/map/staff_objects.dat");
         packMapPre209(13428, java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_landscape.dat")),
                 Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_objects.dat")), null,
                         new WorldObject(35006, 10, 1, new Location(3363, 7465, 0)),
                         new WorldObject(35007, 10, 0, new Location(3352, 7465, 0))));
-//        packMapPre209(11601, null,
-//                Regions.inject(11601, null, new WorldObject(50083, 10, 1, new Location(2906, 5206, 0))));
-        //packMapPre209(12342, "assets/map/osnr_home/624.dat", "assets/map/osnr_home/625.dat");
-        //packMapsRSPSi(13382, "assets/osnr/custom_maps/NR_home.pack");
-//        packMapsRSPSi(13430, "assets/map/donator_zones/LDI.pack");
-//        packMapsRSPSi(13433, "assets/map/donator_zones/UDI.pack");
-//        packMapsRSPSi(13550, "assets/map/donator_zones/rev_dungeon.pack");
-//        packMapsRSPSi(13552, "assets/map/donator_zones/rev_dungeon.pack");
-//        packMapsRSPSi(11374, "assets/map/donator_zones/barrows.pack");
-//        packMapsRSPSi(11375, "assets/map/donator_zones/barrows.pack");
-//        packMapsRSPSi(11376, "assets/map/donator_zones/barrows.pack");
-//        packMapsRSPSi(11377, "assets/map/donator_zones/barrows.pack");
-//        packMapsRSPSi(11378, "assets/map/donator_zones/barrows.pack");
-//        packMapsRSPSi(11379, "assets/map/donator_zones/barrows.pack");
-//
-//        packMapsRSPSi(13436, "assets/map/donator_zones/RDI.pack");
-//        packMapsRSPSi(13439, "assets/map/donator_zones/DI.pack");
-//        packMapsRSPSi(13441, "assets/map/donator_zones/DIE.pack");
         packMapsRSPSi(14388, "assets/map/Meiyerditch.pack");
 
-//        packMapsRSPSi(13443, "assets/map/donator_zones/nr_dzone.pack");
         packMapsRSPSi(6457, "assets/map/kourend_castle.pack");
         packMapsRSPSi(10803, "assets/map/witchaven.pack");
 
-//        packMapPre209(6441,
-//                "assets/map/quad_dono_island/top_left_landscape.dat",
-//                "assets/map/quad_dono_island/top_left_objects.dat");
-//        packMapPre209(6697,
-//                "assets/map/quad_dono_island/top_right_landscape.dat",
-//                "assets/map/quad_dono_island/top_right_objects.dat");
-//        packMapPre209(6440,
-//                "assets/map/quad_dono_island/bottom_left_landscape.dat",
-//                "assets/map/quad_dono_island/bottom_left_objects.dat");
-//        packMapPre209(6696,
-//                "assets/map/quad_dono_island/bottom_right_landscape.dat",
-//                "assets/map/quad_dono_island/bottom_right_objects.dat");
-
-//        packMapPre209(6954,
-//                "assets/map/origin_update/desert_island/ls.dat",
-//                "assets/map/origin_update/desert_island/obj.dat");
-//        packMap(13625,
-//                "assets/map/origin_update/edge_island/island2_ls2.dat",
-//                "assets/map/origin_update/edge_island/island2_obj2.dat");
-//        packMap(13369, // edited with land bridge
-//                "assets/map/origin_update/edge_island/wildy2_ls2.dat",
-//                "assets/map/origin_update/edge_island/wildy2_obj2.dat");
-//        packMapPre209(7210,
-//                "assets/map/origin_update/ice_island/ls.dat",
-//                "assets/map/origin_update/ice_island/obj.dat");
-//        packMapPre209(7209,
-//                "assets/map/origin_update/jungle_island/ls.dat",
-//                "assets/map/origin_update/jungle_island/obj.dat");
-//
-//        packMapPre209(7466,
-//                "assets/map/origin_update/barrelchest/ls.dat",
-//                "assets/map/origin_update/barrelchest/obj.dat");
-//        packMapsRSPSi(6440, "assets/map/quad_dono_island/dZone.pack");
-
-//        packMapPre209(6469,
-//                "assets/map/quad_dono_island/chin_dungeon/chin_dung_landscape.dat",
-//                "assets/map/quad_dono_island/chin_dungeon/chin_dung_objects.dat");
 
 
-        if (RUNESPAWN) {
-            packMapPre209(12342, "assets/runespawn/edgarrock_landscape.dat",
-                    "assets/runespawn/edgarrock_objects.dat");
-            packMapPre209(13382, "assets/runespawn/darkedge_landscape.dat",
-                    "assets/runespawn/darkedge_objects.dat");
-        }
         packMapsRSPSi(12854, "assets/map/varrock_topr.pack");
 
-//        CustomWorldMapAreas.changeGodwarsArea(service);
-        CustomWorldMapAreas.changeMainArea(service);
 
         NearRealityEffigyMapEdits.apply();
     }

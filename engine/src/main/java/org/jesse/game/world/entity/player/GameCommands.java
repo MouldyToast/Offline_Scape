@@ -55,8 +55,6 @@ import org.jesse.game.content.skills.magic.spells.teleports.TeleportType;
 import org.jesse.game.content.stars.ScheduledShootingStarSpawn;
 import org.jesse.game.content.stars.ShootingStarLocation;
 import org.jesse.game.content.stars.ShootingStars;
-import org.jesse.game.content.universalshop.UniversalShopCommands;
-import org.jesse.game.content.universalshop.UniversalShopInterface;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.BonusXpManager;
@@ -97,7 +95,6 @@ import org.jesse.game.world.entity.player.privilege.ExpConfigurations;
 import org.jesse.game.world.entity.player.privilege.GameMode;
 import org.jesse.game.world.entity.player.privilege.MemberRank;
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.entity.player.variables.PlayerVariables;
 import org.jesse.game.world.entity.player.variables.TickVariable;
 import org.jesse.game.world.object.WorldObject;
@@ -177,15 +174,11 @@ public final class GameCommands {
         SanctionCommands.INSTANCE.register();
         BotPrevention.INSTANCE.registerCommands();
         ChambersCommands.INSTANCE.register();
-        UniversalShopCommands.INSTANCE.register();
 
         new Command(PlayerPrivilege.ADMINISTRATOR, "bcp", "Opens the breach control panel", (p, args) -> {
             p.getDialogueManager().start(new BreachControlPanel(p));
         });
 
-        new Command(PlayerPrivilege.PLAYER, "boosters", "Opens your active boosters.", (p, args) -> {
-            openBoosters(p);
-        });
 
 
         new Command(PlayerPrivilege.DEVELOPER, "cerbinst", (player, args) -> {
@@ -1041,53 +1034,6 @@ public final class GameCommands {
             };
             teleport.teleport(p);
         });
-        new Command(PlayerPrivilege.SUPPORT, "si", "Teleport to the staff area.", (p, args) -> {
-            if (p.isLocked()) {
-                return;
-            }
-            final Teleport teleport = new Teleport() {
-                @Override
-                public TeleportType getType() {
-                    return TeleportType.REGULAR_TELEPORT;
-                }
-
-                @Override
-                public Location destination() {
-                    return new Location(2078, 7840, 0);
-                }
-
-                @Override
-                public int getLevel() {
-                    return 0;
-                }
-
-                @Override
-                public double getExperience() {
-                    return 0;
-                }
-
-                @Override
-                public int getRandomizationDistance() {
-                    return 3;
-                }
-
-                @Override
-                public Item[] getRunes() {
-                    return null;
-                }
-
-                @Override
-                public int getWildernessLevel() {
-                    return WILDERNESS_LEVEL;
-                }
-
-                @Override
-                public boolean isCombatRestricted() {
-                    return UNRESTRICTED;
-                }
-            };
-            teleport.teleport(p);
-        });
         new Command(PlayerPrivilege.PLAYER, "train", "Teleport to training island.", (p, args) -> {
             if (p.isLocked()) {
                 return;
@@ -1144,17 +1090,7 @@ public final class GameCommands {
         });
 
 
-        new Command(PlayerPrivilege.PLAYER, "ndi", "Teleport to Donator Islands.", (p, args) -> {
-            if (p.isLocked()) return;
-            SpellbookTeleport.DONATOR_ISLANDS.teleport(p);
-        });
 
-        new Command(PlayerPrivilege.PLAYER, "shops", "Opens the universal shop interface.", (p, args) -> {
-            if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
-                return;
-            }
-            UniversalShopInterface.openInterfaceToTab(p, 0);
-        });
         new Command(PlayerPrivilege.PLAYER, "titles", "Opens the loyalty titles interface.", (p, args) -> {
             if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
                 return;
@@ -2117,18 +2053,6 @@ public final class GameCommands {
             p.getSkills().refresh();
             p.getAppearance().resetRenderAnimation();
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "teleloc",
-                "Teleports you to one of the available teleportations.", (p, args) -> {
-            final String query = StringUtilities.compile(args, 0, args.length, ' ').toLowerCase();
-            final PortalTeleport[] teleports = PortalTeleport.values();
-            for (final PortalTeleport teleport : teleports) {
-                final String name = teleport.getSmallDescription().toLowerCase();
-                if (name.startsWith(query)) {
-                    teleport.teleport(p);
-                    return;
-                }
-            }
-        });
         new Command(PlayerPrivilege.FORUM_MODERATOR, "tele",
                 "Teleports you to the requested coordinates. Arguments: x y " + "<Optional>z", (p, args) -> {
 
@@ -2416,8 +2340,7 @@ public final class GameCommands {
             double gameMode = configuration.dropRateIncrease() / 100.0D;
             double donor = p.getMemberRank().getDR();
             double pin = p.getBooleanAttribute("drop_rate_pin_claimed") ? 0.05D : 0.0D;
-            double compCape = p.getCompletionistCapeDRBoost();
-            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin + compCape) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
+            p.sendMessage("DropRate: " + (int) ((gameMode + donor + pin) * 100D) + "%. Mode: " + (int) (gameMode * 100D) + "%. Donor: " + (int) (donor * 100D) + "%. Pin: " + (int) (pin * 100D) + "%");
         });
 
         new Command(PlayerPrivilege.DEVELOPER, new String[]{"b", "bank"}, "Opens the bank.",
@@ -2529,12 +2452,6 @@ public final class GameCommands {
         new Command(PlayerPrivilege.PLAYER, new String[]{"staff", "staffonline",
                 "onlinestaff"}, "List staff members currently online.", (p, args) -> {
             GameNoticeboardInterface.showStaffOnline(p);
-        });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"vote", "voting"}, (p, args) -> {
-            GameInterface.VOTE.open(p);
-        });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"store", "donate"}, (p, args) -> {
-            DeveloperCommands.openStore(p);
         });
         new Command(PlayerPrivilege.PLAYER, new String[]{"rules"}, (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.SERVER_RULES_URL);
@@ -2771,28 +2688,6 @@ public final class GameCommands {
         public boolean eligible(Player player) {
             return (orCondition != null && orCondition.test(player)) || player.getPrivilege().eligibleTo(privilege);
         }
-    }
-
-    public static void openBoosters(Player p) {
-        Analytics.flagInteraction(p, Analytics.InteractionType.CHECK_BOOSTERS);
-        final PlayerVariables vars = p.getVariables();
-        final Colour red = Colour.RS_RED;
-        final Colour green = Colour.RS_GREEN;
-
-        List<String> info = new ArrayList<>();
-        info.add("Larran's key booster: " + (vars.getLarransKeyBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getLarransKeyBoosterTick()) : red + "Inactive"));
-        info.add("Ganodermic booster: " + (vars.getGanoBoosterKillsLeft() > 0 ? green + "Active for " + vars.getGanoBoosterKillsLeft() + " kills" : red + "Inactive"));
-        info.add("Slayer booster: " + (vars.getSlayerBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getSlayerBoosterTick()) : red + "Inactive"));
-        info.add("Pet booster: " + (vars.getPetBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getPetBoosterTick()) : red + "Inactive"));
-        info.add("Gauntlet booster: " + (vars.getGauntletBoosterCompletionsLeft() > 0 ? green + "Active for " + vars.getGauntletBoosterCompletionsLeft() + " completions" : red + "Inactive"));
-        info.add("Blood money booster: " + (vars.getBloodMoneyBoosterLeft() > 0 ? green + "Active for " + vars.getBloodMoneyBoosterLeft() + " PKs" : red + "Inactive"));
-        info.add("Clue booster: " + (vars.getClueBoosterLeft() > 0 ? green + "Active for " + vars.getClueBoosterLeft() + " clues" : red + "Inactive"));
-        info.add("ToB booster: " + (vars.getTobBoosterleft() > 0 ? green + "Active for " + vars.getTobBoosterleft() + " completions" : red + "Inactive"));
-        info.add("Inferno wave skip scroll: " + (p.getBooleanAttribute("used_inferno_skip_scroll") ? green + "Active" : red + "Inactive"));
-        info.add("Revenant booster: " + (vars.getRevenantBoosterTick() > 0 ? green + "Active for " + Utils.ticksToTime(vars.getRevenantBoosterTick()) : red + "Inactive"));
-        info.add("Nex booster: " + (vars.getNexBoosterleft() > 0 ? green + "Active for " + vars.getNexBoosterleft() + " kills" : red + "Inactive"));
-
-        Diary.sendJournal(p, "Boosters information", info);
     }
 
     public static boolean isLiveEligible(Player player, PlayerPrivilege liveRankRequired, PlayerPrivilege... exceptions) {

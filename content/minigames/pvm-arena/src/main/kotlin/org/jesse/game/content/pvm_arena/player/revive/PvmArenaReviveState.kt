@@ -14,7 +14,7 @@ import kotlin.math.ceil
 import kotlin.math.roundToInt
 
 private const val REVIVE_PVM_ARENA_POINTS_REWARD = 15
-private const val REVIVE_TIME_IN_TICKS = 5 // at most 10 ticks, due to skull icon
+private const val REVIVE_TIME_IN_TICKS = 5
 private const val MAX_REVIVE_TIME_IN_TICKS = 10
 
 /**

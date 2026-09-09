@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.CannonRestrictionPlugin;
 
@@ -35,7 +34,6 @@ public class SlayerTower extends Morytania implements CannonRestrictionPlugin {
 	@Override
 	public void enter(final Player player) {
 	    super.enter(player);
-        player.getTeleportManager().unlock(PortalTeleport.SLAYER_TOWER);
 	}
 
 	@Override

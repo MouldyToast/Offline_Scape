@@ -55,9 +55,7 @@ public class WorldBroadcasts {
             "Did you know: Runecrafting yields double the normal amount of runes per essence in addition to multiple runes at certain Runecrafting levels.",
             "Did you know: You can change your displayed experience drops by right clicking the “XP orb and choosing ”XP multiplier.”",
             "Did you know: You can fully customize your F-keys in the Options tab.",
-            "Did you know: You can rewatch the " + GameConstants.SERVER_NAME + " tutorial by talking to the " + GameConstants.SERVER_NAME + " guide near the Grand Exchange at home.",
             "Did you know: You can change your spellbook using the occult altar north of the Grand Exchange.",
-            "Did you know: The Magic shop sells " + GameConstants.SERVER_NAME + " home teleport tablets that allow you to instantly teleport to the home area.",
             "Did you know: You can vote for " + GameConstants.SERVER_NAME + " to receive a cash reward and vote points.",
             "Did you know: There's a chance Krystilia will upgrade your emblem when completing a Wilderness slayer assignment.",
             "Did you know: You can buy RFD gloves from the chest in the Lumbridge Castle Basement.",
@@ -65,11 +63,11 @@ public class WorldBroadcasts {
             "Did you know: All farming timers are half that of OldSchool RuneScape.",
             "Did you know: We provide a Wiki command and quick link under the world map that directs you to the OldSchool RuneScape Wiki which is rather accurate.",
             "Did you know: We have a help chat called \"" + GameConstants.SERVER_CHANNEL_NAME + "\" for any new and seasoned players alike. Join via the clan chat interface.",
-            "Did you know: You can start Slayer South-West of the Grand Exchange with Turael. Higher level slayer masters can also be found here.",
+            "Did you know: You can start Slayer by visiting Turael in Burthorpe.",
             "Did you know: You can purchase fully charged custom starter weapons from the " + GameConstants.SERVER_NAME + " guide for 200K each.",
             "Did you know: You can link your Discord account with your in-game account by typing /link in the OSNR Discord",
             "Did you know: " + GameConstants.SERVER_NAME + " accepts OSGP donations - contact a member of staff for more information.",
-            "Did you know: Zahur at Home can add herbs to vials of water and crush secondary ingredients for you.",
+            "Did you know: Zahur in Nardah can add herbs to vials of water and crush secondary ingredients for you.",
             "Did you know: You can apply to be part of the quality assurance team on our forums and be the first to test upcoming content.",
             "Did you know: the first to discover a Shooting star receives a nice reward"
     };
@@ -122,7 +120,6 @@ public class WorldBroadcasts {
 //            case MYSTERY_BOX_RARE_ITEM -> sendBoxLoot(player, args);
 //            case INFERNO_COMPLETION -> sendInfernoCompletion(player); // TODO: Test!!
 //            case TREASURE_TRAILS -> sendTreasureTrailsReward(player, args);
-//            case WILDERNESS_EVENT -> sendGanodermicBeast(args);
     ////            case BOUNTY_HUNTER -> sendBountyHotSpot(args); // TODO: Test!!
 //            case BREACHES -> sendBreach(args);
 //            default -> logger.debug("Ignored broadcast type {}", type);
@@ -389,12 +386,6 @@ public class WorldBroadcasts {
                 else {
                     secondaryBuilder.append(" has completed the Inferno").append(", with a combat level of ").append(player.getCombatLevel()).append("!");
                 }
-                builder.append(secondaryBuilder);
-                break;
-            }
-            case WILDERNESS_EVENT: {
-                builder.append("Event: ");
-                secondaryBuilder.append(args[0]);
                 builder.append(secondaryBuilder);
                 break;
             }

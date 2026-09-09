@@ -12,7 +12,6 @@ import org.jesse.game.world.entity.npc.Spawnable;
 import org.jesse.game.world.entity.npc.combat.CombatScript;
 import org.jesse.game.world.entity.player.SkillConstants;
 
-import static org.jesse.game.npc.ids.NpcId.DI_KARIL_THE_TAINTED;
 
 /**
  * @author Kris | 29. sept 2018 : 06:11:54
@@ -45,8 +44,7 @@ public class KarilTheTainted extends BarrowsWightNPC implements Spawnable, Comba
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1675:
-			case 16055, DI_KARIL_THE_TAINTED: {
+			case 1675: {
 				return true;
 			}
 			default:

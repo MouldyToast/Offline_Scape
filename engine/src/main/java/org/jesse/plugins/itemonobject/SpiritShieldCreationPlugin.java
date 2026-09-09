@@ -16,7 +16,7 @@ public class SpiritShieldCreationPlugin implements ItemOnObjectAction {
 
 	@Override
 	public Object[] getItems() {
-		return new Object[] {12819, 12823, 12827, 32955};
+		return new Object[] {12819, 12823, 12827};
 	}
 
 	@Override

@@ -633,7 +633,6 @@ public class NPC extends AbstractEntity {
             return false;
         }
         switch(location.getRegionId()){
-            case 13430, 13431: return false;    /* udi */
             case 9456: return false;            /* train island */
             case 9369, 9370: return false;      /* di & die */
             case 11605, 11604: return false;      /* rdi & rdi2 */

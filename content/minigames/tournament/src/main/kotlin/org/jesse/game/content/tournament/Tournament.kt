@@ -201,7 +201,7 @@ class Tournament(val preset: TournamentPreset, timer: WorldTimer) {
     fun cancel(reason: String) {
         fun cancelPlayer(player: Player) {
             player.sendTournamentMessage("The tournament has been cancelled $reason.")
-            player.moveToTournamentPortal()
+            player.moveToTournamentExit()
         }
         when(val state = state) {
             is TournamentState.Finished -> {

@@ -88,7 +88,7 @@ object SlayerHelper {
             if (master == SlayerMaster.KRYSTILIA && !tsk.isAssignableByKrystilia || !tsk.predicate.test(this@getPossibleBossAssignments) || lastAssignment === tsk) {
                 continue
             }
-            if(master != SlayerMaster.SUMONA && tsk.isAssignableBySumonaOnly) continue
+            if (tsk.isAssignableBySumonaOnly) continue
             add(tsk)
         }
         if (isEmpty()) {
@@ -197,9 +197,6 @@ object SlayerHelper {
 
         var worldRate = 100
         if(player.overrideSuperiorRate != 0) worldRate = player.overrideSuperiorRate
-        if (player.variables.slayerBoosterTick > 0) {
-            worldRate = 50.coerceAtLeast((worldRate * 0.75).toInt())
-        }
 
         val bonusPercent = player.getSuperiorBonusRate()
         val factor = 1.0 + bonusPercent / 100.0

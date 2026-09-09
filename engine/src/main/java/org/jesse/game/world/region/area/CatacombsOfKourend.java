@@ -2,7 +2,6 @@ package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.Position;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.CannonRestrictionPlugin;
@@ -31,7 +30,6 @@ public class CatacombsOfKourend extends PolygonRegionArea implements CannonRestr
 
     @Override
     public void enter(Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.KOUREND_CATACOMBS);
     }
 
     @Override

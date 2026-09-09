@@ -4,7 +4,6 @@ import cloud.rsps.rsprot.Session;
 import cloud.rsps.worlds.WorldsManager;
 import com.google.common.base.Preconditions;
 import org.jesse.game.queue.GameQueueList;
-import org.jesse.game.world.Boundary;
 import org.jesse.game.world.WorldEvent;
 import org.jesse.tools.logging.GameLogMessage;
 import org.jesse.tools.logging.GameLogger;
@@ -920,10 +919,6 @@ public final class World {
         return (int) getPlayers().stream()
                 // remove nulls
                 .filter(Objects::nonNull)
-                // Make sure their not in the AFK Zone
-                .filter(player -> !Boundary.AFK_ZONE.isIn(player))
-                // Ensure they are not idle
-//            .filter(player -> !player.isIdle)
                 // count
                 .count();
     }

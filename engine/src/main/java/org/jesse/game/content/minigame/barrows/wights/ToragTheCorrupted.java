@@ -11,7 +11,6 @@ import org.jesse.game.world.entity.npc.combat.CombatScript;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.variables.PlayerVariables;
 
-import static org.jesse.game.npc.ids.NpcId.DI_TORAG_THE_CORRUPTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:39:42
@@ -45,8 +44,7 @@ public class ToragTheCorrupted extends BarrowsWightNPC implements Spawnable, Com
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1676:
-			case 16056, DI_TORAG_THE_CORRUPTED: {
+			case 1676: {
 				return true;
 			}
 			default:

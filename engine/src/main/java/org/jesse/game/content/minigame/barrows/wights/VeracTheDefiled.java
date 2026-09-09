@@ -13,7 +13,6 @@ import org.jesse.game.world.entity.npc.Spawnable;
 import org.jesse.game.world.entity.npc.combat.CombatScript;
 import org.jesse.game.world.entity.player.Player;
 
-import static org.jesse.game.npc.ids.NpcId.DI_VERAC_THE_DEFILED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:19:37
@@ -53,8 +52,7 @@ public class VeracTheDefiled extends BarrowsWightNPC implements Spawnable, Comba
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1677:
-			case 16057, DI_VERAC_THE_DEFILED: {
+			case 1677: {
 				return true;
 			}
 			default:

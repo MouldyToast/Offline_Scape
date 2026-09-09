@@ -1,7 +1,6 @@
 package org.jesse.game.world.region.area;
 
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.RSPolygon;
 
 /**
@@ -30,7 +29,6 @@ public class Brimhaven extends Karamja {
     @Override
     public void enter(final Player player) {
         super.enter(player);
-        player.getTeleportManager().unlock(PortalTeleport.BRIMHAVEN);
     }
 
 

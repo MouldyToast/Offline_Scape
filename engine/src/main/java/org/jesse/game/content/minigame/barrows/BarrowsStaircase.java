@@ -1,6 +1,5 @@
 package org.jesse.game.content.minigame.barrows;
 
-import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.object.ObjectAction;
 import org.jesse.game.world.object.WorldObject;
@@ -16,12 +15,6 @@ public class BarrowsStaircase implements ObjectAction {
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
         if (option.equals("Climb-up")) {
-
-            if(object.getLocation().getX() == 2852) {
-                player.setLocation(new Location(1624, 2614, 0));
-                return;
-            }
-
             final BarrowsWight wight = CollectionUtils.findMatching(BarrowsWight.values, npc -> npc.getStaircaseId() == object.getId());
             if (wight != null) {
                 player.setLocation(wight.getMoundCenter());

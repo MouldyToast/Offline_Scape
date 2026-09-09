@@ -64,7 +64,6 @@ public class ZenyteGuide extends NPCPlugin {
             }
     };
 
-    public static final Location HOME_ZENYTE_GUIDE = new Location(3089, 3496);
     public static final Location SPAWN_LOCATION = new Location(3090, 3497);
     public static boolean disableJoinAnnouncement = false;
 
@@ -183,9 +182,7 @@ public class ZenyteGuide extends NPCPlugin {
                 player.stopAll();
                 player.setFaceEntity(npc);
                 handle(player, npc);
-                if (npc.getLocation().getPositionHash() != HOME_ZENYTE_GUIDE.getPositionHash()) {
-                    npc.setInteractingWith(player);
-                }
+                npc.setInteractingWith(player);
             }
         });
     }

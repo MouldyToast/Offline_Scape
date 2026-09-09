@@ -42,10 +42,6 @@ public class Killstreaks {
 
         double rankBoost = 1.0d + getRankBoost(attacker.getMemberRank());
         int totalBloodmoney = (int) (getTotalBloodmoneyForKill(attacker, victim) * rankBoost);
-        if (attacker.getVariables().getBloodMoneyBoosterLeft() > 0) {
-            attacker.getVariables().setBloodMoneyBoosterLeft(attacker.getVariables().getBloodMoneyBoosterLeft() - 1);
-            totalBloodmoney *= 1.25;
-        }
 
         int attackerCurrentStreak = PlayerAttributesKt.getPvpKillStreak(attacker) + 1;
         PlayerAttributesKt.setPvpKillStreak(attacker, attackerCurrentStreak);

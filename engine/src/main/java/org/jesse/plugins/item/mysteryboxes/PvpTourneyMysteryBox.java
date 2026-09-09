@@ -112,7 +112,6 @@ public class PvpTourneyMysteryBox extends ItemPlugin {
                 new MysteryItem(ItemId.ACCURSED_SCEPTRE_27665, 1, 1, 1000),
                 new MysteryItem(ItemId.WEBWEAVER_BOW_27655, 1, 1, 1000),
                 new MysteryItem(ItemId.URSINE_CHAINMACE_27660, 1, 1, 1000),
-                new MysteryItem(ItemId.POLYPORE_STAFF, 1, 1, 1000),
                 new MysteryItem(ItemId.ANCESTRAL_HAT, 1, 1, 1000),
                 new MysteryItem(ItemId.ANCESTRAL_ROBE_TOP, 1, 1, 1000),
                 new MysteryItem(ItemId.ANCESTRAL_ROBE_BOTTOM, 1, 1, 1000),

@@ -121,9 +121,6 @@ public class SuperiorNPC extends NPC {
         }
         final int req = getCombatDefinitions().getSlayerLevel();
         double probability = 1.0F / (200.0F - (Math.pow(req + 55.0F, 2) / 125.0F));
-        if (killer.getVariables().getSlayerBoosterTick() > 0) {
-            probability *= 1.2;
-        }
 
         if (Utils.randomDouble() < probability) {
             final int roll = Utils.random(7);

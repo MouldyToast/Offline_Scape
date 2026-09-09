@@ -6,7 +6,6 @@ import org.jesse.game.content.achievementdiary.diaries.KourendDiary;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.item.SkillcapePerk;
 import org.jesse.game.util.Utils;
-import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.SoundEffect;
 import org.jesse.game.world.entity.masks.Animation;
 import org.jesse.game.world.entity.player.Action;
@@ -34,7 +33,6 @@ public class Smelting extends Action {
 	public static final Item GOLDSMITH_GAUNTLETS = new Item(776);
 	public static final Item COAL = new Item(453);
 	private static final Item RING_OF_FORGING = new Item(2568);
-	private static final Location EDGEVILLE_FURNACE = new Location(3101, 3493, 0);
 	private final SmeltableBar data;
 	private final int amount;
 	private final WorldObject object;
@@ -145,7 +143,7 @@ public class Smelting extends Action {
 	public int processWithDelay() {
 		int amount = 1;
 		final int body = player.getEquipment().getId(EquipmentSlot.PLATE);
-		if (object.getPositionHash() == EDGEVILLE_FURNACE.getPositionHash() && body >= 13104 && body <= 13107) {
+		if (object.getRegionId() == 12342 && body >= 13104 && body <= 13107) {
 			final SmeltableBar limit = body == 13104 ? SmeltableBar.STEEL_BAR : body == 13105 ? SmeltableBar.MITHRIL_BAR : body == 13106 ? SmeltableBar.ADAMANTITE_BAR : SmeltableBar.RUNITE_BAR;
 			if (Utils.random(10) == 0 && data.ordinal() <= limit.ordinal()) {
 				amount++;

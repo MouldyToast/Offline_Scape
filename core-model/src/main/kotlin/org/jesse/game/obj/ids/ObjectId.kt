@@ -26108,7 +26108,6 @@ const val SCARECROW_55769 = 55769
 const val SCARECROW_55770 = 55770
 
 /* Custom object ids (merged from org.jesse.game.item.CustomObjectId). */
-const val TOURNAMENT_PORTAL_60446 = 60446
 const val CHAOS_CHEST_OPENED = 60503
 const val CHAOS_CHEST_SPAWN = 60504
 const val CHAOS_CHEST_SPAWNED = 60505

@@ -512,10 +512,6 @@ public class CombatUtilities {
                 || itemId == ItemId.ELYSIAN_SPIRIT_SHIELD_OR;
     }
 
-    public static boolean isDivineSpiritShield(int itemId) {
-        return itemId == ItemId.DIVINE_SPIRIT_SHIELD;
-    }
-
     public static boolean isVampyric(Entity entity) {
         return entity instanceof Vampyre || entity instanceof AbstractTheatreNPC;
     }

@@ -16,7 +16,6 @@ import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.SkillConstants;
 import org.jesse.game.world.entity.player.action.combat.magic.CombatSpell;
 
-import static org.jesse.game.npc.ids.NpcId.DI_AHRIM_THE_BLIGHTED;
 
 /**
  * @author Kris | 29. sept 2018 : 05:45:47
@@ -62,8 +61,7 @@ public class AhrimTheBlighted extends BarrowsWightNPC implements Spawnable, Comb
 	@Override
 	public boolean validate(final int id, final String name) {
 		switch (id) {
-			case 1672:
-			case 16052, DI_AHRIM_THE_BLIGHTED: {
+			case 1672: {
 				return true;
 			}
 			default:

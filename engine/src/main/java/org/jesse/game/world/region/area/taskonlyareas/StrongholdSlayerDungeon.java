@@ -5,7 +5,6 @@ import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.EntityAttackPlugin;
@@ -22,7 +21,6 @@ public class StrongholdSlayerDungeon extends PolygonRegionArea implements Entity
 
     @Override
     public void enter(Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.STRONGHOLD_SLAYER_CAVE);
     }
 
     @Override

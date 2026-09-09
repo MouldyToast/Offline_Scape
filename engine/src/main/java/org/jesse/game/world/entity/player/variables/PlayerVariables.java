@@ -93,17 +93,7 @@ public final class PlayerVariables {
         mountKaruulmTeleports = copy.mountKaruulmTeleports;
         enhancedCrystalChestOpenCount = copy.enhancedCrystalChestOpenCount;
         dontPromptFeroxEnclaveBarrier = copy.dontPromptFeroxEnclaveBarrier;
-        ganoBoosterKillsLeft = copy.ganoBoosterKillsLeft;
-        gauntletBoosterCompletionsLeft = copy.gauntletBoosterCompletionsLeft;
-        bloodMoneyBoosterLeft = copy.bloodMoneyBoosterLeft;
-        clueBoosterLeft = copy.clueBoosterLeft;
-        tobBoosterleft = copy.tobBoosterleft;
-        larransKeyBoosterTick = copy.larransKeyBoosterTick;
-        slayerBoosterTick = copy.slayerBoosterTick;
-        petBoosterTick = copy.petBoosterTick;
         enhancedStewTick = copy.enhancedStewTick;
-        revenantBoosterTick = copy.revenantBoosterTick;
-        nexBoosterleft = copy.nexBoosterleft;
         thrallDamageDone = copy.thrallDamageDone;
         pvmArenaBoosterTick = copy.pvmArenaBoosterTick;
         bountyHunterSkipTick = copy.bountyHunterSkipTick;
@@ -154,17 +144,7 @@ public final class PlayerVariables {
     private final Map<String, Variable> scheduled = new LinkedHashMap<>();
     private final transient Set<HealthRegenBoost> healthRegenBoosts = EnumSet.noneOf(HealthRegenBoost.class);
     private transient int cycle = calculateCycle();
-    private int ganoBoosterKillsLeft;
-    private int gauntletBoosterCompletionsLeft;
-    private int bloodMoneyBoosterLeft;
-    private int clueBoosterLeft;
-    private int tobBoosterleft;
-    private int larransKeyBoosterTick;
-    private int slayerBoosterTick;
-    private int petBoosterTick;
     private int enhancedStewTick;
-    private int revenantBoosterTick;
-    private int nexBoosterleft;
     private int pvmArenaBoosterTick;
     private int bountyHunterSkipTick;
 
@@ -326,35 +306,11 @@ public final class PlayerVariables {
                 }
             }
         }
-        if (larransKeyBoosterTick > 0) {
-            larransKeyBoosterTick--;
-            if (larransKeyBoosterTick == 15) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Larran's key booster is about to expire."));
-            } else if (larransKeyBoosterTick == 0) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Larran's key booster has expired."));
-            }
-        }
-        if (slayerBoosterTick > 0) {
-            slayerBoosterTick--;
-            if (slayerBoosterTick == 15) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Slayer booster is about to expire."));
-            } else if (slayerBoosterTick == 0) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Slayer booster has expired."));
-            }
-        }
         if (bountyHunterSkipTick > 0) {
             bountyHunterSkipTick--;
             if (bountyHunterSkipTick == 0) {
                 player.sendMessage("Your Bounty Hunter skip count has been reset.");
                 WildyExtKt.resetBountySkipCounter(player);
-            }
-        }
-        if (petBoosterTick > 0) {
-            petBoosterTick--;
-            if (petBoosterTick == 15) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Pet booster is about to expire."));
-            } else if (petBoosterTick == 0) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Pet booster has expired."));
             }
         }
         if (enhancedStewTick > 0) {
@@ -371,14 +327,6 @@ public final class PlayerVariables {
             }
             if (enhancedStewTick == 30) {
                 player.sendMessage(Colour.RS_PURPLE.wrap("Your Spicy stew effect is about to expire."));
-            }
-        }
-        if (revenantBoosterTick > 0) {
-            revenantBoosterTick--;
-            if (revenantBoosterTick == 15) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Revenant booster is about to expire."));
-            } else if (revenantBoosterTick == 0) {
-                player.sendMessage(Colour.RS_PURPLE.wrap("Your Revenant booster has expired."));
             }
         }
         if (pvmArenaBoosterTick > 0) {
@@ -807,92 +755,12 @@ public final class PlayerVariables {
         return dontPromptFeroxEnclaveBarrier;
     }
 
-    public int getGanoBoosterKillsLeft() {
-        return ganoBoosterKillsLeft;
-    }
-
-    public void setGanoBoosterKillsLeft(int ganoBoosterKillsLeft) {
-        this.ganoBoosterKillsLeft = ganoBoosterKillsLeft;
-    }
-
-    public int getGauntletBoosterCompletionsLeft() {
-        return gauntletBoosterCompletionsLeft;
-    }
-
-    public void setGauntletBoosterCompletionsLeft(int gauntletBoosterCompletionsLeft) {
-        this.gauntletBoosterCompletionsLeft = gauntletBoosterCompletionsLeft;
-    }
-
-    public int getBloodMoneyBoosterLeft() {
-        return bloodMoneyBoosterLeft;
-    }
-
-    public void setBloodMoneyBoosterLeft(int bloodMoneyBoosterLeft) {
-        this.bloodMoneyBoosterLeft = bloodMoneyBoosterLeft;
-    }
-
-    public int getClueBoosterLeft() {
-        return clueBoosterLeft;
-    }
-
-    public void setClueBoosterLeft(int clueBoosterLeft) {
-        this.clueBoosterLeft = clueBoosterLeft;
-    }
-
-    public int getTobBoosterleft() {
-        return tobBoosterleft;
-    }
-
-    public void setTobBoosterleft(int tobBoosterleft) {
-        this.tobBoosterleft = tobBoosterleft;
-    }
-
-    public void setLarransKeyBoosterTick(int larransKeyBoosterTick) {
-        this.larransKeyBoosterTick = larransKeyBoosterTick;
-    }
-
-    public int getLarransKeyBoosterTick() {
-        return larransKeyBoosterTick;
-    }
-
-    public void setSlayerBoosterTick(int slayerBoosterTick) {
-        this.slayerBoosterTick = slayerBoosterTick;
-    }
-
-    public int getSlayerBoosterTick() {
-        return slayerBoosterTick;
-    }
-
-    public void setPetBoosterTick(int petBoosterTick) {
-        this.petBoosterTick = petBoosterTick;
-    }
-
-    public int getPetBoosterTick() {
-        return petBoosterTick;
-    }
-
     public void setEnhancedStewTick(int enhancedStewTick) {
         this.enhancedStewTick = enhancedStewTick;
     }
 
     public int getEnhancedStewTick() {
         return enhancedStewTick;
-    }
-
-    public int getRevenantBoosterTick() {
-        return revenantBoosterTick;
-    }
-
-    public void setRevenantBoosterTick(int revenantBoosterTick) {
-        this.revenantBoosterTick = revenantBoosterTick;
-    }
-
-    public void setNexBoosterleft(int nexBoosterleft) {
-        this.nexBoosterleft = nexBoosterleft;
-    }
-
-    public int getNexBoosterleft() {
-        return nexBoosterleft;
     }
 
     public void setThrallDamageDone(int thrallDamageDone) {

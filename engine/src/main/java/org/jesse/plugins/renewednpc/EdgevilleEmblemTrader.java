@@ -1,7 +1,6 @@
 package org.jesse.plugins.renewednpc;
 
 import org.jesse.game.content.bountyhunter.BountyHunterController;
-import org.jesse.game.content.universalshop.UniversalShopInterface;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.shop.Shop;
 import org.jesse.game.world.entity.npc.actions.NPCPlugin;
@@ -54,8 +53,8 @@ public final class EdgevilleEmblemTrader extends NPCPlugin {
                 }
             });
         });
-        bind("Rewards", (player, npc) -> UniversalShopInterface.openInterfaceToTab(player, 11));
-        bind("BH Shop", (player, npc) -> UniversalShopInterface.openInterfaceToTab(player, 9));
+        bind("Rewards", (player, npc) -> Shop.get("Blood money Store", player.isIronman(), player).open(player));
+        bind("BH Shop", (player, npc) -> Shop.get("Bounty Hunter Rewards", player.isIronman(), player).open(player));
         bind("Exchange Emblems", (player, npc) -> BountyHunterController.processEmblemExchange(player));
 
     }

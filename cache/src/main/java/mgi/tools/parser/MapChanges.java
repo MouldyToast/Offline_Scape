@@ -14,36 +14,6 @@ public class MapChanges {
                     new WorldObject(35020, 10, 0, new Location(3279, 5345, 2)),
                     new WorldObject(35020, 10, 0, new Location(3312, 5344, 2))
             );
-            case 6582 -> {
-                newData = addObjects(inputData,
-                    new WorldObject(36594, 10, 0, new Location(1650, 11680, 0)),
-                    new WorldObject(60501, 10, 0, new Location(1655, 11679, 0)),
-                    new WorldObject(34856, 10, 0, new Location(1654, 11681, 0)),
-                    new WorldObject(34856, 10, 0, new Location(1654, 11678, 0)),
-                    new WorldObject(34856, 10, 0, new Location(1657, 11678, 0)),
-                    new WorldObject(34856, 10, 0, new Location(1657, 11681, 0)),
-                    new WorldObject(60502, 10, 0, new Location(1654, 11683, 0)));
-
-                newData = editObjects(newData,
-                        o -> {
-                            if(o.getId() == 33318)
-                                return true;
-                            if(o.getId() == 660)
-                                return true;
-                            if(o.getId() == 661)
-                                return true;
-                            if(o.getId() == 1457)
-                                return true;
-//                            if(o.getId() == 197 && !o.matches(new Location(1650, 11680, 0))){
-//                                o.setType(10);
-//                                o.setId(34856);
-//                            }
-                            if(o.getId() == 197) {
-                                return true;
-                            }
-                            return false;
-                        });
-            }
             case 13395 -> newData = addObjects(inputData,
                     new WorldObject(35020, 10, 0, new Location(3343, 5346, 2))
             );

@@ -102,9 +102,6 @@ class NexDroptable : NPCDropTableScript() {
                         if ((type == Main || unique) && mvp == player)
                             rarityScale += 0.10
 
-                        if ((type == Unique || type == Tertiary) && player.variables.nexBoosterleft > 0)
-                            rarityScale += 0.15
-
                         rarity = scaleRarity(dropChance, rarity, rarityScale)
                     }
 
@@ -120,10 +117,6 @@ class NexDroptable : NPCDropTableScript() {
                     .filter { it.rarity != common }
 
                 for ((player, contributionPercentage) in playerDamageContributions) {
-                    if (player.variables.nexBoosterleft > 0) {
-                        player.variables.nexBoosterleft--
-                    }
-
                     val isMvp = player == mvp
                     if (isMvp)
                         rollStaticTableAndDrop(player, type = Always)

@@ -19,9 +19,6 @@ object NightmareDropExt {
              return
         var petRate =
             if (phosanis) BaseNightmareNPC.LITTE_NIGHTMARE_RATE_PHOSANIS else BaseNightmareNPC.rateForPet(playersOnStart)
-        if (player.variables.petBoosterTick > 0) {
-            petRate = (petRate * 0.9).toInt()
-        }
         if (boostActive) {
             petRate = (petRate * 0.75).toInt()
         }

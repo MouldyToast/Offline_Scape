@@ -135,17 +135,6 @@ public class GlobalImplings {
             3454, 0), new Location(2711, 3582, 0), new Location(3080, 3447, 0), new Location(3115, 3448, 0),
             new Location(3143, 3442, 0), new Location(3179, 3430, 0)};
     private static final ObjectList<ImplingSpawn> globalSpawns = new ObjectArrayList<>(implingSpawns.length);
-    private static final ObjectList<DonatorImplingSpawn> donorImplings = new ObjectArrayList<>(new DonatorImplingSpawn[]{
-            new DonatorImplingSpawn(Impling.ECLECTIC, new Location(3346, 8162, 2)),
-            new DonatorImplingSpawn(Impling.NATURE, new Location(3355, 8146, 2)),
-            new DonatorImplingSpawn(Impling.NATURE, new Location(3368, 8164, 2)),
-            new DonatorImplingSpawn(Impling.MAGPIE, new Location(3366, 8279, 2)),
-            new DonatorImplingSpawn(Impling.NINJA, new Location(3390, 7984, 0)),
-            new DonatorImplingSpawn(Impling.CRYSTAL, new Location(3370, 7605, 0)),
-            new DonatorImplingSpawn(Impling.DRAGON, new Location(3414, 7593, 0)),
-            new DonatorImplingSpawn(Impling.LUCKY, new Location(3385, 7821, 0)),
-
-    });
 
     @Subscribe
     public static void onServerLaunch(final ServerLaunchEvent event) {
@@ -169,18 +158,7 @@ public class GlobalImplings {
                 }
             }
         }
-        WorldTasksManager.scheduleCreation(() -> {
-            for (DonatorImplingSpawn impling : donorImplings) {
-                ImplingNPC implingNPC = new ImplingNPC(impling.getImpling().getNpcId(), impling.getLocation(), Direction.SOUTH)
-                        .setOnFinished(npc -> {
-                            npc.setRespawnTime(Utils.random(2000, 6000));
-                            npc.setRespawnTask();
-                        });
-                implingNPC.spawn();
-                implingNPC.setRadius(10);
-            }
-        });
-        log.debug(spawnedImplingCount + " global implings spawned; " + rareImplingCount + " rare, " + invisibleImplingCount + " invisible, "+ donorImplings.size()+" donator islands");
+        log.debug(spawnedImplingCount + " global implings spawned; " + rareImplingCount + " rare, " + invisibleImplingCount + " invisible");
     }
 
     public static void spawnRandomImpling() {
@@ -266,21 +244,4 @@ public class GlobalImplings {
         }
     }
 
-    public static class DonatorImplingSpawn {
-        private Impling impling;
-        private Location location;
-
-        public Impling getImpling() {
-            return impling;
-        }
-
-        public Location getLocation() {
-            return location;
-        }
-
-        public DonatorImplingSpawn(Impling impling, Location location) {
-            this.impling = impling;
-            this.location = location;
-        }
-    }
 }

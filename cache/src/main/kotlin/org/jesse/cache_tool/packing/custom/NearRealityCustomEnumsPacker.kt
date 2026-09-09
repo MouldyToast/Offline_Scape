@@ -29,7 +29,6 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 500    // fight caves
             this.values[idx++] = 909    // Fortis Colosseum
             this.values[idx++] = 605    // gauntlet
-            this.values[idx++] = 10300  // gano
             this.values[idx++] = 487    // graardor
             this.values[idx++] = 488    // giant mole
             this.values[idx++] = 489    // grot guardians
@@ -44,48 +43,19 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = 3769   // nex
             this.values[idx++] = 1263   // the nightmare
             this.values[idx++] = 495    // obor
-            this.values[idx++] = 10501   // primals
             this.values[idx++] = 4455   // muspah
-            this.values[idx++] = 10321  // rots
             this.values[idx++] = 601    // sarachnis
             this.values[idx++] = 496    // scorpia
             this.values[idx++] = 497    // skotizo
-            this.values[idx++] = 10500  // strykewyrms
             this.values[idx++] = 498    // thermy
-            this.values[idx++] = 10322  // Vanstrom Klause
             this.values[idx++] = 4653   // Vardorvis
             this.values[idx++] = 501    // Venenatis
             this.values[idx++] = 502    // Vetion
             this.values[idx++] = 503    // Vorkath
             this.values[idx++] = 4654   // Whisperer
-            this.values[idx++] = 10502  // Wild Mole
             this.values[idx++] = 504    // Wintertodt
             this.values[idx++] = 604    // Zalcano
             this.values[idx] = 505      // Zulrah
-            this.pack()
-        }
-
-        // Slayer log - add statue pieces
-        EnumDefinitions.get(2162).apply {
-            var index = this.size
-            this.values[index++] = SLAYER_BASE
-            this.values[index++] = SLAYER_SHAFT
-            this.values[index++] = SLAYER_LEFT_BONE
-            this.values[index] = SLAYER_RIGHT_BONE
-            this.pack()
-        }
-
-        // All Pets log
-        EnumDefinitions.get(2158).apply {
-            var index = this.size
-            this.values[index] = GANODERMIC_RUNT
-            this.pack()
-        }
-
-        // Grotesque Guardians
-        EnumDefinitions.get(2122).apply {
-            var index = this.size
-            this.values[index] = DOUBLE_AMMO_MOULD
             this.pack()
         }
 
@@ -119,21 +89,6 @@ object NearRealityCustomEnumsPacker {
             this.pack()
         }
 
-        // Vanstrom Klause
-        EnumDefinitions.create(10030, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = BLOOD_SHARD
-            this.pack()
-        }
-
-        // Ganodermic Beast
-        EnumDefinitions.create(10025, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[1] = ANCIENT_EYE
-            this.values[2] = DRAGON_KITE
-            this.values[3] = PVP_MYSTERY_BOX
-            this.values[4] = POLYPORE_SPORES
-            this.pack()
-        }
-
         // Duke
         EnumDefinitions.get(5148).apply {
             this.values[5] = MAGUS_ICON
@@ -144,57 +99,6 @@ object NearRealityCustomEnumsPacker {
         EnumDefinitions.get(5149).apply {
             this.values[5] = ULTOR_ICON
             this.pack();
-        }
-
-        /* Strykewyrms */
-        EnumDefinitions.create(10500, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = STAFF_OF_LIGHT
-            this.values[1] = CHAOTIC_CROSSBOW
-            this.values[2] = CHAOTIC_KITESHIELD
-            this.values[3] = EAGLE_EYE_KITESHIELD
-            this.values[4] = FARSEER_KITESHIELD
-            this.pack()
-        }
-
-        /* Primal Items */
-        EnumDefinitions.create(10501, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = PRIMAL_2H_SWORD
-            this.values[1] = PRIMAL_PICKAXE
-            this.values[2] = PRIMAL_KITESHIELD
-            this.values[3] = PRIMAL_SPEAR
-            this.values[4] = PRIMAL_HATCHET
-            this.values[5] = PRIMAL_MAUL
-            this.values[6] = PRIMAL_DAGGER
-            this.values[7] = PRIMAL_LONGSWORD
-            this.values[8] = PRIMAL_RAPIER
-            this.values[9] = PRIMAL_WARHAMMER
-            this.values[10] = PRIMAL_BOOTS
-            this.values[11] = PRIMAL_GAUNTLETS
-            this.values[12] = PRIMAL_FULL_HELM
-            this.values[13] = PRIMAL_PLATEBODY
-            this.values[14] = PRIMAL_CHAINBODY
-            this.values[15] = PRIMAL_PLATESKIRT
-            this.values[16] = PRIMAL_PLATELEGS
-            this.pack()
-        }
-
-        /* Wild Mole */
-        EnumDefinitions.create(10502, ScriptVarType.INTEGER, ScriptVarType.NAMEDOBJ).apply {
-            this.values[0] = GHOSTLY_PARTYHAT
-            this.values[1] = DEMONHORN_NECKLACE
-            this.values[2] = DEATH_CAPE
-            this.values[3] = DRAGON_KITE
-            this.values[4] = SPIRIT_CAPE
-            this.values[5] = MERCENARY_GLOVES
-            this.values[6] = MYSTERY_BOX
-            this.values[7] = SKILLING_MYSTERY_BOX
-            this.values[8] = PRIMAL_FULL_HELM
-            this.values[9] = PRIMAL_CHAINBODY
-            this.values[10] = PRIMAL_PLATESKIRT
-            this.values[11] = PRIMAL_PLATELEGS
-            this.values[12] = PRIMAL_BOOTS
-            this.values[13] = PRIMAL_GAUNTLETS
-            this.pack()
         }
 
         EnumDefinitions.create(10024, ScriptVarType.INTEGER, ScriptVarType.OBJ).apply {
@@ -258,12 +162,6 @@ object NearRealityCustomEnumsPacker {
             this.pack()
         }
 
-        /* Slayer Task Defs - 82 replaces unused Gorak */
-        EnumDefinitions.get(693).apply {
-            this.values[82] = "Strykewyrms"
-            this.pack()
-        }
-
         EnumDefinitions.get(840).apply {
             values.clear()
             var idx = 0
@@ -298,11 +196,9 @@ object NearRealityCustomEnumsPacker {
             this.values[idx++] = ASH_SANCTIFIER                  // Ash sanctifier
             this.values[idx++] = DRAGON_DART                     // Dragon dart
             this.values[idx++] = 32161              // Enhanced excalibur
-            this.values[idx++] = 26255            // Dragon Hunter Gloves
             this.values[idx++] = 26300                // Dragonhide pouch
             this.values[idx++] = 26304                      // Bone pouch
             this.values[idx++] = BONECRUSHER                    // Bonecrusher
-            this.values[idx] = BALMUNG                         // Balmung
             this.pack()
         }
 
@@ -348,12 +244,10 @@ object NearRealityCustomEnumsPacker {
             this.values[BLISTERWOOD_FLAIL] = 300
             this.values[ASH_SANCTIFIER] = 300
             this.values[KERIS_PARTISAN] = 400
-            this.values[26255] = 400
             this.values[26300] = 500
             this.values[26304] = 500
             this.values[26706] = 150
             this.values[32161] = 400
-            this.values[32612] = 750
 
             this.pack()
         }
@@ -390,12 +284,10 @@ object NearRealityCustomEnumsPacker {
             this.values[BLISTERWOOD_FLAIL] = "Super effective against Vampyres."
             this.values[ASH_SANCTIFIER] = "Scatters ashes."
             this.values[KERIS_PARTISAN] = "A mystical-feeling polearm that can easily penetrate through Kalphite chitin."
-            this.values[26255] = "Has the same stats as Barrows Gloves, in addition gives a 25% slayer xp bonus on dragon slayer tasks, and 15% more accuracy on dragons. Requires 41 defence."
             this.values[26300] = "You can carry dragonhide in here."
             this.values[26304] = "A pouch for storing bones."
             this.values[26706] = "A scroll that can be used to imbue items."
             this.values[32161] = "A powerful defensive weapon."
-            this.values[32612] = "Two-handed weapon made of some banite ore and sharpened on the hides of dagannoths, deals 25% extra damage against dagannoths with 15% increased accuracy."
             this.pack()
         }
     }

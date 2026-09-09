@@ -4,23 +4,9 @@ import org.jesse.cache_tool.packing.assetsBase
 
 object NearRealityRebirthPacker {
     @JvmStatic fun pack() {
-        packMasterCompCape()
-        packHome2025()
         packCustoms2023AndMisc()
         packCustoms2024()
         packCustoms2025()
-    }
-
-    @JvmStatic fun packMasterCompCape() {
-        assetsBase("assets/rebirth/master_comp_cape/") {
-            defaultModels()
-        }
-    }
-
-    @JvmStatic fun packHome2025() {
-        assetsBase("assets/rebirth/home_2025/") {
-            defaultModels()
-        }
     }
 
     @JvmStatic fun packCustoms2023AndMisc() {

@@ -2,8 +2,6 @@ package org.jesse.plugins.itemonobject;
 
 import org.jesse.game.content.skills.cooking.CookingDefinitions;
 import org.jesse.game.content.skills.cooking.CookingDefinitions.CookingData;
-import org.jesse.game.content.skills.crafting.CraftingDefinitions;
-import org.jesse.game.content.skills.crafting.actions.PotteryFiringCrafting;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.item.ItemOnObjectAction;
 import org.jesse.game.world.entity.player.Player;
@@ -22,13 +20,6 @@ public final class CookingObjectAction implements ItemOnObjectAction {
 
     @Override
     public void handleItemOnObjectAction(final Player player, final Item item, int slot, final WorldObject object) {
-		if (object.getLocation().equals(3105, 3497, 0)) {
-            final CraftingDefinitions.PotteryFiringData data = CraftingDefinitions.PotteryFiringData.getData(item);
-            if (data != null) {
-                player.getActionManager().setAction(new PotteryFiringCrafting(data, 28));
-            }
-        }
-
         final CookingData[] food = CookingData.isCooking(player, item, object.getName().toLowerCase().contains("fire"));
         final ArrayList<Item> list = new ArrayList<Item>(2);
         final ArrayList<CookingDefinitions.CookingData> cookableList = new ArrayList<CookingData>();
@@ -53,9 +44,6 @@ public final class CookingObjectAction implements ItemOnObjectAction {
         final List<Object> list = new ArrayList<Object>();
         for (final CookingData data : CookingData.values) {
             list.add(data.getRaw());
-        }
-        for (final CraftingDefinitions.PotteryFiringData data : CraftingDefinitions.PotteryFiringData.VALUES_ARR) {
-            list.add(data.getMaterial().getId());
         }
         return list.toArray(new Object[list.size()]);
     }

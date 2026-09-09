@@ -2,7 +2,6 @@ package org.jesse.game.content.tournament.area
 
 import org.jesse.game.content.tournament.*
 import org.jesse.game.content.tournament.area.TournamentLobbyArea.Companion.LOBBY_CENTER
-import org.jesse.game.content.tournament.loc.TournamentPortalObject
 import org.jesse.game.content.tournament.npc.TournamentGuardLobbyPlugin
 import org.jesse.game.plugin.safeDeaths
 import org.jesse.game.content.skills.magic.spells.lunar.SpellbookSwap
@@ -77,7 +76,7 @@ class TournamentLobbyArea(
             log.info("Removed {} from lobby players, now has {} remaining.", player, playersInFightWaitingArea.size)
             closeTournamentInterfaceOverlays(player)
             if (logout && player.isFinished)
-                player.forceLocation(TournamentPortalObject.LOCATION_IN_FRONT_OF_PORTAL.copy())
+                player.forceLocation(TOURNAMENT_EXIT_LOCATION.copy())
         }
     }
 
@@ -113,7 +112,7 @@ class TournamentLobbyArea(
         "Tournament Lobby"
 
     override fun onLoginLocation(): Location =
-        RandomLocation.random(TournamentPortalObject.LOCATION_IN_FRONT_OF_PORTAL, 1)
+        RandomLocation.random(TOURNAMENT_EXIT_LOCATION, 1)
 
     override fun getRespawnLocation(): Location =
         getLocation(RESPAWN_LOCATION)

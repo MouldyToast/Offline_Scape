@@ -9,7 +9,6 @@ import org.jesse.game.world.entity.npc.impl.slayer.wyverns.Wyvern;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.area.plugins.CannonRestrictionPlugin;
@@ -27,7 +26,6 @@ public class TaskOnlyWyvernCave extends PolygonRegionArea implements CannonRestr
 
     @Override
     public void enter(Player player) {
-        player.getTeleportManager().unlock(PortalTeleport.WYVERN_CAVE);
     }
 
     @Override

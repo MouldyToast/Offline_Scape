@@ -15,18 +15,7 @@ public enum PlayerSkulls {
     LOOT_KEY_3(10, 17),
     LOOT_KEY_4(11, 18),
     LOOT_KEY_5(12, 19),
-    BLACK_SKULL(20),
-
-    REVIVE_1(21),
-    REVIVE_2(22),
-    REVIVE_3(23),
-    REVIVE_4(24),
-    REVIVE_5(25),
-    REVIVE_6(26),
-    REVIVE_7(27),
-    REVIVE_8(28),
-    REVIVE_9(29),
-    REVIVE_10(30);
+    BLACK_SKULL(20);
 
     private final int skullStatusId;
     private final int forinthrySurgeSkullStatusId;
@@ -42,12 +31,6 @@ public enum PlayerSkulls {
     }
 
     public static int getSkull(Player player) {
-
-        final int revivalTimer = PlayerAttributesKt.getPvmArenaRevivalCount(player);
-        if (revivalTimer > 0) {
-            PlayerSkulls skull = PlayerSkulls.valueOf("REVIVE_" + revivalTimer);
-            return skull.skullStatusId;
-        }
 
         var skulled = player.getVariables().isSkulled();
         var skull = getLootKeySkull(player);

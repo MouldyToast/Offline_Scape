@@ -11,7 +11,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.ToNumberPolicy;
 import com.google.gson.*;
-import org.jesse.game.model.ui.credit_store.CreditStoreCart;
 import org.jesse.game.world.entity.player.AreaManagerExtKt;
 import org.jesse.game.world.entity.player.FakePlayer;
 import org.jesse.game.world.entity.player.container.impl.SinglePlayerBank;
@@ -119,7 +118,6 @@ public final class LoginManager {
             .registerTypeAdapter(Object2IntMap.class, Object2IntMapDeserializer.INSTANCE)
             .registerTypeAdapter(Int2ObjectMap.class, Int2ObjectMapDeserializer.INSTANCE)
             .registerTypeAdapter(ObjectCollection.class, ObjectCollectionDeserializer.INSTANCE)
-            .registerTypeAdapter(CreditStoreCart.class, CreditStoreCart.Companion)
             .create());
 
     /**
@@ -685,7 +683,7 @@ public final class LoginManager {
         setFields(player, parser, false);
     }
     public static void setFields(final Player player, final Player parser, boolean skipInitEvents) {
-        Location location = AreaManagerExtKt.fixLocationIfInstanceDC(parser, parser.getLocation());
+        Location location = AreaManagerExtKt.fixLocationIfRemovedRegion(AreaManagerExtKt.fixLocationIfInstanceDC(parser, parser.getLocation()));
         player.setLastLocation(location);
         if (!(player instanceof FakePlayer))
             player.getPlayerInformation().setPlayerInformation(parser.getPlayerInformation());
@@ -723,7 +721,6 @@ public final class LoginManager {
         player.getDragonhidePouch().initialize(parser.getDragonhidePouch());
         player.getGemBag().initialize(parser.getGemBag());
         player.getGrandExchange().initialize(parser.getGrandExchange());
-        player.getTeleportManager().initialize(parser.getTeleportManager());
         player.getPetInsurance().initialize(parser.getPetInsurance());
         player.getKillstreakLog().initialize(parser.getKillstreakLog());
         player.getTOAManager().initialize(parser.getTOAManager());

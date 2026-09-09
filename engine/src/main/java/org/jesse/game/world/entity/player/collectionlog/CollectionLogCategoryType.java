@@ -31,7 +31,6 @@ public enum CollectionLogCategoryType {
     THE_FIGHT_CAVES(1522, player -> get(player, "TzTok-Jad")),
     FORTIS_COLOSSEUM(4187, player -> get(player, "Sol Heredit")),
     THE_GAUNTLET(new int[] {2354, 2353}, player -> player.getNumericAttribute("corrupted_gauntlet_completions").intValue(), player -> player.getNumericAttribute("gauntlet_completions").intValue()),
-    GANODERMIC_BEAST(-1, player -> get(player, "Ganodermic Beast")),
     GENERAL_GRAARDOR(1504, player -> get(player, "General Graardor")),
     GIANT_MOLE(1514, player -> get(player, "Giant Mole")),
     GROTESQUE_GUARDIANS(1669, player -> get(player, "Grotesque Guardians")),

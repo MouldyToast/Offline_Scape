@@ -35,7 +35,6 @@ import org.jesse.game.world.region.area.plugins.RandomEventRestrictionPlugin;
 import org.jesse.game.world.region.area.plugins.TeleportPlugin;
 import org.jesse.plugins.dialogue.ItemChat;
 import org.jesse.plugins.dialogue.PlainChat;
-import org.jesse.plugins.renewednpc.ZenyteGuide;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
@@ -238,7 +237,7 @@ public class EvilBobIsland extends PolygonRegionArea implements DeathPlugin, Tel
 
                     @Override
                     public Location destination() {
-                        return ZenyteGuide.HOME_ZENYTE_GUIDE;
+                        return new Location(3089, 3496, 0);
                     }
 
                     @Override

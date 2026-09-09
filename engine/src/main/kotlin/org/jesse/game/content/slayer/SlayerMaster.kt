@@ -25,7 +25,6 @@ enum class SlayerMaster(
     NIEVE(org.jesse.game.npc.ids.NIEVE, 1, 85, 12, "in Tree Gnome Stronghold"),
     DURADEL(org.jesse.game.npc.ids.DURADEL, 50, 100, 15, "in Shilo Village"),
     KONAR_QUO_MATEN(org.jesse.game.npc.ids.KONAR_QUO_MATEN, 1, 75, 18, "On Mount Karuulm"),
-    SUMONA(org.jesse.game.npc.ids.SUMONA, 99, 100, 15, "at Home"),
     ;
 
     fun getMultiplier(taskNum: Int): Int {
@@ -44,7 +43,6 @@ enum class SlayerMaster(
     }
 
     override fun toString(): String {
-        if (this == SUMONA) return "Summona"
         return StringUtils.capitalize(name.replace('_', ' ').lowercase(Locale.getDefault()))
     }
 

@@ -24,10 +24,6 @@ var Player.killingBlowHit: Hit? by attribute("killingBlowHit", null)
 var Player.selectedGameMode: GameMode by attribute("selected_game_mode", GameMode.REGULAR)
 var Player.selectedGameModeDifficulty by persistentAttribute("selected_game_mode_difficulty", 0)
 
-var Player.selectedUniversalShopCategory: Int by attribute("selected_universal_shop_category", 0)
-var Player.univShopSearchActive: Boolean by attribute("univ_shop_search_active", false)
-var Player.univShopDoubleProcess: Boolean by attribute("univShopDoubleProcess", false)
-
 var Player.dailyChallengePoints: Int by persistentAttribute("dailyChallengePoints", 0)
 
 var Player.flaggedAsBot: Boolean by persistentAttribute("flaggedAsBot", false)

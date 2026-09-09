@@ -160,13 +160,6 @@ public final class NPCSpawnLoader {
         dropViewerNPCs.add(7310);
 
 
-        //rdi barrows
-        dropViewerNPCs.add(16052);
-        dropViewerNPCs.add(16053);
-        dropViewerNPCs.add(16054);
-        dropViewerNPCs.add(16055);
-        dropViewerNPCs.add(16056);
-        dropViewerNPCs.add(16057);
 
         dropViewerNPCs.add(NpcId.ABYSSAL_SIRE_5908);
         //vanstrom Klause
@@ -239,7 +232,6 @@ public final class NPCSpawnLoader {
         dropViewerNPCs.addAll(npcTransformers.values());
         artificialSpawns.forEach(spawn -> dropViewerNPCs.add(spawn.getId()));
 
-        dropViewerNPCs.add(NpcId.GANODERMIC_BEAST);
         dropViewerNPCs.add(NpcId.THE_NIGHTMARE_9430);
         dropViewerNPCs.add(NpcId.PHOSANIS_NIGHTMARE_11155);
         ignoredMonsters.add(8615);

@@ -1,6 +1,5 @@
 package org.jesse.scripts.shops
 
-import org.jesse.game.content.universalshop.UnivShopItem
 import org.jesse.game.model.shop.*
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
 import it.unimi.dsi.fastutil.objects.ObjectList
@@ -27,14 +26,6 @@ class ShopBuilder(
         ironmanRestricted: Boolean = false
     ) {
         val item = JsonShop.Item(this, amount, sellPrice, buyPrice, restockTimer, ironmanRestricted)
-        items.add(item)
-    }
-
-    operator fun UnivShopItem.invoke(
-        restockTimer: Int = Shop.DEFAULT_RESTOCK_TIMER,
-    ) {
-        val quantity = if(this.quantity < 100) 10000 else quantity
-        val item = JsonShop.Item(this.id, quantity, this.sellPrice, this.buyPrice, restockTimer, this.ironmanRestricted)
         items.add(item)
     }
 

@@ -1,7 +1,6 @@
 package org.jesse.game.content.event.christmas2019;
 
 import org.jesse.game.task.WorldTasksManager;
-import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.cutscene.FadeScreen;
@@ -16,24 +15,9 @@ public class ChristmasCupboard implements ObjectAction {
     
     @Override
     public void handleObjectAction(Player player, WorldObject object, String name, int optionId, String option) {
-        int x, y;
-    
-        if (object.getPositionHash() == ChristmasConstants.homeChristmasCupboardLocation.getPositionHash()) {
-            if (player.getFollower() != null) {
-                player.sendMessage("The Queen of Snow has forbidden all pets in her domain. You'll have to pick up your follower if you want to travel to the Land of Snow.");
-                return;
-            }
-            // home cupboard
-            x = 2070 + Utils.random(0, 1);
-            y = 5401 + Utils.random(0, 2);
-        } else {
-            // land of snow cupboard
-            x = 3094;
-            y = 3487;
-        }
-    
+        // land of snow cupboard returns the player to Edgeville
         new FadeScreen(player, () -> {
-            player.setLocation(new Location(x, y));
+            player.setLocation(new Location(3094, 3487));
             WorldTasksManager.schedule(() -> AChristmasWarble.start(player), 1);
         }).fade(3);
     }

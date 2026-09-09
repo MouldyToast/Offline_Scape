@@ -1,7 +1,6 @@
 package org.jesse.game.content.tournament
 
 import org.jesse.game.content.tournament.area.TournamentArea
-import org.jesse.game.content.tournament.loc.TournamentPortalObject
 import org.jesse.game.content.tournament.preset.TournamentPresetSave
 import org.jesse.game.GameInterface
 import org.jesse.game.model.ui.InterfacePosition
@@ -63,8 +62,10 @@ internal fun Player.moveToFightZone(location: Location, other: Player) {
     })
     GameInterface.WILDERNESS_OVERLAY.open(this)
 }
-internal fun Player.moveToTournamentPortal() {
-    setLocation(TournamentPortalObject.LOCATION_IN_FRONT_OF_PORTAL.random(2))
+internal val TOURNAMENT_EXIT_LOCATION = Location(3105, 3487, 0)
+
+internal fun Player.moveToTournamentExit() {
+    setLocation(TOURNAMENT_EXIT_LOCATION.random(2))
     restoreStatePostFight()
 }
 internal fun Player.restoreStatePostFight() {

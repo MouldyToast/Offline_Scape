@@ -139,18 +139,6 @@ public class RegalMysteryBox extends ItemPlugin {
                 new MysterySupplyItem(ItemId.ZULRAHS_SCALES, 5000, 20000),
                 new MysterySupplyItem(23962, 100, 200),
                 new MysterySupplyItem(ItemId.ANCIENT_SHARD, 5, 15),
-                new MysterySupplyItem(32149, 2, 5), // Larran's Booster
-                new MysterySupplyItem(32150, 2, 5), // Ganodermic Booster
-                new MysterySupplyItem(32151, 2, 5), // Slayer Booster
-                new MysterySupplyItem(32152, 2, 5), // Pet Booster
-                new MysterySupplyItem(32153, 2, 5), // Gauntlet Booster
-                new MysterySupplyItem(32154, 2, 5), // Blood Money Booster
-                new MysterySupplyItem(32155, 2, 5), // Clue Scroll Booster
-                new MysterySupplyItem(32156, 2, 5), // ToB Booster
-                new MysterySupplyItem(32157, 2, 5), // Slayer Task Picker
-                new MysterySupplyItem(32158, 2, 5), // Slayer Task Reset
-                new MysterySupplyItem(32166, 2, 5), // Rev Booster
-                new MysterySupplyItem(32167, 2, 5), // Nex Booster
                 new MysterySupplyItem(19782, 2, 5), // Xeric's Wisdom
         };
     }

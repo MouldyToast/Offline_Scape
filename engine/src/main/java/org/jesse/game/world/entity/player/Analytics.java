@@ -75,7 +75,7 @@ public class Analytics {
 			statement.setBoolean(17, checkInteraction(flags, InteractionType.DROP_VIEWER));
 			statement.setBoolean(18, checkInteraction(flags, InteractionType.DAILY_CHALLENGES));
 			statement.setBoolean(19, checkInteraction(flags, InteractionType.PREMIUM_TOGGLES));
-			statement.setBoolean(20, checkInteraction(flags, InteractionType.CHECK_BOOSTERS));
+			statement.setBoolean(20, false);
 			statement.setInt(21, freshAccount);
 			statement.setLong(22, totalInGameCurrency);
 			statement.setLong(23, totalWealth);
@@ -158,7 +158,6 @@ public class Analytics {
 		DROP_VIEWER(13),
 		DAILY_CHALLENGES(14),
 		PREMIUM_TOGGLES(15),
-		CHECK_BOOSTERS(16),
 
 
 		;

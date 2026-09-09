@@ -370,10 +370,6 @@ public class Slayer {
                 completedInARow = getKrystiliaStreak() + 1;
                 setKrystiliaStreak(completedInARow);
             }
-            case SUMONA -> {
-                completedInARow = getSumonaStreak() + 1;
-                setSumonaStreak(completedInARow);
-            }
             default -> {
                 completedInARow = player.getNumericAttribute("completed tasks in a row").intValue() + 1;
                 player.addAttribute("completed tasks in a row", completedInARow);
@@ -463,14 +459,6 @@ public class Slayer {
         player.addAttribute("krystilia completed tasks in a row", value);
     }
 
-    public int getSumonaStreak() {
-        return player.getNumericAttribute("sumona completed tasks in a row").intValue();
-    }
-
-    public void setSumonaStreak(final int value) {
-        player.addAttribute("sumona completed tasks in a row", value);
-    }
-
     public int getSlayerPoints() {
         return player.getNumericAttribute("slayer_points").intValue();
     }
@@ -489,6 +477,10 @@ public class Slayer {
         this.player = player;
         bannedTasks = parser.getSlayer().bannedTasks;
         master = parser.getSlayer().master;
+        if (master == null) {
+            // Stage 5c: Sumona removed; old saves with master=SUMONA deserialize to null.
+            master = org.jesse.game.content.slayer.SlayerMaster.TURAEL;
+        }
         if (parser.getSlayer().assignment != null) {
             assignment = new org.jesse.game.content.slayer.Assignment();
             assignment.initialize(player, parser.getSlayer().assignment);
@@ -514,14 +506,6 @@ public class Slayer {
 
     public void setCheckingCombat(final boolean value) {
         player.addAttribute("checking combat in slayer", value ? 1 : 0);
-    }
-
-    public boolean sumonaAssignWildernessTasks() {
-        return player.getBooleanAttribute("sumona wildy tasks");
-    }
-
-    public void setSumonaAssignWildernessTasks(final boolean value) {
-        player.addAttribute("sumona wildy tasks", value ? 1 : 0);
     }
 
     public boolean isCurrentAssignment(final Entity target) {

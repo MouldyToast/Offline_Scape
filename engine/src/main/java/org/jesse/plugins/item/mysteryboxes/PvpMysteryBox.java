@@ -107,9 +107,6 @@ public class PvpMysteryBox extends ItemPlugin {
                 new MysterySupplyItem(24607, 75, 200), // blighted ice
                 new MysterySupplyItem(26705, 75, 200), // blighted surge
                 new MysterySupplyItem(24621, 75, 200), // blighted veng
-                new MysterySupplyItem(32149, 3, 5), // Larran's Booster
-                new MysterySupplyItem(32150, 3, 5), // Ganodermic Booster
-                new MysterySupplyItem(32154, 3, 5), // Blood Money Booster
         };
     }
 

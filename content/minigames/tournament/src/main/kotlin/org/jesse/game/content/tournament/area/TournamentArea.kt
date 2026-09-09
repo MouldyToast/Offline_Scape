@@ -2,7 +2,7 @@ package org.jesse.game.content.tournament.area
 
 import org.jesse.game.content.tournament.Tournament
 import org.jesse.game.content.tournament.TournamentState
-import org.jesse.game.content.tournament.moveToTournamentPortal
+import org.jesse.game.content.tournament.moveToTournamentExit
 import org.jesse.game.content.tournament.preset.TournamentPreset
 import org.jesse.game.content.tournament.sendTournamentMessage
 import org.jesse.game.plugin.experienceGainDisabled
@@ -48,7 +48,7 @@ abstract class TournamentArea(
         val state = tournament.state as? TournamentState.Finished ?:return
         val autoDestroyRegionTimer = state.autoDestroyRegionTimer
         if (autoDestroyRegionTimer.elapsed()) {
-            players.toSet().forEach { it.moveToTournamentPortal() }
+            players.toSet().forEach { it.moveToTournamentExit() }
             destroying = true
             destroyRegion()
         } else {

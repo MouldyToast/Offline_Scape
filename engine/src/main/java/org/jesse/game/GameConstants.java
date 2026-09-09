@@ -47,7 +47,6 @@ public class GameConstants {
 	 */
 	public static WorldProfile WORLD_PROFILE;
 
-	public static boolean RUNESPAWN;
 	public static boolean CYCLE_DEBUG = false;
 
 	public static boolean CHECK_HUNTER_TRAPS_QUANTITY = true;

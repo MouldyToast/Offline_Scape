@@ -22,7 +22,6 @@ public enum BroadcastType {
     MYSTERY_BOX_RARE_ITEM("ff0000", 13, Optional.of(GameSetting.MYSTERY_BOX_BROADCASTS)),
     INFERNO_COMPLETION("ff0000", 13, Optional.empty()),
     TREASURE_TRAILS("e59400", 13, Optional.of(GameSetting.TREASURE_TRAILS_BROADCASTS)),
-    WILDERNESS_EVENT("B22222", 68, Optional.empty()),
     XAMPHUR("e59400", 13, Optional.empty()),
     WORLD_BOSS("00FF00", 68, Optional.empty()),
     SUPER_RARE_DROP("B22222", 51, Optional.empty()),

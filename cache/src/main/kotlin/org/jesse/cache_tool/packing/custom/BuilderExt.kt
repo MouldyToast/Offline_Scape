@@ -5,7 +5,6 @@ import org.jesse.game.item.ids.*
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.items.ItemDefinitions
 import mgi.types.config.npcs.NPCDefinitions
-import mgi.types.worldmap.MapElementDefinitions
 import java.util.*
 
 fun NPCDefinitions.NPCDefinitionsBuilder.movementAnimations(anim: Int): NPCDefinitions.NPCDefinitionsBuilder = this
@@ -158,25 +157,5 @@ fun Any.whipDefinition() = ItemDefinitions.get(ABYSSAL_WHIP)
 fun Int.newItem() = ItemDefinitions(this).toBuilder()
 fun Int.cloneThisTo(newId: Int) = ItemDefinitions.get(this).toBuilder().id(newId)
 
-fun Int.createSmallMapLabel(label: String) = MapElementDefinitions.get(444)!!.toBuilder()
-    .id(this)
-    .text(label)
-    .textSize(0)
-    .build()
-    .pack()
-
-fun Int.createMediumMapLabel(label: String) = MapElementDefinitions.get(444)!!.toBuilder()
-    .id(this)
-    .text(label)
-    .textSize(1)
-    .build()
-    .pack()
-
-fun Int.createLargeMapLabel(label: String) = MapElementDefinitions.get(143)!!.toBuilder()
-    .id(this)
-    .text(label)
-    .textSize(2)
-    .build()
-    .pack()
 
 fun Int.toHSL() = JagexColor.rgbToHSL(this, JagexColor.BRIGHTNESS_HIGH)

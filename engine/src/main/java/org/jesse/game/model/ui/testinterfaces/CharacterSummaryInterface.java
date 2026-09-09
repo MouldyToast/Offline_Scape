@@ -44,7 +44,6 @@ public class CharacterSummaryInterface extends Interface {
         bind("Element layer", (player, slotId, itemId, option) -> {
             if (player.isLocked()) return;
             switch (slotId) {
-                case 3 -> COMP_PROGRESS.open(player);
                 case 4 -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.ACHIEVEMENT_DIARIES);
                 case 5 -> {
                     switch (option) {

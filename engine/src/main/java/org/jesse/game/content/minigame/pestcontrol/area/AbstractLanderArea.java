@@ -6,7 +6,6 @@ import org.jesse.game.content.minigame.pestcontrol.PestControlStatistic;
 import org.jesse.game.content.minigame.pestcontrol.PestControlUtilities;
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.teleportsystem.PortalTeleport;
 import org.jesse.game.world.region.area.VoidKnightsOutpost;
 import org.jesse.game.world.region.area.plugins.CycleProcessPlugin;
 import org.jesse.game.world.region.dynamicregion.AllocatedArea;
@@ -36,7 +35,6 @@ public abstract class AbstractLanderArea extends VoidKnightsOutpost implements C
 
 	@Override
 	public void enter(final Player player) {
-		player.getTeleportManager().unlock(PortalTeleport.PEST_CONTROL);
 		prioritizedPlayers.put(player, 1);
 		PestControlUtilities.sendLanderInterface(player);
 		for (final Player p : players) {

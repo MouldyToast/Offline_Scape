@@ -153,9 +153,6 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
             val clampedLevel = max(1.0, min(144.0, level.toDouble())).toInt()
             var chanceA = 2000 / (sqrt(clampedLevel.toDouble()).toInt())
             val chanceB = 15 + ((level + 60.0f).pow(2) / 200)
-            if (killer.variables.revenantBoosterTick > 0) {
-                chanceA = (chanceA * 0.9).toInt()
-            }
             val a = Utils.random(chanceA - 1)
             var amount: Int = Utils.random(1, max(1.0, sqrt(level * 3.0)).toInt())
             if (killer.getNumericAttribute("ethereum absorption").toInt() == 1) {

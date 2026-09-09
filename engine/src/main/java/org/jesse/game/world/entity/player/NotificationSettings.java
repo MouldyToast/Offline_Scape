@@ -2,7 +2,6 @@ package org.jesse.game.world.entity.player;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVariables;
@@ -139,44 +138,6 @@ public class NotificationSettings {
     public void sendBossKillCountNotification(final String name) {
         final int kills = player.getSettings().getKillsLog().getOrDefault(name.toLowerCase(), 0) & 65535;
         player.sendMessage("Your " + StringFormatUtil.formatString(name) + " kill count is: <col=FF0000>" + kills + "</col>.");
-        handleTitleKillCountUnlock(name, kills);
-    }
-
-    private void handleTitleKillCountUnlock(final String npcName, final int killCount) {
-        switch (npcName.toLowerCase()) {
-            case "general graardor" -> tryUnlockTitle("bandosian", killCount, 250);
-            case "corporeal beast" -> tryUnlockTitle("dark core", killCount, 250);
-            case "commander zilyana" -> tryUnlockTitle("zilyana's bane", killCount, 250);
-            case "kree'arra" -> tryUnlockTitle("armadylean", killCount, 250);
-            case "vorkath" -> tryUnlockTitle("the dragonrider", killCount, 250);
-            case "nex" -> tryUnlockTitle("the nihil", killCount, 250);
-            case "vanstom klause" -> tryUnlockTitle("of vampyrium", killCount, 250);
-            case "cerberus" -> tryUnlockTitle("infernal tamer", killCount, 250);
-            case "giant mole" -> tryUnlockTitle("the burrow breaker", killCount, 250);
-            case "king black dragon" -> tryUnlockTitle("dragonkin", killCount, 250);
-            case "vet'ion" -> tryUnlockTitle("thunderstruck", killCount, 250);
-            case "vennenatis" -> tryUnlockTitle("arachnaphobe", killCount, 250);
-            case "callisto" -> tryUnlockTitle("usine usurper", killCount, 250);
-            case "t'sutsaroth" -> tryUnlockTitle("t'sutsaroth's scrouge", killCount, 250);
-            case "zulrah" -> tryUnlockTitle("the snake", killCount, 250);
-            case "sarachnis" -> tryUnlockTitle("arachnophobe", killCount, 250);
-            case "mimic" -> tryUnlockTitle("illusionaist", killCount, 250);
-            case "hespori" -> tryUnlockTitle("sprout specialist", killCount, 250);
-            case "skotizo" -> tryUnlockTitle("chthonic", killCount, 10);
-            case "grotesque guardians" -> tryUnlockTitle("grotesque", killCount, 100);
-            case "abyssal sire" -> tryUnlockTitle("sire", killCount, 250);
-            case "alchemical hydra" -> tryUnlockTitle("hydra hugger", killCount, 250);
-            case "thermonucleur smoke devil" -> tryUnlockTitle("nucleur", killCount, 250);
-            case "kraken" -> tryUnlockTitle("tentacle tickler", killCount, 250);
-            case "rat" -> tryUnlockTitle("big cheese", killCount, 1000);
-            case "basilisk knight" -> tryUnlockTitle("of v", killCount, 500);
-        }
-    }
-
-    private void tryUnlockTitle(String titleName, int killCount, int threshold) {
-        if (killCount >= threshold && !LoyaltyTitleShop.Companion.hasUnlockedTitle(player, titleName)) {
-            LoyaltyTitleShop.Companion.unlockTitle(player, titleName);
-        }
     }
 
 

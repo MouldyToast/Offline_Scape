@@ -1048,12 +1048,6 @@ public final class GameCommands {
 
 
 
-        new Command(PlayerPrivilege.PLAYER, "titles", "Opens the loyalty titles interface.", (p, args) -> {
-            if (p.isLocked() || p.getActionManager().wasInCombatThisTick()) {
-                return;
-            }
-            GameInterface.LOYALTY_TITLES.open(p);
-        });
         new Command(PlayerPrivilege.PLAYER, "home", "Teleport home.", (p, args) -> {
             if (p.isLocked()) {
                 return;

@@ -520,7 +520,9 @@ public class Slayer {
     }
 
     public boolean isUnlocked(final String name) {
-        return isUnlocked(Enums.SLAYER_PERK_REWARD_NAMES.getKey(name.toLowerCase()).orElseThrow(Enums.exception()));
+        // A perk absent from the unlock names enum does not exist and therefore cannot be unlocked.
+        final var index = Enums.SLAYER_PERK_REWARD_NAMES.getKey(name.toLowerCase());
+        return index.isPresent() && isUnlocked(index.getAsInt());
     }
 
     public void openInterface() {

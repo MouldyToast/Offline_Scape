@@ -1,7 +1,6 @@
 package org.jesse.game.content.commands
 
 import org.jesse.game.model.item.getItemValue
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop
 import org.jesse.game.world.entity.player.flaggedAsBot
 import org.jesse.Main
 import org.jesse.game.GameConstants
@@ -99,18 +98,6 @@ object AdministratorCommands {
                 World.sendObjectAnimation(loc, Animation(id))
             }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "resettitles", "Resets a players title list") { p, args ->
-            p.sendInputName("Enter name of player") { playerName ->
-                val targetPlayer = World.getPlayer(playerName).getOrNull()
-                if (targetPlayer == null)
-                    p.dialogue { plain("No player online found by name `$playerName`") }
-                else {
-                    for (index in 0..LoyaltyTitleShop.loyaltyTitles.size) {
-                        p.playerTitleStatus[index] = false
-                    }
-                }
-            }
-        }
         Command(PlayerPrivilege.ADMINISTRATOR, "unlockmusic", "Unlock all default music tracks for a player") { p, args ->
             p.sendInputName("Enter name of player") { playerName ->
                 val targetPlayer = World.getPlayer(playerName).getOrNull()
@@ -128,18 +115,6 @@ object AdministratorCommands {
             player.setHitpoints(100_000)
             player.temporaryAttributes["admin_hp_event"] = true
             player.sendMessage("Your hitpoints are set... Ready for Fight Club!")
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "unlocktitle", "Unlock a title for a specific player") { p, args ->
-            p.sendInputName("Enter name of player") { playerName ->
-                val targetPlayer = World.getPlayer(playerName).getOrNull()
-                if (targetPlayer == null)
-                    p.dialogue { plain("No player online found by name `$playerName`") }
-                else {
-                    p.sendInputString("Enter name of title") { titleName ->
-                        LoyaltyTitleShop.unlockTitle(targetPlayer, titleName)
-                    }
-                }
-            }
         }
         Command(PlayerPrivilege.ADMINISTRATOR, "td") { p, _ ->
             p.setLocation(Location(4061, 4465, 0))

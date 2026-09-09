@@ -17,7 +17,6 @@ import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.content.middleman.MiddleManManager;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
-import org.jesse.game.model.ui.loyaltytitles.LoyaltyTitleShop;
 import org.jesse.game.world.Boundary;
 import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.world.entity.player.UsernameProvider;
@@ -215,7 +214,6 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import kotlinx.datetime.Clock;
 import mgi.types.config.AnimationDefinitions;
-import mgi.types.config.StructDefinitions;
 import mgi.types.config.TransmogrifiableType;
 import mgi.types.config.items.ItemDefinitions;
 import mgi.types.config.npcs.NPCDefinitions;
@@ -371,8 +369,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private final Map<String, Object> attributes = new ConcurrentHashMap<>();
     @Expose
-    private Map<Integer, Boolean> playerTitleStatus = new HashMap<>();
-    @Expose
     private final ControllerManager controllerManager = new ControllerManager(this);
     @Expose
     private final MusicHandler music = new MusicHandler(this);
@@ -420,7 +416,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private Inventory inventory = new Inventory(this);
     @Expose
-    public Container loyaltyTitleUnlocks;
     private transient Inventory inventoryTemp = new Inventory(this, true);
     private transient DeathMechanics deathMechanics = new DeathMechanics(this);
     @Expose
@@ -4209,51 +4204,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             GameLogger.log(Level.INFO, () -> new GameLogMessage.Login(Clock.System.INSTANCE.now(), getDbUsername(), getIP()));
         }
 
-        //Start of title unlocks
-        var playerKills = PlayerAttributesKt.getPvpKills(this);
-
-        var playTime = variables.getPlayTime();
-        final int seconds = (int) (playTime * 0.6);
-        final int days = seconds / 86400;
-
-        var today = LocalDate.now();
-        var targetDate = LocalDate.of(2025, 4, 5);
-        var veteranDate = LocalDate.of(2025, 3, 1);
-
-        if (today.isEqual(veteranDate))
-            LoyaltyTitleShop.Companion.unlockTitle(this, "veteran");
-        if (today.isBefore(targetDate) || today.isEqual(targetDate))
-            LoyaltyTitleShop.Companion.unlockTitle(this, "day one");
-        if (days >= 14)
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the adventurer");
-        if (days >= 7)
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the devoted");
-
-        if (playerKills >= 100) {
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the aggressive");
-        }
-        if (playerKills >= 250) {
-            LoyaltyTitleShop.Companion.unlockTitle(this, "assassin");
-        }
-        if (playerKills >= 500) {
-            LoyaltyTitleShop.Companion.unlockTitle(this, "? who?");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "...you fail");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "ate dirt");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "cowardly");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "cutey-pie");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "delusional");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "everyone attack");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the fail magnet");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "flamboyant");
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the idiot");
-        }
-        if (playerKills >= 750) {
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the annihilator");
-        }
-        if (playerKills >= 1000) {
-            LoyaltyTitleShop.Companion.unlockTitle(this, "the beast");
-        }
-
         getBankPin().loggedIn();
         if (Objects.equals(15515, getLocation().getRegionId()))
             setLocation(new Location(3808, 9755, 1));
@@ -4412,8 +4362,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             final byte[] uniqueId = playerInformation.getUUID();
             packetDispatcher.updateUID192(uniqueId);
         }
-        loyaltyTitleUnlocks = new Container(ContainerPolicy.NORMAL, ContainerType.LOYALTY_TITLES, Optional.of(this));
-
         WorldTasksManager.schedule(() -> appearance.sync(true));
     }
 
@@ -4483,21 +4431,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         putCrownInner(privilege.crown(), sb);
         putCrownInner(getGameModeCrown(), sb);
         putCrownInner(getMemberCrown(), sb);
-        final var prefix = getPrefixTitle();
-        if (!prefix.isBlank()) {
-            sb.append("<title>");
-            sb.append(prefix);
-            sb.append("</title>");
-        }
         if (!sb.toString().contains("img"))
             sb = new StringBuilder();
         sb.append(getPlayerInformation().getDisplayname());
-        final var suffix = getSuffixTitle();
-        if (!suffix.isBlank()) {
-            sb.append("<title>");
-            sb.append(suffix);
-            sb.append("</title>");
-        }
         return sb.toString();
     }
 
@@ -4505,29 +4441,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (crown.getId() != -1 && crown != Crown.NONE) {
             sb.append(crown.getCrownTag());
         }
-    }
-
-    public String getPrefixTitle() {
-        return getGenderTitleText(true);
-    }
-
-    public String getSuffixTitle() {
-        return getGenderTitleText(false);
-    }
-
-    private String getGenderTitleText(boolean prefix) {
-        final var title = getTitle();
-        final var isMale = appearance.isMale();
-        if (prefix) {
-            return title.getParamAsString(isMale ? 11825 : 11827);
-        } else {
-            return title.getParamAsString(isMale ? 11826 : 11828);
-        }
-    }
-
-    public StructDefinitions getTitle() {
-        final var titleId = getNumericAttributeOrDefault("title", LoyaltyTitleShop.NONE_ID).intValue();
-        return StructDefinitions.get(titleId);
     }
 
     public int getRankIcon() {
@@ -4616,10 +4529,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public Map<String, Object> getAttributes() {
         return attributes;
-    }
-
-    public Map<Integer, Boolean> getPlayerTitleStatus() {
-        return playerTitleStatus;
     }
 
     public ControllerManager getControllerManager() {

@@ -6,11 +6,7 @@ object NearRealityCustomStructsPacker {
 
     @JvmStatic
     fun pack() {
-        StructDefinitions.get(500).copy(10501).apply {
-            this.parameters[689] = "Primal Items"
-            this.parameters[690] = 10501
-            this.pack()
-        }
+        // Primal Items struct 10501 removed — custom items no longer packed.
     }
 
 }

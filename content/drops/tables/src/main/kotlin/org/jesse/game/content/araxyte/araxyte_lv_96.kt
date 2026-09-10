@@ -1,7 +1,6 @@
 package org.jesse.game.content.araxyte
 
 import org.jesse.game.content.slayer.RegularTask
-import org.jesse.scripts.npc.drops.table.chance.dynamic.DynamicRollItemOneIn
 import org.jesse.game.item.Item
 import org.jesse.game.util.Utils
 import org.jesse.scripts.npc.drops.NPCDropTableScript
@@ -12,7 +11,6 @@ import org.jesse.scripts.npc.drops.table.DropTableType.*
 import org.jesse.game.world.entity.npc.drop.matrix.Drop
 import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
-import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class AraxyteLv96Droptable : NPCDropTableScript() {
@@ -86,13 +84,6 @@ class AraxyteLv96Droptable : NPCDropTableScript() {
             Tertiary {
                 SCROLL_BOX_ELITE quantity 1 oneIn 128
             }
-        }
-
-        provideInfo<DynamicRollItemOneIn> {
-            if(this.id == ARANEA_BOOTS)
-                "This rate decreases to 1/600 when on an araxyte slayer task"
-            else
-                null
         }
     }
 }

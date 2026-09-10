@@ -24,7 +24,6 @@ import org.jesse.scripts.npc.drops.table.DropTableType.*
 import org.jesse.game.world.entity.npc.drop.matrix.Drop
 import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
-import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class NexDroptable : NPCDropTableScript() {
@@ -129,15 +128,6 @@ class NexDroptable : NPCDropTableScript() {
                     }
                 }
             }
-        }
-
-        provideInfo<StaticRollItemChance> { table ->
-            if(table == Unique)
-                "This rate is scaled down based on player contributions & DR boost"
-            else if (rarity == common)
-                "The MVP has a 10% increased chance of getting this drop."
-            else
-                null
         }
 
         buildTable(5000) {

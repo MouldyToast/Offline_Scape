@@ -16,14 +16,11 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
-import mgi.types.config.items.ItemDefinitions;
 import mgi.utilities.CollectionUtils;
 import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.*;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 
 import static org.jesse.game.world.entity.npc.drop.matrix.NPCDrops.DropTable.GUARANTEED_WEIGHT;
@@ -149,78 +146,7 @@ public class NPCDrops {
 	}
 
 
-	public static final class DisplayedNPCDrop {
-		private final int itemId;
-		private final int minAmount;
-		private final int maxAmount;
-		private final BiFunction<Player, Integer, Double> function;
-		private BiPredicate<Player, Integer> predicate;
-
-		public DisplayedNPCDrop(final int itemId, final int minAmount, final int maxAmount, final double weight, final int tableWeight) {
-			this.itemId = itemId;
-			this.minAmount = minAmount;
-			this.maxAmount = maxAmount;
-			this.function = (player, npcId) -> weight == GUARANTEED_WEIGHT ? 1 : (weight / tableWeight * 100.0);
-		}
-
-		public DisplayedNPCDrop(final int itemId, final int minAmount, final int maxAmount, final BiFunction<Player, Integer, Double> function) {
-			this.itemId = itemId;
-			this.minAmount = minAmount;
-			this.maxAmount = maxAmount;
-			this.function = function;
-		}
-
-		public int getItemId() {
-			return itemId;
-		}
-
-		public int getMinAmount() {
-			return minAmount;
-		}
-
-		public int getMaxAmount() {
-			return maxAmount;
-		}
-
-		public BiFunction<Player, Integer, Double> getFunction() {
-			return function;
-		}
-
-		public BiPredicate<Player, Integer> getPredicate() {
-			return predicate;
-		}
-
-		public void setPredicate(BiPredicate<Player, Integer> predicate) {
-			this.predicate = predicate;
-		}
-	}
-
-
-	public static final class DisplayedDropTable {
-		private int npcId;
-		private final List<DisplayedNPCDrop> drops;
-
-		public DisplayedDropTable(int npcId, List<DisplayedNPCDrop> drops) {
-			this.npcId = npcId;
-			this.drops = drops;
-		}
-
-		public int getNpcId() {
-			return npcId;
-		}
-
-		public void setNpcId(int npcId) {
-			this.npcId = npcId;
-		}
-
-		public List<DisplayedNPCDrop> getDrops() {
-			return drops;
-		}
-	}
-
 	private static Int2ObjectMap<DropTable> drops;
-	private static Int2ObjectMap<DisplayedDropTable> displayedDrops;
-	private static Int2ObjectMap<List<ItemDrop>> dropsByItem;
 
 	public static Drop[] getDrops(final int npcId) {
 		final NPCDrops.DropTable table = drops.get(npcId);
@@ -230,10 +156,6 @@ public class NPCDrops {
 
 	public static DropTable getTable(final int npcId) {
 		return drops.get(npcId);
-	}
-
-	public static List<ItemDrop> getTableForItem(final int itemId) {
-		return dropsByItem.get(itemId);
 	}
 
 	public static boolean equalsIgnoreRates(final int npc1, final int npc2) {
@@ -266,8 +188,6 @@ public class NPCDrops {
 	public static void init() {
 		try {
 			drops = new Int2ObjectOpenHashMap<>();
-			displayedDrops = new Int2ObjectOpenHashMap<>();
-			dropsByItem = new Int2ObjectOpenHashMap<>(ItemDefinitions.getDefinitions().length);
 
 			Gson gson = DefaultGson.getGson();
 			File folder = new File("cache/data/npcs/drops/");
@@ -311,15 +231,6 @@ public class NPCDrops {
 		table.weight = weight;
 		table.finalizeTable();
 		drops.put(table.npcId, table);
-		final ObjectList<DisplayedNPCDrop> dropsList = new ObjectArrayList<>(table.drops.length);
-		for (final Drop drop : table.drops) {
-			if (drop.getItemId() == ItemId.TOOLKIT) {
-				continue;
-			}
-			dropsList.add(new DisplayedNPCDrop(drop.getItemId(), drop.getMinAmount(), drop.getMaxAmount(), drop.getBaseRate(), weight));
-		}
-		final NPCDrops.DisplayedDropTable clone = new DisplayedDropTable(table.npcId, dropsList);
-		displayedDrops.put(table.npcId, clone);
 	}
 
 

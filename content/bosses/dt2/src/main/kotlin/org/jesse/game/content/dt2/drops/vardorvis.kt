@@ -2,7 +2,6 @@ package org.jesse.game.content.dt2.drops
 
 import org.jesse.game.content.dt2.npc.DT2BossDifficulty
 import org.jesse.game.content.dt2.npc.vardorvis.Vardorvis
-import org.jesse.scripts.npc.drops.table.chance.immutable.StaticRollItemChance
 import org.jesse.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import org.jesse.scripts.npc.drops.table.noted
 import org.jesse.game.content.util.hasKilledVardorvisAwakened
@@ -143,15 +142,6 @@ class VardorvisDroptable : NPCDropTableScript() {
         /* 1/100 base || 3/100 awakened */
 
 
-
-        provideInfo<StaticRollItemChance> { table ->
-            if (table == Unique)
-                "This rate is scaled down based on player contributions & DR boost"
-            else if (rarity == 300)
-                "The MVP has a 10% increased chance of getting this drop."
-            else
-                null
-        }
 
         buildTable(78) {
             Main {

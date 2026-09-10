@@ -8,7 +8,6 @@ import org.jesse.game.world.World;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.npc.ids.NpcId;
 import org.jesse.game.world.entity.npc.impl.Crab;
-import org.jesse.game.world.entity.npc.impl.slayer.superior.SuperiorMonster;
 import org.jesse.game.world.region.GlobalAreaManager;
 import org.jesse.game.world.region.RegionArea;
 import org.jesse.logger.NearRealityLogger;
@@ -37,7 +36,6 @@ public final class NPCSpawnLoader {
 
     private static final Logger log = NearRealityLogger.getLogger(NPCSpawnLoader.class);
 
-    public static final IntSet dropViewerNPCs = IntSets.synchronize(new IntOpenHashSet());
     public static final IntSet ignoredMonsters = IntSets.synchronize(new IntOpenHashSet());
 
     private static final Int2ObjectMap<Set<String>> npcAreaMap = new Int2ObjectOpenHashMap<>();
@@ -151,24 +149,7 @@ public final class NPCSpawnLoader {
         //The Mimic
         artificialSpawns.add(new NPCSpawn(8633, 2719, 4318, 1, Direction.SOUTH, 5));
 
-        dropViewerNPCs.addAll(SuperiorMonster.superiorMonsters);
-        //Armadylian guardian
-        dropViewerNPCs.add(6587);
-        //Bandosian guardian
-        dropViewerNPCs.add(6587);
-        //Brassican mage
-        dropViewerNPCs.add(7310);
-
-
-
-        dropViewerNPCs.add(NpcId.ABYSSAL_SIRE_5908);
-        //vanstrom Klause
-        dropViewerNPCs.add(NpcId.VANSTROM_KLAUSE_9569);
-        //Ancient wizard
-        dropViewerNPCs.add(7307);
         //Krakens
-        dropViewerNPCs.add(494);
-        dropViewerNPCs.add(492);
         npcTransformers.put(493, 492);
         npcTransformers.put(496, 494);
         //Werewolves
@@ -176,45 +157,11 @@ public final class NPCSpawnLoader {
         //All kinds of crabs.
         npcTransformers.putAll(Crab.rocks2AliveMap);
         //Wall beast
-        dropViewerNPCs.add(476);
         npcTransformers.put(475, 476);
         //Zygomites
-        dropViewerNPCs.add(536);
-        dropViewerNPCs.add(1023);
-        dropViewerNPCs.add(471);
         npcTransformers.put(536, 537);
         npcTransformers.put(1023, 1024);
         npcTransformers.put(471, 7797);
-
-        //Tree spirits
-        dropViewerNPCs.add(1163);
-        dropViewerNPCs.add(1861);
-        dropViewerNPCs.add(1862);
-        dropViewerNPCs.add(1863);
-        dropViewerNPCs.add(1864);
-        dropViewerNPCs.add(1865);
-        dropViewerNPCs.add(1866);
-        dropViewerNPCs.add(6380);
-        //Locost riders
-        dropViewerNPCs.add(795);
-        dropViewerNPCs.add(796);
-        dropViewerNPCs.add(800);
-        dropViewerNPCs.add(801);
-        //Brutal green dragons
-        dropViewerNPCs.add(2918);
-        dropViewerNPCs.add(8081);
-        dropViewerNPCs.add(8583);
-
-        // callisto + artio
-        dropViewerNPCs.add(NpcId.CALLISTO_6609);
-        dropViewerNPCs.add(NpcId.ARTIO);
-        //vetion + calvarion
-        dropViewerNPCs.add(NpcId.VETION);
-        dropViewerNPCs.add(NpcId.CALVARION);
-        // ven + spindel
-        dropViewerNPCs.add(NpcId.VENENATIS_6610);
-        dropViewerNPCs.add(NpcId.SPINDEL);
-
 
         //Godwars sergeants
         artificialSpawns.add(new NPCSpawn(2216, 2868, 5362, 2, Direction.SOUTH, 5));
@@ -229,17 +176,11 @@ public final class NPCSpawnLoader {
         artificialSpawns.add(new NPCSpawn(3163, 2834, 5297, 2, Direction.SOUTH, 5));
         artificialSpawns.add(new NPCSpawn(3164, 2827, 5299, 2, Direction.SOUTH, 5));
         artificialSpawns.add(new NPCSpawn(3165, 2829, 5300, 2, Direction.SOUTH, 5));
-        dropViewerNPCs.addAll(npcTransformers.values());
-        artificialSpawns.forEach(spawn -> dropViewerNPCs.add(spawn.getId()));
 
-        dropViewerNPCs.add(NpcId.THE_NIGHTMARE_9430);
-        dropViewerNPCs.add(NpcId.PHOSANIS_NIGHTMARE_11155);
         ignoredMonsters.add(8615);
         ignoredMonsters.add(NpcId.PHANTOM_MUSPAH_12079);
         ignoredMonsters.add(NpcId.PHANTOM_MUSPAH_12082);
         ignoredMonsters.add(NpcId.PHANTOM_MUSPAH_12078);
-
-        dropViewerNPCs.add(12080);
     }
 
     /**
@@ -253,7 +194,6 @@ public final class NPCSpawnLoader {
                 DEFINITIONS.forEach(v -> {
                     try {
                         final int id = v.getId();
-                        dropViewerNPCs.add(id);
 
                         final Location tile = new Location(v.getX(), v.getY(), v.getZ());
                         World.getChunk(tile.getChunkHash());

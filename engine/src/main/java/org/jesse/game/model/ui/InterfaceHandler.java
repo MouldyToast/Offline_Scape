@@ -50,7 +50,6 @@ public class InterfaceHandler {
 			.put(398, new Integer[] {4212288, 50}).put(224, new Integer[] {4404769, 0}).put(116, new Integer[] {4404769, 0})
 			.put(267, new Integer[] {65792, 0}).put(299, new Integer[] {2760198, 0}).build();
 	private static final GameInterface[] WALKABLE_INTERFACES = new GameInterface[] {
-			GameInterface.TELEPORTS,
 			GameInterface.ADVANCED_SETTINGS
 	};
 	private static final Logger log = NearRealityLogger.getLogger(InterfaceHandler.class);

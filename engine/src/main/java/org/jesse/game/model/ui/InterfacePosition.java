@@ -22,7 +22,7 @@ public enum InterfacePosition {
 	EQUIPMENT_TAB(80, 387, true),             // was 79, now 80
 	PRAYER_TAB(81, 541, true),                // was 80, now 81
 	SPELLBOOK_TAB(82, 218, true),             // was 81, now 82
-	ACCOUNT_MANAGEMENT(84, 1702, true),       // was 83, now 84
+	ACCOUNT_MANAGEMENT(84, 109, true),        // was 83, now 84
 	FRIENDS_TAB(85, 429, true),               // was 84, now updated to 85 (SOCIAL_TAB)
 	LOGOUT_TAB(86, 182, true),                // was 85, now 86
 	SETTINGS_TAB(87, 116, true),              // was 86, now 87

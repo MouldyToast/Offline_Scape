@@ -16,7 +16,6 @@ import mgi.types.config.ObjectDefinitions
 import mgi.types.config.enums.EnumDefinitions
 import mgi.types.config.items.ItemDefinitions
 import mgi.types.config.npcs.NPCDefinitions
-import net.runelite.cache.util.ScriptVarType
 import java.util.function.Predicate
 
 /**
@@ -39,9 +38,9 @@ object KeepSetDefinitionOverrides {
             size = 2500
             pack()
         }
-        // Vanilla rev-228 inv 169 is 3 slots; the divine and tournament rune
-        // pouch code (RuneOnRunePouchItemAction, RunePouchInterface) requires
-        // 4, and shrinking would drop runes from saved pouches.
+        // Vanilla rev-228 inv 169 is 3 slots; the divine rune pouch code
+        // (RuneOnRunePouchItemAction, RunePouchInterface) requires 4, and
+        // shrinking would drop runes from saved pouches.
         InventoryDefinitions.get(ContainerType.RUNE_POUCH.id)?.apply {
             size = 4
             pack()
@@ -569,10 +568,8 @@ object KeepSetDefinitionOverrides {
     }
 
     /**
-     * The tournament preset item picker list (enum 10024, read by the server
-     * through Enums.TOURNAMENT_ITEMS_ENUM). Tournament content is kept, and
-     * this enum does not exist in the vanilla cache. All entries are vanilla
-     * item ids.
+     * Additive keys on the vanilla item retrieval-service enums for the kept
+     * death-storage NPCs.
      */
     @JvmStatic
     fun packEnums() {
@@ -598,47 +595,6 @@ object KeepSetDefinitionOverrides {
             values[100] = 200000
             values[102] = 100000
             values[104] = 100000
-            pack()
-        }
-        EnumDefinitions.create(10024, ScriptVarType.INTEGER, ScriptVarType.OBJ).apply {
-            defaultInt = -1
-            values[0] = 565
-            values[1] = 560
-            values[2] = 9075
-            values[3] = 557
-            values[4] = 555
-            values[5] = 562
-            values[6] = 566
-            values[7] = 554
-            values[8] = 556
-            values[9] = 561
-            values[10] = 563
-            values[11] = 564
-            values[12] = 21880
-            values[13] = 3144
-            values[14] = 385
-            values[15] = 391
-            values[16] = 397
-            values[17] = 13441
-            values[18] = 11936
-            values[19] = 6685
-            values[20] = 10925
-            values[21] = 3024
-            values[22] = 2434
-            values[23] = 2440
-            values[24] = 2442
-            values[25] = 2436
-            values[26] = 12695
-            values[27] = 2444
-            values[28] = 3040
-            values[29] = 4417
-            values[30] = 11090
-            values[31] = 2550
-            values[32] = 5698
-            values[33] = 24225
-            values[34] = 10887
-            values[35] = 11802
-            values[36] = 20784
             pack()
         }
     }

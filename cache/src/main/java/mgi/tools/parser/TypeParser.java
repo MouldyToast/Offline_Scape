@@ -802,12 +802,6 @@ public class TypeParser {
                         new WorldObject(26254, 10, 3, new Location(2920, 4848, 0))));
         packMapPre209(13109, null,
                 Regions.inject(13109, null, new WorldObject(187, 10, 1, new Location(3322, 3428, 0))));
-        packMapPre209(13426, "assets/map/osnr_tournament/final_landscape.dat",
-                "assets/map/osnr_tournament/final_objects.dat");
-        packMapPre209(13428, java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_landscape.dat")),
-                Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_objects.dat")), null,
-                        new WorldObject(35006, 10, 1, new Location(3363, 7465, 0)),
-                        new WorldObject(35007, 10, 0, new Location(3352, 7465, 0))));
         KeepSetDefinitionOverrides.applyMapEdits();
     }
 

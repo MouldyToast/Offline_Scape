@@ -95,15 +95,15 @@ public class Settings {
     }
 
     public boolean isRigour() {
-        return player.getNumericAttribute(Setting.RIGOUR.toString()).intValue() == 1 || player.inArea("Tournament Zone");
+        return player.getNumericAttribute(Setting.RIGOUR.toString()).intValue() == 1;
     }
 
     public boolean isAugury() {
-        return player.getNumericAttribute(Setting.AUGURY.toString()).intValue() == 1 || player.inArea("Tournament Zone");
+        return player.getNumericAttribute(Setting.AUGURY.toString()).intValue() == 1;
     }
 
     public boolean isPreserve() {
-        return player.getNumericAttribute(Setting.PRESERVE.toString()).intValue() == 1 || player.inArea("Tournament Zone");
+        return player.getNumericAttribute(Setting.PRESERVE.toString()).intValue() == 1;
     }
 
     public boolean learnedSwampbark() {

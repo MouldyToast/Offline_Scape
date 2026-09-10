@@ -2171,7 +2171,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             setFinished(true);
             World.updateEntityChunk(this, true);
             LocationMap.remove(this);
-            getInterfaceHandler().closeInterface(GameInterface.TOURNAMENT_SPECTATING);
             GlobalAreaManager.update(this, false, true);
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();

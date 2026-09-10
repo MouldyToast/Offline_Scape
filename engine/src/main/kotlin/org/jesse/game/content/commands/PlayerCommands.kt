@@ -44,15 +44,6 @@ object PlayerCommands {
 
 
 
-        Command(PlayerPrivilege.PLAYER, arrayOf("tourny", "tourney"), "Teleport to tournament area.") { p, _ ->
-            if (p.isLocked)
-                return@Command
-            val teleport = RegularTeleport(Location(3097, 3504, 0))
-            p.sendMessage("You teleport to the Tournament Guard.")
-            teleport.teleport(p)
-        }
-
-
         Command(PlayerPrivilege.PLAYER, "referral", "Enter your referral code.") { player, _ ->
             if (player.isLocked)
                 return@Command

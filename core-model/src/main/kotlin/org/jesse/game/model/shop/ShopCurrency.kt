@@ -36,9 +36,6 @@ enum class ShopCurrency(
     STARDUST(25527) {
         override fun toString(): String = "stardust"
     },
-    TOURNAMENT_POINTS(isStackable = false, isPhysical = false) {
-        override fun toString(): String = "tournament points"
-    },
     SLAYER_POINTS(isStackable = false, isPhysical = false) {
         override fun toString(): String = "slayer points"
     },

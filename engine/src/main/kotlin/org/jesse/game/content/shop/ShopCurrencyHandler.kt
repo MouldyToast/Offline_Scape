@@ -20,7 +20,6 @@ object ShopCurrencyHandler {
 
             ShopCurrency.BH_POINTS -> player.bountyHunterPoints
             ShopCurrency.LOYALTY_POINTS -> player.loyaltyManager.loyaltyPoints
-            ShopCurrency.TOURNAMENT_POINTS -> player.getNumericAttribute("tournament points").toInt()
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints.toInt()
             ShopCurrency.SLAYER_POINTS -> player.slayer.slayerPoints
             else -> {
@@ -43,7 +42,6 @@ object ShopCurrencyHandler {
                 val currentAmount = player.loyaltyManager.loyaltyPoints
                 player.loyaltyManager.setLoyaltyPoints(max(0, (currentAmount - amount)))
             }
-            ShopCurrency.TOURNAMENT_POINTS -> player.incrementNumericAttribute("tournament points", -amount)
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints -= amount
             ShopCurrency.SLAYER_POINTS -> player.slayer.setSlayerPoints(player.slayer.slayerPoints - amount, true)
             else -> {
@@ -66,7 +64,6 @@ object ShopCurrencyHandler {
                 val currentAmount = player.loyaltyManager.loyaltyPoints
                 player.loyaltyManager.setLoyaltyPoints(min((currentAmount + amount), Int.MAX_VALUE))
             }
-            ShopCurrency.TOURNAMENT_POINTS -> player.incrementNumericAttribute("tournament points", amount)
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints += amount
             ShopCurrency.SLAYER_POINTS -> player.slayer.setSlayerPoints(player.slayer.slayerPoints + amount, true)
             else -> {

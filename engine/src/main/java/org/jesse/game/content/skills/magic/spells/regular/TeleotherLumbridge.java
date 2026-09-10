@@ -41,10 +41,6 @@ public final class TeleotherLumbridge implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player isn't accepting aid.");
 			return false;
 		}
-        if (target.getDuel() != null) {
-            player.sendMessage("You cannot cast teleother spells on players within duels.");
-            return false;
-        }
 		if (target.getInterfaceHandler().containsInterface(InterfacePosition.CENTRAL)
 				|| target.getInterfaceHandler().containsInterface(InterfacePosition.CHATBOX)) {
 			player.sendMessage("The other player is busy.");

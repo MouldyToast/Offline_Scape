@@ -1,7 +1,6 @@
 package org.jesse.game.content.preset;
 
 import com.google.common.eventbus.Subscribe;
-import org.jesse.game.model.ui.testinterfaces.PresetManagerInterface;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.plugins.events.InitializationEvent;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -122,21 +121,6 @@ public class PresetManager {
 
     public int getUnlockedSlots() {
         return unlockedSlots;
-    }
-
-    public void loadLastPreset() {
-        final Player player = this.player.get();
-        if (player == null) {
-            return;
-        }
-
-        int index = player.getNumericAttributeOrDefault("last preset loaded", -1).intValue();
-        if (index <= -1) {
-            player.sendMessage("You haven't loaded a preset yet.");
-            return;
-        }
-
-        PresetManagerInterface.load(player, index);
     }
 
 }

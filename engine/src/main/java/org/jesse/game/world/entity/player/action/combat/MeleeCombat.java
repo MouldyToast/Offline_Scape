@@ -410,7 +410,7 @@ public class MeleeCombat extends PlayerCombat {
         }
         player.resetWalkSteps();
         final Location nextLocation = target.getLocation();
-        if (player.isProjectileClipped(target, extraSpace <= 0 && !(player.getDuel() != null && player.getDuel().inDuel())) || !(withinRange(target, extraSpace, target.getSize())) || target.hasWalkSteps() && (target instanceof Player || !CollisionUtil.collides(player.getX(), player.getY(), player.getSize(), nextLocation.getX(), nextLocation.getY(), target.getSize()))) {
+        if (player.isProjectileClipped(target, extraSpace <= 0) || !(withinRange(target, extraSpace, target.getSize())) || target.hasWalkSteps() && (target instanceof Player || !CollisionUtil.collides(player.getX(), player.getY(), player.getSize(), nextLocation.getX(), nextLocation.getY(), target.getSize()))) {
             appendWalksteps();
         }
         if (!player.hasWalkSteps() && !isWithinAttackDistance()) {
@@ -427,7 +427,7 @@ public class MeleeCombat extends PlayerCombat {
     protected boolean isWithinAttackDistance() {
         if(target instanceof NPC npc && hasManualDistanceDefined(npc))
             return checkManualDistance(npc);
-        if (target.checkProjectileClip(player, true) && isProjectileClipped(true, extraSpace <= 0 && !(player.getDuel() != null && player.getDuel().inDuel()))) {
+        if (target.checkProjectileClip(player, true) && isProjectileClipped(true, extraSpace <= 0)) {
             return false;
         }
         final Location nextTile = target.getNextLocation();

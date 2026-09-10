@@ -1,7 +1,6 @@
 package org.jesse.game.content.boss.zulrah;
 
 import org.jesse.game.content.achievementdiary.diaries.WesternProvincesDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.boss.zulrah.combat.*;
 import org.jesse.game.item.Item;
 import org.jesse.game.task.WorldTask;
@@ -325,7 +324,6 @@ public final class ZulrahNPC extends NPC {
 		super.onDeath(source);
 		if (source instanceof Player) {
 			player.getAchievementDiaries().update(WesternProvincesDiary.KILL_ZULRAH);
-			AdventCalendarManager.increaseChallengeProgress(player, 2022, 22, 1);
 
 			player.getCombatAchievements().checkKcTask("zulrah", 25, CAType.ZULRAH_ADEPT);
 			player.getCombatAchievements().checkKcTask("zulrah", 75, CAType.ZULRAH_VETERAN);

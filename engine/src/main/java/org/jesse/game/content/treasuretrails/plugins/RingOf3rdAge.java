@@ -36,10 +36,6 @@ public class RingOf3rdAge extends ItemPlugin {
     @Override
     public void handle() {
         bind("Wear", (player, item, container, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
-                player.sendMessage("You can't do this during a duel.");
-                return;
-            }
             if (player.getTemporaryAttributes().get("greegree") != null) {
                 player.sendMessage("You can't do that as a monkey!");
                 return;

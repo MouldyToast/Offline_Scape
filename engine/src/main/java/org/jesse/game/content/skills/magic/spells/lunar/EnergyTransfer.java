@@ -43,10 +43,6 @@ public final class EnergyTransfer implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player is not accepting aid.");
 			return false;
 		}
-		if (target.getDuel() != null) {
-			player.sendMessage("You cannot cast lunar spells on players within duels.");
-			return false;
-		}
 		final boolean inWilderness = WildernessArea.isWithinWilderness(target.getX(), target.getY());
 		if (inWilderness) {
 			if (!player.isMultiArea()) {

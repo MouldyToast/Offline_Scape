@@ -68,8 +68,6 @@ public class InterfaceHandler {
 		QUEST_TAB(1),
 		ACHIEVEMENT_DIARIES(2),
 		KOUREND(-1),
-		SERVER_EVENTS(4),// was adventure paths
-		GAME_NOTICEBOARD(5),
 		EXTRA(3),
 		;
 		public int id;
@@ -143,8 +141,7 @@ public class InterfaceHandler {
 		sendMisc();
 		openJournal();
 		ChatChannelPlayerExtKt.sendSocialTabs(player);
-		setJournal(Journal.GAME_NOTICEBOARD);
-		GameInterface.GAME_SETTINGS.open(player);
+		setJournal(Journal.CHARACTER_SUMMARY);
 		setNumberJournalTabs(player.getVarManager().getBitValue(9340));
 		if (player.isOnMobile()) {
 			player.getSettings().refreshSetting(Setting.MINIMIZE_MINIMAP);
@@ -163,12 +160,6 @@ public class InterfaceHandler {
 				break;
 			case CHARACTER_SUMMARY:
 				GameInterface.CHARACTER_SUMMARY.open(player);
-				break;
-			case GAME_NOTICEBOARD:
-				GameInterface.GAME_NOTICEBOARD.open(player);
-				break;
-			case SERVER_EVENTS:
-				GameInterface.SERVER_EVENTS.open(player);
 				break;
 			case EXTRA:
 				GameInterface.EXTRA_JOURNAL_TAB.open(player);
@@ -194,7 +185,6 @@ public class InterfaceHandler {
 		dispatcher.sendComponentSettings(399, 9, 0, EnumDefinitions.get(1376).getSize(), AccessMask.CLICK_OP1);
 		sendInterface(InterfacePosition.INVENTORY_TAB, 149);
 		sendInterface(InterfacePosition.EQUIPMENT_TAB, 387);
-		GameInterface.GAME_SETTINGS.open(player); //advanced settings tab
 		sendInterface(InterfacePosition.PRAYER_TAB, 541);
 		sendInterface(InterfacePosition.FRIENDS_TAB, 432);
 		sendInterface(InterfacePosition.LOGOUT_TAB, 182);
@@ -504,8 +494,6 @@ public class InterfaceHandler {
 			case CHARACTER_SUMMARY -> GameInterface.CHARACTER_SUMMARY.open(player);
 			case QUEST_TAB -> GameInterface.QUEST_TAB.open(player);
 			case ACHIEVEMENT_DIARIES -> GameInterface.ACHIEVEMENT_DIARY_TAB.open(player);
-			case GAME_NOTICEBOARD -> GameInterface.GAME_NOTICEBOARD.open(player);
-			case SERVER_EVENTS -> GameInterface.SERVER_EVENTS.open(player);
 			case EXTRA -> GameInterface.EXTRA_JOURNAL_TAB.open(player);
 		}
 	}
@@ -527,7 +515,7 @@ public class InterfaceHandler {
 		} else if (player.getInterfaceHandler().journal == InterfaceHandler.Journal.EXTRA) {
 			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY);
 		} else {
-			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.GAME_NOTICEBOARD);
+			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY);
 		}
 	}
 	public boolean isResizable() {

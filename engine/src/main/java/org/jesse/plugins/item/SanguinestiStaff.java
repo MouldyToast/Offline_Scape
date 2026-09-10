@@ -49,10 +49,6 @@ public class SanguinestiStaff extends ItemPlugin implements ChargeExtension {
             }
         });
         bind("Uncharge", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
-                player.sendMessage("You can't do this during a duel.");
-                return;
-            }
             player.getDialogueManager().start(new Dialogue(player) {
                 @Override
                 public void buildDialogue() {

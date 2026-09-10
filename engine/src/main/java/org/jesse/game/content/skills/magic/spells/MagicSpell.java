@@ -1,8 +1,6 @@
 package org.jesse.game.content.skills.magic.spells;
 
 import com.google.common.base.CaseFormat;
-import org.jesse.game.content.minigame.duelarena.Duel;
-import org.jesse.game.content.minigame.duelarena.DuelSetting;
 import org.jesse.game.content.skills.magic.SpellDefinitions;
 import org.jesse.game.content.skills.magic.Spellbook;
 import org.jesse.game.item.Item;
@@ -66,14 +64,6 @@ public interface MagicSpell extends Plugin {
 	}
 
 	default boolean canUse(final Player player) {
-		final Duel duel = player.getDuel();
-		if (duel == null) {
-			return true;
-		}
-		if (duel.hasRule(DuelSetting.NO_MAGIC)) {
-			player.sendMessage("You cannot use magic in a no-magic duel.");
-			return false;
-		}
 		return true;
 	}
 

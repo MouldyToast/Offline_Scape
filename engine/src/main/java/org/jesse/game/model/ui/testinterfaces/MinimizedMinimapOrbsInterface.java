@@ -5,8 +5,6 @@ import org.jesse.game.content.consumables.Consumable;
 import org.jesse.game.content.consumables.drinks.BarbarianMix;
 import org.jesse.game.content.consumables.drinks.Potion;
 import org.jesse.game.content.consumables.edibles.Food;
-import org.jesse.game.content.minigame.duelarena.Duel;
-import org.jesse.game.content.minigame.duelarena.DuelSetting;
 import org.jesse.game.content.skills.magic.Magic;
 import org.jesse.game.content.skills.magic.SpellState;
 import org.jesse.game.content.skills.magic.Spellbook;
@@ -57,11 +55,6 @@ public class MinimizedMinimapOrbsInterface extends Interface {
                 return;
             }
             if (player.isLocked()) {
-                return;
-            }
-            final Duel duel = player.getDuel();
-            if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
-                player.sendMessage("Use of special attacks has been turned off for this duel.");
                 return;
             }
             player.getCombatDefinitions().setSpecial(!player.getCombatDefinitions().isUsingSpecial(), false);

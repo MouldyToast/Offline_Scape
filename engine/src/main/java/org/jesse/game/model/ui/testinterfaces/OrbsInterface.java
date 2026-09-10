@@ -5,8 +5,6 @@ import org.jesse.game.content.consumables.Consumable;
 import org.jesse.game.content.consumables.drinks.BarbarianMix;
 import org.jesse.game.content.consumables.drinks.Potion;
 import org.jesse.game.content.consumables.edibles.Food;
-import org.jesse.game.content.minigame.duelarena.Duel;
-import org.jesse.game.content.minigame.duelarena.DuelSetting;
 import org.jesse.game.content.skills.magic.Magic;
 import org.jesse.game.content.skills.magic.SpellState;
 import org.jesse.game.content.skills.magic.Spellbook;
@@ -64,28 +62,8 @@ public class OrbsInterface extends Interface {
             if (player.isLocked()) {
                 return;
             }
-            final Duel duel = player.getDuel();
-            if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
-                player.sendMessage("Use of special attacks has been turned off for this duel.");
-                return;
-            }
             player.getCombatDefinitions().setSpecial(!player.getCombatDefinitions().isUsingSpecial(), false);
         });
-//        bind("Daily activity", (player, slotId, itemId, option) -> {
-//            if (WildernessArea.isWithinWilderness(player)) {
-//                player.sendMessage("You can't do that in the wilderness.");
-//                return;
-//            }
-//            if (player.isLocked()) {
-//                return;
-//            }
-//            final Duel duel = player.getDuel();
-//            if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
-//                player.sendMessage("Use of special attacks has been turned off for this duel.");
-//                return;
-//            }
-//            GameInterface.DAILY_CHALLENGES_OVERVIEW.open(player);
-//        });
         bind("Experience Tracker", (player, slotId, itemId, option) -> {
             if (option == 1) {
                 player.getSettings().toggleSetting(Setting.EXPERIENCE_TRACKER);

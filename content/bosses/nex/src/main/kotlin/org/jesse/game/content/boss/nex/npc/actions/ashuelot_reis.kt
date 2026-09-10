@@ -14,7 +14,6 @@ class AshuelotReisNpcaction : NPCActionScript() {
         npcs(ASHUELOT_REIS_11289)
 
         "Bank" { GameInterface.BANK.open(player) }
-        "Presets" { GameInterface.PRESET_MANAGER.open(player) }
         "Collect" { GameInterface.GRAND_EXCHANGE_COLLECTION_BOX.open(player)}
         "Talk-to" {
             player.dialogue(npc) {

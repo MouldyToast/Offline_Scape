@@ -51,10 +51,6 @@ public final class HealOther implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player is not accepting aid.");
 			return false;
 		}
-		if (target.getDuel() != null) {
-			player.sendMessage("You cannot cast lunar spells on players within duels.");
-			return false;
-		}
 		final int minimumRequired = (int) Math.ceil(player.getMaxHitpoints() * 0.11F);
 		if (player.getHitpoints() <= minimumRequired) {
 			player.sendMessage("You need more hitpoints to cast this spell.");

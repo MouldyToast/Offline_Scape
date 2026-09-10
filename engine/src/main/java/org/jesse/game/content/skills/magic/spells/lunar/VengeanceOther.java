@@ -48,10 +48,6 @@ public final class VengeanceOther implements PlayerSpell, NPCSpell {
 			player.sendMessage("The other player is not accepting aid.");
 			return false;
 		}
-		if (target.getDuel() != null) {
-			player.sendMessage("You cannot cast lunar spells on players within duels.");
-			return false;
-		}
 		final int vengDelay = player.getVariables().getTime(TickVariable.VENGEANCE);
 		if (vengDelay > 0) {
 			final int seconds = (int) Math.ceil(vengDelay * 0.6F);

@@ -34,7 +34,7 @@ public final class CureGroup implements DefaultSpell {
 			return false;
 		}
 		int count = 0;
-		final List<Player> characters = player.findCharacters(1, Player.class, p2 -> p2 != player && !p2.isDead() && p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) == 1 && p2.getDuel() == null && (p2.getToxins().isPoisoned() || p2.getToxins().isVenomed()));
+		final List<Player> characters = player.findCharacters(1, Player.class, p2 -> p2 != player && !p2.isDead() && p2.getVarManager().getBitValue(SettingVariables.ACCEPT_AID_VARBIT_ID) == 1 && (p2.getToxins().isPoisoned() || p2.getToxins().isVenomed()));
 		for (int i = characters.size() - 1; i >= 0; i--) {
 			final Player p2 = characters.get(i);
 			p2.setGraphics(GFX);

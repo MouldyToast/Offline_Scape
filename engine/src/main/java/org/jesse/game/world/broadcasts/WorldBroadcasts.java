@@ -11,7 +11,6 @@ import org.jesse.game.content.achievementdiary.AdventurersLogIcon;
 import org.jesse.game.content.follower.Pet;
 import org.jesse.game.content.follower.impl.BossPet;
 import org.jesse.game.content.minigame.inferno.model.InfernoCompletions;
-import org.jesse.game.content.serverevent.WorldBoost;
 import org.jesse.game.content.treasuretrails.rewards.BroadcastedTreasure;
 import org.jesse.game.content.vote.VoteHandler;
 import org.jesse.game.item.Item;
@@ -73,9 +72,6 @@ public class WorldBroadcasts {
 
 
     public static void onLogin(Player player) {
-        for (WorldBoost worldBoost : World.getWorldBoosts()) {
-            sendMessage(player, "World Boost active - " + worldBoost.getBoostType().getMssg(), worldBoost.getBoostType().getBroadcastType());
-        }
         if (VoteHandler.isBonusVote()) {
             player.sendMessage(VoteHandler.getBonusVoteMssg() + "|" + GameConstants.SERVER_VOTE_URL, MessageType.GLOBAL_BROADCAST);
         }

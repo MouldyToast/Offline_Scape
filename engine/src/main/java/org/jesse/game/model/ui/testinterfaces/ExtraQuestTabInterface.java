@@ -1,7 +1,6 @@
 package org.jesse.game.model.ui.testinterfaces;
 
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.serverevent.WorldBoost;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.model.ui.PaneType;
 import org.jesse.game.world.World;
@@ -9,7 +8,6 @@ import org.jesse.game.world.entity.player.Player;
 import org.jesse.utils.TimeUnit;
 
 import static org.jesse.game.GameInterface.EXTRA_JOURNAL_TAB;
-import static org.jesse.game.GameInterface.SERVER_EVENTS;
 
 public class ExtraQuestTabInterface extends Interface {
 

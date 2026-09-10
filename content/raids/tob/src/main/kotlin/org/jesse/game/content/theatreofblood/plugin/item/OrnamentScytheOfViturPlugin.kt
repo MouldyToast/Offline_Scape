@@ -42,10 +42,6 @@ class OrnamentScytheOfViturPlugin : ItemPlugin() {
 			}
 		}
 		bind("Uncharge") { player: Player, item: Item, slotId: Int ->
-			if (player.duel != null && player.duel.inDuel()) {
-				player.sendMessage("You can't do this during a duel.")
-				return@bind
-			}
 			player.dialogueManager.start(object : Dialogue(player) {
 				override fun buildDialogue() {
 					plain("You will not be able to re-obtain your vials of blood and blood runes.")

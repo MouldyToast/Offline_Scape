@@ -6,7 +6,6 @@ import org.jesse.game.world.entity.player.action.combat.AmmunitionDefinition;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
 import org.jesse.game.content.boss.phantommuspah.PhantomMuspah;
-import org.jesse.game.content.minigame.duelarena.Duel;
 import org.jesse.game.content.skills.prayer.Prayer;
 import org.jesse.game.content.tombsofamascut.AbstractTheatreNPC;
 import org.jesse.game.content.tombsofamascut.npc.AbstractTOANPC;
@@ -897,12 +896,7 @@ public class RangedCombat extends PlayerCombat {
             final Location location = new Location(target.getLocation());
             final Item item = new Item(ammo.getId());
             WorldTasksManager.schedule(() -> {
-                final Duel duel = player.getDuel();
-                if (duel != null) {
-                    duel.getAmmunitions().get(player).add(item);
-                } else {
-                    World.spawnFloorItem(item, !World.isFloorFree(location, 1) ? new Location(player.getLocation()) : location, 20, player, player, 300, 500);
-                }
+                World.spawnFloorItem(item, !World.isFloorFree(location, 1) ? new Location(player.getLocation()) : location, 20, player, player, 300, 500);
             }, delay);
         }
     }

@@ -1,7 +1,6 @@
 package org.jesse.game.content.boss.dagannothkings;
 
 import org.jesse.game.content.achievementdiary.diaries.FremennikDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.util.Direction;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.Projectile;
@@ -48,7 +47,6 @@ public class DagannothKing extends NPC implements Spawnable, CombatScript {
         if (source instanceof Player player) {
             final int flag = id == 2265 ? 1 : id == 2266 ? 2 : 4;
             player.getAchievementDiaries().update(FremennikDiary.KILL_DAGANNOTH_KINGS, flag);
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 10, 1);
         }
     }
 

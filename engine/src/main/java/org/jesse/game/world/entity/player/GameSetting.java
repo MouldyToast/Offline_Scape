@@ -84,8 +84,6 @@ public enum GameSetting {
         if (type.equals(SettingType.TOGGLE)) {
             if (this == HIDE_ITEMS_YOU_CANT_PICK && !player.isIronman()) {
                 player.sendMessage("This setting has no effect on non-ironman players.");
-                player.getPacketDispatcher().sendClientScript(10200, ordinal(), getName(), getDescription(),
-                        getType().ordinal(), player.getNumericAttribute(toString()).intValue());
                 return;
             }
             player.toggleBooleanAttribute(toString());
@@ -101,8 +99,6 @@ public enum GameSetting {
                 }
                 player.addAttribute(toString(), value);
                 var.updateSingle(player);
-                player.getPacketDispatcher().sendClientScript(10200, ordinal(), name, description, type.ordinal(),
-                        value);
             });
         }
     }

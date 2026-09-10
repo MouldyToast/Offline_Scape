@@ -53,7 +53,6 @@ public class GameConstants {
 
 	public static boolean ANTIKNOX = false;
 	public static boolean WHITELISTING = false;
-	public static boolean DUEL_ARENA = true;
 	public static boolean GROTESQUE_GUARDIANS = true;
 	public static boolean PURGING_CHUNKS = true;
 

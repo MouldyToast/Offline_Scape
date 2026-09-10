@@ -5,7 +5,6 @@ import org.jesse.game.model.item.pluginextensions.ItemPlugin;
 import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
 import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import org.jesse.plugins.PluginPriority;
-import org.jesse.plugins.interfaces.MysteryBoxInterface;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 /**
@@ -36,9 +35,6 @@ public class MysteryBox extends ItemPlugin {
 
     @Override
     public void handle() {
-        bind("Open", (player, item, container, slotId) -> MysteryBoxInterface.openBox(player, item.getId(), rewards, totalWeight, supplies));
-        bind("Quick-Open", (player, item, container, slotId) -> MysteryBoxInterface.openBoxQuick(player, item.getId(), rewards, totalWeight, supplies));
-
         rewards = new MysteryItem[] {
                 //Crystal Chest
                 new MysteryItem(6916, 1, 1, 500),

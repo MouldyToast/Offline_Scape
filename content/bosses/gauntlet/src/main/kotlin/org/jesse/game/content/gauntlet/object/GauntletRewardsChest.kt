@@ -3,7 +3,6 @@ package org.jesse.game.content.gauntlet.`object`
 import org.jesse.game.content.gauntlet.*
 import org.jesse.game.content.gauntlet.rewards.GauntletRewardType
 import org.jesse.game.content.gauntlet.rewards.GauntletRewards
-import org.jesse.game.content.advent.AdventCalendarManager
 import org.jesse.game.content.follower.impl.BossPet
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.*
@@ -76,7 +75,6 @@ class GauntletRewardsChest : ObjectAction {
                     WorldBroadcasts.broadcast(player, BroadcastType.RARE_DROP, item, "Gauntlet")
             }
 
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 20, 1)
 
             val coins = Item(995, if (gauntletType == GauntletType.CORRUPTED) Utils.random(50_000, 100_000) else Utils.random(10_000, 50_000))
             player.inventory.addOrDrop(coins)

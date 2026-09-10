@@ -3,7 +3,6 @@ package org.jesse.game.content.minigame.fightcaves;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
 import org.jesse.game.content.achievementdiary.diaries.KaramjaDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.follower.impl.BossPet;
 import org.jesse.game.content.minigame.fightcaves.npcs.FightCavesNPC;
 import org.jesse.game.content.minigame.fightcaves.npcs.TzTokJad;
@@ -317,9 +316,6 @@ public class FightCaves extends DynamicArea implements LogoutRestrictionPlugin, 
                     break;
                 }
             }
-        }
-        if (wave >= 32) {
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 19, 1);
         }
         final int roundsCompleted = (wave - 62);
         player.getDialogueManager().start(new NPCChat(player, 2180, wave >= 63 ? "You even defeated Tz Tok-Jad, I am most impressed! Please accept this gift as a reward." : roundsCompleted <= 1 ? "Well I suppose you tried... better luck next time." : "Well done in the cave, here, take Tokkul as reward."));

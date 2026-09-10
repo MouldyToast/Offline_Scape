@@ -6,7 +6,6 @@ import org.jesse.game.model.item.degrading.Degradeable;
 import org.jesse.game.model.item.leagues.raging_echo.EchoAxe;
 import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.content.achievementdiary.diaries.*;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.skills.firemaking.Firemaking;
 import org.jesse.game.content.skills.woodcutting.AxeDefinitions;
 import org.jesse.game.content.skills.woodcutting.TreeDefinitions;
@@ -276,7 +275,6 @@ public class Woodcutting extends Action {
             }
         }
 
-        AdventCalendarManager.increaseChallengeProgress(player, 2025, 17, 1);
         player.getSkills().addXp(SkillConstants.WOODCUTTING, experience);
         awardNest();
         rollOutfit();

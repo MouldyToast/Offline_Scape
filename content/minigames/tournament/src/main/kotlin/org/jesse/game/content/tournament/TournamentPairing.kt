@@ -45,7 +45,7 @@ class TournamentPair(
             player.tournamentSpectatorLocation = null
             player.interfaceHandler.closeInterface(GameInterface.TOURNAMENT_SPECTATING)
             restoreOriginalGameFrame(player)
-            GameInterface.GAME_NOTICEBOARD.open(player)
+            GameInterface.CHARACTER_SUMMARY.open(player)
             player.isHidden = false
             player.unlock()
             player.resetFreeze()

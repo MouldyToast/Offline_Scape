@@ -1,8 +1,6 @@
 package org.jesse.game.model.ui.testinterfaces;
 
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.minigame.duelarena.Duel;
-import org.jesse.game.content.minigame.duelarena.DuelSetting;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.world.entity.player.Player;
 
@@ -75,11 +73,6 @@ public class CombatTabInterface extends Interface {
         });
         bind("Special attack", player -> {
             if (player.isLocked()) {
-                return;
-            }
-            final Duel duel = player.getDuel();
-            if (duel != null && duel.hasRule(DuelSetting.NO_SPECIAL_ATTACK) && duel.inDuel()) {
-                player.sendMessage("Use of special attacks has been turned off for this duel.");
                 return;
             }
             player.getCombatDefinitions().setSpecial(!player.getCombatDefinitions().isUsingSpecial(), false);

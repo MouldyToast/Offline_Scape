@@ -236,11 +236,6 @@ object AdministratorCommands {
             p.sendMessage("GE is " + if (GrandExchange.ENABLED) "Enabled" else "Disabled")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "disableworldboosts") { p: Player, _: Array<String?>? ->
-            World.getWorldBoosts().clear()
-            p.sendMessage("World boosts cleared")
-        }
-
         Command(PlayerPrivilege.ADMINISTRATOR, "memory") { p: Player, args: Array<String?>? ->
             val runtime = Runtime.getRuntime()
             val totalMem = runtime.totalMemory()
@@ -306,10 +301,6 @@ object AdministratorCommands {
             player.sendMessage("Last packet received: " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - t.lastReceivedPacket) + " seconds ago")
             player.sendMessage("-------------------")
         })
-        Command(PlayerPrivilege.ADMINISTRATOR, "duelarena", "Toggle duel arena access.") { p: Player, _: Array<String?>? ->
-            GameConstants.DUEL_ARENA = !GameConstants.DUEL_ARENA
-            p.sendMessage("Duel Arena: " + GameConstants.DUEL_ARENA)
-        }
         Command(PlayerPrivilege.ADMINISTRATOR, "grots", "Toggle grotesque guardians.") { p: Player, _: Array<String?>? ->
             GameConstants.GROTESQUE_GUARDIANS = !GameConstants.GROTESQUE_GUARDIANS
             p.sendMessage("Grotesque Guardians: " + GameConstants.GROTESQUE_GUARDIANS)

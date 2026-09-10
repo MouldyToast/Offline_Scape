@@ -17,10 +17,6 @@ public class TridentOfTheSeas extends ItemPlugin {
                 @Override
                 public void buildDialogue() {
                     options(TITLE, new DialogueOption("Uncharge the trident. The coins won't be refunded.", () -> {
-                        if (player.getDuel() != null && player.getDuel().inDuel()) {
-                            player.sendMessage("You can't do this during a duel.");
-                            return;
-                        }
                         if (player.getInventory().getItem(slotId) == item) {
                             uncharge(player, item, slotId);
                         }

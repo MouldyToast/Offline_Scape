@@ -1,7 +1,6 @@
 package org.jesse.game.world.entity.npc.impl.kalphite;
 
 import org.jesse.game.content.achievementdiary.diaries.DesertDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.task.WorldTask;
@@ -90,7 +89,6 @@ public class KalphiteQueen extends NPC implements CombatScript, Spawnable {
             return;
         }
 
-        AdventCalendarManager.increaseChallengeProgress(killer, 2022, 5, 1);
         onDrop(killer);
         final List<DropProcessor> processors = DropProcessorLoader.get(id);
         if (processors != null) {

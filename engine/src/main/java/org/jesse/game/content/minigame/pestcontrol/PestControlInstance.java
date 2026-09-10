@@ -2,7 +2,6 @@ package org.jesse.game.content.minigame.pestcontrol;
 
 import org.jesse.cores.CoresManager;
 import org.jesse.game.content.achievementdiary.diaries.WesternProvincesDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.minigame.pestcontrol.npc.BrawlerNPC;
 import org.jesse.game.content.minigame.pestcontrol.npc.PestPortalNPC;
 import org.jesse.game.content.minigame.pestcontrol.npc.SpinnerNPC;
@@ -373,7 +372,6 @@ public final class PestControlInstance extends DynamicArea implements DeathPlugi
                 if (player.getCombatAchievements().hasTierCompleted(CATierType.EASY)) {
                     points += 1;
                 }
-                AdventCalendarManager.increaseChallengeProgress(player, 2022, 7, points);
                 player.addAttribute("pest_control_points", player.getNumericAttribute("pest_control_points").intValue() + points);
                 player.getInventory().addOrDrop(new Item(995, player.getSkills().getCombatLevel() * 250));
                 if (type.equals(PestControlGameType.NOVICE)) {

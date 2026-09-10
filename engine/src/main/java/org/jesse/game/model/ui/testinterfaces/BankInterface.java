@@ -99,7 +99,6 @@ public class BankInterface extends Interface implements SwitchPlugin {
             return;
         }
 
-        if (player.getDuel() != null) return;
 
         final var bank = player.getBank();
         final var dispatcher = player.getPacketDispatcher();
@@ -298,13 +297,6 @@ public class BankInterface extends Interface implements SwitchPlugin {
                     return Unit.INSTANCE;
                 })));
 
-        bind("Preset Manager", player -> {
-            if (player.getTemporaryAttributes().containsKey("viewing another bank")) {
-                return;
-            }
-            player.getInterfaceHandler().closeInterfaces();
-            GameInterface.PRESET_MANAGER.open(player);
-        });
         Enums.BANK_EQUIPMENT_TAB_SLOT_MAP.getValues().forEach((slot, component)
                 -> bind("Unequip slot " + slot, (player, slotId, itemId, optionId)
                 -> {

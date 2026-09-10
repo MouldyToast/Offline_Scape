@@ -2048,7 +2048,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     public String getDbUsername() {
-        return dbUsername;
+        // Never null: falls back to the in-game username when no account
+        // database is attached (offline/local worlds never set dbUsername).
+        return dbUsername != null ? dbUsername : getUsername();
     }
 
     public void setDbUsername(String dbUsername) {

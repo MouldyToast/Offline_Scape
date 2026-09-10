@@ -12,7 +12,7 @@ public enum RespawnPoint {
     FALADOR(new Location(2973, 3340, 0)),
     CAMELOT(new Location(2757, 3477, 0)),
     ARDOUGNE(new Location(2674, 3291, 0)),
-    EDGEVILLE(new Location(3108, 3474, 0));
+    EDGEVILLE(new Location(3087, 3489, 0));
 
     private final Location location;
 

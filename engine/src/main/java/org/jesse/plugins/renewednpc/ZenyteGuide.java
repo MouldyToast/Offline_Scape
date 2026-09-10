@@ -64,7 +64,7 @@ public class ZenyteGuide extends NPCPlugin {
             }
     };
 
-    public static final Location SPAWN_LOCATION = new Location(3090, 3497);
+    public static final Location SPAWN_LOCATION = new Location(3232, 3230);
     public static boolean disableJoinAnnouncement = false;
 
     public static void finishAppearance(final Player player) {

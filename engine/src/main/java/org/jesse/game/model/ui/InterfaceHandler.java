@@ -31,7 +31,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.jesse.game.GameInterface.EMOTE_TAB;
-import static org.jesse.game.world.entity.player.VarManager.appendPersistentVarbit;
 
 /**
  * @author Tommeh | 28 jan. 2018 : 21:24:02
@@ -39,10 +38,6 @@ import static org.jesse.game.world.entity.player.VarManager.appendPersistentVarb
  *      profile</a>}
  */
 public class InterfaceHandler {
-
-	static {
-		appendPersistentVarbit(9340, 4);
-	}
 
 	private static final IntSet EXPANDED_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {12, 139, 400, 345, 310, 700, 675, 724, 772, 774});
 	private static final IntSet EXPANDED_WIDTH_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {});
@@ -67,7 +62,6 @@ public class InterfaceHandler {
 		QUEST_TAB(1),
 		ACHIEVEMENT_DIARIES(2),
 		KOUREND(-1),
-		EXTRA(3),
 		;
 		public int id;
 		Journal(int id){
@@ -141,7 +135,6 @@ public class InterfaceHandler {
 		openJournal();
 		ChatChannelPlayerExtKt.sendSocialTabs(player);
 		setJournal(Journal.CHARACTER_SUMMARY);
-		setNumberJournalTabs(player.getVarManager().getBitValue(9340));
 		if (player.isOnMobile()) {
 			player.getSettings().refreshSetting(Setting.MINIMIZE_MINIMAP);
 		}
@@ -159,9 +152,6 @@ public class InterfaceHandler {
 				break;
 			case CHARACTER_SUMMARY:
 				GameInterface.CHARACTER_SUMMARY.open(player);
-				break;
-			case EXTRA:
-				GameInterface.EXTRA_JOURNAL_TAB.open(player);
 				break;
 		}
 	}
@@ -493,30 +483,9 @@ public class InterfaceHandler {
 			case CHARACTER_SUMMARY -> GameInterface.CHARACTER_SUMMARY.open(player);
 			case QUEST_TAB -> GameInterface.QUEST_TAB.open(player);
 			case ACHIEVEMENT_DIARIES -> GameInterface.ACHIEVEMENT_DIARY_TAB.open(player);
-			case EXTRA -> GameInterface.EXTRA_JOURNAL_TAB.open(player);
 		}
 	}
 
-	public void setNumberJournalTabs(int targetNumberTabs) {
-		if (targetNumberTabs > 6) {
-			targetNumberTabs = 6;
-		}
-		if(targetNumberTabs < 4) {
-			targetNumberTabs = 4;
-		}
-		int oldNumberTabs = player.getVarManager().getBitValue(9340);
-		player.getVarManager().sendBit(9340, targetNumberTabs);
-		if (oldNumberTabs > 4 && player.getInterfaceHandler().journal == InterfaceHandler.Journal.QUEST_TAB) {
-			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY);
-		}
-		if (targetNumberTabs == 6) {
-			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.EXTRA);
-		} else if (player.getInterfaceHandler().journal == InterfaceHandler.Journal.EXTRA) {
-			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY);
-		} else {
-			player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY);
-		}
-	}
 	public boolean isResizable() {
 		return resizable;
 	}

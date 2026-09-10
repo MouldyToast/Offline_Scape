@@ -4,11 +4,8 @@ import org.jesse.game.item.Item;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.logger.NearRealityLogger;
 import org.jesse.plugins.Plugin;
 import org.jesse.tools.DropUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,26 +19,17 @@ import java.util.function.BiPredicate;
  */
 public abstract class DropProcessor implements Plugin {
 
-	private static final Logger log = NearRealityLogger.getLogger(DropProcessor.class);
-	private final Long2ObjectOpenHashMap<PredicatedDrop> infoMap = new Long2ObjectOpenHashMap<>();
 	private final List<DisplayedDrop> basicDrops = new ArrayList<>();
 	private int[] allIds;
 
+	/** @deprecated Drop viewer removed — this is a no-op. Callers will be stripped in a follow-up. */
+	@Deprecated
 	public void put(final int npcId, final int id, final PredicatedDrop drop) {
-		if (infoMap.containsKey(id | ((long) npcId << 32L))) {
-			throw new RuntimeException("Overriding predicated drop. npc:"+npcId+" drop:"+id);
-		}
-		infoMap.put(id | ((long) npcId << 32L), drop);
 	}
 
+	/** @deprecated Drop viewer removed — this is a no-op. Callers will be stripped in a follow-up. */
+	@Deprecated
 	public void put(final int id, final PredicatedDrop drop) {
-		for (final int npcId : getAllIds()) {
-			if (infoMap.containsKey(id | ((long) npcId << 32L))) {
-                DropProcessor.log.warn("Overriding predicated drop {} for npc {}.", id, npcId);
-				continue;
-			}
-			infoMap.put(id | ((long) npcId << 32L), drop);
-		}
 	}
 
 	public int random(final int num) {
@@ -90,10 +78,6 @@ public abstract class DropProcessor implements Plugin {
 	}
 
 	public abstract int [] ids();
-
-	public Long2ObjectOpenHashMap<PredicatedDrop> getInfoMap() {
-		return infoMap;
-	}
 
 	public List<DisplayedDrop> getBasicDrops() {
 		return basicDrops;

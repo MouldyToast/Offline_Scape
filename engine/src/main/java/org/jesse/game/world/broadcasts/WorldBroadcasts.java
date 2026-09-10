@@ -48,7 +48,6 @@ public class WorldBroadcasts {
             "Did you know: " + GameConstants.SERVER_NAME + " has full RuneLite integration? You can click the wrench icon on the client to customize the RuneLite settings to your liking.",
             "Did you know: You can enable Two Factor Authentication (2FA) to prevent unauthorized logins to your accounts. Enable it in the Game noticeboard tab!",
             "Did you know: You can enable or disable level-up dialogues and broadcasts in the Game Settings menu in the Game Noticeboard Tab.",
-            "Did you know: You can view the drop rate of any monster or item using the Drop Viewer in your Game noticeboard tab.",
             "Did you know: You can easily access our Website, Forums, Discord and Store from your Game noticeboard tab.",
             "Did you know: Runecrafting yields double the normal amount of runes per essence in addition to multiple runes at certain Runecrafting levels.",
             "Did you know: You can change your displayed experience drops by right clicking the “XP orb and choosing ”XP multiplier.”",

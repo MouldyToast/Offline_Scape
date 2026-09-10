@@ -1,15 +1,10 @@
 package org.jesse.scripts.npc.drops
 
 import org.jesse.scripts.npc.NPCScript
-import org.jesse.scripts.npc.drops.table.DropTable
-import org.jesse.scripts.npc.drops.table.DropTableType
-import org.jesse.scripts.npc.drops.table.chance.RollItemChance
-import org.jesse.scripts.npc.drops.table.chance.RollTableChance
 import org.jesse.scripts.npc.drops.table.dsl.NpcDropTableBuilder
 import org.jesse.game.item.Item
 import org.jesse.game.world.entity.npc.NPC
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
-import org.jesse.game.world.entity.npc.spawns.NPCSpawnLoader
 import org.jesse.game.world.entity.player.Player
 import org.jesse.plugins.PluginPriority
 import it.unimi.dsi.fastutil.ints.IntArraySet
@@ -61,11 +56,6 @@ abstract class NPCDropTableScript : NPCScript, DropProcessor() {
 
 
     /**
-     * Optional provider of [org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop.information].
-     */
-    lateinit var viewerInfoProvider: RollItemChance.(DropTableType) -> String?
-
-    /**
      * Lazy property for [NpcDropTableBuilder].
      */
     private val tableBuilder by lazy {
@@ -92,15 +82,6 @@ abstract class NPCDropTableScript : NPCScript, DropProcessor() {
         onDeathHandler = handler
     }
 
-    inline fun<reified T : RollItemChance> provideInfo(crossinline provider: T.(DropTableType) -> String?) {
-        viewerInfoProvider = {
-            if (this is T) {
-                provider(this, it)
-            } else
-                null
-        }
-    }
-
     var override: Boolean = false
     /**
      * Sets the [denominator]
@@ -112,43 +93,8 @@ abstract class NPCDropTableScript : NPCScript, DropProcessor() {
     }
 
     override fun attach() {
-
-        NPCSpawnLoader.dropViewerNPCs.addAll(npcs)
-
-        for ((type, table) in tableBuilder.staticTables) {
-
-            table.toDisplayedDrops().forEach(::appendDrop)
-
-            addDropViewerInfo(table, type)
-        }
-
         if (this::onAttachHandler.isInitialized)
             onAttachHandler()
-    }
-
-    private fun addDropViewerInfo(
-        table: DropTable,
-        type: DropTableType,
-        depth: Int = 0
-    ) {
-        if (depth > 100)
-            error("Too deep nesting level ($depth) $type - $table (make sure there is no self-reference)")
-        for (chance in table.allRolls) {
-            if (chance is RollItemChance) {
-                if (chance.hasDropViewerInfo()) {
-                    chance.ifHasDropViewerInfo {
-                        put(chance.id, PredicatedDrop(it))
-                    }
-                } else if (this::viewerInfoProvider.isInitialized) {
-                    val info = viewerInfoProvider(chance, type)
-                    if (info != null) {
-
-                        put(chance.id, PredicatedDrop(info))
-                    }
-                }
-            } else if (chance is RollTableChance)
-                addDropViewerInfo(chance.dropTable.staticTable, type, depth + 1)
-        }
     }
 
     override fun onDeath(npc: NPC, killer: Player) {

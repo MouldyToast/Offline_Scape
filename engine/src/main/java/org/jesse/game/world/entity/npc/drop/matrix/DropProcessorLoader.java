@@ -17,7 +17,6 @@ public enum DropProcessorLoader {
 
     private static final Logger log = NearRealityLogger.getLogger(DropProcessorLoader.class);
     private static final Int2ObjectMap<List<DropProcessor>> mappedByNPC = new Int2ObjectOpenHashMap<>();
-    private static final Int2ObjectMap<List<DropProcessor>> mappedByItem = new Int2ObjectOpenHashMap<>();
 
     public static List<DropProcessor> get(final int npcID) {
         return mappedByNPC.get(npcID);
@@ -25,14 +24,6 @@ public enum DropProcessorLoader {
 
     public static Int2ObjectMap<List<DropProcessor>> getProcessors() {
         return mappedByNPC;
-    }
-
-    public static boolean contains(final int itemId) {
-        return mappedByItem.containsKey(itemId);
-    }
-
-    public static List<DropProcessor> getByItem(final int itemId) {
-        return mappedByItem.get(itemId);
     }
 
     public static void add(final Class<?> c) {
@@ -47,18 +38,9 @@ public enum DropProcessorLoader {
                 }
                 list.add(dropProcessor);
             }
-            for (final DropProcessor.DisplayedDrop drop : dropProcessor.getBasicDrops()) {
-                final int itemID = drop.getId();
-
-                List<DropProcessor> list = mappedByItem.get(itemID);
-                if (list == null) {
-                    mappedByItem.put(itemID, list = new ObjectArrayList<>());
-                }
-                list.add(dropProcessor);
-            }
         } catch (final Exception e) {
             log.error("Failed to attach drop processor " + c.getName()
-                    + " - its drops will be missing from drop tables and the drop viewer.", e);
+                    + " - its drops will be missing from drop tables.", e);
         }
     }
 

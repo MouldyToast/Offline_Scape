@@ -1,7 +1,6 @@
 package org.jesse.game.content
 
 import org.jesse.scripts.npc.drops.table.always
-import org.jesse.scripts.npc.drops.table.chance.immutable.StaticRollItemChance
 import org.jesse.scripts.npc.drops.table.dsl.StandaloneDropTableBuilder
 import org.jesse.scripts.npc.drops.table.noted
 import org.jesse.scripts.npc.drops.table.tables.rare.RareDropTable
@@ -15,7 +14,6 @@ import org.jesse.scripts.npc.drops.table.DropTableType.*
 import org.jesse.game.world.entity.npc.drop.matrix.Drop
 import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
-import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.PredicatedDrop
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 
 class ZulrahDroptable : NPCDropTableScript() {
@@ -56,13 +54,6 @@ class ZulrahDroptable : NPCDropTableScript() {
                 rollStaticTableAndDropBelowPlayer(killer, type = Unique)
             }
             rollStaticTableAndDropBelowPlayer(killer, type = Tertiary)
-        }
-
-        provideInfo<StaticRollItemChance> { table ->
-            if (table != Always && table != Tertiary)
-                "Zulrah rolls twice on the main drop table.<br>The rate above is for a single roll."
-            else
-                null
         }
 
         buildTable {

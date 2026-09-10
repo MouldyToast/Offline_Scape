@@ -884,8 +884,6 @@ public class TypeParser {
     }
 
     private static void packMaps(final ExecutorService service) throws IOException {
-        packMapPre209(10388, java.nio.file.Files.readAllBytes(Paths.get("assets/map/yanille/328.dat")),
-                java.nio.file.Files.readAllBytes(Paths.get("assets/map/yanille/329.dat")));
         packMapPre209(11567, null,
                 Regions.inject(11567, null, new WorldObject(187, 10, 1, new Location(2919, 3054, 0))));
         packMapPre209(11595, null,
@@ -902,16 +900,6 @@ public class TypeParser {
                 Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_objects.dat")), null,
                         new WorldObject(35006, 10, 1, new Location(3363, 7465, 0)),
                         new WorldObject(35007, 10, 0, new Location(3352, 7465, 0))));
-        packMapsRSPSi(14388, "assets/map/Meiyerditch.pack");
-
-        packMapsRSPSi(6457, "assets/map/kourend_castle.pack");
-        packMapsRSPSi(10803, "assets/map/witchaven.pack");
-
-
-
-        packMapsRSPSi(12854, "assets/map/varrock_topr.pack");
-
-
         KeepSetDefinitionOverrides.applyMapEdits();
     }
 

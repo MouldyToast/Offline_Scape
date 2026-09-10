@@ -8,7 +8,6 @@ import com.fasterxml.jackson.dataformat.toml.TomlFactory;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jesse.cache.interfaces.teleports.packing.TeleportsPacker;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
 import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
 import org.jesse.cache_tool.packing.custom.NearRealityCustomMapsPacker;
@@ -165,14 +164,12 @@ public class TypeParser {
                         Definitions.cacheLowPriorityDefinitions)
         );
         packClientBackground();
-        packSprites();
         packClientScripts();
         packInvs();
         packInterfaces();
         packStructs();
         packParams();
         packMaps(service);
-        TeleportsPacker.pack();
         increaseVarclientAmount();
         KeepSetDefinitionOverrides.packObjects();
         if (ENABLED_MAP_PACKING) {
@@ -381,27 +378,6 @@ public class TypeParser {
         sprite.setHeight(image.getHeight());
         sprite.setImage(0, image);
         sprite.pack();
-    }
-
-    private static void packSprites() throws IOException {
-        for (final File file : Objects
-                .requireNonNull(Paths.get("assets/sprites/spellbook_teleport").toFile().listFiles())) {
-            try {
-                final String[] split = file.getName().replace(".png", "").split("_");
-                final int groupId = Integer.parseInt(split[0]);
-                final int spriteId = Integer.parseInt(split[1]);
-                final BufferedImage image = ImageIO.read(file);
-                final SpriteGroupDefinitions sprite = new SpriteGroupDefinitions(groupId, image.getWidth(),
-                        image.getHeight());
-                sprite.setWidth(image.getWidth());
-                sprite.setHeight(image.getHeight());
-                sprite.setImage(spriteId, image);
-                sprite.pack();
-            } catch (Exception e) {
-                System.err.println("Could not pack sprite '" + file + "'");
-                e.printStackTrace(System.err);
-            }
-        }
     }
 
     private static void packDynamicConfigs() {

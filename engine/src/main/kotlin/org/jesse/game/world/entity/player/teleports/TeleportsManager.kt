@@ -2,7 +2,6 @@ package org.jesse.game.world.entity.player.teleports
 
 import org.jesse.cache.interfaces.teleports.Category
 import org.jesse.cache.interfaces.teleports.Destination
-import org.jesse.game.GameInterface
 import org.jesse.game.model.ui.InterfacePosition
 import org.jesse.game.world.entity.player.Player
 
@@ -31,7 +30,6 @@ class TeleportsManager(
 
     fun setPreviousTeleport(destination: Destination) {
         previousDestination = destination
-        player.packetDispatcher.sendClientScript(10592, destination.name)
     }
 
     fun attemptTeleport(destination: Destination) {
@@ -46,14 +44,6 @@ class TeleportsManager(
         }
 
         DestinationTeleport(destination).teleport(player)
-    }
-
-    fun attemptOpen() {
-        if (player.isLocked) {
-            player.sendMessage("You can't do that right now.")
-            return
-        }
-        GameInterface.TELEPORTS.open(player)
     }
 
     fun updateFavorites() {

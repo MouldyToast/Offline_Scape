@@ -18,7 +18,6 @@ public class ChatInterface extends Interface {
         put(19, "Set channel filter");
         put(23, "Set clan filter");
         put(27, "Set group filter");
-        put(31, "Report button");
     }
 
     @Override
@@ -43,9 +42,6 @@ public class ChatInterface extends Interface {
             if (option >= 3 && option <= 5) {
                 player.getSettings().setSetting(Setting.CLAN_FILTER, option - 3);
             }
-        });
-        bind("Report button", (player, slotId, itemId, option) -> {
-            GameInterface.TELEPORTS.open(player);
         });
     }
 

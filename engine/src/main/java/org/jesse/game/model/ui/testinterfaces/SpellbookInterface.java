@@ -1,7 +1,5 @@
 package org.jesse.game.model.ui.testinterfaces;
 
-import org.jesse.cache.interfaces.teleports.Category;
-import org.jesse.cache.interfaces.teleports.TeleportsList;
 import org.jesse.game.content.bountyhunter.WildyExtKt;
 import org.jesse.game.content.bountyhunter.teleport.TeleportToTarget;
 import org.jesse.game.GameInterface;
@@ -116,16 +114,6 @@ public class SpellbookInterface extends Interface {
             final String option = getOptionString(componentId, optionId);
 
             final String spellName = SpellDefinitions.getSpellName(componentId);
-            if (spellName != null) {
-                final Category category = TeleportsList.getCategories().get(spellName.toLowerCase());
-                if (category != null) { // instead of executing the spell, open the respective category.
-                    player.getVarManager().sendVar(261, category.getId());
-                    player.getTeleportsManager().setSelectedCategory(category);
-                    player.getTeleportsManager().attemptOpen();
-                    return;
-                }
-            }
-
             final DefaultSpell spell = Magic.getSpell(player.getCombatDefinitions().getSpellbook(), spellName, DefaultSpell.class);
             //The below block prevents flapping on the home teleport spell when multi-clicking it.
             if (spell != null

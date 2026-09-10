@@ -1,7 +1,6 @@
 package org.jesse.game.world.entity.player.variables;
 
 import com.google.common.eventbus.Subscribe;
-import org.jesse.game.content.bountyhunter.WildyExtKt;
 import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.world.entity.player.SkillRestoration;
 import org.jesse.Main;
@@ -96,7 +95,6 @@ public final class PlayerVariables {
         enhancedStewTick = copy.enhancedStewTick;
         thrallDamageDone = copy.thrallDamageDone;
         pvmArenaBoosterTick = copy.pvmArenaBoosterTick;
-        bountyHunterSkipTick = copy.bountyHunterSkipTick;
     }
 
     private transient long lastClanKick;
@@ -146,7 +144,6 @@ public final class PlayerVariables {
     private transient int cycle = calculateCycle();
     private int enhancedStewTick;
     private int pvmArenaBoosterTick;
-    private int bountyHunterSkipTick;
 
     private void resetCharacterSaveTimer() {
         nextScheduledCharacterSave = GameConstants.WORLD_PROFILE.isDevelopment() ? (int) TimeUnit.SECONDS.toTicks(15) : ((int) TimeUnit.MINUTES.toTicks(1));
@@ -304,13 +301,6 @@ public final class PlayerVariables {
                         }
                     }
                 }
-            }
-        }
-        if (bountyHunterSkipTick > 0) {
-            bountyHunterSkipTick--;
-            if (bountyHunterSkipTick == 0) {
-                player.sendMessage("Your Bounty Hunter skip count has been reset.");
-                WildyExtKt.resetBountySkipCounter(player);
             }
         }
         if (enhancedStewTick > 0) {
@@ -795,13 +785,6 @@ public final class PlayerVariables {
         this.pvmArenaBoosterTick = pvmArenaBoosterTick;
     }
 
-    public int getBountyHunterSkipTick() {
-        return bountyHunterSkipTick;
-    }
-
-    public void setBountyHunterSkipTick(int bountyHunterSkipTick) {
-        this.bountyHunterSkipTick = bountyHunterSkipTick;
-    }
 
     public boolean isTeleBlocked() {
         return getTime(TickVariable.TELEBLOCK) > 0;

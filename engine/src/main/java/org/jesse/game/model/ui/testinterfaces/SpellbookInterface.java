@@ -1,7 +1,5 @@
 package org.jesse.game.model.ui.testinterfaces;
 
-import org.jesse.game.content.bountyhunter.WildyExtKt;
-import org.jesse.game.content.bountyhunter.teleport.TeleportToTarget;
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.skills.magic.Magic;
 import org.jesse.game.content.skills.magic.SpellDefinitions;
@@ -12,7 +10,6 @@ import org.jesse.game.content.skills.magic.spells.regular.EnchantCrossbowBolt;
 import org.jesse.game.content.skills.magic.spells.regular.Lvl1Enchant;
 import org.jesse.game.content.skills.magic.spells.teleports.SpellbookTeleport;
 import org.jesse.game.content.skills.magic.spells.teleports.structures.HomeStructure;
-import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingsInterface;
 import org.jesse.game.util.AccessMask;
@@ -25,7 +22,6 @@ import org.slf4j.Logger;
 
 import java.util.Objects;
 
-import static org.jesse.game.world.entity.player.container.RequestResult.SUCCESS;
 
 /**
  * @author Kris | 07/01/2019 15:01
@@ -83,26 +79,6 @@ public class SpellbookInterface extends Interface {
         bind("Show spells you lack the runes to cast", player -> player.getSettings().toggleSetting(Setting.SHOW_SPELLS_YOU_LACK_THE_RUNES_TO_CAST));
         bind("Show spells you lack the requirements to cast", player -> player.getSettings().toggleSetting(Setting.SHOW_SPELLS_YOU_LACK_THE_REQUIREMENTS_TO_CAST));
         bind("Enable icon resizing", player -> player.getSettings().toggleSetting(Setting.ENABLE_ICON_RESIZING));
-        bind("Teleport to Target", player -> {
-            var reqRunes = new Item[] {
-                new Item(Magic.LAW_RUNE, 1), new Item(Magic.CHAOS_RUNE, 1), new Item(Magic.DEATH_RUNE, 1)
-            };
-            if (player.getInventory().containsItems(reqRunes)) {
-                if (player.getInventory().deleteItems(reqRunes).getResult() == SUCCESS) {
-                    if (WildyExtKt.isBountyPaired(player)) {
-                        if (TeleportToTarget.Companion.canTeleportToTarget(player))
-                            TeleportToTarget.Companion.teleportToTarget(player);
-                        else
-                            player.sendMessage("You cannot teleport to your target right now.");
-                    }
-                    else
-                        player.sendMessage("You do not have a target to teleport right now.");
-                }
-            }
-            else
-                player.sendMessage("You do not have the required runes to cast this spell.");
-
-        });
     }
 
     @Override

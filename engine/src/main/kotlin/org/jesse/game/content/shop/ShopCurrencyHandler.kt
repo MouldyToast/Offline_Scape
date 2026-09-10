@@ -1,7 +1,6 @@
 package org.jesse.game.content.shop
 
 import org.jesse.api.service.vote.totalVoteCredits
-import org.jesse.game.world.entity.player.bountyHunterPoints
 import org.jesse.game.world.entity.player.pvmArenaPoints
 
 import org.jesse.game.item.Item
@@ -18,7 +17,6 @@ object ShopCurrencyHandler {
         return when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits
 
-            ShopCurrency.BH_POINTS -> player.bountyHunterPoints
             ShopCurrency.LOYALTY_POINTS -> player.loyaltyManager.loyaltyPoints
             ShopCurrency.PVM_ARENA_POINTS -> player.pvmArenaPoints.toInt()
             ShopCurrency.SLAYER_POINTS -> player.slayer.slayerPoints
@@ -36,7 +34,6 @@ object ShopCurrencyHandler {
     fun remove(type: ShopCurrency, player: Player, amount: Int) {
         when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits -= amount
-            ShopCurrency.BH_POINTS -> player.bountyHunterPoints -= amount
 
             ShopCurrency.LOYALTY_POINTS -> {
                 val currentAmount = player.loyaltyManager.loyaltyPoints
@@ -58,7 +55,6 @@ object ShopCurrencyHandler {
     fun add(type: ShopCurrency, player: Player, amount: Int) {
         when(type) {
             ShopCurrency.VOTE_POINTS -> player.totalVoteCredits += amount
-            ShopCurrency.BH_POINTS -> player.bountyHunterPoints += amount
 
             ShopCurrency.LOYALTY_POINTS -> {
                 val currentAmount = player.loyaltyManager.loyaltyPoints

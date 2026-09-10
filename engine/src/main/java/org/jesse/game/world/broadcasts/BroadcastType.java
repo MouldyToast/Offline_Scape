@@ -35,7 +35,6 @@ public enum BroadcastType {
     MALEDICTUS("e59400", 68, Optional.empty()),
     COLOSSAL_CHICKEN("e59400", 13, Optional.empty()),
     PVM_ARENA("e59400", 13, Optional.empty()),
-    BOUNTY_HUNTER("e59400", 57, Optional.empty()),
     BREACHES("FC02E7", -1, Optional.empty()),
     ;
 

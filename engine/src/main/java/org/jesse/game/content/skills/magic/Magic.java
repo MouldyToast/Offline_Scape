@@ -59,12 +59,6 @@ public final class Magic {
 			if (c.isEnum()) {
 				final MagicSpell[] possibleValues = c.getEnumConstants();
 				for (final MagicSpell spell : possibleValues) {
-					if (spell == SpellbookTeleport.TELEPORT_TO_BOUNTY_TARGET) {
-						for (final Spellbook spellbook : Spellbook.VALUES) {
-							spellbook.getSpellCollection().put(spell.getSpellName(), spell);
-						}
-						continue;
-					}
 					final Spellbook spellbook = spell.getSpellbook();
 					if (spellbook == null) {
 						continue;

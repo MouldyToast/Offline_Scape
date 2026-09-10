@@ -2,7 +2,6 @@ package org.jesse.game.content.skills.magic.spells.teleports;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Preconditions;
-import org.jesse.game.content.bountyhunter.teleport.TeleportToTarget;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
 import org.jesse.game.content.skills.magic.Magic;
@@ -19,7 +18,6 @@ import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.entity.player.privilege.MemberRank;
 import org.jesse.plugins.dialogue.PlainChat;
 
-import static org.jesse.game.content.bountyhunter.BountyHunter.TELEPORT_TO_TARGET_UNLOCKED_VAR;
 import static org.jesse.game.content.skills.magic.Spellbook.*;
 import static org.jesse.game.content.skills.magic.spells.teleports.TeleportType.*;
 
@@ -177,32 +175,6 @@ public enum SpellbookTeleport implements TeleportSpell, Teleport {
 			return "FENKENSTRAIN'S_CASTLE_TELEPORT";
 		}
 	},
-	TELEPORT_TO_BOUNTY_TARGET(NORMAL, BOUNTY_TARGET_TELEPORT, 45, null, true) {
-		@Override
-		public Item[] getRunes() {
-			return new Item[] {
-				new Item(Magic.LAW_RUNE, 1), new Item(Magic.CHAOS_RUNE, 1),
-				new Item(Magic.DEATH_RUNE, 1)
-			};
-		}
-
-		@Override
-		public int getLevel() {
-			return 85;
-		}
-
-		@Override
-		public void teleport(final Player player) {
-			TeleportToTarget.Companion.teleportToTarget(player);
-		}
-
-		@Override
-		public boolean canCast(final Player player) {
-			return player.getCombatDefinitions().getSpellbook() == NORMAL &&
-				player.getVarManager().getBitValue(TELEPORT_TO_TARGET_UNLOCKED_VAR) == 1 &&
-				TeleportToTarget.Companion.canTeleportToTarget(player);
-		}
-	},
 	;
 
 	private final double experience;
@@ -344,9 +316,6 @@ public enum SpellbookTeleport implements TeleportSpell, Teleport {
 
 		int structId = -1;
 		switch (this) {
-			case TELEPORT_TO_BOUNTY_TARGET:
-				structId = SettingStructs.SHOW_WARNING_WHEN_CASTING_TELEPORT_TO_TARGET_STRUCT_ID;
-				break;
 			case DAREEYAK_TELEPORT:
 				structId = SettingStructs.SHOW_WARNING_WHEN_CASTING_DAREEYAK_TELEPORT_STRUCT_ID;
 				break;

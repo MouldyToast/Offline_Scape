@@ -18,7 +18,6 @@ public enum TeleportType {
 	ARCEUUS_TELEPORT(new ArceuusStructure()),
 	NEAR_REALITY_PORTAL_TELEPORT(new RegularStructure()),
 	RESPAWN_POINT_TELEPORT(new RespawnPointStructure()),
-	BOUNTY_TARGET_TELEPORT(new BountyTargetStructure()),
 	HOUSE_TELEPORT(new HouseStructure()),
 	TELEOTHER_TELEPORT(new TeleotherStructure()),
 	GROUP_TELEPORT(new GroupStructure()),

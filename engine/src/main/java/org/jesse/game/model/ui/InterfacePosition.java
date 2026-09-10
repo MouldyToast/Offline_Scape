@@ -13,7 +13,6 @@ public enum InterfacePosition {
 	CHATBOX(96, 162, true),                  // was 94, now CHATBOX = 96
 	PRIVATE_CHAT(93, 163, true),              // was 91, updated to SPLIT_CHAT's value (93)
 	WILDERNESS_OVERLAY(3, true),              // remains 3 (FULL_OVERLAY_2)
-	BH_OVERLAY(5, true),                      // remains 5 (STAT_BOOST_HUD)
 	ORBS(33, true),                         // was 32, now updated to 33
 	SKILLS_TAB(77, 320, true),                // was 76, now 77
 	JOURNAL_TAB_HEADER(78, 629, true),        // was 77, now ACTIVE_JOURNAL_TAB = 28

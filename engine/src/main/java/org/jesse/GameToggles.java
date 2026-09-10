@@ -6,5 +6,4 @@ public class GameToggles {
     public static final boolean NEW_PLAYER_BROADCAST_DISABLED = true;
 
     public static boolean COX_MASSES_ENABLED = true;
-    public static boolean BH2020_ENABLED = true;
 }

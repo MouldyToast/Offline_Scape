@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player
 
-import org.jesse.game.content.bountyhunter.BountyHunterWildernessRange
 import org.jesse.game.util.Ticker
 import org.jesse.game.item.Item
 import org.jesse.game.world.entity.Entity
@@ -32,26 +31,6 @@ var Player.slayerBaseDryStreak by persistentAttribute("slayer_base_dry_streak", 
 var Player.slayerShaftDryStreak by persistentAttribute("slayer_shaft_dry_streak", 0)
 var Player.slayerLeftBoneDryStreak by persistentAttribute("slayer_left_bone_dry_streak", 0)
 var Player.slayerRightBoneDryStreak by persistentAttribute("slayer_right_bone_dry_streak", 0)
-/* Bounty Hunter Start */
-
-var Player.bountyHunterPoints: Int by persistentAttribute("bountyHunterPoints", 0)
-var Player.bountyHunterCurrentWildernessRange: BountyHunterWildernessRange? by attribute("bountyHunterWildernessRange", null)
-var Player.bountyAbandonedTicker: Ticker by attribute("bhTicker", Ticker(100, active = false, resetAutomatically = true, defaultsToInactive = true))
-var Player.bountyEarningPotentialTicker: Ticker by attribute("bh_ep_ticker", Ticker(50, active = true, resetAutomatically = true, defaultsToInactive = true))
-var Player.bountyEarningPotentialDeathTicker: Ticker by attribute("bh_ep_death_ticker", Ticker(1500, active = true, resetAutomatically = false, defaultsToInactive = true))
-var Player.bountyHunterInfoDisplay: Int by persistentAttribute("bountyHunterInfoDisplayIdx", 0)
-var Player.bountyHunterInterfaceRateLimit: Int by attribute("bountyHunterRateLimit", 0)
-var Player.bountyHunterInfoCooldown: Int by attribute("bountyHunterInfoCooldown", 0)
-var Player.bountyHunterKills: Int by persistentAttribute("bountyHunterKills", 0)
-var Player.bountyHunterDeaths: Int by persistentAttribute("bountyHunterDeaths", 0)
-var Player.bountyHunterKillstreak: Int by persistentAttribute("bountyHunterKillstreak", 0)
-var Player.bountyHunterSkipCount: Int by persistentAttribute("bountyHunterSkipCount", 0)
-var Player.bountyHunterLastTarget: String by persistentAttribute("bountyHunterLastTarget", "")
-var Player.bountyTargetLevelRange : Int by persistentAttribute("bounty_hunter_target_range", 5)
-var Player.bountyHunterEarningPotential: Int by persistentAttribute("bounty_hunter_earning_potential", 0)
-var Player.bountyHunterEarningPotentialDeathEarned: Int by persistentAttribute("bounty_hunter_earning_potential_death_modifier", 0)
-
-/* Bounty Hunter End */
 
 /* Scar Essence Mine */
 var Player.scarEssenceMineCoffer: Int by persistentAttribute("scarEssenceMineCoffer", 0)

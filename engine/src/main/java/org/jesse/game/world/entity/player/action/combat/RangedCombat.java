@@ -204,11 +204,6 @@ public class RangedCombat extends PlayerCombat {
             maxhit *= 1.05;
         }
 
-        float bountyBoost = determineBountyHunterDmgBoost(player, target);
-        if (bountyBoost != 0) {
-            maxhit *= 1 + bountyBoost;
-        }
-
         double crystalBonus = CrystalArmour.Companion.getTotalDamageBonus(player);
         if (crystalBonus != 0) {
             maxhit *= 1 + crystalBonus;
@@ -361,7 +356,6 @@ public class RangedCombat extends PlayerCombat {
         gearBonus += determineDraconicBoost(player, target);
         gearBonus += determineForinthrySurge(player, target);
         gearBonus += (float) CrystalArmour.Companion.getTotalAccuracyBonus(player);
-        gearBonus += determineBountyHunterAccBoost(player, target);
         gearBonus += determineDemonicBoost(player, target);
 
         if (CombatUtilities.applyPvmArenaBoost(player, target)) {

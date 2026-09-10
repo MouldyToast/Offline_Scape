@@ -81,7 +81,6 @@ public class MeleeCombat extends PlayerCombat {
             boost += 0.15F;
         if (CombatUtilities.applyPvmArenaBoost(player, target))
             boost += 0.05F;
-        boost += determineBountyHunterDmgBoost(player, target);
         if (attackType == AttackType.CRUSH)
             boost += CombatUtilities.getInquisitorSetBoost(player);
         final double a = (Math.floor(player.getSkills().getLevel(SkillConstants.STRENGTH) * player.getPrayerManager().getSkillBoost(SkillConstants.STRENGTH)) + (attackExperienceType == STRENGTH_XP ? 3 : attackExperienceType == SHARED_XP ? 1 : 0) + 8) * (boost);
@@ -201,7 +200,6 @@ public class MeleeCombat extends PlayerCombat {
             boost += 0.15F;
         if (CombatUtilities.applyPvmArenaBoost(player, target))
             boost += 0.05F;
-        boost += determineBountyHunterAccBoost(player, target);
         final double a = Math.floor(Math.floor(player.getSkills().getLevel(SkillConstants.ATTACK) * player.getPrayerManager().getSkillBoost(SkillConstants.ATTACK)) + (type == ATTACK_XP ? 3 : type == SHARED_XP ? 1 : 0) + 8.0F) * (boost);
         final int b = player.getBonuses().getBonus(attackType.ordinal());
         double result = a * (b + 64.0F);

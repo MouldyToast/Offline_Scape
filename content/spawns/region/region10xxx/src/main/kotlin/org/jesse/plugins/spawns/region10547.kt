@@ -10,12 +10,8 @@ class Region10547 : NPCSpawnsScript() {
     init {
         GUARD_DOG(2624, 3319, 0, SOUTH, 4)
         GUARD_DOG(2624, 3327, 0, SOUTH, 4)
-        BETA_PONY(2629, 3266, 0, SOUTH, 15)
-        BETA_PONY(2634, 3265, 0, SOUTH, 15)
         WARRIOR_WOMAN(2629, 3295, 0, SOUTH, 5)
         HERO(2630, 3288, 0, SOUTH, 5)
-        BETA_CAYLEB(2632, 3280, 0, SOUTH, 11)
-        BETA_CAYLEB(2633, 3274, 0, SOUTH, 11)
         WARRIOR_WOMAN(2632, 3299, 0, SOUTH, 5)
         10430(2635, 3294, 0, SOUTH, 5)
         HORACIO(2635, 3311, 0, SOUTH, 2)

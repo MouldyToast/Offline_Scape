@@ -11753,7 +11753,3 @@ const val BANKER_16030 = 16030
 
 /* Custom NPC ids (merged from org.jesse.game.item.CustomNpcId). */
 const val QUEEN_REAVER = 20_000
-const val BETA_CAYLEB = 16072
-const val BETA_SLAYEX = 16073
-const val BETA_FLINT = 16074
-const val BETA_PONY = 16075

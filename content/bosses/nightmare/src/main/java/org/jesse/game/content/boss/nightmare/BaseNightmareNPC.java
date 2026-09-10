@@ -389,7 +389,6 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 		lock(4);
 		setAnimation(CURSE_ATK);
 
-		forEachPlayers(player -> player.getPacketDispatcher().sendClientScript(10673));
 		WorldTasksManager.schedule(() -> forEachPlayers(player -> curseAttackPlayer(player)), 1);
 
 		return getCombatDefinitions().getAttackSpeed();

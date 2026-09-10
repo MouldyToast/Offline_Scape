@@ -40,7 +40,11 @@ public class EmoteTabInterface extends Interface {
                 return;
             }
             final String name = emotesName.get().toLowerCase().replaceAll(" ", "_");
-            if (!player.getEmotesHandler().isUnlocked(Emote.MAP.get(name))) {
+            final Emote emote = Emote.MAP.get(name);
+            if (emote == null) {
+                return;
+            }
+            if (!player.getEmotesHandler().isUnlocked(emote)) {
                 player.sendMessage("You haven't unlocked this emote yet!");
                 return;
             }

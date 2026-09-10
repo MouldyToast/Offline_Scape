@@ -154,7 +154,9 @@ public enum Emote {
 	EXPLORE(49, 10115, new Animation(65535)),
 	RELIC_UNLOCK(50, 11757, new Animation(65535)),
 	PARTY(51, 6550, new Animation(65535)),
-	FORTIS_SALUTE(53, -2, new Animation(10796));//10797 loop
+	TRICK(52, -1, new Animation(65535)),
+	FORTIS_SALUTE(53, -2, new Animation(10796)),//10797 loop
+	SIT_DOWN(54, new Animation(10061));//10053 not loop
 
 	private final Animation animation;
 	private final Graphics graphics;
@@ -206,6 +208,9 @@ public enum Emote {
 				: emote.getAnimation();
 
 
+		if (emote == TRICK) {
+			return;
+		}
 		if (ArrayUtils.contains(SOS_EMOTES, emote)) {
 			final int index = ArrayUtils.indexOf(SOS_EMOTES, emote);
 			player.getAchievementDiaries().update(VarrockDiary.PERFORM_SOS_EMOTES, (int) Math.pow(2, index));

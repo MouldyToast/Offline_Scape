@@ -33,6 +33,9 @@ public final class EmotesHandler {
      * @return unlocked or not.
      */
     public boolean isUnlocked(@NotNull final Emote emote) {
+        if (emote == Emote.TRICK) {
+            return false;
+        }
         return emote.getConfig() == -1 || player.getVarManager().getBitValue(emote.getConfig()) > 0;
     }
 

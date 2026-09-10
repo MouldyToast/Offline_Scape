@@ -55,7 +55,6 @@ import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.custom.AnimationBase;
-import mgi.custom.FramePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
@@ -183,7 +182,6 @@ public class TypeParser {
         } else {
             System.out.println("Skipping NearRealityCustomMapsPacker.pack();");
         }
-        duelArena(cache);
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();
@@ -269,60 +267,6 @@ public class TypeParser {
         KRYO.register(String[].class);
         KRYO.register(String[][].class);
         KRYO.register(Int2ObjectOpenHashMap.class);
-    }
-
-    private static void duelArena(final Cache cache) throws IOException {
-        if (!ENABLED_MAP_PACKING) {
-            return;
-        }
-
-        packDuelArenaMap(cache, 13362,
-                "assets/map/old_duel_arena/duel_arena_land_13362.dat",
-                "assets/map/old_duel_arena/duel_arena_map_13362.dat"
-        );
-        packDuelArenaMap(cache, 13363,
-                "assets/map/old_duel_arena/duel_arena_land_13363.dat",
-                "assets/map/old_duel_arena/duel_arena_map_13363.dat"
-        );
-    }
-
-    private static void packDuelArenaMap(
-            final Cache cache,
-            final int regionId,
-            final String landscapeFilePath, final String mapFilePath) throws IOException {
-        if (!ENABLED_MAP_PACKING) {
-            return;
-        }
-
-        final int regionX = regionId >> 8;
-        final int regionY = regionId & 255;
-
-        final int[] xteas = XTEALoader.getXTEAKeys(regionId);
-        final Archive archiveTo = cache.getArchive(ArchiveType.MAPS);
-        final Group mapGroupTo = archiveTo.findGroupByName("m" + regionX + "_" + regionY);
-        final Group landGroupTo = archiveTo.findGroupByName("l" + regionX + "_" + regionY, xteas);
-
-        final byte[] outputLandData = java.nio.file.Files.readAllBytes(Path.of(landscapeFilePath));
-
-        if (landGroupTo != null) {
-            landGroupTo.findFileByID(0).setData(new ByteBuffer(outputLandData));
-        } else {
-            final Group newLandGroup = new Group(archiveTo.getFreeGroupID(),
-                    new mgi.tools.jagcached.cache.File(new ByteBuffer(outputLandData)));
-            newLandGroup.setName("l" + regionX + "_" + regionY);
-            archiveTo.addGroup(newLandGroup);
-        }
-
-        final byte[] outputMapData = java.nio.file.Files.readAllBytes(Path.of(mapFilePath));
-
-        if (mapGroupTo != null) {
-            mapGroupTo.findFileByID(0).setData(new ByteBuffer(outputMapData));
-        } else {
-            final Group newMapGroup = new Group(archiveTo.getFreeGroupID() + 1,
-                    new mgi.tools.jagcached.cache.File(new ByteBuffer(outputMapData)));
-            newMapGroup.setName("m" + regionX + "_" + regionY);
-            archiveTo.addGroup(newMapGroup);
-        }
     }
 
     public static void parse(final File folder) {
@@ -463,7 +407,6 @@ public class TypeParser {
     }
 
     private static void packHighRevision() throws IOException {
-        FramePacker.write();
         AnimationBase.pack();
     }
 
@@ -539,12 +482,6 @@ public class TypeParser {
         ObjectDefinitions def = new ObjectDefinitions(to, new ByteBuffer(new byte[1]));
         def.copy(from);
         return def;
-    }
-
-    public static void packModel(final int id, final byte[] bytes) {
-        log.info("Packing model: {}", id);
-        CacheManager.getCache().getArchive(ArchiveType.MODELS).addGroup(new Group(id,
-                new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
     }
 
     public static void packSound(final int id, final byte[] bytes) {

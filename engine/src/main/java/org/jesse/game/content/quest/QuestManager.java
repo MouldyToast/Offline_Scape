@@ -53,7 +53,9 @@ public final class QuestManager {
 						vars.sendVarInstant(varId, questFinishStage);
 					}
 				}
-				completed++;
+				if (quest.isCounted()) {
+					completed++;
+				}
 			} catch (final Exception e) {
 				System.err.println("Error while unlocking quest " + quest.name() + " for player " + player.getUsername());
 				e.printStackTrace(NearRealityPrintStream.getErrorStream());

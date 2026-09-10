@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import org.jesse.game.content.consumables.Consumable;
 import org.jesse.game.util.TimeUtils;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.collectionlog.CollectionLogRewardManager;
 
 import java.util.Objects;
 

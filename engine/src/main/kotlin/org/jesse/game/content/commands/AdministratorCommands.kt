@@ -358,9 +358,6 @@ object AdministratorCommands {
         Command(PlayerPrivilege.ADMINISTRATOR, "scene") { p: Player, args: Array<String> ->
             p.viewDistance = args[0].toInt()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, arrayOf("drops", "drop", "dropviewer"), "Opens the drop viewer.") { p: Player?, _: Array<String?>? ->
-            GameInterface.DROP_VIEWER.open(p)
-        }
         Command(PlayerPrivilege.ADMINISTRATOR, "chunkhash") { p: Player, args: Array<String?>? ->
             val x = p.x
             val y = p.y

@@ -22,7 +22,6 @@ import org.jesse.game.content.grandexchange.GrandExchangeHandler
 import org.jesse.game.content.multicannon.DwarfMultiCannon
 import org.jesse.game.content.skills.mining.MiningDefinitions
 import org.jesse.game.model.item.ItemActionHandler
-import org.jesse.game.model.ui.testinterfaces.DropViewerInterface
 import org.jesse.game.referral.ReferralIPDatabase
 import org.jesse.game.referral.ReferralUsageDatabase
 import org.jesse.game.world.World
@@ -230,11 +229,8 @@ object Main {
         logElapsed("Loaded NPC spawns.") { NPCSpawnLoader.loadNPCSpawns() }
         //logElapsed("Initialized SQL manager.") { SQLManager.init() }
 
-        logElapsed("Populated NPC drop viewer data, and mapped global area manager.") {
-            pool.invokeAll(
-                DropViewerInterface::populateDropViewerData,
-                GlobalAreaManager::map
-            )
+        logElapsed("Mapped global area manager.") {
+            GlobalAreaManager.map()
         }
 
         logElapsed("Launched login manager.") {

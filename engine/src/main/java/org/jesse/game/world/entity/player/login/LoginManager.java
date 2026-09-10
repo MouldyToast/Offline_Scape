@@ -731,7 +731,6 @@ public final class LoginManager {
         }
 
         player.setLootkeySettings(parser.getLootkeySettings());
-        player.getCollectionLogRewardManager().initialize(parser.getCollectionLogRewardManager());
 
         player.getBankPin().initialize(parser.getBankPin());
         if(!skipInitEvents) {

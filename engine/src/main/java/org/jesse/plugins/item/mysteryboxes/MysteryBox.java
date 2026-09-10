@@ -2,10 +2,7 @@ package org.jesse.plugins.item.mysteryboxes;
 
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.item.pluginextensions.ItemPlugin;
-import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
-import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import org.jesse.plugins.PluginPriority;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 /**
  * @author Kris | 10/06/2019 06:31
@@ -17,21 +14,6 @@ public class MysteryBox extends ItemPlugin {
     public static int totalWeight;
     public static MysteryItem[] rewards;
     public static MysterySupplyItem[] supplies;
-
-    public static ObjectArrayList<DropViewerEntry> entries = new ObjectArrayList<>();
-    public static ObjectArrayList<DropViewerEntry> toEntries() {
-        if(entries.size() == 0) {
-            calculateEntries();
-        }
-        return entries;
-    }
-
-    private static void calculateEntries() {
-        for (final MysteryItem reward : rewards) {
-            OtherDropViewerEntry entry = new OtherDropViewerEntry(reward.getId(), reward.getMinAmount(), reward.getMaxAmount(), reward.getWeight(), totalWeight, "");
-            entries.add(entry);
-        }
-    }
 
     @Override
     public void handle() {

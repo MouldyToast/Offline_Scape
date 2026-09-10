@@ -5,7 +5,6 @@ import org.jesse.game.content.treasuretrails.ClueItem;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.item.ImmutableItem;
 import org.jesse.game.util.Utils;
-import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import org.jesse.plugins.renewednpc.MonkOfEntrana;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import mgi.types.config.items.ItemDefinitions;
@@ -78,7 +77,6 @@ public abstract class ClueRewardTable {
     );
     private final List<ImmutableItem> rewards = new ObjectArrayList<>();
     private final List<ImmutableItem> entranaRewards = new ObjectArrayList<>();
-    ObjectArrayList<OtherDropViewerEntry> entries = new ObjectArrayList<>();
     private int totalWeight = 0;
     private int totalEntranaWeight = 0;
 
@@ -151,26 +149,6 @@ public abstract class ClueRewardTable {
     }
 
     protected abstract int getMasterScrollRate();
-
-    public ObjectArrayList<OtherDropViewerEntry> toEntries() {
-        if (entries.isEmpty())
-            enumerateEntries();
-        return entries;
-    }
-
-    private void enumerateEntries() {
-        for (final ImmutableItem reward : rewards) {
-            var entry = new OtherDropViewerEntry(
-                reward.getId(),
-                reward.getMinAmount(),
-                reward.getMaxAmount(),
-                reward.getRate(),
-                totalWeight,
-                ""
-            );
-            entries.add(entry);
-        }
-    }
 
     protected final ImmutableItem item(final int id) {
         return item(id, 1);

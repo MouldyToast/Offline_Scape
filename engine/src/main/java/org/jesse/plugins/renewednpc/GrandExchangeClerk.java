@@ -9,7 +9,6 @@ import org.jesse.game.world.entity.player.Player;
 import org.jesse.plugins.dialogue.GrandExchangeClerkD;
 
 import static org.jesse.game.GameInterface.GRAND_EXCHANGE_HISTORY;
-import static org.jesse.game.GameInterface.GRAND_EXCHANGE_OFFERS_VIEWER;
 
 /**
  * @author Kris | 11/03/2019 20:48
@@ -48,18 +47,6 @@ public class GrandExchangeClerk extends NPCPlugin {
             @Override
             public void handle(Player player, NPC npc) {
                 GRAND_EXCHANGE_HISTORY.open(player);
-            }
-
-            @Override
-            public void click(final Player player, final NPC npc, final NPCOption option) {
-                player.setRouteEvent(new EntityEvent(player, new DistancedEntityStrategy(npc, 1), () -> execute(player, npc), true));
-            }
-        });
-        bind("Offers Viewer", new OptionHandler() {
-
-            @Override
-            public void handle(Player player, NPC npc) {
-                GRAND_EXCHANGE_OFFERS_VIEWER.open(player);
             }
 
             @Override

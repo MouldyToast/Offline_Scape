@@ -44,7 +44,7 @@ public class InterfaceHandler {
 		appendPersistentVarbit(9340, 4);
 	}
 
-	private static final IntSet EXPANDED_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {12, 139, 400, 345, 310, 700, 1704, 1709, 675, 724, 1614, 772, 774});
+	private static final IntSet EXPANDED_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {12, 139, 400, 345, 310, 700, 675, 724, 772, 774});
 	private static final IntSet EXPANDED_WIDTH_HEIGHT_INTERFACES = new IntOpenHashSet(new int[] {});
 	private static final Object[] EXPANDED_HEIGHT_ARGS = new Object[]{-1, -2};
 	private static final Object[] EXPANDED_WIDTH_HEIGHT_ARGS = new Object[]{-1, -3};
@@ -56,8 +56,7 @@ public class InterfaceHandler {
 			.put(267, new Integer[] {65792, 0}).put(299, new Integer[] {2760198, 0}).build();
 	private static final GameInterface[] WALKABLE_INTERFACES = new GameInterface[] {
 			GameInterface.TELEPORTS,
-			GameInterface.ADVANCED_SETTINGS,
-			GameInterface.DROP_VIEWER
+			GameInterface.ADVANCED_SETTINGS
 	};
 	private static final Logger log = NearRealityLogger.getLogger(InterfaceHandler.class);
 

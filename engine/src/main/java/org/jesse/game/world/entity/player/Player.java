@@ -134,7 +134,6 @@ import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.game.world.entity.player.calog.CALog;
 import org.jesse.game.world.entity.player.calog.CAType;
 import org.jesse.game.world.entity.player.collectionlog.CollectionLog;
-import org.jesse.game.world.entity.player.collectionlog.CollectionLogRewardManager;
 import org.jesse.game.world.entity.player.container.Container;
 import org.jesse.game.world.entity.player.container.ContainerPolicy;
 import org.jesse.game.world.entity.player.container.ContainerWrapper;
@@ -382,14 +381,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private final SocialManager socialManager = new SocialManager(this);
     @Expose
     private CombatDefinitions combatDefinitions = new CombatDefinitions(this);
-
-    @Expose
-    private final CollectionLogRewardManager clRewardManager = new CollectionLogRewardManager(this);
-
-    public CollectionLogRewardManager getCollectionLogRewardManager() {
-        return clRewardManager;
-    }
-
 
     @Expose
     private final KillstreakLog killstreakLog = new KillstreakLog();

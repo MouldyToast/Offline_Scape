@@ -33,11 +33,13 @@ public class GameModeSetupInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(9, "Rate 1");
-        put(10, "Rate 2");
-        put(11, "Rate 3");
-        put(13, "Rate 4");
-        put(14, "Mode");
+        put(21, "Regular");
+        put(22, "Ironman");
+        put(23, "Ultimate Ironman");
+        put(24, "Hardcore Ironman");
+        put(25, "Group Ironman");
+        put(26, "Hardcore Group Ironman");
+        put(27, "Unranked Group Ironman");
     }
 
     @Override
@@ -47,35 +49,36 @@ public class GameModeSetupInterface extends Interface {
 
         if (!(attr instanceof final String type)) return;
 
+        player.getVarManager().sendVar(266, 1);
         if (type.equals("register")) {
+            PlayerAttributesKt.setSelectedGameMode(player, GameMode.REGULAR);
             VarCollection.IRONMAN_MODE.send(player, 0);
-            VarCollection.UNKNOWN_IRONMAN.send(player, 0);
-            VarCollection.PIN_IRONMAN_MODE.send(player, 1);
         }
         else if (type.equals("review")) {
-            VarCollection.PIN_IRONMAN_MODE.send(player, 0);
+            PlayerAttributesKt.setSelectedGameMode(player, player.getGameMode());
             VarCollection.IRONMAN_MODE.updateSingle(player);
-            VarCollection.UNKNOWN_IRONMAN.updateSingle(player);
         }
-        player.getPacketDispatcher().sendComponentSettings(getInterface(), 14, 0, 44, AccessMask.CLICK_OP1);
     }
 
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
+        player.getVarManager().sendVar(266, 0);
+        VarCollection.IRONMAN_MODE.updateSingle(player);
         player.lock();
         selectExpMode(player, PlayerAttributesKt.getSelectedGameModeDifficulty(player));
 
         WorldTasksManager.schedule(() -> {//have to delay it because closing will also close dialogue
 
             final GameMode mode = PlayerAttributesKt.getSelectedGameMode(player);
-            if (mode == GameMode.GROUP_IRON_MAN) {
+            if (mode.isGroupIronman()) {
+                PlayerAttributesKt.setSelectedGameMode(player, GameMode.GROUP_IRON_MAN);
                 player.getDialogueManager().start(getHardcoreDialogue(player));
                 return;
             }
             final Object attr = player.getTemporaryAttributes().get("ironman_setup");
             if (!(attr instanceof final String type)) return;
             if (type.equals("register"))
-                register(player, mode);
+                player.getDialogueManager().start(rateDialogue(player, mode));
             else if (type.equals("review")) {
                 player.unlock();
                 final GameMode currentMode = player.getGameMode();
@@ -230,26 +233,36 @@ public class GameModeSetupInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Rate 1", player -> selectExpMode(player, 0));
-        bind("Rate 2", player -> selectExpMode(player, 1));
-        bind("Rate 3", player -> selectExpMode(player, 2));
-        bind("Rate 4", player -> selectExpMode(player, 3));
-        bind("Mode", (player, slotId, itemId, option) -> tab(player, slotId));
+        bind("Regular", player -> select(player, GameMode.REGULAR));
+        bind("Ironman", player -> select(player, GameMode.STANDARD_IRON_MAN));
+        bind("Ultimate Ironman", player -> select(player, GameMode.ULTIMATE_IRON_MAN));
+        bind("Hardcore Ironman", player -> select(player, GameMode.HARDCORE_IRON_MAN));
+        bind("Group Ironman", player -> select(player, GameMode.GROUP_IRON_MAN));
+        bind("Hardcore Group Ironman", player -> select(player, GameMode.GROUP_HARDCORE_IRON_MAN));
+        bind("Unranked Group Ironman", player -> player.sendMessage("Unranked group ironman is not supported."));
     }
 
-    private void tab(Player player, int tab) {
-        GameMode gameMode;
-        tab = tab / 9;
-        gameMode = switch (tab) {
-            case 1 -> GameMode.STANDARD_IRON_MAN;
-            case 2 -> GameMode.HARDCORE_IRON_MAN;
-            case 3 -> GameMode.ULTIMATE_IRON_MAN;
-            case 4 -> GameMode.GROUP_IRON_MAN;
-            default -> GameMode.REGULAR;
+    private void select(final Player player, final GameMode mode) {
+        PlayerAttributesKt.setSelectedGameMode(player, mode);
+        VarCollection.IRONMAN_MODE.send(player, mode.ordinal());
+    }
+
+    private Dialogue rateDialogue(final Player player, final GameMode mode) {
+        final boolean regular = mode == GameMode.REGULAR;
+        return new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                options("Choose your experience rates.",
+                        regular ? "150x Combat, 80x Skilling" : "80x Combat, 80x Skilling",
+                        regular ? "80x Combat, 50x Skilling" : "20x Combat, 20x Skilling",
+                        "10x Combat, 10x Skilling",
+                        "5x Combat, 5x Skilling")
+                        .onOptionOne(() -> { selectExpMode(player, 0); register(player, mode); })
+                        .onOptionTwo(() -> { selectExpMode(player, 1); register(player, mode); })
+                        .onOptionThree(() -> { selectExpMode(player, 2); register(player, mode); })
+                        .onOptionFour(() -> { selectExpMode(player, 3); register(player, mode); });
+            }
         };
-        player.getVarManager().sendVar(263, gameMode != GameMode.REGULAR ? 0 : -1);
-        PlayerAttributesKt.setSelectedGameMode(player, gameMode);
-        selectExpMode(player, 0);
     }
 
     private void selectExpMode(final Player player, int rate) {

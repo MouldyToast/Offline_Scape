@@ -163,9 +163,9 @@ public class TypeParser {
                         Definitions.highPriorityDefinitions,
                         Definitions.cacheLowPriorityDefinitions)
         );
+        KeepSetDefinitionOverrides.packComponents();
         packClientBackground();
         packClientScripts();
-        packInvs();
         packInterfaces();
         packMaps(service);
         increaseVarclientAmount();
@@ -457,20 +457,6 @@ public class TypeParser {
                 new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
     }
 
-    public static void packInvs() throws IOException {
-        for (File file : Paths.get("assets/inv").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packInv(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack enum file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
     private static void packClientScripts() throws Exception {
     }
 
@@ -547,12 +533,6 @@ public class TypeParser {
     public static void packClientScriptNamed(final int id, final String archive_name, final byte[] bytes) {
         CacheManager.getCache().getArchive(ArchiveType.CLIENTSCRIPTS).addGroup(new Group(id, archive_name, 1,
                 new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
-    public static void packInv(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.INV)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
     }
 
     private static void packInterfaces() {

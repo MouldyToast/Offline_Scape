@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jesse.cache_tool.packing.custom.GenericDataPacker;
 import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomMapsPacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -170,11 +169,6 @@ public class TypeParser {
         packMaps(service);
         increaseVarclientAmount();
         KeepSetDefinitionOverrides.packObjects();
-        if (ENABLED_MAP_PACKING) {
-            NearRealityCustomMapsPacker.pack();
-        } else {
-            System.out.println("Skipping NearRealityCustomMapsPacker.pack();");
-        }
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();

@@ -167,8 +167,6 @@ public class TypeParser {
         packClientScripts();
         packInvs();
         packInterfaces();
-        packStructs();
-        packParams();
         packMaps(service);
         increaseVarclientAmount();
         KeepSetDefinitionOverrides.packObjects();
@@ -471,46 +469,6 @@ public class TypeParser {
                 }
             }
         }
-    }
-
-    public static void packStructs() throws IOException {
-        for (File file : Paths.get("assets/structs").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packStruct(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack struct file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
-    public static void packStruct(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.STRUCT)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
-    }
-
-    public static void packParams() throws IOException {
-        for (File file : Paths.get("assets/params").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packParam(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack param file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
-    public static void packParam(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.PARAMS)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
     }
 
     private static void packClientScripts() throws Exception {

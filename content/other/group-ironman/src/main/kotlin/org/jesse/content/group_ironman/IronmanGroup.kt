@@ -2,7 +2,6 @@ package org.jesse.content.group_ironman
 
 import org.jesse.content.group_ironman.area.TheNodeArea
 import org.jesse.content.group_ironman.player.*
-import org.jesse.game.content.challenges.ChallengeType
 import org.jesse.game.util.invoke
 import org.jesse.game.world.entity.player.UsernameProvider
 import org.jesse.game.GameInterface
@@ -36,17 +35,17 @@ data class IronmanGroup(
     var leaderUsername: String,
     var ranked: Boolean,
     var type: IronmanGroupType,
-) : ChallengeType {
+) {
 
     /**
      * The name of this group, is set during group formation.
      */
-    override lateinit var name: String
+    lateinit var name: String
 
     /**
      * A unique id for this group.
      */
-    override lateinit var uuid: UUID
+    lateinit var uuid: UUID
 
     /**
      * Whether this group is created, thus finalised and added to [IronmanGroupModule.groups].

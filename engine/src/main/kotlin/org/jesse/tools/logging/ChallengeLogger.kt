@@ -1,7 +1,6 @@
 package org.jesse.tools.logging
 
 import org.jesse.api.GameDatabase
-import org.jesse.game.content.challenges.Challenge
 import org.jesse.logger.NearRealityLogger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher

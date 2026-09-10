@@ -8,7 +8,6 @@ import com.fasterxml.jackson.dataformat.toml.TomlFactory;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jesse.cache_tool.packing.custom.GenericDataPacker;
 import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
@@ -30,7 +29,6 @@ import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.ObjectCollection;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,7 +47,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
@@ -63,7 +60,6 @@ import mgi.types.config.StructDefinitions;
 import mgi.types.config.VarbitDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
 import mgi.types.config.npcs.NPCDefinitions;
-import mgi.types.draw.sprite.SpriteGroupDefinitions;
 import mgi.utilities.Buffer;
 import mgi.utilities.ByteBuffer;
 import net.lingala.zip4j.ZipFile;
@@ -151,7 +147,6 @@ public class TypeParser {
         //Definitions.loadDefinitions(Definitions.cacheLowPriorityDefinitions);
 
         initializeKryo();
-        parse(new File("assets/types"));
         pack(NPCDefinitions.class);
         packDynamicConfigs();
         KeepSetDefinitionOverrides.pack();
@@ -162,12 +157,10 @@ public class TypeParser {
                         Definitions.cacheLowPriorityDefinitions)
         );
         KeepSetDefinitionOverrides.packComponents();
-        packClientBackground();
         packClientScripts();
         packMaps(service);
         increaseVarclientAmount();
         KeepSetDefinitionOverrides.packObjects();
-        GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();
         KeepSetDefinitionOverrides.packSpecialAttacks();
@@ -330,26 +323,6 @@ public class TypeParser {
         if (!filtered.isEmpty()) {
             log.info("Finished packing {} type{}", filtered.size(), filtered.size() == 1 ? "" : "s.");
         }
-    }
-
-    private static void packClientBackground() throws IOException {
-        final byte[] desktop = java.nio.file.Files.readAllBytes(Paths.get("assets/sprites/background" +
-                "/background_desktop.png"));
-        final Cache cache = CacheManager.getCache();
-        final Archive desktopArchive = cache.getArchive(ArchiveType.BINARY);
-        desktopArchive.findGroupByID(0).findFileByID(0).setData(new ByteBuffer(desktop));
-
-        final Archive spritesArchive = cache.getArchive(ArchiveType.SPRITES);
-        Group logoGroup = spritesArchive.findGroupByName("logo");
-
-        final BufferedImage image = ImageIO.read(Paths.get("assets/sprites/background/background_logo" +
-                ".png").toFile());
-        final SpriteGroupDefinitions sprite = new SpriteGroupDefinitions(logoGroup.getID(), image.getWidth(),
-                image.getHeight());
-        sprite.setWidth(image.getWidth());
-        sprite.setHeight(image.getHeight());
-        sprite.setImage(0, image);
-        sprite.pack();
     }
 
     private static void packDynamicConfigs() {
@@ -562,19 +535,6 @@ public class TypeParser {
                 .orElse(null);
 
         packMap(cache, regionID, outputMapData, outputLandData);
-    }
-
-    public static void packMapPre209(final int id, String landscapeFilePath, String mapFilePath)
-            throws IOException {
-        try {
-            packMapRawPre209(CacheManager.getCache(), id,
-                    java.nio.file.Files.readAllBytes(Paths.get(mapFilePath)),
-                    java.nio.file.Files.readAllBytes(Paths.get(landscapeFilePath)));
-            System.err.println("Packed map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-        } catch (Exception e) {
-            System.err.println("Failed to pack map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-            e.printStackTrace(System.err);
-        }
     }
 
     public static void packMap(final int id, String landscapeFilePath, String mapFilePath)

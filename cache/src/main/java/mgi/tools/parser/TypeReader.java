@@ -9,7 +9,6 @@ import mgi.tools.parser.readers.GraphicsReader;
 import mgi.tools.parser.readers.ItemReader;
 import mgi.tools.parser.readers.NPCReader;
 import mgi.tools.parser.readers.ObjectReader;
-import mgi.tools.parser.readers.SpriteReader;
 import mgi.tools.parser.readers.StructReader;
 import mgi.tools.parser.readers.VarbitReader;
 import mgi.types.Definitions;
@@ -28,7 +27,7 @@ public interface TypeReader {
 
     TypeReader[] readers = {
             new ItemReader(), new NPCReader(), new ObjectReader(), new EnumReader(),
-            new StructReader(), new AnimationReader(), new SpriteReader(), new ComponentReader(),
+            new StructReader(), new AnimationReader(), new ComponentReader(),
             new GraphicsReader(), new VarbitReader()
     };
 

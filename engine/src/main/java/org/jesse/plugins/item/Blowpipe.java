@@ -33,10 +33,6 @@ public class Blowpipe extends ItemPlugin implements ChargeExtension {
     @Override
     public void handle() {
         bind("Unload", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
-                player.sendMessage("You can't do this during a duel.");
-                return;
-            }
             final int darts = item.getNumericAttribute("blowpipeDarts").intValue();
             final int type = item.getNumericAttribute("blowpipeDartType").intValue();
             if (darts == 0) {

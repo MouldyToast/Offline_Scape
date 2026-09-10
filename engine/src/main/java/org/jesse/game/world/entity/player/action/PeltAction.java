@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player.action;
 
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.util.CollisionUtil;
@@ -130,7 +129,6 @@ public class PeltAction extends Action {
             }
         }
 
-        AdventCalendarManager.increaseChallengeProgress(player, 2022, 23, 1);
         player.setInvalidAnimation(animation);
         World.sendProjectile(player, target, projectile);
         target.setGraphics(graphics);

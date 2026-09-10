@@ -2,7 +2,6 @@ package org.jesse.game.world.entity.npc.impl;
 
 import com.google.common.base.Preconditions;
 import org.jesse.game.content.achievementdiary.diaries.KourendDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.CameraShakeType;
@@ -133,7 +132,6 @@ public class LizardmanShaman extends NPC implements Spawnable, CombatScript {
         if (source instanceof Player player) {
             player.getAchievementDiaries().update(KourendDiary.KILL_A_LIZARDMAN);
             player.getAchievementDiaries().update(KourendDiary.KILL_A_LIZARDMAN_SHAMAN);
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 2, 1);
             player.getCombatAchievements().complete(CAType.A_SCALEY_ENCOUNTER);
             if (!hitAnyone) player.getCombatAchievements().complete(CAType.SHAYZIEN_PROTECTOR);
         }

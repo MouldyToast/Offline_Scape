@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player.action.combat.ranged;
 
-import org.jesse.game.content.minigame.duelarena.Duel;
 import org.jesse.game.item.Item;
 import org.jesse.game.task.WorldTasksManager;
 import org.jesse.game.util.Utils;
@@ -42,12 +41,7 @@ public final class DragonThrownaxeCombat extends RangedCombat {
 			final Location location = new Location(target.getLocation());
 			final Item item = new Item(ammunitionSource.getAmmo().getId());
 			WorldTasksManager.schedule(() -> {
-				final Duel duel = player.getDuel();
-				if (duel != null) {
-					duel.getAmmunitions().get(player).add(item);
-				} else {
-					World.spawnFloorItem(item, !World.isFloorFree(location, 1) ? new Location(player.getLocation()) : location, 20, player, player, 300, 500);
-				}
+				World.spawnFloorItem(item, !World.isFloorFree(location, 1) ? new Location(player.getLocation()) : location, 20, player, player, 300, 500);
 			}, delay);
 		}
 	}

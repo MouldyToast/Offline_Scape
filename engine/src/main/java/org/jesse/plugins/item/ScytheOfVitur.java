@@ -20,10 +20,6 @@ public class ScytheOfVitur extends ItemPlugin {
         });
         bind("Charge", (player, item, slotId) -> player.sendMessage("Your scythe must be charged using a special " + "vyre well found at Ver Sinhaza."));
         bind("Uncharge", (player, item, slotId) -> {
-            if (player.getDuel() != null && player.getDuel().inDuel()) {
-                player.sendMessage("You can't do this during a duel.");
-                return;
-            }
             player.getDialogueManager().start(new Dialogue(player) {
                 @Override
                 public void buildDialogue() {

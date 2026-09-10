@@ -2,7 +2,6 @@ package org.jesse.game.content.minigame.barrows;
 
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.achievementdiary.diaries.MorytaniaDiary;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.rots.RotsInstance;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.Interface;
@@ -56,7 +55,6 @@ public class BarrowsRewardsInterface extends Interface {
             }
             player.getNotificationSettings().increaseKill("barrows");
             player.getNotificationSettings().sendBossKillCountNotification("barrows");
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 3, 1);
             player.getCombatAchievements().checkKcTask("barrows", 10, CAType.BARROWS_NOVICE);
             player.getCombatAchievements().checkKcTask("barrows", 25, CAType.BARROWS_CHAMPION);
             if (player.getCombatAchievements().hasCurrentTaskFlags(CAType.PRAY_FOR_SUCCESS, Barrows.CA_TASK_NO_DAMAGE)) {

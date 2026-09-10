@@ -54,8 +54,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
-import mgi.custom.AnimationBase;
-import mgi.custom.FramePacker;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
@@ -159,7 +157,6 @@ public class TypeParser {
         parse(new File("assets/types"));
         pack(NPCDefinitions.class);
         packDynamicConfigs();
-        packHighRevision();
         KeepSetDefinitionOverrides.pack();
         removeCATasks();
         pack(
@@ -183,14 +180,6 @@ public class TypeParser {
         } else {
             System.out.println("Skipping NearRealityCustomMapsPacker.pack();");
         }
-        duelArena(cache);
-        if (!isProductionCacheGen) {
-            //packPreservedCS2(cache);
-        } else {
-            // packVCSAssets(cache);
-        }
-        //packVCSAssets(cache);
-
         GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();
@@ -264,65 +253,6 @@ public class TypeParser {
         log.info("End map copy process.");
     }
 
-    private static void packVCSAssets(Cache cache) {
-        processExportedCS2s(cache);
-
-    }
-
-    private static void processExportedCS2s(Cache cache) {
-        Archive cs2s = cache.getArchive(ArchiveType.CLIENTSCRIPTS);
-        for (final File file : Objects.requireNonNull(Paths.get("assets/exports/cs2/").toFile().listFiles())) {
-            try {
-                final String name = file.getName().replace(".cs2", "");
-                final int groupId = Integer.parseInt(name);
-                log.info("Packing exported CS2 #{} into prod cache", groupId);
-                cs2s.addGroup(new Group(groupId, new mgi.tools.jagcached.cache.File(new ByteBuffer(IOUtils.toByteArray(new FileInputStream(file))))));
-            } catch (Exception e) {
-                log.error("Could not pack sprite '{}'", file);
-                e.printStackTrace(System.err);
-            }
-        }
-    }
-
-//    private static void handleSavor() throws Exception {
-//        Cache cache = Cache.openCache("data/cache-staging");
-//        /* Next-Gen Store */
-//        preserveCS2s(cache, 12538, 12539, 12540, 12541, 12542, 12543, 12544, 12545, 12546, 12547, 12548, 12549, 12550,
-//                12551, 12552, 12553, 12554, 12555, 12556, 12557, 12558, 12559, 12560, 12561, 12562, 12563, 12564, 12565, 12566,
-//                12567, 12568, 12569, 12570, 12571, 12572);
-//        preserveCS2s(cache, /*3178,*/ 34020, 34021, 34030, 34031, 34032, 34033, 34034, 34035, 34036, 34037, 34038);
-//        /* Duel Arena */
-//        preserveCS2s(cache, 205, 10590, 10675, 10676, 10677, 10682, 10693, 10694);
-//        preserveCS2s(cache, 45998, 45999, 243);
-//        /* Rune Pouch */
-//       // preserveCS2s(cache, 1456);
-//        cache.close();
-//    }
-
-//    static LinkedHashMap<Integer, Group> PRESERVED_CS2S = new LinkedHashMap<>();
-//
-//    private static void preserveCS2s(Cache cache, int... ids) throws IOException {
-//        Archive cs2s = cache.getArchive(ArchiveType.CLIENTSCRIPTS);
-//        for (int id : ids) {
-//            Group preserved1 = cs2s.findGroupByID(id);
-//            PRESERVED_CS2S.put(id, preserved1.copy());
-//
-//            mgi.tools.jagcached.cache.File preserved1File = preserved1.getFiles()[0];
-//            DataOutputStream fw = new DataOutputStream(new FileOutputStream("assets/exports/cs2/" + id + ".cs2"));
-//            fw.write(preserved1File.getData().getBuffer());
-//            fw.close();
-//        }
-//    }
-
-//    private static void packPreservedCS2(Cache cache) {
-//        Archive cs2s = cache.getArchive(ArchiveType.CLIENTSCRIPTS);
-//        for (Map.Entry<Integer, Group> entry : PRESERVED_CS2S.entrySet()) {
-//            log.info("Packing preserved CS2: {}", entry.getKey());
-//            cs2s.addGroup(entry.getValue());
-//        }
-//    }
-
-
     public static void initializeKryo() {
         for (final Class<?> d : Definitions.cacheLowPriorityDefinitions) {
             KRYO.register(d);
@@ -335,60 +265,6 @@ public class TypeParser {
         KRYO.register(String[].class);
         KRYO.register(String[][].class);
         KRYO.register(Int2ObjectOpenHashMap.class);
-    }
-
-    private static void duelArena(final Cache cache) throws IOException {
-        if (!ENABLED_MAP_PACKING) {
-            return;
-        }
-
-        packDuelArenaMap(cache, 13362,
-                "assets/map/old_duel_arena/duel_arena_land_13362.dat",
-                "assets/map/old_duel_arena/duel_arena_map_13362.dat"
-        );
-        packDuelArenaMap(cache, 13363,
-                "assets/map/old_duel_arena/duel_arena_land_13363.dat",
-                "assets/map/old_duel_arena/duel_arena_map_13363.dat"
-        );
-    }
-
-    private static void packDuelArenaMap(
-            final Cache cache,
-            final int regionId,
-            final String landscapeFilePath, final String mapFilePath) throws IOException {
-        if (!ENABLED_MAP_PACKING) {
-            return;
-        }
-
-        final int regionX = regionId >> 8;
-        final int regionY = regionId & 255;
-
-        final int[] xteas = XTEALoader.getXTEAKeys(regionId);
-        final Archive archiveTo = cache.getArchive(ArchiveType.MAPS);
-        final Group mapGroupTo = archiveTo.findGroupByName("m" + regionX + "_" + regionY);
-        final Group landGroupTo = archiveTo.findGroupByName("l" + regionX + "_" + regionY, xteas);
-
-        final byte[] outputLandData = java.nio.file.Files.readAllBytes(Path.of(landscapeFilePath));
-
-        if (landGroupTo != null) {
-            landGroupTo.findFileByID(0).setData(new ByteBuffer(outputLandData));
-        } else {
-            final Group newLandGroup = new Group(archiveTo.getFreeGroupID(),
-                    new mgi.tools.jagcached.cache.File(new ByteBuffer(outputLandData)));
-            newLandGroup.setName("l" + regionX + "_" + regionY);
-            archiveTo.addGroup(newLandGroup);
-        }
-
-        final byte[] outputMapData = java.nio.file.Files.readAllBytes(Path.of(mapFilePath));
-
-        if (mapGroupTo != null) {
-            mapGroupTo.findFileByID(0).setData(new ByteBuffer(outputMapData));
-        } else {
-            final Group newMapGroup = new Group(archiveTo.getFreeGroupID() + 1,
-                    new mgi.tools.jagcached.cache.File(new ByteBuffer(outputMapData)));
-            newMapGroup.setName("m" + regionX + "_" + regionY);
-            archiveTo.addGroup(newMapGroup);
-        }
     }
 
     public static void parse(final File folder) {
@@ -528,11 +404,6 @@ public class TypeParser {
         }
     }
 
-    private static void packHighRevision() throws IOException {
-        FramePacker.write();
-        AnimationBase.pack();
-    }
-
     private static void packDynamicConfigs() {
         //for (Int2IntMap.Entry entry : EnumDefinitions.getIntEnum(1002).getValues().int2IntEntrySet()) {
         //    System.out.println(entry.getIntKey()+"="+entry.getIntValue());
@@ -607,12 +478,6 @@ public class TypeParser {
         return def;
     }
 
-    public static void packModel(final int id, final byte[] bytes) {
-        log.info("Packing model: {}", id);
-        CacheManager.getCache().getArchive(ArchiveType.MODELS).addGroup(new Group(id,
-                new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
     public static void packSound(final int id, final byte[] bytes) {
         CacheManager.getCache().getArchive(ArchiveType.SYNTHS).addGroup(new Group(id,
                 new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
@@ -673,134 +538,6 @@ public class TypeParser {
     }
 
     private static void packClientScripts() throws Exception {
-        // packClientScript(73,
-        // java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/bank_command/73.cs2")));
-        // packClientScript(386,
-        // java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tourny_fog/386.cs2")));
-//        var files = Paths.get("assets/cs2/old_jagex/").toFile().listFiles();
-//        for (var file : files) {
-//            var id = Integer.parseInt(file.getName().replaceAll(".cs2", ""));
-//            packClientScript(id, java.nio.file.Files.readAllBytes(file.toPath()));
-//        }
-
-//        packClientScript(393,
-//               java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/skill_tab_construction/393.cs2")));
-    /*packClientScript(395,
-        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/skill_tab_construction/395.cs2")));*/
-//        packClientScript(687,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/ironman_setup/687.cs2")));
-        //packClientScript(1004,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/experience_drops_multiplier" +
-        //                ".cs2")));
-//        packClientScript(1261,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tourny_fog/1261.cs2")));
-//        packClientScript(1705,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/edgeville_map_link/1705.cs2")));
-        //packClientScript(2066,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/broadcast_custom_links/2066" +
-        //                ".cs2")));
-//        packClientScript(2094,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/ironman_setup/2094.cs2")));
-//        packClientScript(2096,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/ironman_setup/2096.cs2")));
-//        packClientScript(2186,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tourny_viewer/2186.cs2")));
-        //packClientScript(2200,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/achievement_diary_sizes/2200" +
-        //                ".cs2")));
-        //packClientScript(699,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/emote_tab/699.cs2")));
-        //packClientScript(701,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/emote_tab/701.cs2")));
-        //packClientScript(702,
-        //        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/emote_tab/702.cs2")));
-        /*
-         * for (int id = 3500; id <= 3505; id++) {
-         * packClientScript(id,
-         * java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/game_noticeboard/" + id +
-         * ".cs2")));
-         * }
-         */
-//        packClientScript(10100,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/ironman_setup/10100.cs2")));
-//        for (int i = 10034; i <= 10048; i++) {
-//            packClientScript(i,
-//                    java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/wheel_of_fortune/" + i + ".cs2")));
-//        }
-//
-//        for (int id = 10200; id <= 10202; id++) {
-//            packClientScript(id,
-//                    java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/game_settings/" + id + ".cs2")));
-//        }
-//
-//        for (int id = 10400; id <= 10405; id++) {
-//            packClientScript(id,
-//                    java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tourny_info/" + id + ".cs2")));
-//        }
-//        packClientScript(10600,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tourny_viewer/10600.cs2")));
-//        packClientScript(10700,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/hide_roofs/10700.cs2")));
-
-//        packClientScript(336,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/godwars_dungeon/336.cs2")));
-//        packClientScript(342,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/godwars_dungeon/342.cs2")));
-//        for (int i = 10900; i <= 10912; i++) {
-//            packClientScript(i,
-//                    java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/eco_presets/" + i + ".cs2")));
-//        }
-
-//
-//        packClientScript(1311,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tog_sidepanel_timer.cs2")));
-
-//
-//        packClientScript(1816,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1816.cs2")));
-//        packClientScript(1818,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1818.cs2")));
-//        packClientScript(1819,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1819.cs2")));
-//        packClientScript(1820,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1820.cs2")));
-//        packClientScript(1821,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1821.cs2")));
-//        packClientScript(1822,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1822.cs2")));
-//        packClientScript(1823,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1823.cs2")));
-//        packClientScript(1824,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1824.cs2")));
-//        packClientScript(1825,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1825.cs2")));
-//        packClientScript(1826,
-//                java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/vardovis_ui/script_1826.cs2")));
-
-        /*for (File file : Objects
-                .requireNonNull(Paths.get("assets/cs2/duel_staking/").toFile().listFiles())) {
-            if (file.getName().endsWith(".cs2")) {
-                try {
-                    final int id = Integer.parseInt(file.getName().replace(".cs2", ""));
-                    packClientScript(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("File name of " + file + " must be an integer!");
-                    e.printStackTrace(System.err);
-
-                }
-            }
-        }*/
-        //packClientScript(223, java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/tam/223.cs2")));
-
-
-        // Gauntlet edenified cs2s
-/*    packClientScript(13827,
-        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/gauntlet/13827.cs2")));
-    packClientScript(13828,
-        java.nio.file.Files.readAllBytes(Paths.get("assets/cs2/gauntlet/13828.cs2")));*/
-
-//        packRustyScripts("assets/scripts/out/");
-
     }
 
     private static void packCs2FromDirectory(String first) throws IOException {

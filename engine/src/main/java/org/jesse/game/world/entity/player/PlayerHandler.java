@@ -1,12 +1,10 @@
 package org.jesse.game.world.entity.player;
 
-import org.jesse.game.content.middleman.MiddleManManager;
 import org.jesse.game.world.entity.player.PlayerActionPlugin;
 import org.jesse.game.GameConstants;
 import org.jesse.game.content.minigame.castlewars.CastleWars;
 import org.jesse.game.content.minigame.castlewars.CastleWarsArea;
 import org.jesse.game.content.minigame.castlewars.CastleWarsTeam;
-import org.jesse.game.content.minigame.duelarena.Duel;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.util.Utils;
@@ -88,7 +86,6 @@ public final class PlayerHandler {
 
     private static void handleDefault(Player player, Player p2, String option) {
         switch (option) {
-            case "Challenge" -> handleChallengeRequest(player, p2);
             case "Trade with" -> handleTradeRequest(player, p2);
             case "Take-from" -> handleTakeFlagAttempt(player, p2);
             case "Slash" -> player.setAnimation(new Animation(7328));
@@ -155,38 +152,6 @@ public final class PlayerHandler {
         player.sendMessage("You take the flag from your teammate.");
     }
 
-    private static void handleChallengeRequest(final Player player, final Player p2) {
-        if (!GameConstants.DUEL_ARENA) {
-            player.sendMessage("The Duel Arena is temporarily unavailable right now.");
-            return;
-        }
-        if (player.getDuel() != null) {
-            player.sendMessage("You're already in a duel.");
-            return;
-        }
-        if (p2.getDuel() != null) {
-            player.sendMessage("The other player is already in a duel.");
-            return;
-        }
-
-        if (TempPlayerStatePlugin.enableTempState(player, TempPlayerStatePlugin.StateType.INVENTORY)) {
-            player.sendMessage("Cannot duel right now.");
-            return;
-        }
-        if (p2.getTemporaryAttributes().get("DuelTarget") == player) {
-            p2.getTemporaryAttributes().remove("DuelTarget");
-            player.getInterfaceHandler().closeInterfaces();
-            p2.getInterfaceHandler().closeInterfaces();
-            final Duel duel = new Duel(player, p2);
-            duel.openChallenge();
-            return;
-        }
-        player.getTemporaryAttributes().put("DuelTarget", p2);
-        final String name = player.getPlayerInformation().getDisplayname();
-        player.sendMessage("Challenging " + p2.getPlayerInformation().getDisplayname() + "...");
-        p2.getPacketDispatcher().sendChallengeRequest(name + " wishes to duel with you.", name);
-    }
-
     private static void handleTradeRequest(final Player player, final Player p2) {
         // If the account has a PIN & Required unlocking; STOP HERE
         if (player.getBankPin().requiresVerification(player, () -> handleTradeRequest(player, p2))) return;
@@ -200,9 +165,6 @@ public final class PlayerHandler {
             player.sendMessage("Other player is busy at the moment.");
             return;
         }
-
-        if (MiddleManManager.INSTANCE.onTradeWithOption(player, p2))
-            return;
 
         if (player.getGameMode().isNonGroupIronman() && (!player.getPrivilege().inherits(PlayerPrivilege.MODERATOR) && !p2.getPrivilege().inherits(PlayerPrivilege.MODERATOR))) {
             player.sendMessage("You're an Iron Man. You stand alone.");

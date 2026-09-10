@@ -2,7 +2,6 @@ package org.jesse.game.model;
 
 import org.jesse.cores.ScheduledExternalizable;
 import org.jesse.game.GameConstants;
-import org.jesse.game.model.ui.testinterfaces.GameNoticeboardInterface;
 import org.jesse.game.world.World;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.logger.NearRealityLogger;
@@ -25,7 +24,6 @@ public final class BonusXpManager implements ScheduledExternalizable {
 
     public static void set(final long time) {
         expirationDate = time;
-        GameNoticeboardInterface.refreshBonusXP();
     }
 
     public static void checkIfFlip() {
@@ -33,7 +31,6 @@ public final class BonusXpManager implements ScheduledExternalizable {
             if (expirationDate < System.currentTimeMillis()) {
                 GameConstants.BOOSTED_XP = false;
                 expirationDate = 0;
-                GameNoticeboardInterface.refreshBonusXP();
                 for (final Player player : World.getPlayers()) {
                     player.sendMessage("<col=FF0000><shad=000000>Experience is no longer boosted by 50%!</col></shad>");
                 }
@@ -41,7 +38,6 @@ public final class BonusXpManager implements ScheduledExternalizable {
         } else {
             if (expirationDate > 0) {
                 GameConstants.BOOSTED_XP = true;
-                GameNoticeboardInterface.refreshBonusXP();
                 final String date = new Date(BonusXpManager.expirationDate).toString();
                 for (final Player player : World.getPlayers()) {
                     player.sendMessage("<col=00FF00><shad=000000>Experience is boosted by 50% until " + date + "!</col></shad>");

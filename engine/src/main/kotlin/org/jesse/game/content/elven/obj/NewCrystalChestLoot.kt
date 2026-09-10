@@ -2,8 +2,6 @@ package org.jesse.game.content.elven.obj
 
 import org.jesse.game.item.Item
 import org.jesse.game.item.ids.*
-import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry
-import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry
 import org.jesse.game.world.entity.player.Player
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
 
@@ -169,34 +167,5 @@ enum class NewCrystalChestLoot(
             return loots
         }
 
-        val enhancedEntries: ObjectArrayList<DropViewerEntry> = ObjectArrayList()
-        val normalEntries: ObjectArrayList<DropViewerEntry> = ObjectArrayList()
-
-        @JvmStatic
-        fun toEntries(enhanced: Boolean): ObjectArrayList<DropViewerEntry> {
-            return if(enhanced) {
-                if (enhancedEntries.isEmpty)
-                    mapEntries(enhanced)
-                enhancedEntries
-            } else {
-                if (normalEntries.isEmpty)
-                    mapEntries(enhanced)
-                normalEntries
-            }
-        }
-
-        private fun mapEntries(enhanced: Boolean) {
-            if(!enhanced) {
-                for(loot in entries.filter { !it.enhancedOnly }) {
-                    normalEntries.add(OtherDropViewerEntry(loot.primary()?.id ?: continue, loot.min, loot.max,
-                        1.0, loot.rarity.getDivisor(enhanced).toDouble(), "This item's rate is the chance to roll the associated table."))
-                }
-            } else {
-                for(loot in entries) {
-                    enhancedEntries.add(OtherDropViewerEntry(loot.primary()?.id ?: continue, loot.min, loot.max,
-                        1.0, loot.rarity.getDivisor(enhanced).toDouble(), "This item's rate is the chance to roll the associated table."))
-                }
-            }
-        }
     }
 }

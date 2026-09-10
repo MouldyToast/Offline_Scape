@@ -16,9 +16,6 @@ public class JournalHeaderTabInterface extends Interface {
         put(2, "Character Summary");
         put(10, "Quests");
         put(18, "Achievement Diary");
-        put(26, "Server Events");
-        put(44, "Game Noticeboard");
-        put(34, "Extra");
     }
 
     @Override
@@ -31,9 +28,6 @@ public class JournalHeaderTabInterface extends Interface {
         bind("Quests", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.QUEST_TAB));
         bind("Achievement Diary", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.ACHIEVEMENT_DIARIES));
         bind("Character Summary", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.CHARACTER_SUMMARY));
-        bind("Game Noticeboard", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.GAME_NOTICEBOARD));
-        bind("Server Events", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.SERVER_EVENTS));
-        bind("Extra", player -> player.getInterfaceHandler().setJournal(InterfaceHandler.Journal.EXTRA));
     }
 
     @Override

@@ -6,7 +6,6 @@ import org.jesse.game.content.grandexchange.ExchangeType;
 import org.jesse.game.content.grandexchange.GrandExchange;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.UserInterface;
-import org.jesse.game.model.ui.testinterfaces.GrandExchangeOffersViewerInterface;
 import org.jesse.game.util.ItemUtil;
 import org.jesse.game.world.entity.player.Player;
 import mgi.types.config.items.ItemDefinitions;
@@ -163,9 +162,6 @@ public final class GrandExchangeOffersInterface implements UserInterface {
             case 29:
                 exchange.createOffer();
                 break;
-            case 33:
-                GameInterface.GRAND_EXCHANGE_OFFERS_VIEWER.open(player);
-                break;
             }
         } else if (interfaceId == GrandExchange.INVENTORY_INTERFACE) {
             switch (componentId) {
@@ -176,25 +172,6 @@ public final class GrandExchangeOffersInterface implements UserInterface {
                 }
                 if (optionId == 10) {
                     ItemUtil.sendItemExamine(player, item);
-                    return;
-                }
-                if (player.getInterfaceHandler().isPresent(GameInterface.GRAND_EXCHANGE_OFFERS_VIEWER)) {
-                    if (!item.isTradable()) {
-                        player.sendMessage("This item is untradeable.");
-                        return;
-                    }
-                    if (item.getId() == 995 || item.getId() == 13224 || !item.getDefinitions().isGrandExchange()) {
-                        player.sendMessage("This item cannot be sold.");
-                        return;
-                    }
-                    final int id = item.getDefinitions().getUnnotedOrDefault();
-                    GameInterface.GRAND_EXCHANGE_OFFERS_VIEWER.getPlugin().ifPresent(plugin -> {
-                        player.getPacketDispatcher().sendComponentItem(plugin.getInterface().getId(), plugin.getComponent("Item sprite in search"), id, 1);
-                        player.getPacketDispatcher().sendComponentText(plugin.getInterface(), plugin.getComponent("Item name"), ItemDefinitions.getOrThrow(id).getName());
-                        player.getPacketDispatcher().sendComponentText(plugin.getInterface(), plugin.getComponent("GE Item price"), StringFormatUtil.format(ItemValueExtKt.getItemValue(id)) + "<br>coins each");
-                        player.addTemporaryAttribute("ge_offers_selected_item", id);
-                    });
-                    GrandExchangeOffersViewerInterface.search(player, id, (ExchangeType) player.getTemporaryAttributes().getOrDefault("ge_offers_selected_exchangetype", ExchangeType.BUYING), null);
                     return;
                 }
                 if (exchange.sell(item)) {

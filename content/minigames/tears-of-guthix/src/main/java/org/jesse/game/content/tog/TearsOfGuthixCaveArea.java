@@ -66,7 +66,7 @@ public class TearsOfGuthixCaveArea extends TearsOfGuthixArea implements CyclePro
             GameInterface.SKILLS_TAB, GameInterface.JOURNAL_HEADER_TAB, GameInterface.SETTINGS,
             GameInterface.EMOTE_TAB, GameInterface.MUSIC_TAB, GameInterface.INVENTORY_TAB,
             GameInterface.EQUIPMENT_TAB, GameInterface.PRAYER_TAB_INTERFACE, GameInterface.SPELLBOOK,
-            GameInterface.FRIEND_LIST_TAB, GameInterface.GAME_NOTICEBOARD, GameInterface.LOGOUT,
+            GameInterface.FRIEND_LIST_TAB, GameInterface.LOGOUT,
             GameInterface.REGULAR_CHAT_CHANNELS);
 
     public static void remove(@NotNull final Player player) {

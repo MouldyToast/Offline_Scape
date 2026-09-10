@@ -325,38 +325,6 @@ public class NPCDrops {
 
 
 
-	public static void populateDropViewerData(final List<ItemDefinitions> searchableItemDefinitions) {
-		for (final Int2ObjectMap.Entry<List<DropProcessor>> dropProcessorEntry :
-				DropProcessorLoader.getProcessors().int2ObjectEntrySet()) {
-			final int npcId = dropProcessorEntry.getIntKey();
-			final List<DropProcessor> processorsList = dropProcessorEntry.getValue();
-			for (final DropProcessor processor : processorsList) {
-				for (final DropProcessor.DisplayedDrop displayedDrop : processor.getBasicDrops()) {
-					final NPCDrops.DisplayedDropTable table = NPCDrops.displayedDrops.computeIfAbsent(npcId,
-							__ -> new NPCDrops.DisplayedDropTable(npcId, new ObjectArrayList<>()));
-					final NPCDrops.DisplayedNPCDrop drop = new NPCDrops.DisplayedNPCDrop(displayedDrop.getId(),
-							displayedDrop.getMinAmount(), displayedDrop.getMaxAmount(),
-							(player, id) -> 1.0 / displayedDrop.getRate(player, id) * 100.0);
-					table.getDrops().add(drop);
-					if (displayedDrop.getPredicate() != null) {
-						drop.setPredicate(displayedDrop.getPredicate());
-					}
-				}
-			}
-		}
-		for (final Int2ObjectMap.Entry<NPCDrops.DisplayedDropTable> table :
-				NPCDrops.displayedDrops.int2ObjectEntrySet()) {
-			for (final NPCDrops.DisplayedNPCDrop drop : table.getValue().getDrops()) {
-				NPCDrops.dropsByItem.computeIfAbsent(drop.getItemId(), __ -> new ObjectArrayList<>())
-						.add(new ItemDrop(table.getIntKey(), drop));
-			}
-		}
-		for (final ItemDefinitions def : ItemDefinitions.getDefinitions()) {
-			if (def == null || !NPCDrops.dropsByItem.containsKey(def.getId())) continue;
-			searchableItemDefinitions.add(def);
-		}
-	}
-
 	public void save() {
 		if (!GameConstants.WORLD_PROFILE.isDevelopment()) {
 			throw new IllegalStateException("Saving drops may only be done on development worlds as it reflects on the actual in-use drops.");

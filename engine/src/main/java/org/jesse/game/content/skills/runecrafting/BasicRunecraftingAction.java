@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
 import org.jesse.game.content.achievementdiary.diaries.*;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.follower.Pet;
 import org.jesse.game.content.follower.impl.SkillingPet;
 import org.jesse.game.content.treasuretrails.clues.SherlockTask;
@@ -188,7 +187,6 @@ public final class BasicRunecraftingAction extends Action {
 			player.getDailyChallengeManager().update(SkillingChallenge.CRAFT_WRATH_RUNES, amount * 2);
 		} else if (rune.equals(Runecrafting.BLOOD_RUNE)) {
 			player.getAchievementDiaries().update(KourendDiary.CRAFT_ONE_OR_MORE_BLOOD_RUNES);
-			AdventCalendarManager.increaseChallengeProgress(player, 2022, 12, amount * 2);
 		}
 		player.getSkills().addXp(SkillConstants.RUNECRAFTING, useDaeyalt ? experience * 1.5 : experience);
 		player.getInventory().addItem(new Item(rune.getRuneId(), amount));

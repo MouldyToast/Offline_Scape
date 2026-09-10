@@ -15,10 +15,6 @@ public final class BankObject implements ObjectAction {
             GameInterface.BANK.open(player);
 		} else if (option.equalsIgnoreCase("Collect")) {
             GameInterface.GRAND_EXCHANGE_COLLECTION_BOX.open(player);
-		} else if (option.equalsIgnoreCase("Presets")) {
-			GameInterface.PRESET_MANAGER.open(player);
-		} else if (option.equalsIgnoreCase("Last-preset")) {
-			player.getPresetManager().loadLastPreset();
 		}
 	}
 

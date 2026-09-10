@@ -42,7 +42,6 @@ public enum VarCollection {
     SMASH_VIALS(VAR, 3617, p -> attribute(p, "SMASH_VIALS"), POST_LOGIN),
     FILTER_YELLS(VAR, 3618, p -> attribute(p, "YELL_FILTER"), POST_LOGIN),
     UPDATE_MESSAGE(VAR, 3619, p -> attribute(p, "UPDATE_MESSAGE"), POST_LOGIN),
-    EXAMINE_NPCS(VAR, 3621, p -> attribute(p, "EXAMINE_NPCS"), POST_LOGIN),
     BROADCAST_TREASURE_TRAILS(VAR, 3623, p -> attribute(p, "BROADCAST_TREASURE_TRAILS"), POST_LOGIN),
     SLAYER_STATUES(VAR, 3811, p -> {
         int value = p.getVarManager().getValue(3811);
@@ -61,7 +60,6 @@ public enum VarCollection {
     //JOURNAL_ADDITIONAL_TAB_ENABLED(VARBIT, 9340, Player::getNumJournalTabs, POST_LOGIN),//1 adventure paths (extra) journal tab enabled
     ACTIVE_SOCIAL_TAB(VARBIT, 13071, p -> ChatChannelPlayerExtKt.getSelectedChatChannelType(p).ordinal(), POST_LOGIN),
     DAILY_BATTLESTAVES_COLLECTED(VARBIT, 4539, p -> p.getVariables().isClaimedBattlestaves() ? 1 : 0, POST_LOGIN),
-    DROP_VIEWER_FRACTIONS(VAR, 3600, p -> attribute(p, "drop_viewer_fractions", 1)),
     FLOUR_BIN(VARBIT, 5325, p -> attribute(p, "flourbin", 1), POST_LOGIN),
     BLAST_FURNACE_DISPENSER(VARBIT, 936, p -> attribute(p, "blast_furnace_dispenser", 3), POST_LOGIN),
     BLAST_FURNACE_COFFER(VARBIT, 5356, p -> attribute(p, "blast_furnace_coffer", 1), POST_LOGIN),
@@ -86,7 +84,7 @@ public enum VarCollection {
 			POST_LOGIN),
     VORKATH_RECLAIM(VARBIT, 6108, p -> p.getRetrievalService().is(ItemRetrievalService.RetrievalServiceType.TORFINN)
 			? 25 : 24, POST_LOGIN),
-    MAX_COMP_PROGRESS(VARBIT, 11877, p -> 3, POST_LOGIN),//max quest points
+    MAX_COMP_PROGRESS(VARBIT, 11877, p -> 170, POST_LOGIN),//total quests in the rev-228 quest list (miniquests and RFD subquests excluded), shown as x/y on the character summary
     OVERLOAD_REFRESHES_REMAINING(VARBIT, 5418, p -> p.getVarManager().getBitValue(5418), PRE_LOGIN),
     THRALL_ACTIVE(VARBIT, 12413, p -> ThrallSpellKt.getCurrentThrall(p) != null ? 1 : 0, PRE_LOGIN),
     TOA_ENTRANCE(VARBIT, 13837, p -> 1, POST_LOGIN),

@@ -14,7 +14,6 @@ import org.jesse.game.content.bountyhunter.BountyHunterController;
 import org.jesse.game.content.bountyhunter.WildyExtKt;
 import org.jesse.game.content.buffs.PlayerBuffManager;
 import org.jesse.game.content.commands.DeveloperCommands;
-import org.jesse.game.content.middleman.MiddleManManager;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.ui.chat_channel.ChatChannelPlayerExtKt;
 import org.jesse.game.world.Boundary;
@@ -52,7 +51,6 @@ import org.jesse.game.content.killstreak.KillstreakLog;
 import org.jesse.game.content.lootkeys.LootkeySettings;
 import org.jesse.game.content.minigame.barrows.Barrows;
 import org.jesse.game.content.minigame.blastfurnace.BlastFurnace;
-import org.jesse.game.content.minigame.duelarena.Duel;
 import org.jesse.game.content.minigame.inferno.instance.Inferno;
 import org.jesse.game.content.multicannon.DwarfMultiCannon;
 import org.jesse.game.content.preset.PresetManager;
@@ -77,7 +75,6 @@ import org.jesse.game.content.tombsofamascut.npc.AbstractTOANPC;
 import org.jesse.game.content.treasuretrails.clues.LightBox;
 import org.jesse.game.content.treasuretrails.clues.PuzzleBox;
 import org.jesse.game.content.treasuretrails.stash.Stash;
-import org.jesse.game.content.wheeloffortune.WheelOfFortune;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.BonusXpManager;
 import org.jesse.game.model.item.SkillcapePerk;
@@ -137,7 +134,6 @@ import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.game.world.entity.player.calog.CALog;
 import org.jesse.game.world.entity.player.calog.CAType;
 import org.jesse.game.world.entity.player.collectionlog.CollectionLog;
-import org.jesse.game.world.entity.player.collectionlog.CollectionLogRewardManager;
 import org.jesse.game.world.entity.player.container.Container;
 import org.jesse.game.world.entity.player.container.ContainerPolicy;
 import org.jesse.game.world.entity.player.container.ContainerWrapper;
@@ -387,14 +383,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private CombatDefinitions combatDefinitions = new CombatDefinitions(this);
 
     @Expose
-    private final CollectionLogRewardManager clRewardManager = new CollectionLogRewardManager(this);
-
-    public CollectionLogRewardManager getCollectionLogRewardManager() {
-        return clRewardManager;
-    }
-
-
-    @Expose
     private final KillstreakLog killstreakLog = new KillstreakLog();
     private final HpHud hpHud = new HpHud(this);
 
@@ -486,7 +474,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     @Expose
     private Stash stash = new Stash(this);
     private transient boolean maximumTolerance;
-    private transient Duel duel;
     @Expose
     private SinglePlayerBank bank = new SinglePlayerBank(this);
     @Expose
@@ -542,7 +529,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private transient LogoutType logoutType = LogoutType.NONE;
     @Nullable
     private transient volatile WorldSwitchTarget worldSwitchTarget;
-    private WheelOfFortune wheelOfFortune = new WheelOfFortune(this);
     private transient boolean updatingNPCOptions = true;
     private transient boolean updateNPCOptions;
     private transient IntSet pendingVars = new IntLinkedOpenHashSet(100);
@@ -2062,7 +2048,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     public String getDbUsername() {
-        return dbUsername;
+        // Never null: falls back to the in-game username when no account
+        // database is attached (offline/local worlds never set dbUsername).
+        return dbUsername != null ? dbUsername : getUsername();
     }
 
     public void setDbUsername(String dbUsername) {
@@ -2196,7 +2184,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             interfaceHandler.closeInterfaces();
             MethodicPluginHandler.invokePlugins(ListenerType.LOGOUT, this);
             PluginManager.post(new LogoutEvent(this));
-            MiddleManManager.INSTANCE.onLogout(this);
             if (logger != null) {
                 CoresManager.getServiceProvider().submit(logger::shutdown);
             }
@@ -2482,12 +2469,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (getNumericAttribute("Xp Drops Wildy Only").intValue() == 0 || WildernessArea.isWithinWilderness(getX(), getY())) {
                 getVarManager().sendVar(3504, 1);
             }
-        }
-        final Optional<Interface> optionalPlugin = GameInterface.GAME_NOTICEBOARD.getPlugin();
-        if (optionalPlugin.isPresent()) {
-            final Interface plugin = optionalPlugin.get();
-            packetDispatcher.sendComponentText(plugin.getInterface(), plugin.getComponent("XP rate"), "XP: " +
-                    "<col=ffffff>" + getCombatXPRate() + "x Combat & " + getSkillingXPRate() + "x Skilling</col>");
         }
     }
 
@@ -3210,7 +3191,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 }
             }
             final Item necklace = this.getAmulet();
-            if (necklace != null && necklace.getId() == 11090 && getHitpoints() < (getMaxHitpoints() * 0.2F) && getDuel() == null) {
+            if (necklace != null && necklace.getId() == 11090 && getHitpoints() < (getMaxHitpoints() * 0.2F)) {
                 this.heal((int) (this.getMaxHitpoints() * 0.3F));
                 sendMessage("Your phoenix necklace heals you, but is destroyed in the process.");
                 getEquipment().set(EquipmentSlot.AMULET, null);
@@ -3522,17 +3503,11 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     public void setCanPvp(final boolean canPvp) {
-        setCanPvp(canPvp, false);
-    }
-
-    public void setCanPvp(final boolean canPvp, final boolean duel) {
-        if (this.canPvp == canPvp && this.flagDuel == duel) {
+        if (this.canPvp == canPvp) {
             return;
         }
         this.canPvp = canPvp;
-        this.flagDuel = duel;
         this.setPlayerAttackable(this.canPvp);
-        this.setPlayerChallengeable(!canPvp && this.flagDuel);
     }
 
     @Override
@@ -3664,12 +3639,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
         if (!updateComponentText) return;
 
-        final Optional<Interface> optionalPlugin = GameInterface.GAME_NOTICEBOARD.getPlugin();
-        if (optionalPlugin.isPresent()) {
-            final Interface plugin = optionalPlugin.get();
-            packetDispatcher.sendComponentText(plugin.getInterface(), plugin.getComponent("Privilege"), "Privilege: " +
-                    "<col=ffffff>" + privilege.crown().getCrownTag() + privilege.getPrettyName() + "</col>");
-        }
     }
 
     public void setPrivilege(final PlayerPrivilege privilege) {
@@ -3723,12 +3692,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         varManager.sendBit(1777, gameMode.ordinal());
         updateFlags.flag(UpdateFlag.APPEARANCE);
         ChatChannelPlayerExtKt.sendSocialTabs(this);
-        final Optional<Interface> optionalPlugin = GameInterface.GAME_NOTICEBOARD.getPlugin();
-        if (optionalPlugin.isPresent()) {
-            final Interface plugin = optionalPlugin.get();
-            packetDispatcher.sendComponentText(plugin.getInterface(), plugin.getComponent("Game Mode"), "Mode: " +
-                    "<col=ffffff>" + getGameModeCrown().getCrownTag() + gameMode + "</col>");
-        }
     }
 
     public void setMemberRank(final MemberRank rank) {
@@ -3739,12 +3702,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         memberRank = rank;
         if (!isLoggedIn)
             return;
-        final Optional<Interface> optionalPlugin = GameInterface.GAME_NOTICEBOARD.getPlugin();
-        if (optionalPlugin.isPresent()) {
-            final Interface plugin = optionalPlugin.get();
-            packetDispatcher.sendComponentText(plugin.getInterface(), plugin.getComponent("Member Rank"), "Member: " +
-                    "<col=ffffff>" + getMemberCrown().getCrownTag() + getMemberName().replace(" Member", "") + "</col>");
-        }
         varManager.sendBit(16000, memberRank.equalToOrGreaterThan(MemberRank.TOPAZ) ? 1 : 0);
         getUpdateFlags().flag(UpdateFlag.APPEARANCE);
     }
@@ -4056,7 +4013,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
 
-    private transient boolean flagDuel = false;
 
     public void clearTopLevelRowPlayerOptions() {
         setPlayerOption(0, "null", false);
@@ -4088,10 +4044,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public void setPlayerAttackable(boolean attackable) {
         if (attackable) {
-            setPlayerOption(1, flagDuel ? "Fight" : "Attack", true);
+            setPlayerOption(1, "Attack", true);
         }
         else {
-            clearPlayerOptionRow(1, flagDuel ? "Fight" : "Attack");
+            clearPlayerOptionRow(1, "Attack");
         }
     }
 
@@ -4122,15 +4078,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
     }
 
-    public void setPlayerChallengeable(boolean changeable) {
-        if (changeable) {
-            setPlayerOption(1, "Challenge", false);
-        }
-        else {
-            clearPlayerOptionRow(1, "Challenge");
-        }
-    }
-
     public void setPlayerItemOnPlayerOption(String arg, boolean toggle, boolean top) {
         if (toggle) {
             setPlayerOption(2, arg, top);
@@ -4151,12 +4098,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
             if (options[index].equals("Attack") && (option == null || !option.equals("Attack"))) {
                 setCanPvp(false);
             }
-            else if (options[index].equals("Fight") && (option == null || !option.equals("Fight"))) {
-                setCanPvp(false);
-            }
         }
-        if (Objects.equals(option, "Attack") || Objects.equals(option, "Fight")) {
-            setCanPvp(true, option.equals("Fight"));
+        if (Objects.equals(option, "Attack")) {
+            setCanPvp(true);
         }
     }
 
@@ -4243,12 +4187,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
         }
 
-//        varManager.sendVar(HalloweenUtils.COMPLETED_VARP, HalloweenUtils.isCompleted(this) ? 1 : 0);
-//        varManager.sendVar(GIVE_THANKS_VARP, attributes.containsKey("Thanksgiving 2019 event") ? 1 : 0);
-//        if (SplittingHeirs.progressedAtLeast(this, Stage.EVENT_COMPLETE)) {
-//            emotesHandler.unlock(Emote.AROUND_THE_WORLD_IN_EGGTY_DAYS);
-//            emotesHandler.unlock(Emote.RABBIT_HOP);
-//        }
 
         if (getLootkeySettings() != null) {
             if (lootkeySettings.getCurrentItemsInChest() != null)
@@ -4299,7 +4237,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         sendPlayerOptions();
         MethodicPluginHandler.invokePlugins(ListenerType.LOGIN, this);
         PluginManager.post(new LoginEvent(this));
-        MiddleManManager.INSTANCE.onLogin(this);
         WorldBroadcasts.onLogin(this);
         controllerManager.login();
         GlobalAreaManager.update(this, true, false);
@@ -4415,15 +4352,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (isDead()) {
             sendDeath();
         }
-    }
-
-    public Duel getDuel() {
-        if (duel != null && duel.getPlayer() != this) {
-            final Player opponent = duel.getPlayer();
-            duel.setPlayer(this);
-            duel.setOpponent(opponent);
-        }
-        return duel;
     }
 
     public String getTitleName() {
@@ -4857,10 +4785,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         this.maximumTolerance = maximumTolerance;
     }
 
-    public void setDuel(Duel duel) {
-        this.duel = duel;
-    }
-
     public Bank getBank() {
         return getPersonalBank();
     }
@@ -4997,10 +4921,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public void setWorldSwitchTarget(@Nullable final WorldSwitchTarget worldSwitchTarget) {
         this.worldSwitchTarget = worldSwitchTarget;
-    }
-
-    public WheelOfFortune getWheelOfFortune() {
-        return wheelOfFortune;
     }
 
     public boolean isUpdatingNPCOptions() {

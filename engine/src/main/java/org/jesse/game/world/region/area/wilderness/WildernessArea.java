@@ -3,7 +3,6 @@ package org.jesse.game.world.region.area.wilderness;
 import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.consumables.ConsumableEffects;
-import org.jesse.game.model.ui.testinterfaces.GameNoticeboardInterface;
 import org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVariables;
 import org.jesse.game.util.Colour;
 import org.jesse.game.world.Position;
@@ -198,7 +197,6 @@ public class WildernessArea extends PolygonRegionArea implements
         player.setCanPvp(true);
         //Sets the special attack orb unclickable.
         player.getVarManager().sendBit(IN_WILDERNESS_VARBIT_SPECIAL_UNCLICKABLE, 0);
-        GameNoticeboardInterface.refreshWildernessCounters(GameNoticeboardInterface.wildernessCount.incrementAndGet());
         //Supposed to clear received damage when re-entering wilderness.
         player.getReceivedDamage().clear();
         GameInterface.WILDERNESS_OVERLAY.open(player);
@@ -213,7 +211,6 @@ public class WildernessArea extends PolygonRegionArea implements
             player.getReceivedDamage().clear();
         }
         player.getVarManager().sendBit(IN_WILDERNESS_VARBIT_SPECIAL_UNCLICKABLE, 0);
-        GameNoticeboardInterface.refreshWildernessCounters(GameNoticeboardInterface.wildernessCount.decrementAndGet());
         //Reset the received hits on the player upon leaving Wilderness so that PvM deaths don't register as PvP deaths.
     }
 

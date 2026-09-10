@@ -11,7 +11,6 @@ import org.jesse.game.model.ui.InterfacePosition
 import org.jesse.game.model.ui.NewInterfaceHandler
 import org.jesse.game.model.ui.SubMenuAction
 import org.jesse.game.model.ui.SwitchPlugin
-import org.jesse.game.model.ui.testinterfaces.DropViewerInterface
 import org.jesse.plugins.ListenerType
 import org.jesse.plugins.MethodicPluginHandler
 import org.jesse.plugins.dialogue.CountDialogue
@@ -247,10 +246,6 @@ internal fun PacketConsumer.resumePString() {
         val player = player
         val string = it.string
 
-        if (player.interfaceHandler.isPresent(GameInterface.DROP_VIEWER)) {
-            DropViewerInterface.search(player, string)
-            return@addListener
-        }
         val input = player.temporaryAttributes["interfaceInput"]
         (input as? StringDialogue)?.execute(player, string)
     }

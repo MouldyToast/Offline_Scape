@@ -7,7 +7,6 @@ import org.jesse.game.model.item.leagues.raging_echo.EchoPickaxe;
 import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.content.achievementdiary.AchievementDiaries;
 import org.jesse.game.content.achievementdiary.diaries.*;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.minigame.castlewars.CastlewarsRockPatch;
 import org.jesse.game.content.minigame.motherlode.OreVein;
 import org.jesse.game.content.minigame.motherlode.Paydirt;
@@ -487,7 +486,6 @@ public class Mining extends Action {
         } else if (ore.equals(OreDefinitions.COAL)) {
             diaries.update(KandarinDiary.MINE_COAL);
             diaries.update(FremennikDiary.MINE_COAL_IN_RELLEKKA);
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 21, 1);
         } else if (ore.equals(OreDefinitions.SILVER)) {
             diaries.update(FremennikDiary.CRAFT_A_TIARA, 1);
             daily.update(SkillingChallenge.MINE_SILVER_ORES);

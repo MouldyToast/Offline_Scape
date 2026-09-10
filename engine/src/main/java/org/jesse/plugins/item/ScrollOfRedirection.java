@@ -23,7 +23,6 @@ public class ScrollOfRedirection extends ItemPlugin {
             }
             inventory.deleteItem(new Item(item.getId(), amount));
             player.getLoyaltyManager().setLoyaltyPoints(player.getLoyaltyManager().getLoyaltyPoints() + amount);
-            GameInterface.GAME_NOTICEBOARD.getPlugin().ifPresent(plugin -> player.getPacketDispatcher().sendComponentText(plugin.getInterface(), plugin.getComponent("Loyalty points"), "Loyalty points: <col=ffffff>" + player.getLoyaltyManager().getLoyaltyPoints() + "</col>"));
         }));
     }
 

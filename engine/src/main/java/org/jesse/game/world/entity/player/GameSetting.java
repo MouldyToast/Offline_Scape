@@ -44,9 +44,6 @@ public enum GameSetting {
     ALWAYS_SHOW_LATEST_UPDATE("Latest update message", "Always show latest update message on login, as opposed to " +
             "only showing it the first time around since the update.", 92, VarCollection.UPDATE_MESSAGE,
             SettingType.TOGGLE),
-    EXAMINE_NPCS_DROP_VIEWER("Examine drop viewer", "Examining NPCs opens the drop viewer with the npc's drops " +
-            "displayed on it, as long as the player is not being attacked.", 98, VarCollection.EXAMINE_NPCS,
-            SettingType.TOGGLE),
     TREASURE_TRAILS_BROADCASTS("Treasure Trails broadcasts", "Whether or not to broadcast rare rewards from Treasure " +
             "Trails.", 104, VarCollection.BROADCAST_TREASURE_TRAILS, SettingType.TOGGLE),
     NEW_PLAYERS("New player announcements", "Whether or not to broadcast new players that join the server.", 110, VarCollection.BROADCAST_NEW_PLAYERS, SettingType.TOGGLE),
@@ -84,8 +81,6 @@ public enum GameSetting {
         if (type.equals(SettingType.TOGGLE)) {
             if (this == HIDE_ITEMS_YOU_CANT_PICK && !player.isIronman()) {
                 player.sendMessage("This setting has no effect on non-ironman players.");
-                player.getPacketDispatcher().sendClientScript(10200, ordinal(), getName(), getDescription(),
-                        getType().ordinal(), player.getNumericAttribute(toString()).intValue());
                 return;
             }
             player.toggleBooleanAttribute(toString());
@@ -101,8 +96,6 @@ public enum GameSetting {
                 }
                 player.addAttribute(toString(), value);
                 var.updateSingle(player);
-                player.getPacketDispatcher().sendClientScript(10200, ordinal(), name, description, type.ordinal(),
-                        value);
             });
         }
     }

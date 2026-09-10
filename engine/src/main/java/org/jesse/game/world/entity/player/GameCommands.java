@@ -9,7 +9,6 @@ import org.jesse.game.content.commands.AdministratorCommands;
 import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.content.commands.PlayerCommands;
 import org.jesse.game.content.crystal.CrystalCommands;
-import org.jesse.game.content.middleman.MiddleManCommands;
 import org.jesse.game.content.skills.hunter.herbiboar.Herbiboar;
 import org.jesse.game.content.slayer.Assignment;
 import org.jesse.tools.BotPrevention;
@@ -20,8 +19,6 @@ import org.jesse.game.GameInterface;
 import org.jesse.game.content.Book;
 import org.jesse.game.content.achievementdiary.AchievementDiaries;
 import org.jesse.game.content.achievementdiary.Diary;
-import org.jesse.game.content.advent.AdventCalendarManager;
-import org.jesse.game.content.advent.AdventCalendarRaffle;
 import org.jesse.game.content.boss.BossRespawnTimer;
 import org.jesse.game.content.boss.cerberus.area.CerberusLairInstance;
 import org.jesse.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
@@ -40,8 +37,6 @@ import org.jesse.game.content.minigame.inferno.npc.impl.zuk.TzKalZuk;
 import org.jesse.game.content.minigame.pestcontrol.PestControlUtilities;
 import org.jesse.game.content.minigame.wintertodt.Wintertodt;
 import org.jesse.game.content.partyroom.BirthdayEventRewardList;
-import org.jesse.game.content.serverevent.WorldBoost;
-import org.jesse.game.content.serverevent.WorldBoostType;
 import org.jesse.game.content.skills.magic.Spellbook;
 import org.jesse.game.content.skills.magic.spells.teleports.SpellbookTeleport;
 import org.jesse.game.content.skills.magic.spells.teleports.Teleport;
@@ -56,8 +51,6 @@ import org.jesse.game.model.item.degradableitems.DegradableItem;
 import org.jesse.game.model.item.enums.RareDrop;
 import org.jesse.game.model.shop.Shop;
 import org.jesse.game.model.ui.InterfacePosition;
-import org.jesse.game.model.ui.testinterfaces.GameNoticeboardInterface;
-import org.jesse.game.model.ui.testinterfaces.ServerEventsInterface;
 import org.jesse.game.net.NetworkConstants;
 import org.jesse.game.task.TickTask;
 import org.jesse.game.task.WorldTasksManager;
@@ -147,7 +140,6 @@ import java.util.function.Predicate;
 import static org.jesse.game.item.HiddenItems.HIDDEN_ITEMS;
 import static org.jesse.game.GameConstants.WORLD_PROFILE;
 import static org.jesse.game.GameConstants.isOwner;
-import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
 import static org.jesse.game.world.entity.player.MessageType.GLOBAL_BROADCAST;
 import static java.lang.Integer.parseInt;
 
@@ -161,7 +153,6 @@ public final class GameCommands {
     static {
         PlayerCommands.INSTANCE.register();
         CrystalCommands.INSTANCE.register();
-        MiddleManCommands.INSTANCE.register();
         AdministratorCommands.INSTANCE.register();
         DeveloperCommands.INSTANCE.register();
         SanctionCommands.INSTANCE.register();
@@ -185,20 +176,6 @@ public final class GameCommands {
             }
         });
 
-
-        new Command(PlayerPrivilege.DEVELOPER, "setadvent", (p, args) -> {
-            int day = Integer.parseInt(args[0]);
-            int value = Integer.parseInt(args[1]);
-            AdventCalendarManager.setChallenge(p, day, value);
-            p.sendMessage("Incresing Day " + day + " by " + value);
-        });
-
-        new Command(PlayerPrivilege.DEVELOPER, "setrafflewinner", (p, args) -> {
-            int day = Integer.parseInt(args[0]);
-            String name = TextUtils.formatName(args[1]);
-            AdventCalendarRaffle.setAdventRaffleWinner(day, name);
-            p.sendMessage("Set Day " + day + " advent raffle winner to '" + name + "'");
-        });
 
         new Command(PlayerPrivilege.PLAYER, "toggles", "Opens your premium toggles.", (p, args) -> {
             if (p.isMember()) {
@@ -399,9 +376,6 @@ public final class GameCommands {
 
             inventory.addOrDrop(ItemID.LOOT_KEY_26652, 1);
 
-        });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "addspins", (p, args) -> {
-            p.getWheelOfFortune().setSpins(p.getWheelOfFortune().getSpins() + parseInt(args[0]));
         });
         new Command(PlayerPrivilege.SENIOR_MODERATOR, "addbroadcast", (p, args) -> {
             final int id = parseInt(args[0]);
@@ -1214,7 +1188,6 @@ public final class GameCommands {
                         }
                         p.setExperienceMultiplier(combat, skilling);
                         p.sendMessage("Experience rate set to x" + combat + " & x" + skilling + ".");
-                        GameInterface.GAME_NOTICEBOARD.open(p);
                     } catch (final Exception e) {
                         e.printStackTrace(NearRealityPrintStream.getErrorStream());
                         p.sendMessage("Format is ::xp combat_rate_value skilling_rate_value");
@@ -2330,10 +2303,6 @@ public final class GameCommands {
                 ));
         new Command(PlayerPrivilege.ADMINISTRATOR, "empty", "Clears the player's inventory.", (p, args) -> p.getInventory().clear());
         new Command(PlayerPrivilege.DEVELOPER, "emotes", "Unlocks all of the emotes.", (p, args) -> {
-            p.getAttributes().put("Thanksgiving 2019 event", true);
-            p.addAttribute("Halloween event 2019", 1);
-            p.getVarManager().sendVar(GIVE_THANKS_VARP, 1);
-            p.getVarManager().sendBit(1000, 1);
             for (final Emote e : Emote.VALUES) {
                 p.getEmotesHandler().unlock(e);
             }
@@ -2399,19 +2368,8 @@ public final class GameCommands {
                 p.sendMessage("The right usage of the thread command is be: ;;thread 1 for example.");
             }
         });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"staff", "staffonline",
-                "onlinestaff"}, "List staff members currently online.", (p, args) -> {
-            GameNoticeboardInterface.showStaffOnline(p);
-        });
         new Command(PlayerPrivilege.PLAYER, new String[]{"rules"}, (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.SERVER_RULES_URL);
-        });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"hs", "highscores", "highscore", "hiscores",
-                "hiscore"}, (p, args) -> {
-            GameInterface.HISCORES.open(p);
-        });
-        new Command(PlayerPrivilege.PLAYER, "advent", (p, args) -> {
-            GameInterface.ADVENT_CALENDAR.open(p);
         });
         new Command(PlayerPrivilege.PLAYER, "discord", (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.DISCORD_INVITE);

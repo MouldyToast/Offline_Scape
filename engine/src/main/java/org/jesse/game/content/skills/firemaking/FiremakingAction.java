@@ -1,7 +1,6 @@
 package org.jesse.game.content.skills.firemaking;
 
 import org.jesse.game.content.achievementdiary.diaries.*;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.treasuretrails.clues.SherlockTask;
 import org.jesse.game.item.Item;
 import org.jesse.game.task.WorldTasksManager;
@@ -139,7 +138,6 @@ public class FiremakingAction extends Action {
             SherlockTask.BURN_REDWOOD_LOG.progress(player);
         }
 
-        AdventCalendarManager.increaseChallengeProgress(player, 2022, 24, 1);
         player.sendFilteredMessage("The fire catches and the " + (data.equals(Firemaking.KINDLING) ? "kindlings begin to burn." : "logs begin to burn."));
         player.getSkills().addXp(SkillConstants.FIREMAKING, data.getXp());
         World.destroyFloorItem(player, item, object);

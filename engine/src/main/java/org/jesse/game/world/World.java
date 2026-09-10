@@ -14,10 +14,6 @@ import org.jesse.game.content.achievementdiary.diaries.FremennikDiary;
 import org.jesse.game.content.achievementdiary.diaries.WesternProvincesDiary;
 import org.jesse.game.content.achievementdiary.diaries.WildernessDiary;
 import org.jesse.game.content.grandexchange.GrandExchangeHandler;
-import org.jesse.game.content.minigame.duelarena.Duel;
-import org.jesse.game.content.minigame.duelarena.area.ArenaArea;
-import org.jesse.game.content.serverevent.WorldBoost;
-import org.jesse.game.content.serverevent.WorldBoostType;
 import org.jesse.game.content.skills.farming.FarmingProduct;
 import org.jesse.game.content.skills.magic.Rune;
 import org.jesse.game.content.skills.prayer.actions.Bones;
@@ -28,7 +24,6 @@ import org.jesse.game.model.item.containers.GemBag;
 import org.jesse.game.model.item.containers.HerbSack;
 import org.jesse.game.model.item.containers.LootingBag;
 import org.jesse.game.model.item.containers.*;
-import org.jesse.game.model.ui.testinterfaces.GameNoticeboardInterface;
 import org.jesse.game.net.NetworkConstants;
 import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
@@ -284,9 +279,6 @@ public final class World {
         } catch (final InterruptedException e) {
             log.error("Interrupted world thread shutdown", e);
         }
-
-        log.info("Ending duels and returning items to users.");
-        Duel.beforeShutdown();
 
         log.info("Saving all players' accounts and logging them off.");
         synchronized (LoginManager.writeLock) {
@@ -1757,7 +1749,7 @@ public final class World {
     private static void swap(final int i, final int change) {
         final Player a = World.usedPIDs.get(i);
         final Player b = World.usedPIDs.get(change);
-        if ((a == null || a.getArea() instanceof ArenaArea) && (b == null || b.getArea() instanceof ArenaArea)) {
+        if (a == null && b == null) {
             return;
         }
         final int pidA = a == null ? -1 : a.getPid();
@@ -1849,20 +1841,6 @@ public final class World {
 
     private static final Map<Object, Object> temporaryAttributes = new HashMap<>();
 
-    private static final ObjectArrayList<WorldBoost> worldBoosts = new ObjectArrayList<>();
-
-    public static boolean hasBoost(WorldBoostType boost) {
-        for (WorldBoost worldBoost : worldBoosts) {
-            if (worldBoost.getBoostType().equals(boost))
-                return true;
-        }
-        return false;
-    }
-
-    public static ObjectArrayList<WorldBoost> getWorldBoosts() {
-        return worldBoosts;
-    }
-
     private static final GameQueueList queueList = new GameQueueList();
 
     public static GameQueueList getQueueList() {
@@ -1891,7 +1869,6 @@ public final class World {
                         !it.isNulled() &&
                                 !it.isHidden() &&
                                 it.getPrivilege().inherits(PlayerPrivilege.SUPPORT) &&
-                                !GameNoticeboardInterface.isHidden(it) &&
                                 !(it.getPrivilege() == PlayerPrivilege.HIDDEN_ADMINISTRATOR))
                 .count();
     }

@@ -2,8 +2,6 @@ package org.jesse.game.world.entity.player;
 
 import org.jetbrains.annotations.NotNull;
 
-import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
-
 /**
  * @author Kris | 22. veebr 2018 : 22:43.28
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
@@ -37,8 +35,6 @@ public final class EmotesHandler {
     public boolean isUnlocked(@NotNull final Emote emote) {
         if (emote == Emote.TRICK) {
             return false;
-        } else if (emote == Emote.GIVE_THANKS) {
-            return player.getVarManager().getValue(GIVE_THANKS_VARP) == 1;
         }
         return emote.getConfig() == -1 || player.getVarManager().getBitValue(emote.getConfig()) > 0;
     }

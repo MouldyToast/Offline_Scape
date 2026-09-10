@@ -8,7 +8,6 @@ import org.jesse.game.content.skills.magic.spells.NPCSpell
 import org.jesse.game.content.skills.magic.spells.PlayerSpell
 import org.jesse.game.model.item.ItemOnNPCHandler
 import org.jesse.game.model.item.ItemOnPlayerHandler
-import org.jesse.game.model.ui.testinterfaces.DropViewerInterface
 import org.jesse.game.parser.impl.NPCExamineLoader
 import org.jesse.game.world.World
 import org.jesse.game.world.entity.Location
@@ -108,13 +107,6 @@ fun PacketConsumer.opnpc6() {
         val player = player
         val npcId = it.id
 
-        if (player.getNumericAttribute(GameSetting.EXAMINE_NPCS_DROP_VIEWER.toString()).toInt() == 1) {
-            if (!player.isUnderCombat(6)) {
-                DropViewerInterface.open(player, npcId)
-            } else {
-                player.sendFilteredMessage("You need to be out of combat to use the drop viewer.")
-            }
-        }
         val examine = NPCExamineLoader.get(npcId) ?: return@addListener
         player.sendMessage(examine.examine, MessageType.EXAMINE_NPC)
     }

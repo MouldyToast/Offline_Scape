@@ -176,6 +176,5 @@ public final class LoyaltyManager {
 
     public void setLoyaltyPoints(final int value) {
         player.addAttribute("loyalty points", value);
-        GameInterface.GAME_NOTICEBOARD.getPlugin().ifPresent(plugin -> player.getPacketDispatcher().sendComponentText(plugin.getInterface(), plugin.getComponent("Loyalty points"), "Loyalty points: <col=ffffff>" + player.getLoyaltyManager().getLoyaltyPoints() + "</col>"));
     }
 }

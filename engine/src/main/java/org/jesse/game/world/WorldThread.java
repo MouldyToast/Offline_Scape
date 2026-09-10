@@ -11,7 +11,6 @@ import org.jesse.game.world.entity.player.FakePlayer;
 import org.jesse.threads.MainThread;
 import org.jesse.Main;
 import org.jesse.cores.CoresManager;
-import org.jesse.game.GameClock;
 import org.jesse.game.GameConstants;
 import org.jesse.game.model.BonusXpManager;
 import org.jesse.game.model.shop.Shop;
@@ -166,7 +165,6 @@ public final class WorldThread extends MainThread {
 
         final long gameClockNano = System.nanoTime();
         try {
-            GameClock.process();
             BonusXpManager.checkIfFlip();
         } catch (final Exception e) {
             log.error("Failed to process gameclock and bonus xp manager", e);

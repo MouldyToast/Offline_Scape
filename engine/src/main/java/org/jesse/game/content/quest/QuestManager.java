@@ -33,6 +33,7 @@ public final class QuestManager {
 		vars.sendBitInstant(13175, 10);
 		vars.sendBitInstant(12296, 150);
 
+		int completed = 0;
 		for (final Quest quest : Quest.values) {
 			int varId = quest.getVariable();
 			DBRowDefinition dbRowDefinition = DBRowDefinition.get(quest.getDbTableIndex());
@@ -52,11 +53,16 @@ public final class QuestManager {
 						vars.sendVarInstant(varId, questFinishStage);
 					}
 				}
+				if (quest.isCounted()) {
+					completed++;
+				}
 			} catch (final Exception e) {
 				System.err.println("Error while unlocking quest " + quest.name() + " for player " + player.getUsername());
 				e.printStackTrace(NearRealityPrintStream.getErrorStream());
 			}
 		}
+		// completed-quests count shown as x/y on the character summary
+		vars.sendBitInstant(6347, completed);
 	}
 
 }

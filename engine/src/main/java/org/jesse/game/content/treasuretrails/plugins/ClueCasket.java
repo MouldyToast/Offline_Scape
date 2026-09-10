@@ -1,7 +1,6 @@
 package org.jesse.game.content.treasuretrails.plugins;
 
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.follower.impl.MiscPet;
 import org.jesse.game.content.treasuretrails.ClueLevel;
 import org.jesse.game.content.treasuretrails.TreasureTrail;
@@ -96,7 +95,6 @@ public class ClueCasket extends ItemPlugin {
 
     static final void open(@NotNull final Player player, @NotNull final Item item, @NotNull final ClueLevel tier) {
 
-        AdventCalendarManager.increaseChallengeProgress(player, 2022, 14, 1);
         final ClueRewardTable rewards = Objects.requireNonNull(ClueReward.getTable(item.getId()));
         final List<Item> loot = rewards.roll(player.inArea(Entrana.class), false);
         player.sendMessage("Well done, you've completed the Treasure Trail!");

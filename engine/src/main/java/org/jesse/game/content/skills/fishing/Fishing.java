@@ -8,7 +8,6 @@ import org.jesse.game.world.entity.player.PlayerAttributesKt;
 import org.jesse.game.content.achievementdiary.DiaryReward;
 import org.jesse.game.content.achievementdiary.DiaryUtil;
 import org.jesse.game.content.achievementdiary.diaries.*;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.skills.cooking.CookingDefinitions;
 import org.jesse.game.content.skills.woodcutting.AxeDefinitions;
 import org.jesse.game.content.treasuretrails.ClueItem;
@@ -176,13 +175,11 @@ public class Fishing extends Action {
         } else if (fish.equals(FishDefinitions.LEAPING_STURGEON)) {
             player.getAchievementDiaries().update(KandarinDiary.CATCH_LEAPING_STURGEON);
         } else if (fish.equals(FishDefinitions.SHARK)) {
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 18, 1);
             SherlockTask.CATCH_RAW_SHARK.progress(player);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_SHARKS);
         } else if (fish.equals(FishDefinitions.ANGLERFISH)) {
             player.getAchievementDiaries().update(KourendDiary.CATCH_ANGLERFISH, 1);
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_ANGLERFISH);
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 6, 1);
         } else if (fish.equals(FishDefinitions.KARAMBWANJI)) {
             player.getDailyChallengeManager().update(SkillingChallenge.CATCH_KARAMBWANJI);
         } else if (fish.equals(FishDefinitions.MONKFISH)) {

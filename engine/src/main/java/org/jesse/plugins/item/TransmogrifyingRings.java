@@ -16,10 +16,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 public class TransmogrifyingRings implements EquipPlugin {
     @Override
     public boolean handle(final Player player, final Item item, final int slotId, final int equipmentSlot) {
-        if (player.getDuel() != null && player.getDuel().inDuel()) {
-            player.sendMessage("You can't do this during a duel.");
-            return false;
-        }
         if (player.getTemporaryAttributes().get("greegree") != null) {
             player.sendMessage("You can't do that as a monkey!");
             return false;

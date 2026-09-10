@@ -8,7 +8,6 @@ import org.jesse.game.content.tournament.preset.TournamentPreset
 import org.jesse.game.item.ids.*
 import org.jesse.game.util.WorldTimer
 import org.jesse.game.util.formattedString
-import org.jesse.game.content.advent.AdventCalendarManager
 import org.jesse.game.item.Item
 import org.jesse.game.model.shop.ShopCurrency
 import org.jesse.game.model.ui.InterfacePosition
@@ -45,7 +44,6 @@ class Tournament(val preset: TournamentPreset, timer: WorldTimer) {
 
     fun tryStartNextRound() {
         val playersInFightWaitingArea = participants
-        playersInFightWaitingArea.forEach(::advanceChallengeProgress)
         val participants = playersInFightWaitingArea.toMutableSet()
         val pairs = LinkedList(participants.removePairs())
         val unpairedPlayer = participants.firstOrNull()
@@ -247,9 +245,6 @@ private fun sendWinnerSpecialEffectGraphics(tile: Location): Boolean =
             }
         }
     })
-
-private fun advanceChallengeProgress(player: Player): Unit =
-    AdventCalendarManager.increaseChallengeProgress(player, 2022, 11, 1)
 
 private fun awardPointsForPlacement(player: Player, placement: Int) {
     val points = when (placement) {

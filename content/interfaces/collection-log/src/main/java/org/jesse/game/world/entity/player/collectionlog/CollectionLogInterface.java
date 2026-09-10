@@ -2,9 +2,6 @@ package org.jesse.game.world.entity.player.collectionlog;
 
 import com.google.common.base.Preconditions;
 import com.google.common.eventbus.Subscribe;
-import org.jesse.game.content.collectionlog.CollectionLogRewards;
-import org.jesse.tools.logging.GameLogMessage;
-import org.jesse.tools.logging.GameLogger;
 import org.jesse.game.GameInterface;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.Interface;
@@ -18,12 +15,10 @@ import org.jesse.plugins.events.LoginEvent;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
-import kotlinx.datetime.Instant;
 import mgi.types.config.StructDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
 import mgi.types.config.enums.IntEnum;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.event.Level;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -34,7 +29,6 @@ import java.util.stream.IntStream;
 import static org.jesse.game.GameConstants.WORLD_PROFILE;
 import static org.jesse.game.world.entity.player.collectionlog.CollectionLogConstants.*;
 import static org.jesse.game.world.entity.player.collectionlog.CollectionLogRewardHandler.getCollectionLogItems;
-import static org.jesse.game.world.entity.player.collectionlog.CollectionLogRewardManager.claimInProgress;
 
 /**
  * @author Kris | 12/03/2019 23:03
@@ -52,8 +46,6 @@ public class CollectionLogInterface extends Interface {
     private static final int COLLECTION_LOG_TOTAL_UNLOCKED_VARP = 2943;
     private static final int COLLECTION_LOG_TOTAL_UNLOCKABLE_VARP = 2944;
     private static final String SEARCH_LETTERS = "abcdefghijklmnopqrstuvwxyz \t";
-    public static final String validation_key = "cl-reward-validation-status";
-    public static final String validation_select = "cl-reward-validation-id";
 
     @Override
     protected void attach() {
@@ -64,7 +56,6 @@ public class CollectionLogInterface extends Interface {
         put(8, CLCategoryType.OTHER.category());
         put(21, "Combat achievements");
         put(1, "Close");
-        put(90, "Claim Reward");//?
         int id = 42;
         for (char c : SEARCH_LETTERS.toCharArray()) {
             put(id++, "Search letter " + c);
@@ -82,9 +73,6 @@ public class CollectionLogInterface extends Interface {
         for (char c : SEARCH_LETTERS.toCharArray()) {
             player.getPacketDispatcher().sendComponentSettings(getInterface().getId(), getComponent("Search letter " + c), -1, -1, AccessMask.CLICK_OP1);
         }
-        player.addTemporaryAttribute(validation_key, 0);
-        player.addTemporaryAttribute(validation_select, 0);
-
         refreshTotalUnlocked(player);
         player.getPacketDispatcher().sendUpdateItemContainer(player.getCollectionLog().getContainer());
         player.getInterfaceHandler().sendInterface(this);
@@ -100,8 +88,6 @@ public class CollectionLogInterface extends Interface {
     @Override
     public void close(Player player, Optional<GameInterface> replacement) {
         super.close(player, replacement);
-        player.addTemporaryAttribute(validation_key, 0);
-        player.addTemporaryAttribute(validation_select, 0);
         player.getPacketDispatcher().sendClientScript(2158);
     }
 
@@ -120,8 +106,6 @@ public class CollectionLogInterface extends Interface {
         final var length = categoryEnum.getSize();
         Preconditions.checkArgument(subCategory >= 0 && subCategory < length);
         final int subStructId = categoryEnum.getValue(subCategory).orElseThrow(RuntimeException::new);
-        // Check if anything is claimed or not, and load the button for claiming
-        CollectionLogRewardHandler.evaluateAndSend(subStructId, player, type);
         final var functions = CollectionLogCategories.getFunctions(getCategoryName(subStructId));
         final var varIds = new int[] { 2048, 2941, 2942 };
         if (functions != null)
@@ -221,7 +205,6 @@ public class CollectionLogInterface extends Interface {
             }
         });
         bind("Close", (player) -> player.getInterfaceHandler().closeInterfaces());
-        bind("Claim Reward", this::attemptClaim);
         for (CLCategoryType type : CLCategoryType.values) {
             bind(type + " layer", (player, slotId, itemId, option) -> populate(player, getCurrentCategory(player), slotId));
         }
@@ -235,40 +218,6 @@ public class CollectionLogInterface extends Interface {
                     updateSearchResults(player);
                 }
             });
-        }
-    }
-
-    private void attemptClaim(Player player) {
-        switch(player.getNumericTemporaryAttributeOrDefault(validation_key, 0).intValue()) {
-            case 0, 1 -> player.sendMessage("You have not completed this collection log.");
-            case 2 -> processClaim(player);
-            case 3 -> player.sendMessage("You have already claimed this reward.");
-        }
-
-    }
-
-    private void processClaim(Player player) {
-        int claiming = player.getNumericTemporaryAttributeOrDefault(validation_select, 0).intValue();
-        if (claiming > 0 && player.getCollectionLogRewardManager().claim(claiming)) {
-            var rewards = CollectionLogRewards.getRewardSet(claiming);
-            rewards.toItems()
-                    .stream()
-                    .filter(item -> item.getId() != -1)
-                    .forEach(item -> player.getBank().add(new Item(item.getId(), item.getAmount())));
-            player.sendMessage("Your claimed rewards have been sent to your bank.");
-            player.addTemporaryAttribute(validation_key, 3);
-            player.putBooleanTemporaryAttribute(claimInProgress, false);
-            player.getPacketDispatcher().sendClientScript(34021, 1, 1,
-                    rewards.getItem0(),
-                    rewards.getQuantity0(),
-                    rewards.getItem1(),
-                    rewards.getQuantity1(),
-                    rewards.getItem2(),
-                    rewards.getQuantity2(),
-                    rewards.getItem3(),
-                    rewards.getQuantity3());
-            if(WORLD_PROFILE.isLogsDatabaseEnabled())
-                GameLogger.log(Level.INFO, () -> new GameLogMessage.CollectionLogClaim(Instant.Companion.now(), player.getDbUsername(), StructDefinitions.get(claiming).getParamAsString(STRUCT_POINTER_SUB_ENUM_CAT_NAME)));
         }
     }
 

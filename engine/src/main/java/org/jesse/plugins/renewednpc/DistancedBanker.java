@@ -56,28 +56,6 @@ public class DistancedBanker extends NPCPlugin implements ItemOnNPCAction {
                 player.setRouteEvent(new EntityEvent(player, new DistancedEntityStrategy(npc, 1), () -> execute(player, npc), true));
             }
         });
-        bind("Presets", new OptionHandler() {
-
-            @Override
-            public void handle(Player player, NPC npc) {
-                GameInterface.PRESET_MANAGER.open(player);
-            }
-
-            @Override
-            public void click(final Player player, final NPC npc, final NPCOption option) {
-                player.setRouteEvent(new EntityEvent(player, new DistancedEntityStrategy(npc, 1), () -> execute(player, npc), true));
-            }
-        });
-        bind("Last-Preset", new OptionHandler() {
-            @Override
-            public void handle(Player player, NPC npc) {
-                player.getPresetManager().loadLastPreset();
-            }
-            @Override
-            public void click(final Player player, final NPC npc, final NPCOption option) {
-                player.setRouteEvent(new EntityEvent(player, new DistancedEntityStrategy(npc, 1), () -> execute(player, npc), true));
-            }
-        });
     }
 
     @Override

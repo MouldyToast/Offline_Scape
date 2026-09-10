@@ -11,7 +11,6 @@ import org.jesse.game.content.achievementdiary.AdventurersLogIcon;
 import org.jesse.game.content.follower.Pet;
 import org.jesse.game.content.follower.impl.BossPet;
 import org.jesse.game.content.minigame.inferno.model.InfernoCompletions;
-import org.jesse.game.content.serverevent.WorldBoost;
 import org.jesse.game.content.treasuretrails.rewards.BroadcastedTreasure;
 import org.jesse.game.content.vote.VoteHandler;
 import org.jesse.game.item.Item;
@@ -58,7 +57,6 @@ public class WorldBroadcasts {
             "Did you know: You can vote for " + GameConstants.SERVER_NAME + " to receive a cash reward and vote points.",
             "Did you know: There's a chance Krystilia will upgrade your emblem when completing a Wilderness slayer assignment.",
             "Did you know: You can buy RFD gloves from the chest in the Lumbridge Castle Basement.",
-            "Did you know: You can view current buy and sell offers in the Grand Exchange with the \"Offers Viewer\" on the G.E Interface.",
             "Did you know: All farming timers are half that of OldSchool RuneScape.",
             "Did you know: We provide a Wiki command and quick link under the world map that directs you to the OldSchool RuneScape Wiki which is rather accurate.",
             "Did you know: We have a help chat called \"" + GameConstants.SERVER_CHANNEL_NAME + "\" for any new and seasoned players alike. Join via the clan chat interface.",
@@ -73,9 +71,6 @@ public class WorldBroadcasts {
 
 
     public static void onLogin(Player player) {
-        for (WorldBoost worldBoost : World.getWorldBoosts()) {
-            sendMessage(player, "World Boost active - " + worldBoost.getBoostType().getMssg(), worldBoost.getBoostType().getBroadcastType());
-        }
         if (VoteHandler.isBonusVote()) {
             player.sendMessage(VoteHandler.getBonusVoteMssg() + "|" + GameConstants.SERVER_VOTE_URL, MessageType.GLOBAL_BROADCAST);
         }

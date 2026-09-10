@@ -39,10 +39,6 @@ public class SoulBearer extends ItemPlugin implements PairedItemOnItemPlugin {
         });
         bind("Check", (player, item, container, slotId) -> player.sendMessage(item.getCharges() <= 0 ? "Your soul bearer has no charges. It feels on soul runes and blood runes." : ("Your soul bearer has " + item.getCharges() + " charge" + (item.getCharges() == 1 ? "" : "s") + ".")));
         bind("Uncharge", (player, item, container, slotId) -> {
-            if (player.getDuel() != null) {
-                player.sendMessage("You cannot uncharge the soul bearer within duels.");
-                return;
-            }
             if (item.getCharges() <= 0) {
                 player.sendMessage("Your soul bearer is empty.");
                 return;

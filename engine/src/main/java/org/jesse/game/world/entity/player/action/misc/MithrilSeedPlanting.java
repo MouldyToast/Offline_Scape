@@ -35,7 +35,7 @@ public class MithrilSeedPlanting extends Action {
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return false;
 
         var location = new Location(player.getLocation());
-        if (isValidMovementTile(location) || (player.getDuel() != null && player.getDuel().inDuel())) {
+        if (isValidMovementTile(location)) {
             player.sendMessage("You can't plant mithril seeds here.");
             return false;
         }
@@ -56,7 +56,7 @@ public class MithrilSeedPlanting extends Action {
     public int processWithDelay() {
         if (player.getNumericTemporaryAttribute("mithril seed delay").longValue() > System.currentTimeMillis()) return -1;
         var location = new Location(player.getLocation());
-        if (isValidMovementTile(location) || (player.getDuel() != null && player.getDuel().inDuel())) {
+        if (isValidMovementTile(location)) {
             player.sendMessage("You can't plant mithril seeds here.");
             return -1;
         }

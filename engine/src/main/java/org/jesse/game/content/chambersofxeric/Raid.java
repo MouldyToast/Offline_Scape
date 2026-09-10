@@ -2,7 +2,6 @@ package org.jesse.game.content.chambersofxeric;
 
 import com.google.common.eventbus.Subscribe;
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.content.chambersofxeric.greatolm.GreatOlm;
 import org.jesse.game.content.chambersofxeric.map.*;
 import org.jesse.game.content.chambersofxeric.npc.ScavengerBeast;
@@ -373,7 +372,6 @@ public final class Raid {
                 amt = 131071 - current;
             }
 
-            AdventCalendarManager.increaseChallengeProgress(player, 2022, 8, amt);
             pointsMap.put(username, current + amt);
         }
 

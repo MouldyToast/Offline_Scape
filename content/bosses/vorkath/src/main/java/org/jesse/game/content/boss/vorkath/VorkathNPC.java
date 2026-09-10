@@ -1,6 +1,5 @@
 package org.jesse.game.content.boss.vorkath;
 
-import org.jesse.game.content.advent.AdventCalendarManager;
 import org.jesse.game.item.Item;
 import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
@@ -234,7 +233,6 @@ public final class VorkathNPC extends NPC implements CombatScript {
         attacksPerformed = 0;
         meleeOnly = true;
         attackType = Utils.random(1);
-        AdventCalendarManager.increaseChallengeProgress(killer, 2022, 15, 1);
         tile.setLocation(new Location(getX() - 1, getY() - 1, getPlane()));
         onDrop(killer);
         final NPCDrops.DropTable drops = NPCDrops.getTable(getId());

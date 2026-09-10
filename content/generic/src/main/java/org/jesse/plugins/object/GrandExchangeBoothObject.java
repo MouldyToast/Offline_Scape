@@ -21,12 +21,6 @@ public class GrandExchangeBoothObject implements ObjectAction {
             player.getGrandExchange().openOffersInterface();
         } else if (option.equals("Collect")) {
             GameInterface.GRAND_EXCHANGE_COLLECTION_BOX.open(player);
-        } else if (option.equals("Offers Viewer")) {
-            GameInterface.GRAND_EXCHANGE_OFFERS_VIEWER.open(player);
-        } else if (option.equalsIgnoreCase("Presets")) {
-            GameInterface.PRESET_MANAGER.open(player);
-        } else if (option.equalsIgnoreCase("Last-preset")) {
-            player.getPresetManager().loadLastPreset();
         }
     }
 

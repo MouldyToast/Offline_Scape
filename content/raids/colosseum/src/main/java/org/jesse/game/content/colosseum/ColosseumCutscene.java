@@ -26,7 +26,6 @@ import java.util.List;
 import static org.jesse.game.GameInterface.*;
 import static org.jesse.game.GameInterface.EMOTE_TAB;
 import static org.jesse.game.GameInterface.EQUIPMENT_TAB;
-import static org.jesse.game.GameInterface.GAME_NOTICEBOARD;
 import static org.jesse.game.GameInterface.INVENTORY_TAB;
 import static org.jesse.game.GameInterface.PRAYER_TAB_INTERFACE;
 import static org.jesse.game.GameInterface.SETTINGS;
@@ -36,7 +35,7 @@ public class ColosseumCutscene extends Cutscene {
 
     private static final Location START_LOCATION = new Location(1823, 3111);
     private static final Location SOL_LOCATION = new Location(1823, 3123);
-    private static final List<GameInterface> closedTabs = Arrays.asList(COMBAT_TAB, SKILLS_TAB, JOURNAL_HEADER_TAB, INVENTORY_TAB, EQUIPMENT_TAB, PRAYER_TAB_INTERFACE, SPELLBOOK, SETTINGS, EMOTE_TAB, GAME_NOTICEBOARD);
+    private static final List<GameInterface> closedTabs = Arrays.asList(COMBAT_TAB, SKILLS_TAB, JOURNAL_HEADER_TAB, INVENTORY_TAB, EQUIPMENT_TAB, PRAYER_TAB_INTERFACE, SPELLBOOK, SETTINGS, EMOTE_TAB);
 
     private final ColosseumInstance instance;
     private NPC solNpc;

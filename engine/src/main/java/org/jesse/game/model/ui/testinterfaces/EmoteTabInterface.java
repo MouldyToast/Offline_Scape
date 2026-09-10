@@ -6,12 +6,10 @@ import org.jesse.game.util.AccessMask;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.player.Emote;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.VarManager;
 import mgi.types.config.enums.Enums;
 
 import java.util.Optional;
 
-import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
 
 /**
  * @author Tommeh | 28-10-2018 | 15:12
@@ -19,10 +17,6 @@ import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
  */
 @SuppressWarnings("unused")
 public class EmoteTabInterface extends Interface {
-
-    static {
-        VarManager.appendPersistentVarp(GIVE_THANKS_VARP);
-    }
 
     @Override
     protected void attach() {
@@ -46,7 +40,11 @@ public class EmoteTabInterface extends Interface {
                 return;
             }
             final String name = emotesName.get().toLowerCase().replaceAll(" ", "_");
-            if (!player.getEmotesHandler().isUnlocked(Emote.MAP.get(name))) {
+            final Emote emote = Emote.MAP.get(name);
+            if (emote == null) {
+                return;
+            }
+            if (!player.getEmotesHandler().isUnlocked(emote)) {
                 player.sendMessage("You haven't unlocked this emote yet!");
                 return;
             }

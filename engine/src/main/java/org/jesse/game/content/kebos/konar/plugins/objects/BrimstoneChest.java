@@ -7,8 +7,6 @@ import org.jesse.game.task.WorldTasksManager;
 import org.jesse.game.util.Colour;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.masks.Animation;
-import org.jesse.game.world.entity.npc.drop.viewerentry.DropViewerEntry;
-import org.jesse.game.world.entity.npc.drop.viewerentry.OtherDropViewerEntry;
 import org.jesse.game.world.entity.player.Analytics;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.SkillConstants;
@@ -83,23 +81,6 @@ public class BrimstoneChest implements ObjectAction {
                 rewards.put(entry, new ImmutableItem(reward.getId(), reward.getMinAmount(), reward.getMaxAmount(), weight));
             }
             TOTAL_WEIGHT = total;
-        }
-
-        public static ObjectArrayList<DropViewerEntry> entries = new ObjectArrayList<>();
-        public static ObjectArrayList<DropViewerEntry> toEntries() {
-            if(entries.size() == 0) {
-                calculateEntries();
-            }
-            return entries;
-        }
-
-        private static void calculateEntries() {
-            for (final ImmutableItem reward : rewards.values()) {
-                if(reward == null)
-                    continue;
-                OtherDropViewerEntry entry = new OtherDropViewerEntry(reward.getId(), reward.getMinAmount(), reward.getMaxAmount(), reward.getRate(), TOTAL_WEIGHT, "");
-                entries.add(entry);
-            }
         }
 
         /**

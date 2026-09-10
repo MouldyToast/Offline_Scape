@@ -54,7 +54,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
-import mgi.custom.AnimationBase;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
@@ -158,7 +157,6 @@ public class TypeParser {
         parse(new File("assets/types"));
         pack(NPCDefinitions.class);
         packDynamicConfigs();
-        packHighRevision();
         KeepSetDefinitionOverrides.pack();
         removeCATasks();
         pack(
@@ -404,10 +402,6 @@ public class TypeParser {
                 e.printStackTrace(System.err);
             }
         }
-    }
-
-    private static void packHighRevision() throws IOException {
-        AnimationBase.pack();
     }
 
     private static void packDynamicConfigs() {

@@ -4185,12 +4185,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             }
         }
 
-//        varManager.sendVar(HalloweenUtils.COMPLETED_VARP, HalloweenUtils.isCompleted(this) ? 1 : 0);
-//        varManager.sendVar(GIVE_THANKS_VARP, attributes.containsKey("Thanksgiving 2019 event") ? 1 : 0);
-//        if (SplittingHeirs.progressedAtLeast(this, Stage.EVENT_COMPLETE)) {
-//            emotesHandler.unlock(Emote.AROUND_THE_WORLD_IN_EGGTY_DAYS);
-//            emotesHandler.unlock(Emote.RABBIT_HOP);
-//        }
 
         if (getLootkeySettings() != null) {
             if (lootkeySettings.getCurrentItemsInChest() != null)

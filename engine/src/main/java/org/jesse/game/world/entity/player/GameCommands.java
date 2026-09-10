@@ -140,7 +140,6 @@ import java.util.function.Predicate;
 import static org.jesse.game.item.HiddenItems.HIDDEN_ITEMS;
 import static org.jesse.game.GameConstants.WORLD_PROFILE;
 import static org.jesse.game.GameConstants.isOwner;
-import static org.jesse.game.world.entity.player.Emote.GIVE_THANKS_VARP;
 import static org.jesse.game.world.entity.player.MessageType.GLOBAL_BROADCAST;
 import static java.lang.Integer.parseInt;
 
@@ -2304,10 +2303,6 @@ public final class GameCommands {
                 ));
         new Command(PlayerPrivilege.ADMINISTRATOR, "empty", "Clears the player's inventory.", (p, args) -> p.getInventory().clear());
         new Command(PlayerPrivilege.DEVELOPER, "emotes", "Unlocks all of the emotes.", (p, args) -> {
-            p.getAttributes().put("Thanksgiving 2019 event", true);
-            p.addAttribute("Halloween event 2019", 1);
-            p.getVarManager().sendVar(GIVE_THANKS_VARP, 1);
-            p.getVarManager().sendBit(1000, 1);
             for (final Emote e : Emote.VALUES) {
                 p.getEmotesHandler().unlock(e);
             }

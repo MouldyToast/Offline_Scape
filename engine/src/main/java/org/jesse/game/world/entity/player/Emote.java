@@ -154,14 +154,7 @@ public enum Emote {
 	EXPLORE(49, 10115, new Animation(65535)),
 	RELIC_UNLOCK(50, 11757, new Animation(65535)),
 	PARTY(51, 6550, new Animation(65535)),
-	TRICK(52, 15322, new Animation(15247), new Graphics(12517)),
-	FORTIS_SALUTE(53, -2, new Animation(10796)),//10797 loop
-	SIT_DOWN(54, new Animation(10061)),//10053 not loop
-	GIVE_THANKS(55, -2, null, null),
-	SNOWMAN_DANCE(56, 15024, new Animation(15094), null),
-	FREEZE(57, 15025, new Animation(15093), new Graphics(12505)),
-	DRAMATIC_POINT(58, 15026, new Animation(15084), new Graphics(12502)),
-	AROUND_THE_WORLD_IN_EGGTY_DAYS(59, 15051, new Animation(15231), new Graphics(12514));
+	FORTIS_SALUTE(53, -2, new Animation(10796));//10797 loop
 
 	private final Animation animation;
 	private final Graphics graphics;
@@ -170,7 +163,6 @@ public enum Emote {
 	private final EmoteSequence sequence;
 	public static final Emote[] VALUES = values();
 	private static final Emote[] SOS_EMOTES = {FLAP, SLAP_HEAD, IDEA, STAMP};
-	public static final int GIVE_THANKS_VARP = 3622;
 	public static final int FORTIS_GLORY_VARP = 4130;// fortis salute unlocks if >= 20000
 
 	private Animation getSledAnimation() {
@@ -214,38 +206,6 @@ public enum Emote {
 				: emote.getAnimation();
 
 
-		if (emote == TRICK) {
-//			player.forceAnimation(animation);
-//			player.setGraphics(emote.graphics);
-//			final int delay = (int) Math.ceil(AnimationUtil.getDuration(animation) / 600.0F);
-//			player.addMovementLock(new MovementLock(System.currentTimeMillis() + (delay * 600L)));
-//			addDelay(player, delay * 600L);
-			return;
-		} else if (emote == GIVE_THANKS) {
-
-//			addDelay(player, 18 * 600);
-//			player.lock(17);
-//			player.setInvalidAnimation(EmoteSequence.GIVE_THANKS_START);
-//			WorldTasksManager.schedule(new TickTask() {
-//				@Override
-//				public void run() {
-//					switch (ticks++) {
-//					case 0:
-//						player.setGraphics(EmoteSequence.POOF_GRAPHICS);
-//						player.getAppearance().transform(10022);
-//						player.setInvalidAnimation(EmoteSequence.TURKEY_SPIN);
-//						break;
-//					case 13:
-//						player.getAppearance().transform(-1);
-//						player.setInvalidAnimation(EmoteSequence.GIVE_THANKS_END);
-//						player.setGraphics(EmoteSequence.POOF_GRAPHICS);
-//						stop();
-//						break;
-//					}
-//				}
-//			}, 1, 0);
-			return;
-		}
 		if (ArrayUtils.contains(SOS_EMOTES, emote)) {
 			final int index = ArrayUtils.indexOf(SOS_EMOTES, emote);
 			player.getAchievementDiaries().update(VarrockDiary.PERFORM_SOS_EMOTES, (int) Math.pow(2, index));
@@ -258,18 +218,10 @@ public enum Emote {
 			player.getMusic().playJingle(249);
 		}
 		final int delay = (int) Math.ceil(AnimationUtil.getDuration(animation) / 600.0F);
-		if (emote == FREEZE || emote == AROUND_THE_WORLD_IN_EGGTY_DAYS) {
-			player.addMovementLock(new MovementLock(System.currentTimeMillis() + (delay * 600L)));
-			if (emote == AROUND_THE_WORLD_IN_EGGTY_DAYS) {
-				addDelay(player, (delay + 1) * 600L);
-			}
-		}
 		player.setInvalidAnimation(animation);
 		if (emote.graphics != null) {
 			player.setGraphics(emote.graphics);
-			if (emote != AROUND_THE_WORLD_IN_EGGTY_DAYS) {
-				addDelay(player, delay * 600L);
-			}
+			addDelay(player, delay * 600L);
 		}
 	}
 
@@ -333,10 +285,6 @@ public enum Emote {
 		Animation PREMIER_SHIELD_ANIM = new Animation(7751);
 		Animation CRAZY_DANCE_A = new Animation(7536);
 		Animation CRAZY_DANCE_B = new Animation(7537);
-		Animation GIVE_THANKS_START = new Animation(11008);
-		Animation GIVE_THANKS_END = new Animation(11009);
-		Animation TURKEY_SPIN = new Animation(11010);
-		Graphics POOF_GRAPHICS = new Graphics(5005);
 		Graphics[] PREMIER_GRAPHICS = new Graphics[] {new Graphics(1412), new Graphics(1413), new Graphics(1414)};
 
 		void play(final Player player);

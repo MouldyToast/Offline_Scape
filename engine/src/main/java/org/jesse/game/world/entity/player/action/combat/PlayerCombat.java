@@ -339,9 +339,6 @@ public abstract class PlayerCombat extends Action {
         } else if (spell == CombatSpell.TUMEKENS_SHADOW) {
             player.getActionManager().setAction(new TumekensShadowCombat(entity, spell, castType));
             return;
-        } else if (spell == CombatSpell.STARTER_STAFF) {
-            player.getActionManager().setAction(new StarterStaffCombat(entity, spell, castType));
-            return;
         } else if (spell == CombatSpell.DAWNBRINGER) {
             player.getActionManager().setAction(new DawnbringerCombat(entity, spell, castType));
             return;
@@ -559,10 +556,6 @@ public abstract class PlayerCombat extends Action {
             return;
         } else if (player.getCombatDefinitions().getAutocastSpell() != null) {
             magicAttack(player, entity, player.getCombatDefinitions().getAutocastSpell(), true);
-            return;
-        }
-        if (weaponId == 22335) {
-            magicAttack(player, entity, CombatSpell.STARTER_STAFF, true);
             return;
         }
         if (weaponId == ItemId.DAWNBRINGER) {

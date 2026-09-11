@@ -3579,28 +3579,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
     }
 
     private void handleNpcKill(final NPC target, final Hit hit) {
-        if (getNumericAttribute("demon_kills").intValue() < 100 && CombatUtilities.isDemon(target)) {
-            final int weapon = getEquipment().getId(EquipmentSlot.WEAPON);
-            if (weapon != 2402) {
-                //silverlight
-                return;
-            }
-            if (!hit.getHitType().equals(HitType.MELEE)) {
-                return;
-            }
-            addAttribute("demon_kills", getNumericAttribute("demon_kills").intValue() + 1);
-            final int kills = getNumericAttribute("demon_kills").intValue();
-            if (kills % 25 == 0 && kills < 100) {
-                final int remaining = 100 - kills;
-                sendMessage("You've reached a demon kill checkpoint! You need to kill %d more demons to upgrade your Silverlight."
-                    .formatted(remaining));
-            }
-            else if (kills == 100) {
-                getEquipment().set(EquipmentSlot.WEAPON, new Item(6746));
-                getUpdateFlags().flag(UpdateFlag.APPEARANCE);
-                sendMessage("You've reached 100 demon kills, your Silverlight has been upgraded into a Darklight!");
-            }
-        }
     }
 
     private void handlePlayerKill(final Player target, final Hit hit) {

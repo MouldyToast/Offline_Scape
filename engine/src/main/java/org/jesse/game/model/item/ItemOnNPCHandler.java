@@ -1,8 +1,6 @@
 package org.jesse.game.model.item;
 
-import org.jesse.game.content.rottenpotato.plugin.RottenPotatoItemOnNpc;
 import org.jesse.game.item.Item;
-import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.pathfinding.events.player.EntityEvent;
 import org.jesse.game.world.entity.pathfinding.strategy.EntityStrategy;
@@ -32,8 +30,6 @@ public enum ItemOnNPCHandler {
     private static final Object2ObjectMap<Object, ItemOnNPCAction> allItemsUsable = new Object2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<ItemOnNPCAction> allIntActions = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<ItemOnNPCAction> allObjectStringActions = new Int2ObjectOpenHashMap<>();
-
-    private static final RottenPotatoItemOnNpc potatoNpcPlugin = new RottenPotatoItemOnNpc();
 
     public static void add(final Class<?> c) {
         try {
@@ -93,10 +89,6 @@ public enum ItemOnNPCHandler {
         }
         player.stopAll(false, true, true);
         final int itemId = item.getId();
-        if (itemId == ItemId.ROTTEN_POTATO) {
-            potatoNpcPlugin.handleItemOnNPCAction(player, item, slotId, npc);
-            return;
-        }
         final int npcId = npc.getId();
         final String npcName = npc.getName(player).toLowerCase();
         ItemOnNPCAction action;

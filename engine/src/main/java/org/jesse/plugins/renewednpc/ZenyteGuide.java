@@ -23,14 +23,8 @@ import org.jesse.game.world.entity.player.privilege.ExpConfigurations;
 import org.jesse.game.world.entity.player.privilege.GameMode;
 import kotlin.Unit;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 
-/**
- * @author Kris | 25/11/2018 16:13
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class ZenyteGuide extends NPCPlugin {
 
     public static final int NPC_ID = NpcId.NEARREALITY_GUIDE;
@@ -69,15 +63,7 @@ public class ZenyteGuide extends NPCPlugin {
 
     public static void finishAppearance(final Player player) {
         player.lock();
-        takeWeapon(player, ItemId.STARTER_SWORD);
-        takeWeapon(player, ItemId.STARTER_BOW);
-        takeWeapon(player, ItemId.STARTER_STAFF);
         finishTutorial(player);
-    }
-
-    private static void takeWeapon(@NotNull final Player player, final int weaponId) {
-        final Item weapon = new Item(weaponId, 1, DegradableItem.getFullCharges(weaponId));
-        player.getInventory().addOrDrop(weapon);
     }
 
     public static void finishTutorial(final Player player) {

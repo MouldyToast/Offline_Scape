@@ -283,8 +283,6 @@ public enum DegradableItem implements Degradeable {
     ACCURSED_SCEPTRE(DegradeType.OUTGOING_HIT, ItemId.ACCURSED_SCEPTRE_27665,  ItemId.ACCURSED_SCEPTRE_U_27662, 17000, 0),
     ACCURSED_SCEPTRE_A(DegradeType.OUTGOING_HIT, ItemId.ACCURSED_SCEPTRE_A_27679, ItemId.ACCURSED_SCEPTRE_AU_27676, 17000, 0),
 
-    STARTER_STAFF(DegradeType.OUTGOING_HIT, 22333, 22333, 1000, 0),
-    STARTER_BOW(DegradeType.OUTGOING_HIT, 22335, 22335, 1000, 0),
     XERICS_TALISMAN(DegradeType.USE, 13393, 13392, 1000, 0),
 //    ICE_GLOVES(DegradeType.USE, 1580, -1, 150, 0),
     //Exception, handled differently.

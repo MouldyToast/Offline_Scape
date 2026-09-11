@@ -19,7 +19,6 @@ public class GliderCaptain extends NPCPlugin {
     public int[] getNPCs() {
         return new int[] {
                 6091,
-                NpcId.CAPTAIN_ERRDO,// 6088
                 NpcId.CAPTAIN_SHORACKS,// 7178
                 NpcId.GNORMADIUM_AVLAFRIM_7517,// 7517
                 NpcId.GNORMADIUM_AVLAFRIM_10445,

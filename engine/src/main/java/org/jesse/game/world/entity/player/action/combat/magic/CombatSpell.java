@@ -685,10 +685,6 @@ public enum CombatSpell implements EntitySpell {
             return true;
         }
     },
-    STARTER_STAFF(null,8, 0, new Animation(1162),
-            new Graphics(1521, 0, 92), new Graphics(1523, -1, 124),
-            new SoundEffect(160, 0, 0), new SoundEffect(161, 10, -1),
-            new Projectile(1522, 43, 31, 51, 23, -5, 64, 10)),
     CRYSTAL_STAFF(null, 20, 0, new Animation(1167),
             new Graphics(1719, 0, 92), new Graphics(1721, -1, 60),
             new SoundEffect(178, 0, 0), new SoundEffect(1460, 10, -1),

@@ -1,4 +1,4 @@
-package org.jesse.game.content.araxxor.items.venom
+package org.jesse.plugins.itemonnpc
 
 import org.jesse.game.item.Item
 import org.jesse.game.item.ids.*
@@ -7,7 +7,6 @@ import org.jesse.game.world.entity.npc.NPC
 import org.jesse.game.npc.ids.*
 import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.entity.player.dialogue.Dialogue
-import org.jesse.game.world.entity.player.dialogue.Dialogue.DialogueOption
 
 class JarOfVenomOnWeave : ItemOnNPCAction {
     override fun handleItemOnNPCAction(player: Player?, item: Item?, slot: Int, npc: NPC?) {

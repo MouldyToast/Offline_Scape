@@ -372,10 +372,6 @@ public enum AmmunitionDefinitions implements AmmunitionDefinition {
     WEBWEAVER_BOW(new int[] { 27652, 27655 }, true, false, new Graphics(2283, 0, 96), new SoundEffect(1352, 0, 0),
             new Projectile(2282, 40, 36, 41, 21, 5, 11, 5), 27652, 27655),
 
-    STARTER_ARROW(22333, true, false, new Graphics(1525, 0, 96), new SoundEffect(2693, 0, 0),
-            new Projectile(1524, 40, 36, 41, 21, 5, 11, 5), 22333),
-
-
     ENCHANTED_OPAL_BOLT(new int[] { 9236 }, true, new SoundEffect(2695, 0, 0),
             new Projectile(27, 38, 36, 41, 7, 5, 11, 5),
         767, 837, 9174, 9176, 9177, 9179, 9181, 9183, ItemId.RUNE_CROSSBOW, 26486, 11165, 11167, 11785, 21012, ItemId.DRAGON_HUNTER_CROSSBOW_T, ItemId.DRAGON_HUNTER_CROSSBOW_B, 21902, DRAGON_CROSSBOW_CR, ItemId.ZARYTE_CROSSBOW),

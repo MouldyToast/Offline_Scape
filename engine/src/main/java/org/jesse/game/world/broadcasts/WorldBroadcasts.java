@@ -60,7 +60,6 @@ public class WorldBroadcasts {
             "Did you know: We provide a Wiki command and quick link under the world map that directs you to the OldSchool RuneScape Wiki which is rather accurate.",
             "Did you know: We have a help chat called \"" + GameConstants.SERVER_CHANNEL_NAME + "\" for any new and seasoned players alike. Join via the clan chat interface.",
             "Did you know: You can start Slayer by visiting Turael in Burthorpe.",
-            "Did you know: You can purchase fully charged custom starter weapons from the " + GameConstants.SERVER_NAME + " guide for 200K each.",
             "Did you know: You can link your Discord account with your in-game account by typing /link in the OSNR Discord",
             "Did you know: " + GameConstants.SERVER_NAME + " accepts OSGP donations - contact a member of staff for more information.",
             "Did you know: Zahur in Nardah can add herbs to vials of water and crush secondary ingredients for you.",

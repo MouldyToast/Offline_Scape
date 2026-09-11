@@ -159870,95 +159870,14 @@
     "slot": 0
   },
   {
-    "id": 22331,
-    "weight": 1.5,
-    "slot": 3,
-    "equipmentDefinition": {
-      "weaponDefinition": {
-        "twoHanded": false,
-        "blockAnimation": 424,
-        "standAnimation": 808,
-        "walkAnimation": 819,
-        "runAnimation": 824,
-        "standTurnAnimation": 823,
-        "rotate90Animation": 821,
-        "rotate180Animation": 820,
-        "rotate270Animation": 821,
-        "accurateAnimation": 381,
-        "aggressiveAnimation": 390,
-        "controlledAnimation": 390,
-        "defensiveAnimation": 390,
-        "attackSpeed": 4,
-        "interfaceVarbit": 17,
-        "normalAttackDistance": 0,
-        "longAttackDistance": 0
-      },
-      "bonuses": "5, 21, -2, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0"
-    }
-  },
-  {
     "id": 22332,
     "weight": 0.0,
     "slot": 0
   },
   {
-    "id": 22333,
-    "weight": 1.5,
-    "slot": 3,
-    "equipmentDefinition": {
-      "weaponDefinition": {
-        "twoHanded": true,
-        "blockAnimation": 424,
-        "standAnimation": 808,
-        "walkAnimation": 819,
-        "runAnimation": 824,
-        "standTurnAnimation": 823,
-        "rotate90Animation": 821,
-        "rotate180Animation": 820,
-        "rotate270Animation": 821,
-        "accurateAnimation": 426,
-        "aggressiveAnimation": 426,
-        "controlledAnimation": 426,
-        "defensiveAnimation": 426,
-        "attackSpeed": 4,
-        "interfaceVarbit": 3,
-        "normalAttackDistance": 6,
-        "longAttackDistance": 8
-      },
-      "bonuses": "0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 7, 0, 0"
-    }
-  },
-  {
     "id": 22334,
     "weight": 0.0,
     "slot": 0
-  },
-  {
-    "id": 22335,
-    "weight": 1.5,
-    "slot": 3,
-    "equipmentDefinition": {
-      "weaponDefinition": {
-        "twoHanded": false,
-        "blockAnimation": 424,
-        "standAnimation": 813,
-        "walkAnimation": 1205,
-        "runAnimation": 1210,
-        "standTurnAnimation": 823,
-        "rotate90Animation": 821,
-        "rotate180Animation": 820,
-        "rotate270Animation": 821,
-        "accurateAnimation": 400,
-        "aggressiveAnimation": 406,
-        "controlledAnimation": 400,
-        "defensiveAnimation": 400,
-        "attackSpeed": 4,
-        "interfaceVarbit": 24,
-        "normalAttackDistance": 0,
-        "longAttackDistance": 0
-      },
-      "bonuses": "0, 0, 0, 0, 0, 2, 3, 1, 0, 0, 0, 0, 0, 0"
-    }
   },
   {
     "id": 22336,

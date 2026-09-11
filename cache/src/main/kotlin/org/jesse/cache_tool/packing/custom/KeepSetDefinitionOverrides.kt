@@ -11,7 +11,6 @@ import mgi.tools.parser.TypeParser
 import mgi.types.config.InventoryDefinitions
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.enums.EnumDefinitions
-import mgi.types.config.items.ItemDefinitions
 import mgi.types.config.npcs.NPCDefinitions
 import java.util.function.Predicate
 
@@ -42,61 +41,7 @@ object KeepSetDefinitionOverrides {
             size = 4
             pack()
         }
-        packItemOverrides()
         packNpcOverrides()
-    }
-
-    /**
-     * Item definition overrides for kept custom content. New-id items are
-     * Kryo copies of their source definition, exactly as the old TOML
-     * item reader produced them.
-     */
-    private fun packItemOverrides() {
-        // Royal seed pod gains its Configure option.
-        ItemDefinitions.get(19564).apply {
-            setOption(1, "Configure")
-            pack()
-        }
-        // Rotten potato (staff tool).
-        ItemDefinitions.get(5733).apply {
-            setOption(0, "")
-            setOption(1, "")
-            setOption(2, "Punishment")
-            setOption(3, "Utility")
-            setOption(4, "Destroy")
-            pack()
-        }
-        // Silverlight demon-check. (The old TOML's param 451 line had no
-        // reader and is intentionally not carried over.)
-        ItemDefinitions.get(2402).apply {
-            setOption(0, "")
-            setOption(1, "Wear")
-            setOption(2, "Check")
-            pack()
-        }
-        // Max cape variants: Features/Commune ops (MaxCape content). Only the
-        // live op4/op5 entries of the old TOML survive - its op2 "Teleports"
-        // was dead.
-        for (id in intArrayOf(13329, 13331, 13333, 13335, 21285, 21776, 21780, 21784,
-                              24133, 24134, 24232, 24233, 24234)) {
-            ItemDefinitions.get(id).apply {
-                setOption(3, "Features")
-                pack()
-            }
-        }
-        for (id in intArrayOf(13337, 21898, 24135)) {
-            ItemDefinitions.get(id).apply {
-                setOption(3, "Commune")
-                setOption(4, "Features")
-                pack()
-            }
-        }
-        // Ardougne max cape.
-        ItemDefinitions.get(20760).apply {
-            setOption(3, "Farm Teleport")
-            setOption(4, "Features")
-            pack()
-        }
     }
 
     /**
@@ -105,17 +50,6 @@ object KeepSetDefinitionOverrides {
      * produced them.
      */
     private fun packNpcOverrides() {
-        // Captain Errdo gnome glider quick-travel.
-        NPCDefinitions.get(6088).apply {
-            setOption(0, "Glider")
-            setOption(2, "")
-            pack()
-        }
-        // Captain Rimor CoX party layouts.
-        NPCDefinitions.get(7595).apply {
-            setOption(3, "Layouts")
-            pack()
-        }
         // Dying knight, non-collectable variant (InstancePortal.java).
         TypeParser.KRYO.copy(NPCDefinitions.get(5929)).apply {
             id = 16023
@@ -147,19 +81,6 @@ object KeepSetDefinitionOverrides {
                 id = 16035 + offset
                 pack()
             }
-        }
-        // Sir Eldric, the PvM Arena supplies trader.
-        NPCDefinitions.get(3516).apply {
-            name = "Sir Eldric"
-            setOption(0, "Talk-to")
-            setOption(1, "Trade")
-            pack()
-        }
-        // Vefari (vanilla rev-228 still names NPC 13677 "Weave"; the araxyte
-        // cave hunt content refers to them as Vefari).
-        NPCDefinitions.get(13677).apply {
-            name = "Vefari"
-            pack()
         }
     }
 
@@ -262,19 +183,6 @@ object KeepSetDefinitionOverrides {
             setOption(1, "Reload")
             pack()
         }
-        // Gauntlet reward chest no-prep entries. (The old TOML's 36080
-        // Quick-Pass block was unhandled and is dropped.)
-        ObjectDefinitions.get(36084).apply {
-            setOption(2, "Normal-NoPrep")
-            setOption(3, "Corrupted-NoPrep")
-            pack()
-        }
-        // Catacombs of Kourend statue paid entry (KourendStatueObject.java).
-        ObjectDefinitions.get(27785).apply {
-            setOption(0, "Enter")
-            setOption(1, "Enter-Paid")
-            pack()
-        }
         // Vardorvis instance rock (clone of the public one).
         TypeParser.KRYO.copy(ObjectDefinitions.get(48740)).apply {
             id = 48741
@@ -285,11 +193,6 @@ object KeepSetDefinitionOverrides {
             id = 35020
             name = "<col=ff9040>Hammer</col>"
             models = intArrayOf(2376)
-            pack()
-        }
-        // RDI bonfire (BonfireObject) - vanilla 29300 has no options at all.
-        ObjectDefinitions.get(29300).apply {
-            setOption(0, "Add-logs")
             pack()
         }
         // PvM Arena team portals.
@@ -304,16 +207,6 @@ object KeepSetDefinitionOverrides {
             replacementColours = intArrayOf(-3377, -1232, 639)
             pack()
         }
-    }
-
-    /**
-     * Special attack metadata missing from the vanilla rev-228 enums.
-     * Elder maul (or) is usable in game but vanilla only carries the
-     * plain Elder maul entries.
-     */
-    @JvmStatic
-    fun packSpecialAttacks() {
-        // Elder maul (or) 27100 is already in vanilla enums 1739/906.
     }
 
     /**

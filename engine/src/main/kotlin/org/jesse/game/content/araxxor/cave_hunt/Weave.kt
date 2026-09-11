@@ -12,7 +12,7 @@ import org.jesse.game.world.entity.player.dialogue.dialogue
  * @social Discord: Glabay
  * @since 2024-11-15
  */
-class Vefari: NPCPlugin() {
+class Weave: NPCPlugin() {
     override fun handle() {
         bind("Talk-to") { player, npc ->
             if ((player.mapInstance as AraxyteCaveHunt).roomCompleted) {
@@ -28,5 +28,5 @@ class Vefari: NPCPlugin() {
         }
     }
 
-    override fun getNPCs(): IntArray = intArrayOf(VEFARI)
+    override fun getNPCs(): IntArray = intArrayOf(WEAVE_13677)
 }

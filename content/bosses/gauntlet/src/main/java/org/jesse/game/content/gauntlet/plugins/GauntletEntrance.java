@@ -59,11 +59,7 @@ public final class GauntletEntrance implements ObjectAction {
         }
 
         GauntletType type = GauntletType.STANDARD;
-        if(option.equalsIgnoreCase("Normal-NoPrep"))
-            type = GauntletType.STANDARD_NO_PREP;
-        else if(option.equalsIgnoreCase("Corrupted-NoPrep"))
-            type = GauntletType.CORRUPTED_NO_PREP;
-        else if(option.equalsIgnoreCase("Enter-corrupted"))
+        if(option.equalsIgnoreCase("Enter-corrupted"))
             type = GauntletType.CORRUPTED;
         Gauntlet gauntlet = Gauntlet.construct(player, type);
         if (gauntlet == null) {

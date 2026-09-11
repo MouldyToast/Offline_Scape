@@ -162,7 +162,6 @@ public class TypeParser {
         KeepSetDefinitionOverrides.packObjects();
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();
-        KeepSetDefinitionOverrides.packSpecialAttacks();
         cache.close();
 
         /*
@@ -176,33 +175,8 @@ public class TypeParser {
         service.shutdown();
     }
 
-    private static void portMaps(Cache backport) {
-        copyMapRegionFromTargetCache(backport, 13139, 13139);
-        copyMapRegionFromTargetCache(backport, 13395, 13395);
-        //Triggers repack with new objects
-        //copyMapRegionFromTargetCache(CacheManager.getCache(), 12132, 12132);
-    }
-
     private static void copyMaps() {
         log.info("Begin map copy process...");
-        log.info("    Beginning Catacombs of Kourend...");
-        //copyMapRegion(6302, 6306, 6310);
-        copyMapRegion(6301, 6306, 6310, 6314);
-        copyMapRegion(6300, 6305, 6309, 6313);
-        copyMapRegion(6299, 6304, 6308, 6312);
-        //copyMapRegion(6558, 6562, 6566);
-        copyMapRegion(6557, 6562, 6566, 6570);
-        copyMapRegion(6556, 6561, 6565, 6569);
-        copyMapRegion(6555, 6560, 6564, 6568);
-        //copyMapRegion(6814, 6818, 6822);
-        copyMapRegion(6813, 6818, 6822, 6826);
-        copyMapRegion(6812, 6817, 6821, 6825);
-        copyMapRegion(6811, 6816, 6820, 6824);
-        //copyMapRegion(7070, 7074, 7078);
-        copyMapRegion(7069, 7074, 7078, 7082);
-        copyMapRegion(7068, 7073, 7077, 7081);
-        copyMapRegion(7067, 7072, 7076, 7080);
-        log.info("   Finish Catacombs of Kourend...");
 
         log.info("   Beginning Evil Bob / Train Island...");
         copyMapRegion(10058, 9546);

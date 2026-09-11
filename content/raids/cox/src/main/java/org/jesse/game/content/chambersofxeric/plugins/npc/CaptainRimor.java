@@ -34,6 +34,8 @@ public class CaptainRimor extends NPCPlugin {
                 npc("Remember that you may be kicked out at any time - any items dropped on the ground will be lost inside.");
                 npc("Do not allow your curiosity to get the better of you.");
                 player("Thanks for the warning.");
+                options(new DialogueOption("Tell me about layouts.", () -> openLayouts(player, npc)),
+                        new DialogueOption("Goodbye."));
             }
         }));
         bind("Claim-cape", (player, npc) -> {
@@ -75,7 +77,9 @@ public class CaptainRimor extends NPCPlugin {
                 }
             });
         });
-        bind("Layouts", (player, npc) -> {
+    }
+
+    private void openLayouts(Player player, org.jesse.game.world.entity.npc.NPC npc) {
             player.addAttribute("aware of raids layouts", 1);
             player.getDialogueManager().start(new Dialogue(player, npc) {
                 @Override
@@ -122,7 +126,6 @@ public class CaptainRimor extends NPCPlugin {
                     npc("Certainly.").executeAction(() -> openLayoutsInterface(player));
                 }
             });
-        });
     }
 
     private List<String> generateList(@NotNull final Player player) {

@@ -86,7 +86,7 @@ public class Fishing extends Action {
         this.fish.addAll(Arrays.stream(defs.getFish()).filter(fish -> player.getSkills().getLevel(SkillConstants.FISHING) >= fish.getLevel()).collect(Collectors.toList()));
         if (fish.contains(FishDefinitions.INFERNAL_EEL)) {
             final int gloves = player.getEquipment().getId(EquipmentSlot.HANDS);
-            if (gloves != 1580 && gloves != 30030) {
+            if (gloves != 1580) {
                 player.sendMessage("You need a pair of ice gloves to fish in this hot lava.");
                 return false;
             }

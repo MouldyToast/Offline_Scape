@@ -1,14 +1,8 @@
 package org.jesse.game.content.tormented_demon
 
 import org.jesse.scripts.npc.drops.table.noted
-import org.jesse.game.content.follower.Follower
-import org.jesse.game.content.follower.PetWrapper
-import org.jesse.game.content.follower.impl.BossPet
 import org.jesse.game.item.Item
 import org.jesse.game.util.Utils
-import org.jesse.game.world.broadcasts.BroadcastType
-import org.jesse.game.world.broadcasts.WorldBroadcasts
-import java.util.Random
 import org.jesse.scripts.npc.drops.NPCDropTableScript
 import org.jesse.game.npc.ids.*
 import org.jesse.game.util.invoke
@@ -26,31 +20,6 @@ class TormentedDemonDroptable : NPCDropTableScript() {
         npcs(TORRMENTED_DEMON, TORRMENTED_DEMON_13600, TORRMENTED_DEMON_13601)
 
         onDeath {
-            if (Random().nextDouble() < 1/3000) {
-                val smolderingDemon = BossPet.SMOLDERING_DEMON
-                val item = Item(smolderingDemon.itemId)
-                killer.collectionLog.add(item)
-                if ((PetWrapper.checkFollower(killer) && killer.follower.pet == smolderingDemon) || killer.containsItem(smolderingDemon.itemId))
-                    killer.sendMessage("<col=ff0000>You have a funny feeling like you would have been followed...</col>")
-
-                else if (killer.follower != null) {
-                    if (killer.inventory.addItem(item).isFailure) {
-                        if (killer.bank.add(item).isFailure)
-                            killer.sendMessage("There was not enough space in your bank, and therefore the pet was lost.")
-                        else killer.sendMessage(
-                            "<col=ff0000>You have a funny feeling like you're being followed - The pet has " +
-                                    "been added to your bank.</col>")
-                    }
-                    killer.sendMessage("<col=ff0000>You feel something weird sneaking into your backpack.</col>")
-                    WorldBroadcasts.broadcast(killer, BroadcastType.PET, smolderingDemon)
-                }
-                else {
-                    killer.sendMessage("<col=ff0000>You have a funny feeling like you're being followed.</col>")
-                    killer.follower = Follower(smolderingDemon.petId, killer)
-                    WorldBroadcasts.broadcast(killer, BroadcastType.PET, smolderingDemon)
-                }
-            }
-
             rollStaticTableAndDrop(killer, Tertiary)
             if (Utils.random(500) == 0)
                 rollStaticTableAndDrop(killer, Unique)

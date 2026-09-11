@@ -50,15 +50,6 @@ public enum TickVariable {
     POISON_IMMUNITY,
     VENOM_IMMUNITY,
 
-    BOUNTY_HUNTER_TARGET_LOSS((player, ticks) -> {
-        if (ticks == 100) {
-            player.getBountyHunter().halfTimeNotification();
-        } else if (ticks == 0) {
-            player.getBountyHunter().abandonTarget();
-        }
-    }),
-    BH_V2_COOLDOWN,
-    BH_V2_INTERFACE_COOLDOWN,
     WINE_FERMENTATION((player, ticks) -> {
         if (ticks == 0) {
             final int cooking = player.getSkills().getLevel(SkillConstants.COOKING);

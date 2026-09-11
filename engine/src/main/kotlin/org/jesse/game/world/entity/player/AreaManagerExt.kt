@@ -29,7 +29,9 @@ private val removedCustomRegions = intArrayOf(
     13430, 13431, 13433, 13434, 13436, 13437, 13439, 13440, 13441, 13443,
     13550, 13552, 13686, 13689, 13692, 13693, 13695, 13697,
     // legacy DMM/tournament arenas
-    14477, 14478, 14732, 14733, 14734, 15245, 15246, 15248
+    14477, 14478, 14732, 14733, 14734, 15245, 15246, 15248,
+    // tournament minigame static source maps (minigame culled)
+    13426, 13428
 )
 
 fun fixLocationIfRemovedRegion(location: Location): Location =

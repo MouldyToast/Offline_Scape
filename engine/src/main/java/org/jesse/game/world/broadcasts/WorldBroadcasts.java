@@ -113,7 +113,6 @@ public class WorldBroadcasts {
 //            case MYSTERY_BOX_RARE_ITEM -> sendBoxLoot(player, args);
 //            case INFERNO_COMPLETION -> sendInfernoCompletion(player); // TODO: Test!!
 //            case TREASURE_TRAILS -> sendTreasureTrailsReward(player, args);
-    ////            case BOUNTY_HUNTER -> sendBountyHotSpot(args); // TODO: Test!!
 //            case BREACHES -> sendBreach(args);
 //            default -> logger.debug("Ignored broadcast type {}", type);
 //        }
@@ -129,13 +128,6 @@ public class WorldBroadcasts {
         switch (type) {
             case BREACHES: {
                 secondaryBuilder.append(args[0]);
-                builder.append(secondaryBuilder);
-                break;
-            }
-            case BOUNTY_HUNTER: {
-                builder.append("News: ");
-                secondaryBuilder.append(args[0]);
-                secondaryBuilder.append(" is now the Bounty Hunter Hotspot!");
                 builder.append(secondaryBuilder);
                 break;
             }

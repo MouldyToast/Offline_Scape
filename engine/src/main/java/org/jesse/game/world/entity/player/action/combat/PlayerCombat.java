@@ -2,7 +2,6 @@ package org.jesse.game.world.entity.player.action.combat;
 
 import com.google.common.collect.ImmutableList;
 import org.jesse.game.world.entity.player.action.combat.ranged.MorriganBHWeaponsCombat;
-import org.jesse.game.content.combat.CombatUtility;
 import org.jesse.game.content.crystal.recipes.chargeable.CrystalTool;
 import org.jesse.game.world.entity.CombatCooldownKt;
 import org.jesse.game.world.entity.player.action.combat.ISpecialAttack;
@@ -1372,26 +1371,6 @@ public abstract class PlayerCombat extends Action {
             case ItemId.SILVERLIGHT, ItemId.DARKLIGHT, ItemId.ARCLIGHT, ItemId.EMBERLIGHT, ItemId.SCORCHING_BOW -> true;
             default -> false;
         };
-    }
-
-    public float determineBountyHunterAccBoost(Player player, Entity target) {
-        if(target instanceof NPC && CombatUtility.hasBHImbuedWeapon(player))
-            return 0.15F;
-        if(target instanceof NPC && CombatUtility.hasBHKittedWeapon(player))
-            return 0.10F;
-        if(target instanceof Player && CombatUtility.hasBountyHunterWeapon(player))
-            return 0.15F;
-        return 0.0F;
-    }
-
-    public float determineBountyHunterDmgBoost(Player player, Entity target) {
-        if(target instanceof NPC && CombatUtility.hasBHImbuedWeapon(player))
-            return 0.15F;
-        if(target instanceof NPC && CombatUtility.hasBHKittedWeapon(player))
-            return 0.10F;
-        if(target instanceof NPC && CombatUtility.hasBountyHunterWeapon(player))
-            return 0.10F;
-        return 0.0F;
     }
 
     public double determineSlayerHelmetAccuracyBoost(boolean hasTask, HitType type, Player player, Entity target) {

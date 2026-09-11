@@ -23,7 +23,7 @@ public enum BroadcastType {
     INFERNO_COMPLETION("ff0000", 13, Optional.empty()),
     TREASURE_TRAILS("e59400", 13, Optional.of(GameSetting.TREASURE_TRAILS_BROADCASTS)),
     XAMPHUR("e59400", 13, Optional.empty()),
-    WORLD_BOSS("00FF00", 68, Optional.empty()),
+    WORLD_BOSS("00FF00", 13, Optional.empty()),
     SUPER_RARE_DROP("B22222", 51, Optional.empty()),
 
     LOTTERY("e59400", 50, Optional.empty()),
@@ -32,10 +32,9 @@ public enum BroadcastType {
     MOD_LOGIN("c6cad1", 53, Optional.empty()),
     ADMIN_LOGIN("e4df28", 53, Optional.empty()),
     DEV_LOGIN("002366", 53, Optional.empty()),
-    MALEDICTUS("e59400", 68, Optional.empty()),
+    MALEDICTUS("e59400", 13, Optional.empty()),
     COLOSSAL_CHICKEN("e59400", 13, Optional.empty()),
     PVM_ARENA("e59400", 13, Optional.empty()),
-    BOUNTY_HUNTER("e59400", 57, Optional.empty()),
     BREACHES("FC02E7", -1, Optional.empty()),
     ;
 

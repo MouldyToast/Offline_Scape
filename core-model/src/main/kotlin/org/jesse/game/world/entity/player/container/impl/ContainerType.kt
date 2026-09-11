@@ -18,7 +18,6 @@ enum class ContainerType(val id: Int, val interfaceId: Int = -1, val componentId
 
     /** If3 containers */
     MYSTERY_BOX(133),
-    TOURNAMENT(207),
     HERB_SACK(10), //custom
     GEM_BAG(12), //custom
     MAGIC_STORAGE(100),

@@ -10,8 +10,6 @@ import org.jesse.api.service.sanction.SanctionPlayerExtKt;
 import org.jesse.api.service.user.UserPlayerAttributesKt;
 import org.jesse.game.content.araxxor.AraxxorInstance;
 import org.jesse.game.content.araxxor.items.AraneaBoots;
-import org.jesse.game.content.bountyhunter.BountyHunterController;
-import org.jesse.game.content.bountyhunter.WildyExtKt;
 import org.jesse.game.content.buffs.PlayerBuffManager;
 import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.item.ids.ItemId;
@@ -34,7 +32,6 @@ import org.jesse.game.content.RespawnPoint;
 import org.jesse.game.content.achievementdiary.AchievementDiaries;
 import org.jesse.game.content.achievementdiary.AdventurersLogIcon;
 import org.jesse.game.content.boss.grotesqueguardians.instance.GrotesqueGuardiansInstance;
-import org.jesse.game.content.bountyhunter.BountyHunter;
 import org.jesse.game.content.breaches.BreachManager;
 import org.jesse.game.content.chambersofxeric.Raid;
 import org.jesse.game.content.chambersofxeric.party.RaidParty;
@@ -251,7 +248,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
-import static org.jesse.game.content.bountyhunter.WildyExtKt.getBestEmblem;
 import static org.jesse.game.GameConstants.WORLD_PROFILE;
 import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVariables.*;
 import static org.jesse.game.world.entity.player.action.combat.special.ScorchingShacklesSpecial.*;
@@ -1321,12 +1317,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         setLogoutType(force ? LogoutType.FORCE : LogoutType.REQUESTED);
     }
 
-    public BountyHunter getBountyHunter() {
-        return bountyHunter;
-    }
-
-    private final BountyHunter bountyHunter = new BountyHunter(this);
-
     public void sendInputString(final String question, final StringDialogue dialogue) {
         packetDispatcher.sendClientScript(110, question);
         temporaryAttributes.put("interfaceInput", dialogue);
@@ -2171,7 +2161,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
             setFinished(true);
             World.updateEntityChunk(this, true);
             LocationMap.remove(this);
-            getInterfaceHandler().closeInterface(GameInterface.TOURNAMENT_SPECTATING);
             GlobalAreaManager.update(this, false, true);
             if (getTemporaryAttributes().get("cameraShake") != null) {
                 packetDispatcher.resetCamera();
@@ -3299,14 +3288,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
         if (source != null) {
             DeathChargeKt.invokeDeathChargeEffect(source);
-            if (WildyExtKt.isBountyPaired(this)) {
-                WildyExtKt.processBountyDeath(this);
-                BountyHunterController.completeBounty(source, this);
-            }
-        }
-        var optionalEmblem = getBestEmblem(this);
-        if (optionalEmblem.isPresent()) {
-            BountyHunterController.downgradeEmblem(this);
         }
 
         WorldTasksManager.schedule(new WorldTask() {

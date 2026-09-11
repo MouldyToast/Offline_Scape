@@ -1,6 +1,5 @@
 package org.jesse.game.content
 
-import org.jesse.game.content.bountyhunter.BountyHunterConstants
 import org.jesse.game.world.entity.player.sanityValue
 import org.jesse.game.content.skills.prayer.Prayer
 import org.jesse.game.content.skills.thieving.actions.Pickpocket

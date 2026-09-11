@@ -68,7 +68,6 @@ public class GameConstants {
 		));
 	}
 
-	public static final boolean BOUNTY_HUNTER = false;
 
 	public static double defenceMultiplier = 0.825;
 

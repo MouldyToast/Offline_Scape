@@ -39,7 +39,7 @@ public final class AchievementDiaries {
 	private final Map<DiaryArea, Map<DiaryReward, Boolean>> pendingRewards = new HashMap<>();
 
 	public static void main(String[] args) {
-		final File file = Paths.get(args.length == 0 ? "cache/assets/diary_info.json" : args[0]).toFile();
+		final File file = Paths.get(args.length == 0 ? "data/diary_info.json" : args[0]).toFile();
 		try {
 			final FileWriter writer = new FileWriter(file);
 			final List<DiaryInfo[]> infos = Arrays.stream(ALL_DIARIES).map(diaries -> {

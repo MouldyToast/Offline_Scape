@@ -52,7 +52,6 @@ public enum VarCollection {
         return value;
     }, POST_LOGIN),
     BROADCAST_NEW_PLAYERS(VAR, 3812, p -> attribute(p, "BROADCAST_NEW_PLAYERS"), POST_LOGIN),
-    //var 3611-3613 are used for the tournament overlay
     //var 3622 is used for wheel of fortune
     //var 3625 is used for gwd instances
     TZHAAR_UNLOCKS(VARBIT, 5646, p -> p.getNumericAttribute("infernoVar").intValue(), POST_LOGIN),

@@ -1,6 +1,0 @@
-# Mobile login button
-[sprite]
-inherit=2134
-
-[sprite.images]
-0="mobile_login_button.png"

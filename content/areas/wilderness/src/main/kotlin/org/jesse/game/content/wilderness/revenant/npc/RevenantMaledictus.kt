@@ -323,7 +323,7 @@ class RevenantMaledictus(val spawn: Spawn) :
         }
 
         fun globalHintMessage(): String {
-            return " <img=68>A superior revenant has awoken in the $hint of the revenant caves"
+            return " <img=13>A superior revenant has awoken in the $hint of the revenant caves"
         }
 
         companion object {

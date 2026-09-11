@@ -1,7 +1,7 @@
 package org.jesse.game.content.wilderness.slayer
 
 import com.google.common.eventbus.Subscribe
-import org.jesse.game.content.bountyhunter.getWildernessLevel
+import org.jesse.game.world.region.area.wilderness.WildernessArea
 import org.jesse.game.world.PlayerEvent
 import org.jesse.game.world.hook
 import org.jesse.game.content.slayer.SlayerMaster
@@ -32,7 +32,7 @@ object WildernessSlayerModule {
     }
 
     private fun tryUpgradeEmblem(player: Player) {
-        if (player.getWildernessLevel() < 1) return
+        if (WildernessArea.getWildernessLevel(player.location).orElse(0) < 1) return
         val inventory = player.inventory
         val bestUpgradeableEmblemInInventory = WildernessSlayerEmblem.entries
             .reversed()
@@ -50,12 +50,12 @@ object WildernessSlayerModule {
 
     private fun rewardBloodMoney(player: Player) {
         var bloodMoneyRewardAmount = Utils.random(10, 50)
-        if (player.getWildernessLevel() < 1) return
+        if (WildernessArea.getWildernessLevel(player.location).orElse(0) < 1) return
         player.inventory.addOrDrop(BLOOD_MONEY, bloodMoneyRewardAmount)
     }
 
     private fun rewardLarransKey(player: Player) {
-        if (player.getWildernessLevel() < 1) return
+        if (WildernessArea.getWildernessLevel(player.location).orElse(0) < 1) return
         player.inventory.addOrDrop(LARRANS_KEY, 1)
     }
 }

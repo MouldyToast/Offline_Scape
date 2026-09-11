@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player
 
-import org.jesse.game.content.bountyhunter.BountyHunterEmblem
 import org.jesse.game.item.Item
 import org.jesse.game.model.ui.InterfacePosition
 import org.jesse.game.task.WorldTasksManager

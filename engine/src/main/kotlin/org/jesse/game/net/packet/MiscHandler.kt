@@ -66,10 +66,6 @@ internal fun PacketConsumer.playerReport() {
 internal fun PacketConsumer.oculusLeave() {
     addListener<OculusLeave> {
         val player = player
-        if (player.temporaryAttributes["tournament_spectating"] != null) {
-            player.interfaceHandler.closeInterfaces()
-            return@addListener
-        }
         val pane: PaneType = player.interfaceHandler.pane
         val loc = player.temporaryAttributes["oculusStart"]
         player.interfaceHandler.sendPane(pane, pane)

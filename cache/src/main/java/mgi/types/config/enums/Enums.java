@@ -77,12 +77,6 @@ public interface Enums {
     IntEnum PEST_CONTROL_REWARDS_PACKS_STATS_ENUM = EnumDefinitions.getIntEnumOrEmpty(2288);
     StringEnum SKILL_NAMES_ENUM = EnumDefinitions.getStringEnumOrEmpty(680);
 
-    IntEnum TOURNAMENT_ITEMS_ENUM = EnumDefinitions.getIntEnumOrEmpty(10024);
-    IntEnum TOURNAMENT_REWARDS = EnumDefinitions.getIntEnumOrEmpty(10053);
-    IntEnum TOURNAMENT_REWARDS_NUM = EnumDefinitions.getIntEnumOrEmpty(10054);
-    IntEnum TOURNAMENT_REWARDS_COST = EnumDefinitions.getIntEnumOrEmpty(10055);
-    IntEnum TOURNAMENT_REWARDS_IRONMAN = EnumDefinitions.getIntEnumOrEmpty(10056);
-
     IntEnum OPHELD_TO_IFBUTTON = EnumDefinitions.getIntEnumOrEmpty(4303);
 
     IntEnum NON_SEARCHABLE_SETTINGS_CATEGORIES = EnumDefinitions.getIntEnumOrEmpty(423);
@@ -94,8 +88,6 @@ public interface Enums {
 
     IntEnum TOB_SUPPLIES_SLOT_TO_ITEM = EnumDefinitions.getIntEnumOrEmpty(1952);
     IntEnum TOB_SUPPLIES_ITEM_TO_COST = EnumDefinitions.getIntEnumOrEmpty(1953);
-
-    IntEnum TOURNAMENT_SUPPLIES_BY_CHILD = EnumDefinitions.getIntEnumOrEmpty(1124);
 
     IntEnum HAIR_STYLES_DB_POINTER = EnumDefinitions.getIntEnumOrEmpty(496);
     IntEnum FACIAL_HAIR_STYLES_DB_POINTER = EnumDefinitions.getIntEnumOrEmpty(2630);

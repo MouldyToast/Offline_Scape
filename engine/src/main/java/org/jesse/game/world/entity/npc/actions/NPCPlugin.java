@@ -1,11 +1,6 @@
 package org.jesse.game.world.entity.npc.actions;
 
-import com.google.gson.GsonBuilder;
-import org.jesse.game.world.info.WorldProfile;
-import org.jesse.CacheManager;
 import org.jesse.ContentConstants;
-import org.jesse.Main;
-import org.jesse.cores.CoresManager;
 import org.jesse.game.GameConstants;
 import org.jesse.game.content.skills.thieving.PocketData;
 import org.jesse.game.content.skills.thieving.actions.Pickpocket;
@@ -19,26 +14,12 @@ import org.jesse.game.world.entity.pathfinding.strategy.EntityStrategy;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.logger.NearRealityLogger;
-import org.jesse.logger.NearRealityPrintStream;
-import org.jesse.plugins.DynamicPluginLoader;
 import org.jesse.plugins.Plugin;
-import org.jesse.plugins.PluginType;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import mgi.tools.parser.TypeParser;
-import mgi.tools.parser.readers.NPCReader;
-import mgi.types.Definitions;
 import mgi.types.config.npcs.NPCDefinitions;
 import org.slf4j.Logger;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
@@ -51,58 +32,6 @@ public abstract class NPCPlugin implements Plugin {
     private static final Logger log = NearRealityLogger.getLogger(NPCPlugin.class);
     private static final Map<String, NPCPluginHandler> handlerMap = new HashMap<>();
     private static final Map<String, NPCPluginHandler> defaultHandlerMap = new HashMap<>();
-
-    public static void main(String[] args) {
-        WorldProfile worldProfile = Main.configureWorldProfile();
-        CoresManager.init(worldProfile, null);
-
-        CacheManager.loadDetached();
-
-        Definitions.loadDefinitions(Definitions.cacheLowPriorityDefinitions);
-
-        TypeParser.initializeKryo();
-        TypeParser.parse(new File("cache/assets/types"), false, new NPCReader());
-        TypeParser.pack(NPCDefinitions.class);
-
-        new NPCDefinitions().load();
-        NPCPlugin.verifyOptionExists = false;
-
-        DynamicPluginLoader.load(PluginType.NPC);
-
-        Int2ObjectMap<List<String>> options = loadUsedNpcOptions();
-
-        final File file =
-                Paths.get(args.length == 0 ? "cache/" + NpcActions.DEFAULT_OPTIONS_JSON_PATH : args[0]).toFile();
-        try {
-            final FileWriter writer = new FileWriter(file);
-            new GsonBuilder().setPrettyPrinting().create().toJson(options, writer);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace(NearRealityPrintStream.getErrorStream());
-        }
-
-        System.exit(0);
-    }
-
-
-    private static Int2ObjectMap<List<String>> loadUsedNpcOptions() {
-        Int2ObjectMap<List<String>> optionsMap = new Int2ObjectOpenHashMap<>(10 * 1024);
-        for (NPCDefinitions npc : NPCDefinitions.getDefinitions()) {
-            if (npc == null) continue;
-            final List<String> list = optionsMap.computeIfAbsent(npc.getId(), n -> new ArrayList<>());
-            final String[] options = npc.getOptions();
-            for (final String option : options) {
-                if (option == null) {
-                    list.add(null);
-                    continue;
-                }
-                final NPCPlugin.NPCPluginHandler plugin = NPCPlugin.getHandler(npc.getId(), option);
-                list.add(plugin == null ? null : option);
-            }
-        }
-        return optionsMap;
-    }
 
     static {
         final NPCPlugin.OptionHandler handler = new OptionHandler() {

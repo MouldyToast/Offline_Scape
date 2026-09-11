@@ -26,19 +26,19 @@ public final class RareDropTableProcessor extends DropProcessor {
             //Rare drop table
             final StandardRareDropTable.SRDTNPC srdt = StandardRareDropTable.getTable(id);
             if (srdt == null) continue;
-            this.appendDrop(new DisplayedDrop(2689, srdt.getRollsCount(), srdt.getRollsCount(),
+            this.appendDrop(new DisplayedDrop(989, srdt.getRollsCount(), srdt.getRollsCount(),
                     (float) srdt.getMaxRoll() / srdt.getRoll(), (player, npcId) -> npcId == id));
             if (srdt.isDoubleLoot()) {
-                this.put(id, 2689, new PredicatedDrop("Gives double the loot when rolled."));
+                this.put(id, 989, new PredicatedDrop("Gives double the loot when rolled."));
             } else if (srdt.getRollsCount() == 2) {
-                this.put(id, 2689, new PredicatedDrop("Two individual rolls on the rare drop table are given."));
+                this.put(id, 989, new PredicatedDrop("Two individual rolls on the rare drop table are given."));
             }
         }
         for (final int id : getAllIds()) {
             //Gem drop table
             final GemDropTable.GDTNPC grdt = GemDropTable.getTable(id);
             if (grdt == null) continue;
-            this.appendDrop(new DisplayedDrop(2690, 1, 1, (float) grdt.getMaxRoll() / grdt.getRoll(),
+            this.appendDrop(new DisplayedDrop(1623, 1, 1, (float) grdt.getMaxRoll() / grdt.getRoll(),
                     (player, npcId) -> npcId == id));
         }
     }

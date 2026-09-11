@@ -27,7 +27,7 @@ public class DiaryInfo {
 
     public static DiaryInfo[][] load(Path path) {
         if (path == null)
-            path = Paths.get("assets/diary_info.json");
+            path = Paths.get("../data/diary_info.json");
         DiaryInfo[][] diaryInfo = null;
         try {
             final FileReader reader = new FileReader(path.toFile());

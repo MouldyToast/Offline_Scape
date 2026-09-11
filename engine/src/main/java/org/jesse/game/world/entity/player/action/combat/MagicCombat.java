@@ -186,7 +186,6 @@ public class MagicCombat extends PlayerCombat {
 
         boolean hasTask = player.getSlayer().isCurrentAssignment(target) || CombatUtilities.isUndeadCombatDummy(target);
         result *= determineSlayerHelmetAccuracyBoost(hasTask, HitType.MAGIC, player, target);
-        result += determineBountyHunterAccBoost(player, target);
         result = Math.floor(result);
 
         //If the weapon is smoke battlestaff and the player is on normal spellbook.
@@ -387,7 +386,6 @@ public class MagicCombat extends PlayerCombat {
         if (CombatUtilities.applyPvmArenaBoost(player, target)) {
             situationalModifier += 0.05F;
         }
-        situationalModifier += determineBountyHunterDmgBoost(player, target);
 
         damage = (int) Math.floor(damage * situationalModifier);
 

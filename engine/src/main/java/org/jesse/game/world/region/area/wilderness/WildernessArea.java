@@ -169,7 +169,6 @@ public class WildernessArea extends PolygonRegionArea implements
         // enable blighted stacks
         player.getVarManager().sendBit(5963, 1);
         player.getVarManager().sendBit(11028, 1);
-        player.getVariables().cancel(TickVariable.BOUNTY_HUNTER_TARGET_LOSS);
         if (player.isXPDropsMultiplied() && player.isXPDropsWildyOnly()) {
             player.getVarManager().sendVar(3504, player.getCombatXPRate());
         }

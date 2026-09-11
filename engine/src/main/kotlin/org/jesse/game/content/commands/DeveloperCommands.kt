@@ -5,7 +5,6 @@ import org.jesse.game.util.PlayerAttributesEditor
 import org.jesse.game.world.entity.player.FakePlayer
 import org.jesse.game.world.entity.player.totalDonatedAfterLaunch
 import com.sun.management.HotSpotDiagnosticMXBean
-import org.jesse.GameToggles
 import org.jesse.game.GameConstants.WORLD_PROFILE
 import org.jesse.game.GameConstants.isOwner
 import org.jesse.game.content.achievementdiary.Diary
@@ -188,11 +187,6 @@ object DeveloperCommands {
             } else {
                 player.sendMessage("Try again next time.")
             }
-        }
-
-        Command(PlayerPrivilege.DEVELOPER, "togglebountyhunter") { player, _ ->
-            GameToggles.BH2020_ENABLED = !GameToggles.BH2020_ENABLED
-            player.sendMessage("Bounty Hunter Enabled: ${GameToggles.BH2020_ENABLED}")
         }
 
         Command(PlayerPrivilege.DEVELOPER, "colitem") { player, _ ->

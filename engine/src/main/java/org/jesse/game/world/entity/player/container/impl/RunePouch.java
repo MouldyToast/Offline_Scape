@@ -43,8 +43,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 	}
 
 	public int runePouchCapacity() {
-		if(player.getInventory().containsItem(TOURNAMENT_RUNE_POUCH))
-			return 4;
 		return player.getInventory().containsItem(DIVINE_RUNE_POUCH) ? 4 : 3;
 	}
 

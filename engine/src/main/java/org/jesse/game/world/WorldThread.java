@@ -2,7 +2,6 @@ package org.jesse.game.world;
 
 import cloud.rsps.rsprot.RsprotPingManager;
 import cloud.rsps.rsprot.Session;
-import org.jesse.game.content.bountyhunter.BountyHunterController;
 import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.world.PlayerEvent;
 import org.jesse.game.world.WorldEvent;
@@ -155,12 +154,6 @@ public final class WorldThread extends MainThread {
             WorldTasksManager.processTasks();
         } catch (final Throwable e) {
             log.error("Failed to process world tasks", e);
-        }
-
-        try {
-            BountyHunterController.process();
-        } catch (final Throwable e) {
-            log.error("Failed to process bounty hunter", e);
         }
 
         final long gameClockNano = System.nanoTime();

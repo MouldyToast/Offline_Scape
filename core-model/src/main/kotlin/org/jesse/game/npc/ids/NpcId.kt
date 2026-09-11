@@ -11741,8 +11741,6 @@ const val SNAIL = 15176
 const val EASTER_BUNNY = 15177
 const val EASTER_BIRD = 15187
 const val NULL = 15214
-const val TOURNAMENT_GUARD = 16011
-const val TOURNAMENT_GUARD_16012 = 16012
 const val COMBAT_DUMMY_16019 = 16019
 const val UNDEAD_COMBAT_DUMMY_16020 = 16020
 const val THANKSGIVING_TURKEY = 16022
@@ -11753,7 +11751,3 @@ const val BANKER_16030 = 16030
 
 /* Custom NPC ids (merged from org.jesse.game.item.CustomNpcId). */
 const val QUEEN_REAVER = 20_000
-const val BETA_CAYLEB = 16072
-const val BETA_SLAYEX = 16073
-const val BETA_FLINT = 16074
-const val BETA_PONY = 16075

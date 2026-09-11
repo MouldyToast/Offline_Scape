@@ -8,9 +8,7 @@ import com.fasterxml.jackson.dataformat.toml.TomlFactory;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jesse.cache_tool.packing.custom.GenericDataPacker;
 import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
-import org.jesse.cache_tool.packing.custom.NearRealityCustomMapsPacker;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -20,7 +18,6 @@ import org.jesse.ContentConstants;
 import org.jesse.game.content.achievementdiary.DiaryArea;
 import org.jesse.game.content.achievementdiary.DiaryComplexity;
 import org.jesse.game.content.achievementdiary.DiaryInfo;
-import org.jesse.game.ui.testinterfaces.BountyHunterRewardType;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.object.WorldObject;
 import org.jesse.game.world.region.MapUtils;
@@ -32,7 +29,6 @@ import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.ObjectCollection;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,7 +47,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import javax.imageio.ImageIO;
 import kotlin.text.Charsets;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
@@ -65,7 +60,6 @@ import mgi.types.config.StructDefinitions;
 import mgi.types.config.VarbitDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
 import mgi.types.config.npcs.NPCDefinitions;
-import mgi.types.draw.sprite.SpriteGroupDefinitions;
 import mgi.utilities.Buffer;
 import mgi.utilities.ByteBuffer;
 import net.lingala.zip4j.ZipFile;
@@ -153,7 +147,6 @@ public class TypeParser {
         //Definitions.loadDefinitions(Definitions.cacheLowPriorityDefinitions);
 
         initializeKryo();
-        parse(new File("assets/types"));
         pack(NPCDefinitions.class);
         packDynamicConfigs();
         KeepSetDefinitionOverrides.pack();
@@ -163,30 +156,13 @@ public class TypeParser {
                         Definitions.highPriorityDefinitions,
                         Definitions.cacheLowPriorityDefinitions)
         );
-        packClientBackground();
         packClientScripts();
-        packInvs();
-        packInterfaces();
-        packStructs();
-        packParams();
         packMaps(service);
         increaseVarclientAmount();
         KeepSetDefinitionOverrides.packObjects();
-        if (ENABLED_MAP_PACKING) {
-            NearRealityCustomMapsPacker.pack();
-        } else {
-            System.out.println("Skipping NearRealityCustomMapsPacker.pack();");
-        }
-        GenericDataPacker.INSTANCE.packAll(cache, "assets/packed/");
         copyMaps();
         KeepSetDefinitionOverrides.packEnums();
         KeepSetDefinitionOverrides.packSpecialAttacks();
-        cache.close();
-
-        cache = Cache.openCache("data/cache");
-        CacheManager.loadCache(cache);
-        CacheManager.loadDefinitions(service, true);
-        postPackEdits();
         cache.close();
 
         /*
@@ -198,18 +174,6 @@ public class TypeParser {
         log.info("Cache repack took {} milliseconds", TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime));
 
         service.shutdown();
-    }
-
-    private static void postPackEdits() {
-        ComponentDefinitions def = ComponentDefinitions.get(1722, 3);
-        def.x = 215;
-        def.y = 30;
-        def.pack();
-
-        def = ComponentDefinitions.get(1722, 21);
-        def.x = 215;
-        def.y = 30;
-        def.pack();
     }
 
     private static void portMaps(Cache backport) {
@@ -360,42 +324,11 @@ public class TypeParser {
         }
     }
 
-    private static void packClientBackground() throws IOException {
-        final byte[] desktop = java.nio.file.Files.readAllBytes(Paths.get("assets/sprites/background" +
-                "/background_desktop.png"));
-        final Cache cache = CacheManager.getCache();
-        final Archive desktopArchive = cache.getArchive(ArchiveType.BINARY);
-        desktopArchive.findGroupByID(0).findFileByID(0).setData(new ByteBuffer(desktop));
-
-        final Archive spritesArchive = cache.getArchive(ArchiveType.SPRITES);
-        Group logoGroup = spritesArchive.findGroupByName("logo");
-
-        final BufferedImage image = ImageIO.read(Paths.get("assets/sprites/background/background_logo" +
-                ".png").toFile());
-        final SpriteGroupDefinitions sprite = new SpriteGroupDefinitions(logoGroup.getID(), image.getWidth(),
-                image.getHeight());
-        sprite.setWidth(image.getWidth());
-        sprite.setHeight(image.getHeight());
-        sprite.setImage(0, image);
-        sprite.pack();
-    }
-
     private static void packDynamicConfigs() {
         //for (Int2IntMap.Entry entry : EnumDefinitions.getIntEnum(1002).getValues().int2IntEntrySet()) {
         //    System.out.println(entry.getIntKey()+"="+entry.getIntValue());
         //}
         EnumDefinitions enumDef;
-        enumDef = new EnumDefinitions();
-        enumDef.setId(1974);
-        enumDef.setKeyType("int");
-        enumDef.setValueType("namedobj");
-        enumDef.setDefaultInt(-1);
-        enumDef.setValues(new HashMap<>());
-        int id = 0;
-        for (final BountyHunterRewardType reward : BountyHunterRewardType.values()) {
-            enumDef.getValues().put(id++, reward.getId());
-        }
-        definitions.add(enumDef);
         final DiaryInfo[][] diaries = DiaryInfo.load(null);
         for (final DiaryInfo[] diaryEnum : diaries) {
             final HashMap<Integer, Object> values = new HashMap<>();
@@ -457,60 +390,6 @@ public class TypeParser {
     public static void packSound(final int id, final byte[] bytes) {
         CacheManager.getCache().getArchive(ArchiveType.SYNTHS).addGroup(new Group(id,
                 new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
-    public static void packInvs() throws IOException {
-        for (File file : Paths.get("assets/inv").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packInv(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack enum file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
-    public static void packStructs() throws IOException {
-        for (File file : Paths.get("assets/structs").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packStruct(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack struct file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
-    public static void packStruct(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.STRUCT)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
-    }
-
-    public static void packParams() throws IOException {
-        for (File file : Paths.get("assets/params").toFile().listFiles()) {
-            if (!file.getName().contains(".")) {
-                try {
-                    final int id = Integer.parseInt(file.getName());
-                    packParam(id, java.nio.file.Files.readAllBytes(file.toPath()));
-                } catch (Exception e) {
-                    System.err.println("Failed to pack param file " + file + " name must be an int!");
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-
-    public static void packParam(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.PARAMS)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
     }
 
     private static void packClientScripts() throws Exception {
@@ -591,69 +470,6 @@ public class TypeParser {
                 new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
     }
 
-    public static void packInv(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CONFIGS)
-                .findGroupByID(GroupType.INV)
-                .addFile(new mgi.tools.jagcached.cache.File(id, new ByteBuffer(bytes)));
-    }
-
-    private static void packInterfaces() {
-        final Cache cache = CacheManager.getCache();
-        packInterfacesInner(cache, Paths.get("assets/interfaces").toFile().listFiles());
-        //packMackInterfaces(cache, 5006);
-
-        cache.getArchive(ArchiveType.INTERFACES).finish();
-
-    }
-
-    private static void packInterfacesInner(final Cache cache, final File[] folders) {
-        for (File interfaceFolder : folders) {
-            if (interfaceFolder.isDirectory() && interfaceFolder.getName().contains("compressed"))
-                continue;
-            if (!interfaceFolder.isDirectory()) {
-                continue;
-            }
-
-            final int groupId = Integer.parseInt(interfaceFolder.getName());
-            System.out.println("Creating interface raw [" + groupId + "]");
-            final Group group = new Group(groupId);
-            Arrays.stream(Objects.requireNonNull(interfaceFolder.listFiles()))
-                    .mapToInt(file -> Integer.parseInt(file.getName())).sorted().forEach(id -> {
-                        // System.out.println("\t adding["+id+"]");
-                        final Path path = interfaceFolder.toPath().resolve(Integer.toString(id));
-                        try {
-                            group.addFile(new mgi.tools.jagcached.cache.File(
-                                    new ByteBuffer(java.nio.file.Files.readAllBytes(path))));
-                        } catch (IOException e) {
-                            e.printStackTrace(System.err);
-                        }
-                    });
-            cache.getArchive(ArchiveType.INTERFACES).addGroup(group);
-        }
-    }
-
-    public static void packInterface(final File interfaceFile, final int groupId) {
-        if (!interfaceFile.isDirectory()) {
-            return;
-        }
-
-        final Cache cache = CacheManager.getCache();
-        log.debug("Creating interface {} from file {}", groupId, interfaceFile);
-        final Group group = new Group(groupId);
-        Arrays.stream(Objects.requireNonNull(interfaceFile.listFiles()))
-                .mapToInt(file -> Integer.parseInt(file.getName())).sorted().forEach(id -> {
-                    // System.out.println("\t adding["+id+"]");
-                    final Path path = interfaceFile.toPath().resolve(Integer.toString(id));
-                    try {
-                        group.addFile(new mgi.tools.jagcached.cache.File(
-                                new ByteBuffer(java.nio.file.Files.readAllBytes(path))));
-                    } catch(IOException e) {
-                        e.printStackTrace(System.err);
-                    }
-                });
-        cache.getArchive(ArchiveType.INTERFACES).addGroup(group);
-    }
-
     public static void packMapsRSPSi(int baseRegionID, String packFilePath) throws IOException {
         packMapsRSPSi(CacheManager.getCache(), baseRegionID, packFilePath);
     }
@@ -718,19 +534,6 @@ public class TypeParser {
                 .orElse(null);
 
         packMap(cache, regionID, outputMapData, outputLandData);
-    }
-
-    public static void packMapPre209(final int id, String landscapeFilePath, String mapFilePath)
-            throws IOException {
-        try {
-            packMapRawPre209(CacheManager.getCache(), id,
-                    java.nio.file.Files.readAllBytes(Paths.get(mapFilePath)),
-                    java.nio.file.Files.readAllBytes(Paths.get(landscapeFilePath)));
-            System.err.println("Packed map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-        } catch (Exception e) {
-            System.err.println("Failed to pack map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-            e.printStackTrace(System.err);
-        }
     }
 
     public static void packMap(final int id, String landscapeFilePath, String mapFilePath)
@@ -870,12 +673,6 @@ public class TypeParser {
                         new WorldObject(26254, 10, 3, new Location(2920, 4848, 0))));
         packMapPre209(13109, null,
                 Regions.inject(13109, null, new WorldObject(187, 10, 1, new Location(3322, 3428, 0))));
-        packMapPre209(13426, "assets/map/osnr_tournament/final_landscape.dat",
-                "assets/map/osnr_tournament/final_objects.dat");
-        packMapPre209(13428, java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_landscape.dat")),
-                Regions.inject(java.nio.file.Files.readAllBytes(Paths.get("assets/map/osnr_tournament/tourney_objects.dat")), null,
-                        new WorldObject(35006, 10, 1, new Location(3363, 7465, 0)),
-                        new WorldObject(35007, 10, 0, new Location(3352, 7465, 0))));
         KeepSetDefinitionOverrides.applyMapEdits();
     }
 

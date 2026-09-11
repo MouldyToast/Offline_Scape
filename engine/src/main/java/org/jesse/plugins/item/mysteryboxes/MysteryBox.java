@@ -85,10 +85,8 @@ public class MysteryBox extends ItemPlugin {
                 new MysteryItem(ItemId.SPIRIT_SHIELD, 1, 1, 100),
                 new MysteryItem(ItemId.BLESSED_SPIRIT_SHIELD, 1, 1, 40),
                 new MysteryItem(ItemId.ANCIENT_WYVERN_SHIELD_21634, 1, 1, 42).announce(),
-                new MysteryItem(30030, 1, 1, 60),
                 new MysteryItem(ItemId.DRAGON_PICKAXE, 1, 1, 75),
                 new MysteryItem(ItemId.DRAGON_CROSSBOW, 1, 1, 75).announce(),
-                new MysteryItem(30031, 1, 1, 80),
                 new MysteryItem(ItemId.DRAGON_KITESHIELD, 1, 1, 35).announce(),
                 new MysteryItem(ItemId.DRAGON_PLATEBODY, 1, 1, 35).announce(),
                 new MysteryItem(ItemId.DRAGON_FULL_HELM, 1, 1, 35).announce()

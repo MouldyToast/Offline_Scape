@@ -34,7 +34,7 @@ internal fun TeleportsBuilder.bosses() = "Bosses Teleports"(10005) {
     "Sol Heredit"(-28960, 1801, 9507, 0, "")
     "The Nightmare"(4286, 3808, 9752, 1, "")
     "Thermonuclear Smoke Devil"(4277, 2411, 3055, 0, "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil")
-    "Tormented Demon"(-33250, 4061, 4465, 0, "")
+    "Tormented Demon"(4339, 4061, 4465, 0, "")
     "Vanstrom Klause"(-13495, 3574, 3358, 0, "")
     "Vorkath"(4281, 2277, 4036, 0, "https://oldschool.runescape.wiki/w/Vorkath")
     "Wintertodt"(4266, 1624, 3929, 0, "https://oldschool.runescape.wiki/w/Wintertodt")

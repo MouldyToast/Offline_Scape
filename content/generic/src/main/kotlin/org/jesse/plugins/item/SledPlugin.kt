@@ -12,5 +12,5 @@ class SledPlugin : ItemPlugin() {
 
     override fun handle() = bindKt("Ride") { player.equipment.wear(slotId) }
 
-    override fun getItems() = intArrayOf(SLED, SLED_4084, SLED_25282)
+    override fun getItems() = intArrayOf(SLED_4084, SLED_25282)
 }

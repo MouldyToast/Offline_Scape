@@ -156,7 +156,6 @@ public class TypeParser {
                         Definitions.highPriorityDefinitions,
                         Definitions.cacheLowPriorityDefinitions)
         );
-        KeepSetDefinitionOverrides.packComponents();
         packClientScripts();
         packMaps(service);
         increaseVarclientAmount();

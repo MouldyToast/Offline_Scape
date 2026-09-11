@@ -38,8 +38,6 @@ public class BlastFurnaceObjectAction implements ObjectAction {
 
     private static final Item ICE_GLOVES = new Item(1580, 1);
 
-    private static final Item ENHANCED_ICE_GLOVES = new Item(30030, 1);
-
     private static final Item COINS_PLACEHOLDER = new Item(1000, 1);
 
     @Override
@@ -138,12 +136,12 @@ public class BlastFurnaceObjectAction implements ObjectAction {
             }
             if (WorldObjectUtils.getObjectIdOfPlayer(object, player) == 9095) {
                 final Item gloves = player.getEquipment().getItem(EquipmentSlot.HANDS);
-                if (gloves == null || (gloves.getId() != ICE_GLOVES.getId() && gloves.getId() != ENHANCED_ICE_GLOVES.getId())) {
+                if (gloves == null || gloves.getId() != ICE_GLOVES.getId()) {
                     player.getDialogueManager().start(new PlainChat(player, "The bars are still molten! You need to cool them down."));
                     return;
                 }
                 if (gloves != null) {
-                    if (gloves.getId() == ICE_GLOVES.getId() || gloves.getId() == ENHANCED_ICE_GLOVES.getId()) {
+                    if (gloves.getId() == ICE_GLOVES.getId()) {
                         Item[] barsArray = player.getBlastFurnace().constructBarArray();
                         ArrayUtils.reverse(barsArray);
                         if (barsArray.length == 0) {

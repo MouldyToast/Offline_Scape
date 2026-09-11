@@ -1,6 +1,5 @@
 package org.jesse.cache_tool.packing.custom
 
-import org.jesse.game.item.ids.ELDER_MAUL_OR
 import org.jesse.game.obj.ids.DUKE_SCOREBOARD
 import org.jesse.game.obj.ids.PHANTOM_MUSPAH_SCOREBOARD
 import org.jesse.game.obj.ids.ZAMORAK_PORTAL
@@ -8,9 +7,7 @@ import org.jesse.game.world.entity.Location
 import org.jesse.game.world.entity.player.container.impl.ContainerType
 import org.jesse.game.world.`object`.WorldObject
 import org.jesse.game.world.region.Regions
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import mgi.tools.parser.TypeParser
-import mgi.types.component.ComponentDefinitions
 import mgi.types.config.InventoryDefinitions
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.enums.EnumDefinitions
@@ -45,49 +42,8 @@ object KeepSetDefinitionOverrides {
             size = 4
             pack()
         }
-        // The slumbering Duke Sucellus (NPC 12166) has no options in vanilla;
-        // the boss fight is initiated through this Attack option.
-        NPCDefinitions.get(12166).apply {
-            options[1] = "Attack"
-            pack()
-        }
-        packSpellbookTeleportKeys()
         packItemOverrides()
         packNpcOverrides()
-    }
-
-    /**
-     * The custom teleport interface keys its categories off item params 601
-     * (category name) and 602 (description) on the vanilla spellbook teleport
-     * tablet items; the vanilla teleport-destination params are stripped so
-     * they don't double-key (SpellDefinitions.java and the teleport-1700
-     * system rely on these).
-     */
-    private fun packSpellbookTeleportKeys() {
-        keySpellbookItems(intArrayOf(3286, 4631, 9111, 20409), "Training")
-        keySpellbookItems(intArrayOf(3289, 4634, 20759, 20410), "Skilling")
-        keySpellbookItems(intArrayOf(3292, 4637, 9114, 20411), "Minigames")
-        keySpellbookItems(intArrayOf(3296, 4640, 9117, 20412), "Wilderness")
-        keySpellbookItems(intArrayOf(3301, 4643, 9120, 20413), "Bosses")
-        keySpellbookItems(intArrayOf(3306, 4646, 9127, 20414), "Dungeons")
-        keySpellbookItems(intArrayOf(3312, 4649, 9129, 20419), "Cities")
-        keySpellbookItems(intArrayOf(21836, 4652, 9131, 20420), "Misc")
-    }
-
-    private val REMOVED_SPELL_PARAMS = intArrayOf(365, 367, 369, 606, 366, 368, 370, 607)
-
-    private fun keySpellbookItems(ids: IntArray, category: String) {
-        for (id in ids) {
-            ItemDefinitions.get(id).apply {
-                val params = parameters ?: Int2ObjectOpenHashMap<Any>().also { parameters = it }
-                params.put(601, "$category Teleports")
-                params.put(602, "Opens the teleport interface in the $category category.")
-                for (key in REMOVED_SPELL_PARAMS) {
-                    params.remove(key)
-                }
-                pack()
-            }
-        }
     }
 
     /**
@@ -96,87 +52,6 @@ object KeepSetDefinitionOverrides {
      * item reader produced them.
      */
     private fun packItemOverrides() {
-        // Enhanced ice gloves (IceGloves content) - copied before the 1580
-        // edit below, matching the old TOML parse of a pristine source.
-        TypeParser.KRYO.copy(ItemDefinitions.get(1580)).apply {
-            id = 30030
-            name = "Enhanced ice gloves"
-            isGrandExchange = true
-            replacementColours = shortArrayOf(32511, 32511)
-            setOption(0, "Wear")
-            setOption(1, "")
-            pack()
-        }
-        // Ice gloves keep only their Wear option.
-        ItemDefinitions.get(1580).apply {
-            setOption(0, "Wear")
-            setOption(1, "")
-            pack()
-        }
-        // Pet mystery box (PetMysteryBox content).
-        TypeParser.KRYO.copy(ItemDefinitions.get(6199)).apply {
-            id = 30031
-            name = "Pet mystery box"
-            isGrandExchange = true
-            placeholderId = 30032
-            replacementColours = shortArrayOf(0)
-            setOption(1, "Quick-Open")
-            pack()
-        }
-        // Pet mystery box placeholder.
-        TypeParser.KRYO.copy(ItemDefinitions.get(18086)).apply {
-            id = 30032
-            name = "null"
-            placeholderId = 30031
-            replacementColours = shortArrayOf(0)
-            pack()
-        }
-        // Pet mystery box rewards gain a Drop option and GE tradeability.
-        for (id in intArrayOf(20838, 20840, 20842, 20844, 11863, 12887, 12888, 12889,
-                              12890, 12891, 11021, 11019, 11020, 11022)) {
-            ItemDefinitions.get(id).apply {
-                isGrandExchange = true
-                setOption(4, "Drop")
-                pack()
-            }
-        }
-        // Tome of experience (NewCrystalChestLoot.kt).
-        TypeParser.KRYO.copy(ItemDefinitions.get(22415)).apply {
-            id = 30215
-            price = 999
-            setIsStackable(1)
-            placeholderId = 30216
-            placeholderTemplate = -1
-            setOption(1, "Read-All")
-            pack()
-        }
-        // Tome of experience placeholder.
-        TypeParser.KRYO.copy(ItemDefinitions.get(14577)).apply {
-            id = 30216
-            placeholderTemplate = 14401
-            placeholderId = 30215
-            pack()
-        }
-        // Smouldering demon pet item (BossPet.java).
-        TypeParser.KRYO.copy(ItemDefinitions.get(20023)).apply {
-            id = 33250
-            name = "Smouldering Demon"
-            setOption(0, "")
-            setOption(1, "")
-            setOption(2, "")
-            setOption(3, "")
-            setOption(4, "Drop")
-            pack()
-        }
-        // Clue scroll boxes (ClueItem.java + drop tables). The old TOML's
-        // inventory models (60477-60482) were custom assets deleted long ago,
-        // so the boxes borrow the vanilla scroll box art of the same tier.
-        scrollBox(2803, "beginner", 24361, 30218)
-        scrollBox(2805, "easy", 24362, 30219)
-        scrollBox(2807, "medium", 24363, 30220)
-        scrollBox(2809, "hard", 24364, 30221)
-        scrollBox(2811, "elite", 24365, 30222)
-        scrollBox(2813, "master", 24366, 30223)
         // Royal seed pod gains its Configure option.
         ItemDefinitions.get(19564).apply {
             setOption(1, "Configure")
@@ -189,16 +64,6 @@ object KeepSetDefinitionOverrides {
             setOption(2, "Punishment")
             setOption(3, "Utility")
             setOption(4, "Destroy")
-            pack()
-        }
-        // Sled (Ride option).
-        ItemDefinitions.get(4083).apply {
-            isGrandExchange = true
-            setOption(0, "Ride")
-            setOption(1, "")
-            setOption(2, "")
-            setOption(3, "")
-            setOption(4, "Drop")
             pack()
         }
         // Silverlight demon-check. (The old TOML's param 451 line had no
@@ -232,48 +97,6 @@ object KeepSetDefinitionOverrides {
             setOption(4, "Features")
             pack()
         }
-        // Slayer casket (clue reward casket 7956 repurposed as slayer loot).
-        ItemDefinitions.get(7956).apply {
-            name = "Slayer casket"
-            setIsStackable(1)
-            isGrandExchange = false
-            isMembers = true
-            pack()
-        }
-    }
-
-    /**
-     * A tiered clue scroll box (stackable clue holder) and its bank
-     * placeholder.
-     */
-    private fun scrollBox(boxId: Int, tier: String, vanillaBoxId: Int, placeholder: Int) {
-        ItemDefinitions.get(boxId).apply {
-            name = "Scroll box ($tier)"
-            setIsStackable(1)
-            isGrandExchange = false
-            isMembers = true
-            price = 50
-            shiftClickIndex = -2
-            zoom = 770
-            offsetX = 1
-            offsetY = -6
-            modelPitch = 236
-            modelRoll = 1697
-            modelYaw = 0
-            inventoryModelId = ItemDefinitions.get(vanillaBoxId).inventoryModelId
-            placeholderId = placeholder
-            placeholderTemplate = -1
-            setOption(0, "Open")
-            setOption(1, "")
-            setOption(4, "Drop")
-            pack()
-        }
-        TypeParser.KRYO.copy(ItemDefinitions.get(14577)).apply {
-            id = placeholder
-            placeholderTemplate = 14401
-            placeholderId = boxId
-            pack()
-        }
     }
 
     /**
@@ -282,22 +105,6 @@ object KeepSetDefinitionOverrides {
      * produced them.
      */
     private fun packNpcOverrides() {
-        // Armoured zombies (region 11169 spawns + drop table).
-        for (offset in 0..9) {
-            TypeParser.KRYO.copy(NPCDefinitions.get(12720 + offset)).apply {
-                id = 14113 + offset
-                combatLevel = 109
-                setOption(1, "Attack")
-                pack()
-            }
-        }
-        // Ashuelot Reis nurse banker (Bank/Collect are handled; the old
-        // TOML's op4 "Presets" was dead and is dropped).
-        NPCDefinitions.get(11289).apply {
-            setOption(2, "Bank")
-            setOption(4, "Collect")
-            pack()
-        }
         // Captain Errdo gnome glider quick-travel.
         NPCDefinitions.get(6088).apply {
             setOption(0, "Glider")
@@ -340,22 +147,6 @@ object KeepSetDefinitionOverrides {
                 id = 16035 + offset
                 pack()
             }
-        }
-        // Smouldering demon pet NPC (BossPet.java). The old TOML's resizez
-        // and familiar keys never mapped to a definition field and are not
-        // carried over; the filteredops key set the array without touching
-        // the filter flag, mirrored here via setFilteredOptions.
-        NPCDefinitions.get(13602).apply {
-            name = "Smouldering Demon"
-            models = intArrayOf(53285)
-            combatLevel = 0
-            resizeX = 32
-            resizeY = 32
-            size = 1
-            options = arrayOf(null, null, "Pick-up", null, null)
-            setFilteredOptions(arrayOf(null, null, "Pick-up", null, null))
-            isMinimapVisible = true
-            pack()
         }
         // Sir Eldric, the PvM Arena supplies trader.
         NPCDefinitions.get(3516).apply {
@@ -516,55 +307,13 @@ object KeepSetDefinitionOverrides {
     }
 
     /**
-     * Component definition overrides. Runs where the component TOMLs used to
-     * pack, right after the main definitions pack pass (and before the
-     * interface archive is finished).
-     */
-    @JvmStatic
-    fun packComponents() {
-        // Secondary home teleport destinations on the spellbook home
-        // teleport buttons (SpellbookTeleport.java).
-        for ((component, destination) in intArrayOf(4, 99, 143)
-                .zip(arrayOf("Lumbridge", "Lunar Isle", "Arceuus"))) {
-            ComponentDefinitions.get(218, component).apply {
-                accessMask = 1030
-                setOption(1, destination)
-                pack()
-            }
-        }
-        // XP Multiplier option on the XP orb (OrbsInterface.java).
-        ComponentDefinitions.get(160, 5).apply {
-            accessMask = 14
-            setOption(2, "XP Multiplier")
-            pack()
-        }
-        // Right-click "previous destination" teleport on the spellbook tab
-        // of each gameframe pane (ResizablePaneInterface option 3). Vanilla
-        // carries only ops 1-2 (mask 6) on these components.
-        for ((pane, component) in intArrayOf(161, 164, 548).zip(intArrayOf(65, 58, 69))) {
-            ComponentDefinitions.get(pane, component).apply {
-                accessMask = 14
-                setOption(2, "*")
-                pack()
-            }
-        }
-    }
-
-    /**
      * Special attack metadata missing from the vanilla rev-228 enums.
      * Elder maul (or) is usable in game but vanilla only carries the
      * plain Elder maul entries.
      */
     @JvmStatic
     fun packSpecialAttacks() {
-        EnumDefinitions.get(1739).apply {
-            values[ELDER_MAUL_OR] = "Lowers the target's current Defence level by 35% on a successful hit. The effect is stackable and relative to the target's"
-            pack()
-        }
-        EnumDefinitions.get(906).apply {
-            values[ELDER_MAUL_OR] = 500
-            pack()
-        }
+        // Elder maul (or) 27100 is already in vanilla enums 1739/906.
     }
 
     /**

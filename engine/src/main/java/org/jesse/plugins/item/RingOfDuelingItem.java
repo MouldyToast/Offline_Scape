@@ -28,13 +28,13 @@ public class RingOfDuelingItem extends ItemPlugin {
             player.getDialogueManager().start(new Dialogue(player) {
                 @Override
                 public void buildDialogue() {
-                    options("Where would you like to teleport to?", new DialogueOption("Duel Arena", () -> new RingTeleport(item, container, slotId, new Location(3315, 3235, 0)).teleport(player)),
+                    options("Where would you like to teleport to?", new DialogueOption("Emir's Arena", () -> new RingTeleport(item, container, slotId, new Location(3315, 3235, 0)).teleport(player)),
                             new DialogueOption("Castle Wars", () -> new RingTeleport(item, container, slotId, new Location(2440, 3090, 0)).teleport(player)),
                             new DialogueOption("Ferox Enclave", () -> new RingTeleport(item, container, slotId, new Location(3151, 3636, 0)).teleport(player)), new DialogueOption("Nowhere"));
                 }
             });
         });
-        bind("Duel Arena", (player, item, container, slotId) -> new RingTeleport(item, container, slotId, new Location(3315, 3235, 0)).teleport(player));
+        bind("Emir's Arena", (player, item, container, slotId) -> new RingTeleport(item, container, slotId, new Location(3315, 3235, 0)).teleport(player));
         bind("Castle Wars", (player, item, container, slotId) -> new RingTeleport(item, container, slotId, new Location(2440, 3090, 0)).teleport(player));
         bind("Ferox Enclave", (player, item, container, slotId) -> new RingTeleport(item, container, slotId, new Location(3151, 3636, 0)).teleport(player));
     }

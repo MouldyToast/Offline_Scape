@@ -157,7 +157,6 @@ public enum BossPet implements Pet {
     ZEBO(ItemId.ZEBO, NpcId. ZEBO),
     NID(ItemId.NID, NpcId.NID_13683),
     RAX(ItemId.RAX, NpcId.RAX_13684),
-    SMOLDERING_DEMON(ItemId.SMOLDERING_DEMON, NpcId.TORRMENTED_DEMON_13602),
 
     SMOL_HEREDIT(ItemId.SMOL_HEREDIT, NpcId.SMOL_HEREDIT_12857, -1, SmolHereditD.class)
     ;

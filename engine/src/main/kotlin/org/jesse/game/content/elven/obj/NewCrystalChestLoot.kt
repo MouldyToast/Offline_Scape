@@ -64,7 +64,7 @@ enum class NewCrystalChestLoot(
     BOND(LootRarity.JACKPOT, Item(32070)),
 
     ABBY_WHIP(LootRarity.SUPER_RARE, Item(ABYSSAL_WHIP)),
-    TOME_OF_XP(LootRarity.SUPER_RARE, Item(30215)),
+    TOME_OF_XP(LootRarity.SUPER_RARE, Item(22415)),
     MYSTERY_BOX(LootRarity.SUPER_RARE, Item(6199)),
     AMMY_OF_FURY(LootRarity.SUPER_RARE, Item(AMULET_OF_FURY)),
     DIAMOND_BOLTS_E(LootRarity.SUPER_RARE, Item(org.jesse.game.item.ids.DIAMOND_BOLTS_E), min = 20, max = 50),

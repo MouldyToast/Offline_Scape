@@ -6,6 +6,7 @@ import org.jesse.game.content.gauntlet.GauntletConstants;
 import org.jesse.game.content.gauntlet.GauntletType;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.SkillConstants;
+import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.entity.player.dialogue.impl.NPCChat;
 import org.jesse.game.world.object.ObjectAction;
 import org.jesse.game.world.object.WorldObject;
@@ -58,9 +59,21 @@ public final class GauntletEntrance implements ObjectAction {
             }
         }
 
-        GauntletType type = GauntletType.STANDARD;
-        if(option.equalsIgnoreCase("Enter-corrupted"))
-            type = GauntletType.CORRUPTED;
+        final boolean corrupted = option.equalsIgnoreCase("Enter-corrupted");
+        final GauntletType normal = corrupted ? GauntletType.CORRUPTED : GauntletType.STANDARD;
+        final GauntletType noPrep = corrupted ? GauntletType.CORRUPTED_NO_PREP : GauntletType.STANDARD_NO_PREP;
+
+        player.getDialogueManager().start(new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                options("Select mode:",
+                        new DialogueOption(corrupted ? "Corrupted" : "Normal", () -> startGauntlet(player, normal)),
+                        new DialogueOption("No-Prep", () -> startGauntlet(player, noPrep)));
+            }
+        });
+    }
+
+    private void startGauntlet(Player player, GauntletType type) {
         Gauntlet gauntlet = Gauntlet.construct(player, type);
         if (gauntlet == null) {
             player.getDialogueManager().start(new PlainChat(player, "Unable to construct Gauntlet map instance - please report this to a staff member."));

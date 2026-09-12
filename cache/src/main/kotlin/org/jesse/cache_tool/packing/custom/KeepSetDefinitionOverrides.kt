@@ -121,12 +121,6 @@ object KeepSetDefinitionOverrides {
             setOption(0, "Jump")
             pack()
         }
-        // Nex red portal instance entrance.
-        ObjectDefinitions.get(42941).apply {
-            setOption(0, "Pass")
-            setOption(2, "Peek")
-            pack()
-        }
         // Dagannoth Kings instance entrance crack.
         ObjectDefinitions.get(30169).apply {
             setOption(0, "Private")

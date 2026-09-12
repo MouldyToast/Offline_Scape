@@ -11,7 +11,6 @@ import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.Cache;
 import mgi.tools.jagcached.cache.File;
 import mgi.tools.jagcached.cache.Group;
-import mgi.tools.parser.MapChanges;
 import mgi.types.component.SpriteDefaults;
 import mgi.types.config.AnimationDefinitions;
 import mgi.types.config.HitbarDefinitions;
@@ -247,8 +246,7 @@ public class DataMigration {
                         regionY++;
                         continue;
                     }
-                    byte[] l_data = MapChanges.modifyRegionData(getRegionIDByRegion(regionX, regionY), landBuffer.getBuffer());
-                    landGroup.findFileByID(0).setData(new ByteBuffer(l_data));
+                    landGroup.findFileByID(0).setData(landBuffer);
                     landGroup.setXTEA(null);
                     oldMaps.addGroup(landGroup);
                     oldMaps.addGroup(mapGroup);

@@ -604,7 +604,6 @@ public class TypeParser {
             }
             int length_l = 0;
             if (l_data != null) {
-                l_data = MapChanges.modifyRegionData(id, l_data);
                 length_l = l_data.length;
                 final Group newLandGroup = new Group(archive.getFreeGroupID(),
                         new mgi.tools.jagcached.cache.File(new ByteBuffer(l_data)));

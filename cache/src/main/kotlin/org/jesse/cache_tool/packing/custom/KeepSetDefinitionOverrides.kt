@@ -96,15 +96,6 @@ object KeepSetDefinitionOverrides {
             setOption(0, "Use")
             pack()
         }
-        // DT2 loot objects missing their Take option.
-        ObjectDefinitions.get(47567).apply {
-            setOption(1, "Take")
-            pack()
-        }
-        ObjectDefinitions.get(47568).apply {
-            setOption(1, "Take")
-            pack()
-        }
         // GWD instance crevice exit (GodwarsInstancePortal).
         TypeParser.KRYO.copy(ObjectDefinitions.get(26769)).apply {
             id = 35013

@@ -24,5 +24,5 @@ class FreePestleAndMortarObjectAction: ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(47567)
+    override fun getObjects() = arrayOf(47560) // vanilla pestle and mortar with Take op
 }

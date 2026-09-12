@@ -132,20 +132,28 @@ data class DukeSucellusInstance(
         removeFarmedMaterials()
         addNpcs()
         buildExtremities()
-        buildVats()
+        swapInstanceObjects()
         transferPlayer()
     }
 
-    private fun buildVats() {
-        val coords = arrayOf(leftVatCoord, rightVatCoord)
-        coords.forEach {
-            val obj = it.findObject { id == 47537 } ?: return@forEach
-            World.spawnObject(WorldObject(
-                id = 47536,
-                tile = it,
-                type = 10,
-                rotation = obj.rotation
-            ))
+    /**
+     * The static map has quest-gated "no ops" variants of interactable objects.
+     * In vanilla, the server spawns the interactive variants after DT2 quest
+     * progression. Since all quests are complete, swap them unconditionally.
+     */
+    private fun swapInstanceObjects() {
+        val swaps = mapOf(
+            47537 to 47536,  // Fermentation Vat → Fill/Check/Empty
+            47534 to 47528,  // Arder mushrooms → Pick
+            47532 to 47524,  // Musca mushrooms → Pick
+            47523 to 47522,  // Salt Deposit → Mine
+            47567 to 47560,  // Pestle and mortar → Take
+            47568 to 47561,  // Pickaxe → Take
+        )
+        val sw = getLocation(Location(3008, 6400, 0))
+        World.forEachObject(sw, 64) { obj ->
+            val newId = swaps[obj.id] ?: return@forEachObject
+            World.spawnObject(WorldObject(newId, obj.type, obj.rotation, obj.position))
         }
     }
 

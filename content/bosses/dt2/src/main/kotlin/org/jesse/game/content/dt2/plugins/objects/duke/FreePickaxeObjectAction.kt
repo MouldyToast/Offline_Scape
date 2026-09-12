@@ -24,5 +24,5 @@ class FreePickaxeObjectAction : ObjectAction {
         }
     }
 
-    override fun getObjects() = arrayOf(47568)
+    override fun getObjects() = arrayOf(47561) // vanilla pickaxe with Take op
 }

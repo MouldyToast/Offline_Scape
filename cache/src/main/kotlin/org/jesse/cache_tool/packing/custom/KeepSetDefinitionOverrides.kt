@@ -1,6 +1,5 @@
 package org.jesse.cache_tool.packing.custom
 
-import org.jesse.game.obj.ids.ZAMORAK_PORTAL
 import org.jesse.game.world.entity.player.container.impl.ContainerType
 import mgi.tools.parser.TypeParser
 import mgi.types.config.InventoryDefinitions
@@ -84,43 +83,6 @@ object KeepSetDefinitionOverrides {
      */
     @JvmStatic
     fun packObjects() {
-        // Private portal used by GodwarsInstancePortal for GWD instances.
-        TypeParser.cloneObject(ZAMORAK_PORTAL, 35015).apply {
-            name = "Private portal"
-            sizeX /= 2
-            sizeY /= 2
-            modelSizeX /= 2
-            modelSizeY /= 2
-            modelSizeHeight /= 2
-            mapSceneId = 64
-            setOption(0, "Use")
-            pack()
-        }
-        // GWD instance crevice exit (GodwarsInstancePortal).
-        TypeParser.KRYO.copy(ObjectDefinitions.get(26769)).apply {
-            id = 35013
-            ambient = 25
-            contrast = 500
-            mapSceneId = -1
-            pack()
-        }
-        // GWD private boss room portals (GodwarsInstancePortal).
-        for ((from, to) in intArrayOf(26738, 9368, 20843, 26740)
-                .zip(intArrayOf(50083, 35014, 35016, 35017))) {
-            TypeParser.KRYO.copy(ObjectDefinitions.get(from)).apply {
-                id = to
-                name = "Private portal"
-                mapSceneId = 64
-                setOption(0, "Use")
-                pack()
-            }
-        }
-        // Saradomin encampment stepping stone in GWD instances.
-        TypeParser.KRYO.copy(ObjectDefinitions.get(21120)).apply {
-            id = 35018
-            setOption(0, "Jump")
-            pack()
-        }
         // Dagannoth Kings instance entrance crack.
         ObjectDefinitions.get(30169).apply {
             setOption(0, "Private")

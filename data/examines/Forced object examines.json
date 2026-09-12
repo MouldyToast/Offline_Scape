@@ -729,36 +729,6 @@
     "examine": "A hole in the ground."
   },
   {
-    "name": "Crevice",
-    "id": 35013,
-    "examine": "A small crack. It should be large enough for me to go through it."
-  },
-  {
-    "name": "Bandos portal",
-    "id": 35014,
-    "examine": "A portal devoted to the god Bandos."
-  },
-  {
-    "name": "Zamorak portal",
-    "id": 35015,
-    "examine": "A portal devoted to the god Zamorak."
-  },
-  {
-    "name": "Armadyl portal",
-    "id": 35016,
-    "examine": "A portal devoted to the god Armadyl."
-  },
-  {
-    "name": "Saradomin portal",
-    "id": 35017,
-    "examine": "A portal devoted to the god Saradomin."
-  },
-  {
-    "name": "Saradomin stepping stone",
-    "id": 35018,
-    "examine": "These should be able to carry me over the river."
-  },
-  {
     "name": "Danger warning",
     "id": 35019,
     "examine": "Danger!"

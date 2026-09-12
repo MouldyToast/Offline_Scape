@@ -40,6 +40,11 @@ public final class QuestManager {
         // 0-36 show 48741 (no ops). Any value > 36 hits the default: 48740
         // (Climb-over). 37 is the lowest value that resolves correctly.
         vars.sendBitInstant(15125, 37);
+        // GWD boss doors (26502–26505) are multilocs on varbit 11708.
+        // Value 0 → 40419 (Open + Peek only).
+        // Value 1 → 40420 (Open (normal) + Open (private) + Peek).
+        // In vanilla this unlocks after hard Combat Achievements tier.
+        vars.sendBitInstant(11708, 1);
 		// Araxxor scoreboard (54270) uses varp 4260 (kill count); any non-zero
 		// value resolves the multiloc to the Read scoreboard.
 		vars.sendVarInstant(4260, 1);

@@ -1,12 +1,20 @@
 package org.jesse.game.content.godwars.objects;
 
+import org.jesse.game.content.clans.ClanChannel;
+import org.jesse.game.content.clans.ClanManager;
+import org.jesse.game.content.clans.ClanRank;
+import org.jesse.game.content.godwars.GodwarsInstanceManager;
+import org.jesse.game.content.godwars.GodwarsInstancePortal;
 import org.jesse.game.content.godwars.instance.GodwarsInstance;
+import org.jesse.game.content.godwars.instance.InstanceConstants;
+import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.task.TickTask;
 import org.jesse.game.task.WorldTasksManager;
 import org.jesse.game.world.World;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.container.RequestResult;
+import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.entity.player.privilege.MemberRank;
 import org.jesse.game.world.object.ObjectAction;
 import org.jesse.game.world.object.WorldObject;
@@ -14,20 +22,26 @@ import org.jesse.game.world.region.GlobalAreaManager;
 import org.jesse.game.world.region.RSPolygon;
 import org.jesse.game.world.region.RegionArea;
 import org.jesse.game.world.region.area.godwars.*;
+import org.jesse.game.world.region.dynamicregion.AllocatedArea;
+import org.jesse.game.world.region.dynamicregion.MapBuilder;
+import org.jesse.game.world.region.dynamicregion.OutOfSpaceException;
 import org.jesse.utils.TextUtils;
 import mgi.utilities.CollectionUtils;
+import mgi.utilities.StringFormatUtil;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
-/**
- * @author Tommeh | 24-3-2019 | 14:05
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
- */
 public class GodwarsBossDoorObject implements ObjectAction {
+    private static final Logger log = LoggerFactory.getLogger(GodwarsBossDoorObject.class);
+    private static final Class<?>[] INSTANCE_CTOR_PARAMS = new Class[] {String.class, AllocatedArea.class};
 
     public enum BossDoor {
         //@formatter:off
@@ -141,14 +155,32 @@ public class GodwarsBossDoorObject implements ObjectAction {
             return;
         }
 
-        boolean canPass = true;
-        if (!insideChamber) {
-            canPass = this.pay(player, door);
+        if (insideChamber) {
+            this.pass(player, object, door);
+            return;
         }
 
-        if (canPass) {
-            this.pass(player, object, door);
+        if (!this.pay(player, door)) {
+            return;
         }
+
+        // Killcount/key paid. In a private instance, go straight through.
+        if (player.getArea() instanceof GodwarsInstance) {
+            this.pass(player, object, door);
+            return;
+        }
+
+        if (option.equals("Open (private)")) {
+            final GodwarsInstancePortal portal = CollectionUtils.findMatching(
+                    GodwarsInstancePortal.getValues(), p -> p.name().equals(door.name()));
+            if (portal != null && portal.getInstanceClass() != null) {
+                enterPrivateInstance(player, door, portal);
+            }
+            return;
+        }
+
+        // "Open" or "Open (normal)" — public entry.
+        this.pass(player, object, door);
     }
 
     private boolean pay(Player player, GodwarsBossDoorObject.BossDoor door) {
@@ -202,6 +234,57 @@ public class GodwarsBossDoorObject implements ObjectAction {
                 }
             }
         }, 0, 1);
+    }
+
+    private void enterPrivateInstance(Player player, BossDoor door, GodwarsInstancePortal portal) {
+        final ClanChannel channel = player.getSettings().getChannel();
+        if (channel == null) {
+            player.sendMessage("You need to be in a clan chat channel to start or join an instance.");
+            return;
+        }
+        final Optional<GodwarsInstance> existing = GodwarsInstanceManager.getManager().findInstance(player, portal.getGod());
+        if (existing.isPresent()) {
+            player.lock(1);
+            player.teleport(existing.get().getLocation(portal.getPortalLocation()));
+            return;
+        }
+        final ClanRank rank = ClanManager.getRank(player, channel);
+        if (rank.getId() < channel.getKickRank().getId()) {
+            player.sendMessage("Clan members ranked as " + StringFormatUtil.formatString(channel.getKickRank().toString()) + " or above can only start a clan instance.");
+            return;
+        }
+        final int cost = InstanceConstants.getInstanceCost(player, portal.getCost());
+        player.getDialogueManager().start(new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                plain("Pay " + StringFormatUtil.format(cost) + " to start a private instance?");
+                options(new DialogueOption("Yes.", () -> {
+                    long available = (long) player.getInventory().getAmountOf(ItemId.COINS_995) + player.getBank().getAmountOf(ItemId.COINS_995);
+                    if (available < cost) {
+                        player.sendMessage("You don't have enough coins with you or in your bank.");
+                        return;
+                    }
+                    if (GodwarsInstanceManager.getManager().findInstance(player, portal.getGod()).isPresent()) {
+                        player.sendMessage("Someone in your clan has already initiated an instance.");
+                        return;
+                    }
+                    player.lock(1);
+                    player.getInventory().deleteItem(new Item(995, cost)).onFailure(remainder -> player.getBank().remove(remainder));
+                    try {
+                        final int chunks = portal == GodwarsInstancePortal.ANCIENT ? 16 : 8;
+                        final AllocatedArea allocatedArea = MapBuilder.findEmptyChunk(chunks, 8);
+                        final GodwarsInstance area = portal.getInstanceClass()
+                                .getDeclaredConstructor(INSTANCE_CTOR_PARAMS)
+                                .newInstance(channel.getOwner(), allocatedArea);
+                        area.constructRegion();
+                        player.teleport(area.getLocation(portal.getPortalLocation()));
+                    } catch (OutOfSpaceException | InstantiationException | InvocationTargetException |
+                             NoSuchMethodException | IllegalAccessException e) {
+                        log.error("Failed to create GWD instance for {}", door.getFormattedName(), e);
+                    }
+                }), new DialogueOption("No."));
+            }
+        });
     }
 
     @Override

@@ -161,11 +161,6 @@ object KeepSetDefinitionOverrides {
             setOption(1, "Reload")
             pack()
         }
-        // Vardorvis instance rock (clone of the public one).
-        TypeParser.KRYO.copy(ObjectDefinitions.get(48740)).apply {
-            id = 48741
-            pack()
-        }
         // PvM Arena team portals.
         ObjectDefinitions.get(43765).apply {
             name = "<col=0000ff>Team portal blue</col>"

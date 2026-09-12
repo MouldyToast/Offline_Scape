@@ -36,6 +36,10 @@ public final class QuestManager {
 		// DT2 scoreboards (Duke 46091, Leviathan 49475, Vardorvis 49476,
 		// Whisperer 49474) share varbit 15175; value 2 = Read + Read (Awakened).
 		vars.sendBitInstant(15175, 2);
+        // Vardorvis entrance rocks — multiloc 49495 uses varbit 15125. States
+        // 0-36 show 48741 (no ops). Any value > 36 hits the default: 48740
+        // (Climb-over). 37 is the lowest value that resolves correctly.
+        vars.sendBitInstant(15125, 37);
 		// Araxxor scoreboard (54270) uses varp 4260 (kill count); any non-zero
 		// value resolves the multiloc to the Read scoreboard.
 		vars.sendVarInstant(4260, 1);

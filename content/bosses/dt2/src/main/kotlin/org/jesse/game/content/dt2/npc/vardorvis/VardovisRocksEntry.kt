@@ -8,12 +8,7 @@ import org.jesse.game.world.entity.player.dialogue.dialogue
 import org.jesse.game.world.`object`.ObjectAction
 import org.jesse.game.world.`object`.WorldObject
 
-/**
- * @author Glabay | Glabay-Studios
- * @project near-reality-server
- * @social Discord: Glabay
- * @since 2025-02-16
- */
+
 class VardovisRocksEntry : ObjectAction {
 
     private val awakenedOrb = Item(AWAKENERS_ORB)
@@ -45,5 +40,5 @@ class VardovisRocksEntry : ObjectAction {
     }
 
     override fun getObjects(): Array<Any> =
-        arrayOf(49495, 48741)
+        arrayOf(49495)
 }

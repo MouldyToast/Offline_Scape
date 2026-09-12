@@ -32,6 +32,15 @@ public final class QuestManager {
 		// frozen door quest
 		vars.sendBitInstant(13175, 10);
 		vars.sendBitInstant(12296, 150);
+		// Boss scoreboards — resolve multiloc objects to interactable variants.
+		// DT2 scoreboards (Duke 46091, Leviathan 49475, Vardorvis 49476,
+		// Whisperer 49474) share varbit 15175; value 2 = Read + Read (Awakened).
+		vars.sendBitInstant(15175, 2);
+		// Araxxor scoreboard (54270) uses varp 4260 (kill count); any non-zero
+		// value resolves the multiloc to the Read scoreboard.
+		vars.sendVarInstant(4260, 1);
+		// Muspah scoreboard (46901) needs varbit 14722 = 90, which is already
+		// set by SECRETS_OF_THE_NORTH quest completion in the loop below.
 
 		int completed = 0;
 		for (final Quest quest : Quest.values) {

@@ -52,5 +52,5 @@ class AraxxorStatistics : Scoreboard() {
         ScoreboardModule.araxxorStatistics
 
     override fun getObjects(): Array<Any> =
-        arrayOf(54149)
+        arrayOf(54270)
 }

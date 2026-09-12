@@ -10,12 +10,6 @@ import org.jesse.game.world.`object`.ObjectAction
 import org.jesse.game.obj.ids.*
 import org.jesse.game.world.`object`.WorldObject
 
-/**
- * @author Glabay | Glabay-Studios
- * @project near-reality-server
- * @social Discord: Glabay
- * @since 2025-02-17
- */
 class LeviathanScoreboard: DT2Scoreboard(
         scoreboard = LEVIATHAN_SCOREBOARD,
         bossName = "leviathan"
@@ -24,5 +18,5 @@ class LeviathanScoreboard: DT2Scoreboard(
         DT2Module.getLeviathanStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(47589)
+        arrayOf(49475)
 }

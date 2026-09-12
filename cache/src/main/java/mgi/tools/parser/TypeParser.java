@@ -74,10 +74,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author Tommeh | 16/01/2020 | 01:06
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
- */
+
 @SuppressWarnings({"unchecked", "DataFlowIssue"})
 public class TypeParser {
     public static final Logger log = LoggerFactory.getLogger(TypeParser.class);
@@ -647,7 +644,6 @@ public class TypeParser {
                         new WorldObject(26254, 10, 3, new Location(2920, 4848, 0))));
         packMapPre209(13109, null,
                 Regions.inject(13109, null, new WorldObject(187, 10, 1, new Location(3322, 3428, 0))));
-        KeepSetDefinitionOverrides.applyMapEdits();
     }
 
     public static void removeCATasks() {

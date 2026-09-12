@@ -24,5 +24,5 @@ class WhispererScoreboard: DT2Scoreboard(
         DT2Module.getWhispererStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(47581)
+        arrayOf(49474, 46092)
 }

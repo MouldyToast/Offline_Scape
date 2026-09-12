@@ -1,18 +1,12 @@
 package org.jesse.cache_tool.packing.custom
 
-import org.jesse.game.obj.ids.DUKE_SCOREBOARD
-import org.jesse.game.obj.ids.PHANTOM_MUSPAH_SCOREBOARD
 import org.jesse.game.obj.ids.ZAMORAK_PORTAL
-import org.jesse.game.world.entity.Location
 import org.jesse.game.world.entity.player.container.impl.ContainerType
-import org.jesse.game.world.`object`.WorldObject
-import org.jesse.game.world.region.Regions
 import mgi.tools.parser.TypeParser
 import mgi.types.config.InventoryDefinitions
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.enums.EnumDefinitions
 import mgi.types.config.npcs.NPCDefinitions
-import java.util.function.Predicate
 
 /**
  * The minimal set of cache definition overrides that survive the removal of
@@ -241,56 +235,4 @@ object KeepSetDefinitionOverrides {
         }
     }
 
-    /**
-     * Map edits for post-228 boss content. Runs where the effigy map edits
-     * used to run, after the maps are copied into the output cache.
-     */
-    @JvmStatic
-    fun applyMapEdits() {
-        // Duke Sucellus instance scoreboard (DukeScoreboard.kt).
-        edit(12132) {
-            DUKE_SCOREBOARD(3041, 6430, 0, 4)
-        }
-        // Phantom Muspah scoreboard (PhantomMuspahStatistics.kt).
-        edit(11681) {
-            PHANTOM_MUSPAH_SCOREBOARD(2914, 10317, 0, 4)
-        }
-        // Scoreboard / Ancient Tablet placements for post-228 bosses.
-        edit(8292) {
-            replace(49475, 47589)
-        }
-        edit(4405) {
-            replace(49476, 47598)
-        }
-        edit(14745) {
-            replace(54270, 54149)
-        }
-    }
-
-    class MapEdit(val regionId: Int) {
-        private val objects = mutableListOf<WorldObject>()
-        val replacements = mutableMapOf<Int, Int>()
-        operator fun Int.invoke(x: Int, y: Int, z: Int, type: Int = 10, rotation: Int = 0) {
-            objects += WorldObject(this, type, rotation, Location(x, y, z))
-        }
-
-        fun replace(oldId: Int, newId: Int) {
-            replacements[oldId] = newId
-        }
-
-        private fun buildPredicate() : Predicate<WorldObject> =
-            Predicate<WorldObject> {
-                if(replacements.containsKey(it.id))
-                    it.id = replacements[it.id]!!
-                false
-            }
-
-        fun pack() {
-            TypeParser.packMapPre209(regionId, null, Regions.inject(regionId, buildPredicate(), *objects.toTypedArray()))
-        }
-    }
-
-    private fun edit(regionId: Int, block: MapEdit.() -> Unit) {
-        MapEdit(regionId).apply(block).pack()
-    }
 }

@@ -24,5 +24,5 @@ class VardorvisScoreboard: DT2Scoreboard(
         DT2Module.getVardorvisStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(47598)
+        arrayOf(49476)
 }

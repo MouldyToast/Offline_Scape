@@ -54,5 +54,5 @@ class PhantomMuspahStatistics : Scoreboard() {
         ScoreboardModule.phantomMuspahStatistics
 
     override fun getObjects(): Array<Any> =
-        arrayOf(PHANTOM_MUSPAH_SCOREBOARD)
+        arrayOf(46901)
 }

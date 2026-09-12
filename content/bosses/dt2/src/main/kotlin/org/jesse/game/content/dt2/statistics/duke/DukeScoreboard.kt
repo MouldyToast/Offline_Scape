@@ -9,12 +9,6 @@ import org.jesse.game.world.`object`.ObjectAction
 import org.jesse.game.obj.ids.*
 import org.jesse.game.world.`object`.WorldObject
 
-/**
- * @author Glabay | Glabay-Studios
- * @project near-reality-server
- * @social Discord: Glabay
- * @since 2025-02-17
- */
 class DukeScoreboard : DT2Scoreboard(
         scoreboard = DUKE_SCOREBOARD,
         bossName = "duke sucellus"
@@ -24,5 +18,5 @@ class DukeScoreboard : DT2Scoreboard(
         DT2Module.getDukeStatistics(awakened)
 
     override fun getObjects(): Array<Any> =
-        arrayOf(org.jesse.game.obj.ids.DUKE_SCOREBOARD)
+        arrayOf(46091)
 }

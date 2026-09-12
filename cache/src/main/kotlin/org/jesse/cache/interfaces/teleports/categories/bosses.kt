@@ -19,7 +19,7 @@ internal fun TeleportsBuilder.bosses() = "Bosses Teleports"(10005) {
     "God Wars Dungeon"(4282, 2882, 5311, 2, "https://oldschool.runescape.wiki/w/God_Wars_Dungeon")
     "GWD: Armadyl"(4285, 2830, 5288, 2,"https://oldschool.runescape.wiki/w/Kree%27arra")
     "GWD: Bandos"(4282, 2858, 5363, 2, "https://oldschool.runescape.wiki/w/General_Graardor")
-    "GWD: Saradomin"(4284,2926, 5261, 0, "https://oldschool.runescape.wiki/w/Commander_Zilyana")
+    "GWD: Saradomin"(4284,2910, 5265, 0, "https://oldschool.runescape.wiki/w/Commander_Zilyana")
     "GWD: Zamorak"(4283, 2934, 5352, 2, "https://oldschool.runescape.wiki/w/K%27ril_Tsutsaroth")
     "Kalphite Queen"(4270, 3508, 9493, 0, "https://oldschool.runescape.wiki/w/Kalphite_Queen")
     // "King Black Dragon"(4274, 3022, 3836, 0, "https://oldschool.runescape.wiki/w/King_Black_Dragon") // needs a warning about tping into wilderness

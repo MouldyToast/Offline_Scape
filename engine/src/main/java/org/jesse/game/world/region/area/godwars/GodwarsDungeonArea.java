@@ -7,16 +7,13 @@ import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.region.*;
+import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.region.area.plugins.CannonRestrictionPlugin;
+import org.jesse.game.world.region.area.plugins.DeathPlugin;
 import org.jesse.game.world.region.area.plugins.RandomEventRestrictionPlugin;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Kris | 29. mai 2018 : 16:15:25
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>}
- * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>}
- */
-public class GodwarsDungeonArea extends PolygonRegionArea implements CannonRestrictionPlugin, RandomEventRestrictionPlugin {
+public class GodwarsDungeonArea extends PolygonRegionArea implements CannonRestrictionPlugin, RandomEventRestrictionPlugin, DeathPlugin {
 	private static final int KILLCOUNT_VISIBLE = 3625;
 	public static final RSPolygon polygon = new RSPolygon(new int[][] {
 			{2816, 5184}, {2815, 5375}, {2943, 5376}, {2943, 5184}
@@ -103,4 +100,19 @@ public class GodwarsDungeonArea extends PolygonRegionArea implements CannonRestr
   public RSPolygon chamberArea() {
     return this.polygons()[0];
   }
+
+    @Override
+    public boolean isSafe() {
+        return false;
+    }
+
+    @Override
+    public String getDeathInformation() {
+        return null;
+    }
+
+    @Override
+    public Location getRespawnLocation() {
+        return null;
+    }
 }

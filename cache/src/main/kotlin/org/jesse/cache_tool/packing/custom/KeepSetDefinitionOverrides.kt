@@ -105,13 +105,6 @@ object KeepSetDefinitionOverrides {
             setOption(1, "Take")
             pack()
         }
-        // Magical wheat (Puro Puro spawns it as loc type 22 -
-        // PuroPuroArea.java). The old TOML's cliptype/types keys never mapped
-        // to a definition field; its real effect was the repack itself: this
-        // encoder always re-emits the model list without loc types (opcode 5)
-        // after the typed list, clearing the loc-type restriction so the
-        // object renders at type 22. A plain repack reproduces that exactly.
-        ObjectDefinitions.get(25016).pack()
         // GWD instance crevice exit (GodwarsInstancePortal).
         TypeParser.KRYO.copy(ObjectDefinitions.get(26769)).apply {
             id = 35013
@@ -180,13 +173,6 @@ object KeepSetDefinitionOverrides {
         // Vardorvis instance rock (clone of the public one).
         TypeParser.KRYO.copy(ObjectDefinitions.get(48740)).apply {
             id = 48741
-            pack()
-        }
-        // Raids repair hammer, injected into the maps by MapChanges.java.
-        TypeParser.KRYO.copy(ObjectDefinitions.get(31634)).apply {
-            id = 35020
-            name = "<col=ff9040>Hammer</col>"
-            models = intArrayOf(2376)
             pack()
         }
         // PvM Arena team portals.

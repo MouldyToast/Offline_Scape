@@ -10,12 +10,6 @@ import org.jesse.game.world.entity.player.Player
 import org.slf4j.Logger
 import java.io.BufferedReader
 
-/**
- * @author Glabay | Glabay-Studios
- * @project near-reality-server
- * @social Discord: Glabay
- * @since 2025-02-17
- */
 class AraxxorStatistics : Scoreboard() {
 
     companion object : ScheduledExternalizable {

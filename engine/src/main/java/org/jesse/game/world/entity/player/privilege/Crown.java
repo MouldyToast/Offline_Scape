@@ -25,9 +25,9 @@ public enum Crown {
     CATALYTIC(-1, CrownType.MEMBER),
 
     YOUTUBER(7, CrownType.RANK),
-    FORUM_MODERATOR(1, CrownType.RANK),
-    SUPPORT(1, CrownType.RANK),
-    MODERATOR(1, CrownType.RANK),
+    FORUM_MODERATOR(0, CrownType.RANK),
+    SUPPORT(0, CrownType.RANK),
+    MODERATOR(0, CrownType.RANK),
     SENIOR_MODERATOR(1, CrownType.RANK),
     ADMINISTRATOR(1, CrownType.RANK),
     DEVELOPER(1, CrownType.RANK),

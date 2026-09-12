@@ -48,6 +48,5 @@ class Nex : NPCSpawnsScript() {
         BLOOD_REAVER(2878, 5201, 0, SOUTH, 4)
 
         ASHUELOT_REIS_11289(2904, 5203, 0, SOUTH, 4)
-        KNIGHT_16023(2905, 5200, 0, NORTH, 0)
     }
 }

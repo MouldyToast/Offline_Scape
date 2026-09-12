@@ -135,6 +135,5 @@ class Region11347 : NPCSpawnsScript() {
         GOBLIN_2245(2879, 5327, 2, SOUTH, 6)
         GOBLIN_2249(2879, 5328, 2, SOUTH, 2)
         GOBLIN_2246(2879, 5330, 2, SOUTH, 5)
-        KNIGHT_16023(2856, 5361, 2, SOUTH, 0)
     }
 }

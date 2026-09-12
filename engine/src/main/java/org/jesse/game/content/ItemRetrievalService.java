@@ -11,10 +11,6 @@ import mgi.types.config.enums.Enums;
 
 import java.util.Optional;
 
-/**
- * @author Kris | 01/11/2018 14:21
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class ItemRetrievalService {
 
     public enum RetrievalServiceType {
@@ -30,7 +26,6 @@ public class ItemRetrievalService {
         MIMIC(17, 18),
         NIGHTMARE(25, 26),
         PHOSANI_NIGHTMARE(27, 28),
-        GODWARS(100, 101),
         HAGAVIK(102, 103),
         ROTS(104, 105),
         GRAVESTONE(34, 35),

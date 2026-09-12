@@ -43,15 +43,6 @@ object KeepSetDefinitionOverrides {
      * produced them.
      */
     private fun packNpcOverrides() {
-        // Dying knight, non-collectable variant (InstancePortal.java).
-        TypeParser.KRYO.copy(NPCDefinitions.get(5929)).apply {
-            id = 16023
-            direction = 32
-            setOption(0, "Talk-to")
-            setOption(1, "Collect")
-            setOption(2, "")
-            pack()
-        }
         // Hagavik (Collect option).
         TypeParser.KRYO.copy(NPCDefinitions.get(8402)).apply {
             id = 16024
@@ -138,11 +129,9 @@ object KeepSetDefinitionOverrides {
     @JvmStatic
     fun packEnums() {
         // Item retrieval service entries for the kept death-storage NPCs
-        // (dying knight 16023, Hagavik 16024, Rots) - additive keys on the
+        // (Hagavik 16024, Rots) - additive keys on the
         // vanilla retrieval-service enums.
         EnumDefinitions.get(1753).apply {
-            values[100] = "Dying Knight's salvage"
-            values[101] = "Dying Knight's salvage"
             values[102] = "Hagavik's Item Retrieval Service"
             values[103] = "Hagavik's Item Retrieval Service"
             values[104] = "Rots Item Retrieval Service"
@@ -150,13 +139,11 @@ object KeepSetDefinitionOverrides {
             pack()
         }
         EnumDefinitions.get(1756).apply {
-            values[100] = 995
             values[102] = 995
             values[104] = 995
             pack()
         }
         EnumDefinitions.get(1757).apply {
-            values[100] = 200000
             values[102] = 100000
             values[104] = 100000
             pack()

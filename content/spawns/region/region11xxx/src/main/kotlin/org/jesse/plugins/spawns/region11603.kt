@@ -86,6 +86,5 @@ class Region11603 : NPCSpawnsScript() {
         //SPIRITUAL_MAGE_3161(2936, 5348, 2, SOUTH, 8)
         //WEREWOLF_3136(2936, 5350, 2, SOUTH, 7)
         //SPIRITUAL_RANGER_3160(2937, 5351, 2, SOUTH, 7)
-        KNIGHT_16023(2932, 5354, 2, EAST, 0)
     }
 }

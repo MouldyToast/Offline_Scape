@@ -22,8 +22,6 @@ import org.slf4j.LoggerFactory
 /**
  * Represents a [GodwarsInstance] for the Nex boss.
  *
- * @author Stan van der bend
- *
  * @see org.jesse.game.content.godwars.GodwarsInstancePortal instantiation of the area.
  */
 @Suppress("unused")
@@ -119,8 +117,7 @@ class NexGodwarsInstance(clan: String, allocatedArea: AllocatedArea)
         if (isNexSpawned()) {
             nex!!.playerDied()
         }
-
-        return super.sendDeath(player, source)
+        return false // fall through to default gravestone death
     }
 
     fun isNexSpawned(): Boolean {

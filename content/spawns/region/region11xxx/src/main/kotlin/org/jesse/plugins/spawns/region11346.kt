@@ -70,6 +70,5 @@ class Region11346 : NPCSpawnsScript() {
         AVIANSIE_3177(2878, 5282, 2, SOUTH, 10)
         FERAL_VAMPYRE(2878, 5286, 2, SOUTH, 8)
         AVIANSIE(2878, 5291, 2, SOUTH, 8)
-        KNIGHT_16023(2829, 5292, 2, SOUTH, 0)
     }
 }

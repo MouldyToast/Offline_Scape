@@ -1,11 +1,9 @@
 package org.jesse.game.content.godwars.instance;
 
 import com.google.common.eventbus.Subscribe;
-import org.jesse.game.content.ItemRetrievalService;
 import org.jesse.game.content.godwars.GodType;
 import org.jesse.game.content.godwars.GodwarsInstanceManager;
 import org.jesse.game.content.godwars.npcs.GodwarsBossMinion;
-import org.jesse.game.content.skills.prayer.Prayer;
 import org.jesse.game.task.TickTask;
 import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
@@ -16,7 +14,6 @@ import org.jesse.game.world.Position;
 import org.jesse.game.world.World;
 import org.jesse.game.world.entity.Entity;
 import org.jesse.game.world.entity.Location;
-import org.jesse.game.world.entity.masks.Animation;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
@@ -38,12 +35,6 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
-import static org.jesse.game.world.entity.player.Player.DEATH_ANIMATION;
-
-/**
- * @author Kris | 14/04/2020
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public abstract class GodwarsInstance extends DynamicArea implements FullMovementPlugin, TeleportMovementPlugin, DeathPlugin, DropPlugin, LogoutRestrictionPlugin, CannonRestrictionPlugin, LootBroadcastPlugin {
 
     public static final String CA_TASK_INSTANCE_KC_ATT = "gwd_boss_chamber_kc";
@@ -219,45 +210,8 @@ public abstract class GodwarsInstance extends DynamicArea implements FullMovemen
     }
 
     @Override
-    public boolean sendDeath(Player player, Entity source) {
-        player.setAnimation(Animation.STOP);
-        player.lock();
-        player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
-        }
-        WorldTasksManager.schedule(new WorldTask() {
-            int ticks;
-            @Override
-            public void run() {
-                if (player.isFinished() || player.isNulled()) {
-                    stop();
-                    return;
-                }
-                if (ticks == 0) {
-                    player.setAnimation(DEATH_ANIMATION);
-                } else if (ticks == 2) {
-                    player.getDeathMechanics().service(ItemRetrievalService.RetrievalServiceType.GODWARS, source, true);
-                    player.sendMessage("Oh dear, you have died.");
-                    player.reset();
-                    player.setAnimation(Animation.STOP);
-                    player.sendMessage("The dying knight has retrieved some of your items. You can collect them from him in any of the godwars lobby areas.");
-                    ItemRetrievalService.updateVarps(player);
-                    if (player.getVariables().isSkulled()) {
-                        player.getVariables().setSkull(false);
-                    }
-                    player.blockIncomingHits();
-                    player.setLocation(player.getRespawnPoint().getLocation());
-                } else if (ticks == 3) {
-                    player.unlock();
-                    player.getAppearance().resetRenderAnimation();
-                    player.setAnimation(Animation.STOP);
-                    stop();
-                }
-                ticks++;
-            }
-        }, 0, 1);
-        return true;
+    public Location gravestoneLocation() {
+        return onLoginLocation();
     }
 
     @Override

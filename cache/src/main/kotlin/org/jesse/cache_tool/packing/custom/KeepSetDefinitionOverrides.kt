@@ -1,8 +1,6 @@
 package org.jesse.cache_tool.packing.custom
 
-import org.jesse.game.world.entity.player.container.impl.ContainerType
 import mgi.tools.parser.TypeParser
-import mgi.types.config.InventoryDefinitions
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.enums.EnumDefinitions
 import mgi.types.config.npcs.NPCDefinitions
@@ -15,18 +13,11 @@ import mgi.types.config.npcs.NPCDefinitions
 object KeepSetDefinitionOverrides {
 
     /**
-     * Item, NPC and inventory definition overrides. Runs where the custom
-     * item packer used to run, before the main definition pack pass.
+     * NPC definition overrides. Runs where the custom item packer used to
+     * run, before the main definition pack pass.
      */
     @JvmStatic
     fun pack() {
-        // The collection log container (inv 620) is 500 slots in vanilla;
-        // with all post-228 content loaded, players exceed that. Shrinking
-        // it would silently truncate existing collection log saves.
-        InventoryDefinitions.get(ContainerType.COLLECTION_LOG.id)?.apply {
-            size = 2500
-            pack()
-        }
         packNpcOverrides()
     }
 

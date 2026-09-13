@@ -37,7 +37,7 @@ import static org.jesse.game.world.entity.player.collectionlog.CollectionLogCons
 @StaticInitializer
 public class CollectionLog {
     private static final Logger logger = LoggerFactory.getLogger(CollectionLog.class);
-    public static final IntOpenHashSet COLLECTION_LOG_ITEMS = new IntOpenHashSet(Container.getSize(ContainerType.COLLECTION_LOG));
+    public static final IntOpenHashSet COLLECTION_LOG_ITEMS = new IntOpenHashSet(2048);
     private static final IntOpenHashSet UNTRADABLE_COLLECTION_LOG_ITEMS = new IntOpenHashSet(350);
 
     static {

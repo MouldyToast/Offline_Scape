@@ -2,6 +2,7 @@ package org.jesse.game.world.entity.player.container;
 
 import org.jesse.game.item.Item;
 import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.player.collectionlog.CollectionLog;
 import org.jesse.game.world.entity.player.container.impl.ContainerType;
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege;
 import org.jesse.game.world.region.RegionArea;
@@ -40,6 +41,17 @@ public class Container extends _Container<Item> {
     }
 
     public static int getSize(ContainerType containerType) {
+        /*
+         * The collection log container holds one slot per distinct obtainable
+         * item, which exceeds the vanilla inv 620 def (500 slots vs 1,572
+         * items on rev-228). Size it from the cache's own collection log
+         * enums instead of the inv def — revision-agnostic, and the client
+         * doesn't care: UpdateInvFull carries its own capacity. The null
+         * guard only matters during CollectionLog's class initialization.
+         */
+        if (containerType == ContainerType.COLLECTION_LOG && CollectionLog.COLLECTION_LOG_ITEMS != null) {
+            return CollectionLog.COLLECTION_LOG_ITEMS.size();
+        }
         final InventoryDefinitions defs = InventoryDefinitions.get(containerType.getId());
         return defs == null ? 0 : defs.getSize();
     }

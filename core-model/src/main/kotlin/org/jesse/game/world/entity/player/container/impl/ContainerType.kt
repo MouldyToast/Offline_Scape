@@ -31,7 +31,7 @@ enum class ContainerType(val id: Int, val interfaceId: Int = -1, val componentId
     SPOILS_STAKE(541),
     TRADE(90),
     BANK(95),
-    RUNE_POUCH(169),
+    RUNE_POUCH(589),
     GE_COLLECTABLES_1(518),
     GE_COLLECTABLES_2(519),
     GE_COLLECTABLES_3(520),

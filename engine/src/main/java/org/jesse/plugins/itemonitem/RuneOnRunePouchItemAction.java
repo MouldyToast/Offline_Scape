@@ -2,7 +2,6 @@ package org.jesse.plugins.itemonitem;
 
 import org.jesse.game.content.skills.magic.Rune;
 import org.jesse.game.item.Item;
-import org.jesse.game.item.ids.ItemId;
 import org.jesse.game.model.item.PairedItemOnItemPlugin;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.container.impl.RunePouch;
@@ -10,10 +9,6 @@ import org.jesse.game.world.entity.player.container.impl.RunePouch;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Kris | 11. nov 2017 : 0:19.35
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>}
- */
 @SuppressWarnings("unused")
 public final class RuneOnRunePouchItemAction implements PairedItemOnItemPlugin {
 	@Override
@@ -50,12 +45,6 @@ public final class RuneOnRunePouchItemAction implements PairedItemOnItemPlugin {
 			return;
 		}
 		final int capacity = runePouch.runePouchCapacity();
-		if(capacity == 5 && runePouch.getContainer().getSize() == 4 && runePouch.getAmountOf(runeId) == 0) {
-			perkHandler(player, from, to, fromSlot, toSlot);
-			player.getInventory().refreshAll();
-			runePouch.getContainer().refresh(player);
-			return;
-		}
 		if (runePouch.getContainer().getSize() == capacity) {
 			if (runePouch.getAmountOf(runeId) == 0) {
 				player.sendMessage("You can only carry " + (capacity == 3 ? "three" : "four") + " different types of runes in your rune pouch at a time.");
@@ -65,40 +54,6 @@ public final class RuneOnRunePouchItemAction implements PairedItemOnItemPlugin {
 		runePouch.getContainer().deposit(player, player.getInventory().getContainer(), runeSlot, rune.getAmount());
 		player.getInventory().refreshAll();
 		runePouch.getContainer().refresh(player);
-	}
-
-	public void perkHandler(Player player, Item from, Item to, int fromSlot, int toSlot) {
-		if (to.getId() != ItemId.DIVINE_RUNE_POUCH) {
-			player.sendMessage("This can only be done on a Divine Rune Pouch.");
-			return;
-		}
-		Rune fromRune = Rune.getRune(from);
-		if (fromRune == null) {
-			player.sendMessage("You can only use charged runes on this item.");
-			return;
-		}
-		if (player.getRunePouch().getContainer().getSize() == 4 && (player.getRunePouch().bonusRuneTypeStored == null || player.getRunePouch().bonusRuneTypeStored == fromRune)) {
-			if (player.getRunePouch().bonusRuneQuantityStored >= 16000) {
-				player.sendMessage("You cannot add any more of this rune to your bonus slot.");
-				return;
-			}
-			int amount = from.getAmount();
-			int resultant;
-			if (amount > 16000) {
-				resultant = amount - 16000;
-			} else {
-				resultant = amount;
-			}
-
-			player.getRunePouch().bonusRuneTypeStored = fromRune;
-			player.getRunePouch().bonusRuneQuantityStored = resultant;
-			player.getInventory().deleteItem(from.getId(), resultant);
-			return;
-		} else if (player.getRunePouch().getContainer().getSize() == 4) {
-			player.sendMessage("You already have a bonus rune of another type stored inside.");
-			return;
-		}
-		player.sendDeveloperMessage("Uncaught condition in RunePouchItem");
 	}
 
 		@Override

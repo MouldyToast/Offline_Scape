@@ -27,13 +27,6 @@ object KeepSetDefinitionOverrides {
             size = 2500
             pack()
         }
-        // Vanilla rev-228 inv 169 is 3 slots; the divine rune pouch code
-        // (RuneOnRunePouchItemAction, RunePouchInterface) requires 4, and
-        // shrinking would drop runes from saved pouches.
-        InventoryDefinitions.get(ContainerType.RUNE_POUCH.id)?.apply {
-            size = 4
-            pack()
-        }
         packNpcOverrides()
     }
 

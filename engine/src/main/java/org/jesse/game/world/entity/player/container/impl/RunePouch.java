@@ -1,6 +1,5 @@
 package org.jesse.game.world.entity.player.container.impl;
 
-import com.google.gson.annotations.Expose;
 import org.jesse.game.content.skills.magic.Rune;
 import org.jesse.game.item.Item;
 import org.jesse.game.item.ids.ItemId;
@@ -26,10 +25,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 	private final TempPlayerStatePlugin.StateType tempType;
 	private final boolean tempVariant;
 
-	@Expose
-	public int bonusRuneQuantityStored = 0;
-	@Expose
-	public Rune bonusRuneTypeStored = null;
 
 	public RunePouch(final Player player, TempPlayerStatePlugin.StateType tempType) {
 		this(player, tempType, false);
@@ -56,16 +51,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 		}
 		if (!container.isEmpty()) {
 			player.sendMessage("Not enough space in your inventory.");
-		} else {
-			if(player.getRunePouch().bonusRuneQuantityStored > 0 && player.getRunePouch().bonusRuneTypeStored != null) {
-				if(!player.getInventory().hasFreeSlots()) {
-					player.sendMessage("Please clear one inventory slot to finish emptying your pouch.");
-					return;
-				}
-				player.getInventory().addItem(new Item(player.getRunePouch().bonusRuneTypeStored.getId(), player.getRunePouch().bonusRuneQuantityStored));
-				player.getRunePouch().bonusRuneTypeStored = null;
-				player.getRunePouch().bonusRuneQuantityStored = 0;
-			}
 		}
 
 		player.getInventory().refreshAll();
@@ -86,8 +71,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 			return;
 		}
 		this.container.setContainer(pouch.container);
-		this.bonusRuneQuantityStored = pouch.bonusRuneQuantityStored;
-		this.bonusRuneTypeStored = pouch.bonusRuneTypeStored;
 	}
 
 	private int getIdVarbit(final int slot) {
@@ -103,9 +86,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 			}
 			case 3 -> {
 				return 14285;
-			}
-			case 4-> {
-				return 19494;
 			}
 			default -> {
 				return -1;
@@ -126,9 +106,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 			}
 			case 3 -> {
 				return 14286;
-			}
-			case 4-> {
-				return 19495;
 			}
 			default -> {
 				return -1;
@@ -207,13 +184,6 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 				}
 				player.getVarManager().sendBit(getIdVarbit(i), rune.ordinal() + 1);
 				player.getVarManager().sendBit(getAmountVarbit(i), Math.min(16000, item.getAmount()));
-			}
-			if(bonusRuneQuantityStored > 0 && bonusRuneTypeStored != null) {
-				player.getVarManager().sendBit(getIdVarbit(4), bonusRuneTypeStored.ordinal() + 1);
-				player.getVarManager().sendBit(getAmountVarbit(4), Math.min(16000, bonusRuneQuantityStored));
-			} else {
-				player.getVarManager().sendBit(getIdVarbit(4), 0);
-				player.getVarManager().sendBit(getAmountVarbit(4), 0);
 			}
 		}
 	}

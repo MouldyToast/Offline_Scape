@@ -107,11 +107,8 @@ public final class RunePouchInterface extends Interface implements SwitchPlugin 
         final int capacity = pouch.runePouchCapacity();
         if (pouch.getContainer().getSize() == capacity) {
             if (pouch.getAmountOf(item.getId()) == 0) {
-                if(player.getRunePouch().bonusRuneTypeStored == null) {
-                    player.sendMessage("To add a fifth rune, use the rune on the pouch in your inventory.");
-                    return;
-                }
-                player.sendMessage("You can only carry " + (capacity == 3 ? "three" : "four") + " different types of runes in your rune pouch at a time.");                return;
+                player.sendMessage("You can only carry " + (capacity == 3 ? "three" : "four") + " different types of runes in your rune pouch at a time.");
+                return;
             }
         }
         if (option >= 1 && option <= 3) {

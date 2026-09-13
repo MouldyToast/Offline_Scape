@@ -7,12 +7,9 @@ plugins {
 dependencies {
     api(projects.util)
 
-    implementation(libs.jackson.dataformat.toml)
-
     api(projects.coreModel)
 
     implementation(projects.util)
-    implementation(libs.kryo)
     implementation(libs.google.guava)
     implementation(libs.apache.commons.io)
     implementation(libs.zip4j)

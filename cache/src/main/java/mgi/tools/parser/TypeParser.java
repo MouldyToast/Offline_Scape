@@ -1,19 +1,6 @@
 package mgi.tools.parser;
 
-import com.esotericsoftware.kryo.Kryo;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.toml.TomlFactory;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.jesse.util.gson.Int2ObjectMapDeserializer;
-import org.jesse.util.gson.IntListTypeAdapter;
-import org.jesse.util.gson.Object2IntMapDeserializer;
-import org.jesse.util.gson.ObjectCollectionDeserializer;
 import org.jesse.CacheManager;
-import org.jesse.ContentConstants;
 import org.jesse.game.content.achievementdiary.DiaryArea;
 import org.jesse.game.content.achievementdiary.DiaryComplexity;
 import org.jesse.game.content.achievementdiary.DiaryInfo;
@@ -21,42 +8,28 @@ import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.object.WorldObject;
 import org.jesse.game.world.region.Regions;
 import org.jesse.game.world.region.XTEALoader;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.ObjectCollection;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import kotlin.text.Charsets;
 import mgi.tools.jagcached.ArchiveType;
 import mgi.tools.jagcached.GroupType;
 import mgi.tools.jagcached.cache.Archive;
 import mgi.tools.jagcached.cache.Cache;
 import mgi.tools.jagcached.cache.Group;
 import mgi.types.Definitions;
-import mgi.types.config.ObjectDefinitions;
 import mgi.types.config.StructDefinitions;
 import mgi.types.config.VarbitDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
-import mgi.types.config.npcs.NPCDefinitions;
-import mgi.utilities.Buffer;
 import mgi.utilities.ByteBuffer;
 import net.lingala.zip4j.ZipFile;
 import net.runelite.cache.definitions.loaders.LocationsLoader;
@@ -74,54 +47,23 @@ import org.slf4j.LoggerFactory;
 public class TypeParser {
     public static final Logger log = LoggerFactory.getLogger(TypeParser.class);
     private static final List<Definitions> definitions = new ArrayList<>();
-    public static final Kryo KRYO = new Kryo();
     public static final File CACHE_DIRECTORY = new File("data/cache");
-    public static final File CACHE_STAGING_DIRECTORY = new File("data/cache-staging");
     public static final String CACHE_VERSION = "cache-228";
-    public static final File CACHE_ORIGINAL_DIRECTORY = new File("data/" + CACHE_VERSION);
-    public static final boolean ENABLED_MAP_PACKING = true;
-
-    private static final ThreadLocal<Gson> gson = ThreadLocal.withInitial(() ->
-            new GsonBuilder()
-                    .disableHtmlEscaping()
-                    .setPrettyPrinting()
-                    .registerTypeAdapter(IntList.class, IntListTypeAdapter.INSTANCE)
-                    .registerTypeAdapter(Object2IntMap.class, Object2IntMapDeserializer.INSTANCE)
-                    .registerTypeAdapter(Int2ObjectMap.class, Int2ObjectMapDeserializer.INSTANCE)
-                    .registerTypeAdapter(ObjectCollection.class, ObjectCollectionDeserializer.INSTANCE)
-                    .create());
-
-    public static Gson getGson() {
-        return gson.get();
-    }
 
     public static void main(final String[] args) throws Exception {
         final ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-        String targetCacheDirectory = "data/cache";
-
-        String type = "";
-        boolean isProductionCacheGen = false;
-        if (args.length > 0) {
-            type = args[0];
-        }
-        if (args.length > 2 && Objects.equals(args[2], "production")) {
-            isProductionCacheGen = true;
-        }
 
         final long startTime = System.nanoTime();
         final File cacheZip = new File("data/" + CACHE_VERSION + ".zip");
         if (!CACHE_DIRECTORY.exists())
             CACHE_DIRECTORY.mkdir();
         if (cacheZip.exists()) {
-            // Legacy path: extract from zip (e.g. Jire's cache-228.zip)
             log.info("Extracting cache from {}...", cacheZip.getPath());
             FileUtils.cleanDirectory(CACHE_DIRECTORY);
             final ZipFile originalZip = new ZipFile(cacheZip);
-            originalZip.extractAll(targetCacheDirectory);
+            originalZip.extractAll("data/cache");
         } else if (CACHE_DIRECTORY.exists() && CACHE_DIRECTORY.list() != null
-                && java.util.Arrays.stream(CACHE_DIRECTORY.list()).anyMatch(f -> f.startsWith("main_file_cache"))) {
-            // OpenRS2 path: cache files already downloaded by :cache:setupCache
+                && Arrays.stream(CACHE_DIRECTORY.list()).anyMatch(f -> f.startsWith("main_file_cache"))) {
             log.info("Cache files already present in {}, skipping extraction.", CACHE_DIRECTORY.getPath());
         } else {
             throw new FileNotFoundException(
@@ -133,31 +75,15 @@ public class TypeParser {
         CacheManager.loadCache(cache);
         XTEALoader.load("data/objects/xteas.json");
 
-
-
         CacheManager.loadDefinitions(service, true);
-        //Definitions.loadDefinitions(Definitions.cacheLowPriorityDefinitions);
 
-        initializeKryo();
-        pack(NPCDefinitions.class);
         packDynamicConfigs();
         removeCATasks();
-        pack(
-                ArrayUtils.addAll(
-                        Definitions.highPriorityDefinitions,
-                        Definitions.cacheLowPriorityDefinitions)
-        );
-        packClientScripts();
+        pack(EnumDefinitions.class);
         packMaps(service);
         increaseVarclientAmount();
         copyMaps();
         cache.close();
-
-        /*
-         * cache = Cache.openCache(targetCacheDirectory);
-         * PackFromConsecutively.packAll(cache); // Edenify
-         * cache.close();
-         */
 
         log.info("Cache repack took {} milliseconds", TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime));
 
@@ -177,106 +103,6 @@ public class TypeParser {
         log.info("End map copy process.");
     }
 
-    public static void initializeKryo() {
-        for (final Class<?> d : Definitions.cacheLowPriorityDefinitions) {
-            KRYO.register(d);
-        }
-        for (final Class<?> d : Definitions.highPriorityDefinitions) {
-            KRYO.register(d);
-        }
-        KRYO.register(int[].class);
-        KRYO.register(short[].class);
-        KRYO.register(String[].class);
-        KRYO.register(String[][].class);
-        KRYO.register(Int2ObjectOpenHashMap.class);
-    }
-
-    public static void parse(final File folder) {
-        parse(folder, true, TypeReader.readers);
-    }
-
-    public static void parse(File folder, boolean throwExceptions, TypeReader... readers) {
-        Map<String, TypeReader> readersMap = Arrays.stream(readers)
-                .collect(Collectors.toMap(TypeReader::getType, e -> e));
-        parse(folder, throwExceptions, readersMap,
-                new File(folder, "component").getPath(),
-                readersMap.get("component"));
-    }
-
-    public static void parse(final File folder,
-                             boolean throwExceptions,
-                             Map<String, TypeReader> readers,
-                             String componentFolderPath,
-                             TypeReader componentTypeReader) {
-        final ObjectMapper mapper = new ObjectMapper(new TomlFactory());
-
-        File f = null;
-        try {
-            for (final File file : Objects.requireNonNull(folder.listFiles())) {
-                f = file;
-                if (file.getPath().endsWith("exclude"))
-                    continue;
-                if (file.isDirectory()) {
-                    parse(file, throwExceptions, readers, componentFolderPath, componentTypeReader);
-                } else {
-                    if (!Files.getFileExtension(file.getName()).equals("toml"))
-                        continue;
-
-                    String fileString = FileUtils.readFileToString(file, Charsets.UTF_8);
-                    fileString = fileString.replace("%SERVER_NAME%", ContentConstants.SERVER_NAME);
-
-                    if (componentTypeReader != null && file.getPath().startsWith(componentFolderPath)) {
-                        final JsonNode tree = mapper.readTree(fileString);
-                        final List<Definitions> readDefinitions = componentTypeReader.read(mapper, tree);
-                        definitions.addAll(readDefinitions);
-                    } else {
-                        final JsonNode tree = mapper.readTree(fileString);
-                        final Iterator<Map.Entry<String, JsonNode>> fieldsIterator = tree.properties().iterator();
-                        while (fieldsIterator.hasNext()) {
-                            final Map.Entry<String, JsonNode> entry = fieldsIterator.next();
-
-                            final TypeReader reader = readers.get(entry.getKey());
-                            if (reader == null) {
-                                if (!throwExceptions)
-                                    continue;
-                                System.err.println(readers);
-                                throw new RuntimeException("Could not find a reader for: " + entry.getKey());
-                            }
-                            //System.out.println("reader " + reader.getClass().getSimpleName() + " for key \"" + entry.getKey() + "\" for file " + file.getName());
-
-                            final JsonNode value = entry.getValue();
-                            if (value.isArray()) {
-                                for (final JsonNode node : value) {
-                                    final Map<String, Object> properties =
-                                            mapper.convertValue(node, new TypeReference<>() {
-                                            });
-                                    //System.out.println("value \"" + entry.getKey() + "\" is array: " + properties);
-                                    definitions.addAll(reader.read(properties));
-                                }
-                            } else if (value.isObject()) {
-                                final Map<String, Object> properties =
-                                        mapper.convertValue(value, new TypeReference<>() {
-                                        });
-                                //System.out.println("value \"" + entry.getKey() + "\" is object: " + properties);
-                                definitions.addAll(reader.read(properties));
-                            } else {
-                                final Map<String, Object> properties =
-                                        mapper.convertValue(value, new TypeReference<>() {
-                                        });
-                                //System.out.println("value \"" + entry.getKey() + "\" is unknown (" + value.getNodeType().name() + "): " + properties);
-                                definitions.addAll(reader.read(properties));
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            log.error("Something went wrong in {}", f == null ? null : f.getPath());
-            e.printStackTrace(System.err);
-            System.exit(0);
-        }
-    }
-
     public static void pack(final Class<?>... types) {
         final ArrayList<Definitions> filtered =
                 definitions.stream().filter(d -> ArrayUtils.contains(types,
@@ -288,9 +114,6 @@ public class TypeParser {
     }
 
     private static void packDynamicConfigs() {
-        //for (Int2IntMap.Entry entry : EnumDefinitions.getIntEnum(1002).getValues().int2IntEntrySet()) {
-        //    System.out.println(entry.getIntKey()+"="+entry.getIntValue());
-        //}
         EnumDefinitions enumDef;
         final DiaryInfo[][] diaries = DiaryInfo.load(null);
         for (final DiaryInfo[] diaryEnum : diaries) {
@@ -344,146 +167,6 @@ public class TypeParser {
         }
     }
 
-    public static ObjectDefinitions cloneObject(int from, int to) {
-        ObjectDefinitions def = new ObjectDefinitions(to, new ByteBuffer(new byte[1]));
-        def.copy(from);
-        return def;
-    }
-
-    public static void packSound(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.SYNTHS).addGroup(new Group(id,
-                new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
-    private static void packClientScripts() throws Exception {
-    }
-
-    private static void packCs2FromDirectory(String first) throws IOException {
-        packCs2FromDirectory(first, false);
-    }
-
-    private static void packCs2FromDirectory(String first, boolean verify) throws IOException {
-        var cs2Files = Paths.get(first).toFile().listFiles();
-        for (var file : cs2Files) {
-            if (file.isDirectory()) {
-                var id = Integer.parseInt(file.getName());
-                var child = Paths.get(first + id + "/").toFile().listFiles();
-                for (var file2 : child) {
-                    var name = file2.getName().replaceAll(".cs2", "");
-                    packClientScriptNamed(id, name, java.nio.file.Files.readAllBytes(file2.toPath()));
-                    log.info("Packed named CS2 \"{}\" with ID: {}", name, id);
-                }
-            } else {
-                var id = Integer.parseInt(file.getName().replaceAll(".cs2", ""));
-                var bytes = java.nio.file.Files.readAllBytes(file.toPath());
-                packClientScript(id, bytes);
-                if (verify) {
-                    var buffer = new Buffer(bytes);
-                    buffer.offset = bytes.length - 2;
-                    int length = buffer.readUnsignedShort();
-                    int onset = bytes.length - 2 - length - 12;
-                    buffer.offset = onset;
-                    int a = buffer.readInt();
-                    int localIntCount = buffer.readUnsignedShort();
-                    int localStringCount = buffer.readUnsignedShort();
-                    int intArgumentCount = buffer.readUnsignedShort();
-                    int stringArgumentCount = buffer.readUnsignedShort();
-                    int var6 = buffer.readUnsignedByte();
-                    System.out.println("ID: " + id + ", a: " + a + ", LocalIntCount: " + localIntCount + " LocalStringCount: " + localStringCount + " IntArgumentCount: " + intArgumentCount + " StringArgumentCount: " + stringArgumentCount + " Var6: " + var6);
-                }
-                log.info("Packed CS2 with ID: {}", id);
-            }
-        }
-    }
-
-    public static void packRustyScripts(String folderPath) {
-        for (File file : Objects.requireNonNull(Paths.get(folderPath).toFile().listFiles())) {
-            try {
-                final int id = Integer
-                        .parseInt(file.getName().replace("-0.bin", "").replace("12-", ""));
-                packClientScript(id, java.nio.file.Files.readAllBytes(file.toPath()));
-            } catch (Exception e) {
-                System.err.println("File name of " + file + " must be an integer!");
-                e.printStackTrace(System.err);
-            }
-        }
-    }
-
-    public static void packClientScriptsRecursive(String path) throws IOException {
-        java.nio.file.Files.walk(Path.of(path)).forEach(p -> {
-            File f = p.toFile();
-            if(f.getName().endsWith(".cs2")) try {
-                int id = Integer.parseInt(f.getName().split(".cs2")[0]);
-                byte[] bytes = java.nio.file.Files.readAllBytes(p);
-                //System.err.println(f.getName());
-                packClientScript(id, bytes);
-            } catch(Exception e) {
-                throw new RuntimeException(f.getName(), e);
-            }
-        });
-    }
-
-    public static void packClientScript(final int id, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CLIENTSCRIPTS).addGroup(new Group(id,
-                new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
-    public static void packClientScriptNamed(final int id, final String archive_name, final byte[] bytes) {
-        CacheManager.getCache().getArchive(ArchiveType.CLIENTSCRIPTS).addGroup(new Group(id, archive_name, 1,
-                new mgi.tools.jagcached.cache.File(new ByteBuffer(bytes))));
-    }
-
-    public static void packMapsRSPSi(int baseRegionID, String packFilePath) throws IOException {
-        packMapsRSPSi(CacheManager.getCache(), baseRegionID, packFilePath);
-    }
-
-    public static void packMapsRSPSi(Cache cache, int baseRegionID, String packFilePath)
-            throws IOException {
-        byte[] packBytes = java.nio.file.Files.readAllBytes(Path.of(packFilePath));
-        java.nio.ByteBuffer buffer = java.nio.ByteBuffer.wrap(packBytes);
-
-        int baseRegionX = (baseRegionID >> 8) & 0xFF;
-        int baseRegionY = baseRegionID & 0xFF;
-
-        int mapSquareCount = buffer.getInt();
-
-        for (int i = 0; i < mapSquareCount; i++) {
-            buffer.getInt(); // locGroupID
-            buffer.getInt(); // mapGroupID
-
-            int localMapSqGridX = buffer.getInt();
-            int localMapSqGridZ = buffer.getInt();
-
-            int locsBlockLength = buffer.getInt();
-            byte[] locsBlock = new byte[locsBlockLength];
-            buffer.get(locsBlock);
-
-            int mapBlockLength = buffer.getInt();
-            byte[] mapBlock = new byte[mapBlockLength];
-            buffer.get(mapBlock);
-
-            int regionX = baseRegionX + localMapSqGridX;
-            int regionY = baseRegionY + localMapSqGridZ;
-
-            int regionID = (regionX << 8) | regionY;
-            locsBlock = modifyRegions(regionID, locsBlock);
-            packMapRawPre209(cache, regionID, locsBlock, mapBlock);
-        }
-    }
-
-    private static byte[] modifyRegions(int regionID, byte[] locsBlock) {
-        if (regionID == 8036) {
-            return Regions.inject(locsBlock,
-                    null,
-                    new WorldObject(49210, 22, 2, new Location(2041, 6427, 0)), //Stepping stone
-                    new WorldObject(49207, 10, 1, new Location(2040, 6423, 0)) //Cave Passage
-            );
-        }
-
-        return locsBlock;
-    }
-
-
     public static void packMapRawPre209(Cache cache, int regionID, byte[] locsBlock, byte[] mapBlock) {
         int x = (regionID >> 8) & 0xFF;
         int y = regionID & 0xFF;
@@ -497,19 +180,6 @@ public class TypeParser {
                 .orElse(null);
 
         packMap(cache, regionID, outputMapData, outputLandData);
-    }
-
-    public static void packMap(final int id, String landscapeFilePath, String mapFilePath)
-            throws IOException {
-        try {
-            packMap(CacheManager.getCache(), id,
-                    java.nio.file.Files.readAllBytes(Paths.get(landscapeFilePath)),
-                    java.nio.file.Files.readAllBytes(Paths.get(mapFilePath)));
-            System.err.println("Packed map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-        } catch (Exception e) {
-            System.err.println("Failed to pack map[" + id + "] land = " + landscapeFilePath + ", map = " + mapFilePath);
-            e.printStackTrace(System.err);
-        }
     }
 
     public static void packMapPre209(final int id, final byte[] landscape, final byte[] map) {
@@ -549,40 +219,12 @@ public class TypeParser {
         }
     }
 
-    public static void copyMapRegionFromTargetCache(final Cache source_cache, final int source_region, final int target_region) {
-        final int sourceRegionX = source_region >> 8;
-        final int sourceRegionY = source_region & 255;
-
-        Archive maps = source_cache.getArchive(ArchiveType.MAPS);
-
-        final int[] xteas = XTEALoader.getXTEAKeys(source_region);
-        Group mGroup = maps.findGroupByName("m" + sourceRegionX + "_" + sourceRegionY);
-        Group lGroup = maps.findGroupByName("l" + sourceRegionX + "_" + sourceRegionY, xteas);
-
-
-        byte[] outputMapData = Optional.ofNullable(mGroup.getFiles()[0].getData().getBuffer())
-                .map(data -> MapSaver.save(new MapLoader().load(sourceRegionX, sourceRegionY, data)))
-                .orElse(null);
-
-        byte[] outputLandData = Optional.ofNullable(lGroup.getFiles()[0].getData().getBuffer())
-                .map(data -> LocationSaver.save(new LocationsLoader().load(sourceRegionX, sourceRegionY, data)))
-                .orElse(null);
-
-        packMap(target_region, outputLandData, outputMapData);
-        log.info("Copying old region {} into new cache region {}", source_region, target_region);
-    }
-
     public static void packMap(final int id, final byte[] l_data, final byte[] m_data) {
         packMap(CacheManager.getCache(), id, m_data, l_data);
     }
 
     public static void packMap(final Cache cache, final int id, final byte[] m_data,
                                byte[] l_data) {
-
-        if (!ENABLED_MAP_PACKING) {
-            System.out.println("Skipping packing map[" + id + ']');
-            return;
-        }
         try {
 
             final Archive archive = cache.getArchive(ArchiveType.MAPS);
@@ -892,15 +534,5 @@ public class TypeParser {
             enumDefs.setValues(filteredValues);
             definitions.add(enumDefs);
         }
-    }
-
-    public static List<Definitions> getDefinitions() {
-        return definitions;
-    }
-
-    private static final IntArrayList regionsChanged = new IntArrayList();
-
-    public static void regionChanged(int i) {
-        regionsChanged.add(i);
     }
 }

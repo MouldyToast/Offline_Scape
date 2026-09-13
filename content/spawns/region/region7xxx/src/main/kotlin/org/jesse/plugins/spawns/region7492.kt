@@ -45,6 +45,5 @@ class Region7492 : NPCSpawnsScript() {
         DAGANNOTH_5943(1888, 4409, 1, SOUTH, 24)
         DAGANNOTH_5942(1863, 4380, 2, SOUTH, 27)
         DAGANNOTH_5942(1864, 4383, 2, SOUTH, 27)
-        16024(1918, 4362, 0, NORTH, 0)
     }
 }

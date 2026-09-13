@@ -43,14 +43,6 @@ object KeepSetDefinitionOverrides {
      * produced them.
      */
     private fun packNpcOverrides() {
-        // Hagavik (Collect option).
-        TypeParser.KRYO.copy(NPCDefinitions.get(8402)).apply {
-            id = 16024
-            name = "Hagavik"
-            setOption(0, "Talk-to")
-            setOption(1, "Collect")
-            pack()
-        }
         // TzHaar-Ket-Keh inferno practice mode.
         NPCDefinitions.get(7690).apply {
             setOption(0, "Talk-to")
@@ -110,30 +102,6 @@ object KeepSetDefinitionOverrides {
             name = "<col=ff0000>Team portal red</col>"
             setOption(0, "Enter")
             replacementColours = intArrayOf(-3377, -1232, 639)
-            pack()
-        }
-    }
-
-    /**
-     * Additive keys on the vanilla item retrieval-service enums for the kept
-     * death-storage NPCs.
-     */
-    @JvmStatic
-    fun packEnums() {
-        // Item retrieval service entries for the kept death-storage NPCs
-        // (Hagavik 16024) - additive keys on the
-        // vanilla retrieval-service enums.
-        EnumDefinitions.get(1753).apply {
-            values[102] = "Hagavik's Item Retrieval Service"
-            values[103] = "Hagavik's Item Retrieval Service"
-            pack()
-        }
-        EnumDefinitions.get(1756).apply {
-            values[102] = 995
-            pack()
-        }
-        EnumDefinitions.get(1757).apply {
-            values[102] = 100000
             pack()
         }
     }

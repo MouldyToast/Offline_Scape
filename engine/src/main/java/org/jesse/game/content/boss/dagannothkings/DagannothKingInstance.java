@@ -1,19 +1,14 @@
 package org.jesse.game.content.boss.dagannothkings;
 
 import com.google.common.eventbus.Subscribe;
-import org.jesse.game.content.ItemRetrievalService;
-import org.jesse.game.content.skills.prayer.Prayer;
 import org.jesse.game.task.TickTask;
-import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
 import org.jesse.game.util.Colour;
 import org.jesse.game.util.Direction;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.Position;
 import org.jesse.game.world.World;
-import org.jesse.game.world.entity.Entity;
 import org.jesse.game.world.entity.Location;
-import org.jesse.game.world.entity.masks.Animation;
 import org.jesse.game.world.entity.npc.spawns.NPCSpawn;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.dialogue.Dialogue;
@@ -27,12 +22,6 @@ import org.jesse.logger.NearRealityLogger;
 import org.jesse.plugins.events.ClanLeaveEvent;
 import org.slf4j.Logger;
 
-import static org.jesse.game.world.entity.player.Player.DEATH_ANIMATION;
-
-/**
- * @author Kris | 18/06/2020
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class DagannothKingInstance extends DynamicArea implements CannonRestrictionPlugin, DeathPlugin, LogoutRestrictionPlugin, DropPlugin, LootBroadcastPlugin {
     private static final Logger log = NearRealityLogger.getLogger(DagannothKingInstance.class);
 
@@ -129,45 +118,8 @@ public class DagannothKingInstance extends DynamicArea implements CannonRestrict
     }
 
     @Override
-    public boolean sendDeath(Player player, Entity source) {
-        player.setAnimation(Animation.STOP);
-        player.lock();
-        player.stopAll();
-        if (player.getPrayerManager().isActive(Prayer.RETRIBUTION)) {
-            player.getPrayerManager().applyRetributionEffect(source);
-        }
-        WorldTasksManager.schedule(new WorldTask() {
-            int ticks;
-            @Override
-            public void run() {
-                if (player.isFinished() || player.isNulled()) {
-                    stop();
-                    return;
-                }
-                if (ticks == 0) {
-                    player.setAnimation(DEATH_ANIMATION);
-                } else if (ticks == 2) {
-                    player.getDeathMechanics().service(ItemRetrievalService.RetrievalServiceType.HAGAVIK, source, true);
-                    player.sendMessage("Oh dear, you have died.");
-                    player.reset();
-                    player.setAnimation(Animation.STOP);
-                    player.sendMessage("Hagavik has retrieved some of your items. You can collect them from him in the Waterbirth island dungeon.");
-                    ItemRetrievalService.updateVarps(player);
-                    if (player.getVariables().isSkulled()) {
-                        player.getVariables().setSkull(false);
-                    }
-                    player.blockIncomingHits();
-                    player.setLocation(player.getRespawnPoint().getLocation());
-                } else if (ticks == 3) {
-                    player.unlock();
-                    player.getAppearance().resetRenderAnimation();
-                    player.setAnimation(Animation.STOP);
-                    stop();
-                }
-                ticks++;
-            }
-        }, 0, 1);
-        return true;
+    public Location gravestoneLocation() {
+        return onLoginLocation();
     }
 
     @Override

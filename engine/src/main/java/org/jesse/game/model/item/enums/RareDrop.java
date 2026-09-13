@@ -7,10 +7,6 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 
 import static org.jesse.game.item.ids.ItemId.*;
 
-/**
- * @author Tommeh | 4-2-2019 | 22:24
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
- */
 public enum RareDrop {
     WARPED_SCEPTRE_UNCHARGED(28583),
     BROKEN_ZOMBIE_HELMET(30324),
@@ -140,11 +136,6 @@ public enum RareDrop {
     DAGONHAI_HAT(ItemId.DAGONHAI_HAT),
     DAGONHAI_ROBE_TOP(ItemId.DAGONHAI_ROBE_TOP),
     DAGONHAI_ROBE_BOTTOM(ItemId.DAGONHAI_ROBE_BOTTOM),
-
-    //Rots
-    SHIELD1(32192),
-    SHIELD2(32195),
-    SHIELD3(32198),
 
     //Nightmare
     INQUISITORS_MACE(ItemId.INQUISITORS_MACE),

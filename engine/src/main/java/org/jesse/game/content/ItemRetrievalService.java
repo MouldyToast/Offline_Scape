@@ -27,7 +27,6 @@ public class ItemRetrievalService {
         NIGHTMARE(25, 26),
         PHOSANI_NIGHTMARE(27, 28),
         HAGAVIK(102, 103),
-        ROTS(104, 105),
         GRAVESTONE(34, 35),
         ANCIENT_PRISON(36, 37),
         TOMBS_OF_AMASCUT(39, 38)

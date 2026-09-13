@@ -1,57 +1,20 @@
 package org.jesse.game.content.minigame.barrows;
 
 import org.jesse.game.GameInterface;
-import org.jesse.game.content.ItemRetrievalService;
-import org.jesse.game.content.rots.RotsInstance;
-import org.jesse.game.util.Colour;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.player.Player;
-import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.object.ObjectAction;
 import org.jesse.game.obj.ids.ObjectId;
 import org.jesse.game.world.object.TemporaryDoubleDoor;
 import org.jesse.game.world.object.WorldObject;
 import org.apache.commons.lang3.ArrayUtils;
 
-/**
- * @author Kris | 5. dets 2017 : 0:22.29
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class BarrowsDoor implements ObjectAction {
 
     private static final int[] puzzleDoorTiles = new int[] { Location.hash(3551, 9683, 0), Location.hash(3552, 9683, 0), Location.hash(3540, 9695, 0), Location.hash(3540, 9694, 0), Location.hash(3552, 9706, 0), Location.hash(3551, 9706, 0), Location.hash(3563, 9694, 0), Location.hash(3563, 9695, 0) };
 
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-        if (player.inArea("Rise of the Six")) {
-            RotsInstance area = (RotsInstance) player.getArea();
-            if (area.isEntered()) {
-                player.getDialogueManager().start(new Dialogue(player) {
-                    @Override
-                    public void buildDialogue() {
-                        plain("There's no going back.");
-                    }
-                });
-                return;
-            }
-
-            if (player.getRetrievalService().getType() == ItemRetrievalService.RetrievalServiceType.ROTS && !player.getRetrievalService().getContainer().isEmpty()) {
-                player.getDialogueManager().start(new Dialogue(player) {
-                    @Override
-                    public void buildDialogue() {
-                        options("Strange old man has some of your items. Do you still wish to proceed?", new DialogueOption("Yes.", () -> {
-                            player.getDialogueManager().finish();
-                            enterRots(player, area, object);
-                        }), new DialogueOption("No."));
-                    }
-                });
-                return;
-            }
-
-            enterRots(player, area, object);
-            return;
-        }
-
         if (ArrayUtils.contains(puzzleDoorTiles, player.getLocation().getPositionHash())) {
             if (!player.getBarrows().isPuzzleSolved()) {
                 player.sendMessage("The door is locked with a strange puzzle.");
@@ -61,20 +24,6 @@ public class BarrowsDoor implements ObjectAction {
             }
         }
         TemporaryDoubleDoor.executeBarrowsDoors(player, object, location -> player.getBarrows().sendRandomTarget(location));
-    }
-
-    private static void enterRots(Player player, RotsInstance area, WorldObject object) {
-        player.getDialogueManager().start(new Dialogue(player) {
-            @Override
-            public void buildDialogue() {
-                plain(Colour.RED.wrap("Warning: ") + "Once you enter, you are at " + Colour.RED.wrap("risk of death") + ". There is no escape unless you defeat the encounter.");
-                options(new DialogueOption("Enter.", () -> {
-                    TemporaryDoubleDoor.handleDoubleDoor(player, object);
-                    area.spawnBrothers();
-                    player.sendMessage("The encounter will start shortly.");
-                }), new DialogueOption("Not yet."));
-            }
-        });
     }
 
     @Override

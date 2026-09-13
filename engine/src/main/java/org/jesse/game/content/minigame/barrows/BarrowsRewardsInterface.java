@@ -2,7 +2,6 @@ package org.jesse.game.content.minigame.barrows;
 
 import org.jesse.game.GameInterface;
 import org.jesse.game.content.achievementdiary.diaries.MorytaniaDiary;
-import org.jesse.game.content.rots.RotsInstance;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.util.AccessMask;
@@ -16,10 +15,6 @@ import org.jesse.game.world.entity.player.container.impl.ContainerType;
 import java.util.ArrayList;
 import java.util.Optional;
 
-/**
- * @author Kris | 21/10/2018 10:23
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 @SuppressWarnings("unused")
 public class BarrowsRewardsInterface extends Interface {
     @Override
@@ -31,19 +26,7 @@ public class BarrowsRewardsInterface extends Interface {
     public void open(Player player) {
         player.getInterfaceHandler().closeInterfaces();
 
-        if (player.inArea("Rise of the Six")) {
-            RotsInstance area = (RotsInstance) player.getArea();
-            if (area.isCompleted()) {
-                if (area.isLooted()) {
-                    player.sendMessage("The chest is empty!");
-                    return;
-                }
-
-                area.setLooted(true);
-                area.getContainer().setFullUpdate(true);
-                player.getPacketDispatcher().sendUpdateItemContainer(area.getContainer());
-            }
-        } else {
+        {
             final Barrows barrows = player.getBarrows();
             barrows.setLooted(true);
             barrows.refreshShaking();
@@ -75,9 +58,7 @@ public class BarrowsRewardsInterface extends Interface {
 
     @Override
     public void close(final Player player, final Optional<GameInterface> replacement) {
-        if (player.inArea("Rise of the Six")) {
-            ((RotsInstance) player.getArea()).addLoot();
-        } else {
+        {
             final ArrayList<Item> equipmentPieces = new ArrayList<>();
             player.getBarrows().getContainer().getItems().int2ObjectEntrySet().fastForEach(loot -> {
                 // check if loot is barrows piece or amulet of the damned

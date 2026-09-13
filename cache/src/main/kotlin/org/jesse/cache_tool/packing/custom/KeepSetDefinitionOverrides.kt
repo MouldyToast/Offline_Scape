@@ -58,14 +58,6 @@ object KeepSetDefinitionOverrides {
             setOption(2, "")
             pack()
         }
-        // Rise of the Six barrows brothers. (The old TOML's pet NPCs
-        // 16045-16050 referenced dangling models and were dropped.)
-        for (offset in 0..5) {
-            TypeParser.KRYO.copy(NPCDefinitions.get(1672 + offset)).apply {
-                id = 16035 + offset
-                pack()
-            }
-        }
     }
 
     /**
@@ -129,23 +121,19 @@ object KeepSetDefinitionOverrides {
     @JvmStatic
     fun packEnums() {
         // Item retrieval service entries for the kept death-storage NPCs
-        // (Hagavik 16024, Rots) - additive keys on the
+        // (Hagavik 16024) - additive keys on the
         // vanilla retrieval-service enums.
         EnumDefinitions.get(1753).apply {
             values[102] = "Hagavik's Item Retrieval Service"
             values[103] = "Hagavik's Item Retrieval Service"
-            values[104] = "Rots Item Retrieval Service"
-            values[105] = "Rots Item Retrieval Service"
             pack()
         }
         EnumDefinitions.get(1756).apply {
             values[102] = 995
-            values[104] = 995
             pack()
         }
         EnumDefinitions.get(1757).apply {
             values[102] = 100000
-            values[104] = 100000
             pack()
         }
     }

@@ -2,7 +2,6 @@ package org.jesse.game.content.chambersofxeric.plugins.object;
 
 import org.jesse.game.content.chambersofxeric.Raid;
 import org.jesse.game.content.chambersofxeric.room.DeathlyRoom;
-import org.jesse.game.content.rots.RotsInstance;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.item.ItemOnObjectAction;
 import org.jesse.game.world.World;
@@ -17,10 +16,6 @@ import org.jesse.game.world.object.WorldObject;
 import static org.jesse.game.content.chambersofxeric.room.DeathlyRoom.keystoneCrystal;
 import static org.jesse.game.content.chambersofxeric.room.DeathlyRoom.placingKeystoneAnimation;
 
-/**
- * @author Kris | 06/07/2019 04:19
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 @SuppressWarnings("unused")
 public class ShimmeringBarrier implements ObjectAction, ItemOnObjectAction {
 
@@ -32,23 +27,6 @@ public class ShimmeringBarrier implements ObjectAction, ItemOnObjectAction {
     }
 
     private void dispel(final Player player, final WorldObject object) {
-        if (player.inArea("Rise of the Six")) {
-            RotsInstance area = (RotsInstance) player.getArea();
-            if (!area.isCompleted()) {
-                player.sendMessage("I wonder if there is something that can dispel this?");
-                return;
-            }
-
-            player.resetWalkSteps();
-            if (player.getY() >= object.getY()) {
-                player.addWalkSteps(player.getX(), object.getY() - 1, -1, false);
-            } else {
-                player.addWalkSteps(player.getX(), object.getY() + 1, -1, false);
-            }
-            player.lock(player.hasWalkSteps() ? 2 : 1);
-            return;
-        }
-
         player.getRaid().ifPresent(raid -> raid.ifInRoom(player, DeathlyRoom.class, room -> {
             if (!player.getInventory().containsItem(keystoneCrystal)) {
                 player.sendMessage("You're going to need a magical keystone to dispel this barrier.");

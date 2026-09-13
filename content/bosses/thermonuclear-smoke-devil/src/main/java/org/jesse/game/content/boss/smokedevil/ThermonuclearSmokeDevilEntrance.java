@@ -40,13 +40,15 @@ public class ThermonuclearSmokeDevilEntrance implements ObjectAction {
                     final int playerCount = players.size();
                     player.sendMessage("Standard cave: " + (playerCount == 0 ? "No adventurers." : playerCount + (playerCount == 1 ? " adventurer." : " adventurers.")));
                 }, 2);
-            } else if (option.equals("Private")) {
+            } else {
                 player.getDialogueManager().start(new Dialogue(player) {
 
                     @Override
                     public void buildDialogue() {
                         final int price = 100000;
-                        options("Enter a private Thermonuclear boss cave?", "Pay " + StringFormatUtil.format(price) + " coins.", "Cancel.").onOptionOne(() -> {
+                        options("Squeeze through the crevice?",
+                                new DialogueOption("Enter the public cave.", () -> player.teleport(insideTile)),
+                                new DialogueOption("Pay " + StringFormatUtil.format(price) + " coins for a private cave.", () -> {
                             try {
                                 final int amountInInventory = player.getInventory().getAmountOf(ItemId.COINS_995);
                                 final int amountInBank = player.getBank().getAmountOf(ItemId.COINS_995);
@@ -62,12 +64,11 @@ public class ThermonuclearSmokeDevilEntrance implements ObjectAction {
                             } catch (Exception e) {
                                 log.error("", e);
                             }
-                        });
+                                }),
+                                new DialogueOption("Cancel."));
                         plain(100, "You need at least " + StringFormatUtil.format(price) + " coins to start a private Thermonuclear boss instance.");
                     }
                 });
-            } else {
-                player.teleport(insideTile);
             }
         } else {
             player.teleport(outsideTile);

@@ -42,17 +42,6 @@ object KeepSetDefinitionOverrides {
      */
     @JvmStatic
     fun packObjects() {
-        // Waterbirth dungeon roots no longer block projectiles.
-        ObjectDefinitions.get(30170).apply {
-            isProjectileClip = true
-            pack()
-        }
-        // Thermonuclear smoke devil boss entrance crevice.
-        ObjectDefinitions.get(535).apply {
-            setOption(1, "Private")
-            setOption(2, "Peek")
-            pack()
-        }
         // PvM Arena team portals.
         ObjectDefinitions.get(43765).apply {
             name = "<col=0000ff>Team portal blue</col>"

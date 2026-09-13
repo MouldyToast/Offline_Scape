@@ -8,7 +8,6 @@ import com.fasterxml.jackson.dataformat.toml.TomlFactory;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jesse.cache_tool.packing.custom.KeepSetDefinitionOverrides;
 import org.jesse.util.gson.Int2ObjectMapDeserializer;
 import org.jesse.util.gson.IntListTypeAdapter;
 import org.jesse.util.gson.Object2IntMapDeserializer;
@@ -142,7 +141,6 @@ public class TypeParser {
         initializeKryo();
         pack(NPCDefinitions.class);
         packDynamicConfigs();
-        KeepSetDefinitionOverrides.pack();
         removeCATasks();
         pack(
                 ArrayUtils.addAll(
@@ -152,7 +150,6 @@ public class TypeParser {
         packClientScripts();
         packMaps(service);
         increaseVarclientAmount();
-        KeepSetDefinitionOverrides.packObjects();
         copyMaps();
         cache.close();
 

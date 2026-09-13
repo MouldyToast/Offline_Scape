@@ -5,7 +5,6 @@ import org.jesse.game.content.pvm_arena.PvmArenaModule.notifyPlayerOfCombatBoost
 import org.jesse.game.content.pvm_arena.PvmArenaModule.registerCommands
 import org.jesse.game.content.pvm_arena.PvmArenaModule.spawnObjects
 import org.jesse.game.content.pvm_arena.area.PvmArenaLobbyArea
-import org.jesse.game.content.pvm_arena.loc.PvmArenaTeamPortalPlugin
 import org.jesse.game.content.pvm_arena.player.spawnFakePlayers
 import org.jesse.game.content.pvm_arena.wave.*
 import org.jesse.game.GameConstants
@@ -61,9 +60,6 @@ object PvmArenaModule {
     private fun spawnObjects() {
         World.spawnObject(WorldObject(id = BANK_CHEST, tile = Location(1761, 4705, 0)))
         World.spawnObject(WorldObject(id = ALTAR_OF_THE_OCCULT, 10, 2, Location(1762, 4698, 0)))
-
-        World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_BLUE_PORTAL_ID, tile = Location(1763, 4705, 0)))
-        World.spawnObject(WorldObject(id = PvmArenaTeamPortalPlugin.TEAM_RED_PORTAL_ID, tile = Location(1759, 4705, 0)))
     }
 
     private fun registerCommands() {

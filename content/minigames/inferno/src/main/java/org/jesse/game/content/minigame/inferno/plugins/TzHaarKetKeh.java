@@ -89,7 +89,6 @@ public class TzHaarKetKeh extends NPCPlugin {
                 player(NEVERMIND, "Nevermind.");
             }
         }));
-        bind("Practice Mode", TzHaarKetKeh::practiceMode);
     }
 
     private static void practiceMode(final Player player, final NPC npc) {

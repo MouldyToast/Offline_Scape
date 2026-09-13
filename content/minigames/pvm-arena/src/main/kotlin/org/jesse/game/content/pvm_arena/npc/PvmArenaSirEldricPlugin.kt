@@ -1,5 +1,7 @@
 package org.jesse.game.content.pvm_arena.npc
 
+import org.jesse.game.content.pvm_arena.PvmArenaManager
+import org.jesse.game.content.pvm_arena.PvmArenaTeam
 import org.jesse.game.world.entity.player.pvmArenaPoints
 import org.jesse.game.util.Colour
 import org.jesse.game.world.entity.npc.NPC
@@ -42,6 +44,15 @@ class PvmArenaSirEldricPlugin : NPCPlugin() {
 
     private fun Dialogue.openOptionsMenu(player: Player, npc: NPC) {
         options {
+            "Join the arena." {
+                player.dialogue(npc) {
+                    options {
+                        "Blue team." { PvmArenaManager.tryJoinTeam(player, PvmArenaTeam.Blue) }
+                        "Red team." { PvmArenaManager.tryJoinTeam(player, PvmArenaTeam.Red) }
+                        "Nevermind." { }
+                    }
+                }
+            }
             "What is this place?" {
                 player.dialogue(npc) {
                     npc(
@@ -83,16 +94,16 @@ class PvmArenaSirEldricPlugin : NPCPlugin() {
                     npc(
                         "Ghost",
                         "To enter the fray of the PvM Arena,<br>" +
-                                "you must choose your allegiance by stepping into one of two portals here in the arena."
+                                "you must choose your allegiance - simply tell me which team you wish to join."
                     )
                     npc(
                         "Ghost",
-                                "Each portal teleports you to an area designated for one of the two teams. " +
+                                "I shall send you to an area designated for your team. " +
                             "Prepare well, for once entered, the battle begins posthaste."
                     )
                     npc(
                         "Ghost",
-                        "Gather your allies, arm yourselves, and step forth into the portal when you are ready to test your valor."
+                        "Gather your allies, arm yourselves, and speak to me when you are ready to test your valor."
                     )
                     openOptionsMenu(player, npc)
                 }

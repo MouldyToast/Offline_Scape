@@ -1,5 +1,6 @@
 package org.jesse.plugins.item;
 
+import org.jesse.game.content.boss.giantmole.GiantMoleInstance;
 import org.jesse.game.content.minigame.barrows.BarrowsWight;
 import org.jesse.game.content.treasuretrails.TreasureTrail;
 import org.jesse.game.model.item.pluginextensions.ItemPlugin;
@@ -43,7 +44,7 @@ public class Spade extends ItemPlugin {
 					return;
 				}
 				if (ArrayUtils.contains(GIANT_MOLE_HOLE_HASHES, player.getLocation().getPositionHash())) {
-					player.setLocation(new Location(1752, 5237, 0));
+					GiantMoleInstance.enterDialogue(player);
 					return;
 				}
 				player.sendMessage("Nothing interesting happens.");

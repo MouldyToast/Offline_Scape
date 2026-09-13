@@ -47,13 +47,6 @@ object KeepSetDefinitionOverrides {
             isProjectileClip = true
             pack()
         }
-        // Giant Mole hill instance options.
-        ObjectDefinitions.get(12202).apply {
-            setOption(0, "Enter")
-            setOption(1, "Public")
-            setOption(2, "Private")
-            pack()
-        }
         // Thermonuclear smoke devil boss entrance crevice.
         ObjectDefinitions.get(535).apply {
             setOption(1, "Private")

@@ -13,7 +13,13 @@ import org.jesse.game.world.region.area.plugins.DeathPlugin;
 import org.jesse.game.world.region.area.plugins.EntityAttackPlugin;
 import org.jesse.game.world.region.area.plugins.LogoutPlugin;
 import org.jesse.game.world.region.area.plugins.LootBroadcastPlugin;
+import org.jesse.game.item.Item;
+import org.jesse.game.item.ids.ItemId;
+import org.jesse.game.world.entity.player.dialogue.Dialogue;
 import org.jesse.game.world.region.dynamicregion.AllocatedArea;
+import org.jesse.game.world.region.dynamicregion.MapBuilder;
+import org.jesse.game.world.region.dynamicregion.OutOfSpaceException;
+import org.jesse.logger.NearRealityPrintStream;
 import org.jetbrains.annotations.NotNull;
 
 public class GiantMoleInstance extends DynamicArea implements EntityAttackPlugin, DeathPlugin, LogoutPlugin, LootBroadcastPlugin {
@@ -83,5 +89,52 @@ public class GiantMoleInstance extends DynamicArea implements EntityAttackPlugin
     public boolean isMultiwayArea(Position position) {
         return true;
     }
+
+    private static final int COST = 500_000;
+
+    /**
+     * Entry point from the vanilla spade dig on the Falador Park mole hills.
+     */
+    public static void enterDialogue(final Player player) {
+        player.getDialogueManager().start(new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                options("Would you like to enter the public or private instance?",
+                        new DialogueOption("Public", () -> player.teleport(new Location(1752, 5235, 0))),
+                        new DialogueOption("Private (500k)", () -> startPrivateDialogue(player))
+                );
+            }
+        });
+    }
+
+    private static void startPrivateDialogue(final Player player) {
+        player.getDialogueManager().start(new Dialogue(player) {
+            @Override
+            public void buildDialogue() {
+                options("Would you like to create a personal instance for 500,000 GP?",
+                        new DialogueOption("Yes", () -> {
+                            final int amountInInventory = player.getInventory().getAmountOf(ItemId.COINS_995);
+                            final int amountInBank = player.getBank().getAmountOf(ItemId.COINS_995);
+                            if ((long) amountInBank + amountInInventory >= COST) {
+                                player.lock(1);
+                                player.getInventory().deleteItem(new Item(ItemId.COINS_995, COST)).onFailure(remainder -> player.getBank().remove(remainder));
+                                player.sendMessage("Please wait a few moments as your instance is being constructed.");
+                                try {
+                                    final AllocatedArea allocatedArea = MapBuilder.findEmptyChunk(8, 16);
+                                    final GiantMoleInstance instance = new GiantMoleInstance(player, allocatedArea, (6992 >> 8) << 3, (6992 & 0xFF) << 3);
+                                    instance.constructRegion();
+                                    player.setLocation(instance.getLocation(INSIDE_TILE));
+                                } catch (OutOfSpaceException e) {
+                                    e.printStackTrace(NearRealityPrintStream.getErrorStream());
+                                }
+                                return;
+                            }
+                            setKey(50);
+                        }), new DialogueOption("No."));
+                plain(50, "You don't have enough coins with you or in your bank.");
+            }
+        });
+    }
+
 
 }

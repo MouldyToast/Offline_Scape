@@ -53,11 +53,6 @@ object KeepSetDefinitionOverrides {
             setOption(2, "Peek")
             pack()
         }
-        // CoX entrance steps Reload option.
-        ObjectDefinitions.get(29778).apply {
-            setOption(1, "Reload")
-            pack()
-        }
         // PvM Arena team portals.
         ObjectDefinitions.get(43765).apply {
             name = "<col=0000ff>Team portal blue</col>"

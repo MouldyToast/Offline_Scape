@@ -41,6 +41,15 @@ public final class LeaveRaidD extends Dialogue {
 				}
 			}
 		});
-		options(fullChest.isTrue() ? "You have stuff in the chest.<br>Are you sure you want to abandon the raid?" : "You will not be able to rejoin this raid again.", new DialogueOption("Leave the raid.", () -> raid.leaveRaid(player, false, bool.isTrue())), new DialogueOption("Stay."));
+		final String header = fullChest.isTrue() ? "You have stuff in the chest.<br>Are you sure you want to abandon the raid?" : "You will not be able to rejoin this raid again.";
+		final boolean canReload = raid.getStage() == 0 && raid.getParty().getPlayer().equalsIgnoreCase(player.getUsername());
+		if (canReload) {
+			options(header,
+					new DialogueOption("Leave the raid.", () -> raid.leaveRaid(player, false, bool.isTrue())),
+					new DialogueOption("Reload the layout.", () -> player.getDialogueManager().start(new ReloadRaidD(player, raid))),
+					new DialogueOption("Stay."));
+		} else {
+			options(header, new DialogueOption("Leave the raid.", () -> raid.leaveRaid(player, false, bool.isTrue())), new DialogueOption("Stay."));
+		}
 	}
 }

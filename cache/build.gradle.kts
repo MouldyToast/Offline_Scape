@@ -47,13 +47,6 @@ dependencies {
     runtimeClasspath(libs.slf4j.simple)
 }
 
-tasks.register<JavaExec>("generateCache") {
-    group = "_nr_data"
-    mainClass.set("mgi.tools.parser.TypeParser")
-    classpath = sourceSets["main"].runtimeClasspath
-    args = listOf("--unzip", "false")
-}
-
 // OpenRS2 Archive — rev 228 cache (2025-02-12, ID 2043)
 // Browse available caches at: https://archive.openrs2.org/caches
 val openrs2CacheId = "2043"

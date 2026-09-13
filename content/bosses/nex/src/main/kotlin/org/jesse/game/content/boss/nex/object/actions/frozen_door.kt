@@ -37,6 +37,7 @@ class FrozenDoorObjectaction : ObjectActionScript() {
 
     init {
         FROZEN_DOOR.handleFrozenDoor()
+        FROZEN_DOOR_42841.handleFrozenDoor()
         FROZEN_DOOR_42932.handleFrozenDoor()
         FROZEN_DOOR_42931.handleFrozenDoor()
     }

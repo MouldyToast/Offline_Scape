@@ -68,6 +68,11 @@ class PvmArenaSirEldricPlugin : NPCPlugin() {
                     )
                     npc(
                         "Ghost",
+                        "To enter the fray, you must choose your allegiance - simply tell me which team you wish to join.<br>" +
+                                "Prepare well, for once entered, the battle begins posthaste."
+                    )
+                    npc(
+                        "Ghost",
                         "Triumph brings not only honor but also Arena Points,<br>" +
                                 "which can be exchanged for valuable rewards and a potent blessing, a damage boost against monsters for a short time."
                     )
@@ -85,25 +90,6 @@ class PvmArenaSirEldricPlugin : NPCPlugin() {
                     npc(
                         "Ghost",
                         "The rewards are many, each designed to prepare you for even greater challenges."
-                    )
-                    openOptionsMenu(player, npc)
-                }
-            }
-            "How do I play?" {
-                player.dialogue(npc) {
-                    npc(
-                        "Ghost",
-                        "To enter the fray of the PvM Arena,<br>" +
-                                "you must choose your allegiance - simply tell me which team you wish to join."
-                    )
-                    npc(
-                        "Ghost",
-                                "I shall send you to an area designated for your team. " +
-                            "Prepare well, for once entered, the battle begins posthaste."
-                    )
-                    npc(
-                        "Ghost",
-                        "Gather your allies, arm yourselves, and speak to me when you are ready to test your valor."
                     )
                     openOptionsMenu(player, npc)
                 }

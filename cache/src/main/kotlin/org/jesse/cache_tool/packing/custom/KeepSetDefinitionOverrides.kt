@@ -42,17 +42,6 @@ object KeepSetDefinitionOverrides {
      */
     @JvmStatic
     fun packObjects() {
-        // Dagannoth Kings instance entrance crack.
-        ObjectDefinitions.get(30169).apply {
-            setOption(0, "Private")
-            setOption(1, "Peek")
-            pack()
-        }
-        // Dagannoth Kings ladder private-instance option.
-        ObjectDefinitions.get(10230).apply {
-            setOption(2, "Private")
-            pack()
-        }
         // Waterbirth dungeon roots no longer block projectiles.
         ObjectDefinitions.get(30170).apply {
             isProjectileClip = true

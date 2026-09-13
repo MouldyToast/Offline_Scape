@@ -227,51 +227,6 @@ public class EvilBobIsland extends PolygonRegionArea implements DeathPlugin, Tel
 
         @Override
         public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
-            if(player.getLocation().getRegionId() == 9546) { //Train island uses the same portal id as it's a map copy
-                WorldTasksManager.schedule(() -> new Teleport() {
-
-                    @Override
-                    public TeleportType getType() {
-                        return TeleportType.HOME_TELEPORT;
-                    }
-
-                    @Override
-                    public Location destination() {
-                        return new Location(3089, 3496, 0);
-                    }
-
-                    @Override
-                    public int getLevel() {
-                        return 0;
-                    }
-
-                    @Override
-                    public double getExperience() {
-                        return 0;
-                    }
-
-                    @Override
-                    public int getRandomizationDistance() {
-                        return 0;
-                    }
-
-                    @Override
-                    public Item[] getRunes() {
-                        return new Item[0];
-                    }
-
-                    @Override
-                    public int getWildernessLevel() {
-                        return 0;
-                    }
-
-                    @Override
-                    public boolean isCombatRestricted() {
-                        return false;
-                    }
-                }.teleport(player), 4);
-                return;
-            }
             if (player.getAttributes().get("evil bob complete") == null) {
                 World.findNPC(391, player.getLocation(), 20).ifPresent(bob -> player.getDialogueManager().start(new Dialogue(player, bob) {
 

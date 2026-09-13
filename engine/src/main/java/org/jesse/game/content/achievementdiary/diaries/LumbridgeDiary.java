@@ -110,7 +110,6 @@ public enum LumbridgeDiary implements Diary {
 			MAP.put(type, new ArrayList<>(15));
 		}
 		for (final LumbridgeDiary value : VALUES) {
-			if (value.autoCompleted) continue;
 			MAP.get(value.type).add(value);
 		}
 	}

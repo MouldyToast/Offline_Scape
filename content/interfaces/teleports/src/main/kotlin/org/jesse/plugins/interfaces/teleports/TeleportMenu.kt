@@ -80,7 +80,7 @@ object TeleportMenu {
     @JvmStatic
     @Subscribe
     fun onLaunch(event: ServerLaunchEvent) {
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "tele", "Opens the teleport menu") { player, _ ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "tp", "Opens the teleport menu") { player, _ ->
             open(player)
         }
     }

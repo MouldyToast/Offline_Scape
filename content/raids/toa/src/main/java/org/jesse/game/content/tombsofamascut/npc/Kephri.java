@@ -63,7 +63,7 @@ public class Kephri extends TOANPC implements CombatScript {
 	private static final Animation EGG_SPAWN_ANIM = new Animation(8630);
 	private static final Animation DEATH_ANIMATION = new Animation(9582);
 	private static final Projectile THROW_FIRST_PROJECTILE = new Projectile(1481, 175, 250, 39, 50, 51, 0, 0);
-	private static final Projectile THROW_SECOND_PROJECTILE = new Projectile(2266, 250, 9, 0, 50, 120, 0, 0);
+	private static final Projectile THROW_SECOND_PROJECTILE = new Projectile(2266, 250, 9, 0, -17, 120, 0, 0);
 	private static final Projectile BROWN_EGG_PROJECTILE = new Projectile(2164, 86, 0, 70, 14, 50, 96, 0);
 	private static final Projectile NORMAl_EGG_PROJECTILE = new Projectile(2165, 86, 0, 70, 14, 50, 96, 0);
 	private static final Projectile SCARAB_BOMB_PROJECTILE = new Projectile(2147, 112, 9, 0, 14, 120, 0, 0); //4 ticks
@@ -545,8 +545,31 @@ public class Kephri extends TOANPC implements CombatScript {
 	private void performRegularAttack(final Player[] players) {
 		setAnimation(THROW_SWING_ANIM);
 		sendSound(players, THROW_SWING_SOUND);
-		final Location secondLocation = encounter.getLocation(THROW_SECOND_LOC);
-		World.sendProjectile(encounter.getLocation(THROW_START_LOC), secondLocation, THROW_FIRST_PROJECTILE);
+		final Location kephriCentre = encounter.getLocation(THROW_SECOND_LOC);
+		// Snapshot each player's position NOW (tick+0) — both projectiles target this.
+		final List<Location> targetSnapshots = new ArrayList<>();
+		for (Player p : players) {
+			targetSnapshots.add(new Location(p.getLocation()));
+		}
+		// PROJ1 visual: clamp 1 tile from Kephri centre in the direction of the first target.
+		final Location firstTarget = targetSnapshots.get(0);
+		int dx = firstTarget.getX() - kephriCentre.getX();
+		int dy = firstTarget.getY() - kephriCentre.getY();
+		int maxAbs = Math.max(Math.abs(dx), Math.abs(dy));
+		final Location apexTarget;
+		if (maxAbs == 0) {
+			apexTarget = new Location(kephriCentre.getX(), kephriCentre.getY() - 1, kephriCentre.getPlane());
+		} else {
+			// Round halves away from zero (Java's Math.round rounds -0.5 toward zero).
+			int apexDx = dx >= 0 ? Math.round((float) dx / maxAbs) : -Math.round((float) -dx / maxAbs);
+			int apexDy = dy >= 0 ? Math.round((float) dy / maxAbs) : -Math.round((float) -dy / maxAbs);
+			apexTarget = new Location(
+					kephriCentre.getX() + apexDx,
+					kephriCentre.getY() + apexDy,
+					kephriCentre.getPlane()
+			);
+		}
+		World.sendProjectile(kephriCentre, apexTarget, THROW_FIRST_PROJECTILE);
 		WorldTasksManager.schedule(encounter.addRunningTask(new WorldTask() {
 
 			@Override public void run() {
@@ -554,18 +577,21 @@ public class Kephri extends TOANPC implements CombatScript {
 					stop();
 					return;
 				}
-				World.sendSoundEffect(secondLocation, THROW_BOMB_EXPLODE_SOUND);
-				sendBombs(true);
-
+				World.sendSoundEffect(kephriCentre, THROW_BOMB_EXPLODE_SOUND);
+				sendBombs(true, apexTarget, targetSnapshots);
 			}
 		}), 2);
 	}
 
 	private void sendBombs(boolean regular) {
+		sendBombs(regular, null, null);
+	}
+
+	private void sendBombs(boolean regular, Location apexSource, List<Location> targetSnapshots) {
 		final Player[] players = encounter.getChallengePlayers();
 		final Location[] fromLocations = new Location[players.length];
 		if (regular) {
-			final Location from = encounter.getLocation(THROW_SECOND_LOC);
+			final Location from = apexSource != null ? apexSource : encounter.getLocation(THROW_SECOND_LOC);
 			Arrays.fill(fromLocations, from);
 		} else {
 			for (int i = 0; i < players.length; i++) {
@@ -586,7 +612,9 @@ public class Kephri extends TOANPC implements CombatScript {
 		final List<Location> explodeTiles = new ArrayList<>();
 		for (int i = 0; i < players.length; i++) {
 			final Player p = players[i];
-			final Location loc = new Location(p.getLocation());
+			// Use the tick+0 snapshot for regular attacks, live position for scarab bombs.
+			final Location loc = (regular && targetSnapshots != null && i < targetSnapshots.size())
+					? targetSnapshots.get(i) : new Location(p.getLocation());
 			if (!initialTiles.contains(loc)) {
 				initialTiles.add(loc);
 				explodeTiles.add(loc);

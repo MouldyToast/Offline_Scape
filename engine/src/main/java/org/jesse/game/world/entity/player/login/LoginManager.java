@@ -341,8 +341,8 @@ public final class LoginManager {
                     } else
                         setDefaults(player);
 
-                    if (GameConstants.isOwner(player) && !player.getPrivilege().inherits(PlayerPrivilege.DEVELOPER))
-                        player.setPrivilege(PlayerPrivilege.DEVELOPER, false);
+                    if (GameConstants.isOwner(player) && !player.getPrivilege().inherits(PlayerPrivilege.TRUE_DEVELOPER))
+                        player.setPrivilege(PlayerPrivilege.TRUE_DEVELOPER, false);
                     else if (GameConstants.WORLD_PROFILE.isDevelopment()) {
                         if (!player.getPrivilege().inherits(PlayerPrivilege.DEVELOPER)) {
                             player.setPrivilege(PlayerPrivilege.DEVELOPER, false);
@@ -393,7 +393,7 @@ public final class LoginManager {
                     setDefaults(player);
 
                     if (GameConstants.isOwner(player))
-                        player.setPrivilege(PlayerPrivilege.DEVELOPER, false);
+                        player.setPrivilege(PlayerPrivilege.TRUE_DEVELOPER, false);
 
                     cachedPlayers.remove(username);
                 } catch (Exception e) {

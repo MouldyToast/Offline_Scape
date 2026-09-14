@@ -205,6 +205,9 @@ public abstract class DynamicArea extends PolygonRegionArea implements RandomEve
                 player.forceLocation(new Location(3087, 3490, 0));
             }
             leave(player, logout);
+            if (!logout) {
+                player.getPacketDispatcher().sendClientScript(3145);
+            }
             player.getAreaManager().setArea(null);
         }
         cleared();
@@ -319,6 +322,7 @@ public abstract class DynamicArea extends PolygonRegionArea implements RandomEve
     @Override
     public void add(Player player) {
         super.add(player);
+        player.getPacketDispatcher().sendClientScript(3145, 0);
 
         final AreaManager areaManager = player.getAreaManager();
         areaManager.setLastDynamicAreaName(getClass().getSimpleName());

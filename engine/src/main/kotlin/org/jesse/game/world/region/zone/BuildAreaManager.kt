@@ -12,13 +12,10 @@ import java.util.function.IntPredicate
 import kotlin.math.max
 import kotlin.math.min
 
-/**
- * @author Kris | 22/08/2024
- */
 class BuildAreaManager(private val player: Player) {
     private var lastChunk: Int = -1
-    val chunksInScope = IntOpenHashSet(49)
-    private val chunksToSkip = IntOpenHashSet(49)
+    val chunksInScope = IntOpenHashSet(196)   // 49 zones × 4 planes
+    private val chunksToSkip = IntOpenHashSet(196)
 
     fun syncNewZones() {
         val currentHash = player.location.chunkHash
@@ -32,7 +29,6 @@ class BuildAreaManager(private val player: Player) {
         val baseChunk = player.sceneBaseChunkId
         val baseX = baseChunk and 2047
         val baseY = baseChunk shr 11 and 2047
-        val plane = player.plane
         val tile = player.location
         val tileX = tile.chunkX
         val tileY = tile.chunkY
@@ -61,50 +57,53 @@ class BuildAreaManager(private val player: Player) {
         val maxGlobalX = baseX + endX
         val maxGlobalY = baseY + endY
         val chunksInScope = chunksInScope
-        //First lets remove all out-of-boundaries chunks.
+        // Remove chunks whose XY falls outside the new synchronization window
+        // (on ANY plane — plane is no longer a removal criterion).
         chunksInScope.removeIf(IntPredicate { chunk: Int ->
-            val chunkZ = chunk shr 22
-            if (chunkZ != plane) {
-                return@IntPredicate true
-            }
             val chunkX = chunk and 2047
             val chunkY = chunk shr 11 and 2047
             chunkX < baseGlobalX || chunkX > maxGlobalX || chunkY < baseGlobalY || chunkY > maxGlobalY
         })
 
-        //Now let's fill all the new ones that just came into boundaries.
-        for (x in startX..endX) {
-            for (y in startY..endY) {
-                val chunkX = baseX + x
-                val chunkY = baseY + y
-                val chunk = World.getChunk(Chunk.getChunkHash(chunkX, chunkY, plane))
-                if (!chunksInScope.add(chunk.chunkId)) {
-                    continue
-                }
-                chunksToSkip += chunk.chunkId
-                val spawnedObjects: Short2ObjectMap<WorldObject> = chunk.spawnedObjects
-                val originalObjects: Short2ObjectMap<WorldObject> = chunk.originalObjects
-                val floorItems = chunk.floorItems
-                player.packetDispatcher.updateZoneFullFollows(x shl 3, y shl 3, plane)
-                if (!originalObjects.isEmpty()) {
-                    val objects: ObjectCollection<WorldObject> = originalObjects.values
-                    for (removedObject in objects) {
-                        player.packetDispatcher.locDel(removedObject.x, removedObject.y, removedObject.type, removedObject.rotation)
+        // Fill all new chunks across ALL 4 planes. The client's scene covers all
+        // planes (rebuild_region sends zones for planes 0–3), so zone updates on
+        // any plane must be tracked. Without this, projectiles, spotanims, and
+        // object changes on a plane other than the player's are silently dropped
+        // (e.g. ToA instances that join multi-plane source regions into one scene).
+        for (level in 0 until PLANE_COUNT) {
+            for (x in startX..endX) {
+                for (y in startY..endY) {
+                    val chunkX = baseX + x
+                    val chunkY = baseY + y
+                    val chunk = World.getChunk(Chunk.getChunkHash(chunkX, chunkY, level))
+                    if (!chunksInScope.add(chunk.chunkId)) {
+                        continue
                     }
-                }
-                if (!spawnedObjects.isEmpty()) {
-                    val objects: ObjectCollection<WorldObject> = spawnedObjects.values
-                    for (spawnedObject in objects) {
-                        player.packetDispatcher.locAddChange(spawnedObject.id, spawnedObject.x, spawnedObject.y, spawnedObject.type, spawnedObject.rotation, 0b11111)
-                    }
-                }
-                if (floorItems.isNotEmpty()) {
-                    for (item in floorItems) {
-                        if (!item.isVisibleTo(player) || !player.isFloorItemDisplayed(item)) {
-                            continue
+                    chunksToSkip += chunk.chunkId
+                    val spawnedObjects: Short2ObjectMap<WorldObject> = chunk.spawnedObjects
+                    val originalObjects: Short2ObjectMap<WorldObject> = chunk.originalObjects
+                    val floorItems = chunk.floorItems
+                    player.packetDispatcher.updateZoneFullFollows(x shl 3, y shl 3, level)
+                    if (!originalObjects.isEmpty()) {
+                        val objects: ObjectCollection<WorldObject> = originalObjects.values
+                        for (removedObject in objects) {
+                            player.packetDispatcher.locDel(removedObject.x, removedObject.y, removedObject.type, removedObject.rotation)
                         }
-                        val location = item.location
-                        player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                    }
+                    if (!spawnedObjects.isEmpty()) {
+                        val objects: ObjectCollection<WorldObject> = spawnedObjects.values
+                        for (spawnedObject in objects) {
+                            player.packetDispatcher.locAddChange(spawnedObject.id, spawnedObject.x, spawnedObject.y, spawnedObject.type, spawnedObject.rotation, 0b11111)
+                        }
+                    }
+                    if (floorItems.isNotEmpty()) {
+                        for (item in floorItems) {
+                            if (!item.isVisibleTo(player) || !player.isFloorItemDisplayed(item)) {
+                                continue
+                            }
+                            val location = item.location
+                            player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                        }
                     }
                 }
             }
@@ -115,7 +114,6 @@ class BuildAreaManager(private val player: Player) {
         val baseChunk = player.sceneBaseChunkId
         val baseX = baseChunk and 2047
         val baseY = baseChunk shr 11 and 2047
-        val plane = player.plane
         val tile = player.location
         val tileX = tile.chunkX
         val tileY = tile.chunkY
@@ -139,11 +137,12 @@ class BuildAreaManager(private val player: Player) {
                 (tileY + CHUNK_SYNCHRONIZATION_RADIUS).toDouble(),
                 (baseY + SCENE_CHUNKS_DIAMETER - 1).toDouble()
             ) - baseY).toInt()
+        for (level in 0 until PLANE_COUNT) {
         for (x in startX..endX) {
             for (y in startY..endY) {
                 val chunkX = baseX + x
                 val chunkY = baseY + y
-                val chunk = World.getChunk(Chunk.getChunkHash(chunkX, chunkY, plane))
+                val chunk = World.getChunk(Chunk.getChunkHash(chunkX, chunkY, level))
                 val floorItems = chunk.floorItems
                 if (floorItems.isNotEmpty()) {
                     for (item in floorItems) {
@@ -163,13 +162,13 @@ class BuildAreaManager(private val player: Player) {
                 }
             }
         }
+        } // for level
     }
 
     fun updateDummyEvents() {
         val baseChunk = player.sceneBaseChunkId
         val baseX = (baseChunk and 2047) shl 3
         val baseY = (baseChunk shr 11 and 2047) shl 3
-        val plane = player.plane
         for (zoneId in this.chunksInScope.intIterator()) {
             if (this.chunksToSkip.contains(zoneId)) {
                 continue
@@ -180,7 +179,8 @@ class BuildAreaManager(private val player: Player) {
             }
             val swX = (zoneId and 2047) shl 3
             val swY = (zoneId ushr 11 and 2047) shl 3
-            player.packetDispatcher.updateZonePartialFollows(swX - baseX, swY - baseY, plane)
+            val zonePlane = zoneId ushr 22
+            player.packetDispatcher.updateZonePartialFollows(swX - baseX, swY - baseY, zonePlane)
             for (update in dummy) {
                 when (update) {
                     is ObjAddDummyEvent -> {
@@ -210,7 +210,6 @@ class BuildAreaManager(private val player: Player) {
         val baseChunk = player.sceneBaseChunkId
         val baseX = (baseChunk and 2047) shl 3
         val baseY = (baseChunk shr 11 and 2047) shl 3
-        val plane = player.plane
         for (zoneId in this.chunksInScope.intIterator()) {
             if (this.chunksToSkip.contains(zoneId)) {
                 continue
@@ -221,8 +220,9 @@ class BuildAreaManager(private val player: Player) {
             val desktopUpdates = globalUpdates?.get(clientType) ?: continue
             val swX = (zoneId and 2047) shl 3
             val swY = (zoneId ushr 11 and 2047) shl 3
+            val zonePlane = zoneId ushr 22
             for (buf in globalUpdates) {
-                player.packetDispatcher.updateZonePartialEnclosed(swX - baseX, swY - baseY, plane, desktopUpdates)
+                player.packetDispatcher.updateZonePartialEnclosed(swX - baseX, swY - baseY, zonePlane, desktopUpdates)
             }
         }
     }
@@ -232,6 +232,15 @@ class BuildAreaManager(private val player: Player) {
          * The maximum number of chunks that are loaded in scene at once in a row.
          */
         private const val SCENE_CHUNKS_DIAMETER = Player.SCENE_DIAMETER shr 3
+
+        /**
+         * The number of planes (height levels) the client scene covers.
+         * Zone updates must be tracked and sent for all planes, not just
+         * the player's current plane, because the client renders all 4
+         * planes simultaneously and instanced content (e.g. ToA) maps
+         * source zones from multiple planes into one scene.
+         */
+        private const val PLANE_COUNT = 4
 
         /**
          * The number of chunks that around the player that are being synchronized.

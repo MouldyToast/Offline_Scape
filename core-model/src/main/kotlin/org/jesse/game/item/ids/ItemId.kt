@@ -2,10 +2,6 @@
 
 package org.jesse.game.item.ids
 
-/**
- * @author Kris | 12/10/2019
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 const val DWARF_REMAINS = 0
 const val TOOLKIT = 1
 const val CANNONBALL = 2

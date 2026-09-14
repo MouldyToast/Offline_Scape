@@ -5,13 +5,10 @@ import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.Location;
 import org.apache.commons.lang3.StringUtils;
 
-/**
- * @author Savions.
- */
 public enum TOAPathType {
 
 	APMEKEN("Apmeken", new Location(3562, 5146), EncounterType.APMEKEN_PUZZLE, new Location(3561, 5146), 0, 2, Direction.WEST),
-	SCABARAS("Scabaras", new Location(3559, 5155), EncounterType.SCABARIS_BOSS, new Location(3558, 5154), 0, 0, Direction.SOUTH_WEST),
+	SCABARAS("Scabaras", new Location(3559, 5155), EncounterType.SCABARIS_PUZZLE, new Location(3558, 5154), 0, 0, Direction.SOUTH_WEST),
 	HET("Het", new Location(3539, 5146), EncounterType.HET_PUZZLE, new Location(3541, 5146), 0, 2, Direction.EAST),
 	CRONDIS("Crondis", new Location(3541, 5155), EncounterType.CRONDIS_PUZZLE, new Location(3544, 5154), 0, 0, Direction.SOUTH_EAST);
 

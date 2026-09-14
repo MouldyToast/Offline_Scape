@@ -75,24 +75,22 @@ public final class ZulrahInstance extends DynamicArea implements DeathPlugin, Pa
     @Override
     public void constructed() {
         final Location position = getLocation(2268, 3068, 0);
-        final Location camPos = getLocation(2256, 3064, 0);
-        final Location camLook = getLocation(2275, 3080, 0);
         WorldTasksManager.schedule(new TickTask() {
             @Override
             public void run() {
                 switch (ticks++) {
-                case 0:
-                    player.setLocation(position);
-                    return;
-                case 1:
-                    final Location tile = player.getLastLoadedMapRegionTile();
-                    player.getPacketDispatcher().sendCameraPosition(camPos.getLocalX(tile), camPos.getLocalY(tile), 1000, -128, 0);
-                    player.getPacketDispatcher().sendCameraLook(camLook.getLocalX(tile), camLook.getLocalY(tile), 1000, -128, 0);
-                    return;
-                case 2:
-                    player.getDialogueManager().start(new PlainChat(player, "The priestess rows you to Zulrah\'s shrine,<br>then hurriedly paddles away."));
-                    fadeScreen.unfade();
-                    stop();
+                    case 0:
+                        player.setLocation(position);
+                        return;
+                    case 1:
+                        // RSProx: cam_forceangle(143) args=[280, 1780]
+                        // pitch=280, yaw=1780 (looking north toward Zulrah's spawn)
+                        player.getPacketDispatcher().sendClientScript(143, 280, 1780);
+                        return;
+                    case 2:
+                        player.getDialogueManager().start(new PlainChat(player, "The priestess rows you to Zulrah\'s shrine,<br>then hurriedly paddles away."));
+                        fadeScreen.unfade();
+                        stop();
                 }
             }
         }, Math.min(3 - (int) ((System.currentTimeMillis() - ms) / 600), 5), 0);

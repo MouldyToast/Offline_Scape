@@ -11,7 +11,7 @@ public class VenatorsRingEquipPlugin implements EquipPlugin {
     @Override
     public boolean handle(Player player, Item item, int slotId, int equipmentSlot) {
         final int kills = player.getNotificationSettings().getKillcount("leviathan");
-        if (kills == 0) {
+        if (kills < 0) {
             player.sendMessage("The ring slips off your finger. The power within it seems unfamiliar.");
             return false;
         }

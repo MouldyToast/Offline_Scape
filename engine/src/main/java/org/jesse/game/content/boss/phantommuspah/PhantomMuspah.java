@@ -71,9 +71,9 @@ public class PhantomMuspah extends NPC implements CombatScript {
 	private static final SoundEffect GROUND_SMASH_SOUND = new SoundEffect(6817);
 	private static final SoundEffect SOULSPLIT_SOUND = new SoundEffect(5237);
 	private static final SoundEffect SHIELD_DOWN_SOUND = new SoundEffect(6805);
-	private static final Projectile RANGE_PROJECTILE = new Projectile(2329, 32, 25, 26, 5, 34, 244, 0);
-	private static final Projectile MAGE_PROJECTILE = new Projectile(2327, 100, 24, 24, 5, 30, 0, 0);
-	private static final Projectile SOULSPLIT_PROJECTILE = new Projectile(2009, 30, 47, 0, 5, 50, 64, 0);
+	private static final Projectile RANGE_PROJECTILE = new Projectile(2329, 128, 100, 26, 5, 34, 244, 0);
+	private static final Projectile MAGE_PROJECTILE = new Projectile(2327, 400, 96, 24, 5, 30, 0, 0);
+	private static final Projectile SOULSPLIT_PROJECTILE = new Projectile(2009, 120, 188, 0, 5, 50, 64, 0);
 	private static final RSColour[] SHIELD_HUD_COLOURS = { new RSColour(2, 1, 4), new RSColour(7, 4, 13), new RSColour(14, 8, 25) };
 	private static final int[][] TELEPORT_CIR = {{38, 33}, {24, 39}, {29, 25}, {36, 39}, {22, 33}, {35, 27}, {30, 38}, {23, 26}, {38, 33}, {24, 39}, {29, 25},
 			{36, 39}, {22, 33}, {35, 27}, {30, 38}, {23, 26}, {38, 33}, {24, 39}, {29, 25} };

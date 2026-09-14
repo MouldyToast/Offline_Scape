@@ -10,7 +10,7 @@ import org.jesse.game.world.entity.player.Player;
 
 public final class NexBloodReaver extends BloodReaver {
 
-	public static Projectile soulSplitProjectile = new Projectile(2009, 30, 30, 0, 6, 60, 0, 0);
+	public static Projectile soulSplitProjectile = new Projectile(2009, 120, 120, 0, 6, 60, 0, 0);
 	public static final int ID = NpcId.BLOOD_REAVER_11294;
 
 	private final NexNPC nex;

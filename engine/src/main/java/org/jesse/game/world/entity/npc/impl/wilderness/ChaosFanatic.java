@@ -25,10 +25,10 @@ import java.util.ArrayList;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
  */
 public class ChaosFanatic extends NPC implements CombatScript, Spawnable {
-	private static final Projectile SPECIAL_ATTACK_PROJ = new Projectile(551, 42, 30, 55, 55, 60, 32, 5);
+	private static final Projectile SPECIAL_ATTACK_PROJ = new Projectile(551, 168, 120, 55, 55, 60, 32, 5);
 	private static final Graphics FIRE_WAVE_GFX = new Graphics(157);
 	private static final Graphics SPECIAL_ATTACK_GFX = new Graphics(552);
-	private static final Projectile AUTO_ATTACK_PROJ = new Projectile(554, 42, 30, 55, 15, 29, 32, 5);
+	private static final Projectile AUTO_ATTACK_PROJ = new Projectile(554, 168, 120, 55, 15, 29, 32, 5);
 	private static final Graphics AUTO_ATTACK_GFX = new Graphics(305);
 
 	private static final String[] FORCECHAT = new String[] {"WEUGH!", "Devilish Oxen Roll!", "All your wilderness are belong to them!", "AhehHeheuhHhahueHuUEehEahAH", "I shall call him squidgy and he shall be my squidgy!"};

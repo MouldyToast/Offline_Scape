@@ -20,7 +20,7 @@ public class Scarab extends TOANPC implements CombatScript {
 	private static final int ID = 11697;
 	private static final Animation SPAWN_ANIM = new Animation(9589);
 	private static final Animation ATTACK_ANIM = new Animation(9587);
-	private static final Projectile ATTACK_PROJECTILE = new Projectile(1766, 11, 22, 51, 16, 15, 64, 5);
+	private static final Projectile ATTACK_PROJECTILE = new Projectile(1766, 44, 88, 51, 16, 15, 64, 5);
 	private final boolean isSouthernSpawned;
 	private final ScabarasEncounter encounter;
 

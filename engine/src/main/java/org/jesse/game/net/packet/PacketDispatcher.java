@@ -121,8 +121,8 @@ public final class PacketDispatcher {
         ZoneManager.INSTANCE.mapProjAnim(
                 sender.getPosition().getChunkHash(),
                 projectile.getGraphicsId(),
-                projectile.getStartHeight(),
-                projectile.getEndHeight(),
+                projectile.getStartHeight() / 4,
+                projectile.getEndHeight() / 4,
                 projectile.getDelay(),
                 speed,
                 projectile.getAngle(),

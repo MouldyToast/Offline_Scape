@@ -19,7 +19,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities;
 public final class RangedSequence implements Sequence {
 
     private static final Animation ANIM = new Animation(5069);
-    private static final Projectile PROJ = new Projectile(1044, 65, 10, 40, 15, 18, 0, 5);
+    private static final Projectile PROJ = new Projectile(1044, 260, 40, 40, 15, 18, 0, 5);
 
     private static final SoundEffect RANGED_SEND = new SoundEffect(213, 15);
     private static final SoundEffect RANGED_IMPACT = new SoundEffect(224, 15);

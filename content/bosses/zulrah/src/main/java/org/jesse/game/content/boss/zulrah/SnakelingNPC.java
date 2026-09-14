@@ -81,7 +81,7 @@ public final class SnakelingNPC extends NPC implements CombatScript {
     private static final SoundEffect IMPACT_SOUND = new SoundEffect(794, 2770, 15);
     private static final SoundEffect MELEE_SOUND = new SoundEffect(794, 15);
 
-    private static final Projectile MAGIC_PROJ = new Projectile(1230, 15, 16, 30, 15, 18, 0, 5);
+    private static final Projectile MAGIC_PROJ = new Projectile(1230, 60, 64, 30, 15, 18, 0, 5);
 
     @Override
 	public int attack(final Entity target) {

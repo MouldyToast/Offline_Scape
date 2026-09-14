@@ -29,4 +29,4 @@ internal fun VerzikVitur.lampAttack() {
 }
 
 val lampAttackAnimation = Animation(8114)
-private val projectile = Projectile(1583, 52, 0, 30, 0, 40, 128, 0)
+private val projectile = Projectile(1583, 208, 0, 30, 0, 40, 128, 0)

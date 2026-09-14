@@ -43,7 +43,7 @@ public class Dusk extends NPC implements CombatScript {
     private static final Animation PRISON_ATTACK_ANIM = new Animation(7799);
     private static final Animation DEATH_FIRST_ANIM = new Animation(7803);
     private static final Animation DEATH_SECOND_ANIM = new Animation(7809);
-    private static final Projectile RANGED_ATTACK_PROJ = new Projectile(1444, 90, 40, 0, 32);
+    private static final Projectile RANGED_ATTACK_PROJ = new Projectile(1444, 360, 160, 0, 32);
     private static final Graphics PRISON_ATTACK_GFX = new Graphics(1434);
     private static final ForceTalk ARGHHH = new ForceTalk("Arghhh!");
     public static final int ATTACKABLE_NPC_ID = 7851;

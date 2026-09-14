@@ -31,9 +31,9 @@ public final class TzTokJad extends FightCavesNPC implements CombatScript {
     public static final SoundEffect rangedAttackSound = new SoundEffect(163);
     public static final SoundEffect mageAttackSound = new SoundEffect(162);
     public static final SoundEffect mageLandSound = new SoundEffect(163);
-    public static final Projectile MAGIC_PROJ_HEAD = new Projectile(448, 140, 20, 80, 5, 50, 0, 0);
-    public static final Projectile MAGIC_PROJ_BODY = new Projectile(449, 140, 20, 85, 5, 50, 0, 0);
-    public static final Projectile MAGIC_PROJ_TRAIL = new Projectile(450, 140, 20, 90, 5, 50, 0, 0);
+    public static final Projectile MAGIC_PROJ_HEAD = new Projectile(448, 560, 80, 80, 5, 50, 0, 0);
+    public static final Projectile MAGIC_PROJ_BODY = new Projectile(449, 560, 80, 85, 5, 50, 0, 0);
+    public static final Projectile MAGIC_PROJ_TRAIL = new Projectile(450, 560, 80, 90, 5, 50, 0, 0);
 
     public static final Projectile[] MAGIC_PROJECTILES = new Projectile[] {MAGIC_PROJ_HEAD, MAGIC_PROJ_BODY, MAGIC_PROJ_TRAIL};
     private final int maximumHealth = getMaxHitpoints() >> 1;

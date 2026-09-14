@@ -387,7 +387,7 @@ internal class Sotetseg(room: SotetsegRoom) :
         private val meleeAttackAnimation = Animation(8138)
         private val magicAttackAnimation = Animation(8139)
         private val bombHitGraphic = Graphics(1605)
-        private val bombProjectile = Projectile(1604, 40, 30, 0, 0, 15 * 30, 0, 0)
+        private val bombProjectile = Projectile(1604, 160, 120, 0, 0, 15 * 30, 0, 0)
 
     }
 

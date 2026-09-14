@@ -117,7 +117,7 @@ internal object WebPassiveSpell : PassiveSpell {
     private fun VerzikVitur.attemptWeb(startLoc: Location, webLoc: Location, webLocs: MutableSet<Location>, localWebs: MutableSet<Location>) {
         if (localWebs.contains(webLoc) || !World.isSquareFree(webLoc, 1)) return
         localWebs.add(webLoc)
-        val projectile = Projectile(1601, 132, 0, 0, 14, 120, 0, 0)
+        val projectile = Projectile(1601, 528, 0, 0, 14, 120, 0, 0)
         val delay = World.sendProjectile(startLoc, webLoc, projectile)
         WorldTasksManager.schedule({
             if (!room.completed && !isDead && !isFinished) {

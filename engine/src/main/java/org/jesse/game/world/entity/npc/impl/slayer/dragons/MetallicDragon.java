@@ -25,7 +25,7 @@ import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
  *      profile</a>
  */
 public final class MetallicDragon extends NPC implements CombatScript, Spawnable {
-	private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 30, 30, 38, 10, 28, 0, 5);
+	private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 120, 120, 38, 10, 28, 0, 5);
 	private static final Animation ATTACK_ANIM = new Animation(80);
 	private static final Animation SECONDARY_ATTACK_ANIM = new Animation(91);
 	private static final Animation DRAGONFIRE_ANIM = new Animation(81);

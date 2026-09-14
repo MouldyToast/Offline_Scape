@@ -44,9 +44,9 @@ abstract class CrashSiteGorilla extends NPC implements CombatScript {
     static final Graphics rangedGraphics = new Graphics(1303);
     static final Graphics magicGraphics = new Graphics(1305);
     static final Graphics boulderGraphics = new Graphics(305, 4 * 30, 5);
-    static final Projectile rangedProjectile = new Projectile(1302, 45, 30, 50, 7, -10, 5, 5);
-    static final Projectile magicProjectile = new Projectile(1304, 10, 10, 45, 7, -10, 0, 4);
-    static final Projectile boulderProjectile = new Projectile(856, 200, 6, 0, 0, 4 * 30, 64, 0);
+    static final Projectile rangedProjectile = new Projectile(1302, 180, 120, 50, 7, -10, 5, 5);
+    static final Projectile magicProjectile = new Projectile(1304, 40, 40, 45, 7, -10, 0, 4);
+    static final Projectile boulderProjectile = new Projectile(856, 800, 24, 0, 0, 4 * 30, 64, 0);
     static final SoundEffect magicAttackStartSound = new SoundEffect(3529, 5, 0);
     static final SoundEffect magicAttackLandSound = new SoundEffect(3528, 5, -1);
     static final SoundEffect rangedAttackStartSound = new SoundEffect(3191, 5, 0);

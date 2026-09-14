@@ -41,7 +41,7 @@ public final class CatapultRoom extends WarriorsGuildArea implements FullMovemen
     private static final Animation[] FALL_ANIMS = new Animation[] {new Animation(4172), new Animation(4173), new Animation(4174), new Animation(4175)};
     private static final InterfacePosition[] tabs = new InterfacePosition[] {InterfacePosition.JOURNAL_TAB_HEADER, InterfacePosition.INVENTORY_TAB, InterfacePosition.PRAYER_TAB, InterfacePosition.SPELLBOOK_TAB, InterfacePosition.SETTINGS_TAB, InterfacePosition.EMOTE_TAB};
     private static final String[] PROJ_NAMES = new String[] {"spiky ball", "flung anvil", "slashing blades", "magic missile"};
-    private static final Projectile[] PROJS = new Projectile[] {new Projectile(679, 60, 15, 0, 45, 40 + 60, 0, 5), new Projectile(680, 60, 15, 0, 45, 40 + 60, 0, 5), new Projectile(681, 60, 15, 0, 45, 40 + 60, 0, 5), new Projectile(682, 60, 15, 0, 45, 40 + 60, 0, 5)};
+    private static final Projectile[] PROJS = new Projectile[] {new Projectile(679, 240, 60, 0, 45, 40 + 60, 0, 5), new Projectile(680, 240, 60, 0, 45, 40 + 60, 0, 5), new Projectile(681, 240, 60, 0, 45, 40 + 60, 0, 5), new Projectile(682, 240, 60, 0, 45, 40 + 60, 0, 5)};
     private static final Animation[] DEFENSIVE_ANIMATIONS = new Animation[] {new Animation(4169), new Animation(4168), new Animation(4171), new Animation(4170)};
 
     @Override

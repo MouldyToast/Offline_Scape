@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.npc.combat.CombatScript;
  */
 public class WingmanSkree extends GodwarsBossMinion implements Spawnable, CombatScript {
     private static final Animation attackAnim = new Animation(6958);
-    private static final Projectile darts = new Projectile(1201, 99, 30, 30, 10, 3, 0, 5);
+    private static final Projectile darts = new Projectile(1201, 396, 120, 30, 10, 3, 0, 5);
     private static final SoundEffect attackSound = new SoundEffect(3868, 10, 0);
     private static final SoundEffect hitSound = new SoundEffect(3873, 10, -1);
 

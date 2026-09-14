@@ -107,7 +107,7 @@ class CrystallineNpcs : NPCDefinitionsScript() {
             type = MAGIC
             maxHit = 28
             animation = Animation(84)
-            projectile = Projectile(projectileGraphicsId, 36, 36, 41, 14, 3, 4, 5)
+            projectile = Projectile(projectileGraphicsId, 144, 144, 41, 14, 3, 4, 5)
             impactGraphics = Graphics(impactGraphicsId)
         }
         block { animation = Animation(89) }
@@ -126,7 +126,7 @@ class CrystallineNpcs : NPCDefinitionsScript() {
         attack {
             type = RANGED
             animation = Animation(2731)
-            projectile = Projectile(projectileGraphicsId, 36, 36, 41, 14, 3, 4, 5)
+            projectile = Projectile(projectileGraphicsId, 144, 144, 41, 14, 3, 4, 5)
         }
         block { animation = Animation(2732) }
         spawn {

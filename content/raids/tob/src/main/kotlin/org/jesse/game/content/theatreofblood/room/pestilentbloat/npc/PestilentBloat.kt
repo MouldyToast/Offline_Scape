@@ -244,7 +244,7 @@ internal class PestilentBloat(room: PestilentBloatRoom) :
 
     companion object {
 
-        private val fliesProjectile = Projectile(1568, 60, 10, 0, 0, 30, 0, 6)
+        private val fliesProjectile = Projectile(1568, 240, 40, 0, 0, 30, 0, 6)
         private val fliesImpactGfx = Graphics(1569)
         private val stompAnimation = Animation(8082)
         private val stunGfx = Graphics(254, 0, 92)

@@ -28,8 +28,8 @@ import org.jesse.game.world.entity.player.Player;
 public class Drake extends NPC implements CombatScript, Spawnable {
     private static final Animation meleeAttackAnim = new Animation(8275);
     private static final Animation rangedAttackAnim = new Animation(8276);
-    private static final Projectile rangedAttackProj = new Projectile(1636, 22, 33, 37, 20, 20, 0, 5);
-    private static final Projectile volcanicFlameProj = new Projectile(1637, 22, 10, 37, 35, 80, 0, 5);
+    private static final Projectile rangedAttackProj = new Projectile(1636, 88, 132, 37, 20, 20, 0, 5);
+    private static final Projectile volcanicFlameProj = new Projectile(1637, 88, 40, 37, 35, 80, 0, 5);
     private static final Graphics volcanicFlameOnHitGfx = new Graphics(1638);
     private static final Animation deathAnim = new Animation(8278);
     private int attacks;

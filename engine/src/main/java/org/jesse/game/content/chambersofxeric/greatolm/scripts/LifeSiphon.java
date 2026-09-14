@@ -22,7 +22,7 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class LifeSiphon implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1355, 65, 0, 30, 15, 90, 0, 0);
+	private static final Projectile projectile = new Projectile(1355, 260, 0, 30, 15, 90, 0, 0);
 	private static final Graphics graphics = new Graphics(1363);
 	private static final SoundEffect hitSound = new SoundEffect(124, 5, 0);
 	private static final SoundEffect startSound = new SoundEffect(1784, 15, 0);

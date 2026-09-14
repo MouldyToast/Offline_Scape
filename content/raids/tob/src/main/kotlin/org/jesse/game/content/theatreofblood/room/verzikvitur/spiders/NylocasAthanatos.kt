@@ -94,8 +94,8 @@ internal class NylocasAthanatos(room: VerzikViturRoom, location: Location) :
     }
 
     companion object {
-        val projectileHeal = Projectile(1587, 28, 32, 0, 7, 30, 0, 0)
-        val projectilePoison = Projectile(1588, 28, 32, 0, 7, 30, 0, 0)
+        val projectileHeal = Projectile(1587, 112, 128, 0, 7, 30, 0, 0)
+        val projectilePoison = Projectile(1588, 112, 128, 0, 7, 30, 0, 0)
         const val ID = 8384
     }
 

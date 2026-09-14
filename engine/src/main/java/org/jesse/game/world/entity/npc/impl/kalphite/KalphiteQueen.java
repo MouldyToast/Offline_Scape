@@ -39,10 +39,10 @@ public class KalphiteQueen extends NPC implements CombatScript, Spawnable {
     private static final int PHASE2_NPC = 965;
     private static final Graphics PHASE_SWITCH_GFX = new Graphics(1055);
     private static final Animation PHASE_SWITCH_ANIM = new Animation(6270);
-    private static final Projectile MAGIC_PROJ_P1 = new Projectile(280, 50, 30, 60, 15, 28, 10, 5);
-    private static final Projectile MAGIC_PROJ_P2 = new Projectile(280, 80, 30, 60, 15, 28, 10, 5);
-    private static final Projectile RANGED_PROJ_P1 = new Projectile(288, 40, 30, 35, 15, 8, 10, 5);
-    private static final Projectile RANGED_PROJ_P2 = new Projectile(289, 40, 30, 35, 15, 8, 10, 5);
+    private static final Projectile MAGIC_PROJ_P1 = new Projectile(280, 200, 120, 60, 15, 28, 10, 5);
+    private static final Projectile MAGIC_PROJ_P2 = new Projectile(280, 320, 120, 60, 15, 28, 10, 5);
+    private static final Projectile RANGED_PROJ_P1 = new Projectile(288, 160, 120, 35, 15, 8, 10, 5);
+    private static final Projectile RANGED_PROJ_P2 = new Projectile(289, 160, 120, 35, 15, 8, 10, 5);
     private static final Graphics MAGIC_GFX_P1 = new Graphics(278);
     private static final Graphics MAGIC_GFX_P2 = new Graphics(279);
     private static final Graphics MAGIC_HIT_GFX = new Graphics(281);

@@ -24,7 +24,7 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class DeepBurn implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1349, 65, 0, 30, 15, 18, 0, 5);
+	private static final Projectile projectile = new Projectile(1349, 260, 0, 30, 15, 18, 0, 5);
 	private static final ForceTalk chat = new ForceTalk("Burn with me!");
 	private static final ForceTalk infectedChat = new ForceTalk("I will burn with you!");
 	private static final SoundEffect startSound = new SoundEffect(585, 15, 0);

@@ -35,7 +35,7 @@ public class Kraken extends NPC implements CombatScript, Spawnable {
 	public static final String CA_TASK_INSTANCE_KC_ATT = "kraken_instance_kc";
 	private static final Animation AWAKE_ANIM = new Animation(7135);
 	private static final ImmutableList<Byte[]> POSITIONS = ImmutableList.of(new Byte[] {-3, 4}, new Byte[] {6, 4}, new Byte[] {-3, 0}, new Byte[] {6, 0});
-	private static final Projectile PROJECTILE = new Projectile(156, 80, 28, 35, 20, 18, 64, 5);
+	private static final Projectile PROJECTILE = new Projectile(156, 320, 112, 35, 20, 18, 64, 5);
 	private static final Graphics SPLASH_GRAPHICS = new Graphics(85, 0, 124);
 	private final EnormousTentacle[] tentacles = new EnormousTentacle[4];
 	private int ticks;
@@ -55,7 +55,7 @@ public class Kraken extends NPC implements CombatScript, Spawnable {
 
 		private static final Animation animation = new Animation(2779);
 		private static final Graphics throwingGraphics = new Graphics(50, 0, 96);
-		private static final Projectile throwingProjectile = new Projectile(49, 34, 10, 20, 25, 0, 11, 3);
+		private static final Projectile throwingProjectile = new Projectile(49, 136, 40, 20, 25, 0, 11, 3);
 
 		@Override
 		public void handleItemOnNPCAction(Player player, Item item, int slot, NPC npc) {

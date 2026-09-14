@@ -174,7 +174,7 @@ object LeviathanConstants {
 
     val LIGHTNING_PROJECTILE = Projectile(
         LEVIATHAN_LIGHTNING_PROJECTILE.getId(),
-        200,
+        800,
         0,
         40,
         3,
@@ -185,8 +185,8 @@ object LeviathanConstants {
 
     val BOULDER_PROJECTILE = Projectile(
         LEVIATHAN_BOULDER_PROJECTILE.getId(),
-        150,
-        25,
+        600,
+        100,
         0,
         40,
         60,

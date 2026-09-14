@@ -44,8 +44,8 @@
     },
     "projectile": {
       "graphicsId": 1682,
-      "startHeight": 40,
-      "endHeight": 36,
+      "startHeight": 160,
+      "endHeight": 144,
       "angle": 21,
       "distanceOffset": 11,
       "multiplier": 5,

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class ArmadylianGuard extends TreasureGuardian implements CombatScript {
 
     private static final ForceTalk chat = new ForceTalk("No warning! Begone!");
-    private static final Projectile projectile = new Projectile(1193, 85, 30, 30, 15, 8, 0, 5);
+    private static final Projectile projectile = new Projectile(1193, 340, 120, 30, 15, 8, 0, 5);
 
     public ArmadylianGuard(@NotNull final Player owner, @NotNull final Location tile) {
         super(owner, tile, 6587);

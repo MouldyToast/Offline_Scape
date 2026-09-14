@@ -38,4 +38,4 @@ internal fun VerzikVitur.bloodAttack() {
 
 private val bloodAttackAnimation = Animation(8114)
 private val bloodAttackGraphics = Graphics(1592)
-private val projectile = Projectile(1591, 52, 26, 30, 0, 40, 128, 0)
+private val projectile = Projectile(1591, 208, 104, 30, 0, 40, 128, 0)

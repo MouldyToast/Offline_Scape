@@ -77,11 +77,11 @@ public class ManticoreCombat extends ColosseumWaveNpc implements CombatScript {
     // Slot 1 (lowest orb) fires first (delay=0), slot 2 fires slightly after (delay=5).
     // Slot 3 (melee, highest) fires with slot 1.
     // Duration=25 so the orbs arc visibly across the arena (endtime ≈ delay+25 = 25-30).
-    private static final Projectile SLOT1_MAGIC_PROJ = new Projectile(PROJ_MAGIC, 50, 31, 0, 0, 25, 0, 0);
-    private static final Projectile SLOT1_RANGED_PROJ = new Projectile(PROJ_RANGED, 50, 31, 0, 0, 25, 0, 0);
-    private static final Projectile SLOT2_MAGIC_PROJ = new Projectile(PROJ_MAGIC, 65, 31, 5, 0, 25, 0, 0);
-    private static final Projectile SLOT2_RANGED_PROJ = new Projectile(PROJ_RANGED, 65, 31, 5, 0, 25, 0, 0);
-    private static final Projectile SLOT3_MELEE_PROJ = new Projectile(PROJ_MELEE, 80, 31, 0, 0, 25, 0, 0);
+    private static final Projectile SLOT1_MAGIC_PROJ = new Projectile(PROJ_MAGIC, 200, 124, 0, 0, 25, 0, 0);
+    private static final Projectile SLOT1_RANGED_PROJ = new Projectile(PROJ_RANGED, 200, 124, 0, 0, 25, 0, 0);
+    private static final Projectile SLOT2_MAGIC_PROJ = new Projectile(PROJ_MAGIC, 260, 124, 5, 0, 25, 0, 0);
+    private static final Projectile SLOT2_RANGED_PROJ = new Projectile(PROJ_RANGED, 260, 124, 5, 0, 25, 0, 0);
+    private static final Projectile SLOT3_MELEE_PROJ = new Projectile(PROJ_MELEE, 320, 124, 0, 0, 25, 0, 0);
 
     public ManticoreCombat(int id, Location tile, ColosseumInstance instance) {
         super(id, tile, instance);

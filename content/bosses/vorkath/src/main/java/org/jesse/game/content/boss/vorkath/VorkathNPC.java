@@ -38,27 +38,27 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class VorkathNPC extends NPC implements CombatScript {
-    private static final Projectile acidProjectile = new Projectile(1470, 30, 30, 27, 15, 40, 0, 5);
+    private static final Projectile acidProjectile = new Projectile(1470, 120, 120, 27, 15, 40, 0, 5);
     private static final Graphics acidProjectileSplashGfx = new Graphics(1472, 0, 92);
-    private static final Projectile afterPoisonProjectile = new Projectile(1482, 25, 25, 0, 15, 0, 0, 3);
+    private static final Projectile afterPoisonProjectile = new Projectile(1482, 100, 100, 0, 15, 0, 0, 3);
     private static final Graphics afterPoisonProjectileGfx = new Graphics(131, 0, 92);
     private static final Animation basicAttackAnimation = new Animation(7952);
-    private static final Projectile dragonfireProjectile = new Projectile(393, 30, 25, 27, 15, 40, 0, 5);
+    private static final Projectile dragonfireProjectile = new Projectile(393, 120, 100, 27, 15, 40, 0, 5);
     private static final Graphics dragonfireSplashGfx = new Graphics(157, 0, 92);
     private static final Animation highAttackAnimation = new Animation(7960);
-    private static final Projectile highDamageProjectile = new Projectile(1481, 40, 10, 35, 70, 80, 0, 5);
+    private static final Projectile highDamageProjectile = new Projectile(1481, 160, 40, 35, 70, 80, 0, 5);
     private static final Graphics iceBarrageGfx = new Graphics(369);
-    private static final Projectile iceDragonfireProjectile = new Projectile(395, 30, 25, 27, 15, 40, 0, 5);
-    private static final Projectile magicProjectile = new Projectile(1479, 30, 25, 27, 15, 40, 0, 5);
+    private static final Projectile iceDragonfireProjectile = new Projectile(395, 120, 100, 27, 15, 40, 0, 5);
+    private static final Projectile magicProjectile = new Projectile(1479, 120, 100, 27, 15, 40, 0, 5);
     private static final Graphics magicProjectileSplashGfx = new Graphics(1480, 0, 92);
     private static final Animation meleeAnimation = new Animation(7951);
-    private static final Projectile pinkDragonfireProjectile = new Projectile(1471, 30, 25, 27, 15, 40, 0, 5);
+    private static final Projectile pinkDragonfireProjectile = new Projectile(1471, 120, 100, 27, 15, 40, 0, 5);
     private static final Graphics pinkDragonfireProjectileSplashGfx = new Graphics(1473, 0, 92);
     private static final Animation poisonPoolAnimation = new Animation(7957);
-    private static final Projectile poisonPoolProjectile = new Projectile(1483, 25, 0, 35, 70, -1, 64, 5);
-    private static final Projectile rangedProjectile = new Projectile(1477, 30, 25, 27, 15, 40, 0, 5);
+    private static final Projectile poisonPoolProjectile = new Projectile(1483, 100, 0, 35, 70, -1, 64, 5);
+    private static final Projectile rangedProjectile = new Projectile(1477, 120, 100, 27, 15, 40, 0, 5);
     private static final Graphics rangedProjectileSplashGfx = new Graphics(1478, 0, 92);
-    private static final Projectile zombifiedSpawnProjectile = new Projectile(1484, 60, 25, 35, 60, 85, 0, 0);
+    private static final Projectile zombifiedSpawnProjectile = new Projectile(1484, 240, 100, 35, 60, 85, 0, 0);
     private static final SoundEffect bigFireballSound = new SoundEffect(1519);
     private static final SoundEffect bigFireballHittingSound = new SoundEffect(163, 10);
     private static final SoundEffect vorkathIceSound = new SoundEffect(586);

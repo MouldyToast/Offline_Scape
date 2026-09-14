@@ -30,8 +30,8 @@ import org.jetbrains.annotations.NotNull;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public abstract class MageArenaBossBase extends NPC implements CombatScript {
-    private static final Projectile teleblockProjectile = new Projectile(1299, 43, 25, 40, 0, 28, 64, 5);
-    private static final Projectile barrageProjectile = new Projectile(368, 43, 0, 51, 23, 70, 64, 5);
+    private static final Projectile teleblockProjectile = new Projectile(1299, 172, 100, 40, 0, 28, 64, 5);
+    private static final Projectile barrageProjectile = new Projectile(368, 172, 0, 51, 23, 70, 64, 5);
 
     MageArenaBossBase(final int id, @NotNull final Player owner, @NotNull final Location tile) {
         super(id, tile, Direction.SOUTH, 5);

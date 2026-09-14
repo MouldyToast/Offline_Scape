@@ -20,8 +20,8 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities;
 public final class MagicSequence implements Sequence {
 
     private static final Animation ANIM = new Animation(5069);
-    private static final Projectile MAGIC_PROJ = new Projectile(1046, 65, 10, 40, 15, 18, 0, 5);
-    private static final Projectile RANGED_PROJ = new Projectile(1044, 65, 10, 40, 15, 18, 0, 5);
+    private static final Projectile MAGIC_PROJ = new Projectile(1046, 260, 40, 40, 15, 18, 0, 5);
+    private static final Projectile RANGED_PROJ = new Projectile(1044, 260, 40, 40, 15, 18, 0, 5);
 
     private static final SoundEffect RANGED_SEND = new SoundEffect(213, 15);
     private static final SoundEffect RANGED_IMPACT = new SoundEffect(224, 15);

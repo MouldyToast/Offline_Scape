@@ -26,7 +26,7 @@ public class SergeantSteelwill extends GodwarsBossMinion implements Spawnable, C
         return id == 2217;
     }
 
-    private static final Projectile projectile = new Projectile(1217, 31, 20, 30, 5, 18, 0, 5);
+    private static final Projectile projectile = new Projectile(1217, 124, 80, 30, 5, 18, 0, 5);
     private static final Graphics attackGraphics = new Graphics(1216);
     private static final Graphics targetGraphics = new Graphics(166, 0, 90);
     private static final Graphics splashGraphics = new Graphics(85, 0, 124);

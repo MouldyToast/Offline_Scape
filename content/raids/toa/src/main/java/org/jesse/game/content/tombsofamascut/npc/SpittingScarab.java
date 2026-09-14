@@ -27,7 +27,7 @@ public class SpittingScarab extends TOANPC implements CombatScript {
 	private static final Location SPAWN_LOC = new Location(3556, 5413);
 	private static final Animation SPAWN_ANIM = new Animation(9589);
 	private static final Animation ATTACK_ANIM = new Animation(9588);
-	private static final Projectile ATTACK_PROJECTILE = new Projectile(2152, 24, 31, 36, 16, 14, 64, 5);
+	private static final Projectile ATTACK_PROJECTILE = new Projectile(2152, 96, 124, 36, 16, 14, 64, 5);
 	private final KephriEncounter encounter;
 
 	public SpittingScarab(KephriEncounter encounter) {

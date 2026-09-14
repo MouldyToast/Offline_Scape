@@ -30,7 +30,7 @@ public class Wyrm extends NPC implements CombatScript, Spawnable {
     private static final Animation transformToIdleAnim = new Animation(8269);
     private static final Animation magicAttackAnim = new Animation(8270);
     private static final Animation meleeAttackAnim = new Animation(8271);
-    private static final Projectile magicAttackProj = new Projectile(1634, 43, 10, 33, 10, 18, 0, 5);
+    private static final Projectile magicAttackProj = new Projectile(1634, 172, 40, 33, 10, 18, 0, 5);
     private static final int IDLE_STATE_NPC_ID = 8610;
     private static final int ATTACK_STATE_NPC_ID = 8611;
 

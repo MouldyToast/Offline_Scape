@@ -780,8 +780,8 @@ fun AttackType.sequence(count: Int): Array<AttackType> {
 object ProjConstants {
     val WHISPERER_BASIC_MAGIC = Projectile(
         WhispererConstants.WHISPERER_BASIC_MAGIC_PROJECTILE.id,
-        87,   // startHeight
-        25,   // endHeight
+        348,   // startHeight
+        100,   // endHeight
         30,   // delay (slow)
         5,    // angle (corrected from 60; see explanation)
         51,   // duration
@@ -791,8 +791,8 @@ object ProjConstants {
 
     val WHISPERER_BASIC_MAGIC_FASTEST = Projectile(
         WhispererConstants.WHISPERER_BASIC_MAGIC_PROJECTILE.id,
-        87,
-        25,
+        348,
+        100,
         0,    // delay (fast)
         5,    // angle
         51,   // duration
@@ -802,8 +802,8 @@ object ProjConstants {
 
     val WHISPERER_BASIC_RANGED = Projectile(
         WhispererConstants.WHISPERER_BASIC_RANGED_PROJECTILE.id,
-        87,
-        25,
+        348,
+        100,
         30,   // delay (slow)
         5,    // angle
         51,   // duration
@@ -813,8 +813,8 @@ object ProjConstants {
 
     val WHISPERER_BASIC_RANGED_FASTEST = Projectile(
         WhispererConstants.WHISPERER_BASIC_RANGED_PROJECTILE.id,
-        87,
-        25,
+        348,
+        100,
         0,    // delay (fast)
         5,    // angle
         51,   // duration
@@ -824,7 +824,7 @@ object ProjConstants {
 
     val WHISPERER_BIND = Projectile(
         WhispererConstants.WHISPERER_BIND_PROJECTILE.id,
-        145,  // startHeight
+        580,  // startHeight
         0,    // endHeight
         80,   // delay
         5,    // angle
@@ -846,7 +846,7 @@ object ProjConstants {
 
     val WHISPERER_SOUL_SIPHON = Projectile(
         WhispererConstants.WHISPERER_SOUL_SIPHON.id,
-        125,
+        500,
         0,
         0,    // delay
         5,    // angle
@@ -857,7 +857,7 @@ object ProjConstants {
 
     val WHISPERER_SOUL_SIPHON_RETURN = Projectile(
         WhispererConstants.WHISPERER_SOUL_SIPHON_RETURN.id,
-        100,
+        400,
         0,
         0,    // delay
         5,    // angle

@@ -91,7 +91,7 @@ public class SecondWardenEncounter extends TOARaidArea implements CycleProcessPl
     private static final SoundEffect LAST_PHASE_START_SOUND = new SoundEffect(1465);
     private static final SoundEffect[] FLOOR_REMOVAL_SOUNDS = {new SoundEffect(6247, 9), new SoundEffect(6153, 9, 30), new SoundEffect(6124, 9, 60), new SoundEffect(6219, 9, 90)};
     private static final SoundEffect[] LAID_TO_REST_SOUNDS = {new SoundEffect(6143), new SoundEffect(6044, 1, 330)};
-    private static final Projectile FLOOR_REMOVAL_PROJECTILE = new Projectile(2228, 0, 200, 0, 20, 90, 0, 0);
+    private static final Projectile FLOOR_REMOVAL_PROJECTILE = new Projectile(2228, 0, 800, 0, 20, 90, 0, 0);
     private final boolean insanity;
     private final List<Location> occupiedThunderLocations = new ArrayList<>();
     private final int wardenAttackSpeed;

@@ -3020,8 +3020,8 @@ class PacketSender(private val player: Player) {
         send {
             ProjAnimSpecificV3(
                 id,
-                startHeight,
-                endHeight,
+                startHeight / 4,
+                endHeight / 4,
                 startTime,
                 endTime,
                 angle,
@@ -3493,8 +3493,8 @@ class PacketSender(private val player: Player) {
         send {
             MapProjAnim(
                 id,
-                startHeight,
-                endHeight,
+                startHeight / 4,
+                endHeight / 4,
                 startTime,
                 endTime,
                 angle,

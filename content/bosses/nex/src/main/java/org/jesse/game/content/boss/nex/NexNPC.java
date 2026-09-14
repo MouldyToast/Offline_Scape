@@ -46,15 +46,15 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 	public static final Location NEX_BASE = new Location(2924, 5202);
 	public static final ZoneBorders PRISON_ZONE = new ZoneBorders(2910, 5188, 2940, 5218);
 
-	private static final Projectile wrathProjectile = new Projectile(2012, 30, 0, 0, 0, 60, 64, 0);
-	public static final Projectile iceProjectile = new Projectile(2004, 30, 30, 45, 6, 60, 64, 0);
-	public static final Projectile bloodProjectile = new Projectile(2002, 30, 0, 45, 6, 64, 64, 0);
-	public static final Projectile shadowProjectile = new Projectile(1999, 30, 30, 45, 6, 60, 64, 0);
-	public static final Projectile zaros = new Projectile(2007, 30, 30, 45, 6, 60, 64, 0);
-	public static final Projectile soulsplitProjectile = new Projectile(2009, 30, 50, 0, 0, 50, 64, 0);
-	private static final Projectile turmoilProjectile = new Projectile(2010, 30, 30, 45, 0, 60, 64, 0);
-	private static final Projectile ICE_PROJECTILE_DATA = new Projectile(2010, 30, 30, 30, 6, 120, 0, 0);
-	public static final Projectile smokeProjectile = new Projectile(1997, 30, 30, 45, 6, 60, 64, 0);
+	private static final Projectile wrathProjectile = new Projectile(2012, 120, 0, 0, 0, 60, 64, 0);
+	public static final Projectile iceProjectile = new Projectile(2004, 120, 120, 45, 6, 60, 64, 0);
+	public static final Projectile bloodProjectile = new Projectile(2002, 120, 0, 45, 6, 64, 64, 0);
+	public static final Projectile shadowProjectile = new Projectile(1999, 120, 120, 45, 6, 60, 64, 0);
+	public static final Projectile zaros = new Projectile(2007, 120, 120, 45, 6, 60, 64, 0);
+	public static final Projectile soulsplitProjectile = new Projectile(2009, 120, 200, 0, 0, 50, 64, 0);
+	private static final Projectile turmoilProjectile = new Projectile(2010, 120, 120, 45, 0, 60, 64, 0);
+	private static final Projectile ICE_PROJECTILE_DATA = new Projectile(2010, 120, 120, 30, 6, 120, 0, 0);
+	public static final Projectile smokeProjectile = new Projectile(1997, 120, 120, 45, 6, 60, 64, 0);
 	public static final Animation spawnAnim = new Animation(9182);
 	public static final Animation minionPower = new Animation(9189);
 	public static final Animation spellAttack = new Animation(9188);
@@ -288,7 +288,7 @@ public class NexNPC extends NPC implements CombatScript, Spawnable {
 			say("Die now, in a prison of ice!");
 			specialAttackCount++;
 
-			Projectile icePrisonProjectile = new Projectile(2006, 30, 30, 45, 0, 60, 64, 1);
+			Projectile icePrisonProjectile = new Projectile(2006, 120, 120, 45, 0, 60, 64, 1);
 			int ticks = icePrisonProjectile.build(this, randomPlayer);
 			WorldTasksManager.schedule(() -> {
 				randomPlayer.stopAll();

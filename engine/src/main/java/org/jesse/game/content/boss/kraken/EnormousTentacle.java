@@ -25,7 +25,7 @@ import org.jesse.game.world.entity.player.Player;
 public class EnormousTentacle extends NPC implements CombatScript, Spawnable {
 
 	private static final Animation AWAKE_ANIM = new Animation(3860);
-	private static final Projectile PROJECTILE = new Projectile(162, 80, 28, 35, 20, 18, 64, 5);
+	private static final Projectile PROJECTILE = new Projectile(162, 320, 112, 35, 20, 18, 64, 5);
 	private static final Graphics SPLASH_GRAPHICS = new Graphics(85, 0, 124);
 
 	private int ticks;

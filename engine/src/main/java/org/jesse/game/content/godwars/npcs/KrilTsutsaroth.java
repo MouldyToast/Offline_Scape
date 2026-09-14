@@ -29,7 +29,7 @@ import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentSlot
 public class KrilTsutsaroth extends GodwarsBossNPC implements Spawnable, CombatScript {
     private static final Animation meleeAnimation = new Animation(6948);
     private static final Animation magicAnimation = new Animation(6950);
-    private static final Projectile projectile = new Projectile(1155, 41, 16, 30, 5, 10, 0, 5);
+    private static final Projectile projectile = new Projectile(1155, 164, 64, 30, 5, 10, 0, 5);
     private static final ForceTalk forceTalk = new ForceTalk("YARRRRRRR!");
     private static final String message = "K'ril Tsutsaroth slams through your protection prayer, leaving you feeling" +
             " drained.";

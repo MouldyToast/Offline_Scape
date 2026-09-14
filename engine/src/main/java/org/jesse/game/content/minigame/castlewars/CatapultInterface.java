@@ -31,7 +31,7 @@ public class CatapultInterface extends Interface {
     private static final int SARADOMIN_OFFSET_MULTIPLIER = -2;
     private static final int MAX_CLICKS = 30;
     private static final int NUMBER_0_MODEL_ID = 4863;
-    private static final Projectile projectile = new Projectile(304, 50, 5, 0, 45, 100, 32, 5);
+    private static final Projectile projectile = new Projectile(304, 200, 20, 0, 45, 100, 32, 5);
 
     @Override
     protected void attach() {

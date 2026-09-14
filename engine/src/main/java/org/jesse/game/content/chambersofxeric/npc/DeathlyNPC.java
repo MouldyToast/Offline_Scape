@@ -35,7 +35,7 @@ public final class DeathlyNPC extends RaidNPC<DeathlyRoom> implements CombatScri
 
     private static final Animation magicAnim = new Animation(711);
 
-    private static final Projectile magicProj = new Projectile(130, 43, 25, 57, 15, 18, 64, 5);
+    private static final Projectile magicProj = new Projectile(130, 172, 100, 57, 15, 18, 64, 5);
 
     private static final SoundEffect magicCastSound = new SoundEffect(155, 10, 0);
 
@@ -43,7 +43,7 @@ public final class DeathlyNPC extends RaidNPC<DeathlyRoom> implements CombatScri
 
     private static final Animation rangedAnim = new Animation(426);
 
-    private static final Projectile rangedProj = new Projectile(15, 42, 30, 40, 15, 10, 64, 5);
+    private static final Projectile rangedProj = new Projectile(15, 168, 120, 40, 15, 10, 64, 5);
 
     private static final SoundEffect rangedAttackSound = new SoundEffect(2693, 10, 0);
 

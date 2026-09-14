@@ -27,7 +27,7 @@ internal object MeteorPassiveSpell : PassiveSpell {
         animation = castAnimation
 
         fun ball(from: Entity, target: Player, bounces: Int) {
-            val projectile = Projectile(1598, if (first == target) 48 else 28, 28, 0, 9, 180, 0, 5)
+            val projectile = Projectile(1598, if (first == target) 192 else 112, 112, 0, 9, 180, 0, 5)
             val delay = World.sendProjectile(from, target, projectile)
             WorldTasksManager.schedule({
                 var closest: Player? = null

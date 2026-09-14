@@ -30,7 +30,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class CaveKraken extends NPC implements CombatScript, Spawnable {
 	private static final Animation AWAKE_ANIM = new Animation(7135);
-	private static final Projectile PROJECTILE = new Projectile(162, 40, 28, 57, 20, 18, 64, 5);
+	private static final Projectile PROJECTILE = new Projectile(162, 160, 112, 57, 20, 18, 64, 5);
 	private static final Graphics SPLASH_GRAPHICS = new Graphics(85, 0, 124);
 	private int ticks;
 

@@ -32,15 +32,15 @@ public class SummonedSoul extends NPC {
     /**
      * The projectile the summoned soul sends out when performing the melee attack.
      */
-    private static final Projectile soulProjectile = new Projectile(1248, 25, 20, 0, 75, 10, 0, 5);
+    private static final Projectile soulProjectile = new Projectile(1248, 100, 80, 0, 75, 10, 0, 5);
     /**
      * The projectile the summoned soul sends out when performing the ranged attack.
      */
-    private static final Projectile dartProjectile = new Projectile(34, 25, 20, 0, 20, 10, 0, 5);
+    private static final Projectile dartProjectile = new Projectile(34, 100, 80, 0, 20, 10, 0, 5);
     /**
      * The projectile the summoned soul sends out when performing the magic attack.
      */
-    private static final Projectile fireProjectile = new Projectile(100, 25, 20, 27, 20, 10, 0, 5);
+    private static final Projectile fireProjectile = new Projectile(100, 100, 80, 27, 20, 10, 0, 5);
     /**
      * The animation the soul performs when doing the melee attack.
      */

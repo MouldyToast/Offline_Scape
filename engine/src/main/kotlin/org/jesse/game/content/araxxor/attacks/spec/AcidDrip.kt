@@ -18,7 +18,7 @@ import org.jesse.game.world.entity.Entity
  */
 class AcidDrip(val instance: AraxxorInstance) : Attack {
 
-    private val projectileBlob: Projectile = Projectile(2924, 64, 32, 96, 0)
+    private val projectileBlob: Projectile = Projectile(2924, 256, 128, 96, 0)
 
     override fun invoke(araxxor: Araxxor, target: Entity?) {
         if (target == null || target.isDead || target.isFinished) return

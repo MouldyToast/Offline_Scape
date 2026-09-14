@@ -25,9 +25,9 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class Sphere implements OlmCombatScript {
-	private static final Projectile meleeProjectile = new Projectile(1345, 60, 20, 30, 15, 120, 0, 0);
-	private static final Projectile rangedProjectile = new Projectile(1343, 60, 20, 30, 15, 120, 0, 0);
-	private static final Projectile magicProjectile = new Projectile(1341, 60, 20, 30, 15, 120, 0, 0);
+	private static final Projectile meleeProjectile = new Projectile(1345, 240, 80, 30, 15, 120, 0, 0);
+	private static final Projectile rangedProjectile = new Projectile(1343, 240, 80, 30, 15, 120, 0, 0);
+	private static final Projectile magicProjectile = new Projectile(1341, 240, 80, 30, 15, 120, 0, 0);
 	private static final Graphics meleeGraphics = new Graphics(1346, 0, 96);
 	private static final Graphics rangedGraphics = new Graphics(1344, 0, 96);
 	private static final Graphics magicGraphics = new Graphics(1342, 0, 96);

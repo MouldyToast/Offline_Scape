@@ -32,7 +32,7 @@ class AcidBall(
     true
 ), Attack {
 
-    private val projectileBlob: Projectile = Projectile(2924, 64, 32, 64, 0)
+    private val projectileBlob: Projectile = Projectile(2924, 256, 128, 64, 0)
     private var moveDirection: Direction = South
 
     init {

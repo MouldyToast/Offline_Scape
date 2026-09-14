@@ -35,7 +35,7 @@ public final class AcidSpray implements OlmCombatScript {
 				continue;
 			}
 			count--;
-			final Projectile projectile = new Projectile(1364, 65, 0, 30, 15, 0, 0, 10);
+			final Projectile projectile = new Projectile(1364, 260, 0, 30, 15, 0, 0, 10);
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {

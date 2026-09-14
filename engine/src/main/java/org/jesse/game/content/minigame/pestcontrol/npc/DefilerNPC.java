@@ -18,7 +18,7 @@ import org.jesse.game.world.entity.npc.combat.CombatScript;
 public final class DefilerNPC extends PestNPC implements CombatScript {
 
 	private static final SoundEffect ATTACK_SOUND_EFFECT = new SoundEffect(392, 5);
-	private static final Projectile PROJECTILE = new Projectile(657, 50, 30, 20, 25, 10, 0, 5);
+	private static final Projectile PROJECTILE = new Projectile(657, 200, 120, 20, 25, 10, 0, 5);
 
 	public DefilerNPC(final PestControlInstance instance, final PestPortalNPC portal, final int id, final Location tile) {
 		super(instance, portal, id, tile);

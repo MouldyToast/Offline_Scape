@@ -90,7 +90,7 @@ public final class FountainOfRunePlugin implements ItemOnObjectAction {
 
     static {
         for (int i = 1261; i <= 1271; i++) {
-            PROJECTILES.add(new Projectile(i, 100, 0, 0, 60, 58, 0, 5));
+            PROJECTILES.add(new Projectile(i, 400, 0, 0, 60, 58, 0, 5));
         }
     }
 

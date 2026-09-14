@@ -49,9 +49,9 @@ public class Callisto extends NPC implements CombatScript {
 
     public static final Animation KNOCKBACK_ANIMATION = new Animation(1157);
 
-    private static final Projectile RANGED_PROJECTILE = new Projectile(2350, 5, 25, 35, 15, 55, 64, 0);
+    private static final Projectile RANGED_PROJECTILE = new Projectile(2350, 20, 100, 35, 15, 55, 64, 0);
 
-    private static final Projectile MAGIC_PROJECTILE = new Projectile(133, 50, 25, 60, 15, 55, 64, 0);
+    private static final Projectile MAGIC_PROJECTILE = new Projectile(133, 200, 100, 60, 15, 55, 64, 0);
 
     private static final Graphics STOMP_GRAPHICS = new Graphics(2349);
 

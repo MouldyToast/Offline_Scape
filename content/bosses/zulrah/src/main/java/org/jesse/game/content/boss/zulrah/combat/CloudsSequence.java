@@ -18,8 +18,8 @@ import org.jesse.game.world.entity.player.Player;
 public final class CloudsSequence implements Sequence {
 
 	private static final Animation ANIM = new Animation(5069);
-	private static final Projectile PRIMARY_PROJ = new Projectile(1045, 65, 10, 40, 15, 28, 0, 5);
-	private static final Projectile SECONDARY_PROJ = new Projectile(1045, 65, 10, 40, 15, 58, 0, 5);
+	private static final Projectile PRIMARY_PROJ = new Projectile(1045, 260, 40, 40, 15, 28, 0, 5);
+	private static final Projectile SECONDARY_PROJ = new Projectile(1045, 260, 40, 40, 15, 58, 0, 5);
 
 	private static final SoundEffect SOUND_EFFECT = new SoundEffect(796, 15);
 

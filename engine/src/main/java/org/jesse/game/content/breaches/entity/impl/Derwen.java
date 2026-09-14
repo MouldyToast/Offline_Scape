@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Derwen extends BreachEntity implements Spawnable, CombatScript {
-    private static final Projectile energyBall = new Projectile(1512, 50, 10, 40, 10, 70, 64, 5);
+    private static final Projectile energyBall = new Projectile(1512, 200, 40, 40, 10, 70, 64, 5);
 
     public Derwen(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);
@@ -84,7 +84,7 @@ public class Derwen extends BreachEntity implements Spawnable, CombatScript {
 
 
     private static final class EnergyBall extends NPC implements CombatScript {
-        private static final Projectile healProjectile = new Projectile(1513, 10, 40, 0, 10, 70, 64, 5);
+        private static final Projectile healProjectile = new Projectile(1513, 40, 160, 0, 10, 70, 64, 5);
 
         private EnergyBall(final Derwen derwen, final Location tile) {
             super(7514, tile, Direction.SOUTH, 0);

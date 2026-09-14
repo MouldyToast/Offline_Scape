@@ -62,11 +62,11 @@ public final class VasaNistirio extends RaidNPC<VasaNistirioRoom> {
 
     private static final Graphics explosion = new Graphics(1328);
 
-    private static final Projectile projectile = new Projectile(1327, 70, 3, 0, 15, 150, 0, 0);
+    private static final Projectile projectile = new Projectile(1327, 280, 12, 0, 15, 150, 0, 0);
 
     private static final Graphics impactGraphics = new Graphics(1330);
 
-    private static final Projectile attackProjectile = new Projectile(1329, 60, 15, 0, 15, 90, 64, 0);
+    private static final Projectile attackProjectile = new Projectile(1329, 240, 60, 0, 15, 90, 64, 0);
 
     public VasaNistirio(final Raid raid, final VasaNistirioRoom room, final Location tile) {
         super(raid, room, 7565, tile);

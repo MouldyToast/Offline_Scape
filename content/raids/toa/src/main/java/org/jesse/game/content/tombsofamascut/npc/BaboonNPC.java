@@ -38,8 +38,8 @@ public class BaboonNPC extends TOANPC implements CombatScript {
 	private static final Graphics THRALL_SUMMON_GFX = new Graphics(2017);
 	private static final Graphics EXPLODE_BODY_GFX = new Graphics(2249);
 	private static final Graphics EXPLODE_FIRE_GFX = new Graphics(131);
-	private static final Projectile RANGE_PROJECTILE = new Projectile(2242, 17, 36, 67, 14, 20, 32, 4);
-	private static final Projectile MAGE_PROJECTILE = new Projectile(2247, 20, 34, 30, 15, 20, 50, 4);
+	private static final Projectile RANGE_PROJECTILE = new Projectile(2242, 68, 144, 67, 14, 20, 32, 4);
+	private static final Projectile MAGE_PROJECTILE = new Projectile(2247, 80, 136, 30, 15, 20, 50, 4);
 	private static final SoundEffect THRALL_SUMMON_SOUND = new SoundEffect(100, 6);
 	private static final SoundEffect EXPLODE_SOUND = new SoundEffect(156, 6, 5);
 	protected final ApmekenEncounter encounter;

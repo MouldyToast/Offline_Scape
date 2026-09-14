@@ -17,7 +17,7 @@ import org.jesse.game.world.entity.player.Player;
 public class JalAkRekXil extends InfernoNPC {
 
     private static final Animation attackAnimation = new Animation(7583);
-    private static final Projectile attackProjectile = new Projectile(1379, 15, 24, 15, 17, 30, 0, 5);
+    private static final Projectile attackProjectile = new Projectile(1379, 60, 96, 15, 17, 30, 0, 5);
 
     public JalAkRekXil(final Location location, final Inferno inferno) {
         super(7695, location, inferno);

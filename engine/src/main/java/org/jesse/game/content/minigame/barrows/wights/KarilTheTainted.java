@@ -21,7 +21,7 @@ import org.jesse.game.world.entity.player.SkillConstants;
 public class KarilTheTainted extends BarrowsWightNPC implements Spawnable, CombatScript {
 
 	private static final Graphics GFX = new Graphics(401, 0, 96);
-	private static final Projectile PROJ = new Projectile(27, 42, 30, 40, 15, 3, 64, 5);
+	private static final Projectile PROJ = new Projectile(27, 168, 120, 40, 15, 3, 64, 5);
 
 	public KarilTheTainted(final int id, final Location tile, final Direction facing, final int radius) {
 		super(id, tile, facing, radius);

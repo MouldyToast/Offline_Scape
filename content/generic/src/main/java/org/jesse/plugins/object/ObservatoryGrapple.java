@@ -49,7 +49,7 @@ public class ObservatoryGrapple implements ObjectAction {
         player.lock(2);
         player.getEquipment().set(EquipmentSlot.AMMUNITION, null);
         player.setAnimation(new Animation(7552));
-        World.sendProjectile(player, new Location(2446, 3158, 0), new Projectile(762, 34, 34, 40, 65, 20, 0, 5));
+        World.sendProjectile(player, new Location(2446, 3158, 0), new Projectile(762, 136, 136, 40, 65, 20, 0, 5));
         WorldTasksManager.schedule(() -> {
             player.getVarManager().sendBit(5810, 1);
             player.addAttribute("observatory grapple", 1);

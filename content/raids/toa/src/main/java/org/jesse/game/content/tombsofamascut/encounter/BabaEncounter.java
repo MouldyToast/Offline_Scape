@@ -381,7 +381,7 @@ public class BabaEncounter extends TOARaidArea implements CycleProcessPlugin, Pa
 			Collections.shuffle(tiles);
 			for (int i = 0; i < Math.min(tiles.size(), 3); i++) {
 				final Location tile = tiles.get(i);
-				World.sendProjectile(sarcoTile, tile, new Projectile(2246, 37, 0, 0, 44, 90, 0, 0));
+				World.sendProjectile(sarcoTile, tile, new Projectile(2246, 148, 0, 0, 44, 90, 0, 0));
 				WorldTasksManager.schedule(addRunningTask(() -> {
 					if (baba == null || baba.isDead() || baba.isFinished()) {
 						return;
@@ -589,7 +589,7 @@ public class BabaEncounter extends TOARaidArea implements CycleProcessPlugin, Pa
 		private static final Animation SPAWN_ANIM = new Animation(9753);
 		private static final Animation RANGE_ANIMATION = new Animation(9745);
 		private static final Animation MELEE_ANIMATION = new Animation(9742);
-		private static final Projectile RANGE_PROJECTILE = new Projectile(2243, 36, 36, 67, 8, 34, 128, 0);
+		private static final Projectile RANGE_PROJECTILE = new Projectile(2243, 144, 144, 67, 8, 34, 128, 0);
 		private static final SoundEffect RANGE_SOUNDEFFECT = new SoundEffect(871, 5);
 		private static final int ID = 11781;
 		private int attacks = 3;

@@ -34,11 +34,11 @@ public final class WoodcuttingShrine implements ObjectAction {
 
     private static final class ShrineAction extends Action {
 
-        private static final Projectile GREEN_PROJ = new Projectile(1309, 0, 255, 0, 15, 100, 0, 5);
+        private static final Projectile GREEN_PROJ = new Projectile(1309, 0, 1020, 0, 15, 100, 0, 5);
 
-        private static final Projectile RED_PROJ = new Projectile(1308, 0, 255, 0, 15, 100, 0, 5);
+        private static final Projectile RED_PROJ = new Projectile(1308, 0, 1020, 0, 15, 100, 0, 5);
 
-        private static final Projectile BLUE_PROJ = new Projectile(1307, 0, 255, 0, 15, 100, 0, 5);
+        private static final Projectile BLUE_PROJ = new Projectile(1307, 0, 1020, 0, 15, 100, 0, 5);
 
         private static final Animation OFFERING_ANIM = new Animation(896);
 

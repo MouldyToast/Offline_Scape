@@ -30,9 +30,9 @@ class AcidicAraxyte(
     spawnLocation
 ) {
 
-    private val projectile: Projectile = Projectile(1560, 16, 32, 64, 0)
+    private val projectile: Projectile = Projectile(1560, 64, 128, 64, 0)
 
-    private val projectileBlob: Projectile = Projectile(2924, 64, 32, 64, 0)
+    private val projectileBlob: Projectile = Projectile(2924, 256, 128, 64, 0)
 
     override fun attack(target: Entity?): Int {
         if (getId() == ACIDIC_ARAXYTE_EGG) return 1

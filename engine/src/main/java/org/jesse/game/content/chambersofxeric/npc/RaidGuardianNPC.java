@@ -166,7 +166,7 @@ public final class RaidGuardianNPC extends RaidNPC<GuardiansRoom> implements Com
 	public static final Animation attack = new Animation(1203);
 	private static final Animation stomp = new Animation(4278);
 	private static final Graphics gfx = new Graphics(71, 0, 30);
-	private static final Projectile projectile = new Projectile(645, 255, 10, 15, 0, 15, 64, 0);
+	private static final Projectile projectile = new Projectile(645, 1020, 40, 15, 0, 15, 64, 0);
 	private static final SoundEffect meleeSound = new SoundEffect(2533, 10, 0);
 	private static final SoundEffect rangedSound = new SoundEffect(360, 10, 30);
 

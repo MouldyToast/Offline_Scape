@@ -197,11 +197,11 @@ public final class Cerberus extends NPC implements CombatScript, Spawnable {
     /**
      * The projectile Cerberus sends out when performing its ranged attack.
      */
-    private static final Projectile rangedProj = new Projectile(1245, 70, 20, 30, 15, 45, 64, 15);
+    private static final Projectile rangedProj = new Projectile(1245, 280, 80, 30, 15, 45, 64, 15);
     /**
      * The projectile Cerberus sends out when performing its magic attack.
      */
-    private static final Projectile magicProj = new Projectile(1242, 70, 20, 30, 15, 45, 64, 15);
+    private static final Projectile magicProj = new Projectile(1242, 280, 80, 30, 15, 45, 64, 15);
     /**
      * The projectiles Cerberus sends out when performing the lava pools special attack. A marker is sent out from each of Cerberus' heads.
      */

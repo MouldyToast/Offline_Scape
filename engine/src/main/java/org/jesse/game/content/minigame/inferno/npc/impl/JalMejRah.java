@@ -19,7 +19,7 @@ import org.jesse.game.world.entity.player.SkillConstants;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
  */
 public class JalMejRah extends InfernoNPC {
-    private static final Projectile attackProjectile = new Projectile(1382, 42, 38, 15, 17, 30, 0, 5);
+    private static final Projectile attackProjectile = new Projectile(1382, 168, 152, 15, 17, 30, 0, 5);
     private static final Animation attackAnimation = new Animation(7578);
     private static final int[] drainableStats = {SkillConstants.ATTACK, SkillConstants.DEFENCE, SkillConstants.STRENGTH, SkillConstants.RANGED, SkillConstants.MAGIC, SkillConstants.HITPOINTS};
     /**

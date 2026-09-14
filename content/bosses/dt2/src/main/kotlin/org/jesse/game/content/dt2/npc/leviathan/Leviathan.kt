@@ -260,8 +260,8 @@ class Leviathan(id: Int, position: Location, val instance: LeviathanInstance) : 
 
                     val projectile = Projectile(
                         type.projectile.id,
-                        137,
-                        25,
+                        548,
+                        100,
                         if (volleyCount == 0) startCycle else startCycle,
                         30,
                         lengthAdjustment,

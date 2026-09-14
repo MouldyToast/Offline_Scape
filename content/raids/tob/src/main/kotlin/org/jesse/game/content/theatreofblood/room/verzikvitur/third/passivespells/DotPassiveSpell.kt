@@ -52,7 +52,7 @@ internal object DotPassiveSpell : PassiveSpell {
             WorldTasksManager.schedule({
                 World.sendProjectile(
                     this, p,
-                    Projectile(PROJECTILE_ID, 186, 0, 0, 59, 120, 0, 0)
+                    Projectile(PROJECTILE_ID, 744, 0, 0, 59, 120, 0, 0)
                 )
             }, 9)
         }

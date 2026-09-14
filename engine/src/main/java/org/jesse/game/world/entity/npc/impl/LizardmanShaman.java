@@ -41,8 +41,8 @@ public class LizardmanShaman extends NPC implements Spawnable, CombatScript {
     private static final Animation jump = new Animation(7152);
     private static final Animation land = new Animation(6946);
     private static final Animation meleeAnim = new Animation(7158);
-    private static final Projectile rangedProjectile = new Projectile(1291, 70, 15, 60, 15, 10, 64, 5);
-    private static final Projectile poisonProjectile = new Projectile(1293, 70, 15, 60, 15, 23, 64, 5);
+    private static final Projectile rangedProjectile = new Projectile(1291, 280, 60, 60, 15, 10, 64, 5);
+    private static final Projectile poisonProjectile = new Projectile(1293, 280, 60, 60, 15, 23, 64, 5);
     private static final Graphics poisonSplash = new Graphics(1294);
     private long lastTime;
     private boolean hitAnyone;

@@ -31,7 +31,7 @@ public class AberrantSpectre extends NPC implements Spawnable, CombatScript {
         return name.equalsIgnoreCase("aberrant spectre");
     }
 
-    private static final Projectile PROJECTILE = new Projectile(335, 45, 38, 95, 30);
+    private static final Projectile PROJECTILE = new Projectile(335, 180, 152, 95, 30);
     private static final Graphics GRAPHICS = new Graphics(336, 0, 320);
     private static final SoundEffect impactSound = new SoundEffect(273, 10, 0);
 

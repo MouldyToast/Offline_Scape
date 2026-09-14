@@ -35,9 +35,9 @@ public class ChaosElemental extends NPC implements CombatScript, Spawnable {
 	private static final Graphics PLAYER_TELEPORT_GFX = new Graphics(555, 0, 92);
 	private static final Graphics PLAYER_DISARMING_GFX = new Graphics(552, 0, 92);
 	private static final Graphics PLAYER_PRIMARY_GFX = new Graphics(558, 0, 92);
-	private static final Projectile TELEPORT_PROJ = new Projectile(554, 70, 30, 0, 15, 29, 32, 5);
-	private static final Projectile DISARMING_PROJ = new Projectile(551, 70, 30, 0, 15, 29, 32, 5);
-	private static final Projectile PRIMARY_PROJ = new Projectile(557, 70, 30, 0, 15, 29, 32, 5);
+	private static final Projectile TELEPORT_PROJ = new Projectile(554, 280, 120, 0, 15, 29, 32, 5);
+	private static final Projectile DISARMING_PROJ = new Projectile(551, 280, 120, 0, 15, 29, 32, 5);
+	private static final Projectile PRIMARY_PROJ = new Projectile(557, 280, 120, 0, 15, 29, 32, 5);
 	private static final ArrayList<String> unequippedPlayers = new ArrayList<String>();
 	private static final ArrayList<String> damagedPlayers = new ArrayList<String>();
 	private boolean canTeleportPlayers = true;

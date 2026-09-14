@@ -269,7 +269,7 @@ class DukeSucellusEntity(val arena: DukeSucellusInstance) :
         player.sendSound(SoundEffect(7197, 1, delay * 30, 0))
     }
 
-    private val magicProjectile = Projectile(2434, 32, 10, 20, 30, 2, 32, 10)
+    private val magicProjectile = Projectile(2434, 128, 40, 20, 30, 2, 32, 10)
 
     private fun DT2BossDifficulty.getHitpoints(): Int = when (this) {
         DT2BossDifficulty.NORMAL -> 440

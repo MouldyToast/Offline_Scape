@@ -28,7 +28,7 @@ public class Basilisk extends NPC implements Spawnable, CombatScript {
         return name.equalsIgnoreCase("basilisk");
     }
 
-    private static final Projectile PROJECTILE = new Projectile(75, 18, 25, 115, 0);
+    private static final Projectile PROJECTILE = new Projectile(75, 72, 100, 115, 0);
 
     @Override
     public int attack(final Entity target) {

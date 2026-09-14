@@ -122,7 +122,7 @@ internal class XarpusExhumedPhase(
         private val END_DELAY = TimeUnit.SECONDS.toTicks(4).toInt()
 
         private val exhumedDespawnGfx = Graphics(1549)
-        private val exhumedHealProj = Projectile(1550, 0, 80, 0, 60, 30, 0, 1)
+        private val exhumedHealProj = Projectile(1550, 0, 320, 0, 60, 30, 0, 1)
 
     }
 

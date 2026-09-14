@@ -16,7 +16,7 @@ public class NightmareHuskMagicNPC extends NightmareHuskNPC {
 	public static final int ID = NpcId.HUSK_9455;
 	public static final int ID_PHOSANIS = NpcId.HUSK_9467;
 	private static final Animation ATTACK_ANIMATION = new Animation(8565);
-	private static final Projectile PROJECTILE = new Projectile(1776, 30, 30, 20, 1, 30, 0, 0);
+	private static final Projectile PROJECTILE = new Projectile(1776, 120, 120, 20, 1, 30, 0, 0);
 	private static final Graphics LAND_GRAPHIC = new Graphics(1777, 0, 96);
 
 	public NightmareHuskMagicNPC(int id, Location tile, Player spawnedFor, BaseNightmareNPC boss) {

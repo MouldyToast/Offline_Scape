@@ -25,7 +25,7 @@ public class Porazdir extends MageArenaBossBase {
     private static final Animation magicAnimation = new Animation(7838);
     private static final Animation meleeAnimation = new Animation(7840);
     private static final Animation specialAnimation = new Animation(7841);
-    private static final Projectile specialProjectile = new Projectile(1514, 50, 43, 40, 10, 170, 64, 5);
+    private static final Projectile specialProjectile = new Projectile(1514, 200, 172, 40, 10, 170, 64, 5);
 
     public Porazdir(@NotNull final Player owner, @NotNull final Location tile) {
         super(7860, owner, tile);

@@ -277,10 +277,10 @@ public class CorporealBeastNPC extends NPC implements CombatScript {
     private static final Animation AOE_ATTACK_ANIM = new Animation(1681);
     private static final Animation LEFT_CLAW_MELEE_ANIM = new Animation(1682);
     private static final Animation RIGHT_CLAW_MELEE_ANIM = new Animation(1683);
-    private static final Projectile HIGH_DAMAGE_PROJ = new Projectile(316, 50, 25, 25, 15, 18, 64, 5);
-    private static final Projectile STAT_DRAIN_PROJ = new Projectile(314, 50, 25, 25, 15, 18, 64, 5);
-    private static final Projectile AOE_PROJ = new Projectile(315, 50, 5, 25, 15, 18, 64, 5);
-    private static final Projectile SPLIT_AOE_PROJ = new Projectile(315, 5, 5, 0, 15, 28, 64, 5);
+    private static final Projectile HIGH_DAMAGE_PROJ = new Projectile(316, 200, 100, 25, 15, 18, 64, 5);
+    private static final Projectile STAT_DRAIN_PROJ = new Projectile(314, 200, 100, 25, 15, 18, 64, 5);
+    private static final Projectile AOE_PROJ = new Projectile(315, 200, 20, 25, 15, 18, 64, 5);
+    private static final Projectile SPLIT_AOE_PROJ = new Projectile(315, 20, 20, 0, 15, 28, 64, 5);
     private static final Graphics SPLITTING_GFX = new Graphics(1836);
 
     @Override

@@ -47,7 +47,7 @@ public class FlamePhase implements HydraPhaseSequence {
     private static final Graphics flameGfx = new Graphics(1668, 0, 0);
     private static final Graphics delayedFlameGfx = new Graphics(1668, 30, 0);
     private static final Graphics halfDelayedFlameGfx = new Graphics(1668, 15, 0);
-    private static final Projectile flameAttackProj = new Projectile(1667, 42, 0, 37, 2, 15, 0, 5);
+    private static final Projectile flameAttackProj = new Projectile(1667, 168, 0, 37, 2, 15, 0, 5);
     private static final ForceTalk yowch = new ForceTalk("Yowch!");
     private int attacks;
     private boolean initialSpecial;

@@ -28,7 +28,7 @@ public class DeviantSpectre extends NPC implements Spawnable, CombatScript {
         return id == 7279;
     }
 
-    private static final Projectile PROJECTILE = new Projectile(640, 45, 38, 110, 30);
+    private static final Projectile PROJECTILE = new Projectile(640, 180, 152, 110, 30);
     private static final Graphics GRAPHICS = new Graphics(641, 0, 320);
 
     @Override

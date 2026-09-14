@@ -19,7 +19,7 @@ public class AncientWyvern extends Wyvern {
     private static final Graphics icyBreathGfx = new Graphics(501, 0, 234);
     private static final Animation meleeAnim = new Animation(7651);
     private static final Animation rangedAnim = new Animation(7657);
-    private static final Projectile rangedProjectile = new Projectile(500, 94, 35, 50, 0, 8, 0, 5);
+    private static final Projectile rangedProjectile = new Projectile(500, 376, 140, 50, 0, 8, 0, 5);
 
     public AncientWyvern(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);

@@ -78,7 +78,7 @@ public final class SkeletalMystic extends RaidNPC<DarkAltarRoom> implements Comb
 	}
 
 	private static final Graphics vulnImpact = new Graphics(169, 0, 90);
-	private static final Projectile vulnProj = new Projectile(168, 50, 25, 45, 15, 18, 64, 5);
+	private static final Projectile vulnProj = new Projectile(168, 200, 100, 45, 15, 18, 64, 5);
 	private static final Graphics splash = new Graphics(339, 0, 60);
 	private static final Graphics fireImpact = new Graphics(157, 0, 90);
 	private static final SoundEffect fireStartSound = new SoundEffect(155, 10, 0);
@@ -89,7 +89,7 @@ public final class SkeletalMystic extends RaidNPC<DarkAltarRoom> implements Comb
 	private static final SoundEffect meleeSound = new SoundEffect(511, 10, 0);
 	private static final Graphics vulnStart = new Graphics(1321, 0, 96);
 	private static final Graphics fireStart = new Graphics(1322, 0, 96);
-	private static final Projectile fireProj = new Projectile(130, 50, 25, 45, 15, 18, 64, 5);
+	private static final Projectile fireProj = new Projectile(130, 200, 100, 45, 15, 18, 64, 5);
 	private static final Animation meleeAnim = new Animation(5485);
 	private static final Animation magicAnim = new Animation(5523);
 

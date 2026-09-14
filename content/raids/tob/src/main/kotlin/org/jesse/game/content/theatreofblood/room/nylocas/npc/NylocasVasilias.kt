@@ -166,8 +166,8 @@ internal class NylocasVasilias(room: NylocasRoom) :
         private val magicAnimation = Animation(7990)
         private val meleeAnimation = Animation(8004)
         private val rangedAnimation = Animation(8001)
-        private val magicProjectile = Projectile(1610, 45, 25, 30, 10, 30, 0, 1)
-        private val rangedProjectile = Projectile(1561, 30, 20, 30, 10, 30, 0, 5)
+        private val magicProjectile = Projectile(1610, 180, 100, 30, 10, 30, 0, 1)
+        private val rangedProjectile = Projectile(1561, 120, 80, 30, 10, 30, 0, 5)
 
     }
 

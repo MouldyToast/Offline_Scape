@@ -23,8 +23,8 @@ import org.jetbrains.annotations.NotNull;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class MarbleGargoyle extends SuperiorNPC implements CombatScript {
-    private static final Projectile stoneProjectile = new Projectile(1453, 50, 30, 40, 0, 80, 64, 5);
-    private static final Projectile rockProjectile = new Projectile(276, 50, 30, 30, 0, 30, 64, 5);
+    private static final Projectile stoneProjectile = new Projectile(1453, 200, 120, 40, 0, 80, 64, 5);
+    private static final Projectile rockProjectile = new Projectile(276, 200, 120, 30, 0, 30, 64, 5);
 
     public MarbleGargoyle(@NotNull final Player owner, @NotNull final NPC root, final Location tile) {
         super(owner, root, 7407, tile);

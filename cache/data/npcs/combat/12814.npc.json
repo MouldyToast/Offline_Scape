@@ -11,19 +11,44 @@
   "targetType": "PLAYER",
   "aggressionType": "AGGRESSIVE",
   "statDefinitions": {
-    "combatStats": [110, 110, 80, 110, 110],
-    "aggressiveStats": [150, 150, 150, 0, 150],
-    "defensiveStats": [0, 0, 0, 75, 0],
-    "otherBonuses": [10, 0, 0]
+    "combatStats": [
+      110,
+      110,
+      80,
+      110,
+      110
+    ],
+    "aggressiveStats": [
+      150,
+      150,
+      150,
+      0,
+      150
+    ],
+    "defensiveStats": [
+      0,
+      0,
+      0,
+      75,
+      0
+    ],
+    "otherBonuses": [
+      10,
+      0,
+      0
+    ]
   },
   "attackDefinitions": {
     "type": "RANGED",
     "maxHit": 14,
-    "animation": {"id": 10850, "delay": 0},
+    "animation": {
+      "id": 10850,
+      "delay": 0
+    },
     "projectile": {
       "graphicsId": 9,
-      "startHeight": 40,
-      "endHeight": 36,
+      "startHeight": 160,
+      "endHeight": 144,
       "delay": 51,
       "angle": 16,
       "duration": 5,
@@ -32,10 +57,19 @@
     }
   },
   "blockDefinitions": {
-    "animation": {"id": 10851, "delay": 0}
+    "animation": {
+      "id": 10851,
+      "delay": 0
+    }
   },
   "spawnDefinitions": {
-    "deathAnimation": {"id": 10852, "delay": 0},
-    "spawnAnimation": {"id": 10861, "delay": 0}
+    "deathAnimation": {
+      "id": 10852,
+      "delay": 0
+    },
+    "spawnAnimation": {
+      "id": 10861,
+      "delay": 0
+    }
   }
 }

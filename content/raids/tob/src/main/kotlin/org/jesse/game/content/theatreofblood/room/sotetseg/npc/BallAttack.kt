@@ -18,14 +18,14 @@ internal enum class BallAttack(
     private val requiredPrayer: Prayer
 ) {
 
-    MAGIC(Projectile(1606, 20, 30, 80, 0, 4 * 30, 0, 0), Prayer.PROTECT_FROM_MAGIC) {
+    MAGIC(Projectile(1606, 80, 120, 80, 0, 4 * 30, 0, 0), Prayer.PROTECT_FROM_MAGIC) {
         override fun Sotetseg.performHit(target: Player) {
             delayHit(0, target, magic(target, if (room.raid.hardMode) 75 else 50))
             target.graphics = magicGraphics
             target.sendSound(magicSoundEffect)
         }
     },
-    RANGE(Projectile(1607, 20, 30, 80, 0, 4 * 30, 0, 0), Prayer.PROTECT_FROM_MISSILES) {
+    RANGE(Projectile(1607, 80, 120, 80, 0, 4 * 30, 0, 0), Prayer.PROTECT_FROM_MISSILES) {
         override fun Sotetseg.performHit(target: Player) {
             delayHit(0, target, ranged(target, if (room.raid.hardMode) 75 else 50))
             target.sendSound(rangeSoundEffect)

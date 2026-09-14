@@ -26,7 +26,7 @@ public class GeneralGraardor extends BreachEntity implements Spawnable, CombatSc
         return id == GENERAL_GRAARDOR_12444;
     }
 
-    private static final Projectile projectile = new Projectile(1202, 41, 16, 30, 5, 10, 0, 5);
+    private static final Projectile projectile = new Projectile(1202, 164, 64, 30, 5, 10, 0, 5);
     private static final Animation meleeAnimation = new Animation(7018);
     private static final Animation rangedAnimation = new Animation(7021);
 

@@ -35,7 +35,7 @@ public class CrondisJug extends NPC {
 		}
 	}
 
-	private static final Projectile SPREAD_PROJECTILE = new Projectile(2193, 7, 0, 10, 20, 10, 0, 0);
+	private static final Projectile SPREAD_PROJECTILE = new Projectile(2193, 28, 0, 10, 20, 10, 0, 0);
 	private static final Graphics POISON_REMOVE_GFX = new Graphics(95);
 	private static final Graphics BREAK_GFX = new Graphics(2192);
 	private static final Graphics SPLASH_GFX = new Graphics(68);

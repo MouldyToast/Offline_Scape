@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class BrassicanMage extends TreasureGuardian implements CombatScript {
 
     private static final ForceTalk chat = new ForceTalk("Grow up or leave.");
-    private static final Projectile projectile = new Projectile(772, 40, 36, 21, 21, 11, 11, 5);
+    private static final Projectile projectile = new Projectile(772, 160, 144, 21, 21, 11, 11, 5);
 
     public BrassicanMage(@NotNull final Player owner, @NotNull final Location tile) {
         super(owner, tile, 7310);

@@ -41,8 +41,8 @@ public final class ShotputArea extends WarriorsGuildArea implements PartialMovem
 			new Animation(4181), new Animation(4182), new Animation(4183)
 	};
 	
-	private static final Projectile PROJ = new Projectile(690, 30, 5, 50, 15, 58, 0, 5);
-	private static final Projectile DELAYED_PROJ = new Projectile(690, 30, 5, 100, 15, 58, 0, 5);
+	private static final Projectile PROJ = new Projectile(690, 120, 20, 50, 15, 58, 0, 5);
+	private static final Projectile DELAYED_PROJ = new Projectile(690, 120, 20, 100, 15, 58, 0, 5);
 	
 	private static final String[] LAND_MESSAGES = new String[] {
 			"The shot is perfectly thrown and gently drops to the floor.",

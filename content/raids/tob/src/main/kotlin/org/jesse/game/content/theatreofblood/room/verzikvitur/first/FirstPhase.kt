@@ -28,7 +28,7 @@ internal fun VerzikVitur.firstPhase() {
         for (p in validTargets) {
             val behindPillar = room.supportingPillars.firstOrNull { it?.playerIsBehind(p) ?: false }
             if (behindPillar == null) {
-                val blueProjectile = blueProjectile(28)
+                val blueProjectile = blueProjectile(112)
                 val delay = World.sendProjectile(this, p, blueProjectile)
 
                 WorldTasksManager.schedule({
@@ -47,7 +47,7 @@ internal fun VerzikVitur.firstPhase() {
             .minByOrNull { (_, v) -> v }
             ?.key
             ?: return@schedule
-        val blueProjectile = blueProjectile(52)
+        val blueProjectile = blueProjectile(208)
         val delay = World.sendProjectile(this, pillarToAttack, blueProjectile)
 
         WorldTasksManager.schedule({
@@ -62,6 +62,6 @@ private val attackPillarGraphics = Graphics(1582)
 private val attackPlayerGraphics = Graphics(1581)
 
 private fun blueProjectile(endHeight: Int) = Projectile(
-    1580, 126, endHeight,
+    1580, 504, endHeight,
     20, 29, 90, 64, 0
 )

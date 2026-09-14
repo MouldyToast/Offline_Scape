@@ -21,8 +21,8 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class StandardAttack implements OlmCombatScript {
-	private static final Projectile rangedProjectile = new Projectile(1340, 65, 15, 30, 15, 18, 0, 5);
-	private static final Projectile magicProjectile = new Projectile(1339, 65, 15, 30, 15, 18, 0, 5);
+	private static final Projectile rangedProjectile = new Projectile(1340, 260, 60, 30, 15, 18, 0, 5);
+	private static final Projectile magicProjectile = new Projectile(1339, 260, 60, 30, 15, 18, 0, 5);
 	private static final SoundEffect rangedSound = new SoundEffect(1784, 15, 0);
 	private static final SoundEffect magicSound = new SoundEffect(3749, 15, 0);
 

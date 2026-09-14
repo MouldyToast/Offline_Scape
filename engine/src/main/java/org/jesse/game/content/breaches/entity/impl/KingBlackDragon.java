@@ -194,10 +194,10 @@ public class KingBlackDragon extends BreachEntity implements Spawnable, CombatSc
         return 4;
     }
 
-    private static final Projectile DRAGONFIRE_PROJ = new Projectile(393, 40, 30, 40, 15, 28, 0, 5);
-    private static final Projectile POISON_PROJ = new Projectile(394, 40, 30, 40, 15, 28, 0, 5);
-    private static final Projectile FREEZING_PROJ = new Projectile(395, 40, 30, 40, 15, 28, 0, 5);
-    private static final Projectile SHOCKING_PROJ = new Projectile(396, 40, 30, 40, 15, 28, 0, 5);
+    private static final Projectile DRAGONFIRE_PROJ = new Projectile(393, 160, 120, 40, 15, 28, 0, 5);
+    private static final Projectile POISON_PROJ = new Projectile(394, 160, 120, 40, 15, 28, 0, 5);
+    private static final Projectile FREEZING_PROJ = new Projectile(395, 160, 120, 40, 15, 28, 0, 5);
+    private static final Projectile SHOCKING_PROJ = new Projectile(396, 160, 120, 40, 15, 28, 0, 5);
 
     private static final Graphics DRAGONFIRE_GFX = new Graphics(430, 0, 90);
     private static final Graphics POISON_GFX = new Graphics(429, 0, 90);

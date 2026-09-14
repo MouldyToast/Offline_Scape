@@ -23,7 +23,7 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class CrystalBomb implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1357, 60, 5, 30, 5, 90, 0, 0);
+	private static final Projectile projectile = new Projectile(1357, 240, 20, 30, 5, 90, 0, 0);
 	private static final Graphics explosion = new Graphics(40);
 	private final List<Bomb> crystalBombs = new ArrayList<>();
 	private static final SoundEffect sound = new SoundEffect(3120, 10, 0);

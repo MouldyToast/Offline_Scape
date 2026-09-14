@@ -24,7 +24,7 @@ public class ThrownaxeGoblin extends SpawnableKillcountNPC implements Spawnable,
         return id == 2249;
     }
 
-    private static final Projectile PROJ = new Projectile(1197, 16, 22, 30, 15, 10, 64, 5);
+    private static final Projectile PROJ = new Projectile(1197, 64, 88, 30, 15, 10, 64, 5);
 
     @Override
     public int attack(final Entity target) {

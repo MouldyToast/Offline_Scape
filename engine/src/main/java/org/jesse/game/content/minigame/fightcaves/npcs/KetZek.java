@@ -24,7 +24,7 @@ final class KetZek extends FightCavesNPC implements CombatScript {
     private static final Animation MELEE_ANIM = new Animation(2644);
     private static final Animation MAGIC_ANIM = new Animation(2647);
     private static final Graphics GFX = new Graphics(446);
-    private static final Projectile MAGIC_PROJ = new Projectile(445, 120, 20, 40, 5, 10, 0, 5);
+    private static final Projectile MAGIC_PROJ = new Projectile(445, 480, 80, 40, 5, 10, 0, 5);
     private static final SoundEffect attackSound = new SoundEffect(598);
 
     KetZek(final TzHaarNPC npc, final Location tile, final FightCaves caves) {

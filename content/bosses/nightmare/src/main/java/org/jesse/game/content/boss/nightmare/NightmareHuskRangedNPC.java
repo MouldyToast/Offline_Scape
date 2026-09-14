@@ -15,7 +15,7 @@ public class NightmareHuskRangedNPC extends NightmareHuskNPC {
 	public static final int ID = NpcId.HUSK;
 	public static final int ID_PHOSANIS = NpcId.HUSK_9466;
 	private static final Animation ATTACK_ANIMATION = new Animation(8564);
-	private static final Projectile PROJECTILE = new Projectile(1778, 30, 30, 20, 1, 30, 0, 0);
+	private static final Projectile PROJECTILE = new Projectile(1778, 120, 120, 20, 1, 30, 0, 0);
 
 	public NightmareHuskRangedNPC(int id, Location tile, Player spawnedFor, BaseNightmareNPC boss) {
 		super(id, tile, spawnedFor, boss);

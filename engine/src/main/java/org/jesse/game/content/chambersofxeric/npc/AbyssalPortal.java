@@ -26,7 +26,7 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class AbyssalPortal extends RaidNPC<VespulaRoom> implements CombatScript {
-    private static final Projectile projectile = new Projectile(1366, 10, 10, 0, 0, 60, 0, 0);
+    private static final Projectile projectile = new Projectile(1366, 40, 40, 0, 0, 60, 0, 0);
     private static final int HEALTH_REGENERATION_RATE = 17;
 
     public AbyssalPortal(final Raid raid, final VespulaRoom room, final Location tile) {

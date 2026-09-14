@@ -177,7 +177,7 @@ public final class SmallMuttadile extends RaidNPC<MuttadileRoom> implements Comb
 		super.autoRetaliate(source);
 	}
 
-	private static final Projectile proj = new Projectile(1291, 23, 25, 15, 5, 28, 0, 5);
+	private static final Projectile proj = new Projectile(1291, 92, 100, 15, 5, 28, 0, 5);
 	private static final Animation attackAnim = new Animation(7421);
 	private static final Animation meleeAnim = new Animation(7420);
 	private static final SoundEffect rangedSound = new SoundEffect(385, 5, -1);

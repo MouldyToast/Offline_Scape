@@ -24,7 +24,7 @@ public class ScreamingTwistedBanshee extends SuperiorNPC implements CombatScript
     }
 
     private static final Animation PLAYER_ANIMATION = new Animation(1572);
-    private static final Projectile PROJECTILE = new Projectile(337, 20, 20);
+    private static final Projectile PROJECTILE = new Projectile(337, 80, 80);
 
     @Override
     public int attack(Entity target) {

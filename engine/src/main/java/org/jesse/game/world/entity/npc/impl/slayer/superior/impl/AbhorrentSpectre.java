@@ -23,7 +23,7 @@ public class AbhorrentSpectre extends SuperiorNPC implements CombatScript {
         super(owner, root, 7402, tile);
     }
 
-    private static final Projectile PROJECTILE = new Projectile(335, 85, 38, 45, 0, 95, 64, 5);
+    private static final Projectile PROJECTILE = new Projectile(335, 340, 152, 45, 0, 95, 64, 5);
     private static final Graphics GRAPHICS = new Graphics(336, 0, 320);
 
     @Override

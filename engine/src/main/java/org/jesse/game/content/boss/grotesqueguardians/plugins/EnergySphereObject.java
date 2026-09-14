@@ -24,7 +24,7 @@ public class EnergySphereObject implements ObjectAction {
         if (sphere == null) {
             return;
         }
-        final Projectile projectile = new Projectile(1437 + sphere.getState().ordinal(), 0, 50, 20, 0);
+        final Projectile projectile = new Projectile(1437 + sphere.getState().ordinal(), 0, 200, 20, 0);
         World.sendProjectile(object, player, projectile);
         World.removeObject(sphere);
         WorldTasksManager.schedule(sphere::absorb, projectile.getTime(object, player));

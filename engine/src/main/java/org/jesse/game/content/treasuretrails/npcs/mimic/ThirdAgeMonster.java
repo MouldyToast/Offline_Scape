@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 class ThirdAgeMonster extends NPC implements CombatScript {
     static final int WARRIOR = 8635, RANGER = 8636, MAGE = 8637;
     private static final Graphics drawbackGraphics = new Graphics(1611, 0, 96);
-    private static final Projectile rangedProjectile = new Projectile(1574, 42, 30, 40, 15, 3, 64, 5);
+    private static final Projectile rangedProjectile = new Projectile(1574, 168, 120, 40, 15, 3, 64, 5);
 
     ThirdAgeMonster(@MagicConstant(valuesFromClass = ThirdAgeMonster.class) int id, @NotNull Location tile) {
         super(id, tile, Direction.SOUTH, 0);

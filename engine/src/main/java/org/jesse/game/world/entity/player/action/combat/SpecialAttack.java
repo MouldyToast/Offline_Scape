@@ -1455,7 +1455,7 @@ public enum SpecialAttack implements ISpecialAttack {
 
     CONDEMN(AttackType.MAGIC, new int[] {27665}, WEAPON_SPEED, MAGIC, new Animation(9963), new Graphics(2338), (player, combat, target) -> {
         player.cancelCombat();
-        Projectile projectile = new Projectile(2339, 23, 15, 51, 23, 25, 64, 5);
+        Projectile projectile = new Projectile(2339, 92, 60, 51, 23, 25, 64, 5);
         int delay = World.sendProjectile(player, target, projectile);
         Hit hit = combat.getHit(player, target, 1.50, 1.50, 1.0, false);
         //standard is 2337!

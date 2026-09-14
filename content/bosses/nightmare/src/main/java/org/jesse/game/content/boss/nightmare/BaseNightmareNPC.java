@@ -47,12 +47,12 @@ public abstract class BaseNightmareNPC extends NPC implements CombatScript {
 	public static final Location ARENA_START = new Location(3863, 9941, 3);
 	public static final Location ARENA_END = new Location(3881, 9961, 3);
 
-	private static final Projectile RANGED_PROJ = new Projectile(1766, 100, 30, 100, 15, 60, 128, 0);
-	private static final Projectile MAGIC_PROJ = new Projectile(1764, 100, 30, 70, 15, 60, 128, 0);
-	private static final Projectile BERRIES_PROJ = new Projectile(1783, 10, 10, 0, 15, 30, 0, 5);
-	private static final Projectile HUSK_PROJ = new Projectile(1781, 110, 30, 65, 15, 50, 128, 0);
-	private static final Projectile TOTEM_PROJ = new Projectile(1768, 150, 50, 10, 1, 100, 100, 0);
-	private static final Projectile PARASITE_PROJ = new Projectile(1770, 100, 20, 65, 15, 50, 128, 0);
+	private static final Projectile RANGED_PROJ = new Projectile(1766, 400, 120, 100, 15, 60, 128, 0);
+	private static final Projectile MAGIC_PROJ = new Projectile(1764, 400, 120, 70, 15, 60, 128, 0);
+	private static final Projectile BERRIES_PROJ = new Projectile(1783, 40, 40, 0, 15, 30, 0, 5);
+	private static final Projectile HUSK_PROJ = new Projectile(1781, 440, 120, 65, 15, 50, 128, 0);
+	private static final Projectile TOTEM_PROJ = new Projectile(1768, 600, 200, 10, 1, 100, 100, 0);
+	private static final Projectile PARASITE_PROJ = new Projectile(1770, 400, 80, 65, 15, 50, 128, 0);
 
 	private static final Graphics MAGE_END_GFX = new Graphics(1765, 0, 96);
 	public static final Graphics SHADOW_ATK_GROUND_GFX = new Graphics(1767);

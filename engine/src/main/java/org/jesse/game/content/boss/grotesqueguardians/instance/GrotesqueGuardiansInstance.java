@@ -62,7 +62,7 @@ public class GrotesqueGuardiansInstance extends DynamicArea implements LogoutPlu
     private static final Animation DUSK_REVERT_ANIMATION = new Animation(7793);
     private static final Animation DAWN_FLY_AWAY_ANIMATION = new Animation(7773);
     private static final Animation DAWN_FLY_BACK_ANIMATION = new Animation(7774);
-    private static final Projectile DEBRIS_PROJECTILE = new Projectile(1435, 255, 0, 0, 0, 100, 127, 7);
+    private static final Projectile DEBRIS_PROJECTILE = new Projectile(1435, 1020, 0, 0, 0, 100, 127, 7);
     private static final Graphics DEBRIS_SHADOW_GFX = new Graphics(1446);
     private static final Graphics DEBRIS_IMPACT_GFX = new Graphics(1436);
     private static final Graphics DEBRIS_STUN_GFX = new Graphics(80);

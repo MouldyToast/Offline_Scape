@@ -45,8 +45,8 @@ public class Baba extends TOANPC implements CombatScript {
 	private static final SoundEffect THROW_ROCK_SOUND = new SoundEffect(6023, 0, 10);
 	private static final SoundEffect FLYBACK_SOUND = new SoundEffect(3201);
 	public static final SoundEffect ROLLING_BOULDER_SOUND = new SoundEffect(5981);
-	private static final Projectile ROCK_PROJECTILE = new Projectile(2244, 100, 31, 90, 40, 120, 64, 0);
-	private static final Projectile ROLLING_BOULDER_PROJECTILE = new Projectile(2245, 50, 5, 30, 35, 60, 0, 0);
+	private static final Projectile ROCK_PROJECTILE = new Projectile(2244, 400, 124, 90, 40, 120, 64, 0);
+	private static final Projectile ROLLING_BOULDER_PROJECTILE = new Projectile(2245, 200, 20, 30, 35, 60, 0, 0);
 	private final BabaEncounter encounter;
 	private final boolean shakingThingsUp;
 	private final boolean mindTheGap;

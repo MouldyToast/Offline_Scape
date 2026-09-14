@@ -20,7 +20,7 @@ import org.jesse.game.world.entity.player.SkillConstants;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
  */
 public class DustDevil extends NPC implements CombatScript, Spawnable {
-	private static final Projectile PROJECTILE = new Projectile(73, 30, 35, 108, 10);
+	private static final Projectile PROJECTILE = new Projectile(73, 120, 140, 108, 10);
 
 	public DustDevil(final int id, final Location tile, final Direction facing, final int radius) {
 		super(id, tile, facing, radius);

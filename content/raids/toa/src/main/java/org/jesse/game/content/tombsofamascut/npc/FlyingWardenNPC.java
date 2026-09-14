@@ -41,8 +41,8 @@ public class FlyingWardenNPC extends TOANPC {
     private static final Graphics WARDEN_GFX = new Graphics(2219);
     private static final Graphics SKULL_LANDING_GFX = new Graphics(1447);
     private static final Graphics EXPLOSION_GFX = new Graphics(2158);
-    private static final Projectile SKULL_SEND_PROJECTILE = new Projectile(2226, 87, 20, 30, 20, 90, 0, 0);
-    private static final Projectile SKULL_RETURN_PROJECTILE = new Projectile(2226, 20, 87, 0, 20, 58, 0, 0);
+    private static final Projectile SKULL_SEND_PROJECTILE = new Projectile(2226, 348, 80, 30, 20, 90, 0, 0);
+    private static final Projectile SKULL_RETURN_PROJECTILE = new Projectile(2226, 80, 348, 0, 20, 58, 0, 0);
     private static final Location FIRST_PHANTOM_SPAWN_LOCATION = new Location(3943, 5153, 1);
     private static final Location SECOND_PHANTOM_SPAWN_LOCATION = new Location(3925, 5153, 1);
     private static final Location FLOOR_BASE_LOCATION = new Location(3936, 5157, 1);

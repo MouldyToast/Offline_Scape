@@ -27,9 +27,9 @@ import java.util.ArrayList;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
  */
 public class AdamantDragon extends NPC implements CombatScript, Spawnable {
-    private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 30, 30, 38, 10, 28, 0, 5);
-    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(165, 35, 30, 41, 5, 28, 0, 5);
-    private static final Projectile POISON_ATTACK_PROJ = new Projectile(1486, 35, 0, 41, 10, 101, 0, 5);
+    private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 120, 120, 38, 10, 28, 0, 5);
+    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(165, 140, 120, 41, 5, 28, 0, 5);
+    private static final Projectile POISON_ATTACK_PROJ = new Projectile(1486, 140, 0, 41, 10, 101, 0, 5);
     private static final Projectile POISON_ATTACK_EFFECT_PROJ = new Projectile(1486, 0, 0, 41, 20, 41, 0, 5);
     private static final Graphics MAGIC_ATTACK_ONHIT = new Graphics(166, 0, 92);
     private static final Graphics SPLASH = new Graphics(85, 0, 92);

@@ -51,7 +51,7 @@ public enum ReanimationType implements ItemSpell, FloorItemSpell {
     private static final Graphics CAST_GFX = new Graphics(1288);
     private static final Graphics IMPACT_GFX = new Graphics(1290);
     private static final Animation ANIMATION = new Animation(7198);
-    private static final Projectile PROJECTILE = new Projectile(1289, 30, 0, 50, 15, 30, 0, 5);
+    private static final Projectile PROJECTILE = new Projectile(1289, 120, 0, 50, 15, 30, 0, 5);
 
     @Override
     public boolean spellEffect(Player player, FloorItem item) {

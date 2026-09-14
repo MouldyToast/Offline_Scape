@@ -26,7 +26,7 @@ public class Bree extends GodwarsBossMinion implements Spawnable, CombatScript {
         return id == 2208;
     }
 
-    private static final Projectile projectile = new Projectile(12, 52, 30, 40, 15, 10, 64, 5);
+    private static final Projectile projectile = new Projectile(12, 208, 120, 40, 15, 10, 64, 5);
     private static final Graphics attackGraphics = new Graphics(1185);
     private static final SoundEffect attackSound = new SoundEffect(3841, 10, 0);
 

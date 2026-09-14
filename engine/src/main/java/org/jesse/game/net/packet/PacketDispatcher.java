@@ -35,7 +35,6 @@ import org.jesse.game.world.entity.player.container.impl.ContainerType;
 import org.jesse.game.world.object.WorldObject;
 import org.jesse.game.world.region.zone.ZoneManager;
 import io.netty.buffer.ByteBuf;
-import mgi.tools.parser.TypeParser;
 import mgi.types.component.ComponentDefinitions;
 import net.rsprot.protocol.game.outgoing.camera.util.CameraEaseFunction;
 import net.rsprot.protocol.game.outgoing.clan.ClanChannelFull;
@@ -71,7 +70,7 @@ public final class PacketDispatcher {
 
     private final PacketSender sender;
 
-    public static final Logger log = LoggerFactory.getLogger(TypeParser.class);
+    public static final Logger log = LoggerFactory.getLogger(PacketDispatcher.class);
 
     /**
      * Creates an action sender for the specified player.

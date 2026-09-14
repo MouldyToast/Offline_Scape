@@ -98,7 +98,7 @@ public final class AchievementDiaries {
 			final List<Diary> list = next.getValue();
 			for (final Diary entry : list) {
 				tasksAmount++;
-				if (getProgress(entry) == entry.objectiveLength()/* || entry.autoCompleted()*/) {
+				if (isCompleted(entry)) {
 					tabs.put(type, tabs.getOrDefault(type, 0) + 1);
 					completedAmount++;
 				}

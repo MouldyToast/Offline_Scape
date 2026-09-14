@@ -1,6 +1,5 @@
 package mgi.types.config.npcs;
 
-import com.esotericsoftware.kryo.Kryo;
 import org.jesse.CacheManager;
 import org.jesse.game.world.entity.masks.RenderType;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -538,15 +537,6 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
         }
         filteredOptions[index] = option == null || option.isEmpty() ? null : option;
         filterFlag |= 1 << index;
-    }
-
-    public NPCDefinitions copy() {
-        Kryo kryo = new Kryo();
-        kryo.register(NPCDefinitions.class);
-        kryo.register(int[].class);
-        kryo.register(short[].class);
-        kryo.register(String[].class);
-        return kryo.copy(this);
     }
 
     @Override

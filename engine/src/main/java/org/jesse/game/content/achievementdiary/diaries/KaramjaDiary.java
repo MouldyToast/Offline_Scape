@@ -105,7 +105,6 @@ public enum KaramjaDiary implements Diary {
 			MAP.put(type, new ArrayList<>(15));
 		}
 		for (final KaramjaDiary value : VALUES) {
-			if (value.autoCompleted) continue;
 			MAP.get(value.type).add(value);
 		}
 	}

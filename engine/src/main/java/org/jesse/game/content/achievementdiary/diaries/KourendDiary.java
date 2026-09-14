@@ -99,7 +99,6 @@ public enum KourendDiary implements Diary {
             MAP.put(type, new ArrayList<>(15));
         }
         for (final KourendDiary value : VALUES) {
-            if (value.autoCompleted) continue;
             MAP.get(value.type).add(value);
         }
     }

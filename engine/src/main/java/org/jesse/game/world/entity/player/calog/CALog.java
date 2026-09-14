@@ -7,12 +7,15 @@ import org.jesse.game.world.entity.player.VarManager;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
+import mgi.types.config.StructDefinitions;
 import mgi.types.config.enums.EnumDefinitions;
 import mgi.types.config.enums.IntEnum;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
 
 /**
@@ -38,6 +41,79 @@ public class CALog {
 
 	private static final int[] TOTAL_TASK_COUNT = new int[CATierType.values().length];
 
+	private static final Set<String> INCOMPLETE_TASKS = new HashSet<>(Arrays.asList(
+			"fighting as intended ii", "fighting as intended", "fragment of seren speed-trialist",
+			"galvek speed-trialist", "glough speed-trialist", "the flame skipper", "arooo no more",
+			"perfect olm (solo)", "perfect olm (trio)", "a not so special lizard",
+			"chambers of xeric: cm (5-scale) speed-chaser", "chambers of xeric: cm (solo) speed-chaser",
+			"moving collateral", "perfect corrupted hunllef", "perfect crystalline hunllef",
+			"perfect nightmare", "perfect maiden", "pop it", "perfect nylocas", "perfect verzik",
+			"perfect sotesteg", "perfect bloat", "can't drain this", "perfect xarpus",
+			"nibblers, begone!", "you didn't say anything about a bat", "fight caves speed-chaser",
+			"denying the healers", "the walk", "perfect zulrah",
+			"chambers of xeric (solo) speed-runner", "chambers of xeric (5-scale) speed-runner",
+			"chambers of xeric (trio) speed-runner", "chambers of xeric: cm (solo) speed-runner",
+			"egniol diet ii", "corrupted gauntlet speed-runner", "perfect nex",
+			"perfect phosani's nightmare", "phosani's speedrunner",
+			"nightmare (5-scale) speed-runner", "terrible parent", "a long trip",
+			"perfect theatre", "theatre (5-scale) speed-runner", "theatre (duo) speed-runner",
+			"theatre (4-scale) speed-runner", "theatre (trio) speed-runner",
+			"wasn't even close", "nibbler chaser", "the floor is lava", "no luck required",
+			"jad? what are you doing here?", "budget setup", "playing with jads",
+			"facing jad head-on ii", "denying the healers ii", "no time for a drink",
+			"expert tomb explorer", "something of an expert myself", "expert tomb looter",
+			"ba-bananza", "rockin' around the croc", "doesn't bug me", "all out of medics",
+			"warden't you believe it", "resourceful raider", "but... damage", "fancy feet",
+			"tombs speed runner ii", "tombs speed runner iii", "amascut's remnant",
+			"maybe i'm the boss.", "expert tomb raider", "akkhan't do it", "all praise zebak",
+			"perfection of het", "perfection of apmeken", "perfection of crondis",
+			"perfection of scabaras", "insanity", "tomb explorer", "hardcore raiders",
+			"hardcore tombs", "helpful spirit who?", "dropped the ball", "no skipping allowed",
+			"down do specs", "perfect het", "perfect apmeken", "perfect crondis",
+			"i'm in a rush", "you are not prepared", "tomb looter", "tomb raider",
+			"tombs speed runner", "better get movin'", "chompington", "perfect akkha",
+			"perfect ba-ba", "perfect zebak", "perfect scabaras", "perfect kephri",
+			"perfect wardens", "novice tomb explorer", "novice tomb looter", "movin' on up",
+			"confident raider", "novice tomb raider", "into the den of giants",
+			"not so great after all", "tempoross novice", "master of buckets",
+			"calm before the storm", "fire in the hole!", "tempoross champion",
+			"the lone angler", "dress like you mean it", "why cook?",
+			"theatre of blood: sm adept", "anticoagulants", "appropriate tools",
+			"they won't expect this", "chally time", "nylocas, on the rocks",
+			"just to be safe", "don't look at me!", "no-pillar", "attack, step, wait",
+			"pass it on", "theatre of blood: sm speed-chaser", "the ii jad challenge",
+			"tzhaar-ket-rak's speed-trialist", "facing jad head-on iii",
+			"the iv jad challenge", "tzhaar-ket-rak's speed-chaser", "facing jad head-on iv",
+			"supplies? who needs 'em?", "multi-style specialist", "hard mode? completed it",
+			"the vi jad challenge", "tzhaar-ket-rak's speed-runner", "it wasn't a fluke",
+			"versatile drainer", "blind spot", "stop right there!", "personal space",
+			"royal affairs", "harder mode i", "harder mode ii", "nylo sniper",
+			"team work makes the dream work", "harder mode iii", "pack like a yak",
+			"theatre: hm (trio) speed-runner", "theatre: hm (4-scale) speed-runner",
+			"theatre: hm (5-scale) speed-runner", "theatre of blood: hm grandmaster",
+			"pray for success", "sorry, what was that?", "mage of the ruins",
+			"i'd rather not learn", "claw clipper", "praying to the gods", "weed whacker",
+			"chitin penetrator", "insect repellent", "i can't reach that", "guardians no more",
+			"zulrah adept", "vet'ion adept", "perfect sire", "unrequired antifire",
+			"anti-bite mechanics", "hot on your feet", "3, 2, 1 - mage", "3, 2, 1 - range",
+			"egniol diet", "crystalline warrior", "prayer smasher", "hard hitter",
+			"nightmare (5-scale) speed-trialist", "from one king to another", "reminisce",
+			"zulrah veteran", "snake rebound", "hazard prevention", "vet'eran",
+			"together we'll fall", "redemption enthusiast", "mutta-diet",
+			"dancing with statues", "cryo no more", "blizzard dodger", "kill it with fire",
+			"demonic defence", "the bane of demons", "phantom muspah speed-runner",
+			"phantom muspah manipulator", "can't wake up", "inferno speed-runner",
+			"inferno grandmaster", "chambers of xeric grandmaster",
+			"chambers of xeric: cm (trio) speed-runner",
+			"chambers of xeric: cm (5-scale) speed-runner", "vorkath speed-runner",
+			"the fremennik way", "faithless encounter", "theatre of blood grandmaster",
+			"grotesque guardians speed-runner", "quick cutter", "whack-a-mole",
+			"avoiding those little arms", "shayzien protector", "... 'til dawn",
+			"ready to pounce", "inspect repellent", "walk straight pray true",
+			"demon evasion", "precise positioning", "space is tight",
+			"the worst ranged weapon", "wolf puncher", "wolf puncher ii"
+	));
+
 	static {
 		VarManager.appendPersistentVarbit(CA_EASY_COMPLETION_TOTAL_VARBIT);
 		VarManager.appendPersistentVarbit(CA_MEDIUM_COMPLETION_TOTAL_VARBIT);
@@ -55,17 +131,17 @@ public class CALog {
 		for (int enumIndx = 0; enumIndx < CA_TASK_TIER_ENUMS.length; enumIndx++) {
 			final IntEnum categoryEnum = EnumDefinitions.getIntEnum(CA_TASK_TIER_ENUMS[enumIndx]);
 			final ObjectSet<Int2IntMap.Entry> entrySet = categoryEnum.getValues().int2IntEntrySet();
-			TOTAL_TASK_COUNT[enumIndx] = entrySet.size();
-
-			/*
+			int completableCount = 0;
 			for (final Int2IntMap.Entry entry : entrySet) {
-				final int subCategoryStructId = entry.getIntValue();
-				final StructDefinitions subCategoryStruct = Objects.requireNonNull(StructDefinitions.get(subCategoryStructId));
-				final int taskIndx = Integer.parseInt(subCategoryStruct.getValue(STRUCT_POINTER_TASK_INDX).orElseThrow(RuntimeException::new).toString());
-				final String taskName = String.valueOf(subCategoryStruct.getValue(STRUCT_POINTER_TASK_NAME).orElseThrow(RuntimeException::new).toString());
-				final int taskTier = Integer.parseInt(subCategoryStruct.getValue(STRUCT_POINTER_TASK_TIER).orElseThrow(RuntimeException::new).toString());
-				final int boss = Integer.parseInt(subCategoryStruct.getValue(STRUCT_POINTER_TASK_BOSS).orElseThrow(RuntimeException::new).toString());
-			}*/
+				final StructDefinitions struct = StructDefinitions.get(entry.getIntValue());
+				if (struct == null) continue;
+				final String taskName = struct.getParamAsString(STRUCT_POINTER_TASK_NAME);
+				if (taskName != null && INCOMPLETE_TASKS.contains(taskName.toLowerCase())) {
+					continue;
+				}
+				completableCount++;
+			}
+			TOTAL_TASK_COUNT[enumIndx] = completableCount;
 		}
 	}
 

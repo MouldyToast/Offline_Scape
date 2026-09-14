@@ -53,8 +53,6 @@ import org.jesse.utils.TimeUnit
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.newSingleThreadContext
-import mgi.tools.parser.writers.ItemWriter
-import mgi.tools.parser.writers.TomlPrinter
 import mgi.types.config.ObjectDefinitions
 import mgi.types.config.items.ItemDefinitions
 import mgi.types.config.npcs.NPCDefinitions
@@ -149,13 +147,6 @@ object DeveloperCommands {
             } else {
                 player.sendMessage("Invalid playtime value. Please provide a non-negative number of days.")
             }
-        }
-
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "logitemdef") { player, args ->
-            val itemId = args.getOrNull(0)?.toIntOrNull() ?: return@Command
-            val def = ItemDefinitions.get(itemId)
-            val props = ItemWriter().write(def)
-            TomlPrinter.printTomlBlock("item", props)
         }
 
         Command(PlayerPrivilege.TRUE_DEVELOPER, "addreferral") { player, args ->

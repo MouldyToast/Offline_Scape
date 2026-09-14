@@ -7,12 +7,9 @@ plugins {
 dependencies {
     api(projects.util)
 
-    implementation(libs.jackson.dataformat.toml)
-
     api(projects.coreModel)
 
     implementation(projects.util)
-    implementation(libs.kryo)
     implementation(libs.google.guava)
     implementation(libs.apache.commons.io)
     implementation(libs.zip4j)
@@ -48,13 +45,6 @@ dependencies {
     implementation(libs.sqlite)
 
     runtimeClasspath(libs.slf4j.simple)
-}
-
-tasks.register<JavaExec>("generateCache") {
-    group = "_nr_data"
-    mainClass.set("mgi.tools.parser.TypeParser")
-    classpath = sourceSets["main"].runtimeClasspath
-    args = listOf("--unzip", "false")
 }
 
 // OpenRS2 Archive — rev 228 cache (2025-02-12, ID 2043)

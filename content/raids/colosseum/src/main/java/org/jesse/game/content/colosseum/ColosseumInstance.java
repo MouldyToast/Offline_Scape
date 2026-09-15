@@ -608,12 +608,13 @@ public class ColosseumInstance extends DynamicArea implements EquipmentPlugin, C
             return;
         }
 
-        // Determine gate: north or south based on player position relative to arena centre
-        int gateY = player.getY() > getY(3107) ? 3123 : 3090;
-        int gateX = 1824; // Centre of gate
+        // Determine gate: north or south based on player position relative to arena centre.
+        // Walkable gate tiles: north (1823–1826, 3122), south (1823–1826, 3091).
+        int gateY = player.getY() > getY(3107) ? 3122 : 3091;
+        int gateX = 1824;
 
         for (int npcId : reinforcements) {
-            Location spawnLoc = getLocation(gateX + Utils.random(-2, 2), gateY);
+            Location spawnLoc = getLocation(gateX + Utils.random(-1, 2), gateY);
             ColosseumWaveNpc npc = createWaveNpc(npcId, spawnLoc);
             npc.spawn();
             npc.getCombat().setTarget(player);

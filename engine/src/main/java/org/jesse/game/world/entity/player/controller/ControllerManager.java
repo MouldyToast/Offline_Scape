@@ -53,12 +53,8 @@ public final class ControllerManager {
 		if (lastController == null) {
 			return;
 		}
-		try {
-			// Back-compat: pre-rename saves stored controllers under the old package roots.
-			lastController = lastController
-					.replace("com.zenyte.", "org.jesse.")
-					.replace("com.near_reality.", "org.jesse.");
-			final Object controllerClass = Class.forName(lastController).newInstance();
+        try {
+            final Object controllerClass = Class.forName(lastController).getDeclaredConstructor().newInstance();
 			if (controllerClass == null) {
 				return;
 			}
@@ -70,7 +66,7 @@ public final class ControllerManager {
 			if (controller.removeOnLogin()) {
 				forceStop();
 			}
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | java.lang.reflect.InvocationTargetException e) {
 			log.error("", e);
 			lastController = null;
 		}

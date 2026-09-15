@@ -1535,18 +1535,35 @@ public final class GameCommands {
             p.sendMessage("Maximum tolerance set to: " + value);
         });
         new Command(PlayerPrivilege.PLAYER, "commands", "List all available commands.", (p, args) -> {
-            final ArrayList<String> entries = new ArrayList<>();
-            COMMANDS.values().stream().filter(distinctByKey(c -> c.name)).sorted().forEach(c -> {
-                if (!c.eligible(p) && !isLiveEligible(p, c.privilege, PlayerPrivilege.FORUM_MODERATOR)) {
-                    return;
+            final PlayerPrivilege[] categories = {
+                PlayerPrivilege.PLAYER, PlayerPrivilege.MODERATOR,
+                PlayerPrivilege.SENIOR_MODERATOR, PlayerPrivilege.ADMINISTRATOR,
+                PlayerPrivilege.DEVELOPER, PlayerPrivilege.TRUE_DEVELOPER
+            };
+            final ArrayList<String> labels = new ArrayList<>();
+            final ArrayList<PlayerPrivilege> shown = new ArrayList<>();
+            for (final PlayerPrivilege cat : categories) {
+                if (!p.getPrivilege().eligibleTo(cat)) continue;
+                final boolean hasCommands = COMMANDS.values().stream()
+                    .filter(distinctByKey(c -> c.name))
+                    .anyMatch(c -> c.privilege == cat && c.description != null);
+                if (hasCommands) {
+                    labels.add(cat.crown().getCrownTag() + " " + cat.getPrettyName() + " Commands");
+                    shown.add(cat);
                 }
-                if (c.description != null) {
-                    final String[] lines = Book.splitIntoLine(c.description, 55);
-                    entries.add(c.privilege.crown().getCrownTag() + "<col=ffff00> ::" + c.name);
-                    entries.addAll(Arrays.asList(lines));
+            }
+            if (shown.size() == 1) {
+                sendCommandList(p, shown.get(0));
+                return;
+            }
+            p.getDialogueManager().start(new OptionsMenuD(p, "Command Categories", labels.toArray(new String[0])) {
+                @Override
+                public void handleClick(final int slotId) {
+                    if (slotId < shown.size()) {
+                        sendCommandList(p, shown.get(slotId));
+                    }
                 }
             });
-            Diary.sendJournal(p, "Commands list", entries);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "testvarp", "List all varbits using a varp. Args: varpId", (p, args) -> {
             for (int i = 0; i < CollectionUtils.getIndiceSize(Indice.VARBIT_DEFINITIONS); i++) {
@@ -2539,6 +2556,20 @@ public final class GameCommands {
         if (player.getPrivilege() == PlayerPrivilege.ADMINISTRATOR) {
             player.getPacketDispatcher().sendGameMessage("This command does not exist.", true);
         }
+    }
+
+    private static void sendCommandList(final Player p, final PlayerPrivilege category) {
+        final ArrayList<String> entries = new ArrayList<>();
+        COMMANDS.values().stream()
+            .filter(distinctByKey(c -> c.name))
+            .sorted()
+            .forEach(c -> {
+                if (c.privilege == category && c.description != null) {
+                    entries.add(c.privilege.crown().getCrownTag() + "<col=ffff00> ::" + c.name);
+                    entries.addAll(Arrays.asList(Book.splitIntoLine(c.description, 55)));
+                }
+            });
+        Diary.sendJournal(p, category.getPrettyName() + " Commands", entries);
     }
 
     public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {

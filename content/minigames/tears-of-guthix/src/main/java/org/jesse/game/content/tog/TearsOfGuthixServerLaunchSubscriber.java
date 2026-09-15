@@ -14,7 +14,7 @@ public final class TearsOfGuthixServerLaunchSubscriber {
 
     @Subscribe
     public static void onServerStart(ServerLaunchEvent e) {
-        new GameCommands.Command(PlayerPrivilege.DEVELOPER, "resettog", (p, args) ->
+        new GameCommands.Command(PlayerPrivilege.DEVELOPER, "resettog", "Reset a player's Tears of Guthix cooldown. Args: name", (p, args) ->
                 p.sendInputName("Whose " + "Tears" + " of Guthix restriction to remove?",
                         name -> World.getPlayer(name).ifPresent(targetPlayer ->
                                 targetPlayer.getAttributes().remove(JunaEnterDialogue.LAST_ATTEMPT_DATE_ATTR))));

@@ -18,10 +18,10 @@ object IronmanGroupCommands {
     }
 
     private fun register() {
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "message") {p, args ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "message", "Send a test GIM chat message.") {p, args ->
             p.sendMessage("bla | bla", MessageType.CLAN_GIM_FORM_GROUP, p.username)
         }
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "varclan") { p, args ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "varclan", "Set a varclan value. Args: varId value") { p, args ->
             val group = p.finalisedIronmanGroup
             if (group == null) {
                 p.sendMessage("No group.")

@@ -63,13 +63,13 @@ object PvmArenaModule {
     }
 
     private fun registerCommands() {
-        GameCommands.Command(PlayerPrivilege.PLAYER, "pvm") { p, _ ->
+        GameCommands.Command(PlayerPrivilege.PLAYER, "pvm", "Teleport to the PvM Arena lobby.") { p, _ ->
             PvmArenaLobbyArea.teleportInto(p)
         }
-        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "managepvm") { p, _ ->
+        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "managepvm", "Open the PvM Arena management menu.") { p, _ ->
             openManagementDialogue(p)
         }
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "pvmsim") { p, args ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "pvmsim", "Spawn fake PvM Arena players. Args: [count]") { p, args ->
             val amount = args.getOrNull(0)?.toIntOrNull() ?: 10
             if (GameConstants.WORLD_PROFILE.isPublic())
                 p.sendMessage("This command is only available in the development environment.")

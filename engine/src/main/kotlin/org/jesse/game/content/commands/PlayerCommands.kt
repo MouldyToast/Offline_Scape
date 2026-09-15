@@ -36,7 +36,7 @@ object PlayerCommands {
 
 
 
-        Command(PlayerPrivilege.PLAYER, "kdr") { p, _ ->
+        Command(PlayerPrivilege.PLAYER, "kdr", "Display your PvP kill/death ratio.") { p, _ ->
             val kills = p.pvpKills
             val deaths = p.pvpDeaths
             val ratio = (if (deaths == 0) kills else kills.toDouble() / deaths.toDouble()).toString().format("%.2f")
@@ -47,7 +47,7 @@ object PlayerCommands {
         }
 
         /* Toggles */
-        Command(PlayerPrivilege.PLAYER, "togglehelp") { p, _ ->
+        Command(PlayerPrivilege.PLAYER, "togglehelp", "Toggle auto-join help chat on login.") { p, _ ->
             p.manuallyLeftHelpChat = !p.manuallyLeftHelpChat
             if(p.manuallyLeftHelpChat)
                 p.sendMessage("You will no longer rejoin help chat on login.")

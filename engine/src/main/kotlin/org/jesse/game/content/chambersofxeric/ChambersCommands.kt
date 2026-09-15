@@ -7,12 +7,12 @@ import org.jesse.game.world.entity.player.privilege.PlayerPrivilege
 
 object ChambersCommands {
     fun register() {
-        Command(PlayerPrivilege.DEVELOPER, "togglecoxmasses") { player, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "togglecoxmasses", "Toggle Chambers of Xeric masses.") { player, _ ->
             GameToggles.COX_MASSES_ENABLED = !GameToggles.COX_MASSES_ENABLED
             player.sendMessage("CoX Masses Enabled: ${GameToggles.COX_MASSES_ENABLED}")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "coxscale") { p, args ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "coxscale", "Set raid difficulty scale. Args: scale") { p, args ->
             if(!GameToggles.COX_MASSES_ENABLED) {
                 p.sendMessage("CoX Masses are currently disabled. Please ask a manager to enable them.")
                 return@Command
@@ -29,7 +29,7 @@ object ChambersCommands {
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "coxsupplies") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "coxsupplies", "Fill raid storage with supplies.") { p, _ ->
             if(!GameToggles.COX_MASSES_ENABLED) {
                 p.sendMessage("CoX Masses are currently disabled. Please ask a manager to enable them.")
                 return@Command

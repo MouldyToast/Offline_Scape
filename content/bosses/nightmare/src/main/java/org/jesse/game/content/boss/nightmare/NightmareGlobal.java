@@ -40,7 +40,7 @@ public class NightmareGlobal {
 
 		NightmareBossArea.boss.initTotems(NightmareBossArea.totemNE, NightmareBossArea.totemNW, NightmareBossArea.totemSE, NightmareBossArea.totemSW);
 
-		new GameCommands.Command(PlayerPrivilege.DEVELOPER, "noa", (p, args) -> PoolOfNightmares.enterFight(p));
+		new GameCommands.Command(PlayerPrivilege.DEVELOPER, "noa", "Enter a Nightmare fight.", (p, args) -> PoolOfNightmares.enterFight(p));
 
         WorldTasksManager.scheduleCreation(() -> {
             NightmareLobbyArea.lobbyNPC.spawn();

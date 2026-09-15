@@ -21,12 +21,12 @@ public class TOACommands {
     }
 
     public static void register() {
-        new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "toatest", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "toatest", "Start a solo ToA raid.", (p, args) -> {
             final TOALobbyParty party = new TOALobbyParty(p);
             TOALobbyParty.addLobbyParty(party);
             p.getTOAManager().enterRaid();
         });
-        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "settoarewardmx", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "settoarewardmx", "Set ToA reward multiplier. Args: numerator", (p, args) -> {
             if(GameConstants.isOwner(p)) {
                 int numerator = Integer.parseInt(args[0]);
                 TOARewardHelper.INSTANCE.setRewardMultiplier(numerator);
@@ -34,7 +34,7 @@ public class TOACommands {
                 p.sendMessage("You cannot use this command");
             }
         });
-        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "carrytoa", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "carrytoa", "Skip to ToA rewards. Args: level points purple", (p, args) -> {
             int level = Integer.parseInt(args[0]);
             int points = Integer.parseInt(args[1]);
             boolean overridePurple = Integer.parseInt(args[2]) == 1;
@@ -49,7 +49,7 @@ public class TOACommands {
 
         });
 
-        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "ctoa", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "ctoa", "Quick-skip to ToA rewards.", (p, args) -> {
             int level = 550;
             int points = 16000;
             boolean overridePurple = true;
@@ -69,11 +69,11 @@ public class TOACommands {
             }, 8);
 
         });
-        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "toaclears", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.TRUE_DEVELOPER, "toaclears", "Set your ToA clear count. Args: count", (p, args) -> {
             int clears = Integer.parseInt(args[0]);
             p.addAttribute("tombs of amascut: entry mode", clears);
         });
-        new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "starttoa", (p, args) -> {
+        new GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "starttoa", "Start a ToA encounter from menu.", (p, args) -> {
             p.getDialogueManager().start(new Dialogue(p) {
                 @Override
                 public void buildDialogue() {

@@ -223,6 +223,7 @@ object DeveloperCommands {
             if(!p.immune) {
                 p.sendMessage("Immunity enabled")
                 p.immune = true
+                p.toxins.reset()
             } else {
                 p.sendMessage("Immunity disabled")
                 p.immune = false

@@ -1868,6 +1868,7 @@ public final class GameCommands {
             if (p.getCombatDefinitions().getSpecialEnergy() < 100) {
                 p.getCombatDefinitions().setSpecialEnergy(100);
             }
+            p.getToxins().reset();
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, new String[]{"pray", "prayer"}, "Sets your prayer to your max or " +
                 "requested value. Argument: <Optional>amount", (p, args) -> {

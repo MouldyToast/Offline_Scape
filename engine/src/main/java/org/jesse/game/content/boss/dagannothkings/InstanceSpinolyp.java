@@ -49,7 +49,7 @@ public class InstanceSpinolyp extends NPC implements CombatScript {
         return false;
     }
 
-    private static final Projectile attackProjectile = new Projectile(294, 20, 25, 25, 30, 28, 5, 5);
+    private static final Projectile attackProjectile = new Projectile(294, 80, 100, 25, 30, 28, 5, 5);
 
     @Override
     public int attack(final Entity target) {

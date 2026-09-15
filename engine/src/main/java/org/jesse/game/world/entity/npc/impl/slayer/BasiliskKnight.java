@@ -24,8 +24,8 @@ public class BasiliskKnight extends NPC implements Spawnable, CombatScript {
 		super(id, tile, facing, radius);
 	}
 
-	private static final Projectile PROJECTILE = new Projectile(1735, 18, 25, 0, 55);
-	private static final Projectile NO_SHIELD = new Projectile(1739, 18, 25, 0, 55);
+	private static final Projectile PROJECTILE = new Projectile(1735, 72, 100, 0, 55);
+	private static final Projectile NO_SHIELD = new Projectile(1739, 72, 100, 0, 55);
 	private static final Graphics SPLASH_PROJECTILE = new Graphics(1736, 0, 124);
 
 	@Override

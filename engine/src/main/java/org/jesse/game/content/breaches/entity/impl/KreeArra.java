@@ -50,8 +50,8 @@ public class KreeArra extends BreachEntity implements Spawnable, CombatScript {
 
     private static final Animation meleeAnimation = new Animation(6981);
     private static final Animation distancedAnimation = new Animation(6980);
-    private static final Projectile magicProjectile = new Projectile(1200, 41, 16, 40, 5, 10, 0, 5);
-    private static final Projectile rangedProjectile = new Projectile(1199, 41, 16, 40, 5, 10, 0, 5);
+    private static final Projectile magicProjectile = new Projectile(1200, 164, 64, 40, 5, 10, 0, 5);
+    private static final Projectile rangedProjectile = new Projectile(1199, 164, 64, 40, 5, 10, 0, 5);
     private static final SoundEffect meleeSound = new SoundEffect(3892, 10, 0);
     public static final SoundEffect TORNADO_SOUND = new SoundEffect(3870, 10, 0);
     public static final SoundEffect TORNADO_HIT_SOUND = new SoundEffect(2727, 10, -1);

@@ -22,7 +22,7 @@ import org.jesse.game.world.entity.player.action.combat.magic.CombatSpell;
 public class JusticiarZachariah extends BreachEntity implements Spawnable, CombatScript {
     private static final Animation magicAnimation = new Animation(7962);
     private static final Animation meleeAnimation = new Animation(7853);
-    private static final Projectile specialProjectile = new Projectile(1515, 50, 10, 40, 10, 70, 64, 5);
+    private static final Projectile specialProjectile = new Projectile(1515, 200, 40, 40, 10, 70, 64, 5);
 
     public JusticiarZachariah(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);

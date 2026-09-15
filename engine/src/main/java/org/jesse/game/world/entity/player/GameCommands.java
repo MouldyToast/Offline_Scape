@@ -787,7 +787,7 @@ public final class GameCommands {
             final int py = p.getY();
             for (int x = px - 10; x < px + 10; x++) {
                 for (int y = py - 10; y < py + 10; y++) {
-                    final Projectile proj = new Projectile(id++, 50, 50, 0, 0, 5000, 0, 5);
+                    final Projectile proj = new Projectile(id++, 200, 200, 0, 0, 5000, 0, 5);
                     World.sendProjectile(new Location(x, y, p.getPlane()), new Location(x + 5, y, p.getPlane()), proj);
                 }
             }
@@ -881,7 +881,7 @@ public final class GameCommands {
                     list.add(n);
                 }
             });
-            final Projectile projectile = new Projectile(310, 34, 50, 0, 0, 20, 0, 5);
+            final Projectile projectile = new Projectile(310, 136, 200, 0, 0, 20, 0, 5);
             for (final NPC npc : list) {
                 World.scheduleProjectile(p, npc, projectile).schedule(() -> npc.applyHit(new Hit(p,
                         npc.getHitpoints(), HitType.REGULAR)));

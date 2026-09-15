@@ -22,7 +22,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities;
 public final class FallingCrystal implements OlmCombatScript {
 	private static final Graphics graphics = new Graphics(246);
 	private static final Graphics shatterGraphics = new Graphics(1338);
-	private static final Projectile projectile = new Projectile(1352, 255, 0, 0, 0, 60, 127, 5);
+	private static final Projectile projectile = new Projectile(1352, 1020, 0, 0, 0, 60, 127, 5);
 	private static final SoundEffect crySound = new SoundEffect(324, 15, 0);
 	private static final SoundEffect shatterSound = new SoundEffect(3821, 5, 0);
 

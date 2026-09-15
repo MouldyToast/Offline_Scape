@@ -21,7 +21,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities
  */
 class MagicAttack: Attack {
 
-    private val projectileBlob : Projectile = Projectile(1622, 64, 32, 64, 0)
+    private val projectileBlob : Projectile = Projectile(1622, 256, 128, 64, 0)
 
     override fun invoke(araxxor: Araxxor, target: Entity?) {
         if (target == null) return

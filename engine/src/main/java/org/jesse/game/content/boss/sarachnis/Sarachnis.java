@@ -37,9 +37,9 @@ public final class Sarachnis extends NPC implements CombatScript, Spawnable {
 
     private static final int RANGED_ANIMATION = 4410;
 
-    private static final Projectile RANGED_PROJECTILE = new Projectile(1686, 50, 20, 25, 15, 60, 90, 5);
+    private static final Projectile RANGED_PROJECTILE = new Projectile(1686, 200, 80, 25, 15, 60, 90, 5);
 
-    private static final Projectile WEB_PROJECTILE = new Projectile(1687, 50, 20, 25, 15, 35, 90, 5);
+    private static final Projectile WEB_PROJECTILE = new Projectile(1687, 200, 80, 25, 15, 35, 90, 5);
 
     private Set<Location> walkDestinations;
 

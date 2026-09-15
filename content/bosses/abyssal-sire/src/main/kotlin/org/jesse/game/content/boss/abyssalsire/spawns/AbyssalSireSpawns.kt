@@ -78,7 +78,7 @@ internal class AbyssalSireSpawns(private val sire: AbyssalSire) {
         val shootingSpawnAnimation = Animation(4530)
 
         fun spawnProjectile(distance: Int) = Projectile(
-            SPAWN_PROJECTILE_ID, 92, 0, 103, 15,
+            SPAWN_PROJECTILE_ID, 368, 0, 103, 15,
             120 + distance / 3 * 30, 128, 0
         )
 

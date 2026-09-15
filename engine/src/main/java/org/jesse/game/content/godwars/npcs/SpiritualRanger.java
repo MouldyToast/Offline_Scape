@@ -26,10 +26,10 @@ import org.jetbrains.annotations.NotNull;
 public class SpiritualRanger extends SpawnableKillcountNPC implements Spawnable, CombatScript {
 
     private static final Graphics specialGraphics = new Graphics(1692, 0, 96);
-    private static final Projectile specialProjectile = new Projectile(1693, 40, 0, 35, 10, 120, 64, 0);
+    private static final Projectile specialProjectile = new Projectile(1693, 160, 0, 35, 10, 120, 64, 0);
     private static final Graphics graphics = new Graphics(19, 0, 90);
-    private static final Projectile projectile = new Projectile(10, 42, 30, 40, 15, 10, 64, 5);
-    private static final Projectile thrownaxeProjectile = new Projectile(1197, 16, 22, 30, 15, 10, 64, 5);
+    private static final Projectile projectile = new Projectile(10, 168, 120, 40, 15, 10, 64, 5);
+    private static final Projectile thrownaxeProjectile = new Projectile(1197, 64, 88, 30, 15, 10, 64, 5);
     private static final SoundEffect attackSound = new SoundEffect(2693, 10, 0);
 
     protected SpiritualRanger(final int id, final Location tile, final Direction facing, final int radius) {

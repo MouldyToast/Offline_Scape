@@ -128,9 +128,9 @@ public class DagannothKing extends NPC implements Spawnable, CombatScript {
         return id >= 2265 && id <= 2267;
     }
 
-    private static final Projectile magicProj = new Projectile(162, 63, 25, 27, 15, 33, 64, 5);
+    private static final Projectile magicProj = new Projectile(162, 252, 100, 27, 15, 33, 64, 5);
 
-    private static final Projectile rangedProj = new Projectile(475, 50, 30, 25, 30, 28, 5, 5);
+    private static final Projectile rangedProj = new Projectile(475, 200, 120, 25, 30, 28, 5, 5);
 
     @Override public void handleIngoingHit(Hit hit) {
         if(!bypassSpecificStyleReq && hit.getSource() instanceof Player player) {

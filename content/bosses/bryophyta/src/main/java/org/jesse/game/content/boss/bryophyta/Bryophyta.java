@@ -29,7 +29,7 @@ import kotlin.Pair;
 public class Bryophyta extends NPC implements CombatScript {
     private static final Animation AUTO_ATTACK_ANIM = new Animation(4658);
     private static final Animation MAGIC_ATTACK_ANIM = new Animation(7173);
-    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(139, 50, 33, 46, 23, -5, 64, 10);
+    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(139, 200, 132, 46, 23, -5, 64, 10);
     private static final Graphics MAGIC_ATTACK_ONHIT_GFX = new Graphics(140, 0, 124);
     private static final Graphics SPLASH_GFX = new Graphics(85, 0, 124);
     private final BryophytaInstance instance;

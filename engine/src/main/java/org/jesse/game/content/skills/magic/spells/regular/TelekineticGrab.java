@@ -77,7 +77,7 @@ public final class TelekineticGrab implements FloorItemSpell, NPCSpell {
         private static final Animation CAST = new Animation(723);
         private static final Graphics CAST_GFX = new Graphics(142, 0, 92);
         private static final Graphics CATCH = new Graphics(144);
-        private static final Projectile PROJECTILE = new Projectile(143, 45, 5, 50, 15, 10, 64, 5);
+        private static final Projectile PROJECTILE = new Projectile(143, 180, 20, 50, 15, 10, 64, 5);
         private static final SoundEffect synth = new SoundEffect(3006);
         private static final SoundEffect area = new SoundEffect(3007, 10, 17);
 

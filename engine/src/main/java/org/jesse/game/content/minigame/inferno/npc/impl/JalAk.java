@@ -36,8 +36,8 @@ public class JalAk extends InfernoNPC {
     private static final Animation meleeAnimation = new Animation(7582);
     private static final Animation rangedAnimation = new Animation(7583);
     private static final SoundEffect meleeSound = new SoundEffect(595);
-    private static final Projectile rangedProjectile = new Projectile(1378, 42, 38, 0, 17, 30, 0, 4);
-    private static final Projectile magicProjectile = new Projectile(1380, 42, 38, 15, 17, 30, 0, 4);
+    private static final Projectile rangedProjectile = new Projectile(1378, 168, 152, 0, 17, 30, 0, 4);
+    private static final Projectile magicProjectile = new Projectile(1380, 168, 152, 15, 17, 30, 0, 4);
     public static final Map<Direction, byte[][]> bloblingOffsets = ImmutableMap.<Direction, byte[][]>builder().put(Direction.NORTH, new byte[][] {new byte[] {0, 1}, new byte[] {-1, 0}, new byte[] {1, 0}}).put(Direction.NORTH_EAST, new byte[][] {new byte[] {1, -1}, new byte[] {-1, 1}, new byte[] {1, 1}}).put(Direction.EAST, new byte[][] {new byte[] {0, 0}, new byte[] {1, 1}, new byte[] {1, -1}}).put(Direction.NORTH_WEST, new byte[][] {new byte[] {-1, -1}, new byte[] {-1, 1}, new byte[] {1, 1}}).put(Direction.SOUTH, new byte[][] {new byte[] {0, -1}, new byte[] {-1, 0}, new byte[] {1, 0}}).put(Direction.SOUTH_WEST, new byte[][] {new byte[] {-1, -1}, new byte[] {-1, 1}, new byte[] {1, 1}}).put(Direction.WEST, new byte[][] {new byte[] {-1, 0}, new byte[] {0, 1}, new byte[] {0, -1}}).put(Direction.SOUTH_EAST, new byte[][] {new byte[] {-1, -1}, new byte[] {1, -1}, new byte[] {1, 1}}).build();
     private static final WaveNPC[] bloblings = {WaveNPC.JAL_AKREK_MEJ, WaveNPC.JAL_AKREK_XIL, WaveNPC.JAL_AKREK_KET};
 

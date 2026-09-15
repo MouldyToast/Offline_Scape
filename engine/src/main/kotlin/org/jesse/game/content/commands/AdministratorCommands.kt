@@ -340,7 +340,7 @@ object AdministratorCommands {
             p.packetDispatcher.resetCamera()
         }
         Command(PlayerPrivilege.ADMINISTRATOR, "testproj") { p: Player, args: Array<String> ->
-            val proj = Projectile(args[0].toInt(), 50, 50, 0, 0, 50, 0, 5)
+            val proj = Projectile(args[0].toInt(), 200, 200, 0, 0, 50, 0, 5)
             World.sendProjectile(p.location, Location(p.x + 10, p.y, p.plane), proj)
         }
 

@@ -21,7 +21,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities
  */
 class RangedAttack: Attack {
 
-    private val projectileBlob : Projectile = Projectile(2360, 64, 32, 64, 0)
+    private val projectileBlob : Projectile = Projectile(2360, 256, 128, 64, 0)
 
     override fun invoke(araxxor: Araxxor, target: Entity?) {
         if (target == null) return

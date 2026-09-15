@@ -28,7 +28,7 @@ public class Cockatrice extends NPC implements Spawnable, CombatScript {
         return name.equalsIgnoreCase("cockatrice");
     }
 
-    private static final Projectile PROJECTILE = new Projectile(324, 16, 31, 0, 0, 16, 0, 2);
+    private static final Projectile PROJECTILE = new Projectile(324, 64, 124, 0, 0, 16, 0, 2);
     @Override
     public int attack(final Entity target) {
         if (!(target instanceof Player)) {

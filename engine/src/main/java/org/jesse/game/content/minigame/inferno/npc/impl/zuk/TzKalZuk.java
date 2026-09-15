@@ -40,7 +40,7 @@ public class TzKalZuk extends InfernoNPC {
     private static final Location[] healerSpawnLocations = {new Location(2262, 5363, 0), new Location(2266, 5363, 0), new Location(2276, 5363, 0), new Location(2280, 5363, 0)};
     private static final Graphics healGfx = new Graphics(444, 0, 250);
     private static final Animation attackAnimation = new Animation(7566);
-    private static final Projectile attackProjectile = new Projectile(1375, 80, 33, 60, 10, 30, 0, 2);
+    private static final Projectile attackProjectile = new Projectile(1375, 320, 132, 60, 10, 30, 0, 2);
     private AncestralGlyph glyph;
     private boolean healing;
     private int ticks;

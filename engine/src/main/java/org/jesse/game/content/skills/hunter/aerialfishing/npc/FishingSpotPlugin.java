@@ -34,8 +34,8 @@ import java.util.Map;
 public class FishingSpotPlugin extends NPCPlugin {
 
     private static final Graphics splashGraphics = new Graphics(1633);
-    private static final Projectile throwingProjectileFrom = new Projectile(1632, 34, 10, 20, 25, 0, 64, 8);
-    private static final Projectile throwingProjectileTo = new Projectile(1632, 10, 34, 20, 25, 0, 64, 8);
+    private static final Projectile throwingProjectileFrom = new Projectile(1632, 136, 40, 20, 25, 0, 64, 8);
+    private static final Projectile throwingProjectileTo = new Projectile(1632, 40, 136, 20, 25, 0, 64, 8);
 
     @Override
     public void handle() {

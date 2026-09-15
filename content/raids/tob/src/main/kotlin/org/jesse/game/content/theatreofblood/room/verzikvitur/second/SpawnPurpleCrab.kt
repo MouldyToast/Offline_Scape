@@ -26,4 +26,4 @@ internal fun VerzikVitur.spawnPurpleCrab() {
     }, ticks)
 }
 
-private val projectile = Projectile(1586, 54, 26, 20, 0, 160, 0, 0)
+private val projectile = Projectile(1586, 216, 104, 20, 0, 160, 0, 0)

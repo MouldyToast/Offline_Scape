@@ -561,7 +561,7 @@ public class MagicCombat extends PlayerCombat {
         return 9;
     }
 
-    private static final Projectile teleblock = new Projectile(1300, 43, 31, 46, 23, 29, 64, 5);
+    private static final Projectile teleblock = new Projectile(1300, 172, 124, 46, 23, 29, 64, 5);
 
     @Override
     public int processWithDelay() {

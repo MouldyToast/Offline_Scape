@@ -84,7 +84,7 @@ public final class DarkBeast extends NPC implements Spawnable, CombatScript {
 		return id == 4005 || id == 7250;
 	}
 
-	private static final Projectile MAGICAL_PROJ = new Projectile(130, 35, 30, 40, 5, 38, 64, 5);
+	private static final Projectile MAGICAL_PROJ = new Projectile(130, 140, 120, 40, 5, 38, 64, 5);
 	private static final Graphics SPLASH = new Graphics(85, 0, 92);
 	private static final Graphics GFX = new Graphics(131, 0, 92);
 

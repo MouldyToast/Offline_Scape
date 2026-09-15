@@ -20,4 +20,4 @@ internal fun VerzikVitur.rangeAttack() {
     }, 1)
 }
 
-private val projectile = Projectile(1593, 32, 10, 0, 32, 60, 128, 0)
+private val projectile = Projectile(1593, 128, 40, 0, 32, 60, 128, 0)

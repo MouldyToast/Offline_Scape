@@ -26,7 +26,7 @@ public class EnergySiphonNPC extends NPC {
     private static final int OBJECT_BLOCK_ID = 26209;
     private static final SoundEffect LANDING_SOUND = new SoundEffect(6159, 7);
     private static final SoundEffect SIPHON_SOUND = new SoundEffect(6230, 7);
-    private static final Projectile SIPHON_PROJECTILE = new Projectile(2227, 100, 5, 0, 0, 90, 70, 0);
+    private static final Projectile SIPHON_PROJECTILE = new Projectile(2227, 400, 20, 0, 0, 90, 70, 0);
     private final FlyingWardenNPC wardenNPC;
     private final WorldObject blockObject;
     private final int index;

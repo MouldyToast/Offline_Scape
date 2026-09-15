@@ -20,7 +20,7 @@ import static org.jesse.game.npc.ids.NpcId.KRIL_TSUTSAROTH_12446;
 public class KrilTsutsaroth extends BreachEntity implements Spawnable, CombatScript {
     private static final Animation meleeAnimation = new Animation(6948);
     private static final Animation magicAnimation = new Animation(6950);
-    private static final Projectile projectile = new Projectile(1155, 41, 16, 30, 5, 10, 0, 5);
+    private static final Projectile projectile = new Projectile(1155, 164, 64, 30, 5, 10, 0, 5);
     private static final ForceTalk forceTalk = new ForceTalk("YARRRRRRR!");
     private static final String message = "K'ril Tsutsaroth slams through your protection prayer, leaving you feeling drained.";
     private static final SoundEffect magicSound = new SoundEffect(3866, 10, 0);

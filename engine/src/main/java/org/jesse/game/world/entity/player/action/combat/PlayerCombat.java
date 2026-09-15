@@ -132,7 +132,7 @@ public abstract class PlayerCombat extends Action {
         return stallingToNonStallingAnimations.getOrDefault(animationId, animationId);
     }
 
-    public static final Projectile ZARYTE_SPEC_PROJ = new Projectile(1995, 38, 36, 41, 7, 5, 11, 5);
+    public static final Projectile ZARYTE_SPEC_PROJ = new Projectile(1995, 152, 144, 41, 7, 5, 11, 5);
     public static final Graphics BLOOD_FURY_GFX = new Graphics(1542);
     private static final String[] RANGED_WEAPONS = new String[]{"bow", "javelin", "thrownaxe", "throwing axe", "knife", "knives"
             , "chinchompa", "toktz-xil-ul", "holy water", "dart", "ballista", "blowpipe", "seercull", "mud pie"};
@@ -140,9 +140,9 @@ public abstract class PlayerCombat extends Action {
     private static final Animation DRAGONFIRE_SPECIAL_ANIM = new Animation(6696);
     private static final Graphics DRAGONFIRE_START_GFX = new Graphics(1165);
     private static final Graphics DRAGONFIRE_HIT_GFX = new Graphics(1167, 0, 96);
-    private static final Projectile DRAGONFIRE_PROJ = new Projectile(1166, 25, 25, 80, 15, 10, 0, 5);
+    private static final Projectile DRAGONFIRE_PROJ = new Projectile(1166, 100, 100, 80, 15, 10, 0, 5);
     private static final Graphics WYVERN_DRAGONFIRE_START_GFX = new Graphics(1401);
-    private static final Projectile WYVERN_DRAGONFIRE_PROJ = new Projectile(500, 25, 25, 80, 15, 10, 0, 5);
+    private static final Projectile WYVERN_DRAGONFIRE_PROJ = new Projectile(500, 100, 100, 80, 15, 10, 0, 5);
     private static final Graphics WYVERN_DRAGONFIRE_HIT_GFX = new Graphics(367, 0, 96);
     private static final EnumDefinitions SPECIAL_ENUM = EnumDefinitions.get(906);
     protected final String name;

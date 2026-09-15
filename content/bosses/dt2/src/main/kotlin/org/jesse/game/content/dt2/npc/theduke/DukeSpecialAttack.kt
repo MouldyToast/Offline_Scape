@@ -121,7 +121,7 @@ sealed interface DukeSpecialAttack {
 
         private const val GAS_PROJ_TYPE: Int = 2436
 
-        private val proj: Projectile = Projectile(GAS_PROJ_TYPE, 32, 10, 20, 60, 2, 32, 10)
+        private val proj: Projectile = Projectile(GAS_PROJ_TYPE, 128, 40, 20, 60, 2, 32, 10)
 
         override fun execute(duke: DukeSucellusEntity, target: Player) {
             val ventsNearby = duke.arena.ventPositions.sortedBy { it.getDistance(target.position) }.iterator()
@@ -193,7 +193,7 @@ sealed interface DukeSpecialAttack {
 
         private const val GAS_PROJ_TYPE: Int = 2436
 
-        private val proj: Projectile = Projectile(GAS_PROJ_TYPE, 32, 10, 20, 60, 2, 32, 10)
+        private val proj: Projectile = Projectile(GAS_PROJ_TYPE, 128, 40, 20, 60, 2, 32, 10)
 
         override fun execute(duke: DukeSucellusEntity, target: Player) {
             val secondVent = duke.arena.ventPositions.sortedBy { it.getDistance(target.position) }[1]

@@ -23,7 +23,7 @@ public class AgileScarab extends TOANPC implements CombatScript {
 
 	private static final int AGILE_SCARAB_NPC_ID = 11727;
 	private static final Animation ATTACK_ANIM = new Animation(9594);
-	private static final Projectile ATTACK_PROJECTILE = new Projectile(2152, 10, 31, 60, 16, 2, 64, 5);
+	private static final Projectile ATTACK_PROJECTILE = new Projectile(2152, 40, 124, 60, 16, 2, 64, 5);
 	private final KephriEncounter encounter;
 	private int switchTargetTicks = 20;
 	private Location lastTargetLocation;

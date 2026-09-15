@@ -25,9 +25,9 @@ import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
  */
 public class RuneDragon extends NPC implements CombatScript, Spawnable {
-    private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 30, 30, 38, 10, 28, 0, 5);
-    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(162, 35, 30, 41, 5, 28, 0, 5);
-    private static final Projectile LIGHTNING_ATTACK_PROJ = new Projectile(1488, 35, 0, 41, 10, 41, 0, 5);
+    private static final Projectile DRAGONFIRE_PROJ = new Projectile(54, 120, 120, 38, 10, 28, 0, 5);
+    private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(162, 140, 120, 41, 5, 28, 0, 5);
+    private static final Projectile LIGHTNING_ATTACK_PROJ = new Projectile(1488, 140, 0, 41, 10, 41, 0, 5);
     private static final Graphics MAGIC_ATTACK_ONHIT = new Graphics(163, 0, 92);
     private static final Graphics SPLASH = new Graphics(85, 0, 92);
     private static final Graphics LIFE_LEECH_GFX = new Graphics(753);

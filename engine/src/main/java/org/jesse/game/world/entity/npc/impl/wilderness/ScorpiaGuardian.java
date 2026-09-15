@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.player.Player;
  */
 public class ScorpiaGuardian extends NPC implements Spawnable {
 
-	private static final Projectile HEALING_PROJ = new Projectile(118, 43, 25, 57, 15, 18, 64, 5);
+	private static final Projectile HEALING_PROJ = new Projectile(118, 172, 100, 57, 15, 18, 64, 5);
 
 	private int ticks;
 

@@ -15,8 +15,8 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
  */
 public interface HydraPhaseSequence {
-    Projectile magicAttackProj = new Projectile(1662, 22, 12, 30, 10, 30, 0, 5);
-    Projectile rangedAttackProj = new Projectile(1663, 42, 32, 30, 2, 15, 0, 5);
+    Projectile magicAttackProj = new Projectile(1662, 88, 48, 30, 10, 30, 0, 5);
+    Projectile rangedAttackProj = new Projectile(1663, 168, 128, 30, 2, 15, 0, 5);
 
     int autoAttack(final AlchemicalHydra hydra, final Player player);
 

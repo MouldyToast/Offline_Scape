@@ -111,7 +111,7 @@ public class AncientZygomite extends NPC implements Spawnable, CombatScript {
         return id == 471 || id == NpcId.ANCIENT_ZYGOMITE;
     }
 
-    private static final Projectile projectile = new Projectile(681, 20, 34, 0, 10, 25, 0, 5);
+    private static final Projectile projectile = new Projectile(681, 80, 136, 0, 10, 25, 0, 5);
 
     @Override
     public int attack(final Entity target) {

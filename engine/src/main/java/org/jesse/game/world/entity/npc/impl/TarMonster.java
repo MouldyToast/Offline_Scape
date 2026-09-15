@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.npc.combat.CombatScript;
  */
 public class TarMonster extends NPC implements CombatScript {
     private static final Animation attackAnim = new Animation(7678);
-    private static final Projectile attackProj = new Projectile(1404, 32, 64, 35, 15, 16, 0, 5);
+    private static final Projectile attackProj = new Projectile(1404, 128, 256, 35, 15, 16, 0, 5);
 
     public TarMonster(int id, Location tile, boolean spawned) {
         super(id, tile, spawned);

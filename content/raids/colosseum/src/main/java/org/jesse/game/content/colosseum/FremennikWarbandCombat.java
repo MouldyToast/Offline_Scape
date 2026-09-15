@@ -82,8 +82,8 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     // Projectile constructor: graphicsId, startHeight, endHeight, delay, angle, duration, distanceOffset, multiplier
     private static final Projectile ARCHER_PROJ = new Projectile(
             9,    // iron_arrow_travel
-            40,  // startHeight (RSProx)
-            36,  // endHeight (RSProx)
+            160,  // startHeight (RSProx)
+            144,  // endHeight (RSProx)
             10,   // delay (RSProx: starttime=10)
             15,   // angle (RSProx: angle=15)
             20,   // duration (RSProx: endtime=30 minus starttime=10)
@@ -95,8 +95,8 @@ public class FremennikWarbandCombat extends ColosseumWaveNpc implements CombatSc
     private static final Animation SEER_ANIM = new Animation(10853);
     private static final Projectile SEER_PROJ = new Projectile(
             130,  // fireblast_travel
-            43,  // startHeight (RSProx)
-            31,  // endHeight (RSProx)
+            172,  // startHeight (RSProx)
+            124,  // endHeight (RSProx)
             10,   // delay (RSProx: starttime=10)
             16,   // angle (RSProx: angle=16)
             20,   // duration (RSProx: endtime=30 minus starttime=10)

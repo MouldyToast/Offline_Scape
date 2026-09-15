@@ -81,7 +81,7 @@ public class Mining extends Action {
     private Container container;
     private int slotId;
     public static final Graphics ROCKFALL_EXPLOSION = new Graphics(305);
-    public static final Projectile ROCKFALL_PROJECTILE = new Projectile(645, 255, 0, 0, 0, 25, 64, 5);
+    public static final Projectile ROCKFALL_PROJECTILE = new Projectile(645, 1020, 0, 0, 0, 25, 64, 5);
 
     public Mining(final WorldObject rock, final OreDefinitions ore) {
         this.rock = rock;

@@ -36,8 +36,8 @@ public class DerangedArchaeologist extends NPC implements CombatScript, Spawnabl
 	private static final ForceTalk SPECIAL_MESSAGE = new ForceTalk("Learn to Read!");
 	private static final Animation RANGED_ANIM = new Animation(3353);
 	private static final Graphics EXPLOSIVE_GFX = new Graphics(305, 0, 92);
-	private static final Projectile RANGED_PROJ = new Projectile(1259, 42, 30, 40, 10, 25, 32, 5);
-	private static final Projectile SPECIAL_PROJ = new Projectile(1260, 42, 0, 40, 40, 50, 32, 5);
+	private static final Projectile RANGED_PROJ = new Projectile(1259, 168, 120, 40, 10, 25, 32, 5);
+	private static final Projectile SPECIAL_PROJ = new Projectile(1260, 168, 0, 40, 40, 50, 32, 5);
 	private static final byte[][][] OFFSETS = new byte[][][] {new byte[][] {new byte[] {1, 0}, new byte[] {0, 1}}, new byte[][] {new byte[] {0, -1}, new byte[] {1, 0}}, new byte[][] {new byte[] {-1, 0}, new byte[] {0, -1}}, new byte[][] {new byte[] {-1, 0}, new byte[] {0, 1}}};
 	private int specialCooldown;
 	private boolean hitPlayerWithSpecial;

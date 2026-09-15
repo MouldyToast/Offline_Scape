@@ -44,9 +44,9 @@ public class DagannothKing extends BreachEntity implements Spawnable, CombatScri
         return id == NpcId.DAGANNOTH_PRIME_12442 || id == NpcId.DAGANNOTH_REX_12439 || id == NpcId.DAGANNOTH_SUPREME_12441;
     }
 
-    private static final Projectile magicProj = new Projectile(162, 63, 25, 27, 15, 33, 64, 5);
+    private static final Projectile magicProj = new Projectile(162, 252, 100, 27, 15, 33, 64, 5);
 
-    private static final Projectile rangedProj = new Projectile(475, 50, 30, 25, 30, 28, 5, 5);
+    private static final Projectile rangedProj = new Projectile(475, 200, 120, 25, 30, 28, 5, 5);
 
     @Override
     public void handleIngoingHit(Hit hit) {

@@ -28,9 +28,9 @@ public class Aviansie extends SpawnableKillcountNPC implements Spawnable, Combat
         return name.equalsIgnoreCase("Aviansie");
     }
 
-    private static final Projectile thrownAxe = new Projectile(1193, 85, 30, 30, 15, 8, 0, 5);
-    private static final Projectile javelin = new Projectile(1192, 99, 30, 30, 10, 3, 0, 5);
-    private static final Projectile magic = new Projectile(1192, 80, 30, 30, 0, 3, 0, 5);
+    private static final Projectile thrownAxe = new Projectile(1193, 340, 120, 30, 15, 8, 0, 5);
+    private static final Projectile javelin = new Projectile(1192, 396, 120, 30, 10, 3, 0, 5);
+    private static final Projectile magic = new Projectile(1192, 320, 120, 30, 0, 3, 0, 5);
     private static final SoundEffect attackSound = new SoundEffect(2699, 10, 0);
 
     @Override

@@ -25,7 +25,7 @@ public class FlockleaderGeerin extends GodwarsBossMinion implements Spawnable, C
         return id == 3164;
     }
 
-    private static final Projectile javelin = new Projectile(1192, 99, 30, 30, 10, 3, 0, 5);
+    private static final Projectile javelin = new Projectile(1192, 396, 120, 30, 10, 3, 0, 5);
     private static final SoundEffect attackSound = new SoundEffect(2699, 10, 0);
 
     @Override

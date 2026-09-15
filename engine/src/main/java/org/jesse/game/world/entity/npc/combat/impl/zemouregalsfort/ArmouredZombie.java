@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
  * @since 1/28/2025
  */
 public class ArmouredZombie extends NPC implements Spawnable, CombatScript {
-    private static final Projectile PROJ = new Projectile(2652, 42, 30, 40, 15, 3, 64, 5);
+    private static final Projectile PROJ = new Projectile(2652, 168, 120, 40, 15, 3, 64, 5);
 
     public ArmouredZombie(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius, false);

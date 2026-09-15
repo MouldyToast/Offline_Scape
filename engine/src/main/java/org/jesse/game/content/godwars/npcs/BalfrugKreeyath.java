@@ -21,7 +21,7 @@ public class BalfrugKreeyath extends GodwarsBossMinion implements Spawnable, Com
         super(id, tile, facing, radius);
     }
 
-    private static final Projectile projectile = new Projectile(1227, 50, 20, 30, 5, 18, 0, 5);
+    private static final Projectile projectile = new Projectile(1227, 200, 80, 30, 5, 18, 0, 5);
     private static final Graphics targetGraphics = new Graphics(157, 0, 90);
     private static final Graphics splashGraphics = new Graphics(85, 0, 124);
     private static final SoundEffect castSound = new SoundEffect(3868, 10, 0);

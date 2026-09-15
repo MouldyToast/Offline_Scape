@@ -23,7 +23,7 @@ public final class TorcherNPC extends PestNPC implements CombatScript {
 	private static final SoundEffect[] ATTACK_SOUND_EFFECTS = new SoundEffect[] { new SoundEffect(848, 5), new SoundEffect(846, 5) };
 	private static final Graphics IMPACT_GFX = new Graphics(648, 0, 90);
 	private static final SoundEffect IMPACT_SOUND_EFFECT = new SoundEffect(847, 5);
-	private static final Projectile PROJECTILE = new Projectile(647, 50, 30, 20, 25, 10, 0, 5);
+	private static final Projectile PROJECTILE = new Projectile(647, 200, 120, 20, 25, 10, 0, 5);
 
 	public TorcherNPC(final PestControlInstance instance, final PestPortalNPC portal, final int id, final Location tile) {
 		super(instance, portal, id, tile);

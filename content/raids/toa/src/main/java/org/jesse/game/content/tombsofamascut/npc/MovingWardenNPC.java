@@ -36,10 +36,10 @@ public class MovingWardenNPC extends TOANPC implements CombatScript, IMovingWard
     private static final Animation RANGE_THROW_ANIMATION = new Animation(9660);
     private static final Graphics IMPRISONMENT_GROUND_GFX = new Graphics(1447);
     private static final Graphics IMPRISONMENT_LAND_GFX = new Graphics(2212);
-    private static final Projectile MAGE_PROJECTILE = new Projectile(2224, 100, 25, 0, 12, 90, 128, 0);
-    private static final Projectile RANGE_PROJECTILE = new Projectile(2241, 100, 25, 0, 12, 90, 128, 0);
-    private static final Projectile IMPRISONMENT_PROJECTILE = new Projectile(2210, 100, 10, 0, 12, 120, 64, 0);
-    private static final Projectile CORE_PROJECTILE = new Projectile(2240, 95, 12, 0, 12, 60, 124, 0);
+    private static final Projectile MAGE_PROJECTILE = new Projectile(2224, 400, 100, 0, 12, 90, 128, 0);
+    private static final Projectile RANGE_PROJECTILE = new Projectile(2241, 400, 100, 0, 12, 90, 128, 0);
+    private static final Projectile IMPRISONMENT_PROJECTILE = new Projectile(2210, 400, 40, 0, 12, 120, 64, 0);
+    private static final Projectile CORE_PROJECTILE = new Projectile(2240, 380, 48, 0, 12, 60, 124, 0);
     private static final SoundEffect MAGE_IMPACT_SOUND = new SoundEffect(156);
     private static final SoundEffect RANGE_IMPACT_SOUND = new SoundEffect(6257);
     private final WardenEncounter encounter;
@@ -448,9 +448,9 @@ public class MovingWardenNPC extends TOANPC implements CombatScript, IMovingWard
 
     enum DivineType {
 
-        MELEE(Prayer.PROTECT_FROM_MELEE, "<col=ff3045>The warden throws an arcane scimitar.</col>", new SoundEffect(217), new Projectile(2204, 100, 25, 0, 12, 120, 64, 0)),
-        MAGIC(Prayer.PROTECT_FROM_MAGIC, "<col=a53fff>The warden launches an arcane spell.</col>", new SoundEffect(208), new Projectile(2208, 100, 25, 0, 12, 120, 64, 0)),
-        RANGED(Prayer.PROTECT_FROM_MISSILES, "<col=229628>The warden fires an arcane arrow.</col>", new SoundEffect(129), new Projectile(2206, 100, 25, 0, 12, 120, 64, 0));
+        MELEE(Prayer.PROTECT_FROM_MELEE, "<col=ff3045>The warden throws an arcane scimitar.</col>", new SoundEffect(217), new Projectile(2204, 400, 100, 0, 12, 120, 64, 0)),
+        MAGIC(Prayer.PROTECT_FROM_MAGIC, "<col=a53fff>The warden launches an arcane spell.</col>", new SoundEffect(208), new Projectile(2208, 400, 100, 0, 12, 120, 64, 0)),
+        RANGED(Prayer.PROTECT_FROM_MISSILES, "<col=229628>The warden fires an arcane arrow.</col>", new SoundEffect(129), new Projectile(2206, 400, 100, 0, 12, 120, 64, 0));
 
         public static DivineType[] values = values();
         private final Prayer prayer;

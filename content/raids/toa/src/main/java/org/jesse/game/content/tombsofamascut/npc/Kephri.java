@@ -62,11 +62,11 @@ public class Kephri extends TOANPC implements CombatScript {
 	private static final Animation AWAKE_ANIM = new Animation(9581);
 	private static final Animation EGG_SPAWN_ANIM = new Animation(8630);
 	private static final Animation DEATH_ANIMATION = new Animation(9582);
-	private static final Projectile THROW_FIRST_PROJECTILE = new Projectile(1481, 175, 250, 39, 50, 51, 0, 0);
-	private static final Projectile THROW_SECOND_PROJECTILE = new Projectile(2266, 250, 9, 0, -17, 120, 0, 0);
-	private static final Projectile BROWN_EGG_PROJECTILE = new Projectile(2164, 86, 0, 70, 14, 50, 96, 0);
-	private static final Projectile NORMAl_EGG_PROJECTILE = new Projectile(2165, 86, 0, 70, 14, 50, 96, 0);
-	private static final Projectile SCARAB_BOMB_PROJECTILE = new Projectile(2147, 112, 9, 0, 14, 120, 0, 0); //4 ticks
+	private static final Projectile THROW_FIRST_PROJECTILE = new Projectile(1481, 700, 1000, 39, 50, 51, 0, 0);
+	private static final Projectile THROW_SECOND_PROJECTILE = new Projectile(2266, 1000, 36, 0, -17, 120, 0, 0);
+	private static final Projectile BROWN_EGG_PROJECTILE = new Projectile(2164, 344, 0, 70, 14, 50, 96, 0);
+	private static final Projectile NORMAl_EGG_PROJECTILE = new Projectile(2165, 344, 0, 70, 14, 50, 96, 0);
+	private static final Projectile SCARAB_BOMB_PROJECTILE = new Projectile(2147, 448, 36, 0, 14, 120, 0, 0); //4 ticks
 	private static final Location THROW_START_LOC = new Location(3550, 5409);
 	private static final Location THROW_SECOND_LOC = new Location(3551, 5408);
 	private static final Location[] SWARM_SPAWN_LOCATIONS = {new Location(3543, 5404), new Location(3543, 5410), new Location(3547, 5416), new Location(3553, 5416),

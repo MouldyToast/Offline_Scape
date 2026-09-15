@@ -31,7 +31,7 @@ class HeadGazeProjectile(
         val magicRoll = isAwakened && Utils.random(1) == 0
         val player: Player = instance.player
 
-        val projectile = Projectile(projectileID, 64, 32, 64, 0)
+        val projectile = Projectile(projectileID, 256, 128, 64, 0)
 
         head seq 10348
         head spotanim headGaze

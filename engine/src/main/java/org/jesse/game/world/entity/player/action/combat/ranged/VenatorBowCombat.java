@@ -25,7 +25,7 @@ public class VenatorBowCombat extends RangedCombat {
 
 	private static final Animation SWING_ANIM = new Animation(9858);
 	private static final Graphics SWING_GFX = new Graphics(2289);
-	private static final Projectile SWING_PROJECTILE = new Projectile(2291, 39, 36, 31, 10, 20, 11, 2);
+	private static final Projectile SWING_PROJECTILE = new Projectile(2291, 156, 144, 31, 10, 20, 11, 2);
 
 	public VenatorBowCombat(Entity target) {
 		super(target);
@@ -70,7 +70,7 @@ public class VenatorBowCombat extends RangedCombat {
 		final Optional<Entity> bounceTarget = findBounceTarget(currentTarget);
 		if (bounceTarget.isPresent()) {
 			final Entity newTarget = bounceTarget.get();
-			final Projectile bounceProjectile = new Projectile(2007, 31, 31, 0, 10, 30, 0, 0);
+			final Projectile bounceProjectile = new Projectile(2007, 124, 124, 0, 10, 30, 0, 0);
 			bounceProjectile.setDelay(SWING_PROJECTILE.getDelay() + 30 * ticks);
 			final int additionalTicks = currentTarget.getLocation().getTileDistance(newTarget.getLocation()) - 1;
 			World.sendProjectile(new Location(currentTarget.getLocation()), newTarget, bounceProjectile);

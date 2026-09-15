@@ -132,8 +132,8 @@ internal class Xarpus(room: XarpusRoom) :
     override fun checkProjectileClip(player: Player, melee: Boolean) = false
 
     companion object {
-        val rockProjectile = Projectile(1557, 40, 20, 0, 0, 30, 0, 0)
-        val rockProjectile2 = Projectile(1557, 40, 20, 15, 0, 30, 0, 0)
+        val rockProjectile = Projectile(1557, 160, 80, 0, 0, 30, 0, 0)
+        val rockProjectile2 = Projectile(1557, 160, 80, 15, 0, 30, 0, 0)
     }
 
 }

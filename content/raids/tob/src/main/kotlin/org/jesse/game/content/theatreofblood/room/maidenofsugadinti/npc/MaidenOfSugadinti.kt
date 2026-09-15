@@ -308,8 +308,8 @@ internal class MaidenOfSugadinti(room: MaidenOfSugadintiRoom) :
 
         private val stormAttackAnimation = Animation(8092)
         private val bloodAttackAnimation = Animation(8091)
-        private val stormProjectile = Projectile(1577, 0, 10, 120, 0, 50, 0, 0)
-        private val bloodProjectile = Projectile(1578, 135, 0, 20, 11, 100, 0, 0)
+        private val stormProjectile = Projectile(1577, 0, 40, 120, 0, 50, 0, 0)
+        private val bloodProjectile = Projectile(1578, 540, 0, 20, 11, 100, 0, 0)
         private val bloodSplatGraphic = Graphics(1579)
         private val bonusesToCheck =
             arrayOf(Bonus.ATT_STAB, Bonus.ATT_SLASH, Bonus.ATT_CRUSH, Bonus.ATT_MAGIC, Bonus.ATT_RANGED)

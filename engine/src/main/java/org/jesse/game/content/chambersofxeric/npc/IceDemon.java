@@ -180,7 +180,7 @@ public final class IceDemon extends RaidNPC<IceDemonRoom> implements CombatScrip
 
     private static final Graphics burstGfx = new Graphics(363);
 
-    private static final Projectile proj = new Projectile(1324, 60, 15, 40, 15, 10, 64, 5);
+    private static final Projectile proj = new Projectile(1324, 240, 60, 40, 15, 10, 64, 5);
 
     private static final SoundEffect rangedAttackStartSound = new SoundEffect(1440, 10, 0);
 

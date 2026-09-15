@@ -83,7 +83,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
             val style = if (target.prayerManager.isActive(Prayer.PROTECT_FROM_MAGIC)) "Ranged" else "Magic"
             getCombatDefinitions().setAttackStyle(style)
             if (style == "Magic") {
-                val projectile = Projectile(1415, constants!!.startHeight, 25, constants.delay, 15, 15, 0, 5)
+                val projectile = Projectile(1415, constants!!.startHeight, 100, constants.delay, 15, 15, 0, 5)
                 val freezeDelay = target.getNumericTemporaryAttribute("revenant_freeze").toLong()
                 setAnimation(getCombatDefinitions().attackAnim)
                 val originalLocation = target.location
@@ -113,7 +113,7 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
                     }
                 }, World.sendProjectile(getFaceLocation(target), target, projectile))
             } else {
-                val projectile = Projectile(206, constants!!.startHeight, 25, constants.delay, 15, 15, 0, 5)
+                val projectile = Projectile(206, constants!!.startHeight, 100, constants.delay, 15, 15, 0, 5)
                 setAnimation(getCombatDefinitions().attackAnim)
                 val projectileArrivalDelay = World.sendProjectile(this, target, projectile)
                 val rangedHitDamage = getRandomMaxHit(this, getCombatDefinitions().maxHit, CombatScript.RANGED, target)
@@ -205,17 +205,17 @@ class Revenant(id: Int, tile: Location?, facing: Direction?, radius: Int) :
 }
 
 private enum class RevenantProjectileType(val id: Int, val startHeight: Int, val delay: Int) {
-    IMP(7881, 10, 35),
-    GOBLIN(7931, 20, 20),
-    PYREFIEND(7932, 25, 35),
-    HOBGOBLIN(7933, 25, 35),
-    CYCLOPS(7934, 50, 38),
-    HELLHOUND(7935, 45, 20),
-    DEMON(7936, 45, 30),
-    ORK(7937, 45, 30),
-    DARK_BEAST(7938, 40, 30),
-    KNIGHT(7939, 30, 35),
-    DRAGON(7940, 40, 30);
+    IMP(7881, 40, 35),
+    GOBLIN(7931, 80, 20),
+    PYREFIEND(7932, 100, 35),
+    HOBGOBLIN(7933, 100, 35),
+    CYCLOPS(7934, 200, 38),
+    HELLHOUND(7935, 180, 20),
+    DEMON(7936, 180, 30),
+    ORK(7937, 180, 30),
+    DARK_BEAST(7938, 160, 30),
+    KNIGHT(7939, 120, 35),
+    DRAGON(7940, 160, 30);
 
     companion object {
         @JvmField

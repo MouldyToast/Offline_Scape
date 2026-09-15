@@ -96,9 +96,9 @@ public class WardenEncounter extends TOARaidArea implements CycleProcessPlugin, 
     private static final Animation MOVING_WARDEN_DEATH_ANIMATION = new Animation(9662);
     private static final Animation FLYING_WARDEN_REVIVE_ANIMATOON = new Animation(9664, 120);
     private static final Graphics FLYING_WARDEN_REVIVE_GFX = new Graphics(2218, 120, 0);
-    private static final Projectile ELIDINIS_PROJECTILE = new Projectile(2238, 87, 20, 30, 40, 390, 64, 0);
-    private static final Projectile TUMEKEN_PROJECTILE = new Projectile(2237, 87, 20, 30, 40, 390, 64, 0);
-    private static final Projectile CORE_PROJECTILE = new Projectile(2240, 20, 62, 60, 12, 30, 64, 0);
+    private static final Projectile ELIDINIS_PROJECTILE = new Projectile(2238, 348, 80, 30, 40, 390, 64, 0);
+    private static final Projectile TUMEKEN_PROJECTILE = new Projectile(2237, 348, 80, 30, 40, 390, 64, 0);
+    private static final Projectile CORE_PROJECTILE = new Projectile(2240, 80, 248, 60, 12, 30, 64, 0);
     private static final Graphics PROJECTILE_LANDING_GFX = new Graphics(1605);
     private static final Graphics CORE_EXPLODE_GFX = new Graphics(2157, 30, 50);
     private final List<String> playersReady = new ArrayList<>();

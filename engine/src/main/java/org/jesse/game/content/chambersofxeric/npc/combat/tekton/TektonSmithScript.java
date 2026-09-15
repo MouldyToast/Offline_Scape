@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class TektonSmithScript implements TektonScript {
-	private static final Projectile sparkProjectile = new Projectile(660, 100, 5, 0, 25, 60, 64, 5);
+	private static final Projectile sparkProjectile = new Projectile(660, 400, 20, 0, 25, 60, 64, 5);
 	private static final Graphics explosion = new Graphics(659);
 	private static final SoundEffect flyingSound = new SoundEffect(155, 8, 0);
 	private static final SoundEffect hittingSound = new SoundEffect(156, 5, 0);

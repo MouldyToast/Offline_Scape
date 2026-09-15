@@ -40,9 +40,9 @@ public final class Multicannon extends WorldObject {
 
     private static final int BROKEN_CANNON = 14916;
 
-    private static final Projectile PROJECTILE = new Projectile(53, 36, 35, 0, 3, 25, 11, 5);
+    private static final Projectile PROJECTILE = new Projectile(53, 144, 140, 0, 3, 25, 11, 5);
 
-    private static final Projectile GRANITE_PROJECTILE = new Projectile(1443, 36, 35, 0, 3, 25, 11, 5);
+    private static final Projectile GRANITE_PROJECTILE = new Projectile(1443, 144, 140, 0, 3, 25, 11, 5);
 
     private static final SoundEffect CANNON_SOUND = new SoundEffect(2877, 10, 0);
 

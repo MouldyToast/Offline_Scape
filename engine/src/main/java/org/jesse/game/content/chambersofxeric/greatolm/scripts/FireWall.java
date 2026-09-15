@@ -28,8 +28,8 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class FireWall implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1347, 65, 0, 30, 15, 30, 0, 0);
-	private static final Projectile[] projectiles = new Projectile[] {new Projectile(1348, 10, 10, 0, 27, 30, 0, 0), new Projectile(1348, 10, 10, 0, 24, 30, 0, 0), new Projectile(1348, 10, 10, 0, 21, 30, 0, 0), new Projectile(1348, 10, 10, 0, 18, 30, 0, 0), new Projectile(1348, 10, 10, 0, 15, 30, 0, 0), new Projectile(1348, 10, 10, 0, 12, 30, 0, 0), new Projectile(1348, 10, 10, 0, 9, 30, 0, 0), new Projectile(1348, 10, 10, 0, 6, 30, 0, 0), new Projectile(1348, 10, 10, 0, 3, 30, 0, 0), new Projectile(1348, 10, 10, 0, 0, 30, 0, 0)};
+	private static final Projectile projectile = new Projectile(1347, 260, 0, 30, 15, 30, 0, 0);
+	private static final Projectile[] projectiles = new Projectile[] {new Projectile(1348, 40, 40, 0, 27, 30, 0, 0), new Projectile(1348, 40, 40, 0, 24, 30, 0, 0), new Projectile(1348, 40, 40, 0, 21, 30, 0, 0), new Projectile(1348, 40, 40, 0, 18, 30, 0, 0), new Projectile(1348, 40, 40, 0, 15, 30, 0, 0), new Projectile(1348, 40, 40, 0, 12, 30, 0, 0), new Projectile(1348, 40, 40, 0, 9, 30, 0, 0), new Projectile(1348, 40, 40, 0, 6, 30, 0, 0), new Projectile(1348, 40, 40, 0, 3, 30, 0, 0), new Projectile(1348, 40, 40, 0, 0, 30, 0, 0)};
 	private final List<NPC> firewalls = new ArrayList<>(20);
 	private final List<Location> tiles = new ArrayList<>(20);
 	private static final SoundEffect sound = new SoundEffect(3750, 15, 0);

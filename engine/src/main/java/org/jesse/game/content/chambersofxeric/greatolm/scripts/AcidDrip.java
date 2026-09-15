@@ -17,7 +17,7 @@ import org.jesse.game.world.entity.player.Player;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class AcidDrip implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1364, 60, 20, 30, 5, 30, 0, 5);
+	private static final Projectile projectile = new Projectile(1364, 240, 80, 30, 5, 30, 0, 5);
 	private static final SoundEffect sound = new SoundEffect(1784, 15, 0);
 
 	@Override

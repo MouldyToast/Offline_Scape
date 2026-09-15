@@ -32,7 +32,7 @@ public class JalZek extends InfernoNPC {
     private static final Graphics magicOnHitGfx = new Graphics(131, 0, 124);
     private static final Graphics revivalGfx = new Graphics(444, 0, 550);
     private static final SoundEffect attackSound = new SoundEffect(598);
-    private static final Projectile magicProjectile = new Projectile(1376, 65, 38, 40, 17, 15, 0, 3);
+    private static final Projectile magicProjectile = new Projectile(1376, 260, 152, 40, 17, 15, 0, 3);
     private final List<InfernoNPC> toRevive = new ArrayList<>();
     private final List<InfernoNPC> revived = new ArrayList<>();
     private long reviveDelay;

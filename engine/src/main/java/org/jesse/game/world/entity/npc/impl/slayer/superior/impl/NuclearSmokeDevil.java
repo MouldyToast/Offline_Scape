@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class NuclearSmokeDevil extends SuperiorNPC implements CombatScript {
-    private static final Projectile ATTACK_PROJ = new Projectile(644, 50, 30, 30, 0, 28, 0, 5);
-    private static final Projectile PROJECTILE = new Projectile(73, 50, 35, 108, 10);
+    private static final Projectile ATTACK_PROJ = new Projectile(644, 200, 120, 30, 0, 28, 0, 5);
+    private static final Projectile PROJECTILE = new Projectile(73, 200, 140, 108, 10);
 
     public NuclearSmokeDevil(@NotNull final Player owner, @NotNull final NPC root, final Location tile) {
         super(owner, root, 7406, tile);

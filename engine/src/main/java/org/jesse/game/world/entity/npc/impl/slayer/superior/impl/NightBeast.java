@@ -25,7 +25,7 @@ public class NightBeast extends SuperiorNPC implements CombatScript {
         super(owner, root, 7409, tile);
     }
 
-    private static final Projectile MAGICAL_PROJ = new Projectile(130, 35, 30, 40, 5, 38, 64, 5);
+    private static final Projectile MAGICAL_PROJ = new Projectile(130, 140, 120, 40, 5, 38, 64, 5);
     private static final Graphics SPLASH = new Graphics(85, 0, 92);
     private static final Graphics GFX = new Graphics(131, 0, 92);
 

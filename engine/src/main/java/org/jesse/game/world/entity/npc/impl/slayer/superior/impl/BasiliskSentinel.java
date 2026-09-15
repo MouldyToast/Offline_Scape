@@ -29,8 +29,8 @@ public class BasiliskSentinel extends SuperiorNPC implements CombatScript {
         super(owner, root, BASILISK_SENTINEL, tile);
     }
 
-    private static final Projectile PROJECTILE = new Projectile(1735, 18, 25, 0, 55);
-    private static final Projectile NO_SHIELD = new Projectile(1739, 18, 25, 0, 55);
+    private static final Projectile PROJECTILE = new Projectile(1735, 72, 100, 0, 55);
+    private static final Projectile NO_SHIELD = new Projectile(1739, 72, 100, 0, 55);
     private static final Graphics SPLASH_PROJECTILE = new Graphics(1736, 0, 124);
 
 
@@ -89,7 +89,7 @@ public class BasiliskSentinel extends SuperiorNPC implements CombatScript {
 
 
 
-    private static final Projectile SPECIAL_PROJECTILE = new Projectile(1744, 18, 25, 50, 55);
+    private static final Projectile SPECIAL_PROJECTILE = new Projectile(1744, 72, 100, 50, 55);
     private static final Graphics SPECIAL_SPLASH = new Graphics(1738, 0, 124);
     private static final Graphics FREEZE_END_GFX = new Graphics(1743, 0, 0);
     public static final String FROZEN_ATTR = "BREAK_CLICKS";

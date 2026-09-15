@@ -33,9 +33,9 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
  */
 public class Hydra extends NPC implements CombatScript, Spawnable {
-    private static final Projectile magicAttackProj = new Projectile(1662, 22, 12, 37, 10, 30, 0, 5);
-    private static final Projectile rangedAttackProj = new Projectile(1663, 42, 32, 37, 2, 15, 0, 5);
-    private static final Projectile poisonAttackProj = new Projectile(1644, 42, 0, 37, 2, 15, 0, 5);
+    private static final Projectile magicAttackProj = new Projectile(1662, 88, 48, 37, 10, 30, 0, 5);
+    private static final Projectile rangedAttackProj = new Projectile(1663, 168, 128, 37, 2, 15, 0, 5);
+    private static final Projectile poisonAttackProj = new Projectile(1644, 168, 0, 37, 2, 15, 0, 5);
     private static final Animation MAGIC_ATTACK_ANIM = new Animation(8263);
     private static final Animation rangedAttackAnim = new Animation(8261);
     private static final Animation poisonAttackAnim = new Animation(8262);

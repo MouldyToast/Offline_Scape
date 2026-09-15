@@ -21,4 +21,4 @@ internal fun VerzikVitur.magicAttack() {
 }
 
 private val magicAttackAnimation = Animation(8124)
-private val projectile = Projectile(1594, 32, 10, 0, 32, 50, 128, 0)
+private val projectile = Projectile(1594, 128, 40, 0, 32, 50, 128, 0)

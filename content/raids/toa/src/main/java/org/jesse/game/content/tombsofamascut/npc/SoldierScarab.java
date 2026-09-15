@@ -24,7 +24,7 @@ public class SoldierScarab extends TOANPC implements CombatScript {
 	private static final int ID = 11724;
 	private static final Animation SPAWN_ANIM = new Animation(9589);
 	private static final Animation ATTACK_ANIM = new Animation(9587);
-	private static final Projectile HEAL_PROJECTILE = new Projectile(2150, 25, 62, 0, 2, 30, 30, 0);
+	private static final Projectile HEAL_PROJECTILE = new Projectile(2150, 100, 248, 0, 2, 30, 30, 0);
 	private static final Location SPAWN_LOC = new Location(3556, 5407);
 	private final KephriEncounter encounter;
 	private int healTicks = 13;

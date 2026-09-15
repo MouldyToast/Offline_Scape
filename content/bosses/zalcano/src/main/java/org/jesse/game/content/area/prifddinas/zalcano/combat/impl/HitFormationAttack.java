@@ -16,7 +16,7 @@ public class HitFormationAttack implements ZalcanoAttack {
 
     private static final Animation ANIM = new Animation(8432);
     private static final Animation EXPLODE_ANIMATION = new Animation(8449);
-    private static final Projectile PROJECTILE = new Projectile(1728, 80, 40, 0, 15, 35, 64, 7);
+    private static final Projectile PROJECTILE = new Projectile(1728, 320, 160, 0, 15, 35, 64, 7);
 
     @Override
     public void execute(ZalcanoInstance instance) {

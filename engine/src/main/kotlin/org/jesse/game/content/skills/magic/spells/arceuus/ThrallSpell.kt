@@ -191,7 +191,7 @@ enum class ThrallType(
         5540,
         211,
         212,
-        Projectile(1907, 27, 31, 15, 21, 15, 32, 5)
+        Projectile(1907, 108, 124, 15, 21, 15, 32, 5)
     ),
     SKELETON(
         9048,
@@ -201,7 +201,7 @@ enum class ThrallType(
         5512,
         2700,
         -1,
-        Projectile(1906, 25, 31, 57, 21, 15, 32, 5)
+        Projectile(1906, 100, 124, 57, 21, 15, 32, 5)
     ),
     ZOMBIE(
         9046,

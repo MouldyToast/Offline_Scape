@@ -84,4 +84,4 @@ private fun VerzikVitur.verzikInsidePath(x0: Int, y0: Int, x1: Int, y1: Int): Bo
 }
 
 private val electricAttackAnimation = Animation(8114)
-private val projectile = Projectile(1585, 48, 0, 30, 0, 40, 128, 0)
+private val projectile = Projectile(1585, 192, 0, 30, 0, 40, 128, 0)

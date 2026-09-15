@@ -26,8 +26,8 @@ import java.util.ArrayList;
 public class JalMejJak extends InfernoNPC {
     private static final Animation spawnAnimation = new Animation(2864);
     private static final Animation interactionAnimation = new Animation(2868);
-    private static final Projectile healingProjectile = new Projectile(660, 3, 12, 15, 20, 30, 0, 5);
-    private static final Projectile attackProjectile = new Projectile(660, 3, 0, 15, 25, 30, 0, 5);
+    private static final Projectile healingProjectile = new Projectile(660, 12, 48, 15, 20, 30, 0, 5);
+    private static final Projectile attackProjectile = new Projectile(660, 12, 0, 15, 25, 30, 0, 5);
     private static final Graphics explosion = new Graphics(659);
     private static final SoundEffect flyingSound = new SoundEffect(155, 8, 0);
     private static final SoundEffect hittingSound = new SoundEffect(156, 5, 0);

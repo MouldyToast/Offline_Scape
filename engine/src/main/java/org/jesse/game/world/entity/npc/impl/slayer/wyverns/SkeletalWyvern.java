@@ -28,7 +28,7 @@ public class SkeletalWyvern extends Wyvern {
     private static final Graphics icyBreathGfx = new Graphics(501);
     private static final Animation rangedAnim = new Animation(2989);
     private static final Graphics rangedGfx = new Graphics(499);
-    private static final Projectile rangedProjectile = new Projectile(500, 75, 35, 50, 0, 8, 0, 5);
+    private static final Projectile rangedProjectile = new Projectile(500, 300, 140, 50, 0, 8, 0, 5);
     private static final AttackType[] ATTACK_STYLES = {AttackType.SLASH, AttackType.MAGIC, AttackType.RANGED};
 
     public SkeletalWyvern(final int id, final Location tile, final Direction facing, final int radius) {

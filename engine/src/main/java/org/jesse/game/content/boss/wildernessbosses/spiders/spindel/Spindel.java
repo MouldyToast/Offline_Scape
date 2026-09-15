@@ -35,12 +35,12 @@ import java.util.Collections;
 public class Spindel extends NPC implements CombatScript, Spawnable {
     private final Animation MELEE_ATTACK_ANIM = new Animation(9991);
     private final Animation RANGED_ATTACK_ANIM = new Animation(9989);
-    private final Projectile RANGED_ATTACK_PROJ = new Projectile(2356, 43, 25, 30, 15, 10, 64, 0);
+    private final Projectile RANGED_ATTACK_PROJ = new Projectile(2356, 172, 100, 30, 15, 10, 64, 0);
     private final Graphics RANGED_HIT_GFX = new Graphics(2357);
     private final Animation MAGIC_ATTACK_ANIM = new Animation(9990);
-    private final Projectile MAGIC_ATTACK_PROJ = new Projectile(2358, 43, 25, 30, 15, 10, 64, 0);
+    private final Projectile MAGIC_ATTACK_PROJ = new Projectile(2358, 172, 100, 30, 15, 10, 64, 0);
     private final Graphics MAGIC_HIT_GFX = new Graphics(2359,0,120);
-    private final Projectile WEB_ATTACK_PROJ = new Projectile(2360, 43, 25, 30, 15, 25, 64, 5);
+    private final Projectile WEB_ATTACK_PROJ = new Projectile(2360, 172, 100, 30, 15, 25, 64, 5);
     private final Location MIDDLE = new Location(1630, 11547, 2);
     private final RSPolygon MOVE_AREA = new RSPolygon(new int [][]{
             { 1623, 11539 },

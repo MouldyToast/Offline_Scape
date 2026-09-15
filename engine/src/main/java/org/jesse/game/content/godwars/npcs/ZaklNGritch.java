@@ -21,7 +21,7 @@ public class ZaklNGritch extends GodwarsBossMinion implements Spawnable, CombatS
         super(id, tile, facing, radius);
     }
 
-    private static final Projectile projectile = new Projectile(1223, 8, 20, 30, 15, 18, 0, 5);
+    private static final Projectile projectile = new Projectile(1223, 32, 80, 30, 15, 18, 0, 5);
     private static final Graphics attackGraphics = new Graphics(1222);
     private static final SoundEffect attackSound = new SoundEffect(3874, 10, 0);
 

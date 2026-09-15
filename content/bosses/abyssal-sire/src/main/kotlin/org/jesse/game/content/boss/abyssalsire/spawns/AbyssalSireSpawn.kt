@@ -53,7 +53,7 @@ internal class AbyssalSireSpawn(
     }
 
     companion object {
-        private val rangedProj = Projectile(628, 42, 30, 40, 15, 10, 64, 5)
+        private val rangedProj = Projectile(628, 168, 120, 40, 15, 10, 64, 5)
     }
 
 }

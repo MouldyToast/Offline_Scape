@@ -23,7 +23,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities
 class RangedAttack : Attack {
 
     private val projectile : Projectile =
-        Projectile(2857, 64, 32, 96, 0)
+        Projectile(2857, 256, 128, 96, 0)
 
     override fun invoke(demon: TormentedDemon, target: Entity?) {
         if (target == null) return

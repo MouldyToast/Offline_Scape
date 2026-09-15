@@ -36,9 +36,9 @@ public class JalTokJad extends InfernoNPC {
     private static final Graphics rangedGfx = new Graphics(451);
     private static final Graphics magicGfx = new Graphics(157, 0, 96);
     private static final SoundEffect meleeAttackSound = new SoundEffect(408);
-    private static final Projectile magicHeadProj = new Projectile(448, 140, 20, 70, 5, 100, 0, 0);
-    private static final Projectile magicBodyProj = new Projectile(449, 140, 20, 75, 5, 100, 0, 0);
-    private static final Projectile magicTrailProj = new Projectile(450, 140, 20, 80, 5, 100, 0, 0);
+    private static final Projectile magicHeadProj = new Projectile(448, 560, 80, 70, 5, 100, 0, 0);
+    private static final Projectile magicBodyProj = new Projectile(449, 560, 80, 75, 5, 100, 0, 0);
+    private static final Projectile magicTrailProj = new Projectile(450, 560, 80, 80, 5, 100, 0, 0);
     private static final Projectile[] magicProjectiles = new Projectile[] {magicHeadProj, magicBodyProj, magicTrailProj};
     private final int maximumHealth = getMaxHitpoints() >> 1;
     private final List<YtHurKot> healers = new ArrayList<>(5);

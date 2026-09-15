@@ -52,10 +52,10 @@ public class Zebak extends TOANPC implements CombatScript {
 	private static final Location BASE_WAVE_NORTH_LOC = new Location(3923, 5419);
 	private static final Location[] BLOOD_SPELL_GFX_LOCATIONS = {new Location(3924, 5406), new Location(3925, 5410)};
 	private static final Location[] BLOOD_CLOUD_LOCATIONS = {new Location(3931, 5413), new Location(3934, 5401)};
-	private static final Projectile POISON_SHOOT_PROJECTILE = new Projectile(1555, 62, 0, 30, 35, 120, 100, 0);
-	private static final Projectile BOULDER_PROJECTILE = new Projectile(2172, 62, 0, 30, 35, 120, 100, 0);
-	private static final Projectile JUG_PROJECTILE = new Projectile(2173, 62, 0, 30, 35, 120, 100, 0);
-	private static final Projectile POISON_BOULDER_PROJECTILE = new Projectile(2194, 62, 0, 30, 35, 120, 100, 0);
+	private static final Projectile POISON_SHOOT_PROJECTILE = new Projectile(1555, 248, 0, 30, 35, 120, 100, 0);
+	private static final Projectile BOULDER_PROJECTILE = new Projectile(2172, 248, 0, 30, 35, 120, 100, 0);
+	private static final Projectile JUG_PROJECTILE = new Projectile(2173, 248, 0, 30, 35, 120, 100, 0);
+	private static final Projectile POISON_BOULDER_PROJECTILE = new Projectile(2194, 248, 0, 30, 35, 120, 100, 0);
 	private static final Animation SHOOT_ANIM = new Animation(9624);
 	private static final Animation TAIL_SHOOT_ANIM = new Animation(9625);
 	private static final Animation MELEE_ANIM = new Animation(9621);
@@ -707,7 +707,7 @@ public class Zebak extends TOANPC implements CombatScript {
 		zebakTail.setAnimation(TAIL_SHOOT_ANIM);
 		sendSound(players, soundEffect, new SoundEffect(splitSoundId, 1, 120));
 		final Location baseLoc = zebakEncounter.getLocation(PROJECTILE_BASE_LOC);
-		World.sendProjectile(zebakEncounter.getLocation(PROJECTILE_START_LOC), baseLoc, new Projectile(firstProjectileId, 50, 175, 60, 30, 60, 0, 0));
+		World.sendProjectile(zebakEncounter.getLocation(PROJECTILE_START_LOC), baseLoc, new Projectile(firstProjectileId, 200, 700, 60, 30, 60, 0, 0));
 		WorldTasksManager.schedule(zebakEncounter.addRunningTask(() -> {
 			if (isDying() || isFinished()) {
 				return;
@@ -717,7 +717,7 @@ public class Zebak extends TOANPC implements CombatScript {
 				zebakProjectileNpc.setGraphics(breakGfx);
 				sendSound(updatedPlayers, new SoundEffect(IMPACT_SOUND_ID, 1, 90));
 				for (Player player : updatedPlayers) {
-					World.sendProjectile(baseLoc, player, new Projectile(secondProjectileId, 175, 22, 0, 1, 90, 0, 0));
+					World.sendProjectile(baseLoc, player, new Projectile(secondProjectileId, 700, 88, 0, 1, 90, 0, 0));
 					player.setGraphics(impactGfx);
 				}
 				WorldTasksManager.schedule(zebakEncounter.addRunningTask(() -> {

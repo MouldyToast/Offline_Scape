@@ -31,8 +31,8 @@ import org.jesse.utils.TimeUnit
 import kotlin.math.floor
 import kotlin.math.sqrt
 
-private val rangedProjectile = Projectile(2033, 75, 25, 25, 15, 18, 64, 5)
-private val magicProjecitle = Projectile(1456, 85, 0, 25, 50, 45, 64, 5)
+private val rangedProjectile = Projectile(2033, 300, 100, 25, 15, 18, 64, 5)
+private val magicProjecitle = Projectile(1456, 340, 0, 25, 50, 45, 64, 5)
 
 private val standardAttackAnimation = Animation(9282)
 private val bloodAttackAnimation = Animation(9279)

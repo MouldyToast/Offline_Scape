@@ -96,7 +96,7 @@ public class GeneralGraardor extends GodwarsBossNPC implements Spawnable, Combat
         return id == NpcId.GENERAL_GRAARDOR;
     }
 
-    private static final Projectile projectile = new Projectile(1202, 41, 16, 30, 5, 10, 0, 5);
+    private static final Projectile projectile = new Projectile(1202, 164, 64, 30, 5, 10, 0, 5);
     private static final Animation meleeAnimation = new Animation(7018);
     private static final Animation rangedAnimation = new Animation(7021);
 

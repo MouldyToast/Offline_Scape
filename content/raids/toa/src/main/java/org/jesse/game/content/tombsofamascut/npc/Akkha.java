@@ -59,8 +59,8 @@ public class Akkha extends TOANPC implements CombatScript {
 	private static final Animation GROUND_MEMORY_ANIM = new Animation(9777);
 	private static final Animation GROUND_TRAIL_ANIM = new Animation(9778);
 	private static final Animation FINAL_STAND_ANIM = new Animation(9779);
-	private static final Projectile RANGE_PROJECTILE = new Projectile(2255, 101, 34, 0, 12, 30, 32, 0);
-	private static final Projectile MAGE_PROJECTILE = new Projectile(2253, 101, 34, 0, 12, 30, 32, 0);
+	private static final Projectile RANGE_PROJECTILE = new Projectile(2255, 404, 136, 0, 12, 30, 32, 0);
+	private static final Projectile MAGE_PROJECTILE = new Projectile(2253, 404, 136, 0, 12, 30, 32, 0);
 	private static final SoundEffect RANGE_IMPACT_SOUND = new SoundEffect(5640, 1, 30);
 	private static final SoundEffect MAGE_IMPACT_SOUND = new SoundEffect(5774, 1, 30);
 	private static final SoundEffect CHANGE_STYLE_SOUND = new SoundEffect(5585, 14);

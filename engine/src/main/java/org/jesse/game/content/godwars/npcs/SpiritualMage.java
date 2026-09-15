@@ -29,12 +29,12 @@ public class SpiritualMage extends SpawnableKillcountNPC implements CombatScript
 
     private static final Graphics earthCast = new Graphics(164, 20, 60);
     private static final Graphics earthImpact = new Graphics(166, 0, 92);
-    private static final Projectile earthProjectile = new Projectile(165, 20, 25, 57, 15, 18, 64, 5);
+    private static final Projectile earthProjectile = new Projectile(165, 80, 100, 57, 15, 18, 64, 5);
 
     private static final Graphics saradominImpactGraphics = new Graphics(76, 0, 96);
     private static final Graphics zamorakImpactGraphics = new Graphics(78);
 
-    private static final Projectile thrownAxeProjectile = new Projectile(1193, 85, 30, 30, 15, 8, 0, 5);
+    private static final Projectile thrownAxeProjectile = new Projectile(1193, 340, 120, 30, 15, 8, 0, 5);
 
     private static final SoundEffect spiritualMageSound = new SoundEffect(1655, 10, 0);
     private static final SoundEffect priestMageSound = new SoundEffect(1659, 10, 0);

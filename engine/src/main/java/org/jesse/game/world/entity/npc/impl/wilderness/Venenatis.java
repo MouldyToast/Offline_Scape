@@ -27,7 +27,7 @@ public class Venenatis extends NPC implements CombatScript, Spawnable {
 	private static final Animation MAGIC_ATTACK_ANIM = new Animation(5322);
 	private static final Graphics PRAYER_DRAIN_GFX = new Graphics(172, 0, 92);
 	private static final Graphics STUN_GFX = new Graphics(254, 0, 92);
-	private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(165, 43, 25, 30, 15, 18, 64, 5);
+	private static final Projectile MAGIC_ATTACK_PROJ = new Projectile(165, 172, 100, 30, 15, 18, 64, 5);
 
 	public Venenatis(int id, Location tile, Direction facing, int radius) {
 		super(id, tile, facing, radius);

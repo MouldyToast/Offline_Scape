@@ -33,7 +33,7 @@ public class EnergySphere extends WorldObject {
         if (ticks > 0 && ticks % 12 == 0) {
             //every 7 seconds
             if (state.equals(SphereState.HIGH)) {
-                final Projectile projectile = new Projectile(state.getProjectile(), 0, 90, 20, 0);
+                final Projectile projectile = new Projectile(state.getProjectile(), 0, 360, 20, 0);
                 instance.getEnergySpheres().remove(getId());
                 World.removeObject(this);
                 World.sendProjectile(this, dawn, projectile);

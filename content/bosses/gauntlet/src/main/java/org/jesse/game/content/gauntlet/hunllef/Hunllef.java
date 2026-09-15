@@ -61,17 +61,17 @@ public final class Hunllef extends NPC implements CombatScript {
 
     private static final Animation ATTACK_STYLE_SWITCH_ANIMATION = new Animation(8754, 50);
 
-    private static final Projectile MAGIC_PRAYER_DEACTIVATION_PROJECTILE = new Projectile(1713, 50, 20, 25, 15, 45, 64, 5);
+    private static final Projectile MAGIC_PRAYER_DEACTIVATION_PROJECTILE = new Projectile(1713, 200, 80, 25, 15, 45, 64, 5);
 
-    private static final Projectile MAGIC_PRAYER_DEACTIVATION_PROJECTILE_CORRUPTED = new Projectile(1714, 50, 20, 25, 15, 45, 64, 5);
+    private static final Projectile MAGIC_PRAYER_DEACTIVATION_PROJECTILE_CORRUPTED = new Projectile(1714, 200, 80, 25, 15, 45, 64, 5);
 
-    private static final Projectile MAGIC_PROJECTILE = new Projectile(1707, 50, 20, 25, 15, 45, 90, 5);
+    private static final Projectile MAGIC_PROJECTILE = new Projectile(1707, 200, 80, 25, 15, 45, 90, 5);
 
-    private static final Projectile MAGIC_PROJECTILE_CORRUPTED = new Projectile(1708, 50, 20, 25, 15, 45, 90, 5);
+    private static final Projectile MAGIC_PROJECTILE_CORRUPTED = new Projectile(1708, 200, 80, 25, 15, 45, 90, 5);
 
-    private static final Projectile RANGED_PROJECTILE = new Projectile(1711, 50, 20, 25, 15, 45, 90, 5);
+    private static final Projectile RANGED_PROJECTILE = new Projectile(1711, 200, 80, 25, 15, 45, 90, 5);
 
-    private static final Projectile RANGED_PROJECTILE_CORRUPTED = new Projectile(1712, 50, 20, 25, 15, 45, 90, 5);
+    private static final Projectile RANGED_PROJECTILE_CORRUPTED = new Projectile(1712, 200, 80, 25, 15, 45, 90, 5);
 
     private HunllefType type;
 

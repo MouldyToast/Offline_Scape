@@ -23,7 +23,7 @@ public class ChokeDevil extends SuperiorNPC implements CombatScript {
         super(owner, root, 7404, tile);
     }
 
-    private static final Projectile PROJECTILE = new Projectile(73, 30, 35, 108, 10);
+    private static final Projectile PROJECTILE = new Projectile(73, 120, 140, 108, 10);
 
     @Override
     public int attack(final Entity target) {

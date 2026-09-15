@@ -227,10 +227,10 @@ open class KingBlackDragon(id: Int, tile: Location?, direction: Direction?, radi
     }
 
     companion object {
-        private val DRAGONFIRE_PROJ = Projectile(393, 40, 30, 40, 15, 28, 0, 5)
-        private val POISON_PROJ = Projectile(394, 40, 30, 40, 15, 28, 0, 5)
-        private val FREEZING_PROJ = Projectile(395, 40, 30, 40, 15, 28, 0, 5)
-        private val SHOCKING_PROJ = Projectile(396, 40, 30, 40, 15, 28, 0, 5)
+        private val DRAGONFIRE_PROJ = Projectile(393, 160, 120, 40, 15, 28, 0, 5)
+        private val POISON_PROJ = Projectile(394, 160, 120, 40, 15, 28, 0, 5)
+        private val FREEZING_PROJ = Projectile(395, 160, 120, 40, 15, 28, 0, 5)
+        private val SHOCKING_PROJ = Projectile(396, 160, 120, 40, 15, 28, 0, 5)
         private val DRAGONFIRE_GFX = Graphics(430, 0, 90)
         private val POISON_GFX = Graphics(429, 0, 90)
         private val FREEZING_GFX = Graphics(431, 0, 90)

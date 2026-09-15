@@ -23,7 +23,7 @@ import java.util.List;
 public class SpawnGolemAttack implements ZalcanoAttack {
 
     private static final Animation ANIM = new Animation(8432);
-    private static final Projectile PROJECTILE =  new Projectile(1729, 80, 10, 0, 15, 35, 64, 7);
+    private static final Projectile PROJECTILE =  new Projectile(1729, 320, 40, 0, 15, 35, 64, 7);
 
     private WorldTask spawnTask;
 

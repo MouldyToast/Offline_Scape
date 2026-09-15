@@ -24,7 +24,7 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class TransitionalFallingCrystals implements OlmCombatScript {
-	private static final Projectile projectile = new Projectile(1357, 255, 0, 0, 0, 120, 127, 0);
+	private static final Projectile projectile = new Projectile(1357, 1020, 0, 0, 0, 120, 127, 0);
 	private static final Graphics explode = new Graphics(1358);
 	private static final Graphics shadow = new Graphics(1446, 30, 0);
 	private static final SoundEffect fallSound = new SoundEffect(3834, 10, 0);

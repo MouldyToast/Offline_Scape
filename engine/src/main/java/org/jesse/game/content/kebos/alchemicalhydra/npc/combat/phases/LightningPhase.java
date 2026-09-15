@@ -30,8 +30,8 @@ public class LightningPhase implements HydraPhaseSequence {
     private static final Animation lightningAttackAnim = new Animation(8241);
     private static final Animation rangedAttackAnim = new Animation(8242);
     private static final Animation magicAttackAnim = new Animation(8243);
-    private static final Projectile lightningCenterProj = new Projectile(1664, 65, 0, 37, 2, 15, 0, 5);
-    private static final Projectile lightningAttackProj = new Projectile(1665, 40, 0, 15, 2, 15, 0, 0);
+    private static final Projectile lightningCenterProj = new Projectile(1664, 260, 0, 37, 2, 15, 0, 5);
+    private static final Projectile lightningAttackProj = new Projectile(1665, 160, 0, 15, 2, 15, 0, 0);
     private static final Graphics lightningCenterGfx = new Graphics(1664);
     private static final Graphics lightningGfx = new Graphics(1666);
     private static final Location LIGHTNING_CENTRAL_LOCATION = new Location(1367, 10268, 0);

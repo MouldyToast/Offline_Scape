@@ -45,7 +45,7 @@ public class PoisonPhase implements HydraPhaseSequence {
     private static final Animation rangedAttackAnim = new Animation(8235);
     private static final Animation magicAttackAnim = new Animation(8236);
     public static final Graphics poisonSplashGfx = new Graphics(1645);
-    public static final Projectile poisonAttackProj = new Projectile(1644, 65, 0, 37, 2, 15, 0, 10);
+    public static final Projectile poisonAttackProj = new Projectile(1644, 260, 0, 37, 2, 15, 0, 10);
     private int attacks;
     private boolean initialSpecial;
     private final List<Location> poisonTiles = new ArrayList<>(5);

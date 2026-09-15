@@ -31,10 +31,10 @@ public class BrutalDragon extends NPC implements Spawnable, CombatScript {
         return name.equalsIgnoreCase("brutal green dragon") || name.equalsIgnoreCase("brutal blue dragon") || name.equalsIgnoreCase("brutal red dragon") || name.equalsIgnoreCase("brutal black dragon");
     }
 
-    private static final Projectile blackDragonProjectile = new Projectile(88, 27, 30, 40, 5, 18, 0, 5);
-    private static final Projectile greenDragonProjectile = new Projectile(CombatSpell.WATER_BLAST.getProjectile().getGraphicsId(), 27, 30, 40, 5, 18, 0, 5);
-    private static final Projectile blueDragonProjectile = new Projectile(CombatSpell.WIND_BLAST.getProjectile().getGraphicsId(), 27, 30, 40, 5, 18, 0, 5);
-    private static final Projectile redDragonProjectile = new Projectile(CombatSpell.FIRE_BLAST.getProjectile().getGraphicsId(), 27, 30, 40, 5, 18, 0, 5);
+    private static final Projectile blackDragonProjectile = new Projectile(88, 108, 120, 40, 5, 18, 0, 5);
+    private static final Projectile greenDragonProjectile = new Projectile(CombatSpell.WATER_BLAST.getProjectile().getGraphicsId(), 108, 120, 40, 5, 18, 0, 5);
+    private static final Projectile blueDragonProjectile = new Projectile(CombatSpell.WIND_BLAST.getProjectile().getGraphicsId(), 108, 120, 40, 5, 18, 0, 5);
+    private static final Projectile redDragonProjectile = new Projectile(CombatSpell.FIRE_BLAST.getProjectile().getGraphicsId(), 108, 120, 40, 5, 18, 0, 5);
     private static final Graphics dragonfireGraphics = new Graphics(1, 0, 90);
     private static final Animation attackAnimation = new Animation(80);
     private static final Animation secondaryAttackAnimation = new Animation(91);

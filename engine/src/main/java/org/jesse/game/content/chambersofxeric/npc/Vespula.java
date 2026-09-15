@@ -285,8 +285,8 @@ public class Vespula extends RaidNPC<VespulaRoom> implements CombatScript {
         return 0.5;
     }
 
-    private static final Projectile flyingAttackProjectile = new Projectile(1364, 60, 24, 20, 15, 20, 160, 5);
-    private static final Projectile crawlingAttackProjectile = new Projectile(1364, 30, 24, 20, 15, 20, 160, 5);
+    private static final Projectile flyingAttackProjectile = new Projectile(1364, 240, 96, 20, 15, 20, 160, 5);
+    private static final Projectile crawlingAttackProjectile = new Projectile(1364, 120, 96, 20, 15, 20, 160, 5);
     private static final Animation flyingAttackAnimation = new Animation(7455);
     private static final Animation crawlingAttackAnimation = new Animation(7450);
 

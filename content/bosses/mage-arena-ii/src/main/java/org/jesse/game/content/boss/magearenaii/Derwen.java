@@ -26,11 +26,11 @@ import java.util.List;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class Derwen extends MageArenaBossBase {
-    private static final Projectile energyBall = new Projectile(1512, 50, 10, 40, 10, 70, 64, 5);
+    private static final Projectile energyBall = new Projectile(1512, 200, 40, 40, 10, 70, 64, 5);
 
 
     private static final class EnergyBall extends NPC implements CombatScript {
-        private static final Projectile healProjectile = new Projectile(1513, 10, 40, 0, 10, 70, 64, 5);
+        private static final Projectile healProjectile = new Projectile(1513, 40, 160, 0, 10, 70, 64, 5);
 
         private EnergyBall(final Derwen derwen, final Location tile) {
             super(7514, tile, Direction.SOUTH, 0);

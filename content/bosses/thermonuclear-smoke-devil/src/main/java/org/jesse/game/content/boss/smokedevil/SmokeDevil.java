@@ -29,8 +29,8 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class SmokeDevil extends NPC implements CombatScript, Spawnable {
 
-	private static final Projectile ATTACK_PROJ = new Projectile(644, 30, 30, 30, 0, 28, 0, 5);
-	private static final Projectile PROJECTILE = new Projectile(73, 30, 35, 108, 10);
+	private static final Projectile ATTACK_PROJ = new Projectile(644, 120, 120, 30, 0, 28, 0, 5);
+	private static final Projectile PROJECTILE = new Projectile(73, 120, 140, 108, 10);
 	private boolean hitSomeone = false;
 	private boolean specHits = true;
 

@@ -17,7 +17,7 @@ import org.jesse.game.world.entity.masks.HitType;
 public class TalonedWyvern extends Wyvern {
     private static final Animation meleeAnim = new Animation(7651);
     private static final Animation rangedAnim = new Animation(7657);
-    private static final Projectile rangedProjectile = new Projectile(500, 65, 35, 50, 0, 8, 0, 5);
+    private static final Projectile rangedProjectile = new Projectile(500, 260, 140, 50, 0, 8, 0, 5);
 
     public TalonedWyvern(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);

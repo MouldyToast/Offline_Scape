@@ -40,8 +40,8 @@ public final class LizardmanShaman extends RaidNPC<LizardmanShamanRoom> implemen
 	private static final Animation jump = new Animation(7152);
 	private static final Animation land = new Animation(6946);
 	private static final Animation meleeAnim = new Animation(7158);
-	private static final Projectile rangedProj = new Projectile(1291, 70, 15, 60, 15, 10, 64, 5);
-	private static final Projectile poisonProj = new Projectile(1293, 70, 15, 60, 15, 20, 64, 5);
+	private static final Projectile rangedProj = new Projectile(1291, 280, 60, 60, 15, 10, 64, 5);
+	private static final Projectile poisonProj = new Projectile(1293, 280, 60, 60, 15, 20, 64, 5);
 	private static final Graphics poisonSplash = new Graphics(1294);
 	private long lastTime;
 

@@ -29,9 +29,9 @@ public class NightmareParasiteNPC extends NPC implements CombatScript {
 	private static final Animation SPAWN_WEAKEN = new Animation(8560);
 	private static final Animation SPAWN = new Animation(8561);
 
-	private static final Projectile MAGIC_PROJ = new Projectile(1771, 10, 20, 50,10, 30, 0, 0);
-	private static final Projectile RANGED_PROJ = new Projectile(1775, 10, 20, 50,10, 30, 0, 0);
-	private static final Projectile HEAL_PROJ = new Projectile(1774, 10, 20, 50,10, 30, 0, 0);
+	private static final Projectile MAGIC_PROJ = new Projectile(1771, 40, 80, 50,10, 30, 0, 0);
+	private static final Projectile RANGED_PROJ = new Projectile(1775, 40, 80, 50,10, 30, 0, 0);
+	private static final Projectile HEAL_PROJ = new Projectile(1774, 40, 80, 50,10, 30, 0, 0);
 
 	private static final Graphics MAGIC_LAND = new Graphics(1772, 0, 96);
 

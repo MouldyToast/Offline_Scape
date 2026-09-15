@@ -215,8 +215,8 @@ public final class Vanguard extends RaidNPC<VanguardRoom> implements CombatScrip
 	private static final Animation magicAttack = new Animation(7436);
 	private static final Animation meleeAttack = new Animation(7441);
 	private static final Animation rangedAttack = new Animation(7446);
-	private static final Projectile magicProj = new Projectile(1331, 43, 0, 15, 85, 75, 0, 0);
-	private static final Projectile rangedProj = new Projectile(1332, 20, 0, 30, 25, 30, 64, 0);
+	private static final Projectile magicProj = new Projectile(1331, 172, 0, 15, 85, 75, 0, 0);
+	private static final Projectile rangedProj = new Projectile(1332, 80, 0, 30, 25, 30, 64, 0);
 	private static final Graphics magicExplosion = new Graphics(659);
 	private static final Graphics rangedExplosion = new Graphics(305);
 	private static final SoundEffect meleeSound = new SoundEffect(3308, 10, 0);

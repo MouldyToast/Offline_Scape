@@ -19,7 +19,7 @@ import org.jesse.game.world.entity.npc.combat.CombatScript;
 final class TokXil extends FightCavesNPC implements CombatScript {
     private static final Animation MELEE_ANIM = new Animation(2628);
     private static final Animation RANGED_ANIM = new Animation(2633);
-    private static final Projectile RANGED_PROJ = new Projectile(443, 65, 20, 40, 5, 10, 0, 5);
+    private static final Projectile RANGED_PROJ = new Projectile(443, 260, 80, 40, 5, 10, 0, 5);
     private static final SoundEffect meleeAttackSound = new SoundEffect(598);
     private static final SoundEffect rangedAttackSound = new SoundEffect(601);
     private static final SoundEffect rangedLandSound = new SoundEffect(1184);

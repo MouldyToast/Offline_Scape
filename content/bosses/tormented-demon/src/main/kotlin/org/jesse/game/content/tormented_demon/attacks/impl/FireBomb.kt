@@ -32,7 +32,7 @@ class FireBomb : Attack {
      */
 
     private val fireBombProjectile : Projectile =
-        Projectile(2855, 64, 32, 96, 0)
+        Projectile(2855, 256, 128, 96, 0)
 
     override fun invoke(demon: TormentedDemon, target: Entity?) {
         if (target == null) return

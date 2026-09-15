@@ -22,7 +22,7 @@ import org.jesse.game.world.entity.player.Player;
 public class Banshee extends NPC implements Spawnable, CombatScript {
     private static final Animation ATTACK_ANIMATION = new Animation(1523);
     private static final Animation PLAYER_ANIMATION = new Animation(1572);
-    private static final Projectile PROJECTILE = new Projectile(337, 20, 20);
+    private static final Projectile PROJECTILE = new Projectile(337, 80, 80);
 
     public Banshee(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);

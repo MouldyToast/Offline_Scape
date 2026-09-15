@@ -48,7 +48,7 @@ final class Mimic extends NPC implements CombatScript {
         private static final List<Candy> immutableCandyList = Arrays.asList(PINK, PINK, PINK, RED, GREEN, BLUE);
 
         Candy(final int projectile, final int graphics) {
-            this.projectile = new Projectile(projectile, 30, 10, 5, 75, 50, 0, 10);
+            this.projectile = new Projectile(projectile, 120, 40, 5, 75, 50, 0, 10);
             this.graphics = new Graphics(graphics);
         }
 

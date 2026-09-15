@@ -20,7 +20,7 @@ import org.jesse.game.world.entity.player.Player;
 public final class SnakelingSequence implements Sequence {
 
     private static final Animation ANIM = new Animation(5069);
-    private static final Projectile SNAKELING_PROJ = new Projectile(1047, 65, 10, 40, 15, 90, 0, 5);
+    private static final Projectile SNAKELING_PROJ = new Projectile(1047, 260, 40, 40, 15, 90, 0, 5);
     private final Location tile;
     private static final SoundEffect SOUND_EFFECT = new SoundEffect(788, 15);
 

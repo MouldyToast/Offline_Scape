@@ -25,7 +25,7 @@ public class SergeantGrimspike extends GodwarsBossMinion implements Spawnable, C
         return id == 2218;
     }
 
-    private static final Projectile projectile = new Projectile(1220, 31, 20, 30, 5, 26, 0, 5);
+    private static final Projectile projectile = new Projectile(1220, 124, 80, 30, 5, 26, 0, 5);
     private static final SoundEffect attackSound = new SoundEffect(3841, 10, 0);
 
     @Override

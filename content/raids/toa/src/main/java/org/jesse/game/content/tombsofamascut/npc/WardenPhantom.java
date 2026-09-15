@@ -62,12 +62,12 @@ public class WardenPhantom extends NPC {
     private static final Graphics ZEBAK_RANGE_IMPACT_GFX = new Graphics(1103, 90, 90);
     private static final Graphics KEPHRI_INCOMING_GFX = new Graphics(1447);
     private static final Graphics KEPHRI_BOMB_EXPLODE_GFX = new Graphics(2157, 0, 38);
-    private static final Projectile ZEBAK_INITIAL_RANGE_PROJECTILE = new Projectile(2178, 50, 125, 30, 20, 90, 0, 0);
-    private static final Projectile ZEBAK_INITIAL_MAGE_PROJECTILE = new Projectile(2176, 50, 125, 30, 20, 90, 0, 0);
-    private static final Projectile AKKHA_RANGE_PROJECTILE = new Projectile(2255, 101, 34, 0, 12, 54, 32, 0);
-    private static final Projectile AKKHA_MAGE_PROJECTILE = new Projectile(2253, 101, 34, 0, 12, 54, 32, 0);
-    private static final Projectile KEPHRI_INITIAL_PROJECTILE = new Projectile(1481, 175, 250, 39, 50, 51, 0, 0);
-    private static final Projectile KEPHRI_SECOND_PROJECTILE = new Projectile(2266, 250, 9, 0, 50, 120, 0, 0);
+    private static final Projectile ZEBAK_INITIAL_RANGE_PROJECTILE = new Projectile(2178, 200, 500, 30, 20, 90, 0, 0);
+    private static final Projectile ZEBAK_INITIAL_MAGE_PROJECTILE = new Projectile(2176, 200, 500, 30, 20, 90, 0, 0);
+    private static final Projectile AKKHA_RANGE_PROJECTILE = new Projectile(2255, 404, 136, 0, 12, 54, 32, 0);
+    private static final Projectile AKKHA_MAGE_PROJECTILE = new Projectile(2253, 404, 136, 0, 12, 54, 32, 0);
+    private static final Projectile KEPHRI_INITIAL_PROJECTILE = new Projectile(1481, 700, 1000, 39, 50, 51, 0, 0);
+    private static final Projectile KEPHRI_SECOND_PROJECTILE = new Projectile(2266, 1000, 36, 0, 50, 120, 0, 0);
     private static final int MAGE_SPLIT_SOUND_ID = 5878;
     private static final int RANGE_SPLIT_SOUND_ID = 5896;
     private final boolean stayVigilant;
@@ -135,7 +135,7 @@ public class WardenPhantom extends NPC {
                 for (Player p : updatedPlayers) {
                     if (p != null) {
                         World.sendProjectile(baseTile, p, new Projectile(usingMage ? ZEBAK_MAGE_PROJECTILE_LAUNCH_ID : ZEBAK_RANGE_PROJECTILE_LAUNCH_ID,
-                                125, 22, 0, 1, 90, 0, 0));
+                                500, 88, 0, 1, 90, 0, 0));
                         p.setGraphics(usingMage ? ZEBAK_MAGE_IMPACT_GFX : ZEBAK_RANGE_IMPACT_GFX);
                     }
                 }

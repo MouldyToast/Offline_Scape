@@ -34,7 +34,7 @@ import java.util.Set;
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public final class LargeMuttadile extends RaidNPC<MuttadileRoom> implements CombatScript {
-	private static final Projectile proj = new Projectile(393, 20, 25, 10, 15, 8, 0, 5);
+	private static final Projectile proj = new Projectile(393, 80, 100, 10, 15, 8, 0, 5);
 	private static final Graphics gfx = new Graphics(157, 0, 96);
 	private static final Animation anim = new Animation(7420);
 
@@ -289,8 +289,8 @@ public final class LargeMuttadile extends RaidNPC<MuttadileRoom> implements Comb
 		checkAggressivity();
 	}
 
-	private static final Projectile rangedProj = new Projectile(1291, 25, 25, 15, 15, 28, 0, 5);
-	private static final Projectile magicProj = new Projectile(393, 25, 25, 40, 15, 28, 0, 5);
+	private static final Projectile rangedProj = new Projectile(1291, 100, 100, 15, 15, 28, 0, 5);
+	private static final Projectile magicProj = new Projectile(393, 100, 100, 40, 15, 28, 0, 5);
 	private static final Animation rangedAnim = new Animation(7421);
 	private static final Animation meleeAnim = new Animation(7424);
 	private static final Animation magicAnim = new Animation(7422);

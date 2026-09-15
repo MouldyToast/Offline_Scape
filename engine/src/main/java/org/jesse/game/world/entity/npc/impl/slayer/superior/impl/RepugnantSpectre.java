@@ -22,7 +22,7 @@ public class RepugnantSpectre extends SuperiorNPC implements CombatScript {
     public RepugnantSpectre(@NotNull final Player owner, @NotNull final NPC root, final Location tile) {
         super(owner, root, 7403, tile);
     }
-    private static final Projectile PROJECTILE = new Projectile(640, 85, 38, 45, 0, 95, 64, 5);
+    private static final Projectile PROJECTILE = new Projectile(640, 340, 152, 45, 0, 95, 64, 5);
     private static final Graphics GRAPHICS = new Graphics(641, 0, 320);
 
     @Override

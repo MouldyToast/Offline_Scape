@@ -21,7 +21,7 @@ public class JalXil extends InfernoNPC {
     private static final Animation meleeAnimation = new Animation(7604);
     private static final Animation rangedAnimation = new Animation(7605);
     private static final SoundEffect attackSound = new SoundEffect(598);
-    private static final Projectile rangedProjectile = new Projectile(1377, 72, 33, 35, 17, 30, 0, 4);
+    private static final Projectile rangedProjectile = new Projectile(1377, 288, 132, 35, 17, 30, 0, 4);
 
     public JalXil(final Location location, final Inferno inferno) {
         super(7698, location, inferno);

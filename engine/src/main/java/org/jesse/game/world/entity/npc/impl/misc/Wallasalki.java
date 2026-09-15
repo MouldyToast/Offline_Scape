@@ -20,7 +20,7 @@ import org.jesse.game.world.entity.player.action.combat.magic.spelleffect.SpellE
  * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
  */
 public class Wallasalki extends NPC implements CombatScript, Spawnable {
-    private static final Projectile projectile = new Projectile(162, 22, 31, 30, 23, -5, 64, 10);
+    private static final Projectile projectile = new Projectile(162, 88, 124, 30, 23, -5, 64, 10);
 
     public Wallasalki(int id, Location tile, Direction facing, int radius) {
         super(id, tile, facing, radius);

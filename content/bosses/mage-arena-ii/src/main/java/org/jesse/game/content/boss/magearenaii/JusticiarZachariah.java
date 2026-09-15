@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class JusticiarZachariah extends MageArenaBossBase {
     private static final Animation magicAnimation = new Animation(7962);
     private static final Animation meleeAnimation = new Animation(7853);
-    private static final Projectile specialProjectile = new Projectile(1515, 50, 10, 40, 10, 70, 64, 5);
+    private static final Projectile specialProjectile = new Projectile(1515, 200, 40, 40, 10, 70, 64, 5);
 
     @Override
     Animation getMagicAnimation() {

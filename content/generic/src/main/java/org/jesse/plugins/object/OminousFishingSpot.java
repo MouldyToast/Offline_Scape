@@ -66,7 +66,7 @@ public class OminousFishingSpot implements ObjectAction, ItemOnObjectAction {
 
         private static final Graphics throwingGraphics = new Graphics(50, 0, 96);
 
-        private static final Projectile throwingProjectile = new Projectile(49, 34, 10, 20, 25, 0, 11, 3);
+        private static final Projectile throwingProjectile = new Projectile(49, 136, 40, 20, 25, 0, 11, 3);
 
         public OminousFishingSpotObjectFollowAction(final WorldObject object) {
             this.object = object;

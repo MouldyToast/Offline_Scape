@@ -151,8 +151,8 @@ internal class XarpusPoisonPhase(xarpus: Xarpus) : XarpusPhase(xarpus) {
 
         private val transformationAnim = Animation(8061)
         private val attackAnim = Animation(8059)
-        private val xarpusPoisonProjectile = Projectile(1555, 80, 0, 0, 40, 60, 64, 5)
-        private val splashPoisonProjectile = Projectile(1555, 10, 0, 0, 60, 60, 0, 5)
+        private val xarpusPoisonProjectile = Projectile(1555, 320, 0, 0, 40, 60, 64, 5)
+        private val splashPoisonProjectile = Projectile(1555, 40, 0, 0, 60, 60, 0, 5)
         private val poisonLandGfx = Graphics(1556)
         private val poisonSplatObjectAnim = Animation(8068)
 

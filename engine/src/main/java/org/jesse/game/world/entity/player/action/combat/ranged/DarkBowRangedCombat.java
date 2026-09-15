@@ -27,24 +27,24 @@ public final class DarkBowRangedCombat extends RangedCombat {
     private static final SoundEffect SOUND = new SoundEffect(3731, 0, 0);
 
     private enum Arrow {
-        BRONZE_ARROW(AmmunitionDefinitions.BRONZE_ARROW, new Graphics(1104, 0, 96), new Projectile(10, 40, 36, 41, 7, 5, 11, 5), new Projectile(10, 40, 36, 41, 35, 5, 11, 5)),
-        IRON_ARROW(AmmunitionDefinitions.IRON_ARROW, new Graphics(1105, 0, 96), new Projectile(9, 40, 36, 41, 7, 5, 11, 5), new Projectile(9, 40, 36, 41, 35, 5, 11, 5)),
-        STEEL_ARROW(AmmunitionDefinitions.STEEL_ARROW, new Graphics(1106, 0, 96), new Projectile(11, 40, 36, 41, 7, 5, 11, 5), new Projectile(11, 40, 36, 41, 35, 5, 11, 5)),
-        MITHRIL_ARROW(AmmunitionDefinitions.MITHRIL_ARROW, new Graphics(1107, 0, 96), new Projectile(12, 40, 36, 41, 7, 5, 11, 5), new Projectile(12, 40, 36, 41, 35, 5, 11, 5)),
-        ADAMANT_ARROW(AmmunitionDefinitions.ADAMANT_ARROW, new Graphics(1108, 0, 96), new Projectile(13, 40, 36, 41, 7, 5, 11, 5), new Projectile(13, 40, 36, 41, 35, 5, 11, 5)),
-        RUNE_ARROW(AmmunitionDefinitions.RUNE_ARROW, new Graphics(1109, 0, 96), new Projectile(15, 40, 36, 41, 7, 5, 11, 5), new Projectile(15, 40, 36, 41, 35, 5, 11, 5)),
+        BRONZE_ARROW(AmmunitionDefinitions.BRONZE_ARROW, new Graphics(1104, 0, 96), new Projectile(10, 160, 144, 41, 7, 5, 11, 5), new Projectile(10, 160, 144, 41, 35, 5, 11, 5)),
+        IRON_ARROW(AmmunitionDefinitions.IRON_ARROW, new Graphics(1105, 0, 96), new Projectile(9, 160, 144, 41, 7, 5, 11, 5), new Projectile(9, 160, 144, 41, 35, 5, 11, 5)),
+        STEEL_ARROW(AmmunitionDefinitions.STEEL_ARROW, new Graphics(1106, 0, 96), new Projectile(11, 160, 144, 41, 7, 5, 11, 5), new Projectile(11, 160, 144, 41, 35, 5, 11, 5)),
+        MITHRIL_ARROW(AmmunitionDefinitions.MITHRIL_ARROW, new Graphics(1107, 0, 96), new Projectile(12, 160, 144, 41, 7, 5, 11, 5), new Projectile(12, 160, 144, 41, 35, 5, 11, 5)),
+        ADAMANT_ARROW(AmmunitionDefinitions.ADAMANT_ARROW, new Graphics(1108, 0, 96), new Projectile(13, 160, 144, 41, 7, 5, 11, 5), new Projectile(13, 160, 144, 41, 35, 5, 11, 5)),
+        RUNE_ARROW(AmmunitionDefinitions.RUNE_ARROW, new Graphics(1109, 0, 96), new Projectile(15, 160, 144, 41, 7, 5, 11, 5), new Projectile(15, 160, 144, 41, 35, 5, 11, 5)),
         //TODO
-        BROAD_ARROW(AmmunitionDefinitions.BROAD_ARROW, new Graphics(1112, 0, 96), new Projectile(1384, 40, 36, 41, 7, 5, 11, 5), new Projectile(1384, 40, 36, 41, 35, 5, 11, 5)),
-        AMETHYST_ARROW(AmmunitionDefinitions.AMETHYST_ARROW, new Graphics(1383, 0, 96), new Projectile(1384, 40, 36, 41, 7, 5, 11, 5), new Projectile(1384, 40, 36, 41, 35, 5, 11, 5)),
-        DRAGON_ARROW(AmmunitionDefinitions.DRAGON_ARROW, new Graphics(1113, 0, 96), new Projectile(1120, 40, 36, 41, 7, 5, 11, 5), new Projectile(1120, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_BRONZE_ARROW(AmmunitionDefinitions.LIT_BRONZE_ARROW, new Graphics(1114, 0, 90), new Projectile(10, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_IRON_ARROW(AmmunitionDefinitions.LIT_IRON_ARROW, new Graphics(1114, 0, 90), new Projectile(9, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_STEEL_ARROW(AmmunitionDefinitions.LIT_STEEL_ARROW, new Graphics(1114, 0, 90), new Projectile(11, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_MITHRIL_ARROW(AmmunitionDefinitions.LIT_MITHRIL_ARROW, new Graphics(1114, 0, 90), new Projectile(12, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_ADAMANT_ARROW(AmmunitionDefinitions.LIT_ADAMANT_ARROW, new Graphics(1114, 0, 90), new Projectile(13, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_RUNE_ARROW(AmmunitionDefinitions.LIT_RUNE_ARROW, new Graphics(1114, 0, 90), new Projectile(15, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_AMETHYST_ARROW(AmmunitionDefinitions.LIT_AMETHYST_ARROW, new Graphics(1114, 0, 90), new Projectile(1384, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5)),
-        LIT_DRAGON_ARROW(AmmunitionDefinitions.LIT_DRAGON_ARROW, new Graphics(1114, 0, 90), new Projectile(1120, 40, 36, 41, 7, 5, 11, 5), new Projectile(17, 40, 36, 41, 35, 5, 11, 5));
+        BROAD_ARROW(AmmunitionDefinitions.BROAD_ARROW, new Graphics(1112, 0, 96), new Projectile(1384, 160, 144, 41, 7, 5, 11, 5), new Projectile(1384, 160, 144, 41, 35, 5, 11, 5)),
+        AMETHYST_ARROW(AmmunitionDefinitions.AMETHYST_ARROW, new Graphics(1383, 0, 96), new Projectile(1384, 160, 144, 41, 7, 5, 11, 5), new Projectile(1384, 160, 144, 41, 35, 5, 11, 5)),
+        DRAGON_ARROW(AmmunitionDefinitions.DRAGON_ARROW, new Graphics(1113, 0, 96), new Projectile(1120, 160, 144, 41, 7, 5, 11, 5), new Projectile(1120, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_BRONZE_ARROW(AmmunitionDefinitions.LIT_BRONZE_ARROW, new Graphics(1114, 0, 90), new Projectile(10, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_IRON_ARROW(AmmunitionDefinitions.LIT_IRON_ARROW, new Graphics(1114, 0, 90), new Projectile(9, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_STEEL_ARROW(AmmunitionDefinitions.LIT_STEEL_ARROW, new Graphics(1114, 0, 90), new Projectile(11, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_MITHRIL_ARROW(AmmunitionDefinitions.LIT_MITHRIL_ARROW, new Graphics(1114, 0, 90), new Projectile(12, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_ADAMANT_ARROW(AmmunitionDefinitions.LIT_ADAMANT_ARROW, new Graphics(1114, 0, 90), new Projectile(13, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_RUNE_ARROW(AmmunitionDefinitions.LIT_RUNE_ARROW, new Graphics(1114, 0, 90), new Projectile(15, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_AMETHYST_ARROW(AmmunitionDefinitions.LIT_AMETHYST_ARROW, new Graphics(1114, 0, 90), new Projectile(1384, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5)),
+        LIT_DRAGON_ARROW(AmmunitionDefinitions.LIT_DRAGON_ARROW, new Graphics(1114, 0, 90), new Projectile(1120, 160, 144, 41, 7, 5, 11, 5), new Projectile(17, 160, 144, 41, 35, 5, 11, 5));
 
         private final AmmunitionDefinitions definitions;
         private final Graphics drawback;

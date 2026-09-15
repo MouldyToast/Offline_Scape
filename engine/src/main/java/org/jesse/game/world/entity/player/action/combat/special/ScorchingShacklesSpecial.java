@@ -25,7 +25,7 @@ public class ScorchingShacklesSpecial implements SpecialAttackScript {
     public static final int BURN_TICK_INTERVAL = 4;
     public static final int BURN_DAMAGE_PER_TICK = 1;
     private final Projectile projectile =
-        new Projectile(2807, 32, 32, 0);
+        new Projectile(2807, 128, 128, 0);
 
     @Override
     public void attack(Player player, PlayerCombat combat, Entity target) {

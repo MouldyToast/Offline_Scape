@@ -35,7 +35,7 @@ import java.util.List;
 public class Skotizo extends NPC implements CombatScript {
     private static final Animation meleeAnimation = new Animation(64);
     private static final Animation magicAnimation = new Animation(69);
-    private static final Projectile magicProjectile = new Projectile(1242, 90, 20, 30, 8, 30, 0, 4);
+    private static final Projectile magicProjectile = new Projectile(1242, 360, 80, 30, 8, 30, 0, 4);
     private static final ForceTalk minionSpawningForceTalk = new ForceTalk("Gar mulno ful taglo!");
     private final transient SkotizoInstance instance;
     private static final Graphics graphics = new Graphics(86, 0, 90);

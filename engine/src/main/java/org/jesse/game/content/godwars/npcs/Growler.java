@@ -26,7 +26,7 @@ public class Growler extends GodwarsBossMinion implements Spawnable, CombatScrip
         return id == 2207;
     }
 
-    private static final Projectile projectile = new Projectile(1183, 4, 5, 30, 5, 38, 0, 5);
+    private static final Projectile projectile = new Projectile(1183, 16, 20, 30, 5, 38, 0, 5);
     private static final Graphics attackGraphics = new Graphics(1182);
     private static final Graphics targetGraphics = new Graphics(1184, -1, 0);
     private static final Graphics splashGraphics = new Graphics(85, -1, 124);

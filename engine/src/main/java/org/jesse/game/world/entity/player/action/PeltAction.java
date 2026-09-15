@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 public class PeltAction extends Action {
     private static final Animation animation = new Animation(15096);
     private static final Graphics graphics = new Graphics(2504, 65, 0);
-    private static final Projectile projectile = new Projectile(2503, 25, 10, 45, 5, 20, 0, 0);
+    private static final Projectile projectile = new Projectile(2503, 100, 40, 45, 5, 20, 0, 0);
 
     public PeltAction(@NotNull final Player target) {
         this.target = target;

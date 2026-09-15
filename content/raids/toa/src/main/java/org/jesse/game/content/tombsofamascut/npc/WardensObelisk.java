@@ -50,7 +50,7 @@ public class WardensObelisk extends TOANPC {
     private static final Graphics WHEEL_START_GFX = new Graphics(2236, 30, 0);
     private static final Graphics SKULL_BOMB_LANDING_GFX = new Graphics(1447);
     private static final Graphics ISOLATION_GROUND_GFX = new Graphics(2235);
-    private static final Projectile SKULL_BOMB_PROJECTILE = new Projectile(2225, 100, 3, 23, 40, 97, 64, 0);
+    private static final Projectile SKULL_BOMB_PROJECTILE = new Projectile(2225, 400, 12, 23, 40, 97, 64, 0);
     private static final SoundEffect WHEEL_SOUND = new SoundEffect(6092, 15, 60);
     private static final SoundEffect SKULL_BOMB_LANDING_SOUND = new SoundEffect(6260, 9);
     public static final SoundEffect SKULL_BOMB_THUNDER_SOUND = new SoundEffect(6266, 15);

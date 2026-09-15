@@ -32,21 +32,21 @@ public class Hespori extends NPC implements CombatScript {
      * The ranged attack animation, projectiles and sound effects.
      */
     private static final Animation rangedAttackAnimation = new Animation(8224);
-    private static final Projectile firstRangedProj = new Projectile(1639, 24, 14, 30, 11, 25, 64, 5);
-    private static final Projectile secondRangedProj = new Projectile(1639, 24, 14, 55, 11, 25, 64, 5);
+    private static final Projectile firstRangedProj = new Projectile(1639, 96, 56, 30, 11, 25, 64, 5);
+    private static final Projectile secondRangedProj = new Projectile(1639, 96, 56, 55, 11, 25, 64, 5);
     private static final SoundEffect rangedAttackSound = new SoundEffect(4061, 0, -1);
     /**
      * The magic attack animation, projectiles, graphics and sound effects.
      */
     private static final Animation magicAttackAnimation = new Animation(8223);
-    private static final Projectile magicProjectile = new Projectile(1640, 85, 39, 90, 11, 25, 64, 5);
+    private static final Projectile magicProjectile = new Projectile(1640, 340, 156, 90, 11, 25, 64, 5);
     private static final Graphics magicHitGraphics = new Graphics(1641, -1, 124);
     private static final SoundEffect magicCastSound = new SoundEffect(4056);
     private static final SoundEffect magicHitSound = new SoundEffect(4063, 0, -1);
     /**
      * The snare attack projectile, graphics and sound effects.
      */
-    private static final Projectile snareProjectile = new Projectile(1642, 85, 39, 90, 11, 25, 64, 5);
+    private static final Projectile snareProjectile = new Projectile(1642, 340, 156, 90, 11, 25, 64, 5);
     private static final SoundEffect snareCastSound = new SoundEffect(4062);
     private static final Graphics snareHitGraphics = new Graphics(1643, 0, 124);
     private static final SoundEffect snareHitSound = new SoundEffect(4065);

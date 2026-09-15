@@ -38,9 +38,9 @@ public class Dawn extends NPC implements CombatScript {
     private static final Animation DEATH_SECOND_ANIM = new Animation(7777);
     private static final Animation DUSK_SAD_ANIM = new Animation(7795);
     private static final Animation BOSS_FINISH_OFF = new Animation(401);
-    private static final Projectile RANGED_ATTACK_PROJ = new Projectile(1444, 90, 40, 0, 32);
-    private static final Projectile FREEZE_ATTACK_PROJ = new Projectile(1445, 90, 0, 50, 32);
-    private static final Projectile SPHERE_ATTACK_PROJ = new Projectile(1437, 90, 0, 0, 32);
+    private static final Projectile RANGED_ATTACK_PROJ = new Projectile(1444, 360, 160, 0, 32);
+    private static final Projectile FREEZE_ATTACK_PROJ = new Projectile(1445, 360, 0, 50, 32);
+    private static final Projectile SPHERE_ATTACK_PROJ = new Projectile(1437, 360, 0, 0, 32);
     private static final Graphics FLAME_CORNER_GFX = new Graphics(1433);
     private static final Graphics FREEZE_HIT_GFX = new Graphics(160);
     public static final int ATTACKABLE_NPC_ID = 7852;

@@ -20,7 +20,6 @@ public enum WildernessTeleportCommand {
 	FEROX("ferox", "Teleport to a wilderness location.", create(new Location(3150, 3636))),
 	GDZ("gdz", "Teleport to a wilderness location.", create(new Location(3288, 3886))),
 	GRAVES("graves", "Teleport to a wilderness location.", create(new Location(3149, 3670))),
-    MAGE_BANK("mb", "Teleport to a wilderness location.", create(new Location(2537, 4715))),
 	SEVENTEEN("17s", "Teleport to a wilderness location.", create(new Location(3188, 3653))),
 	ELDER("elders", "Teleport to a wilderness location.", create(new Location(3236, 3640))),
 	//SLAYER_CAVE("sc", create(new Location(3291, 3759))),

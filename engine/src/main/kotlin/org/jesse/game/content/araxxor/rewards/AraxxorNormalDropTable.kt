@@ -57,8 +57,7 @@ enum class AraxxorNormalDropTable(
     VENOM_SACK_2(ARAXYTE_VENOM_SACK, 12, 12, 57.5),
     BARK(org.jesse.game.item.ids.BARK+1, 15, 15, 115.0),
     HEAD(ARAXYTE_HEAD, 1, 1, 100.0),
-    VENOM_JAR(JAR_OF_VENOM, 1, 1, 600.0),
-    SLAYER_PLATFORM(SLAYER_BASE, 1, 1, 500.0)
+    VENOM_JAR(JAR_OF_VENOM, 1, 1, 600.0)
     ;
 
     companion object {

@@ -18,7 +18,7 @@ import org.jesse.game.world.region.area.wilderness.WildernessArea
 object GIMCommands {
 
     fun register() {
-        Command(PlayerPrivilege.ADMINISTRATOR, "managegim") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "managegim", "Manage a GIM player's group.") { p, _ ->
             p.sendInputString("What player would you like to manage") {playerName ->
                 val player = World.getPlayer(playerName)
                 if(player.isPresent) {
@@ -80,7 +80,7 @@ object GIMCommands {
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "managehcgim") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "managehcgim", "Manage a Hardcore GIM group.") { p, _ ->
             p.sendInputString("What player would you like to manage") {playerName ->
                 val player = World.getPlayer(playerName)
                 if(player.isPresent) {
@@ -153,13 +153,13 @@ object GIMCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "forcejoingim") { p, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "forcejoingim", "Force join a GIM group.") { p, _ ->
             p.sendInputString("Which player's group would you like to join") { playerName ->
                 IronmanGroup.find(GIMTarget(username = playerName))?.join(p, true)
             }
         }
 
-        Command(PlayerPrivilege.PLAYER, "node") { p, _ ->
+        Command(PlayerPrivilege.PLAYER, "node", "Teleport back to The Node.") { p, _ ->
             if(p.leftTheNode && p.ironmanGroupType != null || p.privilege.inherits(PlayerPrivilege.ADMINISTRATOR)) {
                 if(p.area !is EdgevilleArea) {
                     p.sendMessage("You cannot use that teleport from here.")

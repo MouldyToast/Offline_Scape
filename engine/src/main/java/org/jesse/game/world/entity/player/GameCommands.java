@@ -165,7 +165,7 @@ public final class GameCommands {
 
 
 
-        new Command(PlayerPrivilege.DEVELOPER, "cerbinst", (player, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "cerbinst", "Create a Cerberus lair instance.", (player, args) -> {
             player.lock();
             try {
                 final AllocatedArea area = MapBuilder.findEmptyChunk(6, 8);
@@ -247,7 +247,7 @@ public final class GameCommands {
             p.sendMessage("Reset herbiboar variables");
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "star", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "star", "Force-spawn a shooting star.", (p, args) -> {
             p.getDialogueManager().start(new Dialogue(p) {
                 @Override
                 public void buildDialogue() {
@@ -276,7 +276,7 @@ public final class GameCommands {
                 }
             });
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "campos", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "campos", "Set camera position. Args: x y height", (p, args) -> {
             int x = p.getX();
             int y = p.getY();
             int plane = 1000;
@@ -299,7 +299,7 @@ public final class GameCommands {
             }
             new CameraPositionAction(p, new Location(x, y), plane, speed, acceleration).run();
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "camlook", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "camlook", "Set camera look-at target. Args: x y height", (p, args) -> {
             int x = p.getX();
             int y = p.getY();
             int plane = 1000;
@@ -322,14 +322,14 @@ public final class GameCommands {
             }
             new CameraLookAction(p, new Location(x, y), plane, speed, acceleration).run();
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "camreset", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "camreset", "Reset camera to default.", (p, args) -> {
             p.getPacketDispatcher().resetCamera();
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "hphudopen", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "hphudopen", "Open the boss HP HUD.", (p, args) -> {
             p.getHpHud().open(NpcId.NEX, 1500);
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "findobj", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "findobj", "Find regions containing an object. Args: objId", (p, args) -> {
             int objId = Integer.parseInt(args[0]);
             ObjectArrayList<Integer> found = new ObjectArrayList<>();
             for (int id = 0; id < MapBuilder.AMOUNT_OF_REGIONS; id++) {
@@ -352,14 +352,14 @@ public final class GameCommands {
             found.forEach(i -> System.out.println("FOUND: " + i));
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "hphudclose", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "hphudclose", "Close the boss HP HUD.", (p, args) -> {
             p.getHpHud().close();
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "lt-1", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "lt-1", "Clear all loot key settings.", (p, args) -> {
             LootkeySettings.clear(p);
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "lt-n", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "lt-n", "Create test loot keys with sample items.", (p, args) -> {
             p.setLootkeySettings(new LootkeySettings(true, false, false, 5_000_000, 0, 0));
 
             var inventory = p.getInventory();
@@ -377,7 +377,7 @@ public final class GameCommands {
             inventory.addOrDrop(ItemID.LOOT_KEY_26652, 1);
 
         });
-        new Command(PlayerPrivilege.SENIOR_MODERATOR, "addbroadcast", (p, args) -> {
+        new Command(PlayerPrivilege.SENIOR_MODERATOR, "addbroadcast", "Add an item to rare drop broadcasts. Args: itemId", (p, args) -> {
             final int id = parseInt(args[0]);
             p.getDialogueManager().start(new Dialogue(p) {
                 @Override
@@ -391,7 +391,7 @@ public final class GameCommands {
                 }
             });
         });
-        new Command(PlayerPrivilege.SENIOR_MODERATOR, "removebroadcast", (p, args) -> {
+        new Command(PlayerPrivilege.SENIOR_MODERATOR, "removebroadcast", "Remove an item from rare drop broadcasts.", (p, args) -> {
             final List<Integer> broadcasts = RareDrop.getDynamicItemIds().stream().toList();
             if (broadcasts.isEmpty()) {
                 p.sendMessage("No dynamic broadcasts present.");
@@ -424,21 +424,21 @@ public final class GameCommands {
                 }
             });
         });
-        new Command(PlayerPrivilege.DEVELOPER, "skotaltar", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "skotaltar", "Teleport to Skotizo altar.", (p, args) -> {
             p.setLocation(new Location(1665, 10048, 0));
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "skotroom", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "skotroom", "Teleport to Skotizo room.", (p, args) -> {
             p.setLocation(new Location(1693, 9886, 0));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "dmgzuk", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "dmgzuk", "Deal damage to TzKal-Zuk. Args: amount", (p, args) -> {
             final RegionArea area = p.getArea();
             if (area instanceof Inferno inferno) {
                 final TzKalZuk zuk = inferno.getNPCs(TzKalZuk.class).get(0);
                 zuk.applyHit(new Hit(p, parseInt(args[0]), HitType.REGULAR));
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "skipwave", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "skipwave", "Skip to an Inferno wave. Args: waveNumber", (p, args) -> {
             if (!p.inArea(p.getName() + "'s Inferno Instance")) {
                 p.sendMessage("You must be in the Inferno to do this.");
                 return;
@@ -448,10 +448,10 @@ public final class GameCommands {
             p.sendMessage("Skipped to wave " + wave.getWave() + ".");
             inferno.skip(wave);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "inferno", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "inferno", "Teleport to the Inferno entrance.", (p, args) -> {
             p.setLocation(new Location(2496, 5115, 0));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "bonusxp", (p, args) -> p.sendInputString("Enter bonus xp expiration " +
+        new Command(PlayerPrivilege.ADMINISTRATOR, "bonusxp", "Set bonus XP expiration. Format: YYYY/MM/DD/HH", (p, args) -> p.sendInputString("Enter bonus xp expiration " +
                 "date: " +
                 "(format: YYYY/MM/DD/HH)", value -> {
             final String[] split = value.split("/");
@@ -471,7 +471,7 @@ public final class GameCommands {
                 }
             });
         }));
-        new Command(PlayerPrivilege.ADMINISTRATOR, "objs", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "objs", "List all objects on your current tile.", (p, args) -> {
             final WorldObject[] objects = World.getRegion(p.getLocation().getRegionId()).getObjects(p.getPlane(),
                     p.getX() & 63, p.getY() & 63);
             if (objects == null) {
@@ -485,7 +485,7 @@ public final class GameCommands {
                 p.sendMessage("Object: " + object.getId() + ", type: " + object.getType() + ", rotation: " + object.getRotation() + ", location: " + object.getX() + ", " + object.getY() + ", " + object.getPlane() + ".");
             }
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "gc", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "gc", "Force a garbage collection (dev worlds only).", (p, args) -> {
             if (!GameConstants.WORLD_PROFILE.isDevelopment()) {
                 return;
             }
@@ -526,7 +526,7 @@ public final class GameCommands {
 
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "gg", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "gg", "Teleport to Grotesque Guardians.", (p, args) -> {
             p.setLocation(GrotesqueGuardiansInstance.OUTSIDE_LOCATION);
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "uninvite", "Revoke beta access of a user. Usage: ::uninvite " +
@@ -544,7 +544,7 @@ public final class GameCommands {
         new Command(PlayerPrivilege.MODERATOR, "related", "See others users with the same ip or mac address. Usage: " +
                 "::related player name",
                 (p, args) -> p.sendMessage("Please user the discord bot in order to find related account with the command /search_related_players <name>"));
-        new Command(PlayerPrivilege.DEVELOPER, "clearnullednpcs", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "clearnullednpcs", "Force-respawn dead NPCs in your viewport.", (p, args) -> {
             //Clears the npcs which are visible in the player's viewport and have died - if they're still in dead
             // status 10 ticks after the check.
             CharacterLoop.forEach(p.getLocation(), p.getViewDistance(), NPC.class, npc -> {
@@ -559,17 +559,17 @@ public final class GameCommands {
             });
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "resetecto", (p, args) -> World.getPlayer(StringUtilities.compile(args
+        new Command(PlayerPrivilege.DEVELOPER, "resetecto", "Reset a player's ectofuntus. Args: name", (p, args) -> World.getPlayer(StringUtilities.compile(args
                 , 0,
                 args.length, ' ')).ifPresent(user -> {
             user.addAttribute("ectofuntus bone status", 0);
             user.addAttribute("ectofuntus grinded bone", 0);
             p.sendMessage(user.getName() + "'s ectofuntus settings reset.");
         }));
-        new Command(PlayerPrivilege.DEVELOPER, "evilbob", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "evilbob", "Teleport to Evil Bob's Island.", (p, args) -> {
             EvilBobIsland.teleport(p);
         });
-        new Command(PlayerPrivilege.MODERATOR, "checkrandom", (p, args) -> {
+        new Command(PlayerPrivilege.MODERATOR, "checkrandom", "Send yourself to the Evil Bob random event.", (p, args) -> {
             if (GameConstants.WORLD_PROFILE.isBeta() && !isOwner(p)) {
                 return;
             }
@@ -680,32 +680,32 @@ public final class GameCommands {
             p.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, 12);
             p.getPacketDispatcher().sendUpdateItemContainer(tp.getEquipment().getContainer(), ContainerType.BANK);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "antiknox", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "antiknox", "Toggle the antiknox system.", (p, args) -> {
             GameConstants.ANTIKNOX = !GameConstants.ANTIKNOX;
             p.sendMessage("Antiknox: " + GameConstants.ANTIKNOX);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "purgechunks", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "purgechunks", "Toggle chunk purging.", (p, args) -> {
             GameConstants.PURGING_CHUNKS = !GameConstants.PURGING_CHUNKS;
             p.sendMessage("Purging chunks: " + GameConstants.PURGING_CHUNKS);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "huntercheck", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "huntercheck", "Toggle hunter trap quantity checking.", (p, args) -> {
             GameConstants.CHECK_HUNTER_TRAPS_QUANTITY = !GameConstants.CHECK_HUNTER_TRAPS_QUANTITY;
             p.sendMessage("Checking hunter trap quantity: " + GameConstants.CHECK_HUNTER_TRAPS_QUANTITY);
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "whitelisting", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "whitelisting", "Toggle the login whitelist.", (p, args) -> {
             GameConstants.WHITELISTING = !GameConstants.WHITELISTING;
             p.sendMessage("Whitelisting: " + GameConstants.WHITELISTING);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "extragponkill", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "extragponkill", "Toggle extra GP on NPC kill.", (p, args) -> {
             GameConstants.EXTRA_GP_ON_NPC_KILL_ENABLED = !GameConstants.EXTRA_GP_ON_NPC_KILL_ENABLED;
             p.sendMessage("Extra GP on NPC Kill (default true): " + GameConstants.EXTRA_GP_ON_NPC_KILL_ENABLED);
         });
-        new Command(PlayerPrivilege.TRUE_DEVELOPER, "allowunlimitedpools", (p, args) -> {
+        new Command(PlayerPrivilege.TRUE_DEVELOPER, "allowunlimitedpools", "Toggle time restrictions on restore pools.", (p, args) -> {
             GameConstants.REMOVE_RESTRICTIONS_ON_POOLS = !GameConstants.REMOVE_RESTRICTIONS_ON_POOLS;
             p.sendMessage("Time Restrictions on restore pools removed (default false): " + GameConstants.REMOVE_RESTRICTIONS_ON_POOLS);
         });
-        new Command(PlayerPrivilege.TRUE_DEVELOPER, "extragponkillrate", (p, args) -> {
+        new Command(PlayerPrivilege.TRUE_DEVELOPER, "extragponkillrate", "Set extra GP on kill rate. Args: rate", (p, args) -> {
             int rate;
             try {
                 rate = Integer.parseInt(args[0]);
@@ -715,7 +715,7 @@ public final class GameCommands {
             GameConstants.EXTRA_GP_ON_NPC_KILL_RATE = rate;
             p.sendMessage("Extra GP on NPC Rate (1 in x/100) set to: " + GameConstants.EXTRA_GP_ON_NPC_KILL_RATE);
         });
-        new Command(PlayerPrivilege.TRUE_DEVELOPER, "extragponkillcannonrate", (p, args) -> {
+        new Command(PlayerPrivilege.TRUE_DEVELOPER, "extragponkillcannonrate", "Set cannon GP-on-kill multiplier. Args: rate", (p, args) -> {
             int rate;
             try {
                 rate = Integer.parseInt(args[0]);
@@ -725,22 +725,22 @@ public final class GameCommands {
             GameConstants.EXTRA_GP_ON_NPC_CANNON_MULTIPLIER = rate;
             p.sendMessage("Extra GP on NPC Cannon Multiplier set to: " + GameConstants.EXTRA_GP_ON_NPC_CANNON_MULTIPLIER);
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "blacklistgpbyname", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "blacklistgpbyname", "Blacklist an NPC name from GP drops. Args: name", (p, args) -> {
             if(args.length < 1)
                 return;
             GameConstants.blacklistedNpcNamesForGold.add(args[0].replace('_', ' '));
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "blacklistgpbyid", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "blacklistgpbyid", "Blacklist an NPC ID from GP drops. Args: npcId", (p, args) -> {
             if(args.length < 1)
                 return;
             GameConstants.blacklistedNpcIdsForGold.add(Integer.parseInt(args[0]));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "whitelist", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "whitelist", "Add a username to the login whitelist. Args: name", (p, args) -> {
             GameConstants.whitelistedUsernames.add(StringFormatUtil.formatUsername(StringUtilities.compile(args, 0,
                     args.length, ' ')));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "teleparty", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "teleparty", "Teleport all raid members to your location.", (p, args) -> {
             if (!isOwner(p)) {
                 return;
             }
@@ -770,18 +770,18 @@ public final class GameCommands {
                     final Player target = player.get();
                     p.sendMessage("IP address for " + target.getName() + " is: " + target.getIP());
                 }));
-        new Command(PlayerPrivilege.DEVELOPER, "superiorrate", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "superiorrate", "Set superior slayer spawn rate. Args: 1-in-N", (p, args) -> {
             p.getTemporaryAttributes().put("superior rate", Math.max(0, parseInt(args[0]) - 1));
             p.sendMessage("Superiors will now appear at a rate of 1/" + (p.getNumericTemporaryAttribute("superior " +
                     "rate").intValue() + 1) + ".");
         });
-        new Command(PlayerPrivilege.DEVELOPER, "js5duplicates", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "js5duplicates", "Toggle JS5 duplicate request filtering.", (p, args) -> {
             GameConstants.FILTERING_DUPLICATE_JS5_REQUESTS = !GameConstants.FILTERING_DUPLICATE_JS5_REQUESTS;
             p.sendMessage("JS5 duplicates filtering: " + GameConstants.FILTERING_DUPLICATE_JS5_REQUESTS);
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "resetge", (p, args) -> p.getGrandExchange().resetExistingOffers());
-        new Command(PlayerPrivilege.DEVELOPER, "multigfx", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "resetge", "Reset your Grand Exchange offers.", (p, args) -> p.getGrandExchange().resetExistingOffers());
+        new Command(PlayerPrivilege.DEVELOPER, "multigfx", "Spawn a grid of projectiles. Args: startId", (p, args) -> {
             int id = parseInt(args[0]);
             final int px = p.getX();
             final int py = p.getY();
@@ -793,7 +793,7 @@ public final class GameCommands {
             }
             p.sendMessage("Last: " + (id - 1));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "barrows", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "barrows", "Roll Barrows rewards. Args: kills rewardPotential", (p, args) -> {
             if (args.length < 2) {
                 p.sendMessage("Arguments are <Number of kills> <Reward potential>");
                 return;
@@ -807,7 +807,7 @@ public final class GameCommands {
             }
             p.sendMessage("Rolled " + number + " Barrows rewards at a reward potential of " + (rp + 668) + ".");
         });
-        new Command(PlayerPrivilege.DEVELOPER, "defencemultiplier", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "defencemultiplier", "Set PvP defence multiplier. Args: value", (p, args) -> {
             final double dbl = Double.parseDouble(args[0]);
             GameConstants.defenceMultiplier = Math.max(0.5, Math.min(2, dbl));
             for (final Player player : World.getPlayers()) {
@@ -815,11 +815,11 @@ public final class GameCommands {
                         GLOBAL_BROADCAST);
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "birthdayeventreload", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "birthdayeventreload", "Reload the birthday event reward list.", (p, args) -> {
             BirthdayEventRewardList.reload();
             p.sendMessage("Birthday event reward list reloaded.");
         });
-        new Command(PlayerPrivilege.DEVELOPER, "addbirthdayreward", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "addbirthdayreward", "Add a username to birthday rewards. Args: name", (p, args) -> {
             final String username = StringUtilities.compile(args, 0, args.length, '_');
             BirthdayEventRewardList.addUsername(username);
             p.sendMessage(username + " added to birthday event reward list.");
@@ -850,7 +850,7 @@ public final class GameCommands {
                 }
             });
         });
-        new Command(PlayerPrivilege.DEVELOPER, "multispawn", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "multispawn", "Spawn NPCs in a grid. Args: npcId [radius]", (p, args) -> {
             final int id = parseInt(args[0]);
             final int radius = args.length == 1 ? 10 : parseInt(args[1]);
             final NPCDefinitions defs = Objects.requireNonNull(NPCDefinitions.get(id));
@@ -872,7 +872,7 @@ public final class GameCommands {
                 }
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "smoke", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "smoke", "Kill all nearby attackable NPCs. Args: [radius]", (p, args) -> {
             final int radius = args.length == 0 ? p.getViewDistance() : parseInt(args[0]);
             final ArrayList<NPC> list = new ArrayList<>();
             final boolean unrestricted = args.length == 2;
@@ -887,10 +887,10 @@ public final class GameCommands {
                         npc.getHitpoints(), HitType.REGULAR)));
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "resetfarming", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "resetfarming", "Reset all your farming patches.", (p, args) -> {
             p.getFarming().reset();
         });
-        new Command(PlayerPrivilege.DEVELOPER, "cycle", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "cycle", "Toggle game cycle debug logging.", (p, args) -> {
             GameConstants.CYCLE_DEBUG = !GameConstants.CYCLE_DEBUG;
             p.sendMessage("Cycle debug: " + GameConstants.CYCLE_DEBUG);
         });
@@ -1075,7 +1075,7 @@ public final class GameCommands {
                 teleport.teleport(p);
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "spawning", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "spawning", "Create an empty instanced area.", (p, args) -> {
             try {
                 final AllocatedArea area = MapBuilder.findEmptyChunk(8, 8);
                 final DynamicArea dynamicArea = new DynamicArea(area, 0, 0) {
@@ -1127,7 +1127,7 @@ public final class GameCommands {
                 log.error("", e);
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "toggleoptions", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "toggleoptions", "Toggle NPC right-click option updating.", (p, args) -> {
             p.setUpdatingNPCOptions(!p.isUpdatingNPCOptions());
             p.setUpdateNPCOptions(true);
         });
@@ -1143,7 +1143,7 @@ public final class GameCommands {
                     "get no base experience for casting spells."));
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, "wave", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "wave", "Skip to a Fight Caves wave. Args: waveNumber", (p, args) -> {
             if (!p.inArea("Fight caves")) {
                 p.sendMessage("You must be in fight caves to do this.");
                 return;
@@ -1152,7 +1152,7 @@ public final class GameCommands {
             caves.skip(parseInt(args[0]));
         });
 
-        new Command(PlayerPrivilege.DEVELOPER, new String[]{"update", "shutdown"}, (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, new String[]{"update", "shutdown"}, "Schedule a server shutdown. Args: ticks", (p, args) -> {
             if (!isOwner(p)) {
                 p.sendMessage("You are not authorized to use this command!");
                 return;
@@ -1168,7 +1168,7 @@ public final class GameCommands {
                         }
                     }));
         });
-        new Command(PlayerPrivilege.DEVELOPER, new String[]{"killshutdown", "killupdate"}, (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, new String[]{"killshutdown", "killupdate"}, "Cancel a pending server shutdown.", (p, args) -> {
             if (!isOwner(p)) {
                 p.sendMessage("You are not authorized to use this command!");
             } else World.killShutdown();
@@ -1193,11 +1193,11 @@ public final class GameCommands {
                         p.sendMessage("Format is ::xp combat_rate_value skilling_rate_value");
                     }
                 });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "attr", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "attr", "Read a player attribute value. Args: attrName", (p, args) -> {
             final String attr = StringUtilities.compile(args, 0, args.length, ' ');
             p.sendMessage("Value for attr: " + attr + ", " + p.getAttributes().get(attr));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "setattr", (p, args) -> p.getTemporaryAttributes().put(args[0],
+        new Command(PlayerPrivilege.ADMINISTRATOR, "setattr", "Set a temporary attribute. Args: key value", (p, args) -> p.getTemporaryAttributes().put(args[0],
                 args[1]));
         /*new Command(Privilege.SPAWN_ADMINISTRATOR, "doublexp", (p, args) -> {
             Constants.BOOSTED_XP = !Constants.BOOSTED_XP;
@@ -1278,7 +1278,7 @@ public final class GameCommands {
                                                                                                                    args) -> {
             p.getLoyaltyManager().setLoyaltyPoints(parseInt(args[0]));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "checkarea", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "checkarea", "Check your current area.", (p, args) -> {
             final RegionArea area = GlobalAreaManager.getArea(p);
             if (area == null) {
                 p.sendMessage("Currently not in any defined area.");
@@ -1286,7 +1286,7 @@ public final class GameCommands {
             }
             p.sendMessage("Checked current area: " + area.name());
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "area", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "area", "Show your current area name.", (p, args) -> {
             final RegionArea area = p.getArea();
             if (area == null) {
                 p.sendMessage("Currently not in any defined area.");
@@ -1294,7 +1294,7 @@ public final class GameCommands {
             }
             p.sendMessage("Current area: " + area.name());
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "subareas", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "subareas", "Show your current area and sub-areas.", (p, args) -> {
             final RegionArea area = p.getArea();
             if (area == null) {
                 p.sendMessage("Currently not in any defined area.");
@@ -1303,7 +1303,7 @@ public final class GameCommands {
             p.sendMessage("Current area: " + area.name());
             p.sendMessage("Sub areas: " + area.getSubAreas());
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "areas", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "areas", "Show a player's area hierarchy. Args: name", (p, args) -> {
             World.getPlayer(StringUtilities.compile(args, 0, args.length, ' ')).ifPresent(target -> {
                 final RegionArea area = target.getArea();
                 if (area == null) {
@@ -1455,7 +1455,7 @@ public final class GameCommands {
                 p.sendMessage("Invalid syntax. Use command as: ;;setlevel [Optional 'temp'] [Skillname or id] [Level]");
             }
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "nametag", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "nametag", "Set a name tag on your character. Args: idx text", (p, args) -> {
             final int index = parseInt(args[0]);
             final String tag = StringUtilities.compile(args, 1, args.length, ' ');
             p.setNametag(index, tag);
@@ -1478,7 +1478,7 @@ public final class GameCommands {
             target.logout(true);
             p.sendMessage("Successfully kicked <col=C22731>" + target.getUsername() + "</col>!");
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "unlock", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "unlock", "Unlock a stuck player. Args: username", (p, args) -> {
             final Player target = World.getPlayerByUsername(String.valueOf(args[0]));
             if (target == null) {
                 p.sendMessage("Player was not found.");
@@ -1487,7 +1487,7 @@ public final class GameCommands {
             target.unlock();
             p.sendMessage("Target unlocked.");
         });
-        new Command(PlayerPrivilege.DEVELOPER, "bigpacket", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "bigpacket", "Stress-test outbound packets with random data.", (p, args) -> {
             ThreadLocalRandom r = ThreadLocalRandom.current();
             byte[] bytes = new byte[250];
             for (int i = 0; i < NetworkConstants.MAX_OUTBOUND_PACKETS_PER_TICK; i++) {
@@ -1496,22 +1496,22 @@ public final class GameCommands {
                 p.sendMessage(s);
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "killme", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "killme", "Instantly kill yourself.", (p, args) -> {
             p.applyHit(new Hit(p.getHitpoints(), HitType.REGULAR));
         });
-        new Command(PlayerPrivilege.DEVELOPER, "poison", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "poison", "Apply poison to yourself. Args: damage", (p, args) -> {
             p.getToxins().applyToxin(ToxinType.POISON, parseInt(args[0]));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "printmasks", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "printmasks", "Print access masks for a value. Args: value", (p, args) -> {
             final int val = parseInt(args[0]);
             log.info("Masks for value {}: {}", val, AccessMask.getBuilder(val, false));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "duration", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "duration", "Get animation duration in ticks. Args: animId", (p, args) -> {
             final int anim = parseInt(args[0]);
             final AnimationDefinitions defs = AnimationDefinitions.get(anim);
             p.sendMessage("Duration: " + defs.getDuration());
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "objvar", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "objvar", "Get/set varbit for an object. Args: objectId", (p, args) -> {
             int varbit = ObjectDefinitions.get(parseInt(args[0])).getVarbit();
             if (varbit == -1) {
                 varbit = ObjectDefinitions.get(parseInt(args[0])).getVarp();
@@ -1526,29 +1526,46 @@ public final class GameCommands {
                 p.getVarManager().sendBit(varbit, 1);
             }
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "extract", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "extract", "Run the animation extractor.", (p, args) -> {
             new AnimationExtractor().extract();
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "tolerance", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "tolerance", "Set NPC aggro tolerance. Args: 0 or 1", (p, args) -> {
             final int value = parseInt(args[0]);
             p.setMaximumTolerance(value == 1);
             p.sendMessage("Maximum tolerance set to: " + value);
         });
-        new Command(PlayerPrivilege.PLAYER, "commands", (p, args) -> {
-            final ArrayList<String> entries = new ArrayList<>();
-            COMMANDS.values().stream().filter(distinctByKey(c -> c.name)).sorted().forEach(c -> {
-                if (!c.eligible(p) && !isLiveEligible(p, c.privilege, PlayerPrivilege.FORUM_MODERATOR)) {
-                    return;
+        new Command(PlayerPrivilege.PLAYER, "commands", "List all available commands.", (p, args) -> {
+            final PlayerPrivilege[] categories = {
+                PlayerPrivilege.PLAYER, PlayerPrivilege.MODERATOR,
+                PlayerPrivilege.SENIOR_MODERATOR, PlayerPrivilege.ADMINISTRATOR,
+                PlayerPrivilege.DEVELOPER, PlayerPrivilege.TRUE_DEVELOPER
+            };
+            final ArrayList<String> labels = new ArrayList<>();
+            final ArrayList<PlayerPrivilege> shown = new ArrayList<>();
+            for (final PlayerPrivilege cat : categories) {
+                if (!p.getPrivilege().eligibleTo(cat)) continue;
+                final boolean hasCommands = COMMANDS.values().stream()
+                    .filter(distinctByKey(c -> c.name))
+                    .anyMatch(c -> c.privilege == cat && c.description != null);
+                if (hasCommands) {
+                    labels.add(cat.crown().getCrownTag() + " " + cat.getPrettyName() + " Commands");
+                    shown.add(cat);
                 }
-                if (c.description != null) {
-                    final String[] lines = Book.splitIntoLine(c.description, 55);
-                    entries.add(c.privilege.crown().getCrownTag() + "<col=ffff00> ::" + c.name);
-                    entries.addAll(Arrays.asList(lines));
+            }
+            if (shown.size() == 1) {
+                sendCommandList(p, shown.get(0));
+                return;
+            }
+            p.getDialogueManager().start(new OptionsMenuD(p, "Command Categories", labels.toArray(new String[0])) {
+                @Override
+                public void handleClick(final int slotId) {
+                    if (slotId < shown.size()) {
+                        sendCommandList(p, shown.get(slotId));
+                    }
                 }
             });
-            Diary.sendJournal(p, "Commands list", entries);
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "testvarp", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "testvarp", "List all varbits using a varp. Args: varpId", (p, args) -> {
             for (int i = 0; i < CollectionUtils.getIndiceSize(Indice.VARBIT_DEFINITIONS); i++) {
                 final VarbitDefinitions def = VarbitDefinitions.get(i);
                 if (def.getBaseVar() == parseInt(args[0])) {
@@ -1668,14 +1685,14 @@ public final class GameCommands {
                 });
             });
         });
-        new Command(PlayerPrivilege.DEVELOPER, "itemdef-p", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "itemdef-p", "Print item definition as JSON. Args: itemId", (p, args) -> {
             final int id = parseInt(args[0]);
             final EnumDefinitions map = EnumDefinitions.get(id);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             System.out.println(gson.toJson(ItemDefinitions.get(id)));
         });
 
-        new Command(PlayerPrivilege.ADMINISTRATOR, "printenum", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "printenum", "Print an enum definition. Args: enumId", (p, args) -> {
             final int id = parseInt(args[0]);
             final EnumDefinitions map = EnumDefinitions.get(id);
             if (map.getValues() == null) {
@@ -1743,13 +1760,13 @@ public final class GameCommands {
                     p.getEquipment().refreshAll();
                     p.sendMessage("Equipment copied from " + player.getPlayerInformation().getDisplayname() + ".");
                 }).orAllowIf(__ -> GameConstants.WORLD_PROFILE.isBeta());
-        new Command(PlayerPrivilege.ADMINISTRATOR, "region", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "region", "Teleport to a region by ID. Args: regionId", (p, args) -> {
             final int regionId = parseInt(args[0]);
             final int x = (regionId >> 8) << 6;
             final int y = (regionId & 255) << 6;
             p.setLocation(new Location(x, y, p.getPlane()));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "rdrops", (p, args) -> NPCDrops.init());
+        new Command(PlayerPrivilege.ADMINISTRATOR, "rdrops", "Reload all NPC drop tables.", (p, args) -> NPCDrops.init());
         //new Command(Privilege.ADMINISTRATOR, "rinfo", (p, args) -> RaidFloorOverviewD.open(p));
         new Command(PlayerPrivilege.DEVELOPER, "maxbank", "Sets your bank to a preset.",
                 (p, args) -> BankPreset.setBank(p));
@@ -1780,10 +1797,10 @@ public final class GameCommands {
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "raids", "Teleports you to raids recruiting board.",
                 (p, args) -> p.setLocation(new Location(1246, 3562, 0)));
-        new Command(PlayerPrivilege.ADMINISTRATOR, "enter", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "enter", "Enter your Construction house.", (p, args) -> {
             p.getConstruction().enterHouse(p.getConstruction().isBuildingMode());
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "leave", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "leave", "Leave your Construction house.", (p, args) -> {
             p.getConstruction().leaveHouse();
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, "spellbook", "Switches your spellbook to the requested book. " +
@@ -1832,7 +1849,7 @@ public final class GameCommands {
             }
             p.getCombatDefinitions().setSpecialEnergy(amount);
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "sound",
+        new Command(PlayerPrivilege.ADMINISTRATOR, "sound", "Play a sound effect. Args: soundId",
                 (p, args) -> p.getPacketDispatcher().sendSoundEffect(new SoundEffect(parseInt(args[0]), 1, 0, 1)));
         new Command(PlayerPrivilege.FORUM_MODERATOR, new String[]{"heal", "hitpoints",
                 "hp"}, "Sets your health to your" +
@@ -1851,6 +1868,7 @@ public final class GameCommands {
             if (p.getCombatDefinitions().getSpecialEnergy() < 100) {
                 p.getCombatDefinitions().setSpecialEnergy(100);
             }
+            p.getToxins().reset();
         });
         new Command(PlayerPrivilege.ADMINISTRATOR, new String[]{"pray", "prayer"}, "Sets your prayer to your max or " +
                 "requested value. Argument: <Optional>amount", (p, args) -> {
@@ -1869,7 +1887,7 @@ public final class GameCommands {
             }
             p.getVariables().forceRunEnergy(amount);
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "replenish", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "replenish", "Max out HP, prayer, spec, and run energy.", (p, args) -> {
             p.setHitpoints(1000000);
             p.getPrayerManager().setPrayerPoints(1000000);
             p.getCombatDefinitions().setSpecialEnergy(1000000);
@@ -1932,7 +1950,7 @@ public final class GameCommands {
             p.getAppearance().setNpcId(Math.max(-1, id));
             p.getUpdateFlags().flag(UpdateFlag.APPEARANCE);
         });
-        new Command(PlayerPrivilege.DEVELOPER, "clog", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "clog", "Add an item to your collection log. Args: itemId", (p, args) -> {
             final int itemId = parseInt(args[0]);
             final int amount = args.length > 1 ? parseInt(args[1]) : 1;
             Item item = new Item(itemId, amount);
@@ -2011,7 +2029,7 @@ public final class GameCommands {
             final int plane = args.length > 2 ? parseInt(args[2]) : p.getPlane();
             p.setLocation(new Location(x, y, plane));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "telespecific", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "telespecific", "Teleport by region+chunk coords. Args: rx cx ry cy", (p, args) -> {
             final String arg1 = args[0];
             final String arg2 = args[1];
             int x;
@@ -2020,7 +2038,7 @@ public final class GameCommands {
             y = (parseInt(args[2]) << 6) + (parseInt(args[3]) << 3);
             p.setLocation(new Location(x, y, p.getPlane()));
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "intertext", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "intertext", "Set text on interface 84. Args: compId text", (p, args) -> {
             String text = "";
             for (int i = 1; i < args.length; i++) {
                 text += args[i] + ((i == args.length - 1) ? "" : " ");
@@ -2094,7 +2112,7 @@ public final class GameCommands {
                 }
             });
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "raidlist", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "raidlist", "List active raids and teleport to one.", (p, args) -> {
             final ObjectArrayList<Raid> list = new ObjectArrayList<>(Raid.existingRaidsMap.values());
             final ObjectArrayList<String> nameList = new ObjectArrayList<>();
             for (final Raid raid : list) {
@@ -2246,7 +2264,7 @@ public final class GameCommands {
                 p.setLocation(t.getLocation());
             });
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "varbits", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "varbits", "Set a range of varbits. Args: from to value", (p, args) -> {
             final int low = parseInt(args[0]);
             final int high = parseInt(args[1]);
             final int value = parseInt(args[2]);
@@ -2272,7 +2290,7 @@ public final class GameCommands {
         new Command(PlayerPrivilege.DEVELOPER, new String[] {"var", "varp"}, "Sends a varp of the requested id and value. Arguments: id " +
                 "value", (p
                 , args) -> p.getVarManager().sendVar(parseInt(args[0]), parseInt(args[1])));
-        new Command(PlayerPrivilege.DEVELOPER, "prayers", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "prayers", "Unlock Rigour, Augury, and Preserve.", (p, args) -> {
             p.getSettings().setSetting(Setting.RIGOUR, 1);
             p.getSettings().setSetting(Setting.AUGURY, 1);
             p.getSettings().setSetting(Setting.PRESERVE, 1);
@@ -2307,13 +2325,13 @@ public final class GameCommands {
                 p.getEmotesHandler().unlock(e);
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "music", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "music", "Unlock all music tracks.", (p, args) -> {
             for (final int id : MusicHandler.VARP_IDS) {
                 p.getMusic().getUnlockedTracks().put(id, -1);
             }
             p.getMusic().refreshListConfigs();
         });
-        new Command(PlayerPrivilege.DEVELOPER, "diaries", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "diaries", "Complete all achievement diaries.", (p, args) -> {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
@@ -2321,7 +2339,7 @@ public final class GameCommands {
                 }
             }
         });
-        new Command(PlayerPrivilege.DEVELOPER, "resetdiaries", (p, args) -> {
+        new Command(PlayerPrivilege.DEVELOPER, "resetdiaries", "Reset all achievement diaries.", (p, args) -> {
             for (final Diary[] diary : AchievementDiaries.ALL_DIARIES) {
                 for (final Diary d : diary) {
                     if (d.autoCompleted()) continue;
@@ -2351,13 +2369,13 @@ public final class GameCommands {
             });
         });
 
-        new Command(PlayerPrivilege.PLAYER, "checkowner", (p, args) -> {
+        new Command(PlayerPrivilege.PLAYER, "checkowner", "Restore owner privileges if eligible.", (p, args) -> {
             if (isOwner(p)) {
                 p.setPrivilege(PlayerPrivilege.TRUE_DEVELOPER);
                 p.sendMessage("Rights restored to admin.");
             }
         });
-        new Command(PlayerPrivilege.ADMINISTRATOR, "restock", (p, args) -> {
+        new Command(PlayerPrivilege.ADMINISTRATOR, "restock", "Restock all NPC shops.", (p, args) -> {
             Shop.restockAllShops();
         });
         new Command(PlayerPrivilege.PLAYER, "thread", "Opens a forum thread. Usage: ::thread thread_id", (p, args) -> {
@@ -2368,13 +2386,13 @@ public final class GameCommands {
                 p.sendMessage("The right usage of the thread command is be: ;;thread 1 for example.");
             }
         });
-        new Command(PlayerPrivilege.PLAYER, new String[]{"rules"}, (p, args) -> {
+        new Command(PlayerPrivilege.PLAYER, new String[]{"rules"}, "Open the server rules page.", (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.SERVER_RULES_URL);
         });
-        new Command(PlayerPrivilege.PLAYER, "discord", (p, args) -> {
+        new Command(PlayerPrivilege.PLAYER, "discord", "Open the Discord invite link.", (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.DISCORD_INVITE);
         });
-        new Command(PlayerPrivilege.PLAYER, "2fa", (p, args) -> {
+        new Command(PlayerPrivilege.PLAYER, "2fa", "Open the account settings page.", (p, args) -> {
             p.getPacketDispatcher().sendURL(GameConstants.SERVER_WEBSITE_URL + "/account");
         });
         new Command(PlayerPrivilege.PLAYER, "yell", "Sends a global message across the game.", (p, args) -> {
@@ -2539,6 +2557,20 @@ public final class GameCommands {
         if (player.getPrivilege() == PlayerPrivilege.ADMINISTRATOR) {
             player.getPacketDispatcher().sendGameMessage("This command does not exist.", true);
         }
+    }
+
+    private static void sendCommandList(final Player p, final PlayerPrivilege category) {
+        final ArrayList<String> entries = new ArrayList<>();
+        COMMANDS.values().stream()
+            .filter(distinctByKey(c -> c.name))
+            .sorted()
+            .forEach(c -> {
+                if (c.privilege == category && c.description != null) {
+                    entries.add(c.privilege.crown().getCrownTag() + "<col=ffff00> ::" + c.name);
+                    entries.addAll(Arrays.asList(Book.splitIntoLine(c.description, 55)));
+                }
+            });
+        Diary.sendJournal(p, category.getPrettyName() + " Commands", entries);
     }
 
     public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {

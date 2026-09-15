@@ -11,7 +11,7 @@ import org.jesse.game.world.entity.player.privilege.PlayerPrivilege.ADMINISTRATO
 object NexCommands {
 
     fun register() {
-        GameCommands.Command(ADMINISTRATOR, "nex") { p, _ ->
+        GameCommands.Command(ADMINISTRATOR, "nex", "Nex testing menu.") { p, _ ->
             p.options {
                 "Teleport-to" { p.teleport(Location(2924, 5202, 0)) }
                 "Force Spawn Nex" { NexModule.spawnNex() }

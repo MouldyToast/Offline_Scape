@@ -13,10 +13,9 @@ import org.jesse.game.world.entity.masks.HitType;
 import org.jesse.game.world.entity.npc.NPC;
 import org.jesse.game.world.entity.npc.NPCCombat;
 import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
+import org.jesse.game.world.entity.player.action.combat.MeleeCombat;
 
-/**
- * @author Savions
- */
 public class WardenCoreNPC extends NPC implements IWardenCore {
 
     private static final int ID = 11771;
@@ -42,6 +41,19 @@ public class WardenCoreNPC extends NPC implements IWardenCore {
 
     @Override
     public void handleIngoingHit(Hit hit) {
+        if (hit.getSource() instanceof Player player) {
+            // Melee always hits max — enforced here so every weapon (Fang, etc.) is covered.
+            if (HitType.MELEE.equals(hit.getHitType())) {
+                final var action = player.getActionManager().getAction();
+                if (action instanceof MeleeCombat melee) {
+                    hit.setDamage(melee.getMaxHit(player, 1, 1, false));
+                }
+            }
+            // 100% accuracy — convert misses into hits.
+            if (hit.getDamage() == 0 && !HitType.HEALED.equals(hit.getHitType())) {
+                hit.setDamage(1);
+            }
+        }
         super.handleIngoingHit(hit);
         movingWardenNPC.applyHit(new Hit(this, hit.getDamage() * 5, HitType.DEFAULT));
     }

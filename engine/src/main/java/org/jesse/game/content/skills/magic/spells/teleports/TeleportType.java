@@ -24,7 +24,6 @@ public enum TeleportType {
 	SCROLL_TELEPORT(new ScrollStructure()),
 	ROYAL_SEED_TELEPORT(new RoyalSeedStructure()),
 	TABLET_TELEPORT(new TabletStructure()),
-	ZENYTE_TABLET_TELEPORT(new TabletStructure()),
     VOLCANIC_MINE_TELEPORT(new VolcanicMineStructure()),
 	RING_OF_RETURNING_TELEPORT(new RingOfReturningStructure()),
 	SKULL_SCEPTRE_TELEPORT(new SkullSceptreStructure()),

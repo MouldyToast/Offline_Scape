@@ -12,7 +12,6 @@ import org.jesse.game.npc.ids.*
 import org.jesse.game.item.ids.NID
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor
 import org.jesse.game.world.entity.player.Player
-import org.jesse.game.world.entity.player.slayerBaseDryStreak
 import org.jesse.game.util.Utils
 import org.jesse.logger.NearRealityLogger
 import org.slf4j.Logger
@@ -87,13 +86,6 @@ class Reward: DropProcessor() {
         // do a normal drop
         val item = AraxxorNormalDropTable.rollForItem()
         if (item != null) {
-            if(item.id != SLAYER_BASE) {
-                player.slayerBaseDryStreak++
-                if(player.slayerBaseDryStreak == 500) {
-                    player.sendMessage("You have received a slayer base for hitting a 500 kill drystreak.")
-                    items.add(Item(SLAYER_BASE))
-                }
-            }
             items.add(item)
             player.collectionLog.add(item)
             WorldBroadcasts.broadcast(player, BroadcastType.RARE_DROP, item, "Araxxor")

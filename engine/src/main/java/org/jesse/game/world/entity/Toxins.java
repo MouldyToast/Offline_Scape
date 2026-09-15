@@ -64,6 +64,9 @@ public final class Toxins {
 		ToxinType type = requestedType;
 		if (entity.getEntityType() == EntityType.PLAYER) {
 			final Player player = (Player) entity;
+			if (player.immune) {
+				return;
+			}
 			if ((type == ToxinType.VENOM && player.getVariables().getTime(TickVariable.VENOM_IMMUNITY) > 0) || (type == ToxinType.POISON && player.getVariables().getTime(TickVariable.POISON_IMMUNITY) > 0)) {
 				return;
 			}

@@ -15,7 +15,7 @@ import mgi.types.config.items.ItemDefinitions
 object GauntletCommands {
 
     fun register() {
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "gauntlet") { p, args ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "gauntlet", "Gauntlet testing menu.") { p, args ->
             p.options {
                 "Teleport to" {
                     p.setLocation(Location(3030, 6128, 1))

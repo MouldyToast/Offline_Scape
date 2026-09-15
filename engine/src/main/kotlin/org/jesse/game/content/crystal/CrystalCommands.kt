@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.player.privilege.PlayerPrivilege
 object CrystalCommands {
 
     fun register() {
-        GameCommands.Command(PlayerPrivilege.DEVELOPER, "crystal") { p, args ->
+        GameCommands.Command(PlayerPrivilege.DEVELOPER, "crystal", "Crystal crafting test menu.") { p, args ->
             p.options {
                 "materials" {
                     for (recipe in CrystalRecipe.all) {

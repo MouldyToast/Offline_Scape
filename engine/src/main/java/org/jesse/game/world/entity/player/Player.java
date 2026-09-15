@@ -4170,16 +4170,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         if (SanctionPlayerExtKt.isYellMuted(this))
             sendMessage("You are currently yell-muted.");
 
-        if (!getBooleanAttribute("claimedFounders2") &&
-                Calendar.getInstance().get(Calendar.YEAR) == 2025 &&
-                (Calendar.getInstance().get(Calendar.MONTH) == Calendar.JULY
-                        || Calendar.getInstance().get(Calendar.MONTH) == Calendar.AUGUST && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) < 11)
-        ) {
-            sendMessage(Colour.RS_GREEN.wrap("Thank you for joining " + GameConstants.SERVER_NAME + "!"));
-            sendMessage(Colour.RS_GREEN.wrap("The Founder's Cape has been added to your inventory/bank."));
-            tryAddInventoryThenBank(new Item(ItemId.FOUNDERS_CAPE));
-            putBooleanAttribute("claimedFounders2", true);
-        }
         updateScopeInScene();
         setRun(isRun());
         //Invokes the xp multiplier refresh.

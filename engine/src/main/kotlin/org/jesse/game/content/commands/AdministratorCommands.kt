@@ -41,7 +41,6 @@ import org.jesse.game.world.entity.player.login.InvitedPlayersList
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege
 import org.jesse.game.world.`object`.WorldObject
 import org.jesse.plugins.dialogue.OptionsMenuD
-import org.jesse.plugins.renewednpc.MysteryBoxMan
 import org.jesse.plugins.renewednpc.ZenyteGuide
 import org.jesse.utils.StringUtilities
 import org.jesse.utils.TimeUnit
@@ -116,10 +115,10 @@ object AdministratorCommands {
             player.temporaryAttributes["admin_hp_event"] = true
             player.sendMessage("Your hitpoints are set... Ready for Fight Club!")
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "td") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "td", "Teleport to Tormented Demons.") { p, _ ->
             p.setLocation(Location(4061, 4465, 0))
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "araxxor") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "araxxor", "Teleport to Araxxor.") { p, _ ->
             p.setLocation(Location(3657, 3404, 0))
         }
         Command(PlayerPrivilege.ADMINISTRATOR, "geunlock", "Restores a players GE offers") { p: Player, _: Array<String?> ->
@@ -143,11 +142,7 @@ object AdministratorCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "togglembox", "Toggles mystery box claiming") { p: Player, _: Array<String?> ->
-            MysteryBoxMan.enabled = !MysteryBoxMan.enabled
-            p.sendMessage("Mystery box claiming is now " + if (MysteryBoxMan.enabled) "enabled" else "disabled")
-        }
-        Command(PlayerPrivilege.MODERATOR, "flagbot") { p, _ ->
+        Command(PlayerPrivilege.MODERATOR, "flagbot", "Flag or unflag a player as a bot.") { p, _ ->
             p.sendInputName("Enter name of botter") { botName ->
                 val targetPlayer = World.getPlayer(botName).getOrNull()
                 if (targetPlayer == null)
@@ -187,7 +182,7 @@ object AdministratorCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "freezeitem") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "freezeitem", "Toggle an item's trade restriction.") { p, _ ->
             p.sendInputInt("What item would you like to disable?") { item ->
                 p.sendInputInt("Enter 1 to enable, 0 to disable the following item: " + ItemDefinitions.get(item).name) { value: Int ->
                     val defs = ItemDefinitions.get(item)
@@ -226,17 +221,17 @@ object AdministratorCommands {
                         + ", rot90=" + d.rotate90Animation + ", rot180=" + d.rotate180Animation
                         + ", rot270=" + d.rotate270Animation)
             })
-        Command(PlayerPrivilege.ADMINISTRATOR, "freeze") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "freeze", "Freeze yourself. Args: [ticks]") { p: Player, args: Array<String> ->
             val freezeDuration = if (args.isEmpty()) 10 else args[0].toInt()
             p.freezeWithNotification(freezeDuration)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablege") { p: Player, _: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "disablege", "Toggle the Grand Exchange.") { p: Player, _: Array<String?>? ->
             GrandExchange.ENABLED = !GrandExchange.ENABLED
             p.sendMessage("GE is " + if (GrandExchange.ENABLED) "Enabled" else "Disabled")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "memory") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "memory", "Display server memory usage.") { p: Player, args: Array<String?>? ->
             val runtime = Runtime.getRuntime()
             val totalMem = runtime.totalMemory()
             val freeMem = runtime.freeMemory()
@@ -247,16 +242,16 @@ object AdministratorCommands {
             p.sendMessage("Total memory: " + StringFormatUtil.format(totalMem))
             p.sendMessage("Max memory: " + StringFormatUtil.format(maxMem))
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablehydra") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "disablehydra", "Toggle Alchemical Hydra.") { p: Player, args: Array<String?>? ->
             GameConstants.ALCHEMICAL_HYDRA = !GameConstants.ALCHEMICAL_HYDRA
             p.sendMessage("Alchemical Hydra: " + GameConstants.ALCHEMICAL_HYDRA)
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "disableraids") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "disableraids", "Toggle Chambers of Xeric.") { p: Player, args: Array<String?>? ->
             GameConstants.CHAMBERS_OF_XERIC = !GameConstants.CHAMBERS_OF_XERIC
             p.sendMessage("Chambers of Xeric: " + GameConstants.CHAMBERS_OF_XERIC)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "tempattr") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "tempattr", "Set a temporary attribute value.") { p: Player, args: Array<String?>? ->
             p.sendInputString("Enter name of the temporary attribute") { key: String? ->
                 p.dialogueManager.finish()
                 p.sendInputInt("Enter value of the temporary attribute") { value: Int ->
@@ -283,7 +278,7 @@ object AdministratorCommands {
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "randomfrequency") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "randomfrequency", "Set random event frequency. Args: hours") { p: Player, args: Array<String> ->
             val value = args[0].toInt()
             GameConstants.randomEvent = TimeUnit.HOURS.toTicks(value.toLong()).toInt()
             p.sendMessage("Random events are on average now occuring every $value hours.")
@@ -310,7 +305,7 @@ object AdministratorCommands {
             PartyRoomVariables.openEditMode(p!!)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "campos") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "campos", "Set camera position. Args: [x y plane speed accel]") { p: Player, args: Array<String> ->
             var x = p.x
             var y = p.y
             var plane = 1000
@@ -323,7 +318,7 @@ object AdministratorCommands {
             if (args.size > 4) { acceleration = args[4].toInt() }
             CameraPositionAction(p, Location(x, y), plane, speed, acceleration).run()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "camlook") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "camlook", "Set camera look target. Args: [x y plane speed accel]") { p: Player, args: Array<String> ->
             var x = p.x
             var y = p.y
             var plane = 1000
@@ -336,45 +331,45 @@ object AdministratorCommands {
             if (args.size > 4) { acceleration = args[4].toInt() }
             CameraLookAction(p, Location(x, y), plane, speed, acceleration).run()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "camreset") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "camreset", "Reset the camera.") { p: Player, args: Array<String?>? ->
             p.packetDispatcher.resetCamera()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "testproj") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "testproj", "Fire a test projectile. Args: id") { p: Player, args: Array<String> ->
             val proj = Projectile(args[0].toInt(), 200, 200, 0, 0, 50, 0, 5)
             World.sendProjectile(p.location, Location(p.x + 10, p.y, p.plane), proj)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "combatdebug") { p: Player, args: Array<String?> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "combatdebug", "Set combat debug flag. Args: true|false") { p: Player, args: Array<String?> ->
             p.temporaryAttributes["combat" + " " + "debug"] = Boolean.valueOf(args[0])
         }
 
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "open") { p: Player?, args: Array<String?> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "open", "Open a game interface by name.") { p: Player?, args: Array<String?> ->
             val name = StringUtilities.compile(args, 0, args.size, ' ')
             findNearestMatchOrNull(name, GameInterface.values, true) { gameInterface: GameInterface ->
                 gameInterface.toString().replace("_".toRegex(), " ")
             }.open(p)
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "scene") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "scene", "Set view distance. Args: distance") { p: Player, args: Array<String> ->
             p.viewDistance = args[0].toInt()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "chunkhash") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "chunkhash", "Show chunk hash at your position.") { p: Player, args: Array<String?>? ->
             val x = p.x
             val y = p.y
             val hash = x shr 3 shl 16 or (y shr 3)
             p.sendMessage("Chunk hash: $hash")
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "value") { p: Player, args: Array<String?> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "value", "Show an item's value. Args: itemId") { p: Player, args: Array<String?> ->
             val id = Integer.valueOf(args[0])
             val definitions = ItemDefinitions.get(id)
             p.sendMessage("Value of " + definitions.name + " is " + definitions.price)
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "play") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "play", "Play a music track. Args: id") { p: Player, args: Array<String> ->
             p.packetDispatcher.sendMusic(args[0].toInt())
         }
 
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "cmbdeb") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "cmbdeb", "Toggle combat debug mode.") { p: Player, args: Array<String?>? ->
             val current = p.getBooleanTemporaryAttribute("combat debug")
             if (!current) {
                 p.putBooleanTemporaryAttribute("combat debug", true)
@@ -385,7 +380,7 @@ object AdministratorCommands {
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "testhitbar") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "testhitbar", "Test a hit bar type. Args: type") { p: Player, args: Array<String> ->
             p.hitBars.clear()
             if (p.hitBars.size > 0) {
                 p.hitBars.add(RemoveHitBar(p.hitBars[0].type))
@@ -398,13 +393,13 @@ object AdministratorCommands {
             p.updateFlags.flag(UpdateFlag.HIT)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "toa") { p: Player?, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "toa", "Open the TOA party overview.") { p: Player?, args: Array<String?>? ->
             GameInterface.TOA_PARTY_OVERVIEW.open(p)
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "tmask") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "tmask", "Show tile mask at your position.") { p: Player, args: Array<String?>? ->
             p.sendMessage(p.location.toString() + "-> " + World.getMask(p.location))
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "toatest") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "toatest", "Test TOA party management UI. Args: id") { p: Player, args: Array<String> ->
             p.interfaceHandler.sendInterface(object : Interface() {
                 override fun attach() {}
                 override fun build() {}
@@ -414,7 +409,7 @@ object AdministratorCommands {
             p.packetDispatcher.sendClientScript(6729, args[0].toInt(), 0, 0, 0, 0, 0, 0, 0)
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "disablejoin") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "disablejoin", "Toggle new player announcements.") { p: Player, args: Array<String?>? ->
             ZenyteGuide.disableJoinAnnouncement = !ZenyteGuide.disableJoinAnnouncement
             if (ZenyteGuide.disableJoinAnnouncement) {
                 p.sendMessage("New players announcement are disabled.")
@@ -423,24 +418,24 @@ object AdministratorCommands {
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "pestpts") { p: Player, _: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "pestpts", "Grant 10000 pest control points.") { p: Player, _: Array<String?>? ->
             p.addAttribute("pest_control_points", 10000)
             p.sendMessage("You get pest control points.")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "cgtest") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "cgtest", "Set corrupted gauntlet KC. Args: count") { p: Player, args: Array<String> ->
             p.attributes["corrupted_gauntlet_completions"] = args[0].toInt()
             p.sendMessage("Corrupted gauntlet kc set to " + p.getNumericAttribute("corrupted_gauntlet_completions"))
         }
 
-        Command(PlayerPrivilege.MODERATOR, "urp") { p: Player, args: Array<String?> ->
+        Command(PlayerPrivilege.MODERATOR, "urp", "Force-unregister a player.") { p: Player, args: Array<String?> ->
             World.getPlayer(StringUtilities.compile(args, 0, args.size, ' ')).ifPresent { user: Player ->
                 World.unregisterPlayer(user, Main.networkService)
                 p.sendMessage("Unregistered " + user.name + ".")
             }
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "testspecialenergy") { p: Player, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "testspecialenergy", "Test special attack energy bounds.") { p: Player, args: Array<String?>? ->
             p.combatDefinitions.specialEnergy = -10
             p.delay(10) { p.combatDefinitions.specialEnergy = 1000 }
         }
@@ -475,7 +470,7 @@ object AdministratorCommands {
         Command(PlayerPrivilege.ADMINISTRATOR, "resetbank", "Wipes your bank.") { p: Player, _: Array<String?>? ->
             p.bank.resetBank()
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "inter",
+        Command(PlayerPrivilege.ADMINISTRATOR, "inter", "Open an interface by id. Args: id",
             BiConsumer { p: Player, args: Array<String> ->
                 val id = args[0].toInt()
                 if (!ComponentDefinitions.containsInterface(id)) {
@@ -484,16 +479,16 @@ object AdministratorCommands {
                 }
                 p.interfaceHandler.sendInterface(InterfacePosition.CENTRAL, id)
             })
-        Command(PlayerPrivilege.DEVELOPER, "amasks") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.DEVELOPER, "amasks", "Send access masks for interface. Args: interfaceId") { p: Player, args: Array<String> ->
             val interfaceID = args[0].toInt()
             for (childID in 0..99) {
                 p.packetDispatcher.sendComponentSettings(interfaceID, childID, 0, 100, AccessMask.CLICK_OP1)
             }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "closeinter") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "closeinter", "Close an interface. Args: id") { p: Player, args: Array<String> ->
             p.interfaceHandler.closeInterface(args[0].toInt())
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "fanim") { p: Player, args: Array<String?> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "fanim", "Force-play an animation. Args: id") { p: Player, args: Array<String?> ->
             val id = Integer.valueOf(args[0])
             p.forceAnimation(Animation(id))
         }
@@ -505,7 +500,7 @@ object AdministratorCommands {
 //                }
             p.animation = Animation(id)
         })
-        Command(PlayerPrivilege.ADMINISTRATOR, "npcallanim") { p: Player?, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "npcallanim", "Stop all NPC animations.") { p: Player?, args: Array<String?>? ->
             for (npc in World.getNPCs()) { npc.animation = Animation.STOP }
         }
 
@@ -513,9 +508,9 @@ object AdministratorCommands {
             val player: Optional<Player> = World.getPlayer(StringUtilities.compile(args, 0, args.size, ' '))
             player.ifPresent { a: Player -> a.slayer.removeTask() }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "cs2") { p: Player, args: Array<String> -> p.packetDispatcher.sendClientScript(args[0].toInt()) }
-        Command(PlayerPrivilege.ADMINISTRATOR, "phantom") { p: Player?, _: Array<String?>? -> PhantomInstance.start(p) }
-        Command(PlayerPrivilege.ADMINISTRATOR, "completeca") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "cs2", "Run a client script. Args: id") { p: Player, args: Array<String> -> p.packetDispatcher.sendClientScript(args[0].toInt()) }
+        Command(PlayerPrivilege.ADMINISTRATOR, "phantom", "Start a Phantom Muspah instance.") { p: Player?, _: Array<String?>? -> PhantomInstance.start(p) }
+        Command(PlayerPrivilege.ADMINISTRATOR, "completeca", "Complete combat achievements. Args: start [end]") { p: Player, args: Array<String> ->
             val start: Int = args[0].toInt()
             p.sendMessage("Completing tasks.")
             var end: Int = start
@@ -524,7 +519,7 @@ object AdministratorCommands {
                 p.combatAchievements.complete(CAType.values[i])
             }
         }
-        Command(PlayerPrivilege.DEVELOPER, "completecabyvar") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.DEVELOPER, "completecabyvar", "Complete a CA by var for a player. Args: varId") { p: Player, args: Array<String> ->
             p.sendInputString("Enter player to unlock achievement for: ") { string: String ->
                 val target = World.getPlayer(string)
                 if(target.isEmpty)
@@ -544,8 +539,8 @@ object AdministratorCommands {
 
 
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "hespori") { p: Player?, _: Array<String?>? -> HesporiInstance.start(p) }
-        Command(PlayerPrivilege.ADMINISTRATOR, "resetca") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "hespori", "Start a Hespori instance.") { p: Player?, _: Array<String?>? -> HesporiInstance.start(p) }
+        Command(PlayerPrivilege.ADMINISTRATOR, "resetca", "Reset combat achievements. Args: start [end]") { p: Player, args: Array<String> ->
             val start: Int = args[0].toInt()
             p.sendMessage("Completing tasks.")
             var end: Int = start
@@ -557,10 +552,10 @@ object AdministratorCommands {
         Command(PlayerPrivilege.ADMINISTRATOR, "varbit", ("Sends a varbit of the requested id and value. Arguments: id value")) { p: Player, args: Array<String> ->
             p.varManager.sendBit(args[0].toInt(), args[1].toInt())
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "getobjvarbit") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "getobjvarbit", "Get an object's varbit. Args: objectId") { p: Player, args: Array<String> ->
             p.sendMessage(("Varbit for " + args[0] + " is: " + ObjectDefinitions.get(args[0].toInt()).varbit))
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "setobjvarbit") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "setobjvarbit", "Set an object varbit value. Args: id value") { p: Player, args: Array<String> ->
             p.varManager.sendVar(args[0].toInt(), args[1].toInt())
             p.sendMessage("Set varbit id " + args[0] + " to value: " + args[1])
         }

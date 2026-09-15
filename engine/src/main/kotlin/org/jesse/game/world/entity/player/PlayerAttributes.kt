@@ -27,11 +27,6 @@ var Player.dailyChallengePoints: Int by persistentAttribute("dailyChallengePoint
 
 var Player.flaggedAsBot: Boolean by persistentAttribute("flaggedAsBot", false)
 
-var Player.slayerBaseDryStreak by persistentAttribute("slayer_base_dry_streak", 0)
-var Player.slayerShaftDryStreak by persistentAttribute("slayer_shaft_dry_streak", 0)
-var Player.slayerLeftBoneDryStreak by persistentAttribute("slayer_left_bone_dry_streak", 0)
-var Player.slayerRightBoneDryStreak by persistentAttribute("slayer_right_bone_dry_streak", 0)
-
 /* Scar Essence Mine */
 var Player.scarEssenceMineCoffer: Int by persistentAttribute("scarEssenceMineCoffer", 0)
 var Player.totalWrathToHagus: Int by persistentAttribute("totalWrathToHagus", 0)
@@ -63,7 +58,6 @@ var Player.revCaveEntryFee by persistentAttribute("rev_cave_entry_fee", 0)
 var Player.tormentedDemonAccuracyBoost: Boolean by persistentAttribute("tormentedDemonAccuracyBoost", false)
 
 var Player.shootingStarsMined: Int by persistentAttribute("shooting_stars_mined", 0)
-var Player.claimedFreeMB: Boolean by persistentAttribute("claimed_referral_mb", false)
 var Player.totalDonatedAfterLaunch: Int by persistentAttribute("total_donated_after_launch", 0)
 
 /**

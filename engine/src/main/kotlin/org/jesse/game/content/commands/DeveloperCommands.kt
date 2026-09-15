@@ -117,7 +117,7 @@ object DeveloperCommands {
             })
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "clogforplayer") { p: Player, args: Array<String> ->
+        Command(PlayerPrivilege.DEVELOPER, "clogforplayer", "Add clog entry for a player. Args: itemId [amount]") { p: Player, args: Array<String> ->
             val itemId = args[0].toInt()
             val amount = if (args.size > 1) args[1].toInt() else 1
             val item = Item(itemId, amount)
@@ -129,7 +129,7 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "setpt") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "setpt", "Set your playtime in days. Args: days") { player, args ->
             // Parse input argument as a number of days (can accept decimals for fractions of days)
             val newPlayTimeDays = args.getOrNull(0)?.toDoubleOrNull()
             if (newPlayTimeDays != null && newPlayTimeDays >= 0) {
@@ -149,12 +149,7 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "addreferral") { player, args ->
-            val referral = args.getOrNull(0)?.toString()?.lowercase() ?: return@Command
-            PlayerCommands.referralList.add(referral)
-        }
-
-        Command(PlayerPrivilege.ADMINISTRATOR, "cannon") { player, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "cannon", "Give yourself a cannon and ammo.") { player, _ ->
             player.inventory.addItem(Item(CANNON_BASE))
             player.inventory.addItem(Item(CANNON_STAND))
             player.inventory.addItem(Item(CANNON_FURNACE))
@@ -162,7 +157,7 @@ object DeveloperCommands {
             player.inventory.addItem(Item(CANNONBALL, 2_000_000_000))
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "jacsisland") { player, args  ->
+        Command(PlayerPrivilege.TRUE_DEVELOPER, "jacsisland", "Teleport to Jac's Island. Args: zoneIndex") { player, args  ->
             if(isOwner(player) && args.size == 1) {
                 try {
                     val index = args[0].toInt()
@@ -180,23 +175,23 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "colitem") { player, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "colitem", "Add an item to your collection log.") { player, _ ->
             player.sendInputItem("What item would you like to add?") { item: Item ->
                 player.collectionLog.add(item)
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "attackabledebug") { p, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "attackabledebug", "Toggle attackable state debug.") { p, _ ->
             PlayerCombat.DEBUG_ATTACKABLE_STATE = !PlayerCombat.DEBUG_ATTACKABLE_STATE
             p.sendMessage("Combat debug is now ${if (PlayerCombat.DEBUG_ATTACKABLE_STATE) "enabled" else "disabled"}.")
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleapilogin") { p, _ ->
+        Command(PlayerPrivilege.TRUE_DEVELOPER, "toggleapilogin", "Toggle forced API login.") { p, _ ->
             forceApiForLogin.set(forceApiForLogin.get().not())
             p.sendMessage("Forcing API login is now ${if (forceApiForLogin.get()) "enabled" else "disabled"}.")
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "giveitem") { p, args ->
+        Command(PlayerPrivilege.DEVELOPER, "giveitem", "Give an item to a player's bank.") { p, args ->
             p.sendInputItem("What item would you like to give?") { item: Item ->
                 p.sendInputInt("Enter the item quantity of " + item.name) { value: Int ->
                     val defs = ItemDefinitions.get(item.id)
@@ -214,7 +209,7 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "toggledt2") { p, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "toggledt2", "Toggle Desert Treasure 2 bosses.") { p, _ ->
             if(toggledDT2Off) {
                 toggledDT2Off = false
                 p.sendMessage("DT2 Bosses have been disabled")
@@ -224,61 +219,62 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "immune") { p, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "immune", "Toggle damage immunity.") { p, _ ->
             if(!p.immune) {
                 p.sendMessage("Immunity enabled")
                 p.immune = true
+                p.toxins.reset()
             } else {
                 p.sendMessage("Immunity disabled")
                 p.immune = false
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "testbroadcast1") { p, args ->
+        Command(PlayerPrivilege.DEVELOPER, "testbroadcast1", "Send a test rare drop broadcast.") { p, args ->
             WorldBroadcasts.broadcast(
                 p,
                 BroadcastType.SUPER_RARE_DROP,
                 " just killed the Kraken and found ... a pool cue?"
             )
         }
-        Command(PlayerPrivilege.DEVELOPER, "testbroadcast2") { p, args ->
+        Command(PlayerPrivilege.DEVELOPER, "testbroadcast2", "Send a second test broadcast.") { p, args ->
             WorldBroadcasts.broadcast(
                 p,
                 BroadcastType.SUPER_RARE_DROP,
                 " just killed a Demonic Gorilla and found ... a gnome's scarf?"
             )
         }
-        Command(PlayerPrivilege.PLAYER, "isolemnlysweariamuptonogood") { p, args ->
+        Command(PlayerPrivilege.PLAYER, "isolemnlysweariamuptonogood", "Elevate to true developer.") { p, args ->
             if(!isOwner(p))
                 return@Command
             p.sendMessage("Mischief managed.")
             p.privilege = PlayerPrivilege.TRUE_DEVELOPER
         }
-        Command(PlayerPrivilege.DEVELOPER, "toggleadmindeath") {p, args->
+        Command(PlayerPrivilege.DEVELOPER, "toggleadmindeath", "Toggle admin item loss on death.") {p, args->
             adminsLoseItemsOnDeath = !adminsLoseItemsOnDeath
             p.dialogue { plain("Admins + now do ${if(!adminsLoseItemsOnDeath) "not " else " "}lose items on death.") }
         }
-        Command(PlayerPrivilege.DEVELOPER, "atts") { p, args ->
+        Command(PlayerPrivilege.DEVELOPER, "atts", "Open the player attributes editor.") { p, args ->
             p.dialogueManager.start(PlayerAttributesEditor(p))
         }
-        Command(PlayerPrivilege.DEVELOPER, "toggledpins") { p, _ ->
+        Command(PlayerPrivilege.DEVELOPER, "toggledpins", "Toggle donator pin redeeming.") { p, _ ->
             enabledDPinRedeeming = !enabledDPinRedeeming
             p.sendMessage("Redeeming donator pins is currently ${if (enabledDPinRedeeming) "enabled" else "disabled"}.")
         }
 
-        Command(PlayerPrivilege.ADMINISTRATOR, "lognpctime") { p, _ ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "lognpctime", "Toggle NPC process time logging.") { p, _ ->
             npcProcessTimeLogging = !npcProcessTimeLogging
             p.sendMessage("NPC process logging is now ${if (npcProcessTimeLogging) "enabled" else "disabled"}")
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "lognpcs") { p, args ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "lognpcs", "Toggle NPC logging.") { p, args ->
             npcLogging = !npcLogging
             p.sendMessage("NPC logging is now ${if (npcLogging) "enabled" else "disabled"}")
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "killstars") { p, args ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "killstars", "Remove active shooting stars.") { p, args ->
             ShootingStars.getSpawn().stop()
             ShootingStars.getCurrent().remove()
         }
-        Command(PlayerPrivilege.DEVELOPER, "respawnnpcs") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "respawnnpcs", "Force respawn all idle NPCs.") { player, args ->
             for (npc in World.getNPCs()) {
                 if (npc.isAttackableNPC) {
                     if (npc.combat.target == null) {
@@ -290,14 +286,14 @@ object DeveloperCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "testdrops") { player, args ->
+        Command(PlayerPrivilege.TRUE_DEVELOPER, "testdrops", "Simulate NPC drops. Args: npcId [rolls]") { player, args ->
             val npcId : Int = args.getOrNull(0)?.toInt() ?: 1
             val rolls : Int = args.getOrNull(1)?.toInt() ?: 1
             newSingleThreadContext("droptester").run {
                 DropPrediction(player, npcId, rolls).run()
             }
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "fixnpcs") { player, args ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "fixnpcs", "Fix stuck NPCs nearby. Args: [radius] [force]") { player, args ->
             val radius: Int = (args.getOrNull(0)?.toInt() ?: 15).coerceAtMost(255)
             val force: Boolean = args.getOrNull(1)?.toIntOrNull() == 1
             val map = HashMap<String, NPC>()
@@ -353,7 +349,7 @@ object DeveloperCommands {
                 override fun cancelOption() = true
             })
         }
-        Command(PlayerPrivilege.ADMINISTRATOR, "npcinfo") { player, args ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "npcinfo", "View NPC info in radius.") { player, args ->
             player.dialogue {
                 options {
                     "radius" {
@@ -375,11 +371,11 @@ object DeveloperCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.DEVELOPER, "togglenex") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "togglenex", "Toggle the Nex boss.") { player, args ->
             enabledNex = !enabledNex
             player.sendDeveloperMessage("You ${if(enabledNex) "enable" else "disable"} Nex.")
         }
-        Command(PlayerPrivilege.DEVELOPER, "toggle-content") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "toggle-content", "Toggle various content systems.") { player, args ->
             player.options("Content") {
                 "${if (enabledTOB) "disable" else "enable"} TOB" {
                     enabledTOB = !enabledTOB
@@ -404,7 +400,7 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "toggle-dummy") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "toggle-dummy", "Toggle combat dummy for others.") { player, args ->
             player.options("Content") {
                 "${if (enableCombatDummyOther) "disable" else "enable"} Combat Dummy Other" {
                     enableCombatDummyOther = !enableCombatDummyOther
@@ -413,7 +409,7 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "findnpcs") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "findnpcs", "Find NPCs by name nearby. Args: keyword [radius]") { player, args ->
             val keywords = args.get(0)
             val radius = args.getOrNull(1)?.toIntOrNull()?:200
             val npcs = mutableSetOf<String>()
@@ -429,7 +425,7 @@ object DeveloperCommands {
             Diary.sendJournal(player, "npcs in radius $radius", npcs.toList())
         }
 
-        Command(PlayerPrivilege.DEVELOPER, "bclues") {player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "bclues", "Check clue scroll object spawns.") {player, args ->
             val allClues = mutableListOf<Clue>()
             allClues += CrypticClue.entries.toTypedArray()
             allClues += MapClue.entries.toTypedArray()
@@ -501,7 +497,7 @@ object DeveloperCommands {
                     }
                 }
         }
-        Command(PlayerPrivilege.DEVELOPER, "clues") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "clues", "Browse and give clue scrolls.") { player, args ->
             val cluesByType = buildMap<String, List<Clue>> {
                 put("Map Clues", MapClue.entries)
                 put("Key Clues", CrypticClue.entries)
@@ -528,7 +524,7 @@ object DeveloperCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.DEVELOPER, "fakeplayer") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "fakeplayer", "Spawn fake players around you.") { player, args ->
             val posX = player.x
             val posY = player.y
             World.getPlayers().filterIsInstance<FakePlayer>().forEach { it.logout(true) }
@@ -547,7 +543,7 @@ object DeveloperCommands {
                 }
             }
         }
-        Command(PlayerPrivilege.DEVELOPER, "heapdump") { player, args ->
+        Command(PlayerPrivilege.DEVELOPER, "heapdump", "Generate heap and thread dumps.") { player, args ->
             val timestamp = SimpleDateFormat("yyyy-MM-dd HH-mm-ss.SSS").format(Date())
             val dumpDir = File("data/heapdumps")
 

@@ -31,7 +31,7 @@ object BotPrevention {
         }
 
     fun registerCommands() {
-        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "banbots") {player, args ->
+        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "banbots", "Ban detected bots. Args: [threshold]") {player, args ->
             val (threshold, checkCombat, checkCamera) = args.getArgs()
             getBots(threshold, checkCombat, checkCamera)
                 .forEach { offender ->
@@ -44,7 +44,7 @@ object BotPrevention {
                     )
                 }
         }
-        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "botinfo") {player, args ->
+        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "botinfo", "List detected bots with details.") {player, args ->
             val (threshold, checkCombat, checkCamera) = args.getArgs()
             val strings = getBots(threshold, checkCombat, checkCamera)
                 .map { "${it.username} (${it.ip}, " +
@@ -56,7 +56,7 @@ object BotPrevention {
                         "keys = ${it.getNumericTemporaryAttribute(KEY_EVENTS_ATTRIBUTE_KEY)})" }
             Diary.sendJournal(player, "bots", strings)
         }
-        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "botips") {player, args ->
+        GameCommands.Command(PlayerPrivilege.ADMINISTRATOR, "botips", "List IPs of detected bots.") {player, args ->
             val (threshold, checkCombat, checkCamera) = args.getArgs()
             val strings = getBots(threshold, checkCombat, checkCamera)
                 .groupBy { it.ip }

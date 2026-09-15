@@ -36,7 +36,7 @@ object RevenantModule {
     }
 
     private fun registerCommands() {
-        Command(PlayerPrivilege.ADMINISTRATOR, "spawnmaledictus") { p: Player?, args: Array<String?>? ->
+        Command(PlayerPrivilege.ADMINISTRATOR, "spawnmaledictus", "Spawn the Revenant Maledictus.") { p: Player?, args: Array<String?>? ->
             RevenantMaledictus.spawn()
         }
         Command(PlayerPrivilege.ADMINISTRATOR, "surge", "Toggles your Forinthry surge status") { p, _ ->

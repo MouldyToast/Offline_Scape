@@ -141,7 +141,7 @@ class ItemsKeptOnDeathInterface : InterfaceScript() {
         var slot = 0
         for (item in alwaysKept) {
             /* CS2 exception */
-            if (item.id == OLD_SCHOOL_BOND_UNTRADEABLE || item.id == _50_DONATOR_SCROLL) {
+            if (item.id == OLD_SCHOOL_BOND_UNTRADEABLE) {
                 continue
             }
             inv[slot] = item

@@ -249,10 +249,6 @@ public class Item extends _Item {
         if (attributes != null && Boolean.TRUE.equals(attributes.get("Tradability"))) {
             return true;
         }
-        if (id >= 2683 && id <= 2688) {
-            //zenyte armour
-            return true;
-        }
         if(itemConfigs.containsKey(id)) {
             return itemConfigs.get(id).getTradeable();
         }

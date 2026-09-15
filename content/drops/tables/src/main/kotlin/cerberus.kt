@@ -1,10 +1,8 @@
 package org.jesse.game.content
 
-import org.jesse.game.world.entity.player.slayerLeftBoneDryStreak
 import org.jesse.scripts.npc.drops.table.always
 import org.jesse.scripts.npc.drops.table.noted
 import org.jesse.scripts.npc.drops.table.tables.rare.RareDropTable
-import org.jesse.game.item.Item
 import org.jesse.scripts.npc.drops.NPCDropTableScript
 import org.jesse.game.npc.ids.*
 import org.jesse.game.util.invoke
@@ -74,7 +72,6 @@ class CerberusDroptable : NPCDropTableScript() {
             Tertiary {
                 ENSOULED_HELLHOUND_HEAD quantity 1 oneIn 15
                 JAR_OF_SOULS quantity 1 oneIn 1000 announce everywhere
-                SLAYER_LEFT_BONE quantity 1 oneIn 500 announce everywhere
             }
         }
 
@@ -83,13 +80,6 @@ class CerberusDroptable : NPCDropTableScript() {
             for (drop in drops) {
                 val item = drop.rollItem(killer, 1.0)
                 if (item != null) {
-                    if(item.id != SLAYER_LEFT_BONE) {
-                        killer.slayerLeftBoneDryStreak++
-                        if(killer.slayerLeftBoneDryStreak == 500) {
-                            killer.sendMessage("You have received a slayer left bone for hitting a 500 kill drystreak.")
-                            npc.dropItem(killer, Item(SLAYER_LEFT_BONE))
-                        }
-                    }
                     npc.dropItem(killer, item, npc.middleLocation, false)
                 }
             }

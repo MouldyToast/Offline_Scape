@@ -149,11 +149,6 @@ object DeveloperCommands {
             }
         }
 
-        Command(PlayerPrivilege.TRUE_DEVELOPER, "addreferral") { player, args ->
-            val referral = args.getOrNull(0)?.toString()?.lowercase() ?: return@Command
-            PlayerCommands.referralList.add(referral)
-        }
-
         Command(PlayerPrivilege.ADMINISTRATOR, "cannon") { player, _ ->
             player.inventory.addItem(Item(CANNON_BASE))
             player.inventory.addItem(Item(CANNON_STAND))

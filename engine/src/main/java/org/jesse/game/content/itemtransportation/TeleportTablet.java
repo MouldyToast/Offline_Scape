@@ -33,7 +33,6 @@ public enum TeleportTablet implements Teleport {
     BRIMHAVEN(new Item(11745), new Location(2760, 3178, 0)),
     YANILLE(new Item(11746), new Location(2544, 3092, 0)),
     TROLLHEIM(new Item(11747), new Location(2890, 3676, 0)),
-    EDGEVILLE(new Item(ItemId.NR_TABLET), new Location(3087, 3489, 0)),
     PADDEWWA(new Item(12781), new Location(3098, 9884, 0)),
     SENNTISTEN(new Item(12782), new Location(3322, 3336, 0)),
     KHARYRLL(new Item(12779), new Location(3492, 3471, 0)),
@@ -79,7 +78,7 @@ public enum TeleportTablet implements Teleport {
 
     @Override
     public TeleportType getType() {
-        return this.equals(VOLCANIC_MINE) ? TeleportType.VOLCANIC_MINE_TELEPORT : this.equals(EDGEVILLE) ? TeleportType.ZENYTE_TABLET_TELEPORT : TeleportType.TABLET_TELEPORT;
+        return this.equals(VOLCANIC_MINE) ? TeleportType.VOLCANIC_MINE_TELEPORT : TeleportType.TABLET_TELEPORT;
     }
 
     @Override

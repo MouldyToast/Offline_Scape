@@ -13,7 +13,6 @@ class KeptItemsItemaction : ItemActionScript() {
          */
         items(
             OLD_SCHOOL_BOND_UNTRADEABLE,
-            _50_DONATOR_SCROLL,
             SALVE_AMULET, SALVE_AMULET_E, SALVE_AMULETI, SALVE_AMULETEI,
             SALVE_AMULETI_25250, SALVE_AMULETEI_25278, SALVE_AMULETI_26763, SALVE_AMULETEI_26782
         )

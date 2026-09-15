@@ -22,8 +22,6 @@ import org.jesse.game.content.grandexchange.GrandExchangeHandler
 import org.jesse.game.content.multicannon.DwarfMultiCannon
 import org.jesse.game.content.skills.mining.MiningDefinitions
 import org.jesse.game.model.item.ItemActionHandler
-import org.jesse.game.referral.ReferralIPDatabase
-import org.jesse.game.referral.ReferralUsageDatabase
 import org.jesse.game.world.World
 import org.jesse.game.world.entity.npc.actions.NPCPlugin
 import org.jesse.game.world.entity.npc.combatdefs.NPCCDLoader
@@ -116,11 +114,6 @@ object Main {
         }
 
         logElapsed("Initialized cores manager.") { CoresManager.init(worldProfile, networkService) }
-
-        logElapsed("Added referral databases.") {
-            ScheduledExternalizableManager.addUnsafe(ReferralIPDatabase::class.java)
-            ScheduledExternalizableManager.addUnsafe(ReferralUsageDatabase::class.java)
-        }
 
         logElapsed("Loaded game.") { GameLoader.load(pool) }
         logElapsed("Loaded item definitions.") {

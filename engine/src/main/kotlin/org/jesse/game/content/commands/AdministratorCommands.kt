@@ -41,7 +41,6 @@ import org.jesse.game.world.entity.player.login.InvitedPlayersList
 import org.jesse.game.world.entity.player.privilege.PlayerPrivilege
 import org.jesse.game.world.`object`.WorldObject
 import org.jesse.plugins.dialogue.OptionsMenuD
-import org.jesse.plugins.renewednpc.MysteryBoxMan
 import org.jesse.plugins.renewednpc.ZenyteGuide
 import org.jesse.utils.StringUtilities
 import org.jesse.utils.TimeUnit
@@ -142,10 +141,6 @@ object AdministratorCommands {
                     p.sendMessage("Player [$playerName] GE Quarantine Enabled: ${GrandExchangeHandler.isQuarantined(playerName)}")
                 }
             }
-        }
-        Command(PlayerPrivilege.ADMINISTRATOR, "togglembox", "Toggles mystery box claiming") { p: Player, _: Array<String?> ->
-            MysteryBoxMan.enabled = !MysteryBoxMan.enabled
-            p.sendMessage("Mystery box claiming is now " + if (MysteryBoxMan.enabled) "enabled" else "disabled")
         }
         Command(PlayerPrivilege.MODERATOR, "flagbot") { p, _ ->
             p.sendInputName("Enter name of botter") { botName ->

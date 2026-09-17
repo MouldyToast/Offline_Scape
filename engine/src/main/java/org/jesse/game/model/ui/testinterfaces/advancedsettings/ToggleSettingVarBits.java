@@ -3,9 +3,6 @@ package org.jesse.game.model.ui.testinterfaces.advancedsettings;
 import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingStructs.*;
 import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVariables.*;
 
-/**
- * @author Jire
- */
 public enum ToggleSettingVarBits implements SettingStructResolvable {
 
     HIDE_ROOFS(HIDE_ROOFS_STRUCT_ID, HIDE_ROOFS_VARBIT_ID),

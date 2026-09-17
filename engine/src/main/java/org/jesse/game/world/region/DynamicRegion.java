@@ -26,11 +26,6 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Kris | 28. juuli 2018 : 18:39:38
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>
- */
 public final class DynamicRegion extends Region {
     private static final Logger log = NearRealityLogger.getLogger(DynamicRegion.class);
     private static final int CHUNKS_PER_REGION = 256;

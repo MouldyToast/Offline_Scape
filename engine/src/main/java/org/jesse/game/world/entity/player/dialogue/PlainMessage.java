@@ -4,11 +4,6 @@ import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.util.AccessMask;
 import org.jesse.game.world.entity.player.Player;
 
-/**
- * Created by admin on 2/15/2016.
- * <p>
- * Represents a plain message, with no entities in the dialogue.
- */
 public class PlainMessage implements Message {
 
     private final String message;

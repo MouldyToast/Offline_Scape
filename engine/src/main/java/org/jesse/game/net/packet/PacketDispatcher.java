@@ -57,9 +57,6 @@ import java.util.Optional;
 /**
  * A utility class for sending packets.
  *
- * @author Graham Edgecombe
- * @author Tom - modifications and additions.
- * @author Jire
  */
 public final class PacketDispatcher {
 

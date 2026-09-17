@@ -254,10 +254,6 @@ import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVar
 import static org.jesse.game.world.entity.player.action.combat.special.ScorchingShacklesSpecial.*;
 import static org.jesse.game.obj.ids.ObjectId.ACID_POOL_54148;
 
-/**
- * @author Kris | 29. dets 2017 : 3:52.50
- * @author Jire
- */
 @SuppressWarnings("FieldMayBeFinal")
 public class Player extends AbstractEntity implements UsernameProvider {
 

@@ -7,11 +7,6 @@ import mgi.types.config.npcs.NPCDefinitions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by Arham 4 on 2/15/2016.
- * <p>
- * Represents a singular message with an NPC talking.
- */
 public class NPCMessage implements Message {
 	private static final Logger logger = LoggerFactory.getLogger(NPCMessage.class);
 

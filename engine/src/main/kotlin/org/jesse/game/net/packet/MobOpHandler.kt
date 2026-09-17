@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.player.GameSetting
 import org.jesse.game.world.entity.player.MessageType
 import org.jesse.game.world.entity.player.PlayerHandler
 import org.jesse.game.world.region.area.plugins.SpellPlugin
-import net.rsprot.protocol.game.incoming.npcs.OpNpc
+import net.rsprot.protocol.game.incoming.npcs.OpNpcV2
 import net.rsprot.protocol.game.incoming.npcs.OpNpc6
 import net.rsprot.protocol.game.incoming.npcs.OpNpcT
 import net.rsprot.protocol.game.incoming.players.OpPlayer
@@ -89,7 +89,7 @@ fun PacketConsumer.opplayert() {
 }
 
 fun PacketConsumer.opnpc() {
-    addListener<OpNpc> {
+    addListener<OpNpcV2> {
         val player = player
         val option = it.op
         val run = it.controlKey

@@ -24,7 +24,7 @@ public class GameConstants {
 	/**
 	 * The current cache revision.
 	 */
-	public static final int REVISION = 228;
+	public static final int REVISION = 240;
 	public static final int CLIENT_VERSION = 1;
 	public static final int WORLD_CYCLE_TIME = 600;
 	public static final int LOGIN_PORT = 43596;

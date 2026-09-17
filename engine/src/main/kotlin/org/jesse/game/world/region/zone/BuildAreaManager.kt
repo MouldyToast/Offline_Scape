@@ -7,7 +7,12 @@ import org.jesse.game.world.region.Chunk
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet
 import it.unimi.dsi.fastutil.objects.ObjectCollection
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap
+import net.rsprot.protocol.api.util.ZonePartialEnclosedCacheBuffer
 import net.rsprot.protocol.common.client.OldSchoolClientType
+import net.rsprot.protocol.game.outgoing.zone.payload.ObjAdd
+import net.rsprot.protocol.game.outgoing.zone.payload.ObjCount
+import net.rsprot.protocol.game.outgoing.zone.payload.ObjDel
+import net.rsprot.protocol.message.ZoneProt
 import java.util.function.IntPredicate
 import kotlin.math.max
 import kotlin.math.min
@@ -16,6 +21,7 @@ class BuildAreaManager(private val player: Player) {
     private var lastChunk: Int = -1
     val chunksInScope = IntOpenHashSet(49)
     private val chunksToSkip = IntOpenHashSet(49)
+    private val enclosedBuffer = ZonePartialEnclosedCacheBuffer()
 
     fun syncNewZones() {
         val currentHash = player.location.chunkHash
@@ -94,16 +100,26 @@ class BuildAreaManager(private val player: Player) {
                     }
                 }
                 if (floorItems.isNotEmpty()) {
+                    val objPayloads = mutableListOf<ZoneProt>()
                     for (item in floorItems) {
                         if (!item.isVisibleTo(player) || !player.isFloorItemDisplayed(item)) {
                             continue
                         }
                         val location = item.location
-                        player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                        objPayloads += ObjAdd(
+                            item.id, item.amount, location.x, location.y,
+                            0b11111.toByte(), item.invisibleTicks,
+                            item.invisibleTicks + item.visibleTicks, 0,
+                            item.visibleTicks > 0
+                        )
+                    }
+                    if (objPayloads.isNotEmpty()) {
+                        sendEnclosed(objPayloads, x shl 3, y shl 3, level)
                     }
                 }
             }
         }
+        enclosedBuffer.releaseBuffers()
     }
 
     fun refreshScopedGroundItems(add: Boolean) {
@@ -141,6 +157,7 @@ class BuildAreaManager(private val player: Player) {
                 val chunk = World.getChunk(Chunk.getChunkHash(chunkX, chunkY, level))
                 val floorItems = chunk.floorItems
                 if (floorItems.isNotEmpty()) {
+                    val payloads = mutableListOf<ZoneProt>()
                     for (item in floorItems) {
                         if (!item.isVisibleTo(player) || !item.hasOwner() || player.isIronman && item.hasOwner() && item.isOwner(
                                 player
@@ -150,14 +167,23 @@ class BuildAreaManager(private val player: Player) {
                         }
                         val location = item.location
                         if (add) {
-                            player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                            payloads += ObjAdd(
+                                item.id, item.amount, location.x, location.y,
+                                0b11111.toByte(), item.invisibleTicks,
+                                item.invisibleTicks + item.visibleTicks, 0,
+                                item.visibleTicks > 0
+                            )
                         } else {
-                            player.packetDispatcher.objDel(item.id, item.amount, location.x, location.y)
+                            payloads += ObjDel(item.id, item.amount, location.x, location.y)
                         }
+                    }
+                    if (payloads.isNotEmpty()) {
+                        sendEnclosed(payloads, x shl 3, y shl 3, level)
                     }
                 }
             }
         }
+        enclosedBuffer.releaseBuffers()
     }
 
     fun updateDummyEvents() {
@@ -175,30 +201,44 @@ class BuildAreaManager(private val player: Player) {
             val swX = (zoneId and 2047) shl 3
             val swY = (zoneId ushr 11 and 2047) shl 3
             val zonePlane = zoneId ushr 22
-            player.packetDispatcher.updateZonePartialFollows(swX - baseX, swY - baseY, zonePlane)
+            val payloads = mutableListOf<ZoneProt>()
             for (update in dummy) {
                 when (update) {
                     is ObjAddDummyEvent -> {
                         val item = update.floorItem
                         if (!item.isVisibleTo(player) || !player.isFloorItemDisplayed(item)) continue
                         val location = item.location
-                        player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                        payloads += ObjAdd(
+                            item.id, item.amount, location.x, location.y,
+                            0b11111.toByte(), item.invisibleTicks,
+                            item.invisibleTicks + item.visibleTicks, 0,
+                            item.visibleTicks > 0
+                        )
                     }
                     is ObjTurnPublicDummyEvent -> {
                         val item = update.floorItem
                         if (item.isReceiver(player) || !player.isFloorItemDisplayed(item) || (item.isVisibleToIronmenOnly && player.isIronman)) continue
                         val location = item.location
-                        player.packetDispatcher.objAdd(item.id, item.amount, location.x, location.y, 0b11111, item.invisibleTicks, item.invisibleTicks + item.visibleTicks, 0, item.visibleTicks > 0)
+                        payloads += ObjAdd(
+                            item.id, item.amount, location.x, location.y,
+                            0b11111.toByte(), item.invisibleTicks,
+                            item.invisibleTicks + item.visibleTicks, 0,
+                            item.visibleTicks > 0
+                        )
                     }
                     is ObjUpdateDummyEvent ->  {
                         val item = update.floorItem
                         if (!item.isVisibleTo(player) || !player.isFloorItemDisplayed(item)) continue
                         val location = item.location
-                        player.packetDispatcher.objCount(item.id, update.oldQuantity, item.amount, location.x, location.y)
+                        payloads += ObjCount(item.id, update.oldQuantity, item.amount, location.x, location.y)
                     }
                 }
             }
+            if (payloads.isNotEmpty()) {
+                sendEnclosed(payloads, swX - baseX, swY - baseY, zonePlane)
+            }
         }
+        enclosedBuffer.releaseBuffers()
     }
 
     fun updateGlobalEvents() {
@@ -222,22 +262,16 @@ class BuildAreaManager(private val player: Player) {
         }
     }
 
+    private fun sendEnclosed(payloads: List<ZoneProt>, zoneX: Int, zoneY: Int, level: Int) {
+        val buf = enclosedBuffer.computeZone(payloads)
+        val desktop = buf[OldSchoolClientType.DESKTOP]?.retainedSlice() ?: return
+        player.packetDispatcher.updateZonePartialEnclosed(zoneX, zoneY, level, desktop)
+    }
+
     private companion object {
-        /**
-         * The maximum number of chunks that are loaded in scene at once in a row.
-         */
         private const val SCENE_CHUNKS_DIAMETER = Player.SCENE_DIAMETER shr 3
-
         private const val PLANE_COUNT = 4
-
-        /**
-         * The number of chunks that around the player that are being synchronized.
-         */
         private const val CHUNK_SYNCHRONIZATION_RADIUS = 3
-
-        /**
-         * The maximum distance how far from a player an event can be synchronized.
-         */
         private const val MAXIMUM_SYNCHRONIZATION_DISTANCE = CHUNK_SYNCHRONIZATION_RADIUS + 1 shl 3
     }
 }

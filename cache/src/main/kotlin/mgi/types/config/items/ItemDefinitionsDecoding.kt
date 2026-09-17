@@ -23,7 +23,9 @@ object ItemDefinitionsDecoding {
             12 -> price = buffer.readInt()
             13 -> wearPos1 = buffer.readByte().toInt()
             14 -> wearPos2 = buffer.readByte().toInt()
+            15 -> Unit
             16 -> isMembers = true
+            44 -> inventoryModelId = buffer.readInt()
             23 -> {
                 primaryMaleModel = buffer.readUnsignedShort()
                 maleOffset = buffer.readUnsignedByte()
@@ -102,6 +104,39 @@ object ItemDefinitionsDecoding {
             140 -> bindTemplateId = buffer.readUnsignedShort()
             148 -> placeholderId = buffer.readUnsignedShort()
             149 -> placeholderTemplate = buffer.readUnsignedShort()
+            45 -> { primaryMaleModel = buffer.readInt(); maleOffset = buffer.readUnsignedByte() }
+            46 -> secondaryMaleModel = buffer.readInt()
+            47 -> buffer.readInt()
+            48 -> { primaryFemaleModel = buffer.readInt(); femaleOffset = buffer.readUnsignedByte() }
+            49 -> secondaryFemaleModel = buffer.readInt()
+            50 -> buffer.readInt()
+            51 -> primaryMaleHeadModelId = buffer.readInt()
+            52 -> secondaryMaleHeadModelId = buffer.readInt()
+            53 -> primaryFemaleHeadModelId = buffer.readInt()
+            54 -> secondaryFemaleHeadModelId = buffer.readInt()
+            160 -> Unit
+            200 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedByte()
+                buffer.readString()
+            }
+            201 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readInt()
+                buffer.readInt()
+                buffer.readString()
+            }
+            202 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readInt()
+                buffer.readInt()
+                buffer.readString()
+            }
             249 -> parameters = buffer.readParameters()
         }
     }

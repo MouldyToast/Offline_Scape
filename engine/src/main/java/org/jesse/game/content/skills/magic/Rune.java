@@ -50,7 +50,7 @@ public enum Rune {
             }
         }
         if (values.length != runeEnum.size()) {
-            log.error("", new RuntimeException("Defined Rune enum size does not match rune cache enum size."));
+            log.warn("Defined Rune enum size ({}) does not match rune cache enum size ({}). New runes may have been added in this revision.", values.length, runeEnum.size());
         }
     }
 

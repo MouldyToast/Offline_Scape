@@ -15,17 +15,17 @@ import org.jesse.plugins.PluginManager
 import net.rsprot.protocol.game.incoming.events.EventAppletFocus
 import net.rsprot.protocol.game.incoming.events.EventCameraPosition
 import net.rsprot.protocol.game.incoming.events.EventKeyboard
-import net.rsprot.protocol.game.incoming.events.EventMouseClick
+import net.rsprot.protocol.game.incoming.events.EventMouseClickV1
 import net.rsprot.protocol.game.incoming.events.EventMouseMove
 import net.rsprot.protocol.game.incoming.events.EventMouseScroll
-import net.rsprot.protocol.game.incoming.events.EventNativeMouseClick
+import net.rsprot.protocol.game.incoming.events.EventMouseClickV2
 import net.rsprot.protocol.game.incoming.events.EventNativeMouseMove
 import net.rsprot.protocol.game.incoming.misc.client.Idle
 import net.rsprot.protocol.game.incoming.misc.client.NoTimeout
 import net.rsprot.protocol.game.incoming.misc.user.BugReport
 import net.rsprot.protocol.game.incoming.misc.user.ClickWorldMap
 import net.rsprot.protocol.game.incoming.misc.user.ClientCheat
-import net.rsprot.protocol.game.incoming.misc.user.OculusLeave
+import net.rsprot.protocol.game.incoming.misc.user.ExitFreecam
 import net.rsprot.protocol.game.incoming.misc.user.SendSnapshot
 import net.rsprot.protocol.game.incoming.misc.user.Teleport
 
@@ -64,7 +64,7 @@ internal fun PacketConsumer.playerReport() {
 }
 
 internal fun PacketConsumer.oculusLeave() {
-    addListener<OculusLeave> {
+    addListener<ExitFreecam> {
         val player = player
         val pane: PaneType = player.interfaceHandler.pane
         val loc = player.temporaryAttributes["oculusStart"]
@@ -158,10 +158,10 @@ internal fun PacketConsumer.eventMouseMove() {
 }
 
 internal fun PacketConsumer.eventMouseClick() {
-    addListener<EventMouseClick> {
+    addListener<EventMouseClickV1> {
         player.incrementNumericTemporaryAttribute(BotPrevention.MOUSE_CLICKS_ATTRIBUTE_KEY, 1)
     }
-    addListener<EventNativeMouseClick> {
+    addListener<EventMouseClickV2> {
         player.incrementNumericTemporaryAttribute(BotPrevention.MOUSE_CLICKS_ATTRIBUTE_KEY, 1)
     }
 }

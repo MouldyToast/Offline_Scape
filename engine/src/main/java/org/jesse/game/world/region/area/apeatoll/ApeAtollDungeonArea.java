@@ -105,6 +105,7 @@ public class ApeAtollDungeonArea extends ApeAtollArea implements CycleProcessPlu
         final IntArrayList regions = new IntArrayList(new int[] { 10894, 11150 });
         regions.forEach((IntConsumer) id -> {
             final Region region = World.getRegion(id, true);
+            if (region.getObjects() == null) return;
             final ObjectCollection<WorldObject> objects = region.getObjects().values();
             for (final WorldObject object : objects) {
                 if (object.getId() == ObjectId.FLOOR_SPIKES_4886) {

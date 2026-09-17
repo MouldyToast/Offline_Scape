@@ -401,14 +401,25 @@ public class Region {
             final int[] xteas = XTEALoader.getXTEAs(regionId);
             final Cache cache = CacheManager.getCache();
             final Archive archive = cache.getArchive(ArchiveType.MAPS);
-            final Group mapGroup = archive.findGroupByName("m" + (regionId >> 8) + "_" + (regionId & 255));
-            final String landName = "l" + (regionId >> 8) + "_" + (regionId & 255);
-            Group landGroup = archive.findGroupByName(landName, xteas);
-            if (landGroup == null) {
-                landGroup = archive.findGroupByName(landName);
+            final ByteBuffer mapBuffer;
+            final ByteBuffer landBuffer;
+            if (!archive.usesNames()) {
+                final Group regionGroup = archive.findGroupByID(regionId);
+                if (regionGroup != null) {
+                    final var mapFile = regionGroup.findFileByID(0);
+                    final var landFile = regionGroup.findFileByID(1);
+                    mapBuffer = mapFile == null ? null : mapFile.getData();
+                    landBuffer = landFile == null ? null : landFile.getData();
+                } else {
+                    mapBuffer = null;
+                    landBuffer = null;
+                }
+            } else {
+                final Group mapGroup = archive.findGroupByName("m" + (regionId >> 8) + "_" + (regionId & 255));
+                final Group landGroup = archive.findGroupByName("l" + (regionId >> 8) + "_" + (regionId & 255), xteas);
+                mapBuffer = mapGroup == null ? null : mapGroup.findFileByID(0).getData();
+                landBuffer = landGroup == null ? null : landGroup.findFileByID(0).getData();
             }
-            final ByteBuffer mapBuffer = mapGroup == null ? null : mapGroup.findFileByID(0).getData();
-            final ByteBuffer landBuffer = landGroup == null ? null : landGroup.findFileByID(0).getData();
             final byte[][][] mapSettings = mapBuffer == null ? null : new byte[4][64][64];
             if (mapBuffer != null) {
                 mapBuffer.setPosition(0);

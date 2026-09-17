@@ -402,7 +402,11 @@ public class Region {
             final Cache cache = CacheManager.getCache();
             final Archive archive = cache.getArchive(ArchiveType.MAPS);
             final Group mapGroup = archive.findGroupByName("m" + (regionId >> 8) + "_" + (regionId & 255));
-            final Group landGroup = archive.findGroupByName("l" + (regionId >> 8) + "_" + (regionId & 255), xteas);
+            final String landName = "l" + (regionId >> 8) + "_" + (regionId & 255);
+            Group landGroup = archive.findGroupByName(landName, xteas);
+            if (landGroup == null) {
+                landGroup = archive.findGroupByName(landName);
+            }
             final ByteBuffer mapBuffer = mapGroup == null ? null : mapGroup.findFileByID(0).getData();
             final ByteBuffer landBuffer = landGroup == null ? null : landGroup.findFileByID(0).getData();
             final byte[][][] mapSettings = mapBuffer == null ? null : new byte[4][64][64];

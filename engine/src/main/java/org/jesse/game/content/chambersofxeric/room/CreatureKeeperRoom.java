@@ -122,15 +122,20 @@ public final class CreatureKeeperRoom extends RaidArea implements CycleProcessPl
         staticChests.add(firstRoomList);
         staticChests.add(secondRoomList);
         staticChests.add(thirdRoomList);
-        final ObjectCollection<WorldObject> objects = World.getRegion(13140, true).getObjects().values();
-        for (final WorldObject object : objects) {
-            if (object == null || object.getId() != 29742) {
-                continue;
+        final var region13140 = World.getRegion(13140, true);
+        if (region13140.getObjects() != null) {
+            final ObjectCollection<WorldObject> objects = region13140.getObjects().values();
+            for (final WorldObject object : objects) {
+                if (object == null || object.getId() != 29742) {
+                    continue;
+                }
+                final ObjectArrayList<WorldObject> list = object.getX() < 3294 ? firstRoomList : secondRoomList;
+                list.add(object);
             }
-            final ObjectArrayList<WorldObject> list = object.getX() < 3294 ? firstRoomList : secondRoomList;
-            list.add(object);
         }
-        for (final WorldObject object : World.getRegion(13396, true).getObjects().values()) {
+        final var region13396 = World.getRegion(13396, true);
+        if (region13396.getObjects() == null) return;
+        for (final WorldObject object : region13396.getObjects().values()) {
             if (object == null || object.getId() != 29742) {
                 continue;
             }

@@ -83,6 +83,9 @@ public class MotherlodeArea extends PolygonRegionArea implements CannonRestricti
 
     void spawn() {
         final Region region = World.getRegion(14936, true);
+        if (region.getObjects() == null) {
+            throw new IllegalStateException("Motherlode region 14936 has no objects - XTEA keys may be missing or invalid for this region.");
+        }
         final ObjectCollection<WorldObject> objects = region.getObjects().values();
         for (final WorldObject object : objects) {
             if (object.getId() > 26664 && object.getId() < 26669) {

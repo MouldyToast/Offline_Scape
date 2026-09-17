@@ -8,12 +8,12 @@ import org.jesse.game.model.item.ItemOnFloorItemHandler
 import org.jesse.game.world.World
 import org.jesse.game.world.entity.Location
 import org.jesse.game.world.flooritem.FloorItemAction
-import net.rsprot.protocol.game.incoming.objs.OpObj
+import net.rsprot.protocol.game.incoming.objs.OpObjV2
 import net.rsprot.protocol.game.incoming.objs.OpObj6
 import net.rsprot.protocol.game.incoming.objs.OpObjT
 
 internal fun PacketConsumer.opobj() {
-    addListener<OpObj> {
+    addListener<OpObjV2> {
         val player = player
         val x = it.x
         val y = it.z

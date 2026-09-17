@@ -34,7 +34,7 @@ dependencies {
 
     api(libs.openhft.chronicle.core)
 
-    api(libs.rsprot.osrs228.api)
+    api(libs.rsprot.osrs240.api)
 
     api(libs.bouncycastle.pkix)
     api(libs.bouncycastle.provider)
@@ -47,17 +47,17 @@ dependencies {
     runtimeClasspath(libs.slf4j.simple)
 }
 
-// OpenRS2 Archive — rev 228 cache (2025-02-12, ID 2043)
+// OpenRS2 Archive — rev 240 cache (2026-09-16, ID 2710)
 // Browse available caches at: https://archive.openrs2.org/caches
-val openrs2CacheId = "2043"
+val openrs2CacheId = "2710"
 val openrs2Scope = "runescape"
 val cacheDir = file("data/cache")
 val xteaFile = file("data/objects/xteas.json")
-val cacheZip = file("data/cache-228-openrs2.zip")
+val cacheZip = file("data/cache-240-openrs2.zip")
 
 tasks.register("downloadCache") {
     group = "_cache"
-    description = "Download OSRS rev 228 cache from OpenRS2 Archive"
+    description = "Download OSRS rev 240 cache from OpenRS2 Archive"
     outputs.dir(cacheDir)
     doLast {
         if (cacheDir.exists() && cacheDir.list()?.any { it.startsWith("main_file_cache") } == true) {
@@ -67,7 +67,7 @@ tasks.register("downloadCache") {
         if (cacheZip.exists()) {
             println("Zip already on disk, extracting from local copy...")
         } else {
-            println("Downloading rev 228 cache from OpenRS2 Archive (ID $openrs2CacheId)...")
+            println("Downloading rev 240 cache from OpenRS2 Archive (ID $openrs2CacheId)...")
             URI("https://archive.openrs2.org/caches/$openrs2Scope/$openrs2CacheId/disk.zip").toURL().openStream().use { input ->
                 cacheZip.outputStream().use { output -> input.copyTo(output) }
             }
@@ -104,7 +104,7 @@ tasks.register("resetCache") {
 
 tasks.register("downloadXTEAs") {
     group = "_cache"
-    description = "Download XTEA keys for rev 228 from OpenRS2 Archive"
+    description = "Download XTEA keys for rev 240 from OpenRS2 Archive"
     outputs.file(xteaFile)
     doLast {
         if (xteaFile.exists() && xteaFile.length() > 2) {

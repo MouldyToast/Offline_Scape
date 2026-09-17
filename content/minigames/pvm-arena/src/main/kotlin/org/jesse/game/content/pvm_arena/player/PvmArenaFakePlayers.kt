@@ -24,7 +24,7 @@ import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.region.CharacterLoop
 import org.jesse.game.world.region.GlobalAreaManager
 import net.rsprot.protocol.game.incoming.buttons.If3Button
-import net.rsprot.protocol.game.incoming.locs.OpLoc
+import net.rsprot.protocol.game.incoming.locs.OpLocV2
 import net.rsprot.protocol.game.incoming.misc.user.MoveGameClick
 import net.rsprot.protocol.message.IncomingGameMessage
 import net.rsprot.protocol.util.CombinedId
@@ -160,12 +160,13 @@ fun scheduleAutoPvmArenaTask(fake: Player) {
                             if (fake.location.matches(targetBandage.location)) {
                                 fake.setForceTalk("Picking up bandage")
                                 val optionIndex = targetBandage.definitions.groundOptions.indexOfFirst { it == "Take" }
-                                val event = OpLoc(
+                                val event = OpLocV2(
                                     targetBandage.id,
                                     targetBandage.location.x,
                                     targetBandage.location.y,
                                     false,
                                     optionIndex + 1,
+                                    0,
                                 )
                                 fake.schedule(event)
                             } else {

@@ -649,8 +649,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public void setViewDistance(int viewDistance) {
         this.viewDistance = viewDistance < 1 ? 1 : Math.min(viewDistance, 104);
         if (avatar != null) {
-            avatar.setPreferredResizeRange$osrs_228_model(this.viewDistance);
-            avatar.setResizeRange$osrs_228_model(this.viewDistance);
+            avatar.setPreferredResizeRange$osrs_240_model(this.viewDistance);
+            avatar.setResizeRange$osrs_240_model(this.viewDistance);
         }
         if (this.npcInfo != null) {
             this.npcInfo.setViewDistance(this.viewDistance);

@@ -7,10 +7,9 @@ import net.rsprot.protocol.game.outgoing.info.npcinfo.SetNpcUpdateOrigin
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerAvatar
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerInfo
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenTop
-import net.rsprot.protocol.game.outgoing.map.RebuildLogin
-import net.rsprot.protocol.game.outgoing.map.util.XteaProvider
+import net.rsprot.protocol.game.outgoing.map.RebuildLoginV2
 import net.rsprot.protocol.game.outgoing.misc.client.ServerTickEnd
-import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorld
+import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorldV2
 
 class Player(
     val index: Int,
@@ -61,19 +60,18 @@ class Player(
     fun onLogin() {
         val session = session ?: return
         session.queue(
-            RebuildLogin(
+            RebuildLoginV2(
                 zoneX, zoneZ,
                 worldId,
-                XteaProvider.ZERO_XTEA_KEY_PROVIDER,
                 playerInfo
             )
         )
         session.queue(
-            SetActiveWorld(
+            SetActiveWorldV2(
                 if (worldId == PlayerInfo.ROOT_WORLD) {
-                    SetActiveWorld.RootWorldType(level)
+                    SetActiveWorldV2.RootWorldType(level)
                 } else {
-                    SetActiveWorld.DynamicWorldType(worldId, level)
+                    SetActiveWorldV2.DynamicWorldType(worldId, level)
                 }
             )
         )
@@ -111,7 +109,7 @@ class Player(
 
         val session = session
         if (session != null) {
-            session.queue(SetActiveWorld(SetActiveWorld.RootWorldType(level)))
+            session.queue(SetActiveWorldV2(SetActiveWorldV2.RootWorldType(level)))
 
             session.queue(SetNpcUpdateOrigin(zoneX, zoneZ))
 

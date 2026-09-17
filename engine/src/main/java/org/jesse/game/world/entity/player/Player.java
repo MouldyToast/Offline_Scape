@@ -4093,6 +4093,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
         interfaceHandler.setResizable(playerInformation.isResizable());
         interfaceHandler.sendGameFrame();
+        // Rev 240: initialize camera zoom range (replaces [clientscript,login] trigger)
+        packetDispatcher.sendClientScript(605, 128, 896, 128, 896);
 
         isLoggedIn = true;
 

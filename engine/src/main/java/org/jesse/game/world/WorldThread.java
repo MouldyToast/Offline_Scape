@@ -321,19 +321,9 @@ public final class WorldThread extends MainThread {
         if (service != null) {
             synchronized (Main.getNetworkServiceLock()) {
                 try {
-                    service.getWorldEntityInfoProtocol().update();
+                    service.getInfoProtocols().update();
                 } catch (final Throwable t) {
-                    log.error("Failed to update world entity info protocol", t);
-                }
-                try {
-                    service.getPlayerInfoProtocol().update();
-                } catch (final Throwable t) {
-                    log.error("Failed to update player entity info protocol", t);
-                }
-                try {
-                    service.getNpcInfoProtocol().update();
-                } catch (final Throwable t) {
-                    log.error("Failed to update npc entity info protocol", t);
+                    log.error("Failed to update info protocols", t);
                 }
             }
         }

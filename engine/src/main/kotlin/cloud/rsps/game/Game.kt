@@ -31,8 +31,8 @@ object Game {
     ): Player? {
         val index = players.size + 1
 
-        val playerInfo = networkService.playerInfoProtocol.alloc(index, oldSchoolClientType)
-        val npcInfo = networkService.npcInfoProtocol.alloc(index, oldSchoolClientType)
+        val playerInfo = networkService.infoProtocols.playerInfoProtocol.alloc(index, oldSchoolClientType)
+        val npcInfo = networkService.infoProtocols.npcInfoProtocol.alloc(index, oldSchoolClientType)
 
         val avatar = playerInfo.avatar
 
@@ -90,8 +90,7 @@ object Game {
                         player.session?.processIncomingPackets(player)
                     }
 
-                    networkService.playerInfoProtocol.update()
-                    networkService.npcInfoProtocol.update()
+                    networkService.infoProtocols.update()
 
                     for (player in players) {
                         player.tick()

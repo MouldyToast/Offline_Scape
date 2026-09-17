@@ -5091,9 +5091,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         synchronized (Main.getNetworkServiceLock()) {
             final NetworkService<Session> service = Main.getNetworkService();
             this.isAllocated = true;
-            this.playerInfo = service.getPlayerInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
-            this.npcInfo = service.getNpcInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
-            this.worldEntityInfo = service.getWorldEntityInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
+            this.playerInfo = service.getInfoProtocols().getPlayerInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
+            this.npcInfo = service.getInfoProtocols().getNpcInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
+            this.worldEntityInfo = service.getInfoProtocols().getWorldEntityInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
             this.avatar = playerInfo.getAvatar();
             this.avatar.updateCoord(getPlane(), getX(), getY());
         }
@@ -5112,19 +5112,19 @@ public class Player extends AbstractEntity implements UsernameProvider {
         final NetworkService<Session> service = Main.getNetworkService();
         synchronized (Main.getNetworkServiceLock()) {
             try {
-                service.getPlayerInfoProtocol().dealloc(this.playerInfo);
+                service.getInfoProtocols().getPlayerInfoProtocol().dealloc(this.playerInfo);
             } catch (Exception e) {
                 log.error("Unable to release player info for index: " + getIndex() + " as player info has thrown!", e);
             }
 
             try {
-                service.getNpcInfoProtocol().dealloc(this.npcInfo);
+                service.getInfoProtocols().getNpcInfoProtocol().dealloc(this.npcInfo);
             } catch (Exception e) {
                 log.error("Unable to release npc info for index: " + getIndex() + " as npc info has thrown!", e);
             }
 
             try {
-                service.getWorldEntityInfoProtocol().dealloc(this.worldEntityInfo);
+                service.getInfoProtocols().getWorldEntityInfoProtocol().dealloc(this.worldEntityInfo);
             } catch (Exception e) {
                 log.error("Unable to release worldentity info for index: " + getIndex() + " as worldentity info has thrown!", e);
             }

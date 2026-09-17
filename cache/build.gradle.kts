@@ -58,7 +58,7 @@ val cacheZip = file("data/cache-240-openrs2.zip")
 tasks.register("downloadCache") {
     group = "_cache"
     description = "Download OSRS rev 240 cache from OpenRS2 Archive"
-    outputs.dir(cacheDir)
+    outputs.upToDateWhen { cacheDir.exists() && cacheDir.list()?.any { it.startsWith("main_file_cache") } == true }
     doLast {
         if (cacheDir.exists() && cacheDir.list()?.any { it.startsWith("main_file_cache") } == true) {
             println("Cache already exists at ${cacheDir.absolutePath}, skipping. Delete cache dir or run resetCache to re-extract.")
@@ -105,7 +105,7 @@ tasks.register("resetCache") {
 tasks.register("downloadXTEAs") {
     group = "_cache"
     description = "Download XTEA keys for rev 240 from OpenRS2 Archive"
-    outputs.file(xteaFile)
+    outputs.upToDateWhen { xteaFile.exists() && xteaFile.length() > 2 }
     doLast {
         if (xteaFile.exists() && xteaFile.length() > 2) {
             println("XTEAs already exist at ${xteaFile.absolutePath}, skipping. Delete to re-download.")

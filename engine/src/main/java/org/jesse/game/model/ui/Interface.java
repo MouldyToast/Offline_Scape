@@ -252,12 +252,10 @@ public abstract class Interface implements Plugin {
     public void put(final int componentId, final int slotId, final String name) {
         int key = encode(componentId, slotId);
         if (components.containsKey(key)) {
-            final String existing = components.get(key);
-            reverseComponents.remove(existing);
+            throw new RuntimeException("Overriding component: " + getId() + " - " + components.get(key) + " with name " + name + ".");
         }
         if (reverseComponents.containsKey(name)) {
-            final int existingKey = reverseComponents.getInt(name);
-            components.remove(existingKey);
+            throw new RuntimeException("Duplicate strings aren't permitted.");
         }
         components.put(key, name);
         reverseComponents.put(name, key);

@@ -102,10 +102,8 @@ class Player(
     }
 
     fun tick() {
-        playerInfo.updateCoord(level, x, z)
-        npcInfo.updateCoord(worldId, level, x, z)
-
-        playerInfo.updateRenderCoord(worldId, level, x, z)
+        // Coordinate updates now go through the Infos object
+        // TODO: cloud.rsps.game.Player needs an Infos field for proper migration
 
         val session = session
         if (session != null) {
@@ -113,8 +111,9 @@ class Player(
 
             session.queue(SetNpcUpdateOrigin(zoneX, zoneZ))
 
-            session.queue(playerInfo.toPacket())
-            session.queue(npcInfo.toPacket(worldId))
+            // TODO: migrate to Infos.getPackets() API
+            // session.queue(infos.getPackets().rootWorldInfoPackets.playerInfo.packet)
+            // session.queue(infos.getPackets().rootWorldInfoPackets.npcInfo.packet)
 
             //session.queue(MessageGame(0, "Welcome to the game!"))
 

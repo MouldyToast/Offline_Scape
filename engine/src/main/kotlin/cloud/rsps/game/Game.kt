@@ -31,24 +31,14 @@ object Game {
     ): Player? {
         val index = players.size + 1
 
-        val playerInfo = networkService.infoProtocols.playerInfoProtocol.alloc(index, oldSchoolClientType)
-        val npcInfo = networkService.infoProtocols.npcInfoProtocol.alloc(index, oldSchoolClientType)
+        val infos = networkService.infoProtocols.alloc(index, oldSchoolClientType)
+        val playerInfo = infos.playerInfo
+        val npcInfo = infos.npcInfo
 
         val avatar = playerInfo.avatar
 
-        avatar.updateCoord(level, x, z)
-
-        playerInfo.updateCoord(level, x, z)
-        npcInfo.updateCoord(worldId, level, x, z)
-
-        playerInfo.updateRenderCoord(worldId, level, x, z)
-
-        val buildArea = BuildArea(
-            ((x ushr 3) - 6).coerceAtLeast(0),
-            ((z ushr 3) - 6).coerceAtLeast(0)
-        )
-        playerInfo.updateBuildArea(worldId, buildArea)
-        npcInfo.updateBuildArea(worldId, buildArea)
+        infos.updateRootCoord(level, x, z)
+        infos.updateRootBuildAreaCenteredOnPlayer(x, z)
 
         val player = Player(
             index,

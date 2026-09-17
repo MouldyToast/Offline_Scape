@@ -15,11 +15,11 @@ import io.netty.buffer.ByteBuf
 import io.netty.util.ReferenceCountUtil
 import io.netty.util.ReferenceCounted
 import mgi.types.component.ComponentDefinitions
-import net.rsprot.protocol.game.outgoing.info.util.CoordGrid
+import net.rsprot.protocol.internal.game.outgoing.info.CoordGrid
 import net.rsprot.protocol.common.game.outgoing.inv.InventoryObject
 import net.rsprot.protocol.game.outgoing.GameServerProtCategory
 import net.rsprot.protocol.game.outgoing.camera.CamLookAtV3
-import net.rsprot.protocol.game.outgoing.camera.CamLookAtEasedCoord
+import net.rsprot.protocol.game.outgoing.camera.CamRotateToCoordinateV1
 import net.rsprot.protocol.game.outgoing.camera.CamMode
 import net.rsprot.protocol.game.outgoing.camera.CamMoveToV3
 import net.rsprot.protocol.game.outgoing.camera.CamMoveToArcV3
@@ -150,7 +150,7 @@ import net.rsprot.protocol.game.outgoing.specific.MapAnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcAnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcHeadIconSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcSpotAnimSpecific
-import net.rsprot.protocol.game.outgoing.specific.PlayerAnimSpecific
+import net.rsprot.protocol.game.outgoing.specific.AnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.PlayerSpotAnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.ProjAnimSpecificV4
 import net.rsprot.protocol.game.outgoing.varp.VarpLarge
@@ -349,7 +349,7 @@ class PacketSender(private val player: Player) {
         function: Int,
     ) {
         send {
-            CamLookAtEasedCoord(
+            CamRotateToCoordinateV1(
                 xInBuildArea,
                 yInBuildArea,
                 height,
@@ -610,16 +610,18 @@ class PacketSender(private val player: Player) {
      * Player info packet is used to synchronize the state of all players in the world.
      */
     internal fun playerInfo(info: PlayerInfo) {
-        sendOrLogout {
-            info.toPacket()
-        }
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.playerInfo.getOrNull() ?: return
+        sendOrLogout { packet }
     }
 
 
 
     internal fun worldEntityInfo(info: WorldEntityInfo) {
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.worldEntityInfo.getOrNull() ?: return
         sendOrLogout {
-            info.toPacket()
+            packet
         }
     }
 
@@ -646,9 +648,9 @@ class PacketSender(private val player: Player) {
         worldId: Int,
         info: NpcInfo,
     ) {
-        sendOrLogout {
-            info.toPacket(worldId)
-        }
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.npcInfo.getOrNull() ?: return
+        sendOrLogout { packet }
     }
 
     /**
@@ -1938,13 +1940,7 @@ class PacketSender(private val player: Player) {
         val rsPlayerInfo = player.playerInfo
         val rsProtNpcInfo = player.npcInfo
 
-        rsPlayerInfo?.updateBuildArea(worldId, buildArea)
-        rsProtNpcInfo?.updateBuildArea(worldId, buildArea)
-
-        val rsProtWorldEntityInfo = player.worldEntityInfo
-
-        rsProtWorldEntityInfo?.updateBuildArea(buildArea)
-        rsProtWorldEntityInfo?.resetRenderCoord()
+        player.infos?.updateRootBuildArea(buildArea)
     }
 
     /**
@@ -2170,7 +2166,7 @@ class PacketSender(private val player: Player) {
      */
     fun updateRebootTimer(gameCycles: Int) {
         send {
-            UpdateRebootTimerV2(gameCycles)
+            UpdateRebootTimerV2(gameCycles, UpdateRebootTimerV2.IgnoreUpdateMessage)
         }
     }
 
@@ -2919,7 +2915,7 @@ class PacketSender(private val player: Player) {
         delay: Int,
     ) {
         send {
-            PlayerAnimSpecific(
+            AnimSpecific(
                 id,
                 delay,
             )

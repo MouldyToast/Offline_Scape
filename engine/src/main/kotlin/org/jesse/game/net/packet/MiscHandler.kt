@@ -25,7 +25,7 @@ import net.rsprot.protocol.game.incoming.misc.client.NoTimeout
 import net.rsprot.protocol.game.incoming.misc.user.BugReport
 import net.rsprot.protocol.game.incoming.misc.user.ClickWorldMap
 import net.rsprot.protocol.game.incoming.misc.user.ClientCheat
-import net.rsprot.protocol.game.incoming.misc.user.OculusLeave
+import net.rsprot.protocol.game.incoming.misc.user.ExitFreecam
 import net.rsprot.protocol.game.incoming.misc.user.SendSnapshot
 import net.rsprot.protocol.game.incoming.misc.user.Teleport
 
@@ -64,7 +64,7 @@ internal fun PacketConsumer.playerReport() {
 }
 
 internal fun PacketConsumer.oculusLeave() {
-    addListener<OculusLeave> {
+    addListener<ExitFreecam> {
         val player = player
         val pane: PaneType = player.interfaceHandler.pane
         val loc = player.temporaryAttributes["oculusStart"]

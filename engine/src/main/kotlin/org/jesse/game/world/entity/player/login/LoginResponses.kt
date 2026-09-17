@@ -23,7 +23,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import kotlinx.coroutines.runBlocking
 import mgi.utilities.StringFormatUtil
 import net.rsprot.crypto.xtea.XteaKey
-import net.rsprot.protocol.api.channel.inetAddress
+import java.net.InetSocketAddress
 import net.rsprot.protocol.api.login.GameLoginResponseHandler
 import net.rsprot.protocol.loginprot.incoming.util.AuthenticationType
 import net.rsprot.protocol.loginprot.incoming.util.LoginBlock
@@ -298,7 +298,7 @@ class LoginRequest(
                     }
                 }
             } else {
-                val loginResult = UserPlayerHandler.validateLogin(player, ctx.inetAddress().hostAddress)
+                val loginResult = UserPlayerHandler.validateLogin(player, (ctx.channel().remoteAddress() as? InetSocketAddress)?.address?.hostAddress ?: "unknown")
                 if (loginResult != null) {
                     return DetailedLoginResponse(loginResult, null)
                 }

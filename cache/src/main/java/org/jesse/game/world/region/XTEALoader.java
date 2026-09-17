@@ -41,41 +41,56 @@ public final class XTEALoader {
 			return;
 		}
 		try (BufferedReader br = Files.newBufferedReader(filePath, StandardCharsets.UTF_8)) {
-			final JsonArray array = JsonParser.parseReader(br).getAsJsonArray();
-			for (final JsonElement element : array) {
-				final JsonObject obj = element.getAsJsonObject();
-				int region = -1;
-				int[] keys = null;
+			final JsonElement root = JsonParser.parseReader(br);
 
-				// Support format: {"mapsquare": N, "key": [a,b,c,d]}
-				if (obj.has("mapsquare")) {
-					region = obj.get("mapsquare").getAsInt();
-				}
-				// Support format: {"region": N, "keys": [a,b,c,d]} (RuneLite)
-				else if (obj.has("region")) {
-					region = obj.get("region").getAsInt();
-				}
-
-				if (obj.has("key")) {
-					final JsonArray keyArray = obj.getAsJsonArray("key");
-					keys = new int[] {
+			if (root.isJsonObject()) {
+				// RuneLite .runelite/cache format: {"12345": [k1,k2,k3,k4], ...}
+				final JsonObject map = root.getAsJsonObject();
+				for (final var entry : map.entrySet()) {
+					final int region = Integer.parseInt(entry.getKey());
+					final JsonArray keyArray = entry.getValue().getAsJsonArray();
+					final int[] keys = new int[] {
 						keyArray.get(0).getAsInt(),
 						keyArray.get(1).getAsInt(),
 						keyArray.get(2).getAsInt(),
 						keyArray.get(3).getAsInt()
 					};
-				} else if (obj.has("keys")) {
-					final JsonArray keyArray = obj.getAsJsonArray("keys");
-					keys = new int[] {
-						keyArray.get(0).getAsInt(),
-						keyArray.get(1).getAsInt(),
-						keyArray.get(2).getAsInt(),
-						keyArray.get(3).getAsInt()
-					};
-				}
-
-				if (region != -1 && keys != null) {
 					regionToXTEA.put(region, new XTEA(region, keys));
+				}
+			} else if (root.isJsonArray()) {
+				final JsonArray array = root.getAsJsonArray();
+				for (final JsonElement element : array) {
+					final JsonObject obj = element.getAsJsonObject();
+					int region = -1;
+					int[] keys = null;
+
+					if (obj.has("mapsquare")) {
+						region = obj.get("mapsquare").getAsInt();
+					} else if (obj.has("region")) {
+						region = obj.get("region").getAsInt();
+					}
+
+					if (obj.has("key")) {
+						final JsonArray keyArray = obj.getAsJsonArray("key");
+						keys = new int[] {
+							keyArray.get(0).getAsInt(),
+							keyArray.get(1).getAsInt(),
+							keyArray.get(2).getAsInt(),
+							keyArray.get(3).getAsInt()
+						};
+					} else if (obj.has("keys")) {
+						final JsonArray keyArray = obj.getAsJsonArray("keys");
+						keys = new int[] {
+							keyArray.get(0).getAsInt(),
+							keyArray.get(1).getAsInt(),
+							keyArray.get(2).getAsInt(),
+							keyArray.get(3).getAsInt()
+						};
+					}
+
+					if (region != -1 && keys != null) {
+						regionToXTEA.put(region, new XTEA(region, keys));
+					}
 				}
 			}
 			log.info("Loaded {} XTEA keys from {}.", regionToXTEA.size(), path);

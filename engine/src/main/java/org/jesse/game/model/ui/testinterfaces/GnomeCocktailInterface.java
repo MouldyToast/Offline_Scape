@@ -24,6 +24,7 @@ public class GnomeCocktailInterface extends Interface {
 
     @Override
     public void open(Player player) {
+        player.getVarManager().sendBit(698, 0);
         player.getInterfaceHandler().sendInterface(getInterface());
         player.getPacketDispatcher().sendComponentSettings(getInterface(), GnomeCocktail.COMPONENT_ID, 0, 6, AccessMask.CLICK_OP1);
     }

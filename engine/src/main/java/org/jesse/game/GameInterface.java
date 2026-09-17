@@ -95,7 +95,7 @@ public enum GameInterface {
     BLAST_FURNACE_TEMPERATURE(30, CENTRAL),
     BLAST_FURNACE_COFFER(474, MINIGAME_OVERLAY),
     WINTERTODT(396, MINIGAME_OVERLAY),
-    TUTORIAL_MAKE_OVER(269), // TODO: rev 240 - ID 269 is now f2p_bond_redeem; tutorial makeover may be merged with CHARACTER_DESIGN(679), needs investigation
+    TUTORIAL_MAKE_OVER(679),
     AVAS_DEVICES(67),
     DECANTING(582, InterfacePosition.DIALOGUE),
     PARTY_DROP_CHEST(265),
@@ -173,7 +173,7 @@ public enum GameInterface {
     EMOTE_TAB(216, InterfacePosition.EMOTE_TAB),
     FRIEND_LIST_TAB(429, FRIENDS_TAB),
     IGNORE_LIST_TAB(432, FRIENDS_TAB),
-    GNOME_COCKTAIL(436), // TODO: rev 240 - ID 436 is now soul_wars_stats; no gnome cocktail interface found in rev 240 dump
+    GNOME_COCKTAIL(49),
     ITEM_RETRIEVAL_SERVICE(602),
     ADVANCED_SETTINGS(134, InterfacePosition.WORLD_MAP),
     BARROWS_PUZZLE(25),

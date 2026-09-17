@@ -198,9 +198,9 @@ public class InterfaceHandler {
 		}
 		final PacketDispatcher dispatcher = player.getPacketDispatcher();
 		dispatcher.sendComponentSettings(216, 1, 0, 47, AccessMask.CLICK_OP1);
-		// TODO: rev 240 audit - interface 261 (soul_wars_tutorial_instructions) components 89/90 may need verification
-		dispatcher.sendComponentSettings(261, 89, 1, 4, AccessMask.CLICK_OP1);
-		dispatcher.sendComponentSettings(261, 90, 1, 4, AccessMask.CLICK_OP1);
+		// Rev 240: interface 261 (soul_wars_tutorial_instructions) redesigned to 3 passive text components — no interactive components remain
+		//dispatcher.sendComponentSettings(261, 89, 1, 4, AccessMask.CLICK_OP1);
+		//dispatcher.sendComponentSettings(261, 90, 1, 4, AccessMask.CLICK_OP1);
 		player.getVarManager().sendBit(4070, player.getCombatDefinitions().getSpellbook().ordinal());
 	}
 

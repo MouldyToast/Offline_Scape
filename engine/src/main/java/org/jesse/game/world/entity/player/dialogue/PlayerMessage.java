@@ -29,8 +29,9 @@ public class PlayerMessage implements Message {
      */
     @Override
     public void display(final Player player) {
+    	Message.setupChatModal(player, 0);
     	player.getInterfaceHandler().sendInterface(InterfacePosition.DIALOGUE, 217);
-		player.getPacketDispatcher().sendClientScript(600, 1, 1, 16, 14221318);
+		player.getPacketDispatcher().sendClientScript(600, 1, 1, Message.chatLineHeight(message), 14221318);
 		player.getPacketDispatcher().sendComponentPlayerHead(217, 2);
 		player.getPacketDispatcher().sendComponentText(217, 4, player.getName());
 		if (cantContinue) {

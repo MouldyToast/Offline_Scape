@@ -3010,8 +3010,8 @@ class PacketSender(private val player: Player) {
             val startZ = bz + yInBuildArea
             ProjAnimSpecificV4(
                 id,
-                startHeight / 4,
-                endHeight / 4,
+                startHeight,
+                endHeight,
                 startTime,
                 endTime,
                 angle,

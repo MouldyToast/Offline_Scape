@@ -706,8 +706,8 @@ public final class World {
         ZoneManager.INSTANCE.mapProjAnim(
                 f.getChunkHash(),
                 projectile.getGraphicsId(),
-                projectile.getStartHeight() / 4,
-                projectile.getEndHeight() / 4,
+                projectile.getStartHeight(),
+                projectile.getEndHeight(),
                 projectile.getDelay(),
                 projSpeed,
                 projectile.getAngle(),

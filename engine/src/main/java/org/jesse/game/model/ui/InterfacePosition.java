@@ -29,7 +29,7 @@ public enum InterfacePosition {
 	MUSIC_TAB(89, 239, true),                 // was 88, now 89
 	COMBAT_TAB(76, 593, true),                // was 75, now 76
 	CENTRAL(16, false),                       // remains 16 (MODAL)
-	DIALOGUE(566, false),                     // was 559, now 566
+    DIALOGUE(567, false),                     // rev 240: chatmodal (567), was chatoverlay (566)
 	MINIGAME_OVERLAY(8, true),                // remains 8 (PARTIAL_OVERLAY)
 	OVERLAY(1, true),                         // remains 1 (FULL_OVERLAY)
 	SINGLE_TAB(74, false),                    // was 73, now 74

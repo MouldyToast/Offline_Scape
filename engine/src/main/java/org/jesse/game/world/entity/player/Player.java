@@ -5311,12 +5311,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         var source = hit.getSource();
         var index = source == null ? -1 : source.getClientIndex();
+        var splatId = hit.isMax() ? hit.getAppliedSplat().getMaxId() : hit.getAppliedSplat().getId();
         this.avatar.getExtendedInfo().addHitMark(
                 index,
-                hit.isMax() ? hit.getAppliedSplat().getMaxId() : hit.getAppliedSplat().getId(),
+                splatId,
+                splatId,
                 hit.getAppliedSplat().getTintedId(),
                 hit.getDamage(),
-                hit.getDelay()
+                hit.getDelay(),
+                4
         );
     }
 

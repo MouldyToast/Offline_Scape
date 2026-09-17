@@ -2400,7 +2400,8 @@ public class NPC extends AbstractEntity {
                 hit.isMax() ? hit.getAppliedSplat().getMaxId() : hit.getAppliedSplat().getId(),
                 hit.getAppliedSplat().getTintedId(),
                 hit.getDamage(),
-                hit.getDelay()
+                hit.getDelay(),
+                4
         );
     }
 

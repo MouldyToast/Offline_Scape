@@ -2,6 +2,7 @@ package cloud.rsps.game
 
 import com.github.michaelbull.logging.InlineLogger
 import net.rsprot.protocol.api.Session
+import net.rsprot.protocol.game.outgoing.info.Infos
 import net.rsprot.protocol.game.outgoing.info.npcinfo.NpcInfo
 import net.rsprot.protocol.game.outgoing.info.npcinfo.SetNpcUpdateOrigin
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerAvatar
@@ -16,6 +17,7 @@ class Player(
 
     val avatar: PlayerAvatar,
 
+    val infos: Infos,
     val playerInfo: PlayerInfo,
     val npcInfo: NpcInfo,
 
@@ -102,8 +104,7 @@ class Player(
     }
 
     fun tick() {
-        // Coordinate updates now go through the Infos object
-        // TODO: cloud.rsps.game.Player needs an Infos field for proper migration
+        infos.updateRootCoord(level, x, z)
 
         val session = session
         if (session != null) {
@@ -111,11 +112,9 @@ class Player(
 
             session.queue(SetNpcUpdateOrigin(zoneX, zoneZ))
 
-            // TODO: migrate to Infos.getPackets() API
-            // session.queue(infos.getPackets().rootWorldInfoPackets.playerInfo.packet)
-            // session.queue(infos.getPackets().rootWorldInfoPackets.npcInfo.packet)
-
-            //session.queue(MessageGame(0, "Welcome to the game!"))
+            val packets = infos.getPackets()
+            packets.rootWorldInfoPackets.playerInfo.getOrNull()?.let { session.queue(it) }
+            packets.rootWorldInfoPackets.npcInfo.getOrNull()?.let { session.queue(it) }
 
             session.queue(ServerTickEnd)
 

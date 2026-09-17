@@ -43,6 +43,7 @@ object Game {
         val player = Player(
             index,
             avatar,
+            infos,
             playerInfo, npcInfo,
             name,
             worldId,

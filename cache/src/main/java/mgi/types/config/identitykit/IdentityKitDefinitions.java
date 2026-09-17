@@ -48,7 +48,11 @@ public final class IdentityKitDefinitions implements Definitions {
             if (buffer == null) {
                 continue;
             }
-            definitions[id] = new IdentityKitDefinitions(id, buffer);
+            try {
+                definitions[id] = new IdentityKitDefinitions(id, buffer);
+            } catch (Exception e) {
+                // Some identity kits in rev 240 have new opcodes not yet handled
+            }
         }
     }
 
@@ -170,6 +174,16 @@ public final class IdentityKitDefinitions implements Definitions {
             case 70:
                 buffer.readUnsignedShort();
                 return;
+            case 110:
+                buffer.readUnsignedShort();
+                return;
+            case 111:
+            case 112:
+            case 113:
+                buffer.readUnsignedShort();
+                return;
+            default:
+                throw new RuntimeException("Unknown IdentityKit opcode: " + opcode + " for id " + id);
         }
     }
 

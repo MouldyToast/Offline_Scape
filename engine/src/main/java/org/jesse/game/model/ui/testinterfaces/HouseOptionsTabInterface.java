@@ -18,10 +18,10 @@ public class HouseOptionsTabInterface extends Interface {
         put(6, "Building mode OFF");
         put(8, "Teleport inside ON");
         put(9, "Teleport inside OFF");
-        put(12, "Render doors closed");
-        put(14, "Render doors open");
-        put(16, "Render no doors");
-        put(20, "Number of rooms");
+        put(14, "Render doors closed");
+        put(17, "Render doors open");
+        put(19, "Render no doors");
+        put(23, "Number of rooms");
     }
 
     @Override

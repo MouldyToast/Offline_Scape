@@ -73,13 +73,13 @@ public class SettingsInterface extends Interface {
     @Override
     protected void attach() {
         put(4, "Close");
-        put(5, "Show less/more information");
-        put(10, "Search");
-        put(19, "Setting");
-        put(21, "Slider");
-        put(23, "Category");
-        put(25, "Cancel drop-down selection");
-        put(28, "Drop-down menu");
+        put(7, "Show less/more information");
+        put(11, "Search");
+        put(20, "Setting");
+        put(18, "Slider");
+        put(24, "Category");
+        put(26, "Cancel drop-down selection");
+        put(29, "Drop-down menu");
     }
 
     @Override

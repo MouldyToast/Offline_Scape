@@ -21,7 +21,7 @@ public class LobbyInterface extends Interface {
     protected void attach() {
         put(6, "Message of the week");
         put(75, "Bank pin");
-        put(81, "Click here to play");
+        put(72, "Click here to play");
     }
 
     @Override

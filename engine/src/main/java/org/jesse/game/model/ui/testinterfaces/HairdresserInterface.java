@@ -17,9 +17,9 @@ import mgi.types.config.identitykit.HairStyle;
 public class HairdresserInterface extends Interface {
     @Override
     protected void attach() {
-        put(2, "Select hair/beard style");
+        put(7, "Select hair/beard style");
         put(8, "Select hair/beard colour");
-        put(9, "Finish make-over");
+        put(10, "Finish make-over");
     }
 
     @Override

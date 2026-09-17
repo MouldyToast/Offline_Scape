@@ -34,12 +34,12 @@ public class MinimizedMinimapOrbsInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(3, "Experience Tracker");
-        put(6, "Cure Toxins");
-        put(17, "Prayer");
-        put(25, "Run");
-        put(49, "View World Map");
-        put(33, "Toggle special");
+        put(4, "Experience Tracker");  // 895:4 xp_drops
+        put(7, "Cure Toxins");         // 895:7 healthbutton
+        put(18, "Prayer");             // 895:18 prayerbutton
+        put(26, "Run");                // 895:26 runbutton
+        put(53, "View World Map");     // 895:53 worldmap
+        put(34, "Toggle special");     // 895:34 specbutton
     }
 
     @Override

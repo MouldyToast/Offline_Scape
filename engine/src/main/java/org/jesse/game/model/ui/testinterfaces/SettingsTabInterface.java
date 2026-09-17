@@ -28,15 +28,14 @@ public class SettingsTabInterface extends Interface {
         put(33, "Open bond pouch");
         put(38, "Player attack options");
         put(39, "NPC attack options");
-        put(41, "Game Client Layout");
-        put(44, "Disable zooming with scroll wheel");
-        put(93, "Mute Music");
-        put(104, "Music Volume");
-        put(107, "Mute Sound Effects");
-        put(118, "Sound Effect Volume");
-        put(122, "Mute Area Sounds");
-        put(121, "Music unlock message");
-        put(133, "Area Sound Volume");
+        put(40, "Game Client Layout");
+        put(26, "Disable zooming with scroll wheel");
+        put(110, "Mute Music");
+        put(108, "Music Volume");
+        put(124, "Mute Sound Effects");
+        put(122, "Sound Effect Volume");
+        put(138, "Mute Area Sounds");
+        put(136, "Area Sound Volume");
     }
 
     @Override

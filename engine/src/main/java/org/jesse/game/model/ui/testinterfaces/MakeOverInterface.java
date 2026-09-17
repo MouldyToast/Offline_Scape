@@ -20,9 +20,9 @@ public class MakeOverInterface extends Interface {
     @Override
     protected void attach() {
         put(2, "Select male");
-        put(6, "Select female");
-        put(9, "Select skin colour");
-        put(10, "Finish make-over");
+        put(8, "Select female");
+        put(13, "Select skin colour");
+        put(18, "Finish make-over");
     }
 
     @Override

@@ -32,24 +32,24 @@ public class SpellbookInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(10, "Crossbow Bolt Enchantments");
-        put(12, "Jewellery Enchantments");
-        put(13, "Lvl-1 Enchant");
-        put(24, "Lvl-2 Enchant");
-        put(37, "Lvl-3 Enchant");
-        put(46, "Lvl-4 Enchant");
-        put(61, "Lvl-5 Enchant");
-        put(74, "Lvl-6 Enchant");
-        put(77, "Lvl-7 Enchant");
-        put(73, "Teleport to Target");
-        put(198, "Spell filters");
-        put(198, 0, "Show combat spells");
-        put(198, 1, "Show teleport spells");
-        put(198, 2, "Show utility spells");
-        put(198, 3, "Show spells you lack the magic level to cast");
-        put(198, 4, "Show spells you lack the runes to cast");
-        put(198, 5, "Show spells you lack the requirements to cast");
-        put(198, 6, "Enable icon resizing");
+        put(13, "Crossbow Bolt Enchantments");   // [xbows_enchant]
+        put(15, "Jewellery Enchantments");        // [enchant_jewellery]
+        put(16, "Lvl-1 Enchant");                 // [enchant_1]
+        put(27, "Lvl-2 Enchant");                 // [enchant_2]
+        put(40, "Lvl-3 Enchant");                 // [enchant_3]
+        put(49, "Lvl-4 Enchant");                 // [enchant_4]
+        put(64, "Lvl-5 Enchant");                 // [enchant_5]
+        put(77, "Lvl-6 Enchant");                 // [enchant_6]
+        put(80, "Lvl-7 Enchant");                 // [enchant_7]
+        put(76, "Teleport to Target");            // [bounty_target]
+        put(206, "Spell filters");                // [filtermenu]
+        put(206, 0, "Show combat spells");
+        put(206, 1, "Show teleport spells");
+        put(206, 2, "Show utility spells");
+        put(206, 3, "Show spells you lack the magic level to cast");
+        put(206, 4, "Show spells you lack the runes to cast");
+        put(206, 5, "Show spells you lack the requirements to cast");
+        put(206, 6, "Enable icon resizing");
     }
 
     private void openJewelleryEnchantments(Player player) {

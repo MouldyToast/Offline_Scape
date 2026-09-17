@@ -21,8 +21,8 @@ public class ExperienceLampInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(25, "Text");
-        put(0, "Confirm");
+        put(26, "Text");
+        put(27, "Confirm");
     }
 
     @Override

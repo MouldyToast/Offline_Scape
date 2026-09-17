@@ -590,7 +590,7 @@ public abstract class AbstractEntity implements Entity {
         if (this instanceof Player player) {
             player.getAvatar().getExtendedInfo().setFaceAngle(this.direction);
         } else if (this instanceof NPC npc) {
-            npc.getAvatar().getExtendedInfo().faceCoord((int) preciseX, (int) preciseY);
+            npc.getAvatar().getExtendedInfo().setFaceCoordGrid((int) preciseX, (int) preciseY, false, 0);
             npc.getAvatar().updateDirection(getRoundedDirection());
         }
     }
@@ -634,7 +634,7 @@ public abstract class AbstractEntity implements Entity {
         if (this instanceof Player player && player.getAvatar() != null) {
             player.getAvatar().getExtendedInfo().setFaceAngle(this.direction);
         } else if (this instanceof NPC npc && npc.getAvatar() != null) {
-            npc.getAvatar().getExtendedInfo().faceCoord(tile.getX(), tile.getY());
+            npc.getAvatar().getExtendedInfo().setFaceCoordGrid(tile.getX(), tile.getY(), false, 0);
             npc.getAvatar().updateDirection(getRoundedDirection());
         }
     }

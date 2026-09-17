@@ -41,47 +41,46 @@ public class BankInterface extends Interface implements SwitchPlugin {
 
     @Override
     protected void attach() {
-        // Main UI buttons -Top
+        // Main UI buttons - Top (rev 240 bankmain.if3 component IDs)
         put(4, "Show tutorial");
         put(7, "Bank size tooltip 1");
-        put(8, "Group storage");
-        put(9, "Bank size");
-        put(11, "Interact with tab");
+        put(125, "Group storage");
+        put(5, "Bank size");
+        put(10, "Interact with tab");
         // Main UI buttons - Bottom
-        put(19, "Swap mode");
-        put(21, "Insert mode");
-        put(24, "Withdraw as Item");
-        put(26, "Withdraw as Note");
-        put(30, "First option amount 1");
-        put(32, "First option amount 5");
-        put(34, "First option amount 10");
-        put(36, "First option amount X");
-        put(38, "First option amount All");
+        put(23, "Swap mode");
+        put(23, 1, "Insert mode");
+        put(25, "Withdraw as Item");
+        put(25, 1, "Withdraw as Note");
+        put(29, "First option amount 1");
+        put(31, "First option amount 5");
+        put(33, "First option amount 10");
+        put(35, "First option amount X");
+        put(37, "First option amount All");
         put(40, "Always set placeholders");
         put(42, "Search");
-        put(44, "Deposit inventory");
-        put(46, "Deposit equipment");
+        put(47, "Deposit inventory");
+        put(49, "Deposit equipment");
         // Settings Menu
-        put(50, "Tab display");
-        put(56, "Toggle incinerator");
-        put(57, "Show bank tutorial");
-        put(60, "Inventory item options");
-        put(61, "Deposit inventory button");
-        put(62, "Deposit worn items button");
-        put(63, "Deposit to potion store");
-        put(64, "Release all placeholders");
-        put(65, "Deposit lock settings");
-        put(67, "Set bank filler amount to 1");
-        put(69, "Set bank filler amount to 10");
-        put(71, "Set bank filler amount to 50");
-        put(73, "Set bank filler amount to X");
-        put(75, "Set bank filler amount to All");
-        put(77, "Add bank fillers");
+        put(127, "Tab display");
+        put(130, "Toggle incinerator");
+        put(131, "Show bank tutorial");
+        put(133, "Inventory item options");
+        put(134, "Deposit inventory button");
+        put(135, "Deposit worn items button");
+        put(138, "Deposit to potion store");
+        put(140, "Release all placeholders");
+        put(141, "Deposit lock settings");
+        put(143, "Set bank filler amount to 1");
+        put(145, "Set bank filler amount to 10");
+        put(147, "Set bank filler amount to 50");
+        put(149, "Set bank filler amount to X");
+        put(151, "Set bank filler amount to All");
+        put(153, "Add bank fillers");
 
-        put(115, "Bank size tooltip 2");
-        put(13, "Interact with item");
-        put(47, "Incinerate item");
-        put(140, "Preset Manager");
+        put(8, "Bank size tooltip 2");
+        put(12, "Interact with item");
+        put(54, "Incinerate item");
         Enums.BANK_EQUIPMENT_TAB_SLOT_MAP.getValues().forEach((slot, component) -> put(component & 0xFFFF, "Unequip slot " + slot));
     }
 

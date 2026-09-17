@@ -153,11 +153,14 @@ public final class SpotAnimationDefinition implements Definitions {
         switch (opcode) {
             case 1 -> modelId = buffer.readUnsignedShort();
             case 2 -> animationId = buffer.readUnsignedShort();
+            case 3 -> modelId = buffer.readInt();
             case 4 -> widthScale = buffer.readUnsignedShort();
             case 5 -> heightScale = buffer.readUnsignedShort();
             case 6 -> orientation = buffer.readUnsignedShort();
             case 7 -> ambient = buffer.readUnsignedByte();
             case 8 -> contrast = buffer.readUnsignedByte();
+            case 9 -> buffer.readString();
+            case 10 -> { }
             case 40 -> {
                 final int length = buffer.readUnsignedByte();
                 recolorFrom = new short[length];

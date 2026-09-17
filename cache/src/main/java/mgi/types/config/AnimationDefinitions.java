@@ -368,6 +368,9 @@ public final class AnimationDefinitions implements Definitions, Cloneable {
                 animMayaStart = buffer.readUnsignedShort();
                 animMayaEnd = buffer.readUnsignedShort();
                 return;
+            case 16:
+                buffer.readByte();
+                return;
             case 17: {
                 animMayaMasks = new boolean[256];
                 final int count = buffer.readUnsignedByte();
@@ -376,8 +379,12 @@ public final class AnimationDefinitions implements Definitions, Cloneable {
                 }
                 break;
             }
+            case 18:
+                buffer.readString();
+                return;
+            case 19:
+                return;
             default:
-                // Unknown opcode – you might want to log or skip.
                 break;
         }
     }

@@ -25,12 +25,6 @@ public class BottomlessCompostBucket extends ItemPlugin implements PairedItemOnI
             final String compostName = type == 0 ? "compost" : type == 1 ? "supercompost" : "ultracompost";
             player.sendMessage("Your bottomless compost bucket contains " + uses + " x " + compostName + ".");
         });
-        bind("Fill/Check", (player, item, container, slotId) -> player.getDialogueManager().start(new Dialogue(player) {
-            @Override
-            public void buildDialogue() {
-                options(TITLE, new DialogueOption("Fill.", () -> getHandler("Fill").handle(player, item, container, slotId)), new DialogueOption("Check.", () -> getHandler("Check").handle(player, item, container, slotId)));
-            }
-        }));
         bind("Empty", (player, item, container, slotId) -> player.getDialogueManager().start(new Dialogue(player) {
             @Override
             public void buildDialogue() {

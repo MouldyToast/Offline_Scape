@@ -140,7 +140,7 @@ mockk = { module = "io.mockk:mockk", version = "1.14.5" }
 xz = { module = "org.tukaani:xz", version = "1.10" }
 googleauth = { module = "com.warrenstrange:googleauth", version = "1.5.0" }
 sqlite = { module = "org.xerial:sqlite-jdbc", version = "3.50.3.0" }
-rsprot-osrs228-api = { module = "net.rsprot:osrs-228-api", version = "1.0.0-ALPHA-20250811" }
+rsprot-osrs240-api = { module = "net.rsprot:osrs-240-api", version = "1.0.0-ALPHA-20260912" }
 runelite-api = { module = "net.runelite:runelite-api", version.ref = "runelite" }
 runelite-cache = { module = "net.runelite:cache", version.ref = "runelite" }
 

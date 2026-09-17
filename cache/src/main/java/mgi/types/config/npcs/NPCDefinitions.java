@@ -243,6 +243,14 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                 }
                 return;
             }
+            case 61: {
+                final int size = buffer.readUnsignedByte();
+                models = new int[size];
+                for (int i = 0; i < size; i++) {
+                    models[i] = buffer.readInt();
+                }
+                return;
+            }
             case 74: stats[0] = buffer.readUnsignedShort(); return;
             case 75: stats[1] = buffer.readUnsignedShort(); return;
             case 76: stats[2] = buffer.readUnsignedShort(); return;
@@ -323,7 +331,7 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                 clickable = false;
                 return;
             case 111:
-                isFollower = true;
+                buffer.readUnsignedByte();
                 return;
             case 114:
                 field2039 = buffer.readUnsignedShort();
@@ -373,14 +381,86 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                     field2057 = -1;
                 }
                 return;
+            case 62: {
+                final int count = buffer.readUnsignedByte();
+                for (int i = 0; i < count; i++) {
+                    buffer.readInt();
+                }
+                return;
+            }
+            case 122:
+            case 123:
+            case 129:
+            case 130:
+            case 145:
+                return;
             case 124:
                 height = buffer.readUnsignedShort();
                 return;
+            case 126:
+                buffer.readUnsignedShort();
+                return;
+            case 146:
+                buffer.readUnsignedShort();
+                return;
+            case 147:
+                return;
+            case 148:
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedByte();
+                return;
+            case 149:
+                buffer.readUnsignedByte();
+                return;
+            case 150:
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                return;
+            case 151:
+                buffer.readUnsignedByte();
+                return;
+            case 152: {
+                buffer.readUnsignedShort();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedByte();
+                final int count = buffer.readUnsignedByte();
+                for (int i = 0; i < count; i++) {
+                    buffer.readUnsignedShort();
+                }
+                return;
+            }
             case 249:
                 parameters = buffer.readParameters();
                 return;
-            //default:
-            //    throw new RuntimeException("UNKNOWN NPC OPCODE: " + opcode);
+            case 251: {
+                buffer.readUnsignedByte();
+                buffer.readUnsignedByte();
+                buffer.readString();
+                return;
+            }
+            case 252: {
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedShort();
+                buffer.readInt();
+                buffer.readInt();
+                buffer.readString();
+                return;
+            }
+            case 253: {
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedShort();
+                buffer.readInt();
+                buffer.readInt();
+                buffer.readString();
+                return;
+            }
         }
     }
 

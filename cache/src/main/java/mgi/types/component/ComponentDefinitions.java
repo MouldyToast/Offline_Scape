@@ -612,10 +612,7 @@ public class ComponentDefinitions implements Definitions, Cloneable {
 		}
 		if (type == 6) {
 			modelType = 1;
-			modelId = buffer.readUnsignedShort();
-			if (modelId == 65535) {
-				modelId = -1;
-			}
+			modelId = buffer.readInt();
 			offsetX2d = buffer.readShort();
 			offsetY2d = buffer.readShort();
 			rotationX = buffer.readUnsignedShort();

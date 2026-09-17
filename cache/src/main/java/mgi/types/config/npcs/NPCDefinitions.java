@@ -243,6 +243,14 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                 }
                 return;
             }
+            case 61: {
+                final int size = buffer.readUnsignedByte();
+                models = new int[size];
+                for (int i = 0; i < size; i++) {
+                    models[i] = buffer.readInt();
+                }
+                return;
+            }
             case 74: stats[0] = buffer.readUnsignedShort(); return;
             case 75: stats[1] = buffer.readUnsignedShort(); return;
             case 76: stats[2] = buffer.readUnsignedShort(); return;
@@ -323,7 +331,7 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                 clickable = false;
                 return;
             case 111:
-                isFollower = true;
+                buffer.readUnsignedByte();
                 return;
             case 114:
                 field2039 = buffer.readUnsignedShort();
@@ -397,6 +405,34 @@ public final class NPCDefinitions implements Definitions, Cloneable, Transmogrif
                 return;
             case 147:
                 return;
+            case 148:
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedByte();
+                return;
+            case 149:
+                buffer.readUnsignedByte();
+                return;
+            case 150:
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedShort();
+                return;
+            case 151:
+                buffer.readUnsignedByte();
+                return;
+            case 152: {
+                buffer.readUnsignedShort();
+                buffer.readUnsignedShort();
+                buffer.readUnsignedByte();
+                buffer.readUnsignedByte();
+                final int count = buffer.readUnsignedByte();
+                for (int i = 0; i < count; i++) {
+                    buffer.readUnsignedShort();
+                }
+                return;
+            }
             case 249:
                 parameters = buffer.readParameters();
                 return;

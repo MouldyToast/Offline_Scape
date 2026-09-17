@@ -127,6 +127,14 @@ public final class IdentityKitDefinitions implements Definitions {
             case 3:
                 selectable = false;
                 return;
+            case 5:
+                modelIds = new int[buffer.readUnsignedByte()];
+                for (int i = 0; i < modelIds.length; i++) {
+                    int id = buffer.readInt();
+                    modelIds[i] = id;
+                    modelIdToDefinitions.put(id, this);
+                }
+                return;
             case 40: {
                 final int length = buffer.readUnsignedByte();
                 originalColours = new short[length];
@@ -153,6 +161,14 @@ public final class IdentityKitDefinitions implements Definitions {
             case 63:
             case 64:
                 headModels[opcode - 60] = buffer.readUnsignedShort();
+                return;
+            case 65:
+            case 66:
+            case 67:
+            case 68:
+            case 69:
+            case 70:
+                buffer.readUnsignedShort();
                 return;
         }
     }

@@ -25,6 +25,7 @@ object ItemDefinitionsDecoding {
             14 -> wearPos2 = buffer.readByte().toInt()
             15 -> Unit
             16 -> isMembers = true
+            44 -> inventoryModelId = buffer.readInt()
             23 -> {
                 primaryMaleModel = buffer.readUnsignedShort()
                 maleOffset = buffer.readUnsignedByte()

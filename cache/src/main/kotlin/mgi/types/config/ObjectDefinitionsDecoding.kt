@@ -19,6 +19,27 @@ object ObjectDefinitionsDecoding {
                 }
             }
             2 -> name = buffer.readString()
+            6 -> {
+                val size = buffer.readUnsignedByte()
+                if (size > 0) {
+                    types = IntArray(size)
+                    models = IntArray(size)
+                    for (i in 0 until size) {
+                        models[i] = buffer.readInt()
+                        types[i] = buffer.readUnsignedByte()
+                    }
+                }
+            }
+            7 -> {
+                val size = buffer.readUnsignedByte()
+                if (size > 0) {
+                    types = null
+                    models = IntArray(size)
+                    for (i in 0 until size) {
+                        models[i] = buffer.readInt()
+                    }
+                }
+            }
             5 -> {
                 val size = buffer.readUnsignedByte()
                 if(size > 0) {
@@ -117,6 +138,38 @@ object ObjectDefinitionsDecoding {
             82 -> mapIconId = buffer.readUnsignedShort()
             89 -> randomizeAnimStart = true
             90 -> deferAnimationStart = true
+            91 -> buffer.readUnsignedByte()
+            93 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+            }
+            94 -> Unit
+            95 -> buffer.readUnsignedByte()
+            96 -> buffer.readUnsignedByte()
+            100 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedByte()
+                buffer.readString()
+            }
+            101 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readInt()
+                buffer.readInt()
+                buffer.readString()
+            }
+            102 -> {
+                buffer.readUnsignedByte()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readUnsignedShort()
+                buffer.readInt()
+                buffer.readInt()
+                buffer.readString()
+            }
             249 -> buffer.readParameters()
         }
     }

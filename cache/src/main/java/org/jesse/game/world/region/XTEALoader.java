@@ -2,6 +2,10 @@ package org.jesse.game.world.region;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.jesse.game.world.DefaultGson;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -37,11 +41,42 @@ public final class XTEALoader {
 			return;
 		}
 		try (BufferedReader br = Files.newBufferedReader(filePath, StandardCharsets.UTF_8)) {
-			Gson gson = DefaultGson.getGson();
-			final XTEA[] xteas = gson.fromJson(br, XTEA[].class);
-			for (final XTEA xtea : xteas) {
-				if (xtea == null) continue;
-				regionToXTEA.put(xtea.getMapsquare(), xtea);
+			final JsonArray array = JsonParser.parseReader(br).getAsJsonArray();
+			for (final JsonElement element : array) {
+				final JsonObject obj = element.getAsJsonObject();
+				int region = -1;
+				int[] keys = null;
+
+				// Support format: {"mapsquare": N, "key": [a,b,c,d]}
+				if (obj.has("mapsquare")) {
+					region = obj.get("mapsquare").getAsInt();
+				}
+				// Support format: {"region": N, "keys": [a,b,c,d]} (RuneLite)
+				else if (obj.has("region")) {
+					region = obj.get("region").getAsInt();
+				}
+
+				if (obj.has("key")) {
+					final JsonArray keyArray = obj.getAsJsonArray("key");
+					keys = new int[] {
+						keyArray.get(0).getAsInt(),
+						keyArray.get(1).getAsInt(),
+						keyArray.get(2).getAsInt(),
+						keyArray.get(3).getAsInt()
+					};
+				} else if (obj.has("keys")) {
+					final JsonArray keyArray = obj.getAsJsonArray("keys");
+					keys = new int[] {
+						keyArray.get(0).getAsInt(),
+						keyArray.get(1).getAsInt(),
+						keyArray.get(2).getAsInt(),
+						keyArray.get(3).getAsInt()
+					};
+				}
+
+				if (region != -1 && keys != null) {
+					regionToXTEA.put(region, new XTEA(region, keys));
+				}
 			}
 			log.info("Loaded {} XTEA keys from {}.", regionToXTEA.size(), path);
 		} catch (IOException e) {

@@ -146,10 +146,7 @@ public final class StringEnumLC extends AbstractEnum<String> {
      * @throws IllegalArgumentException if the enum contains overlapping values.
      */
     public Object2IntMap<String> getReverseValues() {
-        if (reverseStringMap == null) {
-            throw new IllegalArgumentException("Enum contains overlapping values: " + id);
-        }
-        return reverseStringMap;
+        return reverseStringMap != null ? reverseStringMap : Object2IntMaps.emptyMap();
     }
 
     /**

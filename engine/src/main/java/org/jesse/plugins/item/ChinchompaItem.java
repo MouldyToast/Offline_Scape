@@ -11,7 +11,7 @@ import org.jesse.game.world.entity.player.dialogue.Dialogue;
 public class ChinchompaItem extends ItemPlugin {
     @Override
     public void handle() {
-        bind("Release", (player, item, container, slotId) -> {
+        bind("Drop", (player, item, container, slotId) -> {
             if (item.getAmount() == 1) {
                 player.getInventory().deleteItem(slotId, item);
                 player.sendFilteredMessage("You release the Chinchompa and it bounces away.");

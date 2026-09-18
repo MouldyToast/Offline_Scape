@@ -4089,9 +4089,9 @@ public class Player extends AbstractEntity implements UsernameProvider {
         varManager.refreshDefaults();
 
         interfaceHandler.setResizable(playerInformation.isResizable());
-        interfaceHandler.sendGameFrame();
-        // Rev 240: initialize camera zoom range (replaces [clientscript,login] trigger)
+        packetDispatcher.resetCamera();
         packetDispatcher.sendClientScript(605, 128, 896, 128, 896);
+        interfaceHandler.sendGameFrame();
 
         isLoggedIn = true;
 
@@ -4218,7 +4218,6 @@ public class Player extends AbstractEntity implements UsernameProvider {
         else {
             varManager.sendVar(3504, 1);
         }
-        packetDispatcher.resetCamera();
         // script for clearing pm history, synching all vars, send it tick later so server finishes transmitting varps and it synches, fixes roof and stuff
         WorldTasksManager.schedule(() -> packetDispatcher.sendClientScript(876, (int) WorldThread.getCurrentCycle(), 0, getName(), "REGULAR"));
 

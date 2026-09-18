@@ -27,6 +27,7 @@ import net.rsprot.protocol.game.incoming.buttons.IfButtonT
 import net.rsprot.protocol.game.incoming.buttons.IfSubOp
 import net.rsprot.protocol.game.incoming.misc.user.CloseModal
 import net.rsprot.protocol.game.incoming.resumed.ResumePCountDialog
+import net.rsprot.protocol.game.incoming.resumed.ResumePCountDialogLong
 import net.rsprot.protocol.game.incoming.resumed.ResumePNameDialog
 import net.rsprot.protocol.game.incoming.resumed.ResumePObjDialog
 import net.rsprot.protocol.game.incoming.resumed.ResumePStringDialog
@@ -210,6 +211,18 @@ internal fun PacketConsumer.resumePCount() {
     addListener<ResumePCountDialog> {
         val player = player
         val value = it.count
+
+        val input = player.temporaryAttributes["interfaceInput"]
+        if (input is CountDialogue) {
+            input.execute(player, value)
+        }
+    }
+}
+
+internal fun PacketConsumer.resumePCountLong() {
+    addListener<ResumePCountDialogLong> {
+        val player = player
+        val value = it.count.toInt()
 
         val input = player.temporaryAttributes["interfaceInput"]
         if (input is CountDialogue) {

@@ -87,6 +87,28 @@ class GameMessageConsumers {
             }
         }
 
+        builder.opWorldEntity()
+        builder.opWorldEntity6()
+        builder.opWorldEntityT()
+
+        builder.clanChannelKickUser()
+        builder.clanChannelFullRequest()
+        builder.clanSettingsFullRequest()
+        builder.affinedClanSettingsAddBannedFromChannel()
+        builder.affinedClanSettingsSetMutedFromChannel()
+
+        builder.resumePCountLong()
+
+        builder.setHeading()
+        builder.ifCrmViewOp()
+        builder.hiscoreRequest()
+
+        builder.connectionTelemetry()
+        builder.membershipPromotionEligibility()
+        builder.reflectionCheckReply()
+        builder.detectModifiedClient()
+        builder.rSevenStatus()
+
         builder.noTimeout()
         return builder.build()
     }

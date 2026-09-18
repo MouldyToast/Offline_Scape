@@ -18,8 +18,8 @@ public class SidePanelsResizablePaneInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(12, "helper_cox");
-        put(20, "Gravestone info");
+        put(4, "helper_cox");
+        put(21, "Gravestone info");
         put(38, "Open Game Noticeboard");
         put(53, "Character Summary");
         put(57, "Toggle prayer filtering");

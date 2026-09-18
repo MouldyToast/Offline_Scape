@@ -7,11 +7,6 @@ import mgi.types.config.npcs.NPCDefinitions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by Arham 4 on 2/15/2016.
- * <p>
- * Represents a singular message with an NPC talking.
- */
 public class NPCMessage implements Message {
 	private static final Logger logger = LoggerFactory.getLogger(NPCMessage.class);
 
@@ -70,6 +65,7 @@ public class NPCMessage implements Message {
 		}
 		final NPCDefinitions transmogrifiedDefs = NPCDefinitions.get(player.getTransmogrifiedId(baseDefs, npcId));
 
+		Message.setupChatModal(player, 0);
 		player.getInterfaceHandler().sendInterface(InterfacePosition.DIALOGUE, INTERFACE_ID);
 		player.getPacketDispatcher().sendComponentSettings(INTERFACE_ID, CONTINUE_COMPONENT, -1, -1, AccessMask.CONTINUE);
 		player.getPacketDispatcher().sendComponentNPCHead(INTERFACE_ID, NPC_HEAD_COMPONENT, npcId);
@@ -80,7 +76,7 @@ public class NPCMessage implements Message {
 			player.getPacketDispatcher().sendComponentVisibility(INTERFACE_ID, CONTINUE_COMPONENT, true);
 		}
 		player.getPacketDispatcher().sendComponentText(INTERFACE_ID, TEXT_COMPONENT, message);
-		player.getPacketDispatcher().sendClientScript(600, 1, 1, 16, (INTERFACE_ID << 16) | TEXT_COMPONENT);
+		player.getPacketDispatcher().sendClientScript(600, 1, 1, Message.chatLineHeight(message), (INTERFACE_ID << 16) | TEXT_COMPONENT);
 
 		player.getPacketDispatcher().sendComponentAnimation(INTERFACE_ID, NPC_HEAD_COMPONENT, expression.getId());
 		final String toString = expression.toString();

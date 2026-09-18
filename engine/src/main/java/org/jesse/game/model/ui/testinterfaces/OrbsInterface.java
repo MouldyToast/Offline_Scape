@@ -33,14 +33,14 @@ public class OrbsInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(3, "Daily activity");
-        put(5, "Experience Tracker");
-        put(8, "Cure Toxins");
-        put(19, "Prayer");
-        put(27, "Run");
-        put(35, "Toggle special");
-        put(45, "Open Store");
-        put(53, "View World Map");
+        put(4, "Daily activity");
+        put(6, "Experience Tracker");
+        put(9, "Cure Toxins");
+        put(20, "Prayer");
+        put(28, "Run");
+        put(36, "Toggle special");
+        put(46, "Open Store");
+        put(55, "View World Map");
     }
 
     @Override

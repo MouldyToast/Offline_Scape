@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     implementation(libs.apache.commons.lang3)
-    implementation(libs.rsprot.osrs228.api)
+    implementation(libs.rsprot.osrs240.api)
     compileOnly(projects.engine)
     implementation(projects.scripts.npc.actions)
     implementation(projects.scripts.npc.spawns)

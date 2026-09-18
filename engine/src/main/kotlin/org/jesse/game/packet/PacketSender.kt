@@ -15,21 +15,21 @@ import io.netty.buffer.ByteBuf
 import io.netty.util.ReferenceCountUtil
 import io.netty.util.ReferenceCounted
 import mgi.types.component.ComponentDefinitions
-import net.rsprot.crypto.xtea.XteaKey
+import net.rsprot.protocol.internal.game.outgoing.info.CoordGrid
 import net.rsprot.protocol.common.game.outgoing.inv.InventoryObject
 import net.rsprot.protocol.game.outgoing.GameServerProtCategory
-import net.rsprot.protocol.game.outgoing.camera.CamLookAt
-import net.rsprot.protocol.game.outgoing.camera.CamLookAtEasedCoord
+import net.rsprot.protocol.game.outgoing.camera.CamLookAtV3
+import net.rsprot.protocol.game.outgoing.camera.CamRotateToCoordinateV1
 import net.rsprot.protocol.game.outgoing.camera.CamMode
-import net.rsprot.protocol.game.outgoing.camera.CamMoveTo
-import net.rsprot.protocol.game.outgoing.camera.CamMoveToArc
-import net.rsprot.protocol.game.outgoing.camera.CamMoveToCycles
+import net.rsprot.protocol.game.outgoing.camera.CamMoveToV3
+import net.rsprot.protocol.game.outgoing.camera.CamMoveToArcV3
+import net.rsprot.protocol.game.outgoing.camera.CamMoveToCyclesV3
 import net.rsprot.protocol.game.outgoing.camera.CamReset
 import net.rsprot.protocol.game.outgoing.camera.CamRotateBy
 import net.rsprot.protocol.game.outgoing.camera.CamRotateTo
 import net.rsprot.protocol.game.outgoing.camera.CamShake
 import net.rsprot.protocol.game.outgoing.camera.CamSmoothReset
-import net.rsprot.protocol.game.outgoing.camera.CamTargetV2
+import net.rsprot.protocol.game.outgoing.camera.CamTargetV4
 import net.rsprot.protocol.game.outgoing.camera.OculusSync
 import net.rsprot.protocol.game.outgoing.camera.*
 import net.rsprot.protocol.game.outgoing.camera.util.CameraEaseFunction
@@ -64,13 +64,13 @@ import net.rsprot.protocol.game.outgoing.interfaces.IfCloseSub
 import net.rsprot.protocol.game.outgoing.interfaces.IfMoveSub
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenSub
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenTop
-import net.rsprot.protocol.game.outgoing.interfaces.IfResync
+import net.rsprot.protocol.game.outgoing.interfaces.IfResyncV2
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetAngle
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetAnim
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetColour
-import net.rsprot.protocol.game.outgoing.interfaces.IfSetEvents
+import net.rsprot.protocol.game.outgoing.interfaces.IfSetEventsV2
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetHide
-import net.rsprot.protocol.game.outgoing.interfaces.IfSetModel
+import net.rsprot.protocol.game.outgoing.interfaces.IfSetModelV2
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetNpcHead
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetNpcHeadActive
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetObject
@@ -90,12 +90,11 @@ import net.rsprot.protocol.game.outgoing.inv.UpdateInvStopTransmit
 import net.rsprot.protocol.game.outgoing.logout.Logout
 import net.rsprot.protocol.game.outgoing.logout.LogoutTransfer
 import net.rsprot.protocol.game.outgoing.logout.LogoutWithReason
-import net.rsprot.protocol.game.outgoing.map.RebuildLogin
-import net.rsprot.protocol.game.outgoing.map.RebuildNormal
-import net.rsprot.protocol.game.outgoing.map.RebuildRegion
-import net.rsprot.protocol.game.outgoing.map.RebuildWorldEntity
+import net.rsprot.protocol.game.outgoing.map.RebuildLoginV2
+import net.rsprot.protocol.game.outgoing.map.RebuildNormalV2
+import net.rsprot.protocol.game.outgoing.map.RebuildRegionV2
+import net.rsprot.protocol.game.outgoing.map.RebuildWorldEntityV4
 import net.rsprot.protocol.game.outgoing.map.util.RebuildRegionZone
-import net.rsprot.protocol.game.outgoing.map.util.XteaProvider
 import net.rsprot.protocol.game.outgoing.misc.client.*
 import net.rsprot.protocol.game.outgoing.misc.client.HideLocOps
 import net.rsprot.protocol.game.outgoing.misc.client.HideNpcOps
@@ -114,14 +113,14 @@ import net.rsprot.protocol.game.outgoing.misc.client.ServerTickEnd
 import net.rsprot.protocol.game.outgoing.misc.client.SetHeatmapEnabled
 import net.rsprot.protocol.game.outgoing.misc.client.SetInteractionMode
 import net.rsprot.protocol.game.outgoing.misc.client.SiteSettings
-import net.rsprot.protocol.game.outgoing.misc.client.UpdateRebootTimer
+import net.rsprot.protocol.game.outgoing.misc.client.UpdateRebootTimerV2
 import net.rsprot.protocol.game.outgoing.misc.client.UpdateUid192
 import net.rsprot.protocol.game.outgoing.misc.client.UrlOpen
 import net.rsprot.protocol.game.outgoing.misc.player.ChatFilterSettings
 import net.rsprot.protocol.game.outgoing.misc.player.ChatFilterSettingsPrivateChat
 import net.rsprot.protocol.game.outgoing.misc.player.MessageGame
 import net.rsprot.protocol.game.outgoing.misc.player.RunClientScript
-import net.rsprot.protocol.game.outgoing.misc.player.SetMapFlag
+import net.rsprot.protocol.game.outgoing.misc.player.SetMapFlagV2
 import net.rsprot.protocol.game.outgoing.misc.player.SetPlayerOp
 import net.rsprot.protocol.game.outgoing.misc.player.TriggerOnDialogAbort
 import net.rsprot.protocol.game.outgoing.misc.player.UpdateRunEnergy
@@ -151,15 +150,14 @@ import net.rsprot.protocol.game.outgoing.specific.MapAnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcAnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcHeadIconSpecific
 import net.rsprot.protocol.game.outgoing.specific.NpcSpotAnimSpecific
-import net.rsprot.protocol.game.outgoing.specific.PlayerAnimSpecific
+import net.rsprot.protocol.game.outgoing.specific.AnimSpecific
 import net.rsprot.protocol.game.outgoing.specific.PlayerSpotAnimSpecific
-import net.rsprot.protocol.game.outgoing.specific.ProjAnimSpecificV3
+import net.rsprot.protocol.game.outgoing.specific.ProjAnimSpecificV4
 import net.rsprot.protocol.game.outgoing.varp.VarpLarge
 import net.rsprot.protocol.game.outgoing.varp.VarpReset
 import net.rsprot.protocol.game.outgoing.varp.VarpSmall
 import net.rsprot.protocol.game.outgoing.varp.VarpSync
-import net.rsprot.protocol.game.outgoing.worldentity.ClearEntities
-import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorld
+import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorldV2
 import net.rsprot.protocol.game.outgoing.zone.header.UpdateZoneFullFollows
 import net.rsprot.protocol.game.outgoing.zone.header.UpdateZonePartialEnclosed
 import net.rsprot.protocol.game.outgoing.zone.header.UpdateZonePartialFollows
@@ -170,7 +168,7 @@ import net.rsprot.protocol.game.outgoing.zone.payload.LocAnim
 import net.rsprot.protocol.game.outgoing.zone.payload.LocDel
 import net.rsprot.protocol.game.outgoing.zone.payload.LocMerge
 import net.rsprot.protocol.game.outgoing.zone.payload.MapAnim
-import net.rsprot.protocol.game.outgoing.zone.payload.MapProjAnim
+import net.rsprot.protocol.game.outgoing.zone.payload.MapProjAnimV2
 import net.rsprot.protocol.game.outgoing.zone.payload.ObjAdd
 import net.rsprot.protocol.game.outgoing.zone.payload.ObjCount
 import net.rsprot.protocol.game.outgoing.zone.payload.ObjCustomise
@@ -186,13 +184,9 @@ import java.util.concurrent.ThreadLocalRandom
 class PacketSender(private val player: Player) {
 
     companion object {
-        private val XTEA_PROVIDER: XteaProvider = XteaProvider { mapsquareId ->
-            XteaKey(XTEALoader.getXTEAs(mapsquareId))
-        }
-
-        private val REBUILD_REGION_ZONE_PROVIDER = object : RebuildRegion.RebuildRegionZoneProvider {
+        private val REBUILD_REGION_ZONE_PROVIDER = object : RebuildRegionV2.RebuildRegionZoneProvider {
             override fun provide(zoneX: Int, zoneZ: Int, level: Int): RebuildRegionZone? {
-                val mapsquareId = this.getMapsquareId(zoneX, zoneZ)
+                val mapsquareId = (zoneX shr 3 shl 8) + (zoneZ shr 3)
                 val region: Region? = World.regions.get(mapsquareId)
                 var displayedChunkX = zoneX
                 var displayedChunkY = zoneZ
@@ -211,13 +205,11 @@ class PacketSender(private val player: Player) {
                 if (displayedChunkX == 0 && displayedChunkY == 0) {
                     return null
                 }
-                val displayedRegionId = (displayedChunkX shr 3 shl 8) + (displayedChunkY shr 3)
                 return RebuildRegionZone(
                     displayedChunkX,
                     displayedChunkY,
                     displayedPlane,
                     rotation,
-                    XteaKey(XTEALoader.getXTEAs(displayedRegionId))
                 )
             }
         }
@@ -255,12 +247,13 @@ class PacketSender(private val player: Player) {
         acceleration: Int,
     ) {
         send {
-            CamLookAt(
+            CamLookAtV3(
                 xInBuildArea,
                 yInBuildArea,
                 height,
                 speed,
                 acceleration,
+                false,
             )
         }
     }
@@ -356,7 +349,7 @@ class PacketSender(private val player: Player) {
         function: Int,
     ) {
         send {
-            CamLookAtEasedCoord(
+            CamRotateToCoordinateV1(
                 xInBuildArea,
                 yInBuildArea,
                 height,
@@ -403,12 +396,13 @@ class PacketSender(private val player: Player) {
         acceleration: Int,
     ) {
         send {
-            CamMoveTo(
+            CamMoveToV3(
                 xInBuildArea,
                 yInBuildArea,
                 height,
                 speed,
                 acceleration,
+                false,
             )
         }
     }
@@ -438,13 +432,14 @@ class PacketSender(private val player: Player) {
         function: CameraEaseFunction,
     ) {
         send {
-            CamMoveToCycles(
+            CamMoveToCyclesV3(
                 xInBuildArea,
                 yInBuildArea,
                 height,
                 duration,
                 maintainFixedAltitude,
                 function.id,
+                false,
             )
         }
     }
@@ -487,7 +482,7 @@ class PacketSender(private val player: Player) {
         function: Int,
     ) {
         send {
-            CamMoveToArc(
+            CamMoveToArcV3(
                 centerXInBuildArea,
                 centerYInBuildArea,
                 destinationXInBuildArea,
@@ -496,6 +491,7 @@ class PacketSender(private val player: Player) {
                 duration,
                 maintainFixedAltitude,
                 function,
+                false,
             )
         }
     }
@@ -614,20 +610,18 @@ class PacketSender(private val player: Player) {
      * Player info packet is used to synchronize the state of all players in the world.
      */
     internal fun playerInfo(info: PlayerInfo) {
-        sendOrLogout {
-            info.toPacket()
-        }
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.playerInfo.getOrNull() ?: return
+        sendOrLogout { packet }
     }
 
-    internal fun clearEntities() {
-        send {
-            ClearEntities
-        }
-    }
+
 
     internal fun worldEntityInfo(info: WorldEntityInfo) {
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.worldEntityInfo.getOrNull() ?: return
         sendOrLogout {
-            info.toPacket()
+            packet
         }
     }
 
@@ -637,11 +631,10 @@ class PacketSender(private val player: Player) {
         baseZ: Int,
         sizeX: Int,
         sizeZ: Int,
-        zoneProvider: RebuildWorldEntity.RebuildWorldEntityZoneProvider,
+        zoneProvider: RebuildWorldEntityV4.RebuildWorldEntityZoneProvider,
     ) {
         send {
-            RebuildWorldEntity(
-                index,
+            RebuildWorldEntityV4(
                 baseX,
                 baseZ,
                 sizeX,
@@ -655,9 +648,9 @@ class PacketSender(private val player: Player) {
         worldId: Int,
         info: NpcInfo,
     ) {
-        sendOrLogout {
-            info.toPacket(worldId)
-        }
+        val packets = player.infos?.getPackets() ?: return
+        val packet = packets.rootWorldInfoPackets.npcInfo.getOrNull() ?: return
+        sendOrLogout { packet }
     }
 
     /**
@@ -693,13 +686,13 @@ class PacketSender(private val player: Player) {
      */
     fun playerCamTarget(index: Int) {
         send {
-            CamTargetV2(CamTargetV2.PlayerCamTarget(index))
+            CamTargetV4(CamTargetV4.PlayerCamTarget(index))
         }
     }
 
     fun highPriorityPlayerCamTarget(index: Int) {
         sendWithPriority(true) {
-            CamTargetV2(CamTargetV2.PlayerCamTarget(index))
+            CamTargetV4(CamTargetV4.PlayerCamTarget(index))
         }
     }
 
@@ -711,7 +704,7 @@ class PacketSender(private val player: Player) {
      */
     fun npcCamTarget(index: Int) {
         send {
-            CamTargetV2(CamTargetV2.NpcCamTarget(index))
+            CamTargetV4(CamTargetV4.NpcCamTarget(index))
         }
     }
 
@@ -728,11 +721,11 @@ class PacketSender(private val player: Player) {
         level: Int,
     ) {
         send {
-            SetActiveWorld(
+            SetActiveWorldV2(
                 if (worldId == -1) {
-                    SetActiveWorld.RootWorldType(level)
+                    SetActiveWorldV2.RootWorldType(level)
                 } else {
-                    SetActiveWorld.DynamicWorldType(worldId, level)
+                    SetActiveWorldV2.DynamicWorldType(worldId, level)
                 },
             )
         }
@@ -752,7 +745,7 @@ class PacketSender(private val player: Player) {
         cameraLockedPlayerIndex: Int,
     ) {
         sendWithPriority(false) {
-            CamTargetV2(CamTargetV2.WorldEntityTarget(index, cameraLockedPlayerIndex))
+            CamTargetV4(CamTargetV4.WorldEntityTarget(index))
         }
     }
 
@@ -845,11 +838,11 @@ class PacketSender(private val player: Player) {
      */
     internal fun ifResync(
         topLevelInterface: Int,
-        subInterfaces: List<IfResync.SubInterfaceMessage>,
-        events: List<IfResync.InterfaceEventsMessage>,
+        subInterfaces: List<IfResyncV2.SubInterfaceMessage>,
+        events: List<IfResyncV2.InterfaceEventsMessage>,
     ) {
         send {
-            IfResync(
+            IfResyncV2(
                 topLevelInterface,
                 subInterfaces,
                 events,
@@ -857,7 +850,7 @@ class PacketSender(private val player: Player) {
         }
     }
 
-    internal fun ifResync(message: IfResync) {
+    internal fun ifResync(message: IfResyncV2) {
         send {
             message
         }
@@ -1108,11 +1101,12 @@ class PacketSender(private val player: Player) {
 
         send {
             val packet =
-                IfSetEvents(
+                IfSetEventsV2(
                     interfaceId,
                     componentId,
                     start,
                     end,
+                    events,
                     events,
                 )
             /*player.appendIfSetEvent(packet)*/ // TODO: Implement this
@@ -1120,7 +1114,7 @@ class PacketSender(private val player: Player) {
         }
     }
 
-    fun ifSetEvents(event: IfSetEvents) {
+    fun ifSetEvents(event: IfSetEventsV2) {
         send {
             event
         }
@@ -1179,7 +1173,7 @@ class PacketSender(private val player: Player) {
 //        }
 
         send {
-            IfSetModel(
+            IfSetModelV2(
                 interfaceId,
                 componentId,
                 model,
@@ -1869,11 +1863,10 @@ class PacketSender(private val player: Player) {
     ) {
         syncBuildArea()
         send {
-            RebuildLogin(
+            RebuildLoginV2(
                 zoneX,
                 zoneY,
                 worldArea,
-                XTEA_PROVIDER,
                 playerInfo,
             )
         }
@@ -1896,11 +1889,10 @@ class PacketSender(private val player: Player) {
 
         syncBuildArea()
         send {
-            RebuildNormal(
+            RebuildNormalV2(
                 zoneX,
                 zoneY,
                 worldArea,
-                XTEA_PROVIDER,
             )
         }
         setActiveWorld(player.worldEntityId, player.position.plane)
@@ -1927,7 +1919,7 @@ class PacketSender(private val player: Player) {
     ) {
         syncBuildArea()
         send {
-            RebuildRegion(
+            RebuildRegionV2(
                 zoneX,
                 zoneY,
                 reload,
@@ -1948,13 +1940,7 @@ class PacketSender(private val player: Player) {
         val rsPlayerInfo = player.playerInfo
         val rsProtNpcInfo = player.npcInfo
 
-        rsPlayerInfo?.updateBuildArea(worldId, buildArea)
-        rsProtNpcInfo?.updateBuildArea(worldId, buildArea)
-
-        val rsProtWorldEntityInfo = player.worldEntityInfo
-
-        rsProtWorldEntityInfo?.updateBuildArea(buildArea)
-        rsProtWorldEntityInfo?.resetRenderCoord()
+        player.infos?.updateRootBuildArea(buildArea)
     }
 
     /**
@@ -2180,7 +2166,7 @@ class PacketSender(private val player: Player) {
      */
     fun updateRebootTimer(gameCycles: Int) {
         send {
-            UpdateRebootTimer(gameCycles)
+            UpdateRebootTimerV2(gameCycles, UpdateRebootTimerV2.IgnoreUpdateMessage)
         }
     }
 
@@ -2398,7 +2384,7 @@ class PacketSender(private val player: Player) {
         yInBuildArea: Int,
     ) {
         send {
-            SetMapFlag(
+            SetMapFlagV2(
                 xInBuildArea,
                 yInBuildArea,
             )
@@ -2929,7 +2915,7 @@ class PacketSender(private val player: Player) {
         delay: Int,
     ) {
         send {
-            PlayerAnimSpecific(
+            AnimSpecific(
                 id,
                 delay,
             )
@@ -3018,19 +3004,26 @@ class PacketSender(private val player: Player) {
         deltaZ: Int,
     ) {
         send {
-            ProjAnimSpecificV3(
+            val bx = ((player.position.x shr 3) - 6).coerceAtLeast(0) shl 3
+            val bz = ((player.position.y shr 3) - 6).coerceAtLeast(0) shl 3
+            val startX = bx + xInBuildArea
+            val startZ = bz + yInBuildArea
+            ProjAnimSpecificV4(
                 id,
-                startHeight / 4,
-                endHeight / 4,
+                startHeight,
+                endHeight,
                 startTime,
                 endTime,
                 angle,
                 progress,
+                startX,
+                startZ,
+                player.position.plane,
+                0,
+                startX + deltaX,
+                startZ + deltaZ,
+                player.position.plane,
                 targetIndex,
-                xInBuildArea,
-                yInBuildArea,
-                deltaX,
-                deltaZ,
             )
         }
     }
@@ -3491,7 +3484,11 @@ class PacketSender(private val player: Player) {
         deltaZ: Int,
     ) {
         send {
-            MapProjAnim(
+            val zoneX = player.position.x shr 3
+            val zoneZ = player.position.y shr 3
+            val endX = zoneX * 8 + xInZone + deltaX
+            val endZ = zoneZ * 8 + yInZone + deltaZ
+            MapProjAnimV2(
                 id,
                 startHeight / 4,
                 endHeight / 4,
@@ -3503,8 +3500,9 @@ class PacketSender(private val player: Player) {
                 targetIndex,
                 xInZone,
                 yInZone,
-                deltaX,
-                deltaZ,
+                endX,
+                endZ,
+                player.position.plane,
             )
         }
     }

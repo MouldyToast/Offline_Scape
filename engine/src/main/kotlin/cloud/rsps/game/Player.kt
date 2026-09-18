@@ -2,21 +2,22 @@ package cloud.rsps.game
 
 import com.github.michaelbull.logging.InlineLogger
 import net.rsprot.protocol.api.Session
+import net.rsprot.protocol.game.outgoing.info.Infos
 import net.rsprot.protocol.game.outgoing.info.npcinfo.NpcInfo
 import net.rsprot.protocol.game.outgoing.info.npcinfo.SetNpcUpdateOrigin
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerAvatar
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerInfo
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenTop
-import net.rsprot.protocol.game.outgoing.map.RebuildLogin
-import net.rsprot.protocol.game.outgoing.map.util.XteaProvider
+import net.rsprot.protocol.game.outgoing.map.RebuildLoginV2
 import net.rsprot.protocol.game.outgoing.misc.client.ServerTickEnd
-import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorld
+import net.rsprot.protocol.game.outgoing.worldentity.SetActiveWorldV2
 
 class Player(
     val index: Int,
 
     val avatar: PlayerAvatar,
 
+    val infos: Infos,
     val playerInfo: PlayerInfo,
     val npcInfo: NpcInfo,
 
@@ -61,19 +62,18 @@ class Player(
     fun onLogin() {
         val session = session ?: return
         session.queue(
-            RebuildLogin(
+            RebuildLoginV2(
                 zoneX, zoneZ,
                 worldId,
-                XteaProvider.ZERO_XTEA_KEY_PROVIDER,
                 playerInfo
             )
         )
         session.queue(
-            SetActiveWorld(
+            SetActiveWorldV2(
                 if (worldId == PlayerInfo.ROOT_WORLD) {
-                    SetActiveWorld.RootWorldType(level)
+                    SetActiveWorldV2.RootWorldType(level)
                 } else {
-                    SetActiveWorld.DynamicWorldType(worldId, level)
+                    SetActiveWorldV2.DynamicWorldType(worldId, level)
                 }
             )
         )
@@ -104,21 +104,17 @@ class Player(
     }
 
     fun tick() {
-        playerInfo.updateCoord(level, x, z)
-        npcInfo.updateCoord(worldId, level, x, z)
-
-        playerInfo.updateRenderCoord(worldId, level, x, z)
+        infos.updateRootCoord(level, x, z)
 
         val session = session
         if (session != null) {
-            session.queue(SetActiveWorld(SetActiveWorld.RootWorldType(level)))
+            session.queue(SetActiveWorldV2(SetActiveWorldV2.RootWorldType(level)))
 
             session.queue(SetNpcUpdateOrigin(zoneX, zoneZ))
 
-            session.queue(playerInfo.toPacket())
-            session.queue(npcInfo.toPacket(worldId))
-
-            //session.queue(MessageGame(0, "Welcome to the game!"))
+            val packets = infos.getPackets()
+            packets.rootWorldInfoPackets.playerInfo.getOrNull()?.let { session.queue(it) }
+            packets.rootWorldInfoPackets.npcInfo.getOrNull()?.let { session.queue(it) }
 
             session.queue(ServerTickEnd)
 

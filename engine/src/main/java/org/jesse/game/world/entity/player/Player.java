@@ -212,6 +212,7 @@ import mgi.types.config.items.ItemDefinitions;
 import mgi.types.config.npcs.NPCDefinitions;
 import net.rsprot.protocol.api.NetworkService;
 import net.rsprot.protocol.common.client.OldSchoolClientType;
+import net.rsprot.protocol.game.outgoing.info.Infos;
 import net.rsprot.protocol.game.outgoing.info.npcinfo.NpcInfo;
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerAvatar;
 import net.rsprot.protocol.game.outgoing.info.playerinfo.PlayerInfo;
@@ -253,10 +254,6 @@ import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVar
 import static org.jesse.game.world.entity.player.action.combat.special.ScorchingShacklesSpecial.*;
 import static org.jesse.game.obj.ids.ObjectId.ACID_POOL_54148;
 
-/**
- * @author Kris | 29. dets 2017 : 3:52.50
- * @author Jire
- */
 @SuppressWarnings("FieldMayBeFinal")
 public class Player extends AbstractEntity implements UsernameProvider {
 
@@ -480,6 +477,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
     private Hunter hunter = new Hunter(this);
 
 
+    private transient Infos infos;
     private transient PlayerInfo playerInfo;
     private transient NpcInfo npcInfo;
     private transient WorldEntityInfo worldEntityInfo;
@@ -649,8 +647,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public void setViewDistance(int viewDistance) {
         this.viewDistance = viewDistance < 1 ? 1 : Math.min(viewDistance, 104);
         if (avatar != null) {
-            avatar.setPreferredResizeRange$osrs_228_model(this.viewDistance);
-            avatar.setResizeRange$osrs_228_model(this.viewDistance);
+            avatar.setPreferredResizeRange$osrs_240_model(this.viewDistance);
+            avatar.setResizeRange$osrs_240_model(this.viewDistance);
         }
         if (this.npcInfo != null) {
             this.npcInfo.setViewDistance(this.viewDistance);
@@ -1202,8 +1200,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
         //TODO check why double.
         World.updateEntityChunk(this, false);
         farming.refresh();
-        if (this.avatar != null) {
-            avatar.updateCoord(getPlane(), getX(), getY());
+        if (this.infos != null) {
+            infos.updateRootCoord(getPlane(), getX(), getY());
         }
         if (needMapUpdate()) {
             setNeedRegionUpdate(true);
@@ -4091,6 +4089,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
         interfaceHandler.setResizable(playerInformation.isResizable());
         interfaceHandler.sendGameFrame();
+        // Rev 240: initialize camera zoom range (replaces [clientscript,login] trigger)
+        packetDispatcher.sendClientScript(605, 128, 896, 128, 896);
 
         isLoggedIn = true;
 
@@ -5091,11 +5091,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         synchronized (Main.getNetworkServiceLock()) {
             final NetworkService<Session> service = Main.getNetworkService();
             this.isAllocated = true;
-            this.playerInfo = service.getPlayerInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
-            this.npcInfo = service.getNpcInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
-            this.worldEntityInfo = service.getWorldEntityInfoProtocol().alloc(getIndex(), OldSchoolClientType.DESKTOP);
+            this.infos = service.getInfoProtocols().alloc(getIndex(), OldSchoolClientType.DESKTOP);
+            this.playerInfo = infos.getPlayerInfo();
+            this.npcInfo = infos.getNpcInfo();
+            this.worldEntityInfo = infos.getWorldEntityInfo();
             this.avatar = playerInfo.getAvatar();
-            this.avatar.updateCoord(getPlane(), getX(), getY());
+            this.infos.updateRootCoord(getPlane(), getX(), getY());
         }
     }
 
@@ -5112,23 +5113,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
         final NetworkService<Session> service = Main.getNetworkService();
         synchronized (Main.getNetworkServiceLock()) {
             try {
-                service.getPlayerInfoProtocol().dealloc(this.playerInfo);
+                service.getInfoProtocols().dealloc(this.infos);
             } catch (Exception e) {
-                log.error("Unable to release player info for index: " + getIndex() + " as player info has thrown!", e);
+                log.error("Unable to release infos for index: " + getIndex() + " as dealloc has thrown!", e);
             }
 
-            try {
-                service.getNpcInfoProtocol().dealloc(this.npcInfo);
-            } catch (Exception e) {
-                log.error("Unable to release npc info for index: " + getIndex() + " as npc info has thrown!", e);
-            }
-
-            try {
-                service.getWorldEntityInfoProtocol().dealloc(this.worldEntityInfo);
-            } catch (Exception e) {
-                log.error("Unable to release worldentity info for index: " + getIndex() + " as worldentity info has thrown!", e);
-            }
-
+            this.infos = null;
             this.playerInfo = null;
             this.npcInfo = null;
             this.worldEntityInfo = null;
@@ -5145,10 +5135,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
             return;
         }
         try {
-            avatar.updateCoord(z, x, y);
-            npcInfo.updateCoord(worldEntityId, z, x, y);
-            playerInfo.updateRenderCoord(worldEntityId, z, x, y);
-            worldEntityInfo.updateCoord(worldEntityId, z, x, y);
+            infos.updateRootCoord(z, x, y);
         } catch (Exception e) {
             log.info("'" + getName() + "' unable to set avatar position info (index: " + getIndex() + ").");
         }
@@ -5165,6 +5152,10 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public BuildAreaManager getBuildAreaManager() {
         return buildAreaManager;
+    }
+
+    public Infos getInfos() {
+        return infos;
     }
 
     public PlayerInfo getPlayerInfo() {
@@ -5318,12 +5309,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         var source = hit.getSource();
         var index = source == null ? -1 : source.getClientIndex();
+        var splatId = hit.isMax() ? hit.getAppliedSplat().getMaxId() : hit.getAppliedSplat().getId();
         this.avatar.getExtendedInfo().addHitMark(
                 index,
-                hit.isMax() ? hit.getAppliedSplat().getMaxId() : hit.getAppliedSplat().getId(),
+                splatId,
+                splatId,
                 hit.getAppliedSplat().getTintedId(),
                 hit.getDamage(),
-                hit.getDelay()
+                hit.getDelay(),
+                4
         );
     }
 

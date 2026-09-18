@@ -25,7 +25,7 @@ public enum GnomeCocktail {
             new Item(ItemId.GIN), new Item(ItemId.LEMON, 2), new Item(ItemId.ORANGE));
 
     public static final GnomeCocktail[] VALUES = values();
-    public static final int COMPONENT_ID = 3;
+    public static final int COMPONENT_ID = 4;
     private final int slotId;
     private final int shaker;
     private final int level;

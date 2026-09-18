@@ -14,12 +14,12 @@ import org.jesse.game.world.entity.player.privilege.PlayerPrivilege
 import org.jesse.game.world.`object`.ObjectExamineLoader
 import org.jesse.game.world.`object`.ObjectHandler
 import mgi.types.config.ObjectDefinitions
-import net.rsprot.protocol.game.incoming.locs.OpLoc
+import net.rsprot.protocol.game.incoming.locs.OpLocV2
 import net.rsprot.protocol.game.incoming.locs.OpLoc6
 import net.rsprot.protocol.game.incoming.locs.OpLocT
 
 internal fun PacketConsumer.oploc() {
-    addListener<OpLoc> {
+    addListener<OpLocV2> {
         val player = player
         val id = it.id
         val x = it.x

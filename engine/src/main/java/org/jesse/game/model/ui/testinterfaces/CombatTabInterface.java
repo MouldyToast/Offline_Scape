@@ -11,14 +11,14 @@ import org.jesse.game.world.entity.player.Player;
 public class CombatTabInterface extends Interface {
     @Override
     protected void attach() {
-        put(5, "Attack style 1");
-        put(9, "Attack style 2");
-        put(13, "Attack style 3");
-        put(17, "Attack style 4");
-        put(22, "Defensive autocast");
-        put(27, "Autocast");
-        put(31, "Auto retaliate");
-        put(38, "Special attack");
+        put(6, "Attack style 1");
+        put(10, "Attack style 2");
+        put(14, "Attack style 3");
+        put(18, "Attack style 4");
+        put(23, "Defensive autocast");
+        put(28, "Autocast");
+        put(32, "Auto retaliate");
+        put(39, "Special attack");
     }
 
     @Override

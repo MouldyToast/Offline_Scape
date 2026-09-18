@@ -48,7 +48,11 @@ public final class IdentityKitDefinitions implements Definitions {
             if (buffer == null) {
                 continue;
             }
-            definitions[id] = new IdentityKitDefinitions(id, buffer);
+            try {
+                definitions[id] = new IdentityKitDefinitions(id, buffer);
+            } catch (Exception e) {
+                // Some identity kits in rev 240 have new opcodes not yet handled
+            }
         }
     }
 
@@ -127,6 +131,14 @@ public final class IdentityKitDefinitions implements Definitions {
             case 3:
                 selectable = false;
                 return;
+            case 5:
+                modelIds = new int[buffer.readUnsignedByte()];
+                for (int i = 0; i < modelIds.length; i++) {
+                    int id = buffer.readInt();
+                    modelIds[i] = id;
+                    modelIdToDefinitions.put(id, this);
+                }
+                return;
             case 40: {
                 final int length = buffer.readUnsignedByte();
                 originalColours = new short[length];
@@ -154,6 +166,24 @@ public final class IdentityKitDefinitions implements Definitions {
             case 64:
                 headModels[opcode - 60] = buffer.readUnsignedShort();
                 return;
+            case 65:
+            case 66:
+            case 67:
+            case 68:
+            case 69:
+            case 70:
+                buffer.readUnsignedShort();
+                return;
+            case 110:
+                buffer.readUnsignedShort();
+                return;
+            case 111:
+            case 112:
+            case 113:
+                buffer.readUnsignedShort();
+                return;
+            default:
+                throw new RuntimeException("Unknown IdentityKit opcode: " + opcode + " for id " + id);
         }
     }
 

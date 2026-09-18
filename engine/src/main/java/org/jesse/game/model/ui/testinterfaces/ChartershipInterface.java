@@ -18,19 +18,16 @@ import static org.jesse.game.content.sailing.CharterLocation.*;
  * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
  */
 public class ChartershipInterface extends Interface {
+    // Port list order for the list-based chartering interface (885:4 list_content)
+    private static final CharterLocation[] PORT_ORDER = {
+        PORT_TYRAS, PORT_PHASMATYS, CATHERBY, SHIPYARD,
+        MUSA_POINT, BRIMHAVEN, PORT_KHAZARD, PORT_SARIM,
+        MOS_LE_HARMLESS, CORSAIR_COVE, PRIFDDINAS
+    };
+
     @Override
     protected void attach() {
-        put(3, "Port Tyras");
-        put(6, "Port Phasmatys");
-        put(9, "Catherby");
-        put(13, "Shipyard");
-        put(16, "Musa Point");
-        put(22, "Brimhaven");
-        put(24, "Port Khazard");
-        put(27, "Port Sarim");
-        put(30, "Mos Le'Harmless");
-        put(34, "Corsair Cove");
-        put(37, "Prifddinas");
+        put(4, "Port list");  // 885:4 list_content - contains all port entries
     }
 
     @Override
@@ -40,17 +37,12 @@ public class ChartershipInterface extends Interface {
 
     @Override
     protected void build() {
-        bind("Port Tyras", player -> charter(player, PORT_TYRAS));
-        bind("Port Phasmatys", player -> charter(player, PORT_PHASMATYS));
-        bind("Catherby", player -> charter(player, CATHERBY));
-        bind("Shipyard", player -> charter(player, SHIPYARD));
-        bind("Brimhaven", player -> charter(player, BRIMHAVEN));
-        bind("Musa Point", player -> charter(player, MUSA_POINT));
-        bind("Port Khazard", player -> charter(player, PORT_KHAZARD));
-        bind("Port Sarim", player -> charter(player, PORT_SARIM));
-        bind("Mos Le'Harmless", player -> charter(player, MOS_LE_HARMLESS));
-        bind("Corsair Cove", player -> charter(player, CORSAIR_COVE));
-        bind("Prifddinas", player -> charter(player, PRIFDDINAS));
+        bind("Port list", (player, slotId, itemId, option) -> {
+            if (slotId < 0 || slotId >= PORT_ORDER.length) {
+                return;
+            }
+            charter(player, PORT_ORDER[slotId]);
+        });
     }
 
     private void charter(final Player player, final CharterLocation destination) {

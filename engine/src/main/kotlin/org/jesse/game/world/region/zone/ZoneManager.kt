@@ -211,9 +211,12 @@ object ZoneManager {
         deltaX: Int,
         deltaZ: Int,
     ) {
+        val level = chunkId shr 22
+        val endX = xInZone + deltaX
+        val endZ = zInZone + deltaZ
         appendUpdate(
             chunkId,
-            MapProjAnim(
+            MapProjAnimV2(
                 id,
                 startHeight,
                 endHeight,
@@ -223,10 +226,11 @@ object ZoneManager {
                 progress,
                 sourceIndex,
                 targetIndex,
-                xInZone,
-                zInZone,
-                deltaX,
-                deltaZ
+                xInZone and 7,
+                zInZone and 7,
+                endX,
+                endZ,
+                level,
             )
         )
     }

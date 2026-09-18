@@ -4,11 +4,6 @@ import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.util.AccessMask;
 import org.jesse.game.world.entity.player.Player;
 
-/**
- * Created by admin on 2/15/2016.
- * <p>
- * Represents a plain message, with no entities in the dialogue.
- */
 public class PlainMessage implements Message {
 
     private final String message;
@@ -28,12 +23,13 @@ public class PlainMessage implements Message {
 
     @Override
     public final void display(final Player player) {
-    	player.getInterfaceHandler().sendInterface(InterfacePosition.DIALOGUE, 229);
-		player.getPacketDispatcher().sendComponentText(229, 1, message);
-		player.getPacketDispatcher().sendClientScript(600, 1, 1, lineSpacing, 15007745);
-		player.getPacketDispatcher().sendComponentSettings(229, 2, -1, -1, AccessMask.CONTINUE);
-        player.getPacketDispatcher().sendComponentText(229, 2, showContinue ? continueMessage(player) : "");
-		player.getPacketDispatcher().sendComponentVisibility(229, 2, !showContinue);
+        Message.resetChatboxBackground(player);
+        player.getInterfaceHandler().sendInterface(InterfacePosition.DIALOGUE, 229);
+        player.getPacketDispatcher().sendComponentText(229, 3, message);
+        player.getPacketDispatcher().sendClientScript(600, 1, 1, lineSpacing != 0 ? lineSpacing : Message.mesboxLineHeight(message), (229 << 16) | 3);
+        player.getPacketDispatcher().sendComponentSettings(229, 4, -1, -1, AccessMask.CONTINUE);
+        player.getPacketDispatcher().sendComponentText(229, 4, showContinue ? continueMessage(player) : "");
+        player.getPacketDispatcher().sendClientScript(1508, "0");
     }
 
 	@Override

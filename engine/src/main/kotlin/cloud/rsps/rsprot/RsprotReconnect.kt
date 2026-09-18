@@ -52,7 +52,8 @@ object RsprotReconnect {
             player.worldEntityInfo.onReconnect()
 
             val response = LoginResponse.ReconnectOk(playerInfo)
-            val handlerSession = responseHandler.writeSuccessfulResponse(response, block)
+            @Suppress("UNCHECKED_CAST")
+            val handlerSession = responseHandler.writeSuccessfulResponse(response, block, previousSession.rsprot as net.rsprot.protocol.api.Session<Session>)
 
             player.session = RsprotSession(block.seed, player, handlerSession)
             player.playerInformation.ip = handlerSession.hostAddress

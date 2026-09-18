@@ -19,8 +19,8 @@ public class MinigameTabInterface extends Interface {
     @Override
     protected void attach() {
         put(2, "PvM Arena");
-        put(26, "Teleport");
-        put(18, "Select minigame");
+        put(32, "Teleport");
+        put(22, "Select minigame");
     }
 
     @Override

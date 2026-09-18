@@ -14,7 +14,7 @@ public class ResizablePaneInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(20, "Gravestone info");
+        put(21, "Gravestone info");
         put(43, "Open Game Noticeboard");
         put(60, "Character Summary");
         put(64, "Toggle prayer filtering");

@@ -20,8 +20,8 @@ public class GroupingTabInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(26, "Teleport");
-        put(18, "Select minigame");
+        put(32, "Teleport");
+        put(22, "Select minigame");
     }
 
     @Override

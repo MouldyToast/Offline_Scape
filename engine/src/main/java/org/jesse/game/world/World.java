@@ -135,10 +135,6 @@ import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVar
 import static org.jesse.game.model.ui.testinterfaces.advancedsettings.SettingVariables.RUNE_PICKING_BEHAVIOUR_VARBIT_ID;
 import static org.jesse.utils.TextUtils.stringToLong;
 
-/**
- * @author Kris | 24. sept 2017 : 4:13.03
- * @author Jire
- */
 public final class World {
 
     public static final Logger log = NearRealityLogger.getLogger(World.class);
@@ -706,8 +702,8 @@ public final class World {
         ZoneManager.INSTANCE.mapProjAnim(
                 f.getChunkHash(),
                 projectile.getGraphicsId(),
-                projectile.getStartHeight() / 4,
-                projectile.getEndHeight() / 4,
+                projectile.getStartHeight(),
+                projectile.getEndHeight(),
                 projectile.getDelay(),
                 projSpeed,
                 projectile.getAngle(),

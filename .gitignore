@@ -29,7 +29,7 @@ target/
 
 # Game cache (too large for GitHub)
 cache/data/cache/
-cache/data/cache-228-openrs2.zip
+cache/data/cache-*-openrs2.zip
 cache/data/cache-*/
 cache/data/dynamic/
 cache/data/objects/xtea*.json

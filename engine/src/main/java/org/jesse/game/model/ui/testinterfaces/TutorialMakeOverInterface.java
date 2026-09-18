@@ -13,7 +13,7 @@ public class TutorialMakeOverInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(97, "Title");
+        put(11, "Title");
     }
 
     @Override

@@ -14,7 +14,7 @@ public class FixedPaneInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(39, "Gravestone info");
+        put(40, "Gravestone info");
         put(47, "Open Game Noticeboard");
         put(64, "Character Summary");
         put(68, "Toggle prayer filtering");

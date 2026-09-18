@@ -16,11 +16,11 @@ public class MusicPlayerInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(6, "Play song");
-        put(9, "Song name");
-        put(10, "Auto");
-        put(13, "Manual");
-        put(16, "Loop"); // This is random now
+        put(11, "Play song");   // [jukebox] - music list
+        put(4, "Song name");    // [now_playing_text] - current song display
+        put(14, "Auto");        // [area] - Area Mode (auto area-based music)
+        put(13, "Manual");      // [controls] - no direct equivalent in rev 240
+        put(16, "Loop");        // [single] - Single Mode; loop was removed in rev 240
     }
 
     @Override

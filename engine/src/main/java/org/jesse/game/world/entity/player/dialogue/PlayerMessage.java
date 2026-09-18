@@ -3,11 +3,6 @@ package org.jesse.game.world.entity.player.dialogue;
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.player.Player;
 
-/**
- * Created by Arham 4 on 2/15/2016.
- * <p>
- * Represents a singular message with a Player talking.
- */
 public class PlayerMessage implements Message {
 
     private final Expression expression;
@@ -24,13 +19,11 @@ public class PlayerMessage implements Message {
     	cantContinue = true;
 	}
 
-    /**
-     * DO NOT OVERRIDE
-     */
     @Override
     public void display(final Player player) {
+    	Message.setupChatModal(player, 0);
     	player.getInterfaceHandler().sendInterface(InterfacePosition.DIALOGUE, 217);
-		player.getPacketDispatcher().sendClientScript(600, 1, 1, 16, 14221318);
+		player.getPacketDispatcher().sendClientScript(600, 1, 1, Message.chatLineHeight(message), 14221318);
 		player.getPacketDispatcher().sendComponentPlayerHead(217, 2);
 		player.getPacketDispatcher().sendComponentText(217, 4, player.getName());
 		if (cantContinue) {

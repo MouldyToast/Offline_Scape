@@ -57,9 +57,6 @@ import java.util.Optional;
 /**
  * A utility class for sending packets.
  *
- * @author Graham Edgecombe
- * @author Tom - modifications and additions.
- * @author Jire
  */
 public final class PacketDispatcher {
 
@@ -121,8 +118,8 @@ public final class PacketDispatcher {
         ZoneManager.INSTANCE.mapProjAnim(
                 sender.getPosition().getChunkHash(),
                 projectile.getGraphicsId(),
-                projectile.getStartHeight() / 4,
-                projectile.getEndHeight() / 4,
+                projectile.getStartHeight(),
+                projectile.getEndHeight(),
                 projectile.getDelay(),
                 speed,
                 projectile.getAngle(),

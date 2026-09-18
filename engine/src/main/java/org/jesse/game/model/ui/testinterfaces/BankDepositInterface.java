@@ -40,16 +40,16 @@ public class BankDepositInterface extends Interface {
 
     @Override
     protected void attach() {
-        put(23, "Interact with Item");
-        put(29, "Deposit inventory");
+        put(24, "Interact with Item");
+        put(31, "Deposit inventory");
         put(30, "Deposit worn items");
-        put(31, "Deposit loot");
-        put(33, "Deposit lock settings");
-        put(34, "Default Quantity 1");
-        put(35, "Default Quantity 5");
-        put(36, "Default Quantity 10");
-        put(37, "Default Quantity X");
-        put(38, "Default Quantity All");
+        put(32, "Deposit loot");
+        put(34, "Deposit lock settings");
+        put(35, "Default Quantity 1");
+        put(36, "Default Quantity 5");
+        put(37, "Default Quantity 10");
+        put(38, "Default Quantity X");
+        put(39, "Default Quantity All");
         Enums.DEPOSIT_BOX_EQUIPMENT_TAB_SLOT_MAP.getValues().forEach((slot, component) -> put(component & 0xFFFF, "Unequip slot " + slot));
     }
 

@@ -1100,14 +1100,18 @@ class PacketSender(private val player: Player) {
 //        }
 
         send {
+            // V2 split: button ops (old bits 1-10) move to events2, zero-indexed
+            val events2 = (events ushr 1) and 0x3FF
+            // events1: everything except button ops (clear bits 1-10)
+            val events1 = events and ((0x3FF shl 1).inv())
             val packet =
                 IfSetEventsV2(
                     interfaceId,
                     componentId,
                     start,
                     end,
-                    events,
-                    events,
+                    events1,
+                    events2,
                 )
             /*player.appendIfSetEvent(packet)*/ // TODO: Implement this
             packet

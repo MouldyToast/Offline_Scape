@@ -14,6 +14,7 @@ pluginManagement {
 dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
     repositories {
+        mavenLocal()
         mavenCentral()
         maven(url = "https://maven.rsps.cloud/")
         maven(url = "https://repo.runelite.net/") {

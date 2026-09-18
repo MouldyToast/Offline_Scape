@@ -198,7 +198,7 @@ Fix individually if testing reveals a mismatch.
 
 | Packet | Priority | Notes |
 |---|---|---|
-| **IfScriptTrigger** | Medium | CS2 scripts that fire server callbacks will silently fail. May affect rev-240 interfaces that rely on script-triggered server interaction. |
+| ~~**IfScriptTrigger**~~ | ~~Medium~~ DONE | Registered as no-op handler — receives and releases the buffer. Prevents unhandled-packet errors. Real handling can be added when needed. |
 | **ResumePCountDialogLong** | Low | Only needed if a dialog requests a 64-bit numeric input. |
 | **OpWorldEntity1-6** | Blocked | Requires world entity implementation (see Sailing section). |
 | **OpWorldEntityT** | Blocked | Use-item-on-world-entity. Same blocker. |

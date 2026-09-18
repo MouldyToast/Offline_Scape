@@ -26,6 +26,7 @@ class GameMessageConsumers {
 
         builder.if1()
         builder.if3()
+        builder.ifScriptTrigger()
         builder.ifSubOp()
         builder.ifButtonD()
         builder.ifButtonT()

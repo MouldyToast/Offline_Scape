@@ -21,6 +21,7 @@ import org.jesse.plugins.handlers.InterfaceSwitchHandler
 import mgi.utilities.StringFormatUtil
 import net.rsprot.protocol.game.incoming.buttons.If1Button
 import net.rsprot.protocol.game.incoming.buttons.If3Button
+import net.rsprot.protocol.game.incoming.buttons.IfScriptTrigger
 import net.rsprot.protocol.game.incoming.buttons.IfButtonD
 import net.rsprot.protocol.game.incoming.buttons.IfButtonT
 import net.rsprot.protocol.game.incoming.buttons.IfSubOp
@@ -60,6 +61,12 @@ internal fun PacketConsumer.if3() {
             slotId = -1
         }
         ButtonAction.handleComponentAction(player, interfaceId, componentId, slotId, itemId, option, 3)
+    }
+}
+
+internal fun PacketConsumer.ifScriptTrigger() {
+    addListener<IfScriptTrigger> {
+        it.release()
     }
 }
 

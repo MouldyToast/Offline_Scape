@@ -8,33 +8,15 @@
 
 ## P0 -- Bugs That Will Cause Wrong Behavior
 
-### Camera V3 Coordinate Mismatch
+### ~~Camera V3 Coordinate Mismatch~~ FIXED
 
-`PacketSender.kt` passes **build-area coordinates** (0-103) to V3 camera
-constructors that expect **absolute world coordinates** (e.g. 3222, 3218).
-The camera will point at the wrong tile in every scripted camera sequence.
+Build-area coords are now converted to absolute via `buildAreaOriginX/Z()`
+in all 4 camera methods. Commit `0e5ee28a`.
 
-| Method | Line | Class Used | Problem |
-|---|---|---|---|
-| `camLookAt()` | ~250 | `CamLookAtV3` | xInBuildArea/yInBuildArea passed as absolute |
-| `camMoveTo()` | ~399 | `CamMoveToV3` | same |
-| `camMoveToCycles()` | ~435 | `CamMoveToCyclesV3` | same |
-| `camMoveToArc()` | ~485 | `CamMoveToArcV3` | all four coord args are build-area-relative |
+### ~~Info Protocol: getPackets() Called 3x Per Tick~~ FIXED
 
-**Fix:** Convert build-area coords to absolute by adding the build-area
-origin, or downgrade to V1 variants which keep the old build-area
-semantics. V1 typealiases exist (`CamLookAt = CamLookAtV1`, etc.).
-
-### Info Protocol: getPackets() Called 3x Per Tick Per Player
-
-`playerInfo()`, `worldEntityInfo()`, and `npcInfo()` in PacketSender.kt
-each independently call `player.infos?.getPackets()`. If getPackets() has
-consume-once semantics the second and third calls may return empty. Even if
-idempotent this wastes CPU on every player every tick.
-
-**Fix:** Call `getPackets()` once, pass the result to each send method.
-The reference impl in `cloud/rsps/game/Player.kt` line 115 does this
-correctly.
+`getPackets()` result is now cached per tick via `getOrComputeInfoPackets()`
+and cleared after the last info send. Commit `0e5ee28a`.
 
 ---
 

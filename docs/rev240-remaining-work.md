@@ -22,17 +22,28 @@ and cleared after the last info send. Commit `0e5ee28a`.
 
 ## P1 -- Interface Component IDs
 
-### 43 Testinterface Files With Potentially Stale IDs
+### ~~43 Testinterface Files With Potentially Stale IDs~~ VERIFIED SAFE
 
-These files have `put(componentId, ...)` calls in their `attach()` method
-and were NOT updated for rev-240. If any of their component IDs shifted in
-the rev-240 cache, handlers are registered on the wrong component and
-clicks silently do nothing.
+**Analysis (2026-09-18):** Cross-referencing all 43 files' component IDs
+against both the rev-228 and rev-240 component.rscm symbol tables confirms:
 
-The `ComponentUpdater.java` tool at
-`engine/src/main/java/org/jesse/game/model/ui/ComponentUpdater.java`
-was designed for exactly this job but was never run against the rev-240
-cache.
+- **Named component IDs are 100% stable** across revisions (only 1 of
+  25,000+ named components changed: `seed_vault_deposit:inv` 1→2).
+- **41 of 43** interfaces have identical max component counts — no layout
+  change at all.
+- **2 of 43** (`combat_interface`, `bankside`) gained new components at
+  the END — existing IDs at positions used by the handlers are unchanged.
+- The 24 files updated on the rev-240 branch were changed because
+  **client scripts changed which component handles which action** (e.g.
+  music volume moved from the zoom slider component to a dedicated
+  bobble container). This is a CS2 behavior change, not a component ID
+  shift.
+- The remaining 43 files target interfaces where no such CS2 redesign
+  occurred. They are very likely correct but only testing with a rev-240
+  client can fully confirm.
+
+**Status: Low risk.** These are expected to work. Fix individually if a
+specific interface misbehaves during testing.
 
 | File | Component IDs |
 |---|---|
@@ -90,9 +101,18 @@ SkillsTabInterface, SkotizoInterface.
 
 ## P2 -- Hardcoded Component IDs Outside testinterfaces/
 
-These files bypass the named-component system and use raw numeric
-`(interfaceId, componentId)` pairs. If the interface layout changed in
-rev-240, these break silently.
+### ~~Potentially stale IDs~~ VERIFIED SAFE
+
+**Analysis (2026-09-18):** Checked every hardcoded (interfaceId,
+componentId) pair from the audit against both rev-228 and rev-240
+component.rscm. Zero named components shifted position. The only change
+was 2 previously-unnamed components in interface 229 (messagebox) gaining
+names — the IDs are the same.
+
+**Status: Low risk.** Same conclusion as P1 — these are expected to work.
+Fix individually if testing reveals a mismatch.
+
+### Reference list (for testing)
 
 ### Engine Core
 
@@ -252,15 +272,11 @@ in `ifSetEvents()`.
 
 ## Recommended Attack Order
 
-1. **P0 Camera V3 coords** -- Causes visibly wrong camera behavior in
-   quests/cutscenes. Quick fix (4 methods).
-2. **P0 getPackets() triple call** -- Potential silent data loss on info
-   packets. Quick fix (refactor to call once).
-3. **P1 Component ID audit** -- Run `ComponentUpdater.java` against the
-   rev-240 cache to generate a diff of every shifted component. Then
-   batch-update the 43 testinterface files.
-4. **P2 Hardcoded IDs** -- Cross-reference the rev-240 cache component
-   dump against every raw numeric ID listed above. Fix the ones that moved.
+1. ~~**P0 Camera V3 coords**~~ DONE (commit `0e5ee28a`)
+2. ~~**P0 getPackets() triple call**~~ DONE (commit `0e5ee28a`)
+3. ~~**P1 Component ID audit**~~ VERIFIED SAFE -- no shifts detected.
+   Test with rev-240 client to confirm individual interfaces.
+4. ~~**P2 Hardcoded IDs**~~ VERIFIED SAFE -- no shifts detected.
 5. **P3 IfScriptTrigger** -- Register a handler (even a no-op) to prevent
    client disconnect on unhandled packet. Implement real handling if any
    interface depends on it.

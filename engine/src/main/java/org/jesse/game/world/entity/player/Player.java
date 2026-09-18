@@ -2310,6 +2310,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         else {
             log.info("'" + getName() + "' npc info is null, unable to send packet (index: " + getIndex() + ").");
         }
+        packetDispatcher.clearCachedInfoPackets();
         if (regionUpdate) {
             setNeedRegionUpdate(false);
         }

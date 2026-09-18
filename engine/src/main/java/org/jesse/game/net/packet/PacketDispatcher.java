@@ -640,6 +640,10 @@ public final class PacketDispatcher {
         }
     }
 
+    public void clearCachedInfoPackets() {
+        sender.clearCachedInfoPackets$engine();
+    }
+
     public void sendClanChannelMessage(@NotNull ChatChannelType gim, @NotNull String formatName, @NotNull String message) {
         sender.messageClanChannel(
                 gim.getPacketIdentifier(),

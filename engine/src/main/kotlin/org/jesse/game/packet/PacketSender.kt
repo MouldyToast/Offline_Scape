@@ -183,6 +183,25 @@ import java.util.concurrent.ThreadLocalRandom
 
 class PacketSender(private val player: Player) {
 
+    private var cachedInfoPackets: net.rsprot.protocol.game.outgoing.info.InfoPackets? = null
+
+    private fun getOrComputeInfoPackets(): net.rsprot.protocol.game.outgoing.info.InfoPackets? {
+        cachedInfoPackets?.let { return it }
+        val packets = player.infos?.getPackets() ?: return null
+        cachedInfoPackets = packets
+        return packets
+    }
+
+    internal fun clearCachedInfoPackets() {
+        cachedInfoPackets = null
+    }
+
+    private fun buildAreaOriginX(): Int =
+        ((player.position.x ushr 3) - 6).coerceAtLeast(0) shl 3
+
+    private fun buildAreaOriginZ(): Int =
+        ((player.position.y ushr 3) - 6).coerceAtLeast(0) shl 3
+
     companion object {
         private val REBUILD_REGION_ZONE_PROVIDER = object : RebuildRegionV2.RebuildRegionZoneProvider {
             override fun provide(zoneX: Int, zoneZ: Int, level: Int): RebuildRegionZone? {
@@ -248,8 +267,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamLookAtV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 speed,
                 acceleration,
@@ -397,8 +416,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamMoveToV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 speed,
                 acceleration,
@@ -433,8 +452,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamMoveToCyclesV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 duration,
                 maintainFixedAltitude,
@@ -482,11 +501,13 @@ class PacketSender(private val player: Player) {
         function: Int,
     ) {
         send {
+            val ox = buildAreaOriginX()
+            val oz = buildAreaOriginZ()
             CamMoveToArcV3(
-                centerXInBuildArea,
-                centerYInBuildArea,
-                destinationXInBuildArea,
-                destinationyInBuildArea,
+                ox + centerXInBuildArea,
+                oz + centerYInBuildArea,
+                ox + destinationXInBuildArea,
+                oz + destinationyInBuildArea,
                 height,
                 duration,
                 maintainFixedAltitude,
@@ -610,7 +631,7 @@ class PacketSender(private val player: Player) {
      * Player info packet is used to synchronize the state of all players in the world.
      */
     internal fun playerInfo(info: PlayerInfo) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.playerInfo.getOrNull() ?: return
         sendOrLogout { packet }
     }
@@ -618,11 +639,9 @@ class PacketSender(private val player: Player) {
 
 
     internal fun worldEntityInfo(info: WorldEntityInfo) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.worldEntityInfo.getOrNull() ?: return
-        sendOrLogout {
-            packet
-        }
+        sendOrLogout { packet }
     }
 
     internal fun rebuildWorldEntity(
@@ -648,7 +667,7 @@ class PacketSender(private val player: Player) {
         worldId: Int,
         info: NpcInfo,
     ) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.npcInfo.getOrNull() ?: return
         sendOrLogout { packet }
     }

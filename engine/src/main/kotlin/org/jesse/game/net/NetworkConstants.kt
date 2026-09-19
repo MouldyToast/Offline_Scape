@@ -1,11 +1,5 @@
 package org.jesse.game.net
 
-/**
- * @author Tommeh | 28 jul. 2018 | 20:22:18
- * @see [Rune-Server profile](https://www.rune-server.ee/members/tommeh/)}
- *
- * @author Jire
- */
 object NetworkConstants {
 
     const val PLAYER_CAP = 2_000

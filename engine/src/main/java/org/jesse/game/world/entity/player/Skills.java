@@ -506,7 +506,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
     }
 
     public void refresh(final int skill) {
-        if (skill < 0 || skill > SkillConstants.COUNT) {
+        if (skill < 0 || skill >= SkillConstants.COUNT) {
             return;
         }
         if (skill == SkillConstants.HITPOINTS && player.isTorvaHpBoosted()) {
@@ -602,7 +602,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
 
     public boolean isMaxed() {
         for (int i = 0; i < SkillConstants.COUNT; i++) {
-            if (i == SkillConstants.CONSTRUCTION) {
+            if (i == SkillConstants.CONSTRUCTION || i == SkillConstants.SAILING || i >= 24) {
                 continue;
             }
             if (getLevelForXp(i) < 99) {

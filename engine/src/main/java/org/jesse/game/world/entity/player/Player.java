@@ -1366,7 +1366,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
                 log.error("", e);
             }
             try {
-                for (int i = 0; i < 23; i++) {
+                for (int i = 0; i < SkillConstants.COUNT; i++) {
                     getSkills().setLevel(i, getSkills().getLevelForXp(i));
                 }
             }

@@ -1980,7 +1980,7 @@ public final class GameCommands {
             if (p.getNumericAttribute("first_99_skill").intValue() == -1) {
                 p.addAttribute("first_99_skill", 0);
             }
-            for (int i = 0; i < 23; i++) {
+            for (int i = 0; i < SkillConstants.COUNT; i++) {
                 p.getSkills().setSkill(i, 99, 13034431);
             }
             p.getAppearance().resetRenderAnimation();

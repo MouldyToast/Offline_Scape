@@ -31,7 +31,7 @@ public final class QuestManager {
 		vars.sendBitInstant(340, 2);
 		// frozen door quest
 		vars.sendBitInstant(13175, 10);
-		vars.sendBitInstant(12296, 150);
+		//vars.sendBitInstant(12296, 150); possible not needed
 		// Boss scoreboards — resolve multiloc objects to interactable variants.
 		// DT2 scoreboards (Duke 46091, Leviathan 49475, Vardorvis 49476,
 		// Whisperer 49474) share varbit 15175; value 2 = Read + Read (Awakened).

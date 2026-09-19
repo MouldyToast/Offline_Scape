@@ -6,7 +6,6 @@ import org.jesse.game.content.skills.agility.MarkOfGrace
 import org.jesse.game.obj.ids.EDGE_14925
 import org.jesse.game.task.WorldTask
 import org.jesse.game.task.WorldTasksManager
-import org.jesse.game.task.WorldTasksManager.schedule
 import org.jesse.game.world.entity.Location
 import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.ForceMovement
@@ -39,6 +38,10 @@ class FinishCourse : AgilityCourseObstacle(FaladorRooftopCourse::class.java, 6) 
                 ticks++
             }
         }, 0, 0)
+    }
+
+    override fun getRouteEvent(player: Player?, `object`: WorldObject?): Location {
+        return Location(3024, 3333, 3)
     }
 
     override fun getLevel(`object`: WorldObject?): Int {

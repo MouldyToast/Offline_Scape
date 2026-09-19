@@ -17,42 +17,38 @@ class Cable : AgilityCourseObstacle(AlKharidRooftopCourse::class.java, 3) {
     }
 
     override fun startSuccess(player: Player, `object`: WorldObject) {
-        player.addWalkSteps(3266, 3166)
         WorldTasksManager.schedule(object : WorldTask {
             var ticks: Int = 0
             override fun run() {
                 when (ticks++) {
-                    1 -> player.faceObject(`object`)
-                    2 -> {
+                    0 -> {
+                        val startLoc = player.location
                         player.sendFilteredMessage("You begin an almighty run-up...")
                         player.setAnimation(RUNUP_ANIM)
+                        player.setLocation(FIRST_LOC)
                         player.setForceMovement(
                             ForceMovement(
-                                Location(
-                                    player.getX() + 3,
-                                    player.getY(),
-                                    player.getPlane()
-                                ), 30, ForceMovement.EAST
+                                startLoc, 0,
+                                FIRST_LOC, 45,
+                                ForceMovement.EAST
                             )
                         )
                     }
 
-                    3 -> {
+                    1 -> {
                         player.sendFilteredMessage("You gained enough momentum to swing to the other side!")
                         player.setAnimation(ROPESWING_ANIM)
                         player.setLocation(FIRST_LOC)
                         player.setForceMovement(
                             ForceMovement(
-                                Location(
-                                    player.getX() + 18,
-                                    player.getY(),
-                                    player.getPlane()
-                                ), 60, ForceMovement.EAST
+                                FIRST_LOC, 0,
+                                SECOND_LOC, 60,
+                                ForceMovement.EAST
                             )
                         )
                     }
 
-                    4 -> {
+                    2 -> {
                         player.setLocation(SECOND_LOC)
                         MarkOfGrace.spawn(player, AlKharidRooftopCourse.MARK_LOCATIONS, 40, 20)
                         stop()
@@ -75,11 +71,11 @@ class Cable : AgilityCourseObstacle(AlKharidRooftopCourse::class.java, 3) {
     }
 
     override fun getDuration(success: Boolean, `object`: WorldObject?): Int {
-        return 9
+        return 2
     }
 
     companion object {
-        private val FIRST_LOC = Location(3269, 3166, 3)
+        private val FIRST_LOC = Location(3268, 3166, 3)
         private val SECOND_LOC = Location(3284, 3166, 3)
         private val RUNUP_ANIM = Animation(1995)
         private val ROPESWING_ANIM = Animation(751)

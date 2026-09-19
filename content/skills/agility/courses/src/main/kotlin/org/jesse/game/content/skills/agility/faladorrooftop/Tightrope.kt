@@ -79,7 +79,7 @@ class Tightrope : AgilityCourseObstacle(FaladorRooftopCourse::class.java, 2) {
 
     override fun getSuccessXp(`object`: WorldObject): Double {
         val rope: TightropeInfo? = ropes.get(`object`.id)
-        return (if (rope == null) 10.0 else rope.xp) as Double
+        return if (rope == null) 10.0 else rope.xp.toDouble()
     }
 
     override fun getRouteEvent(player: Player?, `object`: WorldObject): Location? {

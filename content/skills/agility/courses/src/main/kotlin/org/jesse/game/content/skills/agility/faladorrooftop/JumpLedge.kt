@@ -36,6 +36,18 @@ class JumpLedge : AgilityCourseObstacle(FaladorRooftopCourse::class.java, 5) {
         }, 0, 0)
     }
 
+    override fun getRouteEvent(player: Player?, `object`: WorldObject): Location {
+        return when (`object`.id) {
+            GAP_14919 -> Location(3018, 3353, 3)
+            LEDGE_14920 -> Location(3016, 3346, 3)
+            LEDGE_14921 -> Location(3013, 3344, 3)
+            LEDGE_14922 -> Location(3013, 3335, 3)
+            LEDGE_14923 -> Location(3013, 3335, 3)
+            LEDGE_14924 -> Location(3017, 3333, 3)
+            else -> `object`
+        }
+    }
+
     override fun getLevel(`object`: WorldObject?): Int {
         return 50
     }

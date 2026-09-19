@@ -3,14 +3,10 @@ package org.jesse.plugins.interfaces;
 import org.jesse.game.content.skills.construction.constants.Furniture;
 import org.jesse.game.item.Item;
 import org.jesse.game.model.ui.UserInterface;
+import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.player.Player;
 import mgi.types.config.items.ItemDefinitions;
 
-/**
- * @author Kris | 10. nov 2017 : 18:04.10
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server
- *      profile</a>}
- */
 public final class SkillInterface implements UserInterface {
 
 	@Override
@@ -42,9 +38,9 @@ public final class SkillInterface implements UserInterface {
 			}
 			builder.delete(builder.length() - 2, builder.length());
 			player.sendMessage(builder.toString());
-		} else if (componentId == 25) {
+		} else if (componentId == 25 || componentId == 30) {
 			player.getTemporaryAttributes().remove("viewingSkill");
-			player.getInterfaceHandler().closeInterface(214);
+			player.getInterfaceHandler().closeInterface(InterfacePosition.FLOATER);
 		} else {
 			player.getVarManager().sendVar(965, (int) player.getTemporaryAttributes().get("viewingSkill") + modifier);
 		}

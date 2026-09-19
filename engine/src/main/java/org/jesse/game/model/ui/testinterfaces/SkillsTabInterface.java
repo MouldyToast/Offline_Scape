@@ -6,8 +6,6 @@ import org.jesse.game.world.entity.player.Player;
 
 public class SkillsTabInterface extends Interface {
 
-    private static final int[] SKILL_BUTTON_VARPS = new int[] { 0, 1, 2, 5, 3, 7, 4, 12, 22, 6, 8, 9, 10, 11, 19, 20, 23, 13, 14, 15, 16, 17, 18, 21, 23 };
-
     @Override
     public DefaultClickHandler getDefaultHandler() {
         return (player, componentId, slotId, itemId, optionId) -> {
@@ -21,7 +19,7 @@ public class SkillsTabInterface extends Interface {
                 player.sendMessage("You can't do this while in combat.");
                 return;
             }
-            player.getSkills().sendSkillMenu(SKILL_BUTTON_VARPS[componentId], 0);
+            player.getSkills().sendSkillMenu(componentId, 0);
         };
     }
 

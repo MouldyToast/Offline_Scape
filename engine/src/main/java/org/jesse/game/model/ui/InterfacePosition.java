@@ -3,12 +3,6 @@ package org.jesse.game.model.ui;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import mgi.types.config.enums.EnumDefinitions;
 
-/**
- * @author Tommeh | 28 jan. 2018 : 23:38:10 | @author Kris | 22. sept 2018 : 20:34:02
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>
- */
 public enum InterfacePosition {
 	CHATBOX(96, 162, true),                  // was 94, now CHATBOX = 96
 	PRIVATE_CHAT(93, 163, true),              // was 91, updated to SPLIT_CHAT's value (93)

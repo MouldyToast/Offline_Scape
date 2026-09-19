@@ -26,6 +26,7 @@ class GameMessageConsumers {
 
         builder.if1()
         builder.if3()
+        builder.ifScriptTrigger()
         builder.ifSubOp()
         builder.ifButtonD()
         builder.ifButtonT()
@@ -85,6 +86,28 @@ class GameMessageConsumers {
                 player.sendMessage("Ping: ${elapsedMs}ms, FPS: $fps, GC: ${gcPercentTime}%")
             }
         }
+
+        builder.opWorldEntity()
+        builder.opWorldEntity6()
+        builder.opWorldEntityT()
+
+        builder.clanChannelKickUser()
+        builder.clanChannelFullRequest()
+        builder.clanSettingsFullRequest()
+        builder.affinedClanSettingsAddBannedFromChannel()
+        builder.affinedClanSettingsSetMutedFromChannel()
+
+        builder.resumePCountLong()
+
+        builder.setHeading()
+        builder.ifCrmViewOp()
+        builder.hiscoreRequest()
+
+        builder.connectionTelemetry()
+        builder.membershipPromotionEligibility()
+        builder.reflectionCheckReply()
+        builder.detectModifiedClient()
+        builder.rSevenStatus()
 
         builder.noTimeout()
         return builder.build()

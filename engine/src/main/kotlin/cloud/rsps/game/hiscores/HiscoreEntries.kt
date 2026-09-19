@@ -10,9 +10,6 @@ import net.runelite.api.gameval.SpriteID.IconBoss25x25
 import net.runelite.api.gameval.SpriteID.Staticons
 import net.runelite.api.gameval.SpriteID.Staticons2
 
-/**
- * @author Jire
- */
 object HiscoreEntries {
 
     @JvmStatic
@@ -100,6 +97,7 @@ object HiscoreEntries {
         skill(21, "Runecraft", Staticons2.RUNECRAFT, SkillConstants.RUNECRAFTING)
         skill(22, "Hunter", Staticons2.HUNTER, SkillConstants.HUNTER)
         skill(23, "Construction", Staticons2.CONSTRUCTION, SkillConstants.CONSTRUCTION)
+        skill(24, "Sailing", Staticons2.CONSTRUCTION, SkillConstants.SAILING) // TODO: correct sprite ID when available
     }
 
     @JvmStatic

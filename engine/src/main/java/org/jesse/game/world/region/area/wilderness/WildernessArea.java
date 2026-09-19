@@ -16,6 +16,7 @@ import org.jesse.game.world.entity.player.action.combat.PlayerCombat;
 import org.jesse.game.world.entity.player.action.combat.magic.CombatSpell;
 import org.jesse.game.world.entity.player.calog.CAType;
 import org.jesse.game.world.entity.player.variables.TickVariable;
+import org.jesse.game.world.entity.player.SkillConstants;
 import org.jesse.game.world.region.GlobalAreaManager;
 import org.jesse.game.world.region.PolygonRegionArea;
 import org.jesse.game.world.region.RSPolygon;
@@ -26,10 +27,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.OptionalInt;
 
-/**
- * @author Kris | 29. mai 2018 : 01:20:23
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class WildernessArea extends PolygonRegionArea implements
         DeathPlugin, EntityAttackPlugin, PlayerCombatPlugin,
         RandomEventRestrictionPlugin, LootBroadcastPlugin {
@@ -162,7 +159,7 @@ public class WildernessArea extends PolygonRegionArea implements
         if(player.getAttributes().containsKey("DIVINE_POTION")) {
             player.getAttributes().remove("DIVINE_POTION");
             player.getVariables().cancel(TickVariable.DIVINE_SUPER_COMBAT_POTION);
-            for (int i = 0; i < 23; i++) {
+            for (int i = 0; i < SkillConstants.COUNT; i++) {
                 player.getSkills().setLevel(i, player.getSkills().getLevelForXp(i));
             }
         }

@@ -506,7 +506,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
     }
 
     public void refresh(final int skill) {
-        if (skill < 0 || skill > SkillConstants.COUNT) {
+        if (skill < 0 || skill >= SkillConstants.COUNT) {
             return;
         }
         if (skill == SkillConstants.HITPOINTS && player.isTorvaHpBoosted()) {
@@ -558,12 +558,10 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
         return (int) Math.min(126, baseLevel);
     }
 
-    public void sendSkillMenu(final int skill, final int subCategory) {
-        player.getInterfaceHandler().sendInterface(InterfacePosition.CENTRAL, SkillConstants.SKILL_GUIDE_INTERFACE);
-        player.getVarManager().sendBit(4371, skill);
-        player.getVarManager().sendBit(4372, subCategory);
-        player.getPacketDispatcher().sendComponentSettings(SkillConstants.SKILL_GUIDE_INTERFACE, 8, 0, 75, AccessMask.CLICK_OP1);
-        player.getTemporaryAttributes().put("viewingSkill", skill);
+    public void sendSkillMenu(final int componentId, final int subCategory) {
+        player.getInterfaceHandler().sendInterface(InterfacePosition.FLOATER, SkillConstants.SKILL_GUIDE_INTERFACE);
+        player.getPacketDispatcher().sendClientScript(9340, componentId, subCategory, 0, 0);
+        player.getTemporaryAttributes().put("viewingSkill", componentId);
     }
 
     public void setSkill(final int skill, final int lvl, final double exp) {
@@ -602,7 +600,7 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
 
     public boolean isMaxed() {
         for (int i = 0; i < SkillConstants.COUNT; i++) {
-            if (i == SkillConstants.CONSTRUCTION) {
+            if (i == SkillConstants.CONSTRUCTION || i == SkillConstants.SAILING || i >= 24) {
                 continue;
             }
             if (getLevelForXp(i) < 99) {

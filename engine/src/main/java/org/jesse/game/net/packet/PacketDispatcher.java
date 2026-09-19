@@ -640,6 +640,26 @@ public final class PacketDispatcher {
         }
     }
 
+    public void clearCachedInfoPackets() {
+        sender.clearCachedInfoPackets$engine();
+    }
+
+    public void sendAmbientSoundStart(final int id, final boolean fade) {
+        sender.ambientSoundStart(id, fade);
+    }
+
+    public void sendAmbientSoundStop(final boolean fade) {
+        sender.ambientSoundStop(fade);
+    }
+
+    public void sendCamSkybox(final int model) {
+        sender.camSkybox(model);
+    }
+
+    public void sendCamUnlock(final boolean unlock) {
+        sender.camUnlock(unlock);
+    }
+
     public void sendClanChannelMessage(@NotNull ChatChannelType gim, @NotNull String formatName, @NotNull String message) {
         sender.messageClanChannel(
                 gim.getPacketIdentifier(),

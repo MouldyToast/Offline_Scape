@@ -34,6 +34,7 @@ public enum InterfacePosition {
 	OVERLAY(1, true),                         // remains 1 (FULL_OVERLAY)
 	SINGLE_TAB(74, false),                    // was 73, now 74
 	WORLD_MAP(18, false),                     // was 17, now 40
+	FLOATER(18, true),
 	UNKNOWN_OVERLAY(3, true),                 // remains 8
 	XP_TRACKER(9, true),                      // remains 9
 	COLOUR_PICKER(8, false),                  // remains 8 (no mapping provided)

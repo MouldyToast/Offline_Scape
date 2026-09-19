@@ -183,6 +183,25 @@ import java.util.concurrent.ThreadLocalRandom
 
 class PacketSender(private val player: Player) {
 
+    private var cachedInfoPackets: net.rsprot.protocol.game.outgoing.info.InfoPackets? = null
+
+    private fun getOrComputeInfoPackets(): net.rsprot.protocol.game.outgoing.info.InfoPackets? {
+        cachedInfoPackets?.let { return it }
+        val packets = player.infos?.getPackets() ?: return null
+        cachedInfoPackets = packets
+        return packets
+    }
+
+    internal fun clearCachedInfoPackets() {
+        cachedInfoPackets = null
+    }
+
+    private fun buildAreaOriginX(): Int =
+        ((player.position.x ushr 3) - 6).coerceAtLeast(0) shl 3
+
+    private fun buildAreaOriginZ(): Int =
+        ((player.position.y ushr 3) - 6).coerceAtLeast(0) shl 3
+
     companion object {
         private val REBUILD_REGION_ZONE_PROVIDER = object : RebuildRegionV2.RebuildRegionZoneProvider {
             override fun provide(zoneX: Int, zoneZ: Int, level: Int): RebuildRegionZone? {
@@ -248,8 +267,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamLookAtV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 speed,
                 acceleration,
@@ -397,8 +416,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamMoveToV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 speed,
                 acceleration,
@@ -433,8 +452,8 @@ class PacketSender(private val player: Player) {
     ) {
         send {
             CamMoveToCyclesV3(
-                xInBuildArea,
-                yInBuildArea,
+                buildAreaOriginX() + xInBuildArea,
+                buildAreaOriginZ() + yInBuildArea,
                 height,
                 duration,
                 maintainFixedAltitude,
@@ -482,11 +501,13 @@ class PacketSender(private val player: Player) {
         function: Int,
     ) {
         send {
+            val ox = buildAreaOriginX()
+            val oz = buildAreaOriginZ()
             CamMoveToArcV3(
-                centerXInBuildArea,
-                centerYInBuildArea,
-                destinationXInBuildArea,
-                destinationyInBuildArea,
+                ox + centerXInBuildArea,
+                oz + centerYInBuildArea,
+                ox + destinationXInBuildArea,
+                oz + destinationyInBuildArea,
                 height,
                 duration,
                 maintainFixedAltitude,
@@ -610,7 +631,7 @@ class PacketSender(private val player: Player) {
      * Player info packet is used to synchronize the state of all players in the world.
      */
     internal fun playerInfo(info: PlayerInfo) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.playerInfo.getOrNull() ?: return
         sendOrLogout { packet }
     }
@@ -618,11 +639,9 @@ class PacketSender(private val player: Player) {
 
 
     internal fun worldEntityInfo(info: WorldEntityInfo) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.worldEntityInfo.getOrNull() ?: return
-        sendOrLogout {
-            packet
-        }
+        sendOrLogout { packet }
     }
 
     internal fun rebuildWorldEntity(
@@ -648,7 +667,7 @@ class PacketSender(private val player: Player) {
         worldId: Int,
         info: NpcInfo,
     ) {
-        val packets = player.infos?.getPackets() ?: return
+        val packets = getOrComputeInfoPackets() ?: return
         val packet = packets.rootWorldInfoPackets.npcInfo.getOrNull() ?: return
         sendOrLogout { packet }
     }
@@ -4163,5 +4182,209 @@ class PacketSender(private val player: Player) {
             block(),
             if (priority) GameServerProtCategory.HIGH_PRIORITY_PROT else GameServerProtCategory.LOW_PRIORITY_PROT,
         )
+    }
+
+    // ---- Rev-240 new outgoing packets ----
+
+    fun camSkybox(model: Int) {
+        send { net.rsprot.protocol.game.outgoing.camera.CamSkybox(model) }
+    }
+
+    fun camUnlock(unlock: Boolean) {
+        send { net.rsprot.protocol.game.outgoing.camera.CamUnlock(unlock) }
+    }
+
+    fun camLookAtCycles(
+        x: Int,
+        z: Int,
+        height: Int,
+        cycles: Int,
+        easing: Int,
+        heightRelative: Boolean,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.camera.CamLookAtCycles(
+                x, z, height, cycles, easing, heightRelative,
+            )
+        }
+    }
+
+    fun ambientSoundStart(id: Int, fade: Boolean) {
+        send { net.rsprot.protocol.game.outgoing.sound.AmbientSoundStart(id, fade) }
+    }
+
+    fun ambientSoundStop(fade: Boolean) {
+        send { net.rsprot.protocol.game.outgoing.sound.AmbientSoundStop(fade) }
+    }
+
+    fun scriptedProjAdd(
+        slot: Int,
+        id: Int,
+        xInZone: Int,
+        zInZone: Int,
+        sourceOffsetX: Int,
+        sourceOffsetZ: Int,
+        sourceHeight: Int,
+        sourceIndex: Int,
+        targetLevel: Int,
+        targetX: Int,
+        targetZ: Int,
+        targetOffsetX: Int,
+        targetOffsetZ: Int,
+        targetHeight: Int,
+        targetIndex: Int,
+        startTime: Int,
+        endTime: Int,
+        curveScriptH: Int,
+        curveScriptA: Int,
+        curveScriptT: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.zone.payload.ScriptedProjAdd(
+                slot, id, xInZone, zInZone,
+                sourceOffsetX, sourceOffsetZ, sourceHeight, sourceIndex,
+                targetLevel, targetX, targetZ,
+                targetOffsetX, targetOffsetZ, targetHeight, targetIndex,
+                startTime, endTime,
+                curveScriptH, curveScriptA, curveScriptT,
+            )
+        }
+    }
+
+    fun scriptedProjChange(
+        slot: Int,
+        targetLevel: Int,
+        targetX: Int,
+        targetZ: Int,
+        targetOffsetX: Int,
+        targetOffsetZ: Int,
+        targetHeight: Int,
+        targetIndex: Int,
+        freezeDuration: Int,
+        deleteOnFreezeEnd: Boolean,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.zone.payload.ScriptedProjChange(
+                slot, targetLevel, targetX, targetZ,
+                targetOffsetX, targetOffsetZ, targetHeight, targetIndex,
+                freezeDuration, deleteOnFreezeEnd,
+            )
+        }
+    }
+
+    fun objAddSpecific(
+        id: Int,
+        quantity: Int,
+        level: Int,
+        x: Int,
+        z: Int,
+        opFlags: Byte,
+        timeUntilPublic: Int,
+        timeUntilDespawn: Int,
+        ownershipType: Int,
+        neverBecomesPublic: Boolean,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjAddSpecific(
+                id, quantity, level, x, z,
+                opFlags, timeUntilPublic, timeUntilDespawn, ownershipType, neverBecomesPublic,
+            )
+        }
+    }
+
+    fun objCountSpecific(
+        id: Int,
+        oldQuantity: Int,
+        newQuantity: Int,
+        level: Int,
+        x: Int,
+        z: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjCountSpecific(
+                id, oldQuantity, newQuantity, level, x, z,
+            )
+        }
+    }
+
+    fun objDelSpecific(
+        id: Int,
+        quantity: Int,
+        level: Int,
+        x: Int,
+        z: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjDelSpecific(
+                id, quantity, level, x, z,
+            )
+        }
+    }
+
+    fun objCustomiseSpecific(
+        id: Int,
+        quantity: Int,
+        model: Int,
+        recolIndex: Int,
+        recol: Int,
+        retexIndex: Int,
+        retex: Int,
+        level: Int,
+        x: Int,
+        z: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjCustomiseSpecific(
+                id, quantity, model, recolIndex, recol, retexIndex, retex, level, x, z,
+            )
+        }
+    }
+
+    fun objUncustomiseSpecific(
+        id: Int,
+        quantity: Int,
+        level: Int,
+        x: Int,
+        z: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjUncustomiseSpecific(
+                id, quantity, level, x, z,
+            )
+        }
+    }
+
+    fun objEnabledOpsSpecific(
+        id: Int,
+        opFlags: Byte,
+        level: Int,
+        x: Int,
+        z: Int,
+    ) {
+        send {
+            net.rsprot.protocol.game.outgoing.specific.ObjEnabledOpsSpecific(
+                id, opFlags, level, x, z,
+            )
+        }
+    }
+
+    fun groupFull(updates: List<net.rsprot.protocol.game.outgoing.group.GroupFull.GroupUpdate>) {
+        send { net.rsprot.protocol.game.outgoing.group.GroupFull(updates) }
+    }
+
+    fun groupVar(updates: List<net.rsprot.protocol.game.outgoing.group.util.GroupVarUpdate<*>>) {
+        send { net.rsprot.protocol.game.outgoing.group.GroupVar(updates) }
+    }
+
+    fun groupVarInt(update: net.rsprot.protocol.game.outgoing.group.util.GroupVarUpdate<Int>) {
+        send { net.rsprot.protocol.game.outgoing.group.GroupVarInt(update) }
+    }
+
+    fun groupVarLong(update: net.rsprot.protocol.game.outgoing.group.util.GroupVarUpdate<Long>) {
+        send { net.rsprot.protocol.game.outgoing.group.GroupVarLong(update) }
+    }
+
+    fun accountFlags(flags: Long) {
+        send { net.rsprot.protocol.game.outgoing.misc.player.AccountFlags(flags) }
     }
 }

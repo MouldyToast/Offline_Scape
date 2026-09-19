@@ -195,3 +195,45 @@ internal fun PacketConsumer.eventMouseIdle() {
         player.logout(false)
     }
 }
+
+internal fun PacketConsumer.setHeading() {
+    addListener<net.rsprot.protocol.game.incoming.misc.user.SetHeading> {
+        val heading = it.heading
+    }
+}
+
+internal fun PacketConsumer.ifCrmViewOp() {
+    addListener<net.rsprot.protocol.game.incoming.misc.user.IfCrmViewOp> {
+    }
+}
+
+internal fun PacketConsumer.hiscoreRequest() {
+    addListener<net.rsprot.protocol.game.incoming.misc.user.HiscoreRequest> {
+    }
+}
+
+internal fun PacketConsumer.connectionTelemetry() {
+    addListener<net.rsprot.protocol.game.incoming.misc.client.ConnectionTelemetry> {
+    }
+}
+
+internal fun PacketConsumer.membershipPromotionEligibility() {
+    addListener<net.rsprot.protocol.game.incoming.misc.client.MembershipPromotionEligibility> {
+    }
+}
+
+internal fun PacketConsumer.reflectionCheckReply() {
+    addListener<net.rsprot.protocol.game.incoming.misc.client.ReflectionCheckReply> {
+        it.release()
+    }
+}
+
+internal fun PacketConsumer.detectModifiedClient() {
+    addListener<net.rsprot.protocol.game.incoming.misc.client.DetectModifiedClient> {
+    }
+}
+
+internal fun PacketConsumer.rSevenStatus() {
+    addListener<net.rsprot.protocol.game.incoming.misc.client.RSevenStatus> {
+    }
+}

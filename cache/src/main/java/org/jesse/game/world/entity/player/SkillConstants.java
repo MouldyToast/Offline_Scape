@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class SkillConstants {
 
-    public static final int COUNT = 23;
+    public static final int COUNT = 25;
 
     public static final int MAXIMUM_EXP = 200000000;
 
@@ -35,14 +35,15 @@ public abstract class SkillConstants {
     public static final int RUNECRAFTING = 20;
     public static final int HUNTER = 21;
     public static final int CONSTRUCTION = 22;
+    public static final int SAILING = 23;
 
     public static final int SKILL_GUIDE_INTERFACE = 214;
 
-    public static final String[] SKILLS = {"Attack", "Defence", "Strength", "Hitpoints", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecraft", "Hunter", "Construction"};
+    public static final String[] SKILLS = {"Attack", "Defence", "Strength", "Hitpoints", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecraft", "Hunter", "Construction", "Sailing", "Unreleased"};
 
-    public static final int[] SKILLS_ICONS = {197, 199, 198, 203, 200, 201, 202, 212, 214, 208, 211, 213, 207, 210, 209, 205, 204, 206, 216, 217, 215, 220, 221};
+    public static final int[] SKILLS_ICONS = {197, 199, 198, 203, 200, 201, 202, 212, 214, 208, 211, 213, 207, 210, 209, 205, 204, 206, 216, 217, 215, 220, 221, -1, -1};
 
-    public static final List<Integer> MILESTONES = ImmutableList.of(50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200);
+    public static final List<Integer> MILESTONES = ImmutableList.of(50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2475);
 
     public static final int[] VALID_SKILLS = new int[]{
             ATTACK,
@@ -66,7 +67,8 @@ public abstract class SkillConstants {
             SLAYER,
             FARMING,
             RUNECRAFTING,
-            HUNTER
+            HUNTER,
+            SAILING
     };
 
 }

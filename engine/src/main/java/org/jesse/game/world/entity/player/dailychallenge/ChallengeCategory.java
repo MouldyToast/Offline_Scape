@@ -3,19 +3,16 @@ package org.jesse.game.world.entity.player.dailychallenge;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.player.Player;
 import org.jesse.game.world.entity.player.Skills;
+import org.jesse.game.world.entity.player.SkillConstants;
 import org.jesse.utils.TextUtils;
 
 import static org.jesse.game.world.entity.player.dailychallenge.ChallengeDifficulty.*;
 
-/**
- * @author Tommeh | 02/05/2019 | 22:40
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>
- */
 public enum ChallengeCategory {
     SKILLING(player -> {
         int skill = 0;
-        while (Skills.isCombatSkill(skill) || skill == 22) {
-            skill = Utils.random(22);
+        while (Skills.isCombatSkill(skill) || skill == SkillConstants.CONSTRUCTION || skill >= SkillConstants.SAILING) {
+            skill = Utils.random(SkillConstants.CONSTRUCTION);
         }
         final int level = player.getSkills().getLevelForXp(skill);
         final ChallengeDifficulty difficulty = level >= 75 ? ELITE : level <= 74 && level >= 45 ? HARD : level <= 44 && level >= 20 ? MEDIUM : EASY;

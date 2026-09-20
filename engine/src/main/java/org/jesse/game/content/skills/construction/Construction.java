@@ -28,6 +28,13 @@ import org.jesse.game.world.entity.player.container.impl.Inventory;
 import org.jesse.game.obj.ids.ObjectId;
 import org.jesse.game.world.object.WorldObject;
 import org.jesse.game.world.region.Region;
+import org.jesse.game.world.region.XTEALoader;
+import org.jesse.game.world.region.dynamicregion.CoordinateUtilities;
+import mgi.tools.jagcached.ArchiveType;
+import mgi.tools.jagcached.cache.Archive;
+import mgi.tools.jagcached.cache.Cache;
+import org.jesse.CacheManager;
+import mgi.utilities.ByteBuffer;
 import org.jesse.game.world.region.dynamicregion.AllocatedArea;
 import org.jesse.game.world.region.dynamicregion.CoordinateUtilities;
 import org.jesse.game.world.region.dynamicregion.MapBuilder;
@@ -311,6 +318,7 @@ public final class Construction {
             } catch (Exception e) {
                 log.error("", e);
             }
+            spawnWindowsFromTemplate(reference);
         }
     }
 
@@ -337,11 +345,6 @@ public final class Construction {
             if (room.getRoom() == RoomType.FORMAL_GARDEN || room.getRoom() == RoomType.GARDEN || room.getRoom() == RoomType.MENAGERIE_OUTDOORS || room.getRoom() == RoomType.SUPERIOR_GARDEN) {
                 continue;
             }
-            final int minX = (room.getX() * 8 - (yardOffset * 8)) % 64;
-            final int minY = (room.getY() * 8 - (yardOffset * 8)) % 64;
-            final int regionId = ((((chunkX + room.getX() - yardOffset) * 8 >> 6) << 8) + (((chunkY + room.getY() - yardOffset) * 8) >> 6));
-            final int regionX = (regionId >> 8) << 6;
-            final int regionY = (regionId & 255) << 6;
             for (int i = 0; i < DOOR_POSITIONS.length; i++) {
                 final int[] coords = DOOR_POSITIONS[i];
                 final int x = coords[0];
@@ -352,7 +355,8 @@ public final class Construction {
                 final int rx = x == 0 ? -1 : x == 7 ? 1 : 0;
                 final int ry = y == 0 ? -1 : y == 7 ? 1 : 0;
                 final int offset = decoration == 0 ? (i % 2 == 0 ? 0 : 1) : (i % 2 != 0 ? 0 : 1);
-                final WorldObject o = new WorldObject(DOOR_IDS[decoration] + offset, 0, rotation, (regionX + minX + x), regionY + minY + y, room.getPlane());
+                final Location doorTile = getWorldTile(((room.getX() - yardOffset) * 8) + x, ((room.getY() - yardOffset) * 8) + y, room.getPlane());
+                final WorldObject o = new WorldObject(DOOR_IDS[decoration] + offset, 0, rotation, doorTile);
                 final int dir = DirectionUtil.getMoveDirection(oppositeX - x, oppositeY - y);
                 final RoomReference ref = getReference(room.getX() + rx, room.getY() + ry, room.getPlane());
                 if (ref != null && ref.getRoom() != RoomType.FORMAL_GARDEN && ref.getRoom() != RoomType.GARDEN && ref.getRoom() != RoomType.MENAGERIE_OUTDOORS && ref.getRoom() != RoomType.SUPERIOR_GARDEN) {
@@ -701,6 +705,73 @@ public final class Construction {
      *
      * @param room room to refresh.
      */
+    /**
+     * Reads the source template chunk directly from the cache, finds any
+     * 13830 (poh_dynamic_window) objects, and spawns the styled window at
+     * the corresponding destination position.  Runs synchronously during
+     * createRooms — no dependency on region object loading.
+     */
+    private void spawnWindowsFromTemplate(final RoomReference room) {
+        final int srcChunkX = room.getRoom().getChunkX() + (decoration >= 4 ? 8 : 0);
+        final int srcChunkY = room.getRoom().getChunkY();
+        final int srcPlane = decoration & 3;
+        final int srcRegionId = (srcChunkX >> 3) << 8 | (srcChunkY >> 3);
+        final int localChunkX = srcChunkX & 7;
+        final int localChunkY = srcChunkY & 7;
+        try {
+            final int[] xteas = XTEALoader.getXTEAs(srcRegionId);
+            final Cache cache = CacheManager.getCache();
+            final Archive archive = cache.getArchive(ArchiveType.MAPS);
+            final ByteBuffer landBuffer;
+            if (!archive.usesNames()) {
+                final var regionGroup = archive.findGroupByID(srcRegionId, xteas, true);
+                landBuffer = regionGroup != null && regionGroup.findFileByID(1) != null
+                        ? regionGroup.findFileByID(1).getData() : null;
+            } else {
+                final var landGroup = archive.findGroupByName(
+                        "l" + (srcRegionId >> 8) + "_" + (srcRegionId & 255), xteas);
+                landBuffer = landGroup != null ? landGroup.findFileByID(0).getData() : null;
+            }
+            if (landBuffer == null) return;
+            landBuffer.setPosition(0);
+
+            final int dstChunkX = chunkX + room.getX() - yardOffset;
+            final int dstChunkY = chunkY + room.getY() - yardOffset;
+            final int rot = room.getRotation();
+            int objectId = -1;
+            int incr;
+            while ((incr = landBuffer.readHugeSmart()) != 0) {
+                objectId += incr;
+                int location = 0;
+                int incr2;
+                while ((incr2 = landBuffer.readUnsignedSmart()) != 0) {
+                    location += incr2 - 1;
+                    final int lx = (location >> 6) & 63;
+                    final int ly = location & 63;
+                    final int lz = (location >> 12) & 3;
+                    final int data = landBuffer.readUnsignedByte();
+                    final int type = data >> 2;
+                    final int objRot = data & 3;
+
+                    if (objectId != ObjectId.WINDOW_13830) continue;
+                    if (lz != srcPlane) continue;
+                    if ((lx >> 3) != localChunkX || (ly >> 3) != localChunkY) continue;
+
+                    final int tileX = lx & 7;
+                    final int tileY = ly & 7;
+                    final int[] coords = CoordinateUtilities.translate(tileX, tileY, rot, 1, 1, objRot);
+                    final int worldX = dstChunkX * 8 + coords[0];
+                    final int worldY = dstChunkY * 8 + coords[1];
+                    final int finalRot = (rot + objRot) & 3;
+
+                    World.spawnObject(new WorldObject(getWindow(), type, finalRot, worldX, worldY, room.getPlane()));
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to read template windows for room " + room.getRoom(), e);
+        }
+    }
+
     private void refreshWindows(final RoomReference room) {
         final int minX = (room.getX() * 8 - (yardOffset * 8)) % 64;
         final int minY = (room.getY() * 8 - (yardOffset * 8)) % 64;

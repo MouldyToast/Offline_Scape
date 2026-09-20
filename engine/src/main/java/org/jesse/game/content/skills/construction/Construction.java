@@ -57,10 +57,6 @@ import java.util.Optional;
 import static org.jesse.game.content.skills.construction.ConstructionConstants.*;
 
 /**
- * @author Tommeh 13 nov. 2017 : 22:36:26
- * @author Kris | 21. nov 2017 : 2:32.54
- * @see <a href="https://www.rune-server.ee/members/tommeh/">Rune-Server profile</a>}
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>}
  * @see <a href="https://rune-status.net/members/kris.354/">Rune-Status profile</a>} TODO: Dungeon floor space reminder: If rocnar exists,
  * leave 15351 empty (and spawn rocnar there) Otherwise, spawn whatever floor space you had. TODO: Configure tip jar to work with other
  * people!
@@ -434,9 +430,21 @@ public final class Construction {
 
     public void removeObject(final RoomReference reference, final WorldObject object) {
         for (final FurnitureData furniture : reference.getFurnitureData()) {
-            for (final int i : furniture.getFurniture().getObjectIds()) {
-                if (i == object.getId() && object.getXInChunk() == furniture.getLocation().getX() && object.getYInChunk() == furniture.getLocation().getYInChunk()) {
-                    refreshObject(reference, furniture, true, true);
+            for (int idx = 0; idx < furniture.getFurniture().getObjectIds().length; idx++) {
+                final int objId = furniture.getFurniture().getObjectIds()[idx];
+                if (objId == object.getId() && object.getXInChunk() == furniture.getLocation().getX() && object.getYInChunk() == furniture.getLocation().getYInChunk()) {
+                    if (idx < furniture.getSpace().getSpotIds().length) {
+                        final int hotspotId = furniture.getSpace().getSpotIds()[idx];
+                        if (buildingMode) {
+                            final WorldObject hotspot = new WorldObject(hotspotId, object.getType(), object.getRotation(), object);
+                            World.spawnObject(hotspot);
+                        } else {
+                            World.removeObject(object);
+                        }
+                    } else {
+                        World.removeObject(object);
+                    }
+                    player.setAnimation(REMOVE_ANIM);
                     reference.getFurnitureData().remove(furniture);
                     if (furniture.getSpace() == FurnitureSpace.QUEST_RUG_SPACE || furniture.getSpace() == FurnitureSpace.SKILL_RUG_SPACE) {
                         enterHouse(true, getRelationalSpawnTile());

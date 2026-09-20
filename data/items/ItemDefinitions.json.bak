@@ -174035,7 +174035,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, 29, -2, 0, 0, 0, 3, 2, 0, 0, 31, 0, 0, 5"
+      "bonuses": "20, 29, -2, 0, 0, 0, 3, 2, 0, 0, 31, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -183682,7 +183701,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "28, 134, 66, 0, 0, 0, 0, 0, 0, 0, 121, 0, 0, 5"
+      "bonuses": "28, 134, 66, 0, 0, 0, 0, 0, 0, 0, 121, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 10169,
+        "walkAnimation": 10170,
+        "runAnimation": 11170,
+        "standTurnAnimation": 10169,
+        "rotate90Animation": 10170,
+        "rotate180Animation": 10170,
+        "rotate270Animation": 10170,
+        "accurateAnimation": 10172,
+        "aggressiveAnimation": 10172,
+        "controlledAnimation": 10171,
+        "defensiveAnimation": 10172,
+        "attackSpeed": 5,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -183727,7 +183765,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -183736,7 +183793,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -183745,7 +183821,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -202413,7 +202508,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "4, 2, -4, 1, 0, 0, 0, 0, 1, 0, 3, 0, 0, 4"
+      "bonuses": "4, 2, -4, 1, 0, 0, 0, 0, 1, 0, 3, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 7056,
+        "standAnimation": 7053,
+        "walkAnimation": 7052,
+        "runAnimation": 7043,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7045,
+        "aggressiveAnimation": 7045,
+        "controlledAnimation": 7055,
+        "defensiveAnimation": 7054,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 10,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203473,7 +203587,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4"
+      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203488,7 +203621,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4"
+      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203503,7 +203655,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4"
+      "bonuses": "40, 25, -4, 1, 0, 0, 0, 0, 1, 0, 40, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203814,7 +203985,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4"
+      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 2080,
+        "aggressiveAnimation": 2081,
+        "controlledAnimation": 2082,
+        "defensiveAnimation": 2080,
+        "attackSpeed": 4,
+        "interfaceVarbit": 15,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203829,7 +204019,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4"
+      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 2080,
+        "aggressiveAnimation": 2081,
+        "controlledAnimation": 2082,
+        "defensiveAnimation": 2080,
+        "attackSpeed": 4,
+        "interfaceVarbit": 15,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -203844,7 +204053,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4"
+      "bonuses": "55, 55, 55, 0, 0, 5, 5, 5, 5, 5, 60, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 2080,
+        "aggressiveAnimation": 2081,
+        "controlledAnimation": 2082,
+        "defensiveAnimation": 2080,
+        "attackSpeed": 4,
+        "interfaceVarbit": 15,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204459,7 +204687,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-100, -100, -50, 0, 0, 0, 0, 0, 0, 0, -20, 0, 0, 3"
+      "bonuses": "-100, -100, -50, 0, 0, 0, 0, 0, 0, 0, -20, 0, 0, 3",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "twoHanded": true,
+        "attackSpeed": 3,
+        "interfaceVarbit": 2,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204876,7 +205123,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 6, 3, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 7"
+      "bonuses": "-3, 6, 3, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204897,7 +205163,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 8, 4, 0, 0, 0, 1, 0, 0, 0, 11, 0, 0, 7"
+      "bonuses": "-3, 8, 4, 0, 0, 0, 1, 0, 0, 0, 11, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204918,7 +205203,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 12, 9, 0, 0, 0, 1, 0, 0, 0, 14, 0, 0, 7"
+      "bonuses": "-3, 12, 9, 0, 0, 0, 1, 0, 0, 0, 14, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204939,7 +205243,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 16, 12, 0, 0, 0, 1, 0, 0, 0, 19, 0, 0, 7"
+      "bonuses": "-3, 16, 12, 0, 0, 0, 1, 0, 0, 0, 19, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204960,7 +205283,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 19, 16, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 7"
+      "bonuses": "-3, 19, 16, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -204981,7 +205323,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 27, 24, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 7"
+      "bonuses": "-3, 27, 24, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -205002,7 +205363,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 41, 38, 0, 0, 0, 1, 0, 0, 0, 46, 0, 0, 7"
+      "bonuses": "-3, 41, 38, 0, 0, 0, 1, 0, 0, 0, 46, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -205023,7 +205403,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7"
+      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -205044,7 +205443,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7"
+      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -205065,7 +205483,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7"
+      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -205086,7 +205523,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7"
+      "bonuses": "-3, 60, 51, 0, 0, 0, 1, 0, 0, 0, 67, 0, 0, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2065,
+        "walkAnimation": 2064,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2067,
+        "aggressiveAnimation": 2067,
+        "controlledAnimation": 2066,
+        "defensiveAnimation": 2067,
+        "twoHanded": true,
+        "attackSpeed": 7,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -206712,7 +207168,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -206721,7 +207196,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -206730,7 +207224,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -206739,7 +207252,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4"
+      "bonuses": "20, -1, 50, 20, 0, 2, 3, 1, 15, 0, 60, -1, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 2079,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 406,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -207283,7 +207815,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "50, 75, 10, -6, 0, -2, 6, 0, 0, 0, 43, 0, 0, 5"
+      "bonuses": "50, 75, 10, -6, 0, -2, 6, 0, 0, 0, 43, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 1429,
+        "standAnimation": 8057,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 8056,
+        "aggressiveAnimation": 8056,
+        "controlledAnimation": 8056,
+        "defensiveAnimation": 8056,
+        "attackSpeed": 5,
+        "interfaceVarbit": 14,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -207335,7 +207886,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 35, 0, 0, 0, 0, 20, 0, 0, 1, 8, 5"
+      "bonuses": "0, 0, 0, 35, 0, 0, 0, 0, 20, 0, 0, 1, 8, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 9494,
+        "walkAnimation": 1663,
+        "runAnimation": 1664,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 1663,
+        "rotate180Animation": 1663,
+        "rotate270Animation": 1663,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -207551,7 +208121,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 12, 0, 2, 3, 1, 12, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 12, 0, 2, 3, 1, 12, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1205,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 400,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -208179,7 +208768,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 124, 0, 0, 106, 109, 109, -10, 148, 38, 0, 0, 5"
+      "bonuses": "0, 0, 124, 0, 0, 106, 109, 109, -10, 148, 38, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 7512,
+        "standAnimation": 7508,
+        "walkAnimation": 7510,
+        "runAnimation": 7509,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7511,
+        "aggressiveAnimation": 7511,
+        "controlledAnimation": 7511,
+        "defensiveAnimation": 7511,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 27,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -208212,7 +208820,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -208221,7 +208848,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -208746,7 +209392,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 6,
+        "longAttackDistance": 8
+      }
     }
   },
   {
@@ -208866,7 +209531,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "40, -2, 60, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 4"
+      "bonuses": "40, -2, 60, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -208881,7 +209565,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 69, 0, 0, 0, 0, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 0, 69, 0, 0, 0, 0, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 426,
+        "aggressiveAnimation": 426,
+        "controlledAnimation": 426,
+        "defensiveAnimation": 426,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -208896,7 +209599,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 8, 4"
+      "bonuses": "0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 8, 4",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 8,
+        "longAttackDistance": 10
+      }
     }
   },
   {
@@ -209152,7 +209874,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 77, 0, 0, 87, 0, 0, 0, 0, 0, 91, 0, 1, 5"
+      "bonuses": "0, 77, 0, 0, 87, 0, 0, 0, 0, 0, 91, 0, 1, 5",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 5246,
+        "walkAnimation": 5245,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 5247,
+        "aggressiveAnimation": 5247,
+        "controlledAnimation": 5247,
+        "defensiveAnimation": 5247,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 6,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -209389,7 +210130,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 79, 0, 0, 0, 0, 0, 0, 0, 8, 4"
+      "bonuses": "0, 0, 0, 0, 79, 0, 0, 0, 0, 0, 0, 0, 8, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 4591,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7552,
+        "aggressiveAnimation": 7552,
+        "controlledAnimation": 7552,
+        "defensiveAnimation": 7552,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 5,
+        "normalAttackDistance": 8,
+        "longAttackDistance": 10
+      }
     }
   },
   {
@@ -209698,7 +210458,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 115, 0, 0, 0, 0, 0, 0, 2, 6, 7"
+      "bonuses": "0, 0, 0, 0, 115, 0, 0, 0, 0, 0, 0, 2, 6, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 7,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -209719,7 +210498,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 115, 0, 0, 0, 0, 0, 0, 2, 7, 7"
+      "bonuses": "0, 0, 0, 0, 115, 0, 0, 0, 0, 0, 0, 2, 7, 7",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 7,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -210181,7 +210979,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "70, 62, 62, 30, 0, 2, 3, 1, 15, 0, 71, 0, 0, 5"
+      "bonuses": "70, 62, 62, 30, 0, 2, 3, 1, 15, 0, 71, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 9494,
+        "walkAnimation": 1663,
+        "runAnimation": 1664,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 13,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -210238,7 +211055,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "115, -4, 121, -4, 0, 0, 0, 0, 0, 0, 81, 0, 0, 4"
+      "bonuses": "115, -4, 121, -4, 0, 0, 0, 0, 0, 0, 81, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 2063,
+        "standAnimation": 2061,
+        "walkAnimation": 2060,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2062,
+        "aggressiveAnimation": 2062,
+        "controlledAnimation": 2062,
+        "defensiveAnimation": 2062,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -210259,7 +211095,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 40, 0, 6, 4"
+      "bonuses": "0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 40, 0, 6, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 426,
+        "aggressiveAnimation": 426,
+        "controlledAnimation": 426,
+        "defensiveAnimation": 426,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 7
+      }
     }
   },
   {
@@ -210832,7 +211687,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "11, 72, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 4"
+      "bonuses": "11, 72, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -212173,7 +213047,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 73, 0, 0, 0, 0, 0, 48, 1, 5, 6"
+      "bonuses": "0, 0, 0, 0, 73, 0, 0, 0, 0, 0, 48, 1, 5, 6",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 6,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 7
+      }
     }
   },
   {
@@ -214149,7 +215042,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6"
+      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 6,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -214164,7 +215076,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "70, 80, -2, 5, 0, 0, 1, 0, 2, 0, 80, 0, 0, 4"
+      "bonuses": "70, 80, -2, 5, 0, 0, 1, 0, 2, 0, 80, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -214179,7 +215110,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 16, 0, 0, 0, 0, 14, 0, 0, 0, 0, 5"
+      "bonuses": "0, 0, 0, 16, 0, 0, 0, 0, 14, 0, 0, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -214194,7 +215144,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 95, 0, 0, 0, 0, 0, 0, 0, 10, 9"
+      "bonuses": "0, 0, 0, 0, 95, 0, 0, 0, 0, 0, 0, 0, 10, 9",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 426,
+        "aggressiveAnimation": 426,
+        "controlledAnimation": 426,
+        "defensiveAnimation": 424,
+        "attackSpeed": 9,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -215710,7 +216679,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "70, 62, 62, 30, 0, 2, 3, 1, 15, 0, 71, 0, 0, 5"
+      "bonuses": "70, 62, 62, 30, 0, 2, 3, 1, 15, 0, 71, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 9494,
+        "walkAnimation": 1663,
+        "runAnimation": 1664,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 13,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -215719,7 +216707,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "115, -4, 121, -4, 0, 0, 0, 0, 0, 0, 81, 0, 0, 4"
+      "bonuses": "115, -4, 121, -4, 0, 0, 0, 0, 0, 0, 81, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 2063,
+        "standAnimation": 2061,
+        "walkAnimation": 2060,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2062,
+        "aggressiveAnimation": 2062,
+        "controlledAnimation": 2062,
+        "defensiveAnimation": 2062,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -215728,7 +216735,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 40, 0, 6, 4"
+      "bonuses": "0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 40, 0, 6, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 426,
+        "aggressiveAnimation": 426,
+        "controlledAnimation": 426,
+        "defensiveAnimation": 426,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 7
+      }
     }
   },
   {
@@ -215959,7 +216985,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "11, 0, 72, 0, 0, 0, 0, 0, 0, 0, 64, 2, 0, 4"
+      "bonuses": "11, 0, 72, 0, 0, 0, 0, 0, 0, 0, 64, 2, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 424,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 2,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -217063,7 +218108,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 16, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0"
+      "bonuses": "0, 0, 0, 16, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 10,
+        "longAttackDistance": 12
+      }
     }
   },
   {
@@ -218571,7 +219635,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "10, 16, -2, 0, 0, 0, 3, 2, 2, 0, 13, 0, 0, 5"
+      "bonuses": "10, 16, -2, 0, 0, 0, 3, 2, 2, 0, 13, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "attackSpeed": 5,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218664,7 +219747,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-3, 105, 90, 0, 0, -1, 0, 0, 0, -1, 107, 0, 0, 5"
+      "bonuses": "-3, 105, 90, 0, 0, -1, 0, 0, 0, -1, 107, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 395,
+        "aggressiveAnimation": 395,
+        "controlledAnimation": 395,
+        "defensiveAnimation": 395,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218794,7 +219896,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "20, 120, -4, 1, 0, 0, 0, 0, 1, 0, 40, 3, 0, 4"
+      "bonuses": "20, 120, -4, 1, 0, 0, 0, 0, 1, 0, 40, 3, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218809,7 +219930,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218818,7 +219958,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 5,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218833,7 +219992,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218842,7 +220020,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 401,
+        "aggressiveAnimation": 401,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 401,
+        "attackSpeed": 5,
+        "interfaceVarbit": 11,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218851,7 +220048,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218860,7 +220076,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 395,
+        "aggressiveAnimation": 395,
+        "controlledAnimation": 395,
+        "defensiveAnimation": 395,
+        "attackSpeed": 5,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218869,7 +220104,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, 32, 0, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218884,7 +220138,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "38, -2, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218893,7 +220166,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5"
+      "bonuses": "-2, 38, 32, 0, 0, 0, 1, 0, 0, 0, 42, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -218986,7 +220278,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6"
+      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6",
+      "weaponDefinition": {
+        "blockAnimation": 7056,
+        "standAnimation": 7053,
+        "walkAnimation": 7052,
+        "runAnimation": 7043,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7045,
+        "aggressiveAnimation": 7045,
+        "controlledAnimation": 7055,
+        "defensiveAnimation": 7054,
+        "twoHanded": true,
+        "attackSpeed": 6,
+        "interfaceVarbit": 10,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -219001,7 +220312,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "125, 75, 0, 0, 0, 70, 70, 70, 28, 70, 113, 0, 0, 5"
+      "bonuses": "125, 75, 0, 0, 0, 70, 70, 70, 28, 70, 113, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 400,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -219031,7 +220361,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 6, 3"
+      "bonuses": "0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 6, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -219040,7 +220389,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 6, 3"
+      "bonuses": "0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 6, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -219145,7 +220513,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "65, 110, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 4"
+      "bonuses": "65, 110, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -219160,7 +220547,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "95, 0, 0, 45, 155, 0, 0, 0, 0, 0, 103, 0, 7, 5"
+      "bonuses": "95, 0, 0, 45, 155, 0, 0, 0, 0, 0, 103, 0, 7, 5",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 5246,
+        "walkAnimation": 5245,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 5247,
+        "aggressiveAnimation": 5247,
+        "controlledAnimation": 5247,
+        "defensiveAnimation": 5247,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 6,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -219175,7 +220581,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 5"
+      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 5",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 5246,
+        "walkAnimation": 5245,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 5247,
+        "aggressiveAnimation": 5247,
+        "controlledAnimation": 5247,
+        "defensiveAnimation": 5247,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 6,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -219494,7 +220919,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 6, 5"
+      "bonuses": "0, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 6, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 0,
+        "standAnimation": 9857,
+        "walkAnimation": 9859,
+        "runAnimation": 9860,
+        "standTurnAnimation": 9862,
+        "rotate90Animation": 9863,
+        "rotate180Animation": 9861,
+        "rotate270Animation": 9863,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 7
+      }
     }
   },
   {
@@ -220413,7 +221857,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6"
+      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 6,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -220422,7 +221885,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6"
+      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 6,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -220431,7 +221913,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6"
+      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 6,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -220440,7 +221941,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6"
+      "bonuses": "12, -1, 65, 15, 0, 3, 5, 2, 15, 0, 68, 0, 0, 6",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 6,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -220809,7 +222329,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "7, -1, 28, 12, 0, 2, 3, 1, 12, 0, 22, 0, 0, 6"
+      "bonuses": "7, -1, 28, 12, 0, 2, 3, 1, 12, 0, 22, 0, 0, 6",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 6,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -221571,7 +223110,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "2, 0, 21, 0, 0, 0, 7, 3, 11, 0, 23, 0, 0, 5"
+      "bonuses": "2, 0, 21, 0, 0, 0, 7, 3, 11, 0, 23, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -222375,7 +223933,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "58, -2, 57, 2, 0, 0, 0, 0, 0, 0, 45, 3, 0, 4"
+      "bonuses": "58, -2, 57, 2, 0, 0, 0, 0, 0, 0, 45, 3, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 430,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 428,
+        "aggressiveAnimation": 428,
+        "controlledAnimation": 429,
+        "defensiveAnimation": 428,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 29,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -222768,7 +224345,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 70, 0, 0, 0, 0, 0, 0, 0, 0, 64, 1, 0, 4"
+      "bonuses": "55, 70, 0, 0, 0, 0, 0, 0, 0, 0, 64, 1, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -222783,7 +224379,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "72, 11, 0, 0, 0, 0, 0, 0, 0, 0, 64, 2, 0, 4"
+      "bonuses": "72, 11, 0, 0, 0, 0, 0, 0, 0, 0, 64, 2, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 400,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -223338,7 +224953,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "-4, -4, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5"
+      "bonuses": "-4, -4, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 2,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -223755,7 +225389,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 30, 0, 1, 5, 5, 10, 0, 0, 2, 6, 3"
+      "bonuses": "0, 0, 0, 30, 0, 1, 5, 5, 10, 0, 0, 2, 6, 3",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 6,
+        "longAttackDistance": 8
+      }
     }
   },
   {
@@ -223770,7 +225423,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 30, 0, 1, 5, 5, 10, 0, 0, 2, 6, 3"
+      "bonuses": "0, 0, 0, 30, 0, 1, 5, 5, 10, 0, 0, 2, 6, 3",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 6,
+        "longAttackDistance": 8
+      }
     }
   },
   {
@@ -223881,7 +225553,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 5"
+      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 0,
+        "standAnimation": 9857,
+        "walkAnimation": 9859,
+        "runAnimation": 9860,
+        "standTurnAnimation": 9862,
+        "rotate90Animation": 9863,
+        "rotate180Animation": 9861,
+        "rotate270Animation": 9863,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 7
+      }
     }
   },
   {
@@ -224577,7 +226268,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "100, 78, -3, 0, 0, 20, 15, -9, 0, 0, 102, 0, 0, 5"
+      "bonuses": "100, 78, -3, 0, 0, 20, 15, -9, 0, 0, 102, 0, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -226551,7 +228261,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -226566,7 +228295,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -226581,7 +228329,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -226596,7 +228363,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -226611,7 +228397,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -226626,7 +228431,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 5, 3"
+      "bonuses": "0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 5, 3",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 5061,
+        "aggressiveAnimation": 5061,
+        "controlledAnimation": 5061,
+        "defensiveAnimation": 5061,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 5,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -235254,7 +237078,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 5"
+      "bonuses": "0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -235359,7 +237202,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 70, 0, 17, 0, 0, 3, 3, 17, 0, 72, 0, 0, 0"
+      "bonuses": "55, 70, 0, 17, 0, 0, 3, 3, 17, 0, 72, 0, 0, 0",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 420,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 440,
+        "aggressiveAnimation": 440,
+        "controlledAnimation": 440,
+        "defensiveAnimation": 440,
+        "attackSpeed": 4,
+        "interfaceVarbit": 21,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -235368,7 +237230,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "55, 70, 0, 25, 0, 0, 3, 3, 17, 0, 72, 0, 0, 0"
+      "bonuses": "55, 70, 0, 25, 0, 0, 3, 3, 17, 0, 72, 0, 0, 0",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 13,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -235383,7 +237264,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6"
+      "bonuses": "0, 132, 80, 0, 0, 0, 0, 0, 0, 0, 132, 8, 0, 6",
+      "weaponDefinition": {
+        "blockAnimation": 7056,
+        "standAnimation": 7053,
+        "walkAnimation": 7052,
+        "runAnimation": 7043,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7045,
+        "aggressiveAnimation": 7045,
+        "controlledAnimation": 7055,
+        "defensiveAnimation": 7054,
+        "twoHanded": true,
+        "attackSpeed": 6,
+        "interfaceVarbit": 10,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -235404,7 +237304,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "65, 110, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 4"
+      "bonuses": "65, 110, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236256,7 +238175,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "105, 75, 0, 0, 0, 0, 0, 0, 0, 0, 103, 0, 0, 5"
+      "bonuses": "105, 75, 0, 0, 0, 0, 0, 0, 0, 0, 103, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 809,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 9471,
+        "aggressiveAnimation": 9471,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 9471,
+        "attackSpeed": 5,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236286,7 +238224,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "80, 132, 0, 0, 0, 0, 0, 0, 0, 0, 142, 0, 2, 5"
+      "bonuses": "80, 132, 0, 0, 0, 0, 0, 0, 0, 0, 142, 0, 2, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 1429,
+        "standAnimation": 809,
+        "walkAnimation": 1146,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 440,
+        "aggressiveAnimation": 440,
+        "controlledAnimation": 412,
+        "defensiveAnimation": 440,
+        "attackSpeed": 5,
+        "interfaceVarbit": 12,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236331,7 +238288,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "10, -5, 83, 37, 0, 1, 1, 0, 25, 0, 62, 0, 0, 5"
+      "bonuses": "10, -5, 83, 37, 0, 1, 1, 0, 25, 0, 62, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "attackSpeed": 5,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236451,7 +238427,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "43, 54, 0, 0, 0, 3, 6, 1, 0, 0, 32, 0, 0, 4"
+      "bonuses": "43, 54, 0, 0, 0, 3, 6, 1, 0, 0, 32, 0, 0, 4",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 397,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 393,
+        "aggressiveAnimation": 393,
+        "controlledAnimation": 393,
+        "defensiveAnimation": 393,
+        "attackSpeed": 4,
+        "interfaceVarbit": 4,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236715,7 +238710,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "72, 72, 72, 0, 0, 0, 0, 0, 0, 0, 70, -1, 0, 4"
+      "bonuses": "72, 72, 72, 0, 0, 0, 0, 0, 0, 0, 70, -1, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 400,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236730,7 +238744,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 95, 0, 0, 0, 0, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 0, 95, 0, 0, 0, 0, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 426,
+        "aggressiveAnimation": 426,
+        "controlledAnimation": 426,
+        "defensiveAnimation": 426,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 3,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -236760,7 +238793,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "60, 60, 10, 3, 0, 0, 0, 0, 3, 0, 20, 0, 0, 3"
+      "bonuses": "60, 60, 10, 3, 0, 0, 0, 0, 3, 0, 20, 0, 0, 3",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 0,
+        "walkAnimation": 0,
+        "runAnimation": 0,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 402,
+        "aggressiveAnimation": 402,
+        "controlledAnimation": 402,
+        "defensiveAnimation": 424,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 17,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -236775,7 +238827,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 130, 20, 20, 20, 25, 60, 0, 0, 9, 6"
+      "bonuses": "0, 0, 0, 0, 130, 20, 20, 20, 25, 60, 0, 0, 9, 6",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 2074,
+        "walkAnimation": 2076,
+        "runAnimation": 2077,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2075,
+        "aggressiveAnimation": 2075,
+        "controlledAnimation": 2075,
+        "defensiveAnimation": 2075,
+        "twoHanded": true,
+        "attackSpeed": 6,
+        "interfaceVarbit": 5,
+        "normalAttackDistance": 9,
+        "longAttackDistance": 11
+      }
     }
   },
   {
@@ -236790,7 +238861,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 60, 25, 0, 0, 5, 5, 17, 0, 50, 0, 8, 5"
+      "bonuses": "0, 0, 60, 25, 0, 0, 5, 5, 17, 0, 50, 0, 8, 5",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 8,
+        "longAttackDistance": 10
+      }
     }
   },
   {
@@ -236805,7 +238895,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 10, 10, 10, 20, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 10, 10, 10, 20, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -236820,7 +238929,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 10, 10, 10, 20, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 10, 10, 10, 20, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 400,
+        "aggressiveAnimation": 406,
+        "controlledAnimation": 400,
+        "defensiveAnimation": 400,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 7,
+        "longAttackDistance": 9
+      }
     }
   },
   {
@@ -237165,7 +239293,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237180,7 +239327,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 13,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237195,7 +239361,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237210,7 +239395,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 25, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 13,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237225,7 +239429,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237234,7 +239457,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237255,7 +239497,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 422,
+        "aggressiveAnimation": 423,
+        "controlledAnimation": 422,
+        "defensiveAnimation": 422,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237270,7 +239531,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237285,7 +239565,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "10, -1, 40, 10, 0, 2, 3, 1, 10, 0, 50, 0, 0, 5"
+      "bonuses": "10, -1, 40, 10, 0, 2, 3, 1, 10, 0, 50, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 420,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 393,
+        "aggressiveAnimation": 393,
+        "controlledAnimation": 393,
+        "defensiveAnimation": 393,
+        "attackSpeed": 5,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237300,7 +239599,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "10, -1, 40, 10, 0, 2, 3, 1, 10, 0, 50, 0, 0, 5"
+      "bonuses": "10, -1, 40, 10, 0, 2, 3, 1, 10, 0, 50, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 420,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 1209,
+        "rotate90Animation": 1207,
+        "rotate180Animation": 1206,
+        "rotate270Animation": 1208,
+        "accurateAnimation": 393,
+        "aggressiveAnimation": 393,
+        "controlledAnimation": 393,
+        "defensiveAnimation": 393,
+        "attackSpeed": 5,
+        "interfaceVarbit": 18,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237321,7 +239639,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "28, 134, 66, 0, 0, 0, 0, 0, 0, 0, 125, 0, 0, 5"
+      "bonuses": "28, 134, 66, 0, 0, 0, 0, 0, 0, 0, 125, 0, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": true,
+        "blockAnimation": 424,
+        "standAnimation": 10169,
+        "walkAnimation": 10170,
+        "runAnimation": 11170,
+        "standTurnAnimation": 10169,
+        "rotate90Animation": 10170,
+        "rotate180Animation": 10170,
+        "rotate270Animation": 10170,
+        "accurateAnimation": 10172,
+        "aggressiveAnimation": 10172,
+        "controlledAnimation": 10171,
+        "defensiveAnimation": 10172,
+        "attackSpeed": 5,
+        "interfaceVarbit": 1,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -237933,7 +240270,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4"
+      "bonuses": "0, 0, 0, 15, 0, 2, 3, 1, 15, 0, 0, 0, 7, 4",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 813,
+        "walkAnimation": 1205,
+        "runAnimation": 1210,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 390,
+        "defensiveAnimation": 424,
+        "attackSpeed": 4,
+        "interfaceVarbit": 24,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -238110,7 +240466,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 7, 6"
+      "bonuses": "0, 0, 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 7, 6",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 424,
+        "standAnimation": 4591,
+        "walkAnimation": 4226,
+        "runAnimation": 4228,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 4227,
+        "rotate270Animation": 822,
+        "accurateAnimation": 7552,
+        "aggressiveAnimation": 7552,
+        "controlledAnimation": 7552,
+        "defensiveAnimation": 7552,
+        "attackSpeed": 6,
+        "interfaceVarbit": 5,
+        "normalAttackDistance": 6,
+        "longAttackDistance": 8
+      }
     }
   },
   {
@@ -239169,7 +241544,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 56, 0, 0, 4"
+      "bonuses": "0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 56, 0, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 2063,
+        "standAnimation": 2061,
+        "walkAnimation": 2060,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2062,
+        "aggressiveAnimation": 2062,
+        "controlledAnimation": 2062,
+        "defensiveAnimation": 2062,
+        "twoHanded": true,
+        "attackSpeed": 4,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239253,7 +241647,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3"
+      "bonuses": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3",
+      "weaponDefinition": {
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 2,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239646,7 +242059,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8, 5, 0, 5"
+      "bonuses": "0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8, 5, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239661,7 +242093,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 12, 5, 0, 5"
+      "bonuses": "0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 12, 5, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 5,
+        "interfaceVarbit": 9,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239676,7 +242127,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "44, 56, 0, 0, 0, 1, 2, 2, 2, 2, 56, 5, 0, 5"
+      "bonuses": "44, 56, 0, 0, 0, 1, 2, 2, 2, 2, 56, 5, 0, 5",
+      "weaponDefinition": {
+        "twoHanded": false,
+        "blockAnimation": 0,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 822,
+        "accurateAnimation": 0,
+        "aggressiveAnimation": 0,
+        "controlledAnimation": 0,
+        "defensiveAnimation": 0,
+        "attackSpeed": 5,
+        "interfaceVarbit": 0,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239697,7 +242167,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 6, 3"
+      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 6, 3",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 6,
+        "longAttackDistance": 8
+      }
     }
   },
   {
@@ -239712,7 +242201,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "32, 68, 0, 10, 0, 0, 2, 0, 10, 0, 46, 6, 0, 4"
+      "bonuses": "32, 68, 0, 10, 0, 0, 2, 0, 10, 0, 46, 6, 0, 4",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 390,
+        "aggressiveAnimation": 390,
+        "controlledAnimation": 381,
+        "defensiveAnimation": 390,
+        "twoHanded": false,
+        "attackSpeed": 4,
+        "interfaceVarbit": 16,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -239739,7 +242247,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "100, 21, 60, 0, 0, 0, 42, 28, 0, 0, 70, 7, 0, 5"
+      "bonuses": "100, 21, 60, 0, 0, 0, 42, 28, 0, 0, 70, 7, 0, 5",
+      "weaponDefinition": {
+        "blockAnimation": 1429,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 2080,
+        "aggressiveAnimation": 2081,
+        "controlledAnimation": 2082,
+        "defensiveAnimation": 2080,
+        "twoHanded": true,
+        "attackSpeed": 5,
+        "interfaceVarbit": 15,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {
@@ -240150,7 +242677,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 4, 3"
+      "bonuses": "0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 4, 3",
+      "weaponDefinition": {
+        "blockAnimation": 424,
+        "standAnimation": 808,
+        "walkAnimation": 819,
+        "runAnimation": 824,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7617,
+        "aggressiveAnimation": 7617,
+        "controlledAnimation": 7617,
+        "defensiveAnimation": 7617,
+        "twoHanded": false,
+        "attackSpeed": 3,
+        "interfaceVarbit": 19,
+        "normalAttackDistance": 4,
+        "longAttackDistance": 6
+      }
     }
   },
   {
@@ -240213,7 +242759,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 0, 0, 0, 125, 0, 0, 0, 0, 0, 0, 0, 10, 6"
+      "bonuses": "0, 0, 0, 0, 125, 0, 0, 0, 0, 0, 0, 0, 10, 6",
+      "weaponDefinition": {
+        "blockAnimation": 7219,
+        "standAnimation": 7220,
+        "walkAnimation": 7223,
+        "runAnimation": 7221,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7555,
+        "aggressiveAnimation": 7555,
+        "controlledAnimation": 7555,
+        "defensiveAnimation": 7555,
+        "twoHanded": true,
+        "attackSpeed": 6,
+        "interfaceVarbit": 5,
+        "normalAttackDistance": 10,
+        "longAttackDistance": 12
+      }
     }
   },
   {
@@ -241578,7 +244143,26 @@
     "slot": 3,
     "equipmentType": "DEFAULT",
     "equipmentDefinition": {
-      "bonuses": "0, 117, 25, 0, 0, 0, 0, 0, 0, 0, 110, 4, 0, 6"
+      "bonuses": "0, 117, 25, 0, 0, 0, 0, 0, 0, 0, 110, 4, 0, 6",
+      "weaponDefinition": {
+        "blockAnimation": 7056,
+        "standAnimation": 7053,
+        "walkAnimation": 7052,
+        "runAnimation": 7043,
+        "standTurnAnimation": 823,
+        "rotate90Animation": 821,
+        "rotate180Animation": 820,
+        "rotate270Animation": 821,
+        "accurateAnimation": 7045,
+        "aggressiveAnimation": 7045,
+        "controlledAnimation": 7055,
+        "defensiveAnimation": 7054,
+        "twoHanded": true,
+        "attackSpeed": 6,
+        "interfaceVarbit": 10,
+        "normalAttackDistance": 0,
+        "longAttackDistance": 0
+      }
     }
   },
   {

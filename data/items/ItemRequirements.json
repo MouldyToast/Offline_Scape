@@ -10,12 +10,382 @@
     ]
   },
   {
+    "id": 48,
+    "description": "Longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 10
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "description": "Shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "description": "Oak shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "description": "Oak longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 25
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "description": "Willow longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "description": "Willow shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 35
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "description": "Maple longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "description": "Maple shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "description": "Yew longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "description": "Yew shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "description": "Magic longbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "description": "Magic shortbow (u)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 80
+      }
+    ]
+  },
+  {
     "id": 78,
     "description": "Ice arrows",
     "requirements": [
       {
         "skill": "Ranged",
         "level": 5
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "description": "Guam potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 3
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "description": "Marrentill potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "description": "Tarromin potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 12
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "description": "Harralander potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "description": "Ranarr potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "description": "Irit potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "description": "Avantoe potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "description": "Kwuarm potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "description": "Cadantine potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "description": "Dwarf weed potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 72
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "description": "Torstol potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "description": "Strength potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 12
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "description": "Attack potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 3
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "description": "Restore potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "description": "Defence potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 139,
+    "description": "Prayer potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 38
+      }
+    ]
+  },
+  {
+    "id": 145,
+    "description": "Super attack(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 151,
+    "description": "Fishing potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 157,
+    "description": "Super strength(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 163,
+    "description": "Super defence(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 169,
+    "description": "Ranging potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 72
+      }
+    ]
+  },
+  {
+    "id": 175,
+    "description": "Antipoison(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 181,
+    "description": "Superantipoison(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 48
+      }
+    ]
+  },
+  {
+    "id": 187,
+    "description": "Weapon poison",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 189,
+    "description": "Zamorak brew(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 78
       }
     ]
   },
@@ -1848,6 +2218,186 @@
     ]
   },
   {
+    "id": 1511,
+    "description": "Logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 1513,
+    "description": "Magic logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 1515,
+    "description": "Yew logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 1517,
+    "description": "Maple logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 1519,
+    "description": "Willow logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 1521,
+    "description": "Oak logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 15
+      }
+    ]
+  },
+  {
+    "id": 1714,
+    "description": "Unstrung symbol",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 16
+      }
+    ]
+  },
+  {
+    "id": 1720,
+    "description": "Unstrung emblem",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 17
+      }
+    ]
+  },
+  {
+    "id": 1995,
+    "description": "Unfermented wine",
+    "requirements": [
+      {
+        "skill": "Cooking",
+        "level": 35
+      }
+    ]
+  },
+  {
+    "id": 2349,
+    "description": "Bronze bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 2351,
+    "description": "Iron bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 15
+      }
+    ]
+  },
+  {
+    "id": 2353,
+    "description": "Steel bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 2355,
+    "description": "Silver bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 2357,
+    "description": "Gold bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 2359,
+    "description": "Mithril bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 2361,
+    "description": "Adamantite bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 2363,
+    "description": "Runite bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 2365,
+    "description": "'perfect' gold bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 40
+      }
+    ]
+  },
+  {
     "id": 2412,
     "description": "Saradomin cape",
     "requirements": [
@@ -1904,6 +2454,26 @@
       {
         "skill": "Magic",
         "level": 60
+      }
+    ]
+  },
+  {
+    "id": 2454,
+    "description": "Antifire potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 69
+      }
+    ]
+  },
+  {
+    "id": 2483,
+    "description": "Lantadyme potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 69
       }
     ]
   },
@@ -2466,6 +3036,86 @@
       {
         "skill": "Ranged",
         "level": 30
+      }
+    ]
+  },
+  {
+    "id": 2961,
+    "description": "Silver sickle",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 18
+      }
+    ]
+  },
+  {
+    "id": 3002,
+    "description": "Toadflax potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 34
+      }
+    ]
+  },
+  {
+    "id": 3004,
+    "description": "Snapdragon potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 63
+      }
+    ]
+  },
+  {
+    "id": 3010,
+    "description": "Energy potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 26
+      }
+    ]
+  },
+  {
+    "id": 3018,
+    "description": "Super energy(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 52
+      }
+    ]
+  },
+  {
+    "id": 3026,
+    "description": "Super restore(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 63
+      }
+    ]
+  },
+  {
+    "id": 3034,
+    "description": "Agility potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 34
+      }
+    ]
+  },
+  {
+    "id": 3042,
+    "description": "Magic potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 76
       }
     ]
   },
@@ -3462,6 +4112,16 @@
       {
         "skill": "Defence",
         "level": 60
+      }
+    ]
+  },
+  {
+    "id": 4201,
+    "description": "Conductor",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 20
       }
     ]
   },
@@ -5704,6 +6364,16 @@
     ]
   },
   {
+    "id": 5525,
+    "description": "Tiara",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 23
+      }
+    ]
+  },
+  {
     "id": 5574,
     "description": "Initiate sallet",
     "requirements": [
@@ -6338,6 +7008,76 @@
     ]
   },
   {
+    "id": 5936,
+    "description": "Weapon poison+ (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 73
+      }
+    ]
+  },
+  {
+    "id": 5937,
+    "description": "Weapon poison(+)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 73
+      }
+    ]
+  },
+  {
+    "id": 5940,
+    "description": "Weapon poison(++)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 82
+      }
+    ]
+  },
+  {
+    "id": 5942,
+    "description": "Antidote+ (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 68
+      }
+    ]
+  },
+  {
+    "id": 5943,
+    "description": "Antidote+(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 68
+      }
+    ]
+  },
+  {
+    "id": 5951,
+    "description": "Antidote++ (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 79
+      }
+    ]
+  },
+  {
+    "id": 5952,
+    "description": "Antidote++(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 79
+      }
+    ]
+  },
+  {
     "id": 6082,
     "description": "Fixed device",
     "requirements": [
@@ -6956,6 +7696,16 @@
     ]
   },
   {
+    "id": 6472,
+    "description": "Compost potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
     "id": 6522,
     "description": "Toktz-xil-ul",
     "requirements": [
@@ -7404,6 +8154,16 @@
     ]
   },
   {
+    "id": 6687,
+    "description": "Saradomin brew(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 81
+      }
+    ]
+  },
+  {
     "id": 6696,
     "description": "Ice cooler",
     "requirements": [
@@ -7440,6 +8200,16 @@
       {
         "skill": "Attack",
         "level": 60
+      }
+    ]
+  },
+  {
+    "id": 6748,
+    "description": "Demonic sigil",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 30
       }
     ]
   },
@@ -8140,6 +8910,96 @@
       {
         "skill": "Defence",
         "level": 40
+      }
+    ]
+  },
+  {
+    "id": 7637,
+    "description": "Silvthrill rod",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 25
+      }
+    ]
+  },
+  {
+    "id": 7652,
+    "description": "Guthix balance (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7654,
+    "description": "Guthix balance (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7656,
+    "description": "Guthix balance (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7658,
+    "description": "Guthix balance (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7660,
+    "description": "Guthix balance(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7662,
+    "description": "Guthix balance(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7664,
+    "description": "Guthix balance(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 7666,
+    "description": "Guthix balance(1)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 22
       }
     ]
   },
@@ -9164,6 +10024,26 @@
     ]
   },
   {
+    "id": 9019,
+    "description": "Magic essence (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 57
+      }
+    ]
+  },
+  {
+    "id": 9022,
+    "description": "Magic essence(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 57
+      }
+    ]
+  },
+  {
     "id": 9044,
     "description": "Pharaoh's sceptre (3)",
     "requirements": [
@@ -9838,6 +10718,26 @@
     ]
   },
   {
+    "id": 9382,
+    "description": "Silver bolts (unf)",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 21
+      }
+    ]
+  },
+  {
+    "id": 9467,
+    "description": "Blurite bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 13
+      }
+    ]
+  },
+  {
     "id": 9629,
     "description": "Tyras helm",
     "requirements": [
@@ -9900,6 +10800,16 @@
       {
         "skill": "Prayer",
         "level": 20
+      }
+    ]
+  },
+  {
+    "id": 9741,
+    "description": "Combat potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 36
       }
     ]
   },
@@ -10590,6 +11500,16 @@
       {
         "skill": "Hunter",
         "level": 99
+      }
+    ]
+  },
+  {
+    "id": 10000,
+    "description": "Hunter potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 53
       }
     ]
   },
@@ -15044,34 +15964,6 @@
     ]
   },
   {
-    "id": 24225,
-    "description": "Granite maul",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 50
-      },
-      {
-        "skill": "Strength",
-        "level": 50
-      }
-    ]
-  },
-  {
-    "id": 24227,
-    "description": "Granite maul",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 50
-      },
-      {
-        "skill": "Strength",
-        "level": 50
-      }
-    ]
-  },
-  {
     "id": 12899,
     "description": "Trident of the swamp",
     "requirements": [
@@ -15099,7 +15991,7 @@
         "skill": "Magic",
         "level": 75
       },
-	  {
+      {
         "skill": "Attack",
         "level": 75
       }
@@ -15113,8 +16005,28 @@
         "skill": "Magic",
         "level": 75
       },
-	  {
+      {
         "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 12913,
+    "description": "Anti-venom+(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 94
+      }
+    ]
+  },
+  {
+    "id": 12924,
+    "description": "Toxic blowpipe (empty)",
+    "requirements": [
+      {
+        "skill": "Ranged",
         "level": 75
       }
     ]
@@ -15125,6 +16037,16 @@
     "requirements": [
       {
         "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 12929,
+    "description": "Serpentine helm (uncharged)",
+    "requirements": [
+      {
+        "skill": "Defence",
         "level": 75
       }
     ]
@@ -15844,8 +16766,28 @@
     ]
   },
   {
+    "id": 13196,
+    "description": "Tanzanite helm (uncharged)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
     "id": 13197,
     "description": "Tanzanite helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 13198,
+    "description": "Magma helm (uncharged)",
     "requirements": [
       {
         "skill": "Defence",
@@ -17432,6 +18374,16 @@
     ]
   },
   {
+    "id": 13354,
+    "description": "Lovakite bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 45
+      }
+    ]
+  },
+  {
     "id": 13357,
     "description": "Shayzien gloves (1)",
     "requirements": [
@@ -17848,6 +18800,16 @@
     ]
   },
   {
+    "id": 19584,
+    "description": "Javelin shaft",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 3
+      }
+    ]
+  },
+  {
     "id": 19639,
     "description": "Black slayer helmet",
     "requirements": [
@@ -17904,6 +18866,16 @@
       {
         "skill": "Defence",
         "level": 10
+      }
+    ]
+  },
+  {
+    "id": 19669,
+    "description": "Redwood logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 90
       }
     ]
   },
@@ -19038,6 +20010,16 @@
     ]
   },
   {
+    "id": 20720,
+    "description": "Bruma torch",
+    "requirements": [
+      {
+        "skill": "Firemaking",
+        "level": 50
+      }
+    ]
+  },
+  {
     "id": 20727,
     "description": "Leaf-bladed battleaxe",
     "requirements": [
@@ -19104,6 +20086,16 @@
       {
         "skill": "Magic",
         "level": 30
+      }
+    ]
+  },
+  {
+    "id": 20752,
+    "description": "Zamorak's unfermented wine",
+    "requirements": [
+      {
+        "skill": "Cooking",
+        "level": 65
       }
     ]
   },
@@ -19514,6 +20506,126 @@
       {
         "skill": "Attack",
         "level": 75
+      }
+    ]
+  },
+  {
+    "id": 21081,
+    "description": "Opal ring",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 21084,
+    "description": "Jade ring",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 13
+      }
+    ]
+  },
+  {
+    "id": 21087,
+    "description": "Topaz ring",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 16
+      }
+    ]
+  },
+  {
+    "id": 21090,
+    "description": "Opal necklace",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 16
+      }
+    ]
+  },
+  {
+    "id": 21093,
+    "description": "Jade necklace",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 25
+      }
+    ]
+  },
+  {
+    "id": 21096,
+    "description": "Topaz necklace",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 32
+      }
+    ]
+  },
+  {
+    "id": 21099,
+    "description": "Opal amulet (u)",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 27
+      }
+    ]
+  },
+  {
+    "id": 21102,
+    "description": "Jade amulet (u)",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 34
+      }
+    ]
+  },
+  {
+    "id": 21105,
+    "description": "Topaz amulet (u)",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 21117,
+    "description": "Opal bracelet",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 21120,
+    "description": "Jade bracelet",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 29
+      }
+    ]
+  },
+  {
+    "id": 21123,
+    "description": "Topaz bracelet",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 38
       }
     ]
   },
@@ -20150,6 +21262,46 @@
     ]
   },
   {
+    "id": 21512,
+    "description": "Bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 21515,
+    "description": "Oak bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 15
+      }
+    ]
+  },
+  {
+    "id": 21518,
+    "description": "Willow bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 25
+      }
+    ]
+  },
+  {
+    "id": 21521,
+    "description": "Teak bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 35
+      }
+    ]
+  },
+  {
     "id": 21633,
     "description": "Ancient wyvern shield",
     "requirements": [
@@ -20267,6 +21419,20 @@
       },
       {
         "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 21752,
+    "description": "Granite ring (i)",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
         "level": 50
       }
     ]
@@ -21376,6 +22542,16 @@
     ]
   },
   {
+    "id": 21978,
+    "description": "Super antifire potion(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 92
+      }
+    ]
+  },
+  {
     "id": 22002,
     "description": "Dragonfire ward",
     "requirements": [
@@ -21748,6 +22924,66 @@
     ]
   },
   {
+    "id": 22192,
+    "description": "Maple bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 22195,
+    "description": "Mahogany bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 22198,
+    "description": "Yew bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 22201,
+    "description": "Magic bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 22204,
+    "description": "Redwood bird house",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 22209,
+    "description": "Extended super antifire(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 98
+      }
+    ]
+  },
+  {
     "id": 22234,
     "description": "Dragon boots (g)",
     "requirements": [
@@ -22064,6 +23300,70 @@
     ]
   },
   {
+    "id": 22368,
+    "description": "Bryophyta's staff (uncharged)",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 22370,
+    "description": "Bryophyta's staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 30
+      },
+      {
+        "skill": "Attack",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 22398,
+    "description": "Ivandis flail",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 22443,
+    "description": "Cadantine blood potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 22452,
+    "description": "Battlemage potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 22464,
+    "description": "Bastion potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 80
+      }
+    ]
+  },
+  {
     "id": 22481,
     "description": "Sanguinesti staff (uncharged)",
     "requirements": [
@@ -22144,6 +23444,176 @@
       {
         "skill": "Magic",
         "level": 60
+      }
+    ]
+  },
+  {
+    "id": 22610,
+    "description": "Vesta's spear",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22613,
+    "description": "Vesta's longsword",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22616,
+    "description": "Vesta's chainbody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22619,
+    "description": "Vesta's plateskirt",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22622,
+    "description": "Statius's warhammer",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22625,
+    "description": "Statius's full helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22628,
+    "description": "Statius's platebody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22631,
+    "description": "Statius's platelegs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22634,
+    "description": "Morrigan's throwing axe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22636,
+    "description": "Morrigan's javelin",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22638,
+    "description": "Morrigan's coif",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22641,
+    "description": "Morrigan's leather body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22644,
+    "description": "Morrigan's leather chaps",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22647,
+    "description": "Zuriel's staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22650,
+    "description": "Zuriel's hood",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22653,
+    "description": "Zuriel's robe top",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 22656,
+    "description": "Zuriel's robe bottom",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
       }
     ]
   },
@@ -22850,42 +24320,158 @@
     ]
   },
   {
-    "id": 25849,
-    "description": "Amethyst dart",
+    "id": 23971,
+    "description": "Crystal helm",
     "requirements": [
       {
-        "skill": "Ranged",
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
         "level": 50
       }
     ]
   },
   {
-    "id": 25851,
-    "description": "Amethyst dart",
+    "id": 23975,
+    "description": "Crystal body",
     "requirements": [
       {
-        "skill": "Ranged",
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
         "level": 50
       }
     ]
   },
   {
-    "id": 25855,
-    "description": "Amethyst dart",
+    "id": 23979,
+    "description": "Crystal legs",
     "requirements": [
       {
-        "skill": "Ranged",
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
         "level": 50
       }
     ]
   },
   {
-    "id": 25857,
-    "description": "Amethyst dart",
+    "id": 23995,
+    "description": "Blade of Saeldor",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 23997,
+    "description": "Blade of Saeldor (inactive)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 24123,
+    "description": "Crystal bow",
     "requirements": [
       {
         "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
         "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24125,
+    "description": "Crystal halberd",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24127,
+    "description": "Crystal shield",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24144,
+    "description": "Staff of Balance",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 24225,
+    "description": "Granite maul",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24227,
+    "description": "Granite maul",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24271,
+    "description": "Neitiznot faceguard",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
       }
     ]
   },
@@ -22893,7 +24479,7 @@
     "id": 24417,
     "description": "Inquisitor's mace",
     "requirements": [
-	  {
+      {
         "skill": "Attack",
         "level": 80
       }
@@ -22903,7 +24489,7 @@
     "id": 24419,
     "description": "Inquisitor's great helm",
     "requirements": [
-	  {
+      {
         "skill": "Strength",
         "level": 70
       },
@@ -22917,7 +24503,7 @@
     "id": 24420,
     "description": "Inquisitor's hauberk",
     "requirements": [
-	  {
+      {
         "skill": "Strength",
         "level": 70
       },
@@ -22931,7 +24517,7 @@
     "id": 24421,
     "description": "Inquisitor's plateskirt",
     "requirements": [
-	  {
+      {
         "skill": "Strength",
         "level": 70
       },
@@ -22942,16 +24528,310 @@
     ]
   },
   {
-    "id": 26235,
-    "description": "Zaryte vambraces",
+    "id": 24422,
+    "description": "Nightmare staff",
     "requirements": [
-	  {
-        "skill": "Ranged",
+      {
+        "skill": "Magic",
+        "level": 72
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24423,
+    "description": "Harmonised Nightmare staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24424,
+    "description": "Volatile Nightmare staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24425,
+    "description": "Eldritch Nightmare staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 24551,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
         "level": 80
+      }
+    ]
+  },
+  {
+    "id": 24664,
+    "description": "Twisted ancestral hat",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
       },
       {
         "skill": "Defence",
-        "level": 45
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 24666,
+    "description": "Twisted ancestral robe top",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      },
+      {
+        "skill": "Defence",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 24668,
+    "description": "Twisted ancestral robe bottom",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      },
+      {
+        "skill": "Defence",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 25246,
+    "description": "Ring of suffering (i)",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 25248,
+    "description": "Ring of suffering (ri)",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 25389,
+    "description": "Swampbark body",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25392,
+    "description": "Swampbark gauntlets",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25395,
+    "description": "Swampbark boots",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25398,
+    "description": "Swampbark helm",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25401,
+    "description": "Swampbark legs",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Defence",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25404,
+    "description": "Bloodbark body",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      },
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 25407,
+    "description": "Bloodbark gauntlets",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      },
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 25410,
+    "description": "Bloodbark boots",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      },
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 25413,
+    "description": "Bloodbark helm",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      },
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 25416,
+    "description": "Bloodbark legs",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      },
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 25574,
+    "description": "Tome of Water",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25731,
+    "description": "Holy sanguinesti staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      }
+    ]
+  },
+  {
+    "id": 25733,
+    "description": "Holy sanguinesti staff (uncharged)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      }
+    ]
+  },
+  {
+    "id": 25734,
+    "description": "Holy ghrazi rapier",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
       }
     ]
   },
@@ -23012,8 +24892,90 @@
     ]
   },
   {
-    "id": 25734,
-    "description": "Holy ghrazi rapier",
+    "id": 25849,
+    "description": "Amethyst dart",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25851,
+    "description": "Amethyst dart",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25855,
+    "description": "Amethyst dart",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25857,
+    "description": "Amethyst dart",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 25862,
+    "description": "Bow of Faerdhinen (inactive)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25865,
+    "description": "Bow of Faerdhinen",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25867,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25870,
+    "description": "Blade of Saeldor (c)",
     "requirements": [
       {
         "skill": "Attack",
@@ -23022,382 +24984,862 @@
     ]
   },
   {
-    "id": 25731,
-    "description": "Holy sanguinesti staff",
+    "id": 25872,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25874,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25876,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25878,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25880,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25882,
+    "description": "Blade of Saeldor (c)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25884,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25886,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25888,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25890,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25892,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25894,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25896,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 25981,
+    "description": "Keris partisan of breaching",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 25985,
+    "description": "Elidinis' ward",
     "requirements": [
       {
         "skill": "Magic",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 26219,
+    "description": "Osmumten's fang",
+    "requirements": [
+      {
+        "skill": "Attack",
         "level": 82
       }
     ]
   },
   {
-    "id": 25733,
-    "description": "Holy sanguinesti staff (uncharged)",
+    "id": 26233,
+    "description": "Ancient godsword",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26235,
+    "description": "Zaryte vambraces",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 26241,
+    "description": "Virtus mask",
     "requirements": [
       {
         "skill": "Magic",
+        "level": 78
+      },
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26243,
+    "description": "Virtus robe top",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      },
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26245,
+    "description": "Virtus robe bottom",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      },
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26342,
+    "description": "Ancient brew(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 26374,
+    "description": "Zaryte crossbow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 26382,
+    "description": "Torva full helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 26384,
+    "description": "Torva platebody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 26386,
+    "description": "Torva platelegs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 26482,
+    "description": "Abyssal whip (or)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26484,
+    "description": "Abyssal tentacle (or)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26583,
+    "description": "Goblin potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 48
+      }
+    ]
+  },
+  {
+    "id": 26731,
+    "description": "Saika's hood",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 26733,
+    "description": "Saika's veil",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 26735,
+    "description": "Saika's shroud",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26737,
+    "description": "Koriff's headband",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 26739,
+    "description": "Koriff's cowl",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 26741,
+    "description": "Koriff's coif",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26743,
+    "description": "Maoma's med helm",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 26745,
+    "description": "Maoma's full helm",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 26747,
+    "description": "Maoma's great helm",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26749,
+    "description": "Calamity chest",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26751,
+    "description": "Superior calamity chest",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26753,
+    "description": "Elite calamity chest",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26755,
+    "description": "Calamity breeches",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26757,
+    "description": "Superior calamity breeches",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26759,
+    "description": "Elite calamity breeches",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 26761,
+    "description": "Ring of suffering (i)",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26762,
+    "description": "Ring of suffering (ri)",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 26788,
+    "description": "Gold tiara",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 42
+      }
+    ]
+  },
+  {
+    "id": 27021,
+    "description": "Colossal blade",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 27100,
+    "description": "Elder maul (or)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 27110,
+    "description": "Mithril gloves (wrapped)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 1
+      },
+      {
+        "skill": "Magic",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 27111,
+    "description": "Rune gloves (wrapped)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 1
+      },
+      {
+        "skill": "Magic",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 27112,
+    "description": "Barrows gloves (wrapped)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 1
+      },
+      {
+        "skill": "Magic",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 27115,
+    "description": "Elder chaos top (or)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 27117,
+    "description": "Elder chaos robe (or)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 27119,
+    "description": "Elder chaos hood (or)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 27205,
+    "description": "Menaphite remedy(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 88
+      }
+    ]
+  },
+  {
+    "id": 27226,
+    "description": "Masori mask",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 27229,
+    "description": "Masori body",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 27232,
+    "description": "Masori chaps",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 27235,
+    "description": "Masori mask (f)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 27238,
+    "description": "Masori body (f)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 27241,
+    "description": "Masori chaps (f)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 27246,
+    "description": "Osmumten's fang (or)",
+    "requirements": [
+      {
+        "skill": "Attack",
         "level": 82
       }
     ]
   },
   {
-    "id": 22610,
-    "description": "Vesta's spear",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22613,
-    "description": "Vesta's longsword",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22622,
-    "description": "Statius's warhammer",
-    "requirements": [
-      {
-        "skill": "Strength",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22647,
-    "description": "Zuriel's staff",
+    "id": 27251,
+    "description": "Elidinis' ward (f)",
     "requirements": [
       {
         "skill": "Magic",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22634,
-    "description": "Morrigan's throwing axe",
-    "requirements": [
+        "level": 80
+      },
       {
-        "skill": "Ranged",
-        "level": 78
+        "skill": "Defence",
+        "level": 80
       }
     ]
   },
   {
-    "id": 22636,
-    "description": "Morrigan's javelin",
-    "requirements": [
-      {
-        "skill": "Ranged",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27900,
-    "description": "Vesta's spear",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27904,
-    "description": "Vesta's longsword",
-    "requirements": [
-      {
-        "skill": "Attack",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27908,
-    "description": "Statius's warhammer",
-    "requirements": [
-      {
-        "skill": "Strength",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27920,
-    "description": "Zuriel's staff",
+    "id": 27253,
+    "description": "Elidinis' ward (or)",
     "requirements": [
       {
         "skill": "Magic",
-        "level": 78
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
       }
     ]
   },
   {
-    "id": 27912,
-    "description": "Morrigan's throwing axe",
+    "id": 27275,
+    "description": "Tumeken's shadow",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 27277,
+    "description": "Tumeken's shadow (uncharged)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 27287,
+    "description": "Keris partisan of corruption",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 27291,
+    "description": "Keris partisan of the sun",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 27374,
+    "description": "Masori assembler",
     "requirements": [
       {
         "skill": "Ranged",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27916,
-    "description": "Morrigan's javelin",
-    "requirements": [
-      {
-        "skill": "Ranged",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27836,
-    "description": "Morrigan's coif",
-    "requirements": [
+        "level": 70
+      },
       {
         "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27837,
-    "description": "Morrigan's leather body",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27838,
-    "description": "Morrigan's leather chaps",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27833,
-    "description": "Statius's full helm",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27834,
-    "description": "Statius's platebody",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27835,
-    "description": "Statius's platelegs",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27831,
-    "description": "Vesta's chainbody",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 27832,
-    "description": "Vesta's plateskirt",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 32169,
-    "description": "Vesta's helmet",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22650,
-    "description": "Zuriel's hood",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22653,
-    "description": "Zuriel's robe top",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22656,
-    "description": "Zuriel's robe bottom",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22638,
-    "description": "Morrigan's coif",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22641,
-    "description": "Morrigan's leather body",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22644,
-    "description": "Morrigan's leather chaps",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22625,
-    "description": "Statius's full helm",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22628,
-    "description": "Statius's platebody",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22631,
-    "description": "Statius's platelegs",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22616,
-    "description": "Vesta's chainbody",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22619,
-    "description": "Vesta's plateskirt",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 32169,
-    "description": "Vesta's helmet",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22650,
-    "description": "Zuriel's hood",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22653,
-    "description": "Zuriel's robe top",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
-      }
-    ]
-  },
-  {
-    "id": 22656,
-    "description": "Zuriel's robe bottom",
-    "requirements": [
-      {
-        "skill": "Defence",
-        "level": 78
+        "level": 35
       }
     ]
   },
@@ -23458,44 +25900,818 @@
     ]
   },
   {
-    "id": 24664,
-    "description": "Twisted ancestral hat",
+    "id": 27629,
+    "description": "Forgotten brew(4)",
     "requirements": [
       {
-        "skill": "Magic",
-        "level": 75
-      },
-      {
-        "skill": "Defence",
-        "level": 65
+        "skill": "Herblore",
+        "level": 91
       }
     ]
   },
   {
-    "id": 24666,
-    "description": "Twisted ancestral robe top",
+    "id": 27632,
+    "description": "Forgotten brew(3)",
     "requirements": [
       {
-        "skill": "Magic",
-        "level": 75
-      },
-      {
-        "skill": "Defence",
-        "level": 65
+        "skill": "Herblore",
+        "level": 91
       }
     ]
   },
   {
-    "id": 24668,
-    "description": "Twisted ancestral robe bottom",
+    "id": 27635,
+    "description": "Forgotten brew(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 91
+      }
+    ]
+  },
+  {
+    "id": 27638,
+    "description": "Forgotten brew(1)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 91
+      }
+    ]
+  },
+  {
+    "id": 27655,
+    "description": "Webweaver bow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 27660,
+    "description": "Ursine chainmace",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 27665,
+    "description": "Accursed sceptre",
     "requirements": [
       {
         "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 27679,
+    "description": "Accursed sceptre (a)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 27690,
+    "description": "Voidwaker",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 27697,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27701,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27705,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27709,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27713,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27717,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27721,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27725,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27729,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27733,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27737,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27741,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27745,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27749,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27753,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27757,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27761,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27765,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27769,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27773,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27777,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 27788,
+    "description": "Thammaron's sceptre (a)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 27831,
+    "description": "Vesta's chainbody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27832,
+    "description": "Vesta's plateskirt",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27833,
+    "description": "Statius's full helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27834,
+    "description": "Statius's platebody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27835,
+    "description": "Statius's platelegs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27836,
+    "description": "Morrigan's coif",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27837,
+    "description": "Morrigan's leather body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27838,
+    "description": "Morrigan's leather chaps",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27853,
+    "description": "Dark bow (bh)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 27855,
+    "description": "Barrelchest anchor (bh)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      },
+      {
+        "skill": "Strength",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 27857,
+    "description": "Dragon mace (bh)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 27859,
+    "description": "Dragon longsword (bh)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 27861,
+    "description": "Abyssal dagger (bh)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 27869,
+    "description": "Voidwaker",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 27900,
+    "description": "Vesta's spear",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27904,
+    "description": "Vesta's longsword",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27908,
+    "description": "Statius's warhammer",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27912,
+    "description": "Morrigan's throwing axe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27916,
+    "description": "Morrigan's javelin",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 27920,
+    "description": "Zuriel's staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 28019,
+    "description": "Dragon dagger (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28025,
+    "description": "Dragon dagger (p++)(cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28027,
+    "description": "Dragon mace (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28029,
+    "description": "Dragon sword (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28031,
+    "description": "Dragon scimitar (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28033,
+    "description": "Dragon longsword (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28035,
+    "description": "Dragon warhammer (cr)",
+    "requirements": [
+      {
+        "skill": "Strength",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28039,
+    "description": "Dragon claws (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28041,
+    "description": "Dragon spear (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28051,
+    "description": "Dragon 2h sword (cr)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28053,
+    "description": "Dragon crossbow (cr)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 64
+      }
+    ]
+  },
+  {
+    "id": 28057,
+    "description": "Dragon med helm (cr)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28063,
+    "description": "Dragon plateskirt (cr)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28067,
+    "description": "Fighter torso (or)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 28069,
+    "description": "Fighter torso (l)(or)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 28070,
+    "description": "Helm of Neitiznot (or)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 28149,
+    "description": "Sturdy harness",
+    "requirements": [
+      {
+        "skill": "Smithing",
         "level": 75
       },
       {
+        "skill": "Woodcutting",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28152,
+    "description": "Nature offerings",
+    "requirements": [
+      {
+        "skill": "Farming",
+        "level": 50
+      },
+      {
+        "skill": "Woodcutting",
+        "level": 68
+      }
+    ]
+  },
+  {
+    "id": 28254,
+    "description": "Sanguine torva full helm",
+    "requirements": [
+      {
         "skill": "Defence",
-        "level": 65
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 28256,
+    "description": "Sanguine torva platebody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 28258,
+    "description": "Sanguine torva platelegs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 80
       }
     ]
   },
@@ -23586,6 +26802,790 @@
     ]
   },
   {
+    "id": 28531,
+    "description": "Corrupted voidwaker",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 28534,
+    "description": "Corrupted dragon claws",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 28537,
+    "description": "Corrupted armadyl godsword",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 28540,
+    "description": "Corrupted twisted bow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 28543,
+    "description": "Corrupted Scythe of Vitur",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      },
+      {
+        "skill": "Strength",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 28547,
+    "description": "Corrupted tumeken's shadow",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28549,
+    "description": "Corrupted tumeken's shadow (uncharged)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28583,
+    "description": "Warped sceptre (uncharged)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 28585,
+    "description": "Warped sceptre",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 28682,
+    "description": "Dinh's blazing bulwark",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      },
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28687,
+    "description": "Blazing blowpipe (empty)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28688,
+    "description": "Blazing blowpipe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28773,
+    "description": "Sage's axe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28792,
+    "description": "Bone mace",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 28796,
+    "description": "Bone staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 28810,
+    "description": "Zombie axe",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 28919,
+    "description": "Tonalztics of Ralos (uncharged)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28922,
+    "description": "Tonalztics of Ralos",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28933,
+    "description": "Sunfire fanatic helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 40
+      },
+      {
+        "skill": "Prayer",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28936,
+    "description": "Sunfire fanatic cuirass",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 40
+      },
+      {
+        "skill": "Prayer",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28939,
+    "description": "Sunfire fanatic chausses",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 40
+      },
+      {
+        "skill": "Prayer",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 28945,
+    "description": "Echo boots",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28947,
+    "description": "Dizana's quiver (uncharged)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28949,
+    "description": "Dizana's quiver (l) (uncharged)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28951,
+    "description": "Dizana's quiver",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28953,
+    "description": "Dizana's quiver (l)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28955,
+    "description": "Blessed Dizana's quiver",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28957,
+    "description": "Blessed Dizana's quiver (l)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28988,
+    "description": "Blue Moon spear",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 28997,
+    "description": "Dual macuahuitl",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29000,
+    "description": "Eclipse atlatl",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      },
+      {
+        "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 29004,
+    "description": "Eclipse Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29007,
+    "description": "Eclipse Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29010,
+    "description": "Eclipse Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29013,
+    "description": "Blue Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29016,
+    "description": "Blue Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29019,
+    "description": "Blue Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29022,
+    "description": "Blood Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29025,
+    "description": "Blood Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29028,
+    "description": "Blood Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29031,
+    "description": "Eclipse Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29033,
+    "description": "Eclipse Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29035,
+    "description": "Eclipse Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29037,
+    "description": "Blue Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29039,
+    "description": "Blue Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29041,
+    "description": "Blue Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29043,
+    "description": "Blood Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29045,
+    "description": "Blood Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29047,
+    "description": "Blood Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29049,
+    "description": "Eclipse Moon chestplate (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29052,
+    "description": "Eclipse Moon tassets (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29055,
+    "description": "Eclipse Moon helm (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29058,
+    "description": "Blue Moon chestplate (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29061,
+    "description": "Blue Moon tassets (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29064,
+    "description": "Blue Moon helm (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29067,
+    "description": "Blood Moon chestplate (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29070,
+    "description": "Blood Moon tassets (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29073,
+    "description": "Blood Moon helm (broken)",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29082,
+    "description": "Moonlight potion(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 3
+      }
+    ]
+  },
+  {
+    "id": 29084,
+    "description": "Sulphur blades",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 29305,
+    "description": "Hunter's spear",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 55
+      },
+      {
+        "skill": "Strength",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 29560,
+    "description": "Elite black full helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 29562,
+    "description": "Elite black platebody",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 29564,
+    "description": "Elite black platelegs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 20
+      }
+    ]
+  },
+  {
     "id": 29577,
     "description": "Torn from the hands of ancient demons.",
     "requirements": [
@@ -23630,6 +27630,114 @@
     ]
   },
   {
+    "id": 29599,
+    "description": "Corrupted dark bow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 29602,
+    "description": "Corrupted Volatile Nightmare staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 29605,
+    "description": "Armadyl godsword (Deadman)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29607,
+    "description": "Voidwaker (Deadman)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29609,
+    "description": "Volatile Nightmare staff (Deadman)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 82
+      },
+      {
+        "skill": "Hitpoints",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 29611,
+    "description": "Dark bow (Deadman)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 29613,
+    "description": "Imbued Zamorak cape (Deadman)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29615,
+    "description": "Imbued Guthix cape (Deadman)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29617,
+    "description": "Imbued Saradomin cape (Deadman)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29777,
+    "description": "Bruma torch (off-hand)",
+    "requirements": [
+      {
+        "skill": "Firemaking",
+        "level": 50
+      }
+    ]
+  },
+  {
     "id": 29796,
     "description": "Noxious halberd",
     "requirements": [
@@ -23656,6 +27764,1990 @@
       {
         "skill": "Hitpoints",
         "level": 90
+      }
+    ]
+  },
+  {
+    "id": 29824,
+    "description": "Extended anti-venom+(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 94
+      }
+    ]
+  },
+  {
+    "id": 29827,
+    "description": "Extended anti-venom+(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 94
+      }
+    ]
+  },
+  {
+    "id": 29830,
+    "description": "Extended anti-venom+(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 94
+      }
+    ]
+  },
+  {
+    "id": 29833,
+    "description": "Extended anti-venom+(1)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 94
+      }
+    ]
+  },
+  {
+    "id": 29840,
+    "description": "Eclipse Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29841,
+    "description": "Eclipse Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29842,
+    "description": "Eclipse Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Ranged",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29843,
+    "description": "Blue Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29844,
+    "description": "Blue Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29845,
+    "description": "Blue Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29846,
+    "description": "Blood Moon chestplate",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29847,
+    "description": "Blood Moon tassets",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29848,
+    "description": "Blood Moon helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29849,
+    "description": "Blue Moon spear",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29850,
+    "description": "Dual macuahuitl",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 70
+      },
+      {
+        "skill": "Strength",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 29851,
+    "description": "Eclipse atlatl",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 75
+      },
+      {
+        "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 29889,
+    "description": "Glacial temotli",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 29971,
+    "description": "Apprentice potion pack",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 29972,
+    "description": "Adept potion pack",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 29973,
+    "description": "Expert potion pack",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 30064,
+    "description": "Tome of Earth",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 30070,
+    "description": "Dragon hunter wand",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 30076,
+    "description": "Hueycoatl hide body",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 40
+      }
+    ]
+  },
+  {
+    "id": 30079,
+    "description": "Hueycoatl hide chaps",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30082,
+    "description": "Hueycoatl hide vambraces",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30100,
+    "description": "Huasca potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 58
+      }
+    ]
+  },
+  {
+    "id": 30128,
+    "description": "Prayer regeneration potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 58
+      }
+    ]
+  },
+  {
+    "id": 30140,
+    "description": "Goading potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 54
+      }
+    ]
+  },
+  {
+    "id": 30305,
+    "description": "Arclight (inactive)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 30321,
+    "description": "Zombie helmet",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 50
+      },
+      {
+        "skill": "Strength",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 30434,
+    "description": "Echo venator bow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 30436,
+    "description": "Echo venator bow (uncharged)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 30445,
+    "description": "Echo ahrim's hood",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30447,
+    "description": "Echo ahrim's robetop",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30449,
+    "description": "Echo ahrim's robeskirt",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30519,
+    "description": "Echo ahrim's hood 100",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30521,
+    "description": "Echo ahrim's robetop 100",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30523,
+    "description": "Echo ahrim's robeskirt 100",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30525,
+    "description": "Echo ahrim's hood 75",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30527,
+    "description": "Echo ahrim's robetop 75",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30529,
+    "description": "Echo ahrim's robeskirt 75",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30531,
+    "description": "Echo ahrim's hood 50",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30533,
+    "description": "Echo ahrim's robetop 50",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30535,
+    "description": "Echo ahrim's robeskirt 50",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30537,
+    "description": "Echo ahrim's hood 25",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30539,
+    "description": "Echo ahrim's robetop 25",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30541,
+    "description": "Echo ahrim's robeskirt 25",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Defence",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30568,
+    "description": "Echo ahrim's staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 70
+      },
+      {
+        "skill": "Attack",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 30634,
+    "description": "Twinflame staff",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 30696,
+    "description": "Castle wars bolts",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 64
+      }
+    ]
+  },
+  {
+    "id": 30750,
+    "description": "Oathplate helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30753,
+    "description": "Oathplate chest",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30756,
+    "description": "Oathplate legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30777,
+    "description": "Radiant oathplate helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30779,
+    "description": "Radiant oathplate chest",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30781,
+    "description": "Radiant oathplate legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 30878,
+    "description": "Surge potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 81
+      }
+    ]
+  },
+  {
+    "id": 30891,
+    "description": "Keris partisan of amascut",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 30955,
+    "description": "Arkan blade",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 30957,
+    "description": "Earthbound tecpatl",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 31081,
+    "description": "Antler guard",
+    "requirements": [
+      {
+        "skill": "Prayer",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 31088,
+    "description": "Avernic treads",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31091,
+    "description": "Avernic treads (pr)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31092,
+    "description": "Avernic treads (pe)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31093,
+    "description": "Avernic treads (et)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31094,
+    "description": "Avernic treads (pr)(pe)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31095,
+    "description": "Avernic treads (pr)(et)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31096,
+    "description": "Avernic treads (pe)(et)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31097,
+    "description": "Avernic treads (max)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Defence",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31106,
+    "description": "Confliction gauntlets",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 31113,
+    "description": "Eye of Ayak",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 83
+      }
+    ]
+  },
+  {
+    "id": 31115,
+    "description": "Eye of Ayak (uncharged)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 83
+      }
+    ]
+  },
+  {
+    "id": 31248,
+    "description": "Belle's folly",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 31575,
+    "description": "Camphor blowpipe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 31577,
+    "description": "Camphor blowpipe (empty)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 58
+      }
+    ]
+  },
+  {
+    "id": 31579,
+    "description": "Ironwood blowpipe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 31581,
+    "description": "Ironwood blowpipe (empty)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 72
+      }
+    ]
+  },
+  {
+    "id": 31583,
+    "description": "Rosewood blowpipe",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 65
+      }
+    ]
+  },
+  {
+    "id": 31585,
+    "description": "Rosewood blowpipe (empty)",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 84
+      }
+    ]
+  },
+  {
+    "id": 31587,
+    "description": "Haemostatic poultice",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 56
+      }
+    ]
+  },
+  {
+    "id": 31593,
+    "description": "Haemostatic dressing (3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 56
+      }
+    ]
+  },
+  {
+    "id": 31605,
+    "description": "Super fishing potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 31614,
+    "description": "Extreme energy potion(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 31617,
+    "description": "Extreme energy potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 31620,
+    "description": "Extreme energy potion(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 31623,
+    "description": "Extreme energy potion(1)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 31629,
+    "description": "Super hunter potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 67
+      }
+    ]
+  },
+  {
+    "id": 31638,
+    "description": "Extended stamina potion(4)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 31641,
+    "description": "Extended stamina potion(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 31644,
+    "description": "Extended stamina potion(2)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 31647,
+    "description": "Extended stamina potion(1)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 31653,
+    "description": "Armadyl brew(3)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 89
+      }
+    ]
+  },
+  {
+    "id": 31662,
+    "description": "Elkhorn potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 49
+      }
+    ]
+  },
+  {
+    "id": 31665,
+    "description": "Pillar potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 31668,
+    "description": "Umbral potion (unf)",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 89
+      }
+    ]
+  },
+  {
+    "id": 31712,
+    "description": "Anti-odour salt",
+    "requirements": [
+      {
+        "skill": "Herblore",
+        "level": 49
+      }
+    ]
+  },
+  {
+    "id": 31918,
+    "description": "Bronze chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 31920,
+    "description": "Iron chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 31922,
+    "description": "Steel chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 35
+      }
+    ]
+  },
+  {
+    "id": 31924,
+    "description": "Mithril chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 31926,
+    "description": "Adamant chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 31928,
+    "description": "Rune chainshot cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 31932,
+    "description": "Bronze incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 5
+      }
+    ]
+  },
+  {
+    "id": 31934,
+    "description": "Iron incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 20
+      }
+    ]
+  },
+  {
+    "id": 31936,
+    "description": "Steel incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 35
+      }
+    ]
+  },
+  {
+    "id": 31938,
+    "description": "Mithril incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 55
+      }
+    ]
+  },
+  {
+    "id": 31940,
+    "description": "Adamant incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 31942,
+    "description": "Rune incendiary cannonball",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 31964,
+    "description": "Repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 31967,
+    "description": "Oak repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 19
+      }
+    ]
+  },
+  {
+    "id": 31970,
+    "description": "Teak repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 31973,
+    "description": "Mahogany repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 47
+      }
+    ]
+  },
+  {
+    "id": 31976,
+    "description": "Camphor repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 31979,
+    "description": "Ironwood repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 31982,
+    "description": "Rosewood repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 92
+      }
+    ]
+  },
+  {
+    "id": 32020,
+    "description": "Large bronze keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 10
+      }
+    ]
+  },
+  {
+    "id": 32023,
+    "description": "Large iron keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 22
+      }
+    ]
+  },
+  {
+    "id": 32026,
+    "description": "Large steel keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 38
+      }
+    ]
+  },
+  {
+    "id": 32029,
+    "description": "Large mithril keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 56
+      }
+    ]
+  },
+  {
+    "id": 32032,
+    "description": "Large adamant keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 74
+      }
+    ]
+  },
+  {
+    "id": 32035,
+    "description": "Large rune keel parts",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 86
+      }
+    ]
+  },
+  {
+    "id": 32041,
+    "description": "Wooden hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 32044,
+    "description": "Oak hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 8
+      }
+    ]
+  },
+  {
+    "id": 32047,
+    "description": "Teak hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 23
+      }
+    ]
+  },
+  {
+    "id": 32050,
+    "description": "Mahogany hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 41
+      }
+    ]
+  },
+  {
+    "id": 32053,
+    "description": "Camphor hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 53
+      }
+    ]
+  },
+  {
+    "id": 32056,
+    "description": "Ironwood hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 32059,
+    "description": "Rosewood hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 84
+      }
+    ]
+  },
+  {
+    "id": 32062,
+    "description": "Large wooden hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 32065,
+    "description": "Large oak hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 8
+      }
+    ]
+  },
+  {
+    "id": 32068,
+    "description": "Large teak hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 23
+      }
+    ]
+  },
+  {
+    "id": 32071,
+    "description": "Large mahogany hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 41
+      }
+    ]
+  },
+  {
+    "id": 32074,
+    "description": "Large camphor hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 53
+      }
+    ]
+  },
+  {
+    "id": 32077,
+    "description": "Large ironwood hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 32080,
+    "description": "Large rosewood hull parts",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 84
+      }
+    ]
+  },
+  {
+    "id": 32169,
+    "description": "Vesta's helmet",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 32300,
+    "description": "Repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 32301,
+    "description": "Oak repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 19
+      }
+    ]
+  },
+  {
+    "id": 32302,
+    "description": "Teak repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 32303,
+    "description": "Mahogany repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 47
+      }
+    ]
+  },
+  {
+    "id": 32304,
+    "description": "Camphor repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 66
+      }
+    ]
+  },
+  {
+    "id": 32305,
+    "description": "Ironwood repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 32306,
+    "description": "Rosewood repair kit",
+    "requirements": [
+      {
+        "skill": "Construction",
+        "level": 92
+      }
+    ]
+  },
+  {
+    "id": 32364,
+    "description": "Camphor crate",
+    "requirements": [
+      {
+        "skill": "Crafting",
+        "level": 62
+      }
+    ]
+  },
+  {
+    "id": 32879,
+    "description": "Aquanite hopper",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 32889,
+    "description": "Lead bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 25
+      }
+    ]
+  },
+  {
+    "id": 32892,
+    "description": "Cupronickel bar",
+    "requirements": [
+      {
+        "skill": "Smithing",
+        "level": 74
+      }
+    ]
+  },
+  {
+    "id": 33021,
+    "description": "Bow of Faerdhinen (c)",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 80
+      },
+      {
+        "skill": "Agility",
+        "level": 70
+      }
+    ]
+  },
+  {
+    "id": 33023,
+    "description": "Crystal body",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33027,
+    "description": "Crystal legs",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33031,
+    "description": "Crystal helm",
+    "requirements": [
+      {
+        "skill": "Defence",
+        "level": 70
+      },
+      {
+        "skill": "Agility",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33035,
+    "description": "Toxic staff (uncharged)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33036,
+    "description": "Toxic staff (Deadman)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
+      },
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33038,
+    "description": "The dogsword",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 33041,
+    "description": "Thunder khopesh",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 33314,
+    "description": "Trident of the Swamp (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 33316,
+    "description": "Uncharged toxic trident (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 33318,
+    "description": "Trident of the Swamp (e) (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 33320,
+    "description": "Uncharged toxic trident (e) (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 78
+      }
+    ]
+  },
+  {
+    "id": 33322,
+    "description": "Trident of the Seas (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33323,
+    "description": "Trident of the Seas (full) (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33326,
+    "description": "Trident of the Seas (e) (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33328,
+    "description": "Uncharged trident (e) (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33335,
+    "description": "Soulreaper axe (o)",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 80
+      },
+      {
+        "skill": "Strength",
+        "level": 80
+      }
+    ]
+  },
+  {
+    "id": 33434,
+    "description": "Uncharged trident (o)",
+    "requirements": [
+      {
+        "skill": "Magic",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33460,
+    "description": "Dragon crossbow",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 64
+      }
+    ]
+  },
+  {
+    "id": 33601,
+    "description": "Seeking broad arrows",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33607,
+    "description": "Sap-treated logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "id": 33609,
+    "description": "Sap-treated magic logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 75
+      }
+    ]
+  },
+  {
+    "id": 33611,
+    "description": "Sap-treated yew logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 60
+      }
+    ]
+  },
+  {
+    "id": 33613,
+    "description": "Sap-treated maple logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 45
+      }
+    ]
+  },
+  {
+    "id": 33615,
+    "description": "Sap-treated willow logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 30
+      }
+    ]
+  },
+  {
+    "id": 33617,
+    "description": "Sap-treated oak logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 15
+      }
+    ]
+  },
+  {
+    "id": 33619,
+    "description": "Sap-treated redwood logs",
+    "requirements": [
+      {
+        "skill": "Fletching",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 33631,
+    "description": "Crimson kisten",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 60
+      },
+      {
+        "skill": "Strength",
+        "level": 85
+      }
+    ]
+  },
+  {
+    "id": 33639,
+    "description": "Necklace of rupture",
+    "requirements": [
+      {
+        "skill": "Hitpoints",
+        "level": 90
+      }
+    ]
+  },
+  {
+    "id": 33716,
+    "description": "Blisterwood stake",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33722,
+    "description": "Sunspear",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 33790,
+    "description": "Spine",
+    "requirements": [
+      {
+        "skill": "Ranged",
+        "level": 50
+      }
+    ]
+  },
+  {
+    "id": 34027,
+    "description": "Hallowfell",
+    "requirements": [
+      {
+        "skill": "Attack",
+        "level": 75
       }
     ]
   }

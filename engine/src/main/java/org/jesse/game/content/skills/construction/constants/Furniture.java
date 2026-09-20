@@ -784,7 +784,14 @@ public enum Furniture {
     CHAMPIONS_CAPE(30403, 21439, -1),
     MOUNTED_MYTHICAL_CAPE(31983, 22114, -1),
 
-    QUEST_LIST(80, 310, 29226, 20633, new Item(970, 10), new Item(8784));
+    QUEST_LIST(80, 310, 29226, 20633, new Item(970, 10), new Item(8784)),
+
+	// Portal Nexus room
+	MARBLE_PORTAL_NEXUS(72, 3240, 33408, 22705, new Item(8786, 4)),
+	GILDED_PORTAL_NEXUS(82, 3720, 33409, 22706, new Item(8786, 4), new Item(8784, 2)),
+	CRYSTALLINE_PORTAL_NEXUS(92, 2720, 33410, 22707, new Item(8788, 2), new Item(8784, 2)),
+	MOUNTED_XERICS_TALISMAN(72, 350, 33419, 22708, new Item(8782), new Item(8784), new Item(13391, 5000), new Item(13392)),
+	MOUNTED_DIGSITE_PENDANT(82, 350, 33420, 22709, new Item(8782), new Item(8784), new Item(22710));
 
     public static final Furniture[] VALUES = values();
     public static final Map<Integer, Furniture> MAP = new HashMap<Integer, Furniture>(VALUES.length * 2);

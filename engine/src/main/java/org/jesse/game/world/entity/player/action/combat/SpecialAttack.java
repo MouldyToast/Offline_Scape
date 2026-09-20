@@ -43,7 +43,9 @@ import org.jesse.game.world.entity.player.action.combat.special.BurningBarrageSp
 import org.jesse.game.world.entity.player.action.combat.special.ScatteredAshesSpecial;
 import org.jesse.game.world.entity.player.action.combat.special.ScorchingShacklesSpecial;
 import org.jesse.game.world.entity.player.action.combat.special.VirulenceSpecial;
+import org.jesse.game.world.entity.player.Bonuses;
 import org.jesse.game.world.entity.player.container.impl.equipment.EquipmentSlot;
+import org.jesse.game.world.region.CharacterLoop;
 import org.jesse.game.world.entity.player.variables.TickVariable;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -1466,6 +1468,59 @@ public enum SpecialAttack implements ISpecialAttack {
                 playerTarget.getSkills().drainPercentageStatically(SkillConstants.DEFENCE, 0.15);
                 playerTarget.getSkills().drainPercentageStatically(SkillConstants.MAGIC, 0.15);
             }
+        }
+    }),
+
+    /**
+     * Sol Slam — Sunlight spear (30369).
+     * Stack-based: uses 7 Sunlight Stacks (varp 4600), not spec energy.
+     * Hits all NPCs within 3 tiles. Typeless damage, no accuracy roll.
+     * Damage scales with prayer bonus: +3% per prayer bonus point.
+     * Stacks are checked/deducted in performInstantSpecial before this fires.
+     */
+    SOL_SLAM(AttackType.STAB, new int[] {30369}, WEAPON_SPEED, MELEE, new Animation(11933), new Graphics(3079), (player, combat, target) -> {
+        final Location loc = player.getLocation();
+
+        // Directional shockwave spotanims — radiate outward from player
+        // Cardinals: tiles 1, 2, 3 out with staggered delay
+        for (int d = 1; d <= 3; d++) {
+            final int delay = (d - 1) * 15;
+            World.sendGraphics(new Graphics(3080, delay, 0), loc.transform(0, -d, 0));   // south
+            World.sendGraphics(new Graphics(3081, delay, 0), loc.transform(-d, 0, 0));   // west
+            World.sendGraphics(new Graphics(3082, delay, 0), loc.transform(0, d, 0));    // north
+            World.sendGraphics(new Graphics(3083, delay, 0), loc.transform(d, 0, 0));    // east
+        }
+        // Diagonals: tiles 1, 2, 3 out with staggered delay
+        for (int d = 1; d <= 3; d++) {
+            final int delay = (d - 1) * 15;
+            World.sendGraphics(new Graphics(3084, delay, 0), loc.transform(d, -d, 0));   // SE
+            World.sendGraphics(new Graphics(3085, delay, 0), loc.transform(-d, -d, 0));  // SW
+            World.sendGraphics(new Graphics(3086, delay, 0), loc.transform(-d, d, 0));   // NW
+            World.sendGraphics(new Graphics(3087, delay, 0), loc.transform(d, d, 0));    // NE
+        }
+
+        // Base melee max hit: effective strength × (strength bonus + 64) / 640
+        double effectiveStr = Math.floor(
+                player.getSkills().getLevel(SkillConstants.STRENGTH)
+                * player.getPrayerManager().getSkillBoost(SkillConstants.STRENGTH)
+        ) + 8;
+        final int strengthBonus = player.getBonuses().getBonus(Bonuses.Bonus.STRENGTH);
+        int baseMaxHit = (int) Math.floor(0.5 + effectiveStr * (strengthBonus + 64.0) / 640.0);
+
+        // +3% damage per prayer bonus point
+        final int prayerBonus = player.getBonuses().getBonus(Bonuses.Bonus.PRAYER);
+        final int maxHit = (int) (baseMaxHit * (1.0 + 0.03 * prayerBonus));
+
+        // AoE — hit all NPCs within 3 tiles, typeless (no accuracy roll)
+        final List<NPC> npcs = CharacterLoop.find(loc, 3, NPC.class,
+                npc -> !npc.isDead() && !npc.isFinished() && npc.isAttackable());
+        for (final NPC npc : npcs) {
+            final int damage = Utils.random(maxHit);
+            final Hit hit = new Hit(player, damage, HitType.TYPELESS);
+            if (damage == maxHit) {
+                hit.setMax(true);
+            }
+            npc.applyHit(hit);
         }
     }),
 

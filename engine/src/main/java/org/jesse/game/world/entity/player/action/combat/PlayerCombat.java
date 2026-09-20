@@ -96,7 +96,8 @@ public abstract class PlayerCombat extends Action {
             CrystalTool.Axe.INSTANCE.getProductItemId(),
             CrystalTool.Pickaxe.INSTANCE.getProductItemId(),
             32161,
-            ItemID.KERIS_PARTISAN_OF_THE_SUN
+            ItemID.KERIS_PARTISAN_OF_THE_SUN,
+            30369 // Sunlight spear — Sol Slam (stack-based instant AoE)
     );
     /**
      * Animations which stall when in PvP combat, but do not stall when in PvM combat.
@@ -299,6 +300,17 @@ public abstract class PlayerCombat extends Action {
                     return;
                 }
                 return;
+            case SOL_SLAM:
+                final int solStacks = player.getVarManager().getValue(4600);
+                if (solStacks < 7) {
+                    player.sendMessage("You need at least 7 sunlight stacks to use this special attack.");
+                    player.getCombatDefinitions().setSpecial(false, true);
+                    return;
+                }
+                player.getVarManager().sendVar(4600, solStacks - 7);
+                player.lock(3);
+                useInstantSpecial(player, special);
+                return;
             case TUMEKENS_LIGHT:
                 if (false) {//TODO add ToA check here.
                     player.sendMessage("You need to be inside the Tomb of Amascut to use the special attack.");
@@ -497,7 +509,7 @@ public abstract class PlayerCombat extends Action {
             return;
         }
         final int weaponId = weapon != null ? weapon.getId() : -1;
-        player.faceEntity(entity);
+        player.setFaceEntity(entity);
         if (weapon != null) {
             final var area = GlobalAreaManager.getArea(player);
             if (area != null) {

@@ -263,6 +263,13 @@ public class MeleeCombat extends PlayerCombat {
         if (hit.getDamage() > 0 && player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.ARCLIGHT) {
             player.getChargesManager().removeCharges(player.getWeapon(), 1, player.getEquipment().getContainer(), EquipmentSlot.WEAPON.getSlot());
         }
+        // Sunlight spear — increment sunlight stacks by 1 on each normal attack (cap 20)
+        if (player.getEquipment().getId(EquipmentSlot.WEAPON) == 30369) {
+            final int stacks = player.getVarManager().getValue(4600);
+            if (stacks < 20) {
+                player.getVarManager().sendVar(4600, stacks + 1);
+            }
+        }
         animate();
         if (player.getEquipment().getId(EquipmentSlot.WEAPON) == ItemId.CORRUPTED_VOLATILE_NIGHTMARE_STAFF) {
             player.getChargesManager().removeCharges(DegradeType.SPELL);

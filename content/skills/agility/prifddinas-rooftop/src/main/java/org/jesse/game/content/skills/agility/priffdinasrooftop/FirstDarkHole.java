@@ -3,6 +3,7 @@ package org.jesse.game.content.skills.agility.priffdinasrooftop;
 import org.jesse.game.content.skills.agility.AgilityCourseObstacle;
 import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
+import org.jesse.game.util.Direction;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.masks.Animation;
 import org.jesse.game.world.entity.player.Player;
@@ -54,7 +55,7 @@ public final class FirstDarkHole extends AgilityCourseObstacle {
             public void run() {
                 switch (ticks++) {
                     case 0: {
-                        fs.fade(4);
+                        fs.fade();
                         break;
                     }
                     case 2: {
@@ -63,6 +64,7 @@ public final class FirstDarkHole extends AgilityCourseObstacle {
                     }
                     case 5: {
                         fs.unfade();
+                        player.faceDirection(Direction.NORTH);
                         stop();
                         break;
                     }

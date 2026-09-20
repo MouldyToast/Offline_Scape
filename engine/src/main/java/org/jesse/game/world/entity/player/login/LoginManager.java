@@ -721,6 +721,7 @@ public final class LoginManager {
         player.getDragonhidePouch().initialize(parser.getDragonhidePouch());
         player.getGemBag().initialize(parser.getGemBag());
         player.getGrandExchange().initialize(parser.getGrandExchange());
+        player.getConstruction().setFields(parser.getConstruction());
         player.getPetInsurance().initialize(parser.getPetInsurance());
         player.getKillstreakLog().initialize(parser.getKillstreakLog());
         player.getTOAManager().initialize(parser.getTOAManager());

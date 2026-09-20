@@ -27,7 +27,7 @@ public final class FadeScreen {
 
 	public void fade() {
 		player.getInterfaceHandler().sendInterface(InterfacePosition.OVERLAY, 174);
-		player.getPacketDispatcher().sendClientScript(951);
+		player.getPacketDispatcher().sendClientScript(948, 0, 255, 0, 0, 50);
 		player.lock();
 	}
 

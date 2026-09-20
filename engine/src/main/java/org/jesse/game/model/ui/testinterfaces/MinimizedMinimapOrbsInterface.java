@@ -175,14 +175,12 @@ public class MinimizedMinimapOrbsInterface extends Interface {
                 player.sendMessage("You can't do that right now.");
                 return;
             }
-            if (option == 3) {
-                if (player.isOnMobile()) {
-                    player.getSettings().toggleSetting(Setting.MINIMIZE_MINIMAP);
-                }
+            if (option == 4) {
+                player.getSettings().toggleSetting(Setting.MINIMIZE_MINIMAP);
                 return;
             }
             if (!player.getWorldMap().isVisible()) {
-                player.getWorldMap().setFullScreen(option == 2);
+                player.getWorldMap().setFullScreen(option == 3);
                 WORLD_MAP.open(player);
             } else {
                 player.getWorldMap().close();

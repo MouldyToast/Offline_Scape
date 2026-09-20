@@ -1,6 +1,7 @@
 package org.jesse.game.world.entity.player;
 
 import org.jesse.game.GameInterface;
+import org.jesse.game.model.MinimapState;
 import org.jesse.game.model.ui.InterfacePosition;
 
 import static org.jesse.game.GameInterface.ORBS;
@@ -19,10 +20,11 @@ import static org.jesse.game.GameInterface.ORBS;
 public enum Setting {
 	WILDERNESS_KD(4143, false, (player, state) -> player.getVarManager().sendBit(4143, state ? 1 : 0)),
 	MOBILE_DEPOSIT_BOX_AMOUNT(4430, false),
-	MINIMIZE_MINIMAP(6254, false, (player, state) -> {
-		player.getVarManager().sendVarInstant(1021, player.getVarManager().getValue(1021));
-		ORBS.open(player);
-	}),
+    MINIMIZE_MINIMAP(6254, false, (player, state) -> {
+        player.getVarManager().sendBitInstant(12986, state ? 1 : 0);
+        player.getPacketDispatcher().sendMinimapState(state ? MinimapState.DISABLED : MinimapState.ENABLED);
+        ORBS.open(player);
+    }),
 	GODWARS_ENTRANCE_ROPE(3966, false),
 	SARADOMIN_TOP_ROPE(3967, false),
 	SARADOMIN_BOTTOM_ROPE(3968, false),

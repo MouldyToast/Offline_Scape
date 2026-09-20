@@ -558,10 +558,15 @@ public final class Skills extends SkillConstants implements TempPlayerStatePlugi
         return (int) Math.min(126, baseLevel);
     }
 
+    // Interface 320 component IDs → cs2 enum_108 internal skill IDs (index 0 unused).
+    private static final int[] COMPONENT_TO_SKILL = {-1, 1, 2, 5, 3, 7, 4, 12, 22, 6, 8, 9, 10, 11, 19, 20, 23, 13, 14, 15, 16, 17, 18, 21, 24};
+
     public void sendSkillMenu(final int componentId, final int subCategory) {
+        if (componentId < 1 || componentId >= COMPONENT_TO_SKILL.length) return;
+        final int skillId = COMPONENT_TO_SKILL[componentId];
         player.getInterfaceHandler().sendInterface(InterfacePosition.FLOATER, SkillConstants.SKILL_GUIDE_INTERFACE);
-        player.getPacketDispatcher().sendClientScript(9340, componentId, subCategory, 0, 0);
-        player.getTemporaryAttributes().put("viewingSkill", componentId);
+        player.getPacketDispatcher().sendClientScript(9340, skillId, subCategory, 0, 0);
+        player.getTemporaryAttributes().put("viewingSkill", skillId);
     }
 
     public void setSkill(final int skill, final int lvl, final double exp) {

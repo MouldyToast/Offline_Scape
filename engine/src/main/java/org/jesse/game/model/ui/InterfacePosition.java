@@ -123,6 +123,7 @@ public enum InterfacePosition {
 		}
 		final EnumDefinitions e = pane.getEnum();
 		final int bitpacked = e.getIntValue(161 << 16 | resizableComponent);
+        if (bitpacked == -1) return -1;
 		return bitpacked == 0 ? resizableComponent : bitpacked & 65535;
 	}
 

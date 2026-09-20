@@ -36,6 +36,7 @@ import org.jesse.plugins.dialogue.PlainChat;
 import org.jesse.plugins.dialogue.RoomCreationD;
 import org.jesse.plugins.dialogue.RoomRemovingD;
 import mgi.types.config.ObjectDefinitions;
+import mgi.types.config.DBRowDefinition;
 import mgi.types.config.items.ItemDefinitions;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
@@ -60,6 +61,20 @@ import static org.jesse.game.content.skills.construction.ConstructionConstants.*
 public final class Construction {
 
     private static final Logger log = NearRealityLogger.getLogger(Construction.class);
+
+    /** furniture dbtable (110) item ID → dbrow ID, for cs2 1404. */
+    private static final Map<Integer, Integer> ITEM_TO_DBROW = new HashMap<>();
+    static {
+        List<DBRowDefinition> rows = DBRowDefinition.tableRows.get(110);
+        if (rows != null) {
+            for (DBRowDefinition row : rows) {
+                Object obj = row.getValueFromRow(0);
+                if (obj instanceof Integer) {
+                    ITEM_TO_DBROW.put((Integer) obj, row.getId());
+                }
+            }
+        }
+    }
 
     @Expose
     private final List<RoomReference> references = new ArrayList<RoomReference>();
@@ -867,7 +882,8 @@ public final class Construction {
             args.add(materials);
         }
         for (int i = 0; i < space.getFurnitures().length; i++) {
-            player.getPacketDispatcher().sendClientScript(1404, i + 1, space.getFurnitures()[i].getItemId(), space.getFurnitures()[i].getLevel(), args.get(i), 1);
+            int dbRow = ITEM_TO_DBROW.getOrDefault(space.getFurnitures()[i].getItemId(), -1);
+            player.getPacketDispatcher().sendClientScript(1404, i + 1, dbRow, space.getFurnitures()[i].getLevel(), args.get(i), 1);
         }
         player.getPacketDispatcher().sendClientScript(1406, space.getFurnitures().length, 0);
         final Object[] data = new Object[] { space, new Location(object.getXInChunk(), object.getYInChunk(), object.getPlane()), object.getType(), object.getRotation(), object };

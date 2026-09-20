@@ -4,7 +4,6 @@ import org.jesse.game.content.skills.agility.AgilityCourseObstacle;
 import org.jesse.game.content.skills.agility.Failable;
 import org.jesse.game.task.WorldTask;
 import org.jesse.game.task.WorldTasksManager;
-import org.jesse.game.util.Direction;
 import org.jesse.game.util.Utils;
 import org.jesse.game.world.entity.Location;
 import org.jesse.game.world.entity.SoundEffect;
@@ -47,7 +46,6 @@ public final class FirstTightRope extends AgilityCourseObstacle implements Faila
     @Override
     public void startSuccess(final Player player, final WorldObject object) {
         player.getPacketDispatcher().sendSoundEffect(TIGHT_ROPE_SOUND);
-        WorldTasksManager.scheduleOrExecute(() ->  player.faceDirection(Direction.WEST), WALK_TIME);
         player.addWalkSteps(END_LOC.getX(), END_LOC.getY(), -1, false);
     }
 

@@ -10,6 +10,7 @@ import org.jesse.game.content.skills.magic.SpellState;
 import org.jesse.game.content.skills.magic.Spellbook;
 import org.jesse.game.content.skills.magic.spells.lunar.CureMe;
 import org.jesse.game.item.Item;
+import org.jesse.game.model.MinimapState;
 import org.jesse.game.model.ui.Interface;
 import org.jesse.game.model.ui.InterfacePosition;
 import org.jesse.game.world.entity.Toxins;
@@ -45,7 +46,9 @@ public class OrbsInterface extends Interface {
 
     @Override
     public void open(Player player) {
-        if (player.isOnMobile() && player.getBooleanSetting(Setting.MINIMIZE_MINIMAP)) {
+        if (player.getBooleanSetting(Setting.MINIMIZE_MINIMAP)) {
+            player.getVarManager().sendBitInstant(12986, 1);
+            player.getPacketDispatcher().sendMinimapState(MinimapState.DISABLED);
             GameInterface.MINIMIZED_ORBS.open(player);
             return;
         }
@@ -185,6 +188,10 @@ public class OrbsInterface extends Interface {
         });
         bind("Run", player -> player.setRun(!player.isRun()));
         bind("View World Map", (player, slotId, itemId, option) -> {
+            if (option == 4) {
+                player.getSettings().toggleSetting(Setting.MINIMIZE_MINIMAP);
+                return;
+            }
             if (player.isLocked() || (option == 3 && player.getInterfaceHandler().containsInterface(InterfacePosition.CENTRAL))) {
                 player.sendMessage("You can't do that right now.");
                 return;

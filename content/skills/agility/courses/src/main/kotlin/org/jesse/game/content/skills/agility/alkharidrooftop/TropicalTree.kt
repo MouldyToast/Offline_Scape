@@ -20,18 +20,19 @@ class TropicalTree : AgilityCourseObstacle(AlKharidRooftopCourse::class.java, 5)
     override fun startSuccess(player: Player, `object`: WorldObject) {
         player.faceObject(`object`)
         player.setForceMovement(ForceMovement(Location(player.location), 55, TREE_LOC, 90, ForceMovement.NORTH))
+        player.setAnimation(Animation(2583))
+        player.setLocation(TREE_LOC)
         WorldTasksManager.schedule(object : WorldTask {
             var ticks: Int = 0
 
             override fun run() {
                 when (ticks++) {
-                    1 -> player.setLocation(TREE_LOC)
-                    2 -> {
+                    1 -> {
                         player.setFaceLocation(FACE_LOC)
                         player.setAnimation(TREE_HANGING_ANIM)
                     }
 
-                    3 -> {
+                    2 -> {
                         player.setFaceLocation(TREE_LOC)
                         player.setAnimation(TREE_HANGING_2_ANIM)
                         player.setForceMovement(
@@ -45,7 +46,7 @@ class TropicalTree : AgilityCourseObstacle(AlKharidRooftopCourse::class.java, 5)
                         )
                     }
 
-                    4 -> {
+                    3 -> {
                         player.setAnimation(JUMP_ANIM)
                         player.setLocation(END_LOC)
                         MarkOfGrace.spawn(player, AlKharidRooftopCourse.MARK_LOCATIONS, 40, 20)

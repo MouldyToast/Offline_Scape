@@ -12,10 +12,6 @@ import org.jesse.game.world.entity.player.SkillConstants;
 import org.jesse.game.obj.ids.ObjectId;
 import org.jesse.game.world.object.WorldObject;
 
-/**
- * @author Kris | 10/05/2019 22:15
- * @see <a href="https://www.rune-server.ee/members/kris/">Rune-Server profile</a>
- */
 public class AgilityPyramidClimbingRocks implements Shortcut {
 
     @Override
@@ -31,7 +27,8 @@ public class AgilityPyramidClimbingRocks implements Shortcut {
         return new int[] { 11948, 11949 };
     }
 
-    private static final Animation CLIMB = new Animation(740);
+    private static final Animation CLIMB_DOWN = new Animation(740);
+    private static final Animation CLIMB_UP = new Animation(740);
 
     @Override
     public int getDuration(final boolean success, final WorldObject object) {
@@ -39,15 +36,25 @@ public class AgilityPyramidClimbingRocks implements Shortcut {
     }
 
     @Override
+    public Location getRouteEvent(final Player player, final WorldObject object) {
+        if (player.getX() > object.getX()) {
+            return object.transform(1, 0, 0);
+        }
+        return object.transform(-1, 0, 0);
+    }
+
+    @Override
     public void startSuccess(final Player player, final WorldObject object) {
-        final Direction direction = player.getX() <= object.getX() ? Direction.EAST : Direction.WEST;
+        final boolean climbingDown = player.getX() <= object.getX();
+        final Direction direction = climbingDown ? Direction.EAST : Direction.WEST;
         Location destination = player.getLocation().transform(direction, 4);
-        ForceMovement forceMovement = new ForceMovement(destination, 120, ForceMovement.WEST);
-        player.setAnimation(CLIMB);
+        int fmDirection = ForceMovement.WEST;
+        ForceMovement forceMovement = new ForceMovement(destination, 120, fmDirection);
+        player.setAnimation(climbingDown ? CLIMB_DOWN : CLIMB_UP);
         player.setForceMovement(forceMovement);
         player.sendSound(new SoundEffect(2454, 1, 0, 5));
         WorldTasksManager.schedule(() -> {
-            player.getSkills().addXp(SkillConstants.AGILITY, direction == Direction.EAST ? 5 : 1);
+            player.getSkills().addXp(SkillConstants.AGILITY, climbingDown ? 5 : 1);
             player.setAnimation(Animation.STOP);
             player.setLocation(destination);
         }, 3);

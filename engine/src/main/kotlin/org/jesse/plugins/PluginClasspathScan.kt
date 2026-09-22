@@ -4,9 +4,8 @@ import io.github.classgraph.ScanResult
 
 /**
  * A single classpath scan shared by every plugin-discovery consumer at boot
- * ([PluginScanner.scanAndLoad] for [PluginType] entries, and the [PluginScript]
- * discovery in [Main]), so the server doesn't pay for multiple full classpath
- * walks over the same packages.
+ * (currently [PluginScanner.scanAndLoad] for [PluginType] entries), so the
+ * server doesn't pay for multiple full classpath walks over the same packages.
  *
  * [scan] is computed once, lazily, on first access from any consumer, and is
  * intentionally never closed: plugin discovery only happens during boot, and

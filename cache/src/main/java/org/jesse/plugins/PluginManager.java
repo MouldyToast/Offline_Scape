@@ -29,12 +29,6 @@ public enum PluginManager {
      */
     private static final Map<Class<?>, Set<Consumer<Event>>> consumerMap = new Object2ObjectOpenHashMap<>();
 
-    /**
-     * Optional hook for forwarding events to the new EventBus. Set by the engine at boot time.
-     * When non-null, every {@link #post(Event)} call also publishes to the new bus.
-     */
-    public static volatile Consumer<Event> postHook;
-
     private static final Logger log = LoggerFactory.getLogger(PluginManager.class);
 
     /**
@@ -93,11 +87,6 @@ public enum PluginManager {
      * @param event the event published.
      */
     public static void post(@NotNull final Event event) {
-        final Consumer<Event> hook = postHook;
-        if (hook != null) {
-            hook.accept(event);
-        }
-
         final Class<? extends Event> clazz = event.getClass();
         final Set<Consumer<Event>> consumers = consumerMap.get(clazz);
         if (consumers == null) {

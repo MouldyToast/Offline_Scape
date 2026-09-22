@@ -47,6 +47,4 @@ dependencies {
     implementation(libs.ktor.serialization.jackson)
 
     implementation(libs.googleauth)
-
-    implementation(libs.google.guice)
 }

@@ -114,7 +114,6 @@ apache-commons-text = { module = "org.apache.commons:commons-text", version = "1
 
 google-guava = { module = "com.google.guava:guava", version = "33.4.8-jre" }
 google-gson = { module = "com.google.code.gson:gson", version = "2.13.1" }
-google-guice = { module = "com.google.inject:guice", version = "7.0.0" }
 
 openhft-chronicle-core = { module = "net.openhft:chronicle-core", version = "2.27ea7" }
 openhft-chronicle-threads = { module = "net.openhft:chronicle-threads", version = "2.27ea2" }

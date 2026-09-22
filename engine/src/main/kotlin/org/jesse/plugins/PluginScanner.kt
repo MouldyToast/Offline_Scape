@@ -9,21 +9,14 @@ import io.github.classgraph.ClassGraph
 import io.github.classgraph.ClassInfo
 import io.github.classgraph.ClassInfoList
 import io.github.classgraph.ScanResult
-import io.netty.buffer.ByteBuf
-import io.netty.buffer.Unpooled
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet
-import java.io.RandomAccessFile
-import java.nio.charset.StandardCharsets
 import java.util.concurrent.TimeUnit
 
 /**
- * Use this to update the plugins data file, after a new plugin class has been added to the source.
+ * Scans the classpath for plugin classes and loads them at boot time.
  *
  * @author Jire
  */
 object PluginScanner {
-
-    const val DEFAULT_FILE_PATH = "data/plugins.dat"
 
     val defaultPackages = arrayOf(
         Main::class.java.packageName,
@@ -72,66 +65,36 @@ object PluginScanner {
     }
 
     @JvmStatic
-    fun ScanResult.getSkipPluginScanClasses(): ClassInfoList = getClassesWithAnnotation(SkipPluginScan::class.java)
+    fun ScanResult.getSkipPluginScanClasses(): ClassInfoList =
+        getClassesWithAnnotation(SkipPluginScan::class.java)
 
+    /**
+     * Loads all [PluginType] entries from the given [scanResult].
+     * Replaces the old scan() → plugins.dat → PluginLoader.load() pipeline.
+     * Classes are sorted globally by [PluginPriority] before loading.
+     *
+     * @param scanResult a shared [ScanResult] — typically [PluginClasspathScan.scan].
+     */
     @JvmStatic
-    @JvmOverloads
-    fun scan(
-        vararg pluginTypes: PluginType = PluginType.values,
-        filePath: String = DEFAULT_FILE_PATH,
-        packages: Array<String> = defaultPackages
-    ) {
-        log.info("Scanning for plugins...")
-
+    fun scanAndLoad(scanResult: ScanResult) {
         val stopwatch = Stopwatch.createStarted()
+        val plugins = mutableListOf<ScannedPlugin>()
+        val skippedPlugins = scanResult.getSkipPluginScanClasses()
 
-        val plugins: MutableSet<ScannedPlugin> = ObjectOpenHashSet()
-        try {
-            scanClasses(*pluginTypes, packages = packages) { pluginType, classInfoList ->
-                for (classInfo in classInfoList) {
-                    try {
-                        val plugin = ScannedPlugin(pluginType, classInfo.name, classInfo.priority)
-                        if (!plugins.add(plugin)) {
-                            throw UnsupportedOperationException("Couldn't add $plugin")
-                        }
-                        log.info("Scanned plugin {}", plugin)
-                    } catch (e: Exception) {
-                        log.error("Error adding plugin for $classInfo (type=$pluginType)", e)
-                    }
-                }
+        for (pluginType in PluginType.values) {
+            val classInfoList = pluginType.scan(scanResult).exclude(skippedPlugins)
+            for (classInfo in classInfoList) {
+                plugins.add(ScannedPlugin(pluginType, classInfo.name, classInfo.priority))
             }
+        }
 
-            val buf = Unpooled.directBuffer()
-            try {
-                for (plugin in plugins.sortedBy { it.priority }) {
-                    buf.writeByte(plugin.pluginType.id)
-                    buf.writeString(plugin.className)
-                }
-
-                val headBuf = Unpooled.directBuffer(4 + buf.readableBytes())
-                    .writeInt(plugins.size)
-                    .writeBytes(buf)
-                try {
-                    val nioBuffer = headBuf.nioBuffer()
-                    RandomAccessFile(filePath, "rw").use { raf ->
-                        raf.channel.write(nioBuffer)
-                    }
-                } finally {
-                    headBuf.release()
-                }
-            } finally {
-                buf.release()
-            }
-        } catch (e: Exception) {
-            log.error("Error during processing Scanner results:", e)
-            return
+        for (plugin in plugins.sortedBy { it.priority }) {
+            val loadedClass = Class.forName(plugin.className)
+            plugin.pluginType.pluginTypeLoader?.loadClass(loadedClass)
         }
 
         val elapsed = stopwatch.elapsed(TimeUnit.MILLISECONDS)
-        log.info(
-            "Successfully scanned {} plugins and wrote to file path \"{}\" in {}ms.",
-            plugins.size, filePath, elapsed
-        )
+        log.info("Scanned and loaded {} plugins in {} ms.", plugins.size, elapsed)
     }
 
     private data class ScannedPlugin(
@@ -140,25 +103,10 @@ object PluginScanner {
         val priority: Int
     )
 
-    private fun ByteBuf.writeString(string: String) {
-        val bytes = string.toByteArray(StandardCharsets.UTF_8)
-        require(bytes.size <= 255)
-
-        writeByte(bytes.size)
-        writeBytes(bytes)
-    }
-
-    @JvmStatic
-    fun main(args: Array<String>) {
-        Main.configureWorldProfile(*args)
-        scan()
-    }
-
     val ClassInfo.priority: Int
         get() = getAnnotationInfo(PluginPriority::class.java)
             ?.getParameterValues(true)
             ?.get(0)
             ?.value as? Int
             ?: PluginPriority.DEFAULT
-
 }

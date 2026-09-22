@@ -68,14 +68,6 @@ val defaultJvmArgs = arrayOf(
     "--add-opens=java.base/sun.net=ALL-UNNAMED",
 )
 
-tasks.register<JavaExec>("runPluginScanner") {
-    group = "_nr_data"
-    mainClass.set("org.jesse.plugins.PluginScanner")
-    classpath = sourceSets["main"].runtimeClasspath
-    workingDir = layout.projectDirectory.dir("../").asFile
-    jvmArgs(*defaultJvmArgs)
-}
-
 tasks.register<JavaExec>("generateFlatCache") {
     group = "_nr_data"
     mainClass.set("org.jire.runecache.GenerateFlatCache")

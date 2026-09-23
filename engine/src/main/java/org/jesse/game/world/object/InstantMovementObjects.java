@@ -67,9 +67,9 @@ public enum InstantMovementObjects {
     CHINCHOMPA_DUNGEON(19039, new Location(2525, 2893, 0), new Location(2532, 9294, 0)),
     CHINCHOMPA_DUNGEON_EXIT(19037, new Location(2533, 9293, 0), new Location(2527, 2894, 0)),
 
-	WEISS_STAIRS(33234, new Location(2867, 3939, 0), new Location(2845, 10351, 0)),
-	WEISS_STAIRS_UP(33261, new Location(2844, 10352, 0), new Location(2869, 3941, 0)),
-	WEISS_SMELLY_HOLE(33262, new Location(2856, 10334, 0), new Location(2859, 3968, 0)),
+	WEISS_STAIRS(33234, new Location(2867, 3939, 0), new Location(2845, 10351, 0), true),
+	WEISS_STAIRS_UP(33261, new Location(2844, 10352, 0), new Location(2869, 3941, 0), true),
+	WEISS_SMELLY_HOLE(33262, new Location(2856, 10334, 0), new Location(2859, 3968, 0), true),
 
     MOS_LE_HARMLESS_EASTERN_LADDER_DUNGEON(5269, new Location(3829, 9462, 0), new Location(3831, 3062, 0)),
     MOS_LE_HARMLESS_WESTERN_LADDER_DUNGEON(5269, new Location(3814, 9462, 0), new Location(3816, 3062, 0)),

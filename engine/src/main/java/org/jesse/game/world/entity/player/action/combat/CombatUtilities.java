@@ -130,7 +130,7 @@ public class CombatUtilities {
     }
 
     public static boolean isUndeadCombatDummy(@NotNull final Entity target) {
-        return target instanceof CombatDummy && ((CombatDummy) target).getId() == NpcId.UNDEAD_COMBAT_DUMMY_16020;
+        return target instanceof CombatDummy && ((CombatDummy) target).getId() == NpcId.UNDEAD_COMBAT_DUMMY;
     }
 
     public static boolean isRevenant(@NotNull final Entity target) {
@@ -530,7 +530,7 @@ public class CombatUtilities {
 
         return switch (id) {
             case ItemId.BLESSED_DIZANAS_QUIVER, ItemId.BLESSED_DIZANAS_QUIVER_L -> true;
-            case ItemId.DIZANAS_QUIVER_UNCHARGED, ItemId.DIZANAS_QUIVER_UNCHARGED_L,
+            case ItemId.DIZANAS_QUIVER_UNCHARGED, ItemId.DIZANAS_QUIVER_L_UNCHARGED,
                  ItemId.DIZANAS_QUIVER, ItemId.DIZANAS_QUIVER_L -> !checkCharges || cape.getCharges() > 0;
             default -> false;
         };

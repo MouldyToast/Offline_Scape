@@ -99,6 +99,6 @@ public class CombatDummy extends NPC implements Spawnable {
 
     @Override
     public boolean validate(int id, String name) {
-        return id == NpcId.COMBAT_DUMMY_16019 || id == NpcId.UNDEAD_COMBAT_DUMMY_16020;
+        return id == NpcId.COMBAT_DUMMY || id == NpcId.UNDEAD_COMBAT_DUMMY;
     }
 }

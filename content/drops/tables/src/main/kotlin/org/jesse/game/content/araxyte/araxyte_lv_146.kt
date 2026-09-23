@@ -17,10 +17,10 @@ import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 class AraxyteLv146Droptable : NPCDropTableScript() {
 
     init {
-        npcs(ARAXYTE_LV_146)
+        npcs(ARAXYTE_13667)
 
         onDeath {
-            npc.dropItem(killer, Item(ARAXYTE_VENOM_SACK))
+            npc.dropItem(killer, Item(ARAXYTE_VENOM_SAC))
             rollStaticTableAndDrop(killer, Tertiary)
             rollStaticTableAndDrop(killer, Main)
         }
@@ -78,7 +78,7 @@ class AraxyteLv146Droptable : NPCDropTableScript() {
                 REDWOOD_TREE_SEED quantity 1 oneIn 3188
                 // Other
                 COINS_995 quantity IntRange(1600, 2400) oneIn 13
-                ARAXYTE_VENOM_SACK quantity 2 oneIn 25
+                ARAXYTE_VENOM_SAC quantity 2 oneIn 25
                 ARAXYTE_HEAD quantity 1 oneIn 2000
             }
 

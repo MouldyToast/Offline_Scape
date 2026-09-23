@@ -25,7 +25,7 @@ class CombineAntiVenomPotion(
     override fun processWithDelay(): Int {
         val potion = player.inventory.getAny(potToUpgrade)
         val dose = Potion.EXTENDED_ANTI_VENOM.getDoses(upgradedPot)
-        if (player.inventory.deleteItems(Item(ARAXYTE_VENOM_SACK, dose), potion).result == RequestResult.SUCCESS) {
+        if (player.inventory.deleteItems(Item(ARAXYTE_VENOM_SAC, dose), potion).result == RequestResult.SUCCESS) {
             player.inventory.addOrDrop(upgradedPot, 1)
             player.skills.addXp(SkillConstants.HERBLORE, 25.5 * dose)
             completed++
@@ -41,7 +41,7 @@ class CombineAntiVenomPotion(
     private fun check(): Boolean {
         val dose = Potion.EXTENDED_ANTI_VENOM.getDoses(upgradedPot)
         if (completed >= amount) return false
-        return player.carryingItem(potToUpgrade) && player.inventory.getAmountOf(ARAXYTE_VENOM_SACK) >= dose
+        return player.carryingItem(potToUpgrade) && player.inventory.getAmountOf(ARAXYTE_VENOM_SAC) >= dose
     }
 
     companion object {

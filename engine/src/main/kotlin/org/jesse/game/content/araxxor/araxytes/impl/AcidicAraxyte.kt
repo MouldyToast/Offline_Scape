@@ -26,7 +26,7 @@ class AcidicAraxyte(
     val instance: AraxxorInstance,
     spawnLocation: Location
 ): Araxyte(
-    ACIDIC_ARAXYTE_EGG,
+    EGG_13674,
     spawnLocation
 ) {
 
@@ -35,7 +35,7 @@ class AcidicAraxyte(
     private val projectileBlob: Projectile = Projectile(2924, 256, 128, 64, 0)
 
     override fun attack(target: Entity?): Int {
-        if (getId() == ACIDIC_ARAXYTE_EGG) return 1
+        if (getId() == EGG_13674) return 1
         if (target == null) return 1
         this seq 11498
         val damage = CombatUtilities.getRandomMaxHit(this, 15, AttackType.RANGED, target)

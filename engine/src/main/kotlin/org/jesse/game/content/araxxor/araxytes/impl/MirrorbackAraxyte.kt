@@ -28,12 +28,12 @@ class MirrorbackAraxyte(
     val instance: AraxxorInstance,
     spawnLocation: Location
 ): Araxyte(
-    MIRRORBACK_ARAXYTE_EGG,
+    EGG_13670,
     spawnLocation
 ) {
 
     override fun attack(target: Entity?): Int {
-        if (getId() == MIRRORBACK_ARAXYTE_EGG) return 1
+        if (getId() == EGG_13670) return 1
         if (target == null) return 1
         this seq 11497
         val damage = CombatUtilities.getRandomMaxHit(this, 15, AttackType.MELEE, target)
@@ -56,7 +56,7 @@ class MirrorbackAraxyte(
     override fun handleIngoingHit(hit: Hit?) {
         if (hit == null) return
         super.handleIngoingHit(hit)
-        if (isDead || isFinished || id == MIRRORBACK_ARAXYTE_EGG) return
+        if (isDead || isFinished || id == EGG_13670) return
         if (hit.hitType == HitType.MAGIC || hit.hitType == HitType.RANGED) return
         if (hit.source is Player) {
             (hit.source as Player).weapon ?: return

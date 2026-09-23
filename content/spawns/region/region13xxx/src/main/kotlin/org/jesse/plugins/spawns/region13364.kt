@@ -8,7 +8,7 @@ import org.jesse.game.util.Direction.*
 class Region13364 : NPCSpawnsScript() {
 
     init {
-        ARCHAEOLOGICAL_EXPERT(3355, 3333, 0, SOUTH, 4)
+        TERRY_BALANDO(3355, 3333, 0, SOUTH, 4)
         DIGSITE_WORKMAN_3630(3356, 3385, 0, SOUTH, 5)
         EXAMINER_3636(3360, 3343, 0, SOUTH, 5)
         EXAMINER_3637(3364, 3339, 0, SOUTH, 4)

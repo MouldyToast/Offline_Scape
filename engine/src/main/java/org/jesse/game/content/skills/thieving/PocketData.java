@@ -37,7 +37,7 @@ public enum PocketData {
             return super.generateRandomLoot(doubleLoot);
         }
     },
-    AL_KHARID_WARRIOR(25, -15, 26, CoinPouch.WARRIOR, true, 5, 2, 2, new String[]{"What do you think you're doing?"}, new ImmutableItem[]{new ImmutableItem(CoinPouch.WARRIOR.getItemId())}, NpcId.AL_KHARID_WARRIOR, NpcId.WARRIOR_WOMAN),
+    AL_KHARID_WARRIOR(25, -15, 26, CoinPouch.WARRIOR, true, 5, 2, 2, new String[]{"What do you think you're doing?"}, new ImmutableItem[]{new ImmutableItem(CoinPouch.WARRIOR.getItemId())}, NpcId.AL_KHARID_WARRIOR, NpcId.WARRIOR_3260),
     ROGUE(32, -8, 35.5, CoinPouch.ROGUE, true, 5, 2, 2, new String[]{"What do you think you're doing?"}, new ImmutableItem[]{new ImmutableItem(CoinPouch.ROGUE.getItemId()), new ImmutableItem(1523), new ImmutableItem(1219), new ImmutableItem(1993), new ImmutableItem(556, 8, 8)}, "Rogue"),
     CAVE_GOBLIN(36, -4, 40, CoinPouch.CAVE_GOBLIN, true, 5, 1, 1, new String[]{"What do you think you're doing?"}, new ImmutableItem[]{new ImmutableItem(10964), new ImmutableItem(10963), new ImmutableItem(10965), new ImmutableItem(10962), new ImmutableItem(10961), new ImmutableItem(10960), new ImmutableItem(CoinPouch.CAVE_GOBLIN.getItemId()), new ImmutableItem(4548), new ImmutableItem(10981), new ImmutableItem(440, 1, 4), new ImmutableItem(4537), new ImmutableItem(1939), new ImmutableItem(590), new ImmutableItem(595)}, "Cave goblin"),
     MASTER_FARMER(38, 38, 43, false, 5, 3, 3, new String[]{"Cor blimey mate, what are ye doing in me pockets?"}, new ImmutableItem[]{

@@ -34,6 +34,6 @@ public final class CorpseCartPlugin implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.CORPSE_CART_39161 , ObjectId.CORPSE_CART};
+        return new Object[] { ObjectId.CART_39161 , ObjectId.CART_39160};
     }
 }

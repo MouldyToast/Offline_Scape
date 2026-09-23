@@ -33,7 +33,7 @@ class LeviathanRegularDroptable : NPCDropTableScript() {
             LEVIATHANS_LURE quantity 1 rarity 3
             VIRTUS_MASK quantity 1 rarity 1
             VIRTUS_ROBE_TOP quantity 1 rarity 1
-            VIRTUS_ROBE_LEGS quantity 1 rarity 1
+            VIRTUS_ROBE_BOTTOM quantity 1 rarity 1
         }
     })
 
@@ -95,7 +95,7 @@ class LeviathanRegularDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(RUBY, 25, 38, 100.00))
         appendDrop(DisplayedDrop(UNCUT_RUBY, 37, 56, 500.00))
         appendDrop(DisplayedDrop(UNCUT_DIAMOND, 37, 56, 500.00))
-        appendDrop(DisplayedDrop(DRAGON_JAVELIN_HEADS, 54, 81, 800.00))
+        appendDrop(DisplayedDrop(DRAGON_JAVELIN_TIPS, 54, 81, 800.00))
         appendDrop(DisplayedDrop(DRAGON_BOLTS_UNF, 150, 225, 200.00))
         appendDrop(DisplayedDrop(ONYX_BOLT_TIPS, 90, 135, 100.00))
         appendDrop(DisplayedDrop(RAW_MANTA_RAY, 180, 270, 100.00))
@@ -112,7 +112,7 @@ class LeviathanRegularDroptable : NPCDropTableScript() {
 
         appendDrop(DisplayedDrop(VIRTUS_MASK, 1, 1, 1600.00))
         appendDrop(DisplayedDrop(VIRTUS_ROBE_TOP, 1, 1, 1600.00))
-        appendDrop(DisplayedDrop(VIRTUS_ROBE_LEGS, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_BOTTOM, 1, 1, 1600.00))
 
         buildTable(100) {
             Main {
@@ -128,7 +128,7 @@ class LeviathanRegularDroptable : NPCDropTableScript() {
                 RUBY quantity 25.noted rarity 1
                 UNCUT_RUBY quantity 37.noted rarity 5
                 UNCUT_DIAMOND quantity 37.noted rarity 5
-                DRAGON_JAVELIN_HEADS quantity 54 rarity 8
+                DRAGON_JAVELIN_TIPS quantity 54 rarity 8
                 DRAGON_BOLTS_UNF quantity 150 rarity 2
                 ONYX_BOLT_TIPS quantity 90 rarity 1
                 RAW_MANTA_RAY quantity 180.noted rarity 1

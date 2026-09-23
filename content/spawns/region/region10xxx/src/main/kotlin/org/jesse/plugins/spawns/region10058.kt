@@ -9,6 +9,6 @@ class Region10058 : NPCSpawnsScript() {
 
     init {
         EVIL_BOB_391(2524, 4777, 0, SOUTH, 5)
-        SERVANT_393(2527, 4777, 0, SOUTH, 5)
+        SERVANT(2527, 4777, 0, SOUTH, 5)
     }
 }

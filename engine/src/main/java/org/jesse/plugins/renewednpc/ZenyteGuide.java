@@ -27,7 +27,7 @@ import java.util.Arrays;
 
 public class ZenyteGuide extends NPCPlugin {
 
-    public static final int NPC_ID = NpcId.NEARREALITY_GUIDE;
+    public static final int NPC_ID = NpcId.GIELINOR_GUIDE;
 
     public static final Item[][] STARTER_ITEMS = {
             { // normal
@@ -45,16 +45,16 @@ public class ZenyteGuide extends NPCPlugin {
                     new Item(20792), new Item(20794), new Item(20796)
             }, // group ironman
             {
-                    new Item(ItemId.GROUP_IRON_HELM),
-                    new Item(ItemId.GROUP_IRON_PLATEBODY),
-                    new Item(ItemId.GROUP_IRON_PLATELEGS),
-                    new Item(ItemId.GROUP_IRON_BRACERS),
+                    new Item(ItemId.GROUP_IRONMAN_HELM),
+                    new Item(ItemId.GROUP_IRONMAN_PLATEBODY),
+                    new Item(ItemId.GROUP_IRONMAN_PLATELEGS),
+                    new Item(ItemId.GROUP_IRONMAN_BRACERS),
             }, // hc group ironman
             {
-                    new Item(ItemId.HARDCORE_GROUP_IRON_HELM),
-                    new Item(ItemId.HARDCORE_GROUP_IRON_PLATEBODY),
-                    new Item(ItemId.HARDCORE_GROUP_IRON_PLATELEGS),
-                    new Item(ItemId.HARDCORE_GROUP_IRON_BRACERS),
+                    new Item(ItemId.HARDCORE_GROUP_IRONMAN_HELM),
+                    new Item(ItemId.HARDCORE_GROUP_IRONMAN_PLATEBODY),
+                    new Item(ItemId.HARDCORE_GROUP_IRONMAN_PLATELEGS),
+                    new Item(ItemId.HARDCORE_GROUP_IRONMAN_BRACERS),
             }
     };
 

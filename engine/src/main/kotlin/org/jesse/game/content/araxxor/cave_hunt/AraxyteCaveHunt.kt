@@ -86,7 +86,7 @@ data class AraxyteCaveHunt(
             9 -> {
                 // Talk to Vefari with Slayer helm
                 spawnWithSafeToThe(WestEast)
-                val weave = NPC(WEAVE_13677, npcTile, true)
+                val weave = NPC(WEAVE, npcTile, true)
                     weave.radius = 0
                     weave.spawn()
                 addNpc(weave)

@@ -27,7 +27,7 @@ import org.jesse.game.world.entity.player.Player
 class AcidBall(
     val instance: AraxxorInstance
 ): NPC(
-    ACIDIC_ARAXYTE_BALL,
+    ARAXXOR_ACID_CANNON_PROJECTILE,
     instance.araxxor?.middleLocation,
     true
 ), Attack {

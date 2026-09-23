@@ -8,9 +8,9 @@ import org.jesse.game.util.Direction.*
 class Region13615 : NPCSpawnsScript() {
 
     init {
-        DESERT_SNAKE(3396, 3029, 0, SOUTH, 3)
-        DESERT_SNAKE(3397, 3044, 0, SOUTH, 3)
-        DESERT_SNAKE(3398, 3038, 0, SOUTH, 3)
+        SNAKE_3544(3396, 3029, 0, SOUTH, 3)
+        SNAKE_3544(3397, 3044, 0, SOUTH, 3)
+        SNAKE_3544(3398, 3038, 0, SOUTH, 3)
         SMALL_LIZARD_463(3400, 3032, 0, SOUTH, 4)
         SMALL_LIZARD_463(3402, 3061, 0, SOUTH, 4)
         SMALL_LIZARD_463(3404, 3060, 0, SOUTH, 4)

@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 public class RunePouch implements TempPlayerStatePlugin.State {
 	public static final Item RUNE_POUCH = new Item(ItemId.RUNE_POUCH);
-	public static final Item TOURNAMENT_RUNE_POUCH = new Item(ItemId.TOURNAMENT_RUNE_POUCH);
+	public static final Item TOURNAMENT_RUNE_POUCH = new Item(ItemId.MOX_PASTE_PLACEHOLDER);
 	public static final Item DIVINE_RUNE_POUCH = new Item(ItemId.DIVINE_RUNE_POUCH);
 	public static final Item[] POUCHES = { RUNE_POUCH, DIVINE_RUNE_POUCH, TOURNAMENT_RUNE_POUCH};
 	private final transient Player player;
@@ -139,7 +139,7 @@ public class RunePouch implements TempPlayerStatePlugin.State {
 	}
 
 	public static RunePouch chooseRunePouch(final Player player, final int item) {
-		if (item == ItemId.TOURNAMENT_RUNE_POUCH) {
+		if (item == ItemId.MOX_PASTE_PLACEHOLDER) {
 			return player.getSecondaryRunePouch();
 		}
 		return player.getRunePouch();

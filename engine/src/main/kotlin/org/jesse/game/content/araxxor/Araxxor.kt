@@ -242,7 +242,7 @@ data class Araxxor(
                 ScoreboardModule.updateAraxxorStatistics(player.bossTimer.currentTracker)
                 player.bossTimer.finishTracking("Araxxor")
             }
-            setTransformationPreservingStats(ARAXXOR_CORPSE)
+            setTransformationPreservingStats(ARAXXOR_13669)
         }
     }
 

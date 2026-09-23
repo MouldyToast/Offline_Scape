@@ -38,7 +38,7 @@ public abstract class ClueRewardTable {
         item(PEST_CONTROL_TELEPORT, 5, 15),
         item(TAI_BWO_WANNAI_TELEPORT, 5, 15),
         item(LUMBERYARD_TELEPORT, 5, 15),
-        item(ELF_CAMP_TELEPORT, 5, 15)
+        item(IORWERTH_CAMP_TELEPORT, 5, 15)
     );
     protected final List<ImmutableItem> scrollbookTable = tableOf(item(MASTER_SCROLL_BOOK_EMPTY));
     protected final List<ImmutableItem> godPagesTable = tableOf(

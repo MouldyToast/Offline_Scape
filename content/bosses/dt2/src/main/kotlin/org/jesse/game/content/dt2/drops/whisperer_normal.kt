@@ -35,7 +35,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
             SIRENS_STAFF quantity 1 rarity 1
             VIRTUS_MASK quantity 1 rarity 1
             VIRTUS_ROBE_TOP quantity 1 rarity 1
-            VIRTUS_ROBE_LEGS quantity 1 rarity 1
+            VIRTUS_ROBE_BOTTOM quantity 1 rarity 1
         }
     })
 
@@ -106,7 +106,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(RUBY, 39, 59, 100.00))
         appendDrop(DisplayedDrop(UNCUT_RUBY, 58, 87, 500.00))
         appendDrop(DisplayedDrop(UNCUT_DIAMOND, 58, 87, 500.00))
-        appendDrop(DisplayedDrop(DRAGON_JAVELIN_HEADS, 84, 126, 800.00))
+        appendDrop(DisplayedDrop(DRAGON_JAVELIN_TIPS, 84, 126, 800.00))
         appendDrop(DisplayedDrop(RUNITE_BOLTS_UNF, 84, 126, 800.00))
         appendDrop(DisplayedDrop(RAW_MONKFISH, 700, 1050, 100.00))
 
@@ -119,7 +119,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
 
         appendDrop(DisplayedDrop(VIRTUS_MASK, 1, 1, 1600.00))
         appendDrop(DisplayedDrop(VIRTUS_ROBE_TOP, 1, 1, 1600.00))
-        appendDrop(DisplayedDrop(VIRTUS_ROBE_LEGS, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_BOTTOM, 1, 1, 1600.00))
 
         buildTable(100) {
             Main {
@@ -143,7 +143,7 @@ class WhispererNormalDroptable : NPCDropTableScript() {
                 RUBY quantity 39.noted rarity 1
                 UNCUT_RUBY quantity 58.noted rarity 5
                 UNCUT_DIAMOND quantity 58.noted rarity 5
-                DRAGON_JAVELIN_HEADS quantity 84 rarity 8
+                DRAGON_JAVELIN_TIPS quantity 84 rarity 8
                 RUNITE_BOLTS_UNF quantity 84 rarity 8
                 RAW_MONKFISH quantity 700.noted rarity 1
 

@@ -79,7 +79,7 @@ class TormentedDemon(
     override fun isTolerable(): Boolean = false
 
     override fun validate(id: Int, name: String): Boolean =
-        id == TORRMENTED_DEMON || id == TORRMENTED_DEMON_13600 || id == TORRMENTED_DEMON_13601
+        id == TORMENTED_DEMON || id == TORMENTED_DEMON_13600 || id == TORMENTED_DEMON_13601
 
     override fun spawn(): NPC {
         super.spawn()

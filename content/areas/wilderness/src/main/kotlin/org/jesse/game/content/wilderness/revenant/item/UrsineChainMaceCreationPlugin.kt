@@ -25,7 +25,7 @@ class UrsineChainMaceCreationPlugin : PairedItemOnItemPlugin {
         player.inventory.deleteItem(viggoras)
 
         val ursine =
-            Item(if (viggoras.id == VIGGORAS_CHAINMACE_U) URSINE_CHAINMACE_U_27657 else URSINE_CHAINMACE_27660)
+            Item(if (viggoras.id == VIGGORAS_CHAINMACE_U) URSINE_CHAINMACE_U else URSINE_CHAINMACE)
         ursine.charges = viggoras.charges
         player.inventory.addItem(ursine)
 

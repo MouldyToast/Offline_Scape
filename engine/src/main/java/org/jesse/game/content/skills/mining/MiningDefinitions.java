@@ -246,10 +246,10 @@ public class MiningDefinitions {
 
     public enum ShapeDefinitions {
         THREE(ObjectId.ROCKS_11391),
-        FOUR(ObjectId.ROCKS_11390, ObjectId.ROCKS_11364, ObjectId.ROCKS_11362, ObjectId.ROCKS_10943, ObjectId.ROCKS_11366, ObjectId.ROCKS_11372, ObjectId.ROCKS_11374, ObjectId.ROCKS_11370, ObjectId.ROCKS_11378, ObjectId.ROCKS_11380, ObjectId.ROCKS_11386, ObjectId.ROCKS_28596),
+        FOUR(ObjectId.ROCKS_11390, ObjectId.IRON_ROCKS, ObjectId.CLAY_ROCKS, ObjectId.COPPER_ROCKS_10943, ObjectId.COAL_ROCKS_11366, ObjectId.MITHRIL_ROCKS, ObjectId.ADAMANTITE_ROCKS, ObjectId.GOLD_ROCKS, ObjectId.BLURITE_ROCKS, ObjectId.GEM_ROCKS, ObjectId.SANDSTONE_ROCKS, ObjectId.LOVAKITE_ROCKS),
         ROCKSLIDE(27063, 27062),
         VOLCANIC_ASH(30986, 30985),
-        WALL(ObjectId.EMPTY_WALL, ObjectId.CRYSTALS, ObjectId.CRYSTALS_11389),
+        WALL(ObjectId.EMPTY_WALL, ObjectId.AMETHYST_CRYSTALS, ObjectId.AMETHYST_CRYSTALS_11389),
         ANCIENT_ESSENCE_WALL(46702, 46701),
         SALT_ROCK(33253, 33254, 33255, 33256, 33257),
         TRAHAEARN(ObjectId.ROCKS_36202, TrahaearnMineRocks.Companion.getAllRockObjectIds()),

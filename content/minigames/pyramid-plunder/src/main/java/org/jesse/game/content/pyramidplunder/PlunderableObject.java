@@ -25,7 +25,7 @@ import java.util.List;
  * @since 4/3/2020
  */
 public interface PlunderableObject {
-    ImmutableItem sceptre = new ImmutableItem(ItemId.PHARAOHS_SCEPTRE_3);
+    ImmutableItem sceptre = new ImmutableItem(ItemId.PHARAOHS_SCEPTRE);
 
     default void reward(final Player player) {
         final double floorBoost = 1 + player.getVarManager().getBitValue(PlunderDoor.ROOM_VARBIT) * 0.05;

@@ -1381,7 +1381,7 @@ public enum SpecialAttack implements ISpecialAttack {
     }),
 
     DISRUPT(AttackType.SLASH, new int[] {
-        VOIDWAKER_27690,
+        VOIDWAKER,
         CORRUPTED_VOIDWAKER
     }, WEAPON_SPEED, MELEE, new Animation(1378), null, (player, combat, target) -> {
         player.sendSound(new SoundEffect(2945, 5, 25));

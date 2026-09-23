@@ -20,8 +20,8 @@ class VenomSackOnAntiVenomAction : ItemOnItemAction {
             player.sendMessage("You need a herblore level of 94 to brew the Extended Anti-Venom.")
             return
         }
-        val venomSack = if (from?.id == ARAXYTE_VENOM_SACK) from else to
-        val potion = if (from?.id != ARAXYTE_VENOM_SACK) from else to
+        val venomSack = if (from?.id == ARAXYTE_VENOM_SAC) from else to
+        val potion = if (from?.id != ARAXYTE_VENOM_SAC) from else to
 
         val dose = potion?.name?.replace(Regex("[^0-9]"), "")?.toIntOrNull() ?: 0
         if (venomSack == null || potion == null) return
@@ -38,10 +38,10 @@ class VenomSackOnAntiVenomAction : ItemOnItemAction {
 
     override fun getMatchingPairs(): Array<ItemOnItemAction.ItemPair> {
         return arrayOf(
-            ItemOnItemAction.ItemPair.of(ANTIVENOM4_12913, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ANTIVENOM3_12915, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ANTIVENOM2_12917, ARAXYTE_VENOM_SACK),
-            ItemOnItemAction.ItemPair.of(ANTIVENOM1_12919, ARAXYTE_VENOM_SACK)
+            ItemOnItemAction.ItemPair.of(ANTIVENOM4_12913, ARAXYTE_VENOM_SAC),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM3_12915, ARAXYTE_VENOM_SAC),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM2_12917, ARAXYTE_VENOM_SAC),
+            ItemOnItemAction.ItemPair.of(ANTIVENOM1_12919, ARAXYTE_VENOM_SAC)
         )
     }
 

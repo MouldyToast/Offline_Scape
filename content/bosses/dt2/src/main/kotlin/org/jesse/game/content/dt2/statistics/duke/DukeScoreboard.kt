@@ -10,7 +10,7 @@ import org.jesse.game.obj.ids.*
 import org.jesse.game.world.`object`.WorldObject
 
 class DukeScoreboard : DT2Scoreboard(
-        scoreboard = DUKE_SCOREBOARD,
+        scoreboard = SCOREBOARD_47564,
         bossName = "duke sucellus"
 ) {
 

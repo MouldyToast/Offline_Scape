@@ -8,6 +8,6 @@ import org.jesse.game.util.Direction.*
 class Region14746 : NPCSpawnsScript() {
 
     init {
-        WEAVE_13677(3700, 9858, 0, WEST, 0)
+        WEAVE(3700, 9858, 0, WEST, 0)
     }
 }

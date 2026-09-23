@@ -14,13 +14,13 @@ enum class IronmanGroupType(
         "Group Iron",
         GameMode.GROUP_IRON_MAN,
         ChatChannelType.IronGroup,
-        GROUP_IRON_HELM,
+        GROUP_IRONMAN_HELM,
     ),
     HARDCORE(
         "Hardcore Group Iron",
         GameMode.GROUP_HARDCORE_IRON_MAN,
         ChatChannelType.HardcoreIronGroup,
-        HARDCORE_GROUP_IRON_HELM
+        HARDCORE_GROUP_IRONMAN_HELM
     );
 
     companion object {

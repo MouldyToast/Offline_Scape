@@ -85,6 +85,6 @@ public final class HarrallakMenarousPlugin extends NPCPlugin {
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.HARRALLAK_MENAROUS };
+        return new int[] { NpcId.HARRALLAK_MENAROUS_13615 };
     }
 }

@@ -10,7 +10,7 @@ class Region6715 : NPCSpawnsScript() {
     init {
         BAT(1670, 3797, 0, SOUTH, 23)
         7231(1670, 3834, 0, SOUTH, 0)
-        ENOCH(1712, 3829, 0, WEST, 0)
+        OKINA(1712, 3829, 0, WEST, 0)
         BAT(1718, 3824, 0, SOUTH, 23)
         NOVICE(1687, 3784, 1, SOUTH, 5)
         NOVICE(1687, 3803, 1, SOUTH, 5)

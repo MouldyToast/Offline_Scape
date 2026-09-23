@@ -49,7 +49,7 @@ class ArtioDroptable : NPCDropTableScript() {
                 DEATH_RUNE           quantity 220  rarity 20
                 BLOOD_RUNE           quantity 140  rarity 20
                 SOUL_RUNE            quantity 150  rarity 20
-                CANNONBALL           quantity 190  rarity 20
+                STEEL_CANNONBALL           quantity 190  rarity 20
 
                 // Materials - 100
                 MAHOGANY_LOGS        quantity 200.noted   rarity 20

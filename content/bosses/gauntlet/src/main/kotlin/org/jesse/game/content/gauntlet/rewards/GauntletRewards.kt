@@ -77,7 +77,7 @@ sealed class GauntletRewards(
         val common = 20
         limit = common * 3 // 3 items
         static {
-            FLYER quantity 1 rarity common
+            IWANS_FLYER quantity 1 rarity common
             POTION quantity 1 rarity common
             ROTTEN_TOMATO quantity 1 rarity common
         }

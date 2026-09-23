@@ -97,6 +97,6 @@ public class Ghommal extends NPCPlugin {
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.GHOMMAL };
+        return new int[] { NpcId.GHOMMAL_13613 };
     }
 }

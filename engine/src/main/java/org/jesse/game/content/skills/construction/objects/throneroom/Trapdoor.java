@@ -24,7 +24,7 @@ public final class Trapdoor implements ObjectInteraction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.TRAPDOOR_13675, ObjectId.TRAPDOOR_13676, ObjectId.TRAPDOOR_13677, ObjectId.TRAPDOOR_13678, ObjectId.TRAPDOOR_13679, ObjectId.TRAPDOOR_13680 };
+        return new Object[] { ObjectId.OAK_TRAPDOOR, ObjectId.TEAK_TRAPDOOR, ObjectId.MAHOGANY_TRAPDOOR, ObjectId.OAK_TRAPDOOR_13678, ObjectId.TEAK_TRAPDOOR_13679, ObjectId.MAHOGANY_TRAPDOOR_13680 };
     }
 
     @Override

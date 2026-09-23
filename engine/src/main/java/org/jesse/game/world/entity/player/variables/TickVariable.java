@@ -263,7 +263,7 @@ public enum TickVariable {
     DIVINE_SUPER_STRENGTH_POTION(DivinePotion.SuperStrength.INSTANCE::pulse),
     SAGES_GREAVES_AGILITY((player, ticks) -> {
         var boots = player.getEquipment().getId(EquipmentSlot.BOOTS);
-        var greaves = boots == ItemId.SAGES_GREAVES;
+        var greaves = boots == ItemId.SEARING_BOOTS;
         if(ticks == 1)
             player.getTemporaryAttributes().put("sage_last_tick_location", player.getLocation().get18BitHash());
 

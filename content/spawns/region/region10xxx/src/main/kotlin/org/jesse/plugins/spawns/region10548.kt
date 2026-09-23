@@ -31,7 +31,7 @@ class Region10548 : NPCSpawnsScript() {
         SHEEP_2693(2656, 3378, 0, SOUTH, 3)
         COW(2657, 3341, 0, SOUTH, 3)
         COW(2658, 3351, 0, SOUTH, 3)
-        WARRIOR_WOMAN(2659, 3332, 0, SOUTH, 5)
+        WARRIOR_3260(2659, 3332, 0, SOUTH, 5)
         COW(2660, 3344, 0, SOUTH, 3)
         222(2663, 3334, 0, SOUTH, 2)
         230(2664, 3329, 0, SOUTH, 2)

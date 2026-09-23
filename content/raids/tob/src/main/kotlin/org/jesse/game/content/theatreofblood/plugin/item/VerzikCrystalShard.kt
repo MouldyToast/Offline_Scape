@@ -45,9 +45,9 @@ class VerzikCrystalShard : ItemPlugin() {
 
     internal companion object {
 
-        val verzikCrystalShard = Item(VERZIKS_CRYSTAL_SHARD)
+        val verzikCrystalShard = Item(ESCAPE_CRYSTAL)
 
-        private val items = intArrayOf(VERZIKS_CRYSTAL_SHARD)
+        private val items = intArrayOf(ESCAPE_CRYSTAL)
 
     }
 

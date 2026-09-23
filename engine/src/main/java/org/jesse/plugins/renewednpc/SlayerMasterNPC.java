@@ -102,11 +102,11 @@ public class SlayerMasterNPC extends NPCPlugin {
     @Override
     public int[] getNPCs() {
         return new int[]{
-                NpcId.TURAEL,
-                NpcId.MAZCHNA,
+                NpcId.TURAEL_13618,
+                NpcId.MAZCHNA_13620,
                 NpcId.VANNAKA,
                 NpcId.CHAELDAR,
-                NpcId.DURADEL,
+                NpcId.DURADEL_13622,
                 NpcId.NIEVE,
                 NpcId.KONAR_QUO_MATEN
         };

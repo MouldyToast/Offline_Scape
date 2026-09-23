@@ -50,7 +50,7 @@ class Region11575 : NPCSpawnsScript() {
         WISTAN(2928, 3546, 0, SOUTH, 3)
         8141(2930, 3557, 0, SOUTH, 0)
         HILD_4112(2930, 3566, 0, SOUTH, 2)
-        TURAEL(2931, 3536, 0, SOUTH, 2)
+        TURAEL_13618(2931, 3536, 0, SOUTH, 2)
         ARCHER_4096(2892, 3558, 1, SOUTH, 2)
         ARCHER_4097(2893, 3559, 1, SOUTH, 2)
         ARCHER_4098(2893, 3569, 1, SOUTH, 5)

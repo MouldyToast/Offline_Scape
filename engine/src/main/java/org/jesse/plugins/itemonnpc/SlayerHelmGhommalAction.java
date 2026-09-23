@@ -16,7 +16,7 @@ public class SlayerHelmGhommalAction implements ItemOnNPCAction {
 
 	@Override public void handleItemOnNPCAction(Player player, Item item, int slot, NPC npc) {
 		if (player.getCombatAchievements().hasTierCompleted(CATierType.ELITE)) {
-			player.getDialogueManager().start(new Dialogue(player, NpcId.GHOMMAL) {
+			player.getDialogueManager().start(new Dialogue(player, NpcId.GHOMMAL_13613) {
 				@Override public void buildDialogue() {
 					if (!player.getCombatAchievements().hasTierCompleted(CATierType.MASTER)) {
 						options("Upgrade (cosmetic) your slayer helm to the TzTok slayer helmet?", new DialogueOption("Yes"), new DialogueOption("No")).onOptionTwo(() -> {
@@ -61,6 +61,6 @@ public class SlayerHelmGhommalAction implements ItemOnNPCAction {
 	}
 
 	@Override public Object[] getObjects() {
-		return new Object[] {NpcId.GHOMMAL};
+		return new Object[] {NpcId.GHOMMAL_13613};
 	}
 }

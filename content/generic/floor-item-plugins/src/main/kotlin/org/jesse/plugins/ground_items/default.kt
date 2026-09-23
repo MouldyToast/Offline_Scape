@@ -554,7 +554,6 @@ class DefaultGrounditems : GroundItemSpawnScript() {
         IRON_PICKAXE(3396, 7804, 0, 30)
         SLICE_OF_CAKE(2702, 3205, 0, 45)
         SLICE_OF_CAKE(2700, 3211, 0, 45)
-        INCUBATOR_BLUEPRINT(2195, 4400, 1, 1)
         IMPLING_JAR(2206, 4390, 1, 1)
         IMPLING_JAR(2205, 4391, 1, 1)
         BUTTERFLY_NET(2213, 4399, 1, 1)

@@ -12,10 +12,10 @@ import org.jesse.game.item.ids.*
 @Suppress("unused")
 class WebWeaverBowPlugin : AbstractRevenantWeaponPlugin(
     chargedToUnchargedIdMap =  HashBiMap.create<Int, Int>().apply {
-        put(WEBWEAVER_BOW_27655, WEBWEAVER_BOW_U_27652)
+        put(WEBWEAVER_BOW, WEBWEAVER_BOW_U)
     },
     dismantleIngredientsByUnchargedIdMap = mapOf(
-        WEBWEAVER_BOW_U_27652 to arrayOf(
+        WEBWEAVER_BOW_U to arrayOf(
             Item(FANGS_OF_VENENATIS),
             Item(CRAWS_BOW_U)
         )

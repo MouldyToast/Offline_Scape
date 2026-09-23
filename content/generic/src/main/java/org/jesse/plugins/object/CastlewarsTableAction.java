@@ -31,6 +31,6 @@ public class CastlewarsTableAction implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.TABLE_4458, ObjectId.TABLE_4459, ObjectId.TABLE_4460, ObjectId.TABLE_4461, ObjectId.TABLE_4462, ObjectId.TABLE_4463, ObjectId.TABLE_4464 };
+        return new Object[] { ObjectId.TABLE_4459, ObjectId.TABLE_4460, ObjectId.TABLE_4461, ObjectId.TABLE_4462, ObjectId.TABLE_4463, ObjectId.TABLE_4464, ObjectId.TABLE_56222, ObjectId.TABLE_56223 };
     }
 }

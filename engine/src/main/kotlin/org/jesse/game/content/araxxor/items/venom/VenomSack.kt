@@ -20,7 +20,7 @@ import org.jesse.game.world.entity.player.variables.TickVariable
 class VenomSack : ItemPlugin() {
     override fun handle() {
         bindKt("Eat") {
-            if (player.inventory.deleteItem(Item(ARAXYTE_VENOM_SACK, 1)).result == RequestResult.SUCCESS) {
+            if (player.inventory.deleteItem(Item(ARAXYTE_VENOM_SAC, 1)).result == RequestResult.SUCCESS) {
                 player seq ConsumableAnimation.EAT_ANIM.id
                 player.applyHit(Hit(null, 4, HitType.VENOM))
                 player.toxins.resetVenom()
@@ -30,5 +30,5 @@ class VenomSack : ItemPlugin() {
         }
     }
 
-    override fun getItems(): IntArray = intArrayOf(ARAXYTE_VENOM_SACK)
+    override fun getItems(): IntArray = intArrayOf(ARAXYTE_VENOM_SAC)
 }

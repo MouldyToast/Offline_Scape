@@ -372,7 +372,7 @@ public enum EmoteClue implements Clue {
                     { 2514, 3639 },
                     { 2514, 3643 },
                     { 2511, 3646 }
-            }, 2), item(BLUE_DHIDE_BODY), item(BLUE_DHIDE_VAMB), emptySlot("No jewelry", EquipmentSlot.AMULET, EquipmentSlot.RING)),
+            }, 2), item(BLUE_DHIDE_BODY), item(BLUE_DHIDE_VAMBRACES), emptySlot("No jewelry", EquipmentSlot.AMULET, EquipmentSlot.RING)),
 
     EMOTE_26(ClueLevel.HARD, emotes(Emote.BLOW_KISS), true,
             "Blow a kiss between the tables in Shilo Village bank. Beware of double agents! Equip a blue mystic hat, bone spear and rune platebody.",
@@ -457,7 +457,7 @@ public enum EmoteClue implements Clue {
                     { 2858, 3346 },
                     { 2858, 3352 },
                     { 2854, 3352 }
-            }), item(BLACK_DHIDE_VAMB), item(BLACK_DHIDE_CHAPS), item(BLACK_DHIDE_BODY)),
+            }), item(BLACK_DHIDE_VAMBRACES), item(BLACK_DHIDE_CHAPS), item(BLACK_DHIDE_BODY)),
 
     EMOTE_33(ClueLevel.EASY, emotes(Emote.CHEER), false,
             "Cheer for the monks at Port Sarim. Equip a coif, steel plateskirt and a sapphire necklace.",
@@ -681,7 +681,7 @@ public enum EmoteClue implements Clue {
                     { 2240, 4672 },
                     { 2304, 4672 },
                     { 2304, 4736 }
-            }), item(BLACK_DHIDE_BODY), item(BLACK_DHIDE_VAMB), item(BLACK_DRAGON_MASK)),
+            }), item(BLACK_DHIDE_BODY), item(BLACK_DHIDE_VAMBRACES), item(BLACK_DRAGON_MASK)),
 
     EMOTE_52(ClueLevel.EASY, emotes(Emote.DANCE), false,
             "Dance at the entrance to the Grand Exchange. Equip a pink skirt, pink robe top and a body tiara.",
@@ -1146,7 +1146,7 @@ public enum EmoteClue implements Clue {
                     { 3242, 3615 },
                     { 3241, 3616 },
                     { 3241, 3617 }
-            }), item(RUNE_PLATELEGS), item(IRON_PLATEBODY), item(BLUE_DHIDE_VAMB)),
+            }), item(RUNE_PLATELEGS), item(IRON_PLATEBODY), item(BLUE_DHIDE_VAMBRACES)),
 
     EMOTE_87(ClueLevel.ELITE, emotes(Emote.SHRUG), false,
             "Shrug in the Shayzien command tent. Equip a blue mystic robe bottom, a rune kiteshield and any bob shirt.",
@@ -1410,7 +1410,7 @@ public enum EmoteClue implements Clue {
                     { 3024, 3699 },
                     { 3028, 3699 },
                     { 3028, 3705 }
-            }), item(ADAMANT_SQ_SHIELD), item(BLUE_DHIDE_VAMB), item(RUNE_PICKAXE)),
+            }), item(ADAMANT_SQ_SHIELD), item(BLUE_DHIDE_VAMBRACES), item(RUNE_PICKAXE)),
 
     EMOTE_107(ClueLevel.ELITE, emotes(Emote.YAWN), false,
             "Yawn at the top of Trollheim. Equip a lava battlestaff, black dragonhide vambraces and a mind shield.",
@@ -1422,7 +1422,7 @@ public enum EmoteClue implements Clue {
                     { 2893, 3672 },
                     { 2897, 3677 },
                     { 2896, 3683 }
-            }), item(LAVA_BATTLESTAFF), item(BLACK_DHIDE_VAMB), item(MIND_SHIELD)),
+            }), item(LAVA_BATTLESTAFF), item(BLACK_DHIDE_VAMBRACES), item(MIND_SHIELD)),
 
     EMOTE_108(ClueLevel.MEDIUM, emotes(Emote.YAWN, Emote.YES), false,
             "Yawn in the centre of Arceuus library. Nod your head before you talk to me. Equip blue dragonhide vambraces, adamant boots and an adamant dagger.",
@@ -1446,7 +1446,7 @@ public enum EmoteClue implements Clue {
                     { 1634, 3818 },
                     { 1632, 3818 },
                     { 1632, 3819 }
-            }), item(BLUE_DHIDE_VAMB), item(ADAMANT_BOOTS), item(ADAMANT_DAGGER)),
+            }), item(BLUE_DHIDE_VAMBRACES), item(ADAMANT_BOOTS), item(ADAMANT_DAGGER)),
 
     /*
     EMOTE_109(null, emotes(null))//BULLROARER

@@ -56,7 +56,7 @@ class WildernessSlayerDropProcessor : DropProcessor() {
         val emblemChance = 1.0f / (155 - (hitpoints / 2.0f))
         val percentage = emblemChance * 100.0f
         val fraction = (100.0f / percentage).toInt()
-        append(MYSTERIOUS_EMBLEM, fraction, npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia. May occasionally drop as a higher tier.")
+        append(ARCHAIC_EMBLEM_TIER_1, fraction, npcId, "Only dropped by those found in Wilderness while on a slayer assignment from Krystilia. May occasionally drop as a higher tier.")
     }
 
     private fun append(itemId: Int, chance: Number, npcId: Int, description: String) {
@@ -123,7 +123,7 @@ class WildernessSlayerDropProcessor : DropProcessor() {
                 npcIdsSpawnedInWilderness.add(spawn.id)
             }
         }
-        npcIdsSpawnedInWilderness.add(VETION_REBORN)
+        npcIdsSpawnedInWilderness.add(VETION_6612)
         npcIdsSpawnedInWilderness.add(SCORPIAS_OFFSPRING_6616)
         npcIdsSpawnedInWilderness.add(SCORPIAS_GUARDIAN)
         return npcIdsAssignedByKrystilia.intersect(npcIdsSpawnedInWilderness).toIntArray()

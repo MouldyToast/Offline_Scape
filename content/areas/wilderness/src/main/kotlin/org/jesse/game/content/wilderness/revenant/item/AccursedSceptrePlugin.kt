@@ -13,15 +13,15 @@ import org.jesse.game.item.ids.*
 @Suppress("unused")
 class AccursedSceptrePlugin : AbstractRevenantWeaponPlugin(
     chargedToUnchargedIdMap = HashBiMap.create<Int, Int>().apply {
-        put(ACCURSED_SCEPTRE_27665, ACCURSED_SCEPTRE_U_27662)
-        put(ACCURSED_SCEPTRE_A_27679, ACCURSED_SCEPTRE_AU_27676)
+        put(ACCURSED_SCEPTRE, ACCURSED_SCEPTRE_U)
+        put(ACCURSED_SCEPTRE_A, ACCURSED_SCEPTRE_AU)
     },
     dismantleIngredientsByUnchargedIdMap = mapOf(
-        ACCURSED_SCEPTRE_U_27662 to arrayOf(
+        ACCURSED_SCEPTRE_U to arrayOf(
             Item(SKULL_OF_VETION),
             Item(THAMMARONS_SCEPTRE_U)
         ),
-        ACCURSED_SCEPTRE_AU_27676 to arrayOf(
+        ACCURSED_SCEPTRE_AU to arrayOf(
             Item(SKULL_OF_VETION),
             Item(THAMMARONS_SCEPTRE_AU)
         )
@@ -32,10 +32,10 @@ class AccursedSceptrePlugin : AbstractRevenantWeaponPlugin(
         super.handle()
         bind("Swap") { player, item, container, slotId ->
             val otherId = when(item.id) {
-                ACCURSED_SCEPTRE_27665 -> ACCURSED_SCEPTRE_A_27679
-                ACCURSED_SCEPTRE_A_27679 -> ACCURSED_SCEPTRE_27665
-                ACCURSED_SCEPTRE_U_27662 -> ACCURSED_SCEPTRE_AU_27676
-                ACCURSED_SCEPTRE_AU_27676 -> ACCURSED_SCEPTRE_U_27662
+                ACCURSED_SCEPTRE -> ACCURSED_SCEPTRE_A
+                ACCURSED_SCEPTRE_A -> ACCURSED_SCEPTRE
+                ACCURSED_SCEPTRE_U -> ACCURSED_SCEPTRE_AU
+                ACCURSED_SCEPTRE_AU -> ACCURSED_SCEPTRE_U
                 else -> null
             }
             if (otherId != null) {

@@ -37,7 +37,7 @@ class VardorvisDroptable : NPCDropTableScript() {
             EXECUTIONERS_AXE_HEAD quantity 1 rarity 3
             ULTOR_VESTIGE quantity 1 rarity 2
             VIRTUS_MASK quantity 1 rarity 1
-            VIRTUS_ROBE_LEGS quantity 1 rarity 1
+            VIRTUS_ROBE_BOTTOM quantity 1 rarity 1
             VIRTUS_ROBE_TOP quantity 1 rarity 1
         }
     })
@@ -119,7 +119,7 @@ class VardorvisDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(ULTOR_VESTIGE, 1, 1, 800.00))
         appendDrop(DisplayedDrop(VIRTUS_MASK, 1, 1, 1600.00))
         appendDrop(DisplayedDrop(VIRTUS_ROBE_TOP, 1, 1, 1600.00))
-        appendDrop(DisplayedDrop(VIRTUS_ROBE_LEGS, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_BOTTOM, 1, 1, 1600.00))
 
         appendDrop(DisplayedDrop(AWAKENERS_ORB, 1, 1, 75.00))
         appendDrop(DisplayedDrop(STRANGLED_TABLET, 1, 1, 25.00))
@@ -147,8 +147,8 @@ class VardorvisDroptable : NPCDropTableScript() {
             Main {
                 COAL quantity 130.noted rarity 8
                 ADAMANTITE_ORE quantity 45.noted rarity 8
-                RUNE_JAVELIN_HEADS quantity 36 rarity 8
-                DRAGON_JAVELIN_HEADS quantity 36 rarity 8
+                RUNE_JAVELIN_TIPS quantity 36 rarity 8
+                DRAGON_JAVELIN_TIPS quantity 36 rarity 8
                 UNCUT_RUBY quantity 25.noted rarity 5
                 UNCUT_DIAMOND quantity 25.noted rarity 5
                 RUNITE_ORE quantity 18.noted rarity 2

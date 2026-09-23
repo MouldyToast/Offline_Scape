@@ -13,11 +13,11 @@ class DegradableItemsItemaction : ItemActionScript() {
         .filterNot {
             it == BONECRUSHER
                     || it == CRAWS_BOW
-                    || it == WEBWEAVER_BOW_27655
+                    || it == WEBWEAVER_BOW
                     || it == THAMMARONS_SCEPTRE
-                    || it == ACCURSED_SCEPTRE_27665
+                    || it == ACCURSED_SCEPTRE
                     || it == VIGGORAS_CHAINMACE
-                    || it == URSINE_CHAINMACE_27660
+                    || it == URSINE_CHAINMACE
                     || it == RING_OF_SUFFERING_RI
                     || it == RING_OF_SUFFERING_I
                     || it == BRACELET_OF_ETHEREUM

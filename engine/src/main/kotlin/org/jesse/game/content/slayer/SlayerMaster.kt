@@ -17,13 +17,13 @@ enum class SlayerMaster(
     val pointsPerTask: Int,
     val location: String
 ) {
-    TURAEL(org.jesse.game.npc.ids.TURAEL, 1, 1, 0, "in Burthorpe"),
+    TURAEL(org.jesse.game.npc.ids.TURAEL_13618, 1, 1, 0, "in Burthorpe"),
     KRYSTILIA(7663, 1, 1, 25, "in Edgeville"),
-    MAZCHNA(org.jesse.game.npc.ids.MAZCHNA, 1, 20, 2, "in Canifis"),
+    MAZCHNA(org.jesse.game.npc.ids.MAZCHNA_13620, 1, 20, 2, "in Canifis"),
     VANNAKA(org.jesse.game.npc.ids.VANNAKA, 1, 40, 4, "within the Edgeville dungeon"),
     CHAELDAR(org.jesse.game.npc.ids.CHAELDAR, 1, 70, 10, "in Zanaris"),
     NIEVE(org.jesse.game.npc.ids.NIEVE, 1, 85, 12, "in Tree Gnome Stronghold"),
-    DURADEL(org.jesse.game.npc.ids.DURADEL, 50, 100, 15, "in Shilo Village"),
+    DURADEL(org.jesse.game.npc.ids.DURADEL_13622, 50, 100, 15, "in Shilo Village"),
     KONAR_QUO_MATEN(org.jesse.game.npc.ids.KONAR_QUO_MATEN, 1, 75, 18, "On Mount Karuulm"),
     ;
 

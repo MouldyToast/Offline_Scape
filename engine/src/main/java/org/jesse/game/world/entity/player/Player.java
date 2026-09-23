@@ -1213,7 +1213,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public boolean wearingSageGreaves() {
         var boots = getEquipment().getId(EquipmentSlot.BOOTS);
-        return boots == ItemId.SAGES_GREAVES;
+        return boots == ItemId.SEARING_BOOTS;
     }
 
     @Override

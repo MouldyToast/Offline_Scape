@@ -10,9 +10,9 @@ class Region10547 : NPCSpawnsScript() {
     init {
         GUARD_DOG(2624, 3319, 0, SOUTH, 4)
         GUARD_DOG(2624, 3327, 0, SOUTH, 4)
-        WARRIOR_WOMAN(2629, 3295, 0, SOUTH, 5)
+        WARRIOR_3260(2629, 3295, 0, SOUTH, 5)
         HERO(2630, 3288, 0, SOUTH, 5)
-        WARRIOR_WOMAN(2632, 3299, 0, SOUTH, 5)
+        WARRIOR_3260(2632, 3299, 0, SOUTH, 5)
         10430(2635, 3294, 0, SOUTH, 5)
         HORACIO(2635, 3311, 0, SOUTH, 2)
         ESTATE_AGENT(2639, 3291, 0, SOUTH, 2)

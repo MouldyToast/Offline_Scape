@@ -227,7 +227,7 @@ public enum ShopNPCHandler {
     // TODO: Verify existence.
     KARAMJA_GENERAL_STORE("Karamja General Store", SHOP_KEEPER_2825, SHOP_ASSISTANT_2826),
     // TODO: Verify existence.
-    KARAMJA_WINES_SPIRITS_BEERS("Karamja Wines, Spirits, and Beers", ZAMBO),
+    KARAMJA_WINES_SPIRITS_BEERS("Karamja Wines, Spirits, and Beers", SUROK_MAGIS),
     // TODO: Verify existence.
     KEEPA_KETTILONS_STORE("Keepa Kettilon's Store", KEEPA_KETTILON),
     // TODO: Verify existence.

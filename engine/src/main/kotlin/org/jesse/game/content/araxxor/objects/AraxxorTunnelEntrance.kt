@@ -42,5 +42,5 @@ class AraxxorTunnelEntrance : ObjectAction {
         player.dialogue { plain("You need to be on a task to fight this boss.") }
     }
 
-    override fun getObjects(): Array<Any> = arrayOf(WEB_TUNNEL_ARAXXOR)
+    override fun getObjects(): Array<Any> = arrayOf(WEB_TUNNEL_54161)
 }

@@ -49,7 +49,7 @@ public enum TreeDefinitions {
 	private static final Int2IntMap stumps = new Int2IntOpenHashMap();
 
 	static {
-		stumps.put(ObjectId.OAK_10820, ObjectId.TREE_STUMP_1356);
+		stumps.put(ObjectId.OAK_TREE_10820, ObjectId.TREE_STUMP_1356);
 		stumps.put(1277, 1343);
 		stumps.put(1279, 1345);
 		stumps.put(1280, 1343);

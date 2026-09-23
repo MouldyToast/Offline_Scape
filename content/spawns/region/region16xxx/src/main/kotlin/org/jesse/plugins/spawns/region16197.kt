@@ -8,11 +8,11 @@ import org.jesse.game.util.Direction.*
 class Region16197 : NPCSpawnsScript() {
 
     init {
-        TORRMENTED_DEMON(4040, 4420, 0, SOUTH, 5)
+        TORMENTED_DEMON(4040, 4420, 0, SOUTH, 5)
 
-        TORRMENTED_DEMON(4038, 4449, 0, SOUTH, 5)
+        TORMENTED_DEMON(4038, 4449, 0, SOUTH, 5)
 
-        TORRMENTED_DEMON(4070, 4427, 0, SOUTH, 5)
-        TORRMENTED_DEMON(4079, 4431, 0, SOUTH, 5)
+        TORMENTED_DEMON(4070, 4427, 0, SOUTH, 5)
+        TORMENTED_DEMON(4079, 4431, 0, SOUTH, 5)
     }
 }

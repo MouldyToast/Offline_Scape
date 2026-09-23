@@ -45,7 +45,7 @@ public class DizanaQuiverOnShrineOnRalos implements ItemOnObjectAction {
 	private static int linkItem(Item item) {
 		return switch (item.getId()) {
 			case DIZANAS_QUIVER_UNCHARGED, DIZANAS_QUIVER -> BLESSED_DIZANAS_QUIVER;
-			case DIZANAS_QUIVER_UNCHARGED_L, DIZANAS_QUIVER_L -> BLESSED_DIZANAS_QUIVER_L;
+			case DIZANAS_QUIVER_L_UNCHARGED, DIZANAS_QUIVER_L -> BLESSED_DIZANAS_QUIVER_L;
 			default -> -1;
 		};
 	}
@@ -53,7 +53,7 @@ public class DizanaQuiverOnShrineOnRalos implements ItemOnObjectAction {
 	@Override
 	public Object[] getItems() {
 		return new Object[]{
-				DIZANAS_QUIVER_UNCHARGED, DIZANAS_QUIVER_UNCHARGED_L,
+				DIZANAS_QUIVER_UNCHARGED, DIZANAS_QUIVER_L_UNCHARGED,
 				DIZANAS_QUIVER, DIZANAS_QUIVER_L,
 		};
 	}

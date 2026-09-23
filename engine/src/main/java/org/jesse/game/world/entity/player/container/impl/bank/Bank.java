@@ -46,7 +46,7 @@ public abstract class Bank {
         unbankableItems.add(ItemId.MIMIC);
         unbankableItems.add(ItemId.DARK_ESSENCE_FRAGMENTS);
         unbankableItems.add(ItemId.HERB_BOX);
-        unbankableItems.add(ItemId.OPENED_HERB_BOX);
+        unbankableItems.add(ItemId.OPEN_HERB_BOX);
         for (var id : LootkeyConstants.LOOT_KEY_ORDER) {
             unbankableItems.add(id);
         }

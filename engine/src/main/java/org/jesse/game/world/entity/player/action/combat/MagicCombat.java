@@ -466,7 +466,7 @@ public class MagicCombat extends PlayerCombat {
 
         if (player.getLegs() != null) {
             int legs = player.getLegs().getId();
-            if (legs == ItemId.VIRTUS_ROBE_LEGS) bonusAdded += 3;
+            if (legs == ItemId.VIRTUS_ROBE_BOTTOM) bonusAdded += 3;
         }
 
         return initial + bonusAdded;

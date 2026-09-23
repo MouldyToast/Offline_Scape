@@ -58,6 +58,6 @@ public class GodwarsAltarObject implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.ZAMORAK_ALTAR, ObjectId.SARADOMIN_ALTAR_26364, ObjectId.ARMADYL_ALTAR, ObjectId.BANDOS_ALTAR };
+        return new Object[] { ObjectId.ZAMORAK_ALTAR, ObjectId.SARADOMIN_ALTAR, ObjectId.ARMADYL_ALTAR, ObjectId.BANDOS_ALTAR };
     }
 }

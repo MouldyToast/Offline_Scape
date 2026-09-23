@@ -11,7 +11,7 @@ import org.jesse.game.item.ids.*
  * @author Stan van der Bend
  */
 enum class CrystalSeed(val itemId: Int, val shardReturnRate: Int) {
-    WEAPON(CRYSTAL_SEED, 10),
+    WEAPON(CRYSTAL_WEAPON_SEED, 10),
     TOOL(CRYSTAL_TOOL_SEED, 100),
     ENHANCED_TELEPORT(ENHANCED_CRYSTAL_TELEPORT_SEED, 150),
     ARMOUR(CRYSTAL_ARMOUR_SEED, 250),

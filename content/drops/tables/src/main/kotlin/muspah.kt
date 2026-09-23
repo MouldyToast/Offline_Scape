@@ -7,6 +7,7 @@ import org.jesse.scripts.npc.drops.table.tables.gem.GemDropTable
 import org.jesse.scripts.npc.drops.table.tables.herb.HerbDropTable
 import org.jesse.game.item.Item
 import org.jesse.game.item.ids.*
+import org.jesse.game.item.ids.MANTA_RAY
 import org.jesse.game.item.ids.ADAMANTITE_ORE
 import org.jesse.game.item.ids.COAL
 import org.jesse.game.item.ids.GOLD_ORE

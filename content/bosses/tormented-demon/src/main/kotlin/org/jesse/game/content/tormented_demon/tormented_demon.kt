@@ -7,6 +7,7 @@ import org.jesse.scripts.npc.drops.NPCDropTableScript
 import org.jesse.game.npc.ids.*
 import org.jesse.game.util.invoke
 import org.jesse.game.item.ids.*
+import org.jesse.game.item.ids.MANTA_RAY
 import org.jesse.scripts.npc.drops.table.DropTableType.*
 import org.jesse.game.world.entity.npc.drop.matrix.Drop
 import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE

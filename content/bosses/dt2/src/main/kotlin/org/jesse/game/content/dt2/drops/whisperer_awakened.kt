@@ -19,6 +19,7 @@ import org.jesse.game.item.ids.MITHRIL_ORE
 import org.jesse.game.item.ids.RUNITE_ORE
 import org.jesse.game.item.ids.WISP
 import org.jesse.scripts.npc.drops.table.DropTableType.*
+import org.jesse.game.item.ids.MANTA_RAY
 import org.jesse.game.world.entity.npc.drop.matrix.Drop
 import org.jesse.game.world.entity.npc.drop.matrix.Drop.GUARANTEED_RATE
 import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor

@@ -7,6 +7,7 @@ import org.jesse.game.content.dt2.npc.leviathan.awakened
 import org.jesse.game.content.skills.prayer.Prayer
 import org.jesse.game.item.ids.*
 import org.jesse.game.npc.ids.TENTACLE
+import org.jesse.game.npc.ids.FLOATING_COLUMN
 import org.jesse.game.task.WorldTask
 import org.jesse.game.util.Direction
 import org.jesse.game.util.Utils.random

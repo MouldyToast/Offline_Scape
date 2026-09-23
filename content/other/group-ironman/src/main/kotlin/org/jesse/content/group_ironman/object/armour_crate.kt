@@ -17,7 +17,7 @@ class ArmourCrateObjectaction : ObjectActionScript() {
     fun Int.armourCrate(groupType: IronmanGroupType) = invoke {
         when {
             player.finalisedIronmanGroup != null ->
-                player.dialogue(GROUP_IRON_TUTOR) {
+                player.dialogue(GROUP_IRONMAN_TUTOR) {
                     npc("You cannot change your Group Iron Mode as you are already part of a ${player.finalisedIronmanGroup!!.allMembers.size}-player Iron group.")
                 }
             player.inIronmanGroupCreationInterface ->

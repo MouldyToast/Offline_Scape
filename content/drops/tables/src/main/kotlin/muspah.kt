@@ -75,7 +75,7 @@ class MuspahDroptable : NPCDropTableScript() {
                 SMOKE_RUNE quantity 314 rarity 10
                 CHAOS_RUNE quantity 480 rarity 5
                 FIRE_RUNE quantity 1964 rarity 5
-                CANNONBALL quantity 666 rarity 5
+                STEEL_CANNONBALL quantity 666 rarity 5
 
                 GRIMY_TOADFLAX quantity 55.noted rarity 3
                 GRIMY_KWUARM quantity 6.noted rarity 2

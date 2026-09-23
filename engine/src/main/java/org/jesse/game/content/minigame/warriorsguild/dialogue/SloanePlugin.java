@@ -82,6 +82,6 @@ public final class SloanePlugin extends NPCPlugin {
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.SLOANE };
+        return new int[] { NpcId.SLOANE_13616 };
     }
 }

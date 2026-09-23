@@ -49,6 +49,6 @@ public class RuniteGolemRocks extends NPCPlugin {
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.ROCKS_6601 };
+        return new int[] { NpcId.RUNITE_ROCKS };
     }
 }

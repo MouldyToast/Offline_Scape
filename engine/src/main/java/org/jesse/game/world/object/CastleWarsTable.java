@@ -10,7 +10,7 @@ import java.util.Map;
  * see https://noeles.life || noele@zenyte.com
  */
 public enum CastleWarsTable {
-    POTIONS(4463, new Item(4045, 1)), ROCKS(4460, new Item(4043, 1)), ROPE(4462, new Item(954, 1)), BARRICADES(4461, new Item(4053, 1)), TOOLKITS(4459, new Item(4051, 1)), PICKAXES(4464, new Item(1265, 1)), BANDAGES(4458, new Item(4049, 1));
+    POTIONS(4463, new Item(4045, 1)), ROCKS(4460, new Item(4043, 1)), ROPE(4462, new Item(954, 1)), BARRICADES(4461, new Item(4053, 1)), TOOLKITS(4459, new Item(4051, 1)), PICKAXES(4464, new Item(1265, 1)), BANDAGES_SARADOMIN(56222, new Item(4049, 1)), BANDAGES_ZAMORAK(56223, new Item(4049, 1));
     public static final Map<Integer, CastleWarsTable> DATA = new HashMap<>();
 
     static {

@@ -24,7 +24,7 @@ class WebWeaverBowCreationPlugin : PairedItemOnItemPlugin {
         player.inventory.deleteItem(Item(FANGS_OF_VENENATIS))
         player.inventory.deleteItem(craws)
 
-        val webweaver = Item(if (craws.id == CRAWS_BOW_U) WEBWEAVER_BOW_U_27652 else WEBWEAVER_BOW_27655)
+        val webweaver = Item(if (craws.id == CRAWS_BOW_U) WEBWEAVER_BOW_U else WEBWEAVER_BOW)
         webweaver.charges = craws.charges
         player.inventory.addItem(webweaver)
 

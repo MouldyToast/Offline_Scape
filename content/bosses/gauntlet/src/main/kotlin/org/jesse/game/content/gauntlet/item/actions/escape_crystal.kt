@@ -9,7 +9,7 @@ import org.jesse.game.model.item.*
 class EscapeCrystalItemaction : ItemActionScript() {
 
     init {
-        items(ESCAPE_CRYSTAL, CORRUPTED_ESCAPE_CRYSTAL)
+        items(ESCAPE_CRYSTAL_25961, CORRUPTED_ESCAPE_CRYSTAL)
 
         "Activate" {
             player.gauntlet

@@ -627,7 +627,7 @@ public enum Furniture {
 	SPIRIT_TREE(75, 700, 29227, 20635, new Item(5375)),
 	OBELISK(80, 3000, 31554, 21788, new Item(21804, 4), new Item(8786, 4)),
 	FAIRY_RING(85, 535, 29228, 20636, new Item(6004, 10), new Item(20609)),
-	SPIRIT_TREE_AND_FAIRY_RING(95, 1170, 29422, 20637, new Item(5375), new Item(6004, 10), new Item(20609)),
+	SPIRIT_TREE_AND_FAIRY_RING(95, 1170, 29229, 20637, new Item(5375), new Item(6004, 10), new Item(20609)),
 	
 	TOPIARY_BUSH(65, 141, 29230, 20638, new Item(8443)),
 	

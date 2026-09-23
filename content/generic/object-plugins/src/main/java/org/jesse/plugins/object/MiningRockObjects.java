@@ -51,7 +51,7 @@ public final class MiningRockObjects implements ObjectAction {
         list.add(7469);
         list.add(30373);
         list.add(33253);
-        list.rem(ObjectId.ROCKS_36210); // soft-clay handled by trahaern mine rocks plugin
+        list.rem(ObjectId.SOFT_CLAY_ROCKS_36210); // soft-clay handled by trahaern mine rocks plugin
         return list.toArray();
     }
 }

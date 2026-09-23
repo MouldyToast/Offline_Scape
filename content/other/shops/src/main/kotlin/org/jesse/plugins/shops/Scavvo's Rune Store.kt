@@ -19,7 +19,7 @@ class ScavvoSRuneStore : ShopScript() {
             RUNE_LONGSWORD(1, 19200, 32000)
             RUNE_SWORD(1, 12480, 20800)
             GREEN_DHIDE_CHAPS(1, 2340, 3900)
-            GREEN_DHIDE_VAMB(1, 1500, 2500)
+            GREEN_DHIDE_VAMBRACES(1, 1500, 2500)
             COIF(2, 120, 200)
         }
     }

@@ -20,12 +20,12 @@ public class Fungi extends NPCPlugin {
     @Override
     public void handle() {
         bind("Pick", (player, npc) -> {
-            if (npc.getId() != ANCIENT_FUGI_471 && npc.isLocked())
+            if (npc.getId() != ANCIENT_FUNGI && npc.isLocked())
                 return;
 
             final int id = npc.getId();
             final int transformed = switch (id) {
-                case ANCIENT_FUGI_471 -> ANCIENT_ZYGOMITE;
+                case ANCIENT_FUNGI -> ANCIENT_ZYGOMITE;
                 case 536 -> ZYGOMITE;
                 case 1023 -> ZYGOMITE_1024;
                 default -> -1;
@@ -63,6 +63,6 @@ public class Fungi extends NPCPlugin {
 
     @Override
     public int[] getNPCs() {
-        return new int[] {ANCIENT_FUGI_471, FUNGI, FUNGI_538, ANCIENT_FUNGI};
+        return new int[] {ANCIENT_FUNGI, FUNGI, FUNGI_538, ANCIENT_FUNGI_8690};
     }
 }

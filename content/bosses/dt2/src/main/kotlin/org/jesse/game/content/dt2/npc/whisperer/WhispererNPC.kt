@@ -149,9 +149,9 @@ class WhispererNPC(
         }
 
         val objects = allObjects?.filter {
-            it.id == CORRUPTED_SEED_DARK_GREEN ||
-                    it.id == CORRUPTED_SEED_LIGHT_GREEN ||
-                    it.id == CORRUPTED_SEED_REAL_WORLD
+            it.id == CORRUPTED_SEED_47575 ||
+                    it.id == CORRUPTED_SEED ||
+                    it.id == CORRUPTED_SEED_47574
         }
         objects?.forEach {
             it.remove()
@@ -855,7 +855,7 @@ class WhispererNPC(
 
                         val timerCondition = containsTimer(WhispererConstants.WHISPERER_HEADBAR_TIMER)
                         val objectCondition =
-                            objects.any { it.exists() && it.id == CORRUPTED_SEED_LIGHT_GREEN }
+                            objects.any { it.exists() && it.id == CORRUPTED_SEED }
 
                         if (timerCondition && objectCondition) {
                             instance.players?.forEach {
@@ -867,7 +867,7 @@ class WhispererNPC(
                     }
 
                     10 -> {
-                        val failed = objects.any { it.exists() && it.id == CORRUPTED_SEED_LIGHT_GREEN }
+                        val failed = objects.any { it.exists() && it.id == CORRUPTED_SEED }
                         if (failed) {
                             val projectile = ProjConstants.WHISPERER_LEECH
                             instance.players?.forEach { player ->
@@ -896,9 +896,9 @@ class WhispererNPC(
 
                             it.position.spotanim(
                                 when (it.id) {
-                                    CORRUPTED_SEED_DARK_GREEN -> WhispererConstants.WHISPERER_LEECH_BLUE_BALL_REMOVE
-                                    CORRUPTED_SEED_REAL_WORLD -> WhispererConstants.WHISPERER_LEECH_BLUE_REALM_BALL_REMOVE
-                                    CORRUPTED_SEED_LIGHT_GREEN -> WhispererConstants.WHISPERER_LEECH_GREEN_BALL_EXPLODE
+                                    CORRUPTED_SEED_47575 -> WhispererConstants.WHISPERER_LEECH_BLUE_BALL_REMOVE
+                                    CORRUPTED_SEED_47574 -> WhispererConstants.WHISPERER_LEECH_BLUE_REALM_BALL_REMOVE
+                                    CORRUPTED_SEED -> WhispererConstants.WHISPERER_LEECH_GREEN_BALL_EXPLODE
                                     else -> return@forEach
                                 }
                             )
@@ -936,9 +936,9 @@ class WhispererNPC(
             val targetLocation = regionSouthWest.transform(offset.first, offset.second, 0)
             targetLocation.spotanim(WhispererConstants.WHISPERER_LEECH_POOL)
             val objectId = when {
-                overworld -> CORRUPTED_SEED_DARK_GREEN
-                alive -> CORRUPTED_SEED_LIGHT_GREEN
-                else -> CORRUPTED_SEED_REAL_WORLD
+                overworld -> CORRUPTED_SEED_47575
+                alive -> CORRUPTED_SEED
+                else -> CORRUPTED_SEED_47574
             }
             MapObject(objectId, targetLocation, 10, 0).spawn()
         }
@@ -1695,7 +1695,7 @@ fun Player.checkForLeech(instance: WhispererInstance) {
 
     playSound(WhispererConstants.WHISPERER_STEP_OVER_LEECH_SYNTH)
 
-    val isGreen = underworldObj.id == CORRUPTED_SEED_LIGHT_GREEN
+    val isGreen = underworldObj.id == CORRUPTED_SEED
     if (isGreen) {
         overworldPos.spotanim(WhispererConstants.WHISPERER_LEECH_BLUE_BALL_DISARM)
         underworldPos.spotanim(WhispererConstants.WHISPERER_LEECH_GREEN_BALL_DISARM)

@@ -143,7 +143,7 @@ class NexDroptable : NPCDropTableScript() {
                 DEATH_RUNE quantity 85..170 rarity common
                 SOUL_RUNE quantity 86..227 rarity common
                 DRAGON_BOLTS_UNF quantity 12..90 rarity common
-                CANNONBALL quantity 42..298 rarity common
+                STEEL_CANNONBALL quantity 42..298 rarity common
                 AIR_RUNE quantity 123..1365 rarity uncommon
                 FIRE_RUNE quantity 210..1655 rarity uncommon
                 WATER_RUNE quantity 193..1599 rarity uncommon

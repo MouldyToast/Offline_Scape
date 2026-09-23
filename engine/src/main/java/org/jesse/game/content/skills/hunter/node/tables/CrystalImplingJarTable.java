@@ -24,7 +24,7 @@ public class CrystalImplingJarTable {
                 .append(ItemId.ONYX_BOLT_TIPS, 56, 6, 10)
                 .append(ItemId.RUNE_ARROWTIPS, 56, 150, 300)
                 .append(ItemId.RUNE_ARROW, 56, 400, 750)
-                .append(ItemId.RUNE_JAVELIN_HEADS, 56, 20, 60)
+                .append(ItemId.RUNE_JAVELIN_TIPS, 56, 20, 60)
                 .append(ItemId.RUNE_DART_TIP, 56, 25, 75)
                 .append(ItemId.RUNE_DART, 56, 50, 100)
                 .append(ItemId.DRAGON_DART_TIP, 56, 10, 15)

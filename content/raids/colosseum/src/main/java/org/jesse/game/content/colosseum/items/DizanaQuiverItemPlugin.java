@@ -80,7 +80,7 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 
 	@Override
 	public int[] getItems() {
-		return new int[]{DIZANAS_QUIVER_UNCHARGED, DIZANAS_QUIVER_UNCHARGED_L, DIZANAS_QUIVER, DIZANAS_QUIVER_L, BLESSED_DIZANAS_QUIVER, BLESSED_DIZANAS_QUIVER_L};
+		return new int[]{DIZANAS_QUIVER_UNCHARGED, DIZANAS_QUIVER_L_UNCHARGED, DIZANAS_QUIVER, DIZANAS_QUIVER_L, BLESSED_DIZANAS_QUIVER, BLESSED_DIZANAS_QUIVER_L};
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 	}
 
 	private static boolean isQuiver(int id) {
-		return id == DIZANAS_QUIVER_UNCHARGED || id == DIZANAS_QUIVER_UNCHARGED_L
+		return id == DIZANAS_QUIVER_UNCHARGED || id == DIZANAS_QUIVER_L_UNCHARGED
 				|| id == DIZANAS_QUIVER || id == DIZANAS_QUIVER_L
 				|| id == BLESSED_DIZANAS_QUIVER || id == BLESSED_DIZANAS_QUIVER_L;
 	}
@@ -200,7 +200,7 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 	private static int chargedToUncharged(final Item item) {
 		return switch (item.getId()) {
 			case DIZANAS_QUIVER -> DIZANAS_QUIVER_UNCHARGED;
-			case DIZANAS_QUIVER_L -> DIZANAS_QUIVER_UNCHARGED_L;
+			case DIZANAS_QUIVER_L -> DIZANAS_QUIVER_L_UNCHARGED;
 			default -> -1;
 		};
 	}
@@ -208,7 +208,7 @@ public class DizanaQuiverItemPlugin extends ItemPlugin implements ItemOnItemActi
 	private static int unchargedToCharged(final Item item) {
 		return switch (item.getId()) {
 			case DIZANAS_QUIVER_UNCHARGED -> DIZANAS_QUIVER;
-			case DIZANAS_QUIVER_UNCHARGED_L -> DIZANAS_QUIVER_L;
+			case DIZANAS_QUIVER_L_UNCHARGED -> DIZANAS_QUIVER_L;
 			default -> -1;
 		};
 	}

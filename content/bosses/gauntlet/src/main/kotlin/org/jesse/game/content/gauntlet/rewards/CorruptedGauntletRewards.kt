@@ -56,7 +56,7 @@ val corruptedRewardsMain = StandaloneDropTableBuilder {
 val corruptedRewardsTertiary = StandaloneDropTableBuilder {
     static {
         SCROLL_BOX_ELITE quantity 1 oneIn 20
-        CRYSTAL_SEED quantity 1 oneIn 25
+        CRYSTAL_WEAPON_SEED quantity 1 oneIn 25
         CRYSTAL_ARMOUR_SEED quantity 1 oneIn 25
         ENHANCED_CRYSTAL_WEAPON_SEED quantity 1 oneIn 100 announce everywhere
         YOUNGLLEF quantity 1 oneIn 500 announce everywhere

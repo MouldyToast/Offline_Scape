@@ -28,7 +28,7 @@ class Region11310 : NPCSpawnsScript() {
         UNDEAD_ONE_5346(2876, 2957, 0, SOUTH, 5)
         UNDEAD_ONE_5350(2877, 2959, 0, SOUTH, 3)
         KALEB_PARAMAYA(2863, 2997, 1, SOUTH, 2)
-        DURADEL(2869, 2982, 1, SOUTH, 2)
+        DURADEL_13622(2869, 2982, 1, SOUTH, 2)
         SERAVEL(2870, 2974, 1, SOUTH, 0)
     }
 }

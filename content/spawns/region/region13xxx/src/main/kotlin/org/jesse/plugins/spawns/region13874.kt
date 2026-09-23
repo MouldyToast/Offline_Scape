@@ -25,7 +25,7 @@ class Region13874 : NPCSpawnsScript() {
         VICTOR(3482, 3208, 0, SOUTH, 2)
         EMILIA(3482, 3210, 0, SOUTH, 2)
         FLORIN(3483, 3243, 0, SOUTH, 3)
-        HELENA(3484, 3207, 0, SOUTH, 2)
+        HELENA_4458(3484, 3207, 0, SOUTH, 2)
         VASILE(3485, 3237, 0, SOUTH, 4)
         3488(3486, 3241, 0, SOUTH, 2)
         CATALINA(3489, 3221, 0, SOUTH, 2)

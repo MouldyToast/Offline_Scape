@@ -35,7 +35,7 @@ class DagannothSupremeDroptable : NPCDropTableScript() {
             Main(85) {
                 // Weapons and armour
                 MITHRIL_KNIFE quantity (25..50) rarity 5
-                RED_DHIDE_VAMB quantity 1 rarity 3
+                RED_DHIDE_VAMBRACES quantity 1 rarity 3
                 RUNE_THROWNAXE quantity (5..10) rarity 2
                 ADAMANT_DART quantity (10..25) rarity 2
                 IRON_KNIFE quantity (200..500) rarity 2

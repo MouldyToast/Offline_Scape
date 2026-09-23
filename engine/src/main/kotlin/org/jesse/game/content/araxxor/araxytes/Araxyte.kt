@@ -34,7 +34,7 @@ abstract class Araxyte(
         maxDistance = 64
     }
 
-    val eggs = listOf(MIRRORBACK_ARAXYTE_EGG, RUPTURA_ARAXYTE_EGG, ACIDIC_ARAXYTE_EGG)
+    val eggs = listOf(EGG_13670, EGG_13672, EGG_13674)
 
     override fun autoRetaliate(source: Entity?) {
         if (eggs.contains(id)) return

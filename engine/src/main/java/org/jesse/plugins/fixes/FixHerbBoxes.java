@@ -20,10 +20,10 @@ public class FixHerbBoxes {
                 if(herbBoxCount > 0)
                     bank.remove(new Item(ItemId.HERB_BOX, herbBoxCount));
             }
-            if(bank != null && bank.containsItem(new Item(ItemId.OPENED_HERB_BOX, 500))) {
-                int herbBoxCount = bank.getAmountOf(ItemId.OPENED_HERB_BOX);
+            if(bank != null && bank.containsItem(new Item(ItemId.OPEN_HERB_BOX, 500))) {
+                int herbBoxCount = bank.getAmountOf(ItemId.OPEN_HERB_BOX);
                 if(herbBoxCount > 0)
-                    bank.remove(new Item(ItemId.OPENED_HERB_BOX, herbBoxCount));
+                    bank.remove(new Item(ItemId.OPEN_HERB_BOX, herbBoxCount));
             }
 
 
@@ -33,10 +33,10 @@ public class FixHerbBoxes {
                 if(herbBoxCount > 0)
                     inventory.deleteItem(new Item(ItemId.HERB_BOX, herbBoxCount));
             }
-            if(inventory != null && inventory.containsItem(new Item(ItemId.OPENED_HERB_BOX, 500))) {
-                int herbBoxCount = inventory.getAmountOf(ItemId.OPENED_HERB_BOX);
+            if(inventory != null && inventory.containsItem(new Item(ItemId.OPEN_HERB_BOX, 500))) {
+                int herbBoxCount = inventory.getAmountOf(ItemId.OPEN_HERB_BOX);
                 if(herbBoxCount > 0)
-                    inventory.deleteItem(new Item(ItemId.OPENED_HERB_BOX, herbBoxCount));
+                    inventory.deleteItem(new Item(ItemId.OPEN_HERB_BOX, herbBoxCount));
             }
 
         }

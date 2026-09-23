@@ -8,6 +8,6 @@ import org.jesse.game.util.Direction.*
 class Region7754 : NPCSpawnsScript() {
 
     init {
-        CHALLENGE_HEADMASTER(1952, 4768, 1, SOUTH, 0)
+        QUIZ_MASTER(1952, 4768, 1, SOUTH, 0)
     }
 }

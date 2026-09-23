@@ -27,7 +27,7 @@ public class EclecticImplingJarTable {
         
                 .append(ItemId.ADAMANT_KITESHIELD)
                 .append(ItemId.BLUE_DHIDE_CHAPS)
-                .append(ItemId.RED_SPIKY_VAMBS)
+                .append(ItemId.RED_SPIKY_VAMBRACES)
                 .append(ItemId.RUNE_DAGGER)
                 .append(ItemId.BATTLESTAFF)
                 .append(ItemDefinitions.getOrThrow(ItemId.ADAMANTITE_ORE).getNotedId(), 1, 10)

@@ -16,7 +16,7 @@ import org.jesse.game.world.entity.player.action.combat.CombatUtilities
  * @social Discord: Glabay
  * @since 2024-11-15
  */
-class LoneAraxyte(val instance: AraxyteCaveHunt, spawnLocation: Location): Araxyte(ARAXYTE_LV_96, spawnLocation) {
+class LoneAraxyte(val instance: AraxyteCaveHunt, spawnLocation: Location): Araxyte(ARAXYTE_13666, spawnLocation) {
 
     override fun attack(target: Entity?): Int {
         if (target == null) return 1

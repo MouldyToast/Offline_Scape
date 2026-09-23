@@ -106,10 +106,10 @@ class SlayerInterface : InterfaceScript() {
                     stop(affordableAmount <= 0, "You don't have enough Slayer points to purchase this.")
                     if (affordableAmount < amount) player.sendMessage("You don't have enough Slayer points to purchase this many.")
                     val itemAmount = when {
-                        def.id == CANNONBALL -> 10
+                        def.id == STEEL_CANNONBALL -> 10
                         def.id == DRAGON_DART -> 2
                         def.id == SCROLL_OF_IMBUING -> 1
-                        def.id == HERB_BOX || def.id == OPENED_HERB_BOX -> 1
+                        def.id == HERB_BOX || def.id == OPEN_HERB_BOX -> 1
                         def.isStackable() -> 250
                         else -> 1
                     }

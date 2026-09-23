@@ -24,12 +24,12 @@ class RupturaAraxyte(
     spawnLocation: Location,
     private var exploding: Boolean = false
 ): Araxyte(
-    RUPTURA_ARAXYTE_EGG,
+    EGG_13672,
     spawnLocation
 ) {
 
     override fun attack(target: Entity?): Int {
-        if (getId() == RUPTURA_ARAXYTE_EGG) return 1
+        if (getId() == EGG_13672) return 1
         if (target == null) return 1
         if (exploding) return 1
 

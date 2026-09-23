@@ -154,7 +154,7 @@ object DeveloperCommands {
             player.inventory.addItem(Item(CANNON_STAND))
             player.inventory.addItem(Item(CANNON_FURNACE))
             player.inventory.addItem(Item(CANNON_BARRELS))
-            player.inventory.addItem(Item(CANNONBALL, 2_000_000_000))
+            player.inventory.addItem(Item(STEEL_CANNONBALL, 2_000_000_000))
         }
 
         Command(PlayerPrivilege.TRUE_DEVELOPER, "jacsisland", "Teleport to Jac's Island. Args: zoneIndex") { player, args  ->

@@ -26,10 +26,10 @@ class AccursedSceptreCreationPlugin : PairedItemOnItemPlugin {
 
         val accursed = Item(
             when (thammarons.id) {
-                THAMMARONS_SCEPTRE_U -> ACCURSED_SCEPTRE_U_27662
-                THAMMARONS_SCEPTRE_AU -> ACCURSED_SCEPTRE_AU_27676
-                THAMMARONS_SCEPTRE -> ACCURSED_SCEPTRE_27665
-                THAMMARONS_SCEPTRE_A -> ACCURSED_SCEPTRE_A_27679
+                THAMMARONS_SCEPTRE_U -> ACCURSED_SCEPTRE_U
+                THAMMARONS_SCEPTRE_AU -> ACCURSED_SCEPTRE_AU
+                THAMMARONS_SCEPTRE -> ACCURSED_SCEPTRE
+                THAMMARONS_SCEPTRE_A -> ACCURSED_SCEPTRE_A
                 else -> {
                     player.sendDeveloperMessage("Invalid item id: ${thammarons.id}")
                     return

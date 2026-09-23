@@ -47,7 +47,7 @@ private const val near_reality_mod = 0.7
 val crystallineRewardsTertiary = StandaloneDropTableBuilder {
     static {
         SCROLL_BOX_ELITE quantity 1 oneIn 25
-        CRYSTAL_SEED quantity 1 oneIn (120 * near_reality_mod).toInt()
+        CRYSTAL_WEAPON_SEED quantity 1 oneIn (120 * near_reality_mod).toInt()
         CRYSTAL_ARMOUR_SEED quantity 1 oneIn (120 * near_reality_mod).toInt()
         ENHANCED_CRYSTAL_WEAPON_SEED quantity 1 oneIn (2_000 * near_reality_mod).toInt() announce everywhere
         YOUNGLLEF quantity 1 oneIn (2_000 * near_reality_mod).toInt() announce everywhere

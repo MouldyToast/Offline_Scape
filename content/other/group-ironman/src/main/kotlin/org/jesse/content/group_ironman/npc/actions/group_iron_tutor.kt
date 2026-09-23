@@ -389,7 +389,7 @@ class GroupIronTutorNpcaction : NPCActionScript() {
     }
 
     init {
-        npcs(GROUP_IRON_TUTOR)
+        npcs(GROUP_IRONMAN_TUTOR)
 
         "Talk-to" {
             player.dialogue(npc) {
@@ -426,25 +426,25 @@ class GroupIronTutorNpcaction : NPCActionScript() {
                 player.faceEntity(npc)
                 val armour = mutableListOf<Item>()
                 if (group.type == IronmanGroupType.HARDCORE) {
-                    armour.add(Item(HARDCORE_GROUP_IRON_HELM))
+                    armour.add(Item(HARDCORE_GROUP_IRONMAN_HELM))
                     when (group.activeMembers.size) {
-                        2 -> armour.add(Item(HARDCORE_GROUP_IRON_PLATEBODY))
-                        3 -> armour.add(Item(HARDCORE_GROUP_IRON_PLATEBODY_26174))
-                        4 -> armour.add(Item(HARDCORE_GROUP_IRON_PLATEBODY_26176))
-                        5 -> armour.add(Item(HARDCORE_GROUP_IRON_PLATEBODY_26178))
+                        2 -> armour.add(Item(HARDCORE_GROUP_IRONMAN_PLATEBODY))
+                        3 -> armour.add(Item(HARDCORE_GROUP_IRONMAN_PLATEBODY_26174))
+                        4 -> armour.add(Item(HARDCORE_GROUP_IRONMAN_PLATEBODY_26176))
+                        5 -> armour.add(Item(HARDCORE_GROUP_IRONMAN_PLATEBODY_26178))
                     }
-                    armour.add(Item(HARDCORE_GROUP_IRON_PLATELEGS))
-                    armour.add(Item(HARDCORE_GROUP_IRON_BRACERS))
+                    armour.add(Item(HARDCORE_GROUP_IRONMAN_PLATELEGS))
+                    armour.add(Item(HARDCORE_GROUP_IRONMAN_BRACERS))
                 } else {
-                    armour.add(Item(GROUP_IRON_HELM))
+                    armour.add(Item(GROUP_IRONMAN_HELM))
                     when (group.activeMembers.size) {
-                        2 -> armour.add(Item(GROUP_IRON_PLATEBODY))
-                        3 -> armour.add(Item(GROUP_IRON_PLATEBODY_26160))
-                        4 -> armour.add(Item(GROUP_IRON_PLATEBODY_26162))
-                        5 -> armour.add(Item(GROUP_IRON_PLATEBODY_26164))
+                        2 -> armour.add(Item(GROUP_IRONMAN_PLATEBODY))
+                        3 -> armour.add(Item(GROUP_IRONMAN_PLATEBODY_26160))
+                        4 -> armour.add(Item(GROUP_IRONMAN_PLATEBODY_26162))
+                        5 -> armour.add(Item(GROUP_IRONMAN_PLATEBODY_26164))
                     }
-                    armour.add(Item(GROUP_IRON_PLATELEGS))
-                    armour.add(Item(GROUP_IRON_BRACERS))
+                    armour.add(Item(GROUP_IRONMAN_PLATELEGS))
+                    armour.add(Item(GROUP_IRONMAN_BRACERS))
                 }
                 val items = ItemUtil.concatenate(
                     player.inventory.container.items.values.toTypedArray(),

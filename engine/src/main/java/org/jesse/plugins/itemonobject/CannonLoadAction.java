@@ -26,7 +26,7 @@ public class CannonLoadAction implements ItemOnObjectAction {
 
     @Override
     public Object[] getItems() {
-        return new Object[] { ItemId.GRANITE_CANNONBALL, ItemId.CANNONBALL };
+        return new Object[] { ItemId.GRANITE_CANNONBALL, ItemId.STEEL_CANNONBALL };
     }
 
     @Override

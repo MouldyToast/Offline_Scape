@@ -82,5 +82,5 @@ class AraxxorCorpse: NPCPlugin() {
         }
     }
 
-    override fun getNPCs(): IntArray = intArrayOf(ARAXXOR_CORPSE)
+    override fun getNPCs(): IntArray = intArrayOf(ARAXXOR_13669)
 }

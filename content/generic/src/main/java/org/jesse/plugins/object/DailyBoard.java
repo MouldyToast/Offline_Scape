@@ -75,6 +75,6 @@ public class DailyBoard implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.DAILY_BOARD };
+        return new Object[] { };
     }
 }

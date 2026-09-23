@@ -34,6 +34,6 @@ public class NistiriosManifestoObject implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.NISTIRIOS_MANIFESTO };
+        return new Object[] { ObjectId.NISTIRIOS_MANIFESTO_30020 };
     }
 }

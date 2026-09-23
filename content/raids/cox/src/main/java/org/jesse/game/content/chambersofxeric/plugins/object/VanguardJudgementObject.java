@@ -34,6 +34,6 @@ public class VanguardJudgementObject implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.VANGUARD_JUDGEMENT };
+        return new Object[] { ObjectId.VANGUARD_JUDGEMENT_30026 };
     }
 }

@@ -18,7 +18,7 @@ import org.jesse.game.world.entity.npc.drop.matrix.DropProcessor.DisplayedDrop
 class TormentedDemonDroptable : NPCDropTableScript() {
 
     init {
-        npcs(TORRMENTED_DEMON, TORRMENTED_DEMON_13600, TORRMENTED_DEMON_13601)
+        npcs(TORMENTED_DEMON, TORMENTED_DEMON_13600, TORMENTED_DEMON_13601)
 
         onDeath {
             rollStaticTableAndDrop(killer, Tertiary)

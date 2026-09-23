@@ -36,6 +36,6 @@ public class SpiritualFairyTree implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.SPIRITUAL_FAIRY_TREE_35003 };
+        return new Object[] { ObjectId.SPIRITUAL_FAIRY_TREE, ObjectId.SPIRITUAL_FAIRY_TREE_29229, ObjectId.SPIRITUAL_FAIRY_TREE_40779 };
     }
 }

@@ -16,7 +16,7 @@ enum class AraxxorSuppliesDropTable(
     val maxAmount: Int,
     val weight: Double
 ) {
-    VENOM_SACK(ARAXYTE_VENOM_SACK, 1, 1, 16.0),
+    VENOM_SACK(ARAXYTE_VENOM_SAC, 1, 1, 16.0),
     SUPER_COMBAT_1(SUPER_COMBAT_POTION1, 1, 1, 16.0),
     PRAYER_3(PRAYER_POTION3, 1, 2, 16.0),
     PRAYER_4(PRAYER_POTION4, 1, 1, 16.0),

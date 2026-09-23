@@ -34,7 +34,7 @@ class DukeNormalDroptable : NPCDropTableScript() {
             EYE_OF_THE_DUKE quantity 1 rarity 3
             MAGUS_ICON quantity 1 rarity 2
             VIRTUS_MASK quantity 1 rarity 1
-            VIRTUS_ROBE_LEGS quantity 1 rarity 1
+            VIRTUS_ROBE_BOTTOM quantity 1 rarity 1
             VIRTUS_ROBE_TOP quantity 1 rarity 1
         }
     })
@@ -73,7 +73,7 @@ class DukeNormalDroptable : NPCDropTableScript() {
         appendDrop(DisplayedDrop(MAGUS_ICON, 1, 1, 800.00))
         appendDrop(DisplayedDrop(VIRTUS_MASK, 1, 1, 1600.00))
         appendDrop(DisplayedDrop(VIRTUS_ROBE_TOP, 1, 1, 1600.00))
-        appendDrop(DisplayedDrop(VIRTUS_ROBE_LEGS, 1, 1, 1600.00))
+        appendDrop(DisplayedDrop(VIRTUS_ROBE_BOTTOM, 1, 1, 1600.00))
 
         appendDrop(DisplayedDrop(AWAKENERS_ORB, 1, 1, 75.00))
         appendDrop(DisplayedDrop(ICE_QUARTZ, 1, 1, 150.00))
@@ -92,8 +92,8 @@ class DukeNormalDroptable : NPCDropTableScript() {
                 //50
                 COAL quantity 130.noted rarity 8
                 ADAMANTITE_ORE quantity 45.noted rarity 8
-                RUNE_JAVELIN_HEADS quantity 24 rarity 8
-                DRAGON_JAVELIN_HEADS quantity 24 rarity 8
+                RUNE_JAVELIN_TIPS quantity 24 rarity 8
+                DRAGON_JAVELIN_TIPS quantity 24 rarity 8
                 UNCUT_RUBY quantity 25.noted rarity 5
                 UNCUT_DIAMOND quantity 25.noted rarity 5
                 RUNITE_ORE quantity 18.noted rarity 2

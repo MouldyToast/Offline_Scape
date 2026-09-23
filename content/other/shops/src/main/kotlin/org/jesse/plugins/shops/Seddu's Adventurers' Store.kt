@@ -16,7 +16,7 @@ class SedduSAdventurersStore : ShopScript() {
             RUNE_PLATELEGS(1, 41600, 60800)
             RUNE_CHAINBODY(1, 33500, 47500)
             GREEN_DHIDE_CHAPS(1, 2613, 3705)
-            GREEN_DHIDE_VAMB(1, -1, 2375)
+            GREEN_DHIDE_VAMBRACES(1, -1, 2375)
             STEEL_KITESHIELD(1, -1, 807)
             BLACK_MED_HELM(1, -1, 547)
         }

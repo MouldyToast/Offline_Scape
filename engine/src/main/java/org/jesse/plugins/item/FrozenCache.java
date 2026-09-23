@@ -24,7 +24,7 @@ public class FrozenCache extends ItemPlugin {
 		TABLE.append(ItemId.RUNE_PLATELEGS, 16, 3);
 		TABLE.append(ItemId.BLACK_DHIDE_BODY, 16, 1);
 		TABLE.append(ItemId.FIRE_RUNE, 16, 1949);
-		TABLE.append(ItemId.CANNONBALL, 16, 666);
+		TABLE.append(ItemId.STEEL_CANNONBALL, 16, 666);
 		TABLE.append(ItemId.DRAGON_PLATESKIRT, 16, 1);
 		TABLE.append(ItemId.TORSTOL_SEED, 16, 4);
 		TABLE.append(ItemId.COAL, 16, 163);

@@ -29,7 +29,7 @@ public class DragonImplingJarTable {
                 .append(ItemDefinitions.getOrThrow(ItemId.DRAGONSTONE).getNotedId(), 1, 3)
                 .append(ItemId.DRAGON_DART_TIP, 1, 100, 350)
                 .append(ItemId.DRAGON_ARROWTIPS, 1, 100, 350)
-                .append(ItemId.DRAGON_JAVELIN_HEADS, 1, 25, 35)
+                .append(ItemId.DRAGON_JAVELIN_TIPS, 1, 25, 35)
                 .append(ItemDefinitions.getOrThrow(ItemId.BABYDRAGON_BONES).getNotedId(), 1, 100, 350)
                 .append(ItemDefinitions.getOrThrow(ItemId.DRAGON_BONES).getNotedId(), 1, 50, 100)
                 .append(ItemId.MAGIC_SEED)

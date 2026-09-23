@@ -75,7 +75,7 @@ class BloodMoney : ShopScript() {
             PADDEWWA_TELEPORT(1000, 0,1)
             SENNTISTEN_TELEPORT(1000, 0,1)
             ANNAKARL_TELEPORT(1000, 0,1)
-            CARRALLANGAR_TELEPORT(1000, 0,1)
+            CARRALLANGER_TELEPORT(1000, 0,1)
             DAREEYAK_TELEPORT(1000, 0,1)
             GHORROCK_TELEPORT(1000, 0,1)
             KHARYRLL_TELEPORT(1000, 0,1)
@@ -95,7 +95,7 @@ class BloodMoney : ShopScript() {
             SEREN_HALO(100, 0, 250)
             ANCIENT_HALO(100, 0, 250)
             BRASSICA_HALO(100, 0, 250)
-            CRYSTAL_SEED(100, 0, 250)
+            CRYSTAL_WEAPON_SEED(100, 0, 250)
         }
     }
 }

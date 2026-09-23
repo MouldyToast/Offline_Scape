@@ -154,7 +154,7 @@ public class EliteRewardsTable extends ClueRewardTable {
             item(GILDED_SCIMITAR),
             item(GILDED_BOOTS),
             item(GILDED_COIF),
-            item(GILDED_DHIDE_VAMBS),
+            item(GILDED_DHIDE_VAMBRACES),
             item(GILDED_DHIDE_BODY),
             item(GILDED_DHIDE_CHAPS),
             item(GILDED_PICKAXE),

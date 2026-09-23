@@ -76,7 +76,7 @@ public class MinimusOutsideNpc extends NPCPlugin implements ItemOnNPCAction {
 	@Override
 	public void handleItemOnNPCAction(Player player, Item item, int slot, NPC npc) {
 		int itemId = item.getId();
-		if (itemId != ItemId.DIZANAS_QUIVER_UNCHARGED && itemId != ItemId.DIZANAS_QUIVER_UNCHARGED_L) {
+		if (itemId != ItemId.DIZANAS_QUIVER_UNCHARGED && itemId != ItemId.DIZANAS_QUIVER_L_UNCHARGED) {
 			player.getDialogueManager().start(new Dialogue(player, npc) {
 				@Override
 				public void buildDialogue() {
@@ -146,7 +146,7 @@ public class MinimusOutsideNpc extends NPCPlugin implements ItemOnNPCAction {
 
 	@Override
 	public Object[] getItems() {
-		return new Object[] {ItemId.BLESSED_DIZANAS_QUIVER, ItemId.BLESSED_DIZANAS_QUIVER_L, ItemId.DIZANAS_QUIVER, ItemId.DIZANAS_QUIVER_L, ItemId.DIZANAS_QUIVER_UNCHARGED, ItemId.DIZANAS_QUIVER_UNCHARGED_L};
+		return new Object[] {ItemId.BLESSED_DIZANAS_QUIVER, ItemId.BLESSED_DIZANAS_QUIVER_L, ItemId.DIZANAS_QUIVER, ItemId.DIZANAS_QUIVER_L, ItemId.DIZANAS_QUIVER_UNCHARGED, ItemId.DIZANAS_QUIVER_L_UNCHARGED};
 	}
 
 	@Override

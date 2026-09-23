@@ -10,7 +10,7 @@ class Region12853 : NPCSpawnsScript() {
     init {
         STRAY_DOG(3200, 3399, 0, SOUTH, 10)
         SHOP_KEEPER_2884(3203, 3397, 0, SOUTH, 3)
-        GYPSY_ARIS(3203, 3424, 0, SOUTH, 2)
+        PALADIN_5082(3203, 3424, 0, SOUTH, 2)
         ZAFF(3203, 3433, 0, SOUTH, 3)
         534(3204, 3417, 0, SOUTH, 3)
         IFFIE(3204, 3419, 0, SOUTH, 0)

@@ -34,6 +34,6 @@ public class HoundmastersDiaryObject implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.HOUNDMASTERS_DIARY };
+        return new Object[] { ObjectId.HOUNDMASTERS_DIARY_30031 };
     }
 }

@@ -8,10 +8,10 @@ import org.jesse.game.util.Direction.*
 class Region13358 : NPCSpawnsScript() {
 
     init {
-        DESERT_SNAKE(3328, 2952, 0, SOUTH, 3)
-        DESERT_SNAKE(3328, 2957, 0, SOUTH, 3)
-        DESERT_SNAKE(3331, 2955, 0, SOUTH, 3)
-        DESERT_SNAKE(3331, 2961, 0, SOUTH, 3)
+        SNAKE_3544(3328, 2952, 0, SOUTH, 3)
+        SNAKE_3544(3328, 2957, 0, SOUTH, 3)
+        SNAKE_3544(3331, 2955, 0, SOUTH, 3)
+        SNAKE_3544(3331, 2961, 0, SOUTH, 3)
         6138(3333, 2952, 0, SOUTH, 8)
         ALI_THE_OPERATOR(3334, 2949, 0, SOUTH, 2)
         6136(3334, 2956, 0, NORTH, 0)

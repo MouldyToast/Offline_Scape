@@ -10,8 +10,8 @@ import org.jesse.game.obj.ids.*
 import org.jesse.game.world.`object`.WorldObject
 
 class DukeScoreboard : DT2Scoreboard(
-        scoreboard = DUKE_SCOREBOARD,
-        bossName = "duke sucellus"
+    scoreboard = DUKE_SCOREBOARD,
+    bossName = "duke sucellus"
 ) {
 
     override fun getBossStatistics(): DT2Score =

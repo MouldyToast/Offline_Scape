@@ -527,7 +527,7 @@ public enum AmmunitionDefinitions implements AmmunitionDefinition {
     private static boolean hasCustomAmmoHandling(int weaponId) {
         return switch (weaponId) {
             case ItemId.TOXIC_BLOWPIPE, ItemId.CRYSTAL_BOW, ItemId.BOW_OF_FAERDHINEN, ItemId.CRAWS_BOW,
-                 ItemId.WEBWEAVER_BOW_27655 -> true;
+                 ItemId.WEBWEAVER_BOW -> true;
             default -> false;
         };
     }

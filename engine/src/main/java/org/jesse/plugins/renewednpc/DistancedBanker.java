@@ -60,7 +60,7 @@ public class DistancedBanker extends NPCPlugin implements ItemOnNPCAction {
 
     @Override
     public int[] getNPCs() {
-        return new int[] { NpcId.BANKER_2117, NpcId.BANKER_2118, NpcId.MAGNUS_GRAM, NpcId.BANKER_16029, NpcId.BANKER_16030 };
+        return new int[] { NpcId.BANKER_2117, NpcId.BANKER_2118, NpcId.MAGNUS_GRAM };
     }
 
     @Override

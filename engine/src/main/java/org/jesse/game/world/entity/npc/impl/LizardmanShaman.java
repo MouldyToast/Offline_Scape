@@ -216,7 +216,7 @@ public class LizardmanShaman extends NPC implements Spawnable, CombatScript {
         final Item helmet = player.getHelmet();
         if (equipment.getId(EquipmentSlot.HELMET) == ItemId.SHAYZIEN_HELM_5 || (helmet != null && helmet.getName().toLowerCase().contains("slayer helm")))
             modifier -= 0.2F;
-        if (equipment.getId(EquipmentSlot.PLATE) == ItemId.SHAYZIEN_PLATEBODY_5) modifier -= 0.2F;
+        if (equipment.getId(EquipmentSlot.PLATE) == ItemId.SHAYZIEN_BODY_5) modifier -= 0.2F;
         if (equipment.getId(EquipmentSlot.LEGS) == ItemId.SHAYZIEN_GREAVES_5) modifier -= 0.2F;
         if (equipment.getId(EquipmentSlot.HANDS) == ItemId.SHAYZIEN_GLOVES_5) modifier -= 0.2F;
         if (equipment.getId(EquipmentSlot.BOOTS) == ItemId.SHAYZIEN_BOOTS_5) modifier -= 0.2F;

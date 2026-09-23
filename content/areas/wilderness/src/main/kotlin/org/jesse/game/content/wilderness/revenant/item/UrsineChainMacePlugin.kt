@@ -12,10 +12,10 @@ import org.jesse.game.item.ids.*
 @Suppress("unused")
 class UrsineChainMacePlugin : AbstractRevenantWeaponPlugin(
     chargedToUnchargedIdMap =  HashBiMap.create<Int, Int>().apply {
-        put(URSINE_CHAINMACE_27660, URSINE_CHAINMACE_U_27657)
+        put(URSINE_CHAINMACE, URSINE_CHAINMACE_U)
     },
     dismantleIngredientsByUnchargedIdMap = mapOf(
-        URSINE_CHAINMACE_U_27657 to arrayOf(
+        URSINE_CHAINMACE_U to arrayOf(
             Item(CLAWS_OF_CALLISTO),
             Item(VIGGORAS_CHAINMACE_U)
         )

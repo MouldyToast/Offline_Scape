@@ -35,5 +35,5 @@ class JarOfVenomOnWeave : ItemOnNPCAction {
     }
 
     override fun getItems(): Array<Any> = arrayOf(JAR_OF_VENOM)
-    override fun getObjects(): Array<Any> = arrayOf(WEAVE_13677)
+    override fun getObjects(): Array<Any> = arrayOf(WEAVE)
 }

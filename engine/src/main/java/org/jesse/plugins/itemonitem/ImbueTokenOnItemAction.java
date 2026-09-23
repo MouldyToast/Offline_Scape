@@ -51,7 +51,7 @@ public class ImbueTokenOnItemAction implements ItemOnItemAction {
     }
 
     private static boolean isImbueScroll(Item from) {
-        return from.getId() == ItemId.IMBUE_SCROLL || from.getId() == ItemId.SCROLL_OF_IMBUING;
+        return from.getId() == ItemId.SCROLL_OF_IMBUING;
     }
 
     @Override
@@ -60,7 +60,6 @@ public class ImbueTokenOnItemAction implements ItemOnItemAction {
         for (final ImbueableItem item : ImbueableItem.values) {
             list.add(item.getNormal());
         }
-        list.add(ItemId.IMBUE_SCROLL);
         list.add(ItemId.SCROLL_OF_IMBUING);
         return list.toArray(new int[list.size()]);
     }

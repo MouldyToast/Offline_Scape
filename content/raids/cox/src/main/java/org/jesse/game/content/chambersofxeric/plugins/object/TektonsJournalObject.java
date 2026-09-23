@@ -19,7 +19,7 @@ public class TektonsJournalObject implements ObjectAction {
     @Override
     public void handleObjectAction(final Player player, final WorldObject object, final String name, final int optionId, final String option) {
         player.getRaid().ifPresent(raid -> {
-            if (object.getId() == ObjectId.TEKTONS_JOURNAL) {
+            if (object.getId() == ObjectId.TEKTONS_JOURNAL_30022) {
                 if (!player.getInventory().hasFreeSlots()) {
                     player.sendMessage("You need some more free space to pick this up.");
                     return;
@@ -36,6 +36,6 @@ public class TektonsJournalObject implements ObjectAction {
 
     @Override
     public Object[] getObjects() {
-        return new Object[] { ObjectId.TEKTONS_JOURNAL };
+        return new Object[] { ObjectId.TEKTONS_JOURNAL_30022 };
     }
 }

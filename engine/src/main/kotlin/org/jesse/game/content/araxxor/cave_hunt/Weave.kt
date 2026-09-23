@@ -58,5 +58,5 @@ class Weave: NPCPlugin() {
         }
     }
 
-    override fun getNPCs(): IntArray = intArrayOf(WEAVE_13677)
+    override fun getNPCs(): IntArray = intArrayOf(WEAVE)
 }

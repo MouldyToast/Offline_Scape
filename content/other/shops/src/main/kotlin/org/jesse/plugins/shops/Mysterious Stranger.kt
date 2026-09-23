@@ -12,7 +12,7 @@ class MysteriousStranger : ShopScript() {
 
     init {
         "Mysterious Stranger"(555, ShopCurrency.COINS, STOCK_ONLY) {
-            VERZIKS_CRYSTAL_SHARD(9500, 10000, 75000)
+            ESCAPE_CRYSTAL(9500, 10000, 75000)
         }
     }
 }

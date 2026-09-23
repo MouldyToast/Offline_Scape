@@ -34,7 +34,7 @@ public final class ColosseumWaveLoot {
         new Drop(ItemId.DEATH_RUNE,      150,  1),
         new Drop(ItemId.CHAOS_RUNE,      150,  1),
         new Drop(ItemId.SUNFIRE_SPLINTERS,150, 1),
-        new Drop(ItemId.CANNONBALL,       80,  1),
+        new Drop(ItemId.STEEL_CANNONBALL,       80,  1),
         new Drop(ItemId.RUNE_KITESHIELD,   4,  1),
         new Drop(ItemId.RUNE_CHAINBODY,    1,  1),
     };
@@ -45,7 +45,7 @@ public final class ColosseumWaveLoot {
         new Drop(ItemId.DEATH_RUNE,      150,  9),
         new Drop(ItemId.CHAOS_RUNE,      150,  9),
         new Drop(ItemId.SUNFIRE_SPLINTERS,150, 9),
-        new Drop(ItemId.CANNONBALL,       80,  9),
+        new Drop(ItemId.STEEL_CANNONBALL,       80,  9),
         new Drop(ItemId.RUNE_KITESHIELD,   4,  9),
         new Drop(ItemId.RUNE_CHAINBODY,    1,  9),
         // Uncommon (1 each × 7 = 7)
@@ -65,7 +65,7 @@ public final class ColosseumWaveLoot {
         new Drop(ItemId.DEATH_RUNE,       150,  5_535),
         new Drop(ItemId.CHAOS_RUNE,       150,  5_535),
         new Drop(ItemId.SUNFIRE_SPLINTERS,150,  5_535),
-        new Drop(ItemId.CANNONBALL,        80,  5_535),
+        new Drop(ItemId.STEEL_CANNONBALL,        80,  5_535),
         new Drop(ItemId.RUNE_KITESHIELD,    4,  5_535),
         new Drop(ItemId.RUNE_CHAINBODY,     1,  5_535),
         // Uncommon (615 each × 7 = 4,305)
@@ -208,7 +208,7 @@ public final class ColosseumWaveLoot {
         new Drop(ItemId.DEATH_RUNE,         300,    360),
         new Drop(ItemId.RUNE_WARHAMMER,       5,    360),
         // Mid (50 each × 4 = 200)
-        new Drop(ItemId.CANNONBALL,        2_000,    50),
+        new Drop(ItemId.STEEL_CANNONBALL,        2_000,    50),
         new Drop(ItemId.DRAGON_PLATESKIRT,     5,    50),
         new Drop(ItemId.DRAGON_ARROWTIPS,    350,    50),
         new Drop(ItemId.ONYX_BOLTS,          150,    50),

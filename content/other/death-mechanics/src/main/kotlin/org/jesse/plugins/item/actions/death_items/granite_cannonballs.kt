@@ -16,7 +16,7 @@ class GraniteCannonballsItemaction : ItemActionScript() {
 
         death {
             if (pvp) {
-                lost { yield(Item(CANNONBALL, item.amount)) }
+                lost { yield(Item(STEEL_CANNONBALL, item.amount)) }
             } else {
                 kept { yield(item) }
             }

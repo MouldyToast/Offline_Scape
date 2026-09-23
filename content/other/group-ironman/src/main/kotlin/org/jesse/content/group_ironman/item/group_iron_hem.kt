@@ -15,7 +15,7 @@ class GroupIronHemItemaction : ItemActionScript() {
     val cooldownSeconds = 30
 
     init {
-        items(GROUP_IRON_HELM, HARDCORE_GROUP_IRON_HELM)
+        items(GROUP_IRONMAN_HELM, HARDCORE_GROUP_IRONMAN_HELM)
 
 
         "teleport" {

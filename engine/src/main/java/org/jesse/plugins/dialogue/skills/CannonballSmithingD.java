@@ -13,7 +13,7 @@ import org.jesse.plugins.dialogue.SkillDialogue;
 public class CannonballSmithingD extends SkillDialogue {
 
 	public CannonballSmithingD(Player player) {
-		super(player, "How many bars would you like to smith?", new Item(ItemId.CANNONBALL));
+		super(player, "How many bars would you like to smith?", new Item(ItemId.STEEL_CANNONBALL));
 	}
 
 	@Override

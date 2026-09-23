@@ -14,19 +14,19 @@ public enum OreDefinitions {
     /**
      * Ores
      */
-    TIN(741600, 438, 1, 1, 2, 17.5, 2, 1, true, ObjectId.ROCKS_11360, ObjectId.ROCKS_11361, ObjectId.ROCKS_10080),
-    COPPER(741600, 436, 1, 1, 2, 17.5, 2, 1, true, ObjectId.ROCKS_10943, ObjectId.ROCKS_11161, ObjectId.ROCKS_10079),
-    CLAY(741600, 434, 1, 1, 2, 5, 2, 1, true, ObjectId.ROCKS_11362, ObjectId.ROCKS_11363),
-    SOFT_CLAY(741600, ItemId.SOFT_CLAY, 70, 1, 67, 5, 2, 1, true, ObjectId.ROCKS_36210),
-    BLURITE(741600, 668, 10, 10, 47, 17.5, 5, 1, true, ObjectId.ROCKS_11378, ObjectId.ROCKS_11379),
-    IRON(741600, 440, 15, 15, 3, 35, 6, 1, true, ObjectId.ROCKS_11364, ObjectId.ROCKS_11365),
-    SILVER(741600, 442, 20, 25, 17, 40, 8, 1, true, ObjectId.ROCKS_11368, ObjectId.ROCKS_11369),
-    COAL(296640, 453, 30, 35, 12, 50, 6, 1, true, ObjectId.ROCKS_11366, ObjectId.ROCKS_11367),
-    GOLD(296640, 444, 40, 45, 17, 65, 9, 1, true, ObjectId.ROCKS_11370, ObjectId.ROCKS_11371),
-    MITHRIL(148320, 447, 55, 65, 33, 80, 12, 1, true, ObjectId.ROCKS_11372, ObjectId.ROCKS_11373),
-    LOVAKITE(245562, 13356, 65, 100, 50, 10, 0, 1, true, ObjectId.ROCKS_28596, ObjectId.ROCKS_28597),
-    ADAMANTITE(59328, 449, 70, 80, 67, 95, 15, 1, true, ObjectId.ROCKS_11374, ObjectId.ROCKS_11375),
-    RUNITE(42377, 451, 85, 99, 150, 125, 18, 1, false, ObjectId.ROCKS_11376, ObjectId.ROCKS_11377),
+    TIN(741600, 438, 1, 1, 2, 17.5, 2, 1, true, ObjectId.TIN_ROCKS_11360, ObjectId.TIN_ROCKS_11361, ObjectId.TIN_ROCKS),
+    COPPER(741600, 436, 1, 1, 2, 17.5, 2, 1, true, ObjectId.COPPER_ROCKS_10943, ObjectId.COPPER_ROCKS_11161, ObjectId.COPPER_ROCKS),
+    CLAY(741600, 434, 1, 1, 2, 5, 2, 1, true, ObjectId.CLAY_ROCKS, ObjectId.CLAY_ROCKS_11363),
+    SOFT_CLAY(741600, ItemId.SOFT_CLAY, 70, 1, 67, 5, 2, 1, true, ObjectId.SOFT_CLAY_ROCKS_36210),
+    BLURITE(741600, 668, 10, 10, 47, 17.5, 5, 1, true, ObjectId.BLURITE_ROCKS, ObjectId.BLURITE_ROCKS_11379),
+    IRON(741600, 440, 15, 15, 3, 35, 6, 1, true, ObjectId.IRON_ROCKS, ObjectId.IRON_ROCKS_11365),
+    SILVER(741600, 442, 20, 25, 17, 40, 8, 1, true, ObjectId.SILVER_ROCKS, ObjectId.SILVER_ROCKS_11369),
+    COAL(296640, 453, 30, 35, 12, 50, 6, 1, true, ObjectId.COAL_ROCKS_11366, ObjectId.COAL_ROCKS_11367),
+    GOLD(296640, 444, 40, 45, 17, 65, 9, 1, true, ObjectId.GOLD_ROCKS, ObjectId.GOLD_ROCKS_11371),
+    MITHRIL(148320, 447, 55, 65, 33, 80, 12, 1, true, ObjectId.MITHRIL_ROCKS, ObjectId.MITHRIL_ROCKS_11373),
+    LOVAKITE(245562, 13356, 65, 100, 50, 10, 0, 1, true, ObjectId.LOVAKITE_ROCKS, ObjectId.LOVAKITE_ROCKS_28597),
+    ADAMANTITE(59328, 449, 70, 80, 67, 95, 15, 1, true, ObjectId.ADAMANTITE_ROCKS, ObjectId.ADAMANTITE_ROCKS_11375),
+    RUNITE(42377, 451, 85, 99, 150, 125, 18, 1, false, ObjectId.RUNITE_ROCKS, ObjectId.RUNITE_ROCKS_11377),
     /**
      * Motherlode mine
      */
@@ -35,9 +35,9 @@ public enum OreDefinitions {
     /**
      * Unique
      */
-    SANDSTONE(741600, -1, 35, 25, 8, -1, 0, 1, true, ObjectId.ROCKS_11386),
-    GRANITE(741600, -1, 45, 35, 8, -1, 0, 1, true, ObjectId.ROCKS_11387),
-    GEM(211886, -1, 40, 60, 175, 65, 0, 1, false, ObjectId.ROCKS_11380, ObjectId.ROCKS_11381),
+    SANDSTONE(741600, -1, 35, 25, 8, -1, 0, 1, true, ObjectId.SANDSTONE_ROCKS),
+    GRANITE(741600, -1, 45, 35, 8, -1, 0, 1, true, ObjectId.GRANITE_ROCKS),
+    GEM(211886, -1, 40, 60, 175, 65, 0, 1, false, ObjectId.GEM_ROCKS, ObjectId.GEM_ROCKS_11381),
     RUNITE_GOLEM_ROCKS(42377, 451, 85, 99, -1, 125, 0, 1, false),
     ROCKSLIDE(-1, -1, 99, 15, 20, 0, 0, 1, false, 27062),
     ROCKFALL(-1, -1, 30, 20, 30, 10, 0, 1, false, 26679, 26680),
@@ -51,7 +51,7 @@ public enum OreDefinitions {
     DAEYALT_ESSENCE(-1, 24706, 60, 1, -1, 5, 0, 0, false, DaeyaltEssence.ESSENSE),
 
     VOLCANIC_ASH(741600, 21622, 22, 5, 50, 10, 0, 11, false, 30985),
-    AMETHYST(46350, 21347, 92, 100, 42, 240, 0, 11, false, ObjectId.CRYSTALS, ObjectId.CRYSTALS_11389),
+    AMETHYST(46350, 21347, 92, 100, 42, 240, 0, 11, false, ObjectId.AMETHYST_CRYSTALS, ObjectId.AMETHYST_CRYSTALS_11389),
     ANCIENT_ESSENCE(-1, ItemId.ANCIENT_ESSENCE, 75, 15, 25, 13.5, 0, 15, false, 46701),
     /**
      * Castle wars

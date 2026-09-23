@@ -660,7 +660,7 @@ public abstract class PlayerCombat extends Action {
         }
         else if (weaponId == ItemId.SOULREAPER_AXE_28338)
             player.getActionManager().setAction(new SoulreaperCombat(entity));
-        else if (weaponId == ItemId.URSINE_CHAINMACE_27660)   player.getActionManager().setAction(new UrsineChainmaceCombat(entity));
+        else if (weaponId == ItemId.URSINE_CHAINMACE)   player.getActionManager().setAction(new UrsineChainmaceCombat(entity));
         else if (weaponId == ItemId.VIGGORAS_CHAINMACE) player.getActionManager().setAction(new ViggoraChainmaceCombat(entity));
         else if (weaponId == ItemId.BLISTERWOOD_FLAIL)    player.getActionManager().setAction(new BlisterwoodFlailCombat(entity));
         else if (weaponId == ItemId.IVANDIS_FLAIL) {
@@ -1171,7 +1171,7 @@ public abstract class PlayerCombat extends Action {
 
             final int damage = Math.min(hit.getDamage(), target.getHitpoints());
             AttackStyle style = getAttackStyle();
-            if(hit.getSource() instanceof Player p && p.getWeapon() != null && p.getWeapon().getId() == ItemId.VOIDWAKER_27690 && usingSpecial)
+            if(hit.getSource() instanceof Player p && p.getWeapon() != null && p.getWeapon().getId() == ItemId.VOIDWAKER && usingSpecial)
                 style = new AttackStyle(AttackType.MAGIC, AttackExperienceType.MAGIC_XP);
             grantExperience(SkillConstants.HITPOINTS, damage * 1.33F * xpModifier);
             AttackExperienceType type = style.getExperienceType();

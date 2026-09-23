@@ -66,7 +66,7 @@ public class DestroyItemDialogue extends Dialogue {
 		return switch (id) {
 			case COLLECTION_LOG -> "You can get another Collection log from the Collector in the Varrock Museum.";
 			case DIZANAS_QUIVER_BROKEN, BLESSED_DIZANAS_QUIVER_BROKEN, DIZANAS_QUIVER_UNCHARGED,
-				 DIZANAS_QUIVER_UNCHARGED_L, DIZANAS_QUIVER, DIZANAS_QUIVER_L, BLESSED_DIZANAS_QUIVER,
+				 DIZANAS_QUIVER_L_UNCHARGED, DIZANAS_QUIVER, DIZANAS_QUIVER_L, BLESSED_DIZANAS_QUIVER,
 				 BLESSED_DIZANAS_QUIVER_L -> "You can get another from The Colosseum.";
 			case SKELETON_BOOTS, SKELETON_GLOVES, SKELETON_LEGGINGS, SKELETON_MASK,
 				 SKELETON_SHIRT -> "You can reclaim this item from Diango in Draynor Village.";

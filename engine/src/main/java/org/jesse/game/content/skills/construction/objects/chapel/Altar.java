@@ -198,7 +198,7 @@ public final class Altar implements ObjectInteraction, ItemOnObjectAction {
             player.getSkills().addXp(SkillConstants.PRAYER, bone.getXp() * modifier);
             if (altar.getId() != 18258 && altar.getId() != 411) {
                 World.sendGraphics(OFFERING_GFX, altar);
-            } else if (altar.getId() == ObjectId.SARADOMIN_ALTAR) {
+            } else if (altar.getId() == ObjectId.ALTAR_18258) {
                 World.sendGraphics(OFFERING_GFX, altar.transform(0, 1, 0));
             }
             return 3;

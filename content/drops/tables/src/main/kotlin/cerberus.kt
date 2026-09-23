@@ -48,7 +48,7 @@ class CerberusDroptable : NPCDropTableScript() {
                 SOUL_RUNE quantity 100 rarity 6
                 PURE_ESSENCE quantity 300.noted rarity 5
                 BLOOD_RUNE quantity 60 rarity 4
-                CANNONBALL quantity 50 rarity 4
+                STEEL_CANNONBALL quantity 50 rarity 4
                 RUNITE_BOLTS_UNF quantity 40 rarity 4
                 DEATH_RUNE quantity 100 rarity 3
                 // Other

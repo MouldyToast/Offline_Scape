@@ -8,11 +8,11 @@ import org.jesse.game.util.Direction.*
 class Region12854 : NPCSpawnsScript() {
 
     init {
-        WARRIOR_WOMAN(3202, 3487, 0, SOUTH, 5)
+        WARRIOR_3260(3202, 3487, 0, SOUTH, 5)
         SIR_PRYSIN(3204, 3473, 0, SOUTH, 3)
         GUARD_3010(3204, 3496, 0, SOUTH, 5)
         6708(3205, 3463, 0, SOUTH, 10)
-        WARRIOR_WOMAN(3205, 3487, 0, SOUTH, 5)
+        WARRIOR_3260(3205, 3487, 0, SOUTH, 5)
         GUARD_3010(3206, 3462, 0, SOUTH, 5)
         6186(3208, 3496, 0, SOUTH, 2)
         6203(3209, 3495, 0, SOUTH, 2)

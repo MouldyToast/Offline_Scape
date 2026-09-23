@@ -94,7 +94,7 @@ public class CannonballSmithing extends Action {
 
     private void smithCannonball(int productAmount) {
         player.getAchievementDiaries().update(MorytaniaDiary.MAKE_CANNONBALLS);
-        player.getInventory().addItem(new Item(ItemId.CANNONBALL, productAmount ));
+        player.getInventory().addItem(new Item(ItemId.STEEL_CANNONBALL, productAmount ));
         player.getSkills().addXp(SkillConstants.SMITHING, XP);
         player.sendFilteredMessage("You pour the molten metal into your cannonball mould.");
         player.sendFilteredMessage("The molten metal cools slowly to form " + productAmount + " cannonballs.");

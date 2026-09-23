@@ -1,8 +1,8 @@
 # PROJECT_MAP.md
 
-> Living reference document for the Offline\_Scape (rev-228) codebase.
+> Living reference document for the Offline\_Scape (rev-240) codebase.
 > Generated from source investigation — not inferred from names.
-> Last updated: 2026-09-15, at commit `e5c78ef6`.
+> Last updated: 2026-09-23, at commit `b36e375`.
 
 ---
 
@@ -28,7 +28,7 @@ Notable: NR infrastructure (credit store, vote shop, sanctions DB) — cull cand
 
 **Purpose:** Application entry point wrapper. Gradle run tasks only; no source.
 
-Key tasks: `runDev`, `runBeta`, `runProduction`, `runPluginScanner`, `runHotswap`. (`generateFlatCache` and `generateWebJs5ResponseDirectory` are dead — see Landmines. `generateCache` is commented out.)
+Key tasks: `runDev`, `runBeta`, `runProduction`, `runHotswap`. (`generateFlatCache` and `generateWebJs5ResponseDirectory` are dead — reference `org.jire.runecache.*` classes that exist nowhere, delete candidates.)
 
 Auto-discovery: `findContentModules()`/`findToolModules()` walk `:content` and `:tools` subprojects and add every one with a `build.gradle.kts` as `runtimeOnly`.
 
@@ -36,7 +36,7 @@ Entry point: `org.jesse.Main` (in `engine`). `applicationName` is `"near-reality
 
 ### cache/
 
-**Purpose:** Cache loading, definition decoding, XTEA keys, RSProt API surface, event bus. The server serves the vanilla OpenRS2 cache unmodified — there is no cache build pipeline.
+**Purpose:** Cache loading, definition decoding, XTEA keys, RSProt API surface, event bus. The server loads the vanilla OpenRS2 cache for definitions — there is no cache build pipeline.
 
 Key packages:
 - `mgi.types` — Cache definition decoders (items, NPCs, objects, animations, components, enums, varbits, params, structs, sprites, model draw code). 105 files.
@@ -48,32 +48,32 @@ Key packages:
 - `org.jesse.ContentConstants` — `SERVER_NAME = "Offline_scape"`, plus `CASTLE_WARS`, `CONSTRUCTION`, `HALLOWEEN`, `SPAWN_MODE` toggles.
 - `net.runelite` (3 files — verified extensions of the runelite-cache artifact), `cloud.rsps` (2 files).
 
-Size: 166 Java files (~47,600 lines), 47 Kotlin files (~2,600 lines).
+Size: 166 Java files (~47,800 lines), 47 Kotlin files (~2,700 lines).
 
-Depends on: `util`, `core-model`. Exposes RuneLite cache lib, RSProt 228 API, Netty, BouncyCastle as `api`.
+Depends on: `util`, `core-model`. Exposes RuneLite cache lib, RSProt 240 API, Netty, BouncyCastle as `api`.
 
-Tasks: `setupCache`, `downloadCache`, `downloadXTEAs`, `resetCache`. `openrs2CacheId = "2043"` pins the OpenRS2 build.
+Tasks: `setupCache`, `downloadCache`, `downloadXTEAs`, `resetCache`. `openrs2CacheId = "2710"` pins the OpenRS2 build.
 
 ### engine/
 
 **Purpose:** Server engine — world simulation, player/NPC entities, combat, skills, networking (RSProt), packet handling, plugin system, plus content not yet extracted to `content/`.
 
 Key packages (all `org.jesse` unless noted):
-- `game` — `GameConstants` (REVISION = 228, REGISTRATION_LOCATION = Tutorial Island 3093,3107,0), `GameInterface`, `GameLoader`; `GameToggles.java` (4 flags: `BARROWS_OLD_DISABLED`, `NIGHTMARE_SHURA_PREREQ`, `NEW_PLAYER_BROADCAST_DISABLED`, `COX_MASSES_ENABLED`).
-- `game.world.entity.player` — `Player.java` (5,377 lines), login, skills, containers, `GameCommands.java` (2,622 lines).
-- `game.world.entity.npc` — `NPC.java` (2,421 lines), combat scripts, spawn loader, combat defs.
+- `game` — `GameConstants` (REVISION = 240, REGISTRATION_LOCATION = Tutorial Island 3093,3107,0), `GameInterface`, `GameLoader`; `GameToggles.java` (4 flags: `BARROWS_OLD_DISABLED`, `NIGHTMARE_SHURA_PREREQ`, `NEW_PLAYER_BROADCAST_DISABLED`, `COX_MASSES_ENABLED`).
+- `game.world.entity.player` — `Player.java` (5,361 lines), login, skills, containers, `GameCommands.java` (2,654 lines).
+- `game.world.entity.npc` — `NPC.java` (2,422 lines), combat scripts, spawn loader, combat defs.
 - `game.world.region` — `Region.java` (715), `DynamicRegion.java` (329), `GlobalAreaManager`.
 - `game.content.skills` — all skill implementations (still in engine, not `content/`).
-- `game.content.commands` — Developer (665) / Administrator (570) / Player (120) commands.
-- `game.net.packet` / `game.packet` — `PacketDispatcher.java` (681), `GameMessageConsumers.kt`, `PacketSender.kt` (4,165).
+- `game.content.commands` — Developer (661) / Administrator (565) / Player (76) commands.
+- `game.net.packet` / `game.packet` — `PacketDispatcher.java` (698), `GameMessageConsumers.kt`, `PacketSender.kt` (4,390).
 - `game.model.ui` — `InterfaceHandler.java` (495) + 91 production interface implementations in `testinterfaces/` (name is legacy; NOT test code).
-- `plugins` — `PluginScanner.kt` (164), `PluginLoader.kt` (90).
+- `plugins` — `PluginScanner.kt`, `PluginClasspathScan.kt` — ClassGraph-based discovery and loading at boot.
 - `network` — `NetworkServiceFactory`, `BootstrapFactory`, `Js5Info`.
 - `api` — store/vote/sanction/user/item API services (NR infrastructure — 22 files).
 - `cloud.rsps` (46 files, rename deferred by decision) — `rsprot/` integration layer (Session, connection handler, login blocks, auth, ping, reconnect), hiscores + worlds Ktor servers, HAProxy, `PluginRoot` scanner marker, misc util.
 - `game.content` NR systems still present: `donation` (3 files), `killstreak` (3), `lootkeys` (6), `breaches` (25), `vote` (1), `preset` (4), `imbue/DisimbueItemHandler.kt`, `scoreboard` (5 files), `xamphur/PhantomHandCorruption.kt`.
 
-Size: 3,168 Java files (~305,600 lines), 421 Kotlin files (~33,600 lines). By far the largest module.
+Size: 3,163 Java files (~305,500 lines), 424 Kotlin files (~34,300 lines). By far the largest module.
 
 Depends on: `threads`, `cache`, `core-model` (api scope).
 
@@ -81,9 +81,9 @@ Depends on: `threads`, `cache`, `core-model` (api scope).
 
 **Purpose:** Shared data models + the three ID constant files. 100% Kotlin.
 
-Key packages: `org.jesse.game.item.ids.ItemId` (14,115 lines), `org.jesse.game.npc.ids.NpcId` (11,751), `org.jesse.game.obj.ids.ObjectId` (26,110) — top-level `const val` with `@file:JvmName` for Java interop. Also container/item/location models.
+Key packages: `org.jesse.game.item.ids.ItemId` (17,465 lines), `org.jesse.game.npc.ids.NpcId` (13,914), `org.jesse.game.obj.ids.ObjectId` (30,513) — top-level `const val` with `@file:JvmName` for Java interop. Also container/item/location models.
 
-Size: 24 Kotlin files, ~53,900 lines (the three ID files are ~52,000 of that).
+Size: 24 Kotlin files, ~63,800 lines (the three ID files are ~61,900 of that).
 
 Depends on: `api` (api scope).
 
@@ -128,7 +128,7 @@ Size: 99 Kotlin files, ~3,500 lines. Packages `org.jesse.scripts.*`. Content mod
 | `travel/` | magic carpet, master scroll book, item transportation |
 | `events/`, `quest/` | empty placeholders (`.gitkeep` only) |
 
-Size: 949 Java files (~79,000 lines), 1,785 Kotlin files (~92,500 lines).
+Size: 853 Java files (~72,400 lines), 1,882 Kotlin files (~98,300 lines).
 
 ### tools/
 
@@ -150,24 +150,24 @@ See Section 4.
 | `engine/src/main/java/org/jesse/game/GameLoader.java` | 25 | loads cache + defs via CacheManager |
 | `cache/src/main/java/org/jesse/CacheManager.java` | 108 | cache init |
 | `cache/src/main/java/mgi/types/Definitions.java` | 125 | definition load order |
-| `engine/src/main/java/org/jesse/game/GameConstants.java` | — | REVISION=228, REGISTRATION_LOCATION |
+| `engine/src/main/java/org/jesse/game/GameConstants.java` | — | REVISION=240, REGISTRATION_LOCATION |
 | `engine/src/main/java/org/jesse/GameToggles.java` | — | 4 feature flags |
 | `cache/src/main/java/org/jesse/ContentConstants.java` | — | SERVER_NAME, feature toggles |
-| `engine/.../world/World.java` | 1,886 | world simulation |
-| `engine/.../world/entity/player/Player.java` | 5,377 | player entity (god class) |
-| `engine/.../world/entity/npc/NPC.java` | 2,421 | NPC entity |
+| `engine/.../world/World.java` | 1,882 | world simulation |
+| `engine/.../world/entity/player/Player.java` | 5,361 | player entity (god class) |
+| `engine/.../world/entity/npc/NPC.java` | 2,422 | NPC entity |
 
 ### Login, Commands, Combat
 
 | File | Lines | Purpose |
 |---|---|---|
-| `engine/.../player/login/LoginManager.java` | 778 | login |
-| `engine/.../player/GameCommands.java` | 2,622 | command dispatcher |
-| `engine/.../commands/DeveloperCommands.kt` | 665 | dev commands |
-| `engine/.../commands/AdministratorCommands.kt` | 570 | admin commands |
-| `engine/.../commands/PlayerCommands.kt` | 120 | player commands |
-| `engine/.../combat/PlayerCombat.java` | 1,422 | player combat |
-| `engine/.../combat/SpecialAttack.java` | 1,559 | special attacks |
+| `engine/.../player/login/LoginManager.java` | 779 | login |
+| `engine/.../player/GameCommands.java` | 2,654 | command dispatcher |
+| `engine/.../commands/DeveloperCommands.kt` | 661 | dev commands |
+| `engine/.../commands/AdministratorCommands.kt` | 565 | admin commands |
+| `engine/.../commands/PlayerCommands.kt` | 76 | player commands |
+| `engine/.../action/combat/PlayerCombat.java` | 1,434 | player combat |
+| `engine/.../action/combat/SpecialAttack.java` | 1,614 | special attacks |
 | `engine/.../npc/combat/CombatScript.java` | — | NPC combat base |
 
 ### Definitions & Cache
@@ -175,25 +175,25 @@ See Section 4.
 | File | Lines | Purpose |
 |---|---|---|
 | `cache/.../config/items/ItemDefinitions.java` | 2,361 | item defs |
-| `cache/.../config/npcs/NPCDefinitions.java` | 1,484 | NPC defs |
+| `cache/.../config/npcs/NPCDefinitions.java` | 1,564 | NPC defs |
 | `cache/.../config/ObjectDefinitions.java` | — | object defs |
-| `cache/.../component/ComponentDefinitions.java` | 1,881 | interface component defs |
+| `cache/.../component/ComponentDefinitions.java` | 1,878 | interface component defs |
 | `cache/.../world/region/XTEALoader.java` | — | XTEA key loading |
 
 ### ID Constants
 
 | File | Lines | Notes |
 |---|---|---|
-| `core-model/.../obj/ids/ObjectId.kt` | 26,110 | generated, don't hand-edit |
-| `core-model/.../item/ids/ItemId.kt` | 14,115 | generated |
-| `core-model/.../npc/ids/NpcId.kt` | 11,751 | generated |
+| `core-model/.../obj/ids/ObjectId.kt` | 30,513 | generated, don't hand-edit |
+| `core-model/.../item/ids/ItemId.kt` | 17,465 | generated |
+| `core-model/.../npc/ids/NpcId.kt` | 13,914 | generated |
 
 ### Networking & Packets
 
 | File | Lines | Purpose |
 |---|---|---|
-| `engine/.../net/packet/PacketDispatcher.java` | 681 | packet dispatch |
-| `engine/.../packet/PacketSender.kt` | 4,165 | outgoing packets |
+| `engine/.../net/packet/PacketDispatcher.java` | 698 | packet dispatch |
+| `engine/.../packet/PacketSender.kt` | 4,390 | outgoing packets |
 | `engine/.../net/packet/GameMessageConsumers.kt` | — | incoming handler registration |
 | `engine/.../cloud/rsps/rsprot/*.kt` | 7 files | RSProt session/auth/login layer |
 | `engine/.../network/NetworkServiceFactory.kt` | — | network bootstrap |
@@ -202,8 +202,8 @@ See Section 4.
 
 | File | Lines | Purpose |
 |---|---|---|
-| `engine/.../plugins/PluginScanner.kt` | 164 | writes `data/plugins.dat` |
-| `engine/.../plugins/PluginLoader.kt` | 90 | Class.forName loading |
+| `engine/.../plugins/PluginScanner.kt` | — | ClassGraph discovery + Class.forName loading at boot |
+| `engine/.../plugins/PluginClasspathScan.kt` | — | shared ClassGraph scan provider |
 | `cache/.../plugins/PluginManager.java` | — | static event bus |
 
 ### Teleports, Shops, Spawns
@@ -217,7 +217,7 @@ See Section 4.
 | `engine/.../npc/spawns/NPCSpawnLoader.java` | 219 | NPC spawn loading |
 | `content/spawns/region/region{N}xxx/` | 911 files | per-region spawn DSL |
 | `cache/data/npcs/combat/*.npc.json` | 3,039 | per-NPC combat defs |
-| `cache/data/npcs/drops/*.drops.json` | 1,798 | per-NPC drop tables |
+| `cache/data/npcs/drops/*.drops.json` | 1,797 | per-NPC drop tables |
 
 ### Colosseum (active development)
 
@@ -232,15 +232,15 @@ See Section 4.
 | Module | Java files | Java lines | Kotlin files | Kotlin lines |
 |---|---|---|---|---|
 | api | 0 | 0 | 78 | 6,404 |
-| cache | 166 | 47,630 | 47 | 2,599 |
-| content | 949 | 79,000 | 1,785 | 92,485 |
-| core-model | 0 | 0 | 24 | 53,867 |
-| engine | 3,168 | 305,626 | 421 | 33,634 |
+| cache | 166 | 47,793 | 47 | 2,687 |
+| content | 853 | 72,354 | 1,882 | 98,320 |
+| core-model | 0 | 0 | 24 | 63,783 |
+| engine | 3,163 | 305,519 | 424 | 34,324 |
 | scripts | 0 | 0 | 99 | 3,497 |
 | threads | 0 | 0 | 2 | 136 |
 | tools | 0 | 0 | 19 | 1,400 |
 | util | 17 | 2,298 | 17 | 764 |
-| **Total** | **4,300** | **~435K** | **2,492** | **~195K** |
+| **Total** | **4,199** | **~428K** | **2,592** | **~211K** |
 
 ### Package namespaces
 
@@ -264,15 +264,15 @@ No `com.zenyte` or `com.near_reality` strings remain in source.
 | `worlds.json` | World config — localhost world 101, port 43594, `verifyPasswords: false`. Contains a `nearRealityGuild` key (branding remnant). |
 | `PROVENANCE_nr.txt` | Pre-collapse `com.near_reality` file listing — NR-cull identification map. |
 | `CUSTOM_ITEM_IDS.txt` | Manifest of the custom item layer (1,398 lines). |
-| `.data/gamevals/*.rscm` | Rev-228 RSCM symbolic-name tables (21 files). |
+| `.data/gamevals/*.rscm` | RSCM symbolic-name tables (21 files). |
 | `.data/gamevals-binary/` | `gamevals.dat` + `gamevals_generated.dat` — binary RSCM tables. |
 | `.run/` | IntelliJ run configurations. |
 
 ### `data/` directory
-`animations.json`, `components.json`, `enums.json`, `structs.json`, `music.json`, `item_variations.json`, `items/` (runtime item overrides + requirements), `examines/`, `areatypes/` (binary combat-zone maps), `osrsbox-db/`, `rewards/`, `referrals/` (orphaned — engine code deleted), `show_objects/`, `cs2_raws/`, `private.key` (RSA), `REWARD_SCHEMA.json`, stronghold questions, `diary_info.json`, `docs/INCOMPLETE_COMBAT_ACHIEVEMENTS.md`. `data/map/` and `data/raids/` are empty. `data/plugins.dat` is generated and gitignored.
+`animations.json`, `components.json`, `enums.json`, `structs.json`, `music.json`, `item_variations.json`, `items/` (runtime item overrides + requirements), `examines/`, `areatypes/` (binary combat-zone maps), `osrsbox-db/`, `rewards/`, `referrals/` (orphaned — engine code deleted), `show_objects/`, `cs2_raws/`, `private.key` (RSA), `REWARD_SCHEMA.json`, stronghold questions, `diary_info.json`, `docs/INCOMPLETE_COMBAT_ACHIEVEMENTS.md`. `data/map/` and `data/raids/` are empty.
 
 ### `cache/data/`
-Gitignored cache at `cache/data/cache/` (from OpenRS2 ID 2043 via `setupCache`), `objects/xteas.json`, door definitions, 3,039 combat JSONs, 1,798 drop JSONs.
+Gitignored cache at `cache/data/cache/` (from OpenRS2 ID 2710 via `setupCache`), `objects/xteas.json`, door definitions, 3,039 combat JSONs, 1,797 drop JSONs.
 
 ### Content format reference
 
@@ -290,33 +290,30 @@ Gitignored cache at `cache/data/cache/` (from OpenRS2 ID 2043 via `setupCache`),
 
 | Task | Purpose |
 |---|---|
-| `./gradlew :cache:setupCache` | Download rev-228 cache + XTEAs from OpenRS2 (ID 2043) — one-time |
+| `./gradlew :cache:setupCache` | Download rev-240 cache + XTEAs from OpenRS2 (ID 2710) — one-time |
 | `./gradlew :cache:resetCache` | Wipe and re-extract from local zip (no download) |
-| `./gradlew :app:runPluginScanner` | Scan for plugin classes → `data/plugins.dat` |
 | `./gradlew :app:runDev` | Start server (localhost, world 101, no password verify) |
 | `./gradlew :app:runHotswap` | Run with HotSwap Agent |
 | `./gradlew clean compileJava compileKotlin` | Compile check |
 
-Pipeline: `setupCache` → `runPluginScanner` → `runDev`. The vanilla cache is served unmodified.
+Pipeline: `setupCache` → `runDev`. The vanilla cache is loaded for definitions only — RSProx handles cache serving to the client.
 
-Re-run `runPluginScanner` after adding/removing plugin classes.
+Client: RSProx with rev-240 config.
 
-Client: RSProx with `jav_local_228.ws` config.
-
-**Adding a content module:** create `content/<group>/<name>/build.gradle.kts` with `compileOnly(projects.engine)` — auto-discovered. Then `runPluginScanner`.
+**Adding a content module:** create `content/<group>/<name>/build.gradle.kts` with `compileOnly(projects.engine)` — auto-discovered by Gradle, plugin classes discovered at boot via ClassGraph. Just restart the server.
 
 ---
 
 ## 6. Architecture Patterns
 
 ### Plugin discovery
-`PluginScanner` scans three package roots via marker classes: `Main::class` (org.jesse), `NearReality::class` (also org.jesse — redundant, kept as marker), `PluginRoot::class` (cloud.rsps). Writes `data/plugins.dat`; `PluginLoader` reads it and loads via `Class.forName`.
+`PluginClasspathScan.scan` creates a shared ClassGraph `ScanResult` at boot, scanning three package roots via marker classes: `Main::class` (org.jesse), `NearReality::class` (also org.jesse — redundant, kept as marker), `PluginRoot::class` (cloud.rsps). `PluginScanner.scanAndLoad(scanResult)` discovers plugin classes by type, sorts by `@PluginPriority`, and loads via `Class.forName` — all in one pass, no intermediate files. Add a class, restart, it's found.
 
 ### Event bus
 `PluginManager` (cache module, `org.jesse.plugins`) — static enum-singleton bus. `@Subscribe` static methods discovered at scan time; `PluginManager.post(event)` at runtime.
 
 ### Content module pattern
-`compileOnly(projects.engine)` means content compiles against engine but is only wired in at runtime through `app`'s runtimeOnly aggregation + plugin scanning. Content never appears on engine's compile classpath.
+`compileOnly(projects.engine)` means content compiles against engine but is only wired in at runtime through `app`'s runtimeOnly aggregation + ClassGraph plugin scanning. Content never appears on engine's compile classpath.
 
 ### Interfaces, combat scripts, definitions
 `GameInterface` enum + `InterfaceHandler` (495 lines) + 91 implementations in `testinterfaces/`; NPC combat scripts extend `CombatScript` registered via `CombatScriptsHandler`; cache decoders in `mgi.types` with runtime JSON overrides from `data/items/`.
@@ -350,10 +347,9 @@ Use the existing `AttributesExt.kt` delegate system (`persistentAttribute()`/`at
 
 ### Misleading names
 - `testinterfaces/` — 91 production interface implementations, not tests.
-- `plugins.dat` — generated binary, never hand-edited.
 
 ### Reflection / string-based loading that breaks on rename
-1. `PluginLoader` — `Class.forName` from `plugins.dat`; re-run `runPluginScanner` after any class moves.
+1. `PluginScanner.scanAndLoad` — `Class.forName` on discovered classes. Class moves are picked up automatically at next boot.
 2. `ControllerManager` — `Class.forName` on persisted controller names (plus the shim above).
 3. `GodwarsBossDoorObject` / `GodwarsInstancePortal` — `Class.forName` boss instance creation.
 4. `AbstractTOAManager` — reflective encounter loading (`content/raids/toa`).
@@ -364,31 +360,32 @@ Use the existing `AttributesExt.kt` delegate system (`persistentAttribute()`/`at
 275 shop files in `content/other/shops/` include spaces and apostrophes. Batch tooling must be null-safe Python, not bash loops.
 
 ### J2K gotcha
-Static `@Subscribe` methods becoming companion members without `@JvmStatic` silently unregister handlers — any batch conversion needs `runPluginScanner` + boot-log diff.
+Static `@Subscribe` methods becoming companion members without `@JvmStatic` silently unregister handlers — any batch conversion needs a boot-log diff.
 
 ### Largest files
 
 | File | Lines |
 |---|---|
-| `core-model/.../obj/ids/ObjectId.kt` | 26,110 |
-| `core-model/.../item/ids/ItemId.kt` | 14,115 |
-| `core-model/.../npc/ids/NpcId.kt` | 11,751 |
-| `engine/.../player/Player.java` | 5,377 |
-| `engine/.../packet/PacketSender.kt` | 4,165 |
+| `core-model/.../obj/ids/ObjectId.kt` | 30,513 |
+| `core-model/.../item/ids/ItemId.kt` | 17,465 |
+| `core-model/.../npc/ids/NpcId.kt` | 13,914 |
+| `engine/.../player/Player.java` | 5,361 |
+| `engine/.../packet/PacketSender.kt` | 4,390 |
 | `cache/.../utils/MapLocations.java` | 3,758 |
 | `cache/mgi/.../model/ModelData.java` | 2,919 |
-| `engine/.../player/GameCommands.java` | 2,622 |
+| `engine/.../player/GameCommands.java` | 2,654 |
 | `cache/mgi/.../Rasterizer3D.java` | 2,456 |
-| `engine/.../npc/NPC.java` | 2,421 |
+| `engine/.../npc/NPC.java` | 2,422 |
 | `cache/mgi/.../ItemDefinitions.java` | 2,361 |
-| `engine/.../World.java` | 1,886 |
-| `cache/mgi/.../ComponentDefinitions.java` | 1,881 |
-| `content/.../dt2/.../WhispererNPC.kt` | 1,866 |
+| `engine/.../World.java` | 1,882 |
+| `cache/mgi/.../ComponentDefinitions.java` | 1,878 |
+| `content/.../dt2/.../WhispererNPC.kt` | 1,867 |
 | `engine/.../slayer/RegularTask.kt` | 1,827 |
 | `api/.../util/BCrypt.kt` | 1,746 |
 | `engine/.../clues/EmoteClue.java` | 1,699 |
-| `engine/.../combat/SpecialAttack.java` | 1,559 |
+| `engine/.../action/combat/SpecialAttack.java` | 1,614 |
+| `cache/.../config/npcs/NPCDefinitions.java` | 1,564 |
 | `content/.../nex/.../NexNPC.java` | 1,503 |
 | `cache/.../efficientarea/Vector.java` | 1,471 |
 | `content/.../nightmare/.../BaseNightmareNPC.java` | 1,469 |
-| `engine/.../combat/PlayerCombat.java` | 1,422 |
+| `engine/.../action/combat/PlayerCombat.java` | 1,434 |

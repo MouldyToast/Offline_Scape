@@ -34,8 +34,9 @@ import org.jesse.game.world.region.GlobalAreaManager
 import org.jesse.game.world.region.XTEALoader
 import org.jesse.game.world.region.areatype.AreaTypes
 import org.jesse.logger.NearRealityLogger
-import org.jesse.plugins.PluginLoader
+import org.jesse.plugins.PluginClasspathScan
 import org.jesse.plugins.PluginManager
+import org.jesse.plugins.PluginScanner
 import org.jesse.plugins.events.PluginsLoadedEvent
 import org.jesse.plugins.events.ServerLaunchEvent
 import org.jesse.server.AttributesSerializable
@@ -213,7 +214,7 @@ object Main {
                 AreaTypes.SINGLES_PLUS
             )
         }
-        logElapsed("Plugin loader loaded.") { PluginLoader.load() }
+        logElapsed("Loaded plugins.") { PluginScanner.scanAndLoad(PluginClasspathScan.scan) }
         logElapsed("Posted plugin manager loaded event.") { PluginManager.post(PluginsLoadedEvent()) }
 
         logElapsed("Set defaults for item action handler.") { ItemActionHandler.setDefaults() }

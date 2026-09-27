@@ -165,6 +165,11 @@ object Sailing {
         }
         synth(player, SYNTH_HELM_OFF)
         if (boat.moveMode != MODE_IDLE) {
+            // Sails drop now (anims, ops, synth) but the boat keeps its speed this tick; deceleration and the mode
+            // varbit follow next tick. Only captured from full sails; half sails assumed the same.
+            if (boat.moveMode == MODE_SAILS || boat.moveMode == MODE_HALF) {
+                boat.holdSpeed = true
+            }
             setMode(boat, MODE_IDLE)
         }
         if (!updatePanel) {
@@ -331,11 +336,15 @@ object Sailing {
             MODE_HALF -> type.halfSpeed
             else -> 0
         }
-        boat.speed = when {
-            boat.moveMode == MODE_REVERSE -> -REVERSE_SPEED
-            boat.speed < 0 -> 0
-            boat.speed < targetSpeed -> min(boat.speed + type.acceleration, targetSpeed)
-            else -> max(boat.speed - type.acceleration, targetSpeed)
+        if (boat.holdSpeed) {
+            boat.holdSpeed = false
+        } else {
+            boat.speed = when {
+                boat.moveMode == MODE_REVERSE -> -REVERSE_SPEED
+                boat.speed < 0 -> 0
+                boat.speed < targetSpeed -> min(boat.speed + type.acceleration, targetSpeed)
+                else -> max(boat.speed - type.acceleration, targetSpeed)
+            }
         }
 
         if (boat.ticks % SPAWNED_VARBIT_INTERVAL == 0) {

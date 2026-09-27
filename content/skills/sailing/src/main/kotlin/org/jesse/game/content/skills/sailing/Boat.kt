@@ -49,6 +49,12 @@ class Boat internal constructor(
      */
     internal var boostTick: Int = -1
 
+    /**
+     * Skip the next speed update once: leaving the helm with the sails up lowers them visually this tick, but the boat
+     * keeps its speed until the next tick (controls capture t48-t49, straight t77-t78, 45 capture t57-t58).
+     */
+    internal var holdSpeed: Boolean = false
+
     /** Current speed in fine units per tick. */
     var speed: Int = 0
         internal set

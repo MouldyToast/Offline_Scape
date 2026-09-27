@@ -3,8 +3,10 @@ package org.jesse.game.content.skills.sailing
 import org.jesse.game.task.WorldTasksManager
 import org.jesse.game.util.Utils
 import org.jesse.game.world.World
+import org.jesse.game.world.entity.SoundEffect
 import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.Graphics
+import org.jesse.game.world.entity.masks.UpdateFlag
 import org.jesse.game.world.entity.player.Player
 import kotlin.math.cos
 import kotlin.math.max
@@ -15,26 +17,24 @@ import kotlin.math.sin
 /**
  * Helm, sails, move modes, wind gusts + trim, steering and per-tick boat movement.
  *
- * Every rule here is taken from the live Pandemonium capture (investigation_sailing_world_entities_v2.md §4-§5):
- * - taking the helm: `sailing_boat_facility_lockedin`=3, SET_INTERACTION_MODE(default: heading/all, boat: walk/all),
- *   player faces the deck tile 3 south of the helm, helm anims, move mode 4 when idle (t443, t601-602);
- * - leaving the helm: RESET_INTERACTION_MODE(boat), SET_INTERACTION_MODE(default: walk/all), lockedin=0 (t599);
- * - steering: SET_HEADING 0..15; the boat turns 128 angle units per tick towards heading*128,
- *   180-degree ties through increasing angles (t672-680);
- * - move modes (sidepanel sail buttons, t446-466): 2 sails set -> +acceleration up to base speed (+ boost);
- *   1 slowing and 0 idle -> -acceleration to 0; 3 reverse -> constant 0.5 tiles/tick backwards, and leaving
- *   reverse stops dead (t461-464);
- * - gusts + trim (t510-533, t563-586, t734-756, t786-808): "You feel a gust of wind." -> Trim within the gust ->
- *   "You trim the sails..." + 20-tick +0.5 boost -> "The wind dies down and your sails with it." when the boost ends;
- *   the next gust came 30 ticks after each boost ended;
- * - movement: fine coords += round_to_32(speed * (-sin, -cos)(angle)) - fits 398/400 live updates.
+ * Sources: the Pandemonium capture (session 1) and `Sailing_around_controls.txt` ("controls capture", rev 240.1,
+ * tick numbers below refer to it unless marked otherwise). See investigation_sailing_controls_capture_v1.md.
  *
- * Unverified (not in the capture): the first gust delay after setting sails (live: 44 and 62 ticks - randomised
- * 40..60 here), how long an untrimmed gust lasts (20 here), and land collision (none yet).
+ * Move modes (varbit 19175) form a ladder: 3 reverse <- 0 sails down -> 1 half sails -> 2 full sails;
+ * 4 = at the helm while idle (a freshly spawned boat, or taking the helm with the sails down).
+ * Speed moves toward the mode's target by `acceleration` per tick: full = base (+ boost), half = 64, down/4 = 0;
+ * reverse is a constant -64 from its first tick and leaving it stops dead (t152, t170).
+ * Movement: fine coords += round_to_32(speed * (-sin, -cos)(angle)) - fits every controls-capture tick
+ * outside land contact.
+ *
+ * Unverified / not implemented: land collision (controls capture t95-t134 shows stop + freeze on a head-on hit,
+ * axis sliding and a small push-back), gust timing beyond the few samples (first gust 44/62/53 ticks after
+ * setting sails, 49 after an untrimmed gust, 30 after a boost - randomised here), sub 0 from modes 1/2 and
+ * sub 2 from modes 2/3 (never pressed in a capture).
  */
 object Sailing {
     const val MODE_IDLE = 0
-    const val MODE_SLOWING = 1
+    const val MODE_HALF = 1
     const val MODE_SAILS = 2
     const val MODE_REVERSE = 3
     const val MODE_HELM_IDLE = 4
@@ -42,22 +42,58 @@ object Sailing {
     private const val VARBIT_FACILITY_LOCKEDIN = 19105
     private const val VARBIT_SAIL_BUTTON_TOGGLED = 19174
     private const val VARBIT_BOAT_MOVE_MODE = 19175
+    private const val VARBIT_SPAWNED_ANGLE = 19129
+    private const val VARBIT_SPAWNED_FINEX = 19141
+    private const val VARBIT_SPAWNED_FINEZ = 19142
 
     private const val WORLD_DEFAULT = -2
     private const val TILE_MODE_WALK = 1
     private const val TILE_MODE_HEADING = 2
     private const val ENTITY_MODE_ALL = 1
 
+    private const val SCRIPT_TOPLEVEL_SIDEBUTTON_SWITCH = 915
+
+    /** `script8778` -> script8777: (captain name, set captain, navigator name, set navigator) + crew rows refresh. */
+    const val SCRIPT_CREW_NAMES = 8778
+
+    // Synths (controls capture). Sail sounds depend only on the sail state change.
+    private const val SYNTH_HELM_ON = 10792
+    private const val SYNTH_HELM_OFF = 10793
+    private const val SYNTH_DOWN_TO_FULL = 10831
+    private const val SYNTH_FULL_TO_DOWN = 10833
+    private const val SYNTH_DOWN_TO_HALF = 10832
+    private const val SYNTH_FULL_TO_HALF = 10834
+    private const val SYNTH_HALF_TO_DOWN = 10835
+    private const val SYNTH_HALF_TO_FULL = 10836
+    private const val SYNTH_GUST = 10839
+    private const val SYNTH_TRIM_1 = 10842
+    private const val SYNTH_TRIM_2 = 10841
+
+    // Op-bearing sail loc (linen sail) op masks: op1 Trim, op2 Set, op5 Un-set.
+    private const val SAIL_OPS_DOWN = 0b10
+    private const val SAIL_OPS_UP = 0b10000
+    private const val SAIL_OPS_GUST = 0b10001
+
+    private const val SAIL_DOWN = 0
+    private const val SAIL_HALF = 1
+    private const val SAIL_FULL = 2
+
     private const val HELM_LOOP_INTERVAL = 10
     private const val TRIM_LOOP_INTERVAL = 4
-    private const val TRIM_LOOP_FIRST = 8
     private const val REVERSE_SPEED = 64
-    private const val GUST_WINDOW = 20
+    private const val GUST_WINDOW = 14
     private const val GUST_AFTER_BOOST = 30
-    private const val FIRST_GUST_MIN = 40
-    private const val FIRST_GUST_MAX = 60
+    private const val GUST_MIN = 40
+    private const val GUST_MAX = 65
+    private const val SPAWNED_VARBIT_INTERVAL = 5
 
-    /** Helm "Navigate" / "Stop-navigating" (the multiloc flips its op1 label on lockedin). */
+    private const val MSG_NOT_AT_HELM = "You or a crewmate must be navigating at the helm to adjust the sails."
+
+    /**
+     * Helm "Navigate" / "Stop-navigating" (the multiloc flips its op1 label on lockedin).
+     * Tick N (t57, t73): lockedin, interaction modes, face 3 tiles south, helm anims, sail state refresh,
+     * sidebutton switch, synth. Tick N+1: sidepanel at-helm varbits, mode 0 -> 4, navigator name.
+     */
     @JvmStatic
     fun toggleHelm(player: Player, boat: Boat) {
         val anims = boat.type.anims ?: return
@@ -81,55 +117,88 @@ object Sailing {
         val sender = player.packetDispatcher.sender
         sender.setInteractionMode(WORLD_DEFAULT, TILE_MODE_HEADING, ENTITY_MODE_ALL)
         sender.setInteractionMode(entity.index, TILE_MODE_WALK, ENTITY_MODE_ALL)
-        val helm = anims.helm
-        player.setFaceLocation(entity.deckTile(helm.dx, helm.dz - 3, helm.level))
+        faceHelmForward(player, boat, anims)
         player.setAnimation(Animation(anims.playerHelmStart))
-        locAnim(boat, helm, anims.helmLocStart)
-        SailingSidepanel.setAtHelm(player, true)
-        if (boat.moveMode == MODE_IDLE && boat.speed == 0) {
-            setMode(boat, MODE_HELM_IDLE)
-        } else {
-            player.varManager.sendBit(VARBIT_BOAT_MOVE_MODE, boat.moveMode)
+        locAnim(boat, anims.helm, anims.helmLocStart)
+        refreshSail(boat)
+        player.packetDispatcher.sendClientScript(SCRIPT_TOPLEVEL_SIDEBUTTON_SWITCH, 0)
+        synth(player, SYNTH_HELM_ON)
+        WorldTasksManager.schedule(1) {
+            if (boat.helmsman !== player || !boat.isLive) {
+                return@schedule
+            }
+            SailingSidepanel.setAtHelm(player, true)
+            if (boat.moveMode == MODE_IDLE) {
+                setMode(boat, MODE_HELM_IDLE, visuals = false)
+            } else {
+                player.varManager.sendBit(VARBIT_BOAT_MOVE_MODE, boat.moveMode)
+            }
+            player.packetDispatcher.sendClientScript(SCRIPT_CREW_NAMES, "", 0, player.name, 1)
         }
     }
 
-    /** Releases the helm (player clicked Stop-navigating, walked off, disembarked, logged out, or the boat despawned). */
+    /**
+     * Releases the helm (Stop-navigating, walked off, disembarked, logged out, boat despawned).
+     * Tick N (t48, t71): interaction modes reset, lockedin 0, facing reset to own tile, anim stop, helm inactive,
+     * synth; raised sails are lowered. Tick N+1 (only when [updatePanel]): mode / at-helm varbits, appearance,
+     * navigator name cleared. Disembark and evacuation pass false - the sidepanel is closed instead.
+     */
     @JvmStatic
-    fun leaveHelm(boat: Boat) {
+    @JvmOverloads
+    fun leaveHelm(boat: Boat, updatePanel: Boolean = true) {
         val player = boat.helmsman ?: return
-        if (boat.moveMode != MODE_IDLE) {
-            setMode(boat, MODE_IDLE)
-        }
         boat.helmsman = null
         boat.helmTicks = 0
-        endGust(boat)
         player.varManager.sendBit(VARBIT_FACILITY_LOCKEDIN, 0)
-        player.varManager.sendBit(VARBIT_BOAT_MOVE_MODE, 0)
-        player.varManager.sendBit(VARBIT_SAIL_BUTTON_TOGGLED, 0)
         val sender = player.packetDispatcher.sender
         sender.resetInteractionMode(boat.entity.index)
         sender.setInteractionMode(WORLD_DEFAULT, TILE_MODE_WALK, ENTITY_MODE_ALL)
+        player.setFaceLocation(player.location)
         player.setAnimation(Animation.STOP)
-        SailingSidepanel.setAtHelm(player, false)
-        val anims = boat.type.anims ?: return
-        locAnim(boat, anims.helm, anims.helmLocInactive)
+        val anims = boat.type.anims
+        if (anims != null) {
+            locAnim(boat, anims.helm, anims.helmLocInactive)
+        }
+        synth(player, SYNTH_HELM_OFF)
+        if (boat.moveMode != MODE_IDLE) {
+            setMode(boat, MODE_IDLE)
+        }
+        if (!updatePanel) {
+            return
+        }
+        WorldTasksManager.schedule(1) {
+            if (player.isFinished || boat.helmsman === player) {
+                return@schedule
+            }
+            player.varManager.sendBit(VARBIT_BOAT_MOVE_MODE, boat.moveMode)
+            player.varManager.sendBit(VARBIT_SAIL_BUTTON_TOGGLED, 0)
+            SailingSidepanel.setAtHelm(player, false)
+            player.updateFlags.flag(UpdateFlag.APPEARANCE)
+            player.packetDispatcher.sendClientScript(SCRIPT_CREW_NAMES, "", 0, "", 1)
+        }
     }
 
-    /** Sails loc "Set" / "Un-set". Only the player at the helm may adjust the sails (live message). */
+    /** Sails loc op2 "Set" (only offered while down) / op5 "Un-set" (offered while half, full or reversing). */
     @JvmStatic
     fun setSails(player: Player, boat: Boat, set: Boolean) {
         if (!requireHelmsman(player, boat)) {
             return
         }
-        if (boat.sailsSet == set) {
-            return
+        val mode = boat.moveMode
+        if (set) {
+            if (mode == MODE_IDLE || mode == MODE_HELM_IDLE) {
+                setMode(boat, MODE_SAILS)
+            }
+        } else if (mode == MODE_HALF || mode == MODE_SAILS || mode == MODE_REVERSE) {
+            setMode(boat, MODE_IDLE)
         }
-        setMode(boat, if (set) MODE_SAILS else MODE_IDLE)
     }
 
     /**
-     * Sidepanel facility buttons (`sailing_sidepanel:facilities_content_clicklayer` 937:25), live t453-466:
-     * sub 0 toggles the sails (2 <-> 0); sub 1 steps 2 -> 1 (slow), 1 -> 0, 0 -> 3 (reverse), 3 -> 0; sub 2 stops (-> 0).
+     * Sidepanel facility buttons (`sailing_sidepanel:facilities_content_clicklayer` 937:25):
+     * - sub 0 toggles the sails: down/4 -> full (t76), otherwise -> down (3 -> 0 at t170);
+     * - sub 1 steps down the ladder: 2 -> 1 (t137), 1 -> 0 (t139), 0/4 -> 3 (t152), 3 -> "already reversing" (t168);
+     * - sub 2 steps up: 0/4 -> 1 (t174), 1 -> 2 (t190); 3 -> 0 and 2 -> no-op are unverified.
      */
     @JvmStatic
     fun sidepanelButton(player: Player, sub: Int) {
@@ -139,13 +208,22 @@ object Sailing {
         }
         val mode = boat.moveMode
         val next = when (sub) {
-            0 -> if (mode == MODE_SAILS) MODE_IDLE else MODE_SAILS
+            0 -> if (mode == MODE_IDLE || mode == MODE_HELM_IDLE) MODE_SAILS else MODE_IDLE
             1 -> when (mode) {
-                MODE_SAILS -> MODE_SLOWING
-                MODE_REVERSE, MODE_SLOWING -> MODE_IDLE
-                else -> if (boat.speed == 0) MODE_REVERSE else MODE_SLOWING
+                MODE_SAILS -> MODE_HALF
+                MODE_HALF -> MODE_IDLE
+                MODE_REVERSE -> {
+                    player.sendMessage("The boat is already reversing.")
+                    return
+                }
+                else -> MODE_REVERSE
             }
-            2 -> MODE_IDLE
+            2 -> when (mode) {
+                MODE_HALF -> MODE_SAILS
+                MODE_REVERSE -> MODE_IDLE
+                MODE_SAILS -> return
+                else -> MODE_HALF
+            }
             else -> return
         }
         if (next != mode) {
@@ -153,57 +231,82 @@ object Sailing {
         }
     }
 
-    /** Sails loc "Trim": only during a gust, with the sails set, from the helm. */
+    /**
+     * Sails loc op1 "Trim": only offered during a gust with half or full sails (opflags 0b10001).
+     * Trim tick (t291): message, face forward, trim start anims, sail refresh (Trim removed), boost vfx, 2 synths.
+     * The boost applies from the next tick for `boostDuration` ticks - see [tickWind].
+     */
     @JvmStatic
     fun trim(player: Player, boat: Boat) {
         if (!requireHelmsman(player, boat)) {
             return
         }
-        if (!boat.sailsSet || boat.gustTicks <= 0) {
+        val anims = boat.type.anims ?: return
+        val mode = boat.moveMode
+        if (boat.gustTicks <= 0 || (mode != MODE_SAILS && mode != MODE_HALF)) {
             player.sendMessage("There's no wind to catch right now.")
             return
         }
-        val anims = boat.type.anims ?: return
         boat.gustTicks = 0
         boat.nextGustIn = -1
-        boat.boostTicks = boat.type.boostDuration
-        boat.boostElapsed = 0
+        boat.boostTick = 0
         player.sendMessage("You trim the sails, catching the wind for a burst of speed!")
+        faceHelmForward(player, boat, anims)
         player.setAnimation(Animation(anims.playerTrimStart))
         locAnim(boat, anims.helm, anims.helmLocTrimStart)
+        setSailOpFlags(boat)
+        sendSteadySail(boat, sailState(mode))
         graphic(boat, anims.sailB, anims.boostGraphic)
+        synth(player, SYNTH_TRIM_1)
+        synth(player, SYNTH_TRIM_2)
     }
 
-    /** SET_HEADING from the client (heading mode is only enabled for the helmsman). */
+    /**
+     * SET_HEADING from the client (heading mode is only enabled for the helmsman). In mode 4 the first heading
+     * also sets full sails: controls capture t40 switched 4 -> 2 with the sail-set anims and synth on the same
+     * tick the boat started turning, with no op / button packet logged (inferred - RSProx does not log SET_HEADING).
+     */
     @JvmStatic
     fun onSetHeading(player: Player, boat: Boat, heading: Int) {
         if (boat.helmsman !== player) {
             return
         }
         boat.targetHeading = heading and 15
+        if (boat.moveMode == MODE_HELM_IDLE) {
+            setMode(boat, MODE_SAILS)
+        }
+    }
+
+    /** Lowers the sails (disembark): mode 0 and a normal deceleration, the boat is not stopped dead (t318-t320). */
+    @JvmStatic
+    fun lowerSails(boat: Boat) {
+        if (boat.moveMode != MODE_IDLE) {
+            setMode(boat, MODE_IDLE)
+        }
     }
 
     /**
-     * One game tick for [boat]: helm upkeep, wind, turning, speed, movement.
+     * One game tick for [boat]: helm upkeep, wind, turning, speed, movement, saved-position varbits.
      * Called from [SailingWorldEntityListener.onTick]; the engine reloads passengers' scenes when the boat moves.
      */
     internal fun tick(boat: Boat) {
         val entity = boat.entity
         val anims = boat.type.anims
         val helmsman = boat.helmsman
+        boat.ticks++
         if (helmsman != null) {
             if (!isAtHelm(helmsman, boat)) {
                 leaveHelm(boat)
             } else {
                 boat.helmTicks++
-                if (anims != null && boat.boostTicks <= 0 && boat.helmTicks % HELM_LOOP_INTERVAL == 0) {
+                if (anims != null && !boat.boosting && boat.helmTicks % HELM_LOOP_INTERVAL == 0) {
                     helmsman.setAnimation(Animation(anims.playerHelmLoop))
                     locAnim(boat, anims.helm, anims.helmLocLoop)
                 }
             }
         }
 
-        tickWind(boat)
+        val boosted = tickWind(boat)
 
         // Turn one step (128) towards the target heading. 180-degree ties go through increasing angles.
         val target = (boat.targetHeading and 15) shl 7
@@ -217,21 +320,30 @@ object Sailing {
             entity.turnTo(next)
         }
 
-        // Speed by move mode.
+        // Speed toward the mode's target.
         val type = boat.type
-        val cruise = min(type.baseSpeed + (if (boat.boostTicks > 0) type.boostAmount else 0), type.speedCap)
-        boat.speed = when (boat.moveMode) {
-            MODE_SAILS -> min(boat.speed + type.acceleration, cruise)
-            MODE_REVERSE -> -REVERSE_SPEED
-            else -> if (boat.speed < 0) 0 else max(boat.speed - type.acceleration, 0)
+        val targetSpeed = when (boat.moveMode) {
+            MODE_SAILS -> min(type.baseSpeed + (if (boosted) type.boostAmount else 0), type.speedCap)
+            MODE_HALF -> type.halfSpeed
+            else -> 0
         }
-        if (boat.moveMode == MODE_SLOWING && boat.speed == 0) {
-            setMode(boat, MODE_IDLE)
+        boat.speed = when {
+            boat.moveMode == MODE_REVERSE -> -REVERSE_SPEED
+            boat.speed < 0 -> 0
+            boat.speed < targetSpeed -> min(boat.speed + type.acceleration, targetSpeed)
+            else -> max(boat.speed - type.acceleration, targetSpeed)
         }
+
+        if (boat.ticks % SPAWNED_VARBIT_INTERVAL == 0) {
+            val owner = World.getPlayers().get(entity.ownerIndex)
+            if (owner != null) {
+                sendSpawnedPosition(owner, boat)
+            }
+        }
+
         if (boat.speed == 0) {
             return
         }
-
         // Move on the 32-fine-unit (quarter tile) grid.
         val radians = entity.angle * Math.PI / 1024.0
         val dx = quarter(-sin(radians) * boat.speed)
@@ -242,118 +354,194 @@ object Sailing {
         entity.moveTo(entity.level, entity.fineX + dx, entity.fineZ + dz, false)
     }
 
-    /** Gust scheduling, gust window, trim boost countdown and their effects. */
-    private fun tickWind(boat: Boat) {
-        val anims = boat.type.anims ?: return
+    /**
+     * `sailing_boat_spawned_angle` / `_finex` / `_finez`: the boat's angle and sub-tile fine offset (0/32/64/96),
+     * sent to the owner on a 5-tick cycle and on board (controls capture t32, 42, 47, 52, ...; also after
+     * disembarking, t322). Only changed values go out (varbits).
+     */
+    @JvmStatic
+    fun sendSpawnedPosition(player: Player, boat: Boat) {
+        val entity = boat.entity
+        val vars = player.varManager
+        vars.sendBit(VARBIT_SPAWNED_ANGLE, entity.angle)
+        vars.sendBit(VARBIT_SPAWNED_FINEX, entity.fineX and 127)
+        vars.sendBit(VARBIT_SPAWNED_FINEZ, entity.fineZ and 127)
+    }
+
+    /**
+     * Trim boost and wind gusts. Returns whether this tick's speed includes the boost.
+     *
+     * Boost (t291 trim): boost vfx on the trim tick and boosted ticks 1..19, trim loop anims on boosted ticks
+     * 4, 8, 12, 16 (t295-t307), on boosted tick 20 (t311) "The wind dies down..." + trim end anims + sail refresh;
+     * the speed is back to normal the tick after. Next gust 30 ticks later (session 1).
+     *
+     * Gust (t129-t143, t223-t237, t286): only starts under full sail with a helmsman; lasts 14 ticks whatever
+     * happens to the sails, then "The wind dies down..." + sail refresh. Gust start: message, synth, sail refresh
+     * (Trim op shown), full-sail vfx. Each gust tick after that: vfx by last tick's speed - full above half speed,
+     * half at half speed, none when stopped (t137-t140).
+     */
+    private fun tickWind(boat: Boat): Boolean {
+        val anims = boat.type.anims ?: return false
         val helmsman = boat.helmsman
 
-        if (boat.boostTicks > 0) {
-            boat.boostTicks--
-            boat.boostElapsed++
-            graphic(boat, anims.sailB, anims.boostGraphic)
-            if (helmsman != null && boat.boostElapsed >= TRIM_LOOP_FIRST &&
-                (boat.boostElapsed - TRIM_LOOP_FIRST) % TRIM_LOOP_INTERVAL == 0
-            ) {
-                helmsman.setAnimation(Animation(anims.playerTrimLoop))
-                locAnim(boat, anims.helm, anims.helmLocTrimLoop)
+        val boostTick = boat.boostTick
+        if (boostTick >= 0) {
+            val duration = boat.type.boostDuration
+            if (boostTick == 0) {
+                boat.boostTick = 1
+                return false
             }
-            if (boat.boostTicks == 0) {
-                if (helmsman != null) {
-                    helmsman.sendMessage("The wind dies down and your sails with it.")
-                    helmsman.setAnimation(Animation(anims.playerTrimEnd))
+            if (boostTick < duration) {
+                graphic(boat, anims.sailB, anims.boostGraphic)
+                if (helmsman != null && boostTick % TRIM_LOOP_INTERVAL == 0) {
+                    helmsman.setAnimation(Animation(anims.playerTrimLoop))
+                    locAnim(boat, anims.helm, anims.helmLocTrimLoop)
                 }
-                locAnim(boat, anims.helm, anims.helmLocTrimEnd)
-                boat.nextGustIn = GUST_AFTER_BOOST
+                boat.boostTick = boostTick + 1
+                return true
             }
-            return
-        }
-
-        if (!boat.sailsSet || helmsman == null) {
-            endGust(boat)
-            return
+            if (helmsman != null) {
+                helmsman.sendMessage("The wind dies down and your sails with it.")
+                helmsman.setAnimation(Animation(anims.playerTrimEnd))
+            }
+            locAnim(boat, anims.helm, anims.helmLocTrimEnd)
+            boat.boostTick = -1
+            boat.nextGustIn = GUST_AFTER_BOOST
+            boat.helmTicks = 0
+            refreshSail(boat)
+            return true
         }
 
         if (boat.gustTicks > 0) {
             boat.gustTicks--
-            graphic(boat, anims.sailB, anims.gustGraphic)
             if (boat.gustTicks == 0) {
-                boat.nextGustIn = GUST_AFTER_BOOST
+                helmsman?.sendMessage("The wind dies down and your sails with it.")
+                refreshSail(boat)
+                boat.nextGustIn = Utils.random(GUST_MIN, GUST_MAX)
+            } else if (boat.speed > boat.type.halfSpeed) {
+                graphic(boat, anims.sailB, anims.gustGraphic)
+            } else if (boat.speed > 0) {
+                graphic(boat, anims.sailB, anims.gustGraphicHalf)
             }
-            return
+            return false
         }
 
+        // The gust timer only runs under full sail with someone at the helm.
+        if (boat.moveMode != MODE_SAILS || helmsman == null) {
+            return false
+        }
         if (boat.nextGustIn < 0) {
-            boat.nextGustIn = Utils.random(FIRST_GUST_MIN, FIRST_GUST_MAX)
+            boat.nextGustIn = Utils.random(GUST_MIN, GUST_MAX)
         }
-        if (--boat.nextGustIn <= 0) {
-            boat.nextGustIn = -1
-            boat.gustTicks = GUST_WINDOW
-            helmsman.sendMessage("You feel a gust of wind.")
-            locAnim(boat, anims.sailA, anims.sailFull)
-            locAnim(boat, anims.sailB, anims.sailFullOffset)
-            graphic(boat, anims.sailB, anims.gustGraphic)
+        if (--boat.nextGustIn > 0) {
+            return false
         }
-    }
-
-    private fun endGust(boat: Boat) {
-        boat.gustTicks = 0
         boat.nextGustIn = -1
+        boat.gustTicks = GUST_WINDOW
+        helmsman.sendMessage("You feel a gust of wind.")
+        refreshSail(boat)
+        graphic(boat, anims.sailB, anims.gustGraphic)
+        synth(boat, SYNTH_GUST)
+        return false
     }
 
     private fun requireHelmsman(player: Player, boat: Boat): Boolean {
         if (boat.helmsman !== player) {
-            player.sendMessage("You must be navigating at the helm to adjust the sails.")
+            player.sendMessage(MSG_NOT_AT_HELM)
             return false
         }
         return true
     }
 
-    /** Changes the move mode: sail anims on entering / leaving mode 2, sidepanel varbits for the helmsman. */
-    private fun setMode(boat: Boat, mode: Int) {
-        val wasSails = boat.sailsSet
+    /**
+     * Changes the move mode. With [visuals]: the sail loc's ops are re-sent (every change, t190), a sail state change
+     * plays the transition anims + synth now and the steady anims next tick, a change within the same sail state
+     * (0 <-> 3) re-sends the steady anims now and next tick (t152-153, t170-171). The helmsman gets the mode and
+     * sail-button varbits. A running boost ends when leaving full sails.
+     */
+    private fun setMode(boat: Boat, mode: Int, visuals: Boolean = true) {
+        val oldSail = sailState(boat.moveMode)
         boat.moveMode = mode
         if (mode != MODE_SAILS) {
-            boat.boostTicks = 0
+            boat.boostTick = -1
         }
         val anims = boat.type.anims
-        if (anims != null && wasSails != boat.sailsSet) {
-            val set = boat.sailsSet
-            if (set) {
-                locAnim(boat, anims.sailA, anims.sailDownToFull)
-                locAnim(boat, anims.sailB, anims.sailDownToFullOffset)
+        if (visuals && anims != null) {
+            val newSail = sailState(mode)
+            setSailOpFlags(boat)
+            if (oldSail != newSail) {
+                locAnim(boat, anims.sailA, transition(anims.sailAAnims, oldSail, newSail))
+                locAnim(boat, anims.sailB, transition(anims.sailBAnims, oldSail, newSail))
+                synth(boat, sailSound(oldSail, newSail))
+                scheduleSteadySail(boat, newSail)
             } else {
-                locAnim(boat, anims.sailA, anims.sailFullToDown)
-                locAnim(boat, anims.sailB, anims.sailFullToDownOffset)
-            }
-            WorldTasksManager.schedule(1) {
-                if (boat.sailsSet != set || !boat.isLive) {
-                    return@schedule
-                }
-                if (set) {
-                    locAnim(boat, anims.sailA, anims.sailFull)
-                    locAnim(boat, anims.sailB, anims.sailFullOffset)
-                } else {
-                    locAnim(boat, anims.sailA, anims.sailDown)
-                    locAnim(boat, anims.sailB, anims.sailDownOffset)
-                }
+                sendSteadySail(boat, newSail)
+                scheduleSteadySail(boat, newSail)
             }
         }
         val helmsman = boat.helmsman ?: return
         helmsman.varManager.sendBit(VARBIT_BOAT_MOVE_MODE, mode)
         helmsman.varManager.sendBit(
             VARBIT_SAIL_BUTTON_TOGGLED,
-            if (mode == MODE_SAILS || mode == MODE_SLOWING || mode == MODE_REVERSE) 1 else 0,
+            if (mode == MODE_SAILS || mode == MODE_HALF || mode == MODE_REVERSE) 1 else 0,
         )
     }
 
-    /** Stops the boat dead (docking). */
-    @JvmStatic
-    fun stop(boat: Boat) {
-        if (boat.moveMode != MODE_IDLE) {
-            setMode(boat, MODE_IDLE)
+    /** Re-sends the sail ops and steady sail anims now and next tick (helm on, gust start/end, boost end). */
+    private fun refreshSail(boat: Boat) {
+        val state = sailState(boat.moveMode)
+        setSailOpFlags(boat)
+        sendSteadySail(boat, state)
+        scheduleSteadySail(boat, state)
+    }
+
+    private fun setSailOpFlags(boat: Boat) {
+        val anims = boat.type.anims ?: return
+        val mode = boat.moveMode
+        val ops = when {
+            (mode == MODE_SAILS || mode == MODE_HALF) && boat.gustTicks > 0 -> SAIL_OPS_GUST
+            mode == MODE_SAILS || mode == MODE_HALF || mode == MODE_REVERSE -> SAIL_OPS_UP
+            else -> SAIL_OPS_DOWN
         }
-        boat.speed = 0
-        endGust(boat)
+        boat.entity.setLocOpFlags(anims.sailB, ops)
+    }
+
+    private fun sendSteadySail(boat: Boat, state: Int) {
+        val anims = boat.type.anims ?: return
+        locAnim(boat, anims.sailA, steady(anims.sailAAnims, state))
+        locAnim(boat, anims.sailB, steady(anims.sailBAnims, state))
+    }
+
+    private fun scheduleSteadySail(boat: Boat, state: Int) {
+        WorldTasksManager.schedule(1) {
+            if (boat.isLive && sailState(boat.moveMode) == state) {
+                sendSteadySail(boat, state)
+            }
+        }
+    }
+
+    private fun sailState(mode: Int): Int = when (mode) {
+        MODE_SAILS -> SAIL_FULL
+        MODE_HALF -> SAIL_HALF
+        else -> SAIL_DOWN
+    }
+
+    private fun steady(set: SailAnimSet, state: Int): Int = when (state) {
+        SAIL_FULL -> set.full
+        SAIL_HALF -> set.half
+        else -> set.down
+    }
+
+    private fun transition(set: SailAnimSet, from: Int, to: Int): Int = when (from) {
+        SAIL_DOWN -> if (to == SAIL_HALF) set.downToHalf else set.downToFull
+        SAIL_HALF -> if (to == SAIL_DOWN) set.halfToDown else set.halfToFull
+        else -> if (to == SAIL_DOWN) set.fullToDown else set.fullToHalf
+    }
+
+    private fun sailSound(from: Int, to: Int): Int = when (from) {
+        SAIL_DOWN -> if (to == SAIL_HALF) SYNTH_DOWN_TO_HALF else SYNTH_DOWN_TO_FULL
+        SAIL_HALF -> if (to == SAIL_DOWN) SYNTH_HALF_TO_DOWN else SYNTH_HALF_TO_FULL
+        else -> if (to == SAIL_DOWN) SYNTH_FULL_TO_DOWN else SYNTH_FULL_TO_HALF
     }
 
     private fun isAtHelm(player: Player, boat: Boat): Boolean {
@@ -365,6 +553,34 @@ object Sailing {
                 location.plane == helm.level &&
                 location.x == (entity.instanceZoneX shl 3) + helm.dx &&
                 location.y == (entity.instanceZoneZ shl 3) + helm.dz
+    }
+
+    /** The helmsman faces the deck tile 3 south of the helm (t37, t57, t73, trim t291) whatever the boat's angle. */
+    private fun faceHelmForward(player: Player, boat: Boat, anims: SailingAnims) {
+        val helm = anims.helm
+        player.setFaceLocation(boat.entity.deckTile(helm.dx, helm.dz - 3, helm.level))
+    }
+
+    /** Players standing on [boat]'s deck. */
+    private fun passengers(boat: Boat): List<Player> {
+        val entity = boat.entity
+        val result = ArrayList<Player>(1)
+        for (player in World.getPlayers()) {
+            if (player != null && entity.containsDeckTile(player.location)) {
+                result.add(player)
+            }
+        }
+        return result
+    }
+
+    private fun synth(player: Player, id: Int) {
+        player.packetDispatcher.sendSoundEffect(SoundEffect(id))
+    }
+
+    private fun synth(boat: Boat, id: Int) {
+        for (player in passengers(boat)) {
+            synth(player, id)
+        }
     }
 
     private fun locAnim(boat: Boat, loc: DeckRef, animation: Int) {

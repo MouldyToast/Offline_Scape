@@ -286,7 +286,8 @@ class BuildAreaManager(private val player: Player) {
                             player.packetDispatcher.locDel(removedObject.x, removedObject.y, removedObject.type, removedObject.rotation)
                         }
                         for (spawnedObject in chunk.spawnedObjects.values) {
-                            player.packetDispatcher.locAddChange(spawnedObject.id, spawnedObject.x, spawnedObject.y, spawnedObject.type, spawnedObject.rotation, 0b11111)
+                            val opFlags = worldEntity.locOpFlags(spawnedObject.x, spawnedObject.y, spawnedObject.plane, spawnedObject.type)
+                            player.packetDispatcher.locAddChange(spawnedObject.id, spawnedObject.x, spawnedObject.y, spawnedObject.type, spawnedObject.rotation, opFlags)
                         }
                         continue
                     }

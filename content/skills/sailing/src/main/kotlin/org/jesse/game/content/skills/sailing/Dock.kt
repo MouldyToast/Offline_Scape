@@ -15,8 +15,12 @@ import kotlin.math.max
  * - sea tile + rotation: where your boat spawns when you board at this dock
  *   (Pandemonium raft t439: (3074.5, 2987.5) angle 1024. Port Sarim: intro skiff t74 (3054.5, 3193.5) angle 0 -
  *   the raft's own Port Sarim berth is not in the capture yet).
+ * - id: the value written to `sailing_boat_1_port` / `sailing_boarded_boat_last_dock` /
+ *   `sailing_boarded_boat_last_standard_dock` on disembark (controls capture t318: Port Sarim -> 0;
+ *   login value 1 after last disembarking at the Pandemonium).
  */
 enum class Dock(
+    val id: Int,
     val displayName: String,
     val gangplankId: Int,
     val gangplankX: Int,
@@ -27,8 +31,8 @@ enum class Dock(
     val seaTileZ: Int,
     val rotation: Int,
 ) {
-    PORT_SARIM("Port Sarim", 59835, 3051, 3193, 3050, 3193, 3054, 3193, 0),
-    PANDEMONIUM("the Pandemonium", 59836, 3070, 2987, 3069, 2987, 3074, 2987, 1024),
+    PORT_SARIM(0, "Port Sarim", 59835, 3051, 3193, 3050, 3193, 3054, 3193, 0),
+    PANDEMONIUM(1, "the Pandemonium", 59836, 3070, 2987, 3069, 2987, 3074, 2987, 1024),
     ;
 
     val landTile: Location
@@ -40,11 +44,11 @@ enum class Dock(
         return max(abs(root.x - gangplankX), abs(root.y - gangplankZ))
     }
 
-    /** Whether [boat] is close enough to this dock to board / disembark (capture: 3-5 tiles). */
+    /** Whether [boat] is close enough to this dock to board / disembark (captures: 3, 4.5 and 7 tiles). */
     fun isNear(boat: Boat): Boolean = distanceTo(boat) <= DOCKING_RANGE
 
     companion object {
-        /** Unverified threshold: live docked at 3 (Port Sarim) and spawned at 4.5 (Pandemonium) tiles. */
+        /** Unverified threshold: live docked at 3 and 7 (Port Sarim, the latter at full speed) and spawned at 4.5 (Pandemonium) tiles. */
         const val DOCKING_RANGE = 10
 
         @JvmStatic

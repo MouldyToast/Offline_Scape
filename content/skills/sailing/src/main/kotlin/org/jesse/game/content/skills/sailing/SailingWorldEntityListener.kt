@@ -34,7 +34,8 @@ object SailingWorldEntityListener : WorldEntityListener {
     override fun onEvacuate(player: Player, entity: WorldEntity, logout: Boolean) {
         val boat = Boats[entity] ?: return
         if (boat.helmsman === player) {
-            Sailing.leaveHelm(boat)
+            // The sidepanel is closed right after (or goes with the session), so no deferred panel update.
+            Sailing.leaveHelm(boat, updatePanel = false)
         }
         if (logout) {
             // Logging out: only the varbits (the sidepanel goes with the session), as before the split.
@@ -56,7 +57,7 @@ object SailingWorldEntityListener : WorldEntityListener {
     override fun onDespawn(entity: WorldEntity) {
         val boat = Boats[entity] ?: return
         // The helmsman is normally released in onEvacuate; this covers one who left the deck earlier this tick.
-        Sailing.leaveHelm(boat)
+        Sailing.leaveHelm(boat, updatePanel = false)
         Boats.remove(entity)
     }
 }

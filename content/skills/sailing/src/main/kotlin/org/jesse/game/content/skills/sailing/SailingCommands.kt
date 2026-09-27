@@ -52,6 +52,9 @@ object SailingCommands {
                 player.sendMessage("You are not on a boat.")
                 return@Command
             }
+            if (boat.helmsman === player) {
+                Sailing.leaveHelm(boat, updatePanel = false)
+            }
             Docking.exitBoat(player, boat.entity.rootTile)
             player.sendMessage("You disembark.")
         }

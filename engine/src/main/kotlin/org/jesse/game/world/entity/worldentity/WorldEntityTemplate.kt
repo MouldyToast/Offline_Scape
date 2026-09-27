@@ -2,6 +2,8 @@ package org.jesse.game.world.entity.worldentity
 
 /**
  * A loc placed on a world entity's deck, relative to the template's south-west tile.
+ * [opFlags] is the initial right-click op mask (bit n = op n+1) sent with the loc; change it at runtime with
+ * [WorldEntity.setLocOpFlags].
  */
 data class DeckLoc(
     val id: Int,
@@ -10,7 +12,13 @@ data class DeckLoc(
     val dx: Int,
     val dz: Int,
     val level: Int,
-)
+    val opFlags: Int = DeckLoc.ALL_OPS,
+) {
+    companion object {
+        /** All five ops shown (`OpFlags.ALL_SHOWN`). */
+        const val ALL_OPS = 0b11111
+    }
+}
 
 /**
  * The map template a world entity is built from. The engine copies [sizeX] x [sizeZ] zones starting at

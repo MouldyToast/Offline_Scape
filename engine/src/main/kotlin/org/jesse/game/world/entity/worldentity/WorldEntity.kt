@@ -2,8 +2,10 @@ package org.jesse.game.world.entity.worldentity
 
 import net.rsprot.protocol.game.outgoing.info.worldentityinfo.WorldEntityAvatar
 import org.jesse.game.world.World
+import org.jesse.game.world.`object`.WorldObject
 import org.jesse.game.world.entity.Location
 import org.jesse.game.world.region.dynamicregion.AllocatedArea
+import org.jesse.game.world.region.zone.ZoneManager
 
 /**
  * A world entity: an instanced piece of map (the deck) rendered by the client at a
@@ -40,6 +42,9 @@ class WorldEntity internal constructor(
         private set
 
     internal var avatar: WorldEntityAvatar? = null
+
+    /** Op mask per deck loc (absolute tile + shape), for locs whose ops differ from all-shown. */
+    private val locOpFlags = HashMap<Long, Int>()
 
     /** South-west zone of the deck instance (the allocated dynamic area). */
     val instanceZoneX: Int
@@ -85,6 +90,38 @@ class WorldEntity internal constructor(
             }
         }
     }
+
+    /**
+     * Op mask currently shown for the deck loc of [shape] at ([x], [z], [level]) (absolute instance tile).
+     * Used by the deck zone full sync so a player who starts viewing the deck gets the current ops.
+     */
+    fun locOpFlags(x: Int, z: Int, level: Int, shape: Int): Int =
+        locOpFlags[locKey(x, z, level, shape)] ?: DeckLoc.ALL_OPS
+
+    /**
+     * Changes which right-click ops [loc] shows (live: `loc_add_change` re-sent with new opflags, e.g. a sail
+     * showing only "Set" while down and "Trim" during a gust). Stored for later full syncs and broadcast to
+     * everyone viewing the deck this tick.
+     */
+    fun setLocOpFlags(loc: DeckLoc, opFlags: Int) {
+        val tile = deckTile(loc.dx, loc.dz, loc.level)
+        storeLocOpFlags(tile, loc.shape, opFlags)
+        ZoneManager.locAddChange(tile.chunkHash, WorldObject(loc.id, loc.shape, loc.rotation, tile), opFlags)
+    }
+
+    /** Records [opFlags] for a deck loc without sending anything (spawn time: the full sync sends it). */
+    internal fun storeLocOpFlags(tile: Location, shape: Int, opFlags: Int) {
+        val key = locKey(tile.x, tile.y, tile.plane, shape)
+        if (opFlags == DeckLoc.ALL_OPS) {
+            locOpFlags.remove(key)
+        } else {
+            locOpFlags[key] = opFlags
+        }
+    }
+
+    private fun locKey(x: Int, z: Int, level: Int, shape: Int): Long =
+        (x.toLong() and 0x3FFF) or ((z.toLong() and 0x3FFF) shl 14) or ((level.toLong() and 3) shl 28) or
+                ((shape.toLong() and 0x1F) shl 30)
 
     fun turnTo(angle: Int) {
         this.angle = angle and 2047

@@ -26,32 +26,39 @@ class Boat internal constructor(
 
     /**
      * Movement mode, mirrored to the sidepanel varbit `sailing_sidepanel_boat_move_mode` (19175):
-     * 0 idle / sails lowered, 1 slowing to a stop, 2 sails set, 3 reverse, 4 at the helm while idle.
+     * 0 sails down, 1 half sails, 2 full sails, 3 reverse, 4 at the helm while idle.
+     * A freshly spawned boat starts in 4 (controls capture t32: first board 0 -> 4; re-board t329 left it at 0).
      * See [Sailing] for the per-mode speed rules.
      */
-    var moveMode: Int = 0
+    var moveMode: Int = Sailing.MODE_HELM_IDLE
         internal set
 
-    /** Whether the sails are set (mode 2). */
+    /** Whether the sails are fully set (mode 2). */
     val sailsSet: Boolean
         get() = moveMode == Sailing.MODE_SAILS
 
     /** Ticks left in the current wind gust (trim window), 0 when there is no gust. */
     internal var gustTicks: Int = 0
 
-    /** Ticks until the next gust while sailing, -1 when not scheduled. */
+    /** Ticks until the next gust while under full sail, -1 when not scheduled. */
     internal var nextGustIn: Int = -1
 
-    /** Ticks elapsed in the current trim boost (drives the 4-tick trim loop anim). */
-    internal var boostElapsed: Int = 0
+    /**
+     * Trim boost progress: -1 when not boosting, 0 on the trim tick, then 1..boostDuration for the boosted ticks
+     * (the boost speed applies from the tick after the trim, controls capture t291 trim -> t292..t311 at 256).
+     */
+    internal var boostTick: Int = -1
 
     /** Current speed in fine units per tick. */
     var speed: Int = 0
         internal set
 
-    /** Remaining ticks of the trim speed boost. */
-    var boostTicks: Int = 0
-        internal set
+    /** Ticks this boat has existed (drives the 5-tick `sailing_boat_spawned_*` varbit cadence). */
+    internal var ticks: Int = 0
+
+    /** Whether a trim boost is running. */
+    val boosting: Boolean
+        get() = boostTick >= 0
 
     /** Whether this boat is still live (its world entity has not despawned). */
     val isLive: Boolean

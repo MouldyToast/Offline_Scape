@@ -6,6 +6,7 @@ import org.jesse.game.world.entity.SoundEffect
 import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.Graphics
 import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.entity.worldentity.WorldEntities
 import org.jesse.game.world.flooritem.FloorItem
 import org.jesse.game.world.`object`.AttachedObject
 import org.jesse.game.world.`object`.WorldObject
@@ -107,6 +108,8 @@ object ZoneManager {
                 }
                 trackedZones += player.buildAreaManager.chunksInScope
             }
+            // World entity decks are never inside a root scene: track them explicitly.
+            WorldEntities.addDeckZoneIds(trackedZones)
             val iterator = trackedZones.intIterator()
             while (iterator.hasNext()) {
                 val zoneId = iterator.nextInt()
@@ -152,6 +155,11 @@ object ZoneManager {
 
     fun locAddChange(chunk: Chunk, obj: WorldObject) {
         appendUpdate(chunk, LocAddChange(obj.id, obj.x, obj.y, obj.type, obj.rotation, OpFlags.ALL_SHOWN))
+    }
+
+    /** LOC_ADD_CHANGE with an explicit right-click op mask (bit n = op n+1). */
+    fun locAddChange(chunk: Int, obj: WorldObject, opFlags: Int) {
+        appendUpdate(chunk, LocAddChange(obj.id, obj.x, obj.y, obj.type, obj.rotation, opFlags.toByte()))
     }
 
     fun locDel(chunk: Chunk, obj: WorldObject) {

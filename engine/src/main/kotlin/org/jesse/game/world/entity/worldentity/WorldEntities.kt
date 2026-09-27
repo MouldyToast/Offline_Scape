@@ -1,11 +1,13 @@
 package org.jesse.game.world.entity.worldentity
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet
 import org.jesse.Main
 import org.jesse.game.world.World
 import org.jesse.game.world.`object`.WorldObject
 import org.jesse.game.world.entity.Location
 import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.region.Chunk
 import org.jesse.game.world.region.dynamicregion.MapBuilder
 import org.jesse.game.world.region.dynamicregion.OutOfBoundaryException
 import org.jesse.game.world.region.dynamicregion.OutOfSpaceException
@@ -133,6 +135,7 @@ object WorldEntities {
         for (loc in template.deck) {
             val tile = entity.deckTile(loc.dx, loc.dz, loc.level)
             World.spawnObject(WorldObject(loc.id, loc.shape, loc.rotation, tile.x, tile.y, tile.plane))
+            entity.storeLocOpFlags(tile, loc.shape, loc.opFlags)
         }
         synchronized(Main.networkServiceLock) {
             entity.avatar = Main.networkService.worldEntityAvatarFactory.alloc(
@@ -197,6 +200,25 @@ object WorldEntities {
         for (i in 1..MAX_INDEX) {
             val entity = entities[i] ?: continue
             notifyListeners("tick", entity) { it.onTick(entity) }
+        }
+    }
+
+    /**
+     * Adds the zone ids (all levels) of every live deck to [into]. Shared zone events (loc anims, map anims,
+     * loc changes) are only computed for tracked zones, and deck zones are never inside a player's root scene,
+     * so [org.jesse.game.world.region.zone.ZoneManager.computeSharedEvents] adds them through this.
+     */
+    @JvmStatic
+    fun addDeckZoneIds(into: IntOpenHashSet) {
+        for (i in 1..MAX_INDEX) {
+            val entity = entities[i] ?: continue
+            for (dx in 0 until entity.template.sizeX) {
+                for (dz in 0 until entity.template.sizeZ) {
+                    for (level in MIN_LEVEL..MAX_LEVEL) {
+                        into.add(Chunk.getChunkHash(entity.instanceZoneX + dx, entity.instanceZoneZ + dz, level))
+                    }
+                }
+            }
         }
     }
 

@@ -75,30 +75,26 @@ object SailingSidepanel {
     private const val STAT_LIGHT_RANGED = 5165
 
     /**
-     * Raft values sent on boarding. Player role 10 = owner/captain; boat name parts 9 + 22 = the capture account's
-     * boat name ("Bladed Craft", cargo hold title t336) - placeholders until boat naming exists;
-     * HP 20 and repair kits 10 are the capture account's values.
+     * Raft values sent on boarding. Player role 10 = owner/captain; repair kits 10 is the capture account's value.
+     * Boat name, hotspot and HP come from the player's boat record ([BoatOwnership]).
      */
     private const val RAFT_BOAT_TYPE = 8110
-    private const val RAFT_HOTSPOT0 = 15
-    private const val RAFT_HP = 20
     private const val ROLE_OWNER = 10
-    private const val NAME_PART_2 = 9
-    private const val NAME_PART_3 = 22
     private const val REPAIR_KITS = 10
 
     @JvmStatic
     fun open(player: Player, boat: Boat) {
         val vars = player.varManager
-        vars.sendBit(BOARDED_BOAT_NAME_2, NAME_PART_2)
-        vars.sendBit(BOARDED_BOAT_NAME_3, NAME_PART_3)
+        val (name2, name3) = BoatOwnership.nameParts(player)
+        vars.sendBit(BOARDED_BOAT_NAME_2, name2)
+        vars.sendBit(BOARDED_BOAT_NAME_3, name3)
         vars.sendBit(PLAYER_ROLE, ROLE_OWNER)
         vars.sendVar(BOAT_TYPE, RAFT_BOAT_TYPE)
         vars.sendBit(BOAT_MOVE_MODE, boat.moveMode)
         vars.sendBit(PLAYERS_ON_BOARD_TOTAL, 1)
-        vars.sendBit(FACILITY_HOTSPOT0, RAFT_HOTSPOT0)
-        vars.sendBit(BOAT_HP_MAX, RAFT_HP)
-        vars.sendBit(BOAT_HP, RAFT_HP)
+        vars.sendBit(FACILITY_HOTSPOT0, BoatOwnership.hotspot0(player))
+        vars.sendBit(BOAT_HP_MAX, BoatOwnership.storedMaxHp(player))
+        vars.sendBit(BOAT_HP, BoatOwnership.storedHp(player))
         vars.sendBit(HELM_STATUS, 1)
         vars.sendBit(PLAYER_AT_HELM, 0)
         vars.sendBit(REPAIRKITS, REPAIR_KITS)

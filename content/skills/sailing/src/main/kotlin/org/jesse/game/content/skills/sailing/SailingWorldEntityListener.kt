@@ -45,13 +45,16 @@ object SailingWorldEntityListener : WorldEntityListener {
         }
     }
 
-    /** Logout lands on the nearest dock rather than the boat's root tile, which is usually open sea. */
+    /**
+     * Logout saves the player on the land tile of the port their boat is moored at (45 capture login: the login
+     * rebuild is at the Port Sarim land tile (3050, 3193), `sailing_boat_1_port` = Port Sarim), not on the deck.
+     */
     override fun evacuationTile(player: Player, entity: WorldEntity, logout: Boolean): Location? {
         if (!logout) {
             return null
         }
         val boat = Boats[entity] ?: return null
-        return Dock.nearest(boat)?.landTile
+        return (BoatOwnership.port(player) ?: Dock.nearest(boat))?.landTile
     }
 
     override fun onDespawn(entity: WorldEntity) {

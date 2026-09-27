@@ -58,6 +58,10 @@ enum class Dock(
         @JvmStatic
         fun nearest(boat: Boat): Dock? = entries.minByOrNull { it.distanceTo(boat) }
 
+        /** Dock by its `sailing_dock` id (the value of `sailing_boat_1_port`). */
+        @JvmStatic
+        fun byId(id: Int): Dock? = entries.firstOrNull { it.id == id }
+
         @JvmStatic
         val gangplankIds: Array<Any>
             get() = entries.map { it.gangplankId as Any }.toTypedArray()

@@ -11,7 +11,7 @@ import org.jesse.game.world.entity.player.Player
  * Boarding and disembarking, following the live sequences (controls capture board t31-34 / t328-331,
  * disembark t318-321; session 1 t436-440 / t605-607):
  * - tick N (op): fade out (fade_overlay 174, script 948 [0,255,0,0,15]), minimap off; disembark also lowers
- *   the sails (normal deceleration - the boat is not stopped) and records the dock;
+ *   the sails (normal deceleration - the boat is not stopped) and moors the boat at the dock ([BoatOwnership.moor]);
  * - tick N+1: teleport, boarding varbits, sidepanel open/close, message, synth 10754;
  * - tick N+2: fade in (script 948 [0,0,0,255,15]), minimap on;
  * - tick N+3: fade overlay closed.
@@ -21,26 +21,41 @@ object Docking {
     private const val VARBIT_PLAYER_IS_ON_PLAYER_BOAT = 19104
     private const val VARBIT_BOARDED_BOAT_WORLD = 19122
     private const val VARBIT_BOARDED_BOAT = 19136
-    private const val VARBIT_BOAT_1_PORT = 19260
-    private const val VARBIT_LAST_DOCK = 19145
-    private const val VARBIT_LAST_STANDARD_DOCK = 19146
 
     private const val FADE_OVERLAY = 174
     private const val SCRIPT_FADE_OVERLAY = 948
     private const val FADE_CYCLES = 15
     private const val SYNTH_BOARD = 10754
 
-    /** Gangplank "Board" from land: spawn the player's boat at this dock if needed, then board it. */
+    /**
+     * Gangplank "Board" from land. The boat can only be boarded at the port it is moored at ([BoatOwnership.port]);
+     * a player without a boat is given a raft moored here first (stand-in for the sailing intro).
+     * The boat is spawned at the dock's berth unless it is still in the world near this dock (re-boarding after a
+     * disembark needs no rebuild, controls capture t328-329).
+     */
     @JvmStatic
     fun boardAtDock(player: Player, dock: Dock) {
-        val existing = Boats.ownedBy(player.index)
-        if (existing != null && !dock.isNear(existing)) {
-            player.sendMessage("Your boat isn't docked here.")
+        if (!BoatOwnership.owns(player)) {
+            BoatOwnership.grantRaft(player, dock)
+        }
+        val port = BoatOwnership.port(player)
+        if (port != dock) {
+            // Message text unverified - not in any capture.
+            player.sendMessage(
+                if (port != null) "Your boat is moored at ${port.displayName}." else "Your boat isn't moored here.",
+            )
             return
         }
         fadeThen(player) {
-            val boat = Boats.ownedBy(player.index)
-                ?: Boats.spawn(BoatType.RAFT, player.index, dock.seaTileX, dock.seaTileZ, 0, dock.rotation)
+            var boat = Boats.ownedBy(player.index)
+            if (boat != null && !dock.isNear(boat)) {
+                // Left at sea without docking (dev ::disembark): it returns to its berth.
+                Boats.despawn(boat)
+                boat = null
+            }
+            if (boat == null) {
+                boat = Boats.spawn(BoatType.RAFT, player.index, dock.seaTileX, dock.seaTileZ, 0, dock.rotation)
+            }
             if (boat == null) {
                 player.sendMessage("Your boat could not be launched right now.")
                 return@fadeThen
@@ -59,10 +74,7 @@ object Docking {
         if (boat.helmsman === player) {
             Sailing.lowerSails(boat)
         }
-        val vars = player.varManager
-        vars.sendBit(VARBIT_BOAT_1_PORT, dock.id)
-        vars.sendBit(VARBIT_LAST_DOCK, dock.id)
-        vars.sendBit(VARBIT_LAST_STANDARD_DOCK, dock.id)
+        BoatOwnership.moor(player, dock)
         fadeThen(player) {
             if (boat.helmsman === player) {
                 Sailing.leaveHelm(boat, updatePanel = false)

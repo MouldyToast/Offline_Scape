@@ -103,12 +103,20 @@ object Docking {
         player.packetDispatcher.sendSoundEffect(SoundEffect(SYNTH_BOARD))
     }
 
-    /** Clears the boarding varbits and closes the sidepanel, without moving the player. */
+    /**
+     * Clears the boarding varbits and closes the sidepanel, without moving the player. The player is leaving the
+     * boat without logging out (disembark, dev `::disembark`, boat despawned), so there is no boat at sea to restore.
+     */
     @JvmStatic
     fun clearAboard(player: Player) {
         setAboardVarbits(player, false)
+        BoatPersistence.clear(player)
         SailingSidepanel.close(player)
     }
+
+    /** Whether [player] is currently boarded (`sailing_player_is_on_player_boat`). */
+    @JvmStatic
+    fun isAboard(player: Player): Boolean = player.varManager.getBitValue(VARBIT_PLAYER_IS_ON_PLAYER_BOAT) == 1
 
     /**
      * Boarding varbits the live server sets on board / clears on disembark. 19104 also flips

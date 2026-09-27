@@ -351,6 +351,7 @@ object Sailing {
             val owner = World.getPlayers().get(entity.ownerIndex)
             if (owner != null) {
                 sendSpawnedPosition(owner, boat)
+                BoatPersistence.recordIfAboard(owner, boat)
             }
         }
 

@@ -38,7 +38,9 @@ object SailingWorldEntityListener : WorldEntityListener {
             Sailing.leaveHelm(boat, updatePanel = false)
         }
         if (logout) {
-            // Logging out: only the varbits (the sidepanel goes with the session), as before the split.
+            // Logging out aboard: remember where the boat is (restored at login), then only the varbits
+            // (the sidepanel goes with the session).
+            BoatPersistence.recordIfAboard(player, boat)
             Docking.setAboardVarbits(player, false)
         } else {
             Docking.clearAboard(player)

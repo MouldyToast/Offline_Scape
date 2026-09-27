@@ -13,11 +13,11 @@ import org.jesse.plugins.events.ServerLaunchEvent
  * The boat is moored at [port]: the last port it was docked at. It only changes on disembark (controls capture t318);
  * boarding and sailing never touch it, so a boat can only be boarded at the port it was last docked at.
  *
- * Persistence: the engine saves whole varps, so one varbit of every persistent varp is registered at launch.
- * Saved now: the boat record (sailing_boat_1_data, _name, _customisation_2, hp_storage_1/_3, boat_selection,
- * last_dock). Jagex also keeps `sailing_perm_transmit_no_protect_1..3`, but those hold the boarded state
- * (boarded_boat, boarded_boat_world) and the at-sea position - they are saved together with the login restore in
- * the boat-persistence step, so a crash while aboard can't leave stale "on a boat" state behind.
+ * Persistence: the engine saves whole varps, so one varbit of every persistent varp is registered at launch -
+ * Jagex's own split: the boat record (sailing_boat_1_data, _name, _customisation_2, hp_storage_1/_3,
+ * boat_selection, last_dock) and `sailing_perm_transmit_no_protect_1..3` (boat spawned, boarded state, spawned
+ * angle / fine offset). `sailing_temp_transmit_no_protect_1` (on-boat flag, facility lock) is not saved.
+ * A saved boarded state with no boat to restore is cleared at login ([BoatPersistence.onLogin]).
  */
 object BoatOwnership {
     // sailing_boat_1_data
@@ -45,15 +45,17 @@ object BoatOwnership {
     private const val VARBIT_LAST_DOCK = 19145
     private const val VARBIT_LAST_STANDARD_DOCK = 19146
 
-    // sailing_perm_transmit_no_protect_1 / _2 (not saved yet - see the class doc)
+    // sailing_perm_transmit_no_protect_1 / _2 / _3
     private const val VARBIT_BOAT_SPAWNED = 19121
     private const val VARBIT_PREVIOUS_BOAT_DATA_SLOT = 19130
+    private const val VARBIT_SPAWNED_FINEX = 19141
 
     /** One varbit per persistent varp: sailing_boat_1_data, _name, _customisation_2, hp_storage_1, hp_storage_3,
-     *  boat_selection, last_dock. */
+     *  boat_selection, last_dock, perm_transmit_no_protect_1, _2, _3. */
     private val PERSISTENT_VARPS_BY_VARBIT = intArrayOf(
         VARBIT_OWNED, VARBIT_NAME_2, VARBIT_HOTSPOT_0, VARBIT_STORED_HP, VARBIT_STORED_MAX_HP,
         VARBIT_LAST_PERSONAL_BOAT_BOARDED, VARBIT_LAST_DOCK,
+        VARBIT_BOAT_SPAWNED, VARBIT_PREVIOUS_BOAT_DATA_SLOT, VARBIT_SPAWNED_FINEX,
     )
 
     // An owned raft, as in every capture. Name parts 9 + 22 ("Bladed Craft", cargo hold title) are the capture
@@ -102,9 +104,13 @@ object BoatOwnership {
         vars.sendBit(VARBIT_PREVIOUS_BOAT_DATA_SLOT, 1)
     }
 
-    /** Moors the boat at [dock] (disembark, controls capture t318: port + last dock + last standard dock). */
+    /**
+     * Moors the boat at [dock] (disembark, controls capture t318: port + last dock + last standard dock).
+     * A moored boat is no longer at sea, so there is nothing to restore at login.
+     */
     @JvmStatic
     fun moor(player: Player, dock: Dock) {
+        BoatPersistence.clear(player)
         val vars = player.varManager
         vars.sendBit(VARBIT_PORT, dock.id)
         vars.sendBit(VARBIT_LAST_DOCK, dock.id)

@@ -24,7 +24,8 @@ import kotlin.math.sin
  *
  * Move modes (varbit 19175) form a ladder: 3 reverse <- 0 sails down -> 1 half sails -> 2 full sails;
  * 4 = at the helm while idle (a freshly spawned boat, or taking the helm with the sails down).
- * Speed moves toward the mode's target by `acceleration` per tick: full = base (+ boost), half = 64, down/4 = 0;
+ * Speed moves toward the mode's target by `acceleration` per tick: full = base, half = 64, down/4 = 0, a trim boost
+ * adds 64 at full or half (halfsails capture t76-t95: 128);
  * reverse is a constant -64 from its first tick and leaving it stops dead (t152, t170).
  * Movement: fine coords += round_to_32(speed * (-sin, -cos)(angle)) - fits every controls-capture tick
  * outside land contact.
@@ -32,9 +33,9 @@ import kotlin.math.sin
  * Land collision: [WorldEntityCollision] (rotated hull footprint vs blocked tiles, slide z then x); a boat that
  * cannot move at all drops to speed 0 and re-accelerates.
  *
- * Unverified / not implemented: gust timing beyond the few samples (first gust 44/62/53 ticks after
- * setting sails, 49 after an untrimmed gust, 30 after a boost - randomised here), sub 0 from modes 1/2 and
- * sub 2 from modes 2/3 (never pressed in a capture).
+ * Unverified / not implemented: gust timing beyond the few samples (44-62 running ticks after setting sails, 49
+ * after an untrimmed gust, 30 after a boost; the timer pauses while the sails are down - randomised here),
+ * sub 0 from modes 1/2 and sub 2 from modes 2/3 (never pressed in a capture).
  */
 object Sailing {
     const val MODE_IDLE = 0
@@ -69,7 +70,8 @@ object Sailing {
     private const val SYNTH_FULL_TO_HALF = 10834
     private const val SYNTH_HALF_TO_DOWN = 10835
     private const val SYNTH_HALF_TO_FULL = 10836
-    private const val SYNTH_GUST = 10839
+    private const val SYNTH_GUST_FULL = 10839
+    private const val SYNTH_GUST_HALF = 10838
     private const val SYNTH_TRIM_1 = 10842
     private const val SYNTH_TRIM_2 = 10841
 
@@ -166,7 +168,7 @@ object Sailing {
         synth(player, SYNTH_HELM_OFF)
         if (boat.moveMode != MODE_IDLE) {
             // Sails drop now (anims, ops, synth) but the boat keeps its speed this tick; deceleration and the mode
-            // varbit follow next tick. Only captured from full sails; half sails assumed the same.
+            // varbit follow next tick. Full sails: controls t48-t49; half sails: halfsails t43-t44, t157-t158.
             if (boat.moveMode == MODE_SAILS || boat.moveMode == MODE_HALF) {
                 boat.holdSpeed = true
             }
@@ -272,8 +274,9 @@ object Sailing {
 
     /**
      * SET_HEADING from the client (heading mode is only enabled for the helmsman). In mode 4 the first heading
-     * also sets full sails: controls capture t40 switched 4 -> 2 with the sail-set anims and synth on the same
-     * tick the boat started turning, with no op / button packet logged (inferred - RSProx does not log SET_HEADING).
+     * also sets full sails: controls capture t40 and halfsails t12 / t48 switched 4 -> 2 with the sail-set anims and
+     * synth on the same tick the boat started turning, with no op / button packet logged (RSProx does not log
+     * SET_HEADING, so this is inferred - but consistent across every helm-on followed by a click on the sea).
      */
     @JvmStatic
     fun onSetHeading(player: Player, boat: Boat, heading: Int) {
@@ -333,7 +336,7 @@ object Sailing {
         val type = boat.type
         val targetSpeed = when (boat.moveMode) {
             MODE_SAILS -> min(type.baseSpeed + (if (boosted) type.boostAmount else 0), type.speedCap)
-            MODE_HALF -> type.halfSpeed
+            MODE_HALF -> min(type.halfSpeed + (if (boosted) type.boostAmount else 0), type.speedCap)
             else -> 0
         }
         if (boat.holdSpeed) {
@@ -388,10 +391,11 @@ object Sailing {
      * 4, 8, 12, 16 (t295-t307), on boosted tick 20 (t311) "The wind dies down..." + trim end anims + sail refresh;
      * the speed is back to normal the tick after. Next gust 30 ticks later (session 1).
      *
-     * Gust (t129-t143, t223-t237, t286): only starts under full sail with a helmsman; lasts 14 ticks whatever
-     * happens to the sails, then "The wind dies down..." + sail refresh. Gust start: message, synth, sail refresh
-     * (Trim op shown), full-sail vfx. Each gust tick after that: vfx by last tick's speed - full above half speed,
-     * half at half speed, none when stopped (t137-t140).
+     * Gust (controls t129-t143, t223-t237, t286; halfsails t69, t127): starts under full or half sails with a
+     * helmsman; the timer pauses while the sails are down (halfsails: boost end t95 + 30 + 2 ticks down = t127).
+     * Lasts 14 ticks whatever happens to the sails, then "The wind dies down..." + sail refresh. Gust start: message,
+     * synth (10839 full / 10838 half), sail refresh (Trim op shown), vfx. Every gust tick: vfx by last tick's speed -
+     * full above half speed, half at half speed, none when stopped (controls t137-t140, halfsails t69-t74).
      */
     private fun tickWind(boat: Boat): Boolean {
         val anims = boat.type.anims ?: return false
@@ -431,16 +435,14 @@ object Sailing {
                 helmsman?.sendMessage("The wind dies down and your sails with it.")
                 refreshSail(boat)
                 boat.nextGustIn = Utils.random(GUST_MIN, GUST_MAX)
-            } else if (boat.speed > boat.type.halfSpeed) {
-                graphic(boat, anims.sailB, anims.gustGraphic)
-            } else if (boat.speed > 0) {
-                graphic(boat, anims.sailB, anims.gustGraphicHalf)
+            } else {
+                gustGraphic(boat, anims)
             }
             return false
         }
 
-        // The gust timer only runs under full sail with someone at the helm.
-        if (boat.moveMode != MODE_SAILS || helmsman == null) {
+        // The gust timer only runs with the sails up (full or half) and someone at the helm.
+        if ((boat.moveMode != MODE_SAILS && boat.moveMode != MODE_HALF) || helmsman == null) {
             return false
         }
         if (boat.nextGustIn < 0) {
@@ -453,9 +455,18 @@ object Sailing {
         boat.gustTicks = GUST_WINDOW
         helmsman.sendMessage("You feel a gust of wind.")
         refreshSail(boat)
-        graphic(boat, anims.sailB, anims.gustGraphic)
-        synth(boat, SYNTH_GUST)
+        gustGraphic(boat, anims)
+        synth(boat, if (boat.moveMode == MODE_HALF) SYNTH_GUST_HALF else SYNTH_GUST_FULL)
         return false
+    }
+
+    /** Wind vfx on the linen sail by last tick's speed: full above half speed, half at half speed, none when stopped. */
+    private fun gustGraphic(boat: Boat, anims: SailingAnims) {
+        if (boat.speed > boat.type.halfSpeed) {
+            graphic(boat, anims.sailB, anims.gustGraphic)
+        } else if (boat.speed > 0) {
+            graphic(boat, anims.sailB, anims.gustGraphicHalf)
+        }
     }
 
     private fun requireHelmsman(player: Player, boat: Boat): Boolean {
@@ -470,12 +481,12 @@ object Sailing {
      * Changes the move mode. With [visuals]: the sail loc's ops are re-sent (every change, t190), a sail state change
      * plays the transition anims + synth now and the steady anims next tick, a change within the same sail state
      * (0 <-> 3) re-sends the steady anims now and next tick (t152-153, t170-171). The helmsman gets the mode and
-     * sail-button varbits. A running boost ends when leaving full sails.
+     * sail-button varbits. A running boost ends when the sails come down (it applies at full and half sails).
      */
     private fun setMode(boat: Boat, mode: Int, visuals: Boolean = true) {
         val oldSail = sailState(boat.moveMode)
         boat.moveMode = mode
-        if (mode != MODE_SAILS) {
+        if (mode != MODE_SAILS && mode != MODE_HALF) {
             boat.boostTick = -1
         }
         val anims = boat.type.anims

@@ -3,6 +3,7 @@ package org.jesse.game.content.skills.sailing
 import org.jesse.game.task.WorldTasksManager
 import org.jesse.game.util.Utils
 import org.jesse.game.world.World
+import org.jesse.game.world.entity.Location
 import org.jesse.game.world.entity.SoundEffect
 import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.Graphics
@@ -117,7 +118,7 @@ object Sailing {
         val sender = player.packetDispatcher.sender
         sender.setInteractionMode(WORLD_DEFAULT, TILE_MODE_HEADING, ENTITY_MODE_ALL)
         sender.setInteractionMode(entity.index, TILE_MODE_WALK, ENTITY_MODE_ALL)
-        faceHelmForward(player, boat, anims)
+        faceDeckSouth(player)
         player.setAnimation(Animation(anims.playerHelmStart))
         locAnim(boat, anims.helm, anims.helmLocStart)
         refreshSail(boat)
@@ -139,7 +140,7 @@ object Sailing {
 
     /**
      * Releases the helm (Stop-navigating, walked off, disembarked, logged out, boat despawned).
-     * Tick N (t48, t71): interaction modes reset, lockedin 0, facing reset to own tile, anim stop, helm inactive,
+     * Tick N (t48, t71): interaction modes reset, lockedin 0, player stays facing deck south, anim stop, helm inactive,
      * synth; raised sails are lowered. Tick N+1 (only when [updatePanel]): mode / at-helm varbits, appearance,
      * navigator name cleared. Disembark and evacuation pass false - the sidepanel is closed instead.
      */
@@ -153,7 +154,7 @@ object Sailing {
         val sender = player.packetDispatcher.sender
         sender.resetInteractionMode(boat.entity.index)
         sender.setInteractionMode(WORLD_DEFAULT, TILE_MODE_WALK, ENTITY_MODE_ALL)
-        player.setFaceLocation(player.location)
+        faceDeckSouth(player)
         player.setAnimation(Animation.STOP)
         val anims = boat.type.anims
         if (anims != null) {
@@ -251,7 +252,7 @@ object Sailing {
         boat.nextGustIn = -1
         boat.boostTick = 0
         player.sendMessage("You trim the sails, catching the wind for a burst of speed!")
-        faceHelmForward(player, boat, anims)
+        faceDeckSouth(player)
         player.setAnimation(Animation(anims.playerTrimStart))
         locAnim(boat, anims.helm, anims.helmLocTrimStart)
         setSailOpFlags(boat)
@@ -555,10 +556,18 @@ object Sailing {
                 location.y == (entity.instanceZoneZ shl 3) + helm.dz
     }
 
-    /** The helmsman faces the deck tile 3 south of the helm (t37, t57, t73, trim t291) whatever the boat's angle. */
-    private fun faceHelmForward(player: Player, boat: Boat, anims: SailingAnims) {
-        val helm = anims.helm
-        player.setFaceLocation(boat.entity.deckTile(helm.dx, helm.dz - 3, helm.level))
+    /**
+     * Faces [player] deck-south (the raft's bow; the client rotates it with the boat). Live never turns a player
+     * away from south on the raft (controls capture): helm on / trim face the tile 3 south (t37, t57, t73, t291),
+     * sail Set / Un-set send no facing at all (t54, t62, t69), and Stop-navigating faces the player's own tile
+     * (t48, t71), which the client ignores. Our engine converts a face tile to an angle server-side and
+     * `DirectionUtil.getFaceDirection(0, 0)` is atan2(-0.0, -0.0) = north, so the own-tile face is replaced by an
+     * explicit south face. [Player.setFaceLocation] also clears the engine's pending faced object from the click.
+     */
+    @JvmStatic
+    fun faceDeckSouth(player: Player) {
+        val location = player.location
+        player.setFaceLocation(Location(location.x, location.y - 3, location.plane))
     }
 
     /** Players standing on [boat]'s deck. */

@@ -13,10 +13,22 @@ import kotlin.math.abs
 private fun withinReach(player: Player, obj: WorldObject): Boolean =
     player.plane == obj.plane && abs(player.x - obj.x) <= 1 && abs(player.y - obj.y) <= 1
 
+/**
+ * Every click on a loc of the deck the player stands on keeps them facing deck-south, as live does. Without this
+ * the engine's ObjectHandler turns them toward the clicked loc (the linen sail is north of the helm).
+ */
+private fun faceIfOnSameDeck(player: Player, obj: WorldObject) {
+    val boat = Boats.at(obj) ?: return
+    if (Boats.at(player.location) === boat) {
+        Sailing.faceDeckSouth(player)
+    }
+}
+
 /** Helm: op1 Navigate / Stop-navigating (multiloc on `sailing_boat_facility_lockedin`), op4 Escape. */
 @Suppress("unused")
 class BoatHelmObjectAction : ObjectAction {
     override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
+        faceIfOnSameDeck(player, `object`)
         if (!withinReach(player, `object`)) {
             return
         }
@@ -40,6 +52,7 @@ class BoatHelmObjectAction : ObjectAction {
 @Suppress("unused")
 class BoatSailsObjectAction : ObjectAction {
     override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
+        faceIfOnSameDeck(player, `object`)
         if (!withinReach(player, `object`)) {
             return
         }

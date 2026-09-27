@@ -271,8 +271,8 @@ class BuildAreaManager(private val player: Player) {
      * Otherwise: forward this tick's shared zone events (loc anims, loc changes) for the deck zones.
      */
     fun syncWorldEntityZones(worldEntity: WorldEntity, full: Boolean) {
-        for (dx in 0 until worldEntity.type.sizeX) {
-            for (dz in 0 until worldEntity.type.sizeZ) {
+        for (dx in 0 until worldEntity.template.sizeX) {
+            for (dz in 0 until worldEntity.template.sizeZ) {
                 val zoneX = worldEntity.instanceZoneX + dx
                 val zoneZ = worldEntity.instanceZoneZ + dz
                 val relX = dx shl 3

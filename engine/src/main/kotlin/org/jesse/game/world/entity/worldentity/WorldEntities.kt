@@ -10,12 +10,15 @@ import org.jesse.game.world.region.dynamicregion.MapBuilder
 import org.jesse.game.world.region.dynamicregion.OutOfBoundaryException
 import org.jesse.game.world.region.dynamicregion.OutOfSpaceException
 import org.slf4j.LoggerFactory
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Registry of live world entities. Owns index allocation, the deck instance
- * allocation, deck locs, and the RSProt avatar lifecycle.
+ * allocation, deck locs, the RSProt avatar lifecycle, and the generic consequences
+ * of a deck going away (evacuating passengers). Behaviour is content's, via [WorldEntityListener].
  *
- * Must only be used from the world thread (RSProt communication thread).
+ * Must only be used from the world thread (RSProt communication thread),
+ * except [addListener], which is safe from any thread.
  */
 object WorldEntities {
     private val logger = LoggerFactory.getLogger(WorldEntities::class.java)
@@ -31,7 +34,15 @@ object WorldEntities {
     /** Deck zone (zoneX | zoneZ << 11, level-independent) -> world entity whose deck owns it. */
     private val deckZones = Int2ObjectOpenHashMap<WorldEntity>()
 
+    /** Registered at boot (ServerLaunchEvent) while the world thread is already running - hence copy-on-write. */
+    private val listeners = CopyOnWriteArrayList<WorldEntityListener>()
+
     private fun deckZoneKey(zoneX: Int, zoneZ: Int): Int = zoneX or (zoneZ shl 11)
+
+    @JvmStatic
+    fun addListener(listener: WorldEntityListener) {
+        listeners.addIfAbsent(listener)
+    }
 
     @JvmStatic
     operator fun get(index: Int): WorldEntity? = if (index in 1..MAX_INDEX) entities[index] else null
@@ -55,14 +66,14 @@ object WorldEntities {
     }
 
     /**
-     * Spawns a world entity of [type] whose pivot sits on the centre of tile ([tileX], [tileZ], [level]).
-     * Allocates a dynamic area, copies the hull template into it on all levels, loads the deck
+     * Spawns a world entity built from [template] whose pivot sits on the centre of tile ([tileX], [tileZ], [level]).
+     * Allocates a dynamic area, copies the template into it on all levels, loads the deck
      * region(s) so the deck has collision, spawns the deck locs, and allocates the avatar.
      * @return the spawned entity, or null if no index or map space is available.
      */
     @JvmStatic
     fun spawn(
-        type: WorldEntityType,
+        template: WorldEntityTemplate,
         ownerIndex: Int,
         tileX: Int,
         tileZ: Int,
@@ -71,33 +82,33 @@ object WorldEntities {
     ): WorldEntity? {
         val index = (1..MAX_INDEX).firstOrNull { entities[it] == null }
         if (index == null) {
-            logger.warn("No free world entity index for {}", type)
+            logger.warn("No free world entity index for {}", template)
             return null
         }
         val area = try {
-            MapBuilder.findEmptyChunk(type.sizeX, type.sizeZ)
+            MapBuilder.findEmptyChunk(template.sizeX, template.sizeZ)
         } catch (e: OutOfSpaceException) {
-            logger.error("No map space for world entity {}", type, e)
+            logger.error("No map space for world entity {}", template, e)
             return null
         }
         try {
             MapBuilder.copyAllPlanesMap(
                 area,
-                type.templateZoneX,
-                type.templateZoneZ,
+                template.templateZoneX,
+                template.templateZoneZ,
                 area.chunkX,
                 area.chunkY,
-                type.sizeX,
-                type.sizeZ,
+                template.sizeX,
+                template.sizeZ,
             )
         } catch (e: OutOfBoundaryException) {
-            logger.error("Failed to copy template for world entity {}", type, e)
+            logger.error("Failed to copy template for world entity {}", template, e)
             MapBuilder.destroy(area)
             return null
         }
         val entity = WorldEntity(
             index = index,
-            type = type,
+            template = template,
             ownerIndex = ownerIndex,
             area = area,
             level = level,
@@ -105,11 +116,11 @@ object WorldEntities {
             fineZ = WorldEntity.tileToFine(tileZ),
             angle = angle and 2047,
         )
-        // Deck regions are never inside any player's scene (the scene follows the boat's root tile),
+        // Deck regions are never inside any player's scene (the scene follows the entity's root tile),
         // so the normal region loading never reaches them: load them explicitly for collision.
         val loadedRegions = HashSet<Int>()
-        for (dx in 0 until type.sizeX) {
-            for (dz in 0 until type.sizeZ) {
+        for (dx in 0 until template.sizeX) {
+            for (dz in 0 until template.sizeZ) {
                 val zoneX = entity.instanceZoneX + dx
                 val zoneZ = entity.instanceZoneZ + dz
                 val regionId = ((zoneX shr 3) shl 8) or (zoneZ shr 3)
@@ -119,17 +130,17 @@ object WorldEntities {
                 deckZones.put(deckZoneKey(zoneX, zoneZ), entity)
             }
         }
-        for (loc in type.deck) {
+        for (loc in template.deck) {
             val tile = entity.deckTile(loc.dx, loc.dz, loc.level)
             World.spawnObject(WorldObject(loc.id, loc.shape, loc.rotation, tile.x, tile.y, tile.plane))
         }
         synchronized(Main.networkServiceLock) {
             entity.avatar = Main.networkService.worldEntityAvatarFactory.alloc(
                 index = index,
-                id = type.id,
+                id = template.configId,
                 ownerIndex = ownerIndex,
-                sizeX = type.sizeX,
-                sizeZ = type.sizeZ,
+                sizeX = template.sizeX,
+                sizeZ = template.sizeZ,
                 southWestZoneX = entity.instanceZoneX,
                 southWestZoneZ = entity.instanceZoneZ,
                 minLevel = MIN_LEVEL,
@@ -137,7 +148,7 @@ object WorldEntities {
                 fineX = entity.fineX,
                 fineZ = entity.fineZ,
                 projectedLevel = level,
-                activeLevel = type.activeLevel,
+                activeLevel = template.activeLevel,
                 angle = entity.angle,
             )
         }
@@ -146,24 +157,23 @@ object WorldEntities {
     }
 
     /**
-     * Moves every player standing on [entity]'s deck to its root tile, then releases the
-     * avatar and the deck instance. Safe to call twice.
+     * Despawns [entity]: every player standing on its deck is evacuated (see [evacuate]), then
+     * [WorldEntityListener.onDespawn], then the avatar and the deck instance are released. Safe to call twice.
      */
     @JvmStatic
     fun despawn(entity: WorldEntity) {
         if (entities[entity.index] !== entity) {
             return
         }
-        Sailing.leaveHelm(entity)
-        val rootTile = entity.rootTile
         for (player in World.getPlayers()) {
             if (player != null && entity.containsDeckTile(player.location)) {
-                Docking.exitBoat(player, rootTile)
+                evacuate(player, entity, false)
             }
         }
+        notifyListeners("despawn", entity) { it.onDespawn(entity) }
         entities[entity.index] = null
-        for (dx in 0 until entity.type.sizeX) {
-            for (dz in 0 until entity.type.sizeZ) {
+        for (dx in 0 until entity.template.sizeX) {
+            for (dz in 0 until entity.template.sizeZ) {
                 deckZones.remove(deckZoneKey(entity.instanceZoneX + dx, entity.instanceZoneZ + dz))
             }
         }
@@ -178,7 +188,7 @@ object WorldEntities {
     }
 
     /**
-     * Per-tick world entity processing (helm upkeep, turning, speed, movement). Called from the world
+     * Per-tick world entity processing: [WorldEntityListener.onTick] for every live entity. Called from the world
      * thread after player/NPC processing and before the info protocols are built, so avatar coord/angle
      * changes go out in this tick's WORLDENTITY_INFO.
      */
@@ -186,12 +196,15 @@ object WorldEntities {
     fun process() {
         for (i in 1..MAX_INDEX) {
             val entity = entities[i] ?: continue
-            try {
-                Sailing.tick(entity)
-            } catch (e: Exception) {
-                logger.error("World entity {} tick failed", i, e)
-            }
+            notifyListeners("tick", entity) { it.onTick(entity) }
         }
+    }
+
+    /** SET_HEADING from the client: forwarded to listeners when [player] stands on a deck. */
+    @JvmStatic
+    fun onSetHeading(player: Player, heading: Int) {
+        val entity = atTile(player.location) ?: return
+        notifyListeners("set heading", entity) { it.onSetHeading(player, entity, heading) }
     }
 
     /** First live world entity owned by player [ownerIndex], or null. */
@@ -218,22 +231,54 @@ object WorldEntities {
     }
 
     /**
-     * Logout hook: a player saved while on a deck would log back in inside a freed instance,
-     * so they are moved (immediately — the save follows in the same call) to the boat's root
-     * tile first. Then every boat they own is despawned.
+     * Logout hook, called from `World.unregisterPlayer` before the save: a player saved while on a deck would
+     * log back in inside a freed instance, so they are evacuated first (immediately - [Player.forceLocation]).
+     * Then every entity they own is despawned.
      */
     @JvmStatic
     fun onLogout(player: Player) {
         val entity = atTile(player.location)
         if (entity != null) {
-            if (entity.helmsman === player) {
-                Sailing.leaveHelm(entity)
-            }
-            // Land on the nearest dock rather than the boat's root tile, which is usually open sea.
-            val dock = Dock.nearest(entity)
-            player.forceLocation(dock?.landTile ?: entity.rootTile)
-            Docking.setAboardVarbits(player, false)
+            evacuate(player, entity, true)
         }
         despawnOwnedBy(player.index)
+    }
+
+    /**
+     * Takes [player] off [entity]'s deck: listeners get [WorldEntityListener.onEvacuate] while the player is still
+     * aboard, then the player is moved to the first listener-supplied [WorldEntityListener.evacuationTile]
+     * (fallback: the root tile) - immediately on [logout] (the save follows), otherwise as a normal teleport.
+     */
+    private fun evacuate(player: Player, entity: WorldEntity, logout: Boolean) {
+        var tile: Location? = null
+        for (listener in listeners) {
+            tile = try {
+                listener.evacuationTile(player, entity, logout)
+            } catch (e: Exception) {
+                logger.error("World entity {} evacuation tile failed", entity.index, e)
+                null
+            }
+            if (tile != null) {
+                break
+            }
+        }
+        val destination = tile ?: entity.rootTile
+        notifyListeners("evacuate", entity) { it.onEvacuate(player, entity, logout) }
+        if (logout) {
+            player.forceLocation(destination)
+        } else {
+            player.setLocation(destination)
+        }
+    }
+
+    /** Listener failures are logged and never abort the engine's own bookkeeping. */
+    private inline fun notifyListeners(what: String, entity: WorldEntity, call: (WorldEntityListener) -> Unit) {
+        for (listener in listeners) {
+            try {
+                call(listener)
+            } catch (e: Exception) {
+                logger.error("World entity {} {} hook failed", entity.index, what, e)
+            }
+        }
     }
 }

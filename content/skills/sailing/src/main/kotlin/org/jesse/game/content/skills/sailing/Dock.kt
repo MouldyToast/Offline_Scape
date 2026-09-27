@@ -1,4 +1,4 @@
-package org.jesse.game.world.entity.worldentity
+package org.jesse.game.content.skills.sailing
 
 import org.jesse.game.world.entity.Location
 import kotlin.math.abs
@@ -35,13 +35,13 @@ enum class Dock(
         get() = Location(landX, landZ, 0)
 
     /** Chebyshev distance from the gangplank to the boat's root tile. */
-    fun distanceTo(entity: WorldEntity): Int {
-        val root = entity.rootTile
+    fun distanceTo(boat: Boat): Int {
+        val root = boat.entity.rootTile
         return max(abs(root.x - gangplankX), abs(root.y - gangplankZ))
     }
 
-    /** Whether [entity] is close enough to this dock to board / disembark (capture: 3-5 tiles). */
-    fun isNear(entity: WorldEntity): Boolean = distanceTo(entity) <= DOCKING_RANGE
+    /** Whether [boat] is close enough to this dock to board / disembark (capture: 3-5 tiles). */
+    fun isNear(boat: Boat): Boolean = distanceTo(boat) <= DOCKING_RANGE
 
     companion object {
         /** Unverified threshold: live docked at 3 (Port Sarim) and spawned at 4.5 (Pandemonium) tiles. */
@@ -52,7 +52,7 @@ enum class Dock(
             entries.firstOrNull { it.gangplankId == id } ?: entries.firstOrNull { it.gangplankX == x && it.gangplankZ == z }
 
         @JvmStatic
-        fun nearest(entity: WorldEntity): Dock? = entries.minByOrNull { it.distanceTo(entity) }
+        fun nearest(boat: Boat): Dock? = entries.minByOrNull { it.distanceTo(boat) }
 
         @JvmStatic
         val gangplankIds: Array<Any>

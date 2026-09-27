@@ -662,8 +662,8 @@ class PacketSender(private val player: Player) {
                 // RebuildWorldEntityV4 takes TILE coordinates and shifts them to zones itself.
                 worldEntity.instanceZoneX shl 3,
                 worldEntity.instanceZoneZ shl 3,
-                worldEntity.type.sizeX,
-                worldEntity.type.sizeZ,
+                worldEntity.template.sizeX,
+                worldEntity.template.sizeZ,
                 REBUILD_WORLD_ENTITY_ZONE_PROVIDER,
             )
         }

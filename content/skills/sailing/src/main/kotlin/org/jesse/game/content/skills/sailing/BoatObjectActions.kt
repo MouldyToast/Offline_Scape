@@ -1,4 +1,4 @@
-package org.jesse.game.world.entity.worldentity
+package org.jesse.game.content.skills.sailing
 
 import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.`object`.ObjectAction
@@ -24,9 +24,9 @@ class BoatHelmObjectAction : ObjectAction {
     }
 
     override fun handleObjectAction(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
-        val entity = WorldEntities.atTile(`object`) ?: return
+        val boat = Boats.at(`object`) ?: return
         when (optionId) {
-            1 -> Sailing.toggleHelm(player, entity)
+            1 -> Sailing.toggleHelm(player, boat)
             else -> player.sendMessage("Nothing interesting happens.")
         }
     }
@@ -47,11 +47,11 @@ class BoatSailsObjectAction : ObjectAction {
     }
 
     override fun handleObjectAction(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
-        val entity = WorldEntities.atTile(`object`) ?: return
+        val boat = Boats.at(`object`) ?: return
         when (optionId) {
-            2 -> Sailing.setSails(player, entity, true)
-            5 -> Sailing.setSails(player, entity, false)
-            1 -> Sailing.trim(player, entity)
+            2 -> Sailing.setSails(player, boat, true)
+            5 -> Sailing.setSails(player, boat, false)
+            1 -> Sailing.trim(player, boat)
             else -> player.sendMessage("Nothing interesting happens.")
         }
     }

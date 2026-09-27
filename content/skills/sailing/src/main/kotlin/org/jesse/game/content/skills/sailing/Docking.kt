@@ -1,4 +1,4 @@
-package org.jesse.game.world.entity.worldentity
+package org.jesse.game.content.skills.sailing
 
 import org.jesse.game.task.WorldTasksManager
 import org.jesse.game.world.entity.Location
@@ -18,14 +18,14 @@ object Docking {
     /** Gangplank "Board" from land: spawn the player's boat at this dock if needed, then board it. */
     @JvmStatic
     fun boardAtDock(player: Player, dock: Dock) {
-        val existing = WorldEntities.ownedBy(player.index)
+        val existing = Boats.ownedBy(player.index)
         if (existing != null && !dock.isNear(existing)) {
             player.sendMessage("Your boat isn't docked here.")
             return
         }
         fadeThen(player) {
-            val boat = WorldEntities.ownedBy(player.index)
-                ?: WorldEntities.spawn(WorldEntityType.RAFT, player.index, dock.seaTileX, dock.seaTileZ, 0, dock.rotation)
+            val boat = Boats.ownedBy(player.index)
+                ?: Boats.spawn(BoatType.RAFT, player.index, dock.seaTileX, dock.seaTileZ, 0, dock.rotation)
             if (boat == null) {
                 player.sendMessage("Your boat could not be launched right now.")
                 return@fadeThen
@@ -36,7 +36,7 @@ object Docking {
 
     /** Gangplank "Disembark", clicked from the deck (the gangplank is a root-world loc). */
     @JvmStatic
-    fun disembarkAtDock(player: Player, boat: WorldEntity, dock: Dock) {
+    fun disembarkAtDock(player: Player, boat: Boat, dock: Dock) {
         if (!dock.isNear(boat)) {
             player.sendMessage("You need to bring the boat closer to the dock.")
             return
@@ -53,17 +53,23 @@ object Docking {
 
     /** Teleports [player] onto [boat]'s deck and sets the boarding varbits (no fade - see [boardAtDock]). */
     @JvmStatic
-    fun enterBoat(player: Player, boat: WorldEntity) {
-        player.setLocation(boat.boardTile)
+    fun enterBoat(player: Player, boat: Boat) {
+        player.setLocation(boat.entity.boardTile)
         setAboardVarbits(player, true)
         SailingSidepanel.open(player, boat)
         player.sendMessage("You board your boat.")
     }
 
-    /** Teleports [player] off a deck to [tile] and clears the boarding varbits (no fade). */
+    /** Teleports [player] off a deck to [tile] and clears the boarding state (no fade). */
     @JvmStatic
     fun exitBoat(player: Player, tile: Location) {
         player.setLocation(tile)
+        clearAboard(player)
+    }
+
+    /** Clears the boarding varbits and closes the sidepanel, without moving the player. */
+    @JvmStatic
+    fun clearAboard(player: Player) {
         setAboardVarbits(player, false)
         SailingSidepanel.close(player)
     }

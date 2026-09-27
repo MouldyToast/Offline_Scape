@@ -1,4 +1,4 @@
-package org.jesse.game.world.entity.worldentity
+package org.jesse.game.content.skills.sailing
 
 import org.jesse.game.GameInterface
 import org.jesse.game.model.ui.InterfacePosition
@@ -55,7 +55,7 @@ object SailingSidepanel {
     private const val RAFT_HP = 20
 
     @JvmStatic
-    fun open(player: Player, boat: WorldEntity) {
+    fun open(player: Player, boat: Boat) {
         val vars = player.varManager
         val type = boat.type
         vars.sendVar(BOAT_TYPE, RAFT_BOAT_TYPE)

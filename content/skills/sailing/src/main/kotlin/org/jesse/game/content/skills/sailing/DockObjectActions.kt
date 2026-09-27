@@ -1,4 +1,4 @@
-package org.jesse.game.world.entity.worldentity
+package org.jesse.game.content.skills.sailing
 
 import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.`object`.ObjectAction
@@ -13,7 +13,7 @@ import org.jesse.game.world.`object`.WorldObject
 @Suppress("unused")
 class DockGangplankObjectAction : ObjectAction {
     override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
-        val boat = WorldEntities.atTile(player.location)
+        val boat = Boats.at(player.location)
         if (boat != null) {
             val dock = Dock.byGangplank(`object`.id, `object`.x, `object`.y) ?: return
             if (optionId == 1) {

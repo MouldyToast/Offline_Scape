@@ -13,8 +13,8 @@ import kotlin.math.max
  *   a multiloc on `sailing_player_is_on_player_boat` (0 = embark: Board, 1 = disembark: Disembark).
  * - land tile: where the disembark teleport lands (Port Sarim t606 (3050,3193,0), Pandemonium t... (3069,2987,0)).
  * - sea tile + rotation: where your boat spawns when you board at this dock
- *   (Pandemonium raft t439: (3074.5, 2987.5) angle 1024. Port Sarim: intro skiff t74 (3054.5, 3193.5) angle 0 -
- *   the raft's own Port Sarim berth is not in the capture yet).
+ *   (Pandemonium raft t439: (3074.5, 2987.5) angle 1024. Port Sarim raft: `sailing_straightintoland` t21
+ *   (3053.5, 3193.5) angle 0 - the intro skiff used (3054.5, 3193.5)).
  * - id: the value written to `sailing_boat_1_port` / `sailing_boarded_boat_last_dock` /
  *   `sailing_boarded_boat_last_standard_dock` on disembark (controls capture t318: Port Sarim -> 0;
  *   login value 1 after last disembarking at the Pandemonium).
@@ -31,7 +31,7 @@ enum class Dock(
     val seaTileZ: Int,
     val rotation: Int,
 ) {
-    PORT_SARIM(0, "Port Sarim", 59835, 3051, 3193, 3050, 3193, 3054, 3193, 0),
+    PORT_SARIM(0, "Port Sarim", 59835, 3051, 3193, 3050, 3193, 3053, 3193, 0),
     PANDEMONIUM(1, "the Pandemonium", 59836, 3070, 2987, 3069, 2987, 3074, 2987, 1024),
     ;
 

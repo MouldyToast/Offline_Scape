@@ -100,6 +100,9 @@ enum class BoatType(
                 DeckLoc(32545, 22, 0, 2, 5, 1), // invisible_type0_nonblocking
                 DeckLoc(32545, 22, 0, 4, 5, 1), // invisible_type0_nonblocking
             ),
+            // worldentity_1: boundssizex=128, boundssizez=384 (1 x 3 tiles, centred on the pivot).
+            boundsSizeX = 128,
+            boundsSizeZ = 384,
         ),
         SailingAnims(
             helm = DeckRef(59554, 10, 0, 3, 4, 1),
@@ -128,10 +131,24 @@ enum class BoatType(
     ),
 
     // Skiff board tile verified: capture t74 teleport to (15556,14276,1) = base + (4,4).
-    SKIFF(WorldEntityTemplate(2, 3840 shr 3, 6400 shr 3, 1, 1, 1, 4, 4, emptyList()), null),
+    // worldentity_2 bounds 256 x 640 (2 x 5 tiles); collision unverified for this hull.
+    SKIFF(
+        WorldEntityTemplate(
+            2, 3840 shr 3, 6400 shr 3, 1, 1, 1, 4, 4, emptyList(),
+            boundsSizeX = 256, boundsSizeZ = 640,
+        ),
+        null,
+    ),
 
     // Sloop board tile UNVERIFIED (never boarded in the capture) - deck centre placeholder.
-    SLOOP(WorldEntityTemplate(3, 3864 shr 3, 6432 shr 3, 1, 2, 1, 4, 8, emptyList()), null),
+    // worldentity_3 bounds 384 x 1280 (3 x 10 tiles), boundsoffsetz=-256 (sign unverified).
+    SLOOP(
+        WorldEntityTemplate(
+            3, 3864 shr 3, 6432 shr 3, 1, 2, 1, 4, 8, emptyList(),
+            boundsSizeX = 384, boundsSizeZ = 1280, boundsOffsetZ = -256,
+        ),
+        null,
+    ),
     ;
 
     /**

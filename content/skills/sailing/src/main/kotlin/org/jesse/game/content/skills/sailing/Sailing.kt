@@ -9,6 +9,7 @@ import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.Graphics
 import org.jesse.game.world.entity.masks.UpdateFlag
 import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.entity.worldentity.WorldEntityCollision
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
@@ -28,8 +29,10 @@ import kotlin.math.sin
  * Movement: fine coords += round_to_32(speed * (-sin, -cos)(angle)) - fits every controls-capture tick
  * outside land contact.
  *
- * Unverified / not implemented: land collision (controls capture t95-t134 shows stop + freeze on a head-on hit,
- * axis sliding and a small push-back), gust timing beyond the few samples (first gust 44/62/53 ticks after
+ * Land collision: [WorldEntityCollision] (rotated hull footprint vs blocked tiles, slide z then x); a boat that
+ * cannot move at all drops to speed 0 and re-accelerates.
+ *
+ * Unverified / not implemented: gust timing beyond the few samples (first gust 44/62/53 ticks after
  * setting sails, 49 after an untrimmed gust, 30 after a boost - randomised here), sub 0 from modes 1/2 and
  * sub 2 from modes 2/3 (never pressed in a capture).
  */
@@ -342,17 +345,16 @@ object Sailing {
             }
         }
 
-        if (boat.speed == 0) {
-            return
-        }
-        // Move on the 32-fine-unit (quarter tile) grid.
+        // Move on the 32-fine-unit (quarter tile) grid, colliding with land. Called even at speed 0 so a boat turned
+        // into the shore is pushed back out (45 capture t8).
         val radians = entity.angle * Math.PI / 1024.0
         val dx = quarter(-sin(radians) * boat.speed)
         val dz = quarter(-cos(radians) * boat.speed)
-        if (dx == 0 && dz == 0) {
-            return
+        val moved = WorldEntityCollision.move(entity, dx, dz)
+        if (!moved && (dx != 0 || dz != 0)) {
+            // Pinned against land: the boat re-accelerates from a standstill (controls capture t96-t100: 64, 128, 192).
+            boat.speed = 0
         }
-        entity.moveTo(entity.level, entity.fineX + dx, entity.fineZ + dz, false)
     }
 
     /**

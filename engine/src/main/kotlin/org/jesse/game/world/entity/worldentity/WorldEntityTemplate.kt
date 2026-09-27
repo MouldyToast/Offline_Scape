@@ -36,6 +36,12 @@ data class DeckLoc(
  * @param boardDx deck tile (template-relative) a player is placed on when boarding.
  * @param boardDz deck tile (template-relative) a player is placed on when boarding.
  * @param deck dynamic locs spawned on the deck after the template copy.
+ * @param boundsSizeX collision footprint width in fine units (`worldentity` config `boundssizex`), 0 = no collision.
+ * @param boundsSizeZ collision footprint length in fine units along the entity's forward axis (`boundssizez`).
+ * @param boundsOffsetX footprint centre offset from the pivot, sideways, fine units (`boundsoffsetx`).
+ * @param boundsOffsetZ footprint centre offset from the pivot, along forward, fine units (`boundsoffsetz`).
+ * The footprint is centred on the pivot for the raft (verified against three live captures, see
+ * [WorldEntityCollision]); the offset direction/sign is unverified (only the sloop config has one).
  */
 class WorldEntityTemplate(
     val configId: Int,
@@ -47,6 +53,10 @@ class WorldEntityTemplate(
     val boardDx: Int,
     val boardDz: Int,
     val deck: List<DeckLoc>,
+    val boundsSizeX: Int = 0,
+    val boundsSizeZ: Int = 0,
+    val boundsOffsetX: Int = 0,
+    val boundsOffsetZ: Int = 0,
 ) {
     override fun toString(): String =
         "WorldEntityTemplate(configId=$configId, template=($templateZoneX, $templateZoneZ), size=${sizeX}x$sizeZ)"

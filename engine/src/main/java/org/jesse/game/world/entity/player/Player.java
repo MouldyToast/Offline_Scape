@@ -136,6 +136,7 @@ import org.jesse.game.world.entity.player.container.ContainerPolicy;
 import org.jesse.game.world.entity.player.container.ContainerWrapper;
 import org.jesse.game.world.entity.player.container.RequestResult;
 import org.jesse.game.world.entity.player.container.impl.ContainerType;
+import org.jesse.game.world.entity.worldentity.WorldEntities;
 import org.jesse.game.world.entity.player.container.impl.Inventory;
 import org.jesse.game.world.entity.player.container.impl.LootingBag;
 import org.jesse.game.world.entity.player.container.impl.PriceChecker;
@@ -739,7 +740,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         final Location currentTile = new Location(getLocation());
         setLocation(tile);
         final ForceMovement fm = new ForceMovement(currentTile, 1, tile, speed,
-            DirectionUtil.getFaceDirection(tile.getX() - currentTile.getX(), tile.getY() - currentTile.getY()));
+                DirectionUtil.getFaceDirection(tile.getX() - currentTile.getX(), tile.getY() - currentTile.getY()));
         setForceMovement(fm);
     }
 
@@ -782,14 +783,14 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public void autoForceMovement(final Location tile, final int delay, final int totalDuration, Runnable onLand) {
         final Location currentTile = new Location(getLocation());
         final int direction = DirectionUtil.getFaceDirection(tile.getX() - currentTile.getX(),
-            tile.getY() - currentTile.getY());
+                tile.getY() - currentTile.getY());
         autoForceMovement(tile, delay, totalDuration, direction, onLand);
     }
 
     public void autoForceMovement(final Location start, final Location dest, final int delay, final int totalDuration) {
         final Location currentTile = new Location(start);
         final int direction = DirectionUtil.getFaceDirection(dest.getX() - start.getX(),
-            dest.getY() - start.getY());
+                dest.getY() - start.getY());
         autoForceMovement(start, dest, delay, totalDuration, direction);
     }
 
@@ -927,31 +928,31 @@ public class Player extends AbstractEntity implements UsernameProvider {
         run = true;
 
         getDefaultMusicTracks().forEach(trackName ->
-            getMusic().unlock(Music.get(trackName))
+                getMusic().unlock(Music.get(trackName))
         );
     }
 
     public static List<String> getDefaultMusicTracks() {
         return List.of(
-            "Alone",
-            "On the Shore",
-            "Rugged Terrain",
-            "The Forlorn Homestead",
-            "Tiptoe",
-            "Vision",
-            "Catch Me If You Can",
-            "Cave of Beasts",
-            "Devils May Care",
-            "Faerie",
-            "Forgotten",
-            "Karamja Jam",
-            "Subterranea",
-            "Complication",
-            "Hells Bells",
-            "La Mort",
-            "Little Cave of Horrors",
-            "Roc and Roll",
-            "Scorpia Dances"
+                "Alone",
+                "On the Shore",
+                "Rugged Terrain",
+                "The Forlorn Homestead",
+                "Tiptoe",
+                "Vision",
+                "Catch Me If You Can",
+                "Cave of Beasts",
+                "Devils May Care",
+                "Faerie",
+                "Forgotten",
+                "Karamja Jam",
+                "Subterranea",
+                "Complication",
+                "Hells Bells",
+                "La Mort",
+                "Little Cave of Horrors",
+                "Roc and Roll",
+                "Scorpia Dances"
         );
     }
 
@@ -2270,7 +2271,7 @@ public class Player extends AbstractEntity implements UsernameProvider {
         }
         getSkills().sendQueuedFakeExperienceDrops();
         packetDispatcher.syncBuildArea();
-        packetDispatcher.setActiveWorld(getWorldEntityId(), getPlane());
+        packetDispatcher.setActiveWorld(getWorldEntityId(), getSceneLocation().getPlane());
 
         final boolean regionUpdate = isNeedRegionUpdate();
         if (regionUpdate) {
@@ -2304,8 +2305,15 @@ public class Player extends AbstractEntity implements UsernameProvider {
         buildAreaManager.updateDummyEvents();
         Location location = getLocation();
         if (npcInfo != null) {
-            packetDispatcher.setNpcUpdateOrigin(getXInScene(location), getYInScene(location));
+            if (WorldEntities.atTile(location) != null) {
+                // On a deck: RSProt computes the root npc info relative to the player's coordinate translated
+                // through the world entity; its own origin is the only one guaranteed to match that packet.
+                packetDispatcher.rootNpcUpdateOrigin();
+            } else {
+                packetDispatcher.setNpcUpdateOrigin(getXInScene(location), getYInScene(location));
+            }
             packetDispatcher.npcinfo();
+            packetDispatcher.worldEntityWorlds();
         }
         else {
             log.info("'" + getName() + "' npc info is null, unable to send packet (index: " + getIndex() + ").");
@@ -2923,16 +2931,16 @@ public class Player extends AbstractEntity implements UsernameProvider {
         Location sw = getLocation().transform(Direction.SOUTH_WEST);
         Location ne = getLocation().transform(Direction.NORTH_EAST);
         Location sourceLocation = source.getLocation();
-		if (sourceLocation.getX() < sw.getX() || sourceLocation.getX() > ne.getX() ||
-				sourceLocation.getY() < sw.getY() || sourceLocation.getY() > ne.getY()) {
-			return;
-		}
+        if (sourceLocation.getX() < sw.getX() || sourceLocation.getX() > ne.getX() ||
+                sourceLocation.getY() < sw.getY() || sourceLocation.getY() > ne.getY()) {
+            return;
+        }
 
         //TODO there's a projectile but I can't find the id for it!
-		chargesManager.removeCharges(boots, 1, getEquipment().getContainer(),
-				EquipmentSlot.BOOTS.getSlot());
-		WorldTasksManager.schedule(() -> source.applyHit(new Hit(this, 1, HitType.REGULAR)));
-	}
+        chargesManager.removeCharges(boots, 1, getEquipment().getContainer(),
+                EquipmentSlot.BOOTS.getSlot());
+        WorldTasksManager.schedule(() -> source.applyHit(new Hit(this, 1, HitType.REGULAR)));
+    }
 
     private void applySmite(final Hit hit) {
         final Entity source = hit.getSource();
@@ -3871,8 +3879,8 @@ public class Player extends AbstractEntity implements UsernameProvider {
 
     public boolean removeItem(final Item item, boolean once) {
         final ContainerWrapper[] wrappers = new ContainerWrapper[] {
-            getInventory(),
-            getEquipment()
+                getInventory(),
+                getEquipment()
         };
         for (final ContainerWrapper wrapper : wrappers) {
             for (int slot = 0; slot < wrapper.getContainer().getSize(); slot++) {
@@ -3902,12 +3910,12 @@ public class Player extends AbstractEntity implements UsernameProvider {
     public long forcedRemoved(final Item item) {
         long count = 0L;
         final Container[] containers = new Container[] {
-            getInventory().getContainer(),
-            getEquipment().getContainer(),
-            getBank().getContainer(),
-            getRetrievalService().getContainer(),
-            getRunePouch().getContainer(),
-            getPrivateStorage().getContainer()
+                getInventory().getContainer(),
+                getEquipment().getContainer(),
+                getBank().getContainer(),
+                getRetrievalService().getContainer(),
+                getRunePouch().getContainer(),
+                getPrivateStorage().getContainer()
         };
 
         for (final var container : containers) {

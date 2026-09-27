@@ -198,7 +198,7 @@ internal fun PacketConsumer.eventMouseIdle() {
 
 internal fun PacketConsumer.setHeading() {
     addListener<net.rsprot.protocol.game.incoming.misc.user.SetHeading> {
-        val heading = it.heading
+        org.jesse.game.world.entity.worldentity.Sailing.onSetHeading(player, it.heading)
     }
 }
 

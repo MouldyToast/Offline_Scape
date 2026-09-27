@@ -27,7 +27,8 @@ internal fun PacketConsumer.oploc() {
         val option = it.op
         val run = it.controlKey
 
-        ObjectHandler.handle(player, id, Location(x, y, player.getPlane()), run, option)
+        val plane = org.jesse.game.world.entity.worldentity.WorldEntities.interactionPlane(player, x, y)
+        ObjectHandler.handle(player, id, Location(x, y, plane), run, option)
     }
 }
 

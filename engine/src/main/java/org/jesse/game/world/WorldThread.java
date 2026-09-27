@@ -5,6 +5,7 @@ import cloud.rsps.rsprot.Session;
 import org.jesse.game.content.commands.DeveloperCommands;
 import org.jesse.game.world.PlayerEvent;
 import org.jesse.game.world.WorldEvent;
+import org.jesse.game.world.entity.worldentity.WorldEntities;
 import org.jesse.game.world.WorldHooks;
 import org.jesse.game.world.entity.player.FakePlayer;
 import org.jesse.threads.MainThread;
@@ -194,6 +195,11 @@ public final class WorldThread extends MainThread {
             log.error("Failed to post process global areas", e);
         }
 
+        try {
+            WorldEntities.process();
+        } catch (final Throwable e) {
+            log.error("Failed to process world entities", e);
+        }
         preUpdateEntities();
         postProcessUpdates();
 

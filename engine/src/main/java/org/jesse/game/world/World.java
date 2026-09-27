@@ -45,6 +45,7 @@ import org.jesse.game.world.entity.player.LogLevel;
 import org.jesse.game.world.entity.player.LogoutType;
 import org.jesse.game.world.entity.player.MessageType;
 import org.jesse.game.world.entity.player.Player;
+import org.jesse.game.world.entity.worldentity.WorldEntities;
 import org.jesse.game.world.entity.player.PlayerInformation;
 import org.jesse.game.world.entity.player.container.Container;
 import org.jesse.game.world.entity.player.container.impl.RunePouch;
@@ -1450,10 +1451,10 @@ public final class World {
                     // If this rune is in our rune pouch
                     if (backpack.containsItem(RunePouch.RUNE_POUCH.getId()))
                         container = RunePouch.chooseRunePouch(player, RunePouch.RUNE_POUCH.getId()).getContainer();
-                    // else if this rune is in our divine rune pouch
+                        // else if this rune is in our divine rune pouch
                     else if (backpack.containsItem(RunePouch.DIVINE_RUNE_POUCH.getId()))
                         container = RunePouch.chooseRunePouch(player, RunePouch.DIVINE_RUNE_POUCH.getId()).getContainer();
-                    // else if we have this rune in our inventory
+                        // else if we have this rune in our inventory
                     else if (player.getInventory().containsItem(it.getId()))
                         container = player.getInventory().getContainer();
                 }
@@ -1657,6 +1658,7 @@ public final class World {
             final Player player,
             final NetworkService<Session> networkService
     ) {
+        WorldEntities.onLogout(player);
         player.release();
         player.finish();
         CoresManager.getLoginManager().save(player);
@@ -1862,7 +1864,7 @@ public final class World {
     public static int getStaffCountOnline() {
         return (int) players.stream().filter(it ->
                         it != null &&
-                        !it.isNulled() &&
+                                !it.isNulled() &&
                                 !it.isHidden() &&
                                 it.getPrivilege().inherits(PlayerPrivilege.SUPPORT) &&
                                 !(it.getPrivilege() == PlayerPrivilege.HIDDEN_ADMINISTRATOR))

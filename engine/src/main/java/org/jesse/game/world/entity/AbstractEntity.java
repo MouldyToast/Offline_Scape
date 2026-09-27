@@ -3,6 +3,8 @@ package org.jesse.game.world.entity;
 import com.google.gson.annotations.Expose;
 import org.jesse.game.queue.GameQueueStack;
 import org.jesse.game.world.Boundary;
+import org.jesse.game.world.entity.worldentity.WorldEntities;
+import org.jesse.game.world.entity.worldentity.WorldEntity;
 import org.jesse.game.world.PlayerEvent;
 import org.jesse.game.world.entity.FastCollisionCheckKt;
 import org.jesse.game.util.DirectionUtil;
@@ -546,7 +548,8 @@ public abstract class AbstractEntity implements Entity {
         if (lastLoadedMapRegionTile == null) {
             return false;
         }
-        return Math.abs(lastLoadedMapRegionTile.getChunkX() - location.getChunkX()) >= 5 || Math.abs(lastLoadedMapRegionTile.getChunkY() - location.getChunkY()) >= 5;
+        final Location scene = getSceneLocation();
+        return Math.abs(lastLoadedMapRegionTile.getChunkX() - scene.getChunkX()) >= 5 || Math.abs(lastLoadedMapRegionTile.getChunkY() - scene.getChunkY()) >= 5;
     }
 
     @Override
@@ -646,8 +649,9 @@ public abstract class AbstractEntity implements Entity {
         mapRegionsIds.clear();
         isAtDynamicRegion = false;
         final int sceneChunksRadio = MAP_SIZES[mapSize] / 16;
-        final int chunkX = location.getChunkX();
-        final int chunkY = location.getChunkY();
+        final Location scene = getSceneLocation();
+        final int chunkX = scene.getChunkX();
+        final int chunkY = scene.getChunkY();
         final int mapHash = MAP_SIZES[mapSize] >> 4;
         final int minRegionX = (chunkX - mapHash) / 8;
         final int minRegionY = (chunkY - mapHash) / 8;
@@ -663,7 +667,7 @@ public abstract class AbstractEntity implements Entity {
                 mapRegionsIds.add(regionId);
             }
         }
-        lastLoadedMapRegionTile = new Location(getX(), getY(), getPlane());
+        lastLoadedMapRegionTile = new Location(scene.getX(), scene.getY(), scene.getPlane());
         sceneBaseChunkId = sceneBaseChunkX | (sceneBaseChunkY << 11);
     }
 
@@ -865,6 +869,16 @@ public abstract class AbstractEntity implements Entity {
     @Override
     public Location getLocation() {
         return location;
+    }
+
+    /**
+     * The coordinate the root-world view follows: the root tile under the world entity whose deck
+     * this entity stands on, otherwise the entity's own location. Map regions, build area, root zone
+     * sync and npc update origin use this; everything else keeps using {@link #getLocation()}.
+     */
+    public Location getSceneLocation() {
+        final WorldEntity worldEntity = WorldEntities.atTile(location);
+        return worldEntity == null ? location : worldEntity.getRootTile();
     }
 
     @Override

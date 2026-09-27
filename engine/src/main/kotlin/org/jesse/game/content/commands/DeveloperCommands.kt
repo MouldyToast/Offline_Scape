@@ -1,6 +1,8 @@
 package org.jesse.game.content.commands
 
 import org.jesse.game.content.slayer.*
+import org.jesse.game.world.entity.worldentity.WorldEntities
+import org.jesse.game.world.entity.worldentity.WorldEntityType
 import org.jesse.game.util.PlayerAttributesEditor
 import org.jesse.game.world.entity.player.FakePlayer
 import org.jesse.game.world.entity.player.totalDonatedAfterLaunch
@@ -155,6 +157,50 @@ object DeveloperCommands {
             player.inventory.addItem(Item(CANNON_FURNACE))
             player.inventory.addItem(Item(CANNON_BARRELS))
             player.inventory.addItem(Item(STEEL_CANNONBALL, 2_000_000_000))
+        }
+
+        Command(PlayerPrivilege.DEVELOPER, "boat", "Toggle a test boat at your tile. Args: [raft|skiff|sloop] [angle 0-2047]") { player, args ->
+            val existing = WorldEntities.ownedBy(player.index)
+            if (existing != null) {
+                WorldEntities.despawn(existing)
+                player.sendMessage("Despawned ${existing.type} (world entity ${existing.index}).")
+                return@Command
+            }
+            val type = WorldEntityType.byName(args.getOrNull(0) ?: "raft")
+            if (type == null) {
+                player.sendMessage("Unknown boat type. Use raft, skiff or sloop.")
+                return@Command
+            }
+            val angle = args.getOrNull(1)?.toIntOrNull() ?: 0
+            val entity = WorldEntities.spawn(type, player.index, player.x, player.y, player.plane, angle)
+            if (entity == null) {
+                player.sendMessage("Failed to spawn $type - see server log.")
+                return@Command
+            }
+            player.sendMessage("Spawned $type as world entity ${entity.index} at ${player.x}, ${player.y} (deck zone ${entity.instanceZoneX}, ${entity.instanceZoneZ}).")
+        }
+
+        Command(PlayerPrivilege.DEVELOPER, "board", "Board your ::boat (teleports onto its deck).") { player, _ ->
+            val entity = WorldEntities.ownedBy(player.index)
+            if (entity == null) {
+                player.sendMessage("You have no boat. Spawn one with ::boat.")
+                return@Command
+            }
+            if (WorldEntities.atTile(player.location) === entity) {
+                player.sendMessage("You are already on your boat.")
+                return@Command
+            }
+            org.jesse.game.world.entity.worldentity.Docking.enterBoat(player, entity)
+        }
+
+        Command(PlayerPrivilege.DEVELOPER, "disembark", "Leave the boat you are standing on.") { player, _ ->
+            val entity = WorldEntities.atTile(player.location)
+            if (entity == null) {
+                player.sendMessage("You are not on a boat.")
+                return@Command
+            }
+            org.jesse.game.world.entity.worldentity.Docking.exitBoat(player, entity.rootTile)
+            player.sendMessage("You disembark.")
         }
 
         Command(PlayerPrivilege.TRUE_DEVELOPER, "jacsisland", "Teleport to Jac's Island. Args: zoneIndex") { player, args  ->

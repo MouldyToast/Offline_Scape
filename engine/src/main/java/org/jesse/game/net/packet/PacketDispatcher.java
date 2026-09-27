@@ -277,11 +277,11 @@ public final class PacketDispatcher {
     }
 
     public void sendStaticMapRegion() {
-        sender.rebuildNormal(player.getLocation().getChunkX(), player.getLocation().getChunkY(), -1);
+        sender.rebuildNormal(player.getSceneLocation().getChunkX(), player.getSceneLocation().getChunkY(), -1);
     }
 
     public void sendDynamicMapRegion() {
-        sender.rebuildRegion$engine(player.getLocation().getChunkX(), player.getLocation().getChunkY(), true);
+        sender.rebuildRegion$engine(player.getSceneLocation().getChunkX(), player.getSceneLocation().getChunkY(), true);
     }
 
     public void sendComponentVisibility(final int interfaceId, final int componentId, final boolean hidden) {
@@ -636,6 +636,19 @@ public final class PacketDispatcher {
         } catch (Throwable t) {
             log.error("Worldentity info error, destroying " + player.getIndex(), t);
             System.out.println("Worldentity info error, destroying " + player.getIndex());
+            player.logout(true);
+        }
+    }
+
+    public void rootNpcUpdateOrigin() {
+        sender.rootNpcUpdateOrigin$engine();
+    }
+
+    public void worldEntityWorlds() {
+        try {
+            sender.worldEntityWorlds$engine();
+        } catch (Throwable t) {
+            log.error("World entity world info error, destroying " + player.getIndex(), t);
             player.logout(true);
         }
     }

@@ -8,6 +8,8 @@ import org.jesse.game.world.entity.WalkStep
 import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.entity.player.container.Container
 import org.jesse.game.world.entity.player.container.impl.ContainerType
+import org.jesse.game.world.entity.worldentity.WorldEntities
+import org.jesse.game.world.entity.worldentity.WorldEntity
 import org.jesse.game.world.region.DynamicRegion
 import org.jesse.game.world.region.Region
 import org.jesse.game.world.region.XTEALoader
@@ -203,6 +205,11 @@ class PacketSender(private val player: Player) {
         ((player.position.y ushr 3) - 6).coerceAtLeast(0) shl 3
 
     companion object {
+        private val REBUILD_WORLD_ENTITY_ZONE_PROVIDER = object : RebuildWorldEntityV4.RebuildWorldEntityZoneProvider {
+            override fun provide(zoneX: Int, zoneZ: Int, level: Int): RebuildRegionZone? =
+                REBUILD_REGION_ZONE_PROVIDER.provide(zoneX, zoneZ, level)
+        }
+
         private val REBUILD_REGION_ZONE_PROVIDER = object : RebuildRegionV2.RebuildRegionZoneProvider {
             override fun provide(zoneX: Int, zoneZ: Int, level: Int): RebuildRegionZone? {
                 val mapsquareId = (zoneX shr 3 shl 8) + (zoneZ shr 3)
@@ -644,23 +651,62 @@ class PacketSender(private val player: Player) {
         sendOrLogout { packet }
     }
 
-    internal fun rebuildWorldEntity(
-        index: Int,
-        baseX: Int,
-        baseZ: Int,
-        sizeX: Int,
-        sizeZ: Int,
-        zoneProvider: RebuildWorldEntityV4.RebuildWorldEntityZoneProvider,
-    ) {
+    /**
+     * REBUILD_WORLDENTITY for [worldEntity]. Carries no world index of its own: it must follow a
+     * SET_ACTIVE_WORLD that selects this world entity. Instance zones resolve to their template
+     * zones through the deck area's DynamicRegion chunk hashes, exactly like REBUILD_REGION.
+     */
+    internal fun rebuildWorldEntity(worldEntity: WorldEntity) {
         send {
             RebuildWorldEntityV4(
-                baseX,
-                baseZ,
-                sizeX,
-                sizeZ,
-                zoneProvider,
+                // RebuildWorldEntityV4 takes TILE coordinates and shifts them to zones itself.
+                worldEntity.instanceZoneX shl 3,
+                worldEntity.instanceZoneZ shl 3,
+                worldEntity.type.sizeX,
+                worldEntity.type.sizeZ,
+                REBUILD_WORLD_ENTITY_ZONE_PROVIDER,
             )
         }
+    }
+
+    /**
+     * Per-world info for every world entity in high resolution, in the order RSProt documents and the
+     * live game uses: SET_ACTIVE_WORLD(world), SET_NPC_UPDATE_ORIGIN, REBUILD_WORLDENTITY (newly added
+     * worlds only), NPC_INFO. Ends with SET_ACTIVE_WORLD(root). Sends nothing when no world is active.
+     */
+    /** SET_NPC_UPDATE_ORIGIN for the root world as computed by RSProt (matches its root npc info). */
+    internal fun rootNpcUpdateOrigin() {
+        val packets = getOrComputeInfoPackets() ?: return
+        val origin = packets.rootWorldInfoPackets.npcUpdateOrigin
+        sendOrLogout { origin }
+    }
+
+    internal fun worldEntityWorlds() {
+        val packets = getOrComputeInfoPackets() ?: return
+        val worlds = packets.activeWorlds
+        if (worlds.isEmpty()) {
+            return
+        }
+        for (world in worlds) {
+            val activeWorld = world.activeWorld
+            val npcUpdateOrigin = world.npcUpdateOrigin
+            sendOrLogout { activeWorld }
+            sendOrLogout { npcUpdateOrigin }
+            val worldEntity = WorldEntities[world.worldId]
+            if (world.added && worldEntity != null) {
+                rebuildWorldEntity(worldEntity)
+            }
+            val npcInfoPacket = world.npcInfo.getOrNull()
+            if (npcInfoPacket != null) {
+                sendOrLogout { npcInfoPacket }
+            }
+            if (worldEntity != null) {
+                // Deck zone updates: full state when the world enters view, shared events afterwards.
+                player.buildAreaManager.syncWorldEntityZones(worldEntity, world.added)
+            }
+        }
+        val rootActiveWorld = packets.rootWorldInfoPackets.activeWorld
+        sendOrLogout { rootActiveWorld }
     }
 
     internal fun npcInfo(
@@ -1894,7 +1940,7 @@ class PacketSender(private val player: Player) {
             )
         }
 
-        setActiveWorld(player.worldEntityId, player.position.plane)
+        setActiveWorld(player.worldEntityId, player.sceneLocation.plane)
     }
 
     /**
@@ -1918,7 +1964,7 @@ class PacketSender(private val player: Player) {
                 worldArea,
             )
         }
-        setActiveWorld(player.worldEntityId, player.position.plane)
+        setActiveWorld(player.worldEntityId, player.sceneLocation.plane)
     }
 
     /**
@@ -1949,12 +1995,12 @@ class PacketSender(private val player: Player) {
                 REBUILD_REGION_ZONE_PROVIDER
             )
         }
-        setActiveWorld(player.worldEntityId, player.position.plane)
+        setActiveWorld(player.worldEntityId, player.sceneLocation.plane)
     }
 
     internal fun syncBuildArea() {
         val worldId = player.worldEntityId
-        val location = player.position
+        val location = player.sceneLocation
         val buildArea = BuildArea(
             ((location.x ushr 3) - 6).coerceAtLeast(0),
             ((location.y ushr 3) - 6).coerceAtLeast(0)
@@ -2406,6 +2452,13 @@ class PacketSender(private val player: Player) {
         xInBuildArea: Int,
         yInBuildArea: Int,
     ) {
+        // Tiles outside the root build area (world entity decks: instance coords minus the root scene base)
+        // are out of range and SetMapFlagV2 throws, killing the click that triggered it. The client draws
+        // its own flag for clicks on a deck. 255/255 (clear flag) still passes through.
+        val clear = xInBuildArea == 255 && yInBuildArea == 255
+        if (!clear && (xInBuildArea !in 0 until 104 || yInBuildArea !in 0 until 104)) {
+            return
+        }
         send {
             SetMapFlagV2(
                 xInBuildArea,

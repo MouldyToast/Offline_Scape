@@ -4,6 +4,7 @@ import org.jesse.game.world.World
 import org.jesse.game.world.entity.player.Player
 import org.jesse.game.world.`object`.WorldObject
 import org.jesse.game.world.region.Chunk
+import org.jesse.game.world.entity.worldentity.WorldEntity
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet
 import it.unimi.dsi.fastutil.objects.ObjectCollection
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap
@@ -24,7 +25,7 @@ class BuildAreaManager(private val player: Player) {
     private val enclosedBuffer = ZonePartialEnclosedCacheBuffer()
 
     fun syncNewZones() {
-        val currentHash = player.location.chunkHash
+        val currentHash = player.sceneLocation.chunkHash
         if (chunksToSkip.isNotEmpty()) {
             chunksToSkip.clear()
         }
@@ -35,7 +36,7 @@ class BuildAreaManager(private val player: Player) {
         val baseChunk = player.sceneBaseChunkId
         val baseX = baseChunk and 2047
         val baseY = baseChunk shr 11 and 2047
-        val tile = player.location
+        val tile = player.sceneLocation
         val tileX = tile.chunkX
         val tileY = tile.chunkY
         val startX =
@@ -126,7 +127,7 @@ class BuildAreaManager(private val player: Player) {
         val baseChunk = player.sceneBaseChunkId
         val baseX = baseChunk and 2047
         val baseY = baseChunk shr 11 and 2047
-        val tile = player.location
+        val tile = player.sceneLocation
         val tileX = tile.chunkX
         val tileY = tile.chunkY
         val startX =
@@ -149,7 +150,7 @@ class BuildAreaManager(private val player: Player) {
                 (tileY + CHUNK_SYNCHRONIZATION_RADIUS).toDouble(),
                 (baseY + SCENE_CHUNKS_DIAMETER - 1).toDouble()
             ) - baseY).toInt()
-        val level = player.location.plane
+        val level = player.sceneLocation.plane
         for (x in startX..endX) {
             for (y in startY..endY) {
                 val chunkX = baseX + x
@@ -258,6 +259,41 @@ class BuildAreaManager(private val player: Player) {
             val zonePlane = zoneId ushr 22
             for (buf in globalUpdates) {
                 player.packetDispatcher.updateZonePartialEnclosed(swX - baseX, swY - baseY, zonePlane, desktopUpdates)
+            }
+        }
+    }
+
+    /**
+     * Zone updates for a world entity's deck. Must be called while SET_ACTIVE_WORLD selects [worldEntity].
+     * Zone coordinates are relative to the deck instance's south-west zone (the rebuild base), on all levels.
+     * [full]: the world just entered view - send UPDATE_ZONE_FULL_FOLLOWS plus every spawned / removed loc
+     * (live capture sends full_follows for levels 0-3 of every deck zone right after the rebuild).
+     * Otherwise: forward this tick's shared zone events (loc anims, loc changes) for the deck zones.
+     */
+    fun syncWorldEntityZones(worldEntity: WorldEntity, full: Boolean) {
+        for (dx in 0 until worldEntity.type.sizeX) {
+            for (dz in 0 until worldEntity.type.sizeZ) {
+                val zoneX = worldEntity.instanceZoneX + dx
+                val zoneZ = worldEntity.instanceZoneZ + dz
+                val relX = dx shl 3
+                val relZ = dz shl 3
+                for (level in 0 until PLANE_COUNT) {
+                    val zoneId = Chunk.getChunkHash(zoneX, zoneZ, level)
+                    if (full) {
+                        val chunk = World.getChunk(zoneId)
+                        player.packetDispatcher.updateZoneFullFollows(relX, relZ, level)
+                        for (removedObject in chunk.originalObjects.values) {
+                            player.packetDispatcher.locDel(removedObject.x, removedObject.y, removedObject.type, removedObject.rotation)
+                        }
+                        for (spawnedObject in chunk.spawnedObjects.values) {
+                            player.packetDispatcher.locAddChange(spawnedObject.id, spawnedObject.x, spawnedObject.y, spawnedObject.type, spawnedObject.rotation, 0b11111)
+                        }
+                        continue
+                    }
+                    val sharedEvents = ZoneManager.getSharedEvents(zoneId) ?: continue
+                    val desktopUpdates = sharedEvents[OldSchoolClientType.DESKTOP] ?: continue
+                    player.packetDispatcher.updateZonePartialEnclosed(relX, relZ, level, desktopUpdates)
+                }
             }
         }
     }

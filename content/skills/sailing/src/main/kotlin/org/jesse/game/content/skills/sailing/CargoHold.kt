@@ -10,7 +10,6 @@ import org.jesse.game.task.WorldTasksManager
 import org.jesse.game.util.AccessMask
 import org.jesse.game.world.entity.SoundEffect
 import org.jesse.game.world.entity.masks.Animation
-import org.jesse.game.world.entity.masks.UpdateFlag
 import org.jesse.game.world.entity.persistentAttribute
 import org.jesse.game.world.entity.player.Player
 import org.jesse.plugins.dialogue.PlainChat
@@ -308,7 +307,7 @@ object CargoHold {
             if (session.busySet) {
                 vars.sendBitInstant(VARBIT_BUSY, 0)
             }
-            player.updateFlags.flag(UpdateFlag.APPEARANCE)
+            updateStance(player)
             refreshWeaponSlot(player)
         }
     }
@@ -340,7 +339,7 @@ object CargoHold {
             }
             player.varManager.sendBitInstant(VARBIT_CARRYING_CARGO, 0)
             player.sendMessage(MSG_DEPOSIT)
-            player.updateFlags.flag(UpdateFlag.APPEARANCE)
+            updateStance(player)
             synth(player, SYNTH_DEPOSIT)
             refreshWeaponSlot(player)
         }
@@ -362,7 +361,7 @@ object CargoHold {
         setWornWeapon(player, Item(crateId, 1))
         WorldTasksManager.schedule(1) {
             if (!player.isFinished) {
-                player.updateFlags.flag(UpdateFlag.APPEARANCE)
+                updateStance(player)
             }
         }
         return true
@@ -432,15 +431,15 @@ object CargoHold {
 
     /**
      * Puts [item] in (or clears) worn slot 3 without the equip / unequip rules, and sends the partial update now so it
-     * goes out where live has it (before the synths, t272). The appearance is flagged by the caller on the next tick
-     * (t103 / t273), so Equipment.refresh (which flags it immediately) is not used.
+     * goes out where live has it (before the synths, t272). The caller re-derives the stance on the next tick with
+     * [updateStance] (t103 / t273: the appearance goes out the tick after), so Equipment.refresh and
+     * Appearance.resetRenderAnimation (both flag the appearance immediately) are not called here.
      */
     private fun setWornWeapon(player: Player, item: Item?) {
         val container = player.equipment.container
         container.set(WORN_WEAPON, item)
         player.packetDispatcher.sender.updateInvPartial(container)
         container.modifiedSlots.remove(WORN_WEAPON)
-        player.appearance.resetRenderAnimation()
     }
 
     /**
@@ -458,6 +457,15 @@ object CargoHold {
         dispatcher.sendClientScript(SCRIPT_PVP_ICONS_COMLEVELRANGE, combatLevel)
         dispatcher.sendComponentText(COMBAT_INTERFACE, COMBAT_COMPONENT_CATEGORY, "Category: Unarmed")
         dispatcher.sendClientScript(SCRIPT_PVP_ICONS_COMLEVELRANGE, combatLevel)
+    }
+
+    /**
+     * Re-derives the render anims from worn slot 3 and flags the appearance. A held crate carries the crate stance
+     * from ItemDefinitions.json (ready 4193 `dttd_carrying_crate_ready`, walk/turn-walks 4194
+     * `dttd_carrying_crate_walk`, run 10679 `dttd_carrying_crate_walk_fast`); an empty slot gives the default stance.
+     */
+    private fun updateStance(player: Player) {
+        player.appearance.resetRenderAnimation()
     }
 
     private fun items(player: Player): MutableList<Item> {

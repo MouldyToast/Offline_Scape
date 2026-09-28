@@ -48,6 +48,22 @@ object SailingCommands {
             Docking.enterBoat(player, boat)
         }
 
+        Command(
+            PlayerPrivilege.DEVELOPER,
+            "cargo",
+            "Hold a cargo crate (worn slot 3 + sailing_carrying_cargo), as a port task pickup would. Args: [obj id]",
+        ) { player, args ->
+            // Default: cargo_crate_platebodies_the_pandemonium (the porttasks capture's crate).
+            val crateId = args.getOrNull(0)?.toIntOrNull() ?: 32773
+            if (CargoHold.isCarryingCargo(player)) {
+                player.sendMessage("You are already carrying cargo.")
+                return@Command
+            }
+            if (CargoHold.giveCrate(player, crateId)) {
+                player.sendMessage("Holding crate $crateId.")
+            }
+        }
+
         Command(PlayerPrivilege.DEVELOPER, "disembark", "Leave the boat you are standing on.") { player, _ ->
             val boat = Boats.at(player.location)
             if (boat == null) {

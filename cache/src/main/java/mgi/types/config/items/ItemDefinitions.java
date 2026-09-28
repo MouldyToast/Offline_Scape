@@ -1485,6 +1485,11 @@ public final class ItemDefinitions implements Definitions, Cloneable {
         this.wearPos2 = wearPos2;
     }
 
+    /** Obj category (cache opcode 94), -1 when unset. */
+    public int getCategory() {
+        return category;
+    }
+
     public int getWearPos1() {
         return wearPos1;
     }

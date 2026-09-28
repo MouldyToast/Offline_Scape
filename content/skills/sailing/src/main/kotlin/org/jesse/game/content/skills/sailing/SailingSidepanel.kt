@@ -108,16 +108,7 @@ object SailingSidepanel {
         dispatcher.sendClientScript(SCRIPT_CREW_NAMES_BOARD, player.name, 1, "", 1)
         dispatcher.sendClientScript(SCRIPT_TOPLEVEL_SIDEBUTTON_SWITCH, 0)
         player.interfaceHandler.sendInterface(InterfacePosition.COMBAT_TAB, INTERFACE_ID)
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_SWITCH_BUTTON, 0, 12, AccessMask.CLICK_OP1)
-        dispatcher.sendComponentSettings(
-            INTERFACE_ID, COMPONENT_FACILITIES_CLICKLAYER, 0, 16,
-            AccessMask.CLICK_OP1, AccessMask.CLICK_OP2, AccessMask.CLICK_OP3, AccessMask.CLICK_OP4,
-        )
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_FACILITIES_NPC_TARGETLAYER, 0, 16, AccessMask.USE_ON_NPCS)
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_ASSIGNATION_CLICKLAYER, 0, 16, AccessMask.CLICK_OP1)
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_ASSIGNATION_BACK_BUTTON, 0, 11, AccessMask.CLICK_OP1)
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_CONTENT_CLICKLAYER, 0, 1, AccessMask.USE_ON_PLAYERS)
-        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_RADIO_BUTTONS, 0, 3, AccessMask.CLICK_OP1)
+        sendEvents(player)
         dispatcher.sendClientScript(SCRIPT_CAMERA_ZOOM_LIMITS, -100, 896, -100, 896)
 
         // Next tick: refresh flags drop and the stats go out (controls capture t33).
@@ -129,6 +120,25 @@ object SailingSidepanel {
             vars.sendBit(BOAT_STATS_NEEDS_UPDATE, 0)
             sendStats(player, boat)
         }
+    }
+
+    /**
+     * The sidepanel's 7 if_setevents, in live order. Sent on board, and re-sent by the weapon-slot-change refresh
+     * while aboard (porttasks t103 / t273: a cargo crate deposited into / withdrawn from the hold).
+     */
+    @JvmStatic
+    fun sendEvents(player: Player) {
+        val dispatcher = player.packetDispatcher
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_SWITCH_BUTTON, 0, 12, AccessMask.CLICK_OP1)
+        dispatcher.sendComponentSettings(
+            INTERFACE_ID, COMPONENT_FACILITIES_CLICKLAYER, 0, 16,
+            AccessMask.CLICK_OP1, AccessMask.CLICK_OP2, AccessMask.CLICK_OP3, AccessMask.CLICK_OP4,
+        )
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_FACILITIES_NPC_TARGETLAYER, 0, 16, AccessMask.USE_ON_NPCS)
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_ASSIGNATION_CLICKLAYER, 0, 16, AccessMask.CLICK_OP1)
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_ASSIGNATION_BACK_BUTTON, 0, 11, AccessMask.CLICK_OP1)
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_CONTENT_CLICKLAYER, 0, 1, AccessMask.USE_ON_PLAYERS)
+        dispatcher.sendComponentSettings(INTERFACE_ID, COMPONENT_CREW_RADIO_BUTTONS, 0, 3, AccessMask.CLICK_OP1)
     }
 
     private fun sendStats(player: Player, boat: Boat) {

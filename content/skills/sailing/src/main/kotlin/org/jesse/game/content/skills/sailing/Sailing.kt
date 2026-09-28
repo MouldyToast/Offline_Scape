@@ -9,6 +9,7 @@ import org.jesse.game.world.entity.masks.Animation
 import org.jesse.game.world.entity.masks.Graphics
 import org.jesse.game.world.entity.masks.UpdateFlag
 import org.jesse.game.world.entity.player.Player
+import org.jesse.game.world.entity.worldentity.DeckLoc
 import org.jesse.game.world.entity.worldentity.WorldEntityCollision
 import kotlin.math.cos
 import kotlin.math.max
@@ -125,7 +126,7 @@ object Sailing {
         sender.setInteractionMode(entity.index, TILE_MODE_WALK, ENTITY_MODE_ALL)
         faceDeckSouth(player)
         player.setAnimation(Animation(anims.playerHelmStart))
-        locAnim(boat, anims.helm, anims.helmLocStart)
+        locAnim(boat, boat.type.helmLoc, anims.helmLocStart)
         refreshSail(boat)
         player.packetDispatcher.sendClientScript(SCRIPT_TOPLEVEL_SIDEBUTTON_SWITCH, 0)
         synth(player, SYNTH_HELM_ON)
@@ -163,7 +164,7 @@ object Sailing {
         player.setAnimation(Animation.STOP)
         val anims = boat.type.anims
         if (anims != null) {
-            locAnim(boat, anims.helm, anims.helmLocInactive)
+            locAnim(boat, boat.type.helmLoc, anims.helmLocInactive)
         }
         synth(player, SYNTH_HELM_OFF)
         if (boat.moveMode != MODE_IDLE) {
@@ -264,10 +265,10 @@ object Sailing {
         player.sendMessage("You trim the sails, catching the wind for a burst of speed!")
         faceDeckSouth(player)
         player.setAnimation(Animation(anims.playerTrimStart))
-        locAnim(boat, anims.helm, anims.helmLocTrimStart)
+        locAnim(boat, boat.type.helmLoc, anims.helmLocTrimStart)
         setSailOpFlags(boat)
         sendSteadySail(boat, sailState(mode))
-        graphic(boat, anims.sailB, anims.boostGraphic)
+        graphic(boat, boat.type.sailBLoc, anims.boostGraphic)
         synth(player, SYNTH_TRIM_1)
         synth(player, SYNTH_TRIM_2)
     }
@@ -313,10 +314,12 @@ object Sailing {
                 boat.helmTicks++
                 if (anims != null && !boat.boosting && boat.helmTicks % HELM_LOOP_INTERVAL == 0) {
                     helmsman.setAnimation(Animation(anims.playerHelmLoop))
-                    locAnim(boat, anims.helm, anims.helmLocLoop)
+                    locAnim(boat, boat.type.helmLoc, anims.helmLocLoop)
                 }
             }
         }
+
+        CargoHold.tick(boat)
 
         val boosted = tickWind(boat)
 
@@ -409,10 +412,10 @@ object Sailing {
                 return false
             }
             if (boostTick < duration) {
-                graphic(boat, anims.sailB, anims.boostGraphic)
+                graphic(boat, boat.type.sailBLoc, anims.boostGraphic)
                 if (helmsman != null && boostTick % TRIM_LOOP_INTERVAL == 0) {
                     helmsman.setAnimation(Animation(anims.playerTrimLoop))
-                    locAnim(boat, anims.helm, anims.helmLocTrimLoop)
+                    locAnim(boat, boat.type.helmLoc, anims.helmLocTrimLoop)
                 }
                 boat.boostTick = boostTick + 1
                 return true
@@ -421,7 +424,7 @@ object Sailing {
                 helmsman.sendMessage("The wind dies down and your sails with it.")
                 helmsman.setAnimation(Animation(anims.playerTrimEnd))
             }
-            locAnim(boat, anims.helm, anims.helmLocTrimEnd)
+            locAnim(boat, boat.type.helmLoc, anims.helmLocTrimEnd)
             boat.boostTick = -1
             boat.nextGustIn = GUST_AFTER_BOOST
             boat.helmTicks = 0
@@ -463,9 +466,9 @@ object Sailing {
     /** Wind vfx on the linen sail by last tick's speed: full above half speed, half at half speed, none when stopped. */
     private fun gustGraphic(boat: Boat, anims: SailingAnims) {
         if (boat.speed > boat.type.halfSpeed) {
-            graphic(boat, anims.sailB, anims.gustGraphic)
+            graphic(boat, boat.type.sailBLoc, anims.gustGraphic)
         } else if (boat.speed > 0) {
-            graphic(boat, anims.sailB, anims.gustGraphicHalf)
+            graphic(boat, boat.type.sailBLoc, anims.gustGraphicHalf)
         }
     }
 
@@ -494,8 +497,8 @@ object Sailing {
             val newSail = sailState(mode)
             setSailOpFlags(boat)
             if (oldSail != newSail) {
-                locAnim(boat, anims.sailA, transition(anims.sailAAnims, oldSail, newSail))
-                locAnim(boat, anims.sailB, transition(anims.sailBAnims, oldSail, newSail))
+                locAnim(boat, boat.type.sailALoc, transition(anims.sailAAnims, oldSail, newSail))
+                locAnim(boat, boat.type.sailBLoc, transition(anims.sailBAnims, oldSail, newSail))
                 synth(boat, sailSound(oldSail, newSail))
                 scheduleSteadySail(boat, newSail)
             } else {
@@ -520,20 +523,20 @@ object Sailing {
     }
 
     private fun setSailOpFlags(boat: Boat) {
-        val anims = boat.type.anims ?: return
+        boat.type.anims ?: return
         val mode = boat.moveMode
         val ops = when {
             (mode == MODE_SAILS || mode == MODE_HALF) && boat.gustTicks > 0 -> SAIL_OPS_GUST
             mode == MODE_SAILS || mode == MODE_HALF || mode == MODE_REVERSE -> SAIL_OPS_UP
             else -> SAIL_OPS_DOWN
         }
-        boat.entity.setLocOpFlags(anims.sailB, ops)
+        boat.entity.setLocOpFlags(boat.type.sailBLoc, ops)
     }
 
     private fun sendSteadySail(boat: Boat, state: Int) {
         val anims = boat.type.anims ?: return
-        locAnim(boat, anims.sailA, steady(anims.sailAAnims, state))
-        locAnim(boat, anims.sailB, steady(anims.sailBAnims, state))
+        locAnim(boat, boat.type.sailALoc, steady(anims.sailAAnims, state))
+        locAnim(boat, boat.type.sailBLoc, steady(anims.sailBAnims, state))
     }
 
     private fun scheduleSteadySail(boat: Boat, state: Int) {
@@ -569,9 +572,9 @@ object Sailing {
     }
 
     private fun isAtHelm(player: Player, boat: Boat): Boolean {
-        val anims = boat.type.anims ?: return false
+        boat.type.anims ?: return false
         val location = player.location
-        val helm = anims.helm
+        val helm = boat.type.helmLoc
         val entity = boat.entity
         return !player.isFinished &&
                 location.plane == helm.level &&
@@ -615,7 +618,7 @@ object Sailing {
         }
     }
 
-    private fun locAnim(boat: Boat, loc: DeckRef, animation: Int) {
+    private fun locAnim(boat: Boat, loc: DeckLoc, animation: Int) {
         World.sendObjectAnimation(
             loc.id,
             loc.shape,
@@ -625,7 +628,7 @@ object Sailing {
         )
     }
 
-    private fun graphic(boat: Boat, loc: DeckRef, graphic: Int) {
+    private fun graphic(boat: Boat, loc: DeckLoc, graphic: Int) {
         World.sendGraphics(Graphics(graphic), boat.entity.deckTile(loc.dx, loc.dz, loc.level))
     }
 

@@ -75,6 +75,11 @@ public class InterfaceHandler {
 	@Expose
 	private boolean resizable;
 	private final transient Player player;
+	/**
+	 * Content hook run once, right BEFORE the main modal (CENTRAL) is closed or replaced, so content can send its own
+	 * close traffic ahead of the main modal's if_closesub (live order, e.g. the sailing cargo hold). Cleared when run.
+	 */
+	private transient Runnable modalCloseHook;
 
 	public InterfaceHandler(final Player player) {
 		this.player = player;
@@ -257,6 +262,7 @@ public class InterfaceHandler {
 		if (position.equals(InterfacePosition.DIALOGUE)) {
 			closeInterface(InterfacePosition.CENTRAL);
 		} else if (position.equals(InterfacePosition.CENTRAL)) {
+			runModalCloseHook();
 			closeInterface(InterfacePosition.DIALOGUE);
 		}
 		PaneType pane = position.equals(InterfacePosition.DIALOGUE) ? PaneType.CHATBOX : this.pane;
@@ -306,6 +312,9 @@ public class InterfaceHandler {
 			}
 		}
 
+		if (contains && position == InterfacePosition.CENTRAL) {
+			runModalCloseHook();
+		}
 		closeInterface(hash, removeFromMap, closeEvent, contains, dialogue, position);
 	}
 
@@ -353,6 +362,22 @@ public class InterfaceHandler {
 		if (plugin != null) {
 			plugin.close(player, replacement);
 		}
+	}
+
+	/**
+	 * Sets (or clears, with null) the hook run once before the main modal is next closed or replaced.
+	 */
+	public void setModalCloseHook(final Runnable hook) {
+		this.modalCloseHook = hook;
+	}
+
+	private void runModalCloseHook() {
+		final Runnable hook = modalCloseHook;
+		if (hook == null) {
+			return;
+		}
+		modalCloseHook = null;
+		hook.run();
 	}
 
 	public void closeInterface(final InterfacePosition position) {

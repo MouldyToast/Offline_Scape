@@ -6,35 +6,50 @@ import org.jesse.game.world.`object`.WorldObject
 import kotlin.math.abs
 
 /**
- * Deck loc actions. Both skip the usual walk-to-object route: the helmsman stands ON the helm tile
- * (live: board teleport lands on the helm tile and op1 needs no movement, capture t443), and the sails
- * are adjacent to it. Routing to a loc on/next to the player's own tile could step them off the helm.
+ * Base for deck facility loc actions. The loc ids come from the hulls' facility declarations ([BoatType.facilityIds])
+ * and the approach / facing policy from the clicked boat's facility of [kind] ([BoatFacility]):
+ * - [FacilityApproach.ON_OR_ADJACENT]: no walk route; the op runs only from the loc's tile or next to it.
+ * - [FacilityApproach.WALK_TO]: the engine's normal walk-to-loc route (default [ObjectAction.handle]); its runnable
+ *   faces the loc and runs [handleObjectAction] on the tick after arrival.
+ * - [FacilityFacing.DECK_SOUTH]: every click on a loc of the deck the player stands on keeps them facing deck-south,
+ *   as live does. Without this the engine's ObjectHandler turns them toward the clicked loc (the linen sail is north
+ *   of the helm).
+ * - [FacilityFacing.LOC]: face the loc (the walk-to runnable already does; ON_OR_ADJACENT faces it here).
  */
-private fun withinReach(player: Player, obj: WorldObject): Boolean =
-    player.plane == obj.plane && abs(player.x - obj.x) <= 1 && abs(player.y - obj.y) <= 1
+abstract class BoatFacilityObjectAction(private val kind: FacilityKind) : ObjectAction {
 
-/**
- * Every click on a loc of the deck the player stands on keeps them facing deck-south, as live does. Without this
- * the engine's ObjectHandler turns them toward the clicked loc (the linen sail is north of the helm).
- */
-private fun faceIfOnSameDeck(player: Player, obj: WorldObject) {
-    val boat = Boats.at(obj) ?: return
-    if (Boats.at(player.location) === boat) {
-        Sailing.faceDeckSouth(player)
+    override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
+        val boat = Boats.at(`object`) ?: return
+        val facility = boat.type.facility(kind) ?: return
+        when (facility.approach) {
+            FacilityApproach.WALK_TO -> super.handle(player, `object`, name, optionId, option)
+            FacilityApproach.ON_OR_ADJACENT -> {
+                when (facility.facing) {
+                    FacilityFacing.DECK_SOUTH -> faceIfOnSameDeck(player, boat)
+                    FacilityFacing.LOC -> player.faceObject(`object`)
+                }
+                if (withinReach(player, `object`)) {
+                    handleObjectAction(player, `object`, name, optionId, option)
+                }
+            }
+        }
+    }
+
+    override fun getObjects(): Array<Any> = BoatType.facilityIds(kind)
+
+    private fun withinReach(player: Player, obj: WorldObject): Boolean =
+        player.plane == obj.plane && abs(player.x - obj.x) <= 1 && abs(player.y - obj.y) <= 1
+
+    private fun faceIfOnSameDeck(player: Player, boat: Boat) {
+        if (Boats.at(player.location) === boat) {
+            Sailing.faceDeckSouth(player)
+        }
     }
 }
 
 /** Helm: op1 Navigate / Stop-navigating (multiloc on `sailing_boat_facility_lockedin`), op4 Escape. */
 @Suppress("unused")
-class BoatHelmObjectAction : ObjectAction {
-    override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
-        faceIfOnSameDeck(player, `object`)
-        if (!withinReach(player, `object`)) {
-            return
-        }
-        handleObjectAction(player, `object`, name, optionId, option)
-    }
-
+class BoatHelmObjectAction : BoatFacilityObjectAction(FacilityKind.HELM) {
     override fun handleObjectAction(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
         val boat = Boats.at(`object`) ?: return
         when (optionId) {
@@ -42,23 +57,11 @@ class BoatHelmObjectAction : ObjectAction {
             else -> player.sendMessage("Nothing interesting happens.")
         }
     }
-
-    // Raft helm multiloc: base sailing_boat_steering_kandarin_1x3_wood (59554) and its variants
-    // _in_use (59555) / _idle (59556), in case the click resolves to the transmogrified id.
-    override fun getObjects(): Array<Any> = arrayOf(59554, 59555, 59556)
 }
 
-/** Sails: op1 Trim (during a wind gust), op2 Set, op5 Un-set. */
+/** Linen sail (the op-bearing sail loc): op1 Trim (during a wind gust), op2 Set, op5 Un-set. */
 @Suppress("unused")
-class BoatSailsObjectAction : ObjectAction {
-    override fun handle(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
-        faceIfOnSameDeck(player, `object`)
-        if (!withinReach(player, `object`)) {
-            return
-        }
-        handleObjectAction(player, `object`, name, optionId, option)
-    }
-
+class BoatSailsObjectAction : BoatFacilityObjectAction(FacilityKind.SAIL_LINEN) {
     override fun handleObjectAction(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
         val boat = Boats.at(`object`) ?: return
         when (optionId) {
@@ -68,7 +71,23 @@ class BoatSailsObjectAction : ObjectAction {
             else -> player.sendMessage("Nothing interesting happens.")
         }
     }
+}
 
-    // sailing_boat_sail_kandarin_1x3_linen (raft sails - the op-bearing sail loc).
-    override fun getObjects(): Array<Any> = arrayOf(29506)
+/**
+ * Cargo hold: a multiloc on `sailing_carrying_cargo` (varbit 19134). The client always sends the base id 60245, so
+ * the variant is resolved here from the varbit: 0 -> `_no_cargo` (op1 Open, op2 Deposit-all, op5 Modify),
+ * 1 -> `_cargo` (op1 Deposit-held, op2 Deposit-all, op5 Modify). op5 is hidden by the spawn opflags.
+ * Only the captured ops are implemented (porttasks: Open t18-t20, Deposit-held t101-t103); op2 Deposit-all is not
+ * captured yet.
+ */
+@Suppress("unused")
+class BoatCargoHoldObjectAction : BoatFacilityObjectAction(FacilityKind.CARGO_HOLD) {
+    override fun handleObjectAction(player: Player, `object`: WorldObject, name: String, optionId: Int, option: String?) {
+        val boat = Boats.at(`object`) ?: return
+        when {
+            optionId == 1 && CargoHold.isCarryingCargo(player) -> CargoHold.depositHeld(player, boat)
+            optionId == 1 -> CargoHold.open(player, boat)
+            else -> player.sendMessage("Nothing interesting happens.")
+        }
+    }
 }
